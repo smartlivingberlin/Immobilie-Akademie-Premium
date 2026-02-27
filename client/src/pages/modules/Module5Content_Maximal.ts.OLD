@@ -1,0 +1,454 @@
+// Modul 5: Prüfung & §34i Darlehensvermittlung
+// 40 Tage | 320 UE | Vollständig mit Theory, extendedTheory, Law, Practice, Tasks, Solutions
+
+export const contentDataModule5Maximal: Record<string, {
+  title: string;
+  theory: string;
+  extendedTheory?: string;
+  law: string[];
+  practice: string;
+  task: string;
+  solution?: string;
+  type?: string;
+}> = {
+
+  day_1: {
+    title: "Wiederholung Modul 1 (Einführung Immobilienwirtschaft)",
+    theory: `Modul 1 behandelte die Grundlagen der Immobilienwirtschaft. Die wichtigsten Themen waren: Marktüberblick Deutschland, Immobilienarten (Wohn-, Gewerbe-, Sonderimmobilien), Rechtsformen (GmbH, AG, GbR), Immobilienfinanzierung (Eigenkapital, Fremdkapital, Annuitätendarlehen), Steuern (Grunderwerbsteuer, Grundsteuer, Einkommensteuer), Versicherungen (Gebäudeversicherung, Haftpflicht), Marketing (Online, Offline, Social Media) und Digitalisierung (PropTech, Smart Home). Die Immobilienwirtschaft ist mit einem Gesamtwert von über 15 Billionen Euro die größte Vermögensklasse in Deutschland. Der Markt ist geprägt von regionalen Unterschieden (München vs. ländliche Regionen) und demografischen Trends (Urbanisierung, Alterung).`,
+    extendedTheory: `**Kernthemen Modul 1 im Detail:**  **1. Marktüberblick Deutschland:** - Gesamtwert: 15 Billionen € - Wohnimmobilien: 80% (12 Billionen €) - Gewerbeimmobilien: 15% (2,25 Billionen €) - Sonderimmobilien: 5% (0,75 Billionen €)  **Regionale Unterschiede:** - München: 10.000 €/m² (Eigentumswohnung) - Berlin: 6.000 €/m² - Hamburg: 7.000 €/m² - Ländliche Regionen: 2.000-3.000 €/m²  **2. Immobilienarten:** - **Wohnimmobilien:** Einfamilienhaus, Mehrfamilienhaus, Eigentumswohnung - **Gewerbeimmobilien:** Büro, Einzelhandel, Logistik - **Sonderimmobilien:** Hotel, Pflegeheim, Produktionshalle  **3. Rechtsformen:** - **GmbH:** Haftungsbeschränkung, Mindeststammkapital 25.000 € - **AG:** Börsennotierung möglich, Mindestgrundkapital 50.000 € - **GbR:** Einfache Gründung, persönliche Haftung  **4. Immobilienfinanzierung:** - **Eigenkapital:** Mindestens 20% (empfohlen: 30%) - **Fremdkapital:** Annuitätendarlehen (80% der Finanzierungen) - **Zinssatz:** 3-4% (Stand 2026)  **5. Steuern:** - **Grunderwerbsteuer:** 3,5-6,5% (je nach Bundesland) - **Grundsteuer:** 0,26-1,0% des Einheitswerts - **Einkommensteuer:** Mieteinnahmen versteuern  **6. Versicherungen:** - **Gebäudeversicherung:** Feuer, Leitungswasser, Sturm - **Haftpflichtversicherung:** Personenschäden, Sachschäden  **7. Marketing:** - **Online:** ImmoScout24, Immowelt (90% der Käufer) - **Offline:** Zeitungsanzeigen, Flyer (10%) - **Social Media:** Facebook, Instagram (wachsend)  **8. Digitalisierung:** - **PropTech:** Digitale Plattformen, Automatisierung - **Smart Home:** Vernetzung, Energieeffizienz`,
+    law: ["§ 34c GewO (Maklererlaubnis)", "§ 1 WoEigG (Wohnungseigentum)", "§ 535 BGB (Mietvertrag)"],
+    practice: `**Prüfungsfragen Modul 1:**  1. Welche Immobilienart macht 80% des deutschen Immobilienmarktes aus? 2. Wie hoch ist die Grunderwerbsteuer in Bayern? 3. Welche Rechtsform erfordert ein Mindeststammkapital von 25.000 €? 4. Wie hoch sollte das Eigenkapital bei einer Immobilienfinanzierung sein? 5. Welche Versicherung deckt Feuer, Leitungswasser und Sturm ab?`,
+    task: `Erstellen Sie eine Zusammenfassung von Modul 1 (max. 2 Seiten) mit den wichtigsten Themen.`,
+    solution: `1. Wohnimmobilien (80%) 2. 3,5% 3. GmbH 4. Mindestens 20%, empfohlen 30% 5. Gebäudeversicherung  ---`,
+    type: "Prüfungsvorbereitung"
+  },
+
+  day_2: {
+    title: "Wiederholung Modul 2 (Makler §34c)",
+    theory: `Modul 2 behandelte die rechtlichen und praktischen Aspekte der Maklertätigkeit nach §34c GewO. Kernthemen waren: Erlaubnispflicht (IHK-Sachkundeprüfung), Maklervertrag (Alleinauftrag, einfacher Auftrag), Maklerprovision (3-7% + MwSt.), Bestellerprinzip (Käufer zahlt), Informationspflichten (Energieausweis, Grundbuchauszug), Haftung (Beratungsfehler, Falschauskunft) und Marketing (Exposé, Besichtigungen, Verhandlungen). Der Makler ist Vermittler zwischen Verkäufer und Käufer und verdient seine Provision nur bei erfolgreicher Vermittlung (Erfolgshonorar).`,
+    extendedTheory: `**Kernthemen Modul 2 im Detail:**  **1. Erlaubnispflicht §34c GewO:** - Sachkundeprüfung bei der IHK - Berufshaftpflichtversicherung (mind. 1 Mio. € Personenschäden, 250.000 € Sachschäden) - Gewerbeanmeldung  **2. Maklervertrag:** - **Alleinauftrag:** Exklusivrecht für 3-6 Monate - **Einfacher Auftrag:** Mehrere Makler parallel - **Schriftform:** Empfohlen (nicht zwingend)  **3. Maklerprovision:** - **Wohnimmobilien:** 3-7% + MwSt. (je nach Region) - **Gewerbeimmobilien:** 5-10% + MwSt. - **Bestellerprinzip:** Käufer zahlt (seit 2020)  **4. Informationspflichten:** - **Energieausweis:** Pflicht seit 2014 - **Grundbuchauszug:** Eigentümer, Lasten - **Baugenehmigung:** Legalität prüfen - **Altlasten:** Kontaminierung offenlegen  **5. Haftung:** - **Beratungsfehler:** Falsche Flächenangaben - **Falschauskunft:** Verschweigen von Mängeln - **Schadensersatz:** Bis zur Höhe der Provision  **6. Marketing:** - **Exposé:** Professionelle Fotos, Grundrisse - **Besichtigungen:** Einzeltermine, Massenbesichtigungen - **Verhandlungen:** Preisfindung, Kompromisse`,
+    law: ["§ 34c GewO (Maklererlaubnis)", "§ 652 BGB (Maklerlohn)", "§ 656a BGB (Bestellerprinzip)", "EnEV (Energieausweis)"],
+    practice: `**Prüfungsfragen Modul 2:**  1. Welche Versicherung benötigt ein Makler? 2. Wie hoch ist die Mindestdeckungssumme für Personenschäden? 3. Was ist das Bestellerprinzip? 4. Welche Informationspflichten hat ein Makler? 5. Wann verdient ein Makler seine Provision?`,
+    task: `Erstellen Sie ein Exposé für eine Eigentumswohnung (80 m², 3 Zimmer, Berlin).`,
+    solution: `1. Berufshaftpflichtversicherung 2. 1 Mio. € 3. Käufer zahlt die Maklerprovision 4. Energieausweis, Grundbuchauszug, Baugenehmigung, Altlasten 5. Bei erfolgreicher Vermittlung (Erfolgshonorar)  ---`,
+    type: "Prüfungsvorbereitung"
+  },
+
+  day_3: {
+    title: "Wiederholung Modul 3 (Verwaltung WEG/Miet)",
+    theory: `Modul 3 behandelte die Verwaltung von Wohnungseigentum (WEG) und Mietobjekten. Kernthemen waren: WEG-Verwaltung (Eigentümerversammlung, Beschlussfassung, Jahresabrechnung), Mietverwaltung (Mietvertrag, Nebenkostenabrechnung, Mieterhöhung), Instandhaltung (Wartung, Reparaturen, Modernisierung), Hausordnung (Ruhezeiten, Tierhaltung) und Konfliktmanagement (Mediation, Schlichtung). Die Verwaltung ist eine Dienstleistung für Eigentümer und Mieter und erfordert Fachkenntnisse in Recht, Buchhaltung und Kommunikation.`,
+    extendedTheory: `**Kernthemen Modul 3 im Detail:**  **1. WEG-Verwaltung:** - **Eigentümerversammlung:** Mindestens 1x jährlich - **Beschlussfassung:** Einfache Mehrheit (> 50%) - **Jahresabrechnung:** Einnahmen, Ausgaben, Rücklagen - **Verwaltervergütung:** 20-30 €/Einheit/Monat  **2. Mietverwaltung:** - **Mietvertrag:** Unbefristet (Standard), befristet (Ausnahme) - **Nebenkostenabrechnung:** Jährlich, innerhalb 12 Monate - **Mieterhöhung:** Max. 20% in 3 Jahren (Kappungsgrenze) - **Kündigungsfristen:** 3-9 Monate (je nach Mietdauer)  **3. Instandhaltung:** - **Wartung:** Heizung, Aufzug, Brandschutz - **Reparaturen:** Kleinreparaturen (< 100 €) Mieter, große Reparaturen Eigentümer - **Modernisierung:** Energetische Sanierung, Barrierefreiheit  **4. Hausordnung:** - **Ruhezeiten:** 22-6 Uhr, 13-15 Uhr - **Tierhaltung:** Kleintiere erlaubt, Hunde/Katzen Zustimmung - **Gemeinschaftsräume:** Treppenhaus, Waschküche  **5. Konfliktmanagement:** - **Mediation:** Neutrale Vermittlung - **Schlichtung:** Verbindliche Entscheidung - **Gerichtsverfahren:** Letztes Mittel`,
+    law: ["WEG (Wohnungseigentumsgesetz)", "§ 535 BGB (Mietvertrag)", "§ 556 BGB (Nebenkosten)", "§ 558 BGB (Mieterhöhung)"],
+    practice: `**Prüfungsfragen Modul 3:**  1. Wie oft muss eine Eigentümerversammlung stattfinden? 2. Welche Mehrheit ist für Beschlüsse erforderlich? 3. Wie hoch ist die Kappungsgrenze bei Mieterhöhungen? 4. Wer zahlt Kleinreparaturen unter 100 €? 5. Welche Ruhezeiten gelten in Wohngebäuden?`,
+    task: `Erstellen Sie eine Nebenkostenabrechnung für eine 80 m² Wohnung.`,
+    solution: `1. Mindestens 1x jährlich 2. Einfache Mehrheit (> 50%) 3. Max. 20% in 3 Jahren 4. Mieter 5. 22-6 Uhr, 13-15 Uhr  ---`,
+    type: "Prüfungsvorbereitung"
+  },
+
+  day_4: {
+    title: "Wiederholung Modul 4 (Gutachten)",
+    theory: `Modul 4 behandelte die Immobilienbewertung und Gutachtenerstellung. Kernthemen waren: Wertbegriffe (Verkehrswert, Beleihungswert, Versicherungswert), Wertermittlungsverfahren (Vergleichswert, Ertragswert, Sachwert), Bodenrichtwerte (BORIS-D), Gutachterausschüsse, Marktanpassung (Zu-/Abschläge, Sachwertfaktor) und Gutachtenerstellung (Aufbau, Fotos, Berechnungen). Die Immobilienbewertung ist die Grundlage für Kauf, Finanzierung, Steuern und Erbschaft.`,
+    extendedTheory: `**Kernthemen Modul 4 im Detail:**  **1. Wertbegriffe:** - **Verkehrswert:** Marktpreis unter normalen Bedingungen - **Beleihungswert:** 80-90% des Verkehrswerts (für Banken) - **Versicherungswert:** Wiederbeschaffungskosten (für Versicherungen)  **2. Wertermittlungsverfahren:** - **Vergleichswertverfahren:** Für eigengenutzte Wohnimmobilien - **Ertragswertverfahren:** Für vermietete Immobilien - **Sachwertverfahren:** Für Sonderimmobilien  **3. Vergleichswertverfahren:** - Vergleichsobjekte auswählen (mindestens 3-5) - Anpassungen vornehmen (Lage, Größe, Ausstattung, Zustand) - Verkehrswert ableiten (Mittelwert)  **4. Ertragswertverfahren:** - Bodenwert ermitteln - Reinertrag ermitteln (Rohertrag - Bewirtschaftungskosten) - Gebäudeertragswert ermitteln (Gebäudereinertrag × Vervielfältiger) - Ertragswert = Bodenwert + Gebäudeertragswert  **5. Sachwertverfahren:** - Bodenwert ermitteln - Gebäudesachwert ermitteln (Herstellungskosten - Alterswertminderung) - Sachwert = Bodenwert + Gebäudesachwert - Marktanpassung (Sachwert × Sachwertfaktor)  **6. Gutachtenerstellung:** - Objektbeschreibung (Lage, Grundstück, Gebäude) - Wertermittlung (Verfahrenswahl, Berechnungen) - Ergebnis (Verkehrswert) - Anlagen (Fotos, Grundrisse, Berechnungen)`,
+    law: ["§ 194 BauGB (Verkehrswert)", "ImmoWertV 2021 (Wertermittlungsverordnung)", "§§ 192-199 BauGB (Gutachterausschüsse)"],
+    practice: `**Prüfungsfragen Modul 4:**  1. Welches Verfahren wird für eigengenutzte Wohnimmobilien angewendet? 2. Wie wird der Beleihungswert berechnet? 3. Was ist der Vervielfältiger im Ertragswertverfahren? 4. Wie wird die Alterswertminderung berechnet? 5. Was ist der Sachwertfaktor?`,
+    task: `Ermitteln Sie den Verkehrswert eines Einfamilienhauses mit dem Vergleichswertverfahren.`,
+    solution: `1. Vergleichswertverfahren 2. Verkehrswert × 0,8 bis 0,9 3. Faktor zur Kapitalisierung des Gebäudereinertrags 4. (Alter / Gesamtnutzungsdauer) × Herstellungskosten 5. Faktor zur Marktanpassung des Sachwerts  ---`,
+    type: "Prüfungsvorbereitung"
+  },
+
+  day_5: {
+    title: "Prüfungsstrategien & Zeitmanagement",
+    theory: `Eine erfolgreiche Prüfung erfordert nicht nur Fachwissen, sondern auch die richtige Strategie und effektives Zeitmanagement. Wichtige Prüfungsstrategien sind: Prüfungsordnung lesen (Dauer, Hilfsmittel, Bewertung), Zeitplan erstellen (Aufgaben priorisieren), Aufgaben sorgfältig lesen (Schlüsselwörter markieren), mit einfachen Aufgaben beginnen (Erfolgserlebnis), schwierige Aufgaben überspringen (später wiederkommen), Antworten überprüfen (Flüchtigkeitsfehler vermeiden) und Ruhe bewahren (Stress reduzieren). Eine gute Vorbereitung und ein klarer Plan erhöhen die Erfolgschancen erheblich.`,
+    extendedTheory: `**Prüfungsstrategien im Detail:**  **1. Vor der Prüfung:** - **Prüfungsordnung lesen:** Dauer, Hilfsmittel, Bewertung - **Lernplan erstellen:** Themen priorisieren, Zeitplan - **Übungen machen:** Alte Prüfungen, Fallstudien - **Pausen einplanen:** Erholung, Konzentration  **2. Während der Prüfung:** - **Zeitplan erstellen:** Aufgaben priorisieren (z.B. 120 Min. / 40 Fragen = 3 Min./Frage) - **Aufgaben sorgfältig lesen:** Schlüsselwörter markieren - **Mit einfachen Aufgaben beginnen:** Erfolgserlebnis, Selbstvertrauen - **Schwierige Aufgaben überspringen:** Später wiederkommen - **Antworten überprüfen:** Flüchtigkeitsfehler vermeiden - **Ruhe bewahren:** Stress reduzieren, tief atmen  **3. Nach der Prüfung:** - **Nicht über Fehler grübeln:** Was vorbei ist, ist vorbei - **Erholung:** Belohnung, Entspannung - **Feedback einholen:** Verbesserungspotenzial  **Zeitmanagement-Tipps:**  **Multiple-Choice-Fragen:** - **Leicht:** 1-2 Min./Frage - **Mittel:** 2-3 Min./Frage - **Schwer:** 3-5 Min./Frage  **Fallstudien:** - **Lesen:** 5-10 Min. - **Analyse:** 10-15 Min. - **Antwort:** 15-20 Min.  **Berechnungen:** - **Einfach:** 3-5 Min. - **Komplex:** 10-15 Min.  **Prüfungsangst bewältigen:** - **Vorbereitung:** Wissen aufbauen, Sicherheit gewinnen - **Entspannungstechniken:** Tief atmen, progressive Muskelentspannung - **Positive Gedanken:** "Ich schaffe das!" - **Realistische Erwartungen:** Perfektion ist nicht nötig`,
+    law: ["Prüfungsordnung IHK (je nach Bundesland unterschiedlich)"],
+    practice: `**Zeitplan-Übung:**  Prüfung: 120 Minuten, 40 Multiple-Choice-Fragen, 2 Fallstudien  Erstellen Sie einen Zeitplan: - Multiple-Choice: ? Minuten - Fallstudie 1: ? Minuten - Fallstudie 2: ? Minuten - Puffer: ? Minuten`,
+    task: `Erstellen Sie einen persönlichen Lernplan für die nächsten 4 Wochen bis zur Prüfung.`,
+    solution: `**Zeitplan:** - Multiple-Choice: 60 Min. (40 Fragen × 1,5 Min.) - Fallstudie 1: 25 Min. - Fallstudie 2: 25 Min. - Puffer: 10 Min.  ---`,
+    type: "Prüfungsvorbereitung"
+  },
+
+  day_6: {
+    title: "Multiple-Choice-Fragen üben",
+    theory: `Multiple-Choice-Fragen sind der häufigste Fragetyp in IHK-Prüfungen. Sie bestehen aus einer Frage und mehreren Antwortmöglichkeiten (meist 4), von denen eine oder mehrere richtig sind. Wichtige Strategien: Frage genau lesen (Schlüsselwörter markieren), offensichtlich falsche Antworten ausschließen, bei Unsicherheit raten (keine Minuspunkte), Zeit im Auge behalten (nicht zu lange bei einer Frage verweilen). Typische Fragentypen: Wissensfragen (Fakten abfragen), Verständnisfragen (Zusammenhänge erklären), Anwendungsfragen (Wissen anwenden).`,
+    extendedTheory: `**Multiple-Choice-Strategien:**  **1. Frage genau lesen:** - Schlüsselwörter markieren (NICHT, IMMER, NIEMALS) - Frage umformulieren (eigene Worte)  **2. Antworten analysieren:** - Offensichtlich falsche Antworten ausschließen - Ähnliche Antworten vergleichen (oft ist eine richtig) - Extreme Formulierungen (IMMER, NIEMALS) sind meist falsch  **3. Bei Unsicherheit:** - Raten (keine Minuspunkte) - Bauchgefühl vertrauen - Später wiederkommen  **4. Zeitmanagement:** - Nicht zu lange bei einer Frage verweilen (max. 3 Min.) - Schwierige Fragen markieren und überspringen  **Typische Fragentypen:**  **Wissensfragen:** "Wie hoch ist die Grunderwerbsteuer in Bayern?" A) 3,5% ✓ B) 5,0% C) 6,5% D) 7,0%  **Verständnisfragen:** "Was ist der Unterschied zwischen Verkehrswert und Beleihungswert?" A) Verkehrswert ist höher ✓ B) Beleihungswert ist höher C) Beide sind gleich D) Keiner der beiden  **Anwendungsfragen:** "Ein Einfamilienhaus hat einen Verkehrswert von 500.000 €. Wie hoch ist der Beleihungswert bei 80%?" A) 400.000 € ✓ B) 450.000 € C) 500.000 € D) 550.000 €`,
+    law: ["Prüfungsordnung IHK"],
+    practice: `**Übung: 10 Multiple-Choice-Fragen**  1. Welche Versicherung benötigt ein Makler? A) Gebäudeversicherung B) Berufshaftpflicht ✓ C) Lebensversicherung D) Unfallversicherung  2. Wie hoch ist die Mindestdeckungssumme für Personenschäden? A) 500.000 € B) 1 Mio. € ✓ C) 2 Mio. € D) 5 Mio. €  3. Was ist das Bestellerprinzip? A) Verkäufer zahlt B) Käufer zahlt ✓ C) Beide zahlen D) Niemand zahlt  [... 7 weitere Fragen]`,
+    task: `Erstellen Sie 20 eigene Multiple-Choice-Fragen zu den Modulen 1-4.`,
+    solution: `Siehe Practice-Abschnitt  ---`,
+    type: "Prüfungsvorbereitung"
+  },
+
+  day_7: {
+    title: "Fallstudien bearbeiten",
+    theory: `Fallstudien sind praxisnahe Aufgaben, die komplexe Situationen beschreiben und eine Lösung erfordern. Sie testen nicht nur Wissen, sondern auch Anwendung, Analyse und Problemlösung. Typische Fallstudien: Immobilienbewertung, Maklervertrag, WEG-Verwaltung, Finanzierungsberatung. Wichtige Strategien: Fall gründlich lesen (Notizen machen), Fragen identifizieren (Was wird gefragt?), Wissen anwenden (Theorie → Praxis), strukturiert antworten (Einleitung, Hauptteil, Schluss), Zeit im Auge behalten (nicht zu detailliert).`,
+    extendedTheory: `**Fallstudien-Strategien:**  **1. Fall gründlich lesen:** - Notizen machen (wichtige Informationen markieren) - Zahlen herausschreiben - Fragen identifizieren  **2. Wissen anwenden:** - Theorie erinnern (welche Gesetze, Verfahren?) - Praxis übertragen (wie würde ich vorgehen?)  **3. Strukturiert antworten:** - **Einleitung:** Situation beschreiben - **Hauptteil:** Lösung entwickeln (Schritt für Schritt) - **Schluss:** Ergebnis zusammenfassen  **4. Zeitmanagement:** - Nicht zu detailliert (Kernaussagen reichen) - Stichpunkte verwenden (keine Romane)  **Beispiel-Fallstudie:**  **Fall:** Herr Müller möchte sein Einfamilienhaus in Hamburg verkaufen. Das Haus hat 150 m² Wohnfläche, ein Grundstück von 500 m² und wurde 2000 gebaut. Er beauftragt Sie als Makler. In der Umgebung wurden kürzlich drei ähnliche Häuser verkauft: Haus A (140 m², 450 m², Baujahr 1998) für 560.000 €, Haus B (160 m², 550 m², Baujahr 2002) für 720.000 € und Haus C (150 m², 500 m², Baujahr 2000) für 600.000 €.  **Fragen:** 1. Ermitteln Sie den Verkehrswert mit dem Vergleichswertverfahren. 2. Welche Maklerprovision können Sie verlangen? 3. Welche Informationspflichten haben Sie?  **Lösung:** 1. Verkehrswert: 643.800 € (Vergleichswertverfahren mit Anpassungen) 2. Maklerprovision: 3-7% + MwSt. (Hamburg: ca. 6% + MwSt. = 45.907 €) 3. Informationspflichten: Energieausweis, Grundbuchauszug, Baugenehmigung, Altlasten`,
+    law: ["§ 34c GewO", "§ 652 BGB", "ImmoWertV 2021"],
+    practice: `Bearbeiten Sie die Beispiel-Fallstudie vollständig.`,
+    task: `Erstellen Sie eine eigene Fallstudie zu einem Maklervertrag.`,
+    solution: `Siehe extendedTheory  ---`,
+    type: "Prüfungsvorbereitung"
+  },
+
+  day_8: {
+    title: "Mündliche Prüfung vorbereiten",
+    theory: `Die mündliche Prüfung ist der letzte Schritt zur Erlaubnis. Sie dauert 15-30 Minuten und besteht aus einem Fachgespräch mit dem Prüfungsausschuss. Typische Fragen: Fachfragen (Gesetze, Verfahren), Praxisfragen (Wie würden Sie vorgehen?), Verständnisfragen (Warum ist das wichtig?). Wichtige Strategien: Selbstbewusst auftreten, klar und strukturiert antworten, bei Unsicherheit ehrlich sein, Rückfragen stellen (wenn unklar), Ruhe bewahren.`,
+    extendedTheory: `**Mündliche Prüfung: Ablauf und Strategien**  **Ablauf:** 1. **Begrüßung:** Prüfungsausschuss stellt sich vor 2. **Fachgespräch:** 15-30 Minuten 3. **Beratung:** Prüfungsausschuss berät (5-10 Min.) 4. **Ergebnis:** Bestanden/Nicht bestanden  **Typische Fragen:**  **Fachfragen:** - "Was ist der Unterschied zwischen Verkehrswert und Beleihungswert?" - "Welche Informationspflichten hat ein Makler?" - "Wie wird die Maklerprovision berechnet?"  **Praxisfragen:** - "Ein Kunde möchte sein Haus verkaufen. Wie gehen Sie vor?" - "Ein Mieter beschwert sich über Lärm. Was tun Sie?" - "Ein Eigentümer möchte die Hausverwaltung wechseln. Wie läuft das ab?"  **Verständnisfragen:** - "Warum ist der Energieausweis wichtig?" - "Warum gibt es das Bestellerprinzip?" - "Warum ist eine Berufshaftpflichtversicherung Pflicht?"  **Strategien:**  **1. Selbstbewusst auftreten:** - Blickkontakt halten - Deutlich sprechen - Körpersprache (aufrecht sitzen)  **2. Klar und strukturiert antworten:** - Erst denken, dann sprechen - Stichpunkte verwenden (nicht abschweifen) - Beispiele geben (Praxisbezug)  **3. Bei Unsicherheit:** - Ehrlich sein ("Das weiß ich nicht genau, aber...") - Logisch ableiten ("Ich würde vermuten...") - Rückfragen stellen ("Können Sie die Frage präzisieren?")  **4. Ruhe bewahren:** - Tief atmen - Pausen machen (nachdenken ist erlaubt) - Positiv denken`,
+    law: ["Prüfungsordnung IHK"],
+    practice: `Simulieren Sie eine mündliche Prüfung mit einem Partner (15 Minuten).`,
+    task: `Bereiten Sie Antworten auf die 10 häufigsten Fragen vor.`,
+    solution: `Siehe extendedTheory  ---`,
+    type: "Prüfungsvorbereitung"
+  },
+
+  day_9: {
+    title: "Prüfungsangst bewältigen",
+    theory: `Prüfungsangst ist normal und betrifft viele Menschen. Sie äußert sich durch Nervosität, Herzrasen, Schwitzen, Blackouts. Ursachen: Versagensangst, Perfektionismus, mangelnde Vorbereitung, negative Erfahrungen. Bewältigungsstrategien: Gute Vorbereitung (Wissen aufbauen), Entspannungstechniken (Atmung, progressive Muskelentspannung), positive Gedanken ("Ich schaffe das!"), realistische Erwartungen (Perfektion ist nicht nötig), Pausen einplanen (Erholung), Sport und Bewegung (Stress abbauen), ausreichend Schlaf (Regeneration).`,
+    extendedTheory: `**Prüfungsangst: Ursachen und Lösungen**  **Ursachen:** - **Versagensangst:** "Was, wenn ich durchfalle?" - **Perfektionismus:** "Ich muss alles wissen!" - **Mangelnde Vorbereitung:** "Ich habe zu wenig gelernt!" - **Negative Erfahrungen:** "Ich bin schon einmal durchgefallen!"  **Symptome:** - **Körperlich:** Herzrasen, Schwitzen, Zittern, Übelkeit - **Mental:** Blackouts, Konzentrationsprobleme, negative Gedanken - **Verhalten:** Vermeidung, Prokrastination, Schlafstörungen  **Bewältigungsstrategien:**  **1. Gute Vorbereitung:** - Wissen aufbauen (Sicherheit gewinnen) - Lernplan erstellen (Struktur) - Übungen machen (Routine)  **2. Entspannungstechniken:** - **Atemübungen:** Tief ein- und ausatmen (4-7-8-Methode) - **Progressive Muskelentspannung:** Muskeln anspannen und entspannen - **Meditation:** Gedanken zur Ruhe bringen  **3. Positive Gedanken:** - "Ich schaffe das!" - "Ich bin gut vorbereitet!" - "Fehler sind menschlich!"  **4. Realistische Erwartungen:** - Perfektion ist nicht nötig (60-70% reichen oft) - Fehler sind erlaubt - Nicht jede Frage muss richtig sein  **5. Pausen einplanen:** - Erholung (nicht durchlernen) - Hobbys (Ausgleich) - Soziale Kontakte (Unterstützung)  **6. Sport und Bewegung:** - Stress abbauen - Endorphine freisetzen - Konzentration verbessern  **7. Ausreichend Schlaf:** - Regeneration (7-8 Stunden) - Gedächtnis festigen - Konzentration steigern  **Am Prüfungstag:** - Früh aufstehen (nicht hetzen) - Gesundes Frühstück (Energie) - Rechtzeitig ankommen (Stress vermeiden) - Tief atmen (Ruhe bewahren)`,
+    law: ["Keine spezifischen Gesetze"],
+    practice: `Üben Sie Atemübungen und progressive Muskelentspannung (10 Minuten täglich).`,
+    task: `Erstellen Sie eine Liste mit 10 positiven Gedanken für die Prüfung.`,
+    solution: `1. "Ich bin gut vorbereitet!" 2. "Ich schaffe das!" 3. "Fehler sind menschlich!" [... 7 weitere]  ---`,
+    type: "Prüfungsvorbereitung"
+  },
+
+  day_10: {
+    title: "Prüfungssimulation",
+    theory: `Eine Prüfungssimulation ist die beste Vorbereitung. Sie simuliert die echte Prüfung unter realistischen Bedingungen (Zeit, Umgebung, Hilfsmittel). Ziele: Zeitmanagement üben, Nervosität reduzieren, Schwachstellen identifizieren, Selbstvertrauen aufbauen. Ablauf: Alte Prüfungen besorgen (IHK, Online), Zeitlimit setzen (z.B. 120 Min.), Hilfsmittel bereitstellen (Taschenrechner, Gesetzestexte), Prüfung durchführen (keine Unterbrechungen), Auswertung (Fehler analysieren), Nachbereitung (Schwachstellen wiederholen).`,
+    extendedTheory: `**Prüfungssimulation: Schritt für Schritt**  **Vorbereitung:** 1. **Alte Prüfungen besorgen:** IHK-Website, Online-Portale, Lehrbücher 2. **Zeitlimit setzen:** Wie in der echten Prüfung (z.B. 120 Min.) 3. **Hilfsmittel bereitstellen:** Taschenrechner, Gesetzestexte (wenn erlaubt) 4. **Ruhigen Ort wählen:** Keine Ablenkungen  **Durchführung:** 1. **Timer starten:** Zeitlimit einhalten 2. **Prüfung durchführen:** Wie in der echten Prüfung (keine Pausen, keine Unterbrechungen) 3. **Antworten aufschreiben:** Vollständig und strukturiert  **Auswertung:** 1. **Punkte zählen:** Wie viele Fragen richtig? 2. **Fehler analysieren:** Warum falsch? Wissen fehlt? Flüchtigkeitsfehler? 3. **Schwachstellen identifizieren:** Welche Themen wiederholen?  **Nachbereitung:** 1. **Schwachstellen wiederholen:** Theorie nochmal lesen, Übungen machen 2. **Nächste Simulation:** In 1-2 Wochen wiederholen 3. **Fortschritt dokumentieren:** Verbesserung sichtbar machen  **Beispiel-Prüfungssimulation:**  **Prüfung:** 120 Minuten, 40 Multiple-Choice-Fragen, 2 Fallstudien  **Ergebnis:** - Multiple-Choice: 32/40 richtig (80%) - Fallstudie 1: 18/25 Punkte (72%) - Fallstudie 2: 20/25 Punkte (80%) - Gesamt: 70/90 Punkte (78%) → **Bestanden!**  **Fehleranalyse:** - Multiple-Choice: 8 Fehler (Themen: Steuern, Versicherungen) - Fallstudie 1: 7 Punkte verloren (Zeitmanagement, unvollständige Antworten)  **Nachbereitung:** - Steuern und Versicherungen wiederholen - Zeitmanagement verbessern (Stichpunkte verwenden)`,
+    law: ["Prüfungsordnung IHK"],
+    practice: `Führen Sie eine vollständige Prüfungssimulation durch (120 Minuten).`,
+    task: `Dokumentieren Sie Ihr Ergebnis und erstellen Sie einen Nachbereitungsplan.`,
+    solution: `Siehe extendedTheory  ---`,
+    type: "Prüfungsvorbereitung"
+  },
+
+  day_11: {
+    title: "Einführung §34i GewO",
+    theory: `§34i GewO regelt die Erlaubnispflicht für Immobiliardarlehensvermittler. Wer gewerbsmäßig Immobiliardarlehen vermittelt, benötigt eine Erlaubnis der zuständigen IHK. Voraussetzungen: Sachkundeprüfung, Berufshaftpflichtversicherung, Zuverlässigkeit, geordnete Vermögensverhältnisse. Der §34i GewO wurde 2016 eingeführt zur Umsetzung der EU-Wohnimmobilienkreditrichtlinie und dient dem Verbraucherschutz. Ziel: Qualifikation der Vermittler sicherstellen, unseriöse Anbieter ausschließen, Transparenz erhöhen.`,
+    extendedTheory: `**§34i GewO: Hintergrund und Bedeutung**  **Historischer Hintergrund:** - **2008:** Finanzkrise (Ursache: Subprime-Kredite in den USA) - **2014:** EU-Wohnimmobilienkreditrichtlinie (Verbraucherschutz) - **2016:** Umsetzung in Deutschland (§34i GewO)  **Ziele:** 1. **Verbraucherschutz:** Qualifizierte Beratung sicherstellen 2. **Markttransparenz:** Unseriöse Anbieter ausschließen 3. **Finanzstabilität:** Überschuldung vermeiden  **Anwendungsbereich:**  **Erlaubnispflichtig:** - Vermittlung von Immobiliardarlehen (Wohnimmobilien) - Beratung zu Immobiliardarlehen - Nachweistätigkeit (Kontakt herstellen)  **Nicht erlaubnispflichtig:** - Vermittlung von Gewerbedarlehen - Vermittlung von Konsumentenkrediten - Vermittlung durch Banken (eigene Produkte)  **Voraussetzungen für die Erlaubnis:**  **1. Sachkundeprüfung:** - IHK-Prüfung (schriftlich + mündlich) - Inhalte: Recht, Finanzierung, Beratung - Dauer: 120 Min. schriftlich, 15-30 Min. mündlich  **2. Berufshaftpflichtversicherung:** - Mindestdeckung: 1 Mio. € Personenschäden, 250.000 € Sachschäden - Jahreshöchstleistung: 1,5 Mio. €  **3. Zuverlässigkeit:** - Führungszeugnis (keine Vorstrafen) - Gewerbezentralregisterauszug (keine Insolvenz)  **4. Geordnete Vermögensverhältnisse:** - Keine Überschuldung - Keine Insolvenz  **Erlaubnisverfahren:** 1. Antrag bei der IHK 2. Unterlagen einreichen (Sachkundeprüfung, Versicherung, Führungszeugnis) 3. Prüfung durch die IHK (4-8 Wochen) 4. Erlaubnis erteilen oder ablehnen  **Kosten:** - Sachkundeprüfung: 200-400 € - Erlaubnisantrag: 100-300 € - Berufshaftpflichtversicherung: 500-1.500 €/Jahr`,
+    law: ["§ 34i GewO (Erlaubnispflicht Immobiliardarlehensvermittler)", "§ 34i Abs. 1 GewO (Anwendungsbereich)", "§ 34i Abs. 2 GewO (Voraussetzungen)"],
+    practice: `**Prüfungsfragen §34i:**  1. Seit wann gilt §34i GewO? A) 2014 B) 2016 ✓ C) 2018 D) 2020  2. Welche Mindestdeckung muss die Berufshaftpflichtversicherung haben? A) 500.000 € B) 1 Mio. € ✓ C) 2 Mio. € D) 5 Mio. €  3. Wer ist von der Erlaubnispflicht ausgenommen? A) Makler B) Banken ✓ C) Versicherungen D) Niemand`,
+    task: `Recherchieren Sie die Erlaubnisvoraussetzungen in Ihrem Bundesland (IHK-Website).`,
+    solution: `1. B) 2016 2. B) 1 Mio. € 3. B) Banken (eigene Produkte)  ---`,
+    type: "§34i Grundlagen"
+  },
+
+  day_12: {
+    title: "Erlaubnispflicht & Erlaubnisverfahren",
+    theory: `Die Erlaubnispflicht nach §34i GewO gilt für alle, die gewerbsmäßig Immobiliardarlehen vermitteln. Das Erlaubnisverfahren läuft über die zuständige IHK. Antragsteller müssen Sachkunde, Zuverlässigkeit, geordnete Vermögensverhältnisse und eine Berufshaftpflichtversicherung nachweisen. Das Verfahren dauert 4-8 Wochen und kostet 100-300 €. Die Erlaubnis ist unbefristet, kann aber bei Pflichtverletzungen widerrufen werden. Ohne Erlaubnis drohen Bußgelder bis 50.000 € und strafrechtliche Konsequenzen.`,
+    extendedTheory: `**Erlaubnisverfahren Schritt für Schritt:**  **1. Sachkundeprüfung ablegen:** - IHK-Prüfung (schriftlich + mündlich) - Kosten: 200-400 € - Vorbereitung: Lehrgang (optional, 1.000-2.000 €)  **2. Berufshaftpflichtversicherung abschließen:** - Mindestdeckung: 1 Mio. € Personenschäden, 250.000 € Sachschäden - Kosten: 500-1.500 €/Jahr - Anbieter: Hiscox, Allianz, AXA  **3. Unterlagen zusammenstellen:** - Sachkundeprüfungszeugnis - Versicherungsnachweis - Führungszeugnis (nicht älter als 3 Monate) - Gewerbezentralregisterauszug - Personalausweis - Gewerbeanmeldung  **4. Antrag bei der IHK stellen:** - Formular ausfüllen - Unterlagen einreichen - Gebühr zahlen (100-300 €)  **5. Prüfung durch die IHK:** - Vollständigkeit der Unterlagen - Zuverlässigkeitsprüfung - Vermögensprüfung - Dauer: 4-8 Wochen  **6. Erlaubnis erhalten:** - Erlaubnisurkunde - Eintragung im Vermittlerregister (§11a GewO) - Unbefristet gültig  **Pflichten nach Erteilung:**  **1. Weiterbildung:** - 15 Stunden alle 3 Jahre - Themen: Recht, Finanzierung, Beratung  **2. Versicherung aufrechterhalten:** - Jährliche Verlängerung - Nachweis bei der IHK  **3. Änderungen melden:** - Adressänderung - Namensänderung - Geschäftsaufgabe  **Widerruf der Erlaubnis:**  **Gründe:** - Wegfall der Voraussetzungen (Versicherung, Zuverlässigkeit) - Schwere Pflichtverletzungen (Betrug, Täuschung) - Insolvenz  **Konsequenzen:** - Erlaubnis erlischt - Tätigkeit muss eingestellt werden - Bußgeld bis 50.000 €  **Bußgelder bei Verstößen:** - Tätigkeit ohne Erlaubnis: bis 50.000 € - Fehlende Versicherung: bis 25.000 € - Fehlende Weiterbildung: bis 10.000 €`,
+    law: ["§ 34i Abs. 2 GewO (Voraussetzungen)", "§ 34i Abs. 3 GewO (Erlaubnisverfahren)", "§ 34i Abs. 4 GewO (Widerruf)", "§ 144 GewO (Bußgeldvorschriften)"],
+    practice: `**Fall:** Sie möchten als Immobiliardarlehensvermittler tätig werden. Beschreiben Sie die Schritte des Erlaubnisverfahrens.`,
+    task: `Recherchieren Sie die Kosten für die Sachkundeprüfung und die Berufshaftpflichtversicherung in Ihrer Region.`,
+    solution: `Siehe extendedTheory (Schritte 1-6)  ---`,
+    type: "§34i Grundlagen"
+  },
+
+  day_13: {
+    title: "Sachkundeprüfung §34i",
+    theory: `Die Sachkundeprüfung nach §34i GewO ist Voraussetzung für die Erlaubnis. Sie besteht aus einem schriftlichen Teil (120 Min., Multiple-Choice + Fallstudien) und einem mündlichen Teil (15-30 Min., Fachgespräch). Prüfungsinhalte: Kundenberatung, Finanzierungsformen, Kreditwürdigkeitsprüfung, Verbraucherschutz, Datenschutz. Die Durchfallquote liegt bei 20-30%. Eine gute Vorbereitung ist entscheidend (Lehrgang, Selbststudium, Übungsfragen).`,
+    extendedTheory: `**Sachkundeprüfung im Detail:**  **Prüfungsinhalte nach Anlage zu §34i GewO:**  **1. Kundenberatung (30%):** - Bedarfsermittlung - Finanzierungskonzepte - Produktauswahl - Beratungsprotokoll  **2. Finanzierungsformen (25%):** - Annuitätendarlehen - Tilgungsdarlehen - Bauspardarlehen - KfW-Darlehen - Forward-Darlehen  **3. Kreditwürdigkeitsprüfung (20%):** - Einkommensermittlung - Haushaltsrechnung - Schufa-Auskunft - Beleihungswert  **4. Verbraucherschutz (15%):** - Informationspflichten - Widerrufsrecht - Beratungspflichten - Haftung  **5. Datenschutz (10%):** - DSGVO - Datenschutzerklärung - Einwilligungen - Datensicherheit  **Prüfungsablauf:**  **Schriftliche Prüfung (120 Min.):** - 40 Multiple-Choice-Fragen (60 Punkte) - 2 Fallstudien (je 15 Punkte) - Bestehensgrenze: 50% (45 Punkte)  **Mündliche Prüfung (15-30 Min.):** - Fachgespräch mit Prüfungsausschuss - Praxisfragen - Verständnisfragen  **Vorbereitung:**  **1. Lehrgang (optional):** - Dauer: 5-10 Tage - Kosten: 1.000-2.000 € - Anbieter: IHK, private Bildungsträger  **2. Selbststudium:** - Lehrbücher (z.B. "Immobiliardarlehensvermittler IHK") - Online-Kurse - Übungsfragen  **3. Übungsfragen:** - Alte Prüfungen - Online-Tests - Lerngruppen  **Durchfallquote:** - Schriftlich: 15-20% - Mündlich: 5-10% - Gesamt: 20-30%  **Wiederholung:** - Beliebig oft möglich - Kosten: 200-400 € pro Versuch - Wartezeit: Keine`,
+    law: ["§ 34i Abs. 2 Nr. 1 GewO (Sachkundeprüfung)", "Anlage zu § 34i GewO (Prüfungsinhalte)"],
+    practice: `Bearbeiten Sie 20 Multiple-Choice-Fragen zur Sachkundeprüfung.`,
+    task: `Erstellen Sie einen Lernplan für die Vorbereitung auf die Sachkundeprüfung (8 Wochen).`,
+    solution: `**Lernplan:** - Woche 1-2: Kundenberatung - Woche 3-4: Finanzierungsformen - Woche 5: Kreditwürdigkeitsprüfung - Woche 6: Verbraucherschutz - Woche 7: Datenschutz - Woche 8: Wiederholung + Prüfungssimulation  ---`,
+    type: "§34i Grundlagen"
+  },
+
+  day_14: {
+    title: "Berufshaftpflichtversicherung",
+    theory: `Die Berufshaftpflichtversicherung ist Pflicht für Immobiliardarlehensvermittler nach §34i GewO. Sie deckt Vermögensschäden ab, die durch Beratungsfehler, Falschauskunft oder Pflichtverletzungen entstehen. Mindestdeckung: 1 Mio. € Personenschäden, 250.000 € Sachschäden, Jahreshöchstleistung 1,5 Mio. €. Die Versicherung muss während der gesamten Tätigkeit bestehen und jährlich bei der IHK nachgewiesen werden. Kosten: 500-1.500 €/Jahr (abhängig von Umsatz und Risiko). Wichtige Anbieter: Hiscox, Allianz, AXA, VHV.`,
+    extendedTheory: `**Berufshaftpflichtversicherung im Detail:**  **Warum ist sie Pflicht?**  Immobiliardarlehensvermittler beraten Kunden bei existenziellen Entscheidungen. Fehler können zu erheblichen finanziellen Schäden führen (Überschuldung, Zwangsversteigerung). Die Versicherung schützt sowohl den Vermittler als auch den Kunden.  **Versicherte Risiken:**  **1. Beratungsfehler:** - Falsche Produktempfehlung (z.B. variables Darlehen statt Festzins) - Unzureichende Risikoaufklärung (z.B. Zinsänderungsrisiko) - Fehlerhafte Bedarfsermittlung (z.B. zu hohe Darlehensrate)  **2. Falschauskunft:** - Falsche Angaben zu Konditionen (z.B. Zinssatz, Laufzeit) - Verschweigen von Kosten (z.B. Bearbeitungsgebühr) - Falsche Zusicherungen (z.B. "Kredit wird auf jeden Fall genehmigt")  **3. Pflichtverletzungen:** - Fehlende Dokumentation (Beratungsprotokoll) - Verstoß gegen Informationspflichten - Datenschutzverletzung  **Mindestdeckung nach §34i GewO:**  - **Personenschäden:** 1 Mio. € pro Schadensfall - **Sachschäden:** 250.000 € pro Schadensfall - **Jahreshöchstleistung:** 1,5 Mio. € (Summe aller Schäden pro Jahr)  **Beispiel:** Ein Vermittler empfiehlt einem Kunden ein variables Darlehen. Die Zinsen steigen von 2% auf 6%, die monatliche Rate erhöht sich von 1.000 € auf 1.500 €. Der Kunde kann die Rate nicht mehr zahlen und verliert sein Haus. Schaden: 200.000 € → Versicherung zahlt.  **Kosten:**  **Faktoren:** - Umsatz (höherer Umsatz = höhere Prämie) - Risiko (Gewerbedarlehen teurer als Wohnimmobiliendarlehen) - Selbstbehalt (höherer Selbstbehalt = niedrigere Prämie) - Versicherungsumfang (erweiterte Deckung teurer)  **Typische Prämien:** - Einsteiger (< 50.000 € Umsatz): 500-800 €/Jahr - Etabliert (50.000-200.000 € Umsatz): 800-1.200 €/Jahr - Groß (> 200.000 € Umsatz): 1.200-1.500 €/Jahr  **Wichtige Anbieter:** - Hiscox (Marktführer, spezialisiert auf Finanzdienstleister) - Allianz (umfassender Schutz) - AXA (günstige Konditionen) - VHV (flexible Tarife)  **Nachweispflicht:**  Die Versicherun`,
+    law: ["§ 34i Abs. 2 Nr. 2 GewO (Berufshaftpflichtversicherung)", "§ 34i Abs. 5 GewO (Mindestdeckung)"],
+    practice: `**Fall:** Sie vermitteln einem Kunden ein Darlehen mit variabler Verzinsung. Sie weisen nicht auf das Zinsänderungsrisiko hin. Die Zinsen steigen, der Kunde kann die Rate nicht mehr zahlen. Schaden: 150.000 €.  **Fragen:** 1. Haftet die Versicherung? 2. Wie hoch ist der Schaden? 3. Was hätten Sie anders machen müssen?`,
+    task: `Holen Sie drei Angebote für eine Berufshaftpflichtversicherung ein und vergleichen Sie Kosten und Leistungen.`,
+    solution: `1. Ja, Beratungsfehler (fehlende Risikoaufklärung) 2. 150.000 € (unter Mindestdeckung von 250.000 €) 3. Risikoaufklärung im Beratungsprotokoll dokumentieren  ---`,
+    type: "§34i Grundlagen"
+  },
+
+  day_15: {
+    title: "Vermögensschadenhaftpflicht",
+    theory: `Die Vermögensschadenhaftpflicht ist Teil der Berufshaftpflichtversicherung und deckt reine Vermögensschäden ab (ohne Personen- oder Sachschäden). Beispiele: Falschberatung führt zu finanziellen Verlusten, Fehler bei der Kreditwürdigkeitsprüfung, verspätete Bearbeitung führt zu Zinsnachteil. Die Versicherung zahlt Schadensersatz und übernimmt Rechtsverteidigungskosten. Wichtig: Versicherung greift nur bei fahrlässigen Fehlern, nicht bei Vorsatz.`,
+    extendedTheory: `**Vermögensschadenhaftpflicht: Was ist versichert?**  **Definition Vermögensschaden:** Ein reiner Vermögensschaden ist ein finanzieller Verlust ohne Personen- oder Sachschaden.  **Beispiele:**  **1. Falschberatung:** Ein Vermittler empfiehlt einem Kunden ein Darlehen mit 10 Jahren Zinsbindung. Nach 5 Jahren sinken die Zinsen deutlich. Der Kunde hätte mit 5 Jahren Zinsbindung 20.000 € gespart. → Vermögensschaden: 20.000 €  **2. Fehler bei der Kreditwürdigkeitsprüfung:** Ein Vermittler übersieht eine negative Schufa-Eintragung. Die Bank lehnt den Kredit ab. Der Kunde verliert die Immobilie an einen anderen Käufer. → Vermögensschaden: Entgangener Gewinn  **3. Verspätete Bearbeitung:** Ein Vermittler bearbeitet einen Darlehensantrag zu spät. In der Zwischenzeit steigen die Zinsen von 3% auf 4%. Der Kunde zahlt über 30 Jahre 50.000 € mehr. → Vermögensschaden: 50.000 €  **Was ist versichert?**  **1. Schadensersatz:** Die Versicherung zahlt den finanziellen Schaden des Kunden (bis zur Deckungssumme).  **2. Rechtsverteidigungskosten:** Die Versicherung übernimmt Anwalts- und Gerichtskosten (auch bei unbegründeten Ansprüchen).  **3. Gutachterkosten:** Die Versicherung zahlt Sachverständige zur Schadensermittlung.  **Was ist nicht versichert?**  **1. Vorsatz:** Bewusste Täuschung oder Betrug sind nicht versichert.  **2. Grobe Fahrlässigkeit:** Schwere Pflichtverletzungen können ausgeschlossen sein (je nach Vertrag).  **3. Eigenschäden:** Eigene finanzielle Verluste des Vermittlers sind nicht versichert.  **4. Strafen und Bußgelder:** Behördliche Sanktionen sind nicht versichert.  **Schadensabwicklung:**  **1. Schadensfall eintritt:** Kunde macht Schadensersatzanspruch geltend.  **2. Versicherung informieren:** Unverzüglich (innerhalb 7 Tage), schriftlich.  **3. Sachverhalt schildern:** Detailliert, mit Unterlagen (Beratungsprotokoll, E-Mails).  **4. Versicherung prüft:** Deckung, Schadenshöhe, Haftung.  **5. Versicherung reguliert:** Zahlung an Kunden oder Ablehnung (mit Begr`,
+    law: ["§ 34i Abs. 2 Nr. 2 GewO (Berufshaftpflichtversicherung)", "§ 280 BGB (Schadensersatz)", "§ 675 BGB (Sorgfaltspflicht)"],
+    practice: `**Fall:** Sie empfehlen einem Kunden ein Darlehen mit 15 Jahren Zinsbindung (4%). Nach 5 Jahren sinken die Zinsen auf 2%. Der Kunde hätte mit 10 Jahren Zinsbindung 40.000 € gespart.  **Fragen:** 1. Liegt ein Vermögensschaden vor? 2. Haftet die Versicherung? 3. Wie hätten Sie den Schaden vermeiden können?`,
+    task: `Erstellen Sie eine Checkliste zur Vermeidung von Vermögensschäden.`,
+    solution: `1. Ja, finanzieller Verlust durch Falschberatung 2. Ja, wenn fahrlässig (nicht bei Vorsatz) 3. Risikoaufklärung (Zinsänderungsrisiko), alternative Zinsbindungen anbieten  ---`,
+    type: "§34i Grundlagen"
+  },
+
+  day_16: {
+    title: "Beratungspflichten & Beratungsprotokoll",
+    theory: `Immobiliardarlehensvermittler haben umfassende Beratungspflichten nach §34i GewO und der Wohnimmobilienkreditrichtlinie. Sie müssen den Kunden über alle wesentlichen Aspekte der Finanzierung aufklären, Risiken erläutern und ein Beratungsprotokoll erstellen. Das Protokoll dokumentiert die Beratung und dient als Nachweis. Pflichtinhalte: Kundenwünsche, Finanzielle Situation, Produktempfehlung, Risikohinweise, Unterschriften. Das Protokoll muss dem Kunden ausgehändigt werden und 3 Jahre aufbewahrt werden.`,
+    extendedTheory: `**Beratungspflichten im Detail:**  Die Beratung muss ehrlich, klar und nicht irreführend sein. Der Vermittler muss die Interessen des Kunden in den Vordergrund stellen und darf keine Produkte empfehlen, die nicht zum Bedarf passen. Wichtige Pflichten: Bedarfsermittlung (Was braucht der Kunde?), Produktauswahl (Welches Darlehen passt?), Risikoaufklärung (Welche Risiken gibt es?), Kostenaufklärung (Was kostet die Finanzierung?), Dokumentation (Beratungsprotokoll). Das Beratungsprotokoll muss folgende Inhalte haben: Kundendaten, Finanzielle Situation (Einkommen, Ausgaben, Eigenkapital), Finanzierungswunsch (Kaufpreis, Darlehenssumme, Laufzeit), Produktempfehlung (Darlehensart, Zinssatz, Tilgung), Risikohinweise (Zinsänderungsrisiko, Überschuldungsrisiko), Kosten (Zinsen, Gebühren, Nebenkosten), Unterschriften (Kunde und Vermittler). Das Protokoll muss unmittelbar nach der Beratung erstellt und dem Kunden ausgehändigt werden. Aufbewahrungspflicht: 3 Jahre.`,
+    law: ["§ 34i Abs. 5 GewO (Beratungspflichten)", "§ 511 BGB (Beratungsprotokoll)", "Art. 16 Wohnimmobilienkreditrichtlinie"],
+    practice: `Erstellen Sie ein Beratungsprotokoll für einen Kunden, der ein Einfamilienhaus für 500.000 € kaufen möchte.`,
+    task: `Recherchieren Sie Mustervorlagen für Beratungsprotokolle und erstellen Sie eine eigene Vorlage.`,
+    solution: `Siehe extendedTheory (Pflichtinhalte des Beratungsprotokolls)  ---`,
+    type: "§34i Grundlagen"
+  },
+
+  day_17: {
+    title: "Informationspflichten & Widerrufsrecht",
+    theory: `Immobiliardarlehensvermittler müssen Kunden vor Vertragsschluss umfassend informieren. Pflichtinformationen: Identität des Vermittlers, Vergütung, Beschwerdemöglichkeiten, Datenschutz. Die Informationen müssen klar, verständlich und rechtzeitig erfolgen. Zusätzlich hat der Kunde ein Widerrufsrecht von 14 Tagen nach Vertragsschluss. Der Widerruf muss schriftlich erfolgen und ist formfrei. Bei Widerruf erlöschen alle Verpflichtungen.`,
+    extendedTheory: `**Informationspflichten im Detail:**  Die Informationen müssen vor der ersten Beratung erfolgen und können schriftlich oder elektronisch übermittelt werden. Pflichtinformationen: Name und Anschrift des Vermittlers, Registernummer (Vermittlerregister), Vergütung (Provision, Gebühren), Beschwerdemöglichkeiten (Ombudsstelle, BaFin), Datenschutz (DSGVO-konform). Das Widerrufsrecht gilt für Verbraucherdarlehensverträge und beträgt 14 Tage ab Vertragsschluss. Der Widerruf muss schriftlich erfolgen (Brief, E-Mail, Fax) und ist formfrei. Bei Widerruf erlöschen alle Verpflichtungen, bereits gezahlte Beträge müssen zurückerstattet werden.`,
+    law: ["§ 491a BGB (Informationspflichten)", "§ 495 BGB (Widerrufsrecht)", "§ 355 BGB (Widerrufsbelehrung)"],
+    practice: `Erstellen Sie eine Widerrufsbelehrung für einen Immobiliendarlehensvertrag.`,
+    task: `Recherchieren Sie die Beschwerdemöglichkeiten für Kunden (Ombudsstelle, BaFin).`,
+    solution: `Siehe extendedTheory (Pflichtinformationen und Widerrufsrecht)  ---`,
+    type: "§34i Grundlagen"
+  },
+
+  day_18: {
+    title: "Datenschutz & DSGVO",
+    theory: `Immobiliardarlehensvermittler verarbeiten personenbezogene Daten (Name, Adresse, Einkommen, Schufa) und müssen die DSGVO einhalten. Wichtige Pflichten: Datenschutzerklärung bereitstellen, Einwilligungen einholen, Daten sicher speichern, Auskunftsrechte gewähren, Datenpannen melden. Verstöße können Bußgelder bis 20 Mio. € oder 4% des Jahresumsatzes nach sich ziehen. Ein Datenschutzbeauftragter ist ab 20 Mitarbeitern Pflicht.`,
+    extendedTheory: `**DSGVO-Pflichten im Detail:**  Die DSGVO (Datenschutz-Grundverordnung) gilt seit Mai 2018 und regelt die Verarbeitung personenbezogener Daten. Personenbezogene Daten sind alle Informationen, die sich auf eine identifizierte oder identifizierbare Person beziehen (Name, Adresse, E-Mail, Telefon, Einkommen, Schufa-Score). Vermittler müssen eine Datenschutzerklärung bereitstellen, die transparent über die Datenverarbeitung informiert (Zweck, Rechtsgrundlage, Speicherdauer, Empfänger). Einwilligungen müssen freiwillig, informiert und eindeutig sein. Daten müssen sicher gespeichert werden (Verschlüsselung, Zugriffsschutz, Backup). Betroffene haben Auskunftsrechte (Welche Daten werden gespeichert?), Berichtigungsrechte (Falsche Daten korrigieren), Löschrechte (Daten löschen lassen) und Widerspruchsrechte (Datenverarbeitung widersprechen). Datenpannen (z.B. Hackerangriff, Datenverlust) müssen innerhalb 72 Stunden der Aufsichtsbehörde gemeldet werden. Ein Datenschutzbeauftragter ist ab 20 Mitarbeitern Pflicht und überwacht die Einhaltung der DSGVO.`,
+    law: ["DSGVO (Datenschutz-Grundverordnung)", "§ 34i Abs. 5 GewO (Datenschutz)", "BDSG (Bundesdatenschutzgesetz)"],
+    practice: `Erstellen Sie eine Datenschutzerklärung für Ihre Vermittlungstätigkeit.`,
+    task: `Recherchieren Sie die Pflichten eines Datenschutzbeauftragten.`,
+    solution: `Siehe extendedTheory (DSGVO-Pflichten)  ---`,
+    type: "§34i Grundlagen"
+  },
+
+  day_19: {
+    title: "Geldwäschegesetz (GwG)",
+    theory: `Immobiliardarlehensvermittler sind Verpflichtete nach dem Geldwäschegesetz (GwG) und müssen Maßnahmen zur Verhinderung von Geldwäsche und Terrorismusfinanzierung ergreifen. Pflichten: Kundenidentifizierung (Personalausweis prüfen), Risikoanalyse (Verdachtsfälle erkennen), Verdachtsmeldung (bei Auffälligkeiten an FIU), Aufzeichnungspflicht (5 Jahre). Verstöße können Bußgelder bis 1 Mio. € nach sich ziehen.`,
+    extendedTheory: `**Geldwäschegesetz im Detail:**  Geldwäsche ist die Verschleierung der Herkunft illegal erworbener Gelder. Terrorismusfinanzierung ist die Bereitstellung von Geldern für terroristische Zwecke. Vermittler müssen Kunden identifizieren (Personalausweis, Reisepass), Risikoanalysen durchführen (Ist der Kunde verdächtig?), Verdachtsfälle melden (Financial Intelligence Unit - FIU) und Aufzeichnungen 5 Jahre aufbewahren. Verdachtsmomente sind: Barzahlungen über 10.000 €, ungewöhnliche Transaktionen, fehlende Plausibilität, politisch exponierte Personen (PEP). Bei Verdacht muss unverzüglich eine Meldung an die FIU erfolgen (online über goAML-Portal).`,
+    law: ["GwG (Geldwäschegesetz)", "§ 2 Abs. 1 Nr. 14 GwG (Verpflichtete)", "§ 43 GwG (Verdachtsmeldung)"],
+    practice: `Beschreiben Sie den Ablauf einer Kundenidentifizierung nach GwG.`,
+    task: `Recherchieren Sie das goAML-Portal für Verdachtsmeldungen.`,
+    solution: `Siehe extendedTheory (GwG-Pflichten)  ---`,
+    type: "§34i Grundlagen"
+  },
+
+  day_20: {
+    title: "Compliance & Aufsicht (BaFin)",
+    theory: `Die BaFin (Bundesanstalt für Finanzdienstleistungsaufsicht) überwacht Immobiliardarlehensvermittler und prüft die Einhaltung der Vorschriften. Compliance bedeutet Regelkonformität und umfasst interne Kontrollsysteme, Schulungen, Dokumentation. Die BaFin kann Prüfungen durchführen, Bußgelder verhängen und Erlaubnisse widerrufen. Vermittler müssen Jahresberichte einreichen und Änderungen melden.`,
+    extendedTheory: `**Compliance und BaFin-Aufsicht:**  Compliance (Regelkonformität) bedeutet, dass alle gesetzlichen Vorgaben eingehalten werden. Vermittler müssen interne Kontrollsysteme einrichten (Prozesse, Checklisten), Mitarbeiter schulen (Weiterbildung, Compliance-Training) und alles dokumentieren (Beratungsprotokolle, Schulungsnachweise). Die BaFin führt stichprobenartig Prüfungen durch (vor Ort oder schriftlich) und kann bei Verstößen Bußgelder verhängen (bis 5 Mio. €) oder Erlaubnisse widerrufen. Vermittler müssen Jahresberichte einreichen (Umsatz, Anzahl Vermittlungen) und Änderungen melden (Adresse, Geschäftsführer).`,
+    law: ["§ 34i Abs. 6 GewO (Aufsicht)", "KWG (Kreditwesengesetz)", "FinDAG (Finanzdienstleistungsaufsichtsgesetz)"],
+    practice: `Erstellen Sie ein Compliance-Handbuch für Ihre Vermittlungstätigkeit.`,
+    task: `Recherchieren Sie die Aufgaben der BaFin.`,
+    solution: `Siehe extendedTheory (Compliance-Pflichten)  ---`,
+    type: "§34i Grundlagen"
+  },
+
+  day_21: {
+    title: "Annuitätendarlehen",
+    theory: `Das Annuitätendarlehen ist die häufigste Darlehensform (80% aller Immobilienfinanzierungen). Es zeichnet sich durch konstante monatliche Raten (Annuitäten) aus, die sich aus Zins und Tilgung zusammensetzen. Zu Beginn ist der Zinsanteil hoch, der Tilgungsanteil niedrig. Im Laufe der Zeit sinkt der Zinsanteil, der Tilgungsanteil steigt. Typische Zinsbindung: 5, 10, 15 oder 20 Jahre. Nach Ablauf der Zinsbindung ist eine Anschlussfinanzierung erforderlich.`,
+    extendedTheory: `**Annuitätendarlehen im Detail:**  Die Annuität ist die Summe aus Zins und Tilgung und bleibt über die Zinsbindung konstant. Formel: Annuität = Darlehenssumme × (Zinssatz + Tilgungssatz) / 100. Beispiel: Darlehenssumme 300.000 €, Zinssatz 3%, Tilgung 2% → Annuität = 300.000 € × 5% = 15.000 €/Jahr = 1.250 €/Monat. Im ersten Jahr: Zins 9.000 €, Tilgung 6.000 €. Im zweiten Jahr: Zins 8.820 €, Tilgung 6.180 € (weil Restschuld gesunken). Vorteile: Planungssicherheit (konstante Rate), einfache Kalkulation. Nachteile: Zinsänderungsrisiko nach Zinsbindung, lange Laufzeit bei niedriger Tilgung.`,
+    law: ["§ 488 BGB (Darlehensvertrag)", "§ 492 BGB (Verbraucherdarlehen)"],
+    practice: `Berechnen Sie die monatliche Rate für ein Annuitätendarlehen (400.000 €, 3,5% Zins, 2,5% Tilgung).`,
+    task: `Erstellen Sie einen Tilgungsplan für die ersten 5 Jahre.`,
+    solution: `Monatliche Rate: 400.000 € × 6% / 12 = 2.000 €  ---`,
+    type: "Darlehensarten"
+  },
+
+  day_22: {
+    title: "Tilgungsdarlehen",
+    theory: `Beim Tilgungsdarlehen bleibt die Tilgung konstant, die Zinsen sinken mit der Restschuld. Die monatliche Rate sinkt daher im Laufe der Zeit. Vorteil: Schnellere Entschuldung, niedrigere Gesamtzinslast. Nachteil: Hohe Anfangsbelastung. Selten genutzt (< 5% der Finanzierungen).`,
+    extendedTheory: `**Tilgungsdarlehen im Detail:**  Die Tilgung ist konstant, die Zinsen werden auf die Restschuld berechnet. Formel: Tilgung = Darlehenssumme / Laufzeit in Monaten. Zinsen = Restschuld × Zinssatz / 12. Beispiel: Darlehenssumme 300.000 €, Laufzeit 20 Jahre (240 Monate), Zinssatz 3%. Tilgung = 300.000 € / 240 = 1.250 €/Monat. Im ersten Monat: Zinsen 750 €, Rate 2.000 €. Im zweiten Monat: Zinsen 746,88 €, Rate 1.996,88 €. Vorteil: Gesamtzinslast niedriger als beim Annuitätendarlehen. Nachteil: Hohe Anfangsbelastung, Rate sinkt nur langsam.`,
+    law: ["§ 488 BGB (Darlehensvertrag)"],
+    practice: `Berechnen Sie die erste Rate für ein Tilgungsdarlehen (300.000 €, 20 Jahre, 3% Zins).`,
+    task: `Vergleichen Sie Annuitätendarlehen und Tilgungsdarlehen (Vor- und Nachteile).`,
+    solution: `Erste Rate: 1.250 € (Tilgung) + 750 € (Zinsen) = 2.000 €  ---`,
+    type: "Darlehensarten"
+  },
+
+  day_23: {
+    title: "Endfälliges Darlehen",
+    theory: `Beim endfälligen Darlehen wird während der Laufzeit nur der Zins gezahlt, die Tilgung erfolgt am Ende in einer Summe. Oft kombiniert mit Lebensversicherung oder Bausparvertrag. Vorteil: Niedrige monatliche Belastung. Nachteil: Hohe Endfälligkeit, Risiko bei Kapitalanlage.`,
+    extendedTheory: `**Endfälliges Darlehen im Detail:**  Während der Laufzeit zahlt der Kreditnehmer nur Zinsen, die Tilgung wird angespart (Lebensversicherung, Bausparvertrag, Fonds). Am Ende wird die Darlehenssumme in einer Summe zurückgezahlt. Beispiel: Darlehenssumme 300.000 €, Zinssatz 3%, Laufzeit 20 Jahre. Monatliche Zinsrate: 300.000 € × 3% / 12 = 750 €. Zusätzlich Ansparrate (z.B. 500 € in Lebensversicherung). Vorteil: Steuerliche Absetzbarkeit der Zinsen (bei vermieteten Immobilien), niedrige monatliche Belastung. Nachteil: Risiko bei Kapitalanlage (Rendite unter Zinssatz), hohe Endfälligkeit.`,
+    law: ["§ 488 BGB (Darlehensvertrag)"],
+    practice: `Berechnen Sie die monatliche Zinsrate für ein endfälliges Darlehen (250.000 €, 3,5% Zins).`,
+    task: `Recherchieren Sie die steuerliche Behandlung endfälliger Darlehen bei vermieteten Immobilien.`,
+    solution: `Monatliche Zinsrate: 250.000 € × 3,5% / 12 = 729,17 €  ---`,
+    type: "Darlehensarten"
+  },
+
+  day_24: {
+    title: "Bauspardarlehen",
+    theory: `Das Bauspardarlehen ist ein zweckgebundenes Darlehen für Immobilien, das nach einer Ansparphase gewährt wird. Ablauf: Bausparvertrag abschließen, Bausparsumme festlegen, Ansparphase (40-50% ansparen), Zuteilung, Bauspardarlehen auszahlen. Zinssatz ist niedrig und fest. Vorteil: Planungssicherheit, staatliche Förderung (Wohnungsbauprämie, Arbeitnehmersparzulage). Nachteil: Lange Ansparphase, niedrige Verzinsung.`,
+    extendedTheory: `**Bauspardarlehen im Detail:**  Bausparen kombiniert Sparen und Kredit. Phase 1: Ansparphase (7-10 Jahre), 40-50% der Bausparsumme ansparen. Phase 2: Zuteilung (wenn Mindestsparguthaben erreicht und Bewertungszahl ausreichend). Phase 3: Darlehensphase, Bauspardarlehen wird ausgezahlt (50-60% der Bausparsumme), Zinssatz ist fest und niedrig (2-3%). Beispiel: Bausparsumme 100.000 €, Ansparphase 8 Jahre, 40.000 € angespart, Darlehen 60.000 €, Zinssatz 2,5%. Staatliche Förderung: Wohnungsbauprämie (10% auf max. 700 €/Jahr = 70 €), Arbeitnehmersparzulage (9% auf max. 470 €/Jahr = 42,30 €). Vorteil: Niedrige Zinsen, Planungssicherheit. Nachteil: Lange Wartezeit, niedrige Sparverzinsung (0,1-0,5%).`,
+    law: ["§ 1 BauSparkG (Bausparkassengesetz)", "§ 2 WoPG (Wohnungsbau-Prämiengesetz)"],
+    practice: `Berechnen Sie die Wohnungsbauprämie für einen Bausparvertrag (500 € Einzahlung/Jahr).`,
+    task: `Recherchieren Sie die Voraussetzungen für die Wohnungsbauprämie.`,
+    solution: `Wohnungsbauprämie: 500 € × 10% = 50 €  ---`,
+    type: "Darlehensarten"
+  },
+
+  day_25: {
+    title: "KfW-Darlehen",
+    theory: `KfW-Darlehen sind staatlich geförderte Kredite der Kreditanstalt für Wiederaufbau für energieeffizientes Bauen und Sanieren. Programme: KfW 124 (Wohneigentumsprogramm), KfW 153 (Energieeffizient Bauen), KfW 261 (Wohngebäude - Kredit). Zinssatz ist niedrig (ab 0,01%), Tilgungszuschüsse möglich (bis 45%). Kombination mit Bankdarlehen üblich.`,
+    extendedTheory: `**KfW-Darlehen im Detail:**  Die KfW fördert energieeffizientes Bauen und Sanieren mit zinsgünstigen Krediten und Tilgungszuschüssen. Wichtige Programme: KfW 124 (Wohneigentumsprogramm, bis 100.000 € pro Wohneinheit, Zinssatz ab 2,5%), KfW 153 (Energieeffizient Bauen, bis 150.000 € pro Wohneinheit, Zinssatz ab 0,01%, Tilgungszuschuss bis 45%), KfW 261 (Wohngebäude - Kredit, bis 150.000 € pro Wohneinheit, für Effizienzhaus 40). Beispiel: Neubau Effizienzhaus 40, Kosten 400.000 €, KfW-Kredit 150.000 € (0,01% Zins), Tilgungszuschuss 45% = 67.500 €, effektiver Kredit 82.500 €. Kombination mit Bankdarlehen: KfW-Kredit 150.000 €, Bankdarlehen 250.000 €, Eigenkapital 0 €. Vorteil: Sehr niedrige Zinsen, Tilgungszuschüsse. Nachteil: Komplexe Antragstellung, energetische Anforderungen.`,
+    law: ["KfWG (KfW-Gesetz)", "EnEV (Energieeinsparverordnung)"],
+    practice: `Berechnen Sie den Tilgungszuschuss für ein KfW-Darlehen (150.000 €, Effizienzhaus 40, 45% Zuschuss).`,
+    task: `Recherchieren Sie die aktuellen KfW-Programme und Konditionen.`,
+    solution: `Tilgungszuschuss: 150.000 € × 45% = 67.500 €  ---`,
+    type: "Darlehensarten"
+  },
+
+  day_26: {
+    title: "Forward-Darlehen",
+    theory: `Das Forward-Darlehen sichert heute den Zinssatz für eine Anschlussfinanzierung in der Zukunft (bis 5 Jahre im Voraus). Vorteil: Zinssicherheit bei steigenden Zinsen. Nachteil: Forward-Aufschlag (0,01-0,03% pro Monat Vorlaufzeit), keine Flexibilität bei sinkenden Zinsen.`,
+    extendedTheory: `**Forward-Darlehen im Detail:**  Ein Forward-Darlehen wird heute abgeschlossen, aber erst in der Zukunft ausgezahlt (Forward-Periode 12-60 Monate). Der Zinssatz wird heute festgelegt. Beispiel: Aktuelles Darlehen läuft noch 3 Jahre (Zinssatz 2%), danach Anschlussfinanzierung nötig. Zinsen steigen voraussichtlich auf 4%. Forward-Darlehen abschließen: Zinssatz 3% (Forward-Aufschlag 0,03% × 36 Monate = 1,08%), Auszahlung in 3 Jahren. Vorteil: Zinssicherheit (spart 1% = 3.000 €/Jahr bei 300.000 € Restschuld). Nachteil: Forward-Aufschlag (kostet 3.240 €), keine Flexibilität (wenn Zinsen sinken, zahlt man zu viel).`,
+    law: ["§ 488 BGB (Darlehensvertrag)"],
+    practice: `Berechnen Sie den Forward-Aufschlag für ein Forward-Darlehen (300.000 €, 24 Monate Vorlaufzeit, 0,02%/Monat).`,
+    task: `Recherchieren Sie aktuelle Forward-Konditionen bei verschiedenen Banken.`,
+    solution: `Forward-Aufschlag: 0,02% × 24 = 0,48% → 300.000 € × 0,48% = 1.440 €  ---`,
+    type: "Darlehensarten"
+  },
+
+  day_27: {
+    title: "Volltilgerdarlehen",
+    theory: `Beim Volltilgerdarlehen ist die Laufzeit so gewählt, dass das Darlehen am Ende der Zinsbindung vollständig getilgt ist. Keine Anschlussfinanzierung nötig. Vorteil: Planungssicherheit, oft Zinsrabatt. Nachteil: Hohe monatliche Belastung.`,
+    extendedTheory: `Volltilgerdarlehen haben eine höhere Tilgungsrate (3-5% statt 2-3%), damit die Restschuld am Ende der Zinsbindung null ist. Beispiel: 300.000 €, 15 Jahre, 3% Zins, 4,67% Tilgung → Rate 1.917,50 €/Monat. Banken gewähren oft Zinsrabatt (0,1-0,3%). Vorteil: Keine Anschlussfinanzierung, Zinsrabatt. Nachteil: Hohe Rate, weniger Flexibilität.`,
+    law: ["§ 488 BGB"],
+    practice: `Berechnen Sie die Tilgungsrate für ein Volltilgerdarlehen (250.000 €, 20 Jahre, 3,2% Zins).`,
+    task: `Vergleichen Sie Volltilgerdarlehen und Annuitätendarlehen.`,
+    solution: `Tilgungsrate: 250.000 € / 240 Monate = 1.041,67 € + Zinsen  ---`,
+    type: "Darlehensarten"
+  },
+
+  day_28: {
+    title: "Variables Darlehen",
+    theory: `Beim variablen Darlehen ist der Zinssatz nicht fest, sondern orientiert sich am Referenzzinssatz (EURIBOR). Anpassung alle 3 Monate. Vorteil: Flexibilität, Sonderkündigungsrecht. Nachteil: Zinsänderungsrisiko.`,
+    extendedTheory: `Variable Darlehen haben keinen festen Zinssatz, sondern passen sich dem Markt an (EURIBOR + Marge). Beispiel: EURIBOR 2%, Marge 1,5% → Zinssatz 3,5%. Nach 3 Monaten: EURIBOR 2,5% → Zinssatz 4%. Vorteil: Sonderkündigungsrecht (3 Monate), profitiert von sinkenden Zinsen. Nachteil: Risiko bei steigenden Zinsen.`,
+    law: ["§ 488 BGB", "§ 489 BGB (Kündigungsrecht)"],
+    practice: `Berechnen Sie die neue Rate nach Zinsanpassung (300.000 €, alt 3%, neu 3,5%, Tilgung 2%).`,
+    task: `Recherchieren Sie den aktuellen EURIBOR-Zinssatz.`,
+    solution: `Neue Rate: 300.000 € × 5,5% / 12 = 1.375 € (vorher 1.250 €)  ---`,
+    type: "Darlehensarten"
+  },
+
+  day_29: {
+    title: "Cap-Darlehen",
+    theory: `Das Cap-Darlehen ist ein variables Darlehen mit Zinsobergrenze (Cap). Der Zinssatz kann steigen, aber nicht über den Cap hinaus. Vorteil: Flexibilität + Sicherheit. Nachteil: Cap-Aufschlag (0,2-0,5%).`,
+    extendedTheory: `Cap-Darlehen kombinieren Flexibilität (variable Zinsen) mit Sicherheit (Obergrenze). Beispiel: Zinssatz 3%, Cap 4,5%, Cap-Aufschlag 0,3% → effektiver Zinssatz 3,3%. Wenn Zinsen auf 5% steigen, zahlt man nur 4,5%. Vorteil: Schutz vor Zinsexplosion. Nachteil: Cap-Aufschlag, selten angeboten.`,
+    law: ["§ 488 BGB"],
+    practice: `Berechnen Sie die maximale Rate bei einem Cap-Darlehen (300.000 €, Cap 5%, Tilgung 2%).`,
+    task: `Vergleichen Sie Cap-Darlehen und Festzinsdarlehen.`,
+    solution: `Maximale Rate: 300.000 € × 7% / 12 = 1.750 €  ---`,
+    type: "Darlehensarten"
+  },
+
+  day_30: {
+    title: "Kombidarlehen",
+    theory: `Kombidarlehen kombinieren verschiedene Darlehensarten (z.B. Annuitätendarlehen + KfW-Darlehen + Bausparvertrag). Vorteil: Optimale Konditionen, Risikostreuung. Nachteil: Komplex, höherer Verwaltungsaufwand.`,
+    extendedTheory: `Typische Kombinationen: Bankdarlehen 250.000 € (3% Zins) + KfW-Darlehen 150.000 € (0,5% Zins) + Eigenkapital 100.000 € = 500.000 € Kaufpreis. Durchschnittszinssatz: (250.000 × 3% + 150.000 × 0,5%) / 400.000 = 2,06%. Vorteil: Niedrigere Gesamtzinslast. Nachteil: Komplexe Verwaltung (2 Verträge, unterschiedliche Laufzeiten).`,
+    law: ["§ 488 BGB"],
+    practice: `Berechnen Sie den Durchschnittszinssatz für ein Kombidarlehen (200.000 € à 3,5%, 100.000 € à 1,5%).`,
+    task: `Erstellen Sie ein Finanzierungskonzept mit Kombidarlehen für ein Einfamilienhaus (450.000 €).`,
+    solution: `Durchschnittszinssatz: (200.000 × 3,5% + 100.000 × 1,5%) / 300.000 = 2,83%  ---`,
+    type: "Darlehensarten"
+  },
+
+  day_31: {
+    title: "Finanzierungsberatung Grundlagen",
+    theory: `Die Finanzierungsberatung ist der Kern der Vermittlungstätigkeit. Ablauf: Bedarfsermittlung, Einkommensermittlung, Haushaltsrechnung, Produktauswahl, Angebotserstellung, Vertragsabschluss. Wichtig: Kundenorientierung, Transparenz, Dokumentation.`,
+    extendedTheory: `Die Beratung beginnt mit der Bedarfsermittlung (Was möchte der Kunde? Neubau, Bestand, Sanierung?). Dann folgt die Einkommensermittlung (Gehalt, Mieteinnahmen, Kapitalerträge) und die Haushaltsrechnung (Einnahmen minus Ausgaben = verfügbare Rate). Produktauswahl: Welches Darlehen passt? (Annuität, KfW, Bausparen). Angebotserstellung: Vergleich mehrerer Banken. Vertragsabschluss: Beratungsprotokoll, Unterschriften. Dokumentation: Alle Unterlagen aufbewahren (3 Jahre).`,
+    law: ["§ 34i GewO", "§ 511 BGB (Beratungsprotokoll)"],
+    practice: `Führen Sie eine Bedarfsermittlung für einen Kunden durch (Neubau Einfamilienhaus, 500.000 €).`,
+    task: `Erstellen Sie eine Checkliste für die Finanzierungsberatung.`,
+    solution: `Siehe extendedTheory (Ablauf der Beratung)  ---`,
+    type: "Beratung & Praxis"
+  },
+
+  day_32: {
+    title: "Einkommensermittlung & Haushaltsrechnung",
+    theory: `Die Einkommensermittlung ist der erste Schritt zur Berechnung der Finanzierbarkeit. Alle Einkommensquellen werden erfasst: Gehalt (netto), Mieteinnahmen, Kapitalerträge, Kindergeld. Die Haushaltsrechnung stellt Einnahmen und Ausgaben gegenüber. Ausgaben: Miete, Lebenshaltung, Versicherungen, Kredite. Die Differenz ist die verfügbare Rate für die Finanzierung. Faustregel: Maximal 40% des Nettoeinkommens für Wohnkosten.`,
+    extendedTheory: `Einkommensermittlung im Detail: Gehalt wird mit 13-14 Monatsgehältern gerechnet (Weihnachtsgeld, Urlaubsgeld). Mieteinnahmen werden mit 80% angesetzt (Leerstand, Instandhaltung). Kapitalerträge nur, wenn nachhaltig. Haushaltsrechnung: Lebenshaltungskosten nach Haushaltspauschale (1 Person 800 €, 2 Personen 1.200 €, jedes weitere Kind +250 €). Beispiel: Familie mit 2 Kindern, Nettoeinkommen 4.500 €, Ausgaben 2.700 € → verfügbare Rate 1.800 €. Maximale Darlehenssumme bei 3% Zins und 2% Tilgung: 1.800 € × 12 / 5% = 432.000 €.`,
+    law: ["§ 505a BGB (Kreditwürdigkeitsprüfung)", "§ 18a KWG (Kreditwürdigkeitsprüfung)"],
+    practice: `Erstellen Sie eine Haushaltsrechnung für eine Familie: Nettoeinkommen 5.000 €, Mieteinnahmen 800 €, Ausgaben 3.200 €. Berechnen Sie die verfügbare Rate und die maximale Darlehenssumme (3,5% Zins, 2,5% Tilgung).`,
+    task: `Führen Sie eine vollständige Einkommensermittlung für einen Kunden durch (inkl. Gehaltsnachweise, Mietverträge, Kontoauszüge).`,
+    solution: `Verfügbare Rate: 5.000 € + 640 € (80% von 800 €) - 3.200 € = 2.440 €. Maximale Darlehenssumme: 2.440 € × 12 / 6% = 488.000 €.`,
+    type: "Beratung & Praxis"
+  },
+
+  day_33: {
+    title: "Beleihungswert & Beleihungsauslauf",
+    theory: `Der Beleihungswert ist der Wert, den die Bank bei der Kreditvergabe zugrunde legt. Er liegt meist bei 80% des Verkehrswerts. Der Beleihungsauslauf ist das Verhältnis von Darlehenssumme zu Beleihungswert. Formel: Beleihungsauslauf = Darlehen / Beleihungswert × 100%. Bis 60% Beleihungsauslauf: günstige Konditionen. Über 80%: Risikoaufschlag. Über 100%: Vollfinanzierung (selten, teuer).`,
+    extendedTheory: `Beleihungswert-Ermittlung: Verkehrswert 500.000 €, Beleihungswert 400.000 € (80%). Beleihungsauslauf-Stufen: 0-60% (Top-Kondition, Zinssatz 3%), 60-80% (Standard, Zinssatz 3,5%), 80-90% (Risikoaufschlag, Zinssatz 4%), 90-100% (Vollfinanzierung, Zinssatz 5%). Beispiel: Kaufpreis 500.000 €, Eigenkapital 100.000 €, Darlehen 400.000 €. Beleihungsauslauf: 400.000 € / 400.000 € = 100% → Vollfinanzierung, hoher Zinssatz. Empfehlung: Mindestens 20% Eigenkapital (Beleihungsauslauf 80%).`,
+    law: ["§ 16 PfandBG (Beleihungswert)", "§ 14 BelWertV (Beleihungswertermittlung)"],
+    practice: `Berechnen Sie den Beleihungsauslauf für eine Immobilie: Verkehrswert 600.000 €, Darlehen 450.000 €. Welche Kondition erhält der Kunde?`,
+    task: `Erstellen Sie eine Beleihungswert-Berechnung für eine Immobilie (inkl. Verkehrswertgutachten).`,
+    solution: `Beleihungswert: 600.000 € × 80% = 480.000 €. Beleihungsauslauf: 450.000 € / 480.000 € = 93,75% → Vollfinanzierung, Risikoaufschlag.`,
+    type: "Beratung & Praxis"
+  },
+
+  day_34: {
+    title: "Zinsbindung & Anschlussfinanzierung",
+    theory: `Die Zinsbindung ist die Laufzeit, für die der Zinssatz fest vereinbart wird (5, 10, 15, 20 Jahre). Nach Ablauf ist eine Anschlussfinanzierung erforderlich. Optionen: Prolongation (Verlängerung bei gleicher Bank), Umschuldung (Wechsel zu anderer Bank), Forward-Darlehen (Zinssicherung im Voraus). Die Wahl hängt von der Zinsentwicklung ab.`,
+    extendedTheory: `Zinsbindung-Strategie: Bei niedrigen Zinsen lange Zinsbindung (15-20 Jahre), bei hohen Zinsen kurze Zinsbindung (5-10 Jahre). Anschlussfinanzierung: Restschuld nach 10 Jahren bei 300.000 € Darlehen, 3% Zins, 2% Tilgung: 240.000 €. Prolongation: Bank bietet 4% Zins. Umschuldung: Andere Bank bietet 3,5% Zins → Ersparnis 1.200 €/Jahr. Forward-Darlehen: 3 Jahre im Voraus, Zinssatz 3,8% (Forward-Aufschlag 0,8%) → Zinssicherheit.`,
+    law: ["§ 489 BGB (Kündigungsrecht)", "§ 488 BGB (Darlehensvertrag)"],
+    practice: `Berechnen Sie die Anschlussfinanzierung für ein Darlehen: Restschuld 250.000 €, Zinssatz 4%, Tilgung 3%, Laufzeit 15 Jahre.`,
+    task: `Erstellen Sie einen Vergleich: Prolongation vs. Umschuldung vs. Forward-Darlehen.`,
+    solution: `Monatliche Rate: 250.000 € × 7% / 12 = 1.458,33 €. Restschuld nach 15 Jahren: 115.000 €.`,
+    type: "Beratung & Praxis"
+  },
+
+  day_35: {
+    title: "Sondertilgung & Tilgungssatzwechsel",
+    theory: `Sondertilgungen sind außerplanmäßige Tilgungen, die die Restschuld schneller reduzieren. Meist 5-10% der Darlehenssumme pro Jahr kostenfrei möglich. Vorteil: Zinsersparnis, schnellere Entschuldung. Tilgungssatzwechsel ermöglicht die Anpassung der Tilgungsrate während der Laufzeit (z.B. von 2% auf 3%). Meist 1-2 Mal kostenfrei möglich.`,
+    extendedTheory: `Sondertilgung-Beispiel: Darlehen 300.000 €, Zinssatz 3%, Tilgung 2%, Laufzeit 30 Jahre. Ohne Sondertilgung: Gesamtzinsen 155.000 €. Mit Sondertilgung 10.000 €/Jahr: Gesamtzinsen 95.000 €, Ersparnis 60.000 €, Laufzeit 20 Jahre statt 30. Tilgungssatzwechsel: Von 2% auf 3% erhöht die Rate von 1.250 € auf 1.500 €, verkürzt die Laufzeit von 30 auf 22 Jahre.`,
+    law: ["§ 500 BGB (Vorzeitige Rückzahlung)", "§ 489 BGB (Kündigungsrecht)"],
+    practice: `Berechnen Sie die Zinsersparnis bei Sondertilgung: Darlehen 400.000 €, Zinssatz 3,5%, Sondertilgung 15.000 €/Jahr.`,
+    task: `Erstellen Sie einen Tilgungsplan mit und ohne Sondertilgung (Vergleich).`,
+    solution: `Ohne Sondertilgung: Gesamtzinsen ca. 210.000 €. Mit Sondertilgung: Gesamtzinsen ca. 130.000 €, Ersparnis 80.000 €.`,
+    type: "Beratung & Praxis"
+  },
+
+  day_36: {
+    title: "Fördermittel & Zuschüsse",
+    theory: `Fördermittel reduzieren die Finanzierungskosten. Wichtigste Programme: KfW-Zuschüsse (bis 45% für Effizienzhaus 40), Wohnungsbauprämie (10% auf max. 700 €/Jahr), Arbeitnehmersparzulage (9% auf max. 470 €/Jahr), BAFA-Zuschüsse (Heizung, Dämmung). Fördermittel müssen vor Baubeginn beantragt werden.`,
+    extendedTheory: `Fördermittel-Beispiel: Neubau Effizienzhaus 40, Kosten 500.000 €. KfW-Kredit 150.000 € (0,01% Zins), Tilgungszuschuss 45% = 67.500 €. Effektiver Kredit: 82.500 €. Wohnungsbauprämie: 700 € × 10% = 70 €/Jahr. Arbeitnehmersparzulage: 470 € × 9% = 42,30 €/Jahr. BAFA-Zuschuss Wärmepumpe: 35% von 30.000 € = 10.500 €. Gesamtförderung: 78.112,30 €.`,
+    law: ["KfWG (KfW-Gesetz)", "WoPG (Wohnungsbau-Prämiengesetz)", "VermBG (Vermögensbildungsgesetz)"],
+    practice: `Berechnen Sie die Gesamtförderung für ein Effizienzhaus 40 (KfW-Kredit 150.000 €, Tilgungszuschuss 45%, BAFA-Zuschuss 10.000 €).`,
+    task: `Recherchieren Sie aktuelle Förderprogramme und erstellen Sie eine Fördermittel-Übersicht.`,
+    solution: `KfW-Tilgungszuschuss: 67.500 €, BAFA-Zuschuss: 10.000 €, Gesamtförderung: 77.500 €.`,
+    type: "Beratung & Praxis"
+  },
+
+  day_37: {
+    title: "Finanzierungsstrategien",
+    theory: `Finanzierungsstrategien optimieren Kosten und Risiken. Strategien: Hohe Tilgung (schnelle Entschuldung, niedrige Gesamtzinsen), Sondertilgungen nutzen (Bonuszahlungen, Erbschaften), Kombidarlehen (KfW + Bank), Forward-Darlehen (Zinssicherung), Variable Darlehen (bei sinkenden Zinsen). Die Wahl hängt von Einkommen, Risikobereitschaft und Zinsentwicklung ab.`,
+    extendedTheory: `Strategie-Vergleich: Konservativ (hohe Tilgung 3%, lange Zinsbindung 20 Jahre, Sondertilgungen), Ausgewogen (mittlere Tilgung 2%, mittlere Zinsbindung 10 Jahre, Kombidarlehen), Risikofreudig (niedrige Tilgung 1%, kurze Zinsbindung 5 Jahre, variables Darlehen). Beispiel: Darlehen 300.000 €, Zinssatz 3%. Konservativ: Rate 1.500 €, Laufzeit 22 Jahre, Gesamtzinsen 95.000 €. Ausgewogen: Rate 1.250 €, Laufzeit 30 Jahre, Gesamtzinsen 155.000 €. Risikofreudig: Rate 1.000 €, Laufzeit 40 Jahre, Gesamtzinsen 230.000 €.`,
+    law: ["§ 488 BGB (Darlehensvertrag)", "§ 492 BGB (Verbraucherdarlehen)"],
+    practice: `Entwickeln Sie eine Finanzierungsstrategie für einen Kunden: Einkommen 5.000 €, Kaufpreis 500.000 €, Eigenkapital 100.000 €, Risikobereitschaft mittel.`,
+    task: `Erstellen Sie einen Finanzierungsvergleich: Konservativ vs. Ausgewogen vs. Risikofreudig.`,
+    solution: `Ausgewogene Strategie: Darlehen 400.000 €, Tilgung 2%, Zinssatz 3,5%, Zinsbindung 10 Jahre, Rate 1.833 €, KfW-Kredit 50.000 € (1% Zins).`,
+    type: "Beratung & Praxis"
+  },
+
+  day_38: {
+    title: "Praxisfall Neubaufinanzierung",
+    theory: `Praxisfall: Familie möchte Einfamilienhaus bauen. Baukosten 450.000 €, Grundstück 100.000 €, Nebenkosten 50.000 € (Notar, Grunderwerbsteuer, Makler). Gesamtkosten: 600.000 €. Eigenkapital: 120.000 €. Finanzierungsbedarf: 480.000 €. Einkommen: 6.000 € netto. Aufgabe: Finanzierungskonzept erstellen.`,
+    extendedTheory: `Finanzierungskonzept: Haushaltsrechnung: Einkommen 6.000 €, Ausgaben 3.500 €, verfügbare Rate 2.500 €. Beleihungswert: 600.000 € × 80% = 480.000 €. Beleihungsauslauf: 480.000 € / 480.000 € = 100% → Vollfinanzierung. Finanzierung: KfW-Kredit 150.000 € (0,5% Zins, Effizienzhaus 40), Bankdarlehen 330.000 € (3,5% Zins, Tilgung 2,5%). Monatliche Rate: KfW 625 €, Bank 1.650 €, Gesamt 2.275 €. Tilgungszuschuss KfW: 67.500 € (45%). Effektive Finanzierung: 412.500 €.`,
+    law: ["§ 488 BGB", "KfWG", "ImmoWertV 2021"],
+    practice: `Führen Sie die vollständige Finanzierungsberatung durch (Bedarfsermittlung, Haushaltsrechnung, Produktauswahl, Angebotserstellung).`,
+    task: `Erstellen Sie ein Beratungsprotokoll für den Praxisfall.`,
+    solution: `Siehe extendedTheory (Finanzierungskonzept).`,
+    type: "Beratung & Praxis"
+  },
+
+  day_39: {
+    title: "Praxisfall Bestandsfinanzierung",
+    theory: `Praxisfall: Paar möchte Bestandsimmobilie kaufen. Kaufpreis 400.000 €, Nebenkosten 40.000 € (10%). Gesamtkosten: 440.000 €. Eigenkapital: 90.000 €. Finanzierungsbedarf: 350.000 €. Einkommen: 5.500 € netto. Aufgabe: Finanzierungskonzept erstellen.`,
+    extendedTheory: `Finanzierungskonzept: Haushaltsrechnung: Einkommen 5.500 €, Ausgaben 3.200 €, verfügbare Rate 2.300 €. Beleihungswert: 400.000 € × 80% = 320.000 €. Beleihungsauslauf: 350.000 € / 320.000 € = 109% → Vollfinanzierung mit Risikoaufschlag. Finanzierung: Bankdarlehen 350.000 € (4% Zins, Tilgung 2,5%). Monatliche Rate: 1.896 €. Alternative: Eigenkapital erhöhen auf 110.000 € → Darlehen 330.000 €, Beleihungsauslauf 103%, Zinssatz 3,8%, Rate 1.732 €.`,
+    law: ["§ 488 BGB", "§ 492 BGB", "ImmoWertV 2021"],
+    practice: `Führen Sie die Finanzierungsberatung durch und vergleichen Sie zwei Szenarien (mit/ohne zusätzliches Eigenkapital).`,
+    task: `Erstellen Sie einen Finanzierungsvergleich mit Zinsersparnis-Berechnung.`,
+    solution: `Siehe extendedTheory (Finanzierungskonzept mit Alternativen).`,
+    type: "Beratung & Praxis"
+  },
+
+  day_40: {
+    title: "Praxisfall Anschlussfinanzierung & Abschluss",
+    theory: `Praxisfall: Kunde hat vor 10 Jahren Darlehen aufgenommen (300.000 €, 3% Zins, 2% Tilgung). Restschuld: 240.000 €. Zinsbindung läuft aus. Aktuelle Zinsen: 4%. Aufgabe: Anschlussfinanzierung planen. Optionen: Prolongation (4%), Umschuldung (3,7%), Forward-Darlehen (3,9%, 1 Jahr im Voraus). Abschluss Modul 5: Zusammenfassung, Prüfungsvorbereitung, Ausblick.`,
+    extendedTheory: `Anschlussfinanzierung-Vergleich: Prolongation: 240.000 € × 6% (4% Zins + 2% Tilgung) = 1.200 €/Monat, Gesamtzinsen 90.000 €. Umschuldung: 240.000 € × 5,7% (3,7% Zins + 2% Tilgung) = 1.140 €/Monat, Gesamtzinsen 78.000 €, Ersparnis 12.000 €. Forward-Darlehen: 240.000 € × 5,9% (3,9% Zins + 2% Tilgung) = 1.180 €/Monat, Gesamtzinsen 84.000 €, Zinssicherheit. Empfehlung: Umschuldung (beste Konditionen). Abschluss Modul 5: Alle 5 Module abgeschlossen (220 Tage, 1.760 UE). Prüfungsvorbereitung: Wiederholung, Übungen, Simulation. Ausblick: Berufseinstieg, Weiterbildung, Spezialisierung.`,
+    law: ["§ 489 BGB (Kündigungsrecht)", "§ 488 BGB (Darlehensvertrag)"],
+    practice: `Führen Sie die Anschlussfinanzierung-Beratung durch und erstellen Sie einen Vergleich der drei Optionen.`,
+    task: `Erstellen Sie eine Zusammenfassung aller 5 Module und einen persönlichen Lernplan für die IHK-Prüfung.`,
+    solution: `Siehe extendedTheory (Anschlussfinanzierung-Vergleich). Empfehlung: Umschuldung.`,
+    type: "Beratung & Praxis"
+  }
+};

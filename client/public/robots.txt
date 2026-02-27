@@ -1,0 +1,11 @@
+# Immobilien-Bildungsportal Robots.txt
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://makler-lernportal.manus.space/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1

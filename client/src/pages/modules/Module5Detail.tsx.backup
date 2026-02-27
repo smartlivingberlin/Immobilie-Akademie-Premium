@@ -1,0 +1,458 @@
+import { useState } from "react";
+import { Link, useRoute } from "wouter";
+import { 
+  ArrowLeft, 
+  BookOpen, 
+  FileText, 
+  Gavel,
+  Briefcase,
+  ChevronRight,
+  AlertTriangle,
+  CheckCircle2,
+  Award,
+  Calculator,
+  ArrowRight,
+  Maximize2,
+  Minimize2
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import ReactMarkdown from 'react-markdown';
+import { SolutionToggler } from "@/components/SolutionToggler";
+import { ModuleQuiz } from "@/components/ModuleQuiz";
+import { CertificateGenerator } from "@/components/CertificateGenerator";
+import { useToast } from "@/hooks/use-toast";
+import { SmartContent } from "@/components/SmartContent";
+import { FullscreenContent } from "@/components/FullscreenContent";
+
+// Import Maximalist Content
+import { contentDataModule5Maximalist } from "./Module5Content_Maximal";
+import { contentDataModule5MaximalPart2 } from "./Module5Content_Maximal_Part2";
+import { quizQuestionsModule5 } from "@/data/quiz-questions-modul5";
+import { quizCasesModule5 } from "@/data/quiz-cases-modul5";
+import { AIQuizCase } from "@/components/AIQuizCase";
+import { Lightbulb } from "lucide-react";
+
+// Merge all content parts
+const allContent = {
+  ...contentDataModule5Maximalist,
+  ...contentDataModule5MaximalPart2
+};
+
+// Define weeks structure for Module 5 (40 Days)
+const weeks = [
+  {
+    id: 1,
+    title: "Block 1: Grundlagen & Recht §34i (Woche 1-4)",
+    days: "Tag 1-20",
+    topics: ["WIKR", "Kreditarten", "Rechtliche Rahmenbedingungen", "Verbraucherschutz"],
+    dayRange: [1, 20]
+  },
+  {
+    id: 2,
+    title: "Block 2: Beratung & Prüfung (Woche 5-8)",
+    days: "Tag 21-40",
+    topics: ["Bonitätsprüfung", "Unterlagen", "Beratungsprotokoll", "Prüfungsvorbereitung"],
+    dayRange: [21, 40]
+  }
+];
+
+// Helper Component for Maximize Button
+
+export default function Module5Detail() {
+  const [match, params] = useRoute("/modul/5/tag/:day");
+  const urlDay = params?.day ? `day_${params.day}` : "day_1";
+  const { toast } = useToast();
+  
+  // Define types for content structure
+  interface Task {
+    question: string;
+    solution: string;
+  }
+  
+  interface ContentData {
+    title: string;
+    type: string;
+    theory: string;
+    law: string[];
+    practice: string;
+    tasks?: Task[]; // Changed to tasks array to match interface
+    task?: Task | Task[]; // Keep for compatibility if needed
+  }
+
+  const [selectedDay, setSelectedDay] = useState(urlDay);
+  const [showQuiz, setShowQuiz] = useState(false);
+  const [showCertificate, setShowCertificate] = useState(false);
+  const currentDayNum = parseInt(selectedDay.split('_')[1]);
+  
+  // Get content for selected day safely
+  const currentContent = (allContent as any)[selectedDay] as ContentData | undefined;
+
+  // Fallback if content is missing
+  if (!currentContent) {
+    return (
+      <div className="p-8 text-center">
+        <h2 className="text-xl font-bold text-red-600">Inhalt nicht gefunden</h2>
+        <p>Der Inhalt für Tag {currentDayNum} konnte nicht geladen werden.</p>
+        <Button className="mt-4" onClick={() => setSelectedDay("day_1")}>Zurück zu Tag 1</Button>
+      </div>
+    );
+  }
+
+  // Helper to normalize tasks to array
+  // Priority: tasks (new format) -> task (array) -> task (single) -> empty
+  const tasks = currentContent.tasks 
+    ? currentContent.tasks 
+    : Array.isArray(currentContent.task) 
+      ? currentContent.task 
+      : currentContent.task 
+        ? [currentContent.task] 
+        : [];
+
+  const handleQuizComplete = (score: number) => {
+    if (score >= 50) {
+      setShowQuiz(false);
+      setShowCertificate(true);
+      toast({
+        title: "Herzlichen Glückwunsch!",
+        description: "Sie haben das Modul erfolgreich abgeschlossen.",
+      });
+    }
+  };
+
+  // Function to handle navigation to next day
+  const handleNextDay = () => {
+    if (currentDayNum < 40) {
+      const nextDay = `day_${currentDayNum + 1}`;
+      setSelectedDay(nextDay);
+      setShowQuiz(false);
+      setShowCertificate(false);
+      window.scrollTo(0,0);
+    } else {
+      // Last day: Show quiz
+      setShowQuiz(true);
+    }
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+        <div className="flex items-center gap-4">
+          <Link href="/">
+            <Button variant="ghost" size="icon">
+              <ArrowLeft className="h-6 w-6" />
+            </Button>
+          </Link>
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight text-slate-900">Modul 5: Prüfung & §34i</h1>
+            <div className="flex items-center gap-2 text-slate-500 mt-1">
+              <Badge variant="secondary" className="bg-purple-100 text-purple-700 hover:bg-purple-100">
+                Darlehen & Prüfung
+              </Badge>
+              <span className="text-sm">•</span>
+              <span className="text-sm">320 Unterrichtseinheiten</span>
+              <span className="text-sm">•</span>
+              <span className="text-sm">40 Tage</span>
+            </div>
+          </div>
+        </div>
+        
+        <div className="flex items-center gap-4 bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
+          <div className="text-right hidden md:block">
+            <div className="text-sm font-medium text-slate-900">Fortschritt</div>
+            <div className="text-xs text-slate-500">Tag {currentDayNum} von 40</div>
+          </div>
+          <Progress value={(currentDayNum / 40) * 100} className="w-32 h-2" />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        {/* Sidebar Navigation */}
+        <div className="lg:col-span-3">
+          <Card className="h-[calc(100vh-200px)] border-slate-200 shadow-sm flex flex-col">
+            <CardHeader className="pb-3 border-b bg-slate-50/50">
+              <CardTitle className="text-lg">Lernplan</CardTitle>
+              <CardDescription>Wählen Sie einen Tag</CardDescription>
+            </CardHeader>
+            <div className="flex-1 overflow-hidden">
+              <ScrollArea className="h-full">
+                <div className="p-3 space-y-4">
+                  {weeks.map((week) => (
+                    <div key={week.id} className="space-y-2">
+                      <div className="px-2 text-xs font-semibold text-slate-500 uppercase tracking-wider flex justify-between items-center">
+                        {week.title}
+                      </div>
+                      <div className="space-y-1">
+                        {Array.from({ length: week.dayRange[1] - week.dayRange[0] + 1 }, (_, i) => {
+                          const dayNum = week.dayRange[0] + i;
+                          const dayKey = `day_${dayNum}`;
+                          const dayData = (allContent as any)[dayKey];
+                          const isActive = selectedDay === dayKey;
+                          
+                          if (!dayData) return null;
+                          
+                          return (
+                            <Button
+                              key={dayNum}
+                              variant={isActive ? "secondary" : "ghost"}
+                              className={`w-full justify-start text-left h-auto py-2.5 px-3 ${
+                                isActive 
+                                  ? "bg-purple-50 text-purple-700 border border-purple-100" 
+                                  : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                              }`}
+                              onClick={() => {
+                                setSelectedDay(dayKey);
+                                setShowQuiz(false);
+                                setShowCertificate(false);
+                                window.scrollTo(0,0);
+                              }}
+                            >
+                              <div className="flex items-center gap-3 w-full">
+                                <div className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
+                                  isActive 
+                                    ? "bg-purple-600 text-white" 
+                                    : "bg-slate-200 text-slate-600"
+                                }`}>
+                                  {dayNum}
+                                </div>
+                                <div className="overflow-hidden flex-1">
+                                  <div className="truncate font-medium text-sm">
+                                    {dayData.title}
+                                  </div>
+                                </div>
+                                {isActive && <ChevronRight className="h-4 w-4 text-purple-500" />}
+                              </div>
+                            </Button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </ScrollArea>
+            </div>
+          </Card>
+        </div>
+
+        {/* Main Content */}
+        <div className="lg:col-span-9">
+          {showQuiz ? (
+            <ModuleQuiz 
+              moduleTitle="Prüfung & §34i"
+              questions={quizQuestionsModule5}
+              onComplete={handleQuizComplete}
+            />
+          ) : showCertificate ? (
+            <CertificateGenerator 
+              userName="Max Mustermann"
+              moduleName="Modul 5: Prüfung & §34i"
+              completionDate={new Date().toLocaleDateString()}
+              isCompleted={true}
+            />
+          ) : (
+            <Card className="border-slate-200 shadow-md">
+              <CardHeader className="border-b bg-slate-50/50">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <CardTitle className="text-2xl text-slate-900">{currentContent.title}</CardTitle>
+                    <CardDescription className="mt-1">
+                      Tag {currentDayNum} • {currentContent.type || "Lerneinheit"}
+                    </CardDescription>
+                  </div>
+                  {currentDayNum === 40 && (
+                    <Button 
+                      onClick={() => setShowQuiz(true)} 
+                      className="bg-purple-600 hover:bg-purple-700 text-white gap-2"
+                    >
+                      <Award className="h-4 w-4" />
+                      Abschlussprüfung
+                    </Button>
+                  )}
+                </div>
+              </CardHeader>
+              <CardContent className="p-6">
+                <Tabs defaultValue="theory" className="w-full">
+                  <TabsList className="grid w-full grid-cols-4 mb-8 bg-slate-100 p-1 rounded-xl">
+                    <TabsTrigger value="theory" className="data-[state=active]:bg-white data-[state=active]:text-purple-700 data-[state=active]:shadow-sm rounded-lg">
+                      <BookOpen className="h-4 w-4 mr-2" />
+                      Theorie
+                    </TabsTrigger>
+                    <TabsTrigger value="law" className="data-[state=active]:bg-white data-[state=active]:text-purple-700 data-[state=active]:shadow-sm rounded-lg">
+                      <Gavel className="h-4 w-4 mr-2" />
+                      Normen
+                    </TabsTrigger>
+                    <TabsTrigger value="practice" className="data-[state=active]:bg-white data-[state=active]:text-purple-700 data-[state=active]:shadow-sm rounded-lg">
+                      <Briefcase className="h-4 w-4 mr-2" />
+                      Praxis
+                    </TabsTrigger>
+                    <TabsTrigger value="task" className="data-[state=active]:bg-white data-[state=active]:text-purple-700 data-[state=active]:shadow-sm rounded-lg">
+                      <FileText className="h-4 w-4 mr-2" />
+                      Aufgaben
+                    </TabsTrigger>
+                  </TabsList>
+
+                  <TabsContent value="theory" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
+                    <FullscreenContent content={<SmartContent content={currentContent.theory} />} title={`Theorie: ${currentContent.title}`} />
+                    <div className="content-container prose prose-slate max-w-none break-words prose-headings:text-slate-900 prose-a:text-purple-600 prose-strong:text-slate-900">
+                      <SmartContent content={currentContent.theory} />
+                    </div>
+                  </TabsContent>
+
+                  <TabsContent value="law" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
+                    <FullscreenContent 
+                      title={`Rechtliche Grundlagen: ${currentContent.title}`}
+                      content={
+                        <div className="grid gap-4">
+                          {currentContent.law.map((law, index) => (
+                            <Card key={index} className="border-l-4 border-l-purple-500 shadow-sm hover:shadow-md transition-shadow">
+                              <CardContent className="p-4 flex items-start gap-3">
+                                <Gavel className="h-5 w-5 text-purple-500 mt-0.5 flex-shrink-0" />
+                                <div className="prose prose-sm max-w-none">
+                                  <SmartContent content={law} />
+                                </div>
+                              </CardContent>
+                            </Card>
+                          ))}
+                        </div>
+                      } 
+                    />
+                    <div className="content-container grid gap-4">
+                      {currentContent.law.map((law, index) => (
+                        <Card key={index} className="border-l-4 border-l-purple-500 shadow-sm hover:shadow-md transition-shadow">
+                          <CardContent className="p-4 flex items-start gap-3">
+                            <Gavel className="h-5 w-5 text-purple-500 mt-0.5 flex-shrink-0" />
+                            <div className="prose prose-sm max-w-none">
+                              <SmartContent content={law} />
+                            </div>
+                          </CardContent>
+                        </Card>
+                      ))}
+                    </div>
+                  </TabsContent>
+
+                  <TabsContent value="practice" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
+                    <FullscreenContent content={<SmartContent content={currentContent.practice} />} title={`Praxis-Analyse: ${currentContent.title}`} />
+                    <Card className="bg-purple-50/50 border-purple-100 shadow-sm">
+                      <CardHeader>
+                        <CardTitle className="text-purple-800 flex items-center gap-2">
+                          <Briefcase className="h-5 w-5" />
+                          Praxis-Transfer
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="content-container prose prose-purple max-w-none">
+                          <SmartContent content={currentContent.practice} />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </TabsContent>
+
+                  <TabsContent value="task" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
+                     <FullscreenContent 
+                       title={`Aufgaben & Lösungen: ${currentContent.title}`}
+                       content={
+                         <div className="space-y-6">
+                           {tasks.map((task, index) => (
+                             <Card key={index} className="border-slate-200 shadow-sm">
+                               <CardHeader className="bg-slate-50/50 pb-3">
+                                 <CardTitle className="text-base flex items-center gap-2">
+                                   <CheckCircle2 className="h-5 w-5 text-purple-600" />
+                                   Aufgabe {index + 1}
+                                 </CardTitle>
+                               </CardHeader>
+                               <CardContent className="p-6 space-y-4">
+                                 <div className="prose prose-slate max-w-none break-words">
+                                   <SmartContent content={task.question} />
+                                 </div>
+                                 <SolutionToggler solution={task.solution} />
+                               </CardContent>
+                             </Card>
+                           ))}
+                         </div>
+                       } 
+                     />
+                    <div className="content-container space-y-6">
+                      {tasks.map((task, index) => (
+                        <Card key={index} className="border-slate-200 shadow-sm">
+                          <CardHeader className="bg-slate-50/50 pb-3">
+                            <CardTitle className="text-base flex items-center gap-2">
+                              <CheckCircle2 className="h-5 w-5 text-purple-600" />
+                              Aufgabe {index + 1}
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent className="p-6 space-y-4">
+                            <div className="prose prose-slate max-w-none break-words">
+                              <SmartContent content={task.question} />
+                            </div>
+                            <SolutionToggler solution={task.solution} />
+                          </CardContent>
+                        </Card>
+                      ))}
+
+                      {/* AI-Powered Interactive Quiz Cases */}
+                      <div className="mt-8 space-y-6">
+                        <div className="flex items-center gap-3 mb-4">
+                          <Lightbulb className="h-6 w-6 text-blue-600" />
+                          <h3 className="text-xl font-bold text-slate-900">Interaktive Prüfungsfälle mit KI-Bewertung</h3>
+                        </div>
+                        <p className="text-slate-600 mb-6">
+                          Bearbeiten Sie echte Prüfungsfälle zu Darlehensvermittlung und Finanzierung. Erhalten Sie sofortiges, KI-gestütztes Feedback mit Musterlösung und Lernpunkten.
+                        </p>
+                        {quizCasesModule5.map((quizCase) => (
+                          <AIQuizCase key={quizCase.id} quizCase={quizCase} />
+                        ))}
+                      </div>
+                    </div>
+                  </TabsContent>
+                </Tabs>
+                
+                {/* Navigation Footer */}
+                <div className="flex justify-between items-center mt-8 pt-6 border-t border-slate-100">
+                  <Button 
+                    variant="outline" 
+                    onClick={() => {
+                      if (currentDayNum > 1) {
+                        setSelectedDay(`day_${currentDayNum - 1}`);
+                        setShowQuiz(false);
+                        setShowCertificate(false);
+                        window.scrollTo(0,0);
+                      }
+                    }}
+                    disabled={currentDayNum === 1}
+                    className="gap-2"
+                  >
+                    <ArrowLeft className="h-4 w-4" />
+                    Vorheriger Tag
+                  </Button>
+                  
+                  {currentDayNum < 40 ? (
+                    <Button 
+                      onClick={handleNextDay} 
+                      className="bg-purple-600 hover:bg-purple-700 text-white gap-2"
+                    >
+                      Nächster Tag
+                      <ArrowRight className="h-4 w-4" />
+                    </Button>
+                  ) : (
+                    <Button 
+                      onClick={() => setShowQuiz(true)} 
+                      className="bg-purple-600 hover:bg-purple-700 text-white gap-2"
+                    >
+                      Zur Abschlussprüfung
+                      <Award className="h-4 w-4" />
+                    </Button>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}

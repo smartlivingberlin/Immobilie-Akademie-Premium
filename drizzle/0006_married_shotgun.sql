@@ -1,0 +1,1 @@
+DROP TABLE `flashcard_expanded_answers`;
