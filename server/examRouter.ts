@@ -24,6 +24,169 @@ const MODULE_CONTENT: Record<number, string> = {
   5: "Modul 5 - Finanzierung & §34i: Immobiliardarlehensvermittlung, Kreditprozesse, Finanzierungsarten, Beleihungswertermittlung, IHK-Prüfungsvorbereitung"
 };
 
+type ExamQuestionShape = {
+  question: string;
+  options: { A: string; B: string; C: string; D: string };
+  correctAnswer: "A" | "B" | "C" | "D";
+  topic: string;
+  explanation: string;
+};
+
+function tryParseJsonObject<T>(raw: unknown): T | null {
+  if (typeof raw !== "string") return null;
+
+  try {
+    return JSON.parse(raw) as T;
+  } catch {}
+
+  const match = raw.match(/\{[\s\S]*\}/);
+  if (match) {
+    try {
+      return JSON.parse(match[0]) as T;
+    } catch {}
+  }
+
+  return null;
+}
+
+function buildFallbackExamQuestion(moduleId: number, questionNumber: number): ExamQuestionShape {
+  const pools: Record<number, ExamQuestionShape[]> = {
+    1: [
+      {
+        question: "Welche Aussage beschreibt die Aufgabe eines Immobilienmaklers am besten?",
+        options: {
+          A: "Er vermittelt Verträge über Immobilien zwischen Parteien.",
+          B: "Er spricht gerichtliche Urteile in Mietsachen.",
+          C: "Er ersetzt immer den Notar beim Immobilienkauf.",
+          D: "Er darf ohne Auftrag jede Immobilie verwalten."
+        },
+        correctAnswer: "A",
+        topic: "Grundlagen Maklertätigkeit",
+        explanation: "Ein Immobilienmakler vermittelt Verträge über Immobilien. Er ersetzt weder Gericht noch Notar und darf nicht automatisch verwalten."
+      },
+      {
+        question: "Was beeinflusst einen Immobilienmarkt besonders stark?",
+        options: {
+          A: "Angebot und Nachfrage",
+          B: "Nur die Farbe des Gebäudes",
+          C: "Ausschließlich das Baujahr",
+          D: "Nur die Meinung des Maklers"
+        },
+        correctAnswer: "A",
+        topic: "Immobilienmarkt",
+        explanation: "Angebot und Nachfrage sind ein zentraler Marktmechanismus und beeinflussen Preis und Vermarktungsdauer maßgeblich."
+      }
+    ],
+    2: [
+      {
+        question: "Wofür ist §34c GewO im Immobilienbereich besonders wichtig?",
+        options: {
+          A: "Für die gewerberechtliche Erlaubnis bestimmter Tätigkeiten",
+          B: "Für die Berechnung der Grunderwerbsteuer",
+          C: "Für den Grundbucheintrag",
+          D: "Für die notarielle Beurkundung"
+        },
+        correctAnswer: "A",
+        topic: "§34c GewO",
+        explanation: "§34c GewO regelt die Erlaubnispflicht für bestimmte gewerbliche Tätigkeiten, unter anderem in Teilen des Immobilienbereichs."
+      },
+      {
+        question: "Welche Aussage zur MaBV trifft am ehesten zu?",
+        options: {
+          A: "Sie enthält Pflichten für Makler und Bauträger.",
+          B: "Sie regelt nur Mietpreise in Berlin.",
+          C: "Sie ersetzt das BGB vollständig.",
+          D: "Sie gilt nur für Notare."
+        },
+        correctAnswer: "A",
+        topic: "MaBV",
+        explanation: "Die Makler- und Bauträgerverordnung enthält wichtige Vorgaben und Pflichten für entsprechende Gewerbetreibende."
+      }
+    ],
+    3: [
+      {
+        question: "Wer beschließt in einer WEG typischerweise gemeinschaftliche Angelegenheiten?",
+        options: {
+          A: "Die Eigentümerversammlung",
+          B: "Nur der Hausmeister",
+          C: "Nur ein einzelner Eigentümer",
+          D: "Immer automatisch das Bauamt"
+        },
+        correctAnswer: "A",
+        topic: "WEG",
+        explanation: "In der Wohnungseigentümergemeinschaft werden gemeinschaftliche Angelegenheiten grundsätzlich über die Eigentümerversammlung beschlossen."
+      },
+      {
+        question: "Was gehört typischerweise zur Mietverwaltung?",
+        options: {
+          A: "Überwachung von Mieteingängen",
+          B: "Strafverfolgung im Namen des Staates",
+          C: "Notarielle Beurkundung von Kaufverträgen",
+          D: "Ausstellung von Personalausweisen"
+        },
+        correctAnswer: "A",
+        topic: "Mietverwaltung",
+        explanation: "Die Mietverwaltung umfasst unter anderem die Betreuung von Mietverhältnissen und die Überwachung von Mieteingängen."
+      }
+    ],
+    4: [
+      {
+        question: "Welches Wertermittlungsverfahren wird bei vermieteten Renditeobjekten besonders häufig genutzt?",
+        options: {
+          A: "Ertragswertverfahren",
+          B: "Farbwertverfahren",
+          C: "Abschreibungsfrei-Verfahren",
+          D: "Losverfahren"
+        },
+        correctAnswer: "A",
+        topic: "Wertermittlung",
+        explanation: "Beim Renditeobjekt steht der nachhaltig erzielbare Ertrag im Vordergrund. Deshalb ist das Ertragswertverfahren besonders wichtig."
+      },
+      {
+        question: "Welches Verfahren eignet sich oft gut für selbstgenutzte Einfamilienhäuser mit Vergleichsdaten?",
+        options: {
+          A: "Vergleichswertverfahren",
+          B: "Zufallsverfahren",
+          C: "Verlosungsverfahren",
+          D: "Schätzverfahren ohne Daten"
+        },
+        correctAnswer: "A",
+        topic: "Vergleichswertverfahren",
+        explanation: "Wenn ausreichend Vergleichsdaten vorhanden sind, ist das Vergleichswertverfahren oft besonders geeignet."
+      }
+    ],
+    5: [
+      {
+        question: "Was beschreibt der Effektivzins am besten?",
+        options: {
+          A: "Die tatsächlichen jährlichen Kreditkosten inklusive wesentlicher Preisbestandteile",
+          B: "Nur den Sollzins ohne weitere Kosten",
+          C: "Nur die Restschuld am Laufzeitende",
+          D: "Nur die Höhe der Tilgung"
+        },
+        correctAnswer: "A",
+        topic: "Finanzierung",
+        explanation: "Der Effektivzins macht Kreditangebote besser vergleichbar, weil er wesentliche Kostenbestandteile berücksichtigt."
+      },
+      {
+        question: "Was ist bei einer Immobilienfinanzierung die Tilgung?",
+        options: {
+          A: "Die Rückzahlung des Darlehens",
+          B: "Die Eintragung ins Grundbuch",
+          C: "Die Maklerprovision",
+          D: "Die Gebäudeversicherung"
+        },
+        correctAnswer: "A",
+        topic: "Tilgung",
+        explanation: "Tilgung bedeutet die schrittweise Rückzahlung des aufgenommenen Darlehens."
+      }
+    ],
+  };
+
+  const pool = pools[moduleId] ?? pools[1];
+  return pool[(questionNumber - 1) % pool.length];
+}
+
 export const examRouter = router({
   /**
    * Get recommended difficulty based on user performance
@@ -159,11 +322,24 @@ Antworte im folgenden JSON-Format:
           }
         });
 
-        const content = response.choices[0].message.content;
-        if (typeof content !== 'string') {
-          throw new Error('Invalid response format');
+        const content = response.choices[0]?.message?.content;
+        let questionData = tryParseJsonObject<ExamQuestionShape>(content);
+
+        if (
+          !questionData ||
+          typeof questionData.question !== "string" ||
+          !questionData.options ||
+          typeof questionData.options.A !== "string" ||
+          typeof questionData.options.B !== "string" ||
+          typeof questionData.options.C !== "string" ||
+          typeof questionData.options.D !== "string" ||
+          !["A", "B", "C", "D"].includes(questionData.correctAnswer) ||
+          typeof questionData.topic !== "string" ||
+          typeof questionData.explanation !== "string"
+        ) {
+          console.warn("[Exam] Invalid LLM response, using fallback question:", content);
+          questionData = buildFallbackExamQuestion(input.moduleId, input.questionNumber);
         }
-        const questionData = JSON.parse(content);
         
         // Format question text with options
         const questionText = `${questionData.question}\n\nA) ${questionData.options.A}\nB) ${questionData.options.B}\nC) ${questionData.options.C}\nD) ${questionData.options.D}`;
@@ -188,10 +364,27 @@ Antworte im folgenden JSON-Format:
         };
       } catch (error) {
         console.error("[Exam] Error generating question:", error);
-        throw new TRPCError({
-          code: "INTERNAL_SERVER_ERROR",
-          message: "Failed to generate question"
+
+        const fallback = buildFallbackExamQuestion(input.moduleId, input.questionNumber);
+        const questionText = `${fallback.question}\n\nA) ${fallback.options.A}\nB) ${fallback.options.B}\nC) ${fallback.options.C}\nD) ${fallback.options.D}`;
+
+        const savedQuestion = await saveExamQuestion({
+          sessionId: input.sessionId,
+          questionNumber: input.questionNumber,
+          questionText,
+          correctAnswer: fallback.correctAnswer,
+          moduleId: input.moduleId,
+          topic: fallback.topic,
+          difficulty: input.difficulty as "easy" | "medium" | "hard",
+          feedback: fallback.explanation,
         });
+
+        return {
+          id: savedQuestion?.id,
+          question: fallback.question,
+          options: fallback.options,
+          questionNumber: input.questionNumber,
+        };
       }
     }),
 

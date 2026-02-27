@@ -37,6 +37,23 @@ const adminProcedure = protectedProcedure.use(({ ctx, next }) => {
   return next({ ctx });
 });
 
+function safeJsonParse<T>(raw: unknown, fallback: T): T {
+  if (typeof raw !== "string") return fallback;
+
+  try {
+    return JSON.parse(raw) as T;
+  } catch {}
+
+  const match = raw.match(/\{[\s\S]*\}/);
+  if (match) {
+    try {
+      return JSON.parse(match[0]) as T;
+    } catch {}
+  }
+
+  return fallback;
+}
+
 export const appRouter = router({
   // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
@@ -390,45 +407,63 @@ Antworte im folgenden JSON-Format:
   "feedback": "<Dein Feedback in 2-3 Sätzen>"
 }`;
 
-        const aiResponse = await invokeLLM({
-          messages: [
-            { role: "system", content: systemPrompt },
-            { role: "user", content: "Bitte bewerte meine Antwort." },
-          ],
-          response_format: {
-            type: "json_schema",
-            json_schema: {
-              name: "quiz_evaluation",
-              strict: true,
-              schema: {
-                type: "object",
-                properties: {
-                  score: {
-                    type: "number",
-                    description: "Score from 0 to 100",
+        try {
+          const aiResponse = await invokeLLM({
+            messages: [
+              { role: "system", content: systemPrompt },
+              { role: "user", content: "Bitte bewerte meine Antwort." },
+            ],
+            response_format: {
+              type: "json_schema",
+              json_schema: {
+                name: "quiz_evaluation",
+                strict: true,
+                schema: {
+                  type: "object",
+                  properties: {
+                    score: {
+                      type: "number",
+                      description: "Score from 0 to 100",
+                    },
+                    isCorrect: {
+                      type: "boolean",
+                      description: "True if score >= 70",
+                    },
+                    feedback: {
+                      type: "string",
+                      description: "Constructive feedback in 2-3 sentences",
+                    },
                   },
-                  isCorrect: {
-                    type: "boolean",
-                    description: "True if score >= 70",
-                  },
-                  feedback: {
-                    type: "string",
-                    description: "Constructive feedback in 2-3 sentences",
-                  },
+                  required: ["score", "isCorrect", "feedback"],
+                  additionalProperties: false,
                 },
-                required: ["score", "isCorrect", "feedback"],
-                additionalProperties: false,
               },
             },
-          },
-        });
+          });
 
-        const rawContent = aiResponse.choices[0]?.message?.content;
-        const evaluation = typeof rawContent === "string" 
-          ? JSON.parse(rawContent)
-          : { score: 0, isCorrect: false, feedback: "Fehler bei der Bewertung." };
+          const rawContent = aiResponse.choices[0]?.message?.content;
+          const parsed = safeJsonParse(rawContent, {
+            score: 0,
+            isCorrect: false,
+            feedback: "Die KI-Antwort war nicht im erwarteten JSON-Format.",
+          });
 
-        return evaluation as { score: number; isCorrect: boolean; feedback: string };
+          return {
+            score: typeof parsed.score === "number" ? Math.max(0, Math.min(100, parsed.score)) : 0,
+            isCorrect: typeof parsed.isCorrect === "boolean" ? parsed.isCorrect : false,
+            feedback:
+              typeof parsed.feedback === "string" && parsed.feedback.trim()
+                ? parsed.feedback
+                : "Die Antwort konnte nicht automatisch bewertet werden.",
+          } as { score: number; isCorrect: boolean; feedback: string };
+        } catch (error) {
+          console.error("[Quiz] Error evaluating answer:", error);
+          return {
+            score: 0,
+            isCorrect: false,
+            feedback: "Automatische Bewertung momentan nicht verfügbar. Bitte erneut versuchen.",
+          } as { score: number; isCorrect: boolean; feedback: string };
+        }
       }),
   }),
 });
