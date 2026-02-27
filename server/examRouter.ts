@@ -27,6 +27,38 @@ const MODULE_CONTENT: Record<number, string> = {
 type ExamQuestionShape = {
   question: string;
   options: { A: string; B: string; C: string; D: string };
+
+function shuffleExamOptions(questionData: ExamQuestionShape): ExamQuestionShape {
+  const entries = [
+    ["A", questionData.options.A],
+    ["B", questionData.options.B],
+    ["C", questionData.options.C],
+    ["D", questionData.options.D],
+  ] as Array<[string, string]>;
+
+  for (let i = entries.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [entries[i], entries[j]] = [entries[j], entries[i]];
+  }
+
+  const remapped = {
+    A: entries[0][1],
+    B: entries[1][1],
+    C: entries[2][1],
+    D: entries[3][1],
+  };
+
+  const newCorrect = (["A", "B", "C", "D"] as const).find(
+    (key, i) => entries[i][0] === questionData.correctAnswer
+  ) || "A";
+
+  return {
+    ...questionData,
+    options: remapped,
+    correctAnswer: newCorrect,
+  };
+}
+
   correctAnswer: "A" | "B" | "C" | "D";
   topic: string;
   explanation: string;
@@ -398,7 +430,7 @@ Antworte im folgenden JSON-Format:
           typeof questionData.explanation !== "string"
         ) {
           console.warn("[Exam] Invalid LLM response, using fallback question:", content);
-          questionData = buildFallbackExamQuestion(input.moduleId, input.questionNumber);
+          questionData = shuffleExamOptions(buildFallbackExamQuestion(input.moduleId, input.questionNumber));
         }
         
         questionData = shuffleExamQuestionOptions(questionData);
