@@ -82,6 +82,33 @@ function shuffleExamQuestionOptions(questionData: ExamQuestionShape): ExamQuesti
   };
 }
 
+
+function shuffleExamQuestion(question: ExamQuestionShape): ExamQuestionShape {
+  const pool = [
+    { text: question.options.A, correct: question.correctAnswer === "A" },
+    { text: question.options.B, correct: question.correctAnswer === "B" },
+    { text: question.options.C, correct: question.correctAnswer === "C" },
+    { text: question.options.D, correct: question.correctAnswer === "D" },
+  ];
+
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+
+  const letters: Array<"A" | "B" | "C" | "D"> = ["A", "B", "C", "D"];
+  const options: ExamQuestionShape["options"] = { A: "", B: "", C: "", D: "" };
+  let correctAnswer: ExamQuestionShape["correctAnswer"] = "A";
+
+  pool.forEach((entry, index) => {
+    const letter = letters[index];
+    options[letter] = entry.text;
+    if (entry.correct) correctAnswer = letter;
+  });
+
+  return { ...question, options, correctAnswer };
+}
+
 function buildFallbackExamQuestion(moduleId: number, questionNumber: number): ExamQuestionShape {
   const pools: Record<number, ExamQuestionShape[]> = {
     1: [
@@ -375,6 +402,8 @@ Antworte im folgenden JSON-Format:
         }
         
         questionData = shuffleExamQuestionOptions(questionData);
+
+        questionData = shuffleExamQuestion(questionData);
 
         // Format question text with options
         const questionText = `${questionData.question}\n\nA) ${questionData.options.A}\nB) ${questionData.options.B}\nC) ${questionData.options.C}\nD) ${questionData.options.D}`;
