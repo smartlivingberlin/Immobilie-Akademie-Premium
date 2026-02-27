@@ -49,6 +49,39 @@ function tryParseJsonObject<T>(raw: unknown): T | null {
   return null;
 }
 
+type ExamOptionKey = "A" | "B" | "C" | "D";
+
+const EXAM_OPTION_KEYS: ExamOptionKey[] = ["A", "B", "C", "D"];
+
+function shuffleExamQuestionOptions(questionData: ExamQuestionShape): ExamQuestionShape {
+  const entries = EXAM_OPTION_KEYS.map((key) => ({
+    key,
+    text: questionData.options[key],
+  }));
+
+  for (let i = entries.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [entries[i], entries[j]] = [entries[j], entries[i]];
+  }
+
+  const shuffledOptions = {
+    A: entries[0].text,
+    B: entries[1].text,
+    C: entries[2].text,
+    D: entries[3].text,
+  };
+
+  const correctIndex = entries.findIndex((entry) => entry.key === questionData.correctAnswer);
+  const safeCorrectIndex = correctIndex >= 0 ? correctIndex : 0;
+  const shuffledCorrectAnswer = EXAM_OPTION_KEYS[safeCorrectIndex];
+
+  return {
+    ...questionData,
+    options: shuffledOptions,
+    correctAnswer: shuffledCorrectAnswer,
+  };
+}
+
 function buildFallbackExamQuestion(moduleId: number, questionNumber: number): ExamQuestionShape {
   const pools: Record<number, ExamQuestionShape[]> = {
     1: [
@@ -341,6 +374,8 @@ Antworte im folgenden JSON-Format:
           questionData = buildFallbackExamQuestion(input.moduleId, input.questionNumber);
         }
         
+        questionData = shuffleExamQuestionOptions(questionData);
+
         // Format question text with options
         const questionText = `${questionData.question}\n\nA) ${questionData.options.A}\nB) ${questionData.options.B}\nC) ${questionData.options.C}\nD) ${questionData.options.D}`;
 
