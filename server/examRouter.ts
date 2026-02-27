@@ -15,6 +15,63 @@ import {
 import { invokeLLM } from "./_core/llm";
 import { TRPCError } from "@trpc/server";
 
+// --- Exam option randomizer (server-side) ---
+// Mischt A/B/C/D und hält die richtige Antwort korrekt konsistent.
+function shuffleExamOptions(questionData: any) {
+  try {
+    if (!questionData || !questionData.options) return;
+
+    const correct = String(questionData.correctAnswer ?? "").trim().toUpperCase();
+
+    // options normalisieren -> items[]
+    let items: Array<{ text: string; wasCorrect: boolean }> = [];
+
+    if (Array.isArray(questionData.options)) {
+      const arr = questionData.options as any[];
+      items = arr.map((t, i) => ({
+        text: String(t),
+        wasCorrect: String(i) === String(questionData.correctAnswer),
+      }));
+    } else {
+      const opts = questionData.options as Record<string, any>;
+      const preferred = ["A", "B", "C", "D"].filter((k) =>
+        Object.prototype.hasOwnProperty.call(opts, k)
+      );
+      const keys = preferred.length ? preferred : Object.keys(opts);
+      items = keys.map((k) => ({
+        text: String(opts[k]),
+        wasCorrect: k.toUpperCase() == correct,
+      }));
+    }
+
+    if (items.length < 2) return;
+
+    // Fisher–Yates Shuffle
+    for (let i = items.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const tmp = items[i];
+      items[i] = items[j];
+      items[j] = tmp;
+    }
+
+    const letters = ["A", "B", "C", "D"];
+    const newOptions: Record<string, string> = {};
+    let newCorrect = "A";
+
+    items.forEach((it, idx) => {
+      const letter = letters[idx] ?? String.fromCharCode(65 + idx);
+      newOptions[letter] = it.text;
+      if (it.wasCorrect) newCorrect = letter;
+    });
+
+    // in-place anwenden (funktioniert auch wenn questionData const ist)
+    questionData.options = newOptions;
+    questionData.correctAnswer = newCorrect;
+  } catch {
+    return;
+  }
+}
+
 // Module content summaries for question generation
 const MODULE_CONTENT: Record<number, string> = {
   1: "Modul 1 - Einführung & Grundlagen: Akteure der Immobilienwirtschaft, Immobilienmärkte, ethische Grundsätze, Berufsbilder, Marktanalyse",
@@ -28,36 +85,6 @@ type ExamQuestionShape = {
   question: string;
   options: { A: string; B: string; C: string; D: string };
 
-function shuffleExamOptions(questionData: ExamQuestionShape): ExamQuestionShape {
-  const entries = [
-    ["A", questionData.options.A],
-    ["B", questionData.options.B],
-    ["C", questionData.options.C],
-    ["D", questionData.options.D],
-  ] as Array<[string, string]>;
-
-  for (let i = entries.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [entries[i], entries[j]] = [entries[j], entries[i]];
-  }
-
-  const remapped = {
-    A: entries[0][1],
-    B: entries[1][1],
-    C: entries[2][1],
-    D: entries[3][1],
-  };
-
-  const newCorrect = (["A", "B", "C", "D"] as const).find(
-    (key, i) => entries[i][0] === questionData.correctAnswer
-  ) || "A";
-
-  return {
-    ...questionData,
-    options: remapped,
-    correctAnswer: newCorrect,
-  };
-}
 
   correctAnswer: "A" | "B" | "C" | "D";
   topic: string;
@@ -438,6 +465,8 @@ Antworte im folgenden JSON-Format:
         questionData = shuffleExamQuestion(questionData);
 
         // Format question text with options
+        shuffleExamOptions(questionData);
+
         const questionText = `${questionData.question}\n\nA) ${questionData.options.A}\nB) ${questionData.options.B}\nC) ${questionData.options.C}\nD) ${questionData.options.D}`;
 
         // Save question to database
