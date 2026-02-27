@@ -62,13 +62,19 @@ export default function ExamMode() {
   const [selectedModule, setSelectedModule] = useState<number | null>(null);
   const [isIHKMode, setIsIHKMode] = useState(false);
   const [difficulty, setDifficulty] = useState<'easy' | 'medium' | 'hard'>('medium');
+  const [uiError, setUiError] = useState<string | null>(null);
   
   const { data: examHistory } = trpc.exam.getHistory.useQuery({});
   const { data: weakTopics } = trpc.exam.getWeakTopics.useQuery({});
   
   const startExamMutation = trpc.exam.startExam.useMutation({
     onSuccess: (session) => {
+      setUiError(null);
       setLocation(`/pruefung/${session.id}`);
+    },
+    onError: (error) => {
+      console.error("[ExamMode] startExam failed:", error);
+      setUiError(error.message || "Prüfung konnte nicht gestartet werden.");
     },
   });
 
@@ -176,6 +182,16 @@ export default function ExamMode() {
                     {topic.topic} ({topic.incorrectCount}x falsch)
                   </Badge>
                 ))}
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {uiError && (
+          <Card className="mb-6 border-red-200 bg-red-50">
+            <CardContent className="py-4">
+              <div className="text-red-700 text-sm font-medium">
+                {uiError}
               </div>
             </CardContent>
           </Card>
