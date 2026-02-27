@@ -27,6 +27,7 @@ export default function ExamQuestion() {
   const [feedback, setFeedback] = useState<{ isCorrect: boolean; correctAnswer: string; feedback: string | null } | null>(null);
   const [timeElapsed, setTimeElapsed] = useState(0);
   const [questionData, setQuestionData] = useState<any>(null);
+  const [questionError, setQuestionError] = useState<string | null>(null);
 
   const { data: session, isLoading } = trpc.exam.getSession.useQuery({ sessionId });
   
@@ -36,6 +37,12 @@ export default function ExamQuestion() {
       setSelectedAnswer(null);
       setShowFeedback(false);
       setFeedback(null);
+      setQuestionError(null);
+    },
+    onError: (error) => {
+      console.error("[ExamQuestion] generateQuestion failed:", error);
+      setQuestionError("Die Prüfungsfrage konnte gerade nicht geladen werden.");
+      setQuestionData(null);
     },
   });
 
@@ -43,6 +50,10 @@ export default function ExamQuestion() {
     onSuccess: (data) => {
       setFeedback(data);
       setShowFeedback(true);
+    },
+    onError: (error) => {
+      console.error("[ExamQuestion] submitAnswer failed:", error);
+      setQuestionError("Die Antwort konnte gerade nicht ausgewertet werden.");
     },
   });
 
@@ -123,6 +134,7 @@ export default function ExamQuestion() {
     if (currentQuestion < totalQuestions) {
       setCurrentQuestion(currentQuestion + 1);
       setQuestionData(null);
+      setQuestionError(null);
     } else {
       // Complete exam
       completeExamMutation.mutate({
@@ -130,6 +142,17 @@ export default function ExamQuestion() {
         timeSpent: timeElapsed,
       });
     }
+  };
+
+  const handleRetryQuestion = () => {
+    if (!session) return;
+    setQuestionError(null);
+    generateQuestionMutation.mutate({
+      sessionId,
+      questionNumber: currentQuestion,
+      moduleId: session.session.moduleId,
+      difficulty: session.session.difficulty || "medium",
+    });
   };
 
   const formatTime = (seconds: number) => {
@@ -191,6 +214,46 @@ export default function ExamQuestion() {
             <Button onClick={() => setLocation("/pruefung")}>
               Zurück zur Übersicht
             </Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  if (!questionData) {
+    if (questionError) {
+      return (
+        <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
+          <Card className="max-w-lg w-full border-red-200">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-red-600">
+                <AlertCircle className="w-5 h-5" />
+                Frage konnte nicht geladen werden
+              </CardTitle>
+              <CardDescription>
+                {questionError}
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="flex gap-3">
+              <Button onClick={handleRetryQuestion}>
+                Erneut versuchen
+              </Button>
+              <Button variant="outline" onClick={() => setLocation("/pruefung")}>
+                Zurück zur Übersicht
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      );
+    }
+
+    return (
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
+        <Card className="max-w-md w-full">
+          <CardContent className="py-10 text-center">
+            <Loader2 className="w-10 h-10 animate-spin text-blue-600 mx-auto mb-4" />
+            <p className="text-slate-700 font-medium">Prüfungsfrage wird geladen ...</p>
+            <p className="text-slate-500 text-sm mt-2">Bitte kurz warten.</p>
           </CardContent>
         </Card>
       </div>

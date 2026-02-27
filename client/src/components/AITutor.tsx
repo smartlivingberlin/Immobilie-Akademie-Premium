@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import { X, Send, Bot, User, Sparkles, BookOpen, Calculator, Gavel } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { buildKnowledgeBase, searchKnowledgeBase, generateResponse, type KnowledgeEntry } from "@/lib/knowledgeBase";
 import { Streamdown } from "streamdown";
 
@@ -94,7 +93,7 @@ export function AITutor({ isOpen, onClose, moduleContext }: AITutorProps) {
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl h-[80vh] flex flex-col overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl h-[88vh] flex flex-col overflow-hidden">
         {/* Header */}
         <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -119,7 +118,7 @@ export function AITutor({ isOpen, onClose, moduleContext }: AITutorProps) {
         </div>
 
         {/* Messages */}
-        <ScrollArea className="flex-1 p-6" ref={scrollRef}>
+        <div ref={scrollRef} className="flex-1 min-h-0 overflow-y-auto p-6">
           <div className="space-y-4">
             {messages.map((message) => (
               <div
@@ -132,7 +131,7 @@ export function AITutor({ isOpen, onClose, moduleContext }: AITutorProps) {
                   </div>
                 )}
                 <div
-                  className={`max-w-[80%] rounded-2xl px-4 py-3 ${
+                  className={`max-w-[85%] overflow-hidden break-words rounded-2xl px-4 py-3 ${
                     message.role === "user"
                       ? "bg-blue-600 text-white"
                       : "bg-slate-100 text-slate-900"
@@ -179,7 +178,7 @@ export function AITutor({ isOpen, onClose, moduleContext }: AITutorProps) {
               </div>
             )}
           </div>
-        </ScrollArea>
+        </div>
 
         {/* Suggested Questions */}
         {messages.length === 1 && (
