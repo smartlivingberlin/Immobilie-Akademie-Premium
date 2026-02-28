@@ -442,7 +442,7 @@ Antworte im folgenden JSON-Format:
           questionData = shuffleExamOptions(buildFallbackExamQuestion(input.moduleId, input.questionNumber));
         }
         // Format question text with options
-        shuffleExamOptions(questionData);
+        questionData = shuffleExamOptions(questionData);
 
         questionData = shuffleExamOptions(questionData);
 
