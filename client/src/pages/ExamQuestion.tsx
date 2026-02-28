@@ -108,26 +108,28 @@ export default function ExamQuestion() {
     }
   };
 
-  const handleSubmitAnswer = () => {
-    if (selectedAnswer && questionData) {
-      // In IHK mode, just save the answer without showing feedback
-      if (isIHKMode) {
-        submitAnswerMutation.mutate({
+  const handleSubmitAnswer = async () => {
+    if (!selectedAnswer || !questionData) return;
+
+    if (isIHKMode) {
+      // In IHK-Simulation: Antwort speichern, dann sofort zur nächsten Frage
+      try {
+        await submitAnswerMutation.mutateAsync({
           questionId: questionData.id,
           userAnswer: selectedAnswer,
         });
-        // Immediately move to next question without showing feedback
-        setTimeout(() => {
-          handleNextQuestion();
-        }, 500);
-      } else {
-        // Normal mode: show feedback
-        submitAnswerMutation.mutate({
-          questionId: questionData.id,
-          userAnswer: selectedAnswer,
-        });
+      } catch (e) {
+        console.error("[Exam] submitAnswer failed:", e);
       }
+      handleNextQuestion();
+      return;
     }
+
+    // Normal mode: Feedback anzeigen
+    submitAnswerMutation.mutate({
+      questionId: questionData.id,
+      userAnswer: selectedAnswer,
+    });
   };
 
   const handleNextQuestion = () => {

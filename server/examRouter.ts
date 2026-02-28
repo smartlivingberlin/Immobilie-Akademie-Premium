@@ -15,62 +15,6 @@ import {
 import { invokeLLM } from "./_core/llm";
 import { TRPCError } from "@trpc/server";
 
-// --- Exam option randomizer (server-side) ---
-// Mischt A/B/C/D und hält die richtige Antwort korrekt konsistent.
-function shuffleExamOptions(questionData: any) {
-  try {
-    if (!questionData || !questionData.options) return;
-
-    const correct = String(questionData.correctAnswer ?? "").trim().toUpperCase();
-
-    // options normalisieren -> items[]
-    let items: Array<{ text: string; wasCorrect: boolean }> = [];
-
-    if (Array.isArray(questionData.options)) {
-      const arr = questionData.options as any[];
-      items = arr.map((t, i) => ({
-        text: String(t),
-        wasCorrect: String(i) === String(questionData.correctAnswer),
-      }));
-    } else {
-      const opts = questionData.options as Record<string, any>;
-      const preferred = ["A", "B", "C", "D"].filter((k) =>
-        Object.prototype.hasOwnProperty.call(opts, k)
-      );
-      const keys = preferred.length ? preferred : Object.keys(opts);
-      items = keys.map((k) => ({
-        text: String(opts[k]),
-        wasCorrect: k.toUpperCase() == correct,
-      }));
-    }
-
-    if (items.length < 2) return;
-
-    // Fisher–Yates Shuffle
-    for (let i = items.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const tmp = items[i];
-      items[i] = items[j];
-      items[j] = tmp;
-    }
-
-    const letters = ["A", "B", "C", "D"];
-    const newOptions: Record<string, string> = {};
-    let newCorrect = "A";
-
-    items.forEach((it, idx) => {
-      const letter = letters[idx] ?? String.fromCharCode(65 + idx);
-      newOptions[letter] = it.text;
-      if (it.wasCorrect) newCorrect = letter;
-    });
-
-    // in-place anwenden (funktioniert auch wenn questionData const ist)
-    questionData.options = newOptions;
-    questionData.correctAnswer = newCorrect;
-  } catch {
-    return;
-  }
-}
 
 // Module content summaries for question generation
 const MODULE_CONTENT: Record<number, string> = {
@@ -306,6 +250,44 @@ function buildFallbackExamQuestion(moduleId: number, questionNumber: number): Ex
   return pool[(questionNumber - 1) % pool.length];
 }
 
+
+// --- Exam option randomizer (server-side) ---
+// Mischt die Antwortoptionen A/B/C/D, und passt correctAnswer korrekt an.
+type AnswerKey = "A" | "B" | "C" | "D";
+type AnswerOptions = { A: string; B: string; C: string; D: string };
+
+function shuffleExamOptions<T extends { options: AnswerOptions; correctAnswer: AnswerKey }>(q: T): T {
+  try {
+    if (!q || !q.options || !q.correctAnswer) return q;
+
+    const keys: AnswerKey[] = ["A", "B", "C", "D"];
+    const items = keys.map((k) => ({
+      text: q.options[k],
+      isCorrect: q.correctAnswer === k,
+    }));
+
+    // Fisher–Yates Shuffle
+    for (let i = items.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [items[i], items[j]] = [items[j], items[i]];
+    }
+
+    const newKeys: AnswerKey[] = ["A", "B", "C", "D"];
+    const newOptions: AnswerOptions = { A: "", B: "", C: "", D: "" };
+    let newCorrect: AnswerKey = "A";
+
+    for (let i = 0; i < items.length; i++) {
+      const label = newKeys[i];
+      newOptions[label] = items[i].text;
+      if (items[i].isCorrect) newCorrect = label;
+    }
+
+    return { ...q, options: newOptions, correctAnswer: newCorrect };
+  } catch {
+    return q;
+  }
+}
+
 export const examRouter = router({
   /**
    * Get recommended difficulty based on user performance
@@ -466,6 +448,8 @@ Antworte im folgenden JSON-Format:
 
         // Format question text with options
         shuffleExamOptions(questionData);
+
+        questionData = shuffleExamOptions(questionData);
 
         const questionText = `${questionData.question}\n\nA) ${questionData.options.A}\nB) ${questionData.options.B}\nC) ${questionData.options.C}\nD) ${questionData.options.D}`;
 
