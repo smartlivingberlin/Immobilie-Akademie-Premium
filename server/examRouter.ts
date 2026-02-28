@@ -441,11 +441,6 @@ Antworte im folgenden JSON-Format:
           console.warn("[Exam] Invalid LLM response, using fallback question:", content);
           questionData = shuffleExamOptions(buildFallbackExamQuestion(input.moduleId, input.questionNumber));
         }
-        
-        questionData = shuffleExamQuestionOptions(questionData);
-
-        questionData = shuffleExamQuestion(questionData);
-
         // Format question text with options
         shuffleExamOptions(questionData);
 
