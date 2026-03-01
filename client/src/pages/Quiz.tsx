@@ -1,522 +1,270 @@
-import { useState, useEffect } from "react";
-import { trpc } from "@/lib/trpc";
+import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, XCircle, Trophy, BarChart3, BookOpen } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-
-type QuizQuestion = {
-  id: number;
-  moduleId: number;
-  category: string;
-  difficulty: "easy" | "medium" | "hard";
-  questionText: string;
-  options: string;
-  correctAnswer: string;
-  explanation: string;
-};
+import { CheckCircle2, XCircle, Trophy, BarChart3, Brain, Shuffle, Scale } from "lucide-react";
+import { ALL_QUESTIONS, shuffleQuestions, type UnifiedQuestion } from "@/data/all-questions";
 
 type QuizState = "setup" | "quiz" | "results";
 
+const MODULES = [
+  { id: 1, label: "Modul 1: Grundlagen & Einführung" },
+  { id: 2, label: "Modul 2: Maklerrecht & §34c GewO" },
+  { id: 3, label: "Modul 3: Verwaltung (WEG & Miet)" },
+  { id: 4, label: "Modul 4: Wertermittlung & Gutachten" },
+  { id: 5, label: "Modul 5: Finanzierung & §34i GewO" },
+];
+
 export default function Quiz() {
-  const { toast } = useToast();
-  
-  // Quiz configuration
-  const [moduleId, setModuleId] = useState<number>(5); // Default: Modul 5
-  const [category, setCategory] = useState<string>("all");
-  const [difficulty, setDifficulty] = useState<string>("all");
-  const [questionCount, setQuestionCount] = useState<number>(20);
-  
-  // Quiz state
+  const [moduleFilter, setModuleFilter] = useState<string>("all");
+  const [difficultyFilter, setDifficultyFilter] = useState<string>("all");
+  const [categoryFilter, setCategoryFilter] = useState<string>("all");
+  const [questionCount, setQuestionCount] = useState<number>(10);
   const [quizState, setQuizState] = useState<QuizState>("setup");
-  const [questions, setQuestions] = useState<QuizQuestion[]>([]);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const [answers, setAnswers] = useState<{ questionId: number; answer: string; correct: boolean }[]>([]);
-  const [showFeedback, setShowFeedback] = useState<boolean>(false);
-  
-  // Fetch quiz statistics
-  const { data: stats } = trpc.quiz.getQuizStats.useQuery({ moduleId });
-  
-  // Fetch random questions (disabled by default)
-  const [fetchEnabled, setFetchEnabled] = useState(false);
-  const { data: fetchedQuestions, isLoading: isLoadingQuiz, error: quizError } = trpc.quiz.getRandomQuestions.useQuery(
-    {
-      moduleId,
-      category: category === "all" ? undefined : category,
-      difficulty: difficulty === "all" ? undefined : (difficulty as "easy" | "medium" | "hard"),
-      count: questionCount,
-    },
-    {
-      enabled: fetchEnabled,
-    }
-  );
-  
-  // Handle quiz data loading
-  useEffect(() => {
-    if (!fetchEnabled) return;
-    
-    if (fetchedQuestions) {
-      if (fetchedQuestions.length === 0) {
-        toast({
-          title: "Keine Fragen gefunden",
-          description: "Für die gewählten Kriterien sind keine Fragen verfügbar.",
-          variant: "destructive",
-        });
-        setFetchEnabled(false);
-        return;
-      }
-      setQuestions(fetchedQuestions as QuizQuestion[]);
-      setQuizState("quiz");
-      setCurrentQuestionIndex(0);
-      setAnswers([]);
-      setSelectedAnswer(null);
-      setShowFeedback(false);
-      setFetchEnabled(false);
-    }
-    
-    if (quizError) {
-      toast({
-        title: "Fehler",
-        description: "Quiz konnte nicht gestartet werden.",
-        variant: "destructive",
-      });
-      setFetchEnabled(false);
-    }
-  }, [fetchedQuestions, quizError, fetchEnabled, toast]);
-  
-  const currentQuestion = questions[currentQuestionIndex];
-  const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
-  
-  const handleStartQuiz = () => {
-    setFetchEnabled(true);
-  };
-  
-  const handleAnswerSelect = (answer: string) => {
-    setSelectedAnswer(answer);
-  };
-  
-  const handleSubmitAnswer = () => {
-    if (!selectedAnswer || !currentQuestion) return;
-    
-    const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
-    
-    setAnswers([
-      ...answers,
-      {
-        questionId: currentQuestion.id,
-        answer: selectedAnswer,
-        correct: isCorrect,
-      },
-    ]);
-    
-    setShowFeedback(true);
-  };
-  
-  const handleNextQuestion = () => {
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setSelectedAnswer(null);
-      setShowFeedback(false);
-    } else {
-      setQuizState("results");
-    }
-  };
-  
-  const handleRestartQuiz = () => {
-    setQuizState("setup");
-    setQuestions([]);
-    setCurrentQuestionIndex(0);
-    setAnswers([]);
+  const [questions, setQuestions] = useState<UnifiedQuestion[]>([]);
+  const [currentIdx, setCurrentIdx] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const [showFeedback, setShowFeedback] = useState(false);
+  const [answers, setAnswers] = useState<{ questionId: string; answer: number; correct: boolean }[]>([]);
+
+  const availablePool = useMemo(() => {
+    let pool = ALL_QUESTIONS;
+    if (moduleFilter !== "all") pool = pool.filter(q => q.moduleId === parseInt(moduleFilter));
+    if (difficultyFilter !== "all") pool = pool.filter(q => q.difficulty === difficultyFilter);
+    if (categoryFilter !== "all") pool = pool.filter(q => q.category === categoryFilter);
+    return pool;
+  }, [moduleFilter, difficultyFilter, categoryFilter]);
+
+  const availableCategories = useMemo(() => {
+    let pool = ALL_QUESTIONS;
+    if (moduleFilter !== "all") pool = pool.filter(q => q.moduleId === parseInt(moduleFilter));
+    return [...new Set(pool.map(q => q.category))].sort();
+  }, [moduleFilter]);
+
+  const startQuiz = () => {
+    if (availablePool.length === 0) return;
+    const selected = shuffleQuestions(availablePool).slice(0, Math.min(questionCount, availablePool.length));
+    setQuestions(selected);
+    setCurrentIdx(0);
     setSelectedAnswer(null);
     setShowFeedback(false);
+    setAnswers([]);
+    setQuizState("quiz");
   };
-  
-  const correctCount = answers.filter((a) => a.correct).length;
-  const incorrectCount = answers.filter((a) => !a.correct).length;
-  const scorePercentage = (correctCount / answers.length) * 100;
-  const passed = scorePercentage >= 70;
-  
-  // Parse options from JSON string
-  const parseOptions = (optionsStr: string): string[] => {
-    try {
-      return JSON.parse(optionsStr);
-    } catch {
-      return [];
-    }
+
+  const handleAnswer = (answerIdx: number) => {
+    if (showFeedback) return;
+    setSelectedAnswer(answerIdx);
+    setShowFeedback(true);
+    const q = questions[currentIdx];
+    setAnswers(prev => [...prev, { questionId: q.id, answer: answerIdx, correct: answerIdx === q.correctAnswer }]);
   };
-  
-  // Calculate knowledge gaps by category
-  const knowledgeGaps = () => {
-    const categoryStats: Record<string, { correct: number; total: number }> = {};
-    
-    answers.forEach((answer) => {
-      const question = questions.find((q) => q.id === answer.questionId);
-      if (!question) return;
-      
-      if (!categoryStats[question.category]) {
-        categoryStats[question.category] = { correct: 0, total: 0 };
-      }
-      
-      categoryStats[question.category].total++;
-      if (answer.correct) {
-        categoryStats[question.category].correct++;
-      }
-    });
-    
-    return Object.entries(categoryStats)
-      .map(([category, stats]) => ({
-        category,
-        percentage: (stats.correct / stats.total) * 100,
-        correct: stats.correct,
-        total: stats.total,
-      }))
-      .sort((a, b) => a.percentage - b.percentage);
+
+  const nextQuestion = () => {
+    if (currentIdx + 1 >= questions.length) { setQuizState("results"); }
+    else { setCurrentIdx(i => i + 1); setSelectedAnswer(null); setShowFeedback(false); }
   };
-  
-  // Setup screen
+
+  const correctCount = answers.filter(a => a.correct).length;
+  const scorePercent = answers.length > 0 ? Math.round((correctCount / answers.length) * 100) : 0;
+  const getDiffLabel = (d: string) => ({ easy: "Einfach", medium: "Mittel", hard: "Schwer" }[d] || d);
+
   if (quizState === "setup") {
     return (
-      <div className="container max-w-4xl py-8">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-3xl">Prüfungssimulation</CardTitle>
-            <CardDescription>
-              Teste dein Wissen mit interaktiven Multiple-Choice-Fragen
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            {/* Quiz Statistics */}
-            {stats && (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Card>
-                  <CardHeader className="pb-3">
-                    <CardTitle className="text-sm font-medium">Gesamt</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-3xl font-bold">{stats.total}</div>
-                    <p className="text-xs text-muted-foreground">Fragen verfügbar</p>
-                  </CardContent>
-                </Card>
-                
-                <Card>
-                  <CardHeader className="pb-3">
-                    <CardTitle className="text-sm font-medium">Kategorien</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-3xl font-bold">{stats.byCategory.length}</div>
-                    <p className="text-xs text-muted-foreground">Themenbereiche</p>
-                  </CardContent>
-                </Card>
-                
-                <Card>
-                  <CardHeader className="pb-3">
-                    <CardTitle className="text-sm font-medium">Schwierigkeitsgrade</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-3xl font-bold">{stats.byDifficulty.length}</div>
-                    <p className="text-xs text-muted-foreground">Stufen</p>
-                  </CardContent>
-                </Card>
-              </div>
-            )}
-            
-            {/* Quiz Configuration */}
-            <div className="space-y-4">
-              <div>
-                <label className="text-sm font-medium">Modul</label>
-                <Select value={moduleId.toString()} onValueChange={(v) => setModuleId(parseInt(v))}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
+      <div className="min-h-screen bg-slate-50 py-12">
+        <div className="max-w-2xl mx-auto px-4">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+              <Brain className="w-8 h-8 text-blue-600" />
+            </div>
+            <h1 className="text-3xl font-bold text-slate-900 mb-2">Prüfungssimulation</h1>
+            <p className="text-slate-600">
+              <span className="font-semibold text-blue-700">{ALL_QUESTIONS.length} Fragen</span> aus Lernmaterial & BGH-Rechtsprechung — vollständig offline
+            </p>
+            <div className="flex justify-center gap-4 mt-3 flex-wrap">
+              {MODULES.map(m => (
+                <span key={m.id} className="text-xs text-slate-500">
+                  M{m.id}: {ALL_QUESTIONS.filter(q => q.moduleId === m.id).length} Fragen
+                </span>
+              ))}
+            </div>
+          </div>
+          <Card>
+            <CardHeader>
+              <CardTitle>Quiz konfigurieren</CardTitle>
+              <CardDescription>Modul, Schwierigkeit, Kategorie und Fragenanzahl wählen</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-5">
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-slate-700">Modul</label>
+                <Select value={moduleFilter} onValueChange={v => { setModuleFilter(v); setCategoryFilter("all"); }}>
+                  <SelectTrigger><SelectValue /></SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="5">Modul 5: Darlehensvermittlung §34i</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              
-              <div>
-                <label className="text-sm font-medium">Kategorie</label>
-                <Select value={category} onValueChange={setCategory}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">Alle Kategorien</SelectItem>
-                    {stats?.byCategory.map((cat) => (
-                      <SelectItem key={cat.category} value={cat.category}>
-                        {cat.category} ({cat.count} Fragen)
+                    <SelectItem value="all">Alle Module ({ALL_QUESTIONS.length} Fragen)</SelectItem>
+                    {MODULES.map(m => (
+                      <SelectItem key={m.id} value={String(m.id)}>
+                        {m.label} ({ALL_QUESTIONS.filter(q => q.moduleId === m.id).length} Fragen)
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </div>
-              
-              <div>
-                <label className="text-sm font-medium">Schwierigkeitsgrad</label>
-                <Select value={difficulty} onValueChange={setDifficulty}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-slate-700">Schwierigkeit</label>
+                <div className="grid grid-cols-4 gap-2">
+                  {["all","easy","medium","hard"].map(d => (
+                    <button key={d} onClick={() => setDifficultyFilter(d)}
+                      className={"py-2 px-3 rounded-lg border-2 text-sm font-medium transition-all " + (difficultyFilter === d ? "border-blue-600 bg-blue-50 text-blue-900" : "border-slate-200 text-slate-600 hover:border-slate-300")}>
+                      {d === "all" ? "Alle" : getDiffLabel(d)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-slate-700 flex items-center gap-2">
+                  <Scale className="w-4 h-4" /> Kategorie
+                </label>
+                <Select value={categoryFilter} onValueChange={setCategoryFilter}>
+                  <SelectTrigger><SelectValue /></SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">Alle Schwierigkeitsgrade</SelectItem>
-                    <SelectItem value="easy">Leicht</SelectItem>
-                    <SelectItem value="medium">Mittel</SelectItem>
-                    <SelectItem value="hard">Schwer</SelectItem>
+                    <SelectItem value="all">Alle Kategorien ({availablePool.length} verfügbar)</SelectItem>
+                    {availableCategories.map(cat => (
+                      <SelectItem key={cat} value={cat}>{cat}</SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>
-              
-              <div>
-                <label className="text-sm font-medium">Anzahl Fragen</label>
-                <Select value={questionCount.toString()} onValueChange={(v) => setQuestionCount(parseInt(v))}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-slate-700">Anzahl Fragen <span className="text-slate-400">({availablePool.length} verfügbar)</span></label>
+                <Select value={String(questionCount)} onValueChange={v => setQuestionCount(parseInt(v))}>
+                  <SelectTrigger><SelectValue /></SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="10">10 Fragen</SelectItem>
-                    <SelectItem value="20">20 Fragen</SelectItem>
-                    <SelectItem value="30">30 Fragen</SelectItem>
-                    <SelectItem value="50">50 Fragen</SelectItem>
-                    <SelectItem value="100">100 Fragen</SelectItem>
+                    {[5,10,15,20,30,50].filter(n => n <= availablePool.length).map(n => (
+                      <SelectItem key={n} value={String(n)}>{n} Fragen</SelectItem>
+                    ))}
+                    {availablePool.length > 0 && <SelectItem value={String(availablePool.length)}>Alle {availablePool.length} Fragen</SelectItem>}
                   </SelectContent>
                 </Select>
               </div>
-            </div>
-          </CardContent>
-          <CardFooter>
-            <Button onClick={handleStartQuiz} className="w-full" size="lg" disabled={isLoadingQuiz}>
-              {isLoadingQuiz ? "Lade Fragen..." : "Quiz starten"}
-            </Button>
-          </CardFooter>
-        </Card>
+            </CardContent>
+            <CardFooter>
+              <Button className="w-full h-12 text-lg" onClick={startQuiz} disabled={availablePool.length === 0}>
+                <Shuffle className="mr-2 h-5 w-5" />Quiz starten ({Math.min(questionCount, availablePool.length)} Fragen)
+              </Button>
+            </CardFooter>
+          </Card>
+        </div>
       </div>
     );
   }
-  
-  // Quiz screen
-  if (quizState === "quiz" && currentQuestion) {
-    const options = parseOptions(currentQuestion.options);
-    const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
-    
+
+  if (quizState === "quiz") {
+    const q = questions[currentIdx];
     return (
-      <div className="container max-w-4xl py-8">
-        <Card>
-          <CardHeader>
-            <div className="flex items-center justify-between mb-4">
-              <Badge variant={currentQuestion.difficulty === "easy" ? "default" : currentQuestion.difficulty === "medium" ? "secondary" : "destructive"}>
-                {currentQuestion.difficulty === "easy" ? "Leicht" : currentQuestion.difficulty === "medium" ? "Mittel" : "Schwer"}
-              </Badge>
-              <Badge variant="outline">{currentQuestion.category}</Badge>
+      <div className="min-h-screen bg-slate-50 py-8">
+        <div className="max-w-2xl mx-auto px-4">
+          <div className="mb-6">
+            <div className="flex justify-between text-sm text-slate-600 mb-2">
+              <span>Frage {currentIdx + 1} von {questions.length}</span>
+              <span className="font-medium text-green-600">{answers.filter(a => a.correct).length} richtig</span>
             </div>
-            <CardTitle className="text-2xl">
-              Frage {currentQuestionIndex + 1} von {questions.length}
-            </CardTitle>
-            <Progress value={progress} className="mt-4" />
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="text-lg font-medium">{currentQuestion.questionText}</div>
-            
-            <div className="space-y-3">
-              {options.map((option, index) => (
-                <Button
-                  key={index}
-                  variant={
-                    showFeedback
-                      ? option === currentQuestion.correctAnswer
-                        ? "default"
-                        : option === selectedAnswer
-                        ? "destructive"
-                        : "outline"
-                      : selectedAnswer === option
-                      ? "default"
-                      : "outline"
-                  }
-                  className="w-full justify-start text-left h-auto py-4 px-6"
-                  onClick={() => !showFeedback && handleAnswerSelect(option)}
-                  disabled={showFeedback}
-                >
-                  <span className="mr-3 font-bold">{String.fromCharCode(65 + index)}.</span>
-                  <span>{option}</span>
-                  {showFeedback && option === currentQuestion.correctAnswer && (
-                    <CheckCircle2 className="ml-auto h-5 w-5 text-green-500" />
-                  )}
-                  {showFeedback && option === selectedAnswer && option !== currentQuestion.correctAnswer && (
-                    <XCircle className="ml-auto h-5 w-5 text-red-500" />
-                  )}
-                </Button>
-              ))}
-            </div>
-            
+            <Progress value={(currentIdx / questions.length) * 100} className="h-2" />
+          </div>
+          <Card>
+            <CardHeader>
+              <div className="flex gap-2 flex-wrap mb-2">
+                <Badge variant="outline" className="text-xs">M{q.moduleId}</Badge>
+                <Badge variant="outline" className="text-xs">{q.category}</Badge>
+                <Badge variant={q.difficulty === "easy" ? "secondary" : q.difficulty === "hard" ? "destructive" : "default"} className="text-xs">
+                  {getDiffLabel(q.difficulty)}
+                </Badge>
+              </div>
+              <CardTitle className="text-lg leading-snug">{q.question}</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {q.options.map((option, idx) => {
+                let cls = "w-full text-left p-4 rounded-lg border-2 transition-all text-sm ";
+                if (!showFeedback) cls += selectedAnswer === idx ? "border-blue-500 bg-blue-50" : "border-slate-200 hover:border-blue-300 hover:bg-slate-50";
+                else if (idx === q.correctAnswer) cls += "border-green-500 bg-green-50 text-green-900";
+                else if (idx === selectedAnswer) cls += "border-red-500 bg-red-50 text-red-900";
+                else cls += "border-slate-200 bg-white opacity-60";
+                return (
+                  <button key={idx} className={cls} onClick={() => handleAnswer(idx)} disabled={showFeedback}>
+                    <span className="font-bold mr-2">{["A","B","C","D"][idx]}.</span>{option}
+                    {showFeedback && idx === q.correctAnswer && <CheckCircle2 className="inline ml-2 h-4 w-4 text-green-600" />}
+                    {showFeedback && idx === selectedAnswer && idx !== q.correctAnswer && <XCircle className="inline ml-2 h-4 w-4 text-red-600" />}
+                  </button>
+                );
+              })}
+              {showFeedback && (
+                <div className={"p-4 rounded-lg border mt-4 text-sm " + (selectedAnswer === q.correctAnswer ? "bg-green-50 border-green-200 text-green-800" : "bg-orange-50 border-orange-200 text-orange-800")}>
+                  <p className="font-semibold mb-1">{selectedAnswer === q.correctAnswer ? "✓ Richtig!" : "✗ Falsch"}</p>
+                  <p>{q.explanation}</p>
+                </div>
+              )}
+            </CardContent>
             {showFeedback && (
-              <Card className={isCorrect ? "bg-green-50 border-green-200" : "bg-red-50 border-red-200"}>
-                <CardHeader>
-                  <CardTitle className="text-lg flex items-center gap-2">
-                    {isCorrect ? (
-                      <>
-                        <CheckCircle2 className="h-5 w-5 text-green-600" />
-                        <span className="text-green-600">Richtig!</span>
-                      </>
-                    ) : (
-                      <>
-                        <XCircle className="h-5 w-5 text-red-600" />
-                        <span className="text-red-600">Falsch</span>
-                      </>
-                    )}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm">{currentQuestion.explanation}</p>
-                </CardContent>
-              </Card>
+              <CardFooter>
+                <Button className="w-full" onClick={nextQuestion}>
+                  {currentIdx + 1 >= questions.length ? "Auswertung anzeigen" : "Nächste Frage →"}
+                </Button>
+              </CardFooter>
             )}
-          </CardContent>
-          <CardFooter>
-            {!showFeedback ? (
-              <Button onClick={handleSubmitAnswer} className="w-full" size="lg" disabled={!selectedAnswer}>
-                Antwort prüfen
-              </Button>
-            ) : (
-              <Button onClick={handleNextQuestion} className="w-full" size="lg">
-                {currentQuestionIndex < questions.length - 1 ? "Nächste Frage" : "Auswertung anzeigen"}
-              </Button>
-            )}
-          </CardFooter>
-        </Card>
+          </Card>
+        </div>
       </div>
     );
   }
-  
-  // Results screen
-  if (quizState === "results") {
-    const gaps = knowledgeGaps();
-    
-    return (
-      <div className="container max-w-4xl py-8 space-y-6">
-        {/* Score Card */}
-        <Card className={passed ? "bg-green-50 border-green-200" : "bg-red-50 border-red-200"}>
-          <CardHeader>
-            <div className="flex items-center justify-center mb-4">
-              <Trophy className={`h-16 w-16 ${passed ? "text-green-600" : "text-red-600"}`} />
+
+  return (
+    <div className="min-h-screen bg-slate-50 py-12">
+      <div className="max-w-2xl mx-auto px-4">
+        <Card>
+          <CardHeader className="text-center">
+            <div className="flex justify-center mb-4">
+              {scorePercent >= 70 ? <Trophy className="h-16 w-16 text-yellow-500" /> : <BarChart3 className="h-16 w-16 text-blue-500" />}
             </div>
-            <CardTitle className="text-3xl text-center">
-              {passed ? "Bestanden!" : "Nicht bestanden"}
-            </CardTitle>
-            <CardDescription className="text-center text-lg">
-              Du hast {correctCount} von {answers.length} Fragen richtig beantwortet
-            </CardDescription>
+            <CardTitle className="text-2xl">Quiz abgeschlossen!</CardTitle>
+            <CardDescription>{scorePercent >= 70 ? "Bestanden — gut gemacht!" : "Weiter üben — du schaffst das!"}</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="text-center">
-              <div className="text-6xl font-bold mb-2">{scorePercentage.toFixed(0)}%</div>
-              <Progress value={scorePercentage} className="h-4" />
-              <p className="text-sm text-muted-foreground mt-2">
-                {passed ? "Mindestens 70% erforderlich" : "Mindestens 70% erforderlich zum Bestehen"}
-              </p>
+            <div className="text-center mb-6">
+              <div className={"text-5xl font-bold mb-2 " + (scorePercent >= 70 ? "text-green-600" : "text-orange-600")}>{scorePercent}%</div>
+              <p className="text-slate-600">{correctCount} von {questions.length} richtig</p>
             </div>
-          </CardContent>
-        </Card>
-        
-        {/* Statistics */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-green-600" />
-                Richtige Antworten
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-4xl font-bold text-green-600">{correctCount}</div>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <XCircle className="h-5 w-5 text-red-600" />
-                Falsche Antworten
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-4xl font-bold text-red-600">{incorrectCount}</div>
-            </CardContent>
-          </Card>
-        </div>
-        
-        {/* Knowledge Gaps */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <BarChart3 className="h-5 w-5" />
-              Wissenslücken-Analyse
-            </CardTitle>
-            <CardDescription>
-              Themenbereiche nach Erfolgsquote sortiert
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            {gaps.map((gap) => (
-              <div key={gap.category}>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium">{gap.category}</span>
-                  <span className="text-sm text-muted-foreground">
-                    {gap.correct}/{gap.total} ({gap.percentage.toFixed(0)}%)
-                  </span>
+            <div className="grid grid-cols-3 gap-4 mb-6">
+              <div className="text-center p-3 bg-green-50 rounded-lg"><div className="text-2xl font-bold text-green-600">{correctCount}</div><div className="text-xs text-green-700">Richtig</div></div>
+              <div className="text-center p-3 bg-red-50 rounded-lg"><div className="text-2xl font-bold text-red-600">{questions.length - correctCount}</div><div className="text-xs text-red-700">Falsch</div></div>
+              <div className="text-center p-3 bg-blue-50 rounded-lg"><div className="text-2xl font-bold text-blue-600">{questions.length}</div><div className="text-xs text-blue-700">Gesamt</div></div>
+            </div>
+            {answers.filter(a => !a.correct).length > 0 && (
+              <div className="mt-4">
+                <h3 className="font-semibold text-slate-800 mb-3">Falsch beantwortet:</h3>
+                <div className="space-y-3 max-h-96 overflow-y-auto">
+                  {answers.filter(a => !a.correct).map(a => {
+                    const q = questions.find(q => q.id === a.questionId);
+                    if (!q) return null;
+                    return (
+                      <div key={a.questionId} className="p-3 bg-red-50 border border-red-200 rounded-lg text-sm">
+                        <p className="font-medium text-red-900 mb-1">{q.question}</p>
+                        <p className="text-red-700 text-xs">✗ Deine Antwort: {q.options[a.answer]}</p>
+                        <p className="text-green-700 text-xs">✓ Richtig: {q.options[q.correctAnswer]}</p>
+                        <p className="text-slate-600 mt-2 text-xs italic">{q.explanation}</p>
+                      </div>
+                    );
+                  })}
                 </div>
-                <Progress value={gap.percentage} className="h-2" />
               </div>
-            ))}
-          </CardContent>
-        </Card>
-        
-        {/* Recommendations */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <BookOpen className="h-5 w-5" />
-              Empfehlungen
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            {gaps.filter((g) => g.percentage < 70).length > 0 ? (
-              <>
-                <p className="text-sm">
-                  Du solltest folgende Themenbereiche wiederholen:
-                </p>
-                <ul className="list-disc list-inside space-y-1">
-                  {gaps
-                    .filter((g) => g.percentage < 70)
-                    .map((gap) => (
-                      <li key={gap.category} className="text-sm">
-                        <strong>{gap.category}</strong> ({gap.percentage.toFixed(0)}% richtig)
-                      </li>
-                    ))}
-                </ul>
-              </>
-            ) : (
-              <p className="text-sm text-green-600">
-                Hervorragend! Du hast in allen Themenbereichen mindestens 70% erreicht.
-              </p>
             )}
           </CardContent>
+          <CardFooter className="gap-3">
+            <Button className="flex-1" onClick={startQuiz}><Shuffle className="mr-2 h-4 w-4" />Nochmal</Button>
+            <Button variant="outline" className="flex-1" onClick={() => setQuizState("setup")}>Einstellungen</Button>
+          </CardFooter>
         </Card>
-        
-        {/* Actions */}
-        <div className="flex gap-4">
-          <Button onClick={handleRestartQuiz} variant="outline" className="flex-1">
-            Neues Quiz starten
-          </Button>
-          <Button onClick={() => window.location.href = "/modul5"} className="flex-1">
-            Zu Modul 5
-          </Button>
-        </div>
       </div>
-    );
-  }
-  
-  return null;
+    </div>
+  );
 }
