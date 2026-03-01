@@ -1,621 +1,209 @@
 import { z } from "zod";
 import { publicProcedure, protectedProcedure, router } from "./_core/trpc";
-import { 
-  createExamSession, 
-  getExamSession, 
-  getUserExamSessions,
-  saveExamQuestion,
-  getExamQuestions,
-  getExamQuestionById,
-  updateExamQuestion,
-  completeExamSession,
-  getWeakTopics,
-  updateWeakTopic
-} from "./db";
-import { invokeLLM } from "./_core/llm";
+import { createExamSession, getExamSession, getUserExamSessions, saveExamQuestion, getExamQuestions, getExamQuestionById, updateExamQuestion, completeExamSession, getWeakTopics, updateWeakTopic } from "./db";
 import { TRPCError } from "@trpc/server";
 
-
-// Module content summaries for question generation
-const MODULE_CONTENT: Record<number, string> = {
-  1: "Modul 1 - Einführung & Grundlagen: Akteure der Immobilienwirtschaft, Immobilienmärkte, ethische Grundsätze, Berufsbilder, Marktanalyse",
-  2: "Modul 2 - Maklerrecht & §34c GewO: Gewerbeordnung, Makler- und Bauträgerverordnung (MaBV), Wettbewerbsrecht, Verbraucherschutz, Provisionsrecht",
-  3: "Modul 3 - Verwaltung (WEG & Miet): WEG-Recht, Mietverwaltung, Hausverwaltung, technische Gebäudeverwaltung, kaufmännische Verwaltung, Eigentümerversammlungen",
-  4: "Modul 4 - Wertermittlung & Gutachten: Sachwertverfahren, Ertragswertverfahren, Vergleichswertverfahren, Verkehrswertermittlung, Gutachtenerstellung",
-  5: "Modul 5 - Finanzierung & §34i: Immobiliardarlehensvermittlung, Kreditprozesse, Finanzierungsarten, Beleihungswertermittlung, IHK-Prüfungsvorbereitung"
+const LOCAL_QUESTIONS: Record<number, Array<{question: string; options: Record<string, string>; correctAnswer: string; topic: string; explanation: string; difficulty: 'easy' | 'medium' | 'hard'}>> = {
+  1: [
+    { question: "Was versteht man unter dem Begriff 'Immobilie'?", options: { "A": "Nur Grundstücke ohne Bebauung", "B": "Unbewegliche Sachen, insbesondere Grundstücke und Gebäude", "C": "Nur Wohngebäude", "D": "Ausschließlich gewerblich genutzte Objekte" }, correctAnswer: "B", topic: "Grundlagen", explanation: "Immobilien sind unbewegliche Sachen im Sinne des BGB. Dazu gehören Grundstücke sowie alle fest mit dem Grund und Boden verbundenen Gebäude und Bauwerke. Der Begriff umfasst sowohl Wohn- als auch Gewerbeimmobilien.", difficulty: "easy" },
+    { question: "Welche Immobilientypen gibt es NICHT?", options: { "A": "Wohnimmobilien", "B": "Gewerbeimmobilien", "C": "Spezialimmobilien", "D": "Virtuelle Immobilien" }, correctAnswer: "D", topic: "Grundlagen", explanation: "Die klassische Einteilung umfasst Wohnimmobilien (z.B. Einfamilienhäuser, Wohnungen), Gewerbeimmobilien (z.B. Büros, Einzelhandel) und Spezialimmobilien (z.B. Hotels, Pflegeheime). 'Virtuelle Immobilien' ist kein anerkannter Immobilientyp im klassischen Sinne.", difficulty: "easy" },
+    { question: "Was ist der Unterschied zwischen Grundstück und Gebäude?", options: { "A": "Es gibt keinen Unterschied", "B": "Grundstück ist der Boden, Gebäude ist die Bebauung", "C": "Grundstück ist größer als Gebäude", "D": "Gebäude ist immer teurer als Grundstück" }, correctAnswer: "B", topic: "Grundlagen", explanation: "Ein Grundstück ist ein abgegrenzter Teil der Erdoberfläche, der im Grundbuch eingetragen ist. Ein Gebäude ist ein Bauwerk, das fest mit dem Grundstück verbunden ist. Nach § 94 BGB sind Gebäude wesentliche Bestandteile des Grundstücks.", difficulty: "medium" },
+    { question: "Welche Akteure sind NICHT typischerweise am Immobilienmarkt beteiligt?", options: { "A": "Makler, Verwalter, Gutachter", "B": "Käufer, Verkäufer, Mieter", "C": "Banken, Notare, Bauträger", "D": "Einzelhändler, Gastronomen, Friseure" }, correctAnswer: "D", topic: "Marktakteure", explanation: "Am Immobilienmarkt sind typischerweise Makler, Verwalter, Gutachter, Käufer, Verkäufer, Mieter, Vermieter, Banken, Notare und Bauträger beteiligt. Einzelhändler, Gastronomen und Friseure sind zwar möglicherweise Mieter von Gewerbeimmobilien, aber keine typischen Marktakteure im engeren Sinne.", difficulty: "easy" },
+    { question: "Was regelt das Grundbuch?", options: { "A": "Die Bauvorschriften für Immobilien", "B": "Die Eigentumsverhältnisse an Grundstücken", "C": "Die Mietpreise in Deutschland", "D": "Die Steuersätze für Immobilien" }, correctAnswer: "B", topic: "Recht", explanation: "Das Grundbuch ist ein öffentliches Register, das beim Amtsgericht geführt wird. Es dokumentiert die Eigentumsverhältnisse an Grundstücken sowie darauf lastende Rechte (z.B. Grundschulden, Wegerechte). Das Grundbuch genießt öffentlichen Glauben (§ 892 BGB).", difficulty: "medium" },
+    { question: "Welche Aussage über den Immobilienmarkt ist FALSCH?", options: { "A": "Der Immobilienmarkt ist regional sehr unterschiedlich", "B": "Lage ist ein entscheidender Wertfaktor", "C": "Alle Immobilien haben denselben Wert pro Quadratmeter", "D": "Angebot und Nachfrage beeinflussen die Preise" }, correctAnswer: "C", topic: "Markt", explanation: "Der Immobilienmarkt ist stark heterogen und regional unterschiedlich. Die Lage ('Lage, Lage, Lage') ist der wichtigste Wertfaktor. Immobilien haben sehr unterschiedliche Quadratmeterpreise je nach Lage, Zustand, Ausstattung und Marktlage. Die Aussage 'Alle Immobilien haben denselben Wert pro m²' ist daher falsch.", difficulty: "easy" },
+    { question: "Was bedeutet 'Verkehrswert' einer Immobilie?", options: { "A": "Der Wert der Verkehrsanbindung", "B": "Der Preis, den ein Käufer tatsächlich zahlt", "C": "Der Marktwert, der im gewöhnlichen Geschäftsverkehr erzielbar ist", "D": "Der Wert der Parkplätze" }, correctAnswer: "C", topic: "Bewertung", explanation: "Der Verkehrswert (auch Marktwert) ist der Preis, der zum Wertermittlungsstichtag im gewöhnlichen Geschäftsverkehr nach den rechtlichen Gegebenheiten und tatsächlichen Eigenschaften erzielbar wäre. Er wird nach § 194 BauGB durch Gutachter ermittelt.", difficulty: "medium" },
+    { question: "Welche Rechtsform kann KEINE Immobilien besitzen?", options: { "A": "Natürliche Personen", "B": "GmbH", "C": "Vereine", "D": "Alle genannten können Immobilien besitzen" }, correctAnswer: "D", topic: "Recht", explanation: "Alle genannten Rechtsformen können Immobilien besitzen: Natürliche Personen (Privatpersonen), juristische Personen des Privatrechts (GmbH, AG) und juristische Personen des öffentlichen Rechts (Vereine, Stiftungen). Die Eigentumsfähigkeit ist im BGB geregelt.", difficulty: "medium" },
+    { question: "Was ist eine 'Teilungserklärung'?", options: { "A": "Die Aufteilung der Maklercourtage", "B": "Die notarielle Erklärung zur Aufteilung eines Grundstücks in Wohnungseigentum", "C": "Die Trennung von Ehepartnern", "D": "Die Aufteilung von Betriebskosten" }, correctAnswer: "B", topic: "Recht", explanation: "Die Teilungserklärung ist eine notariell beurkundete Erklärung des Eigentümers, durch die ein Grundstück in Miteigentumsanteile aufgeteilt wird, die mit Sondereigentum an Wohnungen oder Räumen verbunden sind. Sie ist die Grundlage für Wohnungseigentum.", difficulty: "hard" },
+    { question: "Welche Aussage über Grundsteuern ist korrekt?", options: { "A": "Grundsteuer wird nur beim Kauf fällig", "B": "Grundsteuer ist eine jährliche Steuer auf Grundbesitz", "C": "Grundsteuer zahlt nur der Mieter", "D": "Grundsteuer gibt es in Deutschland nicht" }, correctAnswer: "B", topic: "Steuern", explanation: "Die Grundsteuer ist eine jährliche Steuer auf den Grundbesitz (Grundstücke und Gebäude). Sie wird von den Gemeinden erhoben und ist vom Eigentümer zu zahlen. Sie kann als Betriebskosten auf Mieter umgelegt werden. Nicht zu verwechseln mit der Grunderwerbsteuer beim Kauf.", difficulty: "medium" },
+    { question: "Was ist der Hauptzweck des Maklervertrags?", options: { "A": "Der Makler verpflichtet sich, eine Immobilie zu kaufen.", "B": "Der Makler verpflichtet sich, den Nachweis oder die Vermittlung eines Vertrages zu erbringen.", "C": "Der Makler garantiert den Verkaufserfolg.", "D": "Der Makler wird Eigentümer der Immobilie." }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Der Maklervertrag verpflichtet den Makler zum Nachweis der Gelegenheit zum Abschluss eines Vertrages oder zur Vermittlung eines solchen (§ 652 BGB).", difficulty: "medium" },
+    { question: "Welche Formvorschrift gilt für den Maklervertrag über Wohnraum?", options: { "A": "Mündliche Vereinbarung reicht aus.", "B": "Er muss notariell beurkundet werden.", "C": "Er bedarf der Textform (§ 656a BGB).", "D": "Er muss handschriftlich verfasst sein." }, correctAnswer: "C", topic: "Fachkenntnisse", explanation: "Seit dem 23.12.2020 bedarf ein Maklervertrag, der den Nachweis der Gelegenheit zum Abschluss eines Kaufvertrags über eine Wohnung oder ein Einfamilienhaus betrifft, der Textform (z.B. E-Mail).", difficulty: "medium" },
+    { question: "Was versteht man unter dem 'Bestellerprinzip' bei der Wohnraummiete?", options: { "A": "Der Mieter zahlt immer die Provision.", "B": "Der Vermieter zahlt immer die Provision.", "C": "Wer den Makler bestellt, bezahlt ihn (§ 2 Abs. 1a WoVermRG).", "D": "Die Provision wird immer geteilt." }, correctAnswer: "C", topic: "Fachkenntnisse", explanation: "Bei der Vermittlung von Wohnraummietverträgen gilt das Bestellerprinzip: Derjenige, der den Makler beauftragt (bestellt), muss die Provision zahlen.", difficulty: "medium" },
+    { question: "Was ist ein 'qualifizierter Alleinauftrag'?", options: { "A": "Der Makler darf auch für andere Kunden tätig werden.", "B": "Der Auftraggeber verzichtet darauf, andere Makler einzuschalten und darf auch nicht selbst tätig werden (umstritten, meist Individualvereinbarung nötig).", "C": "Der Auftraggeber darf parallel andere Makler beauftragen.", "D": "Der Makler erhält eine Festvergütung ohne Erfolg." }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Beim qualifizierten Alleinauftrag verpflichtet sich der Auftraggeber, keine anderen Makler einzuschalten und Interessenten an den alleinbeauftragten Makler zu verweisen.", difficulty: "medium" },
+    { question: "Wann entsteht der Provisionsanspruch des Maklers?", options: { "A": "Mit Unterzeichnung des Maklervertrags.", "B": "Mit der Besichtigung der Immobilie.", "C": "Mit dem wirksamen Zustandekommen des Hauptvertrags (Kauf- oder Mietvertrag).", "D": "Mit der Reservierung der Immobilie." }, correctAnswer: "C", topic: "Fachkenntnisse", explanation: "Der Provisionsanspruch entsteht erst, wenn der Hauptvertrag (z.B. Kaufvertrag) infolge des Nachweises oder der Vermittlung des Maklers wirksam zustande gekommen ist (§ 652 BGB).", difficulty: "medium" },
+    { question: "Was ist das Grundbuch?", options: { "A": "Ein Verzeichnis aller Einwohner einer Stadt.", "B": "Ein öffentliches Register, das die Rechtsverhältnisse an Grundstücken darlegt.", "C": "Ein Buch über die Bodenbeschaffenheit.", "D": "Eine Liste aller Makler in Deutschland." }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Das Grundbuch ist ein öffentliches Register, welches die Eigentumsverhältnisse sowie etwaige Rechte und Lasten an Grundstücken verzeichnet.", difficulty: "medium" },
+    { question: "In welcher Abteilung des Grundbuchs stehen Hypotheken und Grundschulden?", options: { "A": "Abteilung I", "B": "Abteilung II", "C": "Abteilung III", "D": "Im Bestandsverzeichnis" }, correctAnswer: "C", topic: "Fachkenntnisse", explanation: "Abteilung III des Grundbuchs enthält die Grundpfandrechte, also Hypotheken, Grundschulden und Rentenschulden.", difficulty: "medium" },
+    { question: "Was ist eine 'Auflassung'?", options: { "A": "Die Kündigung eines Mietvertrags.", "B": "Die dingliche Einigung über den Eigentumsübergang an einem Grundstück (§ 925 BGB).", "C": "Die Übergabe der Schlüssel.", "D": "Die Löschung einer Grundschuld." }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Die Auflassung ist die zur Übertragung des Eigentums an einem Grundstück erforderliche Einigung zwischen Veräußerer und Erwerber. Sie muss bei gleichzeitiger Anwesenheit beider Teile vor einer zuständigen Stelle (Notar) erklärt werden.", difficulty: "medium" },
+    { question: "Was regelt der Flächennutzungsplan (FNP)?", options: { "A": "Die genaue Farbe der Dachziegel.", "B": "Die Art der baulichen Nutzung für das gesamte Gemeindegebiet in Grundzügen.", "C": "Die Bepflanzung der Vorgärten.", "D": "Die Innenraumgestaltung von Gebäuden." }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Der Flächennutzungsplan ist der vorbereitende Bauleitplan, der die beabsichtigte Art der Bodennutzung für das gesamte Gemeindegebiet in den Grundzügen darstellt.", difficulty: "medium" },
+    { question: "Was bedeutet 'Geschossflächenzahl' (GFZ)?", options: { "A": "Die Anzahl der Fenster pro Geschoss.", "B": "Das Verhältnis der gesamten Geschossfläche zur Größe des Baugrundstücks.", "C": "Die Höhe des Gebäudes in Metern.", "D": "Die Anzahl der erlaubten Stockwerke." }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Die Geschossflächenzahl (GFZ) gibt an, wie viel Quadratmeter Geschossfläche je Quadratmeter Grundstücksfläche zulässig sind.", difficulty: "medium" },
+  ],
+  2: [
+    { question: "Was regelt § 34c GewO?", options: { "A": "Die Mietpreisbremse", "B": "Die Erlaubnispflicht für Immobilienmakler und Darlehensvermittler", "C": "Die Grunderwerbsteuer", "D": "Das Wohnungseigentumsgesetz" }, correctAnswer: "B", topic: "Maklerrecht", explanation: "§ 34c GewO regelt die Erlaubnispflicht für die gewerbsmäßige Ausübung der Tätigkeiten als Immobilienmakler, Darlehensvermittler, Bauträger und Baubetreuer. Wer diese Tätigkeiten ausüben möchte, benötigt eine behördliche Erlaubnis.", difficulty: "easy" },
+    { question: "Seit wann gilt das Bestellerprinzip für Wohnungsmakler?", options: { "A": "2015", "B": "2018", "C": "2020", "D": "2022" }, correctAnswer: "C", topic: "Maklerrecht", explanation: "Das Bestellerprinzip für Wohnungsmakler gilt seit dem 23. Dezember 2020. Es besagt, dass derjenige, der den Makler beauftragt (bestellt), auch die Provision zahlen muss. Bei Vermietung zahlt der Vermieter, bei Verkauf teilen sich Käufer und Verkäufer die Provision mindestens hälftig.", difficulty: "medium" },
+    { question: "Wie hoch ist die übliche Maklercourtage beim Immobilienkauf?", options: { "A": "1-2% des Kaufpreises", "B": "3,57% bis 7,14% des Kaufpreises (je nach Bundesland)", "C": "10% des Kaufpreises", "D": "Festbetrag von 5.000 €" }, correctAnswer: "B", topic: "Courtage", explanation: "Die Maklercourtage beim Immobilienkauf beträgt üblicherweise zwischen 3,57% und 7,14% des Kaufpreises (inkl. MwSt.), abhängig vom Bundesland. Seit 2020 muss der Käufer maximal 50% der Gesamtprovision zahlen, wenn der Verkäufer den Makler beauftragt hat.", difficulty: "medium" },
+    { question: "Wann entsteht der Provisionsanspruch des Maklers?", options: { "A": "Bei Vertragsunterzeichnung", "B": "Bei Besichtigung der Immobilie", "C": "Beim Nachweis oder bei der Vermittlung eines Vertrages", "D": "Nach Ablauf der Widerrufsfrist" }, correctAnswer: "C", topic: "Maklerrecht", explanation: "Der Provisionsanspruch des Maklers entsteht, wenn durch seine Tätigkeit ein Vertrag (Kauf, Miete) zustande kommt (Vermittlung) oder er den Vertragspartner nachweist (Nachweis). Der Vertrag muss rechtswirksam sein und nicht mehr widerrufen werden können.", difficulty: "medium" },
+    { question: "Was ist ein 'Alleinauftrag' beim Makler?", options: { "A": "Der Makler darf nur eine Immobilie vermitteln", "B": "Der Eigentümer beauftragt nur einen Makler und schaltet keine weiteren ein", "C": "Der Makler arbeitet allein ohne Team", "D": "Der Auftrag ist auf einen Monat begrenzt" }, correctAnswer: "B", topic: "Maklervertrag", explanation: "Bei einem Alleinauftrag verpflichtet sich der Eigentümer, für einen bestimmten Zeitraum nur einen Makler mit der Vermarktung zu beauftragen und keine weiteren Makler einzuschalten. Im Gegenzug verpflichtet sich der Makler zu intensiveren Vermarktungsmaßnahmen.", difficulty: "medium" },
+    { question: "Welche Pflichten hat ein Makler gegenüber seinen Auftraggebern?", options: { "A": "Nur die Immobilie zu zeigen", "B": "Sorgfaltspflicht, Treuepflicht, Aufklärungspflicht", "C": "Nur die Provision einzufordern", "D": "Keine besonderen Pflichten" }, correctAnswer: "B", topic: "Maklerpflichten", explanation: "Der Makler hat umfassende Pflichten: Sorgfaltspflicht (gewissenhafte Arbeit), Treuepflicht (Interessenwahrung), Aufklärungspflicht (über wesentliche Umstände), Verschwiegenheitspflicht und Rechenschaftspflicht. Verstöße können zu Schadensersatz und Provisionsverlust führen.", difficulty: "medium" },
+    { question: "Was ist die 'Makler- und Bauträgerverordnung' (MaBV)?", options: { "A": "Eine Verordnung über Bauvorschriften", "B": "Eine Verordnung über die Pflichten von Maklern und Bauträgern", "C": "Eine Steuerverordnung", "D": "Eine Mietrechtsverordnung" }, correctAnswer: "B", topic: "Maklerrecht", explanation: "Die MaBV regelt die Pflichten von Immobilienmaklern, Darlehensvermittlern, Bauträgern und Baubetreuern. Sie enthält Vorschriften über Vermögensschäden-Haftpflichtversicherung, Werbung, Vertragsanbahnung und Informationspflichten.", difficulty: "hard" },
+    { question: "Welche Versicherung muss ein Makler nach MaBV abschließen?", options: { "A": "Krankenversicherung", "B": "Vermögensschaden-Haftpflichtversicherung", "C": "Lebensversicherung", "D": "Rechtsschutzversicherung" }, correctAnswer: "B", topic: "Versicherung", explanation: "Nach § 3 MaBV muss ein Makler eine Vermögensschaden-Haftpflichtversicherung mit einer Mindestdeckungssumme von 500.000 € für Personenschäden und 250.000 € für sonstige Schäden abschließen. Dies dient dem Schutz der Auftraggeber.", difficulty: "medium" },
+    { question: "Was bedeutet 'qualifizierter Alleinauftrag'?", options: { "A": "Der Makler hat eine besondere Qualifikation", "B": "Der Eigentümer darf selbst nicht mehr verkaufen", "C": "Der Eigentümer beauftragt nur einen Makler, darf aber selbst noch verkaufen", "D": "Der Auftrag ist besonders teuer" }, correctAnswer: "C", topic: "Maklervertrag", explanation: "Beim qualifizierten Alleinauftrag beauftragt der Eigentümer nur einen Makler, behält sich aber das Recht vor, die Immobilie selbst zu verkaufen. Beim einfachen Alleinauftrag ist auch der Eigenverkauf ausgeschlossen. Der qualifizierte Alleinauftrag ist die häufigste Form.", difficulty: "hard" },
+    { question: "Welche Angaben MÜSSEN in einem Immobilienexposé enthalten sein?", options: { "A": "Nur der Preis", "B": "Energieausweis-Angaben sind Pflicht", "C": "Nur die Adresse", "D": "Keine Pflichtangaben" }, correctAnswer: "B", topic: "Exposé", explanation: "Nach EnEV/GEG müssen in kommerziellen Immobilienanzeigen bestimmte Energieausweis-Angaben gemacht werden: Art des Ausweises, Energieträger, Baujahr, Energieeffizienzklasse und Energiekennwert. Verstöße können mit Bußgeldern geahndet werden.", difficulty: "hard" },
+    { question: "Welche Erlaubnis ist für die Tätigkeit als Immobilienmakler zwingend erforderlich?", options: { "A": "Gewerbeanmeldung nach §14 GewO", "B": "Erlaubnis nach §34c GewO", "C": "Handelsregistereintrag", "D": "IHK-Zertifikat" }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Die Tätigkeit als Immobilienmakler ist erlaubnispflichtig nach §34c der Gewerbeordnung (GewO). Eine bloße Gewerbeanmeldung reicht nicht aus.", difficulty: "medium" },
+    { question: "Was versteht man unter dem 'Bestellerprinzip' bei der Wohnraumvermittlung?", options: { "A": "Der Käufer zahlt immer die Provision.", "B": "Derjenige zahlt den Makler, der ihn schriftlich beauftragt hat.", "C": "Die Provision wird immer 50/50 geteilt.", "D": "Der Verkäufer zahlt immer die Provision." }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Seit 2015 gilt bei der Wohnraumvermietung das Bestellerprinzip: Wer bestellt (beauftragt), der bezahlt. Meist ist dies der Vermieter.", difficulty: "medium" },
+    { question: "Wie lange beträgt die gesetzliche Widerrufsfrist bei Maklerverträgen, die im Fernabsatz geschlossen wurden?", options: { "A": "14 Tage", "B": "1 Monat", "C": "7 Tage", "D": "Es gibt kein Widerrufsrecht" }, correctAnswer: "A", topic: "Fachkenntnisse", explanation: "Verbraucher haben bei Fernabsatzverträgen (z.B. per E-Mail oder Telefon) ein gesetzliches Widerrufsrecht von 14 Tagen.", difficulty: "medium" },
+    { question: "Welche Pflichten hat ein Makler nach dem Geldwäschegesetz (GwG)?", options: { "A": "Nur Bargeld annehmen", "B": "Identifizierung des Vertragspartners und Risikobewertung", "C": "Meldung aller Verkäufe an das Finanzamt", "D": "Keine besonderen Pflichten" }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Immobilienmakler sind Verpflichtete nach dem GwG und müssen ihre Vertragspartner identifizieren (KYC) sowie eine Risikoanalyse durchführen.", difficulty: "medium" },
+    { question: "Was ist ein 'qualifizierter Alleinauftrag'?", options: { "A": "Ein Auftrag, bei dem der Makler keine Provision erhält.", "B": "Ein Auftrag, bei dem der Kunde auch andere Makler beauftragen darf.", "C": "Ein Auftrag, der den Kunden verpflichtet, nicht selbst tätig zu werden (Interessenten an Makler verweisen).", "D": "Ein Auftrag nur für qualifizierte Immobilien." }, correctAnswer: "C", topic: "Fachkenntnisse", explanation: "Beim qualifizierten Alleinauftrag verzichtet der Auftraggeber darauf, parallel andere Makler einzuschalten UND verpflichtet sich, eigene Interessenten an den Makler zu verweisen.", difficulty: "medium" },
+  ],
+  3: [
+    { question: "Was bedeutet 'WEG'?", options: { "A": "Wohnungseigentumsgesetz", "B": "Wohnungseigentümergemeinschaft", "C": "Wohnungserwerbs-Gesetz", "D": "Wohnungs-Entwicklungs-Gesellschaft" }, correctAnswer: "A", topic: "WEG-Verwaltung", explanation: "WEG steht für 'Wohnungseigentumsgesetz'. Es regelt das Wohnungseigentum und die Rechte und Pflichten der Wohnungseigentümer. Umgangssprachlich wird auch die Wohnungseigentümergemeinschaft als 'WEG' bezeichnet.", difficulty: "easy" },
+    { question: "Was ist das 'Sondereigentum' in einer WEG?", options: { "A": "Das Eigentum an der gesamten Immobilie", "B": "Das ausschließliche Eigentum an einer Wohnung oder Räumen", "C": "Das Eigentum am Grundstück", "D": "Das Eigentum an Gemeinschaftsanlagen" }, correctAnswer: "B", topic: "WEG-Verwaltung", explanation: "Sondereigentum ist das ausschließliche Eigentum an einer Wohnung oder an nicht zu Wohnzwecken dienenden Räumen (Teileigentum). Es ist mit einem Miteigentumsanteil am Gemeinschaftseigentum verbunden. Der Eigentümer kann über sein Sondereigentum frei verfügen.", difficulty: "medium" },
+    { question: "Was gehört zum 'Gemeinschaftseigentum' in einer WEG?", options: { "A": "Nur das Grundstück", "B": "Nur das Treppenhaus", "C": "Grundstück, tragende Wände, Dach, Fassade, Treppenhaus, Heizung", "D": "Nur die Wohnungen" }, correctAnswer: "C", topic: "WEG-Verwaltung", explanation: "Zum Gemeinschaftseigentum gehören alle Teile des Grundstücks und Gebäudes, die nicht Sondereigentum sind: Grundstück, tragende Wände, Dach, Fassade, Treppenhaus, Aufzug, Heizungsanlage, Leitungen (außerhalb der Wohnung). Alle Eigentümer sind daran gemeinschaftlich berechtigt.", difficulty: "medium" },
+    { question: "Was ist eine 'Eigentümerversammlung'?", options: { "A": "Ein geselliges Treffen der Eigentümer", "B": "Das beschlussfassende Organ der Wohnungseigentümergemeinschaft", "C": "Eine Versammlung von Mietern", "D": "Ein Treffen mit dem Verwalter" }, correctAnswer: "B", topic: "WEG-Verwaltung", explanation: "Die Eigentümerversammlung ist das oberste Beschlussorgan der WEG. Hier treffen sich alle Wohnungseigentümer, um über wichtige Angelegenheiten zu entscheiden (z.B. Jahresabrechnung, Instandhaltungsmaßnahmen, Verwalterwahl). Beschlüsse werden nach Köpfen oder Miteigentumsanteilen gefasst.", difficulty: "medium" },
+    { question: "Was ist die 'Instandhaltungsrücklage'?", options: { "A": "Eine Rücklage für Notfälle", "B": "Eine Rücklage für zukünftige Instandhaltungs- und Instandsetzungsmaßnahmen", "C": "Eine Rücklage für Versicherungen", "D": "Eine Rücklage für Steuern" }, correctAnswer: "B", topic: "WEG-Verwaltung", explanation: "Die Instandhaltungsrücklage ist eine finanzielle Rücklage der WEG für zukünftige Instandhaltungs- und Instandsetzungsmaßnahmen am Gemeinschaftseigentum (z.B. Dachsanierung, Fassadenanstrich). Jeder Eigentümer zahlt monatlich einen Betrag ein, der nach Miteigentumsanteilen berechnet wird.", difficulty: "medium" },
+    { question: "Was sind 'Betriebskosten' im Mietrecht?", options: { "A": "Die Kosten für den Betrieb eines Unternehmens", "B": "Die Kosten, die dem Eigentümer durch den Betrieb der Immobilie entstehen", "C": "Die Kosten für Reparaturen", "D": "Die Kosten für Möbel" }, correctAnswer: "B", topic: "Mietverwaltung", explanation: "Betriebskosten sind die Kosten, die dem Eigentümer durch den bestimmungsgemäßen Gebrauch der Immobilie laufend entstehen. Dazu gehören z.B. Grundsteuer, Wasser, Heizung, Müllabfuhr, Hausmeister. Sie können auf den Mieter umgelegt werden, wenn dies im Mietvertrag vereinbart ist.", difficulty: "medium" },
+    { question: "Welche Kosten dürfen NICHT als Betriebskosten auf Mieter umgelegt werden?", options: { "A": "Grundsteuer", "B": "Wasserkosten", "C": "Verwaltungskosten", "D": "Heizkosten" }, correctAnswer: "C", topic: "Betriebskosten", explanation: "Verwaltungskosten (z.B. Kosten für Hausverwaltung, Bankgebühren, Porto) dürfen nicht als Betriebskosten auf Mieter umgelegt werden. Sie sind Kosten des Eigentümers. Umlagefähig sind nur die in § 2 BetrKV aufgeführten Kostenarten.", difficulty: "hard" },
+    { question: "Was ist eine 'Nebenkostenabrechnung'?", options: { "A": "Eine Rechnung für Reparaturen", "B": "Die jährliche Abrechnung der umlagefähigen Betriebskosten", "C": "Eine Rechnung für Möbel", "D": "Die Mietrechnung" }, correctAnswer: "B", topic: "Betriebskosten", explanation: "Die Nebenkostenabrechnung (auch Betriebskostenabrechnung) ist die jährliche Abrechnung der auf den Mieter umgelegten Betriebskosten. Der Vermieter muss sie spätestens 12 Monate nach Ende des Abrechnungszeitraums erstellen. Der Mieter hat ein Recht auf Einsicht in die Belege.", difficulty: "medium" },
+    { question: "Was ist der Unterschied zwischen 'Instandhaltung' und 'Instandsetzung'?", options: { "A": "Es gibt keinen Unterschied", "B": "Instandhaltung = vorbeugende Maßnahmen, Instandsetzung = Reparatur von Schäden", "C": "Instandsetzung ist teurer", "D": "Instandhaltung ist nur für Mieter" }, correctAnswer: "B", topic: "Instandhaltung", explanation: "Instandhaltung umfasst vorbeugende Maßnahmen zur Erhaltung des ordnungsgemäßen Zustands (z.B. Wartung, Pflege). Instandsetzung bedeutet die Beseitigung von Schäden und Mängeln (z.B. Reparatur defekter Teile). Beide Begriffe sind wichtig für die Kostenabgrenzung in WEG und Mietverwaltung.", difficulty: "hard" },
+    { question: "Wie wird das 'Hausgeld' in einer WEG berechnet?", options: { "A": "Alle Eigentümer zahlen denselben Betrag", "B": "Nach Miteigentumsanteilen (MEA)", "C": "Nach Wohnungsgröße", "D": "Nach Anzahl der Personen" }, correctAnswer: "B", topic: "Hausgeld", explanation: "Das Hausgeld wird nach Miteigentumsanteilen (MEA) berechnet. Jeder Eigentümer zahlt entsprechend seinem Anteil am Gemeinschaftseigentum. Das Hausgeld umfasst Betriebskosten, Verwaltungskosten und die Zuführung zur Instandhaltungsrücklage.", difficulty: "medium" },
+    { question: "Was ist die Hauptaufgabe eines WEG-Verwalters?", options: { "A": "Vermietung der Wohnungen", "B": "Verwaltung des gemeinschaftlichen Eigentums", "C": "Verkauf der Wohnungen", "D": "Renovierung des Sondereigentums" }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Der WEG-Verwalter ist primär für die Verwaltung des gemeinschaftlichen Eigentums (Dach, Fassade, Treppenhaus etc.) zuständig, nicht für das Sondereigentum.", difficulty: "medium" },
+    { question: "Welches Gesetz wurde 2020 umfassend reformiert und betrifft die Wohnungseigentumsverwaltung?", options: { "A": "BGB", "B": "WEMoG (Wohnungseigentumsmodernisierungsgesetz)", "C": "GewO", "D": "BauGB" }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Das WEMoG trat am 01.12.2020 in Kraft und hat das WEG-Recht grundlegend reformiert (z.B. Zertifizierter Verwalter, bauliche Veränderungen).", difficulty: "medium" },
+    { question: "Wann muss die Eigentümerversammlung (ETV) mindestens einberufen werden?", options: { "A": "Alle 2 Jahre", "B": "Mindestens einmal im Jahr", "C": "Nur bei Bedarf", "D": "Alle 6 Monate" }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Nach § 24 Abs. 1 WEG muss der Verwalter die Eigentümerversammlung mindestens einmal im Jahr einberufen.", difficulty: "medium" },
+    { question: "Was ist die 'Erhaltungsrücklage' (früher Instandhaltungsrücklage)?", options: { "A": "Der Gewinn des Verwalters", "B": "Eine Ansammlung von Mitteln für künftige Instandsetzungen am Gemeinschaftseigentum", "C": "Die Kaution der Mieter", "D": "Eine Steuer für Eigentümer" }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Die Erhaltungsrücklage ist eine zweckgebundene Rücklage der Eigentümergemeinschaft, um zukünftige Reparaturen und Sanierungen am Gemeinschaftseigentum zu finanzieren.", difficulty: "medium" },
+    { question: "Wer bestellt den Verwalter in einer WEG?", options: { "A": "Das Amtsgericht", "B": "Die Eigentümerversammlung durch Beschluss", "C": "Der Verwaltungsbeirat allein", "D": "Die Gemeinde" }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Der Verwalter wird von der Eigentümerversammlung durch Mehrheitsbeschluss bestellt (§ 26 WEG).", difficulty: "medium" },
+  ],
+  4: [
+    { question: "Was ist der 'Verkehrswert' einer Immobilie?", options: { "A": "Der Wert der Verkehrsanbindung", "B": "Der Marktwert, der im gewöhnlichen Geschäftsverkehr erzielbar ist", "C": "Der Versicherungswert", "D": "Der Beleihungswert" }, correctAnswer: "B", topic: "Bewertung", explanation: "Der Verkehrswert (auch Marktwert) ist der Preis, der zum Wertermittlungsstichtag im gewöhnlichen Geschäftsverkehr nach den rechtlichen Gegebenheiten und tatsächlichen Eigenschaften ohne Rücksicht auf ungewöhnliche oder persönliche Verhältnisse erzielbar wäre.", difficulty: "medium" },
+    { question: "Welche Wertermittlungsverfahren gibt es?", options: { "A": "Nur das Vergleichswertverfahren", "B": "Vergleichswertverfahren, Ertragswertverfahren, Sachwertverfahren", "C": "Nur das Ertragswertverfahren", "D": "Nur das Sachwertverfahren" }, correctAnswer: "B", topic: "Bewertung", explanation: "Es gibt drei normierte Wertermittlungsverfahren: Vergleichswertverfahren (Vergleich mit ähnlichen Objekten), Ertragswertverfahren (kapitalisierte Erträge) und Sachwertverfahren (Herstellungskosten minus Alterswertminderung). Die Wahl hängt von der Immobilienart ab.", difficulty: "medium" },
+    { question: "Für welche Immobilienart ist das Ertragswertverfahren geeignet?", options: { "A": "Eigengenutzte Einfamilienhäuser", "B": "Vermietete Mehrfamilienhäuser und Gewerbeimmobilien", "C": "Unbebaute Grundstücke", "D": "Denkmalgeschützte Gebäude" }, correctAnswer: "B", topic: "Ertragswertverfahren", explanation: "Das Ertragswertverfahren wird für vermietete Immobilien angewendet, bei denen der Ertrag (Miete) im Vordergrund steht. Es eignet sich für Mehrfamilienhäuser, Gewerbeimmobilien und gemischt genutzte Objekte. Der Wert ergibt sich aus den kapitalisierten Reinerträgen.", difficulty: "medium" },
+    { question: "Was ist der 'Bodenwert'?", options: { "A": "Der Wert des Bodenbelags", "B": "Der Wert des unbebauten Grundstücks", "C": "Der Wert des Kellers", "D": "Der Wert der Gartenanlage" }, correctAnswer: "B", topic: "Bewertung", explanation: "Der Bodenwert ist der Wert des unbebauten Grundstücks. Er wird im Vergleichswertverfahren anhand von Bodenrichtwerten ermittelt. Der Bodenwert ist eine wichtige Größe im Sachwertverfahren und Ertragswertverfahren.", difficulty: "easy" },
+    { question: "Was sind 'Bodenrichtwerte'?", options: { "A": "Durchschnittliche Ladenpreise für Grundstücke in einer Lage", "B": "Vorschriften für die Bodenbeschaffenheit", "C": "Werte für die Bodenqualität", "D": "Steuerwerte für Grundstücke" }, correctAnswer: "A", topic: "Bodenwert", explanation: "Bodenrichtwerte sind durchschnittliche Ladenpreise für unbebaute Grundstücke in einer bestimmten Lage. Sie werden von Gutachterausschüssen ermittelt und veröffentlicht. Sie dienen als Orientierung für die Wertermittlung und werden nach Lage, Art und Maß der Nutzung differenziert.", difficulty: "medium" },
+    { question: "Was ist die 'Alterswertminderung'?", options: { "A": "Die Minderung des Werts durch das Alter des Eigentümers", "B": "Die Minderung des Gebäudewerts durch Alterung und Abnutzung", "C": "Die Minderung der Miete bei alten Gebäuden", "D": "Die Minderung der Grundsteuer" }, correctAnswer: "B", topic: "Sachwertverfahren", explanation: "Die Alterswertminderung ist die Minderung des Gebäudewerts durch Alterung, Abnutzung und technische Überholung. Sie wird im Sachwertverfahren vom Gebäudesachwert abgezogen. Die Berechnung erfolgt linear über die Gesamtnutzungsdauer des Gebäudes.", difficulty: "medium" },
+    { question: "Was ist ein 'Verkehrswertgutachten'?", options: { "A": "Ein Gutachten über die Verkehrsanbindung", "B": "Ein Gutachten zur Ermittlung des Marktwerts einer Immobilie", "C": "Ein Gutachten über Verkehrsunfälle", "D": "Ein Gutachten über Parkplätze" }, correctAnswer: "B", topic: "Gutachten", explanation: "Ein Verkehrswertgutachten ist ein Gutachten zur Ermittlung des Marktwerts (Verkehrswerts) einer Immobilie. Es wird von Sachverständigen nach normierten Verfahren erstellt und dient z.B. für Erbauseinandersetzungen, Scheidungen, Zwangsversteigerungen oder Kreditvergaben.", difficulty: "easy" },
+    { question: "Wer darf Verkehrswertgutachten erstellen?", options: { "A": "Nur Notare", "B": "Nur öffentlich bestellte und vereidigte Sachverständige", "C": "Jeder, aber für Gerichte nur zertifizierte Sachverständige", "D": "Nur Makler" }, correctAnswer: "C", topic: "Sachverständige", explanation: "Grundsätzlich darf jeder Verkehrswertgutachten erstellen. Für gerichtliche Zwecke werden jedoch meist öffentlich bestellte und vereidigte Sachverständige oder zertifizierte Sachverständige (z.B. nach DIN EN ISO/IEC 17024) beauftragt. Banken akzeptieren oft nur Gutachten von anerkannten Sachverständigen.", difficulty: "hard" },
+    { question: "Was ist der Unterschied zwischen 'Verkehrswert' und 'Beleihungswert'?", options: { "A": "Es gibt keinen Unterschied", "B": "Verkehrswert = Marktwert, Beleihungswert = vorsichtig geschätzter Wert für Kreditsicherheit", "C": "Beleihungswert ist immer höher", "D": "Verkehrswert ist nur für Verkäufe relevant" }, correctAnswer: "B", topic: "Bewertung", explanation: "Der Verkehrswert ist der Marktwert, der im normalen Geschäftsverkehr erzielbar ist. Der Beleihungswert ist der Wert, den eine Bank bei der Kreditvergabe als Sicherheit ansetzt. Er liegt meist 10-20% unter dem Verkehrswert, da er vorsichtig und nachhaltig geschätzt wird.", difficulty: "hard" },
+    { question: "Was ist ein 'Kurzgutachten'?", options: { "A": "Ein Gutachten, das sehr schnell erstellt wird", "B": "Ein vereinfachtes Gutachten mit weniger Detailtiefe", "C": "Ein Gutachten über kurze Gebäude", "D": "Ein Gutachten für kurze Zeiträume" }, correctAnswer: "B", topic: "Gutachten", explanation: "Ein Kurzgutachten ist ein vereinfachtes Verkehrswertgutachten mit reduziertem Umfang und weniger Detailtiefe. Es enthält die wesentlichen Wertermittlungsdaten, aber weniger Begründungen und Anlagen. Es ist günstiger und schneller zu erstellen als ein Vollgutachten.", difficulty: "medium" },
+    { question: "Welches Verfahren ist für die Bewertung von Ein- und Zweifamilienhäusern primär anzuwenden?", options: { "A": "Ertragswertverfahren", "B": "Sachwertverfahren", "C": "Vergleichswertverfahren", "D": "Discounted-Cash-Flow-Verfahren" }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Das Sachwertverfahren wird vorrangig bei Immobilien angewendet, die für die Eigennutzung konzipiert sind, wie Ein- und Zweifamilienhäuser, da hier der Substanzwert im Vordergrund steht.", difficulty: "medium" },
+    { question: "Was ist der Bodenrichtwert?", options: { "A": "Der durchschnittliche Lagewert des Bodens für eine Mehrheit von Grundstücken", "B": "Der individuelle Wert eines konkreten Grundstücks", "C": "Der Verkaufspreis des letzten Jahres", "D": "Der Wert des Bodens inklusive Bebauung" }, correctAnswer: "A", topic: "Fachkenntnisse", explanation: "Der Bodenrichtwert ist ein aus Kaufpreissammlungen ermittelter durchschnittlicher Lagewert für eine Mehrheit von Grundstücken innerhalb eines abgegrenzten Gebiets (Bodenrichtwertzone).", difficulty: "medium" },
+    { question: "Was versteht man unter dem Liegenschaftszins?", options: { "A": "Den Zinssatz für Hypothekendarlehen", "B": "Die Verzinsung des Verkehrswertes von Grundstücken", "C": "Den Zinssatz der Europäischen Zentralbank", "D": "Die Renditeerwartung des Mieters" }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Der Liegenschaftszins ist der Zinssatz, mit dem der Verkehrswert von Grundstücken marktüblich verzinst wird. Er ist eine wesentliche Größe im Ertragswertverfahren.", difficulty: "medium" },
+    { question: "Welche Faktoren beeinflussen den Rohertrag einer Immobilie?", options: { "A": "Nur die Größe des Grundstücks", "B": "Mieteinnahmen, Lage, Zustand und Ausstattung", "C": "Das Alter des Eigentümers", "D": "Die Farbe der Fassade" }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Der Rohertrag wird maßgeblich durch die nachhaltig erzielbaren Mieteinnahmen bestimmt, welche wiederum von Lage, Zustand und Ausstattung der Immobilie abhängen.", difficulty: "medium" },
+    { question: "Was ist bei der Bewertung von Erbbaurechten besonders zu beachten?", options: { "A": "Es gibt keine Besonderheiten", "B": "Das Erbbaurecht wird wie Volleigentum behandelt", "C": "Die Laufzeit des Erbbaurechts und der Erbbauzins", "D": "Erbbaurechte können nicht bewertet werden" }, correctAnswer: "C", topic: "Fachkenntnisse", explanation: "Bei Erbbaurechten sind die Restlaufzeit des Vertrages und die Höhe des zu zahlenden Erbbauzinses wertbestimmende Faktoren, die den Verkehrswert maßgeblich beeinflussen.", difficulty: "medium" },
+    { question: "Welche Aufgabe hat der Gutachterausschuss?", options: { "A": "Erteilung von Baugenehmigungen", "B": "Führung der Kaufpreissammlung und Ermittlung von Bodenrichtwerten", "C": "Vermittlung von Immobilien", "D": "Festsetzung der Grundsteuer" }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Der Gutachterausschuss führt die Kaufpreissammlung, wertet diese aus und ermittelt darauf basierend Bodenrichtwerte und sonstige für die Wertermittlung erforderliche Daten.", difficulty: "medium" },
+    { question: "Was versteht man unter 'Marktanpassung' im Sachwertverfahren?", options: { "A": "Die Anpassung der Miete an den Mietspiegel", "B": "Die Berücksichtigung der aktuellen Marktlage durch den Sachwertfaktor", "C": "Die Renovierung der Immobilie vor dem Verkauf", "D": "Die Anpassung des Bodenrichtwerts" }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Da der vorläufige Sachwert rein rechnerisch ermittelt wird, muss er durch den Sachwertfaktor an die tatsächliche Marktlage angepasst werden, um den Verkehrswert zu erhalten.", difficulty: "medium" },
+    { question: "Welches Gesetz regelt die Immobilienwertermittlung in Deutschland maßgeblich?", options: { "A": "BGB", "B": "BauGB und ImmoWertV", "C": "StGB", "D": "HGB" }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Das Baugesetzbuch (BauGB) und die Immobilienwertermittlungsverordnung (ImmoWertV) bilden die rechtliche Grundlage für die Verkehrswertermittlung in Deutschland.", difficulty: "medium" },
+    { question: "Was ist der Unterschied zwischen Verkehrswert und Beleihungswert?", options: { "A": "Es gibt keinen Unterschied", "B": "Verkehrswert ist der aktuelle Marktwert, Beleihungswert ein vorsichtigerer Wert für Kreditsicherheiten", "C": "Beleihungswert ist immer höher als der Verkehrswert", "D": "Verkehrswert gilt nur für Gewerbeimmobilien" }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Der Verkehrswert spiegelt den aktuellen Marktwert wider, während der Beleihungswert ein unter Sicherheitsaspekten ermittelter Wert ist, der langfristig erzielt werden kann und meist unter dem Verkehrswert liegt.", difficulty: "medium" },
+    { question: "Was bedeutet 'Restnutzungsdauer'?", options: { "A": "Die Zeit bis zum nächsten Mieterwechsel", "B": "Die Anzahl der Jahre, in denen eine bauliche Anlage bei ordnungsgemäßer Bewirtschaftung voraussichtlich noch wirtschaftlich genutzt werden kann", "C": "Die Dauer der Bauphase", "D": "Die Zeit bis zur vollständigen Abschreibung" }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Die Restnutzungsdauer ist die Zeitspanne, in der ein Gebäude voraussichtlich noch wirtschaftlich genutzt werden kann. Sie ist eine zentrale Größe in allen Wertermittlungsverfahren.", difficulty: "medium" },
+  ],
+  5: [
+    { question: "Was regelt § 34i GewO?", options: { "A": "Die Immobilienmakler-Erlaubnis", "B": "Die Erlaubnispflicht für Darlehensvermittler", "C": "Die Grunderwerbsteuer", "D": "Das Mietrecht" }, correctAnswer: "B", topic: "Darlehensvermittlung", explanation: "§ 34i GewO regelt die Erlaubnispflicht für Darlehensvermittler, Finanzanlagenvermittler und Honorar-Finanzanlagenberater. Wer gewerbsmäßig Darlehensverträge vermittelt, benötigt eine behördliche Erlaubnis nach § 34i GewO.", difficulty: "easy" },
+    { question: "Was ist ein 'Annuitätendarlehen'?", options: { "A": "Ein Darlehen mit steigenden Raten", "B": "Ein Darlehen mit gleichbleibenden Raten aus Zins und Tilgung", "C": "Ein Darlehen ohne Zinsen", "D": "Ein Darlehen nur für Immobilien" }, correctAnswer: "B", topic: "Finanzierung", explanation: "Ein Annuitätendarlehen ist die häufigste Darlehensform bei Immobilienfinanzierungen. Die monatliche Rate (Annuität) bleibt während der Zinsbindung konstant. Sie setzt sich aus Zins und Tilgung zusammen. Mit jeder Rate sinkt der Zinsanteil und der Tilgungsanteil steigt.", difficulty: "medium" },
+    { question: "Was bedeutet 'Zinsbindung'?", options: { "A": "Die Zinsen sind für immer festgelegt", "B": "Der Zinssatz ist für einen vereinbarten Zeitraum fest", "C": "Die Zinsen können jederzeit geändert werden", "D": "Die Zinsen sind an die Inflation gebunden" }, correctAnswer: "B", topic: "Finanzierung", explanation: "Die Zinsbindung ist der Zeitraum, für den der Zinssatz eines Darlehens fest vereinbart ist (z.B. 10, 15 oder 20 Jahre). Während dieser Zeit kann die Bank den Zinssatz nicht ändern. Nach Ablauf der Zinsbindung wird eine Anschlussfinanzierung benötigt.", difficulty: "medium" },
+    { question: "Was ist die 'Tilgung' bei einem Darlehen?", options: { "A": "Die Zinszahlung", "B": "Die Rückzahlung des Darlehensbetrags", "C": "Die Gebühren der Bank", "D": "Die Versicherungsprämie" }, correctAnswer: "B", topic: "Finanzierung", explanation: "Die Tilgung ist die Rückzahlung des Darlehensbetrags (Kapital). Bei einem Annuitätendarlehen wird mit jeder Rate ein Teil getilgt. Die Tilgung wird in Prozent pro Jahr angegeben (z.B. 2% Anfangstilgung). Je höher die Tilgung, desto schneller ist das Darlehen abbezahlt.", difficulty: "easy" },
+    { question: "Was ist ein 'Tilgungsplan'?", options: { "A": "Ein Plan für die Bauplanung", "B": "Eine Übersicht über die Rückzahlung des Darlehens", "C": "Ein Plan für die Zinszahlungen", "D": "Ein Plan für die Versicherungen" }, correctAnswer: "B", topic: "Finanzierung", explanation: "Ein Tilgungsplan ist eine tabellarische Übersicht über den Verlauf der Darlehensrückzahlung. Er zeigt für jede Rate den Zinsanteil, Tilgungsanteil und die Restschuld. Der Tilgungsplan wird von der Bank bei Vertragsabschluss erstellt und ist wichtig für die Finanzplanung.", difficulty: "medium" },
+    { question: "Was ist die 'Grundschuld'?", options: { "A": "Eine Steuer auf Grundstücke", "B": "Ein dingliches Recht zur Absicherung von Darlehen", "C": "Eine Schuld des Grundstücks", "D": "Eine Gebühr für das Grundbuch" }, correctAnswer: "B", topic: "Finanzierung", explanation: "Die Grundschuld ist ein dingliches Recht, das im Grundbuch eingetragen wird. Sie dient der Bank als Sicherheit für ein Darlehen. Im Gegensatz zur Hypothek ist die Grundschuld nicht akzessorisch, d.h. sie bleibt auch nach Tilgung des Darlehens bestehen und kann für weitere Kredite genutzt werden.", difficulty: "medium" },
+    { question: "Was ist der 'Beleihungswert' einer Immobilie?", options: { "A": "Der Verkehrswert", "B": "Der Wert, den eine Bank als Sicherheit für ein Darlehen ansetzt", "C": "Der Versicherungswert", "D": "Der Kaufpreis" }, correctAnswer: "B", topic: "Finanzierung", explanation: "Der Beleihungswert ist der Wert, den eine Bank bei der Kreditvergabe als Sicherheit ansetzt. Er wird vorsichtig und nachhaltig ermittelt und liegt meist 10-20% unter dem Verkehrswert. Die Bank finanziert in der Regel nur einen Prozentsatz des Beleihungswerts (Beleihungsgrenze).", difficulty: "medium" },
+    { question: "Was bedeutet 'Sondertilgung'?", options: { "A": "Eine besonders hohe Tilgung", "B": "Eine außerplanmäßige Tilgung zusätzlich zur regulären Rate", "C": "Eine Tilgung nur für Sonderfälle", "D": "Eine Tilgung ohne Zinsen" }, correctAnswer: "B", topic: "Finanzierung", explanation: "Eine Sondertilgung ist eine außerplanmäßige Tilgung zusätzlich zur regulären monatlichen Rate. Sie ermöglicht es, das Darlehen schneller zurückzuzahlen. Sondertilgungen müssen im Darlehensvertrag vereinbart werden und sind oft auf einen bestimmten Prozentsatz pro Jahr begrenzt (z.B. 5%).", difficulty: "medium" },
+    { question: "Was ist eine 'Anschlussfinanzierung'?", options: { "A": "Die erste Finanzierung einer Immobilie", "B": "Die Finanzierung nach Ablauf der Zinsbindung", "C": "Eine zusätzliche Finanzierung", "D": "Eine Finanzierung für Anschlüsse (Wasser, Strom)" }, correctAnswer: "B", topic: "Finanzierung", explanation: "Eine Anschlussfinanzierung ist die Fortsetzung der Finanzierung nach Ablauf der Zinsbindung. Da das Darlehen meist noch nicht vollständig getilgt ist, muss eine neue Vereinbarung mit der Bank getroffen werden. Alternativ kann man zu einer anderen Bank wechseln (Umschuldung).", difficulty: "medium" },
+    { question: "Welche IHK-Prüfung ist für Immobilienmakler relevant?", options: { "A": "Sachkundeprüfung nach § 34c GewO", "B": "Meisterprüfung", "C": "Gesellenprüfung", "D": "Abitur" }, correctAnswer: "A", topic: "Prüfung", explanation: "Die Sachkundeprüfung nach § 34c GewO ist für Immobilienmakler, Darlehensvermittler, Bauträger und Baubetreuer relevant. Sie wird von der IHK abgenommen und ist Voraussetzung für die Erlaubniserteilung. Die Prüfung umfasst rechtliche, wirtschaftliche und fachliche Kenntnisse.", difficulty: "easy" },
+    { question: "Was versteht man unter dem Begriff 'Beleihungswert'?", options: { "A": "Den aktuellen Marktwert einer Immobilie", "B": "Den Wert, den die Bank langfristig als sicher erzielbar ansieht", "C": "Den Kaufpreis der Immobilie", "D": "Den steuerlichen Einheitswert" }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Der Beleihungswert ist ein Sicherheitswert, der langfristig und unabhängig von konjunkturellen Schwankungen erzielt werden kann. Er bildet die Basis für die Kreditentscheidung.", difficulty: "medium" },
+    { question: "Was ist ein Annuitätendarlehen?", options: { "A": "Ein Darlehen, das am Ende der Laufzeit in einer Summe zurückgezahlt wird", "B": "Ein Darlehen mit gleichbleibenden Raten aus Zins und Tilgung", "C": "Ein Darlehen mit variablen Zinsen", "D": "Ein staatlich gefördertes Darlehen" }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Beim Annuitätendarlehen bleibt die monatliche Rate (Annuität) über die Zinsbindungsfrist konstant. Da der Zinsanteil mit jeder Rate sinkt, steigt der Tilgungsanteil entsprechend an.", difficulty: "medium" },
+    { question: "Welche Unterlage ist für die Bonitätsprüfung eines Selbstständigen unerlässlich?", options: { "A": "Die letzten drei Gehaltsabrechnungen", "B": "Betriebswirtschaftliche Auswertungen (BWA) und Jahresabschlüsse", "C": "Ein Arbeitsvertrag", "D": "Eine Schufa-Selbstauskunft" }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Da Selbstständige kein festes Gehalt beziehen, prüft die Bank die wirtschaftliche Stabilität anhand von BWAs, Einnahmen-Überschuss-Rechnungen oder Bilanzen der letzten Jahre.", difficulty: "medium" },
+    { question: "Was bedeutet 'Vorfälligkeitsentschädigung'?", options: { "A": "Eine Gebühr für die vorzeitige Auszahlung des Darlehens", "B": "Eine Entschädigung der Bank für entgangene Zinsen bei vorzeitiger Rückzahlung", "C": "Eine Prämie für pünktliche Ratenzahlung", "D": "Die Kosten für die Eintragung der Grundschuld" }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Kündigt ein Darlehensnehmer den Kredit während der Zinsbindungsfrist, entsteht der Bank ein Zinsausfallschaden. Diesen muss der Kunde durch die Vorfälligkeitsentschädigung ausgleichen.", difficulty: "medium" },
+    { question: "Welche Funktion hat das Grundbuch bei der Finanzierung?", options: { "A": "Es dokumentiert den Zustand der Immobilie", "B": "Es dient der Absicherung des Darlehens durch Eintragung einer Grundschuld", "C": "Es regelt die Höhe der Grunderwerbsteuer", "D": "Es enthält den Energieausweis" }, correctAnswer: "B", topic: "Fachkenntnisse", explanation: "Das Grundbuch sichert das Darlehen dinglich ab. Die Bank lässt sich in Abteilung III eine Grundschuld oder Hypothek eintragen, um im Falle der Zahlungsunfähigkeit auf die Immobilie zugreifen zu können.", difficulty: "medium" },
+  ],
 };
 
-type ExamQuestionShape = {
-  question: string;
-  options: { A: string; B: string; C: string; D: string };
-
-
-  correctAnswer: "A" | "B" | "C" | "D";
-  topic: string;
-  explanation: string;
-};
-
-function tryParseJsonObject<T>(raw: unknown): T | null {
-  if (typeof raw !== "string") return null;
-
-  try {
-    return JSON.parse(raw) as T;
-  } catch {}
-
-  const match = raw.match(/\{[\s\S]*\}/);
-  if (match) {
-    try {
-      return JSON.parse(match[0]) as T;
-    } catch {}
+function shuffleArray<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
   }
-
-  return null;
+  return a;
 }
 
-type ExamOptionKey = "A" | "B" | "C" | "D";
-
-const EXAM_OPTION_KEYS: ExamOptionKey[] = ["A", "B", "C", "D"];
-
-function shuffleExamQuestionOptions(questionData: ExamQuestionShape): ExamQuestionShape {
-  const entries = EXAM_OPTION_KEYS.map((key) => ({
-    key,
-    text: questionData.options[key],
-  }));
-
-  for (let i = entries.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [entries[i], entries[j]] = [entries[j], entries[i]];
-  }
-
-  const shuffledOptions = {
-    A: entries[0].text,
-    B: entries[1].text,
-    C: entries[2].text,
-    D: entries[3].text,
-  };
-
-  const correctIndex = entries.findIndex((entry) => entry.key === questionData.correctAnswer);
-  const safeCorrectIndex = correctIndex >= 0 ? correctIndex : 0;
-  const shuffledCorrectAnswer = EXAM_OPTION_KEYS[safeCorrectIndex];
-
-  return {
-    ...questionData,
-    options: shuffledOptions,
-    correctAnswer: shuffledCorrectAnswer,
-  };
-}
-
-
-function shuffleExamQuestion(question: ExamQuestionShape): ExamQuestionShape {
-  const pool = [
-    { text: question.options.A, correct: question.correctAnswer === "A" },
-    { text: question.options.B, correct: question.correctAnswer === "B" },
-    { text: question.options.C, correct: question.correctAnswer === "C" },
-    { text: question.options.D, correct: question.correctAnswer === "D" },
-  ];
-
-  for (let i = pool.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [pool[i], pool[j]] = [pool[j], pool[i]];
-  }
-
-  const letters: Array<"A" | "B" | "C" | "D"> = ["A", "B", "C", "D"];
-  const options: ExamQuestionShape["options"] = { A: "", B: "", C: "", D: "" };
-  let correctAnswer: ExamQuestionShape["correctAnswer"] = "A";
-
-  pool.forEach((entry, index) => {
-    const letter = letters[index];
-    options[letter] = entry.text;
-    if (entry.correct) correctAnswer = letter;
+function shuffleOptions(q: typeof LOCAL_QUESTIONS[1][0]) {
+  const letters = ["A","B","C","D"] as const;
+  const entries = Object.entries(q.options) as [string, string][];
+  const shuffled = shuffleArray(entries);
+  const newOptions: Record<string,string> = {};
+  let newCorrect = "A";
+  shuffled.forEach(([origKey, value], idx) => {
+    const newKey = letters[idx];
+    newOptions[newKey] = value;
+    if (origKey === q.correctAnswer) newCorrect = newKey;
   });
-
-  return { ...question, options, correctAnswer };
-}
-
-function buildFallbackExamQuestion(moduleId: number, questionNumber: number): ExamQuestionShape {
-  const pools: Record<number, ExamQuestionShape[]> = {
-    1: [
-      {
-        question: "Welche Aussage beschreibt die Aufgabe eines Immobilienmaklers am besten?",
-        options: {
-          A: "Er vermittelt Verträge über Immobilien zwischen Parteien.",
-          B: "Er spricht gerichtliche Urteile in Mietsachen.",
-          C: "Er ersetzt immer den Notar beim Immobilienkauf.",
-          D: "Er darf ohne Auftrag jede Immobilie verwalten."
-        },
-        correctAnswer: "A",
-        topic: "Grundlagen Maklertätigkeit",
-        explanation: "Ein Immobilienmakler vermittelt Verträge über Immobilien. Er ersetzt weder Gericht noch Notar und darf nicht automatisch verwalten."
-      },
-      {
-        question: "Was beeinflusst einen Immobilienmarkt besonders stark?",
-        options: {
-          A: "Angebot und Nachfrage",
-          B: "Nur die Farbe des Gebäudes",
-          C: "Ausschließlich das Baujahr",
-          D: "Nur die Meinung des Maklers"
-        },
-        correctAnswer: "A",
-        topic: "Immobilienmarkt",
-        explanation: "Angebot und Nachfrage sind ein zentraler Marktmechanismus und beeinflussen Preis und Vermarktungsdauer maßgeblich."
-      }
-    ],
-    2: [
-      {
-        question: "Wofür ist §34c GewO im Immobilienbereich besonders wichtig?",
-        options: {
-          A: "Für die gewerberechtliche Erlaubnis bestimmter Tätigkeiten",
-          B: "Für die Berechnung der Grunderwerbsteuer",
-          C: "Für den Grundbucheintrag",
-          D: "Für die notarielle Beurkundung"
-        },
-        correctAnswer: "A",
-        topic: "§34c GewO",
-        explanation: "§34c GewO regelt die Erlaubnispflicht für bestimmte gewerbliche Tätigkeiten, unter anderem in Teilen des Immobilienbereichs."
-      },
-      {
-        question: "Welche Aussage zur MaBV trifft am ehesten zu?",
-        options: {
-          A: "Sie enthält Pflichten für Makler und Bauträger.",
-          B: "Sie regelt nur Mietpreise in Berlin.",
-          C: "Sie ersetzt das BGB vollständig.",
-          D: "Sie gilt nur für Notare."
-        },
-        correctAnswer: "A",
-        topic: "MaBV",
-        explanation: "Die Makler- und Bauträgerverordnung enthält wichtige Vorgaben und Pflichten für entsprechende Gewerbetreibende."
-      }
-    ],
-    3: [
-      {
-        question: "Wer beschließt in einer WEG typischerweise gemeinschaftliche Angelegenheiten?",
-        options: {
-          A: "Die Eigentümerversammlung",
-          B: "Nur der Hausmeister",
-          C: "Nur ein einzelner Eigentümer",
-          D: "Immer automatisch das Bauamt"
-        },
-        correctAnswer: "A",
-        topic: "WEG",
-        explanation: "In der Wohnungseigentümergemeinschaft werden gemeinschaftliche Angelegenheiten grundsätzlich über die Eigentümerversammlung beschlossen."
-      },
-      {
-        question: "Was gehört typischerweise zur Mietverwaltung?",
-        options: {
-          A: "Überwachung von Mieteingängen",
-          B: "Strafverfolgung im Namen des Staates",
-          C: "Notarielle Beurkundung von Kaufverträgen",
-          D: "Ausstellung von Personalausweisen"
-        },
-        correctAnswer: "A",
-        topic: "Mietverwaltung",
-        explanation: "Die Mietverwaltung umfasst unter anderem die Betreuung von Mietverhältnissen und die Überwachung von Mieteingängen."
-      }
-    ],
-    4: [
-      {
-        question: "Welches Wertermittlungsverfahren wird bei vermieteten Renditeobjekten besonders häufig genutzt?",
-        options: {
-          A: "Ertragswertverfahren",
-          B: "Farbwertverfahren",
-          C: "Abschreibungsfrei-Verfahren",
-          D: "Losverfahren"
-        },
-        correctAnswer: "A",
-        topic: "Wertermittlung",
-        explanation: "Beim Renditeobjekt steht der nachhaltig erzielbare Ertrag im Vordergrund. Deshalb ist das Ertragswertverfahren besonders wichtig."
-      },
-      {
-        question: "Welches Verfahren eignet sich oft gut für selbstgenutzte Einfamilienhäuser mit Vergleichsdaten?",
-        options: {
-          A: "Vergleichswertverfahren",
-          B: "Zufallsverfahren",
-          C: "Verlosungsverfahren",
-          D: "Schätzverfahren ohne Daten"
-        },
-        correctAnswer: "A",
-        topic: "Vergleichswertverfahren",
-        explanation: "Wenn ausreichend Vergleichsdaten vorhanden sind, ist das Vergleichswertverfahren oft besonders geeignet."
-      }
-    ],
-    5: [
-      {
-        question: "Was beschreibt der Effektivzins am besten?",
-        options: {
-          A: "Die tatsächlichen jährlichen Kreditkosten inklusive wesentlicher Preisbestandteile",
-          B: "Nur den Sollzins ohne weitere Kosten",
-          C: "Nur die Restschuld am Laufzeitende",
-          D: "Nur die Höhe der Tilgung"
-        },
-        correctAnswer: "A",
-        topic: "Finanzierung",
-        explanation: "Der Effektivzins macht Kreditangebote besser vergleichbar, weil er wesentliche Kostenbestandteile berücksichtigt."
-      },
-      {
-        question: "Was ist bei einer Immobilienfinanzierung die Tilgung?",
-        options: {
-          A: "Die Rückzahlung des Darlehens",
-          B: "Die Eintragung ins Grundbuch",
-          C: "Die Maklerprovision",
-          D: "Die Gebäudeversicherung"
-        },
-        correctAnswer: "A",
-        topic: "Tilgung",
-        explanation: "Tilgung bedeutet die schrittweise Rückzahlung des aufgenommenen Darlehens."
-      }
-    ],
-  };
-
-  const pool = pools[moduleId] ?? pools[1];
-  return pool[(questionNumber - 1) % pool.length];
-}
-
-
-// --- Exam option randomizer (server-side) ---
-// Mischt die Antwortoptionen A/B/C/D, und passt correctAnswer korrekt an.
-type AnswerKey = "A" | "B" | "C" | "D";
-type AnswerOptions = { A: string; B: string; C: string; D: string };
-
-function shuffleExamOptions<T extends { options: AnswerOptions; correctAnswer: AnswerKey }>(q: T): T {
-  try {
-    if (!q || !q.options || !q.correctAnswer) return q;
-
-    const keys: AnswerKey[] = ["A", "B", "C", "D"];
-    const items = keys.map((k) => ({
-      text: q.options[k],
-      isCorrect: q.correctAnswer === k,
-    }));
-
-    // Fisher–Yates Shuffle
-    for (let i = items.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [items[i], items[j]] = [items[j], items[i]];
-    }
-
-    const newKeys: AnswerKey[] = ["A", "B", "C", "D"];
-    const newOptions: AnswerOptions = { A: "", B: "", C: "", D: "" };
-    let newCorrect: AnswerKey = "A";
-
-    for (let i = 0; i < items.length; i++) {
-      const label = newKeys[i];
-      newOptions[label] = items[i].text;
-      if (items[i].isCorrect) newCorrect = label;
-    }
-
-    return { ...q, options: newOptions, correctAnswer: newCorrect };
-  } catch {
-    return q;
-  }
+  return { ...q, options: newOptions, correctAnswer: newCorrect };
 }
 
 export const examRouter = router({
-  /**
-   * Get recommended difficulty based on user performance
-   */
   getRecommendedDifficulty: protectedProcedure
     .input(z.object({ moduleId: z.number().min(1).max(5) }))
     .query(async ({ ctx, input }) => {
-      const recentSessions = await getUserExamSessions(ctx.user.id, input.moduleId);
-      const last5 = recentSessions.slice(0, 5);
-      
-      if (last5.length === 0) {
-        return { difficulty: 'medium' as const, reason: 'Erste Prüfung - Start mit mittlerem Schwierigkeitsgrad' };
-      }
-
-      const avgScore = last5.reduce((sum, s) => sum + (s.score ?? 0), 0) / last5.length;
-      
-      if (avgScore >= 85) {
-        return { difficulty: 'hard' as const, reason: `Durchschnitt ${avgScore.toFixed(1)}% - Empfehlung: Schwieriger Modus` };
-      } else if (avgScore >= 70) {
-        return { difficulty: 'medium' as const, reason: `Durchschnitt ${avgScore.toFixed(1)}% - Empfehlung: Mittlerer Modus` };
-      } else {
-        return { difficulty: 'easy' as const, reason: `Durchschnitt ${avgScore.toFixed(1)}% - Empfehlung: Einfacher Modus` };
-      }
+      const sessions = await getUserExamSessions(ctx.user.id, input.moduleId);
+      const last5 = sessions.slice(0, 5);
+      if (last5.length === 0) return { difficulty: "medium" as const, reason: "Erste Prüfung – Start mit mittlerem Schwierigkeitsgrad" };
+      const avg = last5.reduce((s, x) => s + (x.score ?? 0), 0) / last5.length;
+      if (avg >= 85) return { difficulty: "hard" as const, reason: `Ø ${avg.toFixed(1)}% – Schwieriger Modus` };
+      if (avg >= 70) return { difficulty: "medium" as const, reason: `Ø ${avg.toFixed(1)}% – Mittlerer Modus` };
+      return { difficulty: "easy" as const, reason: `Ø ${avg.toFixed(1)}% – Einfacher Modus` };
     }),
 
-  /**
-   * Start a new exam session
-   */
   startExam: protectedProcedure
-    .input(z.object({
-      moduleId: z.number().min(1).max(5),
-      difficulty: z.enum(['easy', 'medium', 'hard']).default('medium'),
-      isIHKMode: z.boolean().optional().default(false)
-    }))
+    .input(z.object({ moduleId: z.number().min(1).max(5), difficulty: z.enum(["easy","medium","hard"]).default("medium"), isIHKMode: z.boolean().optional().default(false) }))
     .mutation(async ({ ctx, input }) => {
-      const questionCount = input.isIHKMode ? 72 : 10;
-      const timeLimit = input.isIHKMode ? 180 * 60 : 30 * 60; // 180 min for IHK, 30 min for normal
-      
+      const pool = LOCAL_QUESTIONS[input.moduleId] || [];
+      const questionCount = input.isIHKMode ? Math.min(72, pool.length) : Math.min(10, pool.length);
+      const timeLimit = input.isIHKMode ? 180 * 60 : 30 * 60;
       const session = await createExamSession(ctx.user.id, input.moduleId, questionCount, timeLimit, input.difficulty, input.isIHKMode);
-      if (!session) {
-        throw new TRPCError({
-          code: "INTERNAL_SERVER_ERROR",
-          message: "Failed to create exam session"
-        });
-      }
+      if (!session) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Prüfungssitzung konnte nicht erstellt werden" });
       return session;
     }),
 
-  /**
-   * Generate a question using AI
-   */
   generateQuestion: protectedProcedure
-    .input(z.object({
-      sessionId: z.number(),
-      questionNumber: z.number(),
-      moduleId: z.number().min(1).max(5),
-      difficulty: z.enum(["easy", "medium", "hard"]).default("medium"),
-    }))
+    .input(z.object({ sessionId: z.number(), questionNumber: z.number(), moduleId: z.number().min(1).max(5), difficulty: z.enum(["easy","medium","hard"]).default("medium") }))
     .mutation(async ({ ctx, input }) => {
       const session = await getExamSession(input.sessionId);
-      if (!session || session.userId !== ctx.user.id) {
-        throw new TRPCError({
-          code: "FORBIDDEN",
-          message: "Invalid session"
-        });
-      }
-
-      const moduleContent = MODULE_CONTENT[input.moduleId];
-      const difficultyInstructions = {
-        easy: "Stelle eine einfache Frage, die Grundwissen abfragt.",
-        medium: "Stelle eine mittelschwere Frage, die Verständnis und Anwendung erfordert.",
-        hard: "Stelle eine anspruchsvolle Frage, die tiefes Fachwissen und Transferleistung erfordert."
-      };
-
-      const prompt = `Du bist ein Prüfungsersteller für die Immobilienwirtschaft. Erstelle eine Multiple-Choice-Frage für ${moduleContent}.
-
-${difficultyInstructions[input.difficulty]}
-
-Die Frage muss:
-- Praxisrelevant und prüfungskonform sein
-- 4 Antwortmöglichkeiten haben (A, B, C, D)
-- Genau eine richtige Antwort haben
-- Sich auf echte Gesetze, Verordnungen oder Fachkonzepte beziehen
-
-Antworte im folgenden JSON-Format:
-{
-  "question": "Fragetext hier",
-  "options": {
-    "A": "Antwort A",
-    "B": "Antwort B",
-    "C": "Antwort C",
-    "D": "Antwort D"
-  },
-  "correctAnswer": "A",
-  "topic": "Themenbereich (z.B. Maklerrecht, WEG-Verwaltung)",
-  "explanation": "Kurze Erklärung warum die Antwort richtig ist (mit Gesetzesverweisen)"
-}`;
-
-      try {
-        const response = await invokeLLM({
-          messages: [
-            { role: "system", content: "Du bist ein Experte für Immobilienwirtschaft und erstellst Prüfungsfragen." },
-            { role: "user", content: prompt }
-          ],
-          response_format: {
-            type: "json_schema",
-            json_schema: {
-              name: "exam_question",
-              strict: true,
-              schema: {
-                type: "object",
-                properties: {
-                  question: { type: "string" },
-                  options: {
-                    type: "object",
-                    properties: {
-                      A: { type: "string" },
-                      B: { type: "string" },
-                      C: { type: "string" },
-                      D: { type: "string" }
-                    },
-                    required: ["A", "B", "C", "D"],
-                    additionalProperties: false
-                  },
-                  correctAnswer: { type: "string", enum: ["A", "B", "C", "D"] },
-                  topic: { type: "string" },
-                  explanation: { type: "string" }
-                },
-                required: ["question", "options", "correctAnswer", "topic", "explanation"],
-                additionalProperties: false
-              }
-            }
-          }
-        });
-
-        const content = response.choices[0]?.message?.content;
-        let questionData = tryParseJsonObject<ExamQuestionShape>(content);
-
-        if (
-          !questionData ||
-          typeof questionData.question !== "string" ||
-          !questionData.options ||
-          typeof questionData.options.A !== "string" ||
-          typeof questionData.options.B !== "string" ||
-          typeof questionData.options.C !== "string" ||
-          typeof questionData.options.D !== "string" ||
-          !["A", "B", "C", "D"].includes(questionData.correctAnswer) ||
-          typeof questionData.topic !== "string" ||
-          typeof questionData.explanation !== "string"
-        ) {
-          console.warn("[Exam] Invalid LLM response, using fallback question:", content);
-          questionData = shuffleExamOptions(buildFallbackExamQuestion(input.moduleId, input.questionNumber));
-        }
-        // Format question text with options
-        questionData = shuffleExamOptions(questionData);
-
-        questionData = shuffleExamOptions(questionData);
-
-        const questionText = `${questionData.question}\n\nA) ${questionData.options.A}\nB) ${questionData.options.B}\nC) ${questionData.options.C}\nD) ${questionData.options.D}`;
-
-        // Save question to database
-        const savedQuestion = await saveExamQuestion({
-          sessionId: input.sessionId,
-          questionNumber: input.questionNumber,
-          questionText,
-          correctAnswer: questionData.correctAnswer,
-          moduleId: input.moduleId,
-          topic: questionData.topic,
-          difficulty: input.difficulty as "easy" | "medium" | "hard",
-          feedback: questionData.explanation,
-        });
-
-        return {
-          id: savedQuestion?.id,
-          question: questionData.question,
-          options: questionData.options,
-          questionNumber: input.questionNumber,
-        };
-      } catch (error) {
-        console.error("[Exam] Error generating question:", error);
-
-        const fallback = buildFallbackExamQuestion(input.moduleId, input.questionNumber);
-        const questionText = `${fallback.question}\n\nA) ${fallback.options.A}\nB) ${fallback.options.B}\nC) ${fallback.options.C}\nD) ${fallback.options.D}`;
-
-        const savedQuestion = await saveExamQuestion({
-          sessionId: input.sessionId,
-          questionNumber: input.questionNumber,
-          questionText,
-          correctAnswer: fallback.correctAnswer,
-          moduleId: input.moduleId,
-          topic: fallback.topic,
-          difficulty: input.difficulty as "easy" | "medium" | "hard",
-          feedback: fallback.explanation,
-        });
-
-        return {
-          id: savedQuestion?.id,
-          question: fallback.question,
-          options: fallback.options,
-          questionNumber: input.questionNumber,
-        };
-      }
+      if (!session || session.userId !== ctx.user.id) throw new TRPCError({ code: "FORBIDDEN", message: "Ungültige Sitzung" });
+      const existing = await getExamQuestions(input.sessionId);
+      const usedTexts = new Set(existing.map(q => q.questionText.substring(0, 40)));
+      const all = LOCAL_QUESTIONS[input.moduleId] || [];
+      const filtered = input.difficulty === "medium" ? all : all.filter(q => q.difficulty === input.difficulty);
+      const pool = filtered.length >= 3 ? filtered : all;
+      const unused = pool.filter(q => !usedTexts.has(q.question.substring(0, 40)));
+      const source = unused.length > 0 ? unused : pool;
+      const raw = source[Math.floor(Math.random() * source.length)];
+      const question = shuffleOptions(raw);
+      const saved = await saveExamQuestion({ sessionId: input.sessionId, questionNumber: input.questionNumber, questionText: question.question, correctAnswer: question.correctAnswer, moduleId: input.moduleId, topic: question.topic, difficulty: input.difficulty as "easy" | "medium" | "hard", feedback: question.explanation });
+      return { id: saved?.id, question: question.question, options: question.options, questionNumber: input.questionNumber };
     }),
 
-  /**
-   * Submit an answer and get evaluation
-   */
   submitAnswer: protectedProcedure
-    .input(z.object({
-      questionId: z.number(),
-      userAnswer: z.string(),
-    }))
+    .input(z.object({ questionId: z.number(), userAnswer: z.string() }))
     .mutation(async ({ ctx, input }) => {
-      // BUGFIX: getExamQuestions(sessionId) wurde fälschlicherweise mit questionId aufgerufen.
-      // Korrekt: getExamQuestionById(questionId) holt direkt die einzelne Frage.
       const question = await getExamQuestionById(input.questionId);
-      
-      if (!question) {
-        throw new TRPCError({
-          code: "NOT_FOUND",
-          message: "Question not found"
-        });
-      }
-
+      if (!question) throw new TRPCError({ code: "NOT_FOUND", message: "Frage nicht gefunden" });
       const session = await getExamSession(question.sessionId);
-      if (!session || session.userId !== ctx.user.id) {
-        throw new TRPCError({
-          code: "FORBIDDEN",
-          message: "Invalid session"
-        });
-      }
-
+      if (!session || session.userId !== ctx.user.id) throw new TRPCError({ code: "FORBIDDEN", message: "Ungültige Sitzung" });
       const isCorrect = input.userAnswer === question.correctAnswer;
-
-      // Update question with user answer
-      await updateExamQuestion(
-        input.questionId,
-        input.userAnswer,
-        isCorrect,
-        question.feedback ?? undefined
-      );
-
-      // Track weak topics if incorrect
-      if (!isCorrect && question.topic) {
-        await updateWeakTopic(ctx.user.id, question.moduleId, question.topic);
-      }
-
-      return {
-        isCorrect,
-        correctAnswer: question.correctAnswer,
-        feedback: question.feedback,
-      };
+      await updateExamQuestion(input.questionId, input.userAnswer, isCorrect, question.feedback ?? undefined);
+      if (!isCorrect && question.topic) await updateWeakTopic(ctx.user.id, question.moduleId, question.topic);
+      return { isCorrect, correctAnswer: question.correctAnswer, feedback: question.feedback };
     }),
 
-  /**
-   * Complete exam and calculate score
-   */
   completeExam: protectedProcedure
-    .input(z.object({
-      sessionId: z.number(),
-      timeSpent: z.number(), // in seconds
-    }))
+    .input(z.object({ sessionId: z.number(), timeSpent: z.number() }))
     .mutation(async ({ ctx, input }) => {
       const session = await getExamSession(input.sessionId);
-      if (!session || session.userId !== ctx.user.id) {
-        throw new TRPCError({
-          code: "FORBIDDEN",
-          message: "Invalid session"
-        });
-      }
-
+      if (!session || session.userId !== ctx.user.id) throw new TRPCError({ code: "FORBIDDEN", message: "Ungültige Sitzung" });
       const questions = await getExamQuestions(input.sessionId);
-      const correctAnswers = questions.filter(q => q.isCorrect).length;
-      const score = Math.round((correctAnswers / questions.length) * 100);
-
-      await completeExamSession(input.sessionId, correctAnswers, score, input.timeSpent);
-
-      return {
-        totalQuestions: questions.length,
-        correctAnswers,
-        score,
-        passed: score >= 70, // 70% passing threshold
-      };
+      const correct = questions.filter(q => q.isCorrect).length;
+      const score = questions.length > 0 ? Math.round((correct / questions.length) * 100) : 0;
+      await completeExamSession(input.sessionId, correct, score, input.timeSpent);
+      return { totalQuestions: questions.length, correctAnswers: correct, score, passed: score >= 70 };
     }),
 
-  /**
-   * Get exam session details
-   */
   getSession: protectedProcedure
-    .input(z.object({
-      sessionId: z.number(),
-    }))
+    .input(z.object({ sessionId: z.number() }))
     .query(async ({ ctx, input }) => {
       const session = await getExamSession(input.sessionId);
-      if (!session || session.userId !== ctx.user.id) {
-        throw new TRPCError({
-          code: "FORBIDDEN",
-          message: "Invalid session"
-        });
-      }
-
-      const questions = await getExamQuestions(input.sessionId);
-      
-      return {
-        session,
-        questions,
-      };
+      if (!session || session.userId !== ctx.user.id) throw new TRPCError({ code: "FORBIDDEN", message: "Ungültige Sitzung" });
+      return { session, questions: await getExamQuestions(input.sessionId) };
     }),
 
-  /**
-   * Get user's exam history
-   */
   getHistory: protectedProcedure
-    .input(z.object({
-      moduleId: z.number().min(1).max(5).optional(),
-    }))
-    .query(async ({ ctx, input }) => {
-      return getUserExamSessions(ctx.user.id, input.moduleId);
-    }),
+    .input(z.object({ moduleId: z.number().min(1).max(5).optional() }))
+    .query(async ({ ctx, input }) => getUserExamSessions(ctx.user.id, input.moduleId)),
 
-  /**
-   * Get weak topics for user
-   */
   getWeakTopics: protectedProcedure
-    .input(z.object({
-      moduleId: z.number().min(1).max(5).optional(),
-    }))
-    .query(async ({ ctx, input }) => {
-      return getWeakTopics(ctx.user.id, input.moduleId);
-    }),
+    .input(z.object({ moduleId: z.number().min(1).max(5).optional() }))
+    .query(async ({ ctx, input }) => getWeakTopics(ctx.user.id, input.moduleId)),
 });
