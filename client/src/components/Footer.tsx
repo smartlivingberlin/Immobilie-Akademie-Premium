@@ -20,9 +20,6 @@ export default function Footer() {
               Gutachter und Darlehensvermittler.
             </p>
             <div className="flex items-center gap-2 text-sm">
-              <span className="bg-blue-600 text-white px-2 py-1 rounded text-xs font-semibold">
-                AZAV-konform
-              </span>
               <span className="bg-green-600 text-white px-2 py-1 rounded text-xs font-semibold">
                 IHK-Prüfungsvorbereitung
               </span>

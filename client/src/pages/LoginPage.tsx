@@ -62,7 +62,7 @@ export default function LoginPage() {
           <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
             <span className="text-white text-2xl font-bold">ML</span>
           </div>
-          <h1 className="text-2xl font-bold text-white">MaklerLern.de</h1>
+          <h1 className="text-2xl font-bold text-white">Immobilien-Akademie</h1>
           <p className="text-blue-300 text-sm mt-1">
             Vorbereitung auf die IHK-Sachkundeprüfung §34c/§34i
           </p>
