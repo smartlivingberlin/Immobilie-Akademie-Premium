@@ -150,6 +150,9 @@ export default function LoginPage() {
                 >
                   Jetzt registrieren
                 </button>
+                <div className="mt-2">
+                  <a href="/forgot-password" className="text-sm text-slate-400 hover:underline">Passwort vergessen?</a>
+                </div>
               </>
             ) : (
               <>

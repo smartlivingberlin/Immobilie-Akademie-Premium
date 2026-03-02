@@ -15,6 +15,7 @@ import net from "net";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerOAuthRoutes } from "./oauth";
 import { registerLocalAuthRoutes } from "./auth-local";
+import { registerPasswordResetRoutes } from "../passwordReset";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
@@ -51,6 +52,7 @@ async function startServer() {
   }
   // Lokales Auth
   registerLocalAuthRoutes(app);
+  registerPasswordResetRoutes(app);
 
   // Lokaler Dateispeicher (nur wenn kein Manus)
   const { registerStorageRoute } = await import("../storage");
