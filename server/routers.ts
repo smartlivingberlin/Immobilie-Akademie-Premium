@@ -466,6 +466,40 @@ Antworte im folgenden JSON-Format:
         }
       }),
   }),
+
+  progress: router({
+    startDay: protectedProcedure
+      .input((val: any) => val as { moduleId: number; dayId: number })
+      .mutation(async ({ ctx, input }) => {
+        const db = await (await import('./db')).getDb();
+        const { learningLogs } = await import('../drizzle/schema');
+        const result = await db.insert(learningLogs).values({
+          userId: ctx.user.id,
+          moduleId: input.moduleId,
+          dayId: input.dayId,
+          openedAt: new Date(),
+          completed: false,
+        });
+        return { logId: Number(result.insertId) };
+      }),
+    completeDay: protectedProcedure
+      .input((val: any) => val as { logId: number; durationSeconds: number; heartbeatCount: number })
+      .mutation(async ({ ctx, input }) => {
+        const db = await (await import('./db')).getDb();
+        const { learningLogs } = await import('../drizzle/schema');
+        const { eq, and } = await import('drizzle-orm');
+        await db.update(learningLogs)
+          .set({ closedAt: new Date(), durationSeconds: input.durationSeconds, heartbeatCount: input.heartbeatCount, completed: true })
+          .where(and(eq(learningLogs.id, input.logId), eq(learningLogs.userId, ctx.user.id)));
+        return { ok: true };
+      }),
+    getProgress: protectedProcedure.query(async ({ ctx }) => {
+      const db = await (await import('./db')).getDb();
+      const { learningLogs } = await import('../drizzle/schema');
+      const { eq } = await import('drizzle-orm');
+      return await db.select().from(learningLogs).where(eq(learningLogs.userId, ctx.user.id));
+    }),
+  }),
 });
 
 export type AppRouter = typeof appRouter;
