@@ -467,6 +467,31 @@ Antworte im folgenden JSON-Format:
       }),
   }),
 
+
+  modules: router({
+    // Gibt freigeschaltete Module des eingeloggten Nutzers zurück
+    myAccess: protectedProcedure.query(async ({ ctx }) => {
+      const db = await (await import('./db')).getDb();
+      const { users } = await import('../drizzle/schema');
+      const { eq } = await import('drizzle-orm');
+      const result = await db.select().from(users).where(eq(users.id, ctx.user.id)).limit(1);
+      const modules = result[0].enabledModules ?? '1';
+      return modules.split(',').map(Number).filter(Boolean);
+    }),
+
+    // Admin: Modul für Nutzer freischalten
+    setAccess: adminProcedure
+      .input((val) => val as { userId: number; modules: number[] })
+      .mutation(async ({ input }) => {
+        const db = await (await import('./db')).getDb();
+        const { users } = await import('../drizzle/schema');
+        const { eq } = await import('drizzle-orm');
+        const modulesStr = input.modules.join(',');
+        await db.update(users).set({ enabledModules: modulesStr }).where(eq(users.id, input.userId));
+        return { ok: true };
+      }),
+  }),
+
   progress: router({
     startDay: protectedProcedure
       .input((val: any) => val as { moduleId: number; dayId: number })

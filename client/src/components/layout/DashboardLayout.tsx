@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { useWhiteLabel } from "@/contexts/WhiteLabelContext";
+import { useModuleAccess } from "@/hooks/useModuleAccess";
 import { Button } from "@/components/ui/button";
 import { GlobalSearch } from "@/components/GlobalSearch";
 import { GlobalGlossary } from "@/components/GlobalGlossary";
@@ -56,8 +57,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     { id: 5, name: "Modul 5: Prüfung & §34i", href: "/modul/5", icon: GraduationCap },
   ];
 
-  // Filter modules based on White-Label config
-  const filteredModules = allModules.filter((m) => enabledModules.includes(m.id));
+  const { canAccessModule } = useModuleAccess();
+  // Filter modules based on User-Level access (serverseitig)
+  const filteredModules = allModules.filter((m) => canAccessModule(m.id));
 
   const navigation = [
     { name: "Startseite", href: "/", icon: Home },
