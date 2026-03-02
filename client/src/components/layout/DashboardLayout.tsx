@@ -61,8 +61,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   // Filter modules based on User-Level access (serverseitig)
   const filteredModules = allModules.filter((m) => canAccessModule(m.id));
 
+  const { user } = useAuth();
   const navigation = [
     { name: "Startseite", href: "/", icon: Home },
+    ...(user?.role === "admin" ? [{ name: "Nutzerverwaltung", href: "/admin/nutzer", icon: Home }] : []),
     ...filteredModules.map((m) => ({ name: m.name, href: m.href, icon: m.icon })),
   ];
 

@@ -4,6 +4,10 @@ import DashboardLayout from "@/components/layout/DashboardLayout";
 
 import Home from "@/pages/Home";
 import LoginPage from "@/pages/LoginPage";
+import ForgotPassword from "@/pages/ForgotPassword";
+import ResetPassword from "@/pages/ResetPassword";
+import DeleteAccount from "@/pages/DeleteAccount";
+import UserManagement from "@/pages/admin/UserManagement";
 import Module3Detail from "@/pages/modules/Module3Detail";
 import Module4Detail from "@/pages/modules/Module4Detail";
 import Module5Detail from "@/pages/modules/Module5Detail";
@@ -92,6 +96,10 @@ function Router() {
           <Route path="/modul/5/tag/:day" component={Module5Detail} />
           
           {/* Placeholder Routes for other modules */}
+          <Route path="/forgot-password" component={ForgotPassword} />
+          <Route path="/reset-password" component={ResetPassword} />
+          <Route path="/konto-loeschen" component={DeleteAccount} />
+          <Route path="/admin/nutzer" component={UserManagement} />
           <Route path="/modul/:id">
             {(params) => (
               <div className="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-4">

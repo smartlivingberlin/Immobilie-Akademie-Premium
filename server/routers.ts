@@ -493,6 +493,52 @@ Antworte im folgenden JSON-Format:
   }),
 
 
+
+  adminUsers: router({
+    list: adminProcedure.query(async () => {
+      const db = await (await import('./db')).getDb();
+      const { users } = await import('../drizzle/schema');
+      return await db.select({
+        id: users.id,
+        name: users.name,
+        email: users.email,
+        role: users.role,
+        enabledModules: users.enabledModules,
+        createdAt: users.createdAt,
+        lastSignedIn: users.lastSignedIn,
+      }).from(users).orderBy(users.createdAt);
+    }),
+    setModules: adminProcedure
+      .input((val) => val as { userId: number; modules: string })
+      .mutation(async ({ input }) => {
+        const db = await (await import('./db')).getDb();
+        const { users } = await import('../drizzle/schema');
+        const { eq } = await import('drizzle-orm');
+        await db.update(users).set({ enabledModules: input.modules }).where(eq(users.id, input.userId));
+        return { ok: true };
+      }),
+    setRole: adminProcedure
+      .input((val) => val as { userId: number; role: 'user' | 'admin' | 'trainer' })
+      .mutation(async ({ input }) => {
+        const db = await (await import('./db')).getDb();
+        const { users } = await import('../drizzle/schema');
+        const { eq } = await import('drizzle-orm');
+        await db.update(users).set({ role: input.role }).where(eq(users.id, input.userId));
+        return { ok: true };
+      }),
+    deleteUser: adminProcedure
+      .input((val) => val as { userId: number })
+      .mutation(async ({ input }) => {
+        const db = await (await import('./db')).getDb();
+        const { users, authCredentials, learningLogs } = await import('../drizzle/schema');
+        const { eq } = await import('drizzle-orm');
+        await db.delete(learningLogs).where(eq(learningLogs.userId, input.userId));
+        await db.delete(authCredentials).where(eq(authCredentials.openId, (await db.select().from(users).where(eq(users.id, input.userId)).limit(1))[0]?.openId ?? ''));
+        await db.delete(users).where(eq(users.id, input.userId));
+        return { ok: true };
+      }),
+  }),
+
   account: router({
     deleteMyAccount: protectedProcedure.mutation(async ({ ctx }) => {
       const db = await (await import('./db')).getDb();
