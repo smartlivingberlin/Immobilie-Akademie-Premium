@@ -431,3 +431,16 @@ export const avvAgreements = mysqlTable("avv_agreements", {
 
 export type AvvAgreement = typeof avvAgreements.$inferSelect;
 export type InsertAvvAgreement = typeof avvAgreements.$inferInsert;
+
+/**
+ * Speichert Passwort-Hashes für lokale Auth.
+ * Ersetzt .data/auth.json (ephemeral filesystem).
+ */
+export const authCredentials = mysqlTable("auth_credentials", {
+  id: int("id").autoincrement().primaryKey(),
+  openId: varchar("openId", { length: 64 }).notNull().unique(),
+  hash: text("hash").notNull(),
+  salt: varchar("salt", { length: 64 }).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});

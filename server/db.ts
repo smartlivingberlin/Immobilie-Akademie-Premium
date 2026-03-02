@@ -1275,36 +1275,38 @@ export async function getUserCount(): Promise<number> {
   }
 }
 
-/** Passwort-Hash in JSON-Datei speichern (keine extra DB-Tabelle nötig) */
+/** Passwort-Hash in MySQL speichern (persistent, kein ephemeral filesystem) */
 export async function savePasswordHash(openId: string, hash: string, salt: string): Promise<void> {
+  const db = await getDb();
+  if (!db) {
+    console.error("[DB] savePasswordHash: keine DB-Verbindung");
+    return;
+  }
   try {
-    const { readFileSync, writeFileSync, mkdirSync } = await import("fs");
-    const { join } = await import("path");
-    const dir = join(process.cwd(), ".data");
-    mkdirSync(dir, { recursive: true });
-    const file = join(dir, "auth.json");
-    let data: Record<string, { hash: string; salt: string }> = {};
-    try { data = JSON.parse(readFileSync(file, "utf-8")); } catch {}
-    data[openId] = { hash, salt };
-    writeFileSync(file, JSON.stringify(data, null, 2));
+    const { authCredentials } = await import("../drizzle/schema");
+    await db.insert(authCredentials)
+      .values({ openId, hash, salt })
+      .onDuplicateKeyUpdate({ set: { hash, salt } });
   } catch (error) {
     console.error("[DB] savePasswordHash error:", error);
   }
 }
-
-/** Passwort-Hash laden */
+/** Passwort-Hash aus MySQL laden */
 export async function getPasswordHash(openId: string): Promise<{ hash: string; salt: string } | null> {
+  const db = await getDb();
+  if (!db) return null;
   try {
-    const { readFileSync } = await import("fs");
-    const { join } = await import("path");
-    const file = join(process.cwd(), ".data", "auth.json");
-    const data = JSON.parse(readFileSync(file, "utf-8"));
-    return data[openId] ?? null;
-  } catch {
+    const { authCredentials } = await import("../drizzle/schema");
+    const result = await db.select()
+      .from(authCredentials)
+      .where(eq(authCredentials.openId, openId))
+      .limit(1);
+    return result.length > 0 ? { hash: result[0].hash, salt: result[0].salt } : null;
+  } catch (error) {
+    console.error("[DB] getPasswordHash error:", error);
     return null;
   }
 }
-
 /** Nutzer-Rolle setzen */
 export async function setUserRole(openId: string, role: "user" | "admin" | "trainer"): Promise<void> {
   const db = await getDb();
