@@ -2,7 +2,7 @@ import { Resend } from "resend";
 import crypto from "crypto";
 import type { Express, Request, Response } from "express";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazy init - verhindert Crash beim Start ohne API-Key
 
 export function registerPasswordResetRoutes(app: Express) {
   // Schritt 1: Reset anfordern
@@ -34,6 +34,7 @@ export function registerPasswordResetRoutes(app: Express) {
       const domain = process.env.RAILWAY_PUBLIC_DOMAIN ?? "immobilie-akademie-production.up.railway.app";
       const resetUrl = `https://${domain}/reset-password?token=${token}`;
 
+      const resend = new Resend(process.env.RESEND_API_KEY ?? "");
       await resend.emails.send({
         from: "Immobilien-Akademie <noreply@immobilien-akademie.de>",
         to: email,

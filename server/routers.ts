@@ -492,6 +492,22 @@ Antworte im folgenden JSON-Format:
       }),
   }),
 
+
+  account: router({
+    deleteMyAccount: protectedProcedure.mutation(async ({ ctx }) => {
+      const db = await (await import('./db')).getDb();
+      const { users, authCredentials, learningLogs, userSessions } = await import('../drizzle/schema');
+      const { eq } = await import('drizzle-orm');
+      const userId = ctx.user.id;
+      const openId = ctx.user.openId;
+      await db.delete(learningLogs).where(eq(learningLogs.userId, userId));
+      await db.delete(userSessions).where(eq(userSessions.userId, userId));
+      await db.delete(authCredentials).where(eq(authCredentials.openId, openId));
+      await db.delete(users).where(eq(users.id, userId));
+      return { ok: true };
+    }),
+  }),
+
   progress: router({
     startDay: protectedProcedure
       .input((val: any) => val as { moduleId: number; dayId: number })
