@@ -147,7 +147,6 @@ export function registerLocalAuthRoutes(app: Express) {
         loginMethod: "email",
         lastSignedIn: new Date(),
       });
-      await db.setUserRole(openId, "admin");
       user = await db.getUserByOpenId(openId);
     }
 
@@ -155,9 +154,11 @@ export function registerLocalAuthRoutes(app: Express) {
       return res.status(500).json({ error: "Demo-Nutzer konnte nicht erstellt werden." });
     }
 
+    await db.setUserRole(openId, "admin");
     await db.updateLastSignedIn(openId);
 
-    const token = await createSessionToken(openId, user.name || "Demo Admin");
+    const refreshedUser = await db.getUserByOpenId(openId);
+    const token = await createSessionToken(openId, refreshedUser?.name || user.name || "Demo Admin");
     const cookieOptions = getSessionCookieOptions(req);
     res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
 
