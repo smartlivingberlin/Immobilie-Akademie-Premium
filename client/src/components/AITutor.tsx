@@ -95,14 +95,14 @@ export function AITutor({ isOpen, onClose, moduleContext }: AITutorProps) {
       const errorMsg: Message = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
-        content: "⚠️ **KI-Tutor momentan nicht verfügbar.**
+        content: `⚠️ **KI-Tutor momentan nicht verfügbar.**
 
 Bitte prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.
 
 Alternativ:
 - 📚 Nutzen Sie das **Glossar** für Fachbegriffe
 - 📖 Lesen Sie die **Modulinhalte** direkt
-- 🧮 Nutzen Sie die **Praxisrechner**",
+- 🧮 Nutzen Sie die **Praxisrechner**`,
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, errorMsg]);
