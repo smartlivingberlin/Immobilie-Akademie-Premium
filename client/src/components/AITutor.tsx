@@ -2,8 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { X, Send, Bot, User, Sparkles, BookOpen, Calculator, Gavel } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { buildKnowledgeBase, searchKnowledgeBase, generateResponse, type KnowledgeEntry } from "@/lib/knowledgeBase";
-import { Streamdown } from "streamdown";
+import { trpc } from "@/lib/trpc";
 
 interface Message {
   id: string;
@@ -29,8 +28,10 @@ export function AITutor({ isOpen, onClose, moduleContext }: AITutorProps) {
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [knowledgeBase] = useState<KnowledgeEntry[]>(() => buildKnowledgeBase());
+  const [conversationId, setConversationId] = useState<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const createConversation = trpc.aiAssistant.createConversation.useMutation();
+  const sendMessage = trpc.aiAssistant.sendMessage.useMutation();
 
   // Suggested questions
   const suggestedQuestions = [
@@ -52,37 +53,62 @@ export function AITutor({ isOpen, onClose, moduleContext }: AITutorProps) {
     const userMessage = question || input.trim();
     if (!userMessage) return;
 
-    // Add user message
+    // Nutzer-Nachricht sofort anzeigen
     const userMsg: Message = {
       id: Date.now().toString(),
       role: "user",
       content: userMessage,
       timestamp: new Date(),
     };
-
     setMessages((prev) => [...prev, userMsg]);
     setInput("");
     setIsLoading(true);
 
-    // Simulate thinking delay
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    try {
+      // Konversation erstellen falls noch nicht vorhanden
+      let convId = conversationId;
+      if (!convId) {
+        const conv = await createConversation.mutateAsync({
+          moduleContext: moduleContext,
+        });
+        convId = conv.id;
+        setConversationId(convId);
+      }
 
-    // Search knowledge base
-    const relevantEntries = searchKnowledgeBase(userMessage, knowledgeBase, 3);
+      // Gemini via tRPC aufrufen
+      const result = await sendMessage.mutateAsync({
+        conversationId: convId,
+        message: userMessage,
+        moduleContext: moduleContext,
+      });
 
-    // Generate response
-    const responseContent = generateResponse(userMessage, relevantEntries);
+      const assistantMsg: Message = {
+        id: (Date.now() + 1).toString(),
+        role: "assistant",
+        content: result.message,
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, assistantMsg]);
 
-    // Add assistant message
-    const assistantMsg: Message = {
-      id: (Date.now() + 1).toString(),
-      role: "assistant",
-      content: responseContent,
-      timestamp: new Date(),
-    };
+    } catch (error) {
+      // Offline oder Fehler — ehrliche Meldung
+      const errorMsg: Message = {
+        id: (Date.now() + 1).toString(),
+        role: "assistant",
+        content: "⚠️ **KI-Tutor momentan nicht verfügbar.**
 
-    setMessages((prev) => [...prev, assistantMsg]);
-    setIsLoading(false);
+Bitte prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.
+
+Alternativ:
+- 📚 Nutzen Sie das **Glossar** für Fachbegriffe
+- 📖 Lesen Sie die **Modulinhalte** direkt
+- 🧮 Nutzen Sie die **Praxisrechner**",
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, errorMsg]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleSuggestedQuestion = (question: string) => {
@@ -103,7 +129,7 @@ export function AITutor({ isOpen, onClose, moduleContext }: AITutorProps) {
             <div>
               <h2 className="text-xl font-bold">KI-Tutor</h2>
               <p className="text-sm text-blue-100">
-                Basierend auf Portal-Inhalten • {knowledgeBase.length} Wissenseinträge
+                Powered by Gemini 2.5 Flash • Immobilien-Experte
               </p>
             </div>
           </div>
