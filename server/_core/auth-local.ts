@@ -127,17 +127,41 @@ export function registerLocalAuthRoutes(app: Express) {
    * POST /api/auth/login
    * Meldet Nutzer mit E-Mail + Passwort an.
    */
-  // Magic Link - direkter Login ohne Formular
+  // Magic Link - direkter Demo-Login ohne Formular
   app.get("/api/auth/magic", async (req: Request, res: Response) => {
     const secret = req.query.secret as string;
     if (secret !== "demo2026") {
       return res.status(403).json({ error: "Ungültig" });
     }
-    const user = await getUserByEmail("admin@immobilie.de");
-    if (!user) return res.status(404).json({ error: "Nutzer nicht gefunden" });
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET || "secret", { expiresIn: "7d" });
-    res.cookie("auth_token", token, { httpOnly: true, secure: true, sameSite: "lax", maxAge: 7 * 24 * 60 * 60 * 1000 });
-    return res.redirect("/dashboard");
+
+    const email = "admin@immobilie.de";
+    const openId = `local:${email}`;
+
+    let user = await db.getUserByOpenId(openId);
+
+    if (!user) {
+      await db.upsertUser({
+        openId,
+        name: "Demo Admin",
+        email,
+        loginMethod: "email",
+        lastSignedIn: new Date(),
+      });
+      await db.setUserRole(openId, "admin");
+      user = await db.getUserByOpenId(openId);
+    }
+
+    if (!user) {
+      return res.status(500).json({ error: "Demo-Nutzer konnte nicht erstellt werden." });
+    }
+
+    await db.updateLastSignedIn(openId);
+
+    const token = await createSessionToken(openId, user.name || "Demo Admin");
+    const cookieOptions = getSessionCookieOptions(req);
+    res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
+
+    return res.redirect("/");
   });
 
   app.post("/api/auth/login", async (req: Request, res: Response) => {
