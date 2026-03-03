@@ -214,11 +214,15 @@ const resolveApiUrl = () => {
   if (ENV.forgeApiUrl && ENV.forgeApiUrl.trim().length > 0) {
     return `${ENV.forgeApiUrl.replace(/\/$/, "")}/v1/chat/completions`;
   }
+  // Gemini (wenn GEMINI_API_KEY gesetzt) – via OpenAI-kompatibler Endpoint
+  if (process.env.GEMINI_API_KEY) {
+    return "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions";
+  }
   // OpenAI direkt (wenn OPENAI_API_KEY gesetzt)
   if (process.env.OPENAI_API_KEY) {
     return "https://api.openai.com/v1/chat/completions";
   }
-  // Anthropic (wenn ANTHROPIC_API_KEY gesetzt) – via OpenAI-kompatibler Endpoint
+  // Anthropic (wenn ANTHROPIC_API_KEY gesetzt)
   if (process.env.ANTHROPIC_API_KEY) {
     return "https://api.anthropic.com/v1/messages";
   }
@@ -227,13 +231,13 @@ const resolveApiUrl = () => {
 };
 
 const assertApiKey = () => {
-  if (!ENV.forgeApiKey && !process.env.OPENAI_API_KEY && !process.env.ANTHROPIC_API_KEY) {
-    throw new Error("Kein KI-API-Schlüssel konfiguriert. Setze OPENAI_API_KEY, ANTHROPIC_API_KEY oder BUILT_IN_FORGE_API_KEY in .env");
+  if (!ENV.forgeApiKey && !process.env.OPENAI_API_KEY && !process.env.ANTHROPIC_API_KEY && !process.env.GEMINI_API_KEY) {
+    throw new Error("Kein KI-API-Schlüssel konfiguriert. Setze OPENAI_API_KEY, ANTHROPIC_API_KEY, GEMINI_API_KEY oder BUILT_IN_FORGE_API_KEY in .env");
   }
 };
 
 const getApiKey = () =>
-  ENV.forgeApiKey || process.env.OPENAI_API_KEY || process.env.ANTHROPIC_API_KEY || "";
+  ENV.forgeApiKey || process.env.GEMINI_API_KEY || process.env.OPENAI_API_KEY || process.env.ANTHROPIC_API_KEY || "";
 
 const normalizeResponseFormat = ({
   responseFormat,
@@ -311,10 +315,7 @@ export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
     payload.tool_choice = normalizedToolChoice;
   }
 
-  payload.max_tokens = 32768
-  payload.thinking = {
-    "budget_tokens": 128
-  }
+  payload.max_tokens = 1024
 
   const normalizedResponseFormat = normalizeResponseFormat({
     responseFormat,
