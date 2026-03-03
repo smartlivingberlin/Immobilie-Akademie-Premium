@@ -9,7 +9,10 @@ export function registerServiceWorker() {
       try {
         const registration = await navigator.serviceWorker.register('/sw.js', {
           scope: '/',
+          updateViaCache: 'none',
         });
+        // Sofort auf neue Version wechseln ohne Nutzerbestätigung
+        registration.update();
 
         console.log('[SW] Service Worker registered successfully:', registration.scope);
 
@@ -29,10 +32,9 @@ export function registerServiceWorker() {
               console.log('[SW] New version available! Please refresh.');
               
               // Show update notification to user
-              if (confirm('Eine neue Version ist verfügbar. Jetzt aktualisieren?')) {
-                newWorker.postMessage({ type: 'SKIP_WAITING' });
-                window.location.reload();
-              }
+              // Automatisch aktualisieren ohne Nutzerbestätigung
+              newWorker.postMessage({ type: 'SKIP_WAITING' });
+              window.location.reload();
             }
           });
         });
