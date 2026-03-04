@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { AITutor } from "@/components/AITutor";
+import AIAssistant from "@/components/AIAssistant";
 import { 
   BookOpen, 
   GraduationCap, 
@@ -477,7 +477,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       </Button>
 
       {/* AI Tutor Modal */}
-      <AITutor
+      <AIAssistant
         isOpen={isAIAssistantOpen}
         onClose={() => setIsAIAssistantOpen(false)}
         moduleContext={location.startsWith("/modul/") ? `Modul ${location.split("/")[2]}` : undefined}
