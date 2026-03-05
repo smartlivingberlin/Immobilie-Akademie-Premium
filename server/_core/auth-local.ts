@@ -128,42 +128,9 @@ export function registerLocalAuthRoutes(app: Express) {
    * Meldet Nutzer mit E-Mail + Passwort an.
    */
   // Magic Link - direkter Demo-Login ohne Formular
-  app.get("/api/auth/magic", async (req: Request, res: Response) => {
-    const secret = req.query.secret as string;
-    if (secret !== "demo2026") {
-      return res.status(403).json({ error: "Ungültig" });
-    }
-
-    const email = "admin@immobilie.de";
-    const openId = `local:${email}`;
-
-    let user = await db.getUserByOpenId(openId);
-
-    if (!user) {
-      await db.upsertUser({
-        openId,
-        name: "Demo Admin",
-        email,
-        loginMethod: "email",
-        lastSignedIn: new Date(),
-      });
-      user = await db.getUserByOpenId(openId);
-    }
-
-    if (!user) {
-      return res.status(500).json({ error: "Demo-Nutzer konnte nicht erstellt werden." });
-    }
-
-    await db.setUserRole(openId, "admin");
-    await db.updateLastSignedIn(openId);
-
-    const refreshedUser = await db.getUserByOpenId(openId);
-    const token = await createSessionToken(openId, refreshedUser?.name || user.name || "Demo Admin");
-    const cookieOptions = getSessionCookieOptions(req);
-    res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
-
-    return res.redirect("/");
-  });
+  app.get("/api/auth/magic", async (_req: Request, res: Response) => {
+  return res.status(404).json({ error: "Not found" });
+});;
 
   app.post("/api/auth/login", async (req: Request, res: Response) => {
     const { email, password } = req.body ?? {};
