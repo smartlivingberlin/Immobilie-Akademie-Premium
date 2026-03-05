@@ -39,17 +39,14 @@ queryClient.getMutationCache().subscribe(event => {
   }
 });
 
+const isDev = window.location.hostname === "localhost";
+
 const trpcClient = trpc.createClient({
   links: [
     httpBatchLink({
-      url: "/api/trpc",
-      transformer: superjson,
-      fetch(input, init) {
-        return globalThis.fetch(input, {
-          ...(init ?? {}),
-          credentials: "include",
-        });
-      },
+      url: isDev
+        ? "http://localhost:3002/api/trpc" // lokal: Express-Server
+        : "/api/trpc",                    // online: wie bisher
     }),
   ],
 });
