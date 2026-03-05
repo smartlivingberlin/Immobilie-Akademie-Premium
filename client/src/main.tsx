@@ -42,11 +42,18 @@ queryClient.getMutationCache().subscribe(event => {
 const isDev = window.location.hostname === "localhost";
 
 const trpcClient = trpc.createClient({
+  transformer: superjson,
   links: [
     httpBatchLink({
       url: isDev
-        ? "http://localhost:3002/api/trpc" // lokal: Express-Server
-        : "/api/trpc",                    // online: wie bisher
+        ? "http://localhost:3002/api/trpc"
+        : "/api/trpc",
+      fetch(input, init) {
+        return fetch(input, {
+          ...(init ?? {}),
+          credentials: "include",
+        });
+      },
     }),
   ],
 });
@@ -61,5 +68,4 @@ createRoot(document.getElementById("root")!).render(
   </trpc.Provider>
 );
 
-// Register Service Worker for offline functionality
 registerServiceWorker();
