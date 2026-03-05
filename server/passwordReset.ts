@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 import crypto from "crypto";
 import type { Express, Request, Response } from "express";
+import { hashPassword } from "./_core/auth-local";
 
 // Lazy init - verhindert Crash beim Start ohne API-Key
 
@@ -82,14 +83,7 @@ export function registerPasswordResetRoutes(app: Express) {
       const openId = `local:${email.toLowerCase().trim()}`;
 
       // Neues Passwort hashen
-      const salt = crypto.randomBytes(16).toString("hex");
-      const hash = await new Promise<string>((resolve, reject) => {
-        crypto.pbkdf2(newPassword, salt, 100000, 64, "sha512", (err, key) => {
-          if (err) reject(err);
-          else resolve(key.toString("hex"));
-        });
-      });
-
+      const { hash, salt } = hashPassword(newPassword);
       await savePasswordHash(openId, hash, salt);
 
       // Token als benutzt markieren
