@@ -34,6 +34,12 @@ async function startServer() {
   // Lokales Auth
   registerLocalAuthRoutes(app);
   registerPasswordResetRoutes(app);
+  // Healthcheck für Railway / Monitoring
+  app.get("/api/health", (_req, res) => {
+    return res.status(200).json({ ok: true, ts: new Date().toISOString() });
+  });
+
+
 
   // Lokaler Dateispeicher (nur wenn kein Manus)
   const { registerStorageRoute } = await import("../storage");
