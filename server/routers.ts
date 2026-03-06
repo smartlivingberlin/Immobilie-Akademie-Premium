@@ -471,12 +471,31 @@ Antworte im folgenden JSON-Format:
   modules: router({
     // Gibt freigeschaltete Module des eingeloggten Nutzers zurück
     myAccess: protectedProcedure.query(async ({ ctx }) => {
-      const db = await (await import('./db')).getDb();
-      const { users } = await import('../drizzle/schema');
-      const { eq } = await import('drizzle-orm');
-      const result = await db.select().from(users).where(eq(users.id, ctx.user.id)).limit(1);
-      const modules = result[0].enabledModules ?? '1';
-      return modules.split(',').map(Number).filter(Boolean);
+      // Admins sehen immer alle Module
+      if (ctx.user?.role === "admin") {
+        return [1, 2, 3, 4, 5];
+      }
+
+      const db = await (await import("./db")).getDb();
+      const { users } = await import("../drizzle/schema");
+      const { eq } = await import("drizzle-orm");
+
+      const result = await db
+        .select()
+        .from(users)
+        .where(eq(users.id, ctx.user.id))
+        .limit(1);
+
+      const raw = result[0]?.enabledModules;
+
+      // Fallback: mindestens Modul 1
+      if (!raw || typeof raw !== "string") return [1];
+
+      return raw
+        .split(",")
+        .map((x) => parseInt(x.trim(), 10))
+        .filter((n) => Number.isFinite(n) && n > 0);
+
     }),
 
     // Admin: Modul für Nutzer freischalten
