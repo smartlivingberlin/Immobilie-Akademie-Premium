@@ -58,14 +58,18 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   ];
 
   const { canAccessModule } = useModuleAccess();
-  // Filter modules based on User-Level access (serverseitig)
-  const filteredModules = allModules.filter((m) => canAccessModule(m.id));
 
-    const navigation = [
-    { name: "Startseite", href: "/", icon: Home },
-    ...(user?.role === "admin" ? [{ name: "Nutzerverwaltung", href: "/admin/nutzer", icon: Home }] : []),
-    ...filteredModules.map((m) => ({ name: m.name, href: m.href, icon: m.icon })),
-  ];
+// Module immer anzeigen, aber ggf. "gesperrt" markieren
+const modulesWithAccess = allModules.map((m) => ({
+  ...m,
+  locked: !canAccessModule(m.id),
+}));
+
+const navigation = [
+  { name: "Startseite", href: "/", icon: Home },
+  ...(user?.role === "admin" ? [{ name: "Nutzerverwaltung", href: "/admin/nutzer", icon: Home }] : []),
+  ...modulesWithAccess.map((m) => ({ name: m.name, href: m.href, icon: m.icon, locked: m.locked })),
+];
 
   // Determine sidebar background color (White-Label or default)
   const sidebarBg = isWhiteLabeled && config?.sidebarColor ? config.sidebarColor : undefined;
@@ -74,7 +78,46 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   // Helper component for nav items to handle collapsed state
   const NavItem = ({ item }: { item: typeof navigation[0] }) => {
     const isActive = location === item.href || location.startsWith(item.href + "/");
-    
+    const isLocked = Boolean((item as any).locked);
+    const lockMsg = "Dieses Modul ist gesperrt. Bitte freischalten lassen.";
+
+    // Wenn gesperrt: NICHT navigieren, nur Hinweis zeigen
+    if (isLocked) {
+      if (isCollapsed) {
+        return (
+          <TooltipProvider>
+            <Tooltip delayDuration={0}>
+              <TooltipTrigger asChild>
+                <div
+                  onClick={() => alert(lockMsg)}
+                  title={lockMsg}
+                  className="inline-flex items-center justify-center rounded-md text-sm font-medium w-full justify-center h-10 px-0 mb-1 cursor-not-allowed opacity-60 text-slate-300 hover:text-white hover:bg-slate-800"
+                >
+                  <item.icon className="h-5 w-5" />
+                  <span className="sr-only">{item.name}</span>
+                </div>
+              </TooltipTrigger>
+              <TooltipContent side="right" className="bg-slate-900 text-white border-slate-700">
+                🔒 {item.name}
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        );
+      }
+
+      return (
+        <div
+          onClick={() => alert(lockMsg)}
+          title={lockMsg}
+          className="inline-flex items-center rounded-md text-sm font-medium w-full justify-start mb-1 h-10 px-4 py-2 cursor-not-allowed opacity-60 text-slate-300 hover:text-white hover:bg-slate-800"
+        >
+          <item.icon className="mr-3 h-5 w-5" />
+          🔒 {item.name}
+        </div>
+      );
+    }
+
+    // Normal: wie gehabt (klickbar)
     if (isCollapsed) {
       return (
         <TooltipProvider>
@@ -83,8 +126,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <Link href={item.href}>
                 <div
                   className={`inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 w-full justify-center h-10 px-0 mb-1 cursor-pointer ${
-                    isActive 
-                      ? "bg-blue-600 text-white hover:bg-blue-700" 
+                    isActive
+                      ? "bg-blue-600 text-white hover:bg-blue-700"
                       : "text-slate-300 hover:text-white hover:bg-slate-800"
                   }`}
                 >
@@ -105,9 +148,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <Link href={item.href}>
         <div
           className={`inline-flex items-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 w-full justify-start mb-1 h-10 px-4 py-2 cursor-pointer ${
-            isActive 
-                      ? "bg-blue-600 text-white hover:bg-blue-700" 
-                      : "text-slate-300 hover:text-white hover:bg-slate-800"
+            isActive ? "bg-blue-600 text-white hover:bg-blue-700" : "text-slate-300 hover:text-white hover:bg-slate-800"
           }`}
         >
           <item.icon className="mr-3 h-5 w-5" />
