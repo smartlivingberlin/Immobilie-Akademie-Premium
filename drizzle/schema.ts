@@ -450,6 +450,30 @@ export const authCredentials = mysqlTable("auth_credentials", {
 /**
  * Passwort-Reset Tokens
  */
+
+
+/**
+ * Freischalt-Codes (Voucher) für Module
+ * - Du kannst Codes erzeugen und per WhatsApp/E-Mail versenden
+ * - Codes können 1x oder unendlich oft nutzbar sein
+ * - Codes können deaktiviert werden
+ */
+export const accessCodes = mysqlTable("access_codes", {
+  id: int("id").autoincrement().primaryKey(),
+  code: varchar("code", { length: 64 }).notNull().unique(),
+  modules: varchar("modules", { length: 255 }).notNull(), // z.B. "2,3,4" oder "1,2,3,4,5"
+  role: varchar("role", { length: 16 }), // optional: "user" oder "trainer"
+  maxUses: int("max_uses").notNull().default(1), // 1 = einmalig, 0 = unendlich
+  usedCount: int("used_count").notNull().default(0),
+  isActive: boolean("is_active").notNull().default(true),
+  note: text("note"),
+  createdByUserId: int("created_by_user_id"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export type AccessCode = typeof accessCodes.$inferSelect;
+export type InsertAccessCode = typeof accessCodes.$inferInsert;
+
 export const passwordResetTokens = mysqlTable("password_reset_tokens", {
   id: int("id").autoincrement().primaryKey(),
   email: varchar("email", { length: 320 }).notNull(),
