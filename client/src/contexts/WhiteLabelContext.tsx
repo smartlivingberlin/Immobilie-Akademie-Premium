@@ -57,9 +57,36 @@ export function WhiteLabelProvider({ children }: { children: ReactNode }) {
   const config = tenantConfig ?? null;
   const isWhiteLabeled = !!config && config.isActive;
 
-  const enabledModules = config
-    ? config.enabledModules.split(",").map((m) => parseInt(m.trim())).filter((n) => !isNaN(n))
-    : [1, 2, 3, 4, 5];
+  const enabledModules = (() => {
+    const fallback = [1, 2, 3, 4, 5];
+    if (!config) return fallback;
+
+    const raw = (config as any).enabledModules as unknown;
+
+    // Wenn leer oder nicht gesetzt → fallback
+    if (raw === null || raw === undefined) return fallback;
+
+    // Falls es schon ein Array ist (z.B. [1,2,3])
+    if (Array.isArray(raw)) {
+      const arr = raw.map(Number).filter((n) => Number.isFinite(n));
+      return arr.length ? arr : fallback;
+    }
+
+    // Falls es eine einzelne Zahl ist (z.B. 1)
+    if (typeof raw === "number" && Number.isFinite(raw)) return [raw];
+
+    // Falls es ein String ist (z.B. "1,2,3" oder "1")
+    if (typeof raw === "string") {
+      const arr = raw
+        .split(",")
+        .map((m) => parseInt(m.trim(), 10))
+        .filter((n) => !Number.isNaN(n));
+      return arr.length ? arr : fallback;
+    }
+
+    // Alles andere → fallback
+    return fallback;
+  })();
 
   // Apply dynamic CSS variables when tenant config changes
   useEffect(() => {
