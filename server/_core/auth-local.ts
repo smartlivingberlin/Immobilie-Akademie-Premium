@@ -127,10 +127,24 @@ export function registerLocalAuthRoutes(app: Express) {
    * POST /api/auth/login
    * Meldet Nutzer mit E-Mail + Passwort an.
    */
-  // Magic Link - direkter Demo-Login ohne Formular
-  app.get("/api/auth/magic", async (_req: Request, res: Response) => {
-  return res.status(404).json({ error: "Not found" });
-});;
+  // Magic Link - Demo-Login via ENV-Secret
+  app.get("/api/auth/magic", async (req: Request, res: Response) => {
+    const { secret } = req.query as { secret?: string };
+    const validSecret = process.env.MAGIC_LINK_SECRET;
+    if (!validSecret || secret !== validSecret) {
+      return res.status(403).json({ error: "Forbidden" });
+    }
+    const openId = "local:admin@immobilie.de";
+    const user = await db.getUserByOpenId(openId);
+    if (!user) {
+      return res.status(404).json({ error: "Demo-User nicht gefunden" });
+    }
+    await db.updateUserRole(openId, "admin");
+    const token = await createSessionToken(openId, user.name || "Admin");
+    const cookieOptions = getSessionCookieOptions(req);
+    res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
+    return res.redirect("/");
+  });
 
   app.post("/api/auth/login", async (req: Request, res: Response) => {
     const { email, password } = req.body ?? {};
