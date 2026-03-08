@@ -40,7 +40,7 @@ export default function Quiz() {
   const availableCategories = useMemo(() => {
     let pool = ALL_QUESTIONS;
     if (moduleFilter !== "all") pool = pool.filter(q => q.moduleId === parseInt(moduleFilter));
-    return [...new Set(pool.map(q => q.category))].sort();
+    return Array.from(new Set(pool.map(q => q.category))).sort();
   }, [moduleFilter]);
 
   const startQuiz = () => {

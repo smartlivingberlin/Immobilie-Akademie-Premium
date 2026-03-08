@@ -71,7 +71,7 @@ export function AITutor({ isOpen, onClose, moduleContext }: AITutorProps) {
         const conv = await createConversation.mutateAsync({
           moduleContext: moduleContext,
         });
-        convId = conv.id;
+        convId = conv?.id ?? 0;
         setConversationId(convId);
       }
 
@@ -164,9 +164,9 @@ Alternativ:
                   }`}
                 >
                   {message.role === "assistant" ? (
-                    <Streamdown className="text-sm leading-relaxed">
+                    <p className="text-sm leading-relaxed whitespace-pre-wrap">
                       {message.content}
-                    </Streamdown>
+                    </p>
                   ) : (
                     <p className="text-sm leading-relaxed">{message.content}</p>
                   )}

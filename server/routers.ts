@@ -699,7 +699,7 @@ Antworte im folgenden JSON-Format:
           openedAt: new Date(),
           completed: false,
         });
-        return { logId: Number(result.insertId) };
+        const hdr = result as unknown as [{ insertId: number }, unknown]; return { logId: Number(hdr[0].insertId) };
       }),
     completeDay: protectedProcedure
       .input((val: any) => val as { logId: number; durationSeconds: number; heartbeatCount: number })
