@@ -54,16 +54,17 @@ import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
-// Lazily create the drizzle instance so local tooling can run without a DB.
-export async function getDb() {
-  if (!_db && process.env.DATABASE_URL) {
-    try {
-      _db = drizzle(process.env.DATABASE_URL);
-    } catch (error) {
-      console.warn("[Database] Failed to connect:", error);
-      _db = null;
-    }
+// Liefert IMMER eine DB-Verbindung oder wirft einen Fehler.
+// (Damit es später keine "db ist vielleicht null"-Fehler gibt.)
+export async function getDb(): Promise<ReturnType<typeof drizzle>> {
+  if (_db) return _db;
+
+  const url = process.env.DATABASE_URL;
+  if (!url) {
+    throw new Error("[Database] DATABASE_URL fehlt. Bitte in Railway Variables setzen.");
   }
+
+  _db = drizzle(url);
   return _db;
 }
 
@@ -136,6 +137,11 @@ export async function getUserByOpenId(openId: string) {
   const result = await db.select().from(users).where(eq(users.openId, openId)).limit(1);
 
   return result.length > 0 ? result[0] : undefined;
+}
+
+export async function updateUserRole(openId: string, role: "user" | "admin" | "trainer"): Promise<void> {
+  const db = await getDb();
+  await db.update(users).set({ role }).where(eq(users.openId, openId));
 }
 
 // ============================================
