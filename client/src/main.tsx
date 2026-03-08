@@ -42,7 +42,6 @@ queryClient.getMutationCache().subscribe(event => {
 const isDev = window.location.hostname === "localhost";
 
 const trpcClient = trpc.createClient({
-  transformer: superjson,
   links: [
     httpBatchLink({
       url: isDev
