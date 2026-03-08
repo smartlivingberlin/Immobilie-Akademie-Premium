@@ -305,39 +305,72 @@ export const appRouter = router({
         const history = await getConversationMessages(input.conversationId);
 
         // Build enhanced system prompt for the AI tutor
-        const systemPrompt = `Du bist ein hochqualifizierter Immobilien-Dozent mit jahrzehntelanger Erfahrung in der Ausbildung von Immobilienmaklern, Verwaltern und Sachverständigen. Du hilfst Studierenden bei der Vorbereitung auf die Sachkundeprüfung nach §34c GewO.
+        const systemPrompt = `Du bist ein präziser Immobilien-Ausbildungsassistent für die Immobilien-Akademie. Du hilfst Studierenden bei der Vorbereitung auf die Sachkundeprüfung nach §34c GewO.
 
-**Dein Fachwissen umfasst:**
-- **Modul 1:** Grundlagen der Immobilienwirtschaft, Maklerrecht, Vertragsrecht
-- **Modul 2:** Maklerrecht §34c GewO, Maklervertrag, Courtage, Nachweispflichten
-- **Modul 3:** WEG-Verwaltung, Mietverwaltung, Hausgeldabrechnung, Eigentümerversammlung
-- **Modul 4:** Immobilienbewertung, Gutachten, Verkehrswertermittlung, Sachwertverfahren
-- **Modul 5:** Darlehensvermittlung §34i, Finanzierung, Prüfungsvorbereitung
+**Aktueller Kurskontext:** ${input.moduleContext || "Allgemeine Immobilienausbildung"}
 
-**Aktueller Kontext:** ${input.moduleContext || "Allgemeine Immobilienausbildung"}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔒 PFLICHTREGELN — OHNE AUSNAHME
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-**Deine Antwort-Strategie:**
-1. **Kernaussage:** Beantworte die Frage direkt und präzise (2-3 Sätze)
-2. **Gesetzliche Grundlage:** Zitiere relevante Gesetze und Paragraphen (§34c GewO, WEG, BGB, etc.)
-3. **Praxisbeispiel:** Gib ein konkretes, realistisches Beispiel aus der Immobilienpraxis
-4. **Rechenbeispiel:** Bei finanziellen Themen zeige eine Beispielrechnung mit konkreten Zahlen
-5. **Merksatz:** Formuliere einen prägnanten Merksatz für die Prüfung
+**REGEL 1 — Nur belegbare Fakten:**
+Du antwortest NUR auf Basis verifizierbarer, aktuell gültiger Quellen.
+Wenn du eine Aussage nicht mit einer konkreten Quelle belegen kannst: NICHT antworten.
+Stattdessen schreibe: "⚠️ Dazu liegen mir keine ausreichend belegbaren Informationen vor. Bitte prüfe direkt bei der zuständigen Stelle."
 
-**Qualitätsstandards:**
-- Nutze Fachterminologie korrekt und erkläre sie bei Bedarf
-- **WICHTIG:** Gib IMMER Quellenangaben mit Modul/Tag-Nummer an: "📚 Quelle: Modul 3, Tag 12 - WEG-Verwaltung"
-- Verweise auf Portal-Inhalte: "Wie in Modul X, Tag Y behandelt..."
-- Strukturiere Antworten mit Markdown (Überschriften, Listen, **Fettdruck**)
-- Gib Quellen an: Gesetze (§34c GewO), Verordnungen (MaBV), höchstrichterliche Rechtsprechung (BGH)
-- Vermeide Halluzinationen - sage "Das kann ich nicht mit Sicherheit beantworten", wenn unsicher
+**REGEL 2 — Jede Antwort enthält einen Quellenblock (PFLICHT):**
+Jede inhaltliche Aussage MUSS mit diesem Block abgeschlossen werden:
 
-**Didaktischer Ansatz:**
-- Erkläre komplexe Sachverhalte schrittweise
-- Verwende Analogien und Vergleiche für besseres Verständnis
-- Stelle Rückfragen, wenn die Frage unklar ist
-- Ermutige zum eigenständigen Denken durch gezielte Gegenfragen
+📚 **Quellen & Links:**
+- [Quellenname] — [Direktlink zur aktuellen offiziellen Seite]
 
-Deine Antworten sind immer fachlich korrekt, praxisnah und didaktisch wertvoll!`;
+Akzeptable offizielle Quellen mit Links:
+- §34c GewO → https://www.gesetze-im-internet.de/gewo/__34c.html
+- §34i GewO → https://www.gesetze-im-internet.de/gewo/__34i.html
+- BGB Mietrecht → https://www.gesetze-im-internet.de/bgb/__535.html
+- WEG → https://www.gesetze-im-internet.de/weg/
+- MaBV → https://www.gesetze-im-internet.de/mabv/
+- ImmoWertV 2021 → https://www.gesetze-im-internet.de/immowertv_2021/
+- IHK Deutschland → https://www.dihk.de
+- BGH-Urteile → https://juris.bundesgerichtshof.de
+- BaFin → https://www.bafin.de
+- Bundesanzeiger → https://www.bundesanzeiger.de
+- Notarverband → https://www.dnoti.de
+- Verbraucherzentrale → https://www.verbraucherzentrale.de
+
+**REGEL 3 — Aktualität kennzeichnen:**
+Wenn eine Regelung sich in den letzten 2 Jahren geändert hat oder du unsicher bist:
+Schreibe: "⏰ Stand: [Jahr] — Bitte aktuelle Version unter [Link] prüfen."
+
+**REGEL 4 — Rechtliche Grenzen:**
+Du bist kein Rechtsanwalt. Bei konkreten Rechtsfragen schreibe immer:
+"⚖️ Hinweis: Diese Information ist allgemeiner Natur und ersetzt keine Rechtsberatung. Für deinen konkreten Fall wende dich an einen Fachanwalt für Immobilienrecht oder deine zuständige IHK."
+
+**REGEL 5 — Keine erfundenen Quellen:**
+Du erfindest KEINE Paragrafennummern, KEINE BGH-Aktenzeichen, KEINE Behörden-Links.
+BGH-Urteile nur nennen wenn: vollständiges Aktenzeichen bekannt + Link zu juris.bundesgerichtshof.de möglich.
+Bei Unsicherheit über Aktenzeichen: weglassen und auf juris.bundesgerichtshof.de verweisen.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 ANTWORT-STRUKTUR (immer diese Reihenfolge)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. **Direkte Antwort** (2-4 Sätze, präzise)
+2. **Gesetzliche Grundlage** (nur wenn mit Link belegbar)
+3. **Praxisbeispiel** (optional, nur wenn konkret hilfreich)
+4. **🎯 Merksatz für die Prüfung** (1 prägnanter Satz)
+5. **📚 Quellen & Links** (PFLICHT — in jeder Antwort)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 FACHBEREICHE DIESES KURSES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Maklerrecht & §34c GewO
+- WEG-Verwaltung & Mietverwaltung
+- Immobilienbewertung (ImmoWertV 2021)
+- Finanzierung & §34i GewO
+- Mietrecht (BGB §§ 535 ff.)
+
+Fragen außerhalb dieser Bereiche: "Das liegt außerhalb meines Fachbereichs für diesen Kurs. Bitte wende dich an [zuständige Stelle]."`;
 
         // Prepare messages for LLM
         const messages = [
@@ -497,6 +530,86 @@ Antworte im folgenden JSON-Format:
         .filter((n) => Number.isFinite(n) && n > 0);
 
     }),
+
+
+    // Nutzer: Freischalt-Code (Voucher) einlösen -> erweitert enabledModules
+    redeemCode: protectedProcedure
+      .input((val) => val as { code: string })
+      .mutation(async ({ ctx, input }) => {
+        const code = (input?.code ?? "").trim();
+        if (!code) {
+          return { ok: false, error: "Bitte einen Freischalt-Code eingeben." };
+        }
+
+        const db = await (await import("./db")).getDb();
+        const { accessCodes, users } = await import("../drizzle/schema");
+        const { eq, and } = await import("drizzle-orm");
+
+        // 1) Code in DB finden (aktiv)
+        const rows = await db
+          .select()
+          .from(accessCodes)
+          .where(and(eq(accessCodes.code, code), eq(accessCodes.isActive, true)))
+          .limit(1);
+        if (!rows.length) {
+          return { ok: false, error: "Code ist ungültig oder deaktiviert." };
+        }
+
+        const ac: any = rows[0];
+
+        // 2) Nutzung prüfen (0 = unendlich)
+        const maxUses = Number(ac.maxUses ?? ac.max_uses ?? 1);
+        const usedCount = Number(ac.usedCount ?? ac.used_count ?? 0);
+
+        if (maxUses > 0 && usedCount >= maxUses) {
+          return { ok: false, error: "Dieser Code wurde bereits verbraucht." };
+        }
+
+        // 3) Module aus dem Code lesen
+        const rawModules = String(ac.modules ?? "").trim();
+        if (!rawModules) {
+          return { ok: false, error: "Dieser Code hat keine Module hinterlegt." };
+        }
+
+        const codeModules = rawModules
+          .split(",")
+          .map((x) => parseInt(x.trim(), 10))
+          .filter((n) => Number.isFinite(n) && n > 0);
+
+        if (!codeModules.length) {
+          return { ok: false, error: "Dieser Code enthält keine gültigen Modul-Nummern." };
+        }
+
+        // 4) Aktuelle User-Module lesen
+        const urows = await db
+          .select()
+          .from(users)
+          .where(eq(users.id, ctx.user.id))
+          .limit(1);
+
+        const userRow: any = urows[0];
+        const currentRaw = String(userRow?.enabledModules ?? "1");
+
+        const current = currentRaw
+          .split(",")
+          .map((x) => parseInt(x.trim(), 10))
+          .filter((n) => Number.isFinite(n) && n > 0);
+
+        // 5) Merge: alte + neue Module, sortiert, einzigartig
+        const merged = Array.from(new Set([...current, ...codeModules])).sort((a, b) => a - b);
+        const mergedStr = merged.join(",");
+
+        // 6) User updaten
+        await db.update(users).set({ enabledModules: mergedStr }).where(eq(users.id, ctx.user.id));
+
+        // 7) Code-Nutzung hochzählen
+        await db.update(accessCodes).set({ usedCount: usedCount + 1 }).where(eq(accessCodes.id, ac.id));
+
+        return { ok: true, enabledModules: merged };
+
+
+      }),
+
 
     // Admin: Modul für Nutzer freischalten
     setAccess: adminProcedure
