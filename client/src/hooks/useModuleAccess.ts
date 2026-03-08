@@ -37,7 +37,7 @@ function normalizeEnabledModules(input: unknown): number[] | null {
 }
 
 export function useModuleAccess() {
-  const { data, isLoading } = trpc.modules.myAccess.useQuery();
+  const { data, isLoading } = trpc.modules.myAccess.useQuery(undefined, { staleTime: 0, refetchOnMount: true, refetchOnWindowFocus: true });
 
   const normalized = normalizeEnabledModules(data) ?? [1];
 
