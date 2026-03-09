@@ -9,6 +9,8 @@ import ResetPassword from "@/pages/ResetPassword";
 import DeleteAccount from "@/pages/DeleteAccount";
 import RedeemCode from "@/pages/RedeemCode";
 import AdminCodes from "@/pages/admin/AdminCodes";
+import Impressum from "@/pages/Impressum";
+import Datenschutz from "@/pages/Datenschutz";
 import UserManagement from "@/pages/admin/UserManagement";
 import Module3Detail from "@/pages/modules/Module3Detail";
 import Module4Detail from "@/pages/modules/Module4Detail";
@@ -103,6 +105,8 @@ function Router() {
           <Route path="/konto-loeschen" component={DeleteAccount} />
           <Route path="/code-einloesen" component={RedeemCode} />
           <Route path="/admin/codes" component={AdminCodes} />
+          <Route path="/impressum" component={Impressum} />
+          <Route path="/datenschutz" component={Datenschutz} />
           <Route path="/admin/nutzer" component={UserManagement} />
           <Route path="/modul/:id">
             {(params) => (
