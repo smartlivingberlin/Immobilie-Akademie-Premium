@@ -44,6 +44,10 @@ async function startServer() {
   // Lokaler Dateispeicher (nur wenn kein Manus)
   const { registerStorageRoute } = await import("../storage");
   registerStorageRoute(app);
+  // Stripe
+  const { stripeRouter } = await import("../stripe");
+  app.use(stripeRouter);
+
   // tRPC API
   app.use(
     "/api/trpc",

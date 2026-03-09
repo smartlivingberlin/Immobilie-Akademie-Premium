@@ -11,6 +11,7 @@ import RedeemCode from "@/pages/RedeemCode";
 import AdminCodes from "@/pages/admin/AdminCodes";
 import Impressum from "@/pages/Impressum";
 import Datenschutz from "@/pages/Datenschutz";
+import Kurse from "@/pages/Kurse";
 import UserManagement from "@/pages/admin/UserManagement";
 import Module3Detail from "@/pages/modules/Module3Detail";
 import Module4Detail from "@/pages/modules/Module4Detail";
@@ -78,6 +79,7 @@ function Router() {
           
           {/* Legal Pages */}
           <Route path="/datenschutz" component={Datenschutz} />
+          <Route path="/kurse" component={Kurse} />
           <Route path="/impressum" component={Impressum} />
           <Route path="/agb" component={AGB} />
           
@@ -107,6 +109,7 @@ function Router() {
           <Route path="/admin/codes" component={AdminCodes} />
           <Route path="/impressum" component={Impressum} />
           <Route path="/datenschutz" component={Datenschutz} />
+          <Route path="/kurse" component={Kurse} />
           <Route path="/admin/nutzer" component={UserManagement} />
           <Route path="/modul/:id">
             {(params) => (
