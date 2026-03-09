@@ -499,7 +499,7 @@ const navigation = [
       </aside>
 
       {/* Main Content Area */}
-      <main className="flex-1 flex flex-col min-w-0 overflow-hidden bg-slate-50">
+      <main className="flex-1 flex flex-col min-w-0 overflow-auto bg-slate-50">
         {/* Mobile Header */}
         <div className="lg:hidden h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 sticky top-0 z-30">
           <div className="flex items-center gap-2">
