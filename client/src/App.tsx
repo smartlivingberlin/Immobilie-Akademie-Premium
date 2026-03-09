@@ -7,6 +7,7 @@ import LoginPage from "@/pages/LoginPage";
 import ForgotPassword from "@/pages/ForgotPassword";
 import ResetPassword from "@/pages/ResetPassword";
 import DeleteAccount from "@/pages/DeleteAccount";
+import RedeemCode from "@/pages/RedeemCode";
 import UserManagement from "@/pages/admin/UserManagement";
 import Module3Detail from "@/pages/modules/Module3Detail";
 import Module4Detail from "@/pages/modules/Module4Detail";
@@ -99,6 +100,7 @@ function Router() {
           <Route path="/forgot-password" component={ForgotPassword} />
           <Route path="/reset-password" component={ResetPassword} />
           <Route path="/konto-loeschen" component={DeleteAccount} />
+          <Route path="/code-einloesen" component={RedeemCode} />
           <Route path="/admin/nutzer" component={UserManagement} />
           <Route path="/modul/:id">
             {(params) => (

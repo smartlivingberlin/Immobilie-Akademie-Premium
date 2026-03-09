@@ -24,7 +24,8 @@ import {
   Trophy,
   Video,
   ClipboardCheck,
-  Brain
+  Brain,
+  KeyRound
 } from "lucide-react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { useWhiteLabel } from "@/contexts/WhiteLabelContext";
@@ -419,6 +420,12 @@ const navigation = [
                     <div className={`inline-flex items-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 w-full justify-start mb-2 h-10 px-4 py-2 cursor-pointer text-slate-300 hover:text-white hover:bg-slate-800 ${location === '/zertifikate' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
                       <Award className="h-5 w-5 mr-3" />
                       Zertifikate
+                    </div>
+                  </Link>
+                  <Link href="/code-einloesen">
+                    <div className={`inline-flex items-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 w-full justify-start mb-2 h-10 px-4 py-2 cursor-pointer text-slate-300 hover:text-white hover:bg-slate-800 ${location === '/code-einloesen' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
+                      <KeyRound className="h-5 w-5 mr-3" />
+                      Code einlösen
                     </div>
                   </Link>
                   <Link href="/gamification">
