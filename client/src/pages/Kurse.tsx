@@ -33,7 +33,7 @@ export default function Kurse() {
       const data = await res.json();
       if (data.url) window.location.href = data.url;
       else alert("Fehler: " + data.error);
-    } catch (e) {
+    } catch {
       alert("Fehler beim Checkout");
     } finally {
       setLoading(false);
@@ -41,34 +41,57 @@ export default function Kurse() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-12">
-      <h1 className="text-3xl font-bold mb-2">Kurse & Pakete</h1>
-      <p className="text-slate-500 mb-8">Wähle dein Paket und starte sofort mit der Ausbildung.</p>
+    <div style={{ maxWidth: 1100, margin: "0 auto", padding: "48px 24px" }}>
+      <h1 style={{ fontSize: 28, fontWeight: 700, marginBottom: 8 }}>Kurse & Pakete</h1>
+      <p style={{ color: "#64748b", marginBottom: 40 }}>Wähle dein Paket und starte sofort mit der Ausbildung.</p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
         {products.map((p) => (
-          <div key={p.id} className={`border rounded-xl p-6 flex flex-col gap-4 shadow-sm hover:shadow-md transition ${p.id === "modul_komplett" ? "border-blue-500 ring-2 ring-blue-500" : "border-slate-200"}`}>
+          <div key={p.id} style={{
+            flex: "1 1 280px",
+            border: p.id === "modul_komplett" ? "2px solid #3b82f6" : "1px solid #e2e8f0",
+            borderRadius: 16,
+            padding: 28,
+            display: "flex",
+            flexDirection: "column",
+            gap: 16,
+            boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
+            background: "white",
+          }}>
             {p.id === "modul_komplett" && (
-              <span className="text-xs font-bold bg-blue-600 text-white px-2 py-1 rounded-full self-start">Empfohlen</span>
+              <span style={{ background: "#3b82f6", color: "white", fontSize: 11, fontWeight: 700, padding: "4px 10px", borderRadius: 999, alignSelf: "flex-start" }}>
+                ⭐ Empfohlen
+              </span>
             )}
             <div>
-              <h2 className="text-lg font-bold">{p.name}</h2>
-              <p className="text-sm text-slate-500 mt-1">{p.description}</p>
+              <h2 style={{ fontSize: 17, fontWeight: 700, marginBottom: 6 }}>{p.name}</h2>
+              <p style={{ fontSize: 13, color: "#64748b" }}>{p.description}</p>
             </div>
-            <div className="text-3xl font-bold text-blue-700">{p.priceFormatted}</div>
-            <div className="text-xs text-slate-400">Module: {p.modules}</div>
+            <div style={{ fontSize: 32, fontWeight: 800, color: "#1d4ed8" }}>{p.priceFormatted}</div>
+            <div style={{ fontSize: 12, color: "#94a3b8" }}>Enthaltene Module: {p.modules}</div>
             <button
               onClick={() => handleBuy(p.id)}
               disabled={loading}
-              className="mt-auto bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white font-semibold py-3 rounded-lg transition text-sm"
+              style={{
+                marginTop: "auto",
+                background: "#2563eb",
+                color: "white",
+                border: "none",
+                borderRadius: 10,
+                padding: "12px 0",
+                fontWeight: 700,
+                fontSize: 15,
+                cursor: loading ? "not-allowed" : "pointer",
+                opacity: loading ? 0.6 : 1,
+              }}
             >
-              {loading ? "Weiterleitung..." : "Jetzt kaufen"}
+              {loading ? "Weiterleitung..." : "Jetzt kaufen →"}
             </button>
           </div>
         ))}
       </div>
 
-      <p className="text-xs text-slate-400 mt-8 text-center">
+      <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 40, textAlign: "center" }}>
         🔒 Sichere Zahlung via Stripe · Testkarte: 4242 4242 4242 4242
       </p>
     </div>
