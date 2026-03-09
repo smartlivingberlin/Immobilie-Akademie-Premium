@@ -28,6 +28,7 @@ import {
   KeyRound
 } from "lucide-react";
 import { useAuth } from "@/_core/hooks/useAuth";
+import Footer from "@/components/layout/Footer";
 import { useWhiteLabel } from "@/contexts/WhiteLabelContext";
 import { useModuleAccess } from "@/hooks/useModuleAccess";
 import { Button } from "@/components/ui/button";
@@ -536,6 +537,7 @@ const navigation = [
         onClose={() => setIsAIAssistantOpen(false)}
         moduleContext={location.startsWith("/modul/") ? `Modul ${location.split("/")[2]}` : undefined}
       />
+    <Footer />
     </div>
   );
 }
