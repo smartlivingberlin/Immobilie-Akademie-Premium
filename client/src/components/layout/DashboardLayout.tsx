@@ -520,6 +520,7 @@ const navigation = [
             {children}
           </div>
         </div>
+      <Footer />
       </main>
 
       {/* Floating AI Assistant Button */}
@@ -537,7 +538,6 @@ const navigation = [
         onClose={() => setIsAIAssistantOpen(false)}
         moduleContext={location.startsWith("/modul/") ? `Modul ${location.split("/")[2]}` : undefined}
       />
-    <Footer />
     </div>
   );
 }
