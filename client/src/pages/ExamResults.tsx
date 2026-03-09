@@ -254,11 +254,11 @@ export default function ExamResults() {
                 try {
                   const result = await generateCertificate.mutateAsync({ examSessionId: sessionId });
                   
-                  if (result.success && result.pdfUrl) {
+                  if (result.success && "pdfUrl" in result && result.pdfUrl) {
                     // Open certificate in new tab
                     window.open(result.pdfUrl, '_blank');
                   } else {
-                    alert(result.message || 'Zertifikat konnte nicht erstellt werden.');
+                    alert(("message" in result ? result.message : undefined) || 'Zertifikat konnte nicht erstellt werden.');
                   }
                 } catch (error) {
                   console.error('Certificate generation failed:', error);

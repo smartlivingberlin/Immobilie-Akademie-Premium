@@ -7,10 +7,10 @@ export default function RedeemCode() {
 
   const redeem = trpc.modules.redeemCode.useMutation({
     onSuccess: (data) => {
-      if (data.ok) {
+      if (data.ok && "enabledModules" in data) {
         setResult({ ok: true, message: `✅ Code eingelöst! Freigeschaltete Module: ${(data.enabledModules ?? []).join(", ")}` });
         setCode("");
-      } else {
+      } else if (!data.ok && "error" in data) {
         setResult({ ok: false, message: `❌ ${data.error}` });
       }
     },
