@@ -88,8 +88,32 @@ stripeRouter.post("/api/stripe/webhook", async (req, res) => {
 
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
-    console.log("[Stripe] Zahlung erfolgreich:", session.customer_email, session.metadata);
-    // TODO: Module für User freischalten via session.metadata.modules
+    const email = session.customer_email;
+    const modules = session.metadata?.modules;
+    console.log("[Stripe] Zahlung erfolgreich:", email, "Module:", modules);
+
+    if (email && modules) {
+      try {
+        const { getDb } = await import("./db");
+        const { users } = await import("../drizzle/schema");
+        const { eq } = await import("drizzle-orm");
+        const db = await getDb();
+
+        const userList = await db.select().from(users).where(eq(users.email, email)).limit(1);
+        if (userList.length > 0) {
+          const user = userList[0];
+          const existing = (user.enabledModules || "").split(",").filter(Boolean);
+          const newMods = modules.split(",").filter(Boolean);
+          const merged = [...new Set([...existing, ...newMods])].sort().join(",");
+          await db.update(users).set({ enabledModules: merged }).where(eq(users.id, user.id));
+          console.log("[Stripe] Module freigeschaltet für", email, ":", merged);
+        } else {
+          console.log("[Stripe] User nicht gefunden:", email);
+        }
+      } catch (err: any) {
+        console.error("[Stripe] Webhook DB Fehler:", err.message);
+      }
+    }
   }
 
   res.json({ received: true });
