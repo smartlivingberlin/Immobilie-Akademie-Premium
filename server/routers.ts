@@ -719,6 +719,86 @@ Antworte im folgenden JSON-Format:
       return await db.select().from(learningLogs).where(eq(learningLogs.userId, ctx.user.id));
     }),
   }),
+  adminCodes: router({
+    list: adminProcedure.query(async () => {
+      const db = await (await import('./db')).getDb();
+      const { accessCodes } = await import('../drizzle/schema');
+      return await db.select().from(accessCodes).orderBy(accessCodes.createdAt);
+    }),
+    create: adminProcedure
+      .input((val: any) => val as { code: string; modules: string; maxUses: number; note?: string; role?: string })
+      .mutation(async ({ ctx, input }) => {
+        const db = await (await import('./db')).getDb();
+        const { accessCodes } = await import('../drizzle/schema');
+        await db.insert(accessCodes).values({
+          code: input.code.toUpperCase().trim(),
+          modules: input.modules,
+          maxUses: input.maxUses,
+          note: input.note || null,
+          role: input.role || null,
+          createdByUserId: ctx.user.id,
+        });
+        return { ok: true };
+      }),
+    delete: adminProcedure
+      .input((val: any) => val as { id: number })
+      .mutation(async ({ input }) => {
+        const db = await (await import('./db')).getDb();
+        const { accessCodes } = await import('../drizzle/schema');
+        const { eq } = await import('drizzle-orm');
+        await db.delete(accessCodes).where(eq(accessCodes.id, input.id));
+        return { ok: true };
+      }),
+    toggle: adminProcedure
+      .input((val: any) => val as { id: number; isActive: boolean })
+      .mutation(async ({ input }) => {
+        const db = await (await import('./db')).getDb();
+        const { accessCodes } = await import('../drizzle/schema');
+        const { eq } = await import('drizzle-orm');
+        await db.update(accessCodes).set({ isActive: input.isActive }).where(eq(accessCodes.id, input.id));
+        return { ok: true };
+      }),
+  }),
+  adminCodes: router({
+    list: adminProcedure.query(async () => {
+      const db = await (await import('./db')).getDb();
+      const { accessCodes } = await import('../drizzle/schema');
+      return await db.select().from(accessCodes).orderBy(accessCodes.createdAt);
+    }),
+    create: adminProcedure
+      .input((val: any) => val as { code: string; modules: string; maxUses: number; note?: string; role?: string })
+      .mutation(async ({ ctx, input }) => {
+        const db = await (await import('./db')).getDb();
+        const { accessCodes } = await import('../drizzle/schema');
+        await db.insert(accessCodes).values({
+          code: input.code.toUpperCase().trim(),
+          modules: input.modules,
+          maxUses: input.maxUses,
+          note: input.note || null,
+          role: input.role || null,
+          createdByUserId: ctx.user.id,
+        });
+        return { ok: true };
+      }),
+    delete: adminProcedure
+      .input((val: any) => val as { id: number })
+      .mutation(async ({ input }) => {
+        const db = await (await import('./db')).getDb();
+        const { accessCodes } = await import('../drizzle/schema');
+        const { eq } = await import('drizzle-orm');
+        await db.delete(accessCodes).where(eq(accessCodes.id, input.id));
+        return { ok: true };
+      }),
+    toggle: adminProcedure
+      .input((val: any) => val as { id: number; isActive: boolean })
+      .mutation(async ({ input }) => {
+        const db = await (await import('./db')).getDb();
+        const { accessCodes } = await import('../drizzle/schema');
+        const { eq } = await import('drizzle-orm');
+        await db.update(accessCodes).set({ isActive: input.isActive }).where(eq(accessCodes.id, input.id));
+        return { ok: true };
+      }),
+  }),
 });
 
 export type AppRouter = typeof appRouter;
