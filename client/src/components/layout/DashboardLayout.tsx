@@ -309,6 +309,12 @@ const navigation = [
                         Videos
                       </div>
                     </Link>
+                    <Link href="/admin/codes">
+                      <div className={`flex items-center w-full justify-start text-slate-300 hover:text-white hover:bg-slate-800 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${location === '/admin/codes' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
+                        <KeyRound className="h-5 w-5 mr-3" />
+                        Zugangscodes
+                      </div>
+                    </Link>
                   </div>
                 )}
               </div>
