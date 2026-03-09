@@ -161,7 +161,7 @@ const navigation = [
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex">
+    <div className="min-h-screen bg-slate-50 flex w-full overflow-x-hidden">
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div 

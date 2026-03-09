@@ -37,7 +37,7 @@ export default function Home() {
     <div className="min-h-screen bg-slate-50">
       <SEO {...PAGE_SEO.home} />
       {/* Hero Section */}
-      <section className="relative bg-slate-900 text-white overflow-hidden">
+      <section className="relative bg-slate-900 text-white">
         <div className="absolute inset-0 bg-[url('https://files.manuscdn.com/user_upload_by_module/session_file/310419663028227676/QAWHMVxTaQMQqOJd.png')] bg-cover bg-center opacity-20"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/60"></div>
         
