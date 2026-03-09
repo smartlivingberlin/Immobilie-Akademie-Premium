@@ -7,8 +7,8 @@ export default function Impressum() {
         <h2 className="text-lg font-semibold mb-2">Angaben gemäß § 5 TMG</h2>
         <p className="text-slate-700">
           Immobilien-Akademie GmbH<br />
-          [Straße und Hausnummer]<br />
-          [PLZ] Berlin<br />
+          Durlacher Str. 36<br />
+          10715 Berlin<br />
           Deutschland
         </p>
       </section>
@@ -30,13 +30,13 @@ export default function Impressum() {
         <h2 className="text-lg font-semibold mb-2">Registereintrag</h2>
         <p className="text-slate-700">
           Registergericht: Amtsgericht Berlin<br />
-          Registernummer: [HRB-Nummer]
+          Registernummer: wird nachgetragen
         </p>
       </section>
 
       <section className="mb-6">
         <h2 className="text-lg font-semibold mb-2">Umsatzsteuer-ID</h2>
-        <p className="text-slate-700">DE[Nummer]</p>
+        <p className="text-slate-700">wird nachgetragen</p>
       </section>
 
       <section className="mb-6">
