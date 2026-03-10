@@ -799,6 +799,33 @@ Antworte im folgenden JSON-Format:
         return { ok: true };
       }),
   }),
+  presentationCode: router({
+    redeem: publicProcedure
+      .input((val: any) => val as { code: string })
+      .mutation(async ({ input }) => {
+        const { redeemPresentationCode } = await import('./db');
+        return redeemPresentationCode(input.code);
+      }),
+    list: adminProcedure.query(async () => {
+      const { listPresentationCodes } = await import('./db');
+      return listPresentationCodes();
+    }),
+    create: adminProcedure
+      .input((val: any) => val as { code: string; label: string; modules: string; expiresInDays?: number; maxUsage?: number })
+      .mutation(async ({ input }) => {
+        const { createPresentationCode } = await import('./db');
+        const expiresAt = input.expiresInDays ? new Date(Date.now() + input.expiresInDays * 86400000) : null;
+        await createPresentationCode(input.code, input.label, input.modules, expiresAt, input.maxUsage ?? null);
+        return { ok: true };
+      }),
+    deactivate: adminProcedure
+      .input((val: any) => val as { id: number })
+      .mutation(async ({ input }) => {
+        const { deactivatePresentationCode } = await import('./db');
+        await deactivatePresentationCode(input.id);
+        return { ok: true };
+      }),
+  }),
 });
 
 export type AppRouter = typeof appRouter;
