@@ -1344,3 +1344,34 @@ export async function updateUserEnabledModules(userId: number, moduleIds: number
   const merged = Array.from(new Set([...currentList,...moduleIds])).sort((a,b)=>a-b);
   await db.update(users).set({ enabledModules: merged.join(",") }).where(eq(users.id, userId));
 }
+
+export async function redeemPresentationCode(code: string): Promise<{success: boolean; enabledModules?: string; message: string;}> {
+  const db = await getDb();
+  if (!db) return { success: false, message: "Datenbankfehler" };
+  const rows = await db.execute(`SELECT * FROM presentation_codes WHERE code = ? AND isActive = true LIMIT 1`, [code]) as any;
+  const record = Array.isArray(rows) ? rows[0] : (rows as any).rows?.[0];
+  if (!record) return { success: false, message: "Code nicht gefunden oder deaktiviert" };
+  if (record.expiresAt && new Date(record.expiresAt) < new Date()) return { success: false, message: "Dieser Code ist abgelaufen" };
+  if (record.maxUsage && record.usageCount >= record.maxUsage) return { success: false, message: "Maximale Nutzungsanzahl erreicht" };
+  await db.execute(`UPDATE presentation_codes SET usageCount = usageCount + 1 WHERE id = ?`, [record.id]);
+  return { success: true, enabledModules: record.enabledModules, message: "Code gültig" };
+}
+
+export async function listPresentationCodes(): Promise<any[]> {
+  const db = await getDb();
+  if (!db) return [];
+  const rows = await db.execute(`SELECT * FROM presentation_codes ORDER BY createdAt DESC`) as any;
+  return Array.isArray(rows) ? rows : (rows as any).rows ?? [];
+}
+
+export async function createPresentationCode(code: string, label: string, modules: string, expiresAt: Date | null, maxUsage: number | null): Promise<void> {
+  const db = await getDb();
+  if (!db) return;
+  await db.execute(`INSERT INTO presentation_codes (code, label, enabledModules, expiresAt, maxUsage) VALUES (?, ?, ?, ?, ?)`, [code, label, modules, expiresAt, maxUsage]);
+}
+
+export async function deactivatePresentationCode(id: number): Promise<void> {
+  const db = await getDb();
+  if (!db) return;
+  await db.execute(`UPDATE presentation_codes SET isActive = false WHERE id = ?`, [id]);
+}

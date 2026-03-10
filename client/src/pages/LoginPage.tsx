@@ -155,6 +155,18 @@ export default function LoginPage() {
                 </button>
                 <div className="mt-2">
                   <a href="/forgot-password" className="text-sm text-slate-400 hover:underline">Passwort vergessen?</a>
+                <div className="mt-3 text-center">
+                  <button onClick={() => setShowCodeInput(v => !v)} className="text-xs text-slate-400 hover:text-slate-600 underline">
+                    🔑 Präsentations-Code eingeben
+                  </button>
+                  {showCodeInput && (
+                    <div className="mt-2 flex gap-2">
+                      <input type="text" placeholder="z.B. DEMO-2026-XYZ" value={demoCode} onChange={e => setDemoCode(e.target.value.toUpperCase())} className="flex-1 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                      <button onClick={handleDemoCode} disabled={demoCodeLoading} className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 disabled:opacity-50">{demoCodeLoading ? "..." : "OK"}</button>
+                    </div>
+                  )}
+                  {demoCodeMsg && <p className={`text-xs mt-1 ${demoCodeMsg.startsWith("✅") ? "text-green-600" : "text-red-500"}`}>{demoCodeMsg}</p>}
+                </div>
                 </div>
               </>
             ) : (
