@@ -137,9 +137,6 @@ export default function LoginPage() {
                 ? (mode === "login" ? "Anmelden…" : "Konto erstellen…")
                 : (mode === "login" ? "Anmelden" : "Konto erstellen")}
             </button>
-            {mode === "login" && (
-
-            )}
           </form>
 
           {/* Mode switch */}
