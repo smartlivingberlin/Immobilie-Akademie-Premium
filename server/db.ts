@@ -1334,3 +1334,13 @@ export async function updateLastSignedIn(openId: string): Promise<void> {
     console.error("[DB] updateLastSignedIn error:", error);
   }
 }
+
+export async function updateUserEnabledModules(userId: number, moduleIds: number[]): Promise<void> {
+  const db = await getDb();
+  if (!db) return;
+  const result = await db.select({ enabledModules: users.enabledModules }).from(users).where(eq(users.id, userId)).limit(1);
+  const current = result[0]?.enabledModules ?? "1";
+  const currentList = current.split(",").map((s:string)=>parseInt(s.trim(),10)).filter((n:number)=>!isNaN(n));
+  const merged = Array.from(new Set([...currentList,...moduleIds])).sort((a,b)=>a-b);
+  await db.update(users).set({ enabledModules: merged.join(",") }).where(eq(users.id, userId));
+}

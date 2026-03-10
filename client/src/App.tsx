@@ -19,6 +19,7 @@ import Module4Detail from "@/pages/modules/Module4Detail";
 import Module5Detail from "@/pages/modules/Module5Detail";
 import Module2Detail from "@/pages/modules/Module2Detail";
 import Module1Detail from "@/pages/modules/Module1Detail";
+import ModuleGuard from "@/components/ModuleGuard";
 import Syllabus from "@/pages/Syllabus";
 import Glossary from "@/pages/Glossary";
 import UserGuide from "@/pages/UserGuide";
@@ -91,17 +92,17 @@ function Router() {
           <Route path="/modul/1" component={Module1Detail} />
           <Route path="/modul/1/tag/:day" component={Module1Detail} />
           
-          <Route path="/modul/2" component={Module2Detail} />
-          <Route path="/modul/2/tag/:day" component={Module2Detail} />
+          <Route path="/modul/2">{()=><ModuleGuard moduleId={2}><Module2Detail /></ModuleGuard>}</Route>
+          <Route path="/modul/2/tag/:day">{()=><ModuleGuard moduleId={2}><Module2Detail /></ModuleGuard>}</Route>
           
-          <Route path="/modul/3" component={Module3Detail} />
-          <Route path="/modul/3/tag/:day" component={Module3Detail} />
+          <Route path="/modul/3">{()=><ModuleGuard moduleId={3}><Module3Detail /></ModuleGuard>}</Route>
+          <Route path="/modul/3/tag/:day">{()=><ModuleGuard moduleId={3}><Module3Detail /></ModuleGuard>}</Route>
           
-          <Route path="/modul/4" component={Module4Detail} />
-          <Route path="/modul/4/tag/:day" component={Module4Detail} />
+          <Route path="/modul/4">{()=><ModuleGuard moduleId={4}><Module4Detail /></ModuleGuard>}</Route>
+          <Route path="/modul/4/tag/:day">{()=><ModuleGuard moduleId={4}><Module4Detail /></ModuleGuard>}</Route>
           
-          <Route path="/modul/5" component={Module5Detail} />
-          <Route path="/modul/5/tag/:day" component={Module5Detail} />
+          <Route path="/modul/5">{()=><ModuleGuard moduleId={5}><Module5Detail /></ModuleGuard>}</Route>
+          <Route path="/modul/5/tag/:day">{()=><ModuleGuard moduleId={5}><Module5Detail /></ModuleGuard>}</Route>
           
           {/* Placeholder Routes for other modules */}
           <Route path="/forgot-password" component={ForgotPassword} />
