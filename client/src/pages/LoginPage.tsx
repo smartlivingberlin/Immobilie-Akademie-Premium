@@ -138,20 +138,7 @@ export default function LoginPage() {
                 : (mode === "login" ? "Anmelden" : "Konto erstellen")}
             </button>
             {mode === "login" && (
-              <button
-                type="button"
-                onClick={() => {
-                  setEmail("admin@immobilie.de");
-                  setPassword("Admin1234!");
-                  setTimeout(() => {
-                    const form = document.querySelector("form");
-                    if (form) form.requestSubmit();
-                  }, 100);
-                }}
-                className="w-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-medium py-2.5 rounded-lg transition-colors text-sm"
-              >
-                🚀 Demo-Zugang (ein Klick)
-              </button>
+
             )}
           </form>
 
