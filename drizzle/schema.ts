@@ -11,6 +11,7 @@ export const users = mysqlTable("users", {
   email: varchar("email", { length: 320 }),
   loginMethod: varchar("loginMethod", { length: 64 }),
   role: mysqlEnum("role", ["user", "admin", "trainer"]).default("user").notNull(),
+  enabledModules: varchar("enabledModules", { length: 255 }).default("1").notNull(),
   /** Links user to a specific White-Label tenant (null = default/owner tenant) */
   tenantId: int("tenantId"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
