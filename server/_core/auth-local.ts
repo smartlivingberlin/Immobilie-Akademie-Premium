@@ -146,6 +146,28 @@ export function registerLocalAuthRoutes(app: Express) {
     return res.redirect("/");
   });
 
+  // Präsentations-Code Login — erstellt temporären Guest-User + setzt Cookie
+  app.post("/api/auth/redeem-code", async (req: Request, res: Response) => {
+    const { code } = req.body ?? {};
+    if (!code) return res.status(400).json({ error: "Code fehlt" });
+    const { redeemPresentationCode } = await import("../db");
+    const result = await redeemPresentationCode(code.trim().toUpperCase());
+    if (!result.success) return res.status(400).json({ error: result.message });
+    const openId = `presentation:${code.trim().toUpperCase()}`;
+    await db.upsertUser({
+      openId,
+      name: "Gast",
+      email: null,
+      loginMethod: "presentation_code",
+      lastSignedIn: new Date(),
+    });
+    await db.updateUserEnabledModules(openId, result.enabledModules ?? "1");
+    const token = await createSessionToken(openId, "Gast");
+    const cookieOptions = getSessionCookieOptions(req);
+    res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
+    return res.json({ ok: true });
+  });
+
   app.post("/api/auth/login", async (req: Request, res: Response) => {
     const { email, password } = req.body ?? {};
 
