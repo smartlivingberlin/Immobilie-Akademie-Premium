@@ -1348,7 +1348,7 @@ export async function updateUserEnabledModules(userId: number, moduleIds: number
 export async function redeemPresentationCode(code: string): Promise<{success: boolean; enabledModules?: string; message: string;}> {
   const db = await getDb();
   if (!db) return { success: false, message: "Datenbankfehler" };
-  const rows = await db.execute(`SELECT * FROM presentation_codes WHERE code = ? AND isActive = true LIMIT 1`, [code]) as any;
+  const rows = await db.execute(`SELECT * FROM presentation_codes WHERE code = ? AND isActive = 1 LIMIT 1`, [code]) as any;
   const record = Array.isArray(rows) ? rows[0] : (rows as any).rows?.[0];
   if (!record) return { success: false, message: "Code nicht gefunden oder deaktiviert" };
   if (record.expiresAt && new Date(record.expiresAt) < new Date()) return { success: false, message: "Dieser Code ist abgelaufen" };
