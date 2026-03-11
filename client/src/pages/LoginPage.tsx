@@ -18,6 +18,36 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showCodeInput, setShowCodeInput] = useState(false);
+  const [demoCode, setDemoCode] = useState("");
+  const [demoCodeLoading, setDemoCodeLoading] = useState(false);
+  const [demoCodeMsg, setDemoCodeMsg] = useState("");
+  const [codeValue, setCodeValue] = useState("");
+
+  async function handleDemoCode() {
+    if (!demoCode.trim()) return;
+    setDemoCodeLoading(true);
+    setDemoCodeMsg("");
+    try {
+      const res = await fetch("/api/trpc/presentationCode.redeem", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ json: { code: demoCode.trim() } }),
+        credentials: "include",
+      });
+      const data = await res.json();
+      if (!res.ok || data.error) {
+        setDemoCodeMsg("❌ Ungültiger oder abgelaufener Code.");
+      } else {
+        setDemoCodeMsg("✅ Zugang freigeschaltet! Wird weitergeleitet…");
+        setTimeout(() => { window.location.href = "/"; }, 1500);
+      }
+    } catch {
+      setDemoCodeMsg("❌ Verbindungsfehler.");
+    } finally {
+      setDemoCodeLoading(false);
+    }
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
