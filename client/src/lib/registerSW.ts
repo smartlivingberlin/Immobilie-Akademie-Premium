@@ -7,6 +7,9 @@ export function registerServiceWorker() {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', async () => {
       try {
+        // Alte SWs unregistrieren — verhindert stale cache
+        const existingRegs = await navigator.serviceWorker.getRegistrations();
+        for (const reg of existingRegs) { await reg.unregister(); }
         const registration = await navigator.serviceWorker.register('/sw.js', {
           scope: '/',
           updateViaCache: 'none',
