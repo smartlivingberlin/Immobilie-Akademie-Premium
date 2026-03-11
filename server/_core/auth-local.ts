@@ -169,7 +169,6 @@ export function registerLocalAuthRoutes(app: Express) {
       return res.status(500).json({ error: "Interner Fehler: " + err.message });
     }
   });
-  });
 
   app.post("/api/auth/login", async (req: Request, res: Response) => {
     const { email, password } = req.body ?? {};
