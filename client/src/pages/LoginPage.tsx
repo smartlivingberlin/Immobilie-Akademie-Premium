@@ -19,10 +19,10 @@ export default function LoginPage() {
     setDemoCodeLoading(true);
     setDemoCodeMsg("");
     try {
-      const res = await fetch("/api/trpc/presentationCode.redeem", {
+      const res = await fetch("/api/auth/redeem-code", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ json: { code: demoCode.trim() } }),
+        body: JSON.stringify({ code: demoCode.trim() }),
         credentials: "include",
       });
       const data = await res.json();
