@@ -26,7 +26,7 @@ export default function LoginPage() {
         credentials: "include",
       });
       const data = await res.json();
-      if (!res.ok || data?.error || data?.result?.data?.json?.success === false) {
+      if (!res.ok || data?.error) {
         setDemoCodeMsg("❌ Ungültiger oder abgelaufener Code.");
       } else {
         setDemoCodeMsg("✅ Zugang freigeschaltet! Wird weitergeleitet…");
