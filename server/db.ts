@@ -1348,12 +1348,14 @@ export async function updateUserEnabledModules(userId: number, moduleIds: number
 export async function redeemPresentationCode(code: string): Promise<{success: boolean; enabledModules?: string; message: string;}> {
   const db = await getDb();
   if (!db) return { success: false, message: "Datenbankfehler" };
-  const rows = await db.execute(`SELECT * FROM presentation_codes WHERE code = ? AND isActive = 1 LIMIT 1`, [code]) as any;
+  const { sql } = await import("drizzle-orm");
+  const rows = await db.execute(sql`SELECT * FROM presentation_codes WHERE code = ${code} AND isActive = 1 LIMIT 1`) as any;
   const record = Array.isArray(rows) ? rows[0] : (rows as any).rows?.[0];
   if (!record) return { success: false, message: "Code nicht gefunden oder deaktiviert" };
   if (record.expiresAt && new Date(record.expiresAt) < new Date()) return { success: false, message: "Dieser Code ist abgelaufen" };
   if (record.maxUsage && record.usageCount >= record.maxUsage) return { success: false, message: "Maximale Nutzungsanzahl erreicht" };
-  await db.execute(`UPDATE presentation_codes SET usageCount = usageCount + 1 WHERE id = ?`, [record.id]);
+  const codeId = record.id;
+  await db.execute(sql`UPDATE presentation_codes SET usageCount = usageCount + 1 WHERE id = ${codeId}`);
   return { success: true, enabledModules: record.enabledModules, message: "Code gültig" };
 }
 
