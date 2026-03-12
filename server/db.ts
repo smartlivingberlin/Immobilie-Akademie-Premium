@@ -1354,8 +1354,7 @@ export async function redeemPresentationCode(code: string): Promise<{success: bo
   if (!record) return { success: false, message: "Code nicht gefunden oder deaktiviert" };
   if (record.expiresAt && new Date(record.expiresAt) < new Date()) return { success: false, message: "Dieser Code ist abgelaufen" };
   if (record.maxUsage && record.usageCount >= record.maxUsage) return { success: false, message: "Maximale Nutzungsanzahl erreicht" };
-  const codeId = record.id;
-  await db.execute(sql`UPDATE presentation_codes SET usageCount = usageCount + 1 WHERE id = ${codeId}`);
+  await db.execute(sql`UPDATE presentation_codes SET usageCount = usageCount + 1 WHERE code = ${code}`);
   return { success: true, enabledModules: record.enabledModules, message: "Code gültig" };
 }
 
