@@ -155,10 +155,13 @@ export function registerLocalAuthRoutes(app: Express) {
       if (!result.success) return res.status(400).json({ error: result.message });
       const openId = `presentation:${code.trim().toUpperCase()}`;
       await upsertUser({ openId, name: "Gast" });
-      const user = await getUserByOpenId(openId);
-      if (user?.id && result.enabledModules) {
-        const moduleIds = result.enabledModules.split(",").map((s: string) => parseInt(s.trim(), 10)).filter((n: number) => !isNaN(n));
-        if (moduleIds.length > 0) await updateUserEnabledModules(user.id, moduleIds);
+      // enabledModules direkt per SQL setzen (sicherste Methode)
+      const { getDb } = await import("../db");
+      const { sql } = await import("drizzle-orm");
+      const enabledStr = result.enabledModules ?? "1";
+      const dbConn = await getDb();
+      if (dbConn) {
+        await dbConn.execute(sql`UPDATE users SET enabledModules = ${enabledStr} WHERE openId = ${openId}`);
       }
       const token = await createSessionToken(openId, "Gast");
       const cookieOptions = getSessionCookieOptions(req);

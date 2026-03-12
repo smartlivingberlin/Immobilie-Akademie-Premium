@@ -39,7 +39,7 @@ export default function ModuleGuard({ moduleId, children }: ModuleGuardProps) {
 
   // Nicht eingeloggt → zum Login
   if (!user) {
-    return <Redirect to="/api/oauth/login" />;
+    return <Redirect to="/login" />;
   }
 
   // Admin und Trainer → immer Zugriff
