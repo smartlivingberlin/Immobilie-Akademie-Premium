@@ -759,46 +759,7 @@ Antworte im folgenden JSON-Format:
         return { ok: true };
       }),
   }),
-  adminCodes: router({
-    list: adminProcedure.query(async () => {
-      const db = await (await import('./db')).getDb();
-      const { accessCodes } = await import('../drizzle/schema');
-      return await db.select().from(accessCodes).orderBy(accessCodes.createdAt);
-    }),
-    create: adminProcedure
-      .input((val: any) => val as { code: string; modules: string; maxUses: number; note?: string; role?: string })
-      .mutation(async ({ ctx, input }) => {
-        const db = await (await import('./db')).getDb();
-        const { accessCodes } = await import('../drizzle/schema');
-        await db.insert(accessCodes).values({
-          code: input.code.toUpperCase().trim(),
-          modules: input.modules,
-          maxUses: input.maxUses,
-          note: input.note || null,
-          role: input.role || null,
-          createdByUserId: ctx.user.id,
-        });
-        return { ok: true };
-      }),
-    delete: adminProcedure
-      .input((val: any) => val as { id: number })
-      .mutation(async ({ input }) => {
-        const db = await (await import('./db')).getDb();
-        const { accessCodes } = await import('../drizzle/schema');
-        const { eq } = await import('drizzle-orm');
-        await db.delete(accessCodes).where(eq(accessCodes.id, input.id));
-        return { ok: true };
-      }),
-    toggle: adminProcedure
-      .input((val: any) => val as { id: number; isActive: boolean })
-      .mutation(async ({ input }) => {
-        const db = await (await import('./db')).getDb();
-        const { accessCodes } = await import('../drizzle/schema');
-        const { eq } = await import('drizzle-orm');
-        await db.update(accessCodes).set({ isActive: input.isActive }).where(eq(accessCodes.id, input.id));
-        return { ok: true };
-      }),
-  }),
+
   presentationCode: router({
     redeem: publicProcedure
       .input((val: any) => val as { code: string })
@@ -816,6 +777,31 @@ Antworte im folgenden JSON-Format:
         const { createPresentationCode } = await import('./db');
         const expiresAt = input.expiresInDays ? new Date(Date.now() + input.expiresInDays * 86400000) : null;
         await createPresentationCode(input.code, input.label, input.modules, expiresAt, input.maxUsage ?? null);
+        return { ok: true };
+      }),
+    deactivate: adminProcedure
+      .input((val: any) => val as { id: number })
+      .mutation(async ({ input }) => {
+        const { deactivatePresentationCode } = await import('./db');
+        await deactivatePresentationCode(input.id);
+        return { ok: true };
+      }),
+    activate: adminProcedure
+      .input((val: any) => val as { id: number })
+      .mutation(async ({ input }) => {
+        const { sql } = await import('drizzle-orm');
+        const { getDb } = await import('./db');
+        const db = await getDb();
+        if (db) await db.execute(sql`UPDATE presentation_codes SET isActive = 1 WHERE id = ${input.id}`);
+        return { ok: true };
+      }),
+    delete: adminProcedure
+      .input((val: any) => val as { id: number })
+      .mutation(async ({ input }) => {
+        const { sql } = await import('drizzle-orm');
+        const { getDb } = await import('./db');
+        const db = await getDb();
+        if (db) await db.execute(sql`DELETE FROM presentation_codes WHERE id = ${input.id}`);
         return { ok: true };
       }),
     deactivate: adminProcedure
