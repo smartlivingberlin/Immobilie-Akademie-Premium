@@ -1349,8 +1349,10 @@ export async function redeemPresentationCode(code: string): Promise<{success: bo
   const db = await getDb();
   if (!db) return { success: false, message: "Datenbankfehler" };
   const { sql } = await import("drizzle-orm");
-  const rows = await db.execute(sql`SELECT * FROM presentation_codes WHERE code = ${code} AND isActive = 1 LIMIT 1`) as any;
-  const record = Array.isArray(rows) ? rows[0] : (rows as any).rows?.[0];
+  const rawResult = await db.execute(sql`SELECT * FROM presentation_codes WHERE code = ${code} AND isActive = 1 LIMIT 1`) as any;
+  // Drizzle mysql2: gibt [RowDataPacket[], FieldPacket[]] zurueck
+  const rowsArr = Array.isArray(rawResult[0]) ? rawResult[0] : (Array.isArray(rawResult) ? rawResult : []);
+  const record = rowsArr[0] ?? null;
   if (!record) return { success: false, message: "Code nicht gefunden oder deaktiviert" };
   if (record.expiresAt && new Date(record.expiresAt) < new Date()) return { success: false, message: "Dieser Code ist abgelaufen" };
   if (record.maxUsage && record.usageCount >= record.maxUsage) return { success: false, message: "Maximale Nutzungsanzahl erreicht" };
