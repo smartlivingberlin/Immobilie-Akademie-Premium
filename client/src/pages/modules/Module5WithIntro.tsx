@@ -30,7 +30,7 @@ export default function Module5WithIntro() {
           "KfW-Förderprogramme erklären und vermitteln",
           "Als zertifizierter Darlehensvermittler arbeiten",
         ]}
-        examRelevance="Deckt 100% des IHK-Prüfungsstoffs §34i GewO ab. Alle Rechenaufgaben mit vollständigen Lösungswegen — besonders wichtig für die schriftliche Prüfung."
+        examRelevance="Orientiert am IHK-Rahmenplan §34i GewO. Alle Rechenaufgaben mit vollständigen Lösungswegen."
         legalBasis="§34i GewO, WIKR"
         difficulty="Mittelstufe"
         onStart={() => setShowIntro(false)}

@@ -30,7 +30,7 @@ export default function Module2WithIntro() {
           "Immobilien mit allen 3 Verfahren bewerten",
           "Als selbständiger Immobilienmakler arbeiten",
         ]}
-        examRelevance="Dieses Modul deckt 100% des IHK-Prüfungsstoffs §34c GewO ab. Enthält Original-Prüfungsaufgaben mit Lösungen und eine vollständige Prüfungssimulation."
+        examRelevance="Orientiert am IHK-Rahmenplan §34c GewO. Enthält prüfungsrelevante Übungsaufgaben mit Lösungen und Prüfungssimulation."
         legalBasis="§34c GewO"
         difficulty="Mittelstufe"
         onStart={() => setShowIntro(false)}

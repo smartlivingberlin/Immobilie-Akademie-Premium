@@ -45,7 +45,7 @@ export default function Home() {
           <div className="max-w-3xl">
             <Badge variant="outline" className="mb-6 text-blue-300 border-blue-400/30 bg-blue-500/10 px-4 py-1 text-sm">
               <GraduationCap className="w-4 h-4 mr-2" />
-              Offizieller Lehrgang 2026
+              Lehrgang 2026
             </Badge>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-tight">
               Immobilien-Bildungsportal <span className="text-blue-500">Komplettausbildung</span>
@@ -308,7 +308,7 @@ export default function Home() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl font-bold text-slate-900 mb-4">Was unsere Absolventen sagen</h2>
             <p className="text-lg text-slate-600">
-              Über 500 erfolgreiche Absolventen haben bereits ihre Karriere gestartet
+              Lernende aus ganz Deutschland bereiten sich mit uns auf die IHK-Sachkundeprüfung vor
             </p>
           </div>
 
@@ -563,7 +563,7 @@ export default function Home() {
                 Gibt es eine Geld-zurück-Garantie?
               </AccordionTrigger>
               <AccordionContent className="text-slate-700 leading-relaxed">
-                Ja! Testen Sie Premium 14 Tage kostenlos. Wenn Sie nicht zufrieden sind, kündigen Sie innerhalb der Testphase ohne Kosten. Danach gilt die monatliche Kündigungsfrist.
+                Wir bieten Ihnen das gesetzliche Widerrufsrecht von 14 Tagen nach Kauf (§355 BGB). Die vollständige Widerrufsbelehrung finden Sie unter /widerruf.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -575,7 +575,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Starten Sie jetzt Ihre Immobilien-Karriere</h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Über 500 Absolventen haben bereits ihre Ziele erreicht. Werden Sie Teil unserer Erfolgsgeschichte!
+            Starten Sie jetzt Ihre Immobilien-Karriere und bereiten Sie sich gezielt auf die IHK-Sachkundeprüfung vor.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/modul/1">
