@@ -84,7 +84,6 @@ function Router() {
           {/* Legal Pages */}
           <Route path="/datenschutz" component={Datenschutz} />
           <Route path="/widerruf" component={Widerruf} />
-          <Route path="/widerruf" component={Widerruf} />
           <Route path="/kurse" component={Kurse} />
           <Route path="/zahlung-erfolgreich" component={ZahlungErfolgreich} />
           <Route path="/impressum" component={Impressum} />
