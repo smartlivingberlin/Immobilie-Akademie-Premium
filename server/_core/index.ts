@@ -15,6 +15,7 @@ import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerOAuthRoutes } from "./oauth";
 import { registerLocalAuthRoutes } from "./auth-local";
 import { registerPasswordResetRoutes } from "../passwordReset";
+import { registerPortalPhaseRoutes } from "../portalPhase";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
@@ -34,6 +35,7 @@ async function startServer() {
   // Lokales Auth
   registerLocalAuthRoutes(app);
   registerPasswordResetRoutes(app);
+  registerPortalPhaseRoutes(app);
   // Healthcheck für Railway / Monitoring
   app.get("/api/health", (_req, res) => {
     return res.status(200).json({ ok: true, ts: new Date().toISOString() });

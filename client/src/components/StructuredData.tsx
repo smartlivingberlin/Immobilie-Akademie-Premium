@@ -129,7 +129,7 @@ export function StructuredData() {
           "name": "Bereitet das Portal auf die IHK-Prüfung vor?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Das Portal bereitet optimal auf die IHK-Sachkundeprüfungen nach §34c und §34i GewO sowie §26a WEG vor. Die Inhalte orientieren sich an den offiziellen IHK-Rahmenlehrplänen. Das Portal selbst ist ein privates Bildungsangebot und ersetzt nicht die offizielle IHK-Prüfung.",
+            "text": "Das Portal bereitet optimal auf die IHK-Sachkundeprüfungen nach §34c und §34i GewO sowie §26a WEG vor. Die Inhalte orientieren sich am IHK-Rahmenplan §34c/§34i GewO. Das Portal selbst ist ein privates Bildungsangebot und ersetzt nicht die offizielle IHK-Prüfung.",
           },
         },
       ],
