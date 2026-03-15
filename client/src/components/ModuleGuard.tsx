@@ -122,7 +122,7 @@ export default function ModuleGuard({ moduleId, children }: ModuleGuardProps) {
               </Link>
 
               
-                href="https://wa.me/4915123456789?text=Hallo%2C%20ich%20m%C3%B6chte%20Modul%20" + moduleId + "%20der%20Immobilien-Akademie%20freischalten."
+                href="https://wa.me/491711526327?text=Hallo%2C%20ich%20m%C3%B6chte%20Modul%20" + moduleId + "%20der%20Immobilien-Akademie%20freischalten."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 w-full border border-slate-200 hover:border-green-400 hover:bg-green-50 text-slate-600 hover:text-green-700 font-medium py-3 px-6 rounded-xl transition-colors text-sm"
