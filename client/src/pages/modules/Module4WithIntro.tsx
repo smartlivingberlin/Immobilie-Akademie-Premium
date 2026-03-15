@@ -30,7 +30,7 @@ export default function Module4WithIntro() {
           "Grundstücke und Gebäude separat bewerten",
           "Gutachterausschuss-Daten korrekt interpretieren",
         ]}
-        examRelevance="Grundlage für die Zertifizierung als Sachverständiger (DIN EN ISO 17024). Alle Berechnungen mit vollständigen Lösungswegen und Berliner Marktdaten."
+        examRelevance="Fundierte Vorbereitung auf Sachverständigentätigkeit nach ImmoWertV 2021. Alle Berechnungen mit vollständigen Lösungswegen und Berliner Marktdaten."
         legalBasis="ImmoWertV 2021"
         difficulty="Fortgeschritten"
         onStart={() => setShowIntro(false)}
