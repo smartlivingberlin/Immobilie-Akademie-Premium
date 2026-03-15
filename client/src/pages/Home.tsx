@@ -38,7 +38,7 @@ export default function Home() {
       <SEO {...PAGE_SEO.home} />
       {/* Hero Section */}
       <section className="relative bg-slate-900 text-white">
-        <div className="absolute inset-0 bg-[url('https://files.manuscdn.com/user_upload_by_module/session_file/310419663028227676/QAWHMVxTaQMQqOJd.png')] bg-cover bg-center opacity-20"></div>
+        <div className="absolute inset-0 opacity-0"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/60"></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
