@@ -20,6 +20,11 @@ import Module4Detail from "@/pages/modules/Module4Detail";
 import Module5Detail from "@/pages/modules/Module5Detail";
 import Module2Detail from "@/pages/modules/Module2Detail";
 import Module1Detail from "@/pages/modules/Module1Detail";
+import Module1WithIntro from "@/pages/modules/Module1WithIntro";
+import Module2WithIntro from "@/pages/modules/Module2WithIntro";
+import Module3WithIntro from "@/pages/modules/Module3WithIntro";
+import Module4WithIntro from "@/pages/modules/Module4WithIntro";
+import Module5WithIntro from "@/pages/modules/Module5WithIntro";
 import ModuleGuard from "@/components/ModuleGuard";
 import Syllabus from "@/pages/Syllabus";
 import Glossary from "@/pages/Glossary";
@@ -91,19 +96,19 @@ function Router() {
 
           
           {/* Modul Routes */}
-          <Route path="/modul/1" component={Module1Detail} />
+          <Route path="/modul/1" component={Module1WithIntro} />
           <Route path="/modul/1/tag/:day" component={Module1Detail} />
           
-          <Route path="/modul/2">{()=><ModuleGuard moduleId={2}><Module2Detail /></ModuleGuard>}</Route>
+          <Route path="/modul/2">{()=><ModuleGuard moduleId={2}><Module2WithIntro /></ModuleGuard>}</Route>
           <Route path="/modul/2/tag/:day">{()=><ModuleGuard moduleId={2}><Module2Detail /></ModuleGuard>}</Route>
           
-          <Route path="/modul/3">{()=><ModuleGuard moduleId={3}><Module3Detail /></ModuleGuard>}</Route>
+          <Route path="/modul/3">{()=><ModuleGuard moduleId={3}><Module3WithIntro /></ModuleGuard>}</Route>
           <Route path="/modul/3/tag/:day">{()=><ModuleGuard moduleId={3}><Module3Detail /></ModuleGuard>}</Route>
           
-          <Route path="/modul/4">{()=><ModuleGuard moduleId={4}><Module4Detail /></ModuleGuard>}</Route>
+          <Route path="/modul/4">{()=><ModuleGuard moduleId={4}><Module4WithIntro /></ModuleGuard>}</Route>
           <Route path="/modul/4/tag/:day">{()=><ModuleGuard moduleId={4}><Module4Detail /></ModuleGuard>}</Route>
           
-          <Route path="/modul/5">{()=><ModuleGuard moduleId={5}><Module5Detail /></ModuleGuard>}</Route>
+          <Route path="/modul/5">{()=><ModuleGuard moduleId={5}><Module5WithIntro /></ModuleGuard>}</Route>
           <Route path="/modul/5/tag/:day">{()=><ModuleGuard moduleId={5}><Module5Detail /></ModuleGuard>}</Route>
           
           {/* Placeholder Routes for other modules */}
