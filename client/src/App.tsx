@@ -13,6 +13,7 @@ import Impressum from "@/pages/Impressum";
 import Datenschutz from "@/pages/Datenschutz";
 import Kurse from "@/pages/Kurse";
 import ZahlungErfolgreich from "@/pages/ZahlungErfolgreich";
+import Widerruf from "@/pages/Widerruf";
 import UserManagement from "@/pages/admin/UserManagement";
 import Module3Detail from "@/pages/modules/Module3Detail";
 import Module4Detail from "@/pages/modules/Module4Detail";
@@ -81,6 +82,7 @@ function Router() {
           
           {/* Legal Pages */}
           <Route path="/datenschutz" component={Datenschutz} />
+          <Route path="/widerruf" component={Widerruf} />
           <Route path="/kurse" component={Kurse} />
           <Route path="/zahlung-erfolgreich" component={ZahlungErfolgreich} />
           <Route path="/impressum" component={Impressum} />
