@@ -180,7 +180,7 @@ export default function AGB() {
           </ul>
           <p>
             (4) Mit Beendigung des Vertrags erlischt das Nutzungsrecht. Der Zugang zur Plattform wird gesperrt. 
-            Bereits gezahlte Vergütungen werden nicht erstattet, sofern kein Widerrufsrecht besteht.
+            Bereits gezahlte Vergütungen werden im Rahmen des gesetzlichen Widerrufsrechts nach §355 BGB erstattet. Die vollständige Widerrufsbelehrung ist unter /widerruf abrufbar.
           </p>
 
           <h2>§ 9 Widerrufsrecht für Verbraucher</h2>

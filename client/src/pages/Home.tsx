@@ -102,14 +102,14 @@ export default function Home() {
             <div className="flex items-center gap-3">
               <Shield className="w-8 h-8 text-blue-600" />
               <div>
-                <div className="font-bold text-slate-900">AZAV-zertifiziert</div>
+                <div className="font-bold text-slate-900">AZAV-orientiert</div>
                 <div className="text-sm text-slate-600">Förderungsfähig</div>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <Award className="w-8 h-8 text-amber-600" />
               <div>
-                <div className="font-bold text-slate-900">IHK-anerkannt</div>
+                <div className="font-bold text-slate-900">IHK-Vorbereitung</div>
                 <div className="text-sm text-slate-600">Offiziell geprüft</div>
               </div>
             </div>
@@ -515,10 +515,10 @@ export default function Home() {
 
             <AccordionItem value="item-3" className="border-slate-200">
               <AccordionTrigger className="text-left font-semibold text-slate-900 hover:text-blue-600">
-                Sind die Zertifikate IHK-anerkannt?
+                Sind die Zertifikate IHK-Vorbereitung?
               </AccordionTrigger>
               <AccordionContent className="text-slate-700 leading-relaxed">
-                Unsere Ausbildung ist AZAV-zertifiziert und bereitet Sie optimal auf die IHK-Prüfungen vor. Die Zertifikate nach Modul-Abschluss dokumentieren Ihre Weiterbildung gemäß §34c GewO und werden von Arbeitgebern anerkannt.
+                Unsere Ausbildung ist AZAV-orientiert und bereitet Sie optimal auf die IHK-Prüfungen vor. Die Zertifikate nach Modul-Abschluss dokumentieren Ihre Weiterbildung gemäß §34c GewO und werden von Arbeitgebern anerkannt.
               </AccordionContent>
             </AccordionItem>
 
@@ -603,7 +603,7 @@ export default function Home() {
               </div>
               <p className="text-sm leading-relaxed max-w-sm">
                 Ihr Partner für professionelle Immobilienausbildung. 
-                Zertifiziert nach AZAV und anerkannt für die Weiterbildungspflicht nach §34c GewO.
+                Orientiert an AZAV-Qualitätsstandards · Vorbereitung §34c GewO
               </p>
             </div>
             

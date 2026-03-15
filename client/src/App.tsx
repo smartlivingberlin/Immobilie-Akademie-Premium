@@ -41,6 +41,7 @@ import GamificationDashboard from "@/pages/GamificationDashboard";
 import StrategiePlattform from "@/pages/StrategiePlattform";
 import VideoManagement from "@/pages/admin/VideoManagement";
 import WhiteLabelAdmin from "@/pages/admin/WhiteLabelAdmin";
+import PortalPhaseAdmin from "@/pages/admin/PortalPhaseAdmin";
 
 import Datenschutz from "@/pages/legal/Datenschutz";
 import Impressum from "@/pages/legal/Impressum";
@@ -84,6 +85,7 @@ function Router() {
           {/* Admin Pages */}
           <Route path="/admin/videos" component={VideoManagement} />
           <Route path="/admin/whitelabel" component={WhiteLabelAdmin} />
+          <Route path="/admin/phase" component={PortalPhaseAdmin} />
           
           {/* Legal Pages */}
           <Route path="/datenschutz" component={Datenschutz} />
