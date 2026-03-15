@@ -71,7 +71,6 @@ export default function Footer() {
                 <Link href="/datenschutz" className="hover:text-white transition-colors">
                   Datenschutzerklärung</Link>
                 <Link href="/widerruf" className="hover:text-white transition-colors">Widerrufsbelehrung</Link>
-                </Link>
               </li>
               <li>
                 <Link href="/agb" className="hover:text-white transition-colors">
