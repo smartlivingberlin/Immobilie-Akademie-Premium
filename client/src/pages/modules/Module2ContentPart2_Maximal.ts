@@ -179,6 +179,18 @@ Schritt 2 — Angepasster Preis:
 Schritt 3 — Verkehrswert:
 5.829 × 75 m² = 437.143 €
 Gerundet: 437.000 €`
+      },
+      {
+        question: `München Maxvorstadt: 65m² ETW, Vergleichspreis 9.500€/m², Abschlag kein Aufzug 3.OG −2%, Abschlag BJ 1975 −5%. Verkehrswert?`,
+        solution: `Basis: 65 × 9.500 = 617.500 €\n− 2% = −12.350 €\n− 5% = −30.875 €\n**Verkehrswert: 574.275 € → 574.000 €**\nHinweis: In München dominiert Bodenrichtwert — auch ältere ETW mit Mängeln über 500.000 €.`
+      },
+      {
+        question: `Erfurt Altstadt: 72m² ETW, Vergleichspreis 2.400€/m², Lagezuschlag Altstadt +8%, Modernisierung 2022 +3%. Verkehrswert?`,
+        solution: `Basis: 72 × 2.400 = 172.800 €\n+ 8% = +13.824 €\n+ 3% = +5.184 €\n**Verkehrswert: 191.808 € → 192.000 €**\nHinweis: Ostdeutsche Mittelstädte (Erfurt, Magdeburg, Rostock) zeigen dynamisches Wachstum — deutlich unter Westniveau, aber IHK-Prüfungslogik identisch.`
+      },
+      {
+        question: `Hamburg Altona: 58m² ETW, Vergleichsobjekte: A=5.200€/m² (kein Balkon, gleiche Lage), B=5.600€/m² (Balkon, +5% bessere Lage). Ihr Objekt: Balkon, gleiche Lage wie A. Balkon-Faktor +2%. Verkehrswert?`,
+        solution: `Obj.A anpassen: 5.200 × 1,02 = 5.304 €/m²\nObj.B anpassen: 5.600 / 1,05 = 5.333 €/m² (Balkon bereits enthalten)\nMittelwert: (5.304 + 5.333)/2 = 5.319 €/m²\n**Verkehrswert: 5.319 × 58 = 308.502 € → 308.000 €**`
       }
     ],
     type: "Bewertung"
