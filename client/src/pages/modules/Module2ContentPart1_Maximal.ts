@@ -226,7 +226,7 @@ Ausnahme: Andere Verpflichtete (z.B. der Notar) dürfen informiert werden.`
     ],
     type: "Recht"
   },
-  day_6:  day_6: {
+  day_6: {
     title: "Datenschutz (DSGVO) für Makler",
     theory: "Daten sind das Gold des Maklers, aber der Umgang ist streng reguliert.",
     extendedTheory: `
