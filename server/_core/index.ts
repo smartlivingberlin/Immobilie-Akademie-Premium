@@ -16,6 +16,7 @@ import { registerOAuthRoutes } from "./oauth";
 import { registerLocalAuthRoutes } from "./auth-local";
 import { registerPasswordResetRoutes } from "../passwordReset";
 import { registerPortalPhaseRoutes } from "../portalPhase";
+import { registerRagTutorRoutes } from "../ragTutor";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
@@ -36,6 +37,7 @@ async function startServer() {
   registerLocalAuthRoutes(app);
   registerPasswordResetRoutes(app);
   registerPortalPhaseRoutes(app);
+  registerRagTutorRoutes(app);
   // Healthcheck für Railway / Monitoring
   app.get("/api/health", (_req, res) => {
     return res.status(200).json({ ok: true, ts: new Date().toISOString() });
