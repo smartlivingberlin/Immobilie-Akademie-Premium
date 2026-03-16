@@ -81,6 +81,85 @@ Architekt, Statiker, Baugenehmigung.
       {
         question: "Zählt eine Garage zur BGF des Wohnhauses?",
         solution: "Nein, Garagen werden meist separat bewertet (Pauschalwert pro Stellplatz oder eigene BGF-Berechnung mit eigenen NHK-Werten)."
+      },
+      {
+        question: `Vollständige Sachwertberechnung — München Schwabing (IHK-Niveau):
+EFH, mittlerer Standard, BGF 195 m², Baujahr 2001
+Grundstück: 380 m², Bodenrichtwert München-Schwabing 2024: 3.200 €/m²
+Außenanlagen: 22.000 €
+NHK 2010 EFH mittel: 1.050 €/m²
+Baupreisindex München 2024: 168 (Basis 2010 = 100)
+Sachwertfaktor München EFH: 1,42
+Gesamtnutzungsdauer: 80 Jahre
+Berechnen Sie den Verkehrswert nach Sachwertverfahren.`,
+        solution: `**Schritt 1: Herstellungskosten (HK)**
+195 m² BGF × 1.050 €/m² (NHK 2010) = 204.750 €
+
+**Schritt 2: Baupreisanpassung 2024**
+204.750 € × (168/100) = 204.750 × 1,68 = 343.980 €
+
+**Schritt 3: Alterswertminderung**
+Alter 2024: 23 Jahre | GND: 80 Jahre
+AWM = 23/80 = 28,75%
+Abzug: 343.980 × 28,75% = 98.894 €
+Zeitwert Gebäude: 343.980 − 98.894 = 245.086 €
+
+**Schritt 4: Bodenwert**
+380 m² × 3.200 €/m² = 1.216.000 €
+
+**Schritt 5: Vorläufiger Sachwert**
+245.086 € (Gebäude) + 22.000 € (Außenanlagen) + 1.216.000 € (Boden)
+= 1.483.086 €
+
+**Schritt 6: Marktanpassung**
+1.483.086 € × 1,42 = 2.105.982 €
+Gerundet: **2.100.000 €**
+
+**Merksatz:** In München dominiert der Bodenwert! Der Gebäudewert ist
+im Verhältnis zum Bodenwert gering — typisch für Hochpreisregionen.`,
+      },
+      {
+        question: `Sachwertberechnung — Dresden Striesen (Ostdeutschland):
+EFH, einfacher Standard, BGF 160 m², Baujahr 1992
+Grundstück: 520 m², Bodenrichtwert Dresden-Striesen 2024: 420 €/m²
+Außenanlagen: 12.000 €
+NHK 2010 EFH einfach: 800 €/m²
+Baupreisindex Dresden 2024: 155
+Sachwertfaktor Dresden EFH: 0,95
+GND: 80 Jahre
+Berechnen Sie den Verkehrswert. Was fällt im Vergleich zu München auf?`,
+        solution: `**Schritt 1: Herstellungskosten**
+160 m² × 800 €/m² = 128.000 €
+
+**Schritt 2: Baupreisanpassung**
+128.000 × 1,55 = 198.400 €
+
+**Schritt 3: Alterswertminderung**
+Alter: 32 Jahre | AWM = 32/80 = 40%
+Abzug: 198.400 × 40% = 79.360 €
+Zeitwert: 198.400 − 79.360 = 119.040 €
+
+**Schritt 4: Bodenwert**
+520 m² × 420 €/m² = 218.400 €
+
+**Schritt 5: Vorläufiger Sachwert**
+119.040 + 12.000 + 218.400 = 349.440 €
+
+**Schritt 6: Marktanpassung**
+349.440 × 0,95 = 332.000 €
+Gerundet: **332.000 €**
+
+**Vergleich München/Dresden:**
+| | München | Dresden |
+|---|---|---|
+| Bodenwert | 1.216.000 € (82%) | 218.400 € (62%) |
+| Gebäudewert | 245.086 € (17%) | 119.040 € (34%) |
+| Sachwertfaktor | 1,42 | 0,95 |
+| Verkehrswert | 2.100.000 € | 332.000 € |
+
+Fazit: In Ostdeutschland ist das Verhältnis ausgeglichener.
+Der Sachwertfaktor unter 1,0 bedeutet: Markt zahlt weniger als
+die Substanz kostet — typisch für strukturschwache Regionen.`
       }
     ]
   },
