@@ -623,7 +623,33 @@ Vergleichen Sie die Finanzierung:
   day_13: {
     title: "Zinsbindung, Sollzins, Effektivzins und Konditionsvergleich",
     theory: `Die Zinsbindung legt fest, wie lange der Zinssatz fest bleibt (5, 10, 15, 20 Jahre). Längere Zinsbindung bietet Planungssicherheit, kostet aber mehr Zinsen. Der Sollzins ist der reine Darlehenszins ohne Nebenkosten. Der Effektivzins berücksichtigt alle Kosten (Sollzins + Bearbeitungsgebühr + Disagio + Schätzkosten) und ist die Vergleichsgröße. Beim Konditionsvergleich müssen Sie mehrere Angebote einholen und den Effektivzins, die Zinsbindung, Sondertilgungsrechte und Bereitstellungszinsen vergleichen. Ein Unterschied von 0,5% Effektivzins kann über 25 Jahre mehrere Zehntausend Euro ausmachen. Sie müssen dem Kunden mindestens 3 Angebote vorlegen und die Vor- und Nachteile erklären.`,
-    extendedTheory: `**Zinsbindung, Sollzins, Effektivzins und Konditionsvergleich im Detail:**
+    extendedTheory: 
+### Zinsentwicklung Deutschland 2024/2025 (aktuell)
+
+**EZB-Leitzins (Einlagensatz):**
+| Datum | Leitzins |
+|-------|---------|
+| Jun 2023 | 4,00% (Höchststand) |
+| Jun 2024 | 3,75% (erste Senkung) |
+| Sep 2024 | 3,50% |
+| Dez 2024 | 3,00% |
+| Mär 2025 | 2,50% (aktuell) |
+
+**Bauzinsen Deutschland (10J Zinsbindung, Stand März 2026):**
+- Durchschnitt: ca. 3,8–4,2% p.a.
+- Beste Konditionen (sehr gute Bonität, 60% Beleihung): ab 3,5%
+- Höhere Beleihung (>80%): Aufschlag 0,3–0,8%
+
+**Forward-Darlehen 2025:**
+- Vorlaufzeit 12 Monate: Aufschlag ca. 0,20%
+- Vorlaufzeit 24 Monate: Aufschlag ca. 0,40%
+- Vorlaufzeit 36 Monate: Aufschlag ca. 0,60%
+
+**Prüfungshinweis:** Die IHK-Prüfung fragt keine tagesaktuellen Zinsen,
+sondern das Verständnis der Zinsstruktur und Berechnungsmethoden.
+Aktuelle Marktdaten sind für die Beratungspraxis nach §34i GewO wichtig.
+
+`**Zinsbindung, Sollzins, Effektivzins und Konditionsvergleich im Detail:**
 
 **1. Zinsbindung:**
 
