@@ -73,6 +73,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/widerruf" className="hover:text-white transition-colors">Widerrufsbelehrung</Link>
+                <Link href="/bildungskonzept" className="hover:text-white transition-colors">Bildungskonzept</Link>
               </li>
               <li>
                 <Link href="/agb" className="hover:text-white transition-colors">
