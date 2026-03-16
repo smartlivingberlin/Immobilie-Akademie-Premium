@@ -84,7 +84,8 @@ Die Abrechnung muss dem Mieter spätestens bis zum Ablauf des zwölften Monats n
 
 **Häufiger Fehler:** "Sonstige Betriebskosten" werden abgerechnet, ohne dass im Vertrag konkretisiert wurde, welche Kosten darunter fallen (z.B. Dachrinnenreinigung, Wartung Rauchmelder).
 `,
-    task: {
+    task: [
+    {
       question: "Ein Mieter zieht am 30.06. aus. Der Abrechnungszeitraum ist das Kalenderjahr. Wann muss er spätestens seine BKA erhalten?",
       solution: "Spätestens bis zum 31.12. des Folgejahres. Auch wenn er früher auszieht, wird die Abrechnung auf seinen Zeitraum anteilig erstellt."
     },
@@ -124,6 +125,7 @@ Heizung gesamt: 2.760,00 €
 
 Merksatz: Heizkostenverordnung gilt zwingend — mindestens 50% nach Verbrauch!`
     }
+    ]
   },
   day_63: {
     title: "Mieterhöhungsverlangen",
