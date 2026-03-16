@@ -214,7 +214,8 @@ Ein sorgfältiges Protokoll ist das wichtigste Beweismittel.
 
 **Tipp:** Fotos machen! Bei Streitigkeiten helfen Bilder mehr als vage Beschreibungen.
 `,
-    task: {
+    task: [
+    {
       question: "Ein Mieter wohnt seit 10 Jahren in der Wohnung. Der Vermieter kündigt wegen Eigenbedarf. Welche Kündigungsfrist gilt?",
       solution: "9 Monate (§ 573c BGB), da das Mietverhältnis länger als 8 Jahre besteht."
     },
@@ -258,6 +259,7 @@ Grundstruktur unrealistisch ist. Im Zweifel: Klausel unwirksam.
 
 Praxistipp: Wohnungsübergabeprotokoll mit Fotos = wichtigster Schutz!`
     }
+    ]
   },
   day_65: {
     title: "Forderungsmanagement & Mahnwesen",
