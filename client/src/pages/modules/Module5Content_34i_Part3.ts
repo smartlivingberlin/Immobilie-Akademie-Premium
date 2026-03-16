@@ -623,7 +623,7 @@ Vergleichen Sie die Finanzierung:
   day_13: {
     title: "Zinsbindung, Sollzins, Effektivzins und Konditionsvergleich",
     theory: `Die Zinsbindung legt fest, wie lange der Zinssatz fest bleibt (5, 10, 15, 20 Jahre). Längere Zinsbindung bietet Planungssicherheit, kostet aber mehr Zinsen. Der Sollzins ist der reine Darlehenszins ohne Nebenkosten. Der Effektivzins berücksichtigt alle Kosten (Sollzins + Bearbeitungsgebühr + Disagio + Schätzkosten) und ist die Vergleichsgröße. Beim Konditionsvergleich müssen Sie mehrere Angebote einholen und den Effektivzins, die Zinsbindung, Sondertilgungsrechte und Bereitstellungszinsen vergleichen. Ein Unterschied von 0,5% Effektivzins kann über 25 Jahre mehrere Zehntausend Euro ausmachen. Sie müssen dem Kunden mindestens 3 Angebote vorlegen und die Vor- und Nachteile erklären.`,
-    extendedTheory: 
+    extendedTheory: `
 ### Zinsentwicklung Deutschland 2024/2025 (aktuell)
 
 **EZB-Leitzins (Einlagensatz):**
