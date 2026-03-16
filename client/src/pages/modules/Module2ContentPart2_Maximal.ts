@@ -47,37 +47,140 @@ Verkäufer will 500.000 €, weil er "so viel Liebe reingesteckt hat" (goldene W
   },
   day_22: {
     title: "Vergleichswertverfahren (§ 15 ImmoWertV)",
-    theory: "Das genaueste Verfahren, wenn es Vergleichsobjekte gibt.",
+    theory: "Das Vergleichswertverfahren ist das genaueste Verfahren bei ausreichenden Marktdaten. Grundlage: vergleichbare Kaufpreise aus der Kaufpreissammlung des Gutachterausschusses, angepasst auf das Bewertungsobjekt.",
     extendedTheory: `
-### Funktionsweise
-Man nimmt Kaufpreise von ähnlichen Objekten (aus der Kaufpreissammlung) und passt sie an.
+## Vergleichswertverfahren §15 ImmoWertV — Vollständige Methodik
 
-**Anpassungsfaktoren (Umrechnungskoeffizienten):**
-*   **Lage:** +10% für Bestlage.
-*   **Größe:** Kleine Wohnungen sind pro qm teurer als große!
-*   **Alter:** Abschläge für Baujahr.
-*   **Ausstattung:** Aufschläge für Lift, Balkon.
+### Grundformel
+Verkehrswert = Vergleichspreis/m² × Wohnfläche × Anpassungskoeffizient
 
-**Formel:**
-Vergleichspreis/qm x Fläche x Anpassungsfaktoren = Verkehrswert.
+### Anpassungsfaktoren (Umrechnungskoeffizienten)
+Jedes Vergleichsobjekt unterscheidet sich vom Bewertungsobjekt. Diese Unterschiede werden durch Koeffizienten bereinigt:
 
-**Problem:**
-Bei individuellen Architektenhäusern gibt es keine Vergleichsobjekte. -> Sachwertverfahren nutzen.
+| Merkmal | Typischer Korrekturfaktor Berlin 2024 |
+|---------|---------------------------------------|
+| Sehr gute vs. gute Lage | +8 bis +15% |
+| Balkon vorhanden | +1 bis +3% |
+| Aufzug vorhanden | +2 bis +4% (ab 3. OG relevant) |
+| Baujahr 10 Jahre jünger | +3 bis +6% |
+| Instandhaltungsstau | -5 bis -15% (Kosten 1:1 abziehen!) |
+| Südlage vs. Nordlage | +2 bis +5% |
+
+### Zeitliche Anpassung (Indexierung)
+Ältere Vergleichspreise müssen auf den Bewertungsstichtag angepasst werden:
+
+**Berliner Preisindex Wohnungen (Gutachterausschuss Berlin):**
+- 2020: Index 120
+- 2022: Index 145 (Hochpunkt)
+- 2024: Index 138 (Marktkorrektur ~5%)
+
+Formel: Angepasster Preis = Vergleichspreis × (Index aktuell / Index Kaufjahr)
+
+### Berliner Bodenrichtwerte 2024 (Auswahl)
+| Bezirk | BRW Wohnen €/m² |
+|--------|-----------------|
+| Mitte/Prenzlauer Berg | 2.500–4.500 |
+| Charlottenburg | 2.000–3.500 |
+| Neukölln | 800–1.800 |
+| Pankow | 400–900 |
+| Spandau | 250–500 |
+
+### Wann NICHT anwendbar?
+- Einzigartige Objekte (Schlösser, Architektenhäuser) → Sachwertverfahren
+- Renditeobjekte (MFH, Gewerbe) → Ertragswertverfahren
+- Fehlende Vergleichsdaten → kombinierte Verfahren
+
+### Merkregel IHK:
+**"3 Vergleichsobjekte → Mittelwert → anpassen → Verkehrswert"**
     `,
-    law: ["ImmoWertV § 15"],
-    practice: "Bewerten Sie eine ETW. Vergleichsobjekt A: 3000€/qm (bessere Lage). Vergleichsobjekt B: 2500€/qm (schlechtere Lage). Wo liegt Ihr Objekt?",
+    law: ["§15 ImmoWertV (Vergleichswertverfahren)", "§194 BauGB (Verkehrswertdefinition)", "§9 ImmoWertV (Vergleichspreise, Kaufpreissammlung)"],
+    practice: "Recherchieren Sie aktuelle ETW-Kaufpreise in Ihrem Bezirk über immobilienscout24.de oder Gutachterausschuss Berlin (gutachterausschuss.fi.berlin.de). Welcher Preis/m² gilt für eine 3-Zimmer-ETW in mittlerer Lage?",
     caseStudy: `
-**Fall: Die Penthouse-Wohnung**
-Es gibt keine vergleichbaren Penthouses im Viertel.
-**Lösung:** Indirekter Vergleich (Vergleich mit anderen Stadtteilen + Lagezuschlag) oder Sachwertverfahren (Baukosten).
+**Berliner Praxisfall: ETW Prenzlauer Berg**
+
+Bewertungsobjekt: 3-Zimmer-ETW, 72 m², Baujahr 1990, 3. OG ohne Aufzug, Balkon vorhanden
+
+Vergleichsobjekte aus Kaufpreissammlung Berlin 2024:
+- Objekt A: 5.800 €/m², gleicher Bezirk, BJ 1992, 2. OG, kein Balkon
+- Objekt B: 6.200 €/m², gleicher Bezirk, BJ 1988, 4. OG mit Aufzug
+- Objekt C: 5.600 €/m², gleicher Bezirk, BJ 1991, 1. OG, kein Balkon
+
+Bereinigter Mittelwert: (5.800 + 6.200 + 5.600) / 3 = 5.867 €/m²
+
+Anpassungen:
+- Balkon vorhanden (Objekte haben keinen): +2,5%
+- Kein Aufzug, 3. OG: -1,5%
+- Netto-Anpassung: +1,0%
+
+Angepasster Wert: 5.867 × 1,01 = 5.926 €/m²
+Verkehrswert: 5.926 × 72 m² = 426.672 € → gerundet 427.000 €
+
+IHK-Merksatz: Immer auf volle 1.000 € runden!
     `,
-    task: "Berechnen Sie: 80qm Wohnung. Vergleichspreis 3.000 €. Lagezuschlag 5%. Abschlag Bad (alt) 10.000 €.",
-    solution: `
-80 * 3.000 = 240.000 €.
-+ 5% Lage = 12.000 €.
-- 10.000 € Zustand.
-**Ergebnis:** 242.000 €.
-    `,
+    task: [
+      {
+        question: `Aufgabe 1 — Grundberechnung (IHK-Niveau):
+Eine 3-Zimmer-ETW in Berlin-Neukölln, 68 m², soll bewertet werden.
+Vergleichspreise aus Kaufpreissammlung: 3.200 €/m², 3.400 €/m², 3.100 €/m²
+Das Bewertungsobjekt hat einen Balkon (+2%), ist im 4. OG mit Aufzug (+3%) und hat Instandhaltungsstau (neue Küche + Bad nötig, Kosten ca. 22.000 €).
+Berechnen Sie den Verkehrswert.`,
+        solution: `Schritt 1 — Mittelwert Vergleichspreise:
+(3.200 + 3.400 + 3.100) / 3 = 3.233 €/m²
+
+Schritt 2 — Anpassungen:
+Balkon: +2,0% → +64,67 €/m²
+Aufzug 4. OG: +3,0% → +97,00 €/m²
+Summe Zuschläge: +5,0%
+
+Schritt 3 — Angepasster Preis:
+3.233 × 1,05 = 3.395 €/m²
+
+Schritt 4 — Rohwert:
+3.395 × 68 m² = 230.860 €
+
+Schritt 5 — Instandhaltungsabzug:
+230.860 - 22.000 = 208.860 €
+
+Verkehrswert: 209.000 € (gerundet)
+
+IHK-Merkregel: Instandhaltungskosten werden zu 100% abgezogen!`
+      },
+      {
+        question: `Aufgabe 2 — Zeitliche Indexanpassung:
+Ein Vergleichsgrundstück wurde 2022 für 450.000 € verkauft.
+Berliner Preisindex: 2022 = 145, 2024 = 138.
+Das Bewertungsobjekt ist 5% größer als das Vergleichsobjekt.
+Berechnen Sie den angepassten Vergleichswert für 2024.`,
+        solution: `Schritt 1 — Zeitliche Anpassung:
+Indexfaktor = 138 / 145 = 0,9517
+Zeitangepasster Preis: 450.000 × 0,9517 = 428.265 €
+
+Schritt 2 — Größenanpassung (+5%):
+428.265 × 1,05 = 449.678 €
+
+Angepasster Vergleichswert: 450.000 € (gerundet)
+
+Hinweis: Der Berliner Markt hat 2023/24 eine Korrektur von ca. 5% erfahren.
+Zeitliche Anpassungen sind zwingend bei Vergleichskäufen älter als 12 Monate!`
+      },
+      {
+        question: `Aufgabe 3 — Prüfungsfall Bodenrichtwert-Anpassung:
+Vergleichsobjekt liegt in Bodenrichtwertzone 2.800 €/m².
+Bewertungsobjekt liegt in Bodenrichtwertzone 3.400 €/m².
+Vergleichskaufpreis: 4.800 €/m² Wohnfläche, 75 m² Wohnfläche.
+Berechnen Sie den lageangepassten Verkehrswert.`,
+        solution: `Schritt 1 — Lagezahl berechnen:
+Lagezahl = BRW Bewertungsobjekt / BRW Vergleichsobjekt
+Lagezahl = 3.400 / 2.800 = 1,2143
+
+Schritt 2 — Angepasster Preis:
+4.800 × 1,2143 = 5.829 €/m²
+
+Schritt 3 — Verkehrswert:
+5.829 × 75 m² = 437.143 €
+Gerundet: 437.000 €`
+      }
+    ],
     type: "Bewertung"
   },
   day_23: {
@@ -137,11 +240,69 @@ Der Käufer kauft den zukünftigen Zahlungsstrom (Miete). Der Boden wird nur ver
 MFH, Miete 5€/qm. Markt 10€/qm.
 **Bewertung:** Man darf mit der *marktüblichen* Miete rechnen, wenn eine Erhöhung rechtlich möglich ist. Sonst Abschläge ("Over-Rented" vs "Under-Rented").
     `,
-    task: "Einfache Maklerformel (Vervielfältiger): Jahresmiete 50.000 €. Faktor 20. Wert?",
-    solution: `
-50.000 * 20 = 1.000.000 €.
-(Entspricht 5% Bruttorendite. 100 / 20 = 5).
-    `,
+    task: [
+      {
+        question: `Aufgabe 1 — Vollständige Ertragswertberechnung (IHK-Niveau):
+MFH in Berlin-Neukölln, 6 Wohneinheiten, Baujahr 1968
+Wohnfläche gesamt: 380 m²
+Ist-Miete: 7,80 €/m²/Monat
+Marktmiete Neukölln 2024: 10,20 €/m²/Monat
+Bodenwert: 850 €/m² × 290 m² Grundstück
+Liegenschaftszinssatz: 3,0% (GA-Bericht Berlin Neukölln)
+Restnutzungsdauer: 38 Jahre → Barwertfaktor: 22,5
+Bewirtschaftungskosten: 18% (Altbau)
+Berechnen Sie den Verkehrswert nach Ertragswertverfahren.`,
+        solution: `Schritt 1 — Bodenwert:
+850 €/m² × 290 m² = 246.500 €
+
+Schritt 2 — Rohertrag (MARKTÜBLICH, nicht Ist-Miete!):
+10,20 €/m²/Monat × 380 m² × 12 = 46.512 €/Jahr
+
+Schritt 3 — Bewirtschaftungskosten (18%):
+46.512 × 0,18 = 8.372 €
+
+Schritt 4 — Reinertrag:
+46.512 - 8.372 = 38.140 €
+
+Schritt 5 — Bodenwertverzinsung:
+246.500 × 3,0% = 7.395 €
+
+Schritt 6 — Gebäudereinertrag:
+38.140 - 7.395 = 30.745 €
+
+Schritt 7 — Gebäudeertragswert:
+30.745 × 22,5 = 691.763 €
+
+Schritt 8 — Vorläufiger Ertragswert:
+691.763 + 246.500 = 938.263 €
+
+Schritt 9 — Abzug Mietminderung (Ist < Markt):
+Mietdifferenz: (10,20 - 7,80) × 380 × 12 = 10.944 €/Jahr
+Barwert: 10.944 × 22,5 = 246.240 €
+Abzug!
+
+Verkehrswert: 938.263 - 246.240 = 692.023 €
+Gerundet: 692.000 €
+
+IHK-Merkregel: Ist-Miete IMMER mit Marktmiete vergleichen!
+Unter-Miete = Abzug, Über-Miete = Zuschlag`
+      },
+      {
+        question: `Aufgabe 2 — Liegenschaftszinssatz und Vervielfältiger:
+Gegeben: Jahresreinertrag 42.000 €, Bodenwert 180.000 €, LZ 2,8%, RND 30 Jahre
+Barwertfaktor (30 J / 2,8%): 20,2
+Berechnen Sie den Ertragswert.`,
+        solution: `Gebäudereinertrag:
+42.000 - (180.000 × 2,8%) = 42.000 - 5.040 = 36.960 €
+
+Gebäudeertragswert:
+36.960 × 20,2 = 746.592 €
+
+Ertragswert:
+746.592 + 180.000 = 926.592 €
+Gerundet: 927.000 €`
+      }
+    ],
     type: "Bewertung"
   },
   day_25: {

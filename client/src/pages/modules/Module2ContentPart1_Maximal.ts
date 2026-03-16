@@ -195,19 +195,38 @@ Die Aufsichtsbehörden prüfen streng. Bußgelder beginnen oft bei 10.000 €.
 Käufer fragt: "Kann ich 50.000 € Anzahlung bar an den Verkäufer geben?"
 **Alarm:** Immobilienkauf mit Bargeld ist in Deutschland zwar zivilrechtlich möglich (aber Notare dürfen es nicht beurkunden/abwickeln), aber hochgradig verdächtig. Makler MUSS das melden.
     `,
-    task: "Erstellen Sie eine interne Arbeitsanweisung 'GwG-Prozess' für Ihre Mitarbeiter.",
-    solution: `
-**Arbeitsanweisung:**
-1.  Bei Reservierung: Ausweis kopieren (beide Seiten).
-2.  Prüfen: Passt das Foto? Ist er gültig?
-3.  Fragen: "Handeln Sie auf eigene Rechnung?"
-4.  Bei Firmen: Handelsregisterauszug ziehen + Transparenzregister.
-5.  Dokumentation im CRM-System ablegen.
-6.  Bei Zweifel: Geschäftsleitung informieren -> Verdachtsmeldung prüfen.
-    `,
+    task: [
+      {
+        question: `GwG Prüfungsfall (IHK-Niveau):
+Herr Mehmet K. möchte ein MFH für 1,2 Mio. € kaufen. Er möchte 150.000 € als Anzahlung bar übergeben. Als Käufer tritt eine zypriotische Ltd. auf. Herr K. erklärt, er sei der alleinige Geschäftsführer. Das Geld stamme aus "Geschäften in der Türkei".
+
+Frage 1: Welche GwG-Pflichten hat der Makler?
+Frage 2: Muss eine Verdachtsmeldung abgegeben werden?
+Frage 3: Darf der Makler Herrn K. über eine etwaige Meldung informieren?`,
+        solution: `Antwort 1 — GwG-Pflichten:
+- Identifizierung §11 GwG: Personalausweis Herrn K. + Handelsregister Ltd. Zypern
+- Wirtschaftlich Berechtigter: Nachweis >25% Anteile (§3 GwG)
+- Erhöhte Sorgfalt §15 GwG wegen: Barzahlung >10.000 €, Offshore-Gesellschaft, unklare Mittelherkunft
+- Schriftlicher Nachweis Mittelherkunft verlangen (Kontoauszüge, Geschäftsunterlagen)
+- Eigene Risikoanalyse dokumentieren
+
+Antwort 2 — Verdachtsmeldung:
+JA — Verdachtsmeldung an FIU (goAML) ist PFLICHT weil:
+- Barzahlung 150.000 € (weit über 10.000 € Grenze)
+- Zypern: erhöhtes Risiko (EU-Mitglied, aber bekannt für Briefkastenfirmen)
+- "Geschäfte in der Türkei" ohne konkreten Nachweis
+- Kein konkreter Beweis nötig — begründeter Verdacht reicht! (§43 GwG)
+
+Antwort 3 — Informationspflicht:
+NEIN — Tipping-off-Verbot §47 GwG!
+Der Makler darf Herrn K. NICHT informieren dass eine Verdachtsmeldung abgegeben wurde.
+Verstoß: Strafbar nach §17 GwG (bis 2 Jahre Freiheitsstrafe oder Geldstrafe)
+Ausnahme: Andere Verpflichtete (z.B. der Notar) dürfen informiert werden.`
+      }
+    ],
     type: "Recht"
   },
-  day_6: {
+  day_6:  day_6: {
     title: "Datenschutz (DSGVO) für Makler",
     theory: "Daten sind das Gold des Maklers, aber der Umgang ist streng reguliert.",
     extendedTheory: `
