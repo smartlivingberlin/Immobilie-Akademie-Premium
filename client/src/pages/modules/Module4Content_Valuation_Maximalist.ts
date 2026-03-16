@@ -341,6 +341,14 @@ Basiswert: 80 m² * 3.900 €/m² = 312.000 €.
       {
         question: `Indexanpassung — Leipzig Gohlis 2024:\nVergleichskauf 2022: 2.800€/m², 75m² ETW.\nIndex Leipzig ETW: 2022=118, 2024=112.\nLagezuschlag Gohlis vs. Vergleichsobjekt: +8%.\nBerechnen Sie den aktuellen Verkehrswert.`,
         solution: `Indexfaktor: 112/118 = 0,9492\n2.800 × 0,9492 = 2.658 €/m²\n× Lagezuschlag 1,08 = 2.870 €/m²\n× 75m² = 215.250 € → gerundet **215.000 €**\n\nHinweis: Ostdeutsche Großstädte (Leipzig, Dresden, Erfurt) zeigen seit 2023 leichte Marktkorrekturen nach den Boomjahren 2019-2022.`
+      },
+      {
+        question: `Vollständige Vergleichswertberechnung — Hamburg Eimsbüttel:\nETW 68m², BJ 1995, 2.OG, Balkon, kein Aufzug.\nVergleichsobjekte: A=4.200€/m² (kein Balkon, kein Aufzug, 2.OG) | B=4.600€/m² (Balkon, Aufzug, 3.OG) | C=4.000€/m² (kein Balkon, kein Aufzug, 1.OG)\nFaktoren: Balkon +2%, Aufzug +1,5%, OG ±0,5%/OG. Berechnen Sie den Verkehrswert.`,
+        solution: `Obj.A→ +2% Balkon = 4.284 €/m²\nObj.B→ -2% Balkon, -1,5% Aufzug, +0,5% OG = 4.462 €/m²\nObj.C→ +2% Balkon, -0,5% OG = 4.060 €/m²\nMittelwert: (4.284+4.462+4.060)/3 = 4.269 €/m²\nVerkehrswert: 4.269 × 68 = 290.292 € → gerundet **290.000 €**`
+      },
+      {
+        question: `Indexanpassung — Leipzig Gohlis 2024:\nVergleichskauf 2022: 2.800€/m², 75m² ETW.\nIndex Leipzig ETW: 2022=118, 2024=112.\nLagezuschlag Gohlis vs. Vergleichsobjekt: +8%.\nBerechnen Sie den aktuellen Verkehrswert.`,
+        solution: `Indexfaktor: 112/118 = 0,9492\n2.800 × 0,9492 = 2.658 €/m²\n× Lagezuschlag 1,08 = 2.870 €/m²\n× 75m² = 215.250 € → gerundet **215.000 €**\n\nHinweis: Ostdeutsche Großstädte (Leipzig, Dresden, Erfurt) zeigen seit 2023 leichte Marktkorrekturen nach den Boomjahren 2019-2022.`
       }
     ]
   },
