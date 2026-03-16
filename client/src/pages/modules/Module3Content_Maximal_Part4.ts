@@ -86,7 +86,43 @@ Die Abrechnung muss dem Mieter spätestens bis zum Ablauf des zwölften Monats n
 `,
     task: {
       question: "Ein Mieter zieht am 30.06. aus. Der Abrechnungszeitraum ist das Kalenderjahr. Wann muss er spätestens seine BKA erhalten?",
-      solution: "Spätestens bis zum 31.12. des Folgejahres. Auch wenn er früher auszieht, wird die Abrechnung erst nach Ablauf der Periode fällig und erstellt."
+      solution: "Spätestens bis zum 31.12. des Folgejahres. Auch wenn er früher auszieht, wird die Abrechnung auf seinen Zeitraum anteilig erstellt."
+    },
+    {
+      question: `Vollständige BKA-Berechnung — Musterwohnung Dortmund:
+Wohnung: 72 m², Haus gesamt: 480 m²
+Abrechnungszeitraum: 01.01.-31.12.2024
+Betriebskosten gesamt (Haus):
+- Heizung/Warmwasser: 18.400 € (Heizkostenverordnung: 70% Verbrauch, 30% Fläche)
+- Wasser/Abwasser: 4.800 € (nach Verbrauch — Wohnung: 180 m³ von 1.200 m³ gesamt)
+- Müllabfuhr: 2.400 € (nach Wohnfläche)
+- Hausmeister: 3.600 € (nach Wohnfläche)
+- Gebäudeversicherung: 1.920 € (nach Wohnfläche)
+Vorauszahlungen Mieter: 180 €/Monat = 2.160 €
+Berechnen Sie den Abrechnungsbetrag (Nachzahlung oder Guthaben).`,
+      solution: `**Heizung/Warmwasser (HeizkostenV §7):**
+Flächenanteil: 72/480 = 15%
+Flächenanteil Heizung (30%): 18.400 × 30% × 15% = 828,00 €
+Verbrauchsanteil (70%): Wohnung 15% Verbrauch angenommen = 18.400 × 70% × 15% = 1.932,00 €
+Heizung gesamt: 2.760,00 €
+
+**Wasser/Abwasser (nach Verbrauch):**
+4.800 € × (180/1.200) = 4.800 × 15% = 720,00 €
+
+**Müllabfuhr (nach Fläche):**
+2.400 € × 15% = 360,00 €
+
+**Hausmeister (nach Fläche):**
+3.600 € × 15% = 540,00 €
+
+**Gebäudeversicherung (nach Fläche):**
+1.920 € × 15% = 288,00 €
+
+**Gesamtkosten Wohnung:** 2.760 + 720 + 360 + 540 + 288 = **4.668,00 €**
+**Vorauszahlungen:** 2.160,00 €
+**Nachzahlung: 2.508,00 €**
+
+Merksatz: Heizkostenverordnung gilt zwingend — mindestens 50% nach Verbrauch!`
     }
   },
   day_63: {
@@ -179,6 +215,46 @@ Ein sorgfältiges Protokoll ist das wichtigste Beweismittel.
     task: {
       question: "Ein Mieter wohnt seit 10 Jahren in der Wohnung. Der Vermieter kündigt wegen Eigenbedarf. Welche Kündigungsfrist gilt?",
       solution: "9 Monate (§ 573c BGB), da das Mietverhältnis länger als 8 Jahre besteht."
+    },
+    {
+      question: `BGH-Aktualisierung 2024/25 — Eigenbedarfskündigung:
+BGH Urteil v. 15.01.2025 (VIII ZR 213/23):
+Vermieter kündigt wegen Eigenbedarf für seinen Sohn.
+Sohn findet 3 Monate nach Kündigung eine andere Wohnung.
+Muss der Vermieter die Kündigung zurücknehmen?
+Was sind die Konsequenzen wenn der Eigenbedarf entfällt?`,
+      solution: `**BGH 2025: Wegfall des Eigenbedarfs**
+Ja — entfällt der Eigenbedarf NACH Ausspruch der Kündigung aber VOR Ablauf der Kündigungsfrist, muss der Vermieter den Mieter informieren und die Kündigung wird unwirksam.
+
+**Konsequenzen bei Verschweigen:**
+- Schadensersatz §280 BGB (Umzugskosten, Maklergebühren, Mehrmiete neue Wohnung)
+- BGH: Auch entgangene Mieteinnahmen erstattungsfähig
+- Strafbarkeit wegen Vortäuschung möglich (§263 StGB)
+
+**Praxisregel:** Vermieter müssen Eigenbedarfsgründe dokumentieren und
+bei Wegfall unverzüglich informieren. Nachträglicher Eigenbedarf (nach Auszug)
+→ Schadensersatzpflicht wenn Mieter informiert und zurückgekehrt wäre.`
+    },
+    {
+      question: `BGH 2024 — Schönheitsreparaturen (VIII ZR 71/23):
+Mietvertrag enthält Klausel: "Der Mieter renoviert bei Auszug unabhängig vom Zustand."
+Mieter zieht nach 8 Jahren aus ohne zu renovieren.
+Kann Vermieter Schadensersatz verlangen?`,
+      solution: `**Nein — Klausel ist unwirksam (§307 BGB).**
+
+BGH st. Rspr. + Bestätigung 2024:
+"Endrenovierungsklauseln" ohne Rücksicht auf Wohnungszustand bei Einzug = unwirksam.
+
+**Wirksam nur wenn:**
+1. Wohnung war bei Einzug renoviert (frisch gestrichen)
+2. Fristenplan ist realistisch (3/5/7 Jahre)
+3. Weiche Formulierung: "wenn erforderlich"
+
+**Aktuelle BGH-Linie 2024:**
+Auch "flexible Klauseln" mit Ausnahmen können unwirksam sein wenn
+Grundstruktur unrealistisch ist. Im Zweifel: Klausel unwirksam.
+
+Praxistipp: Wohnungsübergabeprotokoll mit Fotos = wichtigster Schutz!`
     }
   },
   day_65: {
