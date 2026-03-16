@@ -424,6 +424,14 @@ Das ist das Geld, das am Ende des Jahres in der Tasche des Eigentümers bleibt (
       {
         question: "Sind Instandhaltungskosten umlagefähig auf den Mieter?",
         solution: "Nein, Instandhaltung ist Sache des Eigentümers (Vermieters) und mindert daher den Reinertrag."
+      },
+      {
+        question: `Reinertrag berechnen — Köln Ehrenfeld (Deutschlandweit typisch, mittlere Lage):\nMFH 8 WE, Wohnfläche 560 m², Ist-Miete 9,20 €/m²/Monat, Marktmiete 10,50 €/m²/Monat.\nBewirtschaftungskosten: Verwaltung 3%, Instandhaltung 8%, Mietausfallwagnis 2%, Sonstiges 1,5%.\nBerechnen Sie Rohertrag und Reinertrag (mit Marktmiete).`,
+        solution: `**Rohertrag (marktüblich):**\n10,50 €/m² × 560 m² × 12 = 70.560 €/Jahr\n\n**Bewirtschaftungskosten:**\nVerwaltung 3%: 2.117 €\nInstandhaltung 8%: 5.645 €\nMietausfallwagnis 2%: 1.411 €\nSonstiges 1,5%: 1.058 €\nGesamt BWK 14,5%: 10.231 €\n\n**Reinertrag:**\n70.560 − 10.231 = **60.329 €/Jahr**\n\nHinweis Ist-Miete: 9,20 × 560 × 12 = 61.824 € (Rohertrag Ist)\nMarktmiete höher → Aufschlag bei Bewertung möglich wenn Erhöhung rechtlich zulässig.`
+      },
+      {
+        question: `Bewirtschaftungskosten-Vergleich — Frankfurt Sachsenhausen vs. Rostock Stadtmitte:\nFrankfurt: Rohertrag 95.000 €, BWK 22%. Rostock: Rohertrag 42.000 €, BWK 18%.\nWelcher Reinertrag? Warum unterschiedliche BWK-Sätze?`,
+        solution: `Frankfurt Reinertrag: 95.000 × (1 − 0,22) = **74.100 €**\nRostock Reinertrag: 42.000 × (1 − 0,18) = **34.440 €**\n\nGrund unterschiedliche BWK-Sätze:\n- Neubau/sanierter Bestand: niedrigere Instandhaltung\n- Altbau: höhere Instandhaltungskosten\n- Großstädte: höhere Verwaltungskosten (mehr Fluktuation)\n- Strukturschwache Regionen: höheres Mietausfallwagnis\nGA-Berichte der jeweiligen Gutachterausschüsse maßgeblich!`
       }
     ]
   },
@@ -501,6 +509,14 @@ Ertragswert Gebäude + Bodenwert = **Vorläufiger Ertragswert**.
       {
         question: "Wann ist das Ertragswertverfahren NICHT geeignet?",
         solution: "Bei selbstgenutzten Einfamilienhäusern ohne Renditeabsicht. Hier steht der Sachwert (Substanz) im Vordergrund."
+      },
+      {
+        question: `Vollständige Ertragswertberechnung — Berlin Neukölln (IHK-Niveau):\nMFH 6 WE, 420 m² Wohnfläche, Marktmiete 10,80 €/m²/Monat\nBWK: 16% | Bodenwert: 280 m² × 850 €/m² = 238.000 €\nLiegenschaftszinssatz: 3,2% | RND: 38 Jahre\nBarwertfaktor (38J/3,2%): 22,1 (Anlage 1 ImmoWertV)\nBerechnen Sie den vollständigen Ertragswert.`,
+        solution: `**1. Rohertrag:** 10,80 × 420 × 12 = 54.432 €\n**2. BWK (16%):** 54.432 × 0,16 = 8.709 €\n**3. Reinertrag:** 54.432 − 8.709 = 45.723 €\n**4. Bodenwertverzinsung:** 238.000 × 3,2% = 7.616 €\n**5. Gebäudereinertrag:** 45.723 − 7.616 = 38.107 €\n**6. Gebäudeertragswert:** 38.107 × 22,1 = 842.165 €\n**7. Ertragswert:** 842.165 + 238.000 = **1.080.165 €**\nGerundet: **1.080.000 €**`
+      },
+      {
+        question: `Ertragswert — Stuttgart Mitte vs. Magdeburg Stadtfeld im Vergleich:\nStuttgart: Reinertrag 68.000 €, LZ 2,8%, Bodenwert 420.000 €, RND 30J, BF=19,6\nMagdeburg: Reinertrag 28.000 €, LZ 4,5%, Bodenwert 85.000 €, RND 25J, BF=14,8\nBerechnen Sie beide Ertragswerte und erklären Sie den Unterschied.`,
+        solution: `**Stuttgart:**\nBodenwertverzinsung: 420.000 × 2,8% = 11.760 €\nGebäudereinertrag: 68.000 − 11.760 = 56.240 €\nGebäudeertragswert: 56.240 × 19,6 = 1.102.304 €\nErtragswert: 1.102.304 + 420.000 = **1.522.304 € → 1.520.000 €**\n\n**Magdeburg:**\nBodenwertverzinsung: 85.000 × 4,5% = 3.825 €\nGebäudereinertrag: 28.000 − 3.825 = 24.175 €\nGebäudeertragswert: 24.175 × 14,8 = 357.790 €\nErtragswert: 357.790 + 85.000 = **442.790 € → 443.000 €**\n\n**Erklärung:**\nNiedrigerer LZ (Stuttgart) = höherer Vervielfältiger = höherer Wert.\nOstdeutsche Städte: höheres Risiko → höherer LZ → niedrigerer Wert.\nFazit: Gleiches Gebäude, andere Stadt → völlig andere Bewertung!`
       }
     ]
   },
@@ -562,6 +578,10 @@ Die Mieter haben alte Verträge mit Kündigungsschutz.
       {
         question: "Warum ist der Liegenschaftszins bei Gewerbeimmobilien meist höher als bei Wohnimmobilien?",
         solution: "Weil das Risiko bei Gewerbe höher ist (höheres Leerstandsrisiko, speziellere Drittverwendungsfähigkeit). Höheres Risiko = Höhere Renditeerwartung = Höherer Zins = Niedrigerer Vervielfältiger."
+      },
+      {
+        question: `Sonderfall Unter-Miete — Nürnberg Gostenhof:\nMFH, Marktmiete 9,80 €/m²/Monat, Ist-Miete 6,50 €/m²/Monat (Altmieter seit 15 Jahren)\nWohnfläche 380 m², BWK 15%, LZ 3,8%, Bodenwert 165.000 €, RND 28J, BF=17,2\nBerechnen Sie Ertragswert mit Marktmiete UND Abzug Mietminderung.`,
+        solution: `**Mit Marktmiete:**\nRohertrag: 9,80 × 380 × 12 = 44.688 €\nBWK (15%): 6.703 €\nReinertrag: 37.985 €\nBodenwertverzinsung: 165.000 × 3,8% = 6.270 €\nGebäudereinertrag: 31.715 €\nGebäudeertragswert: 31.715 × 17,2 = 545.498 €\nErtragswert Marktmiete: 545.498 + 165.000 = 710.498 €\n\n**Mietminderungsabzug:**\nMietdifferenz/Jahr: (9,80 − 6,50) × 380 × 12 = 15.048 €\nBarwert Mietminderung: 15.048 × 17,2 = 258.826 €\n\n**Verkehrswert:**\n710.498 − 258.826 = 451.672 € → gerundet **452.000 €**\n\nMerksatz: Unter-Miete mindert Wert erheblich! Altmieter = Wertminderung für Käufer.`
       }
     ]
   },
