@@ -24,6 +24,27 @@ const PRODUCTS = [
     modules: "2",
   },
   {
+    id: "modul_3",
+    name: "Modul 3: Verwalter WEG & Mietrecht",
+    description: "WEG-Reform 2020, Eigentümerversammlung, Nebenkostenabrechnung, Mietrecht §535ff BGB. 80 Lerntage, 528 UE.",
+    price: 69900,
+    modules: "1,3",
+  },
+  {
+    id: "modul_4",
+    name: "Modul 4: Gutachter & Sachverständiger",
+    description: "Alle 3 Wertermittlungsverfahren nach ImmoWertV 2021. Vergleichs-, Ertrags- und Sachwertverfahren. 40 Lerntage, 264 UE.",
+    price: 39900,
+    modules: "1,4",
+  },
+  {
+    id: "modul_5",
+    name: "Modul 5: Darlehensvermittler §34i GewO",
+    description: "Vollständige §34i-Vorbereitung: Annuitätendarlehen, KfW-Förderung, ESIS, EU-WIKR. 40 Lerntage, 304 UE.",
+    price: 49900,
+    modules: "1,5",
+  },
+  {
     id: "modul_komplett",
     name: "Komplettpaket: Alle 5 Module",
     description: "Vollständige IHK-Zertifizierung — 1760 Unterrichtseinheiten",
