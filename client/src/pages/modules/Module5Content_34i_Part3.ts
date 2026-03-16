@@ -649,7 +649,7 @@ Vergleichen Sie die Finanzierung:
 sondern das Verständnis der Zinsstruktur und Berechnungsmethoden.
 Aktuelle Marktdaten sind für die Beratungspraxis nach §34i GewO wichtig.
 
-`**Zinsbindung, Sollzins, Effektivzins und Konditionsvergleich im Detail:**
+**Zinsbindung, Sollzins, Effektivzins und Konditionsvergleich im Detail:**
 
 **1. Zinsbindung:**
 
