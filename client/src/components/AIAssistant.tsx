@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { X, Send, Bot, User, Loader2, Sparkles, ChevronDown, Mic, MicOff, Volume2, VolumeX } from "lucide-react";
+import { X, Send, Bot, User, Loader2, Sparkles, ChevronDown, Mic, MicOff, Volume2, VolumeX, Paperclip } from "lucide-react";
 
 interface AIAssistantProps {
   moduleContext?: string;
@@ -45,6 +45,8 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
   const [showScrollBtn, setShowScrollBtn] = useState(false);
   const [listening, setListening] = useState(false);
   const [speaking, setSpeaking] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const recognitionRef = useRef<any>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -161,6 +163,47 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
     const german = voices.find(v => v.lang.startsWith("de"));
     if (german) utterance.voice = german;
     window.speechSynthesis.speak(utterance);
+  };
+
+  const handleFileUpload = async (file: File) => {
+    if (!file) return;
+    setUploading(true);
+    const userMsg = { id: Date.now().toString(), role: "user" as const, text: `📎 Datei hochgeladen: ${file.name}` };
+    setMsgs(p => [...p, userMsg]);
+    try {
+      const res = await fetch("/api/ai/analyze-document", {
+        method: "POST",
+        headers: {
+          "Content-Type": file.type || "application/octet-stream",
+          "x-filename": file.name,
+        },
+        body: file,
+      });
+      const data = await res.json();
+      if (data.analysis) {
+        setMsgs(p => [...p, {
+          id: Date.now().toString() + "_doc",
+          role: "assistant" as const,
+          text: `📄 **Analyse von "${file.name}":**
+
+${data.analysis}`,
+        }]);
+      } else {
+        setMsgs(p => [...p, {
+          id: Date.now().toString() + "_err",
+          role: "assistant" as const,
+          text: "⚠️ Fehler bei der Analyse: " + (data.error || "Unbekannt"),
+        }]);
+      }
+    } catch {
+      setMsgs(p => [...p, {
+        id: Date.now().toString() + "_err",
+        role: "assistant" as const,
+        text: "⚠️ Upload fehlgeschlagen. Bitte erneut versuchen.",
+      }]);
+    } finally {
+      setUploading(false);
+    }
   };
 
   const send = async (text?: string) => {
@@ -395,6 +438,26 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
               }}
             >
               {loading ? <Loader2 size={20} style={{ animation: "spin 1s linear infinite" }} /> : <Send size={20} />}
+            </button>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept=".pdf,.docx,.pptx,.xlsx,.txt,.md,.mp3,.wav,.webm,.m4a,.odt"
+              style={{ display: "none" }}
+              onChange={(e) => { const f = e.target.files?.[0]; if (f) handleFileUpload(f); e.target.value = ""; }}
+            />
+            <button
+              onClick={() => fileInputRef.current?.click()}
+              disabled={uploading || loading}
+              title="Dokument hochladen"
+              style={{
+                background: "#f1f5f9", border: "1.5px solid #e2e8f0", cursor: "pointer",
+                borderRadius: "12px", width: "48px", height: "48px",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                transition: "all 0.2s", flexShrink: 0, color: "#64748b"
+              }}
+            >
+              {uploading ? <Loader2 size={20} style={{ animation: "spin 1s linear infinite" }} /> : <Paperclip size={20} />}
             </button>
             <button
               onClick={startVoice}
