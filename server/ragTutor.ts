@@ -240,4 +240,93 @@ REGELN:
     }
   });
 
+
+  // Dokument-Upload + KI-Analyse
+  app.post("/api/ai/analyze-document", async (req: Request, res: Response) => {
+    try {
+      const chunks: Buffer[] = [];
+      req.on("data", (chunk) => chunks.push(chunk));
+      req.on("end", async () => {
+        const buffer = Buffer.concat(chunks);
+        const contentType = req.headers["content-type"] || "";
+        const filename = (req.headers["x-filename"] as string) || "document";
+        let extractedText = "";
+
+        try {
+          if (contentType.includes("application/pdf") || filename.endsWith(".pdf")) {
+            const pdfParse = (await import("pdf-parse")).default;
+            const data = await pdfParse(buffer);
+            extractedText = data.text;
+          } else if (filename.endsWith(".docx") || contentType.includes("wordprocessingml")) {
+            const mammoth = await import("mammoth");
+            const result = await mammoth.extractRawText({ buffer });
+            extractedText = result.value;
+          } else if (filename.endsWith(".pptx") || filename.endsWith(".xlsx") || filename.endsWith(".odt")) {
+            const officeparser = (await import("officeparser")).default;
+            extractedText = await officeparser.parseOfficeAsync(buffer);
+          } else if (contentType.includes("text/") || filename.endsWith(".txt") || filename.endsWith(".md")) {
+            extractedText = buffer.toString("utf-8");
+          } else if (contentType.includes("audio/") || filename.match(/\.(mp3|wav|webm|m4a|ogg)$/)) {
+            const groqKey = process.env.GROQ_API_KEY;
+            if (!groqKey) return res.status(500).json({ error: "GROQ_API_KEY fehlt" });
+            const FormData = (await import("form-data")).default;
+            const form = new FormData();
+            form.append("file", buffer, { filename, contentType });
+            form.append("model", "whisper-large-v3-turbo");
+            form.append("language", "de");
+            const fetch = (await import("node-fetch")).default;
+            const r = await fetch("https://api.groq.com/openai/v1/audio/transcriptions", {
+              method: "POST",
+              headers: { Authorization: `Bearer ${groqKey}`, ...form.getHeaders() },
+              body: form,
+            });
+            const d = await r.json() as any;
+            extractedText = d.text || "";
+          } else {
+            return res.status(400).json({ error: "Dateityp nicht unterstützt" });
+          }
+        } catch (parseErr) {
+          console.error("[Upload] Parse Fehler:", parseErr);
+          return res.status(500).json({ error: "Datei konnte nicht gelesen werden" });
+        }
+
+        if (!extractedText || extractedText.trim().length < 10) {
+          return res.status(400).json({ error: "Kein Text extrahierbar" });
+        }
+
+        // Claude analysiert den Text
+        const apiKey = process.env.ANTHROPIC_API_KEY;
+        if (!apiKey) return res.status(500).json({ error: "ANTHROPIC_API_KEY fehlt" });
+        const Anthropic = (await import("@anthropic-ai/sdk")).default;
+        const client = new Anthropic({ apiKey });
+        const textSnippet = extractedText.slice(0, 8000);
+        const message = await client.messages.create({
+          model: "claude-haiku-4-5-20251001",
+          max_tokens: 1500,
+          messages: [{
+            role: "user",
+            content: `Du bist ein Immobilien-Experte. Analysiere dieses Dokument und erstelle:
+
+1. **Zusammenfassung** (3-5 Sätze)
+2. **Wichtigste Punkte** (5 Bullet Points)
+3. **Relevanz für Immobilienrecht** (Was ist relevant für §34c/§34i GewO?)
+4. **5 Prüfungsfragen** zum Inhalt mit Antworten
+
+Dokument:
+${textSnippet}`
+          }]
+        });
+        const analysis = (message.content[0] as any).text;
+        res.json({
+          analysis,
+          textLength: extractedText.length,
+          filename,
+        });
+      });
+    } catch (err) {
+      console.error("[Upload] Error:", err);
+      res.status(500).json({ error: "Server-Fehler" });
+    }
+  });
+
 }
