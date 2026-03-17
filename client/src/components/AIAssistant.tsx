@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { X, Send, Bot, User, Loader2, Sparkles, ChevronDown, Mic, MicOff } from "lucide-react";
+import { X, Send, Bot, User, Loader2, Sparkles, ChevronDown, Mic, MicOff, Volume2, VolumeX } from "lucide-react";
 
 interface AIAssistantProps {
   moduleContext?: string;
@@ -44,6 +44,7 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
   const [loading, setLoading] = useState(false);
   const [showScrollBtn, setShowScrollBtn] = useState(false);
   const [listening, setListening] = useState(false);
+  const [speaking, setSpeaking] = useState(false);
   const recognitionRef = useRef<any>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -112,6 +113,26 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
       alert("Mikrofon-Zugriff verweigert: " + err.message);
     }
   };
+  const speak = (text: string) => {
+    if (speaking) {
+      window.speechSynthesis.cancel();
+      setSpeaking(false);
+      return;
+    }
+    const clean = text.replace(/#{1,3} /g, "").replace(/\*\*/g, "").replace(/\*/g, "").replace(/---/g, "").replace(/`/g, "");
+    const utterance = new SpeechSynthesisUtterance(clean);
+    utterance.lang = "de-DE";
+    utterance.rate = 1.0;
+    utterance.pitch = 1.0;
+    const voices = window.speechSynthesis.getVoices();
+    const german = voices.find(v => v.lang.startsWith("de"));
+    if (german) utterance.voice = german;
+    utterance.onstart = () => setSpeaking(true);
+    utterance.onend = () => setSpeaking(false);
+    utterance.onerror = () => setSpeaking(false);
+    window.speechSynthesis.speak(utterance);
+  };
+
   const send = async (text?: string) => {
     const q = (text || input).trim();
     if (!q || loading) return;
