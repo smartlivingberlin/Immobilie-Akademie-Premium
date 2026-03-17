@@ -119,18 +119,28 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
       setSpeaking(false);
       return;
     }
-    const clean = text.replace(/#{1,3} /g, "").replace(/\*\*/g, "").replace(/\*/g, "").replace(/---/g, "").replace(/`/g, "");
+    window.speechSynthesis.cancel();
+    const clean = text.replace(/#{1,3} /g, "").replace(/[*`]/g, "").replace(/---/g, "").trim();
     const utterance = new SpeechSynthesisUtterance(clean);
     utterance.lang = "de-DE";
-    utterance.rate = 1.0;
+    utterance.rate = 0.95;
     utterance.pitch = 1.0;
-    const voices = window.speechSynthesis.getVoices();
-    const german = voices.find(v => v.lang.startsWith("de"));
-    if (german) utterance.voice = german;
+    utterance.volume = 1.0;
     utterance.onstart = () => setSpeaking(true);
     utterance.onend = () => setSpeaking(false);
-    utterance.onerror = () => setSpeaking(false);
-    window.speechSynthesis.speak(utterance);
+    utterance.onerror = (e) => { console.error("TTS Error:", e); setSpeaking(false); };
+    const trySpeak = () => {
+      const voices = window.speechSynthesis.getVoices();
+      const german = voices.find(v => v.lang.startsWith("de"));
+      if (german) utterance.voice = german;
+      window.speechSynthesis.speak(utterance);
+      setSpeaking(true);
+    };
+    if (window.speechSynthesis.getVoices().length > 0) {
+      trySpeak();
+    } else {
+      window.speechSynthesis.onvoiceschanged = () => trySpeak();
+    }
   };
 
   const send = async (text?: string) => {
