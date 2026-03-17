@@ -69,48 +69,49 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
     setShowScrollBtn(scrollHeight - scrollTop - clientHeight > 100);
   };
 
-  const startVoice = () => {
-    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    if (!SpeechRecognition) {
-      alert("Ihr Browser unterstützt keine Spracheingabe. Bitte Chrome oder Edge verwenden.");
-      return;
-    }
+  const startVoice = async () => {
     if (listening) {
-      recognitionRef.current?.stop();
+      (recognitionRef.current as MediaRecorder)?.stop();
       setListening(false);
       return;
     }
-    const recognition = new SpeechRecognition();
-    recognitionRef.current = recognition;
-    recognition.lang = "de-DE";
-    recognition.continuous = false;
-    recognition.interimResults = false;
-    recognition.lang = "de-DE";
-    recognition.onstart = () => setListening(true);
-    recognition.onend = () => setListening(false);
-    recognition.onerror = (event: any) => {
-      setListening(false);
-      if (event.error === "not-allowed") {
-        alert("Mikrofon-Zugriff verweigert. Bitte in den Browser-Einstellungen erlauben.");
-      } else if (event.error === "no-speech") {
-        alert("Keine Sprache erkannt. Bitte nochmal versuchen.");
-      } else {
-        alert("Fehler: " + event.error + "\nTipp: In Brave URL-Leiste: brave://flags → #enable-webrtc-hide-local-ips-with-mdns → Disabled");
-      }
-    };
-    recognition.onresult = (event: any) => {
-      const transcript = event.results[0][0].transcript;
-      setInput(transcript);
-      setTimeout(() => send(transcript), 100);
-    };
     try {
-      recognition.start();
-    } catch(e: any) {
-      setListening(false);
-      alert("Spracheingabe konnte nicht gestartet werden: " + e.message);
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const recorder = new MediaRecorder(stream, { mimeType: "audio/webm" });
+      const chunks: Blob[] = [];
+      recognitionRef.current = recorder;
+      recorder.ondataavailable = (e) => { if (e.data.size > 0) chunks.push(e.data); };
+      recorder.onstop = async () => {
+        stream.getTracks().forEach(t => t.stop());
+        setListening(false);
+        const blob = new Blob(chunks, { type: "audio/webm" });
+        setLoading(true);
+        try {
+          const res = await fetch("/api/ai/transcribe", {
+            method: "POST",
+            headers: { "Content-Type": "audio/webm" },
+            body: blob,
+          });
+          const data = await res.json();
+          if (data.transcript) {
+            setInput(data.transcript);
+            setTimeout(() => send(data.transcript), 100);
+          } else {
+            alert("Transkription fehlgeschlagen: " + (data.error || "Fehler"));
+            setLoading(false);
+          }
+        } catch {
+          alert("Verbindungsfehler bei Transkription");
+          setLoading(false);
+        }
+      };
+      recorder.start();
+      setListening(true);
+      setTimeout(() => { if (recorder.state === "recording") recorder.stop(); }, 10000);
+    } catch (err: any) {
+      alert("Mikrofon-Zugriff verweigert: " + err.message);
     }
   };
-
   const send = async (text?: string) => {
     const q = (text || input).trim();
     if (!q || loading) return;
