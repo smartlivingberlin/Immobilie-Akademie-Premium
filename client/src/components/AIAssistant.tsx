@@ -129,18 +129,10 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
     utterance.onstart = () => setSpeaking(true);
     utterance.onend = () => setSpeaking(false);
     utterance.onerror = (e) => { console.error("TTS Error:", e); setSpeaking(false); };
-    const trySpeak = () => {
-      const voices = window.speechSynthesis.getVoices();
-      const german = voices.find(v => v.lang.startsWith("de"));
-      if (german) utterance.voice = german;
-      window.speechSynthesis.speak(utterance);
-      setSpeaking(true);
-    };
-    if (window.speechSynthesis.getVoices().length > 0) {
-      trySpeak();
-    } else {
-      window.speechSynthesis.onvoiceschanged = () => trySpeak();
-    }
+    const voices = window.speechSynthesis.getVoices();
+    const german = voices.find(v => v.lang.startsWith("de"));
+    if (german) utterance.voice = german;
+    window.speechSynthesis.speak(utterance);
   };
 
   const send = async (text?: string) => {
