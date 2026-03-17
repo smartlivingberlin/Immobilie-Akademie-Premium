@@ -5,7 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Loader2, Send, MessageCircle, X, Sparkles } from "lucide-react";
-import { Streamdown } from "streamdown";
 import { toast } from "sonner";
 
 interface AIAssistantProps {
@@ -60,7 +59,11 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
   }, [messages]);
 
   const handleSend = () => {
-    if (!message.trim() || !conversationId) return;
+    if (!message.trim()) return;
+    if (!conversationId) {
+      createConversation.mutate({ moduleContext });
+      return;
+    }
 
     sendMessage.mutate({
       conversationId,
@@ -148,11 +151,7 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
                           : "bg-slate-100 text-slate-900"
                       }`}
                     >
-                      {msg.role === "assistant" ? (
-                        <Streamdown>{msg.content}</Streamdown>
-                      ) : (
-                        <p className="whitespace-pre-wrap">{msg.content}</p>
-                      )}
+                      <p className="whitespace-pre-wrap text-sm leading-relaxed">{msg.content}</p>
                     </div>
                   </div>
                 ))}
@@ -175,12 +174,12 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
                 onChange={(e) => setMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Stelle eine Frage..."
-                disabled={sendMessage.isPending || !conversationId}
+                disabled={sendMessage.isPending}
                 className="flex-1"
               />
               <Button
                 onClick={handleSend}
-                disabled={!message.trim() || sendMessage.isPending || !conversationId}
+                disabled={!message.trim() || sendMessage.isPending}
                 size="icon"
               >
                 {sendMessage.isPending ? (
