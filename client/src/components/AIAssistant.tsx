@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { X, Send, Bot, User, Loader2, Sparkles, ChevronDown } from "lucide-react";
+import { X, Send, Bot, User, Loader2, Sparkles, ChevronDown, Mic, MicOff } from "lucide-react";
 
 interface AIAssistantProps {
   moduleContext?: string;
@@ -43,6 +43,8 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [showScrollBtn, setShowScrollBtn] = useState(false);
+  const [listening, setListening] = useState(false);
+  const recognitionRef = useRef<any>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -65,6 +67,33 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
     if (!scrollRef.current) return;
     const { scrollTop, scrollHeight, clientHeight } = scrollRef.current;
     setShowScrollBtn(scrollHeight - scrollTop - clientHeight > 100);
+  };
+
+  const startVoice = () => {
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      alert("Ihr Browser unterstützt keine Spracheingabe. Bitte Chrome oder Edge verwenden.");
+      return;
+    }
+    if (listening) {
+      recognitionRef.current?.stop();
+      setListening(false);
+      return;
+    }
+    const recognition = new SpeechRecognition();
+    recognitionRef.current = recognition;
+    recognition.lang = "de-DE";
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.onstart = () => setListening(true);
+    recognition.onend = () => setListening(false);
+    recognition.onerror = () => setListening(false);
+    recognition.onresult = (event: any) => {
+      const transcript = event.results[0][0].transcript;
+      setInput(transcript);
+      setTimeout(() => send(transcript), 100);
+    };
+    recognition.start();
   };
 
   const send = async (text?: string) => {
@@ -286,6 +315,23 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
             >
               {loading ? <Loader2 size={20} style={{ animation: "spin 1s linear infinite" }} /> : <Send size={20} />}
             </button>
+            <button
+              onClick={startVoice}
+              disabled={loading}
+              title={listening ? "Aufnahme stoppen" : "Spracheingabe starten"}
+              style={{
+                background: listening ? "linear-gradient(135deg, #dc2626, #b91c1c)" : "#f1f5f9",
+                color: listening ? "#fff" : "#64748b",
+                border: listening ? "none" : "1.5px solid #e2e8f0",
+                borderRadius: "12px", width: "48px", height: "48px",
+                cursor: loading ? "default" : "pointer",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                transition: "all 0.2s", flexShrink: 0,
+                animation: listening ? "pulse 1.5s ease-in-out infinite" : "none"
+              }}
+            >
+              {listening ? <MicOff size={20} /> : <Mic size={20} />}
+            </button>
           </div>
           <div style={{
             fontSize: "0.72rem", color: "#94a3b8", marginTop: "8px",
@@ -298,6 +344,10 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
       </div>
 
       <style>{`
+        @keyframes pulse {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(220,38,38,0.4); }
+          50% { box-shadow: 0 0 0 8px rgba(220,38,38,0); }
+        }
         @keyframes bounce {
           0%, 60%, 100% { transform: translateY(0); }
           30% { transform: translateY(-6px); }
