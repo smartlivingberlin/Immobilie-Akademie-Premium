@@ -85,15 +85,30 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
     recognition.lang = "de-DE";
     recognition.continuous = false;
     recognition.interimResults = false;
+    recognition.lang = "de-DE";
     recognition.onstart = () => setListening(true);
     recognition.onend = () => setListening(false);
-    recognition.onerror = () => setListening(false);
+    recognition.onerror = (event: any) => {
+      setListening(false);
+      if (event.error === "not-allowed") {
+        alert("Mikrofon-Zugriff verweigert. Bitte in den Browser-Einstellungen erlauben.");
+      } else if (event.error === "no-speech") {
+        alert("Keine Sprache erkannt. Bitte nochmal versuchen.");
+      } else {
+        alert("Fehler: " + event.error + "\nTipp: In Brave URL-Leiste: brave://flags → #enable-webrtc-hide-local-ips-with-mdns → Disabled");
+      }
+    };
     recognition.onresult = (event: any) => {
       const transcript = event.results[0][0].transcript;
       setInput(transcript);
       setTimeout(() => send(transcript), 100);
     };
-    recognition.start();
+    try {
+      recognition.start();
+    } catch(e: any) {
+      setListening(false);
+      alert("Spracheingabe konnte nicht gestartet werden: " + e.message);
+    }
   };
 
   const send = async (text?: string) => {
