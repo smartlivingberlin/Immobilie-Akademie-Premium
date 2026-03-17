@@ -37,7 +37,6 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
   const sendMessage = trpc.aiAssistant.sendMessage.useMutation({
     onSuccess: () => {
       refetchMessages();
-      setMessage("");
     },
     onError: () => {
       toast.error("Fehler beim Senden der Nachricht");
@@ -58,18 +57,21 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
     }
   }, [messages]);
 
-  const handleSend = () => {
-    if (!message.trim()) return;
+  const handleSend = (directMessage?: string) => {
+    const textToSend = directMessage || message.trim();
+    if (!textToSend) return;
     if (!conversationId) {
       createConversation.mutate({ moduleContext });
+      setTimeout(() => handleSend(directMessage || message.trim()), 1500);
       return;
     }
 
     sendMessage.mutate({
       conversationId,
-      message: message.trim(),
+      message: textToSend,
       moduleContext,
     });
+    if (!directMessage) setMessage("");
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -90,7 +92,7 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
 
   return (
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-      <Card className="w-full max-w-3xl h-[80vh] flex flex-col shadow-2xl">
+      <Card className="w-full max-w-2xl h-[70vh] flex flex-col shadow-2xl">
         <CardHeader className="border-b flex-shrink-0">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -127,10 +129,7 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
                       key={idx}
                       variant="outline"
                       className="w-full text-left justify-start h-auto py-3 px-4 whitespace-normal"
-                      onClick={() => {
-                        setMessage(q);
-                        setTimeout(() => handleSend(), 100);
-                      }}
+                      onClick={() => handleSend(q)}
                     >
                       {q}
                     </Button>
