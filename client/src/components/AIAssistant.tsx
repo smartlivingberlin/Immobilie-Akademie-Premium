@@ -266,12 +266,17 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
                 {m.role === "assistant" ? (
                   <>
                   <div dangerouslySetInnerHTML={{ __html: renderMarkdown(m.text) }} />
-                  <button onClick={() => speak(m.text)} style={{
-                    background:"none",border:"none",cursor:"pointer",marginTop:"6px",
-                    padding:"2px 6px",borderRadius:"6px",color:"#94a3b8",fontSize:"11px",
-                    display:"flex",alignItems:"center",gap:"4px"
-                  }}>
-                    <Volume2 size={13}/><span>Vorlesen</span>
+                  <button onClick={(e) => { e.stopPropagation(); speak(m.text); }} style={{
+                    background:"#f1f5f9",border:"1px solid #e2e8f0",cursor:"pointer",
+                    marginTop:"10px",padding:"6px 12px",borderRadius:"8px",
+                    color:"#475569",fontSize:"13px",fontWeight:"500",
+                    display:"flex",alignItems:"center",gap:"6px",
+                    transition:"all 0.2s"
+                  }}
+                  onMouseEnter={e=>{(e.currentTarget as HTMLElement).style.background="#dbeafe";(e.currentTarget as HTMLElement).style.color="#2563eb"}}
+                  onMouseLeave={e=>{(e.currentTarget as HTMLElement).style.background="#f1f5f9";(e.currentTarget as HTMLElement).style.color="#475569"}}
+                  >
+                    <Volume2 size={16}/><span>🔊 Vorlesen</span>
                   </button>
                   </>
                 ) : (
