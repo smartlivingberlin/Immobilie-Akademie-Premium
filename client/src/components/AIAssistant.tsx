@@ -113,26 +113,53 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
       alert("Mikrofon-Zugriff verweigert: " + err.message);
     }
   };
-  const speak = (text: string) => {
+  const speak = async (text: string) => {
     if (speaking) {
-      window.speechSynthesis.cancel();
       setSpeaking(false);
       return;
     }
-    const clean = text.replace(/#{1,3} /g, "").replace(/[*`]/g, "").replace(/---/g, "").slice(0, 1000).trim();
+    const clean = text.replace(/#{1,3} /g, "").replace(/[*`]/g, "").replace(/---/g, "").slice(0, 500).trim();
+    setSpeaking(true);
+    const elevenKey = import.meta.env.VITE_ELEVENLABS_API_KEY;
+    if (elevenKey) {
+      try {
+        const voiceId = "pNInz6obpgDQGcFmaJgB";
+        const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+          method: "POST",
+          headers: {
+            "xi-api-key": elevenKey,
+            "Content-Type": "application/json",
+            "Accept": "audio/mpeg",
+          },
+          body: JSON.stringify({
+            text: clean,
+            model_id: "eleven_multilingual_v2",
+            voice_settings: { stability: 0.5, similarity_boost: 0.75 }
+          }),
+        });
+        if (res.ok) {
+          const blob = await res.blob();
+          const url = URL.createObjectURL(blob);
+          const audio = new Audio(url);
+          audio.onended = () => { setSpeaking(false); URL.revokeObjectURL(url); };
+          audio.onerror = () => setSpeaking(false);
+          await audio.play();
+          return;
+        }
+      } catch (e) {
+        console.warn("ElevenLabs direkt fehlgeschlagen:", e);
+      }
+    }
+    // Fallback Browser TTS
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(clean);
     utterance.lang = "de-DE";
     utterance.rate = 0.9;
-    utterance.pitch = 1.0;
-    utterance.volume = 1.0;
-    utterance.onstart = () => setSpeaking(true);
     utterance.onend = () => setSpeaking(false);
     utterance.onerror = () => setSpeaking(false);
     const voices = window.speechSynthesis.getVoices();
     const german = voices.find(v => v.lang.startsWith("de"));
     if (german) utterance.voice = german;
-    setSpeaking(true);
     window.speechSynthesis.speak(utterance);
   };
 
