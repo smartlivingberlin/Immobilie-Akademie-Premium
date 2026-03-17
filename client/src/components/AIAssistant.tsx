@@ -118,7 +118,7 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
       setSpeaking(false);
       return;
     }
-    const clean = text.replace(/#{1,3} /g, "").replace(/[*`]/g, "").replace(/---/g, "").slice(0, 500).trim();
+    const clean = text.replace(/#{1,3} /g, "").replace(/[*`]/g, "").replace(/---/g, "").slice(0, 300).trim();
     setSpeaking(true);
     const elevenKey = import.meta.env.VITE_ELEVENLABS_API_KEY;
     if (elevenKey) {
