@@ -1,3 +1,4 @@
+import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -16,8 +17,10 @@ import {
 } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import { AITutor } from "@/components/AITutor";
 
 export default function Module3() {
+  const [tutorOpen, setTutorOpen] = React.useState(false);
   return (
     <div className="space-y-8 animate-in fade-in duration-700">
       {/* Header */}
@@ -405,5 +408,21 @@ export default function Module3() {
         </TabsContent>
       </Tabs>
     </div>
+      {/* KI-Tutor Button */}
+      <div className="fixed bottom-6 right-6 z-40">
+        <button
+          onClick={() => setTutorOpen(true)}
+          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-full shadow-lg transition-all duration-200 font-medium text-sm"
+        >
+          <span>🤖</span>
+          <span>KI-Tutor</span>
+        </button>
+      </div>
+      <AITutor
+        isOpen={tutorOpen}
+        onClose={() => setTutorOpen(false)}
+        moduleId={3}
+        moduleContext="Modul 3"
+      />
   );
 }
