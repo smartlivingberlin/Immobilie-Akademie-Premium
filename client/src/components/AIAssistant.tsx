@@ -73,7 +73,7 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
 
   return (
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-      <Card className="w-full max-w-2xl flex flex-col shadow-2xl" style={{ height: "65vh" }}>
+      <Card className="w-full max-w-2xl flex flex-col shadow-2xl" style={{ height: "60vh", maxHeight: "600px" }}>
         <CardHeader className="border-b flex-shrink-0 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -118,7 +118,7 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
                     <div className={`max-w-[80%] rounded-xl px-3 py-2 text-sm whitespace-pre-wrap leading-relaxed ${
                       m.role === "user" ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-900"
                     }`}>
-                      {m.content}
+                      <span style={{whiteSpace:"pre-wrap"}}>{m.content}</span>
                     </div>
                     {m.role === "user" && (
                       <div className="bg-blue-600 rounded-full h-7 w-7 flex items-center justify-center flex-shrink-0 mt-1">
