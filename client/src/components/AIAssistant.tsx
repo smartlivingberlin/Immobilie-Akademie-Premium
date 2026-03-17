@@ -113,22 +113,38 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
       alert("Mikrofon-Zugriff verweigert: " + err.message);
     }
   };
-  const speak = (text: string) => {
+  const speak = async (text: string) => {
     if (speaking) {
-      window.speechSynthesis.cancel();
       setSpeaking(false);
       return;
     }
+    const clean = text.replace(/#{1,3} /g, "").replace(/[*`]/g, "").replace(/---/g, "").slice(0, 500).trim();
+    setSpeaking(true);
+    try {
+      const res = await fetch("/api/ai/tts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: clean }),
+      });
+      if (res.ok) {
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const audio = new Audio(url);
+        audio.onended = () => { setSpeaking(false); URL.revokeObjectURL(url); };
+        audio.onerror = () => setSpeaking(false);
+        await audio.play();
+        return;
+      }
+    } catch (e) {
+      console.warn("ElevenLabs TTS fehlgeschlagen, Fallback:", e);
+    }
+    // Fallback: Browser TTS
     window.speechSynthesis.cancel();
-    const clean = text.replace(/#{1,3} /g, "").replace(/[*`]/g, "").replace(/---/g, "").trim();
     const utterance = new SpeechSynthesisUtterance(clean);
     utterance.lang = "de-DE";
     utterance.rate = 0.95;
-    utterance.pitch = 1.0;
-    utterance.volume = 1.0;
-    utterance.onstart = () => setSpeaking(true);
     utterance.onend = () => setSpeaking(false);
-    utterance.onerror = (e) => { console.error("TTS Error:", e); setSpeaking(false); };
+    utterance.onerror = () => setSpeaking(false);
     const voices = window.speechSynthesis.getVoices();
     const german = voices.find(v => v.lang.startsWith("de"));
     if (german) utterance.voice = german;
