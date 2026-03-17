@@ -1,8 +1,11 @@
+import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Search, Map, Home, Globe } from "lucide-react";
+import { AITutor } from "@/components/AITutor";
 
 export default function Module2() {
+  const [tutorOpen, setTutorOpen] = React.useState(false);
   return (
     <div className="space-y-8">
       <div className="space-y-2">
@@ -67,5 +70,21 @@ export default function Module2() {
         </Card>
       </div>
     </div>
+      {/* KI-Tutor Button */}
+      <div className="fixed bottom-6 right-6 z-40">
+        <button
+          onClick={() => setTutorOpen(true)}
+          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-full shadow-lg transition-all duration-200 font-medium text-sm"
+        >
+          <span>🤖</span>
+          <span>KI-Tutor</span>
+        </button>
+      </div>
+      <AITutor
+        isOpen={tutorOpen}
+        onClose={() => setTutorOpen(false)}
+        moduleId={2}
+        moduleContext="Modul 2"
+      />
   );
 }
