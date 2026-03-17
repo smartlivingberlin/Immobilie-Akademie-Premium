@@ -162,4 +162,47 @@ REGELN:
       res.status(500).json({ error: "Server-Fehler" });
     }
   });
+
+  // Groq Whisper Speech-to-Text
+  app.post("/api/ai/transcribe", async (req: Request, res: Response) => {
+    try {
+      const chunks: Buffer[] = [];
+      req.on("data", (chunk) => chunks.push(chunk));
+      req.on("end", async () => {
+        const buffer = Buffer.concat(chunks);
+        const groqKey = process.env.GROQ_API_KEY;
+        if (!groqKey) {
+          return res.status(500).json({ error: "GROQ_API_KEY fehlt" });
+        }
+        const FormData = (await import("form-data")).default;
+        const form = new FormData();
+        form.append("file", buffer, {
+          filename: "audio.webm",
+          contentType: req.headers["content-type"] || "audio/webm",
+        });
+        form.append("model", "whisper-large-v3-turbo");
+        form.append("language", "de");
+        form.append("response_format", "json");
+        const fetch = (await import("node-fetch")).default;
+        const response = await fetch("https://api.groq.com/openai/v1/audio/transcriptions", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${groqKey}`,
+            ...form.getHeaders(),
+          },
+          body: form,
+        });
+        const data = await response.json() as any;
+        if (data.text) {
+          res.json({ transcript: data.text });
+        } else {
+          res.status(500).json({ error: "Transkription fehlgeschlagen", details: data });
+        }
+      });
+    } catch (err) {
+      console.error("[Whisper] Error:", err);
+      res.status(500).json({ error: "Server-Fehler" });
+    }
+  });
+
 }
