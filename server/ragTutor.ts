@@ -329,185 +329,53 @@ ${textSnippet}`
     }
   });
 
-}
-// Auto-Fragen-Generator: Text → KI → question_bank DB
-router.post("/generate-questions", async (req, res) => {
-  try {
-    const { text, moduleId, category, count = 15 } = req.body;
-    if (!text || !moduleId) return res.status(400).json({ error: "text und moduleId erforderlich" });
 
-    const prompt = `Du bist ein IHK-Prüfungsexperte für Immobilienwirtschaft. Analysiere den folgenden Text und erstelle exakt ${count} Multiple-Choice Prüfungsfragen auf Deutsch.
-
-Text:
-${text.slice(0, 8000)}
-
-Erstelle ${count} Fragen. Gib NUR ein JSON-Array zurück, KEIN Text davor oder danach:
-[{
-  "questionText": "Frage hier?",
-  "options": {"A": "...", "B": "...", "C": "...", "D": "..."},
-  "correctAnswer": "A",
-  "explanation": "Erklärung warum A richtig ist...",
-  "difficulty": "easy|medium|hard",
-  "category": "${category || 'Allgemein'}"
-}]
-
-Regeln:
-- Jede Frage hat genau 4 Optionen (A,B,C,D)
-- Nur eine richtige Antwort
-- Mix: 30% easy, 50% medium, 20% hard
-- IHK-Prüfungsrelevant
-- Keine Duplikate`;
-
-    let questionsJson = "";
+  // Auto-Fragen-Generator: Text → KI → question_bank DB
+  app.post("/api/ai/generate-questions", async (req: Request, res: Response) => {
     try {
-      const Anthropic = (await import("@anthropic-ai/sdk")).default;
-      const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-      const msg = await client.messages.create({
-        model: "claude-haiku-4-5-20251001",
-        max_tokens: 4000,
-        messages: [{ role: "user", content: prompt }]
-      });
-      questionsJson = (msg.content[0] as any).text;
-    } catch {
-      return res.status(500).json({ error: "KI nicht verfügbar" });
-    }
-
-    const clean = questionsJson.replace(/```json/g, "").replace(/```/g, "").trim();
-    let questions;
-    try {
-      questions = JSON.parse(clean);
-    } catch {
-      return res.status(500).json({ error: "KI-Antwort konnte nicht verarbeitet werden" });
-    }
-
-    // In DB speichern
-    const { getDb } = await import("./db");
-    const { questionBank } = await import("../drizzle/schema");
-    const db = await getDb();
-    if (!db) return res.status(500).json({ error: "DB nicht verfügbar" });
-
-    let saved = 0;
-    for (const q of questions) {
+      const { text, moduleId, category, count = 15 } = req.body;
+      if (!text || !moduleId) return res.status(400).json({ error: "text und moduleId erforderlich" });
+      const prompt = `Du bist ein IHK-Prüfungsexperte. Erstelle exakt ${count} Multiple-Choice Prüfungsfragen auf Deutsch aus diesem Text:\n\n${text.slice(0, 8000)}\n\nGib NUR ein JSON-Array zurück:\n[{"questionText":"...","options":{"A":"...","B":"...","C":"...","D":"..."},"correctAnswer":"A","explanation":"...","difficulty":"easy","category":"${category || 'Allgemein'}"}]`;
+      let questionsJson = "";
       try {
-        await db.insert(questionBank).values({
-          moduleId: Number(moduleId),
-          category: q.category || category || "Allgemein",
-          difficulty: q.difficulty || "medium",
-          questionText: q.questionText,
-          options: JSON.stringify(q.options),
-          correctAnswer: q.correctAnswer,
-          explanation: q.explanation || "",
-        });
-        saved++;
-      } catch {}
-    }
+        const answer = await askClaude("Du bist IHK-Prüfungsexperte. Antworte NUR mit JSON.", prompt, []);
+        questionsJson = answer;
+      } catch {
+        return res.status(500).json({ error: "KI nicht verfügbar" });
+      }
+      const clean2 = questionsJson.replace(/```json/g, "").replace(/```/g, "").trim();
+      let questions: any[];
+      try { questions = JSON.parse(clean2); } catch { return res.status(500).json({ error: "KI-Antwort ungültig" }); }
+      const { getDb } = await import("./db");
+      const { questionBank } = await import("../drizzle/schema");
+      const { eq } = await import("drizzle-orm");
+      const db = await getDb();
+      if (!db) return res.status(500).json({ error: "DB nicht verfügbar" });
+      let saved = 0;
+      for (const q of questions) {
+        try {
+          await db.insert(questionBank).values({ moduleId: Number(moduleId), category: q.category || category || "Allgemein", difficulty: q.difficulty || "medium", questionText: q.questionText, options: JSON.stringify(q.options), correctAnswer: q.correctAnswer, explanation: q.explanation || "" });
+          saved++;
+        } catch {}
+      }
+      res.json({ success: true, generated: questions.length, saved, moduleId: Number(moduleId), message: `${saved} Fragen in Modul ${moduleId} gespeichert` });
+    } catch { res.status(500).json({ error: "Fehler beim Generieren" }); }
+  });
 
-    res.json({ 
-      success: true, 
-      generated: questions.length, 
-      saved,
-      moduleId: Number(moduleId),
-      message: `${saved} Fragen erfolgreich in Modul ${moduleId} gespeichert`
-    });
-  } catch (err) {
-    res.status(500).json({ error: "Fehler beim Generieren" });
-  }
-});
-
-// Kursbuch-Generator: Modul-Inhalte → KI → strukturiertes Kursbuch
-router.post("/generate-kursbuch", async (req, res) => {
-  try {
-    const { moduleId, moduleTitle, contentSummary, format = "kursbuch" } = req.body;
-    if (!moduleId || !contentSummary) return res.status(400).json({ error: "moduleId und contentSummary erforderlich" });
-
-    const formatPrompts: Record<string, string> = {
-      kursbuch: "ein vollständiges Kursbuch mit Einleitung, strukturierten Kapiteln, Definitionen, Praxisbeispielen und Zusammenfassungen",
-      zusammenfassung: "eine kompakte Lernzusammenfassung (4-6 Seiten) mit den wichtigsten Punkten, Merksätzen und Paragraphen",
-      skript: "ein Prüfungsskript mit allen wichtigen Fragen, Antworten, Paragraphen und Merkhilfen für die IHK-Prüfung",
-    };
-
-    const prompt = `Du bist ein erfahrener Dozent für Immobilienwirtschaft und IHK-Prüfungsexperte. 
-Erstelle ${formatPrompts[format] || formatPrompts.kursbuch} für das folgende Modul.
-
-Modul: ${moduleTitle}
-Inhalte:
-${contentSummary.slice(0, 10000)}
-
-Anforderungen:
-- Professionelle Qualität wie IU Akademie oder Haufe Akademie
-- Klare Struktur mit nummerierten Kapiteln
-- Praxisnahe Beispiele aus der deutschen Immobilienwirtschaft
-- Alle relevanten Gesetze (BGB, GewO, WEG, MaBV) korrekt zitiert
-- Verständlich für Quereinsteiger und Erwachsene
-- Am Ende: Lernziele, Zusammenfassung, Prüfungshinweise
-
-Format: Markdown mit klaren Überschriften (# ## ###)`;
-
-    let content = "";
+  // Kursbuch-Generator: Modul → KI → strukturiertes Kursbuch
+  app.post("/api/ai/generate-kursbuch", async (req: Request, res: Response) => {
     try {
-      const Anthropic = (await import("@anthropic-ai/sdk")).default;
-      const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-      const msg = await client.messages.create({
-        model: "claude-haiku-4-5-20251001",
-        max_tokens: 6000,
-        messages: [{ role: "user", content: prompt }]
-      });
-      content = (msg.content[0] as any).text;
-    } catch {
-      return res.status(500).json({ error: "KI nicht verfügbar" });
-    }
+      const { moduleId, moduleTitle, contentSummary, format = "kursbuch" } = req.body;
+      if (!moduleId || !contentSummary) return res.status(400).json({ error: "moduleId und contentSummary erforderlich" });
+      const formatMap: Record<string, string> = {
+        kursbuch: "ein vollständiges Kursbuch mit Kapiteln, Definitionen und Praxisbeispielen",
+        zusammenfassung: "eine kompakte Zusammenfassung (4-6 Seiten) mit Merksätzen",
+        skript: "ein Prüfungsskript mit Fragen, Antworten und Merkhilfen",
+      };
+      const prompt = `Du bist IHK-Dozent für Immobilienwirtschaft. Erstelle ${formatMap[format] || formatMap.kursbuch} für: ${moduleTitle}\n\nInhalte: ${contentSummary.slice(0, 8000)}\n\nAnforderungen:\n- Professionelle Qualität wie IU Akademie\n- Klare Struktur mit nummerierten Kapiteln\n- Praxisnahe Beispiele\n- Alle Gesetze korrekt zitiert\n- Verständlich für Quereinsteiger\n- Format: Markdown mit # ## ###`;
+      const content2 = await askClaude("Du bist erfahrener IHK-Dozent für Immobilienwirtschaft.", prompt, []);
+      res.json({ success: true, content: content2, moduleId, moduleTitle, format, generatedAt: new Date().toISOString() });
+    } catch { res.status(500).json({ error: "Fehler beim Generieren" }); }
+  });
 
-    res.json({ success: true, content, moduleId, moduleTitle, format, generatedAt: new Date().toISOString() });
-  } catch {
-    res.status(500).json({ error: "Fehler beim Generieren" });
-  }
-});
-
-// Kursbuch-Generator: Modul-Inhalte → KI → strukturiertes Kursbuch
-router.post("/generate-kursbuch", async (req, res) => {
-  try {
-    const { moduleId, moduleTitle, contentSummary, format = "kursbuch" } = req.body;
-    if (!moduleId || !contentSummary) return res.status(400).json({ error: "moduleId und contentSummary erforderlich" });
-
-    const formatPrompts: Record<string, string> = {
-      kursbuch: "ein vollständiges Kursbuch mit Einleitung, strukturierten Kapiteln, Definitionen, Praxisbeispielen und Zusammenfassungen",
-      zusammenfassung: "eine kompakte Lernzusammenfassung (4-6 Seiten) mit den wichtigsten Punkten, Merksätzen und Paragraphen",
-      skript: "ein Prüfungsskript mit allen wichtigen Fragen, Antworten, Paragraphen und Merkhilfen für die IHK-Prüfung",
-    };
-
-    const prompt = `Du bist ein erfahrener Dozent für Immobilienwirtschaft und IHK-Prüfungsexperte. 
-Erstelle ${formatPrompts[format] || formatPrompts.kursbuch} für das folgende Modul.
-
-Modul: ${moduleTitle}
-Inhalte:
-${contentSummary.slice(0, 10000)}
-
-Anforderungen:
-- Professionelle Qualität wie IU Akademie oder Haufe Akademie
-- Klare Struktur mit nummerierten Kapiteln
-- Praxisnahe Beispiele aus der deutschen Immobilienwirtschaft
-- Alle relevanten Gesetze (BGB, GewO, WEG, MaBV) korrekt zitiert
-- Verständlich für Quereinsteiger und Erwachsene
-- Am Ende: Lernziele, Zusammenfassung, Prüfungshinweise
-
-Format: Markdown mit klaren Überschriften (# ## ###)`;
-
-    let content = "";
-    try {
-      const Anthropic = (await import("@anthropic-ai/sdk")).default;
-      const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-      const msg = await client.messages.create({
-        model: "claude-haiku-4-5-20251001",
-        max_tokens: 6000,
-        messages: [{ role: "user", content: prompt }]
-      });
-      content = (msg.content[0] as any).text;
-    } catch {
-      return res.status(500).json({ error: "KI nicht verfügbar" });
-    }
-
-    res.json({ success: true, content, moduleId, moduleTitle, format, generatedAt: new Date().toISOString() });
-  } catch {
-    res.status(500).json({ error: "Fehler beim Generieren" });
-  }
-});
+}
