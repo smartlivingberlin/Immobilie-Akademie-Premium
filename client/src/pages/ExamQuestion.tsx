@@ -58,10 +58,20 @@ export default function ExamQuestion() {
   });
 
   const completeExamMutation = trpc.exam.completeExam.useMutation({
-    onSuccess: () => {
+    onSuccess: (data) => {
       setLocation(`/pruefung/${sessionId}/ergebnis`);
     },
+    onError: (error) => {
+      console.error("[ExamQuestion] completeExam failed:", error);
+    },
   });
+
+  // Auto-complete wenn Session schon abandoned/completed ist
+  useEffect(() => {
+    if (session?.session?.status === "abandoned" || session?.session?.status === "completed") {
+      setLocation("/pruefungsmodus");
+    }
+  }, [session]);
 
   // Determine if this is IHK mode and get time limit
   const isIHKMode = session?.session.isIHKMode || false;
