@@ -56,7 +56,6 @@ export default function CookieConsent() {
     // Apply preferences (e.g., initialize analytics if enabled)
     if (prefs.analytics) {
       // Initialize analytics here (e.g., Umami)
-      console.log("Analytics enabled");
     }
   };
 

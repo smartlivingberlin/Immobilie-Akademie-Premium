@@ -17,8 +17,6 @@ export function registerServiceWorker() {
         // Sofort auf neue Version wechseln ohne Nutzerbestätigung
         registration.update();
 
-        console.log('[SW] Service Worker registered successfully:', registration.scope);
-
         // Check for updates every hour
         setInterval(() => {
           registration.update();
@@ -32,7 +30,6 @@ export function registerServiceWorker() {
           newWorker.addEventListener('statechange', () => {
             if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
               // New service worker available
-              console.log('[SW] New version available! Please refresh.');
               
               // Show update notification to user
               // Automatisch aktualisieren ohne Nutzerbestätigung
@@ -44,7 +41,6 @@ export function registerServiceWorker() {
 
         // Handle controller change (new SW activated)
         navigator.serviceWorker.addEventListener('controllerchange', () => {
-          console.log('[SW] Controller changed, reloading page');
           window.location.reload();
         });
 
@@ -65,7 +61,6 @@ export async function unregisterServiceWorker() {
     const registrations = await navigator.serviceWorker.getRegistrations();
     for (const registration of registrations) {
       await registration.unregister();
-      console.log('[SW] Service Worker unregistered');
     }
   }
 }

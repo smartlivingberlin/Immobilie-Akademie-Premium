@@ -11,6 +11,7 @@ if (!globalThis.crypto) {
 import "dotenv/config";
 import express from "express";
 import helmet from "helmet";
+import rateLimit from "express-rate-limit";
 import { createServer } from "http";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerOAuthRoutes } from "./oauth";
@@ -27,6 +28,15 @@ import { seedQuizQuestionsIfEmpty } from "../seed-quiz";
 async function startServer() {
   const app = express();
 app.use(helmet({ contentSecurityPolicy: false }));
+
+const aiLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 15,
+  message: { error: "Zu viele Anfragen. Bitte warte eine Minute." },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+app.use("/api/ai", aiLimiter);
   const server = createServer(app);
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
@@ -74,7 +84,6 @@ app.use(helmet({ contentSecurityPolicy: false }));
   const host = "0.0.0.0";
 
   server.listen(port, host, () => {
-    console.log(`[BOOT] PORT env=${process.env.PORT} | listening on ${host}:${port}`);
   });
 }
 

@@ -176,7 +176,6 @@ export function registerPortalPhaseRoutes(app: Express) {
       const { getDb } = await import("./db");
       const db = await getDb();
       await setCurrentPhase(phase as Phase, db);
-      console.log(`[PortalPhase] Phase geändert auf: ${phase} von ${user.email}`);
       res.json({ ok: true, phase, config: PHASES[phase as Phase] });
     } catch (err) {
       console.error("[PortalPhase] Error:", err);

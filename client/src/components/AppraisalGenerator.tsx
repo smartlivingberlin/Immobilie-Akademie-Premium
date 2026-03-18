@@ -44,7 +44,6 @@ export function AppraisalGenerator() {
       });
       
       // In einer echten App würde hier der Download-Link ausgelöst
-      console.log("PDF generated with data:", formData);
     }, 2000);
   };
 

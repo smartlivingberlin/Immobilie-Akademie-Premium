@@ -28,9 +28,8 @@ export async function seedQuizQuestionsIfEmpty(): Promise<void> {
   try {
     const existing = await db.select({ count: sql<number>`count(*)` }).from(questionBank);
     const count = Number(existing[0]?.count ?? 0);
-    if (count > 0) { console.log("[Quiz] Already seeded:", count, "questions"); return; }
-    console.log("[Quiz] Seeding", SEED_QUESTIONS.length, "questions...");
+    if (count > 0) {
+ return; }
     await db.insert(questionBank).values(SEED_QUESTIONS);
-    console.log("[Quiz] Seeded successfully");
   } catch (error) { console.error("[Quiz] Seed error:", error); }
 }
