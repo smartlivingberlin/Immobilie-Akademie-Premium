@@ -111,7 +111,6 @@ stripeRouter.post("/api/stripe/webhook", async (req, res) => {
     const session = event.data.object as Stripe.Checkout.Session;
     const email = session.customer_email;
     const modules = session.metadata?.modules;
-    console.log("[Stripe] Zahlung erfolgreich:", email, "Module:", modules);
 
     if (email && modules) {
       try {
@@ -127,9 +126,7 @@ stripeRouter.post("/api/stripe/webhook", async (req, res) => {
           const newMods = modules.split(",").filter(Boolean);
           const merged = [...new Set([...existing, ...newMods])].sort().join(",");
           await db.update(users).set({ enabledModules: merged }).where(eq(users.id, user.id));
-          console.log("[Stripe] Module freigeschaltet für", email, ":", merged);
         } else {
-          console.log("[Stripe] User nicht gefunden:", email);
         }
       } catch (err: any) {
         console.error("[Stripe] Webhook DB Fehler:", err.message);

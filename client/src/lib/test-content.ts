@@ -37,5 +37,3 @@ export function checkModule3Completeness() {
     status: missingDays.length === 0 ? "COMPLETE" : "INCOMPLETE"
   };
 }
-
-console.log("Module 3 Completeness Check:", checkModule3Completeness());

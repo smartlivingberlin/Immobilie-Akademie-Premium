@@ -6,11 +6,10 @@ import { contentDataModule1Maximal as contentDataModule1Maximalist } from "../pa
 // import { contentDataModule5Maximalist } from "../pages/modules/Module5Detail";
 
 export const testAllModules = () => {
-  console.log("Testing Module 1:", contentDataModule1Maximalist ? "OK" : "MISSING");
-  // console.log("Testing Module 2:", contentDataModule2Maximalist ? "OK" : "MISSING");
-  // console.log("Testing Module 3:", contentDataModule3Maximal ? "OK" : "MISSING");
-  // console.log("Testing Module 4:", contentDataModule4Maximalist ? "OK" : "MISSING");
-  // console.log("Testing Module 5:", contentDataModule5Maximalist ? "OK" : "MISSING");
+  //
+  //
+  //
+  //
   
   return {
     m1: !!contentDataModule1Maximalist,

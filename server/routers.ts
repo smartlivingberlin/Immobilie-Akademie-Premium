@@ -779,13 +779,6 @@ Antworte im folgenden JSON-Format:
         await createPresentationCode(input.code, input.label, input.modules, expiresAt, input.maxUsage ?? null);
         return { ok: true };
       }),
-    deactivate: adminProcedure
-      .input((val: any) => val as { id: number })
-      .mutation(async ({ input }) => {
-        const { deactivatePresentationCode } = await import('./db');
-        await deactivatePresentationCode(input.id);
-        return { ok: true };
-      }),
     activate: adminProcedure
       .input((val: any) => val as { id: number })
       .mutation(async ({ input }) => {
