@@ -14,7 +14,6 @@ import {
   AlertTriangle
 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
-import { Streamdown } from "streamdown";
 
 export default function ExamQuestion() {
   const params = useParams<{ sessionId: string }>();
@@ -419,7 +418,7 @@ export default function ExamQuestion() {
                   </CardHeader>
                   {feedback.feedback && (
                     <CardContent className={feedback.isCorrect ? "text-green-800" : "text-red-800"}>
-                      <Streamdown>{feedback.feedback}</Streamdown>
+                      <div style={{whiteSpace:"pre-wrap",lineHeight:1.6}}>{feedback.feedback}</div>
                     </CardContent>
                   )}
                 </Card>
