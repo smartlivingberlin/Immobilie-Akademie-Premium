@@ -413,3 +413,101 @@ Regeln:
     res.status(500).json({ error: "Fehler beim Generieren" });
   }
 });
+
+// Kursbuch-Generator: Modul-Inhalte → KI → strukturiertes Kursbuch
+router.post("/generate-kursbuch", async (req, res) => {
+  try {
+    const { moduleId, moduleTitle, contentSummary, format = "kursbuch" } = req.body;
+    if (!moduleId || !contentSummary) return res.status(400).json({ error: "moduleId und contentSummary erforderlich" });
+
+    const formatPrompts: Record<string, string> = {
+      kursbuch: "ein vollständiges Kursbuch mit Einleitung, strukturierten Kapiteln, Definitionen, Praxisbeispielen und Zusammenfassungen",
+      zusammenfassung: "eine kompakte Lernzusammenfassung (4-6 Seiten) mit den wichtigsten Punkten, Merksätzen und Paragraphen",
+      skript: "ein Prüfungsskript mit allen wichtigen Fragen, Antworten, Paragraphen und Merkhilfen für die IHK-Prüfung",
+    };
+
+    const prompt = `Du bist ein erfahrener Dozent für Immobilienwirtschaft und IHK-Prüfungsexperte. 
+Erstelle ${formatPrompts[format] || formatPrompts.kursbuch} für das folgende Modul.
+
+Modul: ${moduleTitle}
+Inhalte:
+${contentSummary.slice(0, 10000)}
+
+Anforderungen:
+- Professionelle Qualität wie IU Akademie oder Haufe Akademie
+- Klare Struktur mit nummerierten Kapiteln
+- Praxisnahe Beispiele aus der deutschen Immobilienwirtschaft
+- Alle relevanten Gesetze (BGB, GewO, WEG, MaBV) korrekt zitiert
+- Verständlich für Quereinsteiger und Erwachsene
+- Am Ende: Lernziele, Zusammenfassung, Prüfungshinweise
+
+Format: Markdown mit klaren Überschriften (# ## ###)`;
+
+    let content = "";
+    try {
+      const Anthropic = (await import("@anthropic-ai/sdk")).default;
+      const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+      const msg = await client.messages.create({
+        model: "claude-haiku-4-5-20251001",
+        max_tokens: 6000,
+        messages: [{ role: "user", content: prompt }]
+      });
+      content = (msg.content[0] as any).text;
+    } catch {
+      return res.status(500).json({ error: "KI nicht verfügbar" });
+    }
+
+    res.json({ success: true, content, moduleId, moduleTitle, format, generatedAt: new Date().toISOString() });
+  } catch {
+    res.status(500).json({ error: "Fehler beim Generieren" });
+  }
+});
+
+// Kursbuch-Generator: Modul-Inhalte → KI → strukturiertes Kursbuch
+router.post("/generate-kursbuch", async (req, res) => {
+  try {
+    const { moduleId, moduleTitle, contentSummary, format = "kursbuch" } = req.body;
+    if (!moduleId || !contentSummary) return res.status(400).json({ error: "moduleId und contentSummary erforderlich" });
+
+    const formatPrompts: Record<string, string> = {
+      kursbuch: "ein vollständiges Kursbuch mit Einleitung, strukturierten Kapiteln, Definitionen, Praxisbeispielen und Zusammenfassungen",
+      zusammenfassung: "eine kompakte Lernzusammenfassung (4-6 Seiten) mit den wichtigsten Punkten, Merksätzen und Paragraphen",
+      skript: "ein Prüfungsskript mit allen wichtigen Fragen, Antworten, Paragraphen und Merkhilfen für die IHK-Prüfung",
+    };
+
+    const prompt = `Du bist ein erfahrener Dozent für Immobilienwirtschaft und IHK-Prüfungsexperte. 
+Erstelle ${formatPrompts[format] || formatPrompts.kursbuch} für das folgende Modul.
+
+Modul: ${moduleTitle}
+Inhalte:
+${contentSummary.slice(0, 10000)}
+
+Anforderungen:
+- Professionelle Qualität wie IU Akademie oder Haufe Akademie
+- Klare Struktur mit nummerierten Kapiteln
+- Praxisnahe Beispiele aus der deutschen Immobilienwirtschaft
+- Alle relevanten Gesetze (BGB, GewO, WEG, MaBV) korrekt zitiert
+- Verständlich für Quereinsteiger und Erwachsene
+- Am Ende: Lernziele, Zusammenfassung, Prüfungshinweise
+
+Format: Markdown mit klaren Überschriften (# ## ###)`;
+
+    let content = "";
+    try {
+      const Anthropic = (await import("@anthropic-ai/sdk")).default;
+      const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+      const msg = await client.messages.create({
+        model: "claude-haiku-4-5-20251001",
+        max_tokens: 6000,
+        messages: [{ role: "user", content: prompt }]
+      });
+      content = (msg.content[0] as any).text;
+    } catch {
+      return res.status(500).json({ error: "KI nicht verfügbar" });
+    }
+
+    res.json({ success: true, content, moduleId, moduleTitle, format, generatedAt: new Date().toISOString() });
+  } catch {
+    res.status(500).json({ error: "Fehler beim Generieren" });
+  }
+});
