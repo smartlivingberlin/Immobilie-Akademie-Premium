@@ -9,6 +9,8 @@ import ResetPassword from "@/pages/ResetPassword";
 import DeleteAccount from "@/pages/DeleteAccount";
 import RedeemCode from "@/pages/RedeemCode";
 import AdminCodes from "@/pages/admin/AdminCodes";
+import AdminDashboard from "@/pages/admin/AdminDashboard";
+import ContentUpload from "@/pages/admin/ContentUpload";
 import Impressum from "@/pages/Impressum";
 import Datenschutz from "@/pages/Datenschutz";
 import Kurse from "@/pages/Kurse";
@@ -84,6 +86,8 @@ function Router() {
           <Route path="/strategie" component={StrategiePlattform} />
           
           {/* Admin Pages */}
+          <Route path="/admin" component={AdminDashboard} />
+          <Route path="/admin/upload" component={ContentUpload} />
           <Route path="/admin/videos" component={VideoManagement} />
           <Route path="/admin/whitelabel" component={WhiteLabelAdmin} />
           <Route path="/admin/phase" component={PortalPhaseAdmin} />

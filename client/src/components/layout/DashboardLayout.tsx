@@ -298,6 +298,16 @@ const navigation = [
                     <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
                       Administration
                     </div>
+                    <Link href="/admin">
+                      <div className={`flex items-center w-full justify-start text-slate-300 hover:text-white hover:bg-slate-800 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${location === '/admin' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
+                        <span className="mr-2">📊</span> Dashboard
+                      </div>
+                    </Link>
+                    <Link href="/admin/upload">
+                      <div className={`flex items-center w-full justify-start text-slate-300 hover:text-white hover:bg-slate-800 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${location === '/admin/upload' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
+                        <span className="mr-2">📤</span> Content Upload
+                      </div>
+                    </Link>
                     <Link href="/admin/whitelabel">
                       <div className={`flex items-center w-full justify-start text-slate-300 hover:text-white hover:bg-slate-800 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${location === '/admin/whitelabel' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
                         <Building2 className="h-5 w-5 mr-3" />
