@@ -330,3 +330,86 @@ ${textSnippet}`
   });
 
 }
+// Auto-Fragen-Generator: Text → KI → question_bank DB
+router.post("/generate-questions", async (req, res) => {
+  try {
+    const { text, moduleId, category, count = 15 } = req.body;
+    if (!text || !moduleId) return res.status(400).json({ error: "text und moduleId erforderlich" });
+
+    const prompt = `Du bist ein IHK-Prüfungsexperte für Immobilienwirtschaft. Analysiere den folgenden Text und erstelle exakt ${count} Multiple-Choice Prüfungsfragen auf Deutsch.
+
+Text:
+${text.slice(0, 8000)}
+
+Erstelle ${count} Fragen. Gib NUR ein JSON-Array zurück, KEIN Text davor oder danach:
+[{
+  "questionText": "Frage hier?",
+  "options": {"A": "...", "B": "...", "C": "...", "D": "..."},
+  "correctAnswer": "A",
+  "explanation": "Erklärung warum A richtig ist...",
+  "difficulty": "easy|medium|hard",
+  "category": "${category || 'Allgemein'}"
+}]
+
+Regeln:
+- Jede Frage hat genau 4 Optionen (A,B,C,D)
+- Nur eine richtige Antwort
+- Mix: 30% easy, 50% medium, 20% hard
+- IHK-Prüfungsrelevant
+- Keine Duplikate`;
+
+    let questionsJson = "";
+    try {
+      const Anthropic = (await import("@anthropic-ai/sdk")).default;
+      const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+      const msg = await client.messages.create({
+        model: "claude-haiku-4-5-20251001",
+        max_tokens: 4000,
+        messages: [{ role: "user", content: prompt }]
+      });
+      questionsJson = (msg.content[0] as any).text;
+    } catch {
+      return res.status(500).json({ error: "KI nicht verfügbar" });
+    }
+
+    const clean = questionsJson.replace(/```json/g, "").replace(/```/g, "").trim();
+    let questions;
+    try {
+      questions = JSON.parse(clean);
+    } catch {
+      return res.status(500).json({ error: "KI-Antwort konnte nicht verarbeitet werden" });
+    }
+
+    // In DB speichern
+    const { getDb } = await import("./db");
+    const { questionBank } = await import("../drizzle/schema");
+    const db = await getDb();
+    if (!db) return res.status(500).json({ error: "DB nicht verfügbar" });
+
+    let saved = 0;
+    for (const q of questions) {
+      try {
+        await db.insert(questionBank).values({
+          moduleId: Number(moduleId),
+          category: q.category || category || "Allgemein",
+          difficulty: q.difficulty || "medium",
+          questionText: q.questionText,
+          options: JSON.stringify(q.options),
+          correctAnswer: q.correctAnswer,
+          explanation: q.explanation || "",
+        });
+        saved++;
+      } catch {}
+    }
+
+    res.json({ 
+      success: true, 
+      generated: questions.length, 
+      saved,
+      moduleId: Number(moduleId),
+      message: `${saved} Fragen erfolgreich in Modul ${moduleId} gespeichert`
+    });
+  } catch (err) {
+    res.status(500).json({ error: "Fehler beim Generieren" });
+  }
+});
