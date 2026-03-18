@@ -17,8 +17,6 @@ export const users = mysqlTable("users", {
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
   lastSignedIn: timestamp("lastSignedIn").defaultNow().notNull(),
-  /** Freigeschaltete Module als kommagetrennte Liste z.B. "1" oder "1,2,3" */
-  enabledModules: varchar("enabledModules", { length: 255 }).default("1").notNull(),
 });
 
 export type User = typeof users.$inferSelect;
