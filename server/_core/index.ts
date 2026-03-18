@@ -10,6 +10,7 @@ if (!globalThis.crypto) {
 
 import "dotenv/config";
 import express from "express";
+import helmet from "helmet";
 import { createServer } from "http";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerOAuthRoutes } from "./oauth";
@@ -25,6 +26,7 @@ import { seedQuizQuestionsIfEmpty } from "../seed-quiz";
 
 async function startServer() {
   const app = express();
+app.use(helmet({ contentSecurityPolicy: false }));
   const server = createServer(app);
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
