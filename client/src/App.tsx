@@ -133,10 +133,6 @@ function Router() {
           <Route path="/konto-loeschen" component={DeleteAccount} />
           <Route path="/code-einloesen" component={RedeemCode} />
           <Route path="/admin/codes" component={AdminCodes} />
-          <Route path="/impressum" component={Impressum} />
-          <Route path="/datenschutz" component={Datenschutz} />
-          <Route path="/kurse" component={Kurse} />
-          <Route path="/zahlung-erfolgreich" component={ZahlungErfolgreich} />
           <Route path="/admin/nutzer" component={UserManagement} />
           <Route path="/modul/:id">
             {(params) => (

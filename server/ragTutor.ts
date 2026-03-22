@@ -413,4 +413,169 @@ Bewerte nach IHK-Maßstäben und antworte NUR mit diesem JSON:
     } catch { res.status(500).json({ error: "Fehler bei der Bewertung" }); }
   });
 
+  // Kursbuch aus echtem Modulinhalt generieren
+  app.post("/api/ai/generate-kursbuch-v2", async (req: Request, res: Response) => {
+    try {
+      const { moduleId, format = "kursbuch" } = req.body;
+      if (!moduleId) return res.status(400).json({ error: "moduleId erforderlich" });
+
+      const fs = await import("fs");
+      const path = await import("path");
+
+      const contentFiles: Record<number, string[]> = {
+        1: ["client/src/pages/modules/Module1Content.ts"],
+        2: ["client/src/pages/modules/Module2ContentPart1_Maximal.ts", "client/src/pages/modules/Module2ContentPart2_Maximal.ts"],
+        3: ["client/src/pages/modules/Module3Content_Maximal.ts", "client/src/pages/modules/Module3Content_Maximal_Part2_Extended.ts"],
+        4: ["client/src/pages/modules/Module4Content_Maximal.ts", "client/src/pages/modules/Module4Content_Valuation_Maximalist.ts"],
+        5: ["client/src/pages/modules/Module5Content_34i_Complete.ts"],
+      };
+
+      const moduleNames: Record<number, string> = {
+        1: "Einführung in die Immobilienwirtschaft",
+        2: "Immobilienmakler §34c GewO",
+        3: "WEG-Verwaltung & Mietrecht",
+        4: "Gutachter & Sachverständiger",
+        5: "Darlehensvermittler §34i GewO",
+      };
+
+      const files = contentFiles[Number(moduleId)] || [];
+      let rawContent = "";
+
+      for (const file of files) {
+        const filePath = path.resolve(file);
+        if (fs.existsSync(filePath)) {
+          rawContent += fs.readFileSync(filePath, "utf-8").slice(0, 30000) + "\n\n";
+        }
+      }
+
+      if (!rawContent) return res.status(404).json({ error: "Modulinhalt nicht gefunden" });
+
+      // Tage extrahieren
+      const dayMatches = rawContent.matchAll(/day_\d+:\s*\{([^}]+(?:\{[^}]*\}[^}]*)*?)\}/gs);
+      const days: string[] = [];
+      for (const match of dayMatches) {
+        const titleMatch = match[1].match(/title:\s*["'\`]([^"'\`]+)["'\`]/);
+        const theoryMatch = match[1].match(/theory:\s*["'\`]([^"'\`]{10,})["'\`]/);
+        if (titleMatch && theoryMatch) {
+          days.push(\`### \${titleMatch[1]}\n\${theoryMatch[1]}\`);
+        }
+      }
+
+      const extractedContent = days.length > 0
+        ? days.slice(0, 40).join("\n\n")
+        : rawContent.slice(0, 15000);
+
+      const formatPrompts: Record<string, string> = {
+        kursbuch: \`Erstelle ein vollständiges professionelles KURSBUCH mit:
+- Vorwort und Lernziele
+- Nummerierte Kapitel pro Lerntag
+- Theorie ausführlich erklärt (nicht nur Stichworte)
+- Praxisbeispiele und Fallbeispiele
+- Gesetzliche Grundlagen zitiert
+- Merkkästen mit wichtigen Definitionen
+- Übungsaufgaben am Ende jedes Kapitels
+- Zusammenfassung und Prüfungsvorbereitung\`,
+        zusammenfassung: \`Erstelle eine kompakte LERNZUSAMMENFASSUNG mit:
+- Die 20 wichtigsten Begriffe mit Definitionen
+- Alle relevanten Paragraphen und Gesetze
+- Merksätze für die Prüfung
+- Häufige Prüfungsfragen\`,
+        skript: \`Erstelle ein detailliertes PRÜFUNGSSKRIPT mit:
+- Alle Themen als Frage-Antwort-Format
+- IHK-typische Prüfungsfragen mit Musterlösungen
+- Wichtige Paragraphen zum Auswendiglernen
+- Tipps für die Prüfungssituation\`,
+      };
+
+      const prompt = \`Du bist Lehrgangsleiter an einer IHK-Akademie. \${formatPrompts[format] || formatPrompts.kursbuch}
+
+Modul: \${moduleNames[Number(moduleId)]}
+
+LERNINHALTE (aus dem tatsächlichen Lehrplan):
+\${extractedContent}
+
+WICHTIGE ANFORDERUNGEN:
+- Minimum 3.000 Wörter
+- Professionelles Layout mit Markdown-Überschriften (# ## ###)
+- Jedes Kapitel hat Theorie, Praxisbeispiel und Merkkästen
+- Verständlich für Quereinsteiger und Erwachsene ohne Vorkenntnisse
+- Alle Gesetze korrekt zitiert (BGB, GewO, WEG, ImmoWertV etc.)
+- Praxisnah mit echten Berliner/deutschen Beispielen
+- Didaktisch aufgebaut: vom Einfachen zum Komplexen\`;
+
+      const generatedContent = await askClaude(
+        "Du bist erfahrener IHK-Dozent und Fachautor für Immobilienwirtschaft.",
+        prompt,
+        []
+      );
+
+      res.json({
+        success: true,
+        content: generatedContent,
+        moduleId,
+        moduleName: moduleNames[Number(moduleId)],
+        format,
+        daysExtracted: days.length,
+        generatedAt: new Date().toISOString()
+      });
+    } catch (err: any) {
+      res.status(500).json({ error: "Fehler beim Generieren: " + err.message });
+    }
+  });
+
+  app.post("/api/ai/generate-kursbuch-v2", async (req: Request, res: Response) => {
+    try {
+      const { moduleId, format = "kursbuch" } = req.body;
+      if (!moduleId) return res.status(400).json({ error: "moduleId erforderlich" });
+      const fs = await import("fs");
+      const path = await import("path");
+      const contentFiles: Record<number, string[]> = {
+        1: ["client/src/pages/modules/Module1Content.ts"],
+        2: ["client/src/pages/modules/Module2ContentPart1_Maximal.ts","client/src/pages/modules/Module2ContentPart2_Maximal.ts"],
+        3: ["client/src/pages/modules/Module3Content_Maximal.ts","client/src/pages/modules/Module3Content_Maximal_Part2_Extended.ts"],
+        4: ["client/src/pages/modules/Module4Content_Maximal.ts","client/src/pages/modules/Module4Content_Valuation_Maximalist.ts"],
+        5: ["client/src/pages/modules/Module5Content_34i_Complete.ts"],
+      };
+      const moduleNames: Record<number, string> = {
+        1: "Einführung in die Immobilienwirtschaft", 2: "Immobilienmakler §34c GewO",
+        3: "WEG-Verwaltung & Mietrecht", 4: "Gutachter & Sachverständiger", 5: "Darlehensvermittler §34i GewO",
+      };
+      const files = contentFiles[Number(moduleId)] || [];
+      let rawContent = "";
+      for (const file of files) {
+        const filePath = path.resolve(file);
+        if (fs.existsSync(filePath)) rawContent += fs.readFileSync(filePath, "utf-8").slice(0, 25000) + "\n\n";
+      }
+      if (!rawContent) return res.status(404).json({ error: "Modulinhalt nicht gefunden" });
+      const titleTheoryPairs: string[] = [];
+      const lines = rawContent.split("\n");
+      let currentTitle = ""; let currentTheory = ""; let currentPractice = ""; let currentTask = "";
+      for (const line of lines) {
+        const tMatch = line.match(/title:\s*["\`'](.+?)["\`']/);
+        const thMatch = line.match(/theory:\s*["\`'](.+?)["\`']/);
+        const prMatch = line.match(/practice:\s*["\`'](.+?)["\`']/);
+        const taMatch = line.match(/task:\s*["\`'](.+?)["\`']/);
+        if (tMatch) { currentTitle = tMatch[1]; }
+        if (thMatch) { currentTheory = thMatch[1]; }
+        if (prMatch) { currentPractice = prMatch[1]; }
+        if (taMatch) {
+          currentTask = taMatch[1];
+          if (currentTitle && currentTheory) {
+            titleTheoryPairs.push("### " + currentTitle + "\nTheorie: " + currentTheory + "\nPraxis: " + currentPractice + "\nAufgabe: " + currentTask);
+          }
+          currentTitle = ""; currentTheory = ""; currentPractice = ""; currentTask = "";
+        }
+      }
+      const extractedContent = titleTheoryPairs.length > 0 ? titleTheoryPairs.slice(0, 30).join("\n\n") : rawContent.slice(0, 12000);
+      const formatInstructions: Record<string, string> = {
+        kursbuch: "Erstelle ein vollstaendiges KURSBUCH (min. 3000 Woerter) mit: Vorwort, nummerierte Kapitel, ausfuehrliche Theorie, Praxisbeispiele, Merkkästen, Übungsaufgaben, Zusammenfassung",
+        zusammenfassung: "Erstelle eine LERNZUSAMMENFASSUNG mit: 20 wichtigste Begriffe, alle Paragraphen, Merksätze, häufige Prüfungsfragen",
+        skript: "Erstelle ein PRÜFUNGSSKRIPT mit: Frage-Antwort-Format, IHK-Prüfungsfragen mit Lösungen, wichtige Paragraphen",
+      };
+      const prompt = "Modul: " + moduleNames[Number(moduleId)] + "\n\n" + formatInstructions[format] + "\n\nLERNINHALTE:\n" + extractedContent + "\n\nAnforderungen: Professionell wie IU Akademie, verständlich für Quereinsteiger, alle Gesetze korrekt zitiert, Markdown-Format mit # ## ###";
+      const generatedContent = await askClaude("Du bist erfahrener IHK-Dozent und Fachautor für Immobilienwirtschaft in Deutschland.", prompt, []);
+      res.json({ success: true, content: generatedContent, moduleId, moduleName: moduleNames[Number(moduleId)], format, daysExtracted: titleTheoryPairs.length, generatedAt: new Date().toISOString() });
+    } catch (err: any) { res.status(500).json({ error: "Fehler: " + err.message }); }
+  });
+
 }
