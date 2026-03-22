@@ -308,6 +308,11 @@ const navigation = [
                         <span className="mr-2">📖</span> Kursbuch-Generator
                       </div>
                     </Link>
+                    <Link href="/admin/fragen">
+                      <div className={`flex items-center w-full justify-start text-slate-300 hover:text-white hover:bg-slate-800 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${location === '/admin/fragen' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
+                        <span className="mr-2">❓</span> Fragen-Manager
+                      </div>
+                    </Link>
                     <Link href="/admin/upload">
                       <div className={`flex items-center w-full justify-start text-slate-300 hover:text-white hover:bg-slate-800 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${location === '/admin/upload' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
                         <span className="mr-2">📤</span> Content Upload

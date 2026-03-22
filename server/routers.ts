@@ -805,6 +805,53 @@ Antworte im folgenden JSON-Format:
         return { ok: true };
       }),
   }),
+  adminQuestions: router({
+    list: adminProcedure
+      .input(z.object({
+        moduleId: z.number().optional(),
+        difficulty: z.string().optional(),
+        search: z.string().optional(),
+        limit: z.number().default(20),
+        offset: z.number().default(0),
+      }))
+      .query(async ({ input }) => {
+        const { getDb } = await import("./db");
+        const { like, and, eq } = await import("drizzle-orm");
+        const db = await getDb();
+        if (!db) return { questions: [], total: 0 };
+        const conditions: any[] = [];
+        if (input.moduleId) conditions.push(eq(questionBank.moduleId, input.moduleId));
+        if (input.difficulty) conditions.push(eq(questionBank.difficulty, input.difficulty as any));
+        if (input.search) conditions.push(like(questionBank.questionText, `%${input.search}%`));
+        const where = conditions.length > 0 ? and(...conditions) : undefined;
+        const [questions, countResult] = await Promise.all([
+          db.select().from(questionBank).where(where).limit(input.limit).offset(input.offset).orderBy(questionBank.moduleId),
+          db.select({ count: questionBank.id }).from(questionBank).where(where),
+        ]);
+        return { questions, total: countResult.length };
+      }),
+    delete: adminProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input }) => {
+        const { getDb } = await import("./db");
+        const { eq } = await import("drizzle-orm");
+        const db = await getDb();
+        if (!db) throw new Error("DB nicht verfügbar");
+        await db.delete(questionBank).where(eq(questionBank.id, input.id));
+        return { ok: true };
+      }),
+    update: adminProcedure
+      .input(z.object({ id: z.number(), questionText: z.string() }))
+      .mutation(async ({ input }) => {
+        const { getDb } = await import("./db");
+        const { eq } = await import("drizzle-orm");
+        const db = await getDb();
+        if (!db) throw new Error("DB nicht verfügbar");
+        await db.update(questionBank).set({ questionText: input.questionText }).where(eq(questionBank.id, input.id));
+        return { ok: true };
+      }),
+  }),
+
 });
 
 export type AppRouter = typeof appRouter;
