@@ -457,7 +457,7 @@ Bewerte nach IHK-Maßstäben und antworte NUR mit diesem JSON:
         const titleMatch = match[1].match(/title:\s*["'\`]([^"'\`]+)["'\`]/);
         const theoryMatch = match[1].match(/theory:\s*["'\`]([^"'\`]{10,})["'\`]/);
         if (titleMatch && theoryMatch) {
-          days.push(\`### \${titleMatch[1]}\n\${theoryMatch[1]}\`);
+          days.push("### " + titleMatch[1] + "\n" + theoryMatch[1]);
         }
       }
 
@@ -466,42 +466,12 @@ Bewerte nach IHK-Maßstäben und antworte NUR mit diesem JSON:
         : rawContent.slice(0, 15000);
 
       const formatPrompts: Record<string, string> = {
-        kursbuch: \`Erstelle ein vollständiges professionelles KURSBUCH mit:
-- Vorwort und Lernziele
-- Nummerierte Kapitel pro Lerntag
-- Theorie ausführlich erklärt (nicht nur Stichworte)
-- Praxisbeispiele und Fallbeispiele
-- Gesetzliche Grundlagen zitiert
-- Merkkästen mit wichtigen Definitionen
-- Übungsaufgaben am Ende jedes Kapitels
-- Zusammenfassung und Prüfungsvorbereitung\`,
-        zusammenfassung: \`Erstelle eine kompakte LERNZUSAMMENFASSUNG mit:
-- Die 20 wichtigsten Begriffe mit Definitionen
-- Alle relevanten Paragraphen und Gesetze
-- Merksätze für die Prüfung
-- Häufige Prüfungsfragen\`,
-        skript: \`Erstelle ein detailliertes PRÜFUNGSSKRIPT mit:
-- Alle Themen als Frage-Antwort-Format
-- IHK-typische Prüfungsfragen mit Musterlösungen
-- Wichtige Paragraphen zum Auswendiglernen
-- Tipps für die Prüfungssituation\`,
+        kursbuch: "Erstelle ein vollstaendiges KURSBUCH (min 3000 Woerter) mit: Vorwort, nummerierte Kapitel, ausfuehrliche Theorie, Praxisbeispiele, Merkkästen mit Definitionen, Übungsaufgaben, Zusammenfassung",
+        zusammenfassung: "Erstelle eine LERNZUSAMMENFASSUNG mit: 20 wichtigste Begriffe mit Definitionen, alle relevanten Paragraphen, Merksätze, häufige Prüfungsfragen",
+        skript: "Erstelle ein PRÜFUNGSSKRIPT mit: Frage-Antwort-Format, IHK-Prüfungsfragen mit Musterlösungen, wichtige Paragraphen zum Auswendiglernen",
       };
 
-      const prompt = \`Du bist Lehrgangsleiter an einer IHK-Akademie. \${formatPrompts[format] || formatPrompts.kursbuch}
-
-Modul: \${moduleNames[Number(moduleId)]}
-
-LERNINHALTE (aus dem tatsächlichen Lehrplan):
-\${extractedContent}
-
-WICHTIGE ANFORDERUNGEN:
-- Minimum 3.000 Wörter
-- Professionelles Layout mit Markdown-Überschriften (# ## ###)
-- Jedes Kapitel hat Theorie, Praxisbeispiel und Merkkästen
-- Verständlich für Quereinsteiger und Erwachsene ohne Vorkenntnisse
-- Alle Gesetze korrekt zitiert (BGB, GewO, WEG, ImmoWertV etc.)
-- Praxisnah mit echten Berliner/deutschen Beispielen
-- Didaktisch aufgebaut: vom Einfachen zum Komplexen\`;
+      const prompt = "Modul: " + moduleNames[Number(moduleId)] + "\n\n" + (formatPrompts[format] || formatPrompts.kursbuch) + "\n\nLERNINHALTE:\n" + extractedContent + "\n\nAnforderungen: Professionell, min 3000 Woerter, Markdown-Format"; 
 
       const generatedContent = await askClaude(
         "Du bist erfahrener IHK-Dozent und Fachautor für Immobilienwirtschaft.",
