@@ -36,13 +36,13 @@ export default function KursbuchGenerator() {
     setResult(null);
     const mod = MODULES.find(m => m.id === selectedModule)!;
     try {
-      const res = await fetch("/api/ai/generate-kursbuch", {
+      const res = await fetch("/api/ai/generate-kursbuch-v2", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ moduleId: selectedModule, moduleTitle: mod.title, contentSummary: MODULE_SUMMARY[selectedModule], format: selectedFormat }),
+        body: JSON.stringify({ moduleId: selectedModule, format: selectedFormat }),
       });
       const data = await res.json();
-      if (data.success) setResult({ content: data.content, moduleTitle: mod.title, format: selectedFormat });
+      if (data.success) setResult({ content: data.content, moduleTitle: data.moduleName || mod.title, format: selectedFormat });
       else setError(data.error || "Fehler");
     } catch { setError("Verbindungsfehler"); }
     finally { setLoading(false); }
