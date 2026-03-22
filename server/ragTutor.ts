@@ -378,4 +378,39 @@ ${textSnippet}`
     } catch { res.status(500).json({ error: "Fehler beim Generieren" }); }
   });
 
+  // Fallstudie bewerten
+  app.post("/api/ai/bewerte-fallstudie", async (req: Request, res: Response) => {
+    try {
+      const { aufgabe, musterantwort, nutzerAntwort, modul } = req.body;
+      if (!aufgabe || !nutzerAntwort) return res.status(400).json({ error: "Aufgabe und Antwort erforderlich" });
+      const prompt = `Du bist ein IHK-Prüfer für Immobilienwirtschaft. Bewerte die folgende Antwort eines Prüflings.
+
+AUFGABE:
+${aufgabe}
+
+MUSTERANTWORT (nicht zeigen):
+${musterantwort}
+
+ANTWORT DES PRÜFLINGS:
+${nutzerAntwort}
+
+Bewerte nach IHK-Maßstäben und antworte NUR mit diesem JSON:
+{
+  "note": "Sehr gut|Gut|Befriedigend|Ausreichend|Mangelhaft",
+  "punkte": 0-100,
+  "feedback": "2-3 Sätze Gesamtbewertung",
+  "staerken": "Was gut war",
+  "verbesserungen": "Was fehlt oder falsch ist"
+}`;
+      const answer = await askClaude("Du bist strenger aber fairer IHK-Prüfer. Antworte NUR mit JSON.", prompt, []);
+      const clean = answer.replace(/\`\`\`json/g, "").replace(/\`\`\`/g, "").trim();
+      try {
+        const bewertung = JSON.parse(clean);
+        res.json({ success: true, bewertung });
+      } catch {
+        res.status(500).json({ error: "Bewertung konnte nicht verarbeitet werden" });
+      }
+    } catch { res.status(500).json({ error: "Fehler bei der Bewertung" }); }
+  });
+
 }

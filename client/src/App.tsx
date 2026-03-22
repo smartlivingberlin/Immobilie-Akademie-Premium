@@ -11,6 +11,9 @@ import RedeemCode from "@/pages/RedeemCode";
 import AdminCodes from "@/pages/admin/AdminCodes";
 import AdminDashboard from "@/pages/admin/AdminDashboard";
 import KursbuchGenerator from "@/pages/admin/KursbuchGenerator";
+import FragenManager from "@/pages/admin/FragenManager";
+import Fallstudien from "@/pages/Fallstudien";
+import Flashcards from "@/pages/Flashcards";
 import ContentUpload from "@/pages/admin/ContentUpload";
 import Impressum from "@/pages/Impressum";
 import Datenschutz from "@/pages/Datenschutz";
@@ -90,6 +93,9 @@ function Router() {
           <Route path="/admin" component={AdminDashboard} />
           <Route path="/admin/upload" component={ContentUpload} />
           <Route path="/admin/kursbuch" component={KursbuchGenerator} />
+          <Route path="/admin/fragen" component={FragenManager} />
+          <Route path="/fallstudien" component={Fallstudien} />
+          <Route path="/lernkarten" component={Flashcards} />
           <Route path="/admin/videos" component={VideoManagement} />
           <Route path="/admin/whitelabel" component={WhiteLabelAdmin} />
           <Route path="/admin/phase" component={PortalPhaseAdmin} />
