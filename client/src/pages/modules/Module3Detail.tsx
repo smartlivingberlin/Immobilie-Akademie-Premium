@@ -16,6 +16,7 @@ import {
   Maximize2,
   Minimize2
 } from "lucide-react";
+import { AITutor } from "@/components/AITutor";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -543,6 +544,12 @@ export default function Module3Detail() {
           </Card>
         </div>
       </div>
-    </div>
+      <AITutor
+      isOpen={showAITutor}
+      onClose={() => setShowAITutor(false)}
+      moduleId={3}
+      moduleContext={"Modul 3"}
+    />
+</div>
   );
 }
