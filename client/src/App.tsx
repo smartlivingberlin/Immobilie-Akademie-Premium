@@ -17,6 +17,7 @@ import MediaSkriptGenerator from "@/pages/admin/MediaSkriptGenerator";
 import FragenManager from "@/pages/admin/FragenManager";
 import Fallstudien from "@/pages/Fallstudien";
 import Flashcards from "@/pages/Flashcards";
+import ExposeTrainer from "@/pages/ExposeTrainer";
 import ContentUpload from "@/pages/admin/ContentUpload";
 import Impressum from "@/pages/Impressum";
 import Datenschutz from "@/pages/Datenschutz";
@@ -102,6 +103,7 @@ function Router() {
           <Route path="/admin/fragen" component={FragenManager} />
           <Route path="/fallstudien" component={Fallstudien} />
           <Route path="/lernkarten" component={Flashcards} />
+          <Route path="/expose-trainer" component={ExposeTrainer} />
           <Route path="/admin/videos" component={VideoManagement} />
           <Route path="/admin/whitelabel" component={WhiteLabelAdmin} />
           <Route path="/admin/phase" component={PortalPhaseAdmin} />

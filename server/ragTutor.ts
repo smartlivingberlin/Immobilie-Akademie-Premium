@@ -683,4 +683,26 @@ INHALTLICHE ANFORDERUNGEN:
     }
   });
 
+  // Exposé-Generator: Immobilie beschreiben + KI bewertet Pflichtangaben
+  app.post("/api/ai/bewerte-expose", async (req: Request, res: Response) => {
+    try {
+      const { expose, immobilienDaten } = req.body;
+      if (!expose || expose.length < 50) return res.status(400).json({ error: "Exposé zu kurz" });
+
+      const prompt = "Du bist ein IHK-Prüfer für Immobilienmakler. Bewerte das folgende Exposé nach deutschen Pflichtangaben.\n\nIMMOBILIEN-DATEN:\n" + (immobilienDaten || "Nicht angegeben") + "\n\nEINGEREICHTES EXPOSÉ:\n" + expose + "\n\nPrüfe folgende Pflichtangaben nach GEG/EnEV und MaBV:\n1. Energieausweis-Typ (Bedarfs- oder Verbrauchsausweis)\n2. Energieträger (Gas, Öl, Fernwärme etc.)\n3. Baujahr des Gebäudes\n4. Energiekennwert (kWh/m²a)\n5. Energieeffizienzklasse (A+ bis H)\n6. Courtage-Angabe mit Mehrwertsteuer\n7. Wohnfläche in Quadratmeter\n8. Kaufpreis oder Miete\n9. Lage/Adresse (zumindest Stadtteil)\n10. Objektbeschreibung\n\nAntworte NUR mit diesem JSON:\n{\n  \"gesamtnote\": \"Sehr gut|Gut|Befriedigend|Ausreichend|Mangelhaft\",\n  \"punkte\": 0-100,\n  \"pflichtangaben\": {\n    \"energieausweis_typ\": true|false,\n    \"energietraeger\": true|false,\n    \"baujahr\": true|false,\n    \"energiekennwert\": true|false,\n    \"effizienzklasse\": true|false,\n    \"courtage\": true|false,\n    \"wohnflaeche\": true|false,\n    \"preis\": true|false,\n    \"lage\": true|false,\n    \"objektbeschreibung\": true|false\n  },\n  \"feedback\": \"2-3 Sätze Gesamtbewertung\",\n  \"fehlendeAngaben\": [\"Liste der fehlenden Pflichtangaben\"],\n  \"verbesserungen\": \"Konkrete Verbesserungsvorschläge\",\n  \"rechtlicheRisiken\": \"Rechtliche Risiken bei fehlendem Exposé\"\n}";
+
+      const answer = await askClaude("Du bist strenger IHK-Prüfer für Maklerrecht. Antworte NUR mit JSON.", prompt, []);
+      const clean = answer.replace(/```json/g, "").replace(/```/g, "").trim();
+
+      try {
+        const bewertung = JSON.parse(clean);
+        res.json({ success: true, bewertung });
+      } catch {
+        res.status(500).json({ error: "Bewertung konnte nicht verarbeitet werden" });
+      }
+    } catch (err: any) {
+      res.status(500).json({ error: "Fehler: " + err.message });
+    }
+  });
+
 }
