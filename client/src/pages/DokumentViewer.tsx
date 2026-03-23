@@ -162,12 +162,8 @@ export default function DokumentViewer() {
   const exportiereMarkierungen = () => {
     const text = markierungen.map(m =>
       `Seite ${m.seite} | ${FARBEN.find(f => f.id === m.farbe)?.label} | ${m.erstellt}${m.kommentar ? " | " + m.kommentar : ""}`
-    ).join("
-");
-    const blob = new Blob([`MARKIERUNGEN — ${dateiName}
-${"=".repeat(50)}
-
-${text}`], { type: "text/plain" });
+    ).join("\n");
+    const blob = new Blob(["MARKIERUNGEN — " + dateiName + "\n" + "=".repeat(50) + "\n\n" + text], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
