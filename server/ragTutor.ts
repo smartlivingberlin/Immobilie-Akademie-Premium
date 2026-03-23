@@ -52,7 +52,7 @@ async function askClaude(systemPrompt: string, question: string, context: any[])
     },
     body: JSON.stringify({
       model: "claude-haiku-4-5-20251001",
-      max_tokens: 1024,
+      max_tokens: 8000,
       system: systemPrompt,
       messages,
     }),
@@ -302,7 +302,7 @@ REGELN:
         const textSnippet = extractedText.slice(0, 8000);
         const message = await client.messages.create({
           model: "claude-haiku-4-5-20251001",
-          max_tokens: 1500,
+          max_tokens: 8000,
           messages: [{
             role: "user",
             content: `Du bist ein Immobilien-Experte. Analysiere dieses Dokument und erstelle:
@@ -460,9 +460,9 @@ Bewerte nach IHK-Maßstäben und antworte NUR mit diesem JSON:
       }
       const extractedContent = titleTheoryPairs.length > 0 ? titleTheoryPairs.slice(0, 30).join("\n\n") : rawContent.slice(0, 12000);
       const formatInstructions: Record<string, string> = {
-        kursbuch: "Erstelle ein vollstaendiges KURSBUCH (min. 3000 Woerter) mit: Vorwort, nummerierte Kapitel, ausfuehrliche Theorie, Praxisbeispiele, Merkkästen, Übungsaufgaben, Zusammenfassung",
-        zusammenfassung: "Erstelle eine LERNZUSAMMENFASSUNG mit: 20 wichtigste Begriffe, alle Paragraphen, Merksätze, häufige Prüfungsfragen",
-        skript: "Erstelle ein PRÜFUNGSSKRIPT mit: Frage-Antwort-Format, IHK-Prüfungsfragen mit Lösungen, wichtige Paragraphen",
+        kursbuch: "Erstelle ein vollständiges professionelles KURSBUCH mit MINDESTENS 5000 Wörtern. Struktur: 1) Vorwort und Lernziele (300 Wörter) 2) Mindestens 8 nummerierte Kapitel je 400-600 Wörter mit Theorie, Praxisbeispielen aus Berlin/Deutschland, Merkkästen mit wichtigen Definitionen 3) Übungsaufgaben am Ende jedes Kapitels mit Musterlösungen 4) Zusammenfassung und IHK-Prüfungsvorbereitung. WICHTIG: Schreibe vollständig und ausführlich — kürze NICHTS ab.",
+        zusammenfassung: "Erstelle eine vollständige LERNZUSAMMENFASSUNG mit MINDESTENS 2000 Wörtern: 1) Die 30 wichtigsten Begriffe mit ausführlichen Definitionen 2) Alle relevanten Paragraphen mit Erklärung was sie bedeuten 3) Mindestens 15 Merksätze für die Prüfung 4) 20 häufige IHK-Prüfungsfragen mit vollständigen Musterlösungen. Kürze nichts ab.",
+        skript: "Erstelle ein vollständiges PRÜFUNGSSKRIPT mit MINDESTENS 3000 Wörtern: 1) 30 IHK-typische Prüfungsfragen im Frage-Antwort-Format mit ausführlichen Musterlösungen 2) Alle prüfungsrelevanten Paragraphen mit Erklärung 3) Rechenwege für Berechnungsaufgaben Schritt für Schritt 4) Tipps für die Prüfungssituation. Vollständig ausschreiben — nichts kürzen.",
       };
       const prompt = "Modul: " + moduleNames[Number(moduleId)] + "\n\n" + formatInstructions[format] + "\n\nLERNINHALTE:\n" + extractedContent + "\n\nAnforderungen: Professionell wie IU Akademie, verständlich für Quereinsteiger, alle Gesetze korrekt zitiert, Markdown-Format mit # ## ###";
       const generatedContent = await askClaude("Du bist erfahrener IHK-Dozent und Fachautor für Immobilienwirtschaft in Deutschland.", prompt, []);
