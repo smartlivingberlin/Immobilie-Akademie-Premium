@@ -303,6 +303,11 @@ const navigation = [
                         <span className="mr-2">📊</span> Dashboard
                       </div>
                     </Link>
+                    <Link href="/admin/loesungen">
+                      <div className={`flex items-center w-full justify-start text-slate-300 hover:text-white hover:bg-slate-800 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${location === '/admin/loesungen' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
+                        <span className="mr-2">📚</span> Lösungsübersicht
+                      </div>
+                    </Link>
                     <Link href="/admin/mediaskript">
                       <div className={`flex items-center w-full justify-start text-slate-300 hover:text-white hover:bg-slate-800 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${location === '/admin/mediaskript' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
                         <span className="mr-2">🎬</span> Mediaskript-Generator
