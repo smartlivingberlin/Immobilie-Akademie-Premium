@@ -817,7 +817,7 @@ Antworte im folgenden JSON-Format:
       }))
       .query(async ({ input }) => {
         const { getDb } = await import("./db");
-        const { like, and, eq } = await import("drizzle-orm");
+        const { like, and, eq, count, sql } = await import("drizzle-orm");
         const db = await getDb();
         if (!db) return { questions: [], total: 0 };
         const conditions: any[] = [];
@@ -827,9 +827,9 @@ Antworte im folgenden JSON-Format:
         const where = conditions.length > 0 ? and(...conditions) : undefined;
         const [questions, countResult] = await Promise.all([
           db.select().from(questionBank).where(where).limit(input.limit).offset(input.offset).orderBy(questionBank.moduleId),
-          db.select({ count: questionBank.id }).from(questionBank).where(where),
+          db.select({ total: count() }).from(questionBank).where(where),
         ]);
-        return { questions, total: countResult.length };
+        return { questions, total: countResult[0]?.total ?? 0 };
       }),
     delete: adminProcedure
       .input(z.object({ id: z.number() }))
@@ -842,13 +842,22 @@ Antworte im folgenden JSON-Format:
         return { ok: true };
       }),
     update: adminProcedure
-      .input(z.object({ id: z.number(), questionText: z.string() }))
+      .input(z.object({
+        id: z.number(),
+        questionText: z.string().optional(),
+        difficulty: z.string().optional(),
+        category: z.string().optional(),
+      }))
       .mutation(async ({ input }) => {
         const { getDb } = await import("./db");
         const { eq } = await import("drizzle-orm");
         const db = await getDb();
         if (!db) throw new Error("DB nicht verfügbar");
-        await db.update(questionBank).set({ questionText: input.questionText }).where(eq(questionBank.id, input.id));
+        const updateData: any = {};
+        if (input.questionText) updateData.questionText = input.questionText;
+        if (input.difficulty) updateData.difficulty = input.difficulty;
+        if (input.category) updateData.category = input.category;
+        await db.update(questionBank).set(updateData).where(eq(questionBank.id, input.id));
         return { ok: true };
       }),
   }),

@@ -9,8 +9,8 @@ export default function AdminDashboard() {
   const stats = [
     { label: "Nutzer gesamt", value: users?.length ?? "–", icon: Users, color: "#2563eb", href: "/admin/nutzer" },
     { label: "Zugangscodes", value: codes?.length ?? "–", icon: Code, color: "#7c3aed", href: "/admin/codes" },
-    { label: "Prüfungsfragen", value: "521", icon: FileQuestion, color: "#059669", href: "/admin/inhalte" },
-    { label: "Module", value: "5", icon: BookOpen, color: "#d97706", href: "/admin/inhalte" },
+    { label: "Prüfungsfragen", value: "521", icon: FileQuestion, color: "#059669", href: "/admin/fragen" },
+    { label: "Module", value: "5", icon: BookOpen, color: "#d97706", href: "/admin/fragen" },
   ];
 
   const sections = [
