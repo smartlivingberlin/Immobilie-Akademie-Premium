@@ -60,6 +60,42 @@ Aufgabe:
 4. Gebäudeertragswert = 43.200 × 20,09 = 867.888 EUR; Ertragswert = 867.888 + 280.000 = 1.147.888 EUR
 5. Verkehrswert gerundet: 1.150.000 EUR`,
   },
+  {
+    id: 4,
+    modul: 1,
+    titel: "Erstkäufer fragt nach Grundbuch",
+    schwierigkeit: "easy",
+    aufgabe: `Ein Erstkäufer kommt zu Ihnen und fragt: Was steht im Grundbuch und warum ist das wichtig?
+
+1. Was ist das Grundbuch und wo wird es geführt?
+2. Was steht in Abteilung I, II und III?
+3. Warum sollte ein Käufer den Grundbuchauszug prüfen?
+4. Was ist eine Auflassungsvormerkung?
+5. Was bedeutet der öffentliche Glaube des Grundbuchs?`,
+    musterantwort: `1. Öffentliches Register beim Amtsgericht - dokumentiert alle Rechtsverhältnisse (§873 BGB)
+2. Abt. I: Eigentümer | Abt. II: Lasten/Beschränkungen | Abt. III: Grundpfandrechte (Grundschulden)
+3. Prüfen ob Verkäufer Eigentümer ist, ob Schulden auf dem Grundstück lasten, ob Rechte Dritter bestehen
+4. Sichert Anspruch des Käufers nach Kaufvertrag bis zur Eigentumsumschreibung (§883 BGB)
+5. Gutgläubiger Erwerb ist geschützt auch wenn Eintragung fehlerhaft war (§892 BGB)`,
+  },
+  {
+    id: 5,
+    modul: 5,
+    titel: "Kundin fragt nach Finanzierungsoptionen",
+    schwierigkeit: "medium",
+    aufgabe: `Frau Schmidt (45J, 3.500 EUR netto) möchte eine Wohnung für 350.000 EUR kaufen. Sie hat 70.000 EUR Eigenkapital.
+
+1. Wie hoch ist der Finanzierungsbedarf und der Beleihungsauslauf (LTV)?
+2. Unterschied Nominalzins vs. effektiver Jahreszins?
+3. Was bedeutet 2% Anfangstilgung und wie lange dauert die Rückzahlung?
+4. Welche KfW-Programme könnten relevant sein?
+5. Was ist eine Grundschuld und wie sichert sie die Bank ab?`,
+    musterantwort: `1. Bedarf: 350.000 - 70.000 = 280.000 EUR | LTV = 80% - im üblichen Rahmen
+2. Nominalzins: reiner Zinssatz | Effektiver Jahreszins: alle Kosten inkl. Gebühren - Pflichtangabe nach PAngV
+3. 2% Tilgung + 3,5% Zins = 1.283 EUR/Monat | Laufzeit ca. 30 Jahre
+4. KfW 124 (Wohneigentum), KfW 261 (Energieeffizient Sanieren), KfW 300
+5. Grundschuld §1191 BGB: dingliches Sicherungsrecht in Abt. III | nicht akzessorisch - bleibt nach Tilgung bestehen`,
+  },
 ];
 
 export default function Fallstudien() {
