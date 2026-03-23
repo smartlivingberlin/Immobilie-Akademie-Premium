@@ -121,6 +121,7 @@ export default function Module2Detail() {
 
   const [selectedDay, setSelectedDay] = useState(urlDay);
   const [isQuizCompleted, setIsQuizCompleted] = useState(false);
+  const [showAITutor, setShowAITutor] = useState(false);
   const currentDayNum = parseInt(selectedDay.split('_')[1]);
 
   // AZAV-Anwesenheitsnachweis: Heartbeat alle 60 Sekunden

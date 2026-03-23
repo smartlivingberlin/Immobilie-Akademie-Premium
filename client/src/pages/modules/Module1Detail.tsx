@@ -76,6 +76,7 @@ export default function Module1Detail() {
   const urlDay = params?.day ? `day_${params.day}` : "day_1";
   const [selectedDay, setSelectedDay] = useState(urlDay);
   const [isQuizCompleted, setIsQuizCompleted] = useState(false);
+  const [showAITutor, setShowAITutor] = useState(false);
 
   const currentContent = contentData[selectedDay as keyof typeof contentData] || contentData.day_1;
   const currentDayNum = parseInt(selectedDay.replace('day_', ''));
