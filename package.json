@@ -76,6 +76,7 @@
     "node-fpdf": "^1.0.49",
     "officeparser": "^6.0.4",
     "pdf-parse": "^2.4.5",
+    "pdfjs-dist": "^5.5.207",
     "react": "^19.2.1",
     "react-day-picker": "^9.11.1",
     "react-dom": "^19.2.1",

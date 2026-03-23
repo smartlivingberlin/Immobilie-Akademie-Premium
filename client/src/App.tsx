@@ -20,6 +20,7 @@ import FragenManager from "@/pages/admin/FragenManager";
 import Fallstudien from "@/pages/Fallstudien";
 import Flashcards from "@/pages/Flashcards";
 import ExposeTrainer from "@/pages/ExposeTrainer";
+import DokumentViewer from "@/pages/DokumentViewer";
 import ContentUpload from "@/pages/admin/ContentUpload";
 import Impressum from "@/pages/Impressum";
 import Datenschutz from "@/pages/Datenschutz";
@@ -108,6 +109,7 @@ function Router() {
           <Route path="/fallstudien" component={Fallstudien} />
           <Route path="/lernkarten" component={Flashcards} />
           <Route path="/expose-trainer" component={ExposeTrainer} />
+          <Route path="/dokument-viewer" component={DokumentViewer} />
           <Route path="/admin/videos" component={VideoManagement} />
           <Route path="/admin/whitelabel" component={WhiteLabelAdmin} />
           <Route path="/admin/phase" component={PortalPhaseAdmin} />
