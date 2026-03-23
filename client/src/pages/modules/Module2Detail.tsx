@@ -1,3 +1,4 @@
+import { useFontScale } from "@/App";
 import { useState } from "react";
 import { Link, useRoute } from "wouter";
 import { useActivityHeartbeat } from "@/hooks/useActivityHeartbeat";

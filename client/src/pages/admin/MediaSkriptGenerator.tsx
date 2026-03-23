@@ -1,3 +1,4 @@
+import { FullscreenContent } from "@/components/FullscreenContent";
 import { useState } from "react";
 import { Sparkles, Loader2, Download, Copy, CheckCircle, Mic, Video, Radio, FileText, ExternalLink } from "lucide-react";
 
@@ -196,7 +197,14 @@ export default function MediaSkriptGenerator() {
             </div>
           )}
 
-          {/* Skript-Text */}
+          {/* Vollbild */}
+            <div style={{ padding: "8px 16px", borderBottom: "0.5px solid #f1f5f9" }}>
+              <FullscreenContent
+                title={result.thema + " — " + FORMATE.find(f => f.id === result.format)?.label}
+                content={<div style={{ whiteSpace: "pre-wrap", lineHeight: 1.9, fontSize: 15, fontFamily: "monospace" }}>{result.skript}</div>}
+              />
+            </div>
+            {/* Skript-Text */}
           <div style={{ padding: 20, fontSize: 13, color: "#374151", lineHeight: 1.9, whiteSpace: "pre-wrap", maxHeight: 600, overflowY: "auto", fontFamily: "monospace, monospace" }}>
             {result.skript}
           </div>
