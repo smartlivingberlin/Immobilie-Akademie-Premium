@@ -1,3 +1,4 @@
+import { FullscreenContent } from "@/components/FullscreenContent";
 import { useState } from "react";
 import { Sparkles, Loader2, Download, Users, BookOpen, Clock, AlertTriangle, CheckCircle, Eye, EyeOff } from "lucide-react";
 
@@ -144,6 +145,13 @@ export default function DozentenCockpit() {
             </div>
           )}
 
+          {/* Vollbild */}
+          <div style={{ marginBottom: 8 }}>
+            <FullscreenContent
+              title={FORMATS.find(f => f.id === format)?.label + " — M" + moduleId}
+              content={<div style={{ whiteSpace: "pre-wrap", lineHeight: 1.9, fontSize: 15 }}>{result.plan}</div>}
+            />
+          </div>
           {/* Unterrichtsplan */}
           <div style={{ background: "#fff", border: "0.5px solid #e2e8f0", borderRadius: 12, overflow: "hidden" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "14px 16px", borderBottom: "0.5px solid #f1f5f9", background: "#f8fafc" }}>

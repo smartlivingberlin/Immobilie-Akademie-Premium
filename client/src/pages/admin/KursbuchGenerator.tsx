@@ -1,3 +1,4 @@
+import { FullscreenContent } from "@/components/FullscreenContent";
 import { useState } from "react";
 import { Loader2, Download, CheckCircle, Sparkles } from "lucide-react";
 

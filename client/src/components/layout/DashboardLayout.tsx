@@ -45,6 +45,7 @@ import {
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { scale: fontScale, setScale: setFontScale } = useFontScale();
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isAIAssistantOpen, setIsAIAssistantOpen] = useState(false);
 
@@ -554,6 +555,15 @@ const navigation = [
             <LogOut className={`h-4 w-4 ${isCollapsed ? "" : "mr-2"}`} />
             {!isCollapsed && "Abmelden"}
           </Button>
+          {!isCollapsed && (
+            <div style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 4, justifyContent: "center" }}>
+              <button onClick={() => setFontScale(s => Math.max(0.8, s - 0.1))}
+                style={{ padding: "2px 8px", border: "0.5px solid #334155", borderRadius: 4, background: "none", color: "#94a3b8", cursor: "pointer", fontSize: 14 }}>A-</button>
+              <span style={{ fontSize: 10, color: "#64748b", padding: "0 4px" }}>{Math.round(fontScale * 100)}%</span>
+              <button onClick={() => setFontScale(s => Math.min(1.4, s + 0.1))}
+                style={{ padding: "2px 8px", border: "0.5px solid #334155", borderRadius: 4, background: "none", color: "#94a3b8", cursor: "pointer", fontSize: 14 }}>A+</button>
+            </div>
+          )}
         </div>
       </aside>
 
@@ -574,7 +584,7 @@ const navigation = [
 
         {/* Content Scroll Area */}
         <div className="flex-1 overflow-y-auto p-4 md:p-8 scroll-smooth">
-          <div className={`max-w-7xl mx-auto transition-all duration-300 ${isCollapsed ? "max-w-[1600px]" : ""}`}>
+          <div className={`max-w-7xl mx-auto transition-all duration-300 ${isCollapsed ? "max-w-[1600px]" : ""}`} style={{ fontSize: fontScale + "rem" }}>
             <Breadcrumbs />
             {children}
           </div>
