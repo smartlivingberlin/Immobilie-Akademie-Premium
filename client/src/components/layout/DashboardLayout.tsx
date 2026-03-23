@@ -45,7 +45,7 @@ import {
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { scale: fontScale, setScale: setFontScale } = useFontScale();
+  const [fontScale, setFontScale] = useState(parseFloat(localStorage.getItem("fontScale") || "1.0"));
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isAIAssistantOpen, setIsAIAssistantOpen] = useState(false);
 
