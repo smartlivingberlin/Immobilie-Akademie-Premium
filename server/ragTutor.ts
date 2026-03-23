@@ -470,4 +470,125 @@ Bewerte nach IHK-Maßstäben und antworte NUR mit diesem JSON:
     } catch (err: any) { res.status(500).json({ error: "Fehler: " + err.message }); }
   });
 
+  // Dozenten-Cockpit: Lernfortschritt analysieren + Unterrichtsplan generieren
+  app.post("/api/ai/dozenten-cockpit", async (req: Request, res: Response) => {
+    try {
+      const { moduleId, format = "unterrichtsplan" } = req.body;
+      if (!moduleId) return res.status(400).json({ error: "moduleId erforderlich" });
+
+      const { getDb } = await import("./db");
+      const { learningLogs, users, questionBank } = await import("../drizzle/schema");
+      const { eq, and, count, avg, sql } = await import("drizzle-orm");
+      const db = await getDb();
+      if (!db) return res.status(500).json({ error: "DB nicht verfügbar" });
+
+      const moduleNames: Record<number, string> = {
+        1: "Einführung in die Immobilienwirtschaft",
+        2: "Immobilienmakler §34c GewO",
+        3: "WEG-Verwaltung & Mietrecht",
+        4: "Gutachter & Sachverständiger",
+        5: "Darlehensvermittler §34i GewO",
+      };
+
+      // Lernfortschritt der Gruppe abrufen
+      const logs = await db.select({
+        userId: learningLogs.userId,
+        dayId: learningLogs.dayId,
+        completed: learningLogs.completed,
+        durationSeconds: learningLogs.durationSeconds,
+        heartbeatCount: learningLogs.heartbeatCount,
+      }).from(learningLogs)
+        .where(eq(learningLogs.moduleId, Number(moduleId)));
+
+      // Statistiken berechnen
+      const totalUsers = new Set(logs.map(l => l.userId)).size;
+      const completedDays = logs.filter(l => l.completed);
+      const avgDuration = completedDays.length > 0
+        ? Math.round(completedDays.reduce((s, l) => s + l.durationSeconds, 0) / completedDays.length / 60)
+        : 0;
+
+      // Welche Tage wurden am wenigsten absolviert
+      const dayStats: Record<number, { completed: number; started: number }> = {};
+      for (const log of logs) {
+        if (!dayStats[log.dayId]) dayStats[log.dayId] = { completed: 0, started: 0 };
+        dayStats[log.dayId].started++;
+        if (log.completed) dayStats[log.dayId].completed++;
+      }
+
+      const weakDays = Object.entries(dayStats)
+        .filter(([_, s]) => s.started > 0)
+        .map(([day, s]) => ({ day: Number(day), rate: Math.round(s.completed / s.started * 100) }))
+        .sort((a, b) => a.rate - b.rate)
+        .slice(0, 5);
+
+      // Prüfungsfragen-Statistik
+      const questionCount = await db.select({ total: count() })
+        .from(questionBank)
+        .where(eq(questionBank.moduleId, Number(moduleId)));
+
+      const gruppenAnalyse = {
+        moduleName: moduleNames[Number(moduleId)],
+        moduleId: Number(moduleId),
+        totalNutzer: totalUsers,
+        abgesolvierteEinheiten: completedDays.length,
+        durchschnittlicheZeit: avgDuration,
+        schwacheTage: weakDays,
+        prüfungsfragen: questionCount[0]?.total ?? 0,
+      };
+
+      // KI-Unterrichtsplan generieren
+      const formatInstructions: Record<string, string> = {
+        unterrichtsplan: `Erstelle einen detaillierten UNTERRICHTSPLAN für 90 Minuten mit:
+- Begrüssung und Lernziele (5 Min)
+- Wiederholung schwacher Themen (20 Min) mit konkretem Sprechtext
+- Kernthema der Stunde (35 Min) mit Erklärungen und Beispielen
+- Gruppenübung/Fallbeispiel (20 Min)
+- Fragen und Zusammenfassung (10 Min)
+Füge bei jedem Abschnitt den genauen SPRECHTEXT hinzu den der Dozent sagen soll.`,
+        zusammenfassung: `Erstelle eine KURZÜBERSICHT für den Dozenten:
+- Stand der Gruppe in 3 Sätzen
+- Top 3 Schwachstellen
+- 5 wichtigste Themen für heute
+- 3 konkrete Übungsaufgaben`,
+        uebungen: `Erstelle 5 PRAXISÜBUNGEN passend zum Lernstand:
+- Jede Übung mit Aufgabenstellung, Musterlösung und Zeitangabe
+- Aufsteigend nach Schwierigkeit
+- Bezug zu echten IHK-Prüfungssituationen`,
+      };
+
+      const prompt = `Du bist ein erfahrener IHK-Dozent für ${gruppenAnalyse.moduleName}.
+
+AKTUELLE GRUPPENSITUATION:
+- Lernende aktiv: ${gruppenAnalyse.totalNutzer}
+- Absolvierte Lerneinheiten: ${gruppenAnalyse.abgesolvierteEinheiten}
+- Ø Lernzeit pro Einheit: ${gruppenAnalyse.durchschnittlicheZeit} Minuten
+- Verfügbare Prüfungsfragen: ${gruppenAnalyse.prüfungsfragen}
+- Schwache Lerntage (wenig Abschlüsse): ${gruppenAnalyse.schwacheTage.map(d => "Tag " + d.day + " (" + d.rate + "% Abschlussrate)").join(", ") || "Keine Daten"}
+
+${formatInstructions[format] || formatInstructions.unterrichtsplan}
+
+WICHTIG: 
+- Sprich die Lernenden als Erwachsene an
+- Verwende Praxisbeispiele aus dem Berliner/deutschen Immobilienmarkt
+- Alle Paragraphen korrekt zitieren
+- Verständlich für Quereinsteiger ohne juristische Vorkenntnisse`;
+
+      const plan = await askClaude(
+        "Du bist erfahrener IHK-Dozent für Immobilienwirtschaft in Deutschland.",
+        prompt,
+        []
+      );
+
+      res.json({
+        success: true,
+        plan,
+        gruppenAnalyse,
+        format,
+        generatedAt: new Date().toISOString(),
+      });
+    } catch (err: any) {
+      res.status(500).json({ error: "Fehler: " + err.message });
+    }
+  });
+
 }
