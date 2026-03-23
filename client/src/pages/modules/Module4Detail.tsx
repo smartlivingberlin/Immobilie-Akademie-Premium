@@ -105,6 +105,7 @@ export default function Module4Detail() {
   }
 
   const [selectedDay, setSelectedDay] = useState(urlDay);
+  const [showAITutor, setShowAITutor] = useState(false);
   const [showQuiz, setShowQuiz] = useState(false);
   const [showCertificate, setShowCertificate] = useState(false);
   const currentDayNum = parseInt(selectedDay.split('_')[1]);
