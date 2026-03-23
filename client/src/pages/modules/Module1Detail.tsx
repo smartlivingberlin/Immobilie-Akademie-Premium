@@ -17,6 +17,7 @@ import {
   Ruler,
   ArrowRight
 } from "lucide-react";
+import { AITutor } from "@/components/AITutor";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -447,6 +448,12 @@ export default function Module1Detail() {
           </div>
         </div>
       </div>
-    </div>
+      <AITutor
+      isOpen={showAITutor}
+      onClose={() => setShowAITutor(false)}
+      moduleId={1}
+      moduleContext={"Modul 1"}
+    />
+</div>
   );
 }
