@@ -12,6 +12,8 @@ import AdminCodes from "@/pages/admin/AdminCodes";
 import AdminDashboard from "@/pages/admin/AdminDashboard";
 import KursbuchGenerator from "@/pages/admin/KursbuchGenerator";
 import DozentenCockpit from "@/pages/admin/DozentenCockpit";
+import MediaSkriptGenerator from "@/pages/admin/MediaSkriptGenerator";
+import MediaSkriptGenerator from "@/pages/admin/MediaSkriptGenerator";
 import FragenManager from "@/pages/admin/FragenManager";
 import Fallstudien from "@/pages/Fallstudien";
 import Flashcards from "@/pages/Flashcards";
@@ -95,6 +97,8 @@ function Router() {
           <Route path="/admin/upload" component={ContentUpload} />
           <Route path="/admin/kursbuch" component={KursbuchGenerator} />
           <Route path="/admin/dozenten" component={DozentenCockpit} />
+          <Route path="/admin/mediaskript" component={MediaSkriptGenerator} />
+          <Route path="/admin/mediaskript" component={MediaSkriptGenerator} />
           <Route path="/admin/fragen" component={FragenManager} />
           <Route path="/fallstudien" component={Fallstudien} />
           <Route path="/lernkarten" component={Flashcards} />

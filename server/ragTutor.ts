@@ -591,4 +591,96 @@ WICHTIG:
     }
   });
 
+  // NotebookLM + Video Skript Generator
+  app.post("/api/ai/generate-mediaskript", async (req: Request, res: Response) => {
+    try {
+      const { moduleId, thema, format = "podcast" } = req.body;
+      if (!moduleId || !thema) return res.status(400).json({ error: "moduleId und thema erforderlich" });
+
+      const moduleNames: Record<number, string> = {
+        1: "Einführung in die Immobilienwirtschaft",
+        2: "Immobilienmakler §34c GewO",
+        3: "WEG-Verwaltung & Mietrecht",
+        4: "Gutachter & Sachverständiger",
+        5: "Darlehensvermittler §34i GewO",
+      };
+
+      const formatPrompts: Record<string, string> = {
+        podcast: `Schreibe einen PODCAST-TEXT für NotebookLM Audio Overview (Deep Dive Format, 8-12 Minuten).
+WICHTIG - Exaktes Format das NotebookLM am besten verarbeitet:
+- Zwei Sprecher: [SPRECHER A] und [SPRECHER B]
+- Beginne mit: "[SPRECHER A]: Hey, willkommen zurück! Heute sprechen wir über..."
+- Wechsle alle 2-4 Sätze zwischen den Sprechern
+- Nutze echte Berliner Immobilienbeispiele
+- Erkläre jeden Fachbegriff sofort danach in einfachen Worten
+- Stelle rhetorische Fragen: "Wusstest du, dass...?"
+- Beende mit: "Was nimmst du heute mit?"
+- Mindestens 2.000 Wörter für gute Audio-Qualität`,
+
+        videoskript: `Schreibe ein professionelles VIDEO-SPRECHTEXTSKRIPT für einen echten menschlichen Sprecher (10-15 Minuten).
+Format für Video-Produktion:
+[SZENE: Beschreibung was im Bild zu sehen ist]
+[SPRECHER - NORMAL/BETONEND/PAUSE]: Der gesprochene Text hier...
+[EINBLENDUNG: Text der eingeblendet wird]
+[BEISPIEL: Konkreter Fall aus der Praxis]
+
+Regeln:
+- Kurze Sätze (max. 15 Wörter) für flüssiges Sprechen
+- Pausen markieren mit [PAUSE 2 SEC]
+- Wichtige Begriffe markieren mit *Kursiv*
+- Praxisbeispiele aus Berlin/Deutschland
+- Verständlich für Quereinsteiger ohne Vorkenntnisse
+- Am Ende: Zusammenfassung + 3 Lernziele`,
+
+        synthesia: `Schreibe ein KI-AVATAR SKRIPT für Synthesia oder ähnliche Tools (5-8 Minuten).
+Format für KI-Avatar Videos:
+- Sehr kurze Sätze (max. 10 Wörter) - KI-Stimmen klingen sonst unnatürlich
+- Keine Klammern oder Sonderzeichen im Sprechtext
+- Beginne jeden Abschnitt mit dem Thema als Titel: ## THEMA
+- Sprechertext darunter ohne Formatierung
+- Nach jedem Abschnitt: VISUALS: [was gezeigt werden soll]
+- Einfache Sprache - Hauptschulniveau ausreichend
+- Keine verschachtelten Sätze
+- Wiederholungen sind gut für KI-Stimmen`,
+
+        zusammenfassung: `Schreibe eine KURZE ZUSAMMENFASSUNG (2-3 Minuten) für alle drei Verwendungen:
+- Als NotebookLM Brief Format (kurzer Podcast)
+- Als Social Media Video (Instagram/LinkedIn)
+- Als Einleitung vor dem Hauptvideo
+
+Format: Fließtext, klar strukturiert, max. 500 Wörter.
+Kernpunkte als nummerierte Liste am Ende.`,
+      };
+
+      const prompt = formatPrompts[format] || formatPrompts.podcast;
+      const systemPrompt = `Du bist ein erfahrener Medienproducer und IHK-Dozent für Immobilienwirtschaft in Deutschland.
+Modul: ${moduleNames[Number(moduleId)]}
+Thema: ${thema}
+
+${prompt}
+
+INHALTLICHE ANFORDERUNGEN:
+- Alle Gesetze korrekt zitieren (§34c GewO, §652 BGB, etc.)
+- Praxisbeispiele aus dem deutschen/Berliner Immobilienmarkt
+- Für Quereinsteiger und Erwachsene ohne Vorkenntnisse verständlich
+- IHK-Prüfungsrelevante Inhalte bevorzugen
+- Aktuelle Rechtslage 2025/2026`;
+
+      const result = await askClaude(systemPrompt, `Erstelle das ${format}-Skript für: ${thema}`, []);
+
+      res.json({
+        success: true,
+        skript: result,
+        format,
+        thema,
+        moduleId,
+        moduleName: moduleNames[Number(moduleId)],
+        generatedAt: new Date().toISOString(),
+        wordCount: result.split(" ").length,
+      });
+    } catch (err: any) {
+      res.status(500).json({ error: "Fehler: " + err.message });
+    }
+  });
+
 }
