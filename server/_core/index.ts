@@ -60,9 +60,13 @@ app.use("/api/ai", aiLimiter);
   // Lokaler Dateispeicher (nur wenn kein Manus)
   const { registerStorageRoute } = await import("../storage");
   registerStorageRoute(app);
-  // Stripe
-  const { stripeRouter } = await import("../stripe");
-  app.use(stripeRouter);
+  // Stripe nur laden, wenn Schlüssel vorhanden ist
+  if (process.env.STRIPE_SECRET_KEY) {
+    const { stripeRouter } = await import("../stripe");
+    app.use(stripeRouter);
+  } else {
+    console.log("[dev] Stripe deaktiviert: STRIPE_SECRET_KEY nicht gesetzt");
+  }
 
   // tRPC API
   app.use(
