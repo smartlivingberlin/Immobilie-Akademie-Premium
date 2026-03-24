@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { trpc } from "@/lib/trpc";
+import { useState, useRef, useEffect } from "react";
 import { useActivityHeartbeat } from "@/hooks/useActivityHeartbeat";
 import { Link, useRoute } from "wouter";
 import { 
@@ -106,6 +107,42 @@ export default function Module4Detail() {
 
   const [selectedDay, setSelectedDay] = useState(urlDay);
   const [showAITutor, setShowAITutor] = useState(false);
+
+  // Lernfortschritt Tracking
+  const logIdRef = useRef<number | null>(null);
+  const startTimeRef = useRef<number>(Date.now());
+  const heartbeatRef = useRef<number>(0);
+  const startDayMutation = trpc.progress.startDay.useMutation();
+  const completeDayMutation = trpc.progress.completeDay.useMutation();
+
+  // Tag öffnen → in DB speichern
+  useEffect(() => {
+    const dayNum = parseInt(selectedDay.replace('day_', ''));
+    if (!dayNum) return;
+    startTimeRef.current = Date.now();
+    heartbeatRef.current = 0;
+    startDayMutation.mutate(
+      { moduleId: 4, dayId: dayNum },
+      { onSuccess: (data) => { logIdRef.current = data.logId; } }
+    );
+    // Heartbeat alle 30 Sekunden
+    const interval = setInterval(() => { heartbeatRef.current += 1; }, 30000);
+    return () => clearInterval(interval);
+  }, [selectedDay]);
+
+  // Tag abschließen
+  const completeCurrentDay = () => {
+    if (logIdRef.current) {
+      const duration = Math.round((Date.now() - startTimeRef.current) / 1000);
+      completeDayMutation.mutate({
+        logId: logIdRef.current,
+        durationSeconds: duration,
+        heartbeatCount: heartbeatRef.current,
+      });
+      logIdRef.current = null;
+    }
+  };
+
   const [showQuiz, setShowQuiz] = useState(false);
   const [showCertificate, setShowCertificate] = useState(false);
   const currentDayNum = parseInt(selectedDay.split('_')[1]);
