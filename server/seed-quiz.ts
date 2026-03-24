@@ -23,6 +23,14 @@ const SEED_QUESTIONS = [
 ];
 
 export async function seedQuizQuestionsIfEmpty(): Promise<void> {
+  const url = process.env.DATABASE_URL || "";
+
+  // Lokaler Safe-Mode: Platzhalter-DB nicht ansprechen
+  if (!url || url.includes("@host:") || url.includes("mysql://user:passwort@")) {
+    console.log("[dev] Quiz-Seed übersprungen: keine echte DATABASE_URL gesetzt");
+    return;
+  }
+
   const db = await getDb();
   if (!db) return;
   try {

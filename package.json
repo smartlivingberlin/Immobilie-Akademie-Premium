@@ -127,7 +127,13 @@
     },
     "overrides": {
       "tailwindcss>nanoid": "3.3.7"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "core-js",
+      "esbuild",
+      "tesseract.js"
+    ]
   },
   "engines": {
     "node": ">=22 <23"
