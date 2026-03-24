@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { 
-  TrendingUp, 
-  Clock, 
-  BookOpen, 
-  Award, 
+import {
+  TrendingUp,
+  Clock,
+  BookOpen,
+  Award,
   Calendar,
   Flame,
   Target,
@@ -14,16 +13,11 @@ import {
   Download,
   CheckCircle2
 } from "lucide-react";
-import { getProgress } from "@/lib/progressTracking";
+import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
 
 export default function Dashboard() {
-  const [progress, setProgress] = useState(getProgress());
-
-  // Refresh progress data when component mounts
-  useEffect(() => {
-    setProgress(getProgress());
-  }, []);
+  const { data: dbProgress, isLoading } = trpc.progress.getProgress.useQuery();
 
   const modules = [
     { id: 1, name: "Modul 1: Einführung", days: 20, color: "bg-blue-500", lightColor: "bg-blue-100", textColor: "text-blue-700" },
@@ -34,43 +28,25 @@ export default function Dashboard() {
   ];
 
   const getModuleStats = (moduleId: number) => {
-    const module = progress.modules[moduleId];
-    if (!module) {
-      return {
-        completionPercentage: 0,
-        daysCompleted: 0,
-        totalDays: modules.find(m => m.id === moduleId)?.days || 0,
-        timeSpent: 0,
-        started: false,
-      };
-    }
-
     const totalDays = modules.find(m => m.id === moduleId)?.days || 0;
-    const daysCompleted = Object.values(module.days).filter(d => d.completed).length;
-
-    return {
-      completionPercentage: module.completionPercentage,
-      daysCompleted,
-      totalDays,
-      timeSpent: Math.round(module.totalTimeSpent / 60), // Convert to hours
-      started: true,
-    };
+    if (!dbProgress) return { completionPercentage: 0, daysCompleted: 0, totalDays, timeSpent: 0, started: false };
+    const logs = dbProgress.filter((l: any) => l.moduleId === moduleId);
+    const daysCompleted = logs.filter((l: any) => l.completed).length;
+    const timeSpent = Math.round(logs.reduce((sum: number, l: any) => sum + (l.durationSeconds || 0), 0) / 60);
+    const completionPercentage = totalDays > 0 ? Math.round((daysCompleted / totalDays) * 100) : 0;
+    return { completionPercentage, daysCompleted, totalDays, timeSpent, started: logs.length > 0 };
   };
 
-  const totalHours = Math.round(progress.totalTimeSpent / 60);
-  const activeModules = Object.keys(progress.modules).length;
-  const completedModules = Object.values(progress.modules).filter(m => m.completionPercentage >= 80).length;
-
-  // Calculate total days completed
-  const totalDaysCompleted = Object.values(progress.modules).reduce((sum, module) => {
-    return sum + Object.values(module.days).filter(d => d.completed).length;
-  }, 0);
-
-  const totalDays = 220; // Total days across all modules
-
+  const totalHours = Math.round((dbProgress?.reduce((sum: number, l: any) => sum + (l.durationSeconds || 0), 0) || 0) / 3600);
+  const activeModules = [1,2,3,4,5].filter(id => (dbProgress || []).some((l: any) => l.moduleId === id)).length;
+  const completedModules = [1,2,3,4,5].filter(id => getModuleStats(id).completionPercentage >= 80).length;
+  const totalDaysCompleted = (dbProgress || []).filter((l: any) => l.completed).length;
+  const totalDays = 220;
   // Format last activity date
-  const lastActivityText = progress.lastActivityDate
-    ? new Date(progress.lastActivityDate).toLocaleDateString("de-DE", {
+  if (isLoading) return <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"50vh",color:"#64748b"}}>Lernstatistiken werden geladen...</div>;
+
+  const lastActivityText = dbProgress && dbProgress.length > 0
+    ? new Date(dbProgress[dbProgress.length-1].openedAt).toLocaleDateString("de-DE", {
         day: "2-digit",
         month: "long",
         year: "numeric",
@@ -98,7 +74,7 @@ export default function Dashboard() {
               <div>
                 <p className="text-sm font-medium text-slate-600">Gesamtfortschritt</p>
                 <p className="text-3xl font-bold text-slate-900 mt-2">
-                  {progress.overallCompletionPercentage}%
+                  {Math.round((totalDaysCompleted / totalDays) * 100)}%
                 </p>
                 <p className="text-xs text-slate-500 mt-1">
                   {totalDaysCompleted} von {totalDays} Tagen
@@ -133,7 +109,7 @@ export default function Dashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-slate-600">Lernstreak</p>
-                <p className="text-3xl font-bold text-slate-900 mt-2">{progress.currentStreak}</p>
+                <p className="text-3xl font-bold text-slate-900 mt-2">{0}</p>
                 <p className="text-xs text-slate-500 mt-1">
                   Rekord: {progress.longestStreak} Tage
                 </p>
@@ -190,8 +166,8 @@ export default function Dashboard() {
               <div>
                 <p className="text-sm text-slate-600">Durchschn. Lernzeit/Tag</p>
                 <p className="font-semibold text-slate-900">
-                  {progress.currentStreak > 0 
-                    ? `${Math.round(totalHours / progress.currentStreak)}h`
+                  {0 > 0 
+                    ? `${Math.round(totalHours / 0)}h`
                     : "N/A"}
                 </p>
               </div>
@@ -349,10 +325,10 @@ export default function Dashboard() {
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {/* First Day */}
-            <div className={`p-4 rounded-lg border-2 ${progress.currentStreak >= 1 ? 'border-blue-500 bg-blue-50' : 'border-slate-200 bg-slate-50'}`}>
+            <div className={`p-4 rounded-lg border-2 ${0 >= 1 ? 'border-blue-500 bg-blue-50' : 'border-slate-200 bg-slate-50'}`}>
               <div className="flex flex-col items-center text-center">
-                <div className={`p-3 rounded-full mb-2 ${progress.currentStreak >= 1 ? 'bg-blue-100' : 'bg-slate-200'}`}>
-                  <Calendar className={`w-6 h-6 ${progress.currentStreak >= 1 ? 'text-blue-600' : 'text-slate-400'}`} />
+                <div className={`p-3 rounded-full mb-2 ${0 >= 1 ? 'bg-blue-100' : 'bg-slate-200'}`}>
+                  <Calendar className={`w-6 h-6 ${0 >= 1 ? 'text-blue-600' : 'text-slate-400'}`} />
                 </div>
                 <p className="font-semibold text-sm">Erster Tag</p>
                 <p className="text-xs text-slate-600 mt-1">Lernreise begonnen</p>
@@ -371,10 +347,10 @@ export default function Dashboard() {
             </div>
 
             {/* 50% Progress */}
-            <div className={`p-4 rounded-lg border-2 ${progress.overallCompletionPercentage >= 50 ? 'border-green-500 bg-green-50' : 'border-slate-200 bg-slate-50'}`}>
+            <div className={`p-4 rounded-lg border-2 ${Math.round((totalDaysCompleted / totalDays) * 100) >= 50 ? 'border-green-500 bg-green-50' : 'border-slate-200 bg-slate-50'}`}>
               <div className="flex flex-col items-center text-center">
-                <div className={`p-3 rounded-full mb-2 ${progress.overallCompletionPercentage >= 50 ? 'bg-green-100' : 'bg-slate-200'}`}>
-                  <Target className={`w-6 h-6 ${progress.overallCompletionPercentage >= 50 ? 'text-green-600' : 'text-slate-400'}`} />
+                <div className={`p-3 rounded-full mb-2 ${Math.round((totalDaysCompleted / totalDays) * 100) >= 50 ? 'bg-green-100' : 'bg-slate-200'}`}>
+                  <Target className={`w-6 h-6 ${Math.round((totalDaysCompleted / totalDays) * 100) >= 50 ? 'text-green-600' : 'text-slate-400'}`} />
                 </div>
                 <p className="font-semibold text-sm">Halbzeit</p>
                 <p className="text-xs text-slate-600 mt-1">50% erreicht</p>
