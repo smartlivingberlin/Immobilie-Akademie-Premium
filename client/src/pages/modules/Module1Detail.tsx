@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { trpc } from "@/lib/trpc";
+import { useState, useRef, useEffect } from "react";
 import { useActivityHeartbeat } from "@/hooks/useActivityHeartbeat";
 import { Link, useRoute } from "wouter";
 import { 
@@ -77,6 +78,42 @@ export default function Module1Detail() {
   const [selectedDay, setSelectedDay] = useState(urlDay);
   const [isQuizCompleted, setIsQuizCompleted] = useState(false);
   const [showAITutor, setShowAITutor] = useState(false);
+
+  // Lernfortschritt Tracking
+  const logIdRef = useRef<number | null>(null);
+  const startTimeRef = useRef<number>(Date.now());
+  const heartbeatRef = useRef<number>(0);
+  const startDayMutation = trpc.progress.startDay.useMutation();
+  const completeDayMutation = trpc.progress.completeDay.useMutation();
+
+  // Tag öffnen → in DB speichern
+  useEffect(() => {
+    const dayNum = parseInt(selectedDay.replace('day_', ''));
+    if (!dayNum) return;
+    startTimeRef.current = Date.now();
+    heartbeatRef.current = 0;
+    startDayMutation.mutate(
+      { moduleId: 1, dayId: dayNum },
+      { onSuccess: (data) => { logIdRef.current = data.logId; } }
+    );
+    // Heartbeat alle 30 Sekunden
+    const interval = setInterval(() => { heartbeatRef.current += 1; }, 30000);
+    return () => clearInterval(interval);
+  }, [selectedDay]);
+
+  // Tag abschließen
+  const completeCurrentDay = () => {
+    if (logIdRef.current) {
+      const duration = Math.round((Date.now() - startTimeRef.current) / 1000);
+      completeDayMutation.mutate({
+        logId: logIdRef.current,
+        durationSeconds: duration,
+        heartbeatCount: heartbeatRef.current,
+      });
+      logIdRef.current = null;
+    }
+  };
+
 
   const currentContent = contentData[selectedDay as keyof typeof contentData] || contentData.day_1;
   const currentDayNum = parseInt(selectedDay.replace('day_', ''));
@@ -432,6 +469,7 @@ export default function Module1Detail() {
                   {currentDayNum < 20 && (
                     <Button
                       onClick={() => {
+                        completeCurrentDay();
                         const nextDay = `day_${currentDayNum + 1}`;
                         setSelectedDay(nextDay);
                         window.scrollTo(0, 0);
