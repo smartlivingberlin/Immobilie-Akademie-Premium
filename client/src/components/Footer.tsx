@@ -98,20 +98,20 @@ export default function Footer() {
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-1 flex-shrink-0 text-blue-500" />
                 <span>
-                  [Straße und Hausnummer]<br />
-                  [PLZ und Ort]
+                  Durlacher Str. 36<br />
+                  10715 Berlin
                 </span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 flex-shrink-0 text-blue-500" />
                 <a href="tel:+49123456789" className="hover:text-white transition-colors">
-                  [Telefonnummer]
+                  +49 171 1526327
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 flex-shrink-0 text-blue-500" />
                 <a href="mailto:info@example.com" className="hover:text-white transition-colors">
-                  [E-Mail-Adresse]
+                  gadyri@icloud.com
                 </a>
               </li>
             </ul>

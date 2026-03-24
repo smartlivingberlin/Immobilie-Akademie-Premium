@@ -1,4 +1,5 @@
 import { Route, Switch } from "wouter";
+import { trpc } from "@/lib/trpc";
 import { Toaster } from "@/components/ui/toaster";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 
@@ -12,8 +13,6 @@ import AdminCodes from "@/pages/admin/AdminCodes";
 import AdminDashboard from "@/pages/admin/AdminDashboard";
 import KursbuchGenerator from "@/pages/admin/KursbuchGenerator";
 import DozentenCockpit from "@/pages/admin/DozentenCockpit";
-import MediaSkriptGenerator from "@/pages/admin/MediaSkriptGenerator";
-import DozentenLoesungen from "@/pages/admin/DozentenLoesungen";
 import MediaSkriptGenerator from "@/pages/admin/MediaSkriptGenerator";
 import DozentenLoesungen from "@/pages/admin/DozentenLoesungen";
 import FragenManager from "@/pages/admin/FragenManager";
@@ -68,6 +67,21 @@ import ExamMode from "@/pages/ExamMode";
 import ExamQuestion from "@/pages/ExamQuestion";
 import ExamResults from "@/pages/ExamResults";
 
+
+function ProtectedRoute({ component: Component }: { component: () => JSX.Element }) {
+  const { data: user, isLoading } = trpc.auth.me.useQuery(undefined, { retry: false });
+  if (isLoading) return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
+  if (!user) { window.location.href = "/login"; return null; }
+  return <Component />;
+}
+
+function AdminRoute({ component: Component }: { component: () => JSX.Element }) {
+  const { data: user, isLoading } = trpc.auth.me.useQuery(undefined, { retry: false });
+  if (isLoading) return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
+  if (!user || user.role !== "admin") { window.location.href = "/login"; return null; }
+  return <Component />;
+}
+
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -97,22 +111,20 @@ function Router() {
           <Route path="/strategie" component={StrategiePlattform} />
           
           {/* Admin Pages */}
-          <Route path="/admin" component={AdminDashboard} />
-          <Route path="/admin/upload" component={ContentUpload} />
-          <Route path="/admin/kursbuch" component={KursbuchGenerator} />
-          <Route path="/admin/dozenten" component={DozentenCockpit} />
-          <Route path="/admin/mediaskript" component={MediaSkriptGenerator} />
-          <Route path="/admin/loesungen" component={DozentenLoesungen} />
-          <Route path="/admin/mediaskript" component={MediaSkriptGenerator} />
-          <Route path="/admin/loesungen" component={DozentenLoesungen} />
-          <Route path="/admin/fragen" component={FragenManager} />
+          <Route path="/admin" component={() => <AdminRoute component={AdminDashboard} />} />
+          <Route path="/admin/upload" component={() => <AdminRoute component={ContentUpload} />} />
+          <Route path="/admin/kursbuch" component={() => <AdminRoute component={KursbuchGenerator} />} />
+          <Route path="/admin/dozenten" component={() => <AdminRoute component={DozentenCockpit} />} />
+          <Route path="/admin/mediaskript" component={() => <AdminRoute component={MediaSkriptGenerator} />} />
+          <Route path="/admin/loesungen" component={() => <AdminRoute component={DozentenLoesungen} />} />
+          <Route path="/admin/fragen" component={() => <AdminRoute component={FragenManager} />} />
           <Route path="/fallstudien" component={Fallstudien} />
           <Route path="/lernkarten" component={Flashcards} />
           <Route path="/expose-trainer" component={ExposeTrainer} />
           <Route path="/dokument-viewer" component={DokumentViewer} />
-          <Route path="/admin/videos" component={VideoManagement} />
-          <Route path="/admin/whitelabel" component={WhiteLabelAdmin} />
-          <Route path="/admin/phase" component={PortalPhaseAdmin} />
+          <Route path="/admin/videos" component={() => <AdminRoute component={VideoManagement} />} />
+          <Route path="/admin/whitelabel" component={() => <AdminRoute component={WhiteLabelAdmin} />} />
+          <Route path="/admin/phase" component={() => <AdminRoute component={PortalPhaseAdmin} />} />
           
           {/* Legal Pages */}
           <Route path="/datenschutz" component={Datenschutz} />
