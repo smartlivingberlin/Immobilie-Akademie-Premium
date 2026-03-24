@@ -702,6 +702,28 @@ Antworte im folgenden JSON-Format:
         });
         const hdr = result as unknown as [{ insertId: number }, unknown]; return { logId: Number(hdr[0].insertId) };
       }),
+    completeDayByIds: protectedProcedure
+      .input((val: any) => val as { moduleId: number; dayId: number; durationSeconds: number })
+      .mutation(async ({ ctx, input }) => {
+        const db = await (await import('./db')).getDb();
+        const { learningLogs } = await import('../drizzle/schema');
+        const { eq, and } = await import('drizzle-orm');
+        // Update existing log or insert new completed one
+        const existing = await db.select().from(learningLogs)
+          .where(and(eq(learningLogs.userId, ctx.user.id), eq(learningLogs.moduleId, input.moduleId), eq(learningLogs.dayId, input.dayId)))
+          .limit(1);
+        if (existing.length > 0) {
+          await db.update(learningLogs)
+            .set({ completed: true, closedAt: new Date(), durationSeconds: input.durationSeconds })
+            .where(eq(learningLogs.id, existing[0].id));
+        } else {
+          await db.insert(learningLogs).values({
+            userId: ctx.user.id, moduleId: input.moduleId, dayId: input.dayId,
+            openedAt: new Date(), closedAt: new Date(), completed: true, durationSeconds: input.durationSeconds, heartbeatCount: 0
+          });
+        }
+        return { ok: true };
+      }),
     completeDay: protectedProcedure
       .input((val: any) => val as { logId: number; durationSeconds: number; heartbeatCount: number })
       .mutation(async ({ ctx, input }) => {

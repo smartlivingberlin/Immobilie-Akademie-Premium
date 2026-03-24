@@ -113,7 +113,7 @@ export default function Module4Detail() {
   const startTimeRef = useRef<number>(Date.now());
   const heartbeatRef = useRef<number>(0);
   const startDayMutation = trpc.progress.startDay.useMutation();
-  const completeDayMutation = trpc.progress.completeDay.useMutation();
+  const completeDayByIdsMutation = trpc.progress.completeDayByIds.useMutation();
 
   // Tag öffnen → in DB speichern
   useEffect(() => {
@@ -132,15 +132,13 @@ export default function Module4Detail() {
 
   // Tag abschließen
   const completeCurrentDay = () => {
-    if (logIdRef.current) {
-      const duration = Math.round((Date.now() - startTimeRef.current) / 1000);
-      completeDayMutation.mutate({
-        logId: logIdRef.current,
-        durationSeconds: duration,
-        heartbeatCount: heartbeatRef.current,
-      });
-      logIdRef.current = null;
-    }
+    const dayNum = parseInt(selectedDay.replace('day_', ''));
+    const duration = Math.round((Date.now() - startTimeRef.current) / 1000);
+    completeDayByIdsMutation.mutate({
+      moduleId: 4,
+      dayId: dayNum,
+      durationSeconds: Math.max(duration, 1),
+    });
   };
 
   const [showQuiz, setShowQuiz] = useState(false);
