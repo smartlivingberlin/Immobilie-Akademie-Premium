@@ -32,11 +32,13 @@ export default function CookieConsent() {
   });
 
   useEffect(() => {
+    // Auf Login-Seite keinen Banner zeigen
+    if (window.location.pathname === '/login') return;
     // Check if user has already made a choice
     const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
     if (!consent) {
       // Show banner after a short delay for better UX
-      setTimeout(() => setShowBanner(true), 1000);
+      setTimeout(() => setShowBanner(true), 2000);
     } else {
       // Load saved preferences
       const savedPreferences = localStorage.getItem(COOKIE_PREFERENCES_KEY);
