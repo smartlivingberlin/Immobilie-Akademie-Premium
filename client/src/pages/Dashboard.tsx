@@ -43,7 +43,8 @@ export default function Dashboard() {
   const totalDaysCompleted = (dbProgress || []).filter((l: any) => l.completed).length;
   const totalDays = 220;
   // Format last activity date
-  if (isLoading) return <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"50vh",color:"#64748b"}}>Lernstatistiken werden geladen...</div>;
+  // Daten anzeigen auch wenn noch nicht fertig geladen
+  const progressData = dbProgress || [];
 
   const lastActivityText = dbProgress && dbProgress.length > 0
     ? new Date(dbProgress[dbProgress.length-1].openedAt).toLocaleDateString("de-DE", {
