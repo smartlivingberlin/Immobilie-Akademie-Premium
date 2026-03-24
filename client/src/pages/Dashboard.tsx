@@ -17,7 +17,7 @@ import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
 
 export default function Dashboard() {
-  const { data: dbProgress, isLoading } = trpc.progress.getProgress.useQuery();
+  const { data: dbProgress, isLoading } = trpc.trpc.progress.getProgress.useQuery();
 
   const modules = [
     { id: 1, name: "Modul 1: Einführung", days: 20, color: "bg-blue-500", lightColor: "bg-blue-100", textColor: "text-blue-700" },
@@ -111,7 +111,7 @@ export default function Dashboard() {
                 <p className="text-sm font-medium text-slate-600">Lernstreak</p>
                 <p className="text-3xl font-bold text-slate-900 mt-2">{0}</p>
                 <p className="text-xs text-slate-500 mt-1">
-                  Rekord: {progress.longestStreak} Tage
+                  Rekord: {0} Tage
                 </p>
               </div>
               <div className="p-3 bg-orange-100 rounded-lg">
@@ -336,10 +336,10 @@ export default function Dashboard() {
             </div>
 
             {/* 7 Day Streak */}
-            <div className={`p-4 rounded-lg border-2 ${progress.longestStreak >= 7 ? 'border-orange-500 bg-orange-50' : 'border-slate-200 bg-slate-50'}`}>
+            <div className={`p-4 rounded-lg border-2 ${0 >= 7 ? 'border-orange-500 bg-orange-50' : 'border-slate-200 bg-slate-50'}`}>
               <div className="flex flex-col items-center text-center">
-                <div className={`p-3 rounded-full mb-2 ${progress.longestStreak >= 7 ? 'bg-orange-100' : 'bg-slate-200'}`}>
-                  <Flame className={`w-6 h-6 ${progress.longestStreak >= 7 ? 'text-orange-600' : 'text-slate-400'}`} />
+                <div className={`p-3 rounded-full mb-2 ${0 >= 7 ? 'bg-orange-100' : 'bg-slate-200'}`}>
+                  <Flame className={`w-6 h-6 ${0 >= 7 ? 'text-orange-600' : 'text-slate-400'}`} />
                 </div>
                 <p className="font-semibold text-sm">7-Tage-Streak</p>
                 <p className="text-xs text-slate-600 mt-1">Konsequent gelernt</p>
