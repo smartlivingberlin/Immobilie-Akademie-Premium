@@ -25,8 +25,10 @@ import {
   Video,
   ClipboardCheck,
   Brain,
-  KeyRound
-} from "lucide-react";
+  KeyRound,
+  Film,
+  BookText,
+  Upload} from "lucide-react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import Footer from "@/components/layout/Footer";
 import { useWhiteLabel } from "@/contexts/WhiteLabelContext";
@@ -301,37 +303,37 @@ const navigation = [
                     </div>
                     <Link href="/admin">
                       <div className={`flex items-center w-full justify-start text-slate-300 hover:text-white hover:bg-slate-800 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${location === '/admin' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
-                        <span className="mr-2">📊</span> Dashboard
+                        <LayoutDashboard className="h-4 w-4 mr-2" /> Dashboard
                       </div>
                     </Link>
                     <Link href="/admin/loesungen">
                       <div className={`flex items-center w-full justify-start text-slate-300 hover:text-white hover:bg-slate-800 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${location === '/admin/loesungen' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
-                        <span className="mr-2">📚</span> Lösungsübersicht
+                        <BookOpen className="h-4 w-4 mr-2" /> Lösungsübersicht
                       </div>
                     </Link>
                     <Link href="/admin/mediaskript">
                       <div className={`flex items-center w-full justify-start text-slate-300 hover:text-white hover:bg-slate-800 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${location === '/admin/mediaskript' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
-                        <span className="mr-2">🎬</span> Mediaskript-Generator
+                        <Film className="h-4 w-4 mr-2" /> Mediaskript-Generator
                       </div>
                     </Link>
                     <Link href="/admin/dozenten">
                       <div className={`flex items-center w-full justify-start text-slate-300 hover:text-white hover:bg-slate-800 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${location === '/admin/dozenten' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
-                        <span className="mr-2">👨‍🏫</span> Dozenten-Cockpit
+                        <GraduationCap className="h-4 w-4 mr-2" /> Dozenten-Cockpit
                       </div>
                     </Link>
                     <Link href="/admin/kursbuch">
                       <div className={`flex items-center w-full justify-start text-slate-300 hover:text-white hover:bg-slate-800 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${location === '/admin/kursbuch' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
-                        <span className="mr-2">📖</span> Kursbuch-Generator
+                        <BookText className="h-4 w-4 mr-2" /> Kursbuch-Generator
                       </div>
                     </Link>
                     <Link href="/admin/fragen">
                       <div className={`flex items-center w-full justify-start text-slate-300 hover:text-white hover:bg-slate-800 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${location === '/admin/fragen' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
-                        <span className="mr-2">❓</span> Fragen-Manager
+                        <HelpCircle className="h-4 w-4 mr-2" /> Fragen-Manager
                       </div>
                     </Link>
                     <Link href="/admin/upload">
                       <div className={`flex items-center w-full justify-start text-slate-300 hover:text-white hover:bg-slate-800 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${location === '/admin/upload' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
-                        <span className="mr-2">📤</span> Content Upload
+                        <Upload className="h-4 w-4 mr-2" /> Content Upload
                       </div>
                     </Link>
                     <Link href="/admin/whitelabel">
@@ -530,8 +532,8 @@ const navigation = [
                   <span className="font-semibold text-sm">JD</span>
                 </div>
                 <div className="overflow-hidden">
-                  <div className="font-medium text-sm truncate">Max Mustermann</div>
-                  <div className="text-xs text-slate-500 truncate">Teilnehmer</div>
+                  <div className="font-medium text-sm truncate">{user?.name || user?.email?.split("@")[0] || "Nutzer"}</div>
+                  <div className="text-xs text-slate-500 truncate">{user?.role === "admin" ? "Administrator" : "Teilnehmer"}</div>
                 </div>
               </div>
             </>
@@ -543,7 +545,7 @@ const navigation = [
                     <span className="font-semibold text-sm">JD</span>
                   </div>
                 </TooltipTrigger>
-                <TooltipContent side="right">Max Mustermann (100%)</TooltipContent>
+                <TooltipContent side="right">{user?.name || "Nutzer"} ({Math.round(fontScale * 100)}%)</TooltipContent>
               </Tooltip>
             </TooltipProvider>
           )}
