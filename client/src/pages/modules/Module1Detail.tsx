@@ -387,6 +387,31 @@ export default function Module1Detail() {
                         </div>
                       </CardContent>
                     </Card>
+                    {/* Strukturierte Aufgaben aus tasks[] */}
+                    {(currentContent as any).tasks && (currentContent as any).tasks.length > 0 && (
+                      <div className="space-y-4 mt-4">
+                        <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+                          <Target className="h-5 w-5 text-amber-600" />
+                          Tagesaufgaben
+                        </h3>
+                        {(currentContent as any).tasks.map((aufgabe: any, idx: number) => (
+                          <Card key={idx} className="border-l-4 border-l-amber-500 bg-amber-50/30">
+                            <CardContent className="pt-4">
+                              <div className="flex gap-3">
+                                <span className="flex-shrink-0 w-7 h-7 bg-amber-600 text-white rounded-full flex items-center justify-center text-sm font-bold">{idx + 1}</span>
+                                <div>
+                                  <p className="font-medium text-slate-900 mb-1">{aufgabe.question}</p>
+                                  {aufgabe.hint && <p className="text-sm text-slate-500 italic">💡 Tipp: {aufgabe.hint}</p>}
+                                  <span className="inline-block mt-2 text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-700">
+                                    {aufgabe.type === "reflection" ? "🤔 Reflexion" : aufgabe.type === "case" ? "📋 Fallstudie" : "🔍 Recherche"}
+                                  </span>
+                                </div>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        ))}
+                      </div>
+                    )}
 
                     {/* AI-Powered Interactive Quiz Cases */}
                     <div className="mt-8 space-y-6">
