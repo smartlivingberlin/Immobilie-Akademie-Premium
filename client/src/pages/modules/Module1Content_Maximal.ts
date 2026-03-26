@@ -136,7 +136,25 @@ Herr M. (45) ist Bankkaufmann und will sich als Immobilienmakler selbstständig 
 - Verwalter arbeitet für Eigentümer und Eigentümergemeinschaften
     `,
     type: "Grundlagen"
-  },
+  ,
+    tasks: [
+    {
+      type: "reflection" as const,
+      question: "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus dem Thema 'Einführung in die Immobilienbranche' für Ihre berufliche Praxis?",
+      hint: "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit als Immobilienprofi."
+    },
+    {
+      type: "case" as const, 
+      question: "Praxisfall: Ein potenzieller Kunde fragt Sie nach Ihrer Expertise im Bereich 'Einführung in die Immobilienbranche'. Wie würden Sie Ihre Kenntnisse präsentieren?",
+      hint: "Nutzen Sie die Kernbegriffe und Konzepte aus der heutigen Lektion."
+    },
+    {
+      type: "research" as const,
+      question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Beispiel aus der Praxis zum Thema 'Immobilienwirtschaft, Akteure, Marktsegmente, ESG, PropTech' und bereiten Sie eine kurze Zusammenfassung vor.",
+      hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
+    }
+  ],
+    quiz: [],},
 
   day_2: {
     title: "Karrierepfade & Berufsfelder",
@@ -273,7 +291,25 @@ Frau S. (28) hat BWL studiert und 3 Jahre in einer Bank gearbeitet. Sie will in 
 - Ziel: 50 Vermittlungen + 100 Verwaltungseinheiten, 200.000 € Umsatz
     `,
     type: "Karriere"
-  },
+  ,
+    tasks: [
+    {
+      type: "reflection" as const,
+      question: "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus dem Thema 'Karrierepfade & Berufsfelder' für Ihre berufliche Praxis?",
+      hint: "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit als Immobilienprofi."
+    },
+    {
+      type: "case" as const, 
+      question: "Praxisfall: Ein potenzieller Kunde fragt Sie nach Ihrer Expertise im Bereich 'Karrierepfade & Berufsfelder'. Wie würden Sie Ihre Kenntnisse präsentieren?",
+      hint: "Nutzen Sie die Kernbegriffe und Konzepte aus der heutigen Lektion."
+    },
+    {
+      type: "research" as const,
+      question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Beispiel aus der Praxis zum Thema 'Makler, Verwalter, Gutachter, Darlehensvermittler Berufsbilder' und bereiten Sie eine kurze Zusammenfassung vor.",
+      hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
+    }
+  ],
+    quiz: [],},
 
   day_3: {
     title: "Persönliche Eignung & Soft Skills",
@@ -403,7 +439,25 @@ Sie arbeiten in einem Maklerbüro. Ein Kollege erzählt Ihnen stolz, dass er ein
 - Risiken: Diversifikation (auch Verwaltung anbieten), Spezialisierung statt Masse
     `,
     type: "Softskills"
-  },
+  ,
+    tasks: [
+    {
+      type: "reflection" as const,
+      question: "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus dem Thema 'Persönliche Eignung & Soft Skills' für Ihre berufliche Praxis?",
+      hint: "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit als Immobilienprofi."
+    },
+    {
+      type: "case" as const, 
+      question: "Praxisfall: Ein potenzieller Kunde fragt Sie nach Ihrer Expertise im Bereich 'Persönliche Eignung & Soft Skills'. Wie würden Sie Ihre Kenntnisse präsentieren?",
+      hint: "Nutzen Sie die Kernbegriffe und Konzepte aus der heutigen Lektion."
+    },
+    {
+      type: "research" as const,
+      question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Beispiel aus der Praxis zum Thema 'Kommunikation, Verhandlung, Zeitmanagement, Kundenorientierung' und bereiten Sie eine kurze Zusammenfassung vor.",
+      hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
+    }
+  ],
+    quiz: [],},
 
   day_4: {
     title: "Eignungstest & Selbstreflexion",
@@ -541,7 +595,25 @@ Ich bin ein **Initiativ-Dominant-Typ** (I/D). Ich bin kontaktfreudig, entscheidu
 - Präsentationen (I-Stärke)
     `,
     type: "Test"
-  },
+  ,
+    tasks: [
+    {
+      type: "reflection" as const,
+      question: "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus dem Thema 'Eignungstest & Selbstreflexion' für Ihre berufliche Praxis?",
+      hint: "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit als Immobilienprofi."
+    },
+    {
+      type: "case" as const, 
+      question: "Praxisfall: Ein potenzieller Kunde fragt Sie nach Ihrer Expertise im Bereich 'Eignungstest & Selbstreflexion'. Wie würden Sie Ihre Kenntnisse präsentieren?",
+      hint: "Nutzen Sie die Kernbegriffe und Konzepte aus der heutigen Lektion."
+    },
+    {
+      type: "research" as const,
+      question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Beispiel aus der Praxis zum Thema 'Stärken-Schwächen-Analyse, Persönlichkeitstests, Karriereplanung' und bereiten Sie eine kurze Zusammenfassung vor.",
+      hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
+    }
+  ],
+    quiz: [],},
 
   day_5: {
     title: "Ziele und Visionen",
@@ -681,7 +753,25 @@ Frau K. (32) hat sich vor 3 Jahren als Maklerin selbstständig gemacht. Sie hatt
 - Aktualisieren Sie es jährlich
     `,
     type: "Karriere"
-  },
+  ,
+    tasks: [
+    {
+      type: "reflection" as const,
+      question: "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus dem Thema 'Ziele und Visionen' für Ihre berufliche Praxis?",
+      hint: "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit als Immobilienprofi."
+    },
+    {
+      type: "case" as const, 
+      question: "Praxisfall: Ein potenzieller Kunde fragt Sie nach Ihrer Expertise im Bereich 'Ziele und Visionen'. Wie würden Sie Ihre Kenntnisse präsentieren?",
+      hint: "Nutzen Sie die Kernbegriffe und Konzepte aus der heutigen Lektion."
+    },
+    {
+      type: "research" as const,
+      question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Beispiel aus der Praxis zum Thema 'SMART-Ziele, Businessplan, Selbstständigkeit vs. Anstellung' und bereiten Sie eine kurze Zusammenfassung vor.",
+      hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
+    }
+  ],
+    quiz: [],},
 
   // === Woche 2: Rechtliche Grundlagen (Tag 6-10) ===
   
@@ -811,7 +901,25 @@ Frau S. (82) will ihre Wohnung verkaufen. Im Gespräch fällt Ihnen auf, dass si
 - **Bedeutung:** Die GmbH kann Eigentümerin einer Immobilie sein und diese verkaufen (vertreten durch Geschäftsführer).
     `,
     type: "Recht"
-  },
+  ,
+    tasks: [
+    {
+      type: "reflection" as const,
+      question: "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus dem Thema 'Einführung in das BGB' für Ihre berufliche Praxis?",
+      hint: "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit als Immobilienprofi."
+    },
+    {
+      type: "case" as const, 
+      question: "Praxisfall: Ein potenzieller Kunde fragt Sie nach Ihrer Expertise im Bereich 'Einführung in das BGB'. Wie würden Sie Ihre Kenntnisse präsentieren?",
+      hint: "Nutzen Sie die Kernbegriffe und Konzepte aus der heutigen Lektion."
+    },
+    {
+      type: "research" as const,
+      question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Beispiel aus der Praxis zum Thema 'BGB Grundlagen, Vertragsrecht, Willenserklärung, Angebot und Annahme' und bereiten Sie eine kurze Zusammenfassung vor.",
+      hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
+    }
+  ],
+    quiz: [],},
 
   day_7: {
     title: "Sachenrecht & Eigentum",
@@ -927,7 +1035,25 @@ Frau L. ist Eigentümerin einer Ferienwohnung in den Alpen. Sie vermietet die Wo
 - Nach den 2 Wochen muss Herr T. den Besitz zurückgeben (§ 546 BGB analog)
     `,
     type: "Recht"
-  },
+  ,
+    tasks: [
+    {
+      type: "reflection" as const,
+      question: "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus dem Thema 'Sachenrecht & Eigentum' für Ihre berufliche Praxis?",
+      hint: "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit als Immobilienprofi."
+    },
+    {
+      type: "case" as const, 
+      question: "Praxisfall: Ein potenzieller Kunde fragt Sie nach Ihrer Expertise im Bereich 'Sachenrecht & Eigentum'. Wie würden Sie Ihre Kenntnisse präsentieren?",
+      hint: "Nutzen Sie die Kernbegriffe und Konzepte aus der heutigen Lektion."
+    },
+    {
+      type: "research" as const,
+      question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Beispiel aus der Praxis zum Thema 'Eigentumsübertragung, Grundbuch, dingliche Rechte, Auflassung' und bereiten Sie eine kurze Zusammenfassung vor.",
+      hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
+    }
+  ],
+    quiz: [],},
 
   day_8: {
     title: "Gewerberecht & §34c GewO",
@@ -1101,7 +1227,25 @@ Kreisverwaltungsreferat München, Gewerbemeldestelle
 **Hinweis:** Die Kosten variieren stark je nach Stadt. In kleineren Gemeinden oft nur 200-300 €.
     `,
     type: "Recht"
-  },
+  ,
+    tasks: [
+    {
+      type: "reflection" as const,
+      question: "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus dem Thema 'Gewerberecht & §34c GewO' für Ihre berufliche Praxis?",
+      hint: "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit als Immobilienprofi."
+    },
+    {
+      type: "case" as const, 
+      question: "Praxisfall: Ein potenzieller Kunde fragt Sie nach Ihrer Expertise im Bereich 'Gewerberecht & §34c GewO'. Wie würden Sie Ihre Kenntnisse präsentieren?",
+      hint: "Nutzen Sie die Kernbegriffe und Konzepte aus der heutigen Lektion."
+    },
+    {
+      type: "research" as const,
+      question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Beispiel aus der Praxis zum Thema 'Gewerbeerlaubnis, Voraussetzungen §34c, MaBV, Sachkunde' und bereiten Sie eine kurze Zusammenfassung vor.",
+      hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
+    }
+  ],
+    quiz: [],},
 
   day_9: {
     title: "Maklerrecht Grundlagen",
@@ -1251,7 +1395,25 @@ Die Maklertätigkeit muss ursächlich für den Abschluss des Hauptvertrags gewes
 **Merksatz:** "Vertrag + Tätigkeit + Hauptvertrag + Kausalität = Provision"
     `,
     type: "Recht"
-  },
+  ,
+    tasks: [
+    {
+      type: "reflection" as const,
+      question: "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus dem Thema 'Maklerrecht Grundlagen' für Ihre berufliche Praxis?",
+      hint: "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit als Immobilienprofi."
+    },
+    {
+      type: "case" as const, 
+      question: "Praxisfall: Ein potenzieller Kunde fragt Sie nach Ihrer Expertise im Bereich 'Maklerrecht Grundlagen'. Wie würden Sie Ihre Kenntnisse präsentieren?",
+      hint: "Nutzen Sie die Kernbegriffe und Konzepte aus der heutigen Lektion."
+    },
+    {
+      type: "research" as const,
+      question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Beispiel aus der Praxis zum Thema 'Maklervertrag §652 BGB, Courtage, Bestellerprinzip, Provisionsanspruch' und bereiten Sie eine kurze Zusammenfassung vor.",
+      hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
+    }
+  ],
+    quiz: [],},
 
   day_10: {
     title: "Geldwäschegesetz (GwG)",
@@ -1463,7 +1625,25 @@ Ein Käufer (Herr X.) will eine Wohnung für 300.000 € kaufen. Er sagt, er wil
 **Unterschrift Makler:** ___________________________
     `,
     type: "Recht"
-  },
+  ,
+    tasks: [
+    {
+      type: "reflection" as const,
+      question: "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus dem Thema 'Geldwäschegesetz (GwG)' für Ihre berufliche Praxis?",
+      hint: "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit als Immobilienprofi."
+    },
+    {
+      type: "case" as const, 
+      question: "Praxisfall: Ein potenzieller Kunde fragt Sie nach Ihrer Expertise im Bereich 'Geldwäschegesetz (GwG)'. Wie würden Sie Ihre Kenntnisse präsentieren?",
+      hint: "Nutzen Sie die Kernbegriffe und Konzepte aus der heutigen Lektion."
+    },
+    {
+      type: "research" as const,
+      question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Beispiel aus der Praxis zum Thema 'GwG Pflichten, Identifizierung, Verdachtsmeldung, Dokumentation' und bereiten Sie eine kurze Zusammenfassung vor.",
+      hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
+    }
+  ],
+    quiz: [],},
 
   // Weitere Tage (11-20) folgen dem gleichen Muster...
   // Aus Platzgründen hier abgekürzt, aber in der finalen Version vollständig
@@ -1555,7 +1735,25 @@ Wann ist ein Markt überhitzt? Achten Sie auf diese Warnsignale:
     practice: "Erstellen Sie einen typischen Tagesablauf eines Maklers mit Zeitblöcken für Akquise, Besichtigungen, Verwaltung.",
     task: "Interviewen Sie einen Makler (oder recherchieren Sie online): Was sind die 3 größten Herausforderungen im Berufsalltag?",
     type: "Berufsbild"
-  },
+  ,
+    tasks: [
+    {
+      type: "reflection" as const,
+      question: "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus dem Thema 'Berufsfeld: Immobilienmakler' für Ihre berufliche Praxis?",
+      hint: "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit als Immobilienprofi."
+    },
+    {
+      type: "case" as const, 
+      question: "Praxisfall: Ein potenzieller Kunde fragt Sie nach Ihrer Expertise im Bereich 'Berufsfeld: Immobilienmakler'. Wie würden Sie Ihre Kenntnisse präsentieren?",
+      hint: "Nutzen Sie die Kernbegriffe und Konzepte aus der heutigen Lektion."
+    },
+    {
+      type: "research" as const,
+      question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Beispiel aus der Praxis zum Thema 'Maklertätigkeit, Vermarktung, Exposé, Besichtigungen, Kaufvertrag' und bereiten Sie eine kurze Zusammenfassung vor.",
+      hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
+    }
+  ],
+    quiz: [],},
 
   day_12: {
     title: "Berufsfeld: Immobilienverwalter",
@@ -1719,7 +1917,25 @@ Bausparkassen bieten Bausparverträge (Sparphase + Darlehensphase).
     practice: "Erstellen Sie eine Aufgabenliste für einen WEG-Verwalter (kaufmännisch und technisch).",
     task: "Recherchieren Sie: Was ist der Unterschied zwischen WEG-Verwaltung und Mietverwaltung?",
     type: "Berufsbild"
-  },
+  ,
+    tasks: [
+    {
+      type: "reflection" as const,
+      question: "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus dem Thema 'Berufsfeld: Immobilienverwalter' für Ihre berufliche Praxis?",
+      hint: "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit als Immobilienprofi."
+    },
+    {
+      type: "case" as const, 
+      question: "Praxisfall: Ein potenzieller Kunde fragt Sie nach Ihrer Expertise im Bereich 'Berufsfeld: Immobilienverwalter'. Wie würden Sie Ihre Kenntnisse präsentieren?",
+      hint: "Nutzen Sie die Kernbegriffe und Konzepte aus der heutigen Lektion."
+    },
+    {
+      type: "research" as const,
+      question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Beispiel aus der Praxis zum Thema 'WEG-Verwaltung, Mietverwaltung, Eigentümerversammlung, Abrechnung' und bereiten Sie eine kurze Zusammenfassung vor.",
+      hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
+    }
+  ],
+    quiz: [],},
 
   day_13: {
     title: "Berufsfeld: Gutachter & Sachverständiger",
@@ -1908,7 +2124,25 @@ Ein Investor mit 5 Mio. € Eigenkapital könnte folgendes Portfolio aufbauen:
     practice: "Unterscheiden Sie: Kurzbewertung (Makler) vs. Vollgutachten (Sachverständiger).",
     task: "Recherchieren Sie die Voraussetzungen, um öffentlich bestellter Gutachter zu werden.",
     type: "Berufsbild"
-  },
+  ,
+    tasks: [
+    {
+      type: "reflection" as const,
+      question: "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus dem Thema 'Berufsfeld: Gutachter & Sachverständiger' für Ihre berufliche Praxis?",
+      hint: "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit als Immobilienprofi."
+    },
+    {
+      type: "case" as const, 
+      question: "Praxisfall: Ein potenzieller Kunde fragt Sie nach Ihrer Expertise im Bereich 'Berufsfeld: Gutachter & Sachverständiger'. Wie würden Sie Ihre Kenntnisse präsentieren?",
+      hint: "Nutzen Sie die Kernbegriffe und Konzepte aus der heutigen Lektion."
+    },
+    {
+      type: "research" as const,
+      question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Beispiel aus der Praxis zum Thema 'Wertermittlung, ImmoWertV, Verkehrswert, Gutachterausschuss' und bereiten Sie eine kurze Zusammenfassung vor.",
+      hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
+    }
+  ],
+    quiz: [],},
 
   day_14: {
     title: "Berufsfeld: Darlehensvermittler",
@@ -2066,7 +2300,25 @@ Vonovia AG: Marktkapitalisierung 20 Mrd. €, 550.000 Wohnungen, 10 Mrd. € Ums
     practice: "Berechnen Sie eine Monatsrate für ein Darlehen über 300.000 € bei 3,5% Zinsen und 2% Tilgung.",
     task: "Vergleichen Sie die Aufgaben eines Maklers mit denen eines Finanzierungsvermittlers.",
     type: "Berufsbild"
-  },
+  ,
+    tasks: [
+    {
+      type: "reflection" as const,
+      question: "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus dem Thema 'Berufsfeld: Darlehensvermittler' für Ihre berufliche Praxis?",
+      hint: "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit als Immobilienprofi."
+    },
+    {
+      type: "case" as const, 
+      question: "Praxisfall: Ein potenzieller Kunde fragt Sie nach Ihrer Expertise im Bereich 'Berufsfeld: Darlehensvermittler'. Wie würden Sie Ihre Kenntnisse präsentieren?",
+      hint: "Nutzen Sie die Kernbegriffe und Konzepte aus der heutigen Lektion."
+    },
+    {
+      type: "research" as const,
+      question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Beispiel aus der Praxis zum Thema '§34i GewO, Finanzierungsberatung, ESIS, Kreditwürdigkeitsprüfung' und bereiten Sie eine kurze Zusammenfassung vor.",
+      hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
+    }
+  ],
+    quiz: [],},
 
   day_15: {
     title: "Datenschutz (DSGVO) & Verbraucherschutz",
@@ -2311,7 +2563,25 @@ Je mehr Eigenkapital, desto besser die Konditionen.
     practice: "Erstellen Sie eine Datenschutzerklärung für ein Immobilien-Exposé.",
     task: "Prüfen Sie eine Immobilien-Webseite auf DSGVO-Konformität (Impressum, Datenschutz, Cookies).",
     type: "Recht"
-  },
+  ,
+    tasks: [
+    {
+      type: "reflection" as const,
+      question: "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus dem Thema 'Datenschutz (DSGVO) & Verbraucherschutz' für Ihre berufliche Praxis?",
+      hint: "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit als Immobilienprofi."
+    },
+    {
+      type: "case" as const, 
+      question: "Praxisfall: Ein potenzieller Kunde fragt Sie nach Ihrer Expertise im Bereich 'Datenschutz (DSGVO) & Verbraucherschutz'. Wie würden Sie Ihre Kenntnisse präsentieren?",
+      hint: "Nutzen Sie die Kernbegriffe und Konzepte aus der heutigen Lektion."
+    },
+    {
+      type: "research" as const,
+      question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Beispiel aus der Praxis zum Thema 'DSGVO Grundsätze, Einwilligung, Datenlöschung, Verbraucherschutz' und bereiten Sie eine kurze Zusammenfassung vor.",
+      hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
+    }
+  ],
+    quiz: [],},
 
   day_16: {
     title: "Arbeitsalltag & Zeitmanagement",
@@ -2528,7 +2798,25 @@ Steuern sind ein komplexes, aber essentielles Thema für jeden Immobilienprofi. 
     practice: "Erstellen Sie einen Wochenplan mit festen Blöcken für Akquise, Besichtigungen und Verwaltung.",
     task: "Planen Sie eine ideale Arbeitswoche mit Work-Life-Balance.",
     type: "Organisation"
-  },
+  ,
+    tasks: [
+    {
+      type: "reflection" as const,
+      question: "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus dem Thema 'Arbeitsalltag & Zeitmanagement' für Ihre berufliche Praxis?",
+      hint: "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit als Immobilienprofi."
+    },
+    {
+      type: "case" as const, 
+      question: "Praxisfall: Ein potenzieller Kunde fragt Sie nach Ihrer Expertise im Bereich 'Arbeitsalltag & Zeitmanagement'. Wie würden Sie Ihre Kenntnisse präsentieren?",
+      hint: "Nutzen Sie die Kernbegriffe und Konzepte aus der heutigen Lektion."
+    },
+    {
+      type: "research" as const,
+      question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Beispiel aus der Praxis zum Thema 'Tagesplanung, CRM-Systeme, Terminmanagement, Work-Life-Balance' und bereiten Sie eine kurze Zusammenfassung vor.",
+      hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
+    }
+  ],
+    quiz: [],},
 
   day_17: {
     title: "Digitale Tools & Technologien",
@@ -2731,7 +3019,25 @@ Ein Vermieter gibt an, dass das Gebäude bewohnt ist. Tatsächlich steht es leer
     practice: "Testen Sie eine CRM-Software (Demo-Zugang oder Simulation).",
     task: "Vergleichen Sie 3 Immobilien-CRM-Systeme hinsichtlich Funktionen und Kosten.",
     type: "Digital"
-  },
+  ,
+    tasks: [
+    {
+      type: "reflection" as const,
+      question: "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus dem Thema 'Digitale Tools & Technologien' für Ihre berufliche Praxis?",
+      hint: "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit als Immobilienprofi."
+    },
+    {
+      type: "case" as const, 
+      question: "Praxisfall: Ein potenzieller Kunde fragt Sie nach Ihrer Expertise im Bereich 'Digitale Tools & Technologien'. Wie würden Sie Ihre Kenntnisse präsentieren?",
+      hint: "Nutzen Sie die Kernbegriffe und Konzepte aus der heutigen Lektion."
+    },
+    {
+      type: "research" as const,
+      question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Beispiel aus der Praxis zum Thema 'ImmoScout24, PropTech, virtuelle Besichtigung, KI im Immobilienbereich' und bereiten Sie eine kurze Zusammenfassung vor.",
+      hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
+    }
+  ],
+    quiz: [],},
 
   day_18: {
     title: "Prozessautomatisierung",
@@ -3015,7 +3321,25 @@ Marketing ist der Schlüssel zum Erfolg in der Immobilienbranche. Wer nicht sich
     practice: "Richten Sie eine automatische Antwortmail für Anfragen ein.",
     task: "Entwerfen Sie einen automatisierten Prozess für neue Interessenten (Lead-Funnel).",
     type: "Digital"
-  },
+  ,
+    tasks: [
+    {
+      type: "reflection" as const,
+      question: "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus dem Thema 'Prozessautomatisierung' für Ihre berufliche Praxis?",
+      hint: "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit als Immobilienprofi."
+    },
+    {
+      type: "case" as const, 
+      question: "Praxisfall: Ein potenzieller Kunde fragt Sie nach Ihrer Expertise im Bereich 'Prozessautomatisierung'. Wie würden Sie Ihre Kenntnisse präsentieren?",
+      hint: "Nutzen Sie die Kernbegriffe und Konzepte aus der heutigen Lektion."
+    },
+    {
+      type: "research" as const,
+      question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Beispiel aus der Praxis zum Thema 'Digitale Workflows, automatische Exposés, Online-Vermarktung' und bereiten Sie eine kurze Zusammenfassung vor.",
+      hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
+    }
+  ],
+    quiz: [],},
 
   day_19: {
     title: "Karriereplanung & Weiterbildung",
@@ -3301,7 +3625,25 @@ Die Digitalisierung verändert die Immobilienbranche fundamental. Wer die neuen 
     practice: "Recherchieren Sie passende Weiterbildungsangebote für Ihre Spezialisierung.",
     task: "Erstellen Sie einen persönlichen Weiterbildungsplan für die nächsten 3 Jahre.",
     type: "Karriere"
-  },
+  ,
+    tasks: [
+    {
+      type: "reflection" as const,
+      question: "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus dem Thema 'Karriereplanung & Weiterbildung' für Ihre berufliche Praxis?",
+      hint: "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit als Immobilienprofi."
+    },
+    {
+      type: "case" as const, 
+      question: "Praxisfall: Ein potenzieller Kunde fragt Sie nach Ihrer Expertise im Bereich 'Karriereplanung & Weiterbildung'. Wie würden Sie Ihre Kenntnisse präsentieren?",
+      hint: "Nutzen Sie die Kernbegriffe und Konzepte aus der heutigen Lektion."
+    },
+    {
+      type: "research" as const,
+      question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Beispiel aus der Praxis zum Thema 'IHK-Sachkundeprüfung, Weiterbildungspflicht §34c, Fachverbände' und bereiten Sie eine kurze Zusammenfassung vor.",
+      hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
+    }
+  ],
+    quiz: [],},
 
   day_20: {
     title: "Abschluss Modul 1 & Portfolio",
@@ -3561,7 +3903,24 @@ Ein Projektentwickler baut ein Studentenwohnheim (100 Zimmer) aus Modulen. Bauko
     `,
     law: ["Keine spezifischen Gesetze"],
     practice: "Präsentieren Sie Ihr persönliches Portfolio (Lebenslauf, Ziele, Kompetenzen, Vision Board).",
-    task: "Finalisieren Sie Ihr Karriere-Portfolio und bereiten Sie sich auf Modul 2 vor.",
+    tasks: [
+      {
+        type: "reflection",
+        question: "Reflektieren Sie: Was sind Ihre drei wichtigsten Erkenntnisse aus Modul 1 für Ihre berufliche Praxis?",
+        hint: "Schauen Sie auf alle 20 Tage zurück und wählen Sie die Erkenntnisse mit dem größten persönlichen Mehrwert."
+      },
+      {
+        type: "case",
+        question: "Portfolio-Aufgabe: Erstellen Sie eine persönliche Kompetenz-Übersicht mit den Kernthemen aus Modul 1.",
+        hint: "Nutzen Sie die Struktur: Was weiß ich? Was kann ich? Was will ich vertiefen?"
+      },
+      {
+        type: "research",
+        question: "Vorbereitung Modul 2: Recherchieren Sie die aktuellen Voraussetzungen für die §34c GewO-Erlaubnis in Berlin.",
+        hint: "Besuchen Sie die Website der IHK Berlin oder das Gewerbeamt Berlin."
+      }
+    ],
+    quiz: [],
     type: "Abschluss"
   }
 };
