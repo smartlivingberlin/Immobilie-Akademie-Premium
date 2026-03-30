@@ -1,0 +1,51 @@
+=== 70. MODUL 3 FRAGMENTIERUNG ANALYSE ===
+M3 Dateistruktur:
+-rw-r--r-- 1 lenovo lenovo 9.7K Mar 22 18:37 client/src/pages/modules/Module3ContentPart2.ts
+-rw-r--r-- 1 lenovo lenovo 9.3K Mar 22 18:37 client/src/pages/modules/Module3ContentPart3.ts
+-rw-r--r-- 1 lenovo lenovo 8.7K Mar 22 18:37 client/src/pages/modules/Module3ContentPart4.ts
+-rw-r--r-- 1 lenovo lenovo  72K Mar 22 18:37 client/src/pages/modules/Module3Content_Days61-80.ts
+-rw-r--r-- 1 lenovo lenovo  24K Mar 22 18:37 client/src/pages/modules/Module3Content_Maximal.ts
+-rw-r--r-- 1 lenovo lenovo 134K Mar 22 18:37 client/src/pages/modules/Module3Content_Maximal_MissingDays.ts
+-rw-r--r-- 1 lenovo lenovo 5.6K Mar 22 18:37 client/src/pages/modules/Module3Content_Maximal_Part2.ts
+-rw-r--r-- 1 lenovo lenovo  44K Mar 22 18:37 client/src/pages/modules/Module3Content_Maximal_Part2_Extended.ts
+-rw-r--r-- 1 lenovo lenovo  16K Mar 22 18:37 client/src/pages/modules/Module3Content_Maximal_Part3.ts
+-rw-r--r-- 1 lenovo lenovo  19K Mar 22 18:37 client/src/pages/modules/Module3Content_Maximal_Part3_Extended.ts
+-rw-r--r-- 1 lenovo lenovo  39K Mar 22 18:37 client/src/pages/modules/Module3Content_Maximal_Part4.ts
+-rw-r--r-- 1 lenovo lenovo  42K Mar 22 18:37 client/src/pages/modules/Module3_ExtendedTheory_Days29-40.ts
+
+-- Tage in jeder Datei --
+Module3ContentPart2.ts: 20 Tage
+Module3ContentPart3.ts: 20 Tage
+Module3ContentPart4.ts: 20 Tage
+Module3Content_Days61-80.ts: 0
+0 Tage
+Module3Content_Maximal.ts: 3 Tage
+Module3Content_Maximal_MissingDays.ts: 19 Tage
+Module3Content_Maximal_Part2.ts: 2 Tage
+Module3Content_Maximal_Part2_Extended.ts: 18 Tage
+Module3Content_Maximal_Part3.ts: 2 Tage
+Module3Content_Maximal_Part3_Extended.ts: 18 Tage
+Module3Content_Maximal_Part4.ts: 20 Tage
+Module3_ExtendedTheory_Days29-40.ts: 12 Tage
+
+-- Module3Detail importiert --
+import { quizQuestionsModule3 } from "@/data/quiz-questions-modul3";
+import { courtCasesModule3 } from "@/data/rechtsprechung-modul3";
+import { contentDataModule3Maximal as contentDataModule3MaximalPart1 } from "./Module3Content_Maximal";
+import { contentDataModule3MaximalPart2 } from "./Module3Content_Maximal_Part2";
+import { contentDataModule3MaximalPart2Extended } from "./Module3Content_Maximal_Part2_Extended";
+import { contentDataModule3MaximalPart3 } from "./Module3Content_Maximal_Part3";
+import { contentDataModule3MaximalPart3Extended } from "./Module3Content_Maximal_Part3_Extended";
+import { contentDataModule3MaximalPart4 } from "./Module3Content_Maximal_Part4";
+import { contentDataModule3MaximalMissingDays } from "./Module3Content_Maximal_MissingDays";
+export const contentDataModule3 = {
+  ...contentDataModule3MaximalPart1,
+  ...contentDataModule3MaximalMissingDays,
+  ...contentDataModule3MaximalPart2,
+  ...contentDataModule3MaximalPart2Extended,
+  ...contentDataModule3MaximalPart3,
+  ...contentDataModule3MaximalPart3Extended,
+  ...contentDataModule3MaximalPart4
+  const currentContent = contentDataModule3[selectedDay as keyof typeof contentDataModule3] as unknown as ContentData;
+                          const dayData = contentDataModule3[dayKey as keyof typeof contentDataModule3];
+                    Nächster Tag: {contentDataModule3[`day_${currentDayNum + 1}` as keyof typeof contentDataModule3]?.title}

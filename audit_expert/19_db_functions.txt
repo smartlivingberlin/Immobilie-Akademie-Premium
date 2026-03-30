@@ -1,0 +1,51 @@
+=== 19. DATENBANK FUNKTIONEN ===
+59:export async function getDb(): Promise<ReturnType<typeof drizzle>> {
+71:export async function upsertUser(user: InsertUser): Promise<void> {
+130:export async function getUserByOpenId(openId: string) {
+142:export async function updateUserRole(openId: string, role: "user" | "admin" | "trainer"): Promise<void> {
+154:export async function createChatConversation(
+186:export async function addChatMessage(
+218:export async function getConversationMessages(
+237:export async function getUserConversations(
+256:export async function updateConversationTitle(
+279:export async function getAllWhitelabelConfigs(): Promise<WhitelabelConfig[]> {
+295:export async function getWhitelabelConfigById(
+316:export async function getWhitelabelConfigBySlug(
+337:export async function createWhitelabelConfig(
+378:export async function updateWhitelabelConfig(
+397:export async function deleteWhitelabelConfig(
+414:export async function getWhitelabelConfigForUser(
+441:export async function assignUserToTenant(
+460:export async function getUsersByTenantId(
+483:export async function getAllVideoTutorials(): Promise<VideoTutorial[]> {
+501:export async function getVideoTutorialsByModule(moduleId: number): Promise<VideoTutorial[]> {
+520:export async function getVideoTutorialsByDay(moduleId: number, dayNumber: number): Promise<VideoTutorial[]> {
+541:export async function getVideoTutorialById(id: number): Promise<VideoTutorial | null> {
+562:export async function createVideoTutorial(data: InsertVideoTutorial): Promise<VideoTutorial | null> {
+585:export async function updateVideoTutorial(id: number, data: Partial<InsertVideoTutorial>): Promise<VideoTutorial | null> {
+605:export async function deleteVideoTutorial(id: number): Promise<boolean> {
+621:export async function getUserVideoProgress(userId: number, videoId: number): Promise<VideoProgress | null> {
+644:export async function updateVideoProgress(
+693:export async function getAllUserVideoProgress(userId: number): Promise<VideoProgress[]> {
+717:export async function createExamSession(
+767:export async function getExamSession(sessionId: number): Promise<ExamSession | null> {
+788:export async function getUserExamSessions(userId: number, moduleId?: number): Promise<ExamSession[]> {
+814:export async function saveExamQuestion(questionData: InsertExamQuestion): Promise<ExamQuestion | undefined> {
+842:export async function getExamQuestions(sessionId: number): Promise<ExamQuestion[]> {
+862:export async function getExamQuestionById(questionId: number): Promise<ExamQuestion | undefined> {
+882:export async function updateExamQuestion(
+904:export async function completeExamSession(
+932:export async function getWeakTopics(userId: number, moduleId?: number): Promise<ExamWeakTopic[]> {
+958:export async function updateWeakTopic(userId: number, moduleId: number, topic: string): Promise<void> {
+1003:export async function openLearningLog(
+1020:export async function closeLearningLog(
+1035:export async function incrementHeartbeat(logId: number): Promise<void> {
+1048:export async function getCompletedDays(
+1079:export async function saveHeartbeat(
+1108:export async function writeExamAuditLog(
+1121:export async function getExamAuditLog(sessionId: number): Promise<ExamAuditEntry[]> {
+1136:export async function saveFeedback(data: InsertFeedback): Promise<void> {
+1147:export async function getFeedbackStats(): Promise<
+1172:export async function createComplaint(data: InsertComplaint): Promise<void> {
+1183:export async function getOpenComplaints(): Promise<Complaint[]> {
+1197:export async function updateComplaintStatus(

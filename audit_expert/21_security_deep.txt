@@ -1,0 +1,19 @@
+=== 21. SICHERHEIT DETAILS ===
+-- Rate Limiting --
+server/_core/index.ts:14:import rateLimit from "express-rate-limit";
+server/_core/index.ts:32:const aiLimiter = rateLimit({
+
+-- CORS --
+server/_core/map.ts:5: * All credentials are automatically injected. Array parameters use | as separator.
+server/_core/map.ts:27:      "Google Maps proxy credentials missing: set BUILT_IN_FORGE_API_URL and BUILT_IN_FORGE_API_KEY"
+server/_core/map.ts:139:  origin_addresses: string[];
+server/_core/map.ts:229:    originalIndex?: number;
+server/_core/map.ts:248: * Input: { origin: string, destination: string, mode?: TravelMode, waypoints?: string, alternatives?: boolean }
+server/_core/map.ts:253: * DISTANCE MATRIX - Calculate travel times/distances for multiple origin-destination pairs
+server/_core/imageGeneration.ts:12: *     originalImages: [{
+server/_core/imageGeneration.ts:23:  originalImages?: Array<{
+server/_core/imageGeneration.ts:63:      original_images: options.originalImages || [],
+
+-- Helmet Headers --
+server/_core/index.ts:13:import helmet from "helmet";
+server/_core/index.ts:30:app.use(helmet({ contentSecurityPolicy: false }));

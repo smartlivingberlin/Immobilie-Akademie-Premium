@@ -1,0 +1,210 @@
+=== 36. ALLE KOMPONENTEN VOLLSTÄNDIG ===
+--- AIAssistant.tsx ---
+Zeilen: 506
+4:interface AIAssistantProps {
+10:interface Msg {
+41:export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssistantProps) {
+
+--- AIChatBox.tsx ---
+Zeilen: 393
+9: * Message type matching server-side LLM Message interface
+16:export type AIChatBoxProps = {
+65: * - Matches server-side Message interface for seamless integration
+112:export function AIChatBox({
+
+--- AIQuizCase.tsx ---
+Zeilen: 217
+10:export interface QuizCase {
+23:interface AIQuizCaseProps {
+28:export function AIQuizCase({ quizCase, onComplete }: AIQuizCaseProps) {
+
+--- AITutor.tsx ---
+Zeilen: 216
+7:interface Message {
+14:interface AITutorProps {
+36:export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorProps) {
+
+--- AppraisalGenerator.tsx ---
+Zeilen: 174
+11:export function AppraisalGenerator() {
+
+--- BackButton.tsx ---
+Zeilen: 33
+5:interface BackButtonProps {
+10:export function BackButton({ label = "Zurück", fallbackHref = "/" }: BackButtonProps) {
+
+--- Breadcrumbs.tsx ---
+Zeilen: 92
+4:interface BreadcrumbItem {
+9:export function Breadcrumbs() {
+
+--- CertificateGenerator.tsx ---
+Zeilen: 112
+7:interface CertificateGeneratorProps {
+17:export function CertificateGenerator({ 
+29:  // Resolve props aliases
+
+--- ComplaintForm.tsx ---
+Zeilen: 106
+13:export default function ComplaintForm() {
+
+--- CookieConsent.tsx ---
+Zeilen: 275
+16:interface CookiePreferences {
+25:export default function CookieConsent() {
+257:export function hasAnalyticsConsent(): boolean {
+264:export function hasMarketingConsent(): boolean {
+271:export function resetCookieConsent(): void {
+
+--- CourtCaseDisplay.tsx ---
+Zeilen: 98
+11:interface CourtCaseDisplayProps {
+15:export function CourtCaseDisplay({ courtCase }: CourtCaseDisplayProps) {
+
+--- DashboardLayout.tsx ---
+Zeilen: 264
+40:export default function DashboardLayout({
+100:type DashboardLayoutContentProps = {
+
+--- DashboardLayoutSkeleton.tsx ---
+Zeilen: 46
+3:export function DashboardLayoutSkeleton() {
+
+--- DocumentGenerator.tsx ---
+Zeilen: 227
+10:export interface DocumentGeneratorProps {
+18:export function DocumentGenerator({ title, description = "Erstellen Sie ein professionelles Dokument.", templateType, type, content }: DocumentGeneratorProps) {
+
+--- ErrorBoundary.tsx ---
+Zeilen: 62
+5:interface Props {
+9:interface State {
+15:  constructor(props: Props) {
+16:    super(props);
+58:    return this.props.children;
+62:export default ErrorBoundary;
+
+--- ExpertModeValuation.tsx ---
+Zeilen: 120
+8:export function ExpertModeValuation() {
+
+--- FeedbackWidget.tsx ---
+Zeilen: 101
+13:interface FeedbackWidgetProps {
+19:export default function FeedbackWidget({ moduleId, dayId, onSubmitted }: FeedbackWidgetProps) {
+
+--- Footer.tsx ---
+Zeilen: 135
+5:export default function Footer() {
+
+--- FullscreenContent.tsx ---
+Zeilen: 115
+6:interface FullscreenContentProps {
+23:export function FullscreenContent({ title, content, icon, triggerButton }: FullscreenContentProps) {
+97:interface FullscreenTriggerProps {
+103:export function FullscreenTrigger({ onClick, className = "", label = "Vollbild" }: FullscreenTriggerProps) {
+
+--- GlobalGlossary.tsx ---
+Zeilen: 153
+23:export function GlobalGlossary() {
+
+--- GlobalSearch.tsx ---
+Zeilen: 238
+33:interface GlobalSearchProps {
+37:export function GlobalSearch({ collapsed = false }: GlobalSearchProps) {
+
+--- GlossaryLinker.tsx ---
+Zeilen: 127
+12:interface GlossaryLinkerProps {
+31:export function GlossaryLinker({ children, className = '' }: GlossaryLinkerProps) {
+
+--- GlossaryTooltip.tsx ---
+Zeilen: 154
+10:interface GlossaryTooltipProps {
+16:export function GlossaryTooltip({ term, children, className = "" }: GlossaryTooltipProps) {
+70:interface GlossaryTextProps {
+75:export function GlossaryText({ text, className = "" }: GlossaryTextProps) {
+
+--- LawLink.tsx ---
+Zeilen: 29
+4:interface LawLinkProps {
+10:export function LawLink({ law, className = "", showIcon = false }: LawLinkProps) {
+
+--- LegalLink.tsx ---
+Zeilen: 136
+3:interface LegalLinkProps {
+17:export function LegalLink({ law, className = "" }: LegalLinkProps) {
+121:export function hasLegalReference(text: string): boolean {
+
+--- Map.tsx ---
+Zeilen: 155
+84:  interface Window {
+112:interface MapViewProps {
+119:export function MapView({
+
+--- ModuleGuard.tsx ---
+Zeilen: 93
+4:interface ModuleGuardProps {
+9:export default function ModuleGuard({ moduleId, children }: ModuleGuardProps) {
+
+--- ModuleIntro.tsx ---
+Zeilen: 117
+1:interface ModuleIntroProps {
+23:export function ModuleIntro({
+
+--- ModuleQuiz.tsx ---
+Zeilen: 217
+11:interface QuizQuestion {
+19:interface ModuleQuizProps {
+26:export function ModuleQuiz({ moduleTitle = "Modul Quiz", questions, onComplete, passingScore = 70 }: ModuleQuizProps) {
+
+--- Quiz.tsx ---
+Zeilen: 359
+19:interface QuizProps {
+24:export function Quiz({ moduleId, onComplete }: QuizProps) {
+
+--- SEO.tsx ---
+Zeilen: 159
+4:interface SEOProps {
+19:export function SEO({ title, description, keywords, ogImage, canonical }: SEOProps) {
+
+--- SmartContent.tsx ---
+Zeilen: 152
+8:interface SmartContentProps {
+
+--- SolutionToggler.tsx ---
+Zeilen: 53
+7:interface SolutionTogglerProps {
+14:export function SolutionToggler({ 
+
+--- SourceReference.tsx ---
+Zeilen: 125
+3:interface SourceReferenceProps {
+11:export function SourceReference({
+62:interface FootnoteProps {
+69:export function Footnote({ number, source, url, type }: FootnoteProps) {
+81:interface CitationProps {
+86:export function Citation({ number, className = "" }: CitationProps) {
+97:interface SourcesSectionProps {
+106:export function SourcesSection({ sources }: SourcesSectionProps) {
+
+--- StructuredData.tsx ---
+Zeilen: 195
+3:interface CourseModule {
+37:export function StructuredData() {
+
+--- ValuationCalculator.tsx ---
+Zeilen: 327
+11:export function ValuationCalculator() {
+
+--- VideoPlayer.tsx ---
+Zeilen: 263
+18:interface VideoPlayerProps {
+29:export function VideoPlayer({
+214:interface VideoListProps {
+219:export function VideoList({ moduleId, dayNumber }: VideoListProps) {
+
+--- YieldCalculator.tsx ---
+Zeilen: 137
+8:export function YieldCalculator() {
+

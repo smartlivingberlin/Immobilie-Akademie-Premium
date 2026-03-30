@@ -1,3 +1,4 @@
+=== 5. APP ROUTEN (FRONTEND) ===
 import { Route, Switch } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Toaster } from "@/components/ui/toaster";
@@ -21,6 +22,8 @@ import Flashcards from "@/pages/Flashcards";
 import ExposeTrainer from "@/pages/ExposeTrainer";
 import DokumentViewer from "@/pages/DokumentViewer";
 import ContentUpload from "@/pages/admin/ContentUpload";
+import Impressum from "@/pages/Impressum";
+import Datenschutz from "@/pages/Datenschutz";
 import Kurse from "@/pages/Kurse";
 import ZahlungErfolgreich from "@/pages/ZahlungErfolgreich";
 import Widerruf from "@/pages/Widerruf";
@@ -136,8 +139,8 @@ function Router() {
 
           
           {/* Modul Routes */}
-          <Route path="/modul/1" component={() => <ProtectedRoute component={Module1WithIntro} />} />
-          <Route path="/modul/1/tag/:day" component={() => <ProtectedRoute component={Module1Detail} />} />
+          <Route path="/modul/1" component={Module1WithIntro} />
+          <Route path="/modul/1/tag/:day" component={Module1Detail} />
           
           <Route path="/modul/2">{()=><ModuleGuard moduleId={2}><Module2WithIntro /></ModuleGuard>}</Route>
           <Route path="/modul/2/tag/:day">{()=><ModuleGuard moduleId={2}><Module2Detail /></ModuleGuard>}</Route>

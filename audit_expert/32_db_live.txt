@@ -1,0 +1,18 @@
+=== 32. DATENBANK AKTUELLE TABELLEN LIVE ===
+Prüfe DB-Verbindung...
+[dotenv@17.2.4] injecting env (6) from .env -- tip: 🗂️ backup and recover secrets: https://dotenvx.com/ops
+Error: connect ETIMEDOUT
+    at Object.createConnectionPromise [as createConnection] (/home/lenovo/projects/Immobilie-Akademie/node_modules/.pnpm/mysql2@3.16.3/node_modules/mysql2/promise.js:19:31)
+    at [eval]:5:28
+    at [eval]:17:3
+    at runScriptInThisContext (node:internal/vm:209:10)
+    at node:internal/process/execution:446:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:444:60)
+    at evalFunction (node:internal/process/execution:279:30)
+    at evalTypeScript (node:internal/process/execution:291:3)
+    at node:internal/main/eval_string:74:3 {
+  code: 'ETIMEDOUT',
+  errno: undefined,
+  sqlState: undefined
+}

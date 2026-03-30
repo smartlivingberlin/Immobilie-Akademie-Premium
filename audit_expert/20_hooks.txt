@@ -1,0 +1,238 @@
+=== 20. FRONTEND HOOKS ===
+--- client/src/hooks/use-toast.ts ---
+// Simplified version of shadcn/ui toast hook
+import { useState, useEffect } from "react"
+
+type ToastProps = {
+  id: string
+  title?: string
+  description?: string
+  action?: React.ReactNode
+  variant?: "default" | "destructive"
+}
+
+type ToastOptions = Omit<ToastProps, "id">
+
+export function useToast() {
+  const [toasts, setToasts] = useState<ToastProps[]>([])
+
+  const toast = ({ title, description, action }: ToastOptions) => {
+    const id = Math.random().toString(36).substring(2, 9)
+    const newToast = { id, title, description, action }
+    setToasts((prev) => [...prev, newToast])
+    
+    // Auto dismiss after 3 seconds
+    setTimeout(() => {
+      setToasts((prev) => prev.filter((t) => t.id !== id))
+    }, 3000)
+  }
+
+  return {
+    toast,
+    toasts,
+
+--- client/src/hooks/useActivityHeartbeat.ts ---
+/**
+ * useActivityHeartbeat.ts
+ *
+ * React-Hook der alle 60 Sekunden ein Aktivitätssignal an den Server sendet,
+ * solange der Nutzer eine Lerneinheit geöffnet hat.
+ *
+ * Zweck: AZAV-Anwesenheitsnachweis – nur aktive Lernzeit wird gezählt.
+ * Der Hook pausiert automatisch wenn das Tab inaktiv ist.
+ */
+
+import { useEffect, useRef, useCallback } from "react";
+import { trpc } from "@/lib/trpc";
+
+const HEARTBEAT_INTERVAL_MS = 60_000; // 60 Sekunden
+const INACTIVITY_THRESHOLD_MS = 90_000; // 90 Sek Inaktivität → Heartbeat pausieren
+
+interface UseActivityHeartbeatOptions {
+  moduleId: number;
+  dayId: number;
+  enabled?: boolean; // Kann deaktiviert werden (z.B. auf Quiz-Seiten)
+}
+
+export function useActivityHeartbeat({
+  moduleId,
+  dayId,
+  enabled = true,
+}: UseActivityHeartbeatOptions) {
+  const heartbeatMutation = trpc.azav.heartbeat.useMutation();
+  const openDayMutation = trpc.azav.openDay.useMutation();
+  const closeDayMutation = trpc.azav.closeDay.useMutation();
+
+--- client/src/hooks/useComposition.ts ---
+import { useRef } from "react";
+import { usePersistFn } from "./usePersistFn";
+
+export interface UseCompositionReturn<
+  T extends HTMLInputElement | HTMLTextAreaElement,
+> {
+  onCompositionStart: React.CompositionEventHandler<T>;
+  onCompositionEnd: React.CompositionEventHandler<T>;
+  onKeyDown: React.KeyboardEventHandler<T>;
+  isComposing: () => boolean;
+}
+
+export interface UseCompositionOptions<
+  T extends HTMLInputElement | HTMLTextAreaElement,
+> {
+  onKeyDown?: React.KeyboardEventHandler<T>;
+  onCompositionStart?: React.CompositionEventHandler<T>;
+  onCompositionEnd?: React.CompositionEventHandler<T>;
+}
+
+type TimerResponse = ReturnType<typeof setTimeout>;
+
+export function useComposition<
+  T extends HTMLInputElement | HTMLTextAreaElement = HTMLInputElement,
+>(options: UseCompositionOptions<T> = {}): UseCompositionReturn<T> {
+  const {
+    onKeyDown: originalOnKeyDown,
+    onCompositionStart: originalOnCompositionStart,
+    onCompositionEnd: originalOnCompositionEnd,
+  } = options;
+
+--- client/src/hooks/useModuleAccess.ts ---
+/**
+ * Hook für Modulzugangsschutz
+ * Fragt serverseitig ab welche Module der Nutzer sehen darf
+ */
+import { trpc } from "@/lib/trpc";
+
+function normalizeEnabledModules(input: unknown): number[] | null {
+  if (!input) return null;
+
+  // Schon ein Array (ideal)
+  if (Array.isArray(input)) {
+    const arr = input.map(Number).filter((n) => Number.isFinite(n));
+    return arr.length ? arr : null;
+  }
+
+  // Einzelne Zahl
+  if (typeof input === "number" && Number.isFinite(input)) return [input];
+
+  // String wie "1" oder "1,2,3"
+  if (typeof input === "string") {
+    const arr = input
+      .split(/[,;\s]+/)
+      .map((s) => s.trim())
+      .filter(Boolean)
+      .map((s) => Number(s))
+      .filter((n) => Number.isFinite(n));
+    return arr.length ? arr : null;
+  }
+
+  // Falls API mal { enabledModules: ... } liefert
+
+--- client/src/hooks/usePersistFn.ts ---
+import { useRef } from "react";
+
+type noop = (...args: any[]) => any;
+
+/**
+ * usePersistFn instead of useCallback to reduce cognitive load
+ */
+export function usePersistFn<T extends noop>(fn: T) {
+  const fnRef = useRef<T>(fn);
+  fnRef.current = fn;
+
+  const persistFn = useRef<T>(null);
+  if (!persistFn.current) {
+    persistFn.current = function (this: unknown, ...args) {
+      return fnRef.current!.apply(this, args);
+    } as T;
+  }
+
+  return persistFn.current!;
+}
+
+--- client/src/hooks/usePortalPhase.ts ---
+import { useState, useEffect } from "react";
+
+export type Phase = "A" | "B" | "C" | "D";
+
+export interface PhaseConfig {
+  id: Phase;
+  name: string;
+  description: string;
+  badges: { azav: boolean; zfu: boolean; ihk: boolean; bgs: boolean };
+  labels: {
+    productType: string;
+    certificationNote: string;
+    faqCertAnswer: string;
+    footerBadge1: string;
+    footerBadge2: string;
+  };
+  canSell: boolean;
+  requirements: string[];
+  unlocked: boolean;
+}
+
+let _cachedPhase: { phase: Phase; config: PhaseConfig } | null = null;
+
+export function usePortalPhase() {
+  const [data, setData] = useState(_cachedPhase);
+  const [loading, setLoading] = useState(!_cachedPhase);
+
+  useEffect(() => {
+    if (_cachedPhase) return;
+    fetch("/api/portal-phase")
+
+--- client/src/hooks/useServerProgress.ts ---
+/**
+ * Server-seitiger Lernfortschritt Hook
+ * Schreibt in MySQL learning_logs + localStorage als Cache
+ */
+import { trpc } from "@/lib/trpc";
+import { getProgress, markDayCompleted } from "@/lib/progressTracking";
+
+export function useServerProgress() {
+  const { data: serverLogs, refetch } = trpc.progress.getProgress.useQuery();
+
+  const startDayMutation = trpc.progress.startDay.useMutation();
+  const completeDayMutation = trpc.progress.completeDay.useMutation();
+
+  const startDay = async (moduleId: number, dayId: number) => {
+    try {
+      const result = await startDayMutation.mutateAsync({ moduleId, dayId });
+      return result.logId;
+    } catch (e) {
+      console.warn("[Progress] Server nicht erreichbar, nur localStorage", e);
+      return null;
+    }
+  };
+
+  const completeDay = async (
+    moduleId: number,
+    dayId: number,
+    logId: number | null,
+    durationSeconds: number,
+    heartbeatCount: number
+  ) => {
+
+--- client/src/hooks/useMobile.tsx ---
+import * as React from "react";
+
+const MOBILE_BREAKPOINT = 768;
+
+export function useIsMobile() {
+  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(
+    undefined
+  );
+
+  React.useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
+    const onChange = () => {
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+    };
+    mql.addEventListener("change", onChange);
+    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+    return () => mql.removeEventListener("change", onChange);
+  }, []);
+
+  return !!isMobile;
+}
+

@@ -1,0 +1,25 @@
+=== 66. PERFORMANCE — BUNDLE GRÖSSE ANALYSE ===
+total 260K
+-rw-r--r-- 1 lenovo lenovo 255K Mar 30 13:21 index.js
+drwxr-xr-x 3 lenovo lenovo 4.0K Mar 30 13:21 public
+
+-- Größte Dateien im Dist --
+-rw-r--r-- 1 lenovo lenovo 3.2M Mar 30 13:21 dist/public/assets/index-DdohHaXI.js
+-rw-r--r-- 1 lenovo lenovo 397K Mar 30 13:21 dist/public/assets/pdf-DreA9CGo.js
+-rw-r--r-- 1 lenovo lenovo 255K Mar 30 13:21 dist/index.js
+-rw-r--r-- 1 lenovo lenovo 198K Mar 30 13:21 dist/public/assets/html2canvas.esm-B0tyYwQk.js
+-rw-r--r-- 1 lenovo lenovo 174K Mar 30 13:21 dist/public/assets/index-BVd7-O-g.css
+-rw-r--r-- 1 lenovo lenovo 156K Mar 30 13:21 dist/public/assets/index.es-BEyjvIzA.js
+-rw-r--r-- 1 lenovo lenovo 23K Mar 30 13:21 dist/public/assets/purify.es-B9ZVCkUG.js
+-rw-r--r-- 1 lenovo lenovo 9.1K Mar 30 13:21 dist/public/benutzerhandbuch.md
+-rw-r--r-- 1 lenovo lenovo 7.6K Mar 30 13:21 dist/public/icon-512.png
+-rw-r--r-- 1 lenovo lenovo 4.5K Mar 30 13:21 dist/public/offline.html
+-rw-r--r-- 1 lenovo lenovo 3.5K Mar 30 13:21 dist/public/index.html
+-rw-r--r-- 1 lenovo lenovo 2.7K Mar 30 13:21 dist/public/icon-192.png
+-rw-r--r-- 1 lenovo lenovo 938 Mar 30 13:21 dist/public/sw.js
+-rw-r--r-- 1 lenovo lenovo 872 Mar 30 13:21 dist/public/sitemap.xml
+-rw-r--r-- 1 lenovo lenovo 788 Mar 30 13:21 dist/public/manifest.json
+-rw-r--r-- 1 lenovo lenovo 235 Mar 30 13:21 dist/public/robots.txt
+-rw-r--r-- 1 lenovo lenovo 0 Mar 22 18:37 dist/public/.gitkeep
+
+-- Lazy Loading Check --

@@ -1,0 +1,35 @@
+=== 71. VOLLSTÄNDIGER RAG-TUTOR ===
+37:async function askClaude(systemPrompt: string, question: string, context: any[]): Promise<string> {
+54:      model: "claude-haiku-4-5-20251001",
+70:async function askGemini(systemPrompt: string, question: string, context: any[]): Promise<string> {
+72:    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+80:            role: m.role === "assistant" ? "model" : "user",
+99:export function registerRagTutorRoutes(app: Express) {
+139:          usedModel = "claude-haiku";
+159:      res.json({ answer, moduleId: moduleId || null, model: usedModel });
+183:        form.append("model", "whisper-large-v3-turbo");
+227:          model_id: "eleven_multilingual_v2",
+275:            form.append("model", "whisper-large-v3-turbo");
+304:          model: "claude-haiku-4-5-20251001",
+338:      const prompt = `Du bist ein IHK-Prüfungsexperte. Erstelle exakt ${count} Multiple-Choice Prüfungsfragen auf Deutsch aus diesem Text:\n\n${text.slice(0, 8000)}\n\nGib NUR ein JSON-Array zurück:\n[{"questionText":"...","options":{"A":"...","B":"...","C":"...","D":"..."},"correctAnswer":"A","explanation":"...","difficulty":"easy","category":"${category || 'Allgemein'}"}]`;
+341:        const answer = await askClaude("Du bist IHK-Prüfungsexperte. Antworte NUR mit JSON.", prompt, []);
+375:      const prompt = `Du bist IHK-Dozent für Immobilienwirtschaft. Erstelle ${formatMap[format] || formatMap.kursbuch} für: ${moduleTitle}\n\nInhalte: ${contentSummary.slice(0, 8000)}\n\nAnforderungen:\n- Professionelle Qualität wie IU Akademie\n- Klare Struktur mit nummerierten Kapiteln\n- Praxisnahe Beispiele\n- Alle Gesetze korrekt zitiert\n- Verständlich für Quereinsteiger\n- Format: Markdown mit # ## ###`;
+376:      const content2 = await askClaude("Du bist erfahrener IHK-Dozent für Immobilienwirtschaft.", prompt, []);
+386:      const prompt = `Du bist ein IHK-Prüfer für Immobilienwirtschaft. Bewerte die folgende Antwort eines Prüflings.
+405:      const answer = await askClaude("Du bist strenger aber fairer IHK-Prüfer. Antworte NUR mit JSON.", prompt, []);
+467:      const prompt = "Modul: " + moduleNames[Number(moduleId)] + "\n\n" + formatInstructions[format] + "\n\nLERNINHALTE:\n" + extractedContent + "\n\nAnforderungen: Professionell wie IU Akademie, verständlich für Quereinsteiger, alle Gesetze korrekt zitiert, Markdown-Format mit # ## ###";
+468:      const generatedContent = await askClaude("Du bist erfahrener IHK-Dozent und Fachautor für Immobilienwirtschaft in Deutschland.", prompt, []);
+559:      const prompt = `Du bist ein erfahrener IHK-Dozent für ${gruppenAnalyse.moduleName}.
+578:        prompt,
+655:      const prompt = formatPrompts[format] || formatPrompts.podcast;
+660:${prompt}
+692:      const prompt = "Du bist ein IHK-Prüfer für Immobilienmakler. Bewerte das folgende Exposé nach deutschen Pflichtangaben.\n\nIMMOBILIEN-DATEN:\n" + (immobilienDaten || "Nicht angegeben") + "\n\nEINGEREICHTES EXPOSÉ:\n" + expose + "\n\nPrüfe folgende Pflichtangaben nach GEG/EnEV und MaBV:\n1. Energieausweis-Typ (Bedarfs- oder Verbrauchsausweis)\n2. Energieträger (Gas, Öl, Fernwärme etc.)\n3. Baujahr des Gebäudes\n4. Energiekennwert (kWh/m²a)\n5. Energieeffizienzklasse (A+ bis H)\n6. Courtage-Angabe mit Mehrwertsteuer\n7. Wohnfläche in Quadratmeter\n8. Kaufpreis oder Miete\n9. Lage/Adresse (zumindest Stadtteil)\n10. Objektbeschreibung\n\nAntworte NUR mit diesem JSON:\n{\n  \"gesamtnote\": \"Sehr gut|Gut|Befriedigend|Ausreichend|Mangelhaft\",\n  \"punkte\": 0-100,\n  \"pflichtangaben\": {\n    \"energieausweis_typ\": true|false,\n    \"energietraeger\": true|false,\n    \"baujahr\": true|false,\n    \"energiekennwert\": true|false,\n    \"effizienzklasse\": true|false,\n    \"courtage\": true|false,\n    \"wohnflaeche\": true|false,\n    \"preis\": true|false,\n    \"lage\": true|false,\n    \"objektbeschreibung\": true|false\n  },\n  \"feedback\": \"2-3 Sätze Gesamtbewertung\",\n  \"fehlendeAngaben\": [\"Liste der fehlenden Pflichtangaben\"],\n  \"verbesserungen\": \"Konkrete Verbesserungsvorschläge\",\n  \"rechtlicheRisiken\": \"Rechtliche Risiken bei fehlendem Exposé\"\n}";
+694:      const answer = await askClaude("Du bist strenger IHK-Prüfer für Maklerrecht. Antworte NUR mit JSON.", prompt, []);
+
+-- KI Modelle genutzt --
+54:      model: "claude-haiku-4-5-20251001",
+72:    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+139:          usedModel = "claude-haiku";
+149:          usedModel = "gemini-flash";
+159:      res.json({ answer, moduleId: moduleId || null, model: usedModel });
+304:          model: "claude-haiku-4-5-20251001",

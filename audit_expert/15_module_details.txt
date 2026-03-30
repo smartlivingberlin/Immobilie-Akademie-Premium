@@ -1,0 +1,81 @@
+=== 15. MODULE DETAIL IMPORTS ===
+--- Module1Detail.tsx IMPORTS ---
+22:import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+26:import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+32:import { SmartContent } from "@/components/SmartContent";
+33:import { FullscreenContent } from "@/components/FullscreenContent";
+36:import { contentDataModule1Maximal as contentData } from "./Module1Content_Maximal";
+116:  const currentContent = contentData[selectedDay as keyof typeof contentData] || contentData.day_1;
+194:                          const dayData = contentData[dayKey as keyof typeof contentData];
+254:                         content={Object.values(contentData).map(d => d.theory).join('\n\n')}
+
+--- Module2Detail.tsx IMPORTS ---
+21:import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+25:import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+34:import { SmartContent } from "@/components/SmartContent";
+35:import { FullscreenContent } from "@/components/FullscreenContent";
+42:import { contentDataPart1Maximal } from "./Module2ContentPart1_Maximal";
+43:import { contentDataPart2Maximal } from "./Module2ContentPart2_Maximal";
+44:import { contentDataPart3Maximal } from "./Module2ContentPart3_Maximal";
+47:export const contentDataModule2 = {
+48:  ...contentDataPart1Maximal,
+49:  ...contentDataPart2Maximal,
+50:  ...contentDataPart3Maximal
+166:  const currentContent = contentDataModule2[selectedDay as keyof typeof contentDataModule2] as unknown as ContentData;
+279:                          const dayData = contentDataModule2[dayKey as keyof typeof contentDataModule2];
+581:                    Nächster Tag: {contentDataModule2[`day_${currentDayNum + 1}` as keyof typeof contentDataModule2]?.title}
+
+--- Module3Detail.tsx IMPORTS ---
+21:import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+25:import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+33:import { SmartContent } from "@/components/SmartContent";
+34:import { FullscreenContent } from "@/components/FullscreenContent";
+41:import { contentDataModule3Maximal as contentDataModule3MaximalPart1 } from "./Module3Content_Maximal";
+42:import { contentDataModule3MaximalPart2 } from "./Module3Content_Maximal_Part2";
+43:import { contentDataModule3MaximalPart2Extended } from "./Module3Content_Maximal_Part2_Extended";
+44:import { contentDataModule3MaximalPart3 } from "./Module3Content_Maximal_Part3";
+45:import { contentDataModule3MaximalPart3Extended } from "./Module3Content_Maximal_Part3_Extended";
+46:import { contentDataModule3MaximalPart4 } from "./Module3Content_Maximal_Part4";
+47:import { contentDataModule3MaximalMissingDays } from "./Module3Content_Maximal_MissingDays";
+50:export const contentDataModule3 = {
+51:  ...contentDataModule3MaximalPart1,
+52:  ...contentDataModule3MaximalMissingDays,
+53:  ...contentDataModule3MaximalPart2,
+54:  ...contentDataModule3MaximalPart2Extended,
+55:  ...contentDataModule3MaximalPart3,
+56:  ...contentDataModule3MaximalPart3Extended,
+57:  ...contentDataModule3MaximalPart4
+158:  const currentContent = contentDataModule3[selectedDay as keyof typeof contentDataModule3] as unknown as ContentData;
+
+--- Module4Detail.tsx IMPORTS ---
+25:import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+29:import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+36:import { SmartContent } from "@/components/SmartContent";
+37:import { FullscreenContent } from "@/components/FullscreenContent";
+42:import { contentDataModule4Maximalist } from "./Module4Content_Valuation_Maximalist";
+43:import { contentDataModule4MaximalistPart2 } from "./Module4Content_Valuation_Maximalist_Part2";
+50:  ...contentDataModule4Maximalist,
+51:  ...contentDataModule4MaximalistPart2
+
+--- Module5Detail.tsx IMPORTS ---
+25:import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+29:import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+36:import { SmartContent } from "@/components/SmartContent";
+37:import { FullscreenContent } from "@/components/FullscreenContent";
+42:// OLD: import { contentDataModule5Maximal } from "./Module5Content_Maximal";
+43:import { contentDataModule5_34i_Part1 } from "./Module5Content_34i_Part1";
+44:import { contentDataModule5_34i_Part2 } from "./Module5Content_34i_Part2";
+45:import { contentDataModule5_34i_Part3 } from "./Module5Content_34i_Part3";
+46:import { contentDataModule5_34i_Part4 } from "./Module5Content_34i_Part4";
+47:import { contentDataModule5_34i_Part5 } from "./Module5Content_34i_Part5";
+48:import { contentDataModule5_34i_Part6 } from "./Module5Content_34i_Part6";
+49:import { contentDataModule5_34i_Part7_Final } from "./Module5Content_34i_Part7_Final";
+52:const contentDataModule5Maximal = {
+53:  ...contentDataModule5_34i_Part1,
+54:  ...contentDataModule5_34i_Part2,
+55:  ...contentDataModule5_34i_Part3,
+56:  ...contentDataModule5_34i_Part4,
+57:  ...contentDataModule5_34i_Part5,
+58:  ...contentDataModule5_34i_Part6,
+59:  ...contentDataModule5_34i_Part7_Final,
+
