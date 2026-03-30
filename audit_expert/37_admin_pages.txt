@@ -1,0 +1,77 @@
+=== 37. ALLE ADMIN SEITEN VOLLSTÄNDIG ===
+--- AdminCodes.tsx ---
+Zeilen: 167
+22:  const { data: codes, refetch } = trpc.presentationCode.list.useQuery();
+23:  const create = trpc.presentationCode.create.useMutation({ onSuccess: () => { refetch(); setShowForm(false); setCode(generateCode()); setLabel(""); setModules([1,2,3,4,5]); }});
+24:  const deactivate = trpc.presentationCode.deactivate.useMutation({ onSuccess: () => refetch() });
+25:  const activate = trpc.presentationCode.activate.useMutation({ onSuccess: () => refetch() });
+26:  const del = trpc.presentationCode.delete.useMutation({ onSuccess: () => refetch() });
+
+--- AdminDashboard.tsx ---
+Zeilen: 124
+6:  const { data: users } = trpc.adminUsers.list.useQuery();
+7:  const { data: codes } = trpc.presentationCode.list.useQuery();
+8:  const { data: questions } = trpc.adminQuestions.list.useQuery({ limit: 9999, offset: 0 });
+
+--- ContentUpload.tsx ---
+Zeilen: 253
+46:      const res = await fetch("/api/ai/analyze-document", {
+69:      const res = await fetch("/api/ai/generate-questions", {
+
+--- DozentenCockpit.tsx ---
+Zeilen: 178
+32:      const res = await fetch("/api/ai/dozenten-cockpit", {
+
+--- DozentenLoesungen.tsx ---
+Zeilen: 362
+157:  const { data: questionsData, isLoading } = trpc.adminQuestions.list.useQuery({
+
+--- FragenManager.tsx ---
+Zeilen: 133
+22:  const { data, refetch, isLoading } = trpc.adminQuestions.list.useQuery({
+30:  const deleteMutation = trpc.adminQuestions.delete.useMutation({ onSuccess: () => refetch() });
+31:  const updateMutation = trpc.adminQuestions.update.useMutation({
+32:    onSuccess: () => { setEditId(null); refetch(); }
+
+--- KursbuchGenerator.tsx ---
+Zeilen: 133
+14:  { id: "kursbuch", label: "Kursbuch", desc: "Vollständiges Lernbuch mit Kapiteln und Beispielen", icon: "📖" },
+40:      const res = await fetch("/api/ai/generate-kursbuch-v2", {
+
+--- MediaSkriptGenerator.tsx ---
+Zeilen: 217
+46:      const res = await fetch("/api/ai/generate-mediaskript", {
+
+--- PortalPhaseAdmin.tsx ---
+Zeilen: 237
+28:    fetch("/api/portal-phase")
+36:    fetch("/api/portal-phase")
+73:      const r = await fetch("/api/admin/portal-phase", {
+
+--- UserManagement.tsx ---
+Zeilen: 92
+7:  const { data: users, refetch, isLoading } = trpc.adminUsers.list.useQuery();
+8:  const setModules = trpc.adminUsers.setModules.useMutation({ onSuccess: () => refetch() });
+9:  const setRole = trpc.adminUsers.setRole.useMutation({ onSuccess: () => refetch() });
+10:  const deleteUser = trpc.adminUsers.deleteUser.useMutation({ onSuccess: () => refetch() });
+
+--- VideoManagement.tsx ---
+Zeilen: 439
+55:  const { data: videos, isLoading, refetch } = trpc.videos.list.useQuery();
+58:  const createMutation = trpc.videos.create.useMutation({
+64:      refetch();
+77:  const updateMutation = trpc.videos.update.useMutation({
+83:      refetch();
+96:  const deleteMutation = trpc.videos.delete.useMutation({
+102:      refetch();
+
+--- WhiteLabelAdmin.tsx ---
+Zeilen: 934
+97:  const utils = trpc.useUtils();
+100:  const { data: configs, isLoading } = trpc.whitelabel.list.useQuery();
+103:  const createMutation = trpc.whitelabel.create.useMutation({
+115:  const updateMutation = trpc.whitelabel.update.useMutation({
+126:  const deleteMutation = trpc.whitelabel.delete.useMutation({
+136:  const uploadLogoMutation = trpc.whitelabel.uploadLogo.useMutation({
+146:  const uploadFaviconMutation = trpc.whitelabel.uploadFavicon.useMutation({
+

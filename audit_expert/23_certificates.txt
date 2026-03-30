@@ -1,0 +1,22 @@
+=== 23. ZERTIFIKAT SYSTEM ===
+2:import { protectedProcedure, router } from "./_core/trpc";
+9:export const certificateRouter = router({
+33:        pdfUrl: result.pdfUrl,
+
+1:import { jsPDF } from "jspdf";
+22:export async function generateCertificatePDF(
+36:): Promise<{ pdfUrl: string; pdfKey: string }> {
+153:  const pdfBuffer = Buffer.from(doc.output("arraybuffer"));
+156:  const pdfKey = `certificates/module-${moduleId}/${nanoid()}.pdf`;
+158:  // Upload to S3
+159:  const pdfUrl = await storagePut(pdfKey, pdfBuffer, "application/pdf");
+161:  return { pdfUrl, pdfKey };
+167:export async function createCertificate(
+170:): Promise<{ certificateId: number; pdfUrl: string } | null> {
+207:      pdfUrl: existingCert.pdfUrl,
+225:  const { pdfUrl, pdfKey } = await generateCertificatePDF(
+246:      pdfUrl,
+247:      pdfKey,
+253:    pdfUrl,
+260:export async function getUserCertificates(userId: number) {
+275:export async function getCertificateByExamSession(examSessionId: number) {

@@ -1,0 +1,73 @@
+=== 39. RECHTSPRECHUNG DATEN ===
+--- rechtsprechung-modul2.ts ---
+57 client/src/data/rechtsprechung-modul2.ts
+9
+export interface CourtCaseModule2 {
+  id: string;
+  court: string;
+  reference: string;
+  date: string;
+  title: string;
+  summary: string;
+  facts: string;
+  legalIssue: string;
+  decision: string;
+  practicalImplication: string;
+  relatedLaws: string[];
+  tags: string[];
+  sourceUrl: string;
+}
+
+export const courtCasesModule2: CourtCaseModule2[] = [
+  {
+    id: "bghi-zr-32-24",
+    court: "BGH",
+
+--- rechtsprechung-modul3.ts ---
+64 client/src/data/rechtsprechung-modul3.ts
+8
+/**
+ * Rechtsprechung für Modul 3: WEG-Verwaltung
+ * Echte BGH-Urteile zu Wohnungseigentumsrecht
+ */
+
+export interface CourtCase {
+  id: string;
+  title: string;
+  court: string;
+  date: string;
+  reference: string;
+  category: string;
+  summary: string;
+  facts: string;
+  legalIssue: string;
+  decision: string;
+  practicalImplication: string;
+  relatedLaws: string[];
+  sourceUrl: string;
+  tags: string[];
+
+--- rechtsprechung-modul4.ts ---
+56 client/src/data/rechtsprechung-modul4.ts
+10
+export interface CourtCaseModule4 {
+  id: string;
+  court: string;
+  reference: string;
+  date: string;
+  title: string;
+  summary: string;
+  facts: string;
+  legalIssue: string;
+  decision: string;
+  practicalImplication: string;
+  relatedLaws: string[];
+  tags: string[];
+  sourceUrl: string;
+}
+
+export const courtCasesModule4: CourtCaseModule4[] = [
+  {
+    id: "olg-hamm-22-u-25-24",
+    court: "OLG Hamm",
+

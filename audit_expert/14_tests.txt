@@ -1,0 +1,8 @@
+=== 14. TEST DATEIEN ===
+./server/aiAssistant.test.ts
+./server/certificates.test.ts
+./server/whitelabel.test.ts
+./server/exam-mode-button.test.ts
+./server/pdf.test.ts
+./server/ihk-timer.test.ts
+./server/auth.logout.test.ts
