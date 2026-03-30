@@ -41,6 +41,8 @@ import { courtCasesModule4 } from "@/data/rechtsprechung-modul4";
 // Import Content
 import { contentDataModule4Maximalist } from "./Module4Content_Valuation_Maximalist";
 import { contentDataModule4MaximalistPart2 } from "./Module4Content_Valuation_Maximalist_Part2";
+import { contentDataModule4Bonus } from "./Module4Content_Bonus_HypZert";
+import { contentDataModule4BonusPart2 } from "./Module4Content_Bonus_HypZert_Part2";
 import { quizQuestionsModule4 } from "@/data/quiz-questions-modul4";
 import { VideoList } from "@/components/VideoPlayer";
 import { Video } from "lucide-react";
@@ -48,7 +50,9 @@ import { Video } from "lucide-react";
 // Merge content parts
 const allContent = {
   ...contentDataModule4Maximalist,
-  ...contentDataModule4MaximalistPart2
+  ...contentDataModule4MaximalistPart2,
+  ...contentDataModule4Bonus,
+  ...contentDataModule4BonusPart2
 };
 
 // Define weeks structure for Module 4 (20 Days)
