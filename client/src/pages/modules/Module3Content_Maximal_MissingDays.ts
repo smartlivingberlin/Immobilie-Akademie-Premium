@@ -35,6 +35,23 @@ Wenn die Kosten steigen (z.B. Energiepreise), muss der Verwalter den Wirtschafts
       "§ 19 WEG (Wirkung des Urteils)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Der Wirtschaftsplan: Die Finanzplanung der WEG' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Der Wirtschaftsplan: Die Finanzplanung der WEG'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Der Wirtschaftsplan: Die Finanzplanung der WEG' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Praxis-Tipp: Realistische Planung
 
 Planen Sie lieber etwas großzügiger als zu knapp. Eine kleine Rückerstattung am Jahresende freut die Eigentümer mehr als eine hohe Nachzahlung.
@@ -123,6 +140,23 @@ Die Abrechnung muss "unverzüglich" nach Ablauf des Jahres erstellt werden. Die 
       "BGH V ZR 44/09 (Anforderungen an die Abrechnung)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Die Jahresabrechnung: Grundlagen & Struktur' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Die Jahresabrechnung: Grundlagen & Struktur'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Die Jahresabrechnung: Grundlagen & Struktur' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Die Rechnungsprüfung
 
 Vor der Versammlung prüft der Verwaltungsbeirat die Abrechnung.
@@ -208,6 +242,23 @@ Die Eigentümer können mit einfacher Mehrheit beschließen, den Kostenverteiler
       "HeizkostenV (Vorrang vor WEG)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Verteilerschlüssel in der WEG' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Verteilerschlüssel in der WEG'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Verteilerschlüssel in der WEG' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Fallstudie: Der Aufzug
 
 Eine WEG besteht aus Erdgeschosswohnungen und Wohnungen im 1.-5. Stock. Es gibt einen Aufzug.
@@ -286,6 +337,23 @@ Wird nicht verbrauchsabhängig abgerechnet, darf der Nutzer den Kostenanteil um 
       "§ 12 HeizkostenV (Kürzungsrecht)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Die Heizkostenabrechnung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Die Heizkostenabrechnung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Die Heizkostenabrechnung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Umgang mit Messdienstleistern
 
 Die Abrechnung erstellt meist eine externe Firma (Techem, Ista, Brunata etc.).
@@ -359,6 +427,23 @@ Seit der Reform 2020 muss der Verwalter nach Ablauf eines Kalenderjahres einen V
       "§ 28 Abs. 4 WEG (Vermögensbericht)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Vermögensbericht & Erhaltungsrücklage' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Vermögensbericht & Erhaltungsrücklage'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Vermögensbericht & Erhaltungsrücklage' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Die "Peterssche Formel"
 
 Eine Faustformel zur Berechnung der notwendigen Rücklage:
@@ -446,6 +531,23 @@ Die ETV ist eine nichtöffentliche Veranstaltung. Externe (Mieter, Anwälte, Ber
       "BGH V ZR 110/11 (Teilnahme Dritter)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Organisation der Eigentümerversammlung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Organisation der Eigentümerversammlung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Organisation der Eigentümerversammlung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Die hybride Eigentümerversammlung
 
 Seit 2020 können Eigentümer auch online teilnehmen (§ 23 Abs. 1 WEG), wenn dies beschlossen wurde.
@@ -523,6 +625,23 @@ Hat ein Eigentümer die Mehrheit (z.B. Bauträger hält noch 60% der Anteile), k
       "§ 25 Abs. 4 WEG (Stimmrechtsausschluss bei Interessenkollision)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Beschlussfassung & Stimmrecht' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Beschlussfassung & Stimmrecht'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Beschlussfassung & Stimmrecht' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Stimmrechtsausschluss (§ 25 Abs. 4 WEG)
 
 Ein Eigentümer darf nicht mitstimmen, wenn:
@@ -608,6 +727,23 @@ Zusätzlich zum Protokoll muss der Verwalter eine Beschluss-Sammlung führen.
       "§ 24 Abs. 7 WEG (Beschluss-Sammlung)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Das Versammlungsprotokoll' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Das Versammlungsprotokoll'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Das Versammlungsprotokoll' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Fehler im Protokoll
 
 Ein falsches Protokoll macht den Beschluss nicht automatisch nichtig, aber es schafft Beweisprobleme.
@@ -687,6 +823,23 @@ Die Klage richtet sich gegen die **Gemeinschaft der Wohnungseigentümer**, nicht
       "§ 23 Abs. 4 WEG (Nichtigkeit)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Die Beschlussanfechtung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Die Beschlussanfechtung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Die Beschlussanfechtung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Die Zitterpartie für den Verwalter
 
 Solange die Anfechtungsfrist läuft, sollte der Verwalter Beschlüsse nicht umsetzen (außer Notmaßnahmen), um Rückabwicklungen zu vermeiden.
@@ -769,6 +922,23 @@ Wird separat vergütet (meist % der Kaltmiete oder Festbetrag pro Monat).
       "§ 535 BGB (Mietvertrag)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Die Sondereigentumsverwaltung (SEV)' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Die Sondereigentumsverwaltung (SEV)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Die Sondereigentumsverwaltung (SEV)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Der "Durchlaufposten" Hausgeld
 
 Als SEV-Verwalter müssen Sie die WEG-Abrechnung (Eigentümer-Ebene) in die Betriebskostenabrechnung (Mieter-Ebene) "übersetzen".
@@ -853,6 +1023,23 @@ Ein "Zeitmietvertrag" ist nur noch mit qualifiziertem Grund möglich (z.B. Eigen
       "§ 575 BGB (Zeitmietvertrag)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Der Wohnraum-Mietvertrag' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Der Wohnraum-Mietvertrag'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Der Wohnraum-Mietvertrag' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Die Wohnungsübergabe
 
 Das Übergabeprotokoll ist das wichtigste Beweismittel beim Auszug.
@@ -931,6 +1118,23 @@ Möglich, wenn der Mieter:
       "§ 569 BGB (Zahlungsverzug)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Kündigung & Räumung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Kündigung & Räumung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Kündigung & Räumung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Die Räumungsklage
 
 Zieht der Mieter trotz Kündigung nicht aus, darf der Vermieter nicht einfach das Schloss austauschen ("Verbotene Eigenmacht").
@@ -1018,6 +1222,23 @@ Einfach "Ich will mehr Geld" sagen, geht nicht.
       "§ 557b BGB (Indexmiete)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Die Mieterhöhung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Die Mieterhöhung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Die Mieterhöhung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Der Mietspiegel
 
 In Berlin und vielen Großstädten gibt es qualifizierte Mietspiegel.
@@ -1107,6 +1328,23 @@ Bei rein privaten Streitigkeiten (z.B. Beleidigung unter Nachbarn) ist der Verwa
       "§ 14 WEG (Pflichten der Eigentümer)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Konfliktmanagement: Der Verwalter als Mediator' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Konfliktmanagement: Der Verwalter als Mediator'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Konfliktmanagement: Der Verwalter als Mediator' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Eskalationsstufen
 
 1.  **Gespräch:** Persönliches Gespräch mit den Beteiligten.
@@ -1192,6 +1430,23 @@ Als Verwalter müssen Sie überzeugen, beruhigen und führen.
     `,
     law: [],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Kommunikation & Rhetorik für Verwalter' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Kommunikation & Rhetorik für Verwalter'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Kommunikation & Rhetorik für Verwalter' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Rhetorik-Tipps
 
 - **Ich-Botschaften:** Statt "Sie haben nicht gezahlt" besser "Ich habe noch keinen Zahlungseingang verzeichnet". Das klingt weniger vorwurfsvoll.
@@ -1274,6 +1529,23 @@ Nur 20% der Kosten einer Immobilie entstehen beim Bau, 80% während der Nutzung!
       "TrinkwV (Trinkwasserverordnung)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Facility Management: Mehr als nur Hausmeister' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Facility Management: Mehr als nur Hausmeister'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Facility Management: Mehr als nur Hausmeister' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Energie-Optimierung
 
 Die Energiekosten sind der größte Hebel im FM.
@@ -1362,6 +1634,23 @@ Nutzen Sie diesen Tag, um offene Fragen zu klären und die Gesetzestexte noch ei
     `,
     law: [],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Zwischenprüfung: Grundlagen & Verwaltung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Zwischenprüfung: Grundlagen & Verwaltung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Zwischenprüfung: Grundlagen & Verwaltung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Prüfungssimulation
 
 Stellen Sie sich vor, Sie sitzen in der mündlichen IHK-Prüfung.
@@ -1464,6 +1753,23 @@ Für technische Anlagen sind regelmäßige Wartungen gesetzlich vorgeschrieben:
       "DIN EN 1176 (Spielplatzsicherheit)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Technische Verwaltung: Grundlagen & Pflichten' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Technische Verwaltung: Grundlagen & Pflichten'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Technische Verwaltung: Grundlagen & Pflichten' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Praxis-Fall: Winterdienst-Unfall
 
 Ein Postbote stürzt auf dem vereisten Gehweg vor Ihrer WEG und bricht sich das Bein. Er verklagt die WEG auf Schmerzensgeld.
@@ -1578,6 +1884,23 @@ Seit 2020 können mit einfacher Mehrheit beschlossen werden:
       "§ 25 WEG (Beschlussfassung)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Beschlussfassung über Sanierungen' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Beschlussfassung über Sanierungen'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Beschlussfassung über Sanierungen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Praxis-Fall: Fassadensanierung
 
 Ihre WEG (20 Einheiten) hat eine stark beschädigte Fassade. Die Sanierung kostet 200.000€.

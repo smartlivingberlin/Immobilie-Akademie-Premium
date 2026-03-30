@@ -81,6 +81,23 @@ export const contentDataModule5_34i_Part7_Final: Record<string, {
 1-B, 2-B, 3-B, 4-B, 5-B, 6-A, 7-C, 8-B, 9-B, 10-B, 11-A, 12-B, 13-B, 14-B, 15-B, 16-B, 17-B, 18-A, 19-B, 20-B, 21-B, 22-B, 23-B, 24-B, 25-B, 26-A, 27-A, 28-B, 29-B, 30-A, 31-C, 32-A, 33-A, 34-D, 35-B, 36-A, 37-B, 38-B, 39-C, 40-A, 41-B, 42-A, 43-B, 44-C, 45-B, 46-B, 47-A, 48-A, 49-B, 50-C`,
     law: ["§34i GewO", "§ 491 BGB", "§ 511 BGB", "§ 489 BGB", "§ 498 BGB", "GwG", "DSGVO"],
     practice: `Beantworten Sie alle 50 Fragen und prüfen Sie Ihre Antworten. **Bestehensgrenze:** 35 von 50 Fragen richtig (70%).`,
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Prüfungssimulation 1: Multiple-Choice-Fragen (50 Fragen)' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Prüfungssimulation 1: Multiple-Choice-Fragen (50 Fragen)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Prüfungssimulation 1: Multiple-Choice-Fragen (50 Fragen)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: `Zählen Sie Ihre richtigen Antworten und berechnen Sie Ihre Punktzahl in Prozent.`,
     solution: `Siehe Lösungen oben. Bei <70%: Schwachstellen identifizieren und wiederholen.`,
     type: "Prüfungsvorbereitung"
@@ -116,6 +133,23 @@ export const contentDataModule5_34i_Part7_Final: Record<string, {
 1. 1.145,83 € | 2. 3,10% | 3. 1.800 € | 4. 1.500 € | 5. 80% | 6. 15.000 € | 7. 20.000 € | 8. 35.000 € | 9. 20% | 10. 360.000 € | 11. 10.560 € | 12. 3,74% | 13. 37.500 € | 14. 1,25 € | 15. 15.000 € | 16. 525 € | 17. 9.000 € | 18. 10.400 € | 19. 1.400 € | 20. 310.345 €`,
     law: ["§ 491 BGB", "§ 502 BGB", "§ 6 PAngV"],
     practice: `Rechnen Sie alle 20 Aufgaben und prüfen Sie Ihre Antworten. **Bestehensgrenze:** 14 von 20 Aufgaben richtig (70%).`,
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Prüfungssimulation 2: Rechenaufgaben (20 Aufgaben)' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Prüfungssimulation 2: Rechenaufgaben (20 Aufgaben)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Prüfungssimulation 2: Rechenaufgaben (20 Aufgaben)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: `Zählen Sie Ihre richtigen Antworten und berechnen Sie Ihre Punktzahl in Prozent.`,
     solution: `Siehe Lösungen oben. Bei <70%: Formeln wiederholen und üben.`,
     type: "Prüfungsvorbereitung"
@@ -134,6 +168,23 @@ Kunde: Restschuld 220.000 €, Prolongation 4,5%, Umschuldung 4,0%, Kosten 440 �
 Kunde: Neubau KfW 40, Gesamtkosten 506.000 €, Eigenkapital 84.000 €, KfW 150.000 €, Hausbank 330.000 €. Aufgaben: Tilgungszuschuss berechnen, Monatliche Rate, Ersparnis.`,
     law: ["§ 491 BGB", "§ 511 BGB", "§ 489 BGB"],
     practice: `Bearbeiten Sie alle 3 Fallstudien vollständig. **Bestehensgrenze:** 70 von 100 Punkten.`,
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Prüfungssimulation 3: Fallstudien (3 Fallstudien)' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Prüfungssimulation 3: Fallstudien (3 Fallstudien)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Prüfungssimulation 3: Fallstudien (3 Fallstudien)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: `Zählen Sie Ihre Punkte und berechnen Sie Ihre Punktzahl in Prozent.`,
     solution: `Siehe Lösungen in Tagen 26-28. Bei <70%: Fallstudien wiederholen.`,
     type: "Prüfungsvorbereitung"
@@ -161,6 +212,23 @@ Kunde: Neubau KfW 40, Gesamtkosten 506.000 €, Eigenkapital 84.000 €, KfW 150
 - Vollständigkeit (25%)`,
     law: ["§34i GewO", "§ 491 BGB", "§ 511 BGB", "§ 489 BGB"],
     practice: `Beantworten Sie alle 10 Fragen laut und nehmen Sie sich auf (oder üben Sie mit Partner). **Bestehensgrenze:** 7 von 10 Fragen korrekt beantwortet.`,
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Prüfungssimulation 4: Mündliche Prüfung (10 Fragen)' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Prüfungssimulation 4: Mündliche Prüfung (10 Fragen)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Prüfungssimulation 4: Mündliche Prüfung (10 Fragen)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: `Bewerten Sie Ihre Antworten nach den Kriterien: Fachliche Korrektheit, Verständlichkeit, Vollständigkeit.`,
     solution: `Siehe Lösungen in Tagen 1-20. Bei <70%: Gesetze und Praxisbeispiele wiederholen.`,
     type: "Prüfungsvorbereitung"
@@ -186,6 +254,23 @@ Kunde: Neubau KfW 40, Gesamtkosten 506.000 €, Eigenkapital 84.000 €, KfW 150
 **Bestehensgrenze:** 70 von 100 Punkten`,
     law: ["Alle Gesetze aus Tagen 1-30"],
     practice: `Bearbeiten Sie die Gesamtprüfung vollständig. **Zeitlimit:** 180 Minuten. **Bestehensgrenze:** 70 von 100 Punkten.`,
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Prüfungssimulation 5: Gesamtprüfung (Alle Bereiche)' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Prüfungssimulation 5: Gesamtprüfung (Alle Bereiche)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Prüfungssimulation 5: Gesamtprüfung (Alle Bereiche)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: `Zählen Sie Ihre Punkte und berechnen Sie Ihre Punktzahl in Prozent. Identifizieren Sie Schwachstellen.`,
     solution: `Siehe Lösungen in Tagen 31-34. Bei <70%: Schwachstellen wiederholen (Tage 36-40).`,
     type: "Prüfungsvorbereitung"
@@ -237,6 +322,23 @@ Kunde: Neubau KfW 40, Gesamtkosten 506.000 €, Eigenkapital 84.000 €, KfW 150
 - Datenpanne melden (Art. 33, 34 DSGVO)`,
     law: ["§34i GewO", "§ 491 BGB", "§ 511 BGB", "§ 489 BGB", "§ 498 BGB", "§ 502 BGB", "GwG", "DSGVO"],
     practice: `Lernen Sie alle Gesetze auswendig und üben Sie die Anwendung in Praxisbeispielen.`,
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Wiederholung: Gesetze und Paragraphen' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Wiederholung: Gesetze und Paragraphen'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Wiederholung: Gesetze und Paragraphen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: `Schreiben Sie alle Gesetze aus dem Gedächtnis auf und prüfen Sie Ihre Antworten.`,
     solution: `Siehe oben. Bei Fehlern: Gesetze wiederholen.`,
     type: "Prüfungsvorbereitung"
@@ -280,6 +382,23 @@ Grundsteuer = Einheitswert × Grundsteuermesszahl × Hebesatz
 (Formel komplex, meist vorgegeben)`,
     law: ["§ 6 PAngV", "§ 502 BGB"],
     practice: `Üben Sie alle Formeln mit Beispielaufgaben (siehe Tag 32).`,
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Wiederholung: Formeln und Berechnungen' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Wiederholung: Formeln und Berechnungen'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Wiederholung: Formeln und Berechnungen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: `Schreiben Sie alle Formeln aus dem Gedächtnis auf und rechnen Sie 10 Beispielaufgaben.`,
     solution: `Siehe oben. Bei Fehlern: Formeln wiederholen und üben.`,
     type: "Prüfungsvorbereitung"
@@ -327,6 +446,23 @@ Grundsteuer = Einheitswert × Grundsteuermesszahl × Hebesatz
 - Risiken minimieren`,
     law: ["§ 491 BGB", "§ 511 BGB", "§ 489 BGB"],
     practice: `Arbeiten Sie alle Fallstudien aus Tagen 26-30 erneut durch.`,
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Wiederholung: Praxisbeispiele und Fallstudien' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Wiederholung: Praxisbeispiele und Fallstudien'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Wiederholung: Praxisbeispiele und Fallstudien' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: `Bearbeiten Sie 3 Fallstudien Ihrer Wahl vollständig und prüfen Sie Ihre Antworten.`,
     solution: `Siehe Lösungen in Tagen 26-30. Bei Fehlern: Fallstudien wiederholen.`,
     type: "Prüfungsvorbereitung"
@@ -368,6 +504,23 @@ Grundsteuer = Einheitswert × Grundsteuermesszahl × Hebesatz
 - Ziel: 100% Prüfungssicherheit`,
     law: ["Alle Gesetze aus Tagen 1-30"],
     practice: `Identifizieren Sie Ihre Schwachstellen und wiederholen Sie diese gezielt.`,
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Wiederholung: Schwachstellen identifizieren und beheben' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Wiederholung: Schwachstellen identifizieren und beheben'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Wiederholung: Schwachstellen identifizieren und beheben' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: `Erstellen Sie eine Liste Ihrer Schwachstellen und arbeiten Sie diese systematisch durch.`,
     solution: `Siehe Lösungen in Tagen 1-38. Bei Schwachstellen: Gezielt wiederholen und üben.`,
     type: "Prüfungsvorbereitung"
@@ -422,6 +575,23 @@ Grundsteuer = Einheitswert × Grundsteuermesszahl × Hebesatz
 **VIEL ERFOLG BEI DER SACHKUNDEPRÜFUNG §34i!**`,
     law: ["§34i GewO", "§ 491 BGB", "§ 511 BGB", "§ 489 BGB", "§ 498 BGB", "GwG", "DSGVO"],
     practice: `Wiederholen Sie alle wichtigen Inhalte ein letztes Mal und bereiten Sie sich mental auf die Prüfung vor.`,
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Abschluss: Letzte Wiederholung und Prüfungsvorbereitung' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Abschluss: Letzte Wiederholung und Prüfungsvorbereitung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Abschluss: Letzte Wiederholung und Prüfungsvorbereitung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: `Erstellen Sie eine Checkliste für die Prüfung (Unterlagen, Anfahrt, Zeitplan).`,
     solution: `Sie sind bestens vorbereitet! Viel Erfolg bei der Sachkundeprüfung §34i!`,
     type: "Prüfungsvorbereitung"

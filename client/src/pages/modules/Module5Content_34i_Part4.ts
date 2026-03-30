@@ -249,6 +249,23 @@ Nach 10 Jahren kann der Kunde das Darlehen mit 6 Monaten Frist kündigen, unabh�
       "§ 498 BGB (Kündigung bei Zahlungsverzug)"
     ],
     practice: `**Praxisfall 1: Prolongation vs. Umschuldung**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Anschlussfinanzierung, Prolongation und Forward-Darlehen' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Anschlussfinanzierung, Prolongation und Forward-Darlehen'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Anschlussfinanzierung, Prolongation und Forward-Darlehen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Kunde hat eine Restschuld von 200.000 € nach 10 Jahren Zinsbindung. Seine Bank bietet Prolongation zu 4,2% p.a. an. Eine andere Bank bietet 3,8% p.a.
 
@@ -600,6 +617,23 @@ Recht, die Tilgungsrate während der Laufzeit anzupassen (z.B. von 2% auf 3% ode
       "§ 502 BGB (Vorfälligkeitsentschädigung)"
     ],
     practice: `**Praxisfall 1: Vorfälligkeitsentschädigung berechnen**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Vorfälligkeitsentschädigung, Sondertilgung und Tilgungssatzwechsel' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Vorfälligkeitsentschädigung, Sondertilgung und Tilgungssatzwechsel'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Vorfälligkeitsentschädigung, Sondertilgung und Tilgungssatzwechsel' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Kunde möchte sein Darlehen vorzeitig zurückzahlen:
 - Restschuld: 180.000 €
@@ -967,6 +1001,23 @@ Verfügbares Einkommen / 1,2 = Maximale Darlehensrate (20% Sicherheitspuffer)
       "VVG (Versicherungsvertragsgesetz)"
     ],
     practice: `**Praxisfall 1: Zinsänderungsrisiko**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Risiken der Immobilienfinanzierung und Absicherung' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Risiken der Immobilienfinanzierung und Absicherung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Risiken der Immobilienfinanzierung und Absicherung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Kunde hat ein Darlehen über 250.000 € (2,5% p.a., 10 Jahre Zinsbindung, 2% Tilgung). Nach 10 Jahren beträgt die Restschuld 200.000 €. Die Zinsen sind auf 5,0% p.a. gestiegen.
 
@@ -1308,6 +1359,23 @@ Verkauf einer Immobilie gegen lebenslange Rente. Der Verkäufer bleibt in der Im
       "§ 488 BGB (Darlehensvertrag)"
     ],
     practice: `**Praxisfall 1: Mietkauf**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Besondere Finanzierungsformen: Mietkauf, Leibrente, Reverse Mortgage' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Besondere Finanzierungsformen: Mietkauf, Leibrente, Reverse Mortgage'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Besondere Finanzierungsformen: Mietkauf, Leibrente, Reverse Mortgage' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Käufer ohne Eigenkapital möchte eine Immobilie für 300.000 € per Mietkauf erwerben. Monatliche Miete: 1.200 €, Anrechnung: 350 €/Monat, Laufzeit: 10 Jahre.
 
@@ -1662,6 +1730,23 @@ Grundsteuer = Einheitswert × Grundsteuermesszahl × Hebesatz
       "DSGVO (Datenschutz-Grundverordnung)"
     ],
     practice: `**Praxisfall 1: Gesamtberatung**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Zusammenfassung Theorie und Vorbereitung auf Prüfungsvorbereitung' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Zusammenfassung Theorie und Vorbereitung auf Prüfungsvorbereitung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Zusammenfassung Theorie und Vorbereitung auf Prüfungsvorbereitung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Kunde (35 Jahre, verheiratet, 2 Kinder) möchte eine Eigentumswohnung für 400.000 € kaufen. Nettoeinkommen: 4.500 € (Kunde) + 2.500 € (Ehefrau). Eigenkapital: 80.000 €. Ausgaben: 3.000 €/Monat.
 

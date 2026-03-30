@@ -265,6 +265,23 @@ export const contentDataModule5_34i_Part6: Record<string, {
       "§ 18a KWG (Kreditwürdigkeitsprüfung)"
     ],
     practice: `**Ihre Aufgabe:**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Fallstudie: Erstberatung Eigenheimfinanzierung' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Fallstudie: Erstberatung Eigenheimfinanzierung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Fallstudie: Erstberatung Eigenheimfinanzierung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Bearbeiten Sie die Fallstudie vollständig:
 
@@ -571,6 +588,23 @@ Berechnen Sie die monatliche Rate:
       "§ 511 BGB (Beratungs- und Dokumentationspflichten)"
     ],
     practice: `**Ihre Aufgabe:**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Fallstudie: Anschlussfinanzierung und Umschuldung' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Fallstudie: Anschlussfinanzierung und Umschuldung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Fallstudie: Anschlussfinanzierung und Umschuldung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Bearbeiten Sie die Fallstudie vollständig:
 
@@ -869,6 +903,23 @@ Prüfen Sie das Sonderkündigungsrecht:
       "KfW-Förderrichtlinien"
     ],
     practice: `**Ihre Aufgabe:**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Fallstudie: Baufinanzierung mit KfW-Förderung' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Fallstudie: Baufinanzierung mit KfW-Förderung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Fallstudie: Baufinanzierung mit KfW-Förderung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Bearbeiten Sie die Fallstudie vollständig:
 
@@ -1195,6 +1246,23 @@ Berechnen Sie die Ersparnis:
       "EStG (Einkommensteuergesetz - AfA)"
     ],
     practice: `**Ihre Aufgabe:**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Fallstudie: Finanzierung für Selbstständige' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Fallstudie: Finanzierung für Selbstständige'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Fallstudie: Finanzierung für Selbstständige' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Bearbeiten Sie die Fallstudie vollständig:
 
@@ -1539,6 +1607,23 @@ Berechnen Sie die Steuerersparnis:
       "§ 18a KWG (Kreditwürdigkeitsprüfung)"
     ],
     practice: `**Ihre Aufgabe:**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Fallstudie: Komplexe Finanzierung mit mehreren Herausforderungen' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Fallstudie: Komplexe Finanzierung mit mehreren Herausforderungen'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Fallstudie: Komplexe Finanzierung mit mehreren Herausforderungen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Bearbeiten Sie die Fallstudie vollständig:
 

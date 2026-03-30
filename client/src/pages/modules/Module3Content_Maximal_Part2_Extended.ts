@@ -82,6 +82,23 @@ Der Verwalter darf in dringenden Fällen ohne Beschluss handeln:
       "[§ 20 WEG](https://www.gesetze-im-internet.de/weg/__20.html) (Beschlussfassung)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Instandhaltung & Instandsetzung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Instandhaltung & Instandsetzung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Instandhaltung & Instandsetzung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Praxis-Fall: Heizungsausfall am Freitagabend
 
 **Sachverhalt:**
@@ -253,6 +270,23 @@ Gesamtkosten: 120.000 € (brutto)
       "[DGUV V3](https://publikationen.dguv.de/regelwerk/dguv-vorschriften/) (Elektrische Anlagen)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Wartungsverträge & Dienstleister' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Wartungsverträge & Dienstleister'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Wartungsverträge & Dienstleister' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Praxis-Übung: Angebotsvergleich Gartenpflege
 
 **Ausgangslage:**
@@ -480,6 +514,23 @@ Wenn ein formal selbstständiger Hausmeister faktisch wie ein Arbeitnehmer behan
       "[BetrKV § 2 Nr. 14](https://www.gesetze-im-internet.de/betrkv/__2.html) (Hauswart)"
     ],
     practice: "Erstellen Sie ein Pflichtenheft für einen Hausmeister (Minijob, 520 €/Monat) mit wöchentlichen Kontrollrundgängen.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Hausmeister & Reinigungspersonal' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Hausmeister & Reinigungspersonal'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Hausmeister & Reinigungspersonal' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Schreiben Sie eine Stellenanzeige für einen Hausmeister (Minijob) für eine WEG mit 20 Einheiten.",
     type: "Personal"
   },
@@ -613,6 +664,23 @@ Wenn ein formal selbstständiger Hausmeister faktisch wie ein Arbeitnehmer behan
       "[HeizkostenV](https://www.gesetze-im-internet.de/heizkostenv/) (Heizkostenverordnung)"
     ],
     practice: "Legionellenbefall: Sofortmaßnahmen, Informationspflicht an Mieter und Gesundheitsamt, thermische Desinfektion.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Technische Anlagen: Heizung & Sanitär' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Technische Anlagen: Heizung & Sanitär'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Technische Anlagen: Heizung & Sanitär' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Erklären Sie einem Laien den Unterschied zwischen Verdunster und Funkzähler bei der Heizkostenabrechnung.",
     type: "Technik"
   },
@@ -784,6 +852,23 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
       "[DIN 14676](https://www.din.de/) (Rauchwarnmelder)"
     ],
     practice: "Fahrräder im Treppenhaus - Brandschutzrisiko oder geduldete Nutzung? Rechtliche Einordnung und Handlungsoptionen.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Technische Anlagen: Elektrik & Brandschutz' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Technische Anlagen: Elektrik & Brandschutz'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Technische Anlagen: Elektrik & Brandschutz' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Erstellen Sie einen Aushang zur Brandschutzordnung für das Treppenhaus (DIN A4, verständlich für Laien).",
     type: "Sicherheit"
   },
@@ -921,6 +1006,23 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
       "[§ 555b BGB](https://www.gesetze-im-internet.de/bgb/__555b.html) (Modernisierung)"
     ],
     practice: "Planung einer energetischen Sanierung mit Fördermitteln (KfW 261, BAFA). Wirtschaftlichkeitsberechnung.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Modernisierung & Energieeffizienz (GEG)' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Modernisierung & Energieeffizienz (GEG)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Modernisierung & Energieeffizienz (GEG)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Prüfen Sie, ob für ein Gebäude Baujahr 1990 ein Energieausweis Pflicht ist und welche Art (Bedarf oder Verbrauch).",
     type: "Umwelt"
   },
@@ -933,6 +1035,23 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
       "[DIN 4108](https://www.din.de/) (Wärmeschutz)"
     ],
     practice: "Streitgespräch mit Mieter führen. Beweissicherung durch Datenlogger (Temperatur/Luftfeuchtigkeit über 4 Wochen).",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Schimmel & Feuchtigkeit' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Schimmel & Feuchtigkeit'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Schimmel & Feuchtigkeit' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Erstellen Sie ein Merkblatt 'Richtig Heizen und Lüften' für Mieter (DIN A4, verständlich).",
     type: "Technik"
   },
@@ -944,6 +1063,23 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
       "[§ 19 WEG](https://www.gesetze-im-internet.de/weg/__19.html) (Ordnungsmäßige Verwaltung)"
     ],
     practice: "Erstellung eines realen Instandhaltungsplans für ein fiktives Objekt (MFH 10 WE, Bj. 1970, letzte Sanierung 1995).",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Praxisprojekt: Instandhaltungsplan' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Praxisprojekt: Instandhaltungsplan'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Praxisprojekt: Instandhaltungsplan' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Entwickeln Sie einen 5-Jahres-Plan für Dach, Fassade und Heizung mit Kostenschätzung und Finanzierungsplan.",
     type: "Praxis"
   },
@@ -958,6 +1094,23 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
       "[GoBD](https://www.bundesfinanzministerium.de/) (Grundsätze ordnungsmäßiger Buchführung)"
     ],
     practice: "Einrichtung eines neuen Objekts in der Software. Datenimport aus Excel, Stammdaten anlegen, Wirtschaftsplan erstellen.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Verwalter-Software & ERP-Systeme' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Verwalter-Software & ERP-Systeme'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Verwalter-Software & ERP-Systeme' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Vergleichen Sie drei Verwalter-Software-Lösungen (Domus, Haufe, Immoware) anhand einer Matrix (Funktionen, Kosten, Cloud/On-Premise).",
     type: "Digital"
   },
@@ -970,6 +1123,23 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
       "[BDSG](https://www.gesetze-im-internet.de/bdsg_2018/)"
     ],
     practice: "Auskunftsanfrage eines Mieters beantworten. Was darf rausgegeben werden? (Name, Adresse, Mietvertrag JA / Einkommen, Schufa NEIN)",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Datenschutz & DSGVO im Alltag' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Datenschutz & DSGVO im Alltag'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Datenschutz & DSGVO im Alltag' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Erstellen Sie ein Muster-Antwortschreiben auf eine DSGVO-Auskunftsanfrage eines Eigentümers.",
     type: "Recht"
   },
@@ -981,6 +1151,23 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
       "[§ 23 Abs. 1a WEG](https://www.gesetze-im-internet.de/weg/__23.html) (Online-Versammlung)"
     ],
     practice: "Simulation einer hybriden Versammlung. Umgang mit technischen Störungen (Verbindungsabbruch, Ton-/Bildprobleme).",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Digitale Eigentümerversammlung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Digitale Eigentümerversammlung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Digitale Eigentümerversammlung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Erstellen Sie einen Leitfaden für Eigentümer zur Online-Teilnahme (Zoom/Teams, technische Voraussetzungen, Abstimmung).",
     type: "Digital"
   },
@@ -992,6 +1179,23 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
       "Keine spezifischen Gesetze - Management-Theorie"
     ],
     practice: "Analyse des eigenen Zeitmanagements. Wo sind die Zeitfresser? (Telefon, E-Mails, Meetings, Verwaltungsaufgaben)",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Prozessoptimierung & Zeitmanagement' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Prozessoptimierung & Zeitmanagement'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Prozessoptimierung & Zeitmanagement' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Entwerfen Sie einen standardisierten Workflow für eine Schadensmeldung (Eingang, Prüfung, Beauftragung, Abrechnung, Dokumentation).",
     type: "Management"
   },
@@ -1003,6 +1207,23 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
       "[§ 578 BGB](https://www.gesetze-im-internet.de/bgb/__578.html) (Mietverhältnisse über Grundstücke und Räume)"
     ],
     practice: "Vertragsverhandlung für ein Ladenlokal. Wertsicherungsklausel formulieren (Indexmiete an VPI gekoppelt).",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Mietrecht Spezial: Gewerbemietrecht' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Mietrecht Spezial: Gewerbemietrecht'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Mietrecht Spezial: Gewerbemietrecht' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Prüfen Sie einen Gewerbemietvertrag auf unwirksame AGB-Klauseln (Schönheitsreparaturen, Kleinreparaturen, Kündigungsverzicht).",
     type: "Recht"
   },
@@ -1015,6 +1236,23 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
       "[§ 573a BGB](https://www.gesetze-im-internet.de/bgb/__573a.html) (Kündigungssperrfrist)"
     ],
     practice: "Kalkulation des Möblierungszuschlags für eine Einbauküche (Anschaffungskosten 5.000 €, Nutzungsdauer 10 Jahre).",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Mietrecht Spezial: Möbliertes Wohnen' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Mietrecht Spezial: Möbliertes Wohnen'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Mietrecht Spezial: Möbliertes Wohnen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Berechnen Sie den zulässigen Zuschlag für eine Möblierung im Wert von 5.000 € bei einer Nutzungsdauer von 10 Jahren.",
     type: "Finanzen"
   },
@@ -1027,6 +1265,23 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
       "II. BV (Zweite Berechnungsverordnung)"
     ],
     practice: "Prüfung der Belegungsbindung bei Mieterwechsel. Einkommensgrenzen für WBS prüfen.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Mietrecht Spezial: Öffentlich gefördert' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Mietrecht Spezial: Öffentlich gefördert'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Mietrecht Spezial: Öffentlich gefördert' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Ermitteln Sie die zulässige Kostenmiete anhand einer Wirtschaftlichkeitsberechnung (Kapitaldienst + Bewirtschaftungskosten).",
     type: "Recht"
   },
@@ -1039,6 +1294,23 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
       "[§ 557b BGB](https://www.gesetze-im-internet.de/bgb/__557b.html) (Indexmiete)"
     ],
     practice: "Berechnung der Indexmiete nach VPI-Anpassung (Basis 2020: 800 €, VPI 2020: 105, VPI 2026: 115).",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Mietrecht Spezial: Staffel- & Indexmiete' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Mietrecht Spezial: Staffel- & Indexmiete'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Mietrecht Spezial: Staffel- & Indexmiete' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Formulieren Sie eine wirksame Staffelmietklausel für einen Mietvertrag (5 Jahre, jährliche Erhöhung um 3%).",
     type: "Recht"
   },
@@ -1051,6 +1323,23 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
       "[§ 15 WEG](https://www.gesetze-im-internet.de/weg/__15.html) (Sondereigentum)"
     ],
     practice: "Mediation zwischen zwei Eigentümern (Lärm, Parkplatz, Haustiere). Gesprächsführung nach Harvard-Konzept.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Konfliktmanagement: Eigentümer vs. Eigentümer' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Konfliktmanagement: Eigentümer vs. Eigentümer'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Konfliktmanagement: Eigentümer vs. Eigentümer' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Entwickeln Sie einen Leitfaden für Konfliktgespräche (Vorbereitung, Gesprächsführung, Dokumentation, Nachbereitung).",
     type: "Kommunikation"
   },
@@ -1062,6 +1351,23 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
       "Alle relevanten Gesetze aus Tag 21-39"
     ],
     practice: "Simulation einer mündlichen Prüfung: Fallbeispiele aus der WEG-Verwaltung lösen.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Abschluss Block 2: Prüfungsvorbereitung WEG' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Abschluss Block 2: Prüfungsvorbereitung WEG'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Abschluss Block 2: Prüfungsvorbereitung WEG' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Erstellen Sie eine Mindmap mit allen Themen aus Block 2 (Tag 21-40) und deren Zusammenhängen.",
     type: "Prüfung"
   }

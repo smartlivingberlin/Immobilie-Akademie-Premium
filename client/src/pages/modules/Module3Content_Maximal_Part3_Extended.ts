@@ -130,6 +130,23 @@ export const contentDataModule3MaximalPart3Extended: Record<string, WEGDayConten
       "[§ 1807 BGB](https://www.gesetze-im-internet.de/bgb/__1807.html) (Mündelsichere Anlagen)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Rücklagenbildung & Verwendung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Rücklagenbildung & Verwendung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Rücklagenbildung & Verwendung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Praxis-Fall: Berechnung der Zinsen
 
 **Sachverhalt:**
@@ -258,6 +275,23 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
       "[§ 16 WEG](https://www.gesetze-im-internet.de/weg/__16.html) (Verteilerschlüssel)"
     ],
     practice: "Anpassung der Hausgelder aufgrund gestiegener Energiekosten (+30%). Kommunikation an Eigentümer mit Begründung.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Jahreswirtschaftsplan (JWP) - Erstellung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Jahreswirtschaftsplan (JWP) - Erstellung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Jahreswirtschaftsplan (JWP) - Erstellung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Erstellen Sie einen kompletten Jahreswirtschaftsplan für eine WEG mit 10 Einheiten inkl. Heizkostenprognose.",
     type: "Finanzen"
   },
@@ -270,6 +304,23 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
       "[§ 27 Abs. 5 WEG](https://www.gesetze-im-internet.de/weg/__27.html) (Vermögensverwaltung)"
     ],
     practice: "Plausibilitätsprüfung: Stimmen Anfangs- und Endbestände der Bankkonten? Lückenlose Dokumentation aller Buchungen.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Jahresabrechnung - Gesamtabrechnung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Jahresabrechnung - Gesamtabrechnung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Jahresabrechnung - Gesamtabrechnung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Erstellen Sie den Mantelbogen (Gesamtabrechnung) für ein Wirtschaftsjahr mit Vermögensstatus.",
     type: "Finanzen"
   },
@@ -282,6 +333,23 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
       "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) (Einzelabrechnung)"
     ],
     practice: "Berechnung der Nachzahlung/Guthaben. Umgang mit Eigentümerwechsel im laufenden Jahr (anteilige Abrechnung).",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Jahresabrechnung - Einzelabrechnung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Jahresabrechnung - Einzelabrechnung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Jahresabrechnung - Einzelabrechnung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Erstellen Sie eine Einzelabrechnung für Wohnung Nr. 3 (75 m², 2 Personen, MEA 850/10.000).",
     type: "Finanzen"
   },
@@ -294,6 +362,23 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
       "[HeizkostenV § 12](https://www.gesetze-im-internet.de/heizkostenv/__12.html) (Kürzungsrecht)"
     ],
     practice: "Prüfung einer Abrechnung vom Messdienstleister (Techem, Ista). Häufige Fehler: Falsche Gerätenummern, fehlende Ablesungen.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Heizkostenabrechnung & HKVO' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Heizkostenabrechnung & HKVO'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Heizkostenabrechnung & HKVO' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Verteilen Sie Gesamtheizkosten von 12.000 € korrekt nach 70/30-Schlüssel (70% Verbrauch, 30% Fläche) auf 10 Wohnungen.",
     type: "Technik"
   },
@@ -305,6 +390,23 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
       "[§ 29 WEG](https://www.gesetze-im-internet.de/weg/__29.html) (Verwaltungsbeirat)"
     ],
     practice: "Durchführung einer Beiratsprüfung. Stichproben vs. Vollprüfung. Umgang mit fehlenden Belegen oder Unklarheiten.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Rechnungsprüfung durch den Beirat' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Rechnungsprüfung durch den Beirat'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Rechnungsprüfung durch den Beirat' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Erstellen Sie eine Checkliste für die Rechnungsprüfung durch den Beirat (10 Punkte).",
     type: "Organisation"
   },
@@ -316,6 +418,23 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
       "BGH-Rechtsprechung zur Entlastung (z.B. BGH V ZR 173/18)"
     ],
     practice: "Formulierung des Beschlussantrags zur Entlastung und Genehmigung der Abrechnung. Getrennte Abstimmung empfohlen.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Entlastung des Verwalters' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Entlastung des Verwalters'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Entlastung des Verwalters' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Schreiben Sie den Tagesordnungspunkt 'Genehmigung Jahresabrechnung 2025 und Entlastung des Verwalters' für die Eigentümerversammlung.",
     type: "Recht"
   },
@@ -327,6 +446,23 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
       "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) (Jahresabrechnung)"
     ],
     practice: "Fallstudie: Eine Abrechnung wird angefochten, weil der Verteilerschlüssel für Wasser falsch war (Personen statt MEA). Was nun?",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Praxisprojekt: Die fehlerhafte Abrechnung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Praxisprojekt: Die fehlerhafte Abrechnung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Praxisprojekt: Die fehlerhafte Abrechnung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Korrigieren Sie eine fehlerhafte Muster-Abrechnung und schreiben Sie eine Erläuterung für die Eigentümer.",
     type: "Praxis"
   },
@@ -341,6 +477,23 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
       "[§ 23 WEG](https://www.gesetze-im-internet.de/weg/__23.html) (Eigentümerversammlung)"
     ],
     practice: "Erstellung einer rechtssicheren Tagesordnung. Aufnahme von Anträgen der Eigentümer (Frist: bis 1 Woche vor Versammlung).",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Einladung & Tagesordnung (TOPs)' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Einladung & Tagesordnung (TOPs)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Einladung & Tagesordnung (TOPs)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Formulieren Sie 5 rechtssichere Tagesordnungspunkte (Abrechnung, Wirtschaftsplan, bauliche Veränderung, Verwalterbestellung, Sonstiges).",
     type: "Organisation"
   },
@@ -352,6 +505,23 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
       "[§ 25 WEG](https://www.gesetze-im-internet.de/weg/__25.html) (Beschlussfassung)"
     ],
     practice: "Prüfung der Anwesenheitsliste. Zurückweisung ungültiger Vollmachten (z.B. ohne Originalunterschrift, zu alt).",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Vollmachten & Vertretung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Vollmachten & Vertretung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Vollmachten & Vertretung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Entwerfen Sie ein Vollmachtsformular für die Eigentümerversammlung (mit Hinweis auf Vertretungsbeschränkungen).",
     type: "Recht"
   },
@@ -363,6 +533,23 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
       "[§ 24 Abs. 5 WEG](https://www.gesetze-im-internet.de/weg/__24.html) (Vorsitz)"
     ],
     practice: "Simulation: Eine hitzige Debatte über eine Sonderumlage moderieren. Umgang mit Störern und persönlichen Angriffen.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Versammlungsleitung & Ablauf' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Versammlungsleitung & Ablauf'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Versammlungsleitung & Ablauf' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Erstellen Sie einen Leitfaden 'Ablauf einer Eigentümerversammlung' für sich selbst (Begrüßung bis Verabschiedung).",
     type: "Softskills"
   },
@@ -375,6 +562,23 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
       "[§ 20 WEG](https://www.gesetze-im-internet.de/weg/__20.html) (Bauliche Veränderungen)"
     ],
     practice: "Auszählung einer komplizierten Abstimmung mit verschiedenen Miteigentumsanteilen. Berechnung der qualifizierten Mehrheit.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Beschlussfassung & Abstimmung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Beschlussfassung & Abstimmung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Beschlussfassung & Abstimmung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Berechnen Sie das Abstimmungsergebnis: 10 Eigentümer, 10.000 MEA, 7 Ja-Stimmen (6.500 MEA), 2 Nein (2.500 MEA), 1 Enthaltung (1.000 MEA). Ist die einfache Mehrheit erreicht?",
     type: "Recht"
   },
@@ -386,6 +590,23 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
       "[§ 24 Abs. 6 WEG](https://www.gesetze-im-internet.de/weg/__24.html) (Niederschrift)"
     ],
     practice: "Formulierung klarer Beschlusstexte im Protokoll. Vermeidung von 'Zitterbeschlüssen' (unklare Formulierungen).",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Verkündung & Protokollierung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Verkündung & Protokollierung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Verkündung & Protokollierung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Protokollieren Sie 3 gefasste Beschlüsse rechtssicher (Fassadensanierung, Wirtschaftsplan, Verwalterbestellung).",
     type: "Dokumente"
   },
@@ -397,6 +618,23 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
       "[§ 24 Abs. 7 WEG](https://www.gesetze-im-internet.de/weg/__24.html) (Beschluss-Sammlung)"
     ],
     practice: "Pflege der digitalen Beschluss-Sammlung. Löschung aufgehobener Beschlüsse (Kennzeichnung 'aufgehoben am...').",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Beschluss-Sammlung führen' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Beschluss-Sammlung führen'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Beschluss-Sammlung führen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Übertragen Sie 5 Protokoll-Beschlüsse in die Beschluss-Sammlung (mit Datum, Wortlaut, Abstimmungsergebnis).",
     type: "Organisation"
   },
@@ -409,6 +647,23 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
       "[§ 23 Abs. 4 WEG](https://www.gesetze-im-internet.de/weg/__23.html) (Nichtigkeit)"
     ],
     practice: "Reaktion auf eine Klagezustellung. Information der Eigentümer. Beauftragung eines Anwalts. Kostenrisiko abschätzen.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Anfechtungsklage & Nichtigkeitsklage' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Anfechtungsklage & Nichtigkeitsklage'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Anfechtungsklage & Nichtigkeitsklage' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Erstellen Sie ein Informationsschreiben an die Eigentümer über eine eingegangene Anfechtungsklage (sachlich, neutral).",
     type: "Recht"
   },
@@ -420,6 +675,23 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
       "[§ 16 Abs. 2 WEG](https://www.gesetze-im-internet.de/weg/__16.html) (Kostenverteilung)"
     ],
     practice: "Kommunikation einer Sonderumlage an die Eigentümer. Ratenzahlungsvereinbarungen bei finanziellen Härtefällen.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Sonderumlage beschließen & einziehen' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Sonderumlage beschließen & einziehen'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Sonderumlage beschließen & einziehen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Formulieren Sie einen Beschlussantrag für eine Sonderumlage von 80.000 € (Fassadensanierung) mit Fälligkeitsregelung.",
     type: "Finanzen"
   },
@@ -431,6 +703,23 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
       "Keine spezifischen Gesetze - Kommunikationstheorie"
     ],
     practice: "Deeskalationstechniken: Aktives Zuhören, Ich-Botschaften, Pausentechnik. Umgang mit persönlichen Angriffen.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Konfliktmanagement in der Versammlung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Konfliktmanagement in der Versammlung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Konfliktmanagement in der Versammlung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Entwickeln Sie ein Rollenspiel: Zwei Eigentümer streiten über Lärmbelästigung. Sie moderieren als Verwalter.",
     type: "Softskills"
   },
@@ -442,6 +731,23 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
       "Alle relevanten Gesetze aus Tag 41-59"
     ],
     practice: "Simulation einer mündlichen Prüfung: Komplexe Fallbeispiele aus der WEG-Verwaltung lösen.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Abschluss Block 3: Prüfungsvorbereitung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Abschluss Block 3: Prüfungsvorbereitung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Abschluss Block 3: Prüfungsvorbereitung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     task: "Erstellen Sie eine Zusammenfassung aller Themen aus Block 3 (Tag 41-60) als Lernkarten (Vorder-/Rückseite).",
     type: "Prüfung"
   }

@@ -104,6 +104,23 @@ Das Gesetz zur Umsetzung der Wohnimmobilienkreditrichtlinie (Richtlinie 2014/17/
       "Richtlinie 2014/17/EU (Wohnimmobilienkreditrichtlinie)"
     ],
     practice: `**Praxisfall 1: Erlaubnispflicht prüfen**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Einführung §34i GewO: Rechtliche Grundlagen der Immobiliardarlehensvermittlung' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Einführung §34i GewO: Rechtliche Grundlagen der Immobiliardarlehensvermittlung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Einführung §34i GewO: Rechtliche Grundlagen der Immobiliardarlehensvermittlung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Herr Müller möchte als selbstständiger Finanzberater tätig werden und Kunden bei der Immobilienfinanzierung unterstützen. Er plant folgende Tätigkeiten:
 - Beratung zu Immobiliendarlehen
@@ -348,6 +365,23 @@ Vertrag kommt zustande, wenn Angebot und Annahme übereinstimmen (Konsens).
       "§§ 134, 138, 125 BGB (Nichtigkeit)"
     ],
     practice: `**Praxisfall 1: Geschäftsfähigkeit prüfen**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Rechtsfähigkeit, Geschäftsfähigkeit und Vertragsrecht' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Rechtsfähigkeit, Geschäftsfähigkeit und Vertragsrecht'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Rechtsfähigkeit, Geschäftsfähigkeit und Vertragsrecht' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein 17-jähriger Schüler möchte eine Eigentumswohnung für 200.000 € kaufen und benötigt dafür ein Darlehen von 180.000 €. Seine Eltern sind einverstanden und bereit, den Vertrag mitzuunterschreiben.
 
@@ -603,6 +637,23 @@ Wohnungseigentum kann wie ein Grundstück finanziert werden. Die Bank lässt sic
       "§ 27 WEG (Verwalter)"
     ],
     practice: `**Praxisfall 1: Erbbaurecht finanzieren**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Grundstücke, Erbbaurecht, Wohnungseigentum - Rechtliche Grundlagen' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Grundstücke, Erbbaurecht, Wohnungseigentum - Rechtliche Grundlagen'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Grundstücke, Erbbaurecht, Wohnungseigentum - Rechtliche Grundlagen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Kunde möchte eine Eigentumswohnung auf Erbbaurechtsgrundstück kaufen. Der Kaufpreis beträgt 250.000 €, der Erbbauzins 6.000 €/Jahr (3% von 200.000 € Grundstückswert), die Restlaufzeit des Erbbaurechts 75 Jahre.
 
@@ -906,6 +957,23 @@ Nach vollständiger Rückzahlung des Darlehens erteilt die Bank eine Löschungsb
       "GBO (Grundbuchordnung)"
     ],
     practice: `**Praxisfall 1: Grundbuchauszug analysieren**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Grundbuch: Aufbau, Funktion und Eintragungen' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Grundbuch: Aufbau, Funktion und Eintragungen'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Grundbuch: Aufbau, Funktion und Eintragungen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Kunde zeigt Ihnen folgenden Grundbuchauszug:
 
@@ -1281,6 +1349,23 @@ Entschädigung der Bank für entgangene Zinsen bei vorzeitiger Rückzahlung des 
       "§ 125 BGB (Nichtigkeit bei Formmangel)"
     ],
     practice: `**Praxisfall 1: Widerrufsrecht prüfen**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Immobiliar-Verbraucherdarlehensvertrag und Verbraucherkreditrecht' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Immobiliar-Verbraucherdarlehensvertrag und Verbraucherkreditrecht'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Immobiliar-Verbraucherdarlehensvertrag und Verbraucherkreditrecht' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Kunde unterschreibt am 1. April 2026 einen Darlehensvertrag über 350.000 €. Die Bank händigt ihm das ESIS-Merkblatt am 25. März 2026 aus, die Widerrufsbelehrung fehlt jedoch. Am 20. April 2026 möchte der Kunde widerrufen.
 

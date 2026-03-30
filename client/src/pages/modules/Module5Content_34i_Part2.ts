@@ -203,6 +203,23 @@ Wenn Sie an einer Bank beteiligt sind, müssen Sie das offenlegen.
       "§ 257 HGB (Aufbewahrungspflicht)"
     ],
     practice: `**Praxisfall 1: Beratungsprotokoll erstellen**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Verhaltens- und Informationspflichten als Immobiliardarlehensvermittler' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Verhaltens- und Informationspflichten als Immobiliardarlehensvermittler'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Verhaltens- und Informationspflichten als Immobiliardarlehensvermittler' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Kunde (35 Jahre, verheiratet, 2 Kinder) möchte eine Eigentumswohnung für 350.000 € kaufen. Er hat 70.000 € Eigenkapital und verdient 4.500 € netto/Monat. Seine Frau verdient 2.500 € netto/Monat. Die monatlichen Ausgaben betragen 3.000 €.
 
@@ -603,6 +620,23 @@ Kunde aus Dubai möchte Immobilie in Deutschland kaufen.
       "§ 261 StGB (Geldwäsche)"
     ],
     practice: `**Praxisfall 1: Identifizierung**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Kreditwesengesetz (KWG) und Geldwäschegesetz (GwG)' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Kreditwesengesetz (KWG) und Geldwäschegesetz (GwG)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Kreditwesengesetz (KWG) und Geldwäschegesetz (GwG)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Kunde möchte ein Darlehen aufnehmen. Er zeigt Ihnen seinen Personalausweis (gültig bis 2028). Sie kopieren den Ausweis und legen die Kopie in die Kundenakte.
 
@@ -1011,6 +1045,23 @@ Kunden haben das Recht, die Löschung ihrer Daten zu verlangen (nach Ablauf der 
       "DSGVO (Datenschutz-Grundverordnung)"
     ],
     practice: `**Praxisfall 1: Irreführende Werbung**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Verbraucherschutz, Schlichtungsstellen und Unlauterer Wettbewerb' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Verbraucherschutz, Schlichtungsstellen und Unlauterer Wettbewerb'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Verbraucherschutz, Schlichtungsstellen und Unlauterer Wettbewerb' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Immobiliardarlehensvermittler wirbt mit: "0% Zinsen für Immobiliendarlehen - nur heute!" In Wirklichkeit gelten die 0% Zinsen nur für die ersten 3 Monate, danach 4,5%. Ein Kunde beschwert sich bei der Verbraucherschutzzentrale.
 
@@ -1388,6 +1439,23 @@ Sie dürfen keine Informationen über Ihre Kunden an Dritte weitergeben, außer:
       "§ 56 GwG (Bußgeldvorschriften)"
     ],
     practice: `**Praxisfall 1: Datenpanne**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Datenschutz (DSGVO), Verschwiegenheit und Zuständigkeiten der Aufsicht' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Datenschutz (DSGVO), Verschwiegenheit und Zuständigkeiten der Aufsicht'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Datenschutz (DSGVO), Verschwiegenheit und Zuständigkeiten der Aufsicht' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Mitarbeiter verliert einen USB-Stick mit Kundendaten (Namen, Adressen, Einkommensnachweise, Kontoauszüge) von 50 Kunden. Der USB-Stick war nicht verschlüsselt.
 
@@ -1803,6 +1871,23 @@ Gewinne aus dem Verkauf von Immobilien innerhalb von 10 Jahren sind steuerpflich
       "ErbStG (Erbschaftsteuer- und Schenkungsteuergesetz)"
     ],
     practice: `**Praxisfall 1: Grunderwerbsteuer berechnen**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Steuerliche Aspekte des Immobilienerwerbs' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Steuerliche Aspekte des Immobilienerwerbs'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Steuerliche Aspekte des Immobilienerwerbs' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Kunde kauft eine Eigentumswohnung in München für 400.000 €. Bayern erhebt 3,5% Grunderwerbsteuer.
 
