@@ -88,8 +88,8 @@ export default function CookieConsent() {
   return (
     <>
       {/* Cookie Banner */}
-      <div className="fixed bottom-4 right-4 z-40 p-0 animate-in slide-in-from-bottom duration-500 max-w-sm w-full">
-        <Card className="max-w-4xl mx-auto shadow-2xl border-2">
+      <div className="fixed bottom-4 right-4 z-30 p-0 animate-in slide-in-from-bottom duration-500 max-w-xs w-full">
+        <Card className="shadow-xl border">
           <CardHeader className="pb-3">
             <div className="flex items-start justify-between gap-4">
               <div className="flex items-center gap-3">
