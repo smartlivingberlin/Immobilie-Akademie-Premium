@@ -298,6 +298,9 @@ export default function Module1Detail() {
                     />
                     <div className="prose prose-slate max-w-none break-words prose-headings:text-slate-900 prose-p:text-slate-600 prose-li:text-slate-600 prose-strong:text-slate-900">
                       <SmartContent content={currentContent.theory} />
+                      {(currentContent as any).extendedTheory && (
+                        <SmartContent content={(currentContent as any).extendedTheory} />
+                      )}
                     </div>
                   </TabsContent>
 
