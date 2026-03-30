@@ -121,6 +121,23 @@ export const contentDataModule5_34i_Part5: Record<string, {
       "§ 18a KWG (Kreditwürdigkeitsprüfung)"
     ],
     practice: `**Praxisfall 1: Haushaltsrechnung erstellen**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Übungsaufgaben: Haushaltsrechnung und Finanzierungsplanung' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Übungsaufgaben: Haushaltsrechnung und Finanzierungsplanung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Übungsaufgaben: Haushaltsrechnung und Finanzierungsplanung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Kunde (32 Jahre, ledig) möchte eine Eigentumswohnung kaufen. Nettoeinkommen: 3.800 €/Monat. Ausgaben: Lebenshaltung 1.100 €, Pkw 350 €, Versicherungen 180 €, Freizeit 450 €, Sparen 300 €.
 
@@ -426,6 +443,23 @@ Berechnen Sie das maximale Darlehen:
       "§ 511 BGB (Beratungs- und Dokumentationspflichten)"
     ],
     practice: `**Praxisfall 1: Konditionsvergleich**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Übungsaufgaben: Konditionsvergleich und Effektivzins' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Übungsaufgaben: Konditionsvergleich und Effektivzins'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Übungsaufgaben: Konditionsvergleich und Effektivzins' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Kunde benötigt ein Darlehen über 350.000 €. Sie holen 3 Angebote ein:
 
@@ -720,6 +754,23 @@ Vergleichen Sie die Angebote:
       "BDSG (Bundesdatenschutzgesetz - Schufa)"
     ],
     practice: `**Praxisfall 1: Bonitätsprüfung**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Übungsaufgaben: Bonitätsprüfung und Schufa' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Übungsaufgaben: Bonitätsprüfung und Schufa'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Übungsaufgaben: Bonitätsprüfung und Schufa' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Kunde (35 Jahre, Angestellter) beantragt ein Darlehen über 320.000 €. Nettoeinkommen: 4.200 €/Monat (unbefristet). Ausgaben: 2.300 €/Monat. Eigenkapital: 80.000 €. Schufa-Score: 91%. Negativmerkmale: 1 laufender Ratenkredit (180 €/Monat).
 
@@ -1071,6 +1122,23 @@ Max Beispiel, Datum
       "§ 18a KWG (Kreditwürdigkeitsprüfung)"
     ],
     practice: `**Praxisfall 1: Vollständiges Beratungsprotokoll**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Übungsaufgaben: Beratungsprotokoll und Dokumentation' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Übungsaufgaben: Beratungsprotokoll und Dokumentation'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Übungsaufgaben: Beratungsprotokoll und Dokumentation' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Kunde (40 Jahre, verheiratet, 1 Kind) möchte eine Eigentumswohnung für 350.000 € kaufen. Nettoeinkommen: 5.000 € (Kunde) + 2.000 € (Ehepartner) = 7.000 €/Monat. Ausgaben: 3.500 €/Monat. Eigenkapital: 90.000 €. Schufa-Score: 94%.
 
@@ -1368,6 +1436,23 @@ Ein Kunde hat ein Darlehen über 300.000 € mit 1% Tilgung abgeschlossen. Nach 
       "DSGVO (Datenschutz-Grundverordnung)"
     ],
     practice: `**Praxisfall 1: Widerrufsrecht**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Übungsaufgaben: Rechtsfälle und Gesetze' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Übungsaufgaben: Rechtsfälle und Gesetze'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Übungsaufgaben: Rechtsfälle und Gesetze' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Kunde hat am 10.03.2026 einen Darlehensvertrag über 350.000 € abgeschlossen. Die Widerrufsbelehrung war korrekt. Am 25.03.2026 möchte er widerrufen.
 

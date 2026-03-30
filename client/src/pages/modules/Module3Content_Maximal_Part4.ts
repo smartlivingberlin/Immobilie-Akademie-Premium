@@ -32,6 +32,23 @@ Der Vertrag wird zwischen dem Eigentümer (Auftraggeber) und dem Verwalter gesch
       "§ 675 BGB (Entgeltliche Geschäftsbesorgung)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Mietverwaltung: Grundlagen & Vertrag' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Mietverwaltung: Grundlagen & Vertrag'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Mietverwaltung: Grundlagen & Vertrag' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Praxis-Beispiel: Der Verwaltervertrag
 Ein Eigentümer besitzt 5 Eigentumswohnungen in einer WEG und möchte Sie mit der Sondereigentumsverwaltung beauftragen.
 
@@ -75,6 +92,23 @@ Die Abrechnung muss dem Mieter spätestens bis zum Ablauf des zwölften Monats n
       "Heizkostenverordnung (HeizkostenV)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Betriebskostenabrechnung (BKA)' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Betriebskostenabrechnung (BKA)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Betriebskostenabrechnung (BKA)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Checkliste für die BKA-Erstellung
 1.  **Zusammenstellung der Gesamtkosten:** Rechnungen prüfen, Periodenabgrenzung beachten (Abfluss- vs. Leistungsprinzip).
 2.  **Verteilerschlüssel prüfen:** Stimmen die Schlüssel mit dem Mietvertrag überein?
@@ -156,6 +190,23 @@ Vermieter können die Miete nicht willkürlich erhöhen. Es gelten strenge geset
       "§ 557b BGB (Indexmiete)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Mieterhöhungsverlangen' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Mieterhöhungsverlangen'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Mieterhöhungsverlangen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Fallbeispiel: Indexmiete anpassen
 Im Mietvertrag (Beginn 01.01.2022) ist eine Indexmiete vereinbart. Basisindex: 110 Punkte. Aktueller Index (Jan 2024): 121 Punkte. Alte Kaltmiete: 800 €.
 
@@ -206,6 +257,23 @@ Schriftliche Erklärung an den Mieter mit Berechnungsgrundlage. Die neue Miete w
       "§ 573c BGB (Fristen der ordentlichen Kündigung)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Kündigung & Abwicklung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Kündigung & Abwicklung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Kündigung & Abwicklung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Das Übergabeprotokoll
 Ein sorgfältiges Protokoll ist das wichtigste Beweismittel.
 *   **Inhalt:** Zählerstände (Strom, Gas, Wasser), Anzahl Schlüssel, Mängel (genau beschrieben, z.B. "Kratzer im Parkett Wohnzimmer, 5cm, mittig"), Absprachen zu Renovierung.
@@ -288,6 +356,23 @@ Mietrückstände und offene Hausgeldzahlungen gefährden die Liquidität.
       "§ 690 ZPO (Mahnantrag)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Forderungsmanagement & Mahnwesen' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Forderungsmanagement & Mahnwesen'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Forderungsmanagement & Mahnwesen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Prozess bei Mietrückstand
 1.  **Tag 4 des Monats:** Zahlungseingang prüfen. Fehlt Miete?
 2.  **Tag 5:** Telefonischer Kontakt (oft nur Vergesslichkeit/Bankfehler).
@@ -327,6 +412,23 @@ FM ist mehr als nur Hausmeistertätigkeit. Es ist die ganzheitliche Betrachtung 
       "Betriebssicherheitsverordnung (BetrSichV)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Grundlagen Facility Management (FM)' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Grundlagen Facility Management (FM)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Grundlagen Facility Management (FM)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Vergabe von Dienstleistungen (IGM)
 Sie suchen einen neuen Dienstleister für Treppenhausreinigung und Winterdienst.
 
@@ -367,6 +469,23 @@ Die Pflicht kann auf Dritte (Hausmeister, Dienstleister, Mieter) übertragen wer
       "§ 836 BGB (Haftung des Tierhalters/Gebäudebesitzers)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Verkehrssicherungspflichten' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Verkehrssicherungspflichten'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Verkehrssicherungspflichten' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Das Verkehrssicherungsprotokoll
 Führen Sie ein Logbuch über Ihre Kontrollen.
 *   **Datum/Uhrzeit.**
@@ -407,6 +526,23 @@ Vermieter müssen sich je nach energetischem Zustand des Gebäudes an den CO2-Ko
       "Kohlendioxidkostenaufteilungsgesetz (CO2KostAufG)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Energiemanagement & Nachhaltigkeit' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Energiemanagement & Nachhaltigkeit'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Energiemanagement & Nachhaltigkeit' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Energieausweis prüfen
 Sie übernehmen ein Objekt. Prüfen Sie den Energieausweis:
 1.  **Gültigkeit:** Max. 10 Jahre.
@@ -449,6 +585,23 @@ Abgleich der geplanten Kosten mit der Instandhaltungsrücklage. Ggf. Erhöhung d
       "§ 28 WEG (Wirtschaftsplan)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Instandhaltungsplanung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Instandhaltungsplanung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Instandhaltungsplanung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Begehung und Zustandsbewertung
 Führen Sie eine jährliche Objektbegehung durch, idealerweise mit einem Beirat oder Techniker.
 *   **Dach:** Sichtprüfung (Ziegel, Rinnen).
@@ -490,6 +643,23 @@ Der Verwalter muss für ausreichenden Versicherungsschutz sorgen.
       "VVG (Versicherungsvertragsgesetz)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Versicherungsmanagement' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Versicherungsmanagement'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Versicherungsmanagement' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Der Versicherungsschaden
 Ein Rohrbruch im 2. OG nässt die Wohnung im 1. OG durch.
 1.  **Sofort:** Wasser abdrehen, Notdienst Sanitär rufen.
@@ -538,6 +708,23 @@ Verwalter sind oft Mediatoren zwischen Eigentümern, Mietern und Nachbarn.
       "Hausordnung"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Kommunikation & Konfliktlösung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Kommunikation & Konfliktlösung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Kommunikation & Konfliktlösung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Lärmprotokoll
 Ein Eigentümer beschwert sich massiv über Lärm aus der Wohnung darüber.
 **Ihre Reaktion:**
@@ -573,6 +760,23 @@ ETVs können emotional und chaotisch werden. Der Verwalter muss die Versammlung 
       "§ 24 WEG (Einberufung, Vorsitz, Niederschrift)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Die schwierige Eigentümerversammlung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Die schwierige Eigentümerversammlung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Die schwierige Eigentümerversammlung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Szenario: Sanierungsstau vs. Kostenbremse
 Das Dach ist undicht. Eine Sanierung kostet 100.000 €. Drei Eigentümer (Rentner) sagen: "Wir haben kein Geld, flicken reicht." Die anderen wollen eine energetische Sanierung.
 
@@ -611,6 +815,23 @@ Verwalter verarbeiten sensible Daten (Namen, Konten, Vermögensverhältnisse).
       "BDSG (Bundesdatenschutzgesetz)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Datenschutz (DSGVO) in der Verwaltung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Datenschutz (DSGVO) in der Verwaltung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Datenschutz (DSGVO) in der Verwaltung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Auskunftsersuchen
 Ein Mieter verlangt Auskunft darüber, welche Daten Sie über ihn gespeichert haben.
 **Reaktion:**
@@ -653,6 +874,23 @@ Die Branche wandelt sich von Papierordnern zu digitalen Plattformen.
 `,
     law: [],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Digitalisierung & PropTech' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Digitalisierung & PropTech'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Digitalisierung & PropTech' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Einführung eines Kundenportals
 Sie wollen eine App einführen.
 1.  **Auswahl:** Anbieter vergleichen (Funktionen, Schnittstelle zur Verwaltersoftware, Datenschutz).
@@ -691,6 +929,23 @@ Grundwissen im Steuerrecht ist unerlässlich, auch wenn keine Steuerberatung gel
       "UStG (Umsatzsteuergesetz)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Steuern rund um die Immobilie' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Steuern rund um die Immobilie'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Steuern rund um die Immobilie' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Bescheinigung nach § 35a EStG
 Ein Eigentümer verlangt eine Bescheinigung für das Finanzamt.
 *   In der Hausgeldabrechnung ist meist eine Anlage "Bescheinigung nach § 35a EStG" enthalten.
@@ -719,6 +974,23 @@ Zentrale Punkte für die Prüfung und Praxis:
 `,
     law: ["WEG (Wohnungseigentumsgesetz)"],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Repetitorium: WEG-Recht' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Repetitorium: WEG-Recht'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Repetitorium: WEG-Recht' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Lern-Check
 Gehen Sie alte Protokolle und Teilungserklärungen durch. Versuchen Sie, Streitfälle von damals mit Ihrem jetzigen Wissen neu zu bewerten. Hätten Sie anders gehandelt?
 `,
@@ -741,6 +1013,23 @@ Gehen Sie alte Protokolle und Teilungserklärungen durch. Versuchen Sie, Streitf
 `,
     law: ["BGB Mietrecht (§§ 535 ff.)"],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Repetitorium: Mietrecht' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Repetitorium: Mietrecht'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Repetitorium: Mietrecht' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Karteikarten-Lernen
 Erstellen Sie Karteikarten zu den wichtigsten Fristen:
 *   Kündigungsfristen (Mieter/Vermieter).
@@ -766,6 +1055,23 @@ Erstellen Sie Karteikarten zu den wichtigsten Fristen:
 `,
     law: [],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Repetitorium: Kaufmännische Verwaltung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Repetitorium: Kaufmännische Verwaltung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Repetitorium: Kaufmännische Verwaltung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Rechenübungen
 Üben Sie die Verteilung von Kosten:
 *   Kosten 10.000 €, Verteilerschlüssel MEA.
@@ -798,6 +1104,23 @@ In einer WEG tropft es durch die Decke (Technik/Versicherung). Der Mieter oben v
 `,
     law: [],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Prüfungssimulation: Fallstudien' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Prüfungssimulation: Fallstudien'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Prüfungssimulation: Fallstudien' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Übungsfall
 Versuchen Sie den "Horror-Fall" strukturiert zu lösen.
 1.  Notmaßnahme (Wasser stoppen) nach § 27 WEG (Notgeschäftsführung).
@@ -834,6 +1157,23 @@ Bleiben Sie neugierig! Die Rechtsprechung (insb. BGH-Urteile zum WEG-Recht) änd
 `,
     law: ["§ 34c GewO (Weiterbildungspflicht)"],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Abschluss & Ausblick' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Abschluss & Ausblick'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Abschluss & Ausblick' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 ### Ihr persönlicher Action-Plan
 1.  **Zertifizierung:** Melden Sie sich zur IHK-Prüfung "Zertifizierter Verwalter" an (falls noch nicht geschehen).
 2.  **Software:** Entscheiden Sie sich für eine Verwaltersoftware.

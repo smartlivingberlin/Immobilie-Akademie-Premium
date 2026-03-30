@@ -31,6 +31,23 @@ Ländersache (3,5% bis 6,5%). Fällt auf Grund & Boden + Gebäude an.
     `,
     law: ["EStG § 23", "GrEStG"],
     practice: "Recherchieren Sie den aktuellen Grunderwerbsteuersatz in Ihrem Bundesland.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Steuern für Makler & Kunden (EStG)' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Steuern für Makler & Kunden (EStG)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Steuern für Makler & Kunden (EStG)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Der schnelle Auszug**
 Kunde kauft 2020, wohnt drin. Zieht 2022 aus (vermietet). Verkauft 2024.
@@ -61,6 +78,23 @@ Steuer: 200.000 * 42% = 84.000 € ans Finanzamt.
     `,
     law: [],
     practice: "Nutzen Sie einen Renditerechner (Excel).",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Immobilien als Kapitalanlage' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Immobilien als Kapitalanlage'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Immobilien als Kapitalanlage' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Die negative Rendite**
 Miete deckt nicht die Rate. Kunde muss jeden Monat 200 € zuschießen.
@@ -89,6 +123,23 @@ Ich leihe Geld für 4% und lege es für 6% an. Die Differenz (2%) hebelt mein Ei
     `,
     law: ["EStG § 7i (Denkmal)", "DSchG (Denkmalschutzgesetz)"],
     practice: "Suchen Sie ein Denkmalobjekt. Lesen Sie die Baubeschreibung.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Denkmalschutz & Sanierung (AfA)' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Denkmalschutz & Sanierung (AfA)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Denkmalschutz & Sanierung (AfA)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Die nicht anerkannte Sanierung**
 Kunde saniert erst, beantragt dann Bescheinigung.
@@ -118,6 +169,23 @@ Vertrieb für Bauträger.
     `,
     law: ["MaBV § 3 (Zahlungsplan)"],
     practice: "Vergleichen Sie einen Bauträgervertrag mit einem normalen Kaufvertrag.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Neubau-Projekte & Bauträger' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Neubau-Projekte & Bauträger'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Neubau-Projekte & Bauträger' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Die Bauträger-Pleite**
 Bauträger geht pleite, Haus halb fertig. Käufer hat schon 90% gezahlt (Vorauskasse, verboten!).
@@ -150,6 +218,23 @@ Banken finanzieren ungern, wenn Restlaufzeit kurz ist. (Tilgung muss 10 Jahre vo
     `,
     law: ["ErbbauRG"],
     practice: "Berechnen Sie: Bodenwert 200.000 €. Zins 4%. Monatliche Belastung?",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Erbbaurecht' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Erbbaurecht'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Erbbaurecht' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Das unverkäufliche Erbpacht-Haus**
 Restlaufzeit 20 Jahre.
@@ -177,6 +262,23 @@ Land wird meist gepachtet, nicht verkauft. Pachtpreise sehr niedrig.
     `,
     law: ["GrdstVG"],
     practice: "Was kostet 1qm Ackerland in Ihrer Region? (Bodenrichtwert).",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Landwirtschaftliche Flächen' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Landwirtschaftliche Flächen'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Landwirtschaftliche Flächen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Der Pferdeliebhaber**
 Anwalt will Wiese für Pferde kaufen. Landwirt meldet Bedarf an.
@@ -208,6 +310,23 @@ Makler dürfen bei ZVG nicht vermitteln (keine Provision vom Gericht). Aber: Ber
     `,
     law: ["ZVG"],
     practice: "Besuchen Sie www.zvg-portal.de. Suchen Sie einen Termin.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Zwangsversteigerung (ZVG)' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Zwangsversteigerung (ZVG)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Zwangsversteigerung (ZVG)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Die "Katze im Sack"**
 Käufer ersteigert Haus. Innen total verwüstet (Mietnomaden).
@@ -234,6 +353,23 @@ Kaufpreis = Verkehrswert - Wert Wohnrecht.
     `,
     law: ["BGB (Leibrente, Nießbrauch)"],
     practice: "Berechnen Sie den Wert eines lebenslangen Wohnrechts für eine 75-jährige Frau (Faktor 10). Miete 1.000 €.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Leibrente & Immobilienverrentung' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Leibrente & Immobilienverrentung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Leibrente & Immobilienverrentung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Die "zu gesunde" Oma**
 Käufer zahlt Rente. Oma wird 105. Käufer zahlt drauf.
@@ -263,6 +399,23 @@ Bei Vermietung ("Gewinnerzielungsabsicht") kann man Werbungskosten absetzen. Bei
     `,
     law: [],
     practice: "Recherchieren Sie die Auslastungsquoten auf Sylt vs. Bayerischer Wald.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Ferienimmobilien' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Ferienimmobilien'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Ferienimmobilien' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Das Corona-Verbot**
 Beherbergungsverbot. Ferienwohnung leer. Kredit läuft weiter.
@@ -289,6 +442,23 @@ Makler in DE vermittelt an Partner vor Ort. Provisionsteilung (Referral Fee).
     `,
     law: ["IPR (Internationales Privatrecht)"],
     practice: "Suchen Sie eine Immobilie in Palma de Mallorca. Vergleichen Sie die Courtage (dort oft vom Verkäufer gezahlt!).",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Internationaler Markt' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Internationaler Markt'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Internationaler Markt' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Der illegale Anbau in Spanien**
 Käufer kauft Finca. Pool ist illegal. Abrissverfügung.
@@ -322,6 +492,23 @@ Werden Makler durch Algorithmen ersetzt? (McMakler, Homeday).
     `,
     law: [],
     practice: "Lassen Sie ChatGPT einen Exposé-Text für eine 'Bruchbude' schreiben, der positiv klingt.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'PropTech & KI im Maklerbüro' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'PropTech & KI im Maklerbüro'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'PropTech & KI im Maklerbüro' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Die reine Online-Bewertung**
 Kunde vertraut Algorithmus, verkauft zu billig an Aufkäufer.
@@ -352,6 +539,23 @@ Oft sind Emotionen das Hindernis, nicht der Preis.
     `,
     law: [],
     practice: "Rollenspiel: Scheidungspaar. Sie vermitteln.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Konfliktmanagement & Mediation' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Konfliktmanagement & Mediation'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Konfliktmanagement & Mediation' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Der Rosenkrieg**
 Mann sabotiert Besichtigungen (läuft in Unterhose rum).
@@ -384,6 +588,23 @@ Erreichbarkeit regeln. "Am Wochenende nur Notfälle".
     `,
     law: [],
     practice: "Analysieren Sie Ihren Tag. Wo haben Sie Zeit verschwendet?",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Selbstmanagement & Zeitmanagement' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Selbstmanagement & Zeitmanagement'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Selbstmanagement & Zeitmanagement' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Der "Mädchen für alles"-Makler**
 Mäht Rasen vor Besichtigung, putzt Fenster.
@@ -415,6 +636,23 @@ So: Frei.
     `,
     law: [],
     practice: "Wie begrüßen Sie eine Gruppe (Ehepaar + Eltern)? (Erst die Damen, dann die Älteren).",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Business-Knigge & Etikette' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Business-Knigge & Etikette'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Business-Knigge & Etikette' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Der schwitzende Makler**
 Kommt abgehetzt, riecht nach Rauch.
@@ -441,6 +679,23 @@ No-Go: Kurze Hosen, Flip-Flops, tiefer Ausschnitt.
     `,
     law: [],
     practice: "Lösen Sie 10 Multiple-Choice-Fragen zum Recht.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Wiederholung: Recht & Verträge' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Wiederholung: Recht & Verträge'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Wiederholung: Recht & Verträge' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: "Zusammenfassung diverser Fälle.",
     task: "Erstellen Sie Spickzettel für die Paragraphen.",
     solution: "§ 34c GewO, § 652 BGB, § 355 BGB, MaBV.",
@@ -462,6 +717,23 @@ No-Go: Kurze Hosen, Flip-Flops, tiefer Ausschnitt.
     `,
     law: [],
     practice: "Bewerten Sie ein fiktives Objekt in 30 Minuten komplett.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Wiederholung: Bewertung & Technik' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Wiederholung: Bewertung & Technik'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Wiederholung: Bewertung & Technik' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: "Bewertungsgutachten prüfen.",
     task: "Fehlersuche in einem falschen Gutachten.",
     solution: "Falscher Bodenwert, falsche Restnutzungsdauer.",
@@ -481,6 +753,23 @@ No-Go: Kurze Hosen, Flip-Flops, tiefer Ausschnitt.
     `,
     law: [],
     practice: "Verkaufsgespräch simulieren (Video aufnehmen).",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Wiederholung: Marketing & Vertrieb' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Wiederholung: Marketing & Vertrieb'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Wiederholung: Marketing & Vertrieb' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: "Exposé-Optimierung.",
     task: "Verbessern Sie ein schlechtes Exposé.",
     solution: "Bessere Bilder, emotionalerer Text.",
@@ -496,6 +785,23 @@ Themen: Recht, Bewertung, Marketing.
     `,
     law: [],
     practice: "Führen Sie den Test durch (ohne Hilfsmittel).",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Abschlussprüfung Simulation (Teil 1)' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Abschlussprüfung Simulation (Teil 1)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Abschlussprüfung Simulation (Teil 1)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: "Prüfungsmodus.",
     task: "Korrigieren Sie sich selbst.",
     solution: "Lösungsschlüssel.",
@@ -509,6 +815,23 @@ Erstellung eines Exposés und einer Bewertung für ein gegebenes Objekt.
     `,
     law: [],
     practice: "Erstellen Sie das Exposé.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Abschlussprüfung Simulation (Teil 2)' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Abschlussprüfung Simulation (Teil 2)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Abschlussprüfung Simulation (Teil 2)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: "Praxisaufgabe.",
     task: "Bewerten Sie das Objekt.",
     solution: "Musterlösung.",
@@ -530,6 +853,23 @@ Der Markt ändert sich. Bleiben Sie dran (20h Weiterbildung!).
     `,
     law: [],
     practice: "Feiern Sie Ihren Erfolg!",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Zertifikat & Start in die Praxis' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Zertifikat & Start in die Praxis'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Zertifikat & Start in die Praxis' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: "Ihr Businessplan.",
     task: "Setzen Sie sich Umsatzziele für Jahr 1.",
     solution: "Realistisch: 3-5 Verkäufe im ersten Jahr.",

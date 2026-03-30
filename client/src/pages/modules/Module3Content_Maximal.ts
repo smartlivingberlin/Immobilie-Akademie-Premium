@@ -42,6 +42,23 @@ Die Reform hat die Position des Verwalters gestärkt, aber auch die Rechte der E
       "§ 27 WEG (Aufgaben und Befugnisse des Verwalters)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Einführung in die WEG-Verwaltung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Einführung in die WEG-Verwaltung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Einführung in die WEG-Verwaltung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Praxis-Fall: Die erste Eigentümerversammlung
 
 Sie übernehmen eine neue WEG mit 20 Einheiten. Die Stimmung ist angespannt, da der Vorverwalter Gelder veruntreut hat.
@@ -136,6 +153,23 @@ Ein SNR gibt einem Eigentümer das exklusive Recht, eine Fläche des Gemeinschaf
       "§ 16 WEG (Nutzungen, Lasten und Kosten)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Die Teilungserklärung & Gemeinschaftsordnung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Die Teilungserklärung & Gemeinschaftsordnung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Die Teilungserklärung & Gemeinschaftsordnung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Praxis-Fall: Der Streit um den Garten
 
 Eigentümer E im Erdgeschoss nutzt den Garten allein und hat dort ein festes Gartenhaus gebaut. Die Eigentümer im 1. Stock beschweren sich.
@@ -226,6 +260,23 @@ Die ETV ist der Ort der Willensbildung. Nur hier können wirksame Beschlüsse ge
       "§ 25 WEG (Mehrheitsbeschluss)"
     ],
     practice: `
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Die Eigentümerversammlung (ETV)' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Die Eigentümerversammlung (ETV)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an WEG, Mietrecht, Eigentümerversammlung, WEG §19."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Die Eigentümerversammlung (ETV)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 # Praxis-Szenario: Die turbulente Versammlung
 
 In der ETV geht es hoch her. Eigentümer M (Querulant) stört ständig und beleidigt den Verwalter.

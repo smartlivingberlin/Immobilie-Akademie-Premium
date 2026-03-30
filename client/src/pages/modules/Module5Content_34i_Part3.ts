@@ -186,6 +186,23 @@ Oft wird ein endfälliges Darlehen mit einer Lebensversicherung kombiniert:
       "§ 493 BGB (Pflichtangaben bei Immobiliar-Verbraucherdarlehensverträgen)"
     ],
     practice: `**Praxisfall 1: Annuitätendarlehen berechnen**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Darlehensarten: Annuitätendarlehen, Tilgungsdarlehen, Endfälliges Darlehen' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Darlehensarten: Annuitätendarlehen, Tilgungsdarlehen, Endfälliges Darlehen'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Darlehensarten: Annuitätendarlehen, Tilgungsdarlehen, Endfälliges Darlehen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Kunde möchte ein Annuitätendarlehen über 250.000 € aufnehmen. Zinssatz: 3,0% p.a., Anfangstilgung: 2,5% p.a.
 
@@ -488,6 +505,23 @@ Vergleichen Sie die Gesamtzinsbelastung:
       "EnEV (Energieeinsparverordnung)"
     ],
     practice: `**Praxisfall 1: Bauspardarlehen**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Bauspardarlehen, KfW-Darlehen und Förderprogramme' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Bauspardarlehen, KfW-Darlehen und Förderprogramme'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Bauspardarlehen, KfW-Darlehen und Förderprogramme' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Kunde möchte in 10 Jahren eine Immobilie kaufen und schließt einen Bausparvertrag ab:
 - Bausparsumme: 100.000 €
@@ -892,6 +926,23 @@ Recht, jährlich einen bestimmten Betrag zusätzlich zur regulären Rate zu tilg
       "PAngV (Preisangabenverordnung)"
     ],
     practice: `**Praxisfall 1: Effektivzins berechnen**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Zinsbindung, Sollzins, Effektivzins und Konditionsvergleich' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Zinsbindung, Sollzins, Effektivzins und Konditionsvergleich'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Zinsbindung, Sollzins, Effektivzins und Konditionsvergleich' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Kunde erhält folgendes Angebot:
 - Darlehensbetrag: 250.000 €
@@ -1244,6 +1295,23 @@ Beleihungsauslauf = Darlehensbetrag / Beleihungswert × 100%
       "§ 34 BDSG (Auskunft über Schufa-Daten)"
     ],
     practice: `**Praxisfall 1: Haushaltsrechnung**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Bonitätsprüfung, Schufa-Auskunft und Kreditwürdigkeitsprüfung' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Bonitätsprüfung, Schufa-Auskunft und Kreditwürdigkeitsprüfung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Bonitätsprüfung, Schufa-Auskunft und Kreditwürdigkeitsprüfung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Kunde hat folgende finanzielle Situation:
 - Nettoeinkommen: 5.000 €/Monat
@@ -1579,6 +1647,23 @@ Die Bürgschaft ist eine persönliche Sicherheit: Eine dritte Person (Bürge) ve
       "GBO (Grundbuchordnung)"
     ],
     practice: `**Praxisfall 1: Grundschuld bestellen**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Sicherheiten: Grundschuld, Hypothek, Bürgschaft' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Sicherheiten: Grundschuld, Hypothek, Bürgschaft'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Sicherheiten: Grundschuld, Hypothek, Bürgschaft' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
 
 Ein Kunde kauft eine Immobilie für 450.000 € und benötigt ein Darlehen über 350.000 €. Die Bank verlangt eine erstrangige Grundschuld.
 

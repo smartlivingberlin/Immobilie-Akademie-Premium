@@ -33,6 +33,23 @@ Regelt die gesetzlichen Verfahren in Deutschland.
     `,
     law: ["ImmoWertV", "BauGB § 194"],
     practice: "Suchen Sie 3 vergleichbare Wohnungen auf ImmoScout zu einer fiktiven Wohnung (3 Zi, 70qm, Bj 1990, Zentrum). Berechnen Sie den Durchschnittspreis/qm.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Einführung Wertermittlung (ImmoWertV)' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Einführung Wertermittlung (ImmoWertV)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Einführung Wertermittlung (ImmoWertV)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Der emotionale Verkäufer**
 Verkäufer will 500.000 €, weil er "so viel Liebe reingesteckt hat" (goldene Wasserhähne). Markt sagt 400.000 €.
@@ -95,6 +112,23 @@ Formel: Angepasster Preis = Vergleichspreis × (Index aktuell / Index Kaufjahr)
     `,
     law: ["§15 ImmoWertV (Vergleichswertverfahren)", "§194 BauGB (Verkehrswertdefinition)", "§9 ImmoWertV (Vergleichspreise, Kaufpreissammlung)"],
     practice: "Recherchieren Sie aktuelle ETW-Kaufpreise in Ihrem Bezirk über immobilienscout24.de oder Gutachterausschuss Berlin (gutachterausschuss.fi.berlin.de). Welcher Preis/m² gilt für eine 3-Zimmer-ETW in mittlerer Lage?",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Vergleichswertverfahren (§ 15 ImmoWertV)' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Vergleichswertverfahren (§ 15 ImmoWertV)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Vergleichswertverfahren (§ 15 ImmoWertV)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Berliner Praxisfall: ETW Prenzlauer Berg**
 
@@ -213,6 +247,23 @@ Gerundet: 437.000 €`
     `,
     law: ["ImmoWertV § 21-23"],
     practice: "Finden Sie den Sachwertfaktor für EFH in Ihrem lokalen Marktbericht.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Sachwertverfahren (§ 21 ImmoWertV)' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Sachwertverfahren (§ 21 ImmoWertV)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Sachwertverfahren (§ 21 ImmoWertV)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Das 'Liebhaberobjekt'**
 Ein Schloss im Nirgendwo. Herstellungskosten 5 Mio. €. Bodenwert gering.
@@ -247,6 +298,23 @@ Der Käufer kauft den zukünftigen Zahlungsstrom (Miete). Der Boden wird nur ver
     `,
     law: ["ImmoWertV § 27-34"],
     practice: "Was ist der aktuelle Liegenschaftszins für MFH in Ihrer Stadt? (Marktbericht).",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Ertragswertverfahren (§ 27 ImmoWertV)' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Ertragswertverfahren (§ 27 ImmoWertV)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Ertragswertverfahren (§ 27 ImmoWertV)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Die Miete ist zu niedrig**
 MFH, Miete 5€/qm. Markt 10€/qm.
@@ -333,6 +401,23 @@ Der Makler muss ungefragt über *bekannte* oder *offensichtliche* Mängel aufkl�
     `,
     law: ["BGB § 434 (Sachmangel)"],
     practice: "Gehen Sie in den Keller. Riecht es muffig? Sehen Sie Ausblühungen (Salze) an der Wand?",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Bauschäden & Mängel erkennen' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Bauschäden & Mängel erkennen'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Bauschäden & Mängel erkennen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Der verschwiegene Wasserschaden**
 Verkäufer streicht kurz vor Verkauf über den Wasserfleck. Makler sieht es ("frische Farbe"), fragt aber nicht nach.
@@ -366,6 +451,23 @@ Man definiert ein Farmgebiet (z.B. 2000 Haushalte) und bearbeitet es systematisc
     `,
     law: ["UWG (Werberecht)"],
     practice: "Entwerfen Sie einen Farming-Flyer für Ihr Viertel.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Einkaufsstrategien: Farming' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Einkaufsstrategien: Farming'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Einkaufsstrategien: Farming' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Der Gießkannen-Flyer**
 Makler wirft 10.000 billige Flyer in die ganze Stadt. Rücklauf: 0.
@@ -396,6 +498,23 @@ Nicht betteln. Augenhöhe!
     `,
     law: [],
     practice: "Rollenspiel mit Partner: Überzeugen Sie einen 'Selbstverkäufer'.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Einkaufsgespräch & Einwandbehandlung' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Einkaufsgespräch & Einwandbehandlung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Einkaufsgespräch & Einwandbehandlung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Der 'Mal schauen'-Auftrag**
 Eigentümer sagt: "Bringen Sie mir jemanden, aber ich unterschreibe nichts."
@@ -424,6 +543,23 @@ Meist 6 Monate. Automatische Verlängerung möglich (in AGB max. 3 Monate, besse
     `,
     law: ["BGB § 652"],
     practice: "Lesen Sie einen IVD-Mustervertrag.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Der Makleralleinauftrag' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Der Makleralleinauftrag'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Der Makleralleinauftrag' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Der Fremdverkauf**
 Trotz Alleinauftrag verkauft der Eigentümer an seinen Neffen.
@@ -461,6 +597,23 @@ Energieausweisdaten, Provision, Impressum, Widerrufsbelehrung müssen rein.
     `,
     law: ["UWG"],
     practice: "Fotografieren Sie Ihr Wohnzimmer. Vergleichen Sie: Licht an/aus, Weitwinkel vs. Zoom.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Exposé-Erstellung: Text & Bild' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Exposé-Erstellung: Text & Bild'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Exposé-Erstellung: Text & Bild' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Das Photoshop-Desaster**
 Makler retuschiert Strommast weg und macht den Rasen knallgrün.
@@ -490,6 +643,23 @@ Diskretvermarktung ohne Portale. Für Luxusobjekte oder Prominente. Nur über di
     `,
     law: [],
     practice: "Erstellen Sie einen Social-Media-Post für ein neues Objekt (Bild + Text + Hashtags).",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Vermarktungskanäle' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Vermarktungskanäle'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Vermarktungskanäle' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Nur ImmoScout**
 Makler stellt Objekt nur bei ImmoScout ein. Keine Anfragen.
@@ -525,6 +695,23 @@ Makler stellt Objekt nur bei ImmoScout ein. Keine Anfragen.
     `,
     law: [],
     practice: "Entwerfen Sie einen Telefonleitfaden für das Erstgespräch.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Anfragen-Management & Qualifizierung' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Anfragen-Management & Qualifizierung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Anfragen-Management & Qualifizierung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Der Massenbesichtiger**
 Makler lädt alle 50 Anfragen zur Einzelbesichtigung ein.
@@ -559,6 +746,23 @@ Makler lädt alle 50 Anfragen zur Einzelbesichtigung ein.
     `,
     law: [],
     practice: "Führen Sie eine fiktive Besichtigung in Ihrer Wohnung durch. Planen Sie den Weg.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Besichtigungs-Dramaturgie' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Besichtigungs-Dramaturgie'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Besichtigungs-Dramaturgie' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Die Gruppenbesichtigung**
 20 Leute gleichzeitig im Haus. Chaos. Keiner kann Fragen stellen.
@@ -596,6 +800,23 @@ Offenes Verfahren: "Mindestpreis 300k, bitte geben Sie Ihr Gebot ab."
     `,
     law: [],
     practice: "Üben Sie das 'Schweigen' im Gespräch.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Verkaufspsychologie & Verhandlung' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Verkaufspsychologie & Verhandlung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Verkaufspsychologie & Verhandlung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Der unverschämte Käufer**
 Bietet 30% unter Angebotspreis. Verkäufer ist beleidigt und bricht ab.
@@ -621,6 +842,23 @@ Lieber "Reservierungsvereinbarung" ohne Gebühr, aber mit "Notarbestätigung". S
     `,
     law: ["BGB § 307 (AGB-Recht)", "BGH Urteile"],
     practice: "Lesen Sie das BGH-Urteil zur Reservierungsgebühr.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Reservierung & Anzahlung' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Reservierung & Anzahlung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Reservierung & Anzahlung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Geld zurück?**
 Kunde reserviert, zahlt 2.000 €, springt dann ab. Fordert Geld zurück.
@@ -646,6 +884,23 @@ Braucht § 34i GewO (Immobiliardarlehensvermittler). Wer das nicht hat: Finger w
     `,
     law: ["GewO § 34i"],
     practice: "Wie sieht eine echte Finanzierungszusage aus? Googeln Sie Muster.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Finanzierungssicherung' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Finanzierungssicherung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Finanzierungssicherung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Die geplatzte Finanzierung**
 Notarvertrag unterschrieben. 2 Wochen später sagt Bank "Nein".
@@ -673,6 +928,23 @@ Verbraucher müssen den Entwurf 14 Tage *vor* Beurkundung erhalten, um ihn zu pr
     `,
     law: ["BeurkG § 17", "BGB § 311b (Formzwang)"],
     practice: "Lesen Sie einen Muster-Kaufvertrag.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Kaufvertragsentwurf & Notar' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Kaufvertragsentwurf & Notar'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Kaufvertragsentwurf & Notar' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Die vergessene Einbauküche**
 Küche ist im Preis drin, steht aber nicht im Vertrag.
@@ -703,6 +975,23 @@ Mit Trennung: 480k * 6% = 28.800 € Steuer.
     `,
     law: [],
     practice: "Was zieht man zum Notar an? (Business Casual bis Suit).",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Der Notartermin' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Der Notartermin'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Der Notartermin' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Der Käufer erscheint nicht**
 Alle warten beim Notar. Käufer kommt nicht.
@@ -728,6 +1017,23 @@ Erst wenn Geld auf dem Konto ist! (Niemals vorher Schlüssel geben -> Risiko!).
     `,
     law: [],
     practice: "Erstellen Sie ein Übergabeprotokoll-Formular.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'After-Sales & Übergabe' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'After-Sales & Übergabe'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'After-Sales & Übergabe' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Schlüssel vor Geld**
 Käufer darf schon renovieren ("Nur Tapeten abreißen"). Er reißt Wände ein, zahlt dann den Kaufpreis nicht.
@@ -759,6 +1065,23 @@ Makler muss das prüfen, um Vermieter vor Bußgeld/Rückforderung zu schützen.
     `,
     law: ["WoVermittG § 2 (Bestellerprinzip)", "BGB § 556d (Mietpreisbremse)"],
     practice: "Prüfen Sie: Gilt in Ihrer Stadt die Mietpreisbremse?",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Mietrecht für Makler (Bestellerprinzip)' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Mietrecht für Makler (Bestellerprinzip)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Mietrecht für Makler (Bestellerprinzip)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Die verdeckte Provision**
 Makler verlangt vom Mieter "Abstandszahlung" für Küche (5.000 €, Küche wertlos), um Provision zu kassieren.
@@ -785,6 +1108,23 @@ Miete steigt mit Inflation (Verbraucherpreisindex). Im Gewerbe Standard.
     `,
     law: ["BGB § 581 (Pacht)"],
     practice: "Lesen Sie einen Gewerbemietvertrag. Suchen Sie die Konkurrenzschutzklausel.",
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Gewerbevermietung & Pacht' sind für Ihre Tätigkeit als Makler §34c GewO-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Gewerbevermietung & Pacht'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34c GewO, MaBV, Maklerrecht, BGB §652."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Gewerbevermietung & Pacht' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
     caseStudy: `
 **Fall: Schriftformheilungsklausel**
 Gewerbemietvertrag muss schriftlich sein (bei > 1 Jahr). Wenn nicht -> Kündbar wie unbefristet!
