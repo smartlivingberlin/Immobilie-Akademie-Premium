@@ -282,7 +282,7 @@ Die Aufsichtsbehörden prüfen streng. Bußgelder beginnen oft bei 10.000 €.
 Käufer fragt: "Kann ich 50.000 € Anzahlung bar an den Verkäufer geben?"
 **Alarm:** Immobilienkauf mit Bargeld ist in Deutschland zwar zivilrechtlich möglich (aber Notare dürfen es nicht beurkunden/abwickeln), aber hochgradig verdächtig. Makler MUSS das melden.
     `,
-    practice: `Praxisfall:
+    task: [
       {
         question: `GwG Prüfungsfall (IHK-Niveau):
 Herr Mehmet K. möchte ein MFH für 1,2 Mio. € kaufen. Er möchte 150.000 € als Anzahlung bar übergeben. Als Käufer tritt eine zypriotische Ltd. auf. Herr K. erklärt, er sei der alleinige Geschäftsführer. Das Geld stamme aus "Geschäften in der Türkei".
