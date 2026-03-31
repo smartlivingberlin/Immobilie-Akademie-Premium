@@ -40,8 +40,7 @@ app.use(helmet({
       objectSrc: ["'none'"],
       upgradeInsecureRequests: [],
     },
-  }
-  }
+  },
 }));
 
 // Login Rate Limiter — verhindert Brute-Force Angriffe
