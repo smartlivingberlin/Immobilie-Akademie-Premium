@@ -3,49 +3,49 @@ import { trpc } from "@/lib/trpc";
 import { Toaster } from "@/components/ui/toaster";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 
-import Home from "@/pages/Home";
-import LoginPage from "@/pages/LoginPage";
-import ForgotPassword from "@/pages/ForgotPassword";
-import ResetPassword from "@/pages/ResetPassword";
-import DeleteAccount from "@/pages/DeleteAccount";
-import RedeemCode from "@/pages/RedeemCode";
-import AdminCodes from "@/pages/admin/AdminCodes";
-import AdminDashboard from "@/pages/admin/AdminDashboard";
-import KursbuchGenerator from "@/pages/admin/KursbuchGenerator";
-import DozentenCockpit from "@/pages/admin/DozentenCockpit";
-import MediaSkriptGenerator from "@/pages/admin/MediaSkriptGenerator";
-import DozentenLoesungen from "@/pages/admin/DozentenLoesungen";
-import FragenManager from "@/pages/admin/FragenManager";
-import Fallstudien from "@/pages/Fallstudien";
-import Flashcards from "@/pages/Flashcards";
-import ExposeTrainer from "@/pages/ExposeTrainer";
-import DokumentViewer from "@/pages/DokumentViewer";
-import ContentUpload from "@/pages/admin/ContentUpload";
-import Kurse from "@/pages/Kurse";
-import ZahlungErfolgreich from "@/pages/ZahlungErfolgreich";
-import Widerruf from "@/pages/Widerruf";
-import Bildungskonzept from "@/pages/Bildungskonzept";
-import UserManagement from "@/pages/admin/UserManagement";
-import Module3Detail from "@/pages/modules/Module3Detail";
-import Module4Detail from "@/pages/modules/Module4Detail";
-import Module5Detail from "@/pages/modules/Module5Detail";
-import Module2Detail from "@/pages/modules/Module2Detail";
-import Module1Detail from "@/pages/modules/Module1Detail";
-import Module1WithIntro from "@/pages/modules/Module1WithIntro";
-import Module2WithIntro from "@/pages/modules/Module2WithIntro";
-import Module3WithIntro from "@/pages/modules/Module3WithIntro";
-import Module4WithIntro from "@/pages/modules/Module4WithIntro";
-import Module5WithIntro from "@/pages/modules/Module5WithIntro";
+const Home = lazy(() => import("@/pages/Home"));
+const LoginPage = lazy(() => import("@/pages/LoginPage"));
+const ForgotPassword = lazy(() => import("@/pages/ForgotPassword"));
+const ResetPassword = lazy(() => import("@/pages/ResetPassword"));
+const DeleteAccount = lazy(() => import("@/pages/DeleteAccount"));
+const RedeemCode = lazy(() => import("@/pages/RedeemCode"));
+const AdminCodes = lazy(() => import("@/pages/admin/AdminCodes"));
+const AdminDashboard = lazy(() => import("@/pages/admin/AdminDashboard"));
+const KursbuchGenerator = lazy(() => import("@/pages/admin/KursbuchGenerator"));
+const DozentenCockpit = lazy(() => import("@/pages/admin/DozentenCockpit"));
+const MediaSkriptGenerator = lazy(() => import("@/pages/admin/MediaSkriptGenerator"));
+const DozentenLoesungen = lazy(() => import("@/pages/admin/DozentenLoesungen"));
+const FragenManager = lazy(() => import("@/pages/admin/FragenManager"));
+const Fallstudien = lazy(() => import("@/pages/Fallstudien"));
+const Flashcards = lazy(() => import("@/pages/Flashcards"));
+const ExposeTrainer = lazy(() => import("@/pages/ExposeTrainer"));
+const DokumentViewer = lazy(() => import("@/pages/DokumentViewer"));
+const ContentUpload = lazy(() => import("@/pages/admin/ContentUpload"));
+const Kurse = lazy(() => import("@/pages/Kurse"));
+const ZahlungErfolgreich = lazy(() => import("@/pages/ZahlungErfolgreich"));
+const Widerruf = lazy(() => import("@/pages/Widerruf"));
+const Bildungskonzept = lazy(() => import("@/pages/Bildungskonzept"));
+const UserManagement = lazy(() => import("@/pages/admin/UserManagement"));
+const Module3Detail = lazy(() => import("@/pages/modules/Module3Detail"));
+const Module4Detail = lazy(() => import("@/pages/modules/Module4Detail"));
+const Module5Detail = lazy(() => import("@/pages/modules/Module5Detail"));
+const Module2Detail = lazy(() => import("@/pages/modules/Module2Detail"));
+const Module1Detail = lazy(() => import("@/pages/modules/Module1Detail"));
+const Module1WithIntro = lazy(() => import("@/pages/modules/Module1WithIntro"));
+const Module2WithIntro = lazy(() => import("@/pages/modules/Module2WithIntro"));
+const Module3WithIntro = lazy(() => import("@/pages/modules/Module3WithIntro"));
+const Module4WithIntro = lazy(() => import("@/pages/modules/Module4WithIntro"));
+const Module5WithIntro = lazy(() => import("@/pages/modules/Module5WithIntro"));
 import ModuleGuard from "@/components/ModuleGuard";
-import Syllabus from "@/pages/Syllabus";
-import Glossary from "@/pages/Glossary";
-import UserGuide from "@/pages/UserGuide";
-import Rechner from "@/pages/Rechner";
-import Calculators from "@/pages/Calculators";
-import Certificates from "@/pages/Certificates";
+const Syllabus = lazy(() => import("@/pages/Syllabus"));
+const Glossary = lazy(() => import("@/pages/Glossary"));
+const UserGuide = lazy(() => import("@/pages/UserGuide"));
+const Rechner = lazy(() => import("@/pages/Rechner"));
+const Calculators = lazy(() => import("@/pages/Calculators"));
+const Certificates = lazy(() => import("@/pages/Certificates"));
 import ComplaintForm from "@/components/ComplaintForm";
 import FeedbackWidget from "@/components/FeedbackWidget";
-import Dashboard from "@/pages/Dashboard";
+const Dashboard = lazy(() => import("@/pages/Dashboard"));
 import QuizPage from "@/pages/QuizPage";
 import Quiz from "@/pages/Quiz";
 import GamificationDashboard from "@/pages/GamificationDashboard";
@@ -87,7 +87,8 @@ function Router() {
       <Toaster />
       <CookieConsent />
         <StructuredData />
-        <Switch>
+        <Suspense fallback={<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:"18px",color:"#64748b"}}>Laden...</div>}>
+      <Switch>
           <Route path="/login" component={LoginPage} />
           <Route path="/" component={Home} />
           
@@ -174,6 +175,7 @@ function Router() {
           
           <Route component={NotFound} />
         </Switch>
+      </Suspense>
         <Footer />
       </DashboardLayout>
   );
