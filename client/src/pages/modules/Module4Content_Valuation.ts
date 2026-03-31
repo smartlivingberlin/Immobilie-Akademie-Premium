@@ -3,7 +3,8 @@ export const contentDataModule4: Record<string, {
   theory: string;
   law: string[];
   practice: string;
-  task: string;
+  task?: string;
+  tasks?: Array<{type?: string; question: string; hint?: string}>;
   type?: string;
 }> = {
   // Block 1: Grundlagen & Markt (Tag 1-4)
