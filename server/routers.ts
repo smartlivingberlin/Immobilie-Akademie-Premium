@@ -4,7 +4,7 @@ import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
-import { questionBank } from "../drizzle/schema";
+import { questionBank, users } from "../drizzle/schema";
 import { 
   createChatConversation, 
   addChatMessage, 
@@ -20,7 +20,9 @@ import {
   getWhitelabelConfigForUser,
   assignUserToTenant,
   getUsersByTenantId
+  getDb,
 } from "./db";
+import { eq } from "drizzle-orm";
 import { invokeLLM } from "./_core/llm";
 import { storagePut } from "./storage";
 import { videoRouter } from "./videoRouter";
@@ -66,6 +68,29 @@ export const appRouter = router({
   azav: azavRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
+    completeOnboarding: protectedProcedure
+      .input(z.object({
+        learningGoal: z.string(),
+        dailyMinutes: z.number(),
+        preferredTime: z.string(),
+        experienceLevel: z.string(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        if (!ctx.user?.id) throw new TRPCError({ code: 'UNAUTHORIZED' });
+        const db = await getDb();
+        if (!db) throw new TRPCError({ code: 'INTERNAL_SERVER_ERROR' });
+        await db.update(users)
+          .set({
+            onboardingCompleted: 1,
+            learningGoal: input.learningGoal,
+            dailyMinutes: input.dailyMinutes,
+            preferredTime: input.preferredTime,
+            experienceLevel: input.experienceLevel,
+          })
+          .where(eq(users.id, ctx.user.id));
+        return { success: true };
+      }),
+
     logout: publicProcedure.mutation(({ ctx }) => {
       const cookieOptions = getSessionCookieOptions(ctx.req);
       ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });

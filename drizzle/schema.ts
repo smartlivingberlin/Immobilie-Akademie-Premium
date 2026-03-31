@@ -12,6 +12,11 @@ export const users = mysqlTable("users", {
   loginMethod: varchar("loginMethod", { length: 64 }),
   role: mysqlEnum("role", ["user", "admin", "trainer"]).default("user").notNull(),
   enabledModules: varchar("enabledModules", { length: 255 }).default("1").notNull(),
+  onboardingCompleted: int("onboardingCompleted").default(0),
+  learningGoal: varchar("learningGoal", { length: 64 }),
+  dailyMinutes: int("dailyMinutes").default(30),
+  preferredTime: varchar("preferredTime", { length: 32 }),
+  experienceLevel: varchar("experienceLevel", { length: 32 }),
   /** Links user to a specific White-Label tenant (null = default/owner tenant) */
   tenantId: int("tenantId"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
