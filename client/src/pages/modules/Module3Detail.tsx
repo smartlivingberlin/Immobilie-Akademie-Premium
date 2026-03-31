@@ -44,12 +44,13 @@ import { contentDataModule3MaximalPart2Extended } from "./Module3Content_Maximal
 import { contentDataModule3MaximalPart3 } from "./Module3Content_Maximal_Part3";
 import { contentDataModule3MaximalPart3Extended } from "./Module3Content_Maximal_Part3_Extended";
 import { contentDataModule3MaximalPart4 } from "./Module3Content_Maximal_Part4";
-import { contentDataModule3MaximalMissingDays } from "./Module3Content_Maximal_MissingDays";
+import { contentDataModule3MaximalMissingDays, module3MissingDays41_42 } from "./Module3Content_Maximal_MissingDays";
 
 // Merge all content parts
 export const contentDataModule3 = {
   ...contentDataModule3MaximalPart1,
   ...contentDataModule3MaximalMissingDays,
+  ...module3MissingDays41_42,
   ...contentDataModule3MaximalPart2,
   ...contentDataModule3MaximalPart2Extended,
   ...contentDataModule3MaximalPart3,

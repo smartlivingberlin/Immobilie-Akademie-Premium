@@ -1981,3 +1981,180 @@ Nach Abschluss der Sanierung erfolgt die Abnahme. Der Verwalter prüft gemeinsam
 `
   }
 };
+
+export const module3MissingDays41_42 = {
+  day_41: {
+    title: "Hausgeldabrechnung: Grundlagen und Pflichten",
+    theory: `Die Hausgeldabrechnung ist das zentrale Finanzdokument der WEG-Verwaltung. Jeder Eigentümer zahlt monatlich Hausgeld als Vorauszahlung auf die gemeinschaftlichen Kosten. Die jährliche Abrechnung zeigt ob zu viel oder zu wenig gezahlt wurde.`,
+    extendedTheory: `## Hausgeldabrechnung — Das Herzstück der WEG-Verwaltung
+
+### Was ist Hausgeld?
+Hausgeld ist die monatliche Vorauszahlung jedes Wohnungseigentümers auf die laufenden Kosten der Wohnanlage. Es deckt:
+- Laufende Betriebskosten (Strom, Wasser, Heizung)
+- Verwaltungskosten (Verwalterhonorar, Versicherungen)
+- Instandhaltungsrücklage (Pflichtanteil nach § 19 Abs. 2 Nr. 4 WEG)
+- Eventuelle Sonderumlagen
+
+### Struktur der Jahresabrechnung (§ 28 Abs. 2 WEG)
+Die Jahresabrechnung besteht aus:
+
+**1. Gesamtabrechnung**
+Alle Einnahmen und Ausgaben der Gemeinschaft im Abrechnungsjahr — unabhängig von der Verteilung auf Eigentümer.
+
+**2. Einzelabrechnungen**
+Anteilige Kosten für jeden einzelnen Eigentümer basierend auf dem Verteilerschlüssel (meist Miteigentumsanteile, MEA).
+
+**3. Vermögensbericht (§ 28 Abs. 4 WEG)**
+Seit WEG-Reform 2020 Pflicht: Zeigt aktuellen Stand der Rücklagen und Verbindlichkeiten.
+
+### Verteilerschlüssel
+- **Miteigentumsanteile (MEA):** Standard für die meisten Kosten
+- **Wohnfläche:** Häufig bei Heizkosten (HeizkostenV)
+- **Personenanzahl:** Selten, für Wasserkosten möglich
+- **Verbrauch:** Bei Einzelzählern (Heizkostenabrechnung)
+
+### Heizkosten-Besonderheit (HeizkostenV)
+Mindestens 50%, höchstens 70% nach Verbrauch abrechnen — Rest nach Wohnfläche. Verstoß: Kürzungsrecht des Eigentümers um 15%.
+
+### Fristen
+- Abrechnung bis spätestens 31. März des Folgejahres
+- Eigentümerversammlung zur Genehmigung
+- Nachzahlungen/Guthaben nach Beschlussfassung fällig
+
+### Häufige Fehler in der Abrechnung
+1. Falscher Verteilerschlüssel
+2. Fehlende Einzelabrechnungen
+3. Falsche Rücklagenzuordnung
+4. Vergessene Einnahmen (Versicherungserstattungen)
+5. Kein Vermögensbericht`,
+    law: [
+      "§ 28 WEG — Wirtschaftsplan, Rechnungslegung, Vermögensbericht: https://www.gesetze-im-internet.de/woeigg/__28.html",
+      "§ 19 WEG — Ordnungsmäßige Verwaltung: https://www.gesetze-im-internet.de/woeigg/__19.html",
+      "Heizkostenverordnung (HeizkostenV): https://www.gesetze-im-internet.de/heizkostenv/",
+    ],
+    practice: `Praxisfall Hausgeldabrechnung:
+Eine WEG mit 10 Wohnungen (gesamt 800 m²) hat folgende Jahreskosten:
+- Versicherungen: 4.800€
+- Hausmeister: 6.000€ 
+- Strom Gemeinschaft: 1.200€
+- Heizung gesamt: 12.000€ (davon 7.200€ nach Verbrauch, 4.800€ nach Fläche)
+- Verwalterhonorar: 3.600€
+- Rücklage: 4.800€
+
+Wohnung Nr. 3: 85 m², MEA: 110/1000, Heizverbrauch: 12% des Gesamtverbrauchs
+
+Aufgabe: Berechnen Sie das Hausgeld für Wohnung Nr. 3.`,
+    tasks: [
+      {
+        type: "calculation",
+        question: "Eine WEG hat 8 Einheiten. Jahreskosten 48.000€. Wohnung A hat 95 MEA von 1000. Vorauszahlung war 450€/Monat. Ergebnis der Jahresabrechnung für Wohnung A?",
+        hint: "Anteil = 95/1000 × 48.000€. Dann mit geleisteten Vorauszahlungen vergleichen."
+      },
+      {
+        type: "case",
+        question: "Eigentümer Müller beschwert sich: 'Die Abrechnung stimmt nicht — Heizkosten wurden nur nach Fläche verteilt, obwohl Zähler vorhanden sind.' Hat er Recht? Welche Konsequenz hat ein Verstoß gegen die HeizkostenV?",
+        hint: "HeizkostenV § 12: Kürzungsrecht bei Verstoß gegen Verbrauchserfassung"
+      },
+      {
+        type: "reflection",
+        question: "Warum ist der Vermögensbericht seit der WEG-Reform 2020 Pflicht? Welchen Mehrwert schafft er für Eigentümer und Käufer?",
+        hint: "Transparenz über Rücklagensituation — relevant für Kaufentscheidungen"
+      }
+    ],
+    quiz: [
+      {
+        question: "Wie hoch muss der verbrauchsabhängige Anteil bei der Heizkostenabrechnung mindestens sein?",
+        options: ["30%", "50%", "70%", "100%"],
+        answer: "1",
+        explanation: "§ 7 HeizkostenV: Mindestens 50%, höchstens 70% nach Verbrauch — Rest nach Wohnfläche."
+      }
+    ]
+  },
+
+  day_42: {
+    title: "Sonderumlage und Wirtschaftsplan: Planung und Durchsetzung",
+    theory: `Wenn die regulären Rücklagen nicht ausreichen oder unvorhergesehene Kosten entstehen, beschließt die Eigentümerversammlung eine Sonderumlage. Der Wirtschaftsplan legt fest was im kommenden Jahr geplant ist und wie hoch das Hausgeld sein wird.`,
+    extendedTheory: `## Sonderumlage und Wirtschaftsplan
+
+### Der Wirtschaftsplan (§ 28 Abs. 1 WEG)
+Der Verwalter erstellt jährlich einen Wirtschaftsplan der enthält:
+- Voraussichtliche Einnahmen und Ausgaben
+- Beitragsleistungen der Eigentümer (Hausgeld)
+- Beiträge zur Instandhaltungsrücklage
+
+**Ablauf:**
+1. Verwalter erstellt Entwurf (bis Oktober/November)
+2. Beirat prüft und berät
+3. Eigentümerversammlung beschließt (einfache Mehrheit)
+4. Ab 1. Januar gilt der neue Plan
+
+**Vorschuss vs. Vorauszahlung:**
+Der beschlossene Wirtschaftsplan begründet Vorauszahlungspflichten. Zahlt ein Eigentümer nicht, kann die Gemeinschaft gerichtlich vollstrecken — auch ohne Mahnung!
+
+### Die Sonderumlage
+Eine Sonderumlage wird beschlossen wenn:
+- Unvorhergesehene Reparaturen anfallen (Dach, Fassade, Heizung)
+- Die Rücklage nicht ausreicht
+- Sofortmaßnahmen finanziert werden müssen
+
+**Rechtliche Grundlage:** § 19 Abs. 2 Nr. 4 WEG i.V.m. Mehrheitsbeschluss
+
+**Verteilung:** Nach Miteigentumsanteilen (MEA) — außer die Gemeinschaft beschließt einen anderen Schlüssel
+
+**Zahlungspflicht:** Mit Beschlussfassung — nicht erst nach Fälligkeit der Kosten!
+
+### Anfechtung von Beschlüssen
+Eigentümer können Beschlüsse über Sonderumlage oder Wirtschaftsplan anfechten:
+- Frist: 1 Monat ab Beschluss (§ 45 WEG)
+- Klage beim Amtsgericht (Ort der Immobilie)
+- Keine aufschiebende Wirkung: Zahlen trotzdem!
+
+### Praxisproblem: Zahlungsausfall
+Zahlt ein Eigentümer nicht:
+1. Mahnung (formlos möglich)
+2. Beschluss über gerichtliche Beitreibung
+3. Mahnverfahren oder Klage
+4. Vollstreckung ins Grundbuch möglich (§ 10 Abs. 3 ZVG)
+
+### Besonderheit: Erwerber haftet mit
+Wer eine Eigentumswohnung kauft, haftet für rückständiges Hausgeld des Voreigentümers bis zu einem bestimmten Betrag — wichtig bei der Due Diligence!`,
+    law: [
+      "§ 28 WEG — Wirtschaftsplan: https://www.gesetze-im-internet.de/woeigg/__28.html",
+      "§ 19 WEG — Ordnungsmäßige Verwaltung: https://www.gesetze-im-internet.de/woeigg/__19.html",
+      "§ 45 WEG — Anfechtungsklage: https://www.gesetze-im-internet.de/woeigg/__45.html",
+      "§ 10 Abs. 3 ZVG — Haftung des Erwerbers: https://www.gesetze-im-internet.de/zvg/__10.html",
+    ],
+    practice: `Praxisfall Sonderumlage:
+In einer WEG mit 12 Einheiten (MEA gesamt: 1000) muss das Dach repariert werden. Kosten laut Angebot: 84.000€. Die Instandhaltungsrücklage beträgt nur 22.000€.
+
+Eigentümer Schmidt (MEA: 95) fragt:
+1. Wie hoch ist seine Sonderumlage?
+2. Wann muss er zahlen?
+3. Kann er die Zahlung verweigern bis er das Protokoll erhalten hat?`,
+    tasks: [
+      {
+        type: "calculation",
+        question: "WEG mit 6 Einheiten beschließt Sonderumlage von 36.000€. Eigentümer Bauer: MEA 180/1000. Wie hoch ist seine Sonderumlage? Wann ist sie fällig?",
+        hint: "180/1000 × 36.000€. Fälligkeit: gemäß Beschluss, oft sofort oder innerhalb 4 Wochen."
+      },
+      {
+        type: "case",
+        question: "Eigentümerin Weber verweigert die Sonderumlage weil sie den Beschluss für zu teuer hält. Sie hat nicht gegen den Beschluss gestimmt und ihn auch nicht angefochten. Was sind die Konsequenzen?",
+        hint: "Bestandskräftiger Beschluss — Anfechtungsfrist abgelaufen. Vollstreckung möglich."
+      },
+      {
+        type: "reflection",
+        question: "Ein Wohnungskäufer fragt Sie: 'Ich kaufe die Wohnung im März. Im Januar wurde eine Sonderumlage beschlossen. Muss ich die zahlen?' Wie antworten Sie?",
+        hint: "§ 10 Abs. 3 ZVG: Erwerber haftet für laufendes Jahr und Vorjahr. Due Diligence wichtig!"
+      }
+    ],
+    quiz: [
+      {
+        question: "Wie lange beträgt die Anfechtungsfrist für WEG-Beschlüsse?",
+        options: ["2 Wochen", "1 Monat", "3 Monate", "6 Monate"],
+        answer: "1",
+        explanation: "§ 45 WEG: Die Anfechtungsklage muss innerhalb eines Monats nach Beschlussfassung erhoben werden."
+      }
+    ]
+  }
+};
