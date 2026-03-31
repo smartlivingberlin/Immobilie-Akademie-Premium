@@ -81,13 +81,31 @@ export function useActivityHeartbeat({
     activityEvents.forEach(evt => window.addEventListener(evt, updateActivity, { passive: true }));
 
     // Heartbeat-Intervall starten
+    // ERKLÄRUNG: Alle 60 Sekunden prüfen ob Nutzer noch aktiv ist
+    // Wenn ja: Heartbeat senden UND aktuelle Lernzeit speichern
+    // Das verhindert Datenverlust wenn Browser Tab einfach zugemacht wird
     intervalRef.current = setInterval(() => {
       const msSinceActivity = Date.now() - lastActivityRef.current.getTime();
       if (msSinceActivity > INACTIVITY_THRESHOLD_MS) {
-        // Nutzer inaktiv – kein Heartbeat senden
+        // Nutzer inaktiv seit mehr als 90 Sekunden – kein Heartbeat
         return;
       }
+      // Heartbeat senden (AZAV-Anwesenheitsnachweis)
       heartbeatMutation.mutate({ moduleId, dayId });
+      
+      // ZUSÄTZLICH: Aktuelle Lernzeit zwischenspeichern
+      // Falls Browser abstürzt oder Tab geschlossen wird ohne beforeunload
+      if (logIdRef.current && openedAtRef.current) {
+        const currentDuration = Math.floor(
+          (Date.now() - openedAtRef.current.getTime()) / 1000
+        );
+        // Lernzeit im Hintergrund aktualisieren (kein await nötig)
+        closeDayMutation.mutate({
+          logId: logIdRef.current,
+          durationSeconds: currentDuration,
+          completed: false, // noch nicht abgeschlossen
+        });
+      }
     }, HEARTBEAT_INTERVAL_MS);
 
     // Beim Verlassen: Log schließen
