@@ -17,7 +17,7 @@ import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
 
 export default function Dashboard() {
-  const { data: dbProgress, isLoading } = trpc.trpc.progress.getProgress.useQuery();
+  const { data: dbProgress, isLoading } = trpc.progress.getProgress.useQuery();
 
   const modules = [
     { id: 1, name: "Modul 1: Einführung", days: 20, color: "bg-blue-500", lightColor: "bg-blue-100", textColor: "text-blue-700" },
