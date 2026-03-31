@@ -40,13 +40,7 @@ app.use(helmet({
       objectSrc: ["'none'"],
       upgradeInsecureRequests: [],
     },
-  },
-  permissionsPolicy: {
-    features: {
-      camera: [],
-      microphone: ["'self'"],
-      geolocation: [],
-    }
+  }
   }
 }));
 
