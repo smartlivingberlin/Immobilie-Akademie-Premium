@@ -345,8 +345,10 @@ const currentContent = allContent[selectedDay as keyof typeof allContent] || all
                   <TabsContent value="theory" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
                     <FullscreenContent content={<SmartContent content={currentContent.theory} />} title={`Theorie: ${currentContent.title}`} />
                     <div className="content-container prose prose-slate max-w-none break-words prose-headings:text-slate-900 prose-a:text-blue-600 prose-strong:text-slate-900">
+                      <>
                       <AudioPlayer text={currentContent.theory} label="Theorie vorlesen" />
                       <SmartContent content={currentContent.theory} />
+                      </>
                       {(currentContent as any).extendedTheory && (
                         <SmartContent content={(currentContent as any).extendedTheory} />
                       )}
