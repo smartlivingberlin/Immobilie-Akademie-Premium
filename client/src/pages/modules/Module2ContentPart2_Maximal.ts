@@ -5,7 +5,7 @@ export const contentDataPart2Maximal: Record<string, {
   title: string;
   theory: string;
   law: string[];
-  practice: string | Array<{question: string; solution: string}>;
+  practice: any;
   task?: string;
   tasks?: Array<{type?: string; question: string; hint?: string}>;
   quiz?: Array<{question: string; options?: string[]; answer?: string; explanation?: string}>;
@@ -153,7 +153,7 @@ Verkehrswert: 5.926 × 72 m² = 426.672 € → gerundet 427.000 €
 
 IHK-Merksatz: Immer auf volle 1.000 € runden!
     `,
-    task: [
+    practice: `Praxisfall:
       {
         question: `Aufgabe 1 — Grundberechnung (IHK-Niveau):
 Eine 3-Zimmer-ETW in Berlin-Neukölln, 68 m², soll bewertet werden.
@@ -322,7 +322,7 @@ Der Käufer kauft den zukünftigen Zahlungsstrom (Miete). Der Boden wird nur ver
 MFH, Miete 5€/qm. Markt 10€/qm.
 **Bewertung:** Man darf mit der *marktüblichen* Miete rechnen, wenn eine Erhöhung rechtlich möglich ist. Sonst Abschläge ("Over-Rented" vs "Under-Rented").
     `,
-    task: [
+    practice: `Praxisfall:
       {
         question: `Aufgabe 1 — Vollständige Ertragswertberechnung (IHK-Niveau):
 MFH in Berlin-Neukölln, 6 Wohneinheiten, Baujahr 1968

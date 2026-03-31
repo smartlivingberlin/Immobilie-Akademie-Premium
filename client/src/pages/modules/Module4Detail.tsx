@@ -301,7 +301,7 @@ const currentContent = allContent[selectedDay as keyof typeof allContent] || all
                   <div>
                     <CardTitle className="text-2xl text-slate-900">{currentContent.title}</CardTitle>
                     <CardDescription className="mt-1">
-                      Tag {currentDayNum} • {currentContent.type || "Lerneinheit"}
+                      Tag {currentDayNum} • {(currentContent as any).type || "Lerneinheit"}
                     </CardDescription>
                   </div>
                   {currentDayNum === 20 && (
