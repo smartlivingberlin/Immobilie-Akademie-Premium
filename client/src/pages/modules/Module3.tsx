@@ -424,5 +424,6 @@ export default function Module3() {
         moduleId={3}
         moduleContext="Modul 3"
       />
+    </div>
   );
 }

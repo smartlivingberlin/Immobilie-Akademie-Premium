@@ -50,6 +50,17 @@ app.use(helmet({
   }
 }));
 
+// Login Rate Limiter — verhindert Brute-Force Angriffe
+// Erklärt: Nach 10 falschen Versuchen in 15 Minuten wird die IP gesperrt
+// Das schützt alle Nutzerkonten vor automatisierten Passwort-Angriffen
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 Minuten
+  max: 10, // max 10 Versuche
+  message: { error: "Zu viele Login-Versuche. Bitte warte 15 Minuten." },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
 const aiLimiter = rateLimit({
   windowMs: 60 * 1000,
   max: 15,
@@ -58,6 +69,8 @@ const aiLimiter = rateLimit({
   legacyHeaders: false,
 });
 app.use("/api/ai", aiLimiter);
+app.use("/api/auth/login", loginLimiter);
+app.use("/api/auth/register", loginLimiter);
   const server = createServer(app);
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
