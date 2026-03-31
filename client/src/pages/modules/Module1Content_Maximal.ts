@@ -169,7 +169,7 @@ Herr M. (45) ist Bankkaufmann und will sich als Immobilienmakler selbstständig 
 **Voraussetzungen:**
 - Erlaubnis nach §34c GewO (Zuverlässigkeit, geordnete Vermögensverhältnisse)
 - KEINE fachliche Prüfung erforderlich (aber empfohlen)
-- Weiterbildungspflicht: 20 Stunden in 3 Jahren
+- Weiterbildungspflicht: 20 Stunden in 3 Jahren (§34c Abs. 2a GewO, §15b MaBV) ⚠️ **Aktuell (Stand 2025/2026):** Das Bundeskabinett hat am 5.11.2025 beschlossen, diese Weiterbildungspflicht abzuschaffen (Bürokratierückbau-Gesetz). Bis zur Verkündung im Bundesgesetzblatt gilt noch die alte Regelung.
 
 **Verdienstmöglichkeiten:**
 - Provision: 3-7% vom Kaufpreis (je nach Region und Marktsegment)
@@ -1098,10 +1098,10 @@ Frau L. ist Eigentümerin einer Ferienwohnung in den Alpen. Sie vermietet die Wo
 
 **Wichtig:** Die Versicherung muss VOR Aufnahme der Tätigkeit bestehen!
 
-**4. Weiterbildungspflicht (MaBV § 15b)**
+**4. Weiterbildungspflicht (MaBV § 15b) — Abschaffung geplant!**
 
 **Seit 2018:**
-- 20 Stunden Weiterbildung innerhalb von 3 Jahren
+- 20 Stunden Weiterbildung innerhalb von 3 Jahren ⚠️ **Aktuell (Stand 2025/2026):** Das Bundeskabinett hat am 5.11.2025 beschlossen, diese Weiterbildungspflicht abzuschaffen (Bürokratierückbau-Gesetz). Bis zur Verkündung im Bundesgesetzblatt gilt noch die alte Regelung.
 - Nachweis durch Teilnahmebescheinigungen
 - Keine Prüfung erforderlich ("Sitzschein")
 

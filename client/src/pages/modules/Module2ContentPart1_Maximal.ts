@@ -30,7 +30,7 @@ Wer gewerbsmäßig Immobilien vermitteln will, braucht eine behördliche Erlaubn
 Anders als oft vermutet, ist *keine* fachliche Prüfung (Sachkundenachweis) nötig, um die Erlaubnis zu erhalten. Das führt zu einer niedrigen Markteintrittsbarriere, aber auch zu großen Qualitätsunterschieden am Markt.
 
 **3. Weiterbildungspflicht**
-Seit 2018 müssen Makler jedoch 20 Stunden Weiterbildung innerhalb von 3 Jahren nachweisen (MaBV). Dies ist eine reine "Sitzschein"-Pflicht, keine Prüfung.
+Seit 2018 müssen Makler 20 Stunden Weiterbildung innerhalb von 3 Jahren nachweisen (§34c Abs. 2a GewO, §15b MaBV). ⚠️ **Aktuell (Stand 2025/2026):** Das Bundeskabinett hat am 5.11.2025 beschlossen, diese Weiterbildungspflicht abzuschaffen (Bürokratierückbau-Gesetz). Bis zur Verkündung im Bundesgesetzblatt gilt noch die alte Regelung.
     `,
     law: ["§ 34c GewO", "MaBV § 15b (Weiterbildung)"],
     practice: "Recherchieren Sie bei Ihrem lokalen Ordnungsamt/Gewerbeamt: Welche Unterlagen werden genau gefordert und was kostet die Erlaubnis?",
@@ -114,7 +114,7 @@ Wer Bauträgergeschäfte macht, muss jährlich einen Prüfbericht (Wirtschaftspr
     ],
     caseStudy: `
 **Fall: Die fehlende Weiterbildung**
-Makler M wird geprüft. Er kann für die Jahre 2021-2023 keine 20 Stunden Weiterbildung nachweisen.
+Makler M wird geprüft. Er kann für die Jahre 2021-2023 keine 20 Stunden Weiterbildung nachweisen. Hinweis: Ab Inkrafttreten des Bürokratierückbau-Gesetzes entfällt diese Pflicht — der Fall bleibt für bereits laufende Prüfverfahren relevant.
 **Folge:** Bußgeld (bis 5.000 €). Bei Wiederholung droht der Widerruf der §34c-Erlaubnis wegen Unzuverlässigkeit.
     `,
     task: "Recherchieren Sie 3 anerkannte Weiterbildungsanbieter für Makler.",
