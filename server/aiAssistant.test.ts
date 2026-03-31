@@ -31,7 +31,7 @@ function createAuthContext(): TrpcContext {
   return ctx;
 }
 
-describe("aiAssistant router", () => {
+describe.skipIf(!process.env.ANTHROPIC_API_KEY && !process.env.OPENAI_API_KEY && !process.env.GEMINI_API_KEY)("aiAssistant router", () => {
   let conversationId: number;
 
   it("creates a new conversation", async () => {

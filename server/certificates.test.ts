@@ -84,7 +84,8 @@ describe("Certificate Generation", () => {
 
     expect(result).not.toBeNull();
     expect(result?.certificateId).toBeGreaterThan(0);
-    expect(result?.pdfUrl).toContain("https://");
+    // URL kann S3 (https://) oder lokaler Storage (/api/storage/) sein
+    expect(result?.pdfUrl).toMatch(/https:\/\/|\/api\/storage\//);
     expect(result?.pdfUrl).toContain(".pdf");
   });
 
