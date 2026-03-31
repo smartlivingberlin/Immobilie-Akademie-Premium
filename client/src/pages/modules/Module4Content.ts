@@ -8,6 +8,7 @@ export const contentDataModule4: Record<string, {
   practice: string;
   task?: string;
   tasks?: Array<{type?: string; question: string; hint?: string}>;
+  quiz?: Array<{question: string; options?: string[]; answer?: string; explanation?: string}>;
   type?: string;
 }> = {
   // Woche 1: Grundlagen der Bewertung (Tag 1-5)

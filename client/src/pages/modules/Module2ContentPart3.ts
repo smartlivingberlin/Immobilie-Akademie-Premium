@@ -8,6 +8,7 @@ export const contentDataPart3: Record<string, {
   practice: string;
   task?: string;
   tasks?: Array<{type?: string; question: string; hint?: string}>;
+  quiz?: Array<{question: string; options?: string[]; answer?: string; explanation?: string}>;
   type?: string;
 }> = {
   // Woche 9-10: Marketing & Digitalisierung (Tag 41-50)
