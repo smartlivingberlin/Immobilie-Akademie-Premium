@@ -16,8 +16,12 @@ import {
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
 
+import OnboardingWizard from "@/components/OnboardingWizard";
+
 export default function Dashboard() {
+  const { data: user, refetch: refetchUser } = trpc.auth.me.useQuery();
   const { data: dbProgress, isLoading } = trpc.progress.getProgress.useQuery();
+  const showOnboarding = user && !user.onboardingCompleted;
 
   const modules = [
     { id: 1, name: "Modul 1: Einführung", days: 20, color: "bg-blue-500", lightColor: "bg-blue-100", textColor: "text-blue-700" },
@@ -53,6 +57,10 @@ export default function Dashboard() {
         year: "numeric",
       })
     : "Keine Aktivität";
+
+  if (showOnboarding) {
+    return <OnboardingWizard onComplete={() => refetchUser()} />;
+  }
 
   return (
     <div className="container mx-auto py-8 space-y-8">
