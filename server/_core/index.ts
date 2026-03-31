@@ -27,7 +27,28 @@ import { seedQuizQuestionsIfEmpty } from "../seed-quiz";
 
 async function startServer() {
   const app = express();
-app.use(helmet({ contentSecurityPolicy: false }));
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://js.stripe.com"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      imgSrc: ["'self'", "data:", "https:", "blob:"],
+      connectSrc: ["'self'", "https://api.stripe.com", "https://api.anthropic.com", "https://generativelanguage.googleapis.com"],
+      frameSrc: ["'self'", "https://js.stripe.com", "https://hooks.stripe.com"],
+      fontSrc: ["'self'", "data:"],
+      objectSrc: ["'none'"],
+      upgradeInsecureRequests: [],
+    },
+  },
+  permissionsPolicy: {
+    features: {
+      camera: [],
+      microphone: ["'self'"],
+      geolocation: [],
+    }
+  }
+}));
 
 const aiLimiter = rateLimit({
   windowMs: 60 * 1000,
