@@ -384,7 +384,60 @@ export default function Datenschutz() {
             Endgerät gespeichert.
           </p>
 
-          <h2>9. Änderung dieser Datenschutzerklärung</h2>
+
+          <h2>9. Drittanbieter und Auftragsverarbeiter</h2>
+
+          <h3>Stripe (Zahlungsabwicklung)</h3>
+          <p>
+            Für die Abwicklung von Zahlungen nutzen wir den Dienst Stripe. Anbieter ist die Stripe, Inc.,
+            510 Townsend Street, San Francisco, CA 94103, USA. Stripe verarbeitet Ihre Zahlungsdaten
+            (Kreditkartennummer, Bankverbindung) zur Durchführung des Zahlungsvorgangs. Die Verarbeitung
+            erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung). Stripe ist nach dem
+            EU-US Data Privacy Framework zertifiziert. Weitere Informationen finden Sie in der
+            Datenschutzerklärung von Stripe unter: https://stripe.com/de/privacy
+          </p>
+
+          <h3>Anthropic (KI-Tutor)</h3>
+          <p>
+            Unser Portal nutzt den KI-Dienst Claude der Anthropic, PBC, 548 Market St., PMB 90375,
+            San Francisco, CA 94104, USA. Wenn Sie den KI-Tutor nutzen, werden Ihre Eingaben (Fragen,
+            Texte) zur Verarbeitung an Anthropic übermittelt. Anthropic verarbeitet diese Daten zur
+            Generierung von Antworten. Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b
+            DSGVO (Vertragserfüllung) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der
+            Bereitstellung eines KI-gestützten Lernangebots). Anthropic ist nach dem EU-US Data Privacy
+            Framework zertifiziert. Weitere Informationen: https://www.anthropic.com/privacy
+          </p>
+          <p>
+            Wir empfehlen, keine personenbezogenen Daten Dritter in den KI-Tutor einzugeben.
+          </p>
+
+          <h3>Railway (Hosting)</h3>
+          <p>
+            Unsere Website wird auf der Infrastruktur der Railway Corp., 340 S Lemon Ave #4133, Walnut,
+            CA 91789, USA gehostet. Dabei werden Server-Log-Daten (IP-Adresse, Zugriffszeit, Browser)
+            verarbeitet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am
+            sicheren Betrieb). Railway ist nach dem EU-US Data Privacy Framework zertifiziert.
+          </p>
+
+          <h2>10. Ihre Rechte nach Art. 13 DSGVO (Betroffenenrechte)</h2>
+          <p>
+            Sie haben gegenüber uns folgende Rechte hinsichtlich der Sie betreffenden personenbezogenen Daten:
+          </p>
+          <ul>
+            <li><strong>Recht auf Auskunft</strong> (Art. 15 DSGVO): Sie können Auskunft über Ihre bei uns gespeicherten Daten verlangen.</li>
+            <li><strong>Recht auf Berichtigung</strong> (Art. 16 DSGVO): Sie können die Berichtigung unrichtiger Daten verlangen.</li>
+            <li><strong>Recht auf Löschung</strong> (Art. 17 DSGVO): Sie können die Löschung Ihrer Daten verlangen, soweit keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</li>
+            <li><strong>Recht auf Einschränkung</strong> (Art. 18 DSGVO): Sie können die Einschränkung der Verarbeitung Ihrer Daten verlangen.</li>
+            <li><strong>Recht auf Datenübertragbarkeit</strong> (Art. 20 DSGVO): Sie können Ihre Daten in einem maschinenlesbaren Format erhalten.</li>
+            <li><strong>Widerspruchsrecht</strong> (Art. 21 DSGVO): Sie können der Verarbeitung Ihrer Daten widersprechen.</li>
+            <li><strong>Recht auf Widerruf</strong> (Art. 7 Abs. 3 DSGVO): Eine erteilte Einwilligung können Sie jederzeit widerrufen.</li>
+            <li><strong>Beschwerderecht</strong> (Art. 77 DSGVO): Sie haben das Recht, sich bei der zuständigen Datenschutzaufsichtsbehörde zu beschweren. Zuständig ist der Berliner Beauftragte für Datenschutz und Informationsfreiheit, Friedrichstr. 219, 10969 Berlin.</li>
+          </ul>
+          <p>
+            Zur Ausübung Ihrer Rechte wenden Sie sich bitte an: info@immobilien-bildungsportal.de
+          </p>
+
+          <h2>11. Änderung dieser Datenschutzerklärung</h2>
           <p>
             Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen 
             Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen, 
