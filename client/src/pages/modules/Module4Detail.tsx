@@ -92,7 +92,7 @@ const weeks = [
 export default function Module4Detail() {
   const [match, params] = useRoute("/modul/4/tag/:day");
   const { toast } = useToast();
-  const urlDay = params?.day ? `day_${params.day}` : "day_1";
+  const urlDay = params?.day ? `day_${params.day}` : Object.keys(allContent)[0];
   
   // Define types for content structure
   interface Task {
@@ -153,7 +153,8 @@ export default function Module4Detail() {
   useActivityHeartbeat({ moduleId: 4, dayId: currentDayNum });
   
   // Get content for selected day
-  const currentContent = allContent[selectedDay as keyof typeof allContent] || allContent.day_1;
+  const firstDay = Object.keys(allContent)[0] as keyof typeof allContent;
+const currentContent = allContent[selectedDay as keyof typeof allContent] || allContent[firstDay];
 
   const handleQuizComplete = (score: number) => {
     if (score >= 50) {

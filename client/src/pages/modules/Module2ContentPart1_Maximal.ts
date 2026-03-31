@@ -5,7 +5,7 @@ export const contentDataPart1Maximal: Record<string, {
   title: string;
   theory: string;
   law: string[];
-  practice: string;
+  practice: string | Array<{question: string; solution: string}>;
   task?: string;
   tasks?: Array<{type?: string; question: string; hint?: string}>;
   quiz?: Array<{question: string; options?: string[]; answer?: string; explanation?: string}>;
