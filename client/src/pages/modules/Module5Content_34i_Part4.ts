@@ -9,6 +9,7 @@ export const contentDataModule5_34i_Part4: Record<string, {
   practice: string;
   task?: string;
   tasks?: Array<{type?: string; question: string; hint?: string}>;
+  quiz?: Array<{question: string; options?: string[]; answer?: string; explanation?: string}>;
   solution?: string;
   type?: string;
 }> = {

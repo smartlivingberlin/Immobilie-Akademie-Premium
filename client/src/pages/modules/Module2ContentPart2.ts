@@ -8,6 +8,7 @@ export const contentDataPart2: Record<string, {
   practice: string;
   task?: string;
   tasks?: Array<{type?: string; question: string; hint?: string}>;
+  quiz?: Array<{question: string; options?: string[]; answer?: string; explanation?: string}>;
   type?: string;
 }> = {
   // Woche 5-6: Vertiefung Recht & Bewertung (Tag 21-30)
