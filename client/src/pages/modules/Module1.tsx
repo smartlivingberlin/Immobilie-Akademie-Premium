@@ -12,6 +12,7 @@ import { AITutor } from "@/components/AITutor";
 export default function Module1() {
   const [tutorOpen, setTutorOpen] = React.useState(false);
   return (
+    <>
     <div className="space-y-8 animate-in fade-in duration-700">
       {/* Header */}
       <div className="space-y-4">
@@ -380,5 +381,6 @@ export default function Module1() {
         moduleId={1}
         moduleContext="Modul 1"
       />
+    </>
   );
 }
