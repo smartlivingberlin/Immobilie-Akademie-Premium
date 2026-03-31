@@ -1,29 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemag.org/schemas/sitemap/0.9">
-
-  <url>
-    <loc>https://immobilie-akademie-production.up.railway.app/</loc>
-    <lastmod>2026-03-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>https://immobilie-akademie-production.up.railway.app/lehrplan</loc>
-    <lastmod>2026-03-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://immobilie-akademie-production.up.railway.app/glossar</loc>
-    <lastmod>2026-03-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://immobilie-akademie-production.up.railway.app/login</loc>
-    <lastmod>2026-03-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://immobilie-akademie-production.up.railway.app/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://immobilie-akademie-production.up.railway.app/kurse</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://immobilie-akademie-production.up.railway.app/lehrplan</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://immobilie-akademie-production.up.railway.app/glossary</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://immobilie-akademie-production.up.railway.app/login</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://immobilie-akademie-production.up.railway.app/bildungskonzept</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://immobilie-akademie-production.up.railway.app/rechner</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://immobilie-akademie-production.up.railway.app/finanzierungsrechner</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://immobilie-akademie-production.up.railway.app/lernkarten</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://immobilie-akademie-production.up.railway.app/fallstudien</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://immobilie-akademie-production.up.railway.app/expose-trainer</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://immobilie-akademie-production.up.railway.app/modul/1</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://immobilie-akademie-production.up.railway.app/modul/2</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://immobilie-akademie-production.up.railway.app/modul/3</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://immobilie-akademie-production.up.railway.app/modul/4</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://immobilie-akademie-production.up.railway.app/modul/5</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://immobilie-akademie-production.up.railway.app/impressum</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://immobilie-akademie-production.up.railway.app/datenschutz</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://immobilie-akademie-production.up.railway.app/agb</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://immobilie-akademie-production.up.railway.app/widerruf</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>
