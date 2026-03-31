@@ -380,6 +380,5 @@ export default function Module1() {
         moduleId={1}
         moduleContext="Modul 1"
       />
-    </div>
   );
 }

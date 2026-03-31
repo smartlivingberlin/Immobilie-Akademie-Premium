@@ -86,6 +86,5 @@ export default function Module2() {
         moduleId={2}
         moduleContext="Modul 2"
       />
-    </div>
   );
 }

@@ -137,6 +137,5 @@ export default function Module5() {
         moduleId={5}
         moduleContext="Modul 5"
       />
-    </div>
   );
 }
