@@ -351,11 +351,11 @@ const currentContent = allContent[selectedDay as keyof typeof allContent] || all
                     </div>
 
                     {/* Solution Accordion */}
-                    {currentContent.solution && (
+                    {(currentContent as any).solution && (
                       <div className="mt-8">
                         <SolutionToggler 
                           title="Musterlösung anzeigen"
-                          solution={currentContent.solution}
+                          solution={(currentContent as any).solution}
                         />
                       </div>
                     )}
@@ -393,11 +393,11 @@ const currentContent = allContent[selectedDay as keyof typeof allContent] || all
                     </div>
 
                     {/* Solution Accordion */}
-                    {currentContent.solution && (
+                    {(currentContent as any).solution && (
                       <div className="mt-8">
                         <SolutionToggler 
                           title="Musterlösung anzeigen"
-                          solution={currentContent.solution}
+                          solution={(currentContent as any).solution}
                         />
                       </div>
                     )}
@@ -428,11 +428,11 @@ const currentContent = allContent[selectedDay as keyof typeof allContent] || all
                     </Card>
 
                     {/* Solution Accordion */}
-                    {currentContent.solution && (
+                    {(currentContent as any).solution && (
                       <div className="mt-8">
                         <SolutionToggler 
                           title="Musterlösung anzeigen"
-                          solution={currentContent.solution}
+                          solution={(currentContent as any).solution}
                         />
                       </div>
                     )}
@@ -482,11 +482,11 @@ const currentContent = allContent[selectedDay as keyof typeof allContent] || all
                     </div>
 
                     {/* Solution Accordion */}
-                    {currentContent.solution && (
+                    {(currentContent as any).solution && (
                       <div className="mt-8">
                         <SolutionToggler 
                           title="Musterlösung anzeigen"
-                          solution={currentContent.solution}
+                          solution={(currentContent as any).solution}
                         />
                       </div>
                     )}
