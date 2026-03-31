@@ -1370,11 +1370,11 @@ export async function listPresentationCodes(): Promise<any[]> {
 export async function createPresentationCode(code: string, label: string, modules: string, expiresAt: Date | null, maxUsage: number | null): Promise<void> {
   const db = await getDb();
   if (!db) return;
-  await db.execute(`INSERT INTO presentation_codes (code, label, enabledModules, expiresAt, maxUsage) VALUES (?, ?, ?, ?, ?)`, [code, label, modules, expiresAt, maxUsage]);
+  await db.execute(sql`INSERT INTO presentation_codes (code, label, enabledModules, expiresAt, maxUsage) VALUES (${code}, ${label}, ${modules}, ${expiresAt}, ${maxUsage})`);
 }
 
 export async function deactivatePresentationCode(id: number): Promise<void> {
   const db = await getDb();
   if (!db) return;
-  await db.execute(`UPDATE presentation_codes SET isActive = false WHERE id = ?`, [id]);
+  await db.execute(sql`UPDATE presentation_codes SET isActive = false WHERE id = ${id}`);
 }
