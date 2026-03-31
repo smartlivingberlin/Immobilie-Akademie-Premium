@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import React, { lazy, Suspense } from "react";
 import { Route, Switch } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Toaster } from "@/components/ui/toaster";
@@ -67,14 +67,14 @@ import ExamQuestion from "@/pages/ExamQuestion";
 import ExamResults from "@/pages/ExamResults";
 
 
-function ProtectedRoute({ component: Component }: { component: () => JSX.Element }) {
+function ProtectedRoute({ component: Component }: { component: React.ComponentType }) {
   const { data: user, isLoading } = trpc.auth.me.useQuery(undefined, { retry: false });
   if (isLoading) return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
   if (!user) { window.location.href = "/login"; return null; }
   return <Component />;
 }
 
-function AdminRoute({ component: Component }: { component: () => JSX.Element }) {
+function AdminRoute({ component: Component }: { component: React.ComponentType }) {
   const { data: user, isLoading } = trpc.auth.me.useQuery(undefined, { retry: false });
   if (isLoading) return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
   if (!user || user.role !== "admin") { window.location.href = "/login"; return null; }
