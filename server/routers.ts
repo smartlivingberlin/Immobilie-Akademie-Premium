@@ -19,7 +19,7 @@ import {
   deleteWhitelabelConfig,
   getWhitelabelConfigForUser,
   assignUserToTenant,
-  getUsersByTenantId
+  getUsersByTenantId,
   getDb,
 } from "./db";
 import { eq } from "drizzle-orm";
