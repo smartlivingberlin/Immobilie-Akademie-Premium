@@ -263,7 +263,7 @@ REGELN:
             extractedText = result.value;
           } else if (filename.endsWith(".pptx") || filename.endsWith(".xlsx") || filename.endsWith(".odt")) {
             const officeparser = (await import("officeparser")).default;
-            extractedText = await officeparser.parseOfficeAsync(buffer);
+            extractedText = await officeparser.parseOffice(buffer);
           } else if (contentType.includes("text/") || filename.endsWith(".txt") || filename.endsWith(".md")) {
             extractedText = buffer.toString("utf-8");
           } else if (contentType.includes("audio/") || filename.match(/\.(mp3|wav|webm|m4a|ogg)$/)) {
