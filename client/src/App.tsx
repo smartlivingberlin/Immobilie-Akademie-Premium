@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { Route, Switch } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Toaster } from "@/components/ui/toaster";
