@@ -7,6 +7,7 @@ import { AITutor } from "@/components/AITutor";
 export default function Module2() {
   const [tutorOpen, setTutorOpen] = React.useState(false);
   return (
+    <>
     <div className="space-y-8">
       <div className="space-y-2">
         <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl text-slate-900 dark:text-white">
@@ -86,5 +87,6 @@ export default function Module2() {
         moduleId={2}
         moduleContext="Modul 2"
       />
+    </>
   );
 }
