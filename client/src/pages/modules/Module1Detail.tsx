@@ -1,4 +1,5 @@
 import { trpc } from "@/lib/trpc";
+import AudioPlayer from "@/components/AudioPlayer";
 import { useState, useRef, useEffect } from "react";
 import { useActivityHeartbeat } from "@/hooks/useActivityHeartbeat";
 import { Link, useRoute } from "wouter";
@@ -294,10 +295,12 @@ export default function Module1Detail() {
                   <TabsContent value="theory" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none">
                     <FullscreenContent 
                       title={`Theorie: ${currentContent.title}`}
-                      content={<SmartContent content={currentContent.theory} />}
+                      content={<AudioPlayer text={currentContent.theory} label="Theorie vorlesen" />
+              <SmartContent content={currentContent.theory} />}
                     />
                     <div className="prose prose-slate max-w-none break-words prose-headings:text-slate-900 prose-p:text-slate-600 prose-li:text-slate-600 prose-strong:text-slate-900">
-                      <SmartContent content={currentContent.theory} />
+                      <AudioPlayer text={currentContent.theory} label="Theorie vorlesen" />
+              <SmartContent content={currentContent.theory} />
                       {(currentContent as any).extendedTheory && (
                         <SmartContent content={(currentContent as any).extendedTheory} />
                       )}
