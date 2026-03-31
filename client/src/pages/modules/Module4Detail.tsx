@@ -455,7 +455,7 @@ const currentContent = allContent[selectedDay as keyof typeof allContent] || all
                                  <div className="prose prose-slate max-w-none break-words">
                                    <SmartContent content={task.question} />
                                  </div>
-                                 <SolutionToggler solution={task.solution} />
+                                 <SolutionToggler solution={(task as any).solution} />
                                </CardContent>
                              </Card>
                            ))}
@@ -475,7 +475,7 @@ const currentContent = allContent[selectedDay as keyof typeof allContent] || all
                             <div className="prose prose-slate max-w-none break-words">
                               <SmartContent content={task.question} />
                             </div>
-                            <SolutionToggler solution={task.solution} />
+                            <SolutionToggler solution={(task as any).solution} />
                           </CardContent>
                         </Card>
                       ))}
