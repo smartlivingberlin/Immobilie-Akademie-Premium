@@ -327,8 +327,10 @@ export default function Module5Detail() {
                   </TabsList>
 
                   <TabsContent value="theory" className="space-y-6">
-                    <AudioPlayer text={currentContent.theory} label="Theorie vorlesen" />
+                    <>
+              <AudioPlayer text={currentContent.theory} label="Theorie vorlesen" />
               <SmartContent content={currentContent.theory} />
+              </>
                     {currentContent.extendedTheory && (
                       <div className="mt-6 pt-6 border-t">
                         <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
