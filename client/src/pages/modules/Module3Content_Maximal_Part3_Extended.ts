@@ -8,7 +8,8 @@ export interface WEGDayContent {
   law: string[];
   practice: string;
   caseStudy?: string;
-  task: string;
+  task?: string;
+  tasks?: Array<{type?: string; question: string; hint?: string}>;
   solution?: string;
   type?: string;
 }

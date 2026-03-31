@@ -6,7 +6,8 @@ export const contentDataModule1: Record<string, {
   theory: string;
   law: string[];
   practice: string;
-  task: string;
+  task?: string;
+  tasks?: Array<{type?: string; question: string; hint?: string}>;
   type?: string;
 }> = {
   // Woche 1: Einführung & Markt (Tag 1-5)

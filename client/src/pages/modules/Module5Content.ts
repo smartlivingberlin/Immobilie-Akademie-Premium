@@ -6,7 +6,8 @@ export const contentDataModule5: Record<string, {
   theory: string;
   law: string[];
   practice: string;
-  task: string;
+  task?: string;
+  tasks?: Array<{type?: string; question: string; hint?: string}>;
   type?: string;
 }> = {
   // Woche 1: Einführung & Rechtliche Grundlagen (Tag 1-5)

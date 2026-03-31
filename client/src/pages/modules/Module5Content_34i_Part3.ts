@@ -7,7 +7,8 @@ export const contentDataModule5_34i_Part3: Record<string, {
   extendedTheory?: string;
   law: string[];
   practice: string;
-  task: string;
+  task?: string;
+  tasks?: Array<{type?: string; question: string; hint?: string}>;
   solution?: string;
   type?: string;
 }> = {
