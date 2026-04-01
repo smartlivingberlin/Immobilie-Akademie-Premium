@@ -45,6 +45,11 @@ import {
 } from "@/components/ui/tooltip";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+  const logoutMutation = trpc.auth.logout.useMutation({
+    onSuccess: () => {
+      window.location.href = "/login";
+    },
+  });
   const [location] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [fontScale, setFontScale] = useState(parseFloat(localStorage.getItem("fontScale") || "1.0"));
