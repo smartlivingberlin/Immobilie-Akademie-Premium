@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { trpc } from "@/lib/trpc";
 import { Link, useLocation } from "wouter";
 import AIAssistant from "@/components/AIAssistant";
 import { 
