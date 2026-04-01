@@ -557,6 +557,7 @@ const navigation = [
 
           <Button 
             variant="outline" 
+            onClick={() => logoutMutation.mutate()}
             className={`w-full border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white ${isCollapsed ? "px-0" : ""}`}
           >
             <LogOut className={`h-4 w-4 ${isCollapsed ? "" : "mr-2"}`} />
