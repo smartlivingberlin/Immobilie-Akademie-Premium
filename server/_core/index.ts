@@ -46,12 +46,15 @@ app.use(helmet({
 // Login Rate Limiter — verhindert Brute-Force Angriffe
 // Erklärt: Nach 10 falschen Versuchen in 15 Minuten wird die IP gesperrt
 // Das schützt alle Nutzerkonten vor automatisierten Passwort-Angriffen
+app.set("trust proxy", 1); // Railway Fastly CDN
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 Minuten
   max: 10, // max 10 Versuche
   message: { error: "Zu viele Login-Versuche. Bitte warte 15 Minuten." },
   standardHeaders: true,
   legacyHeaders: false,
+  validate: { trustProxy: false },
+  skip: (req) => false,
 });
 
 const aiLimiter = rateLimit({
