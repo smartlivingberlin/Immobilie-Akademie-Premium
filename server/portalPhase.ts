@@ -225,7 +225,8 @@ export function registerPortalPhaseRoutes(app: Express) {
       const { getDb } = await import("./db");
       const db = await getDb();
       const phase = await getCurrentPhase(db);
-      res.json({ phase, config: PHASES[phase] });
+      const flags = getFlagsForPhase(phase);
+      res.json({ phase, config: PHASES[phase], flags });
     } catch {
       res.json({ phase: _currentPhase, config: PHASES[_currentPhase] });
     }
