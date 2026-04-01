@@ -10,6 +10,80 @@ import type { Express, Request, Response } from "express";
 
 export type Phase = "A" | "B" | "C" | "D";
 
+// Feature Flags — können unabhängig von Phase ein/aus geschaltet werden
+export interface FeatureFlags {
+  // Compliance
+  consentCheckboxRequired: boolean;    // DSGVO-Checkbox beim Wizard
+  agbCheckboxRequired: boolean;        // AGB-Zustimmung beim Wizard
+  azavAttendanceNotice: boolean;       // AZAV Anwesenheitshinweis
+  widerrufsbelehrungPopup: boolean;    // Widerrufsbelehrung beim Kauf
+
+  // Features
+  onboardingWizard: boolean;          // Onboarding-Wizard an/aus
+  audioFunction: boolean;             // Text-to-Speech an/aus
+  gamification: boolean;              // Punkte/Badges an/aus
+  kiTutor: boolean;                   // KI-Tutor an/aus
+  liveWebinare: boolean;              // Live-Webinare (zukünftig)
+  b2bWhiteLabel: boolean;             // White-Label B2B an/aus
+  
+  // Marketing
+  googleAnalytics: boolean;           // Google Analytics an/aus
+  cookieBanner: boolean;              // Cookie-Banner an/aus
+  
+  // Zahlungen
+  stripeActive: boolean;              // Stripe Zahlungen an/aus
+  automaticInvoicing: boolean;        // Automatische Rechnungen
+}
+
+// Standard-Flags (Phase A — Minimal)
+export const DEFAULT_FLAGS: FeatureFlags = {
+  consentCheckboxRequired: false,
+  agbCheckboxRequired: false,
+  azavAttendanceNotice: false,
+  widerrufsbelehrungPopup: false,
+  onboardingWizard: true,
+  audioFunction: true,
+  gamification: true,
+  kiTutor: true,
+  liveWebinare: false,
+  b2bWhiteLabel: false,
+  googleAnalytics: false,
+  cookieBanner: true,
+  stripeActive: false,
+  automaticInvoicing: false,
+};
+
+// Flags für Phase B (ZFU)
+export const FLAGS_PHASE_B: Partial<FeatureFlags> = {
+  consentCheckboxRequired: true,
+  agbCheckboxRequired: true,
+  widerrufsbelehrungPopup: true,
+  stripeActive: true,
+  automaticInvoicing: true,
+};
+
+// Flags für Phase C (AZAV)
+export const FLAGS_PHASE_C: Partial<FeatureFlags> = {
+  ...FLAGS_PHASE_B,
+  azavAttendanceNotice: true,
+};
+
+// Flags für Phase D (Vollzertifiziert)
+export const FLAGS_PHASE_D: Partial<FeatureFlags> = {
+  ...FLAGS_PHASE_C,
+  liveWebinare: true,
+  b2bWhiteLabel: true,
+  googleAnalytics: true,
+};
+
+// Aktive Flags basierend auf Phase berechnen
+export function getFlagsForPhase(phase: Phase): FeatureFlags {
+  const overrides = phase === "B" ? FLAGS_PHASE_B :
+                    phase === "C" ? FLAGS_PHASE_C :
+                    phase === "D" ? FLAGS_PHASE_D : {};
+  return { ...DEFAULT_FLAGS, ...overrides };
+}
+
 export interface PhaseConfig {
   id: Phase;
   name: string;
