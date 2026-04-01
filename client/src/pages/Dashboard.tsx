@@ -21,7 +21,7 @@ import OnboardingWizard from "@/components/OnboardingWizard";
 export default function Dashboard() {
   const { data: user, refetch: refetchUser } = trpc.auth.me.useQuery();
   const { data: dbProgress, isLoading } = trpc.progress.getProgress.useQuery();
-  const showOnboarding = user && !user.onboardingCompleted;
+  const showOnboarding = user && !(user as any).onboardingCompleted;
 
   const modules = [
     { id: 1, name: "Modul 1: Einführung", days: 20, color: "bg-blue-500", lightColor: "bg-blue-100", textColor: "text-blue-700" },
