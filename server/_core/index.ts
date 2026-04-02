@@ -12,6 +12,7 @@ import "dotenv/config";
 import express from "express";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
+import compression from "compression";
 import { createServer } from "http";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerOAuthRoutes } from "./oauth";
@@ -46,7 +47,8 @@ app.use(helmet({
 // Login Rate Limiter — verhindert Brute-Force Angriffe
 // Erklärt: Nach 10 falschen Versuchen in 15 Minuten wird die IP gesperrt
 // Das schützt alle Nutzerkonten vor automatisierten Passwort-Angriffen
-app.set("trust proxy", 1); // Railway Fastly CDN
+app.set("trust proxy", 1);
+app.use(compression()); // Gzip/Brotli Kompression // Railway Fastly CDN
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 Minuten
   max: 10, // max 10 Versuche
