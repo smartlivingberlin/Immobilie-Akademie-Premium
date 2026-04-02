@@ -30,7 +30,7 @@ export default function Syllabus() {
       borderColor: "border-blue-200",
       duration: "20 Tage",
       units: "160 UE",
-      description: "Einführung in die Immobilienwirtschaft, Berufsbild, Märkte und Akteure.",
+      description: "Ihr Fundament in der Immobilienwirtschaft, Berufsbild, Märkte und Akteure.",
       topics: [
         "Einführung in die Immobilienbranche",
         "Karrierepfade & Weiterbildung",

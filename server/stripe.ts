@@ -13,7 +13,7 @@ const PRODUCTS = [
     id: "modul_1",
     name: "Modul 1: Ihr Fundament in der Immobilienwirtschaft",
     description: "Der Grundstein Ihrer Immobilienkarriere: Recht, Markt, Bewertung und Praxis kompakt in 20 Lerntagen und 160 UE. Inklusive KI-Tutor und Zertifikat. Ideal als Einstieg — und Pflichtbasis für alle weiteren Module.",
-    price: 19900, // in Cent = 199,00 €
+    price: 14900, // in Cent = 149,00 €
     modules: "1",
   },
   {
