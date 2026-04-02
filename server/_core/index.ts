@@ -26,6 +26,15 @@ import { serveStatic, setupVite } from "./vite";
 import { seedQuizQuestionsIfEmpty } from "../seed-quiz";
 
 
+// Globaler Error Handler
+process.on('uncaughtException', (err) => {
+  console.error('[CRITICAL] Uncaught Exception:', err.message, err.stack);
+});
+process.on('unhandledRejection', (reason) => {
+  console.error('[CRITICAL] Unhandled Rejection:', reason);
+});
+
+
 async function startServer() {
   const app = express();
 app.use(helmet({
