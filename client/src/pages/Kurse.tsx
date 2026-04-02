@@ -2,6 +2,16 @@ import { useState, useEffect } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Link } from "wouter";
 
+
+const KURS_SLUGS: Record<string, string> = {
+  modul_1: "modul-1-immobilien-grundkurs",
+  modul_2: "modul-2-makler-34c",
+  modul_3: "modul-3-weg-verwalter",
+  modul_4: "modul-4-gutachter",
+  modul_5: "modul-5-34i-darlehensvermittler",
+  modul_komplett: "",
+};
+
 interface Product {
   id: string;
   name: string;
@@ -73,6 +83,13 @@ export default function Kurse() {
             </div>
             <div className="text-3xl font-extrabold text-blue-700">{p.priceFormatted}</div>
             <div className="text-xs text-slate-400">Enthaltene Module: {p.modules}</div>
+            {KURS_SLUGS[p.id] && (
+              <Link href={`/kurs/${KURS_SLUGS[p.id]}`}>
+                <button className="w-full border border-blue-200 text-blue-700 hover:bg-blue-50 font-semibold rounded-xl py-2.5 text-sm transition-colors">
+                  📖 Kurs-Details & Inhalte
+                </button>
+              </Link>
+            )}
             <button
               onClick={() => handleBuy(p.id)}
               disabled={loading}
