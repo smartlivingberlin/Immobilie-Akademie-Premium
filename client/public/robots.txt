@@ -1,11 +1,7 @@
-# Immobilien-Bildungsportal Robots.txt
 User-agent: *
 Allow: /
-Disallow: /admin/
+Disallow: /dashboard
+Disallow: /admin
 Disallow: /api/
 
-# Sitemap
-Sitemap: https://immobilie-akademie-production.up.railway.app/sitemap.xml
-
-# Crawl-delay for respectful crawling
-Crawl-delay: 1
+Sitemap: https://immobilien-akademie-smart.de/sitemap.xml
