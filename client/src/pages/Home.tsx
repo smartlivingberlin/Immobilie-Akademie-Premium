@@ -52,7 +52,7 @@ export default function Home() {
             </h1>
             <p className="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed max-w-2xl">
               Ihr zentraler Zugang zu allen 5 Ausbildungsmodulen: Vom Einsteiger über den Makler (§34c) und Verwalter (WEG/Miet) bis hin zum Darlehensvermittler (§34i). 
-              Insgesamt 1760 Unterrichtseinheiten geballtes Fachwissen.
+              Insgesamt 1920 Unterrichtseinheiten geballtes Fachwissen.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
@@ -84,7 +84,7 @@ export default function Home() {
               <div className="text-sm font-medium text-slate-500 uppercase tracking-wider">Ausbildungstage</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-slate-900 mb-1">1760</div>
+              <div className="text-4xl font-bold text-slate-900 mb-1">1920</div>
               <div className="text-sm font-medium text-slate-500 uppercase tracking-wider">Unterrichtseinheiten</div>
             </div>
             <div className="text-center">
@@ -161,7 +161,7 @@ export default function Home() {
                 </div>
                 <h3 className="font-bold text-slate-900 mb-2">Video-Tutorials</h3>
                 <p className="text-sm text-slate-600">
-                  YouTube & Vimeo Integration mit Fortschritts-Tracking für alle 220 Tage
+                  YouTube & Vimeo Integration mit Fortschritts-Tracking für alle 240 Tage
                 </p>
               </CardContent>
             </Card>
@@ -447,7 +447,7 @@ export default function Home() {
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-slate-700 font-medium">Alle 5 Module (220 Tage, 1760 UE)</span>
+                    <span className="text-slate-700 font-medium">Alle 5 Module (240 Tage, 1920 UE)</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />

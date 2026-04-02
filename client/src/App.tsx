@@ -130,6 +130,12 @@ function Router() {
           <Route path="/datenschutz" component={Datenschutz} />
           <Route path="/widerruf" component={Widerruf} />
           <Route path="/bildungskonzept" component={Bildungskonzept} />
+          
+          <Route path="/kurs/modul-1-immobilien-grundkurs" component={() => <KursLanding slug="modul-1-immobilien-grundkurs" />} />
+          <Route path="/kurs/modul-2-makler-34c" component={() => <KursLanding slug="modul-2-makler-34c" />} />
+          <Route path="/kurs/modul-3-weg-verwalter" component={() => <KursLanding slug="modul-3-weg-verwalter" />} />
+          <Route path="/kurs/modul-4-gutachter" component={() => <KursLanding slug="modul-4-gutachter" />} />
+          <Route path="/kurs/modul-5-34i-darlehensvermittler" component={() => <KursLanding slug="modul-5-34i-darlehensvermittler" />} />
           <Route path="/kurse" component={Kurse} />
           <Route path="/zahlung-erfolgreich" component={ZahlungErfolgreich} />
           <Route path="/impressum" component={Impressum} />

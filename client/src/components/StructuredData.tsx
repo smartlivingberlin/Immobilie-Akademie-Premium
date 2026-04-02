@@ -64,7 +64,7 @@ export function StructuredData() {
       "@context": "https://schema.org",
       "@type": "Course",
       "name": "Immobilien-Komplettausbildung: Makler, Verwalter, Darlehensvermittler",
-      "description": "Umfassende Online-Ausbildung für Immobilienprofis mit 220 Ausbildungstagen und 1760 Unterrichtseinheiten. Bereitet auf IHK-Prüfungen nach §34c und §34i GewO vor.",
+      "description": "Umfassende Online-Ausbildung für Immobilienprofis mit 240 Ausbildungstagen und 1920 Unterrichtseinheiten. Bereitet auf IHK-Prüfungen nach §34c und §34i GewO vor.",
       "provider": {
         "@type": "EducationalOrganization",
         "name": "Immobilien-Bildungsportal",
@@ -79,7 +79,7 @@ export function StructuredData() {
       "educationalLevel": "Professional",
       "coursePrerequisites": "Keine formalen Voraussetzungen erforderlich",
       "timeRequired": "P220D",
-      "numberOfCredits": 1760,
+      "numberOfCredits": 1920,
       "courseMode": "online",
       "inLanguage": "de",
       "availableLanguage": "de",
@@ -121,7 +121,7 @@ export function StructuredData() {
           "name": "Wie lange dauert die Ausbildung?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Die Komplettausbildung umfasst 220 Ausbildungstage mit insgesamt 1760 Unterrichtseinheiten. Je nach individuellem Lerntempo kann die Ausbildung in 3-12 Monaten absolviert werden.",
+            "text": "Die Komplettausbildung umfasst 220 Ausbildungstage mit insgesamt 1920 Unterrichtseinheiten. Je nach individuellem Lerntempo kann die Ausbildung in 3-12 Monaten absolviert werden.",
           },
         },
         {

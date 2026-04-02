@@ -529,7 +529,7 @@ const navigation = [
                   <div className="h-full bg-green-500 w-full rounded-full" />
                 </div>
                 <div className="text-[10px] text-slate-500 mt-1 text-center">
-                  1760 von 1760 UE absolviert
+                  1920 von 1920 UE absolviert
                 </div>
               </div>
 
