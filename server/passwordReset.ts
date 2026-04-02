@@ -37,7 +37,7 @@ export function registerPasswordResetRoutes(app: Express) {
 
       const resend = new Resend(process.env.RESEND_API_KEY ?? "");
       await resend.emails.send({
-        from: "Immobilien-Akademie <noreply@immobilien-akademie.de>",
+        from: "Immobilien Akademie Smart <onboarding@resend.dev>",
         to: email,
         subject: "Passwort zurücksetzen",
         html: `
