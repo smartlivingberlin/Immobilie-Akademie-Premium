@@ -31,7 +31,7 @@ export default function AGB() {
             Immobilienbereich zur Verfügung. Das Angebot umfasst insbesondere:
           </p>
           <ul>
-            <li>5 Lernmodule mit insgesamt 220 Ausbildungstagen (1.760 Unterrichtseinheiten)</li>
+            <li>5 Lernmodule mit insgesamt 240 Ausbildungstagen (1.920 Unterrichtseinheiten)</li>
             <li>Theoretische Grundlagen und vertiefende Inhalte</li>
             <li>Gesetzestexte und Rechtsnormen</li>
             <li>Praxisbeispiele und Fallstudien</li>
