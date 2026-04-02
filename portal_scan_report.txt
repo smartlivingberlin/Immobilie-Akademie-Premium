@@ -1,0 +1,324 @@
+═════════════════════════════════════════════════════════════════
+VOLLSTÄNDIGER PORTAL-SCAN — TEXT & INHALT
+Datum: 2.4.2026, 13:47:28
+═════════════════════════════════════════════════════════════════
+
+─────────────────────────────────────────────────────────────────
+📄 Startseite (/)
+─────────────────────────────────────────────────────────────────
+
+📌 ÜBERSCHRIFTEN:
+  H1: Immobilien
+  H1: Immobilien-Bildungsportal Komplettausbildung
+  H2: Modernste Lernmethoden
+  H3: KI-Tutor
+  H3: Video-Tutorials
+  H3: Interaktive Quizze
+  H3: Gamification
+  H2: Der modulare Aufbau
+
+🔢 ZAHLEN & PREISE:
+  • 1920 UE
+  • 1920 Unterrichtseinheit
+  • 1920
+UNTERRICHTSEINHEIT
+  • 240 Tage
+  • 20 Tage
+  • 160 UE
+  • 14 Tage
+
+❌ VERALTETE WERTE CHECK:
+  ❌ 220 Tage (alt → 240) → gefunden: "220
+AUSB"
+
+🔍 META: Title="Startseite | Immobilien-Bildungsportal" | Desc="Komplette Immobilien-Ausbildung mit 5 Modulen: Makler §34c, WEG-Verwal"
+
+─────────────────────────────────────────────────────────────────
+📄 Kurse (/kurse)
+─────────────────────────────────────────────────────────────────
+
+📌 ÜBERSCHRIFTEN:
+  H1: Immobilien
+  H1: Kurse & Pakete
+  H2: Modul 1: Ihr Fundament in der Immobilienwirtschaft
+  H2: Modul 2: Immobilienmakler §34c GewO — Die Lizenz zum Vermitteln
+  H2: Modul 3: WEG-Verwalter & Mietrecht — Ihr Weg zur Hausverwaltung
+  H2: Modul 4: Immobilienbewertung & Sachverständigenwesen
+  H2: Modul 5: Darlehensvermittler §34i GewO — Finanzierung als Karriere
+  H2: Komplett-Ausbildung: Alle 5 Module — Der komplette Immobilienprofi
+
+🔢 ZAHLEN & PREISE:
+  • 1920 UE
+  • 160 UE
+  • 199,00 €
+  • 480 UE
+  • 499,00 €
+  • 640 UE
+  • 699,00 €
+  • 320 UE
+  • 399,00 €
+  • 1499,00 €
+
+❌ VERALTETE WERTE CHECK:
+  ❌ Preis 199€ Modul1 (→ 149€) → gefunden: "199,00 €"
+
+🔍 META: Title="Immobilien-Bildungsportal | §34c GewO Makler-Ausbildung Onli" | Desc="Komplette Online-Ausbildung zum Immobilienmakler (§34c GewO), WEG-Verw"
+
+─────────────────────────────────────────────────────────────────
+📄 Lehrplan (/lehrplan)
+─────────────────────────────────────────────────────────────────
+
+📌 ÜBERSCHRIFTEN:
+  H1: Immobilien
+  H1: Gesamter Lehrplan
+  H3: Schnellzugriff
+  H3: Rechtliches
+  H3: Kontakt
+
+🔢 ZAHLEN & PREISE:
+  • 1920 UE
+  • 240 Tage
+  • 1920 Unterrichtseinheit
+  • 20 Tage
+  • 160 UE
+  • 60 Tage
+  • 480 UE
+  • 80 Tage
+  • 640 UE
+
+❌ VERALTETE WERTE CHECK:
+  ❌ Alter Modul-1-Name → gefunden: "Einführung in die Immobilienwirtschaft"
+
+🔍 META: Title="Immobilien-Bildungsportal | §34c GewO Makler-Ausbildung Onli" | Desc="Komplette Online-Ausbildung zum Immobilienmakler (§34c GewO), WEG-Verw"
+
+─────────────────────────────────────────────────────────────────
+📄 Glossar (/glossary)
+─────────────────────────────────────────────────────────────────
+
+📌 ÜBERSCHRIFTEN:
+  H1: Immobilien
+  H1: Fachbegriffe & Gesetze
+  H3: Schnellzugriff
+  H3: Rechtliches
+  H3: Kontakt
+
+🔢 ZAHLEN & PREISE:
+  • 1920 UE
+  • 14 Tage
+
+❌ VERALTETE WERTE CHECK:
+  ✅ Alles aktuell
+
+🔍 META: Title="Immobilien-Bildungsportal | §34c GewO Makler-Ausbildung Onli" | Desc="Komplette Online-Ausbildung zum Immobilienmakler (§34c GewO), WEG-Verw"
+
+─────────────────────────────────────────────────────────────────
+📄 Bildungskonzept (/bildungskonzept)
+─────────────────────────────────────────────────────────────────
+
+📌 ÜBERSCHRIFTEN:
+  H1: Immobilien
+  H1: Bildungskonzept
+  H1: Bildungskonzept
+  H2: 1
+Bildungsträger
+  H2: 2
+Zielgruppe & Zugangsvorraussetzungen
+  H2: 3
+Lernziele & Qualifikationen
+  H2: 4
+Curriculum — Modulübersicht
+  H2: 5
+Lernmethodik & didaktisches Konzept
+
+🔢 ZAHLEN & PREISE:
+  • 1920 UE
+
+❌ VERALTETE WERTE CHECK:
+  ❌ 1.760 UE (alt → 1.920) → gefunden: "1.760"
+
+🔍 META: Title="Immobilien-Bildungsportal | §34c GewO Makler-Ausbildung Onli" | Desc="Komplette Online-Ausbildung zum Immobilienmakler (§34c GewO), WEG-Verw"
+
+─────────────────────────────────────────────────────────────────
+📄 Impressum (/impressum)
+─────────────────────────────────────────────────────────────────
+
+📌 ÜBERSCHRIFTEN:
+  H1: Immobilien
+  H2: Anbieter
+  H2: Kontakt
+  H2: Vertretungsberechtigte Person(en)
+  H2: Registereintrag
+  H2: Umsatzsteuer-Identifikationsnummer
+  H2: Wirtschafts-Identifikationsnummer
+  H2: Berufsbezeichnung und berufsrechtliche Regelungen
+
+🔢 ZAHLEN & PREISE:
+  • 1920 UE
+
+❌ VERALTETE WERTE CHECK:
+  ✅ Alles aktuell
+
+🔍 META: Title="Immobilien-Bildungsportal | §34c GewO Makler-Ausbildung Onli" | Desc="Komplette Online-Ausbildung zum Immobilienmakler (§34c GewO), WEG-Verw"
+
+─────────────────────────────────────────────────────────────────
+📄 Datenschutz (/datenschutz)
+─────────────────────────────────────────────────────────────────
+
+📌 ÜBERSCHRIFTEN:
+  H1: Immobilien
+  H2: 1. Datenschutz auf einen Blick
+  H3: Allgemeine Hinweise
+  H3: Datenerfassung auf dieser Website
+  H2: 2. Hosting
+  H3: Externes Hosting
+  H2: 3. Allgemeine Hinweise und Pflichtinformationen
+  H3: Datenschutz
+
+🔢 ZAHLEN & PREISE:
+  • 1920 UE
+
+❌ VERALTETE WERTE CHECK:
+  ✅ Alles aktuell
+
+🔍 META: Title="Immobilien-Bildungsportal | §34c GewO Makler-Ausbildung Onli" | Desc="Komplette Online-Ausbildung zum Immobilienmakler (§34c GewO), WEG-Verw"
+
+─────────────────────────────────────────────────────────────────
+📄 AGB (/agb)
+─────────────────────────────────────────────────────────────────
+
+📌 ÜBERSCHRIFTEN:
+  H1: Immobilien
+  H2: § 1 Geltungsbereich
+  H2: § 2 Vertragsgegenstand
+  H2: § 3 Vertragsschluss und Registrierung
+  H2: § 4 Leistungsumfang und Verfügbarkeit
+  H2: § 5 Nutzungsrechte und Urheberrecht
+  H2: § 6 Pflichten des Nutzers
+  H2: § 7 Vergütung und Zahlungsbedingungen
+
+🔢 ZAHLEN & PREISE:
+  • 1920 UE
+  • 1.920 Unterrichtseinheit
+  • 14 Tage
+
+❌ VERALTETE WERTE CHECK:
+  ✅ Alles aktuell
+
+🔍 META: Title="Immobilien-Bildungsportal | §34c GewO Makler-Ausbildung Onli" | Desc="Komplette Online-Ausbildung zum Immobilienmakler (§34c GewO), WEG-Verw"
+
+─────────────────────────────────────────────────────────────────
+📄 Widerruf (/widerruf)
+─────────────────────────────────────────────────────────────────
+
+📌 ÜBERSCHRIFTEN:
+  H1: Immobilien
+  H1: Widerrufsbelehrung
+  H2: Widerrufsrecht
+  H2: Folgen des Widerrufs
+  H2: Erlöschen des Widerrufsrechts bei digitalen Inhalten
+  H2: Muster-Widerrufsformular
+  H3: Schnellzugriff
+  H3: Rechtliches
+
+🔢 ZAHLEN & PREISE:
+  • 1920 UE
+
+❌ VERALTETE WERTE CHECK:
+  ✅ Alles aktuell
+
+🔍 META: Title="Immobilien-Bildungsportal | §34c GewO Makler-Ausbildung Onli" | Desc="Komplette Online-Ausbildung zum Immobilienmakler (§34c GewO), WEG-Verw"
+
+─────────────────────────────────────────────────────────────────
+📄 Landing M1 (/kurs/modul-1-immobilien-grundkurs)
+─────────────────────────────────────────────────────────────────
+
+📌 ÜBERSCHRIFTEN:
+  ⚠️ Keine H1/H2/H3!
+
+🔢 ZAHLEN & PREISE:
+  (keine gefunden)
+
+❌ VERALTETE WERTE CHECK:
+  ✅ Alles aktuell
+
+🔍 META: Title="Immobilien-Bildungsportal | §34c GewO Makler-Ausbildung Onli" | Desc="Komplette Online-Ausbildung zum Immobilienmakler (§34c GewO), WEG-Verw"
+
+─────────────────────────────────────────────────────────────────
+📄 Landing M2 (/kurs/modul-2-makler-34c)
+─────────────────────────────────────────────────────────────────
+
+📌 ÜBERSCHRIFTEN:
+  ⚠️ Keine H1/H2/H3!
+
+🔢 ZAHLEN & PREISE:
+  (keine gefunden)
+
+❌ VERALTETE WERTE CHECK:
+  ✅ Alles aktuell
+
+🔍 META: Title="Immobilien-Bildungsportal | §34c GewO Makler-Ausbildung Onli" | Desc="Komplette Online-Ausbildung zum Immobilienmakler (§34c GewO), WEG-Verw"
+
+─────────────────────────────────────────────────────────────────
+📄 Landing M3 (/kurs/modul-3-weg-verwalter)
+─────────────────────────────────────────────────────────────────
+
+📌 ÜBERSCHRIFTEN:
+  ⚠️ Keine H1/H2/H3!
+
+🔢 ZAHLEN & PREISE:
+  (keine gefunden)
+
+❌ VERALTETE WERTE CHECK:
+  ✅ Alles aktuell
+
+🔍 META: Title="Immobilien-Bildungsportal | §34c GewO Makler-Ausbildung Onli" | Desc="Komplette Online-Ausbildung zum Immobilienmakler (§34c GewO), WEG-Verw"
+
+─────────────────────────────────────────────────────────────────
+📄 Landing M4 (/kurs/modul-4-gutachter)
+─────────────────────────────────────────────────────────────────
+
+📌 ÜBERSCHRIFTEN:
+  ⚠️ Keine H1/H2/H3!
+
+🔢 ZAHLEN & PREISE:
+  (keine gefunden)
+
+❌ VERALTETE WERTE CHECK:
+  ✅ Alles aktuell
+
+🔍 META: Title="Immobilien-Bildungsportal | §34c GewO Makler-Ausbildung Onli" | Desc="Komplette Online-Ausbildung zum Immobilienmakler (§34c GewO), WEG-Verw"
+
+─────────────────────────────────────────────────────────────────
+📄 Landing M5 (/kurs/modul-5-34i-darlehensvermittler)
+─────────────────────────────────────────────────────────────────
+
+📌 ÜBERSCHRIFTEN:
+  ⚠️ Keine H1/H2/H3!
+
+🔢 ZAHLEN & PREISE:
+  (keine gefunden)
+
+❌ VERALTETE WERTE CHECK:
+  ✅ Alles aktuell
+
+🔍 META: Title="Immobilien-Bildungsportal | §34c GewO Makler-Ausbildung Onli" | Desc="Komplette Online-Ausbildung zum Immobilienmakler (§34c GewO), WEG-Verw"
+
+═════════════════════════════════════════════════════════════════
+ZUSAMMENFASSUNG ALLER PROBLEME
+═════════════════════════════════════════════════════════════════
+
+⚠️  4 PROBLEME:
+
+1. [Startseite] "220 Tage (alt → 240)"
+   Gefunden: "220
+AUSB"
+
+2. [Kurse] "Preis 199€ Modul1 (→ 149€)"
+   Gefunden: "199,00 €"
+
+3. [Lehrplan] "Alter Modul-1-Name"
+   Gefunden: "Einführung in die Immobilienwirtschaft"
+
+4. [Bildungskonzept] "1.760 UE (alt → 1.920)"
+   Gefunden: "1.760"
+

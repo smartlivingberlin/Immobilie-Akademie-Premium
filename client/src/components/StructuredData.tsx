@@ -121,7 +121,7 @@ export function StructuredData() {
           "name": "Wie lange dauert die Ausbildung?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Die Komplettausbildung umfasst 220 Ausbildungstage mit insgesamt 1920 Unterrichtseinheiten. Je nach individuellem Lerntempo kann die Ausbildung in 3-12 Monaten absolviert werden.",
+            "text": "Die Komplettausbildung umfasst 240 Ausbildungstage mit insgesamt 1920 Unterrichtseinheiten. Je nach individuellem Lerntempo kann die Ausbildung in 3-12 Monaten absolviert werden.",
           },
         },
         {

@@ -9,7 +9,7 @@ export default function Module1WithIntro() {
     return (
       <ModuleIntro
         moduleId={1}
-        title="Einführung in die Immobilienwirtschaft"
+        title="Ihr Fundament in der Immobilienwirtschaft"
         subtitle="Der ideale Einstieg für alle, die neu in der Immobilienbranche sind. Du lernst die wichtigsten Grundlagen, Rechtsgrundlagen und Marktstrukturen — verständlich erklärt, ohne Vorkenntnisse."
         targetAudience="Dieses Modul richtet sich an Quereinsteiger aus allen Berufsfeldern, die eine Karriere als Immobilienmakler, Verwalter oder Sachverständiger anstreben. Keine Vorkenntnisse in der Immobilienwirtschaft erforderlich."
         duration="20 Lerntage"
