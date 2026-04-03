@@ -183,7 +183,7 @@ REGELN:
       // Primär: Gemini Flash (KOSTENLOS bis 1500 Anfragen/Tag!)
       if (process.env.GEMINI_API_KEY) {
         try {
-          answer = await askGemini(systemPrompt, question, context || []);
+          answer = await askGemini(systemPrompt, question, context || [], 3000); // Vollständige Antworten mit Quellen
           usedModel = "gemini-2.5-flash";
         } catch (err) {
           console.error("[RAG-Tutor] Gemini Fehler, versuche Claude:", err);
@@ -193,7 +193,7 @@ REGELN:
       // Fallback: Claude Haiku (nur wenn Gemini versagt)
       if (!answer && process.env.ANTHROPIC_API_KEY) {
         try {
-          answer = await askClaude(systemPrompt, question, context || []);
+          answer = await askClaude(systemPrompt, question, context || [], 3000); // Vollständige Antworten mit Quellen
           usedModel = "claude-haiku";
         } catch (err) {
           console.error("[RAG-Tutor] Claude Fehler:", err);
