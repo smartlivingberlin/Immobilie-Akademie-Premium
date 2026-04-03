@@ -120,7 +120,7 @@ export default function Bildungskonzept() {
               <tr className="bg-blue-50 font-semibold">
                 <td className="p-2 border border-slate-200">Gesamt</td>
                 <td className="p-2 border border-slate-200">Vollständige Immobilienausbildung</td>
-                <td className="p-2 border border-slate-200 text-center">220</td>
+                <td className="p-2 border border-slate-200 text-center">240</td>
                 <td className="p-2 border border-slate-200 text-center">1.920</td>
                 <td className="p-2 border border-slate-200 text-slate-500">§34c, §34i GewO</td>
               </tr>

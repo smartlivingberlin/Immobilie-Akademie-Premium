@@ -287,7 +287,7 @@ export default function GamificationDashboard() {
               </CardHeader>
               <CardContent>
                 <div className="text-3xl font-bold">{data.stats.totalDaysCompleted}</div>
-                <p className="text-xs text-muted-foreground mt-1">Von 220 Tagen</p>
+                <p className="text-xs text-muted-foreground mt-1">Von 240 Tagen</p>
               </CardContent>
             </Card>
             

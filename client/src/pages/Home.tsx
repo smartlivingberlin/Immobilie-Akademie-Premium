@@ -58,7 +58,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/modul/1">
                 <div className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-blue-600 hover:bg-blue-700 text-white h-14 px-8 text-lg w-full sm:w-auto cursor-pointer">
-                  Jetzt kostenlos starten <ArrowRight className="ml-2 h-5 w-5" />
+                  Jetzt starten — ab 149 EUR <ArrowRight className="ml-2 h-5 w-5" />
                 </div>
               </Link>
               <Link href="#pricing">
@@ -211,13 +211,13 @@ export default function Home() {
                   <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <BookOpen className="w-7 h-7 text-blue-600" />
                   </div>
-                  <Badge variant="outline" className="mb-4 bg-slate-50 text-slate-600 border-slate-200">Modul 1 • Kostenlos</Badge>
+                  <Badge variant="outline" className="mb-4 bg-slate-50 text-slate-600 border-slate-200">Modul 1 • 149 EUR</Badge>
                   <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">Einführung & Grundlagen</h3>
                   <p className="text-slate-600 mb-6 leading-relaxed">
                     Der perfekte Einstieg. Lernen Sie die Akteure, Märkte und ethischen Grundsätze der Immobilienwirtschaft kennen.
                   </p>
                   <div className="flex items-center text-sm font-medium text-blue-600">
-                    Jetzt kostenlos starten <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    Jetzt starten — ab 149 EUR <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </CardContent>
               </Card>
@@ -382,7 +382,7 @@ export default function Home() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl font-bold text-slate-900 mb-4">Transparent & Fair</h2>
             <p className="text-lg text-slate-600">
-              Starten Sie kostenlos mit Modul 1 oder sichern Sie sich Zugang zur Komplettausbildung
+              Starten Sie mit Modul 1 (149 EUR) oder sichern Sie sich Zugang zur Komplettausbildung
             </p>
           </div>
 
@@ -390,7 +390,7 @@ export default function Home() {
             {/* Free Plan */}
             <Card className="border-2 border-slate-200">
               <CardHeader className="text-center pb-8">
-                <CardTitle className="text-2xl mb-2">Kostenlos</CardTitle>
+                <CardTitle className="text-2xl mb-2">149 EUR</CardTitle>
                 <div className="text-4xl font-bold text-slate-900 mb-2">€0</div>
                 <CardDescription>Perfekt zum Reinschnuppern</CardDescription>
               </CardHeader>
@@ -427,7 +427,7 @@ export default function Home() {
                 </ul>
                 <Link href="/modul/1">
                   <div className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-transparent hover:bg-accent hover:text-accent-foreground w-full h-12 text-lg cursor-pointer">
-                    Jetzt kostenlos starten
+                    Jetzt starten — ab 149 EUR
                   </div>
                 </Link>
               </CardContent>
@@ -475,7 +475,7 @@ export default function Home() {
                   </li>
                 </ul>
                 <Button className="w-full h-12 text-lg bg-blue-600 hover:bg-blue-700">
-                  14 Tage kostenlos testen
+                  14 Tage Widerrufsrecht
                 </Button>
                 <p className="text-xs text-center text-slate-500 mt-3">Jederzeit kündbar • Keine Kreditkarte erforderlich</p>
               </CardContent>
@@ -497,10 +497,10 @@ export default function Home() {
           <Accordion type="single" collapsible value={openFaq} onValueChange={setOpenFaq}>
             <AccordionItem value="item-1" className="border-slate-200">
               <AccordionTrigger className="text-left font-semibold text-slate-900 hover:text-blue-600">
-                Ist Modul 1 wirklich komplett kostenlos?
+                Was kostet Modul 1?
               </AccordionTrigger>
               <AccordionContent className="text-slate-700 leading-relaxed">
-                Ja! Modul 1 mit allen 20 Tagen (160 Unterrichtseinheiten) ist dauerhaft kostenlos. Sie erhalten Zugang zu Theorie, Gesetzen, Praxisbeispielen, Aufgaben und Quizzen ohne versteckte Kosten oder Zahlungspflicht.
+                Modul 1 kostet 149 EUR und enthält alle 20 Lerntage (160 Unterrichtseinheiten) mit Theorie, Gesetzen, Praxisbeispielen, Aufgaben und Quizzen. Nach dem Kauf haben Sie dauerhaften Zugriff.
               </AccordionContent>
             </AccordionItem>
 
