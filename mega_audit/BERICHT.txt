@@ -1,0 +1,114 @@
+MEGA-AUDIT BERICHT
+Datum: 3.4.2026, 13:34:19
+Screenshots: 63
+
+PROBLEME (10):
+1. Admin Dashboard: 404 Fehler
+2. Modul 1 Übersicht: 404 Fehler
+3. Modul 2 Übersicht: 404 Fehler
+4. Modul 3 Übersicht: 404 Fehler
+5. Modul 4 Übersicht: 404 Fehler
+6. Modul 5 Übersicht: 404 Fehler
+7. Flashcards Startansicht: 404 Fehler
+8. Flashcard — erste Karte: 404 Fehler
+9. Prüfungs-Simulation Start: 404 Fehler
+10. MOBIL: Dashboard: 404 Fehler
+
+ALLE SCREENSHOTS:
+✅ 001 Startseite — voller Überblick
+✅ 002 Kursübersicht — alle Module
+✅ 003 Kurs-Button: Modul 1: Einführung
+✅ 004 Lehrplan — vollständig
+✅ 005 Glossar — Fachbegriffe
+✅ 006 Glossar Filter 1
+✅ 007 Bildungskonzept
+✅ 008 Landing Page M1_Grundkurs
+✅ 009 M1_Grundkurs Button: Suche im Lehrplan...
+⌘
+K
+✅ 010 Landing Page M2_Makler
+✅ 011 M2_Makler Button: Suche im Lehrplan...
+⌘
+K
+✅ 012 Landing Page M3_WEG
+✅ 013 M3_WEG Button: Suche im Lehrplan...
+⌘
+K
+✅ 014 Landing Page M4_Gutachter
+✅ 015 M4_Gutachter Button: Suche im Lehrplan...
+⌘
+K
+✅ 016 Landing Page M5_Darlehen
+✅ 017 M5_Darlehen Button: Suche im Lehrplan...
+⌘
+K
+✅ 018 Login-Seite leer
+✅ 019 Login mit falschen Daten ausgefüllt
+✅ 020 Login Fehlermeldung bei falschem Passwort
+✅ 021 Rechtlich: IMPRESSUM
+✅ 022 Rechtlich: DATENSCHUTZ
+✅ 023 Rechtlich: AGB
+✅ 024 Rechtlich: WIDERRUF
+❌ 025 Admin Dashboard
+❌ 026 Modul 1 Übersicht
+❌ 027 Modul 2 Übersicht
+❌ 028 Modul 3 Übersicht
+❌ 029 Modul 4 Übersicht
+❌ 030 Modul 5 Übersicht
+✅ 031 ADMIN: Admin Hauptseite
+✅ 032 Admin Hauptseite → Klick: Suche im Lehrplan...
+⌘
+K
+✅ 033 ADMIN: KI-Monitor Dashboard
+✅ 034 KI-Monitor Dashboard → Klick: Suche im Lehrplan...
+⌘
+K
+✅ 035 ADMIN: Portal-Agent Dashboard
+✅ 036 Portal-Agent Dashboard → Klick: Suche im Lehrplan...
+⌘
+K
+✅ 037 ADMIN: Kursbuch-Generator
+✅ 038 Kursbuch-Generator → Klick: Suche im Lehrplan...
+⌘
+K
+✅ 039 ADMIN: Mediaskript-Generator
+✅ 040 Mediaskript-Generator → Klick: Suche im Lehrplan...
+⌘
+K
+✅ 041 ADMIN: Dozenten-Cockpit
+✅ 042 Dozenten-Cockpit → Klick: Suche im Lehrplan...
+⌘
+K
+✅ 043 ADMIN: Fragen-Manager
+✅ 044 Fragen-Manager → Klick: Suche im Lehrplan...
+⌘
+K
+✅ 045 ADMIN: Content Upload
+✅ 046 Content Upload → Klick: Suche im Lehrplan...
+⌘
+K
+✅ 047 ADMIN: Nutzerverwaltung
+✅ 048 Nutzerverwaltung → Klick: Suche im Lehrplan...
+⌘
+K
+✅ 049 ADMIN: Dozenten-Lösungen
+✅ 050 Dozenten-Lösungen → Klick: Suche im Lehrplan...
+⌘
+K
+✅ 051 ADMIN: Portal-Phase Admin
+✅ 052 Portal-Phase Admin → Klick: Suche im Lehrplan...
+⌘
+K
+✅ 053 ADMIN: White-Label Admin
+✅ 054 White-Label Admin → Klick: Suche im Lehrplan...
+⌘
+K
+✅ 055 Mediaskript leer
+✅ 056 Mediaskript — Ergebnis
+❌ 057 Flashcards Startansicht
+❌ 058 Flashcard — erste Karte
+✅ 059 Expose-Trainer
+❌ 060 Prüfungs-Simulation Start
+✅ 061 MOBIL: Startseite iPhone
+✅ 062 MOBIL: Kurse
+❌ 063 MOBIL: Dashboard
