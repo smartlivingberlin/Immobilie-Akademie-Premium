@@ -11,11 +11,11 @@ import type { Express, Request, Response } from "express";
 // ════════════════════════════════════════════════════════
 function getSmartContext(moduleId?: string | number, maxChars: number = 12000): string {
   try {
-    const { readFileSync, existsSync } = require("fs");
-    const { join } = require("path");
+    
+    
     
     if (moduleId) {
-      const filePath = join(__dirname, "..", "knowledge", `modul_${moduleId}.txt`);
+      const filePath = pathJoin(__dirname, "..", "knowledge", `modul_${moduleId}.txt`);
       if (existsSync(filePath)) {
         const content = readFileSync(filePath, "utf-8");
         return content.slice(0, maxChars);
@@ -25,7 +25,7 @@ function getSmartContext(moduleId?: string | number, maxChars: number = 12000): 
     // Alle Module wenn kein spezifisches Modul
     let combined = "";
     for (let i = 1; i <= 5; i++) {
-      const filePath = join(__dirname, "..", "knowledge", `modul_${i}.txt`);
+      const filePath = pathJoin(__dirname, "..", "knowledge", `modul_${i}.txt`);
       if (existsSync(filePath)) {
         combined += readFileSync(filePath, "utf-8").slice(0, 2000) + "\n\n";
       }
