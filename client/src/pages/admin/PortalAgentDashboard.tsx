@@ -132,21 +132,23 @@ export default function PortalAgentDashboard() {
           <h2 className="text-lg font-bold text-slate-900 mb-2">🔗 Direkte Rechtsquellen</h2>
           <p className="text-slate-500 text-sm mb-4">Alle klickbar — öffnen offizielle Gesetzestexte</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {Object.entries(GESETZE_LINKS).map(([name, url]) => (
-              
-                key={name}
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-slate-50 hover:bg-blue-50 border border-slate-100 hover:border-blue-200 rounded-lg p-3 transition-all"
-              >
-                <span className="text-blue-600 text-lg">📖</span>
-                <div>
-                  <div className="font-medium text-slate-900 text-xs">{name}</div>
-                  <div className="text-slate-400 text-xs">→ gesetze-im-internet.de</div>
-                </div>
-              </a>
-            ))}
+            {Object.entries(GESETZE_LINKS).map(([name, url]) => {
+              return (
+                
+                  key={name}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 bg-slate-50 hover:bg-blue-50 border border-slate-100 hover:border-blue-200 rounded-lg p-3 transition-all"
+                >
+                  <span className="text-blue-600 text-lg">📖</span>
+                  <div>
+                    <div className="font-medium text-slate-900 text-xs">{name}</div>
+                    <div className="text-slate-400 text-xs">gesetze-im-internet.de</div>
+                  </div>
+                </a>
+              );
+            })}
           </div>
         </div>
 
