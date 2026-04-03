@@ -268,7 +268,7 @@ export default function KursLanding({ slug }: { slug: string }) {
               </Link>
               <Link href="/login">
                 <button className="border-2 border-white/40 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 transition-all">
-                  Kostenlos testen
+                  Jetzt starten
                 </button>
               </Link>
             </div>
