@@ -1,4 +1,0 @@
-OK: 60
-Fehler: 0
-
-Probleme:
