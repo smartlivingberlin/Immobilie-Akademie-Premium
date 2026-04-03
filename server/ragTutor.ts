@@ -230,6 +230,7 @@ VERFÜGBARE DIREKT-LINKS (nur passende verwenden):
 
   // KI-Monitor Statistiken — echte DB-Daten
   app.get("/api/admin/ki-stats", async (req: Request, res: Response) => {
+    if (!(req as any).session?.userId) return res.status(401).json({ error: "Login erforderlich" });
     try {
       const { getDb } = await import("./db");
       const db = await getDb();

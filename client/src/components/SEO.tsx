@@ -23,7 +23,7 @@ export function SEO({ title, description, keywords, ogImage, canonical }: SEOPro
   const metaDescription = description || DEFAULT_SEO.description;
   const metaKeywords = keywords || DEFAULT_SEO.keywords;
   const metaImage = ogImage || DEFAULT_SEO.ogImage;
-  const canonicalUrl = canonical || `https://makler-lernportal.manus.space${location}`;
+  const canonicalUrl = canonical || `https://immobilie-akademie-production.up.railway.app${location}`;
 
   useEffect(() => {
     // Update document title
@@ -81,7 +81,7 @@ export function SEO({ title, description, keywords, ogImage, canonical }: SEOPro
       "@type": "EducationalOrganization",
       "name": "Immobilien-Bildungsportal",
       "description": metaDescription,
-      "url": "https://makler-lernportal.manus.space",
+      "url": "https://immobilie-akademie-production.up.railway.app",
       "logo": metaImage,
       "address": {
         "@type": "PostalAddress",
