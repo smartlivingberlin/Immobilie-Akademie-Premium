@@ -410,7 +410,7 @@ Fragen außerhalb dieser Bereiche: "Das liegt außerhalb meines Fachbereichs fü
         ];
 
         // Get AI response
-        const aiResponse = await invokeLLM({ messages });
+        const aiResponse = await invokeLLM({ messages, maxTokens: 2000 });
         const rawContent = aiResponse.choices[0]?.message?.content;
         const assistantMessage = typeof rawContent === "string" 
           ? rawContent 
@@ -468,6 +468,7 @@ Antworte im folgenden JSON-Format:
 
         try {
           const aiResponse = await invokeLLM({
+            maxTokens: 500, // Quiz-Feedback: JSON, kurz
             messages: [
               { role: "system", content: systemPrompt },
               { role: "user", content: "Bitte bewerte meine Antwort." },
