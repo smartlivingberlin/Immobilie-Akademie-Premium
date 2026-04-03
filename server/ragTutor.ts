@@ -52,7 +52,7 @@ async function askClaude(systemPrompt: string, question: string, context: any[])
     },
     body: JSON.stringify({
       model: "claude-haiku-4-5-20251001",
-      max_tokens: 800, // Optimiert: 800 reicht für KI-Tutor Antworten
+      max_tokens: 2000, // Vollständige Antworten ohne Abschneiden
       system: systemPrompt,
       messages,
     }),
@@ -82,7 +82,7 @@ async function askGemini(systemPrompt: string, question: string, context: any[])
           })),
           { role: "user", parts: [{ text: question }] },
         ],
-        generationConfig: { temperature: 0.3, maxOutputTokens: 1024 },
+        generationConfig: { temperature: 0.3, maxOutputTokens: 2000 },
       }),
     }
   );
@@ -306,7 +306,7 @@ REGELN:
         const textSnippet = extractedText.slice(0, 8000);
         const message = await client.messages.create({
           model: "claude-haiku-4-5-20251001",
-          max_tokens: 800, // Optimiert: 800 reicht für KI-Tutor Antworten
+          max_tokens: 2000, // Vollständige Antworten ohne Abschneiden
           messages: [{
             role: "user",
             content: `Du bist ein Immobilien-Experte. Analysiere dieses Dokument und erstelle:
