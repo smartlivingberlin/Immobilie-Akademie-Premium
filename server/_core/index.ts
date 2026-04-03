@@ -19,6 +19,7 @@ import { registerOAuthRoutes } from "./oauth";
 import { registerLocalAuthRoutes } from "./auth-local";
 import { registerPasswordResetRoutes } from "../passwordReset";
 import { registerPortalPhaseRoutes } from "../portalPhase";
+import { registerAgentRoutes } from "../agent/agentRoutes";
 import { registerRagTutorRoutes } from "../ragTutor";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
@@ -91,6 +92,7 @@ app.use("/api/auth/register", loginLimiter);
   registerPasswordResetRoutes(app);
   registerPortalPhaseRoutes(app);
   registerRagTutorRoutes(app);
+  registerAgentRoutes(app);
   // Healthcheck für Railway / Monitoring
   app.get("/api/health", (_req, res) => {
     return res.status(200).json({ ok: true, ts: new Date().toISOString() });
