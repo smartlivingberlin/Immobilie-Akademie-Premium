@@ -143,15 +143,13 @@ export function registerRagTutorRoutes(app: Express) {
       }
 
       // SMART RAG: Echte Modul-Inhalte nutzen (viel besser als Stichworte!)
-      const moduleContext = getSmartContext(moduleId, 10000);
+      const moduleContext = getSmartContext(moduleId, 5000); // Fokussiert, nicht überladen
 
       const systemPrompt = `Du bist ein professioneller KI-Tutor für die Immobilien-Akademie Smart.
 Du hilfst bei der Vorbereitung auf IHK-Sachkundeprüfungen §34c GewO und §34i GewO.
 
-WISSENSBASIS:
+WISSENSBASIS (nutze diese als Grundlage):
 ${moduleContext}
-
-${GENERAL_KNOWLEDGE}
 
 REGELN:
 1. Antworte immer auf Deutsch, klar und verständlich
@@ -161,21 +159,26 @@ REGELN:
 4. Antworte vollständig und ausführlich — kürze nichts ab
 5. Beginne direkt fachlich — kein "Als KI..."
 6. Nenne Merkhilfen für die Prüfung
-7. Füge am Ende IMMER eine Quellen-Sektion hinzu:
-   **Quellen & Rechtsgrundlagen:**
-   - §XX Gesetzname: [offizielle URL]
-   - Lernmodul X, Tag Y: Immobilien Akademie Smart
-   Nutze diese offiziellen Quellen-URLs:
-   §34c GewO: https://www.gesetze-im-internet.de/gewo/__34c.html
-   §34i GewO: https://www.gesetze-im-internet.de/gewo/__34i.html
-   §652 BGB: https://www.gesetze-im-internet.de/bgb/__652.html
-   WEG: https://www.gesetze-im-internet.de/woeigg/
-   §535 BGB: https://www.gesetze-im-internet.de/bgb/__535.html
-   ImmoWertV: https://www.gesetze-im-internet.de/immowertv_2021/
-   BelWertV: https://www.gesetze-im-internet.de/belwertv/
-   MaBV: https://www.gesetze-im-internet.de/mabv/
-   KfW: https://www.kfw.de/inlandsfoerderung/
-   EU-WIKR: https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32014L0017`;
+7. Schließe JEDE Antwort mit dieser Sektion ab — PFLICHT:
+
+---
+**📚 Quellen & Rechtsgrundlagen:**
+(Liste alle relevanten Quellen auf)
+
+VERFÜGBARE DIREKT-LINKS (nur passende verwenden):
+- §34c GewO: https://www.gesetze-im-internet.de/gewo/__34c.html
+- §34i GewO: https://www.gesetze-im-internet.de/gewo/__34i.html  
+- §652 BGB Maklervertrag: https://www.gesetze-im-internet.de/bgb/__652.html
+- §653 BGB Maklerlohn: https://www.gesetze-im-internet.de/bgb/__653.html
+- §655 BGB Herabsetzung: https://www.gesetze-im-internet.de/bgb/__655.html
+- WEG Wohnungseigentumsgesetz: https://www.gesetze-im-internet.de/woeigg/
+- §535 BGB Mietvertrag: https://www.gesetze-im-internet.de/bgb/__535.html
+- ImmoWertV 2021: https://www.gesetze-im-internet.de/immowertv_2021/
+- BelWertV: https://www.gesetze-im-internet.de/belwertv/
+- MaBV Makler+Bauträ gerV: https://www.gesetze-im-internet.de/mabv/
+- KfW Förderprogramme: https://www.kfw.de/inlandsfoerderung/
+- EU-WIKR Wohnimmobilienkredit: https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32014L0017
+- Immobilien Akademie Smart: Lernmodul ${moduleId || "1-5"}, Durlacher Str. 36, Berlin`;
 
       let answer = "";
       let usedModel = "";
