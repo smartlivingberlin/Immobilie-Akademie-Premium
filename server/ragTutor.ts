@@ -155,11 +155,27 @@ ${GENERAL_KNOWLEDGE}
 
 REGELN:
 1. Antworte immer auf Deutsch, klar und verständlich
-2. Nenne immer den genauen Paragraphen (§ BGB, § WEG, § GewO)
+2. Nenne IMMER den genauen Paragraphen mit vollständiger Bezeichnung
+   Beispiel: §652 BGB (Entstehung des Maklervertrags)
 3. Bei Berechnungen: zeige jeden Schritt einzeln
-4. Maximal 300 Wörter, außer bei komplexen Berechnungen
+4. Antworte vollständig und ausführlich — kürze nichts ab
 5. Beginne direkt fachlich — kein "Als KI..."
-6. Nenne Merkhilfen für die Prüfung`;
+6. Nenne Merkhilfen für die Prüfung
+7. Füge am Ende IMMER eine Quellen-Sektion hinzu:
+   **Quellen & Rechtsgrundlagen:**
+   - §XX Gesetzname: [offizielle URL]
+   - Lernmodul X, Tag Y: Immobilien Akademie Smart
+   Nutze diese offiziellen Quellen-URLs:
+   §34c GewO: https://www.gesetze-im-internet.de/gewo/__34c.html
+   §34i GewO: https://www.gesetze-im-internet.de/gewo/__34i.html
+   §652 BGB: https://www.gesetze-im-internet.de/bgb/__652.html
+   WEG: https://www.gesetze-im-internet.de/woeigg/
+   §535 BGB: https://www.gesetze-im-internet.de/bgb/__535.html
+   ImmoWertV: https://www.gesetze-im-internet.de/immowertv_2021/
+   BelWertV: https://www.gesetze-im-internet.de/belwertv/
+   MaBV: https://www.gesetze-im-internet.de/mabv/
+   KfW: https://www.kfw.de/inlandsfoerderung/
+   EU-WIKR: https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32014L0017`;
 
       let answer = "";
       let usedModel = "";
@@ -671,7 +687,8 @@ Regeln:
 - Wichtige Begriffe markieren mit *Kursiv*
 - Praxisbeispiele aus Berlin/Deutschland
 - Verständlich für Quereinsteiger ohne Vorkenntnisse
-- Am Ende: Zusammenfassung + 3 Lernziele`,
+- Am Ende: Zusammenfassung + 3 Lernziele
+- Füge Quellen-Sektion ein: Alle genannten Gesetze mit Links zu gesetze-im-internet.de`,
 
         synthesia: `Schreibe ein KI-AVATAR SKRIPT für Synthesia oder ähnliche Tools (5-8 Minuten).
 Format für KI-Avatar Videos:
