@@ -509,7 +509,7 @@ export default function Home() {
                 Wie lange habe ich Zugriff auf die Inhalte?
               </AccordionTrigger>
               <AccordionContent className="text-slate-700 leading-relaxed">
-                Bei Premium-Mitgliedschaft haben Sie unbegrenzten Zugriff auf alle Module, solange Ihr Abo aktiv ist. Modul 1 bleibt auch nach Kündigung kostenlos verfügbar. Ihr Lernfortschritt wird dauerhaft gespeichert.
+                Bei Premium-Mitgliedschaft haben Sie unbegrenzten Zugriff auf alle Module, solange Ihr Abo aktiv ist. Modul 1 bleibt auch nach Kündigung zugänglich. Ihr Lernfortschritt wird dauerhaft gespeichert.
               </AccordionContent>
             </AccordionItem>
 
@@ -580,7 +580,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/modul/1">
               <div className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary text-secondary-foreground hover:bg-secondary/80 h-14 px-8 text-lg cursor-pointer">
-                Kostenlos starten <ArrowRight className="ml-2 h-5 w-5" />
+                Jetzt starten <ArrowRight className="ml-2 h-5 w-5" />
               </div>
             </Link>
             <Button size="lg" variant="outline" className="h-14 px-8 text-lg border-white text-white hover:bg-white/10">
