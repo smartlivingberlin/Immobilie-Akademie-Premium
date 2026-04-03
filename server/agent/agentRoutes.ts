@@ -4,10 +4,25 @@ import PortalAgent, { WISSENS_KARTE } from "./PortalAgent";
 export function registerAgentRoutes(app: Express) {
 
   app.get("/api/agent/knowledge-map", (_req: Request, res: Response) => {
+    // Alle Gesetzes-Links aus allen Modulen sammeln
+    const allLinks: Record<string, string> = {};
+    const moduleLaws: Record<number, string[]> = {};
+    for (let m = 1; m <= 5; m++) {
+      const mod = WISSENS_KARTE.module[m as keyof typeof WISSENS_KARTE.module];
+      if (mod) {
+        moduleLaws[m] = mod.gesetze || [];
+        Object.assign(allLinks, mod.gesetze_urls || {});
+      }
+    }
     return res.json({
-      legalSources: Object.keys(WISSENS_KARTE.gesetze_links || {}).length,
-      moduleLaws: WISSENS_KARTE.modul_gesetze || {},
-      legalLinks: WISSENS_KARTE.gesetze_links || {},
+      legalSources: Object.keys(allLinks).length,
+      moduleLaws,
+      legalLinks: allLinks,
+      moduleInfo: Object.fromEntries(
+        Object.entries(WISSENS_KARTE.module).map(([k, v]: [string, any]) => 
+          [k, { name: v.name, gesetze: v.gesetze }]
+        )
+      ),
       description: "Vollständige Wissensbasis des Portals",
     });
   });
