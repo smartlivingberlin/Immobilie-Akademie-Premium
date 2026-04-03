@@ -4,6 +4,39 @@
  */
 import type { Express, Request, Response } from "express";
 
+
+// ════════════════════════════════════════════════════════
+// SMART RAG: Echte Modul-Inhalte als KI-Wissensbasis
+// Lädt extrahierte Inhalte aus server/knowledge/
+// ════════════════════════════════════════════════════════
+function getSmartContext(moduleId?: string | number, maxChars: number = 12000): string {
+  try {
+    const { readFileSync, existsSync } = require("fs");
+    const { join } = require("path");
+    
+    if (moduleId) {
+      const filePath = join(__dirname, "..", "knowledge", `modul_${moduleId}.txt`);
+      if (existsSync(filePath)) {
+        const content = readFileSync(filePath, "utf-8");
+        return content.slice(0, maxChars);
+      }
+    }
+    
+    // Alle Module wenn kein spezifisches Modul
+    let combined = "";
+    for (let i = 1; i <= 5; i++) {
+      const filePath = join(__dirname, "..", "knowledge", `modul_${i}.txt`);
+      if (existsSync(filePath)) {
+        combined += readFileSync(filePath, "utf-8").slice(0, 2000) + "\n\n";
+      }
+    }
+    return combined.slice(0, maxChars);
+  } catch {
+    // Fallback auf alte MODULE_KNOWLEDGE
+    return moduleId ? MODULE_KNOWLEDGE[String(moduleId)] || "" : Object.values(MODULE_KNOWLEDGE).join("\n\n");
+  }
+}
+
 const MODULE_KNOWLEDGE: Record<string, string> = {
   "1": `MODUL 1 — Einführung Immobilienwirtschaft (20 Tage, 160 UE)
 Themen: Marktüberblick Deutschland, BGB Grundlagen §433ff, §535ff, §652 Maklerrecht, GewO §34c/§34i/§34d, Grundbuchrecht §873/§925 BGB, WEG-Grundlagen, BauGB, Marktakteure, Immobilientypen, Verkehrswert §194 BauGB.
@@ -109,9 +142,8 @@ export function registerRagTutorRoutes(app: Express) {
         return res.status(503).json({ error: "KI-Service nicht konfiguriert" });
       }
 
-      const moduleContext = moduleId && MODULE_KNOWLEDGE[String(moduleId)]
-        ? MODULE_KNOWLEDGE[String(moduleId)]
-        : Object.values(MODULE_KNOWLEDGE).join("\n\n");
+      // SMART RAG: Echte Modul-Inhalte nutzen (viel besser als Stichworte!)
+      const moduleContext = getSmartContext(moduleId, 10000);
 
       const systemPrompt = `Du bist ein professioneller KI-Tutor für die Immobilien-Akademie Smart.
 Du hilfst bei der Vorbereitung auf IHK-Sachkundeprüfungen §34c GewO und §34i GewO.
@@ -462,7 +494,11 @@ Bewerte nach IHK-Maßstäben und antworte NUR mit diesem JSON:
           currentTitle = ""; currentTheory = ""; currentPractice = ""; currentTask = "";
         }
       }
-      const extractedContent = titleTheoryPairs.length > 0 ? titleTheoryPairs.slice(0, 30).join("\n\n") : rawContent.slice(0, 12000);
+      // SMART RAG: Extrahierten Content + Smart Context kombinieren
+      const smartCtx = getSmartContext(moduleId, 8000);
+      const extractedContent = titleTheoryPairs.length > 0 
+        ? titleTheoryPairs.slice(0, 40).join("\n\n") + "\n\n---\nZUSÄTZLICHE WISSENSBASIS:\n" + smartCtx
+        : smartCtx || rawContent.slice(0, 12000);
       const formatInstructions: Record<string, string> = {
         kursbuch: "Erstelle ein vollständiges professionelles KURSBUCH mit MINDESTENS 5000 Wörtern. Struktur: 1) Vorwort und Lernziele (300 Wörter) 2) Mindestens 8 nummerierte Kapitel je 400-600 Wörter mit Theorie, Praxisbeispielen aus Berlin/Deutschland, Merkkästen mit wichtigen Definitionen 3) Übungsaufgaben am Ende jedes Kapitels mit Musterlösungen 4) Zusammenfassung und IHK-Prüfungsvorbereitung. WICHTIG: Schreibe vollständig und ausführlich — kürze NICHTS ab.",
         zusammenfassung: "Erstelle eine vollständige LERNZUSAMMENFASSUNG mit MINDESTENS 2000 Wörtern: 1) Die 30 wichtigsten Begriffe mit ausführlichen Definitionen 2) Alle relevanten Paragraphen mit Erklärung was sie bedeuten 3) Mindestens 15 Merksätze für die Prüfung 4) 20 häufige IHK-Prüfungsfragen mit vollständigen Musterlösungen. Kürze nichts ab.",
