@@ -136,7 +136,7 @@ export const BADGE_DEFINITIONS: Omit<Badge, 'unlocked' | 'unlockedAt' | 'progres
   { id: 'curious', name: 'Wissbegierig', description: '10 Tage abgeschlossen', icon: '📚', category: 'learning', requirement: 10 },
   { id: 'expert', name: 'Experte', description: '50 Tage abgeschlossen', icon: '🏆', category: 'learning', requirement: 50 },
   { id: 'master', name: 'Meister', description: '100 Tage abgeschlossen', icon: '🌟', category: 'learning', requirement: 100 },
-  { id: 'legend', name: 'Legende', description: 'Alle 220 Tage abgeschlossen', icon: '👑', category: 'learning', requirement: 220 },
+  { id: 'legend', name: 'Legende', description: 'Alle 240 Tage abgeschlossen', icon: '👑', category: 'learning', requirement: 240 },
   { id: 'bookworm', name: 'Bücherwurm', description: '50 Glossar-Begriffe gelernt', icon: '📖', category: 'learning', requirement: 50 },
   { id: 'knowledge_giant', name: 'Wissensriese', description: '100 Glossar-Begriffe gelernt', icon: '🧠', category: 'learning', requirement: 100 },
   { id: 'goal_oriented', name: 'Zielstrebig', description: 'Erstes Modul abgeschlossen', icon: '🎯', category: 'learning', requirement: 1 },
@@ -407,7 +407,7 @@ export function checkAndUnlockBadges(data: GamificationData): Badge[] {
         shouldUnlock = data.stats.totalDaysCompleted >= 100;
         break;
       case 'legend':
-        shouldUnlock = data.stats.totalDaysCompleted >= 220;
+        shouldUnlock = data.stats.totalDaysCompleted >= 240;
         break;
       case 'bookworm':
         shouldUnlock = data.stats.totalGlossaryTermsLearned >= 50;
