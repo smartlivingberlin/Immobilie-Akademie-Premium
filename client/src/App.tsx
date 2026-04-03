@@ -33,6 +33,8 @@ const Module5Detail = lazy(() => import("@/pages/modules/Module5Detail"));
 const Module2Detail = lazy(() => import("@/pages/modules/Module2Detail"));
 const Module1Detail = lazy(() => import("@/pages/modules/Module1Detail"));
 const Module1WithIntro = lazy(() => import("@/pages/modules/Module1WithIntro"));
+const KiMonitor = lazy(() => import("@/pages/admin/KiMonitor"));
+const KursLanding = lazy(() => import("@/pages/kurs/KursLanding"));
 const Module2WithIntro = lazy(() => import("@/pages/modules/Module2WithIntro"));
 const Module3WithIntro = lazy(() => import("@/pages/modules/Module3WithIntro"));
 const Module4WithIntro = lazy(() => import("@/pages/modules/Module4WithIntro"));
