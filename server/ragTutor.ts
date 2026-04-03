@@ -69,7 +69,7 @@ async function askClaude(systemPrompt: string, question: string, context: any[])
 
 async function askGemini(systemPrompt: string, question: string, context: any[]): Promise<string> {
   const response = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -136,7 +136,7 @@ REGELN:
       if (process.env.GEMINI_API_KEY) {
         try {
           answer = await askGemini(systemPrompt, question, context || []);
-          usedModel = "gemini-flash";
+          usedModel = "gemini-2.5-flash";
         } catch (err) {
           console.error("[RAG-Tutor] Gemini Fehler, versuche Claude:", err);
         }
