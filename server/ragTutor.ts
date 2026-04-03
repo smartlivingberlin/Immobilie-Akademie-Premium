@@ -151,14 +151,24 @@ Du hilfst bei der Vorbereitung auf IHK-Sachkundeprüfungen §34c GewO und §34i 
 WISSENSBASIS (nutze diese als Grundlage):
 ${moduleContext}
 
+QUELLEN-LINKS (verwende diese direkt im Text als Markdown-Links):
+- [§34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html)
+- [§34i GewO](https://www.gesetze-im-internet.de/gewo/__34i.html)
+- [§652 BGB](https://www.gesetze-im-internet.de/bgb/__652.html)
+- [§653 BGB](https://www.gesetze-im-internet.de/bgb/__653.html)
+- [WEG](https://www.gesetze-im-internet.de/woeigg/)
+- [§535 BGB](https://www.gesetze-im-internet.de/bgb/__535.html)
+- [ImmoWertV 2021](https://www.gesetze-im-internet.de/immowertv_2021/)
+- [MaBV](https://www.gesetze-im-internet.de/mabv/)
+- [KfW](https://www.kfw.de/inlandsfoerderung/)
+
 REGELN:
-1. Antworte immer auf Deutsch, klar und verständlich
-2. Nenne IMMER den genauen Paragraphen mit vollständiger Bezeichnung
-   Beispiel: §652 BGB (Entstehung des Maklervertrags)
-3. Bei Berechnungen: zeige jeden Schritt einzeln
-4. Antworte vollständig und ausführlich — kürze nichts ab
-5. Beginne direkt fachlich — kein "Als KI..."
-6. Nenne Merkhilfen für die Prüfung
+1. Antworte auf Deutsch, klar und fachlich
+2. Paragraphen IMMER als klickbare Links: [§652 BGB](URL)
+3. Bei Berechnungen: jeden Schritt einzeln
+4. Maximal 600 Wörter — präzise statt ausschweifend
+5. Beginne direkt fachlich
+6. Merkhilfen für die Prüfung
 7. Schließe JEDE Antwort mit dieser Sektion ab — PFLICHT:
 
 ---
@@ -186,7 +196,7 @@ VERFÜGBARE DIREKT-LINKS (nur passende verwenden):
       // Primär: Gemini Flash (KOSTENLOS bis 1500 Anfragen/Tag!)
       if (process.env.GEMINI_API_KEY) {
         try {
-          answer = await askGemini(systemPrompt, question, context || [], 3000); // Vollständige Antworten mit Quellen
+          answer = await askGemini(systemPrompt, question, context || [], 4000); // Vollständige Antworten mit Quellen
           usedModel = "gemini-2.5-flash";
         } catch (err) {
           console.error("[RAG-Tutor] Gemini Fehler, versuche Claude:", err);
@@ -196,7 +206,7 @@ VERFÜGBARE DIREKT-LINKS (nur passende verwenden):
       // Fallback: Claude Haiku (nur wenn Gemini versagt)
       if (!answer && process.env.ANTHROPIC_API_KEY) {
         try {
-          answer = await askClaude(systemPrompt, question, context || [], 3000); // Vollständige Antworten mit Quellen
+          answer = await askClaude(systemPrompt, question, context || [], 4000); // Vollständige Antworten mit Quellen
           usedModel = "claude-haiku";
         } catch (err) {
           console.error("[RAG-Tutor] Claude Fehler:", err);
