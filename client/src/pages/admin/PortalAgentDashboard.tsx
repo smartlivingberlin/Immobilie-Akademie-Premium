@@ -124,6 +124,7 @@ export default function PortalAgentDashboard() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {Object.entries(GESETZE_LINKS).map(([name, url]) => (
               
+                <a
                 key={name}
                 href={url}
                 target="_blank"
