@@ -33,6 +33,7 @@ const Module5Detail = lazy(() => import("@/pages/modules/Module5Detail"));
 const Module2Detail = lazy(() => import("@/pages/modules/Module2Detail"));
 const Module1Detail = lazy(() => import("@/pages/modules/Module1Detail"));
 const Module1WithIntro = lazy(() => import("@/pages/modules/Module1WithIntro"));
+const PortalAgentDashboard = lazy(() => import("@/pages/admin/PortalAgentDashboard"));
 const KiMonitor = lazy(() => import("@/pages/admin/KiMonitor"));
 const KursLanding = lazy(() => import("@/pages/kurs/KursLanding"));
 const Module2WithIntro = lazy(() => import("@/pages/modules/Module2WithIntro"));
@@ -133,6 +134,7 @@ function Router() {
           <Route path="/widerruf" component={Widerruf} />
           <Route path="/bildungskonzept" component={Bildungskonzept} />
           
+          <Route path="/admin/portal-agent" component={() => <PortalAgentDashboard />} />
           <Route path="/admin/ki-monitor" component={KiMonitor} />
           <Route path="/kurs/modul-1-immobilien-grundkurs" component={() => <KursLanding slug="modul-1-immobilien-grundkurs" />} />
           <Route path="/kurs/modul-2-makler-34c" component={() => <KursLanding slug="modul-2-makler-34c" />} />
