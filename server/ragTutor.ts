@@ -34,7 +34,7 @@ ALLGEMEINE IMMOBILIENWIRTSCHAFT:
 - Energieausweis Pflicht: bei Verkauf und Neuvermietung (GEG §80)
 `;
 
-async function askClaude(systemPrompt: string, question: string, context: any[]): Promise<string> {
+async function askClaude(systemPrompt: string, question: string, context: any[], maxTokens: number = 2000): Promise<string> {
   const messages = [
     ...context.slice(-6).map((m: any) => ({
       role: m.role === "assistant" ? "assistant" : "user",
@@ -52,7 +52,7 @@ async function askClaude(systemPrompt: string, question: string, context: any[])
     },
     body: JSON.stringify({
       model: "claude-haiku-4-5-20251001",
-      max_tokens: 2000, // Vollständige Antworten ohne Abschneiden
+      max_tokens: maxTokens, // Dynamisch je nach Anwendungsfall
       system: systemPrompt,
       messages,
     }),
@@ -67,7 +67,7 @@ async function askClaude(systemPrompt: string, question: string, context: any[])
   return data.content?.[0]?.text || "";
 }
 
-async function askGemini(systemPrompt: string, question: string, context: any[]): Promise<string> {
+async function askGemini(systemPrompt: string, question: string, context: any[], maxTokens: number = 2000): Promise<string> {
   const response = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
     {
@@ -82,7 +82,7 @@ async function askGemini(systemPrompt: string, question: string, context: any[])
           })),
           { role: "user", parts: [{ text: question }] },
         ],
-        generationConfig: { temperature: 0.3, maxOutputTokens: 2000 },
+        generationConfig: { temperature: 0.3, maxOutputTokens: maxTokens },
       }),
     }
   );
@@ -227,7 +227,7 @@ REGELN:
           "Accept": "audio/mpeg",
         },
         body: JSON.stringify({
-          text: text.slice(0, 500),
+          text: text.slice(0, 5000), // Vollständiger Text ohne Abschneiden
           model_id: "eleven_multilingual_v2",
           voice_settings: { stability: 0.5, similarity_boost: 0.75 }
         }),
@@ -342,7 +342,7 @@ ${textSnippet}`
       const prompt = `Du bist ein IHK-Prüfungsexperte. Erstelle exakt ${count} Multiple-Choice Prüfungsfragen auf Deutsch aus diesem Text:\n\n${text.slice(0, 8000)}\n\nGib NUR ein JSON-Array zurück:\n[{"questionText":"...","options":{"A":"...","B":"...","C":"...","D":"..."},"correctAnswer":"A","explanation":"...","difficulty":"easy","category":"${category || 'Allgemein'}"}]`;
       let questionsJson = "";
       try {
-        const answer = await askClaude("Du bist IHK-Prüfungsexperte. Antworte NUR mit JSON.", prompt, []);
+        const answer = await askClaude("Du bist IHK-Prüfungsexperte. Antworte NUR mit JSON.", prompt, [], 2000); // JSON: 2000 reicht
         questionsJson = answer;
       } catch {
         return res.status(500).json({ error: "KI nicht verfügbar" });
@@ -377,7 +377,7 @@ ${textSnippet}`
         skript: "ein Prüfungsskript mit Fragen, Antworten und Merkhilfen",
       };
       const prompt = `Du bist IHK-Dozent für Immobilienwirtschaft. Erstelle ${formatMap[format] || formatMap.kursbuch} für: ${moduleTitle}\n\nInhalte: ${contentSummary.slice(0, 8000)}\n\nAnforderungen:\n- Professionelle Qualität wie IU Akademie\n- Klare Struktur mit nummerierten Kapiteln\n- Praxisnahe Beispiele\n- Alle Gesetze korrekt zitiert\n- Verständlich für Quereinsteiger\n- Format: Markdown mit # ## ###`;
-      const content2 = await askClaude("Du bist erfahrener IHK-Dozent für Immobilienwirtschaft.", prompt, []);
+      const content2 = await askClaude("Du bist erfahrener IHK-Dozent für Immobilienwirtschaft.", prompt, [], 4000); // Kursbuch vollständig
       res.json({ success: true, content: content2, moduleId, moduleTitle, format, generatedAt: new Date().toISOString() });
     } catch { res.status(500).json({ error: "Fehler beim Generieren" }); }
   });
@@ -406,7 +406,7 @@ Bewerte nach IHK-Maßstäben und antworte NUR mit diesem JSON:
   "staerken": "Was gut war",
   "verbesserungen": "Was fehlt oder falsch ist"
 }`;
-      const answer = await askClaude("Du bist strenger aber fairer IHK-Prüfer. Antworte NUR mit JSON.", prompt, []);
+      const answer = await askClaude("Du bist strenger aber fairer IHK-Prüfer. Antworte NUR mit JSON.", prompt, [], 500); // Nur JSON-Feedback
       const clean = answer.replace(/\`\`\`json/g, "").replace(/\`\`\`/g, "").trim();
       try {
         const bewertung = JSON.parse(clean);
@@ -469,7 +469,7 @@ Bewerte nach IHK-Maßstäben und antworte NUR mit diesem JSON:
         skript: "Erstelle ein vollständiges PRÜFUNGSSKRIPT mit MINDESTENS 3000 Wörtern: 1) 30 IHK-typische Prüfungsfragen im Frage-Antwort-Format mit ausführlichen Musterlösungen 2) Alle prüfungsrelevanten Paragraphen mit Erklärung 3) Rechenwege für Berechnungsaufgaben Schritt für Schritt 4) Tipps für die Prüfungssituation. Vollständig ausschreiben — nichts kürzen.",
       };
       const prompt = "Modul: " + moduleNames[Number(moduleId)] + "\n\n" + formatInstructions[format] + "\n\nLERNINHALTE:\n" + extractedContent + "\n\nAnforderungen: Professionell wie IU Akademie, verständlich für Quereinsteiger, alle Gesetze korrekt zitiert, Markdown-Format mit # ## ###";
-      const generatedContent = await askClaude("Du bist erfahrener IHK-Dozent und Fachautor für Immobilienwirtschaft in Deutschland.", prompt, []);
+      const generatedContent = await askClaude("Du bist erfahrener IHK-Dozent und Fachautor für Immobilienwirtschaft in Deutschland.", prompt, [], 8000); // Kursbuch braucht viel Platz
       res.json({ success: true, content: generatedContent, moduleId, moduleName: moduleNames[Number(moduleId)], format, daysExtracted: titleTheoryPairs.length, generatedAt: new Date().toISOString() });
     } catch (err: any) { res.status(500).json({ error: "Fehler: " + err.message }); }
   });
@@ -580,7 +580,8 @@ WICHTIG:
       const plan = await askClaude(
         "Du bist erfahrener IHK-Dozent für Immobilienwirtschaft in Deutschland.",
         prompt,
-        []
+        [],
+        4000 // Unterrichtsplan braucht ausführliche Antworten
       );
 
       res.json({
@@ -670,7 +671,7 @@ INHALTLICHE ANFORDERUNGEN:
 - IHK-Prüfungsrelevante Inhalte bevorzugen
 - Aktuelle Rechtslage 2025/2026`;
 
-      const result = await askClaude(systemPrompt, `Erstelle das ${format}-Skript für: ${thema}`, []);
+      const result = await askClaude(systemPrompt, `Erstelle das ${format}-Skript für: ${thema}`, [], 6000); // Mediaskript: Podcast/Video braucht viel Text
 
       res.json({
         success: true,
@@ -695,7 +696,7 @@ INHALTLICHE ANFORDERUNGEN:
 
       const prompt = "Du bist ein IHK-Prüfer für Immobilienmakler. Bewerte das folgende Exposé nach deutschen Pflichtangaben.\n\nIMMOBILIEN-DATEN:\n" + (immobilienDaten || "Nicht angegeben") + "\n\nEINGEREICHTES EXPOSÉ:\n" + expose + "\n\nPrüfe folgende Pflichtangaben nach GEG/EnEV und MaBV:\n1. Energieausweis-Typ (Bedarfs- oder Verbrauchsausweis)\n2. Energieträger (Gas, Öl, Fernwärme etc.)\n3. Baujahr des Gebäudes\n4. Energiekennwert (kWh/m²a)\n5. Energieeffizienzklasse (A+ bis H)\n6. Courtage-Angabe mit Mehrwertsteuer\n7. Wohnfläche in Quadratmeter\n8. Kaufpreis oder Miete\n9. Lage/Adresse (zumindest Stadtteil)\n10. Objektbeschreibung\n\nAntworte NUR mit diesem JSON:\n{\n  \"gesamtnote\": \"Sehr gut|Gut|Befriedigend|Ausreichend|Mangelhaft\",\n  \"punkte\": 0-100,\n  \"pflichtangaben\": {\n    \"energieausweis_typ\": true|false,\n    \"energietraeger\": true|false,\n    \"baujahr\": true|false,\n    \"energiekennwert\": true|false,\n    \"effizienzklasse\": true|false,\n    \"courtage\": true|false,\n    \"wohnflaeche\": true|false,\n    \"preis\": true|false,\n    \"lage\": true|false,\n    \"objektbeschreibung\": true|false\n  },\n  \"feedback\": \"2-3 Sätze Gesamtbewertung\",\n  \"fehlendeAngaben\": [\"Liste der fehlenden Pflichtangaben\"],\n  \"verbesserungen\": \"Konkrete Verbesserungsvorschläge\",\n  \"rechtlicheRisiken\": \"Rechtliche Risiken bei fehlendem Exposé\"\n}";
 
-      const answer = await askClaude("Du bist strenger IHK-Prüfer für Maklerrecht. Antworte NUR mit JSON.", prompt, []);
+      const answer = await askClaude("Du bist strenger IHK-Prüfer für Maklerrecht. Antworte NUR mit JSON.", prompt, [], 500); // Nur JSON
       const clean = answer.replace(/```json/g, "").replace(/```/g, "").trim();
 
       try {
