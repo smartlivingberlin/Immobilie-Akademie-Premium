@@ -80,7 +80,7 @@ export default function Home() {
               <div className="text-sm font-medium text-slate-500 uppercase tracking-wider">Module</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-blue-600 mb-1">220</div>
+              T0</div>
               <div className="text-sm font-medium text-slate-500 uppercase tracking-wider">Ausbildungstage</div>
             </div>
             <div className="text-center">
