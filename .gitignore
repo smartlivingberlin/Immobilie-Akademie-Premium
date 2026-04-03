@@ -126,3 +126,10 @@ ideas.md
 todo.md
 vitest.config.ts
 client/src/main.tsx.before-clean-fix.*
+audit_screenshots/
+correct_audit/
+mega_audit/
+complete_audit/
+*.mjs
+portal_scan_report.txt
+audit_report.txt
