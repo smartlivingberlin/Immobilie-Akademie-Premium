@@ -131,6 +131,7 @@ function Router() {
           <Route path="/widerruf" component={Widerruf} />
           <Route path="/bildungskonzept" component={Bildungskonzept} />
           
+          <Route path="/admin/ki-monitor" component={KiMonitor} />
           <Route path="/kurs/modul-1-immobilien-grundkurs" component={() => <KursLanding slug="modul-1-immobilien-grundkurs" />} />
           <Route path="/kurs/modul-2-makler-34c" component={() => <KursLanding slug="modul-2-makler-34c" />} />
           <Route path="/kurs/modul-3-weg-verwalter" component={() => <KursLanding slug="modul-3-weg-verwalter" />} />

@@ -52,7 +52,7 @@ async function askClaude(systemPrompt: string, question: string, context: any[])
     },
     body: JSON.stringify({
       model: "claude-haiku-4-5-20251001",
-      max_tokens: 8000,
+      max_tokens: 800, // Optimiert: 800 reicht für KI-Tutor Antworten
       system: systemPrompt,
       messages,
     }),
@@ -132,29 +132,33 @@ REGELN:
       let answer = "";
       let usedModel = "";
 
-      // Primär: Claude Haiku
-      if (process.env.ANTHROPIC_API_KEY) {
-        try {
-          answer = await askClaude(systemPrompt, question, context || []);
-          usedModel = "claude-haiku";
-        } catch (err) {
-          console.error("[RAG-Tutor] Claude Fehler, versuche Gemini:", err);
-        }
-      }
-
-      // Fallback: Gemini
-      if (!answer && process.env.GEMINI_API_KEY) {
+      // Primär: Gemini Flash (KOSTENLOS bis 1500 Anfragen/Tag!)
+      if (process.env.GEMINI_API_KEY) {
         try {
           answer = await askGemini(systemPrompt, question, context || []);
           usedModel = "gemini-flash";
         } catch (err) {
-          console.error("[RAG-Tutor] Gemini Fehler:", err);
+          console.error("[RAG-Tutor] Gemini Fehler, versuche Claude:", err);
+        }
+      }
+
+      // Fallback: Claude Haiku (nur wenn Gemini versagt)
+      if (!answer && process.env.ANTHROPIC_API_KEY) {
+        try {
+          answer = await askClaude(systemPrompt, question, context || []);
+          usedModel = "claude-haiku";
+        } catch (err) {
+          console.error("[RAG-Tutor] Claude Fehler:", err);
         }
       }
 
       if (!answer) {
         return res.status(502).json({ error: "KI-Service temporär nicht verfügbar" });
       }
+
+      // Token-Tracking für Kostenkontrolle
+      const estimatedTokens = Math.round((question.length + answer.length) / 4);
+      console.log(`[KI-KOSTEN] Modell: ${usedModel}, ~${estimatedTokens} Token, User: ${(req as any).session?.userId || "anon"}`);
 
       res.json({ answer, moduleId: moduleId || null, model: usedModel });
     } catch (err) {
@@ -302,7 +306,7 @@ REGELN:
         const textSnippet = extractedText.slice(0, 8000);
         const message = await client.messages.create({
           model: "claude-haiku-4-5-20251001",
-          max_tokens: 8000,
+          max_tokens: 800, // Optimiert: 800 reicht für KI-Tutor Antworten
           messages: [{
             role: "user",
             content: `Du bist ein Immobilien-Experte. Analysiere dieses Dokument und erstelle:
