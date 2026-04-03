@@ -228,7 +228,7 @@ export default function DokumentViewer() {
                   <ZoomIn size={14} />
                 </button>
               </div>
-              <button onClick={() => { setPdfDoc(null); setMarkierungen([]); setDateiName(""); }}
+              <button aria-label="Dokument schließen" onClick={() => { setPdfDoc(null); setMarkierungen([]); setDateiName(""); }}
                 style={{ padding: "5px 10px", border: "0.5px solid #e2e8f0", borderRadius: 6, background: "#fff", cursor: "pointer", fontSize: 11, color: "#64748b" }}>
                 Anderes PDF
               </button>

@@ -200,7 +200,7 @@ const navigation = [
                 </div>
               )}
               <div>
-                <h1 className="font-bold text-lg leading-none">{isWhiteLabeled ? companyName : 'Immobilien'}</h1>
+                <div className="font-bold text-lg leading-none">{isWhiteLabeled ? companyName : 'Immobilien'}</div>
                 {!isWhiteLabeled && <span className="text-xs text-blue-400 font-medium">Akademie</span>}
               </div>
             </div>

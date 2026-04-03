@@ -339,7 +339,7 @@ ${data.analysis}`,
                 {m.role === "assistant" ? (
                   <>
                   <div dangerouslySetInnerHTML={{ __html: renderMarkdown(m.text) }} />
-                  <button onClick={(e) => { e.stopPropagation(); speak(m.text); }} style={{
+                  <button aria-label="Text vorlesen" onClick={(e) => { e.stopPropagation(); speak(m.text); }} style={{
                     background:"#f1f5f9",border:"1px solid #e2e8f0",cursor:"pointer",
                     marginTop:"10px",padding:"6px 12px",borderRadius:"8px",
                     color:"#475569",fontSize:"13px",fontWeight:"500",
