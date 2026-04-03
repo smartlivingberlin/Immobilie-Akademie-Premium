@@ -1,0 +1,143 @@
+# MODUL 2: Immobilienmakler §34c GewO
+
+LERNTAGE & THEMEN:
+• Berufsbild & §34c GewO
+• Gewerberecht & MaBV
+• Maklervertrag: BGB Grundlagen
+• Widerrufsrecht Deep Dive
+• Geldwäschegesetz (GwG) Deep Dive
+• Datenschutz (DSGVO) für Makler
+• Wettbewerbsrecht (UWG) Basics
+• Verbraucherschutz Spezial
+• Das Maklerbüro: Organisation
+• Netzwerke & Gemeinschaftsgeschäfte
+• Standortanalyse Deep Dive
+• Marktforschung & Datenquellen
+• Immobilienarten & Nutzungsarten
+• Baurecht Basics (BauGB, BauNVO)
+• Grundbuch lesen (Abt I & II)
+• Grundbuch Abt III & Finanzierungslasten
+• Bauunterlagen & Flurkarte
+• Energieausweis (GEG)
+• Wohnflächenberechnung (WoFlV vs DIN 277)
+• Objektunterlagen-Management
+• Einführung Wertermittlung (ImmoWertV)
+• Vergleichswertverfahren (§ 15 ImmoWertV)
+• Sachwertverfahren (§ 21 ImmoWertV)
+• Ertragswertverfahren (§ 27 ImmoWertV)
+• Bauschäden & Mängel erkennen
+• Einkaufsstrategien: Farming
+• Einkaufsgespräch & Einwandbehandlung
+• Der Makleralleinauftrag
+• Exposé-Erstellung: Text & Bild
+• Vermarktungskanäle
+
+KERNINHALTE:
+- Der Immobilienmakler ist ein Vermittler zwischen Angebot und Nachfrage. Die Tätigkeit ist erlaubnispflichtig nach § 34c GewO.
+- Nach Erhalt der Erlaubnis gelten Pflichten aus der Makler- und Bauträgerverordnung (MaBV).
+- Der Maklervertrag ist die Basis für die Provision. Er ist im BGB geregelt.
+- Das Widerrufsrecht ist der größte Provisionskiller. Makler müssen es beherrschen.
+- Makler sind die 'Gatekeeper' gegen Geldwäsche im Immobiliensektor.
+- Daten sind das Gold des Maklers, aber der Umgang ist streng reguliert.
+- Werbung muss wahr sein. Das UWG schützt Mitbewerber und Verbraucher.
+- Besondere Regeln beim Verbrauchsgüterkauf und Dienstleistungen.
+- Wohnen, Gewerbe, Spezialimmobilien. Baurechtliche Unterschiede.
+- Die vollständige Objektakte ist der Schlüssel zur Finanzierung.
+- Der 'richtige' Preis ist der Schlüssel zum Verkaufserfolg.
+- Das Vergleichswertverfahren ist das genaueste Verfahren bei ausreichenden Marktdaten. Grundlage: vergleichbare Kaufpreise aus der Kaufpreissammlung des Gutachterausschusses, angepasst auf das Bewertun
+- Makler müssen keine Gutachter sein, aber 'offensichtliche Mängel' erkennen.
+- Wer das Objekt hat, hat die Macht. Akquise ist der wichtigste Job.
+- Verkäufer wollen keine Makler. Sie wollen den besten Preis.
+- Der Goldstandard. Nur so investiert der Makler Zeit und Geld.
+- Das Exposé ist der erste Eindruck. Es muss verkaufen, aber ehrlich sein.
+- Wo finde ich den Käufer? Portale sind nicht alles.
+- Eine Besichtigung ist eine Inszenierung, kein Aufschließen.
+- Der Preis ist nicht fix. Verhandeln ist ein Spiel.
+
+PRAXISBEISPIELE:
+- Recherchieren Sie bei Ihrem lokalen Ordnungsamt/Gewerbeamt: Welche Unterlagen werden genau gefordert und was kostet die Erlaubnis?
+- Erstellen Sie ein Muster für ein Makler-Journal (Auftragsbuch).
+- Formulieren Sie einen Provisionshinweis für ein Exposé, der ein konkludentes Handeln ermöglichen würde (bei Gewerbe).
+- Testen Sie den Prozess bei Immobilienscout24 als Nutzer. Was passiert, wenn man eine Anfrage stellt?
+- Registrieren Sie sich (fiktiv) im 'goAML' Portal der FIU. Das ist Pflicht für jeden Makler!
+- Prüfen Sie Ihre E-Mail-Signatur. Ist ein Link zur Datenschutzerklärung enthalten?
+- Suchen Sie auf Portalen nach 'verkauften' Objekten. Wenn sie länger als 1-2 Wochen online sind -> Wettbewerbsverstoß.
+- Ein Arzt kauft eine Praxisfläche. Ist er Verbraucher? (Nein, Unternehmer). Ein Arzt kauft eine Wohnung zur Vermietung. Ist er Verbraucher? (Ja, privat
+- Vergleichen Sie 3 CRM-Anbieter anhand ihrer Features und Preise.
+- Sprechen Sie einen lokalen Handwerker an. 'Wenn Sie ein Haus sehen, das leer steht, sagen Sie mir Bescheid. Ich zahle 10% meiner Provision bei Erfolg.
+
+FACHWISSEN:
+- 
+### Der Immobilienmakler: Berufsbild und Zugangsvoraussetzungen
+Der Beruf des Immobilienmaklers ist in Deutschland kein klassischer Ausbildungsberuf mit Kammerzwang (wie Handwerker oder Ärzte), sondern ein Gewerbe, das einer Erlaubnispflicht unterliegt.
+
+**1. Die Erlaubnis nach § 34c GewO**
+Wer gew
+- 
+### Die Pflichten nach MaBV
+Die MaBV regelt nicht den Vertragsabschluss, sondern das Verhalten des Gewerbetreibenden *nach* Erhalt der Erlaubnis.
+
+**1. Buchführungspflicht (§ 10 MaBV)**
+Der Makler muss Aufzeichnungen über seine Aufträge führen.
+*   Daten des Auftraggebers
+*   Daten des Objekts
+*   
+- 
+### Der Maklervertrag (§§ 652 ff. BGB)
+Der Maklervertrag verpflichtet den Makler zum Nachweis oder zur Vermittlung und den Auftraggeber zur Zahlung der Provision *im Erfolgsfall*.
+
+**1. Zustandekommen**
+*   Mündlich (Handschlag) - *Achtung: Nicht bei Wohnungskauf!*
+*   Konkludent (Schlüssiges Verha
+- 
+### Das 14-tägige Widerrufsrecht
+Verbraucher haben bei Fernabsatzverträgen (Telefon, E-Mail, Internet) und Verträgen außerhalb von Geschäftsräumen ein Widerrufsrecht.
+
+**Das Problem:**
+Der Makler will sofort arbeiten (Exposé senden, besichtigen). Die Widerrufsfrist läuft aber 14 Tage.
+Wenn der Makl
+- 
+### Die Pflichten des Maklers nach GwG
+1.  **Risikomanagement:** Risikoanalyse des eigenen Geschäfts erstellen.
+2.  **Sorgfaltspflichten (KYC - Know Your Customer):**
+    *   Identifizierung des Vertragspartners (Ausweis).
+    *   Prüfung des wirtschaftlich Berechtigten (Transparenzregister).
+    *
+- 
+### Schlichtungsstellen
+Makler müssen in ihren AGB/Impressum informieren, ob sie an einem Streitbeilegungsverfahren teilnehmen (§ 36 VSBG). Meistens: 
+- 
+### Vermögensschaden-Haftpflichtversicherung
+Nicht Pflicht nach §34c, aber überlebenswichtig.
+*   Deckt Schäden aus Falschberatung (z.B. falsche Wohnfläche, vergessener Nießbrauch).
+*   Deckungssumme mind. 250.000 €, besser 500.000 €.
+
+### CRM-Software (Customer Relationship Management)
+Ohne Softwa
+- 
+### Gemeinschaftsgeschäft
+Makler A hat das Objekt, Makler B den Käufer.
+*   Man teilt die Provision (meist 50/50 vom Gesamtumsatz oder jeder behält seine Seite).
+*   Regeln vorher schriftlich fixieren! (Kundenschutz).
+
+### Netzwerke
+*   **IVD (Immobilienverband Deutschland):** Gütesiegel, Lobby, Re
+- 
+### Harte und weiche Standortfaktoren
+*   **Hart:** Verkehrsanbindung, Steuern, Fördergebiete, Bodenpreise.
+*   **Weich:** Image, Freizeitwert, Kultur, 
+- 
+### Wohnimmobilien
+*   EFH (Freistehend, DHH, RH).
+*   ETW (Eigentumswohnung).
+*   MFH (Zinshaus).
+
+### Gewerbeimmobilien
+*   Büro.
+*   Handel (Retail).
+*   Logistik/Halle.
+*   Spezial (Hotel, Pflegeheim).
+
+### Mischobjekte
+Wohn- und Geschäftshaus (WGH).
+*   Bewertung schwierig (Ertragswert gemisch

@@ -1,0 +1,185 @@
+# MODUL 5: Darlehensvermittler §34i GewO
+
+LERNTAGE & THEMEN:
+• Einführung §34i GewO: Rechtliche Grundlagen der Immobiliardarlehensvermittlung
+• Rechtsfähigkeit, Geschäftsfähigkeit und Vertragsrecht
+• Grundstücke, Erbbaurecht, Wohnungseigentum - Rechtliche Grundlagen
+• Grundbuch: Aufbau, Funktion und Eintragungen
+• Immobiliar-Verbraucherdarlehensvertrag und Verbraucherkreditrecht
+• Verhaltens- und Informationspflichten als Immobiliardarlehensvermittler
+• Kreditwesengesetz (KWG) und Geldwäschegesetz (GwG)
+• Verbraucherschutz, Schlichtungsstellen und Unlauterer Wettbewerb
+• Datenschutz (DSGVO), Verschwiegenheit und Zuständigkeiten der Aufsicht
+• Steuerliche Aspekte des Immobilienerwerbs
+• Darlehensarten: Annuitätendarlehen, Tilgungsdarlehen, Endfälliges Darlehen
+• Bauspardarlehen, KfW-Darlehen und Förderprogramme
+• Zinsbindung, Sollzins, Effektivzins und Konditionsvergleich
+• Bonitätsprüfung, Schufa-Auskunft und Kreditwürdigkeitsprüfung
+• Sicherheiten: Grundschuld, Hypothek, Bürgschaft
+• Anschlussfinanzierung, Prolongation und Forward-Darlehen
+• Vorfälligkeitsentschädigung, Sondertilgung und Tilgungssatzwechsel
+• Risiken der Immobilienfinanzierung und Absicherung
+• Besondere Finanzierungsformen: Mietkauf, Leibrente, Reverse Mortgage
+• Zusammenfassung Theorie und Vorbereitung auf Prüfungsvorbereitung
+• Übungsaufgaben: Haushaltsrechnung und Finanzierungsplanung
+• Übungsaufgaben: Konditionsvergleich und Effektivzins
+• Übungsaufgaben: Bonitätsprüfung und Schufa
+• Übungsaufgaben: Beratungsprotokoll und Dokumentation
+• Übungsaufgaben: Rechtsfälle und Gesetze
+• Fallstudie: Erstberatung Eigenheimfinanzierung
+• Fallstudie: Anschlussfinanzierung und Umschuldung
+• Fallstudie: Baufinanzierung mit KfW-Förderung
+• Fallstudie: Finanzierung für Selbstständige
+• Fallstudie: Komplexe Finanzierung mit mehreren Herausforderungen
+
+KERNINHALTE:
+- Die Tätigkeit als Immobiliardarlehensvermittler ist seit dem 21. März 2016 durch das Gesetz zur Umsetzung der Wohnimmobilienkreditrichtlinie geregelt. §34i GewO definiert die Erlaubnispflicht für Pers
+- Rechtsfähigkeit ist die Fähigkeit, Träger von Rechten und Pflichten zu sein. Jeder Mensch ist ab Geburt rechtsfähig (§ 1 BGB). Geschäftsfähigkeit ist die Fähigkeit, Rechtsgeschäfte (z.B. Verträge) wir
+- Ein Grundstück ist ein abgegrenzter Teil der Erdoberfläche, der im Grundbuch eingetragen ist (§ 873 BGB). Jedes Grundstück hat eine eindeutige Bezeichnung (Gemarkung, Flur, Flurstück). Grundstücksglei
+- Das Grundbuch ist ein öffentliches Register, das Auskunft über Eigentumsverhältnisse, Belastungen und Rechte an Grundstücken gibt (§ 873 BGB). Es wird vom Grundbuchamt (Amtsgericht) geführt und ist fü
+- Ein Immobiliar-Verbraucherdarlehensvertrag ist ein Darlehensvertrag zwischen einem Darlehensgeber (Bank) und einem Verbraucher (Privatperson), der durch Grundpfandrechte besichert ist und dem Erwerb, 
+- Als Immobiliardarlehensvermittler unterliegen Sie strengen Verhaltens- und Informationspflichten nach §34i Abs. 3 GewO und §511 BGB. Sie müssen den Kunden umfassend über das Darlehen, die Kosten, Risi
+- Das Kreditwesengesetz (KWG) regelt die Aufsicht über Kreditinstitute und Finanzdienstleister. Als Immobiliardarlehensvermittler sind Sie kein Kreditinstitut, unterliegen aber bestimmten Meldepflichten
+- Der Verbraucherschutz soll Verbraucher vor unfairen Geschäftspraktiken, überhöhten Preisen und intransparenten Vertragsbedingungen schützen. Zentrale Vorschriften sind: Informationspflichten (§ 491a B
+- Die Datenschutz-Grundverordnung (DSGVO) regelt den Schutz personenbezogener Daten in der EU. Als Immobiliardarlehensvermittler verarbeiten Sie sensible Daten Ihrer Kunden (Einkommen, Vermögen, Schulde
+- Beim Immobilienerwerb fallen verschiedene Steuern an: Grunderwerbsteuer (3,5-6,5% je nach Bundesland), Grundsteuer (jährlich, 0,26-1,0% des Einheitswerts), Einkommensteuer auf Mieteinnahmen (persönlic
+- Es gibt verschiedene Darlehensarten, die sich in der Rückzahlungsstruktur unterscheiden. Das **Annuitätendarlehen** ist die häufigste Form: Die monatliche Rate (Annuität) bleibt konstant, setzt sich a
+- Bauspardarlehen sind Darlehen von Bausparkassen, die nach einer Ansparphase ausgezahlt werden. Der Kunde spart zunächst 40-50% der Bausparsumme an, danach erhält er ein zinsgünstiges Darlehen. Vorteil
+- Die Zinsbindung legt fest, wie lange der Zinssatz fest bleibt (5, 10, 15, 20 Jahre). Längere Zinsbindung bietet Planungssicherheit, kostet aber mehr Zinsen. Der Sollzins ist der reine Darlehenszins oh
+- Die Bonitätsprüfung dient der Einschätzung der Kreditwürdigkeit des Kunden. Sie umfasst: Einkommensprüfung (Gehaltsabrechnungen, Steuerbescheide), Ausgabenprüfung (Lebenshaltungskosten, bestehende Kre
+- Banken verlangen Sicherheiten für Immobiliendarlehen. Die **Grundschuld** ist die häufigste Sicherheit: Sie wird im Grundbuch eingetragen und gibt der Bank das Recht, die Immobilie zu verwerten (Zwang
+- Nach Ablauf der Zinsbindung benötigt der Kunde eine Anschlussfinanzierung für die Restschuld. Es gibt drei Optionen: **Prolongation** (Verlängerung bei der bisherigen Bank), **Umschuldung** (Wechsel z
+- Die Vorfälligkeitsentschädigung ist eine Entschädigung an die Bank bei vorzeitiger Rückzahlung des Darlehens. Sie berechnet sich aus dem Zinsverlust der Bank (Vertragszins - Wiederanlagezins) × Restla
+- Immobilienfinanzierungen bergen verschiedene Risiken: **Zinsänderungsrisiko** (Zinsen steigen nach Zinsbindung), **Zahlungsunfähigkeitsrisiko** (Jobverlust, Krankheit), **Zwangsversteigerungsrisiko** 
+- Neben klassischen Darlehen gibt es besondere Finanzierungsformen: **Mietkauf** (Miete + Kaufoption, Miete wird auf Kaufpreis angerechnet), **Leibrente** (Verkauf gegen lebenslange Rente, Verkäufer ble
+- Die Theoriephase (Tage 1-20) hat alle wichtigen Themen der Darlehensvermittlung §34i abgedeckt: Rechtliche Grundlagen (§34i GewO, BGB, GwG), Darlehensarten (Annuitäten-, Tilgungs-, Endfälliges Darlehe
+
+PRAXISBEISPIELE:
+- **Praxisfall 1: Erlaubnispflicht prüfen**
+    tasks: [
+      {
+        type: 
+- **Praxisfall 1: Geschäftsfähigkeit prüfen**
+    tasks: [
+      {
+        type: 
+- **Praxisfall 1: Erbbaurecht finanzieren**
+    tasks: [
+      {
+        type: 
+- **Praxisfall 1: Grundbuchauszug analysieren**
+    tasks: [
+      {
+        type: 
+- **Praxisfall 1: Widerrufsrecht prüfen**
+    tasks: [
+      {
+        type: 
+- **Praxisfall 1: Beratungsprotokoll erstellen**
+    tasks: [
+      {
+        type: 
+- **Praxisfall 1: Identifizierung**
+    tasks: [
+      {
+        type: 
+- **Praxisfall 1: Irreführende Werbung**
+    tasks: [
+      {
+        type: 
+- **Praxisfall 1: Datenpanne**
+    tasks: [
+      {
+        type: 
+- **Praxisfall 1: Grunderwerbsteuer berechnen**
+    tasks: [
+      {
+        type: 
+
+FACHWISSEN:
+- **§34i GewO im Detail:**
+
+**Gesetzliche Grundlage:**
+Das Gesetz zur Umsetzung der Wohnimmobilienkreditrichtlinie (Richtlinie 2014/17/EU) trat am 21. März 2016 in Kraft und verschärfte die Anforderungen an Immobiliardarlehensvermittler erheblich. Ziel war der verbesserte Verbraucherschutz durch quali
+- **Rechtsfähigkeit und Geschäftsfähigkeit im Detail:**
+
+**1. Rechtsfähigkeit (§ 1 BGB):**
+Rechtsfähigkeit ist die Fähigkeit, Träger von Rechten und Pflichten zu sein. Sie beginnt mit der Vollendung der Geburt und endet mit dem Tod.
+
+**Rechte:**
+- Eigentum (§ 903 BGB)
+- Forderungen (§ 241 BGB)
+- Persö
+- **Grundstücke und grundstücksgleiche Rechte im Detail:**
+
+**1. Grundstück (§ 873 BGB):**
+
+**Definition:**
+Ein Grundstück ist ein abgegrenzter Teil der Erdoberfläche, der im Grundbuch eingetragen ist. Es ist ein unbewegliches Wirtschaftsgut und gehört zu den wichtigsten Vermögenswerten.
+
+**Bestandtei
+- **Das Grundbuch im Detail:**
+
+**1. Funktion und Bedeutung:**
+
+Das Grundbuch ist das zentrale Register für Immobilien in Deutschland. Es dient:
+- **Publizität:** Öffentliche Bekanntmachung von Eigentumsverhältnissen und Belastungen
+- **Rechtssicherheit:** Schutz des Rechtsverkehrs durch öffentlichen 
+- **Immobiliar-Verbraucherdarlehensvertrag und Verbraucherkreditrecht im Detail:**
+
+**1. Definition Immobiliar-Verbraucherdarlehensvertrag (§ 491 Abs. 3 BGB):**
+
+Ein Immobiliar-Verbraucherdarlehensvertrag liegt vor, wenn folgende Voraussetzungen erfüllt sind:
+
+**Verbraucher (§ 13 BGB):**
+- Natürliche 
+- **Verhaltens- und Informationspflichten im Detail:**
+
+**1. Informationspflichten (§ 491a BGB, § 511 BGB):**
+
+**Vorvertragliche Informationen:**
+Vor Vertragsschluss müssen Sie dem Kunden folgende Informationen übergeben:
+
+**ESIS-Merkblatt (Europäisches Standardisiertes Merkblatt):**
+- Standardisierte
+- **Kreditwesengesetz (KWG) und Geldwäschegesetz (GwG) im Detail:**
+
+**1. Kreditwesengesetz (KWG):**
+
+**Anwendungsbereich:**
+Das KWG regelt die Aufsicht über:
+- Kreditinstitute (Banken, Sparkassen)
+- Finanzdienstleister (Vermögensverwalter, Anlageberater)
+- Zahlungsinstitute (PayPal, Klarna)
+
+**Immobi
+- **Verbraucherschutz, Schlichtungsstellen und Unlauterer Wettbewerb im Detail:**
+
+**1. Verbraucherschutz:**
+
+**Zweck:**
+Schutz von Verbrauchern (Privatpersonen) vor:
+- Unfairen Geschäftspraktiken
+- Überhöhten Preisen
+- Intransparenten Vertragsbedingungen
+- Irreführender Werbung
+
+**Zentrale Vorschrift
+- **Datenschutz (DSGVO), Verschwiegenheit und Zuständigkeiten im Detail:**
+
+**1. Datenschutz-Grundverordnung (DSGVO):**
+
+**Anwendungsbereich:**
+Die DSGVO gilt für die Verarbeitung personenbezogener Daten:
+- **Personenbezogene Daten:** Alle Informationen, die sich auf eine identifizierte oder identifiz
+- **Steuerliche Aspekte des Immobilienerwerbs im Detail:**
+
+**1. Grunderwerbsteuer:**
+
+**Definition:**
+Die Grunderwerbsteuer ist eine einmalige Steuer, die beim Kauf einer Immobilie anfällt.
+
+**Steuersatz:**
+- **Bundesweit unterschiedlich:** 3,5% bis 6,5% des Kaufpreises
+- **Bayern, Sachsen:** 3,5%
+- 

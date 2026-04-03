@@ -1,0 +1,244 @@
+# MODUL 3: WEG-Verwalter & Mietrecht
+
+LERNTAGE & THEMEN:
+• Einführung in die WEG-Verwaltung
+• Die Teilungserklärung & Gemeinschaftsordnung
+• Die Eigentümerversammlung (ETV)
+• Der Wirtschaftsplan: Die Finanzplanung der WEG
+• Die Jahresabrechnung: Grundlagen & Struktur
+• Verteilerschlüssel in der WEG
+• Die Heizkostenabrechnung
+• Vermögensbericht & Erhaltungsrücklage
+• Organisation der Eigentümerversammlung
+• Beschlussfassung & Stimmrecht
+• Das Versammlungsprotokoll
+• Die Beschlussanfechtung
+• Die Sondereigentumsverwaltung (SEV)
+• Der Wohnraum-Mietvertrag
+• Kündigung & Räumung
+• Die Mieterhöhung
+• Konfliktmanagement: Der Verwalter als Mediator
+• Kommunikation & Rhetorik für Verwalter
+• Facility Management: Mehr als nur Hausmeister
+• Zwischenprüfung: Grundlagen & Verwaltung
+• Technische Verwaltung: Grundlagen & Pflichten
+• Beschlussfassung über Sanierungen
+• Hausgeldabrechnung: Grundlagen und Pflichten
+• Sonderumlage und Wirtschaftsplan: Planung und Durchsetzung
+• Instandhaltung & Instandsetzung
+• Wartungsverträge & Dienstleister
+• Hausmeister & Reinigungspersonal
+• Technische Anlagen: Heizung & Sanitär
+• Technische Anlagen: Elektrik & Brandschutz
+• Modernisierung & Energieeffizienz (GEG)
+
+KERNINHALTE:
+- 
+# Die WEG-Verwaltung: Das Herzstück der Immobilienbetreuung
+
+Die Verwaltung von Wohnungseigentümergemeinschaften (WEG) ist die Königsdisziplin der Immobilienverwaltung. Sie erfordert fundiertes juris
+- 
+# Die Teilungserklärung: Das Grundgesetz der WEG
+
+Die Teilungserklärung (§ 8 WEG) ist die Urkunde, mit der das Grundstück in Miteigentumsanteile aufgeteilt wird. Sie ist das wichtigste Dokument jeder
+- 
+# Die Eigentümerversammlung: Das Parlament der WEG
+
+Die ETV ist der Ort der Willensbildung. Nur hier können wirksame Beschlüsse gefasst werden (Ausnahme: Umlaufbeschluss).
+
+## 1. Einberufung
+- **Wer:
+- 
+# Der Wirtschaftsplan: Das Budget der Gemeinschaft
+
+Der Wirtschaftsplan (§ 28 WEG) ist die Prognose der Einnahmen und Ausgaben für das kommende Wirtschaftsjahr. Er ist die Grundlage für die monatlich
+- 
+# Die Jahresabrechnung: Der Kassensturz
+
+Nach Ablauf des Wirtschaftsjahres muss der Verwalter eine Abrechnung erstellen (§ 28 Abs. 2 WEG). Sie stellt die tatsächlichen Einnahmen und Ausgaben den gepl
+- 
+# Wer zahlt was? Die Verteilerschlüssel
+
+Die korrekte Verteilung der Kosten ist der häufigste Streitpunkt in WEG-Abrechnungen.
+
+## 1. Gesetzlicher Standard (§ 16 Abs. 2 WEG)
+Grundsätzlich werden alle
+- 
+# Die Heizkostenverordnung (HeizkostenV)
+
+Heiz- und Warmwasserkosten dürfen in der WEG (und im Mietrecht) fast nie pauschal abgerechnet werden. Die HeizkostenV ist zwingendes Recht.
+
+## 1. Grundprinz
+- 
+# Der Vermögensbericht
+
+Seit der Reform 2020 muss der Verwalter nach Ablauf eines Kalenderjahres einen Vermögensbericht erstellen (§ 28 Abs. 4 WEG).
+
+## 1. Inhalt
+- Darstellung der **Erhaltungsrückla
+- 
+# Die perfekte ETV: Organisation ist alles
+
+Eine gut organisierte Versammlung dauert 1-2 Stunden, eine schlechte bis tief in die Nacht.
+
+## 1. Vorbereitung
+- **Raum:** Groß genug, neutral (nicht in d
+- 
+# Wer hat die Macht? Das Stimmrecht
+
+## 1. Das Kopfprinzip (früher Standard)
+Ein Eigentümer = Eine Stimme. Egal wie viele Wohnungen er hat.
+
+## 2. Das Wertprinzip (heute Standard gem. § 25 Abs. 2 WEG
+- 
+# Das Protokoll: Die Urkunde der Beschlüsse
+
+Das Protokoll (§ 24 Abs. 6 WEG) beweist, was beschlossen wurde.
+
+## 1. Form
+- Schriftlich.
+- Unterschrieben vom Verwalter, einem Beirat und (meist) einem 
+- 
+# Wenn Eigentümer nicht einverstanden sind
+
+Gegen Beschlüsse kann jeder Eigentümer Klage erheben (§ 44 WEG).
+
+## 1. Fristen (Das 
+- 
+# Der Mietvertrag: Das Fundament
+
+Das deutsche Mietrecht ist sehr mieterfreundlich. Fehler im Vertrag gehen fast immer zu Lasten des Vermieters.
+
+## 1. Formularverträge (AGB-Recht)
+Die meisten Mietve
+- 
+# Wenn es zu Ende geht: Die Kündigung
+
+## 1. Kündigung durch den Mieter
+- Frist: 3 Monate zum Monatsende. Keine Begründung nötig.
+
+## 2. Kündigung durch den Vermieter
+Braucht immer einen gesetzlichen
+- 
+# Wenn Nachbarn streiten
+
+In einer WEG prallen unterschiedliche Interessen und Charaktere aufeinander. Der Verwalter steht oft dazwischen.
+
+## 1. Typische Konfliktfelder
+- **Lärm:** Musik, Kinder, Tr
+- 
+# Souverän auftreten
+
+Als Verwalter müssen Sie überzeugen, beruhigen und führen.
+
+## 1. Die Eigentümerversammlung leiten
+- **Klare Ansagen:** 
+- 
+# Facility Management (FM)
+
+FM betrachtet die Immobilie ganzheitlich über den gesamten Lebenszyklus.
+
+## 1. Die drei Säulen des FM
+- **Technisches FM:** Betreiben, Instandhalten, Energiemanagement.
+-
+- 
+# Zeit für einen Check-up
+
+Wir haben die Grundlagen der WEG-Verwaltung, die kaufmännische Verwaltung und das Mietrecht behandelt.
+
+## Wiederholung der Key-Facts:
+1.  **WEG:** Unterscheidung Sonder-/G
+- 
+# Die technische Verwaltung: Das Fundament der Immobilie
+
+Die technische Verwaltung umfasst alle Maßnahmen zur Erhaltung und Pflege der baulichen Substanz sowie der technischen Anlagen einer Immobili
+- 
+# Sanierungen: Zwischen Notwendigkeit und Mehrheitswillen
+
+Sanierungen sind oft die größten Streitpunkte in einer WEG. Die Beschlussfassung ist komplex und hängt von der Art der Maßnahme ab.
+
+## 1. A
+
+PRAXISBEISPIELE:
+- 
+    tasks: [
+      {
+        type: 
+- 
+    tasks: [
+      {
+        type: 
+- 
+    tasks: [
+      {
+        type: 
+- 
+    tasks: [
+      {
+        type: 
+- 
+    tasks: [
+      {
+        type: 
+- 
+    tasks: [
+      {
+        type: 
+- 
+    tasks: [
+      {
+        type: 
+- 
+    tasks: [
+      {
+        type: 
+- 
+    tasks: [
+      {
+        type: 
+- 
+    tasks: [
+      {
+        type: 
+
+FACHWISSEN:
+- 
+### Vertiefung: Die WEG-Verwaltung im Kontext des deutschen Immobilienrechts
+
+Die Verwaltung von Wohnungseigentümergemeinschaften (WEG) bildet einen der komplexesten Bereiche des deutschen Immobilienrechts. Mit der grundlegenden Reform des Wohnungseigentumsgesetzes im Dezember 2020 hat der Gesetzge
+- 
+### Vertiefung: Die Teilungserklärung als Verfassung der WEG
+
+Die Teilungserklärung ist das Gründungsdokument jeder Wohnungseigentümergemeinschaft und wird häufig als 
+- 
+### Vertiefung: Die Eigentümerversammlung als demokratisches Organ
+
+Die Eigentümerversammlung (ETV) ist das zentrale Beschlussorgan der Wohnungseigentümergemeinschaft und funktioniert nach demokratischen Prinzipien. Seit der WEG-Reform 2020 ist die ETV immer beschlussfähig, unabhängig davon, wie vi
+- 
+### Vertiefung: Der Wirtschaftsplan als strategisches Steuerungsinstrument
+
+Der Wirtschaftsplan ist weit mehr als eine bloße Aufstellung von Einnahmen und Ausgaben. Er ist das zentrale Steuerungsinstrument der WEG-Verwaltung und bildet die Grundlage für die monatlichen Hausgeldzahlungen der Eigentü
+- 
+### Vertiefung: Die Jahresabrechnung als Rechenschaftsbericht des Verwalters
+
+Die Jahresabrechnung ist der wichtigste Rechenschaftsbericht des Verwalters gegenüber den Eigentümern. Sie stellt die tatsächlichen Einnahmen und Ausgaben des abgelaufenen Wirtschaftsjahres dar und bildet die Grundlage fü
+- 
+### Vertiefung: Verteilerschlüssel als Gerechtigkeitsinstrument der WEG
+
+Die korrekte Anwendung von Verteilerschlüsseln ist eine der anspruchsvollsten Aufgaben in der WEG-Verwaltung und gleichzeitig der häufigste Anlass für Streitigkeiten unter Eigentümern. Der Verteilerschlüssel bestimmt, welchen 
+- 
+### Vertiefung: Die Heizkostenabrechnung als Spezialgebiet der WEG-Verwaltung
+
+Die Heizkostenabrechnung ist eines der komplexesten Themen in der WEG-Verwaltung, da sie durch die Heizkostenverordnung (HeizkostenV) zwingend geregelt ist und vom allgemeinen WEG-Recht abweicht. Die HeizkostenV geht als
+- 
+### Vertiefung: Der Vermögensbericht und die strategische Rücklagenplanung
+
+Der Vermögensbericht ist eine Neuerung der WEG-Reform 2020 und ergänzt die Jahresabrechnung um eine vermögensrechtliche Perspektive. Während die Abrechnung nur die Geldbewegungen eines Jahres darstellt, gibt der Vermögensbe
+- 
+### Vertiefung: Die professionelle Organisation der Eigentümerversammlung
+
+Die Organisation einer Eigentümerversammlung ist eine logistische und kommunikative Herausforderung, die weit über das bloße Versenden einer Einladung hinausgeht. Eine gut vorbereitete Versammlung dauert ein bis zwei Stunden
+- 
+### Vertiefung: Beschlussfassung und Stimmrecht in der WEG
+
+Das Stimmrecht ist das zentrale Mitwirkungsrecht der Wohnungseigentümer und bestimmt, wer in der Eigentümerversammlung wie viel Einfluss hat. Die WEG-Reform 2020 hat das Stimmrecht grundlegend neu geregelt und das Wertprinzip als gesetzlic
