@@ -130,11 +130,11 @@ export default function Flashcards() {
                 </div>
               ) : (
                 <div style={{ display: "flex", justifyContent: "center", gap: 16 }}>
-                  <button onClick={() => { setFlip(false); setIndex(i => Math.max(0, i - 1)); }} disabled={index === 0}
+                  <button aria-label="Vorherige Karte" onClick={() => { setFlip(false); setIndex(i => Math.max(0, i - 1)); }} disabled={index === 0}
                     style={{ padding: "8px 16px", border: "0.5px solid #e2e8f0", borderRadius: 8, background: "#fff", cursor: "pointer", display: "flex", alignItems: "center", gap: 6, fontSize: 13, color: "#64748b", opacity: index === 0 ? 0.4 : 1 }}>
                     <ChevronLeft size={14} /> Zurück
                   </button>
-                  <button onClick={() => { setFlip(false); setIndex(i => Math.min(i + 1, total - 1)); }} disabled={index >= total - 1}
+                  <button aria-label="Nächste Karte" onClick={() => { setFlip(false); setIndex(i => Math.min(i + 1, total - 1)); }} disabled={index >= total - 1}
                     style={{ padding: "8px 16px", border: "0.5px solid #e2e8f0", borderRadius: 8, background: "#fff", cursor: "pointer", display: "flex", alignItems: "center", gap: 6, fontSize: 13, color: "#64748b", opacity: index >= total - 1 ? 0.4 : 1 }}>
                     Weiter <ChevronRight size={14} />
                   </button>
