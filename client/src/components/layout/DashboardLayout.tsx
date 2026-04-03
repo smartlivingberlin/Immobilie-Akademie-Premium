@@ -337,6 +337,16 @@ const navigation = [
                         <HelpCircle className="h-4 w-4 mr-2" /> Fragen-Manager
                       </div>
                     </Link>
+                    <Link href="/admin/portal-agent">
+                      <div className={`flex items-center w-full justify-start text-slate-300 hover:text-white hover:bg-slate-800 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${location === '/admin/portal-agent' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
+                        <span className="mr-2">🤖</span> Portal-Agent
+                      </div>
+                    </Link>
+                    <Link href="/admin/ki-monitor">
+                      <div className={`flex items-center w-full justify-start text-slate-300 hover:text-white hover:bg-slate-800 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${location === '/admin/ki-monitor' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
+                        <span className="mr-2">📊</span> KI-Monitor
+                      </div>
+                    </Link>
                     <Link href="/admin/upload">
                       <div className={`flex items-center w-full justify-start text-slate-300 hover:text-white hover:bg-slate-800 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${location === '/admin/upload' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
                         <Upload className="h-4 w-4 mr-2" /> Content Upload
