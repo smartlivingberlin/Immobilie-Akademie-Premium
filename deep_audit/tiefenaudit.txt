@@ -1,0 +1,46 @@
+❌ [Startseite] Volltext: 220 Tage (alt → 240)
+✅ [Kurse] Module: Modul 1 vorhanden
+✅ [Kurse] Module: Modul 2 vorhanden
+✅ [Kurse] Module: Modul 3 vorhanden
+✅ [Kurse] Module: Modul 4 vorhanden
+✅ [Kurse] Module: Modul 5 vorhanden
+⚠️ [Landing M1] Inhalt: Keyword fehlt: "Grundkurs"
+✅ [Landing M1] CTA: Button: Jetzt starten — 149 EUR
+✅ [Landing M2] CTA: Button: Jetzt starten — 499 EUR
+✅ [Landing M3] CTA: Button: Jetzt starten — 699 EUR
+✅ [Landing M4] CTA: Button: Jetzt starten — 399 EUR
+✅ [Landing M5] CTA: Button: Jetzt starten — 499 EUR
+✅ [Impressum] Straße/Adresse: vorhanden
+✅ [Impressum] Stadt: vorhanden
+✅ [Impressum] Name des Betreibers: vorhanden
+✅ [Impressum] Nachname: vorhanden
+✅ [Impressum] TMG Hinweis: vorhanden
+✅ [Impressum] Kontaktangabe: vorhanden
+✅ [Impressum] Email: vorhanden
+✅ [Impressum] Telefon: vorhanden
+⚠️ [Datenschutz] Verantwortliche Person: fehlt möglicherweise
+✅ [Datenschutz] DSGVO Hinweis ODER: OK
+⚠️ [Datenschutz] DSB ODER: fehlt möglicherweise
+✅ [Datenschutz] Personenbezogene Daten: OK
+✅ [Datenschutz] Betroffenenrechte: OK
+✅ [Datenschutz] Recht auf Löschung: OK
+✅ [Datenschutz] Recht auf Auskunft: OK
+✅ [AGB] Widerrufsrecht: OK
+✅ [AGB] Zahlungsbedingungen: OK
+✅ [AGB] Haftungsausschluss: OK
+✅ [AGB] Gerichtsstand ODER: OK
+⚠️ [AGB] Anwendbares Recht: prüfen
+✅ [AGB] Aktuelle UE-Zahl: OK
+✅ [Lehrplan] Modul 1: vorhanden
+✅ [Lehrplan] Modul 2: vorhanden
+✅ [Lehrplan] Modul 3: vorhanden
+✅ [Lehrplan] Modul 4: vorhanden
+✅ [Lehrplan] Modul 5: vorhanden
+✅ [Lehrplan] Tage: 240 Tage vorhanden
+✅ [Lehrplan] UE: 1920 UE vorhanden
+✅ [M1/Tag1] Inhalt: 4675 Zeichen
+✅ [M2/Tag1] Inhalt: 5477 Zeichen
+✅ [M3/Tag1] Inhalt: 11374 Zeichen
+✅ [M4/Tag1] Inhalt: 4817 Zeichen
+✅ [M5/Tag1] Inhalt: 6271 Zeichen
+❌ [KI-Monitor] Inhalt: Seite erscheint leer!

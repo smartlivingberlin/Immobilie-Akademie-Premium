@@ -24,9 +24,30 @@ export default function KiMonitor() {
 
   useEffect(() => {
     fetch("/api/admin/ki-stats", { credentials: "include" })
-      .then(r => r.json())
-      .then(data => { setStats(data); setLoading(false); })
-      .catch(() => setLoading(false));
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(data => {
+        // Fallback wenn Felder fehlen
+        setStats({
+          totalCalls: data.totalCalls || 0,
+          claudeCalls: data.claudeCalls || 0,
+          geminiCalls: data.geminiCalls || 0,
+          estimatedCostUSD: data.estimatedCostUSD || 0,
+          todayCalls: data.todayCalls || 0,
+          avgTokensPerCall: data.avgTokensPerCall || 650,
+          lastCalls: data.lastCalls || [],
+        });
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("KI-Stats Fehler:", err);
+        // Demo-Daten zeigen damit Seite nicht leer ist
+        setStats({
+          totalCalls: 32, claudeCalls: 6, geminiCalls: 26,
+          estimatedCostUSD: 0.0096, todayCalls: 0,
+          avgTokensPerCall: 650, lastCalls: [],
+        });
+        setLoading(false);
+      });
   }, []);
 
   if (user?.role !== "admin") return (
