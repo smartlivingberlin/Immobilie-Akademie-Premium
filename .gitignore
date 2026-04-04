@@ -133,3 +133,5 @@ complete_audit/
 *.mjs
 portal_scan_report.txt
 audit_report.txt
+stakeholder_audit/
+ultimate_audit/
