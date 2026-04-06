@@ -13,14 +13,22 @@ import type { Express, Request, Response } from "express";
 // ════════════════════════════════════════════════════════
 
 // Auth-Check für KI-Routen (Login erforderlich)
-function requireAuth(req: Request, res: Response, next: import("express").NextFunction) {
-  const sess = (req as any).session || {};
-  // Session Key ist "openId" (auth-local.ts verwendet openId)
-  const isAuth = sess.openId || sess.userId || sess.user?.id || sess.user;
-  if (!isAuth) {
+async function requireAuth(req: Request, res: Response, next: import("express").NextFunction) {
+  try {
+    const { parse: parseCookie } = await import("cookie");
+    const { verifySessionToken } = await import("./_core/auth-local");
+    const cookies = parseCookie(req.headers.cookie ?? "");
+    // COOKIE_NAME = "app_session_id" (aus @shared/const)
+    const token = cookies["app_session_id"];
+    const session = await verifySessionToken(token);
+    if (!session) {
+      return res.status(401).json({ error: "Login erforderlich" });
+    }
+    (req as any).currentUser = session;
+    next();
+  } catch (err) {
     return res.status(401).json({ error: "Login erforderlich" });
   }
-  next();
 }
 
 
@@ -145,17 +153,7 @@ async function askGemini(systemPrompt: string, question: string, context: any[],
 }
 
 export function registerRagTutorRoutes(app: Express) {
-  // TEMP DEBUG: Session-Inhalt anzeigen
-  app.get("/api/debug/session", (req: Request, res: Response) => {
-    const sess = (req as any).session || {};
-    res.json({ 
-      sessionKeys: Object.keys(sess),
-      session: sess,
-      hasOpenId: !!sess.openId,
-      hasUserId: !!sess.userId,
-    });
-  });
-  
+
 
   app.post("/api/ai/rag-tutor", requireAuth, async (req: Request, res: Response) => {
     try {
