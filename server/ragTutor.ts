@@ -15,8 +15,8 @@ import type { Express, Request, Response } from "express";
 // Auth-Check für KI-Routen (Login erforderlich)
 function requireAuth(req: Request, res: Response, next: import("express").NextFunction) {
   const sess = (req as any).session || {};
-  // Unterstütze verschiedene Session-Strukturen
-  const isAuth = sess.userId || sess.user?.id || sess.user || sess.authenticated;
+  // Session Key ist "openId" (auth-local.ts verwendet openId)
+  const isAuth = sess.openId || sess.userId || sess.user?.id || sess.user;
   if (!isAuth) {
     return res.status(401).json({ error: "Login erforderlich" });
   }
