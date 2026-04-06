@@ -13,8 +13,9 @@ import type { Express, Request, Response } from "express";
 // ════════════════════════════════════════════════════════
 
 // Auth-Check für KI-Routen (Login erforderlich)
-function requireAuth(req: Request, res: Response, next: Function) {
-  if (!(req as any).session?.userId) {
+function requireAuth(req: Request, res: Response, next: import("express").NextFunction) {
+  const session = (req as any).session;
+  if (!session?.userId) {
     return res.status(401).json({ error: "Login erforderlich" });
   }
   next();
