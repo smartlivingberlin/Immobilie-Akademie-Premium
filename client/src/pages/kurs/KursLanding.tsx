@@ -40,7 +40,7 @@ const KURSE: Record<string, {
       "200+ IHK-orientierte Prüfungsfragen",
       "Offizielles Zertifikat nach Abschluss",
       "Pflichtbasis für alle weiteren Module",
-      `Einmalig kaufen — ${zugang.monate} Monate Vollzugang`,
+      "Einmalig kaufen — zeitlich befristeter Vollzugang",
     ],
     faq: [
       { f: "Muss ich Modul 1 vor den anderen Modulen machen?", a: "Modul 1 wird als Basis empfohlen — viele Grundbegriffe die in Modul 2–5 vorausgesetzt werden, werden hier erklärt. Es ist nicht zwingend vorgeschrieben, aber sehr sinnvoll." },
