@@ -2,6 +2,17 @@ import type { Express, Request, Response } from "express";
 import crypto from "crypto";
 import { getDb } from "./db";
 import { sql } from "drizzle-orm";
+import nodemailer from "nodemailer";
+
+function createTransport() {
+  return nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "alisadgadyri38@gmail.com",
+      pass: process.env.GMAIL_APP_PASSWORD,
+    },
+  });
+}
 
 function generateTrialCode(): string {
   return "TRIAL-" + crypto.randomBytes(4).toString("hex").toUpperCase();
@@ -9,16 +20,11 @@ function generateTrialCode(): string {
 
 async function sendTrialEmail(name: string, email: string, code: string, hours: number): Promise<void> {
   const baseUrl = process.env.PUBLIC_URL || "https://immobilie-akademie-production.up.railway.app";
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-    },
-    body: JSON.stringify({
-      from: "Immobilien Akademie Smart <onboarding@resend.dev>",
-      to: email,
-      subject: `${name}, dein kostenloser Testzugang wartet! 🎓`,
+  const transporter = createTransport();
+  await transporter.sendMail({
+    from: '"Immobilien Akademie Smart" <alisadgadyri38@gmail.com>',
+    to: email,
+    subject: `${name}, dein kostenloser Testzugang wartet! 🎓`,
       html: `
 <!DOCTYPE html><html lang="de"><head><meta charset="UTF-8"></head>
 <body style="font-family:Arial,sans-serif;background:#f8fafc;margin:0;padding:20px">
@@ -71,11 +77,6 @@ async function sendTrialEmail(name: string, email: string, code: string, hours: 
 </body></html>`,
     }),
   });
-  if (!res.ok) {
-    const err = await res.text();
-    console.error("[Trial] Resend Fehler:", err);
-    throw new Error("E-Mail-Versand fehlgeschlagen");
-  }
 }
 
 export function registerTrialRoutes(app: Express) {

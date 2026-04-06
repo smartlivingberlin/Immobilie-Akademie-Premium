@@ -8,16 +8,17 @@ const RESEND_KEY = process.env.RESEND_API_KEY || "";
 async function sendFollowupEmail(
   name: string, email: string, code: string, hoursLeft: number
 ): Promise<void> {
-  await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${RESEND_KEY}`,
+  const transporter = require("nodemailer").createTransport({
+    service: "gmail",
+    auth: {
+      user: "alisadgadyri38@gmail.com",
+      pass: process.env.GMAIL_APP_PASSWORD,
     },
-    body: JSON.stringify({
-      from: "Immobilien Akademie Smart <onboarding@resend.dev>",
-      to: email,
-      subject: `${name}, dein Testzugang läuft in ${hoursLeft}h ab ⏰`,
+  });
+  await transporter.sendMail({
+    from: '"Immobilien Akademie Smart" <alisadgadyri38@gmail.com>',
+    to: email,
+    subject: `${name}, dein Testzugang läuft in ${hoursLeft}h ab ⏰`,
       html: `
 <!DOCTYPE html><html lang="de"><body style="font-family:Arial,sans-serif;background:#f8fafc;padding:20px">
 <div style="max-width:520px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden">
@@ -62,7 +63,6 @@ async function sendFollowupEmail(
   </div>
 </div>
 </body></html>`,
-    }),
   });
 }
 
