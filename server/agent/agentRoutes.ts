@@ -45,7 +45,7 @@ export function registerAgentRoutes(app: Express) {
   app.post("/api/agent/smart-context", (req: Request, res: Response) => {
     const { question, moduleId } = req.body;
     if (!question) return res.status(400).json({ error: "question fehlt" });
-    const context = PortalAgent.buildOptimalContext(question, moduleId);
+    const context = PortalAgent.getBesteQuelle(question, moduleId);
     return res.json({ ...context, moduleId, question });
   });
 }

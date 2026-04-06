@@ -1,3 +1,5 @@
+import { join as pathJoin } from 'path';
+import { existsSync, readFileSync } from 'fs';
 /**
  * RAG-Tutor: KI antwortet aus echten Modulinhalten
  * Primär: Claude Haiku (Anthropic) | Fallback: Gemini
