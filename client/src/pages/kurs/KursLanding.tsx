@@ -40,7 +40,7 @@ const KURSE: Record<string, {
       "200+ IHK-orientierte Prüfungsfragen",
       "Offizielles Zertifikat nach Abschluss",
       "Pflichtbasis für alle weiteren Module",
-      `Einmalig kaufen — ${zugang.monate} Monate Vollzugang`,
+      "Einmalig kaufen — " + zugang.monate + " Monate Vollzugang",
     ],
     faq: [
       { f: "Muss ich Modul 1 vor den anderen Modulen machen?", a: "Modul 1 wird als Basis empfohlen — viele Grundbegriffe die in Modul 2–5 vorausgesetzt werden, werden hier erklärt. Es ist nicht zwingend vorgeschrieben, aber sehr sinnvoll." },
@@ -285,7 +285,7 @@ export default function KursLanding({ slug }: { slug: string }) {
                 { label: "Lerntage", value: kurs.tage },
                 { label: "Unterrichtseinheiten", value: kurs.ue },
                 { label: "Prüfungsfragen", value: "200+" },
-                { label: "Zugang", value: `${zugang.monate} Monate` },
+                { label: "Zugang", value: String(zugang.monate) + " Monate" },
               ].map(s => (
                 <div key={s.label} className="bg-white/10 backdrop-blur rounded-xl p-4 text-center border border-white/20">
                   <div className="text-3xl font-bold">{s.value}</div>
@@ -395,18 +395,20 @@ export default function KursLanding({ slug }: { slug: string }) {
             <p className="text-white/70 mb-2 text-lg">Einmalige Investition — {zugang.monate} Monate Vollzugang Nutzen</p>
             <div className="text-7xl font-bold my-6">{kurs.preis} EUR</div>
             <p className="text-white/50 mb-6">
-              Einmalige Zahlung · {zugang.monate} Monate Vollzugang · {zugang.versuche}× Prüfungsversuch inklusive
+              Einmalige Zahlung · {zugang.monate} Monate Vollzugang · {zugang.versuche}× Prüfungsversuch
             </p>
             <div className="flex flex-wrap justify-center gap-3 mb-8">
               {[
-                `✓ ${zugang.monate} Monate Zugang`,
-                `✓ ${zugang.verlaengerung} Monate verlängerbar`,
-                `✓ ${zugang.versuche} Prüfungsversuche`,
-                "✓ Zertifikat inklusive",
-                "✓ Sofortzugang nach Kauf",
-              ].map(t => (
-                <span key={t} className="bg-white/10 text-white/80 px-4 py-2 rounded-full text-sm">{t}</span>
+                { text: "Monate Zugang", val: zugang.monate },
+                { text: "Monate verlängerbar", val: zugang.verlaengerung },
+                { text: "Prüfungsversuche", val: zugang.versuche },
+              ].map(b => (
+                <span key={b.text} className="bg-white/10 text-white/80 px-4 py-2 rounded-full text-sm">
+                  ✓ {b.val} {b.text}
+                </span>
               ))}
+              <span className="bg-white/10 text-white/80 px-4 py-2 rounded-full text-sm">✓ Zertifikat inklusive</span>
+              <span className="bg-white/10 text-white/80 px-4 py-2 rounded-full text-sm">✓ Sofortzugang nach Kauf</span>
             </div>
               <button
                 onClick={handleKaufen}
