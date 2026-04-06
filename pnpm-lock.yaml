@@ -130,6 +130,9 @@ importers:
       '@types/jspdf':
         specifier: ^2.0.0
         version: 2.0.0
+      '@types/nodemailer':
+        specifier: ^8.0.0
+        version: 8.0.0
       axios:
         specifier: ^1.14.0
         version: 1.14.0
@@ -205,6 +208,9 @@ importers:
       node-fpdf:
         specifier: ^1.0.49
         version: 1.0.49
+      nodemailer:
+        specifier: ^8.0.4
+        version: 8.0.4
       officeparser:
         specifier: ^6.0.4
         version: 6.0.4
@@ -2438,6 +2444,9 @@ packages:
   '@types/node@24.7.0':
     resolution: {integrity: sha512-IbKooQVqUBrlzWTi79E8Fw78l8k1RNtlDDNWsFZs7XonuQSJ8oNYfEeclhprUldXISRMLzBpILuKgPlIxm+/Yw==}
 
+  '@types/nodemailer@8.0.0':
+    resolution: {integrity: sha512-fyf8jWULsCo0d0BuoQ75i6IeoHs47qcqxWc7yUdUcV0pOZGjUTTOvwdG1PRXUDqN/8A64yQdQdnA2pZgcdi+cA==}
+
   '@types/pako@2.0.4':
     resolution: {integrity: sha512-VWDCbrLeVXJM9fihYodcLiIv0ku+AlOa/TQ1SvYOaBuyrSKgEcro95LJyIsJ4vSo6BXIxOKxiJAat04CmST9Fw==}
 
@@ -3709,6 +3718,10 @@ packages:
 
   node-releases@2.0.23:
     resolution: {integrity: sha512-cCmFDMSm26S6tQSDpBCg/NR8NENrVPhAJSf+XbxBG4rPFaaonlEoE9wHQmun+cls499TQGSb7ZyPBRlzgKfpeg==}
+
+  nodemailer@8.0.4:
+    resolution: {integrity: sha512-k+jf6N8PfQJ0Fe8ZhJlgqU5qJU44Lpvp2yvidH3vp1lPnVQMgi4yEEMPXg5eJS1gFIJTVq1NHBk7Ia9ARdSBdQ==}
+    engines: {node: '>=6.0.0'}
 
   normalize-range@0.1.2:
     resolution: {integrity: sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==}
@@ -6794,6 +6807,10 @@ snapshots:
     dependencies:
       undici-types: 7.14.0
 
+  '@types/nodemailer@8.0.0':
+    dependencies:
+      '@types/node': 24.7.0
+
   '@types/pako@2.0.4': {}
 
   '@types/qs@6.14.0': {}
@@ -8155,6 +8172,8 @@ snapshots:
     optional: true
 
   node-releases@2.0.23: {}
+
+  nodemailer@8.0.4: {}
 
   normalize-range@0.1.2: {}
 
