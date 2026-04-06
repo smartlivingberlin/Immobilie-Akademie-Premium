@@ -107,7 +107,7 @@ app.use("/api/auth/register", loginLimiter);
   registerPasswordResetRoutes(app);
   registerPortalPhaseRoutes(app);
   registerRagTutorRoutes(app);
-  registerTrialRoutes(app, db);
+  registerTrialRoutes(app);
   registerAgentRoutes(app);
   // Healthcheck für Railway / Monitoring
   app.get("/api/health", (_req, res) => {
