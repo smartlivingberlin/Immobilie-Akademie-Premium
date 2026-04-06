@@ -387,6 +387,30 @@ export default function KursLanding({ slug }: { slug: string }) {
 
         </div>
 
+        {/* TRIAL FORMULAR */}
+        <div id="kostenlos-testen" className="py-16 bg-slate-50 scroll-mt-8">
+          <div className="max-w-2xl mx-auto px-6">
+            <div className="text-center mb-8">
+              <div className="inline-block bg-amber-100 text-amber-800 text-sm font-semibold px-4 py-2 rounded-full mb-4">
+                🎁 Kostenlos testen
+              </div>
+              <h2 className="text-3xl font-bold text-slate-900 mb-4">
+                Erst testen, dann entscheiden
+              </h2>
+              <p className="text-slate-500 text-lg">
+                24 Stunden vollständiger Zugang zu allen Modulen — kein Risiko, keine Kreditkarte.
+              </p>
+            </div>
+            <TrialForm moduleSlug={slug} />
+            <p className="text-center text-slate-400 text-xs mt-4">
+              Bereits überzeugt?{" "}
+              <button onClick={handleKaufen} className="underline hover:text-slate-600">
+                Direkt kaufen für {kurs.preis} EUR →
+              </button>
+            </p>
+          </div>
+        </div>
+
         {/* FINALER CTA */}
         <div className={`bg-gradient-to-br ${f.grad} text-white`}>
           <div className="max-w-5xl mx-auto px-6 py-16 text-center">
