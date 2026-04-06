@@ -67,6 +67,7 @@ export function TrialForm({ moduleSlug }: { moduleSlug?: string }) {
           Bitte prüfen Sie auch Ihren <strong>Spam-Ordner</strong>, falls die E-Mail nicht sofort ankommt.
         </p>
         
+        
           href="/code-einloesen"
           className="inline-block mt-6 bg-green-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-800 transition-colors"
         >
