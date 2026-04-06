@@ -91,128 +91,96 @@ function AdminRoute({ component: Component }: { component: React.ComponentType }
   return <Component />;
 }
 
-function Router() {
-  // useLocation braucht Wouter-Kontext — window.location als Fallback
-  const path = typeof window !== "undefined" ? window.location.pathname : "/";
+function PublicLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <Toaster />
+      <CookieConsent />
+      <StructuredData />
+      {children}
+    </>
+  );
+}
 
-  // Öffentliche Seiten ohne DashboardLayout
-  const isPublic =
-    path === "/" ||
-    path === "/login" ||
-    path === "/kurse" ||
-    path.startsWith("/kurs/") ||
-    path.startsWith("/impressum") ||
-    path.startsWith("/datenschutz") ||
-    path.startsWith("/agb") ||
-    path.startsWith("/widerruf") ||
-    path.startsWith("/bildungskonzept") ||
-    path.startsWith("/rechner") ||
-    path.startsWith("/finanzierungsrechner") ||
-    path.startsWith("/lehrplan") ||
-    path.startsWith("/glossary") ||
-    path.startsWith("/hilfe") ||
-    path.startsWith("/zahlung-erfolgreich") ||
-    path.startsWith("/forgot-password") ||
-    path.startsWith("/reset-password") ||
-    path.startsWith("/code-einloesen") ||
-    path.startsWith("/konto-loeschen") ||
-    path.startsWith("/beschwerde");
-
-  if (isPublic) {
-    return (
-      <>
-        <Toaster />
-        <CookieConsent />
-        <StructuredData />
-        <Suspense fallback={<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:"18px",color:"#64748b"}}>Laden...</div>}>
-          <Switch>
-            <Route path="/" component={Home} />
-            <Route path="/login" component={LoginPage} />
-            <Route path="/forgot-password" component={ForgotPassword} />
-            <Route path="/reset-password" component={ResetPassword} />
-            <Route path="/code-einloesen" component={RedeemCode} />
-            <Route path="/konto-loeschen" component={DeleteAccount} />
-            <Route path="/kurse" component={Kurse} />
-            <Route path="/kurs/modul-1-immobilien-grundkurs" component={() => <KursLanding slug="modul-1-immobilien-grundkurs" />} />
-            <Route path="/kurs/modul-2-makler-34c" component={() => <KursLanding slug="modul-2-makler-34c" />} />
-            <Route path="/kurs/modul-3-weg-verwalter" component={() => <KursLanding slug="modul-3-weg-verwalter" />} />
-            <Route path="/kurs/modul-4-gutachter" component={() => <KursLanding slug="modul-4-gutachter" />} />
-            <Route path="/kurs/modul-5-34i-darlehensvermittler" component={() => <KursLanding slug="modul-5-34i-darlehensvermittler" />} />
-            <Route path="/zahlung-erfolgreich" component={ZahlungErfolgreich} />
-            <Route path="/impressum" component={Impressum} />
-            <Route path="/datenschutz" component={Datenschutz} />
-            <Route path="/agb" component={AGB} />
-            <Route path="/widerruf" component={Widerruf} />
-            <Route path="/bildungskonzept" component={Bildungskonzept} />
-            <Route path="/rechner" component={Rechner} />
-            <Route path="/finanzierungsrechner" component={Calculators} />
-            <Route path="/lehrplan" component={Syllabus} />
-            <Route path="/glossary" component={Glossary} />
-            <Route path="/hilfe" component={UserGuide} />
-            <Route path="/beschwerde" component={ComplaintForm} />
-          </Switch>
-        </Suspense>
-      </>
-    );
-  }
-
-  // Geschützte Seiten MIT DashboardLayout
+function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <DashboardLayout>
       <Toaster />
       <CookieConsent />
       <StructuredData />
-      <Suspense fallback={<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:"18px",color:"#64748b"}}>Laden...</div>}>
-        <Switch>
-          <Route path="/statistiken" component={() => <ProtectedRoute component={Dashboard} />} />
-          <Route path="/quiz/:moduleId" component={() => <ProtectedRoute component={QuizPage} />} />
-          <Route path="/quiz" component={() => <ProtectedRoute component={Quiz} />} />
-          <Route path="/gamification" component={() => <ProtectedRoute component={GamificationDashboard} />} />
-          <Route path="/pruefung" component={() => <ProtectedRoute component={ExamMode} />} />
-          <Route path="/pruefung/:sessionId" component={() => <ProtectedRoute component={ExamQuestion} />} />
-          <Route path="/pruefung/:sessionId/ergebnis" component={() => <ProtectedRoute component={ExamResults} />} />
-          <Route path="/strategie" component={() => <ProtectedRoute component={StrategiePlattform} />} />
-          <Route path="/zertifikate" component={() => <ProtectedRoute component={Certificates} />} />
-          <Route path="/fallstudien" component={() => <ProtectedRoute component={Fallstudien} />} />
-          <Route path="/lernkarten" component={() => <ProtectedRoute component={Flashcards} />} />
-          <Route path="/expose-trainer" component={() => <ProtectedRoute component={ExposeTrainer} />} />
-          <Route path="/dokument-viewer" component={() => <ProtectedRoute component={DokumentViewer} />} />
-          <Route path="/modul/1" component={() => <ProtectedRoute component={Module1WithIntro} />} />
-          <Route path="/modul/1/tag/:day" component={() => <ProtectedRoute component={Module1Detail} />} />
-          <Route path="/modul/2">{()=><ProtectedModuleRoute moduleId={2}><Module2WithIntro /></ProtectedModuleRoute>}</Route>
-          <Route path="/modul/2/tag/:day">{()=><ProtectedModuleRoute moduleId={2}><Module2Detail /></ProtectedModuleRoute>}</Route>
-          <Route path="/modul/3">{()=><ProtectedModuleRoute moduleId={3}><Module3WithIntro /></ProtectedModuleRoute>}</Route>
-          <Route path="/modul/3/tag/:day">{()=><ProtectedModuleRoute moduleId={3}><Module3Detail /></ProtectedModuleRoute>}</Route>
-          <Route path="/modul/4">{()=><ProtectedModuleRoute moduleId={4}><Module4WithIntro /></ProtectedModuleRoute>}</Route>
-          <Route path="/modul/4/tag/:day">{()=><ProtectedModuleRoute moduleId={4}><Module4Detail /></ProtectedModuleRoute>}</Route>
-          <Route path="/modul/5">{()=><ProtectedModuleRoute moduleId={5}><Module5WithIntro /></ProtectedModuleRoute>}</Route>
-          <Route path="/modul/5/tag/:day">{()=><ProtectedModuleRoute moduleId={5}><Module5Detail /></ProtectedModuleRoute>}</Route>
-          <Route path="/modul/:id">
-            {(params) => (
-              <div className="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-4">
-                <div className="p-4 bg-slate-100 rounded-full"><span className="text-4xl">🚧</span></div>
-                <h2 className="text-2xl font-bold text-slate-900">Modul {params.id} in Entwicklung</h2>
-              </div>
-            )}
-          </Route>
-          <Route path="/admin" component={() => <AdminRoute component={AdminDashboard} />} />
-          <Route path="/admin/upload" component={() => <AdminRoute component={ContentUpload} />} />
-          <Route path="/admin/kursbuch" component={() => <AdminRoute component={KursbuchGenerator} />} />
-          <Route path="/admin/dozenten" component={() => <AdminRoute component={DozentenCockpit} />} />
-          <Route path="/admin/mediaskript" component={() => <AdminRoute component={MediaSkriptGenerator} />} />
-          <Route path="/admin/loesungen" component={() => <AdminRoute component={DozentenLoesungen} />} />
-          <Route path="/admin/fragen" component={() => <AdminRoute component={FragenManager} />} />
-          <Route path="/admin/videos" component={() => <AdminRoute component={VideoManagement} />} />
-          <Route path="/admin/whitelabel" component={() => <AdminRoute component={WhiteLabelAdmin} />} />
-          <Route path="/admin/phase" component={() => <AdminRoute component={PortalPhaseAdmin} />} />
-          <Route path="/admin/portal-agent" component={() => <AdminRoute component={PortalAgentDashboard} />} />
-          <Route path="/admin/ki-monitor" component={() => <AdminRoute component={KiMonitor} />} />
-          <Route path="/admin/codes" component={() => <AdminRoute component={AdminCodes} />} />
-          <Route path="/admin/nutzer" component={() => <AdminRoute component={UserManagement} />} />
-          <Route component={NotFound} />
-        </Switch>
-      </Suspense>
+      {children}
     </DashboardLayout>
+  );
+}
+
+function Router() {
+  return (
+    <Suspense fallback={<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:"18px",color:"#64748b"}}>Laden...</div>}>
+      <Switch>
+        <Route path="/"><PublicLayout><Home /></PublicLayout></Route>
+        <Route path="/login"><PublicLayout><LoginPage /></PublicLayout></Route>
+        <Route path="/forgot-password"><PublicLayout><ForgotPassword /></PublicLayout></Route>
+        <Route path="/reset-password"><PublicLayout><ResetPassword /></PublicLayout></Route>
+        <Route path="/code-einloesen"><PublicLayout><RedeemCode /></PublicLayout></Route>
+        <Route path="/konto-loeschen"><PublicLayout><DeleteAccount /></PublicLayout></Route>
+        <Route path="/kurse"><PublicLayout><Kurse /></PublicLayout></Route>
+        <Route path="/kurs/modul-1-immobilien-grundkurs"><PublicLayout><KursLanding slug="modul-1-immobilien-grundkurs" /></PublicLayout></Route>
+        <Route path="/kurs/modul-2-makler-34c"><PublicLayout><KursLanding slug="modul-2-makler-34c" /></PublicLayout></Route>
+        <Route path="/kurs/modul-3-weg-verwalter"><PublicLayout><KursLanding slug="modul-3-weg-verwalter" /></PublicLayout></Route>
+        <Route path="/kurs/modul-4-gutachter"><PublicLayout><KursLanding slug="modul-4-gutachter" /></PublicLayout></Route>
+        <Route path="/kurs/modul-5-34i-darlehensvermittler"><PublicLayout><KursLanding slug="modul-5-34i-darlehensvermittler" /></PublicLayout></Route>
+        <Route path="/zahlung-erfolgreich"><PublicLayout><ZahlungErfolgreich /></PublicLayout></Route>
+        <Route path="/impressum"><PublicLayout><Impressum /></PublicLayout></Route>
+        <Route path="/datenschutz"><PublicLayout><Datenschutz /></PublicLayout></Route>
+        <Route path="/agb"><PublicLayout><AGB /></PublicLayout></Route>
+        <Route path="/widerruf"><PublicLayout><Widerruf /></PublicLayout></Route>
+        <Route path="/bildungskonzept"><PublicLayout><Bildungskonzept /></PublicLayout></Route>
+        <Route path="/rechner"><PublicLayout><Rechner /></PublicLayout></Route>
+        <Route path="/finanzierungsrechner"><PublicLayout><Calculators /></PublicLayout></Route>
+        <Route path="/lehrplan"><PublicLayout><Syllabus /></PublicLayout></Route>
+        <Route path="/glossary"><PublicLayout><Glossary /></PublicLayout></Route>
+        <Route path="/hilfe"><PublicLayout><UserGuide /></PublicLayout></Route>
+        <Route path="/beschwerde"><PublicLayout><ComplaintForm /></PublicLayout></Route>
+        <Route path="/statistiken"><AppLayout><ProtectedRoute component={Dashboard} /></AppLayout></Route>
+        <Route path="/quiz/:moduleId"><AppLayout><ProtectedRoute component={QuizPage} /></AppLayout></Route>
+        <Route path="/quiz"><AppLayout><ProtectedRoute component={Quiz} /></AppLayout></Route>
+        <Route path="/gamification"><AppLayout><ProtectedRoute component={GamificationDashboard} /></AppLayout></Route>
+        <Route path="/pruefung/:sessionId/ergebnis"><AppLayout><ProtectedRoute component={ExamResults} /></AppLayout></Route>
+        <Route path="/pruefung/:sessionId"><AppLayout><ProtectedRoute component={ExamQuestion} /></AppLayout></Route>
+        <Route path="/pruefung"><AppLayout><ProtectedRoute component={ExamMode} /></AppLayout></Route>
+        <Route path="/strategie"><AppLayout><ProtectedRoute component={StrategiePlattform} /></AppLayout></Route>
+        <Route path="/zertifikate"><AppLayout><ProtectedRoute component={Certificates} /></AppLayout></Route>
+        <Route path="/fallstudien"><AppLayout><ProtectedRoute component={Fallstudien} /></AppLayout></Route>
+        <Route path="/lernkarten"><AppLayout><ProtectedRoute component={Flashcards} /></AppLayout></Route>
+        <Route path="/expose-trainer"><AppLayout><ProtectedRoute component={ExposeTrainer} /></AppLayout></Route>
+        <Route path="/dokument-viewer"><AppLayout><ProtectedRoute component={DokumentViewer} /></AppLayout></Route>
+        <Route path="/modul/1/tag/:day"><AppLayout><ProtectedRoute component={Module1Detail} /></AppLayout></Route>
+        <Route path="/modul/1"><AppLayout><ProtectedRoute component={Module1WithIntro} /></AppLayout></Route>
+        <Route path="/modul/2/tag/:day"><AppLayout><ProtectedModuleRoute moduleId={2}><Module2Detail /></ProtectedModuleRoute></AppLayout></Route>
+        <Route path="/modul/2"><AppLayout><ProtectedModuleRoute moduleId={2}><Module2WithIntro /></ProtectedModuleRoute></AppLayout></Route>
+        <Route path="/modul/3/tag/:day"><AppLayout><ProtectedModuleRoute moduleId={3}><Module3Detail /></ProtectedModuleRoute></AppLayout></Route>
+        <Route path="/modul/3"><AppLayout><ProtectedModuleRoute moduleId={3}><Module3WithIntro /></ProtectedModuleRoute></AppLayout></Route>
+        <Route path="/modul/4/tag/:day"><AppLayout><ProtectedModuleRoute moduleId={4}><Module4Detail /></ProtectedModuleRoute></AppLayout></Route>
+        <Route path="/modul/4"><AppLayout><ProtectedModuleRoute moduleId={4}><Module4WithIntro /></ProtectedModuleRoute></AppLayout></Route>
+        <Route path="/modul/5/tag/:day"><AppLayout><ProtectedModuleRoute moduleId={5}><Module5Detail /></ProtectedModuleRoute></AppLayout></Route>
+        <Route path="/modul/5"><AppLayout><ProtectedModuleRoute moduleId={5}><Module5WithIntro /></ProtectedModuleRoute></AppLayout></Route>
+        <Route path="/admin/upload"><AppLayout><AdminRoute component={ContentUpload} /></AppLayout></Route>
+        <Route path="/admin/kursbuch"><AppLayout><AdminRoute component={KursbuchGenerator} /></AppLayout></Route>
+        <Route path="/admin/dozenten"><AppLayout><AdminRoute component={DozentenCockpit} /></AppLayout></Route>
+        <Route path="/admin/mediaskript"><AppLayout><AdminRoute component={MediaSkriptGenerator} /></AppLayout></Route>
+        <Route path="/admin/loesungen"><AppLayout><AdminRoute component={DozentenLoesungen} /></AppLayout></Route>
+        <Route path="/admin/fragen"><AppLayout><AdminRoute component={FragenManager} /></AppLayout></Route>
+        <Route path="/admin/videos"><AppLayout><AdminRoute component={VideoManagement} /></AppLayout></Route>
+        <Route path="/admin/whitelabel"><AppLayout><AdminRoute component={WhiteLabelAdmin} /></AppLayout></Route>
+        <Route path="/admin/phase"><AppLayout><AdminRoute component={PortalPhaseAdmin} /></AppLayout></Route>
+        <Route path="/admin/portal-agent"><AppLayout><AdminRoute component={PortalAgentDashboard} /></AppLayout></Route>
+        <Route path="/admin/ki-monitor"><AppLayout><AdminRoute component={KiMonitor} /></AppLayout></Route>
+        <Route path="/admin/codes"><AppLayout><AdminRoute component={AdminCodes} /></AppLayout></Route>
+        <Route path="/admin/nutzer"><AppLayout><AdminRoute component={UserManagement} /></AppLayout></Route>
+        <Route path="/admin"><AppLayout><AdminRoute component={AdminDashboard} /></AppLayout></Route>
+        <Route component={NotFound} />
+      </Switch>
+    </Suspense>
   );
 }
 
