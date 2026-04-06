@@ -132,11 +132,18 @@ export function registerTrialRoutes(app: Express) {
       }
 
       // In presentation_codes eintragen — das ist was redeemPresentationCode() liest
-      await db.execute(
-        sql`INSERT INTO presentation_codes (code, label, enabledModules, expiresAt, isActive, maxUsage, usageCount)
-            VALUES (${code}, ${`Trial ${emailClean}`}, ${'1,2,3,4,5'}, ${expiresAt}, ${1}, ${1}, ${0})
-            ON DUPLICATE KEY UPDATE expiresAt = ${expiresAt}, isActive = 1, usageCount = 0`
-      ).catch((e: any) => console.error("[Trial] presentation_codes Fehler:", e));
+      try {
+        await db.execute(
+          sql`DELETE FROM presentation_codes WHERE code = ${code}`
+        );
+        await db.execute(
+          sql`INSERT INTO presentation_codes (code, label, enabledModules, expiresAt, isActive, maxUsage, usageCount)
+              VALUES (${code}, ${"Trial " + emailClean}, ${"1,2,3,4,5"}, ${expiresAt}, ${1}, ${1}, ${0})`
+        );
+        console.log("[Trial] presentation_codes OK:", code);
+      } catch (e: any) {
+        console.error("[Trial] presentation_codes Fehler:", e?.message);
+      }
 
       await sendTrialEmail(nameClean, emailClean, code, 24).catch(console.error);
       return res.json({ ok: true, message: "Ihr Testzugang wurde per E-Mail versendet. Bitte prüfen Sie Ihren Posteingang (auch Spam-Ordner)." });
