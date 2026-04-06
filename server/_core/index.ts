@@ -66,6 +66,14 @@ async function startServer() {
 app.set("trust proxy", 1);
 app.use(compression()); // Gzip/Brotli Kompression // Railway Fastly CDN
 const loginLimiter = rateLimit({
+  keyGenerator: (req) => {
+    // Railway: echte IP aus X-Forwarded-For
+    const forwarded = req.headers['x-forwarded-for'];
+    const ip = forwarded 
+      ? (Array.isArray(forwarded) ? forwarded[0] : forwarded.split(',')[0]).trim()
+      : req.socket.remoteAddress || 'unknown';
+    return ip;
+  },
   windowMs: 15 * 60 * 1000, // 15 Minuten
   max: 10, // max 10 Versuche
   message: { error: "Zu viele Login-Versuche. Bitte warte 15 Minuten." },
