@@ -1,64 +1,123 @@
-import { useState } from "react";
-import { trpc } from "@/lib/trpc";
+import { useState, useEffect } from "react";
+import { Link } from "wouter";
 
 export default function RedeemCode() {
   const [code, setCode] = useState("");
-  const [result, setResult] = useState<{ ok: boolean; message: string } | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
-  const redeem = trpc.modules.redeemCode.useMutation({
-    onSuccess: (data) => {
-      if (data.ok && "enabledModules" in data) {
-        setResult({ ok: true, message: `✅ Code eingelöst! Freigeschaltete Module: ${(data.enabledModules ?? []).join(", ")}` });
-        setCode("");
-      } else if (!data.ok && "error" in data) {
-        setResult({ ok: false, message: `❌ ${data.error}` });
-      }
-    },
-    onError: (e) => {
-      setResult({ ok: false, message: `❌ Fehler: ${e.message}` });
-    },
-  });
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const urlCode = params.get("code");
+    if (urlCode) {
+      setCode(urlCode.toUpperCase());
+    }
+  }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!code.trim()) return;
-    setResult(null);
-    redeem.mutate({ code: code.trim() });
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/auth/redeem-code", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code: code.trim().toUpperCase() }),
+      });
+      const data = await res.json();
+      if (res.ok && data.ok) {
+        setSuccess(true);
+        setTimeout(() => {
+          window.location.href = "/statistiken";
+        }, 2000);
+      } else {
+        setError(data.error || "Code ungültig oder abgelaufen.");
+      }
+    } catch {
+      setError("Verbindungsfehler. Bitte versuchen Sie es erneut.");
+    } finally {
+      setLoading(false);
+    }
   };
 
-  return (
-    <div className="max-w-lg mx-auto mt-16 p-6">
-      <h1 className="text-2xl font-bold mb-2">Freischalt-Code einlösen</h1>
-      <p className="text-slate-500 text-sm mb-6">
-        Gib deinen Zugangscode ein um neue Module freizuschalten.
-      </p>
-
-      <div className="space-y-3">
-        <input
-          type="text"
-          value={code}
-          onChange={(e) => setCode(e.target.value.toUpperCase())}
-          onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
-          placeholder="Z.B. MAKLER-2026-XYZ"
-          className="w-full border rounded-lg px-4 py-3 text-sm font-mono tracking-widest focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <button
-          onClick={handleSubmit}
-          disabled={redeem.isPending || !code.trim()}
-          className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white font-semibold py-3 rounded-lg transition"
-        >
-          {redeem.isPending ? "Wird geprüft..." : "Code einlösen"}
-        </button>
-      </div>
-
-      {result && (
-        <div className={`mt-4 p-4 rounded-lg text-sm font-medium ${result.ok ? "bg-green-50 text-green-800 border border-green-200" : "bg-red-50 text-red-800 border border-red-200"}`}>
-          {result.message}
+  if (success) {
+    return (
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
+        <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-10 text-center">
+          <div className="text-6xl mb-4">🎉</div>
+          <h1 className="text-2xl font-bold text-slate-900 mb-2">
+            Zugang freigeschaltet!
+          </h1>
+          <p className="text-slate-500 mb-6">
+            Ihr Zugang wurde aktiviert. Sie werden weitergeleitet...
+          </p>
+          <div className="animate-pulse text-blue-600">Weiterleitung zum Portal...</div>
         </div>
-      )}
+      </div>
+    );
+  }
 
-      <p className="text-xs text-slate-400 mt-6 text-center">
-        Codes erhalten Sie nach dem Kauf eines Kurses per E-Mail.
-      </p>
+  return (
+    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
+      <div className="max-w-md w-full">
+        <div className="text-center mb-8">
+          <div className="text-5xl mb-4">🔑</div>
+          <h1 className="text-2xl font-bold text-slate-900 mb-2">
+            Zugangscode einlösen
+          </h1>
+          <p className="text-slate-500">
+            Gib deinen Zugangscode ein um das Portal freizuschalten.
+          </p>
+        </div>
+
+        <div className="bg-white rounded-2xl shadow-lg p-8">
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-1">
+                Dein Zugangscode
+              </label>
+              <input
+                type="text"
+                value={code}
+                onChange={(e) => setCode(e.target.value.toUpperCase())}
+                onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
+                placeholder="z.B. TRIAL-ABC123"
+                className="w-full border border-slate-300 rounded-xl px-4 py-3 text-slate-900 font-mono tracking-widest text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-center"
+              />
+            </div>
+
+            {error && (
+              <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-red-700 text-sm">
+                ❌ {error}
+              </div>
+            )}
+
+            <button
+              onClick={handleSubmit}
+              disabled={loading || !code.trim()}
+              className="w-full bg-slate-900 text-amber-400 font-bold py-4 rounded-xl hover:bg-slate-800 transition-colors disabled:opacity-50 text-lg"
+            >
+              {loading ? "Wird geprüft..." : "Code einlösen →"}
+            </button>
+          </div>
+
+          <div className="mt-6 pt-6 border-t border-slate-100 text-center space-y-2">
+            <p className="text-xs text-slate-400">
+              Noch keinen Code? Teste das Portal kostenlos:
+            </p>
+            <Link href="/kurse">
+              <button className="text-blue-600 text-sm font-medium hover:underline">
+                Kostenlos 24h testen →
+              </button>
+            </Link>
+          </div>
+        </div>
+
+        <p className="text-center text-xs text-slate-400 mt-6">
+          Codes erhalten Sie nach dem Kauf oder per Trial-Anfrage auf den Kurs-Seiten.
+        </p>
+      </div>
     </div>
   );
 }
