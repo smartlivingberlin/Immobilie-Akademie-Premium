@@ -81,7 +81,7 @@ function ProtectedModuleRoute({ moduleId, children }: { moduleId: number, childr
   const { data: user, isLoading } = trpc.auth.me.useQuery(undefined, { retry: false });
   if (isLoading) return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
   if (!user) { window.location.href = "/login"; return null; }
-  return <ModuleGuard moduleId={moduleId}>{children}</ProtectedModuleRoute>;
+  return <ModuleGuard moduleId={moduleId}>{children}</ModuleGuard>;
 }
 
 function AdminRoute({ component: Component }: { component: React.ComponentType }) {
