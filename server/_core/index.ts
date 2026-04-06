@@ -26,6 +26,7 @@ import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { seedQuizQuestionsIfEmpty } from "../seed-quiz";
 import { registerOwnerRoutes } from "../ownerRoute";
+import { runTrialFollowupCron } from "../trialFollowup";
 import { registerTrialRoutes } from "../trialRoute";
 
 
@@ -67,23 +68,39 @@ async function startServer() {
 // Das schützt alle Nutzerkonten vor automatisierten Passwort-Angriffen
 app.set("trust proxy", 1);
 app.use(compression()); // Gzip/Brotli Kompression // Railway Fastly CDN
-const loginLimiter = rateLimit({
-  keyGenerator: (req) => {
-    // Railway: echte IP aus X-Forwarded-For
-    const forwarded = req.headers['x-forwarded-for'];
-    const ip = forwarded 
-      ? (Array.isArray(forwarded) ? forwarded[0] : forwarded.split(',')[0]).trim()
-      : req.socket.remoteAddress || 'unknown';
-    return ip;
-  },
-  windowMs: 15 * 60 * 1000, // 15 Minuten
-  max: 10, // max 10 Versuche
-  message: { error: "Zu viele Login-Versuche. Bitte warte 15 Minuten." },
-  standardHeaders: true,
-  legacyHeaders: false,
-  validate: { trustProxy: false },
-  skip: (req) => false,
-});
+// Rate Limiter mit eigenem In-Memory Store (Railway-kompatibel)
+const _loginAttempts = new Map<string, { count: number; resetAt: number }>();
+const loginLimiter = (req: any, res: any, next: any) => {
+  const forwarded = req.headers['x-forwarded-for'] || '';
+  const ip = (Array.isArray(forwarded) 
+    ? forwarded[0] 
+    : forwarded.split(',')[0]).trim() || req.socket?.remoteAddress || 'unknown';
+  
+  const now = Date.now();
+  const windowMs = 15 * 60 * 1000; // 15 Minuten
+  const maxAttempts = 10;
+  
+  const record = _loginAttempts.get(ip);
+  if (record && now < record.resetAt) {
+    if (record.count >= maxAttempts) {
+      const retryAfter = Math.ceil((record.resetAt - now) / 1000 / 60);
+      return res.status(429).json({ 
+        error: `Zu viele Login-Versuche. Bitte warte ${retryAfter} Minuten.` 
+      });
+    }
+    record.count++;
+  } else {
+    _loginAttempts.set(ip, { count: 1, resetAt: now + windowMs });
+  }
+  
+  // Cleanup alter Einträge alle 100 Requests
+  if (_loginAttempts.size > 1000) {
+    for (const [key, val] of _loginAttempts.entries()) {
+      if (now > val.resetAt) _loginAttempts.delete(key);
+    }
+  }
+  next();
+};
 
 const aiLimiter = rateLimit({
   windowMs: 60 * 1000,
@@ -112,6 +129,10 @@ app.use("/api/auth/register", loginLimiter);
   registerTrialRoutes(app);
   registerAgentRoutes(app);
   // Healthcheck für Railway / Monitoring
+  // Trial Follow-up Cron: alle 30 Minuten
+  setInterval(() => { runTrialFollowupCron().catch(console.error); }, 30 * 60 * 1000);
+  setTimeout(() => runTrialFollowupCron().catch(console.error), 5000); // Beim Start
+  
   app.get("/api/health", (_req, res) => {
     return res.status(200).json({ ok: true, ts: new Date().toISOString() });
   });
