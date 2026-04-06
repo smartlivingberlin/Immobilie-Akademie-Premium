@@ -25,6 +25,7 @@ import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { seedQuizQuestionsIfEmpty } from "../seed-quiz";
+import { registerOwnerRoutes } from "../ownerRoute";
 import { registerTrialRoutes } from "../trialRoute";
 
 
@@ -103,6 +104,7 @@ app.use("/api/auth/register", loginLimiter);
     registerOAuthRoutes(app);
   }
   // Lokales Auth
+  registerOwnerRoutes(app);
   registerLocalAuthRoutes(app);
   registerPasswordResetRoutes(app);
   registerPortalPhaseRoutes(app);
