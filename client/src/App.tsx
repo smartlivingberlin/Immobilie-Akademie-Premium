@@ -92,25 +92,77 @@ function AdminRoute({ component: Component }: { component: React.ComponentType }
 }
 
 function Router() {
-  // make sure to consider if you need authentication for certain routes
+  const [location] = useLocation();
+
+  // Öffentliche Seiten ohne DashboardLayout
+  const isPublic =
+    location === "/" ||
+    location === "/login" ||
+    location === "/kurse" ||
+    location.startsWith("/kurs/") ||
+    location.startsWith("/impressum") ||
+    location.startsWith("/datenschutz") ||
+    location.startsWith("/agb") ||
+    location.startsWith("/widerruf") ||
+    location.startsWith("/bildungskonzept") ||
+    location.startsWith("/rechner") ||
+    location.startsWith("/finanzierungsrechner") ||
+    location.startsWith("/lehrplan") ||
+    location.startsWith("/glossary") ||
+    location.startsWith("/hilfe") ||
+    location.startsWith("/zahlung-erfolgreich") ||
+    location.startsWith("/forgot-password") ||
+    location.startsWith("/reset-password") ||
+    location.startsWith("/code-einloesen") ||
+    location.startsWith("/konto-loeschen") ||
+    location.startsWith("/beschwerde");
+
+  if (isPublic) {
+    return (
+      <>
+        <Toaster />
+        <CookieConsent />
+        <StructuredData />
+        <Suspense fallback={<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:"18px",color:"#64748b"}}>Laden...</div>}>
+          <Switch>
+            <Route path="/" component={Home} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/forgot-password" component={ForgotPassword} />
+            <Route path="/reset-password" component={ResetPassword} />
+            <Route path="/code-einloesen" component={RedeemCode} />
+            <Route path="/konto-loeschen" component={DeleteAccount} />
+            <Route path="/kurse" component={Kurse} />
+            <Route path="/kurs/modul-1-immobilien-grundkurs" component={() => <KursLanding slug="modul-1-immobilien-grundkurs" />} />
+            <Route path="/kurs/modul-2-makler-34c" component={() => <KursLanding slug="modul-2-makler-34c" />} />
+            <Route path="/kurs/modul-3-weg-verwalter" component={() => <KursLanding slug="modul-3-weg-verwalter" />} />
+            <Route path="/kurs/modul-4-gutachter" component={() => <KursLanding slug="modul-4-gutachter" />} />
+            <Route path="/kurs/modul-5-34i-darlehensvermittler" component={() => <KursLanding slug="modul-5-34i-darlehensvermittler" />} />
+            <Route path="/zahlung-erfolgreich" component={ZahlungErfolgreich} />
+            <Route path="/impressum" component={Impressum} />
+            <Route path="/datenschutz" component={Datenschutz} />
+            <Route path="/agb" component={AGB} />
+            <Route path="/widerruf" component={Widerruf} />
+            <Route path="/bildungskonzept" component={Bildungskonzept} />
+            <Route path="/rechner" component={Rechner} />
+            <Route path="/finanzierungsrechner" component={Calculators} />
+            <Route path="/lehrplan" component={Syllabus} />
+            <Route path="/glossary" component={Glossary} />
+            <Route path="/hilfe" component={UserGuide} />
+            <Route path="/beschwerde" component={ComplaintForm} />
+          </Switch>
+        </Suspense>
+      </>
+    );
+  }
+
+  // Geschützte Seiten MIT DashboardLayout
   return (
     <DashboardLayout>
       <Toaster />
       <CookieConsent />
-        <StructuredData />
-        <Suspense fallback={<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:"18px",color:"#64748b"}}>Laden...</div>}>
-      <Switch>
-          <Route path="/login" component={LoginPage} />
-          <Route path="/" component={Home} />
-          
-          {/* Global Pages */}
-          <Route path="/lehrplan" component={Syllabus} />
-          <Route path="/glossary" component={Glossary} />
-          <Route path="/rechner" component={Rechner} />
-          <Route path="/finanzierungsrechner" component={Calculators} />
-          <Route path="/hilfe" component={UserGuide} />
-          <Route path="/zertifikate" component={() => <ProtectedRoute component={Certificates} />} />
-          <Route path="/beschwerde" component={ComplaintForm} />
+      <StructuredData />
+      <Suspense fallback={<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:"18px",color:"#64748b"}}>Laden...</div>}>
+        <Switch>
           <Route path="/statistiken" component={() => <ProtectedRoute component={Dashboard} />} />
           <Route path="/quiz/:moduleId" component={() => <ProtectedRoute component={QuizPage} />} />
           <Route path="/quiz" component={() => <ProtectedRoute component={Quiz} />} />
@@ -119,8 +171,29 @@ function Router() {
           <Route path="/pruefung/:sessionId" component={() => <ProtectedRoute component={ExamQuestion} />} />
           <Route path="/pruefung/:sessionId/ergebnis" component={() => <ProtectedRoute component={ExamResults} />} />
           <Route path="/strategie" component={() => <ProtectedRoute component={StrategiePlattform} />} />
-          
-          {/* Admin Pages */}
+          <Route path="/zertifikate" component={() => <ProtectedRoute component={Certificates} />} />
+          <Route path="/fallstudien" component={() => <ProtectedRoute component={Fallstudien} />} />
+          <Route path="/lernkarten" component={() => <ProtectedRoute component={Flashcards} />} />
+          <Route path="/expose-trainer" component={() => <ProtectedRoute component={ExposeTrainer} />} />
+          <Route path="/dokument-viewer" component={() => <ProtectedRoute component={DokumentViewer} />} />
+          <Route path="/modul/1" component={() => <ProtectedRoute component={Module1WithIntro} />} />
+          <Route path="/modul/1/tag/:day" component={() => <ProtectedRoute component={Module1Detail} />} />
+          <Route path="/modul/2">{()=><ProtectedModuleRoute moduleId={2}><Module2WithIntro /></ProtectedModuleRoute>}</Route>
+          <Route path="/modul/2/tag/:day">{()=><ProtectedModuleRoute moduleId={2}><Module2Detail /></ProtectedModuleRoute>}</Route>
+          <Route path="/modul/3">{()=><ProtectedModuleRoute moduleId={3}><Module3WithIntro /></ProtectedModuleRoute>}</Route>
+          <Route path="/modul/3/tag/:day">{()=><ProtectedModuleRoute moduleId={3}><Module3Detail /></ProtectedModuleRoute>}</Route>
+          <Route path="/modul/4">{()=><ProtectedModuleRoute moduleId={4}><Module4WithIntro /></ProtectedModuleRoute>}</Route>
+          <Route path="/modul/4/tag/:day">{()=><ProtectedModuleRoute moduleId={4}><Module4Detail /></ProtectedModuleRoute>}</Route>
+          <Route path="/modul/5">{()=><ProtectedModuleRoute moduleId={5}><Module5WithIntro /></ProtectedModuleRoute>}</Route>
+          <Route path="/modul/5/tag/:day">{()=><ProtectedModuleRoute moduleId={5}><Module5Detail /></ProtectedModuleRoute>}</Route>
+          <Route path="/modul/:id">
+            {(params) => (
+              <div className="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-4">
+                <div className="p-4 bg-slate-100 rounded-full"><span className="text-4xl">🚧</span></div>
+                <h2 className="text-2xl font-bold text-slate-900">Modul {params.id} in Entwicklung</h2>
+              </div>
+            )}
+          </Route>
           <Route path="/admin" component={() => <AdminRoute component={AdminDashboard} />} />
           <Route path="/admin/upload" component={() => <AdminRoute component={ContentUpload} />} />
           <Route path="/admin/kursbuch" component={() => <AdminRoute component={KursbuchGenerator} />} />
@@ -128,77 +201,20 @@ function Router() {
           <Route path="/admin/mediaskript" component={() => <AdminRoute component={MediaSkriptGenerator} />} />
           <Route path="/admin/loesungen" component={() => <AdminRoute component={DozentenLoesungen} />} />
           <Route path="/admin/fragen" component={() => <AdminRoute component={FragenManager} />} />
-          <Route path="/fallstudien" component={() => <ProtectedRoute component={Fallstudien} />} />
-          <Route path="/lernkarten" component={() => <ProtectedRoute component={Flashcards} />} />
-          <Route path="/expose-trainer" component={() => <ProtectedRoute component={ExposeTrainer} />} />
-          <Route path="/dokument-viewer" component={() => <ProtectedRoute component={DokumentViewer} />} />
           <Route path="/admin/videos" component={() => <AdminRoute component={VideoManagement} />} />
           <Route path="/admin/whitelabel" component={() => <AdminRoute component={WhiteLabelAdmin} />} />
           <Route path="/admin/phase" component={() => <AdminRoute component={PortalPhaseAdmin} />} />
-          
-          {/* Legal Pages */}
-          <Route path="/datenschutz" component={Datenschutz} />
-          <Route path="/widerruf" component={Widerruf} />
-          <Route path="/bildungskonzept" component={Bildungskonzept} />
-          
           <Route path="/admin/portal-agent" component={() => <AdminRoute component={PortalAgentDashboard} />} />
           <Route path="/admin/ki-monitor" component={() => <AdminRoute component={KiMonitor} />} />
-          <Route path="/kurs/modul-1-immobilien-grundkurs" component={() => <KursLanding slug="modul-1-immobilien-grundkurs" />} />
-          <Route path="/kurs/modul-2-makler-34c" component={() => <KursLanding slug="modul-2-makler-34c" />} />
-          <Route path="/kurs/modul-3-weg-verwalter" component={() => <KursLanding slug="modul-3-weg-verwalter" />} />
-          <Route path="/kurs/modul-4-gutachter" component={() => <KursLanding slug="modul-4-gutachter" />} />
-          <Route path="/kurs/modul-5-34i-darlehensvermittler" component={() => <KursLanding slug="modul-5-34i-darlehensvermittler" />} />
-          <Route path="/kurse" component={Kurse} />
-          <Route path="/zahlung-erfolgreich" component={ZahlungErfolgreich} />
-          <Route path="/impressum" component={Impressum} />
-          <Route path="/agb" component={AGB} />
-          
-
-          
-          {/* Modul Routes */}
-          <Route path="/modul/1" component={() => <ProtectedRoute component={Module1WithIntro} />} />
-          <Route path="/modul/1/tag/:day" component={() => <ProtectedRoute component={Module1Detail} />} />
-          
-          <Route path="/modul/2">{()=><ProtectedModuleRoute moduleId={2}><Module2WithIntro /></ProtectedModuleRoute>}</Route>
-          <Route path="/modul/2/tag/:day">{()=><ProtectedModuleRoute moduleId={2}><Module2Detail /></ProtectedModuleRoute>}</Route>
-          
-          <Route path="/modul/3">{()=><ProtectedModuleRoute moduleId={3}><Module3WithIntro /></ProtectedModuleRoute>}</Route>
-          <Route path="/modul/3/tag/:day">{()=><ProtectedModuleRoute moduleId={3}><Module3Detail /></ProtectedModuleRoute>}</Route>
-          
-          <Route path="/modul/4">{()=><ProtectedModuleRoute moduleId={4}><Module4WithIntro /></ProtectedModuleRoute>}</Route>
-          <Route path="/modul/4/tag/:day">{()=><ProtectedModuleRoute moduleId={4}><Module4Detail /></ProtectedModuleRoute>}</Route>
-          
-          <Route path="/modul/5">{()=><ProtectedModuleRoute moduleId={5}><Module5WithIntro /></ProtectedModuleRoute>}</Route>
-          <Route path="/modul/5/tag/:day">{()=><ProtectedModuleRoute moduleId={5}><Module5Detail /></ProtectedModuleRoute>}</Route>
-          
-          {/* Placeholder Routes for other modules */}
-          <Route path="/forgot-password" component={ForgotPassword} />
-          <Route path="/reset-password" component={ResetPassword} />
-          <Route path="/konto-loeschen" component={DeleteAccount} />
-          <Route path="/code-einloesen" component={RedeemCode} />
           <Route path="/admin/codes" component={() => <AdminRoute component={AdminCodes} />} />
           <Route path="/admin/nutzer" component={() => <AdminRoute component={UserManagement} />} />
-          <Route path="/modul/:id">
-            {(params) => (
-              <div className="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-4">
-                <div className="p-4 bg-slate-100 rounded-full">
-                  <span className="text-4xl">🚧</span>
-                </div>
-                <h2 className="text-2xl font-bold text-slate-900">Modul {params.id} in Entwicklung</h2>
-                <p className="text-slate-500 max-w-md">
-                  Dieses Modul wird derzeit erstellt. Bitte beginnen Sie mit Modul 3 (Verwaltung), da dieses aktuell im Fokus steht.
-                </p>
-              </div>
-            )}
-          </Route>
-          
           <Route component={NotFound} />
         </Switch>
       </Suspense>
-        <Footer />
-      </DashboardLayout>
+    </DashboardLayout>
   );
 }
+
 
 function App() {
   // QueryClientProvider ist in main.tsx gesetzt – nicht doppelt wrappen
