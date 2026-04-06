@@ -233,7 +233,7 @@ export function registerPortalPhaseRoutes(app: Express) {
   });
 
   // POST /api/admin/portal-phase — nur Admin
-  app.post("/api/admin/portal-phase", async (req: Request, res: Response) => {
+  app.post("/api/admin/portal-phase", (req: any, res: any, next: any) => { if (!req.session?.userId || req.session?.role !== "admin") return res.status(403).json({error:"Kein Zugriff"}); next(); }, async (req: Request, res: Response) => {
     try {
       const { verifySessionToken } = await import("./_core/auth-local");
       const { getUserByOpenId } = await import("./db");

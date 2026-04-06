@@ -11,6 +11,16 @@ import type { Express, Request, Response } from "express";
 // SMART RAG: Echte Modul-Inhalte als KI-Wissensbasis
 // Lädt extrahierte Inhalte aus server/knowledge/
 // ════════════════════════════════════════════════════════
+
+// Auth-Check für KI-Routen (Login erforderlich)
+function requireAuth(req: Request, res: Response, next: Function) {
+  if (!(req as any).session?.userId) {
+    return res.status(401).json({ error: "Login erforderlich" });
+  }
+  next();
+}
+
+
 function getSmartContext(moduleId?: string | number, maxChars: number = 12000): string {
   try {
     
@@ -132,7 +142,7 @@ async function askGemini(systemPrompt: string, question: string, context: any[],
 }
 
 export function registerRagTutorRoutes(app: Express) {
-  app.post("/api/ai/rag-tutor", async (req: Request, res: Response) => {
+  app.post("/api/ai/rag-tutor", requireAuth, async (req: Request, res: Response) => {
     try {
       const { question, moduleId, context } = req.body;
 
@@ -280,7 +290,7 @@ VERFÜGBARE DIREKT-LINKS (nur passende verwenden):
   });
 
   // Groq Whisper Speech-to-Text
-  app.post("/api/ai/transcribe", async (req: Request, res: Response) => {
+  app.post("/api/ai/transcribe", requireAuth, async (req: Request, res: Response) => {
     try {
       const chunks: Buffer[] = [];
       req.on("data", (chunk) => chunks.push(chunk));
@@ -323,7 +333,7 @@ VERFÜGBARE DIREKT-LINKS (nur passende verwenden):
 
 
   // ElevenLabs Text-to-Speech
-  app.post("/api/ai/tts", async (req: Request, res: Response) => {
+  app.post("/api/ai/tts", requireAuth, async (req: Request, res: Response) => {
     try {
       const { text } = req.body;
       if (!text) return res.status(400).json({ error: "Text fehlt" });
@@ -358,7 +368,7 @@ VERFÜGBARE DIREKT-LINKS (nur passende verwenden):
 
 
   // Dokument-Upload + KI-Analyse
-  app.post("/api/ai/analyze-document", async (req: Request, res: Response) => {
+  app.post("/api/ai/analyze-document", requireAuth, async (req: Request, res: Response) => {
     try {
       const chunks: Buffer[] = [];
       req.on("data", (chunk) => chunks.push(chunk));
@@ -447,7 +457,7 @@ ${textSnippet}`
 
 
   // Auto-Fragen-Generator: Text → KI → question_bank DB
-  app.post("/api/ai/generate-questions", async (req: Request, res: Response) => {
+  app.post("/api/ai/generate-questions", requireAuth, async (req: Request, res: Response) => {
     try {
       const { text, moduleId, category, count = 15 } = req.body;
       if (!text || !moduleId) return res.status(400).json({ error: "text und moduleId erforderlich" });
@@ -479,7 +489,7 @@ ${textSnippet}`
   });
 
   // Kursbuch-Generator: Modul → KI → strukturiertes Kursbuch
-  app.post("/api/ai/generate-kursbuch", async (req: Request, res: Response) => {
+  app.post("/api/ai/generate-kursbuch", requireAuth, async (req: Request, res: Response) => {
     try {
       const { moduleId, moduleTitle, contentSummary, format = "kursbuch" } = req.body;
       if (!moduleId || !contentSummary) return res.status(400).json({ error: "moduleId und contentSummary erforderlich" });
@@ -495,7 +505,7 @@ ${textSnippet}`
   });
 
   // Fallstudie bewerten
-  app.post("/api/ai/bewerte-fallstudie", async (req: Request, res: Response) => {
+  app.post("/api/ai/bewerte-fallstudie", requireAuth, async (req: Request, res: Response) => {
     try {
       const { aufgabe, musterantwort, nutzerAntwort, modul } = req.body;
       if (!aufgabe || !nutzerAntwort) return res.status(400).json({ error: "Aufgabe und Antwort erforderlich" });
@@ -531,7 +541,7 @@ Bewerte nach IHK-Maßstäben und antworte NUR mit diesem JSON:
 
   // Kursbuch aus echtem Modulinhalt generieren
 
-  app.post("/api/ai/generate-kursbuch-v2", async (req: Request, res: Response) => {
+  app.post("/api/ai/generate-kursbuch-v2", requireAuth, async (req: Request, res: Response) => {
     try {
       const { moduleId, format = "kursbuch" } = req.body;
       if (!moduleId) return res.status(400).json({ error: "moduleId erforderlich" });
@@ -591,7 +601,7 @@ Bewerte nach IHK-Maßstäben und antworte NUR mit diesem JSON:
   });
 
   // Dozenten-Cockpit: Lernfortschritt analysieren + Unterrichtsplan generieren
-  app.post("/api/ai/dozenten-cockpit", async (req: Request, res: Response) => {
+  app.post("/api/ai/dozenten-cockpit", requireAuth, async (req: Request, res: Response) => {
     try {
       const { moduleId, format = "unterrichtsplan" } = req.body;
       if (!moduleId) return res.status(400).json({ error: "moduleId erforderlich" });
@@ -713,7 +723,7 @@ WICHTIG:
   });
 
   // NotebookLM + Video Skript Generator
-  app.post("/api/ai/generate-mediaskript", async (req: Request, res: Response) => {
+  app.post("/api/ai/generate-mediaskript", requireAuth, async (req: Request, res: Response) => {
     try {
       const { moduleId, thema, format = "podcast" } = req.body;
       if (!moduleId || !thema) return res.status(400).json({ error: "moduleId und thema erforderlich" });
@@ -806,7 +816,7 @@ INHALTLICHE ANFORDERUNGEN:
   });
 
   // Exposé-Generator: Immobilie beschreiben + KI bewertet Pflichtangaben
-  app.post("/api/ai/bewerte-expose", async (req: Request, res: Response) => {
+  app.post("/api/ai/bewerte-expose", requireAuth, async (req: Request, res: Response) => {
     try {
       const { expose, immobilienDaten } = req.body;
       if (!expose || expose.length < 50) return res.status(400).json({ error: "Exposé zu kurz" });
