@@ -111,6 +111,10 @@ export function registerTrialRoutes(app: Express) {
           const newExpiry = new Date(new Date(row.expiresAt).getTime() + 24 * 60 * 60 * 1000);
           await db.execute(
             sql`UPDATE trial_leads SET expiresAt = ${newExpiry}, extended = 1, extensionCount = extensionCount + 1 WHERE email = ${emailClean}`
+        );
+        // presentation_codes auch verlängern
+        await db.execute(
+          sql`UPDATE presentation_codes SET expiresAt = ${newExpiry}, usageCount = 0 WHERE code = ${row.code}`
           );
           await sendTrialEmail(nameClean, emailClean, row.code, 48).catch(console.error);
           return res.json({ ok: true, extended: true, message: "Ihr Testzugang wurde um 24 Stunden verlängert. Bitte prüfen Sie Ihre E-Mails." });
@@ -138,7 +142,7 @@ export function registerTrialRoutes(app: Express) {
         );
         await db.execute(
           sql`INSERT INTO presentation_codes (code, label, enabledModules, expiresAt, isActive, maxUsage, usageCount)
-              VALUES (${code}, ${"Trial " + emailClean}, ${"1,2,3,4,5"}, ${expiresAt}, ${1}, ${1}, ${0})`
+              VALUES (${code}, ${"Trial " + emailClean}, ${"1,2,3,4,5"}, ${expiresAt}, ${1}, ${3}, ${0})`
         );
         console.log("[Trial] presentation_codes OK:", code);
       } catch (e: any) {
