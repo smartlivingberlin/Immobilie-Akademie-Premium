@@ -403,7 +403,7 @@ VERFÜGBARE DIREKT-LINKS (nur passende verwenden):
 
         try {
           if (contentType.includes("application/pdf") || filename.endsWith(".pdf")) {
-            const pdfParse = (await import("pdf-parse")).default;
+            const pdfMod = await import("pdf-parse"); const pdfParse = (pdfMod as any).default ?? pdfMod;
             const data = await pdfParse(buffer);
             extractedText = data.text;
           } else if (filename.endsWith(".docx") || contentType.includes("wordprocessingml")) {
