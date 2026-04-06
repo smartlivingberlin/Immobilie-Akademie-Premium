@@ -40,7 +40,7 @@ const KURSE: Record<string, {
       "200+ IHK-orientierte Prüfungsfragen",
       "Offizielles Zertifikat nach Abschluss",
       "Pflichtbasis für alle weiteren Module",
-      "Einmalig kaufen — lebenslanger Zugang",
+      `Einmalig kaufen — ${zugang.monate} Monate Vollzugang`,
     ],
     faq: [
       { f: "Muss ich Modul 1 vor den anderen Modulen machen?", a: "Modul 1 wird als Basis empfohlen — viele Grundbegriffe die in Modul 2–5 vorausgesetzt werden, werden hier erklärt. Es ist nicht zwingend vorgeschrieben, aber sehr sinnvoll." },
@@ -216,8 +216,17 @@ const FARBEN: Record<string, {grad: string; btn: string; badge: string}> = {
   teal:   { grad: "from-teal-700 to-teal-900",   btn: "bg-teal-600 hover:bg-teal-700",   badge: "bg-teal-100 text-teal-800" },
 };
 
+const ZUGANG: Record<string, {monate: number; verlaengerung: number; versuche: number}> = {
+  "modul-1-immobilien-grundkurs":    { monate: 4,  verlaengerung: 2, versuche: 3 },
+  "modul-2-makler-34c":              { monate: 8,  verlaengerung: 3, versuche: 3 },
+  "modul-3-weg-verwalter":           { monate: 10, verlaengerung: 4, versuche: 3 },
+  "modul-4-gutachter":               { monate: 6,  verlaengerung: 2, versuche: 3 },
+  "modul-5-34i-darlehensvermittler": { monate: 6,  verlaengerung: 2, versuche: 3 },
+};
+
 export default function KursLanding({ slug }: { slug: string }) {
   const kurs = KURSE[slug];
+  const zugang = ZUGANG[slug] || { monate: 6, verlaengerung: 2, versuche: 3 };
   const [, navigate] = useLocation();
   const [loading, setLoading] = useState(false);
 
@@ -276,7 +285,7 @@ export default function KursLanding({ slug }: { slug: string }) {
                 { label: "Lerntage", value: kurs.tage },
                 { label: "Unterrichtseinheiten", value: kurs.ue },
                 { label: "Prüfungsfragen", value: "200+" },
-                { label: "Zugang", value: "Lebenslang" },
+                { label: "Zugang", value: `${zugang.monate} Monate` },
               ].map(s => (
                 <div key={s.label} className="bg-white/10 backdrop-blur rounded-xl p-4 text-center border border-white/20">
                   <div className="text-3xl font-bold">{s.value}</div>
@@ -293,11 +302,15 @@ export default function KursLanding({ slug }: { slug: string }) {
               >
                 {loading ? "Weiterleitung..." : `Jetzt kaufen — ${kurs.preis} EUR`}
               </button>
-              <a href="#kostenlos-testen">
-                <button className="border-2 border-white/40 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 transition-all">
-                  Kostenlos 24h testen
-                </button>
-              </a>
+              <button
+                onClick={() => {
+                  const el = document.getElementById("kostenlos-testen");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="border-2 border-white/40 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 transition-all"
+              >
+                🎁 Kostenlos 24h testen
+              </button>
             </div>
             <p className="text-white/50 text-sm mt-4">
               ✓ 14 Tage Widerrufsrecht &nbsp;·&nbsp; ✓ Sichere Zahlung via Stripe &nbsp;·&nbsp; ✓ Sofortzugang nach Kauf
@@ -379,9 +392,22 @@ export default function KursLanding({ slug }: { slug: string }) {
           <div className="max-w-5xl mx-auto px-6 py-16 text-center">
             <div className="text-5xl mb-6">{kurs.emoji}</div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Bereit für den nächsten Schritt?</h2>
-            <p className="text-white/70 mb-2 text-lg">Einmalige Investition — lebenslanger Nutzen</p>
+            <p className="text-white/70 mb-2 text-lg">Einmalige Investition — {zugang.monate} Monate Vollzugang Nutzen</p>
             <div className="text-7xl font-bold my-6">{kurs.preis} EUR</div>
-            <p className="text-white/50 mb-10">Einmalig · Lebenslanger Zugang · Zertifikat inklusive · Sofortzugang</p>
+            <p className="text-white/50 mb-6">
+              Einmalige Zahlung · {zugang.monate} Monate Vollzugang · {zugang.versuche}× Prüfungsversuch inklusive
+            </p>
+            <div className="flex flex-wrap justify-center gap-3 mb-8">
+              {[
+                `✓ ${zugang.monate} Monate Zugang`,
+                `✓ ${zugang.verlaengerung} Monate verlängerbar`,
+                `✓ ${zugang.versuche} Prüfungsversuche`,
+                "✓ Zertifikat inklusive",
+                "✓ Sofortzugang nach Kauf",
+              ].map(t => (
+                <span key={t} className="bg-white/10 text-white/80 px-4 py-2 rounded-full text-sm">{t}</span>
+              ))}
+            </div>
               <button
                 onClick={handleKaufen}
                 disabled={loading}
@@ -400,6 +426,7 @@ export default function KursLanding({ slug }: { slug: string }) {
               <span>✓ Sichere Zahlung via Stripe</span>
               <span>✓ Sofortzugang nach Kauf</span>
               <span>✓ Auf allen Geräten nutzbar</span>
+              <span>✓ Verlängerung auf Anfrage möglich</span>
             </div>
           </div>
         </div>
