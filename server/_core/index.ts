@@ -38,13 +38,13 @@ process.on('unhandledRejection', (reason) => {
 
 async function startServer() {
   const app = express();
-ap
+
   // Permissions-Policy Header
   app.use((_req, res, next) => {
     res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=(), payment=(self \"https://js.stripe.com\")");
     next();
   });
-p.use(helmet({
+  app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
