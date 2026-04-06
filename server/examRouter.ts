@@ -114,25 +114,15 @@ function shuffleOptions(q: typeof LOCAL_QUESTIONS[1][0]) {
   const letters = ["A","B","C","D"] as const;
   const entries = Object.entries(q.options) as [string, string][];
   
-  // Garantiere echte Durchmischung: richtige Antwort soll NICHT immer A sein
-  // Platziere die richtige Antwort zuerst an zufälliger Position (1-3, nie 0)
-  const correctEntry = entries.find(([key]) => key === q.correctAnswer);
-  const wrongEntries = entries.filter(([key]) => key !== q.correctAnswer);
-  
-  // Falsche Antworten mischen
-  const shuffledWrong = shuffleArray(wrongEntries);
-  
-  // Richtige Antwort an zufällige Position 1-3 setzen (nie Position 0=A)
-  const correctPos = 1 + Math.floor(Math.random() * 3); // 1, 2 oder 3
-  const combined: [string, string][] = [...shuffledWrong];
-  combined.splice(correctPos, 0, correctEntry!);
+  // Alle 4 Optionen komplett zufällig mischen (A/B/C/D gleichwahrscheinlich)
+  const shuffled = shuffleArray(entries);
   
   const newOptions: Record<string,string> = {};
   let newCorrect: string = "A";
-  combined.forEach(([_origKey, value], idx) => {
+  shuffled.forEach(([origKey, value], idx) => {
     const newKey = letters[idx];
     newOptions[newKey] = value;
-    if (value === correctEntry![1]) newCorrect = newKey;
+    if (origKey === q.correctAnswer) newCorrect = newKey;
   });
   
   return { ...q, options: newOptions, correctAnswer: newCorrect };
