@@ -11,7 +11,9 @@ export function registerOwnerRoutes(app: Express) {
   app.get("/api/owner/access", async (req: Request, res: Response) => {
     const { key, redirect: redir } = req.query as { key?: string; redirect?: string };
 
-    const ownerCode = ENV.ownerMagicCode || process.env.OWNER_MAGIC_CODE;
+    // Lese direkt aus process.env zur Laufzeit (nicht gecacht)
+    const ownerCode = process.env.OWNER_MAGIC_CODE || ENV.ownerMagicCode;
+    console.log("[Owner] Code check:", !!ownerCode, "key:", key?.slice(0,10));
     if (!key || !ownerCode || key !== ownerCode) {
       return res.status(403).send(`
         <html><body style="font-family:Arial;padding:40px;text-align:center">
@@ -34,8 +36,11 @@ export function registerOwnerRoutes(app: Express) {
 
   // GET /owner → Kurzlink
   app.get("/owner", async (req: Request, res: Response) => {
-    const ownerCode = ENV.ownerMagicCode || process.env.OWNER_MAGIC_CODE;
-    if (!ownerCode) return res.status(500).send("OWNER_MAGIC_CODE nicht konfiguriert");
+    const ownerCode = process.env.OWNER_MAGIC_CODE || ENV.ownerMagicCode;
+    if (!ownerCode) {
+      console.error("[Owner] OWNER_MAGIC_CODE nicht gesetzt! ENV:", Object.keys(process.env).filter(k => k.includes('OWNER')));
+      return res.status(500).send(`OWNER_MAGIC_CODE fehlt. Env-Keys: ${Object.keys(process.env).filter(k=>k.includes('OWNER')).join(',')}`);
+    }
     return res.redirect(`/api/owner/access?key=${ownerCode}&redirect=/admin`);
   });
 }
