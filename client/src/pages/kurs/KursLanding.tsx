@@ -1,6 +1,7 @@
 import { TrialForm } from "@/components/TrialForm";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { SEO } from "@/components/SEO";
+import { useState } from "react";
 
 const KURSE: Record<string, {
   id: string; titel: string; untertitel: string; preis: number;
@@ -217,6 +218,29 @@ const FARBEN: Record<string, {grad: string; btn: string; badge: string}> = {
 
 export default function KursLanding({ slug }: { slug: string }) {
   const kurs = KURSE[slug];
+  const [, navigate] = useLocation();
+  const [loading, setLoading] = useState(false);
+
+  const handleKaufen = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/stripe/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ productId: kurs.id }),
+      });
+      if (!res.ok) throw new Error("Checkout fehlgeschlagen");
+      const { url } = await res.json();
+      if (url) window.location.href = url;
+      else navigate("/login");
+    } catch (e) {
+      // Fallback: zur Login/Kurse Seite
+      navigate("/login");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   if (!kurs) return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="text-center">
@@ -262,16 +286,18 @@ export default function KursLanding({ slug }: { slug: string }) {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/kurse">
-                <button className="bg-white text-slate-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/90 transition-all shadow-xl">
-                  Jetzt starten — {kurs.preis} EUR
-                </button>
-              </Link>
-              <Link href="/login">
+              <button
+                onClick={handleKaufen}
+                disabled={loading}
+                className="bg-white text-slate-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/90 transition-all shadow-xl disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                {loading ? "Weiterleitung..." : `Jetzt kaufen — ${kurs.preis} EUR`}
+              </button>
+              <a href="#kostenlos-testen">
                 <button className="border-2 border-white/40 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 transition-all">
-                  Jetzt starten
+                  Kostenlos 24h testen
                 </button>
-              </Link>
+              </a>
             </div>
             <p className="text-white/50 text-sm mt-4">
               ✓ 14 Tage Widerrufsrecht &nbsp;·&nbsp; ✓ Sichere Zahlung via Stripe &nbsp;·&nbsp; ✓ Sofortzugang nach Kauf
@@ -356,11 +382,19 @@ export default function KursLanding({ slug }: { slug: string }) {
             <p className="text-white/70 mb-2 text-lg">Einmalige Investition — lebenslanger Nutzen</p>
             <div className="text-7xl font-bold my-6">{kurs.preis} EUR</div>
             <p className="text-white/50 mb-10">Einmalig · Lebenslanger Zugang · Zertifikat inklusive · Sofortzugang</p>
-            <Link href="/kurse">
-              <button className="bg-white text-slate-900 px-12 py-5 rounded-xl font-bold text-xl hover:bg-white/90 transition-all shadow-2xl">
-                Jetzt kaufen & sofort starten
+              <button
+                onClick={handleKaufen}
+                disabled={loading}
+                className="bg-white text-slate-900 px-12 py-5 rounded-xl font-bold text-xl hover:bg-white/90 transition-all shadow-2xl disabled:opacity-70"
+              >
+                {loading ? "Weiterleitung zu Stripe..." : `Jetzt kaufen — ${kurs.preis} EUR`}
               </button>
-            </Link>
+              <p className="mt-4 text-white/60 text-sm">
+                Oder{" "}
+                <a href="#kostenlos-testen" className="underline hover:text-white">
+                  24h kostenlos testen
+                </a>
+              </p>
             <div className="mt-8 flex flex-wrap justify-center gap-6 text-white/60 text-sm">
               <span>✓ 14 Tage Widerrufsrecht</span>
               <span>✓ Sichere Zahlung via Stripe</span>
