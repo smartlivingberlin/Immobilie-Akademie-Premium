@@ -432,6 +432,7 @@ export default function Datenschutz() {
             <li><strong>Widerspruchsrecht</strong> (Art. 21 DSGVO): Sie können der Verarbeitung Ihrer Daten widersprechen.</li>
             <li><strong>Recht auf Widerruf</strong> (Art. 7 Abs. 3 DSGVO): Eine erteilte Einwilligung können Sie jederzeit widerrufen.</li>
             <li><strong>Beschwerderecht</strong> (Art. 77 DSGVO): Sie haben das Recht, sich bei der zuständigen Datenschutzaufsichtsbehörde zu beschweren. Zuständig ist der Berliner Beauftragte für Datenschutz und Informationsfreiheit, Friedrichstr. 219, 10969 Berlin.</li>
+            <li><strong>Resend Inc.</strong> — Transaktionaler E-Mail-Versand (Registrierung, Passwort-Reset). Es wird ausschließlich die E-Mail-Adresse des Nutzers übermittelt. Datenschutzerklärung: resend.com/privacy</li>
           </ul>
           <p>
             Zur Ausübung Ihrer Rechte wenden Sie sich bitte an: info@immobilien-bildungsportal.de
