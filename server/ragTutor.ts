@@ -1,3 +1,4 @@
+import { ENV } from "./_core/env";
 import { join as pathJoin } from 'path';
 import { existsSync, readFileSync } from 'fs';
 /**
@@ -16,17 +17,26 @@ import type { Express, Request, Response } from "express";
 async function requireAuth(req: Request, res: Response, next: import("express").NextFunction) {
   try {
     const { parse: parseCookie } = await import("cookie");
-    const { verifySessionToken } = await import("./_core/auth-local");
-    const cookies = parseCookie(req.headers.cookie ?? "");
-    // COOKIE_NAME = "app_session_id" (aus @shared/const)
-    const token = cookies["app_session_id"];
-    const session = await verifySessionToken(token);
-    if (!session) {
+    const rawCookies = parseCookie(req.headers.cookie ?? "");
+    // Versuche alle bekannten Cookie-Namen
+    const token = rawCookies["app_session_id"] || 
+                  rawCookies["session"] || 
+                  rawCookies["auth_token"];
+    if (!token) {
       return res.status(401).json({ error: "Login erforderlich" });
     }
-    (req as any).currentUser = session;
-    next();
-  } catch (err) {
+    // JWT direkt verifizieren — gleiche Logik wie /api/auth/me
+    const { jwtVerify } = await import("jose");
+    const secret = new TextEncoder().encode(
+      ENV.cookieSecret || process.env.COOKIE_SECRET || "CHANGE_THIS_SECRET_IN_ENV"
+    );
+    const { payload } = await jwtVerify(token, secret, { algorithms: ["HS256"] });
+    if (!payload) {
+      return res.status(401).json({ error: "Ungültiger Token" });
+    }
+    (req as any).currentUser = payload;
+    return next();
+  } catch (e) {
     return res.status(401).json({ error: "Login erforderlich" });
   }
 }
