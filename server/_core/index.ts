@@ -25,6 +25,7 @@ import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { seedQuizQuestionsIfEmpty } from "../seed-quiz";
+import { registerTrialRoutes } from "../trialRoute";
 
 
 // Globaler Error Handler
@@ -106,6 +107,7 @@ app.use("/api/auth/register", loginLimiter);
   registerPasswordResetRoutes(app);
   registerPortalPhaseRoutes(app);
   registerRagTutorRoutes(app);
+  registerTrialRoutes(app, db);
   registerAgentRoutes(app);
   // Healthcheck für Railway / Monitoring
   app.get("/api/health", (_req, res) => {

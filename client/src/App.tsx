@@ -81,7 +81,7 @@ function ProtectedModuleRoute({ moduleId, children }: { moduleId: number, childr
   const { data: user, isLoading } = trpc.auth.me.useQuery(undefined, { retry: false });
   if (isLoading) return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
   if (!user) { window.location.href = "/login"; return null; }
-  return <ModuleGuard moduleId={moduleId}>{children}</ModuleGuard>;
+  return <ModuleGuard moduleId={moduleId}>{children}</ProtectedModuleRoute>;
 }
 
 function AdminRoute({ component: Component }: { component: React.ComponentType }) {
@@ -159,17 +159,17 @@ function Router() {
           <Route path="/modul/1" component={() => <ProtectedRoute component={Module1WithIntro} />} />
           <Route path="/modul/1/tag/:day" component={() => <ProtectedRoute component={Module1Detail} />} />
           
-          <Route path="/modul/2">{()=><ProtectedModuleRoute moduleId={2}><Module2WithIntro /></ModuleGuard>}</Route>
-          <Route path="/modul/2/tag/:day">{()=><ProtectedModuleRoute moduleId={2}><Module2Detail /></ModuleGuard>}</Route>
+          <Route path="/modul/2">{()=><ProtectedModuleRoute moduleId={2}><Module2WithIntro /></ProtectedModuleRoute>}</Route>
+          <Route path="/modul/2/tag/:day">{()=><ProtectedModuleRoute moduleId={2}><Module2Detail /></ProtectedModuleRoute>}</Route>
           
-          <Route path="/modul/3">{()=><ProtectedModuleRoute moduleId={3}><Module3WithIntro /></ModuleGuard>}</Route>
-          <Route path="/modul/3/tag/:day">{()=><ProtectedModuleRoute moduleId={3}><Module3Detail /></ModuleGuard>}</Route>
+          <Route path="/modul/3">{()=><ProtectedModuleRoute moduleId={3}><Module3WithIntro /></ProtectedModuleRoute>}</Route>
+          <Route path="/modul/3/tag/:day">{()=><ProtectedModuleRoute moduleId={3}><Module3Detail /></ProtectedModuleRoute>}</Route>
           
-          <Route path="/modul/4">{()=><ProtectedModuleRoute moduleId={4}><Module4WithIntro /></ModuleGuard>}</Route>
-          <Route path="/modul/4/tag/:day">{()=><ProtectedModuleRoute moduleId={4}><Module4Detail /></ModuleGuard>}</Route>
+          <Route path="/modul/4">{()=><ProtectedModuleRoute moduleId={4}><Module4WithIntro /></ProtectedModuleRoute>}</Route>
+          <Route path="/modul/4/tag/:day">{()=><ProtectedModuleRoute moduleId={4}><Module4Detail /></ProtectedModuleRoute>}</Route>
           
-          <Route path="/modul/5">{()=><ProtectedModuleRoute moduleId={5}><Module5WithIntro /></ModuleGuard>}</Route>
-          <Route path="/modul/5/tag/:day">{()=><ProtectedModuleRoute moduleId={5}><Module5Detail /></ModuleGuard>}</Route>
+          <Route path="/modul/5">{()=><ProtectedModuleRoute moduleId={5}><Module5WithIntro /></ProtectedModuleRoute>}</Route>
+          <Route path="/modul/5/tag/:day">{()=><ProtectedModuleRoute moduleId={5}><Module5Detail /></ProtectedModuleRoute>}</Route>
           
           {/* Placeholder Routes for other modules */}
           <Route path="/forgot-password" component={ForgotPassword} />
