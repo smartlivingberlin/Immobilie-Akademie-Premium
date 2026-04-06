@@ -92,30 +92,31 @@ function AdminRoute({ component: Component }: { component: React.ComponentType }
 }
 
 function Router() {
-  const [location] = useLocation();
+  // useLocation braucht Wouter-Kontext — window.location als Fallback
+  const path = typeof window !== "undefined" ? window.location.pathname : "/";
 
   // Öffentliche Seiten ohne DashboardLayout
   const isPublic =
-    location === "/" ||
-    location === "/login" ||
-    location === "/kurse" ||
-    location.startsWith("/kurs/") ||
-    location.startsWith("/impressum") ||
-    location.startsWith("/datenschutz") ||
-    location.startsWith("/agb") ||
-    location.startsWith("/widerruf") ||
-    location.startsWith("/bildungskonzept") ||
-    location.startsWith("/rechner") ||
-    location.startsWith("/finanzierungsrechner") ||
-    location.startsWith("/lehrplan") ||
-    location.startsWith("/glossary") ||
-    location.startsWith("/hilfe") ||
-    location.startsWith("/zahlung-erfolgreich") ||
-    location.startsWith("/forgot-password") ||
-    location.startsWith("/reset-password") ||
-    location.startsWith("/code-einloesen") ||
-    location.startsWith("/konto-loeschen") ||
-    location.startsWith("/beschwerde");
+    path === "/" ||
+    path === "/login" ||
+    path === "/kurse" ||
+    path.startsWith("/kurs/") ||
+    path.startsWith("/impressum") ||
+    path.startsWith("/datenschutz") ||
+    path.startsWith("/agb") ||
+    path.startsWith("/widerruf") ||
+    path.startsWith("/bildungskonzept") ||
+    path.startsWith("/rechner") ||
+    path.startsWith("/finanzierungsrechner") ||
+    path.startsWith("/lehrplan") ||
+    path.startsWith("/glossary") ||
+    path.startsWith("/hilfe") ||
+    path.startsWith("/zahlung-erfolgreich") ||
+    path.startsWith("/forgot-password") ||
+    path.startsWith("/reset-password") ||
+    path.startsWith("/code-einloesen") ||
+    path.startsWith("/konto-loeschen") ||
+    path.startsWith("/beschwerde");
 
   if (isPublic) {
     return (
