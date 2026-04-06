@@ -77,6 +77,13 @@ function ProtectedRoute({ component: Component }: { component: React.ComponentTy
   return <Component />;
 }
 
+function ProtectedModuleRoute({ moduleId, children }: { moduleId: number, children: React.ReactNode }) {
+  const { data: user, isLoading } = trpc.auth.me.useQuery(undefined, { retry: false });
+  if (isLoading) return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
+  if (!user) { window.location.href = "/login"; return null; }
+  return <ModuleGuard moduleId={moduleId}>{children}</ModuleGuard>;
+}
+
 function AdminRoute({ component: Component }: { component: React.ComponentType }) {
   const { data: user, isLoading } = trpc.auth.me.useQuery(undefined, { retry: false });
   if (isLoading) return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
@@ -102,16 +109,16 @@ function Router() {
           <Route path="/rechner" component={Rechner} />
           <Route path="/finanzierungsrechner" component={Calculators} />
           <Route path="/hilfe" component={UserGuide} />
-          <Route path="/zertifikate" component={Certificates} />
+          <Route path="/zertifikate" component={() => <ProtectedRoute component={Certificates} />} />
           <Route path="/beschwerde" component={ComplaintForm} />
-          <Route path="/statistiken" component={Dashboard} />
-          <Route path="/quiz/:moduleId" component={QuizPage} />
-          <Route path="/quiz" component={Quiz} />
-          <Route path="/gamification" component={GamificationDashboard} />
-          <Route path="/pruefung" component={ExamMode} />
-          <Route path="/pruefung/:sessionId" component={ExamQuestion} />
-          <Route path="/pruefung/:sessionId/ergebnis" component={ExamResults} />
-          <Route path="/strategie" component={StrategiePlattform} />
+          <Route path="/statistiken" component={() => <ProtectedRoute component={Dashboard} />} />
+          <Route path="/quiz/:moduleId" component={() => <ProtectedRoute component={QuizPage} />} />
+          <Route path="/quiz" component={() => <ProtectedRoute component={Quiz} />} />
+          <Route path="/gamification" component={() => <ProtectedRoute component={GamificationDashboard} />} />
+          <Route path="/pruefung" component={() => <ProtectedRoute component={ExamMode} />} />
+          <Route path="/pruefung/:sessionId" component={() => <ProtectedRoute component={ExamQuestion} />} />
+          <Route path="/pruefung/:sessionId/ergebnis" component={() => <ProtectedRoute component={ExamResults} />} />
+          <Route path="/strategie" component={() => <ProtectedRoute component={StrategiePlattform} />} />
           
           {/* Admin Pages */}
           <Route path="/admin" component={() => <AdminRoute component={AdminDashboard} />} />
@@ -121,10 +128,10 @@ function Router() {
           <Route path="/admin/mediaskript" component={() => <AdminRoute component={MediaSkriptGenerator} />} />
           <Route path="/admin/loesungen" component={() => <AdminRoute component={DozentenLoesungen} />} />
           <Route path="/admin/fragen" component={() => <AdminRoute component={FragenManager} />} />
-          <Route path="/fallstudien" component={Fallstudien} />
-          <Route path="/lernkarten" component={Flashcards} />
-          <Route path="/expose-trainer" component={ExposeTrainer} />
-          <Route path="/dokument-viewer" component={DokumentViewer} />
+          <Route path="/fallstudien" component={() => <ProtectedRoute component={Fallstudien} />} />
+          <Route path="/lernkarten" component={() => <ProtectedRoute component={Flashcards} />} />
+          <Route path="/expose-trainer" component={() => <ProtectedRoute component={ExposeTrainer} />} />
+          <Route path="/dokument-viewer" component={() => <ProtectedRoute component={DokumentViewer} />} />
           <Route path="/admin/videos" component={() => <AdminRoute component={VideoManagement} />} />
           <Route path="/admin/whitelabel" component={() => <AdminRoute component={WhiteLabelAdmin} />} />
           <Route path="/admin/phase" component={() => <AdminRoute component={PortalPhaseAdmin} />} />
@@ -134,8 +141,8 @@ function Router() {
           <Route path="/widerruf" component={Widerruf} />
           <Route path="/bildungskonzept" component={Bildungskonzept} />
           
-          <Route path="/admin/portal-agent" component={() => <PortalAgentDashboard />} />
-          <Route path="/admin/ki-monitor" component={KiMonitor} />
+          <Route path="/admin/portal-agent" component={() => <AdminRoute component={PortalAgentDashboard} />} />
+          <Route path="/admin/ki-monitor" component={() => <AdminRoute component={KiMonitor} />} />
           <Route path="/kurs/modul-1-immobilien-grundkurs" component={() => <KursLanding slug="modul-1-immobilien-grundkurs" />} />
           <Route path="/kurs/modul-2-makler-34c" component={() => <KursLanding slug="modul-2-makler-34c" />} />
           <Route path="/kurs/modul-3-weg-verwalter" component={() => <KursLanding slug="modul-3-weg-verwalter" />} />
@@ -152,25 +159,25 @@ function Router() {
           <Route path="/modul/1" component={() => <ProtectedRoute component={Module1WithIntro} />} />
           <Route path="/modul/1/tag/:day" component={() => <ProtectedRoute component={Module1Detail} />} />
           
-          <Route path="/modul/2">{()=><ModuleGuard moduleId={2}><Module2WithIntro /></ModuleGuard>}</Route>
-          <Route path="/modul/2/tag/:day">{()=><ModuleGuard moduleId={2}><Module2Detail /></ModuleGuard>}</Route>
+          <Route path="/modul/2">{()=><ProtectedModuleRoute moduleId={2}><Module2WithIntro /></ModuleGuard>}</Route>
+          <Route path="/modul/2/tag/:day">{()=><ProtectedModuleRoute moduleId={2}><Module2Detail /></ModuleGuard>}</Route>
           
-          <Route path="/modul/3">{()=><ModuleGuard moduleId={3}><Module3WithIntro /></ModuleGuard>}</Route>
-          <Route path="/modul/3/tag/:day">{()=><ModuleGuard moduleId={3}><Module3Detail /></ModuleGuard>}</Route>
+          <Route path="/modul/3">{()=><ProtectedModuleRoute moduleId={3}><Module3WithIntro /></ModuleGuard>}</Route>
+          <Route path="/modul/3/tag/:day">{()=><ProtectedModuleRoute moduleId={3}><Module3Detail /></ModuleGuard>}</Route>
           
-          <Route path="/modul/4">{()=><ModuleGuard moduleId={4}><Module4WithIntro /></ModuleGuard>}</Route>
-          <Route path="/modul/4/tag/:day">{()=><ModuleGuard moduleId={4}><Module4Detail /></ModuleGuard>}</Route>
+          <Route path="/modul/4">{()=><ProtectedModuleRoute moduleId={4}><Module4WithIntro /></ModuleGuard>}</Route>
+          <Route path="/modul/4/tag/:day">{()=><ProtectedModuleRoute moduleId={4}><Module4Detail /></ModuleGuard>}</Route>
           
-          <Route path="/modul/5">{()=><ModuleGuard moduleId={5}><Module5WithIntro /></ModuleGuard>}</Route>
-          <Route path="/modul/5/tag/:day">{()=><ModuleGuard moduleId={5}><Module5Detail /></ModuleGuard>}</Route>
+          <Route path="/modul/5">{()=><ProtectedModuleRoute moduleId={5}><Module5WithIntro /></ModuleGuard>}</Route>
+          <Route path="/modul/5/tag/:day">{()=><ProtectedModuleRoute moduleId={5}><Module5Detail /></ModuleGuard>}</Route>
           
           {/* Placeholder Routes for other modules */}
           <Route path="/forgot-password" component={ForgotPassword} />
           <Route path="/reset-password" component={ResetPassword} />
           <Route path="/konto-loeschen" component={DeleteAccount} />
           <Route path="/code-einloesen" component={RedeemCode} />
-          <Route path="/admin/codes" component={AdminCodes} />
-          <Route path="/admin/nutzer" component={UserManagement} />
+          <Route path="/admin/codes" component={() => <AdminRoute component={AdminCodes} />} />
+          <Route path="/admin/nutzer" component={() => <AdminRoute component={UserManagement} />} />
           <Route path="/modul/:id">
             {(params) => (
               <div className="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-4">
