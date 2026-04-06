@@ -141,3 +141,7 @@ stakeholder_audit/
 ultimate_audit/
 stakeholder_audit/
 ultimate_audit/
+
+deep_audit/
+*.png
+MASTER_FIX_PLAN.sh
