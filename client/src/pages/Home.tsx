@@ -1,3 +1,4 @@
+import { TrialForm } from "@/components/TrialForm";
 import { SEO, PAGE_SEO } from "@/components/SEO";
 import { Link } from "wouter";
 import { useAuth } from "@/_core/hooks/useAuth";
