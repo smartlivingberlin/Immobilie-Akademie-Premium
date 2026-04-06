@@ -1,3 +1,4 @@
+import { TrialForm } from "@/components/TrialForm";
 import { Link } from "wouter";
 import { SEO } from "@/components/SEO";
 
