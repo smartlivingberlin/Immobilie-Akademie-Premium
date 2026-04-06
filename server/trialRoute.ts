@@ -75,7 +75,6 @@ async function sendTrialEmail(name: string, email: string, code: string, hours: 
   </div>
 </div>
 </body></html>`,
-    }),
   });
 }
 
