@@ -36,7 +36,12 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <SEO {...PAGE_SEO.home} />
+      <SEO
+        title="Immobilien Akademie Smart — IHK-Vorbereitung §34c & §34i"
+        description="810+ Prüfungsfragen, KI-Tutor, 240 Lerntage. Die beste Online-Vorbereitung für die IHK-Sachkundeprüfung §34c und §34i GewO."
+        keywords="IHK Prüfung, §34c GewO, §34i GewO, Immobilienmakler, WEG-Verwalter, Sachkundeprüfung"
+        ogImage="https://immobilie-akademie-production.up.railway.app/icon-512.png"
+      />
       {/* Hero Section */}
       <section className="relative bg-slate-900 text-white">
         <div className="absolute inset-0 opacity-0"></div>

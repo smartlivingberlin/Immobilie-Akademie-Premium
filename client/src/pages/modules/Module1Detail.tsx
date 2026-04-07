@@ -366,6 +366,7 @@ export default function Module1Detail() {
                               <CardContent className="pt-6">
                                 <div className="flex gap-4">
                                   <Gavel className="h-6 w-6 text-blue-500 flex-shrink-0 mt-1" />
+                    <AudioPlayer text={(currentContent.law || []).join(". ")} label="Normen vorlesen" />
                                   <div className="prose prose-sm max-w-none break-words">
                                     <SmartContent content={law} />
                                   </div>
@@ -426,6 +427,7 @@ export default function Module1Detail() {
                           <CardContent className="pt-6">
                             <div className="flex gap-4">
                               <Target className="h-6 w-6 text-amber-600 flex-shrink-0 mt-1" />
+                    <AudioPlayer text={currentContent.task || ""} label="Aufgaben vorlesen" />
                               <div className="flex-1">
                                 <div className="prose prose-sm max-w-none break-words">
                                   <SmartContent content={currentContent.task} />
