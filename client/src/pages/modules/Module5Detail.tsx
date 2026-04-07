@@ -352,9 +352,26 @@ export default function Module5Detail() {
                     )}
                   </TabsContent>
 
-                  <TabsContent value="law" className="space-y-4">
+                  <TabsContent value="law" className="mt-0 space-y-4 animate-in fade-in-50 focus-visible:outline-none relative group">
+                    <FullscreenContent
+                      title={`Normen & Gesetze: ${currentContent.title}`}
+                      content={
+                        <div className="space-y-4">
+                          {currentContent.law && currentContent.law.length > 0 ? (
+                            currentContent.law.map((lawItem: string, index: number) => (
+                              <div key={index} className="flex items-start gap-3 p-4 border-l-4 border-l-blue-500 bg-blue-50 rounded-r-lg">
+                                <span className="text-blue-600 font-bold mt-1">§</span>
+                                <p className="font-medium text-slate-900">{lawItem}</p>
+                              </div>
+                            ))
+                          ) : (
+                            <p className="text-slate-500">Keine spezifischen Gesetze für diesen Tag.</p>
+                          )}
+                        </div>
+                      }
+                    />
                     {currentContent.law && currentContent.law.length > 0 ? (
-                      currentContent.law.map((lawItem, index) => (
+                      currentContent.law.map((lawItem: string, index: number) => (
                         <Card key={index} className="border-l-4 border-l-blue-500">
                           <CardContent className="p-4">
                             <div className="flex items-start gap-3">
@@ -371,11 +388,26 @@ export default function Module5Detail() {
                     )}
                   </TabsContent>
 
-                  <TabsContent value="practice" className="space-y-6">
+                  <TabsContent value="practice" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
+                    <FullscreenContent
+                      title={`Praxis: ${currentContent.title}`}
+                      content={<SmartContent content={currentContent.practice} />}
+                    />
                     <SmartContent content={currentContent.practice} />
                   </TabsContent>
 
-                  <TabsContent value="tasks" className="space-y-6">
+                  <TabsContent value="tasks" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
+                    <FullscreenContent
+                      title={`Aufgaben: ${currentContent.title}`}
+                      content={
+                        <div>
+                          <SmartContent content={currentContent.task} />
+                          {currentContent.solution && (
+                            <SolutionToggler solution={currentContent.solution} />
+                          )}
+                        </div>
+                      }
+                    />
                     <SmartContent content={currentContent.task} />
                     {currentContent.solution && (
                       <SolutionToggler solution={currentContent.solution} />
