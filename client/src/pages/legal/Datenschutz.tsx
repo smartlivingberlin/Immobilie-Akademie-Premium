@@ -99,7 +99,7 @@ export default function Datenschutz() {
             Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:
           </p>
           <p>
-            Alisad Gadyri<br />
+            Alisad Gadyri<br />E-Mail: alisadgadyri38@gmail.com<br />
             Durlacher Str. 36<br />
             10715 Berlin<br />
             <br />
@@ -451,5 +451,27 @@ export default function Datenschutz() {
         </CardContent>
       </Card>
     </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">Gmail / Google SMTP (E-Mail-Versand)</h3>
+                <p className="text-slate-600 leading-relaxed">
+                  Für den automatischen Versand von E-Mails (Zugangscodes, Benachrichtigungen) nutzen wir den
+                  Gmail-SMTP-Dienst von Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.
+                  Hierbei werden E-Mail-Adressen der Empfänger übermittelt. Die Verarbeitung erfolgt auf Grundlage
+                  von Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung) sowie Art. 6 Abs. 1 lit. f DSGVO
+                  (berechtigtes Interesse an zuverlässiger E-Mail-Zustellung). Google ist nach dem EU-U.S. Data
+                  Privacy Framework zertifiziert. Datenschutzerklärung: https://policies.google.com/privacy
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">Google Gemini (KI-Dienst)</h3>
+                <p className="text-slate-600 leading-relaxed">
+                  Für KI-gestützte Lerninhalte und den KI-Tutor nutzen wir Google Gemini (Google LLC, USA).
+                  Dabei werden Nutzeranfragen (Fragen im KI-Tutor) an die Gemini API übermittelt.
+                  Es werden keine personenbezogenen Daten ohne Notwendigkeit übermittelt.
+                  Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO.
+                  Google ist nach dem EU-U.S. Data Privacy Framework zertifiziert.
+                  Datenschutzerklärung: https://policies.google.com/privacy
+                </p>
+              </div>
   );
 }
