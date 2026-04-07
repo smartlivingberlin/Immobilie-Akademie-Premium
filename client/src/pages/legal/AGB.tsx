@@ -309,7 +309,22 @@ export default function AGB() {
                   Der Kaufpreis ist sofort bei Vertragsschluss fällig.
                 </p>
               </div>
-            </CardContent>
+    
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-slate-900">§ 12 Anwendbares Recht und Gerichtsstand</h3>
+            <p className="text-slate-600 leading-relaxed">
+              Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts.
+              Gerichtsstand für alle Streitigkeiten aus und im Zusammenhang mit diesem Vertrag ist
+              Berlin, sofern der Nutzer Kaufmann, juristische Person des öffentlichen Rechts oder
+              öffentlich-rechtliches Sondervermögen ist.
+            </p>
+            <p className="text-slate-600 leading-relaxed">
+              Für digitale Inhalte gilt ergänzend § 327 BGB. Der Nutzer hat das Recht auf
+              Bereitstellung, Aktualisierung und Mängelbeseitigung digitaler Inhalte gemäß
+              §§ 327 ff. BGB.
+            </p>
+          </div>
+        </CardContent>
       </Card>
     </div>
   );
