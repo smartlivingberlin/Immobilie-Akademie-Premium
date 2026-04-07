@@ -298,7 +298,18 @@ export default function AGB() {
           <p className="text-sm text-muted-foreground">
             Quelle: Erstellt mit Unterstützung von e-recht24.de und angepasst für dieses Lernportal.
           </p>
-        </CardContent>
+        
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">§ 4 Preise und Zahlungsbedingungen</h3>
+                <p className="text-slate-600 leading-relaxed">
+                  Die aktuellen Preise für die einzelnen Module sind:
+                  Modul 1: 149,00 EUR, Modul 2: 499,00 EUR, Modul 3: 699,00 EUR,
+                  Modul 4: 399,00 EUR, Modul 5: 499,00 EUR (jeweils inkl. MwSt.).
+                  Alle Preise sind Endpreise. Die Zahlung erfolgt über den Zahlungsdienstleister Stripe.
+                  Der Kaufpreis ist sofort bei Vertragsschluss fällig.
+                </p>
+              </div>
+            </CardContent>
       </Card>
     </div>
   );

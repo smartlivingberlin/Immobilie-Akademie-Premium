@@ -12,7 +12,9 @@ export default function Impressum() {
         <CardContent className="prose prose-slate max-w-none">
           <h2>Anbieter</h2>
           <div className="not-prose bg-slate-50 p-6 rounded-lg border border-slate-200 mb-6">
-            <p className="font-semibold text-lg mb-2">Alisad Gadyri</p>
+            <p className="font-semibold text-lg mb-2">Alisad Gadyri
+                <br />E-Mail: alisadgadyri38@gmail.com
+                <br />Tel: +49 171 1526327</p>
             <p className="text-slate-700">Einzelunternehmen</p>
             <div className="flex items-start gap-2 mt-4 text-slate-700">
               <MapPin className="w-4 h-4 mt-1 flex-shrink-0" />
@@ -37,7 +39,9 @@ export default function Impressum() {
           </div>
 
           <h2>Vertretungsberechtigte Person(en)</h2>
-          <p>Alisad Gadyri (Inhaber)</p>
+          <p>Alisad Gadyri
+                <br />E-Mail: alisadgadyri38@gmail.com
+                <br />Tel: +49 171 1526327 (Inhaber)</p>
 
           <h2>Registereintrag</h2>
           <p className="text-sm text-muted-foreground italic">
@@ -82,7 +86,9 @@ export default function Impressum() {
 
           <h2>Redaktionell verantwortlich</h2>
           <p>
-            Alisad Gadyri<br />
+            Alisad Gadyri
+                <br />E-Mail: alisadgadyri38@gmail.com
+                <br />Tel: +49 171 1526327<br />
             Durlacher Str. 36<br />
             10715 Berlin
           </p>
