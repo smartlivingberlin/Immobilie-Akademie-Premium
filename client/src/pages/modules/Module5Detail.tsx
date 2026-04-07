@@ -36,6 +36,7 @@ import { CertificateGenerator } from "@/components/CertificateGenerator";
 import { useToast } from "@/hooks/use-toast";
 import { SmartContent } from "@/components/SmartContent";
 import { FullscreenContent } from "@/components/FullscreenContent";
+import { NotebookLMExport } from "@/components/NotebookLMExport";
 import { VideoList } from "@/components/VideoPlayer";
 import { Video } from "lucide-react";
 
@@ -345,6 +346,15 @@ export default function Module5Detail() {
     }
   />
   <AudioPlayer text={currentContent.theory} label="Theorie vorlesen" />
+                    <NotebookLMExport
+                      moduleId={5}
+                      dayNumber={currentDayNum}
+                      title={currentContent.title}
+                      theory={currentContent.theory}
+                      law={currentContent.law}
+                      practice={currentContent.practice}
+                      task={currentContent.task}
+                    />
   <SmartContent content={currentContent.theory} />
   {currentContent.extendedTheory && (
     <div className="mt-6 pt-6 border-t">

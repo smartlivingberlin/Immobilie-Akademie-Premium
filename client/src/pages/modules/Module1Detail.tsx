@@ -32,6 +32,7 @@ import { CertificateGenerator } from "@/components/CertificateGenerator";
 import { DocumentGenerator } from "@/components/DocumentGenerator";
 import { SmartContent } from "@/components/SmartContent";
 import { FullscreenContent } from "@/components/FullscreenContent";
+import { NotebookLMExport } from "@/components/NotebookLMExport";
 
 // Import Maximalist Content
 import { contentDataModule1Maximal as contentData } from "./Module1Content_Maximal";
@@ -300,6 +301,15 @@ export default function Module1Detail() {
                     <div className="prose prose-slate max-w-none break-words prose-headings:text-slate-900 prose-p:text-slate-600 prose-li:text-slate-600 prose-strong:text-slate-900">
                       <>
                       <AudioPlayer text={currentContent.theory} label="Theorie vorlesen" />
+                    <NotebookLMExport
+                      moduleId={1}
+                      dayNumber={currentDayNum}
+                      title={currentContent.title}
+                      theory={currentContent.theory}
+                      law={currentContent.law}
+                      practice={currentContent.practice}
+                      task={currentContent.task}
+                    />
                       <SmartContent content={currentContent.theory} />
                       </>
                       {(currentContent as any).extendedTheory && (

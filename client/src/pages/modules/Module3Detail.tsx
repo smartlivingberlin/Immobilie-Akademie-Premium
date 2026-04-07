@@ -33,6 +33,7 @@ import { quizQuestionsModule3 } from "@/data/quiz-questions-modul3";
 import { SolutionToggler } from "@/components/SolutionToggler";
 import { SmartContent } from "@/components/SmartContent";
 import { FullscreenContent } from "@/components/FullscreenContent";
+import { NotebookLMExport } from "@/components/NotebookLMExport";
 import { CourtCaseDisplay } from "@/components/CourtCaseDisplay";
 import { courtCasesModule3 } from "@/data/rechtsprechung-modul3";
 import { VideoList } from "@/components/VideoPlayer";
@@ -373,6 +374,15 @@ export default function Module3Detail() {
                   <div className="content-container prose prose-slate max-w-none prose-headings:text-slate-900 prose-a:text-blue-600 prose-strong:text-slate-900">
                     <>
               <AudioPlayer text={currentContent.theory} label="Theorie vorlesen" />
+                    <NotebookLMExport
+                      moduleId={3}
+                      dayNumber={currentDayNum}
+                      title={currentContent.title}
+                      theory={currentContent.theory}
+                      law={currentContent.law}
+                      practice={currentContent.practice}
+                      task={currentContent.task}
+                    />
               <SmartContent content={currentContent.theory} />
               </>
                     {currentContent.extendedTheory && (
