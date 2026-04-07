@@ -36,6 +36,7 @@ import { CertificateGenerator } from "@/components/CertificateGenerator";
 import { useToast } from "@/hooks/use-toast";
 import { SmartContent } from "@/components/SmartContent";
 import { FullscreenContent } from "@/components/FullscreenContent";
+import { NotebookLMExport } from "@/components/NotebookLMExport";
 import { CourtCaseDisplay } from "@/components/CourtCaseDisplay";
 import { courtCasesModule4 } from "@/data/rechtsprechung-modul4";
 
@@ -347,6 +348,15 @@ const currentContent = allContent[selectedDay as keyof typeof allContent] || all
                     <div className="content-container prose prose-slate max-w-none break-words prose-headings:text-slate-900 prose-a:text-blue-600 prose-strong:text-slate-900">
                       <>
                       <AudioPlayer text={currentContent.theory} label="Theorie vorlesen" />
+                    <NotebookLMExport
+                      moduleId={4}
+                      dayNumber={currentDayNum}
+                      title={currentContent.title}
+                      theory={currentContent.theory}
+                      law={currentContent.law}
+                      practice={currentContent.practice}
+                      task={currentContent.task}
+                    />
                       <SmartContent content={currentContent.theory} />
                       </>
                       {(currentContent as any).extendedTheory && (
