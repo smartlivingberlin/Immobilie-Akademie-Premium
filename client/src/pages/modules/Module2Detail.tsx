@@ -381,15 +381,47 @@ export default function Module2Detail() {
                 </TabsList>
 
                 <TabsContent value="theory" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
-                  <FullscreenContent content={<SmartContent content={currentContent.theory} />} title={`Theorie: ${currentContent.title}`} />
+                  <FullscreenContent
+                      title={`Theorie: ${currentContent.title}`}
+                      content={
+                        <div className="space-y-8">
+                          <SmartContent content={currentContent.theory} />
+                          {(currentContent as any).extendedTheory && (
+                            <div className="mt-8 pt-8 border-t-2 border-amber-200">
+                              <h2 className="text-2xl font-bold text-amber-700 mb-4 flex items-center gap-2">
+                                <span>💡</span> Vertiefungswissen
+                              </h2>
+                              <SmartContent content={(currentContent as any).extendedTheory} />
+                            </div>
+                          )}
+                          {(currentContent as any).law && (currentContent as any).law.length > 0 && (
+                            <div className="mt-8 pt-8 border-t-2 border-blue-200">
+                              <h2 className="text-2xl font-bold text-blue-700 mb-4 flex items-center gap-2">
+                                <span>⚖️</span> Relevante Gesetze & Normen
+                              </h2>
+                              {(currentContent as any).law.map((item: string, i: number) => (
+                                <div key={i} className="flex gap-3 p-3 bg-blue-50 rounded-lg mb-2">
+                                  <span className="text-blue-600 font-bold">§</span>
+                                  <span>{item}</span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      }
+                    />
                   <div className="content-container prose prose-slate max-w-none prose-headings:text-slate-900 prose-a:text-blue-600 prose-strong:text-slate-900">
                     <>
-              <AudioPlayer text={currentContent.theory} label="Theorie vorlesen" />
+              <AudioPlayer 
+                      text={[currentContent.theory, (currentContent as any).extendedTheory].filter(Boolean).join("\n\n")} 
+                      label="Theorie + Vertiefung vorlesen" 
+                    />
                     <NotebookLMExport
                       moduleId={2}
                       dayNumber={currentDayNum}
                       title={currentContent.title}
                       theory={currentContent.theory}
+                      extendedTheory={(currentContent as any).extendedTheory}
                       law={currentContent.law}
                       practice={currentContent.practice}
                       task={currentContent.task}
@@ -471,7 +503,8 @@ export default function Module2Detail() {
                 </TabsContent>
 
                 <TabsContent value="practice" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
-                  <FullscreenContent content={<SmartContent content={currentContent.practice} />} title={`Praxis-Analyse: ${currentContent.title}`} />
+                  <FullscreenContent content={<AudioPlayer text={currentContent.practice || ""} label="Praxis vorlesen" />
+                    <SmartContent content={currentContent.practice} />} title={`Praxis-Analyse: ${currentContent.title}`} />
                   <Card className="bg-emerald-50/50 border-emerald-100 shadow-sm">
                     <CardHeader>
                       <CardTitle className="text-emerald-800 flex items-center gap-2">
