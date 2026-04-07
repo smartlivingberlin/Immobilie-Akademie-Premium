@@ -448,9 +448,7 @@ export default function Datenschutz() {
           <p className="text-sm text-muted-foreground mt-8">
             Quelle: Erstellt mit Unterstützung von e-recht24.de und angepasst für dieses Lernportal.
           </p>
-        </CardContent>
-      </Card>
-    </div>
+
               <div>
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">Gmail / Google SMTP (E-Mail-Versand)</h3>
                 <p className="text-slate-600 leading-relaxed">
@@ -473,5 +471,8 @@ export default function Datenschutz() {
                   Datenschutzerklärung: https://policies.google.com/privacy
                 </p>
               </div>
+        </CardContent>
+      </Card>
+    </div>
   );
 }
