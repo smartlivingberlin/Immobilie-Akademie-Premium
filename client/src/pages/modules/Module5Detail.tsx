@@ -328,25 +328,25 @@ export default function Module5Detail() {
                   </TabsList>
 
                   <TabsContent value="theory" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
-  <FullscreenContent
+                    <FullscreenContent
                       title={`Theorie: ${currentContent.title}`}
                       content={
                         <div className="space-y-8">
                           <SmartContent content={currentContent.theory} />
-                          {(currentContent as any).extendedTheory && (
+                          {currentContent.extendedTheory && (
                             <div className="mt-8 pt-8 border-t-2 border-amber-200">
                               <h2 className="text-2xl font-bold text-amber-700 mb-4 flex items-center gap-2">
                                 <span>💡</span> Vertiefungswissen
                               </h2>
-                              <SmartContent content={(currentContent as any).extendedTheory} />
+                              <SmartContent content={currentContent.extendedTheory} />
                             </div>
                           )}
-                          {(currentContent as any).law && (currentContent as any).law.length > 0 && (
+                          {currentContent.law && currentContent.law.length > 0 && (
                             <div className="mt-8 pt-8 border-t-2 border-blue-200">
                               <h2 className="text-2xl font-bold text-blue-700 mb-4 flex items-center gap-2">
                                 <span>⚖️</span> Relevante Gesetze & Normen
                               </h2>
-                              {(currentContent as any).law.map((item: string, i: number) => (
+                              {currentContent.law.map((item: string, i: number) => (
                                 <div key={i} className="flex gap-3 p-3 bg-blue-50 rounded-lg mb-2">
                                   <span className="text-blue-600 font-bold">§</span>
                                   <span>{item}</span>
@@ -357,50 +357,42 @@ export default function Module5Detail() {
                         </div>
                       }
                     />
-        {currentContent.extendedTheory && (
-          <div className="mt-6 pt-6 border-t">
-            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-              <Lightbulb className="h-5 w-5 text-amber-500" />
-              Vertiefungswissen
-            </h3>
-            <SmartContent content={currentContent.extendedTheory} />
-          </div>
-        )}
-      </div>
-    }
-  />
-  <AudioPlayer 
-                      text={[currentContent.theory, (currentContent as any).extendedTheory].filter(Boolean).join("\n\n")} 
-                      label="Theorie + Vertiefung vorlesen" 
+                    <AudioPlayer
+                      text={[currentContent.theory, currentContent.extendedTheory].filter(Boolean).join("\n\n")}
+                      label="Theorie + Vertiefung vorlesen"
                     />
                     <NotebookLMExport
                       moduleId={5}
                       dayNumber={currentDayNum}
                       title={currentContent.title}
                       theory={currentContent.theory}
-                      extendedTheory={(currentContent as any).extendedTheory}
+                      extendedTheory={currentContent.extendedTheory}
                       law={currentContent.law}
                       practice={currentContent.practice}
                       task={currentContent.task}
                     />
-  <SmartContent content={currentContent.theory} />
-  {currentContent.extendedTheory && (
-    <div className="mt-6 pt-6 border-t">
-      <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-        <Lightbulb className="h-5 w-5 text-amber-500" />
-        Vertiefungswissen
-      </h3>
-      <SmartContent content={currentContent.extendedTheory} />
-    </div>
-  )}
-  {currentContent.solution && (
-    <div className="mt-8">
-      <SolutionToggler title="Musterlösung anzeigen" solution={currentContent.solution} />
-    </div>
-  )}
-</TabsContent>
+                    <SmartContent content={currentContent.theory} />
+                    {currentContent.extendedTheory && (
+                      <div className="mt-6 pt-6 border-t border-amber-200">
+                        <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                          <Lightbulb className="h-5 w-5 text-amber-500" />
+                          Vertiefungswissen
+                        </h3>
+                        <AudioPlayer
+                          text={currentContent.extendedTheory}
+                          label="Vertiefung vorlesen"
+                        />
+                        <SmartContent content={currentContent.extendedTheory} />
+                      </div>
+                    )}
+                    {currentContent.solution && (
+                      <div className="mt-8">
+                        <SolutionToggler title="Musterlösung anzeigen" solution={currentContent.solution} />
+                      </div>
+                    )}
+                  </TabsContent>
 
-                  <TabsContent value="law" className="mt-0 space-y-4 animate-in fade-in-50 focus-visible:outline-none relative group">
+                                    <TabsContent value="law" className="mt-0 space-y-4 animate-in fade-in-50 focus-visible:outline-none relative group">
                     <FullscreenContent
                       title={`Normen & Gesetze: ${currentContent.title}`}
                       content={
@@ -439,8 +431,15 @@ export default function Module5Detail() {
                   <TabsContent value="practice" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
                     <FullscreenContent
                       title={`Praxis: ${currentContent.title}`}
-                      content={<AudioPlayer text={currentContent.practice || ""} label="Praxis vorlesen" />
-                    <SmartContent content={currentContent.practice} />}
+                      content={
+                        <div>
+                          <SmartContent content={currentContent.practice} />
+                        </div>
+                      }
+                    />
+                    <AudioPlayer
+                      text={currentContent.practice || ""}
+                      label="Praxis vorlesen"
                     />
                     <SmartContent content={currentContent.practice} />
                   </TabsContent>
