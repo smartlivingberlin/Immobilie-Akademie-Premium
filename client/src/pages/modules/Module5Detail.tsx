@@ -326,31 +326,41 @@ export default function Module5Detail() {
                     </TabsTrigger>
                   </TabsList>
 
-                  <TabsContent value="theory" className="space-y-6">
-                    <>
-              <AudioPlayer text={currentContent.theory} label="Theorie vorlesen" />
-              <SmartContent content={currentContent.theory} />
-              </>
-                    {currentContent.extendedTheory && (
-                      <div className="mt-6 pt-6 border-t">
-                        <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                          <Lightbulb className="h-5 w-5 text-amber-500" />
-                          Vertiefungswissen
-                        </h3>
-                        <SmartContent content={currentContent.extendedTheory} />
-                      </div>
-                    )}
-
-                    {/* Solution Accordion */}
-                    {currentContent.solution && (
-                      <div className="mt-8">
-                        <SolutionToggler 
-                          title="Musterlösung anzeigen"
-                          solution={currentContent.solution}
-                        />
-                      </div>
-                    )}
-                  </TabsContent>
+                  <TabsContent value="theory" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
+  <FullscreenContent
+    title={`Theorie: ${currentContent.title}`}
+    content={
+      <div>
+        <SmartContent content={currentContent.theory} />
+        {currentContent.extendedTheory && (
+          <div className="mt-6 pt-6 border-t">
+            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <Lightbulb className="h-5 w-5 text-amber-500" />
+              Vertiefungswissen
+            </h3>
+            <SmartContent content={currentContent.extendedTheory} />
+          </div>
+        )}
+      </div>
+    }
+  />
+  <AudioPlayer text={currentContent.theory} label="Theorie vorlesen" />
+  <SmartContent content={currentContent.theory} />
+  {currentContent.extendedTheory && (
+    <div className="mt-6 pt-6 border-t">
+      <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+        <Lightbulb className="h-5 w-5 text-amber-500" />
+        Vertiefungswissen
+      </h3>
+      <SmartContent content={currentContent.extendedTheory} />
+    </div>
+  )}
+  {currentContent.solution && (
+    <div className="mt-8">
+      <SolutionToggler title="Musterlösung anzeigen" solution={currentContent.solution} />
+    </div>
+  )}
+</TabsContent>
 
                   <TabsContent value="law" className="mt-0 space-y-4 animate-in fade-in-50 focus-visible:outline-none relative group">
                     <FullscreenContent
