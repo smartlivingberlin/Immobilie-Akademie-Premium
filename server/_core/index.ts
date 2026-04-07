@@ -9,6 +9,7 @@ if (!globalThis.crypto) {
 }
 
 import "dotenv/config";
+import cookieParser from "cookie-parser";
 import express from "express";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
@@ -47,7 +48,12 @@ async function startServer() {
     res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=(), payment=(self \"https://js.stripe.com\")");
     next();
   });
-  app.use(helmet({
+  app.use((_req, res, next) => {
+  res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+  res.setHeader("X-Frame-Options", "SAMEORIGIN");
+  next();
+});
+app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
@@ -114,7 +120,8 @@ app.use("/api/auth/login", loginLimiter);
 app.use("/api/auth/register", loginLimiter);
   const server = createServer(app);
   // Configure body parser with larger size limit for file uploads
-  app.use(express.json({ limit: "50mb" }));
+  app.use(cookieParser());
+app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
   // OAuth callback (Manus) – nur wenn OAUTH_SERVER_URL konfiguriert
   if (process.env.OAUTH_SERVER_URL) {
