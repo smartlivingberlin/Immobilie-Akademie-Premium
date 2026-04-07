@@ -480,7 +480,7 @@ export default function Module3Detail() {
                 </TabsContent>
 
                 <TabsContent value="practice" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
-                  <<FullscreenContent
+                  <FullscreenContent
                     title={`Praxis: ${currentContent.title}`}
                     content={
                       <div>
@@ -488,7 +488,6 @@ export default function Module3Detail() {
                       </div>
                     }
                   />
-                    <SmartContent content={currentContent.practice} />} title={`Praxis-Analyse: ${currentContent.title}`} />
                   <Card className="bg-emerald-50/50 border-emerald-100 shadow-sm">
                     <CardHeader>
                       <CardTitle className="text-emerald-800 flex items-center gap-2">
