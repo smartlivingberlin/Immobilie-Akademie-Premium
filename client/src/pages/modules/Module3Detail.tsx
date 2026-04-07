@@ -456,6 +456,7 @@ export default function Module3Detail() {
                           <Card key={index} className="border-l-4 border-l-blue-500 shadow-sm hover:shadow-md transition-shadow">
                             <CardContent className="p-4 flex items-start gap-3">
                               <Gavel className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
+                    <AudioPlayer text={(currentContent.law || []).join(". ")} label="Normen vorlesen" />
                               <div className="prose prose-slate max-w-none prose-headings:text-slate-900 prose-a:text-blue-600 prose-strong:text-slate-900">
                                 <SmartContent content={law} />
                               </div>
@@ -554,6 +555,7 @@ export default function Module3Detail() {
                              </CardHeader>
                              <CardContent className="pt-4">
                                <SolutionToggler solution={task.solution} />
+                    <AudioPlayer text={currentContent.task || ""} label="Aufgaben vorlesen" />
                              </CardContent>
                            </Card>
                          ))}

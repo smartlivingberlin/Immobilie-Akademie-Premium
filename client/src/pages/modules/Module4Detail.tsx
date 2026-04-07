@@ -425,6 +425,7 @@ const currentContent = allContent[selectedDay as keyof typeof allContent] || all
                             <Card key={index} className="border-l-4 border-l-blue-500 shadow-sm hover:shadow-md transition-shadow">
                               <CardContent className="p-4 flex items-start gap-3">
                                 <Gavel className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
+                    <AudioPlayer text={(currentContent.law || []).join(". ")} label="Normen vorlesen" />
                                 <div className="prose prose-sm max-w-none break-words">
                                   <SmartContent content={law} />
                                 </div>
@@ -510,6 +511,7 @@ const currentContent = allContent[selectedDay as keyof typeof allContent] || all
                                <CardHeader className="bg-slate-50/50 pb-3">
                                  <CardTitle className="text-base flex items-center gap-2">
                                    <CheckCircle2 className="h-5 w-5 text-blue-600" />
+                    <AudioPlayer text={currentContent.task || ""} label="Aufgaben vorlesen" />
                                    Aufgabe {index + 1}
                                  </CardTitle>
                                </CardHeader>

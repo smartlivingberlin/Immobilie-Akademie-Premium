@@ -410,6 +410,7 @@ export default function Module5Detail() {
                         </div>
                       }
                     />
+                    <AudioPlayer text={(currentContent.law || []).join(". ")} label="Normen vorlesen" />
                     {currentContent.law && currentContent.law.length > 0 ? (
                       currentContent.law.map((lawItem: string, index: number) => (
                         <Card key={index} className="border-l-4 border-l-blue-500">
@@ -450,6 +451,7 @@ export default function Module5Detail() {
                       content={
                         <div>
                           <SmartContent content={currentContent.task} />
+                    <AudioPlayer text={currentContent.task || ""} label="Aufgaben vorlesen" />
                           {currentContent.solution && (
                             <SolutionToggler solution={currentContent.solution} />
                           )}
