@@ -322,7 +322,6 @@ export default function Module1Detail() {
                           )}
                         </div>
                       }
-                    />}
                     />
                     <div className="prose prose-slate max-w-none break-words prose-headings:text-slate-900 prose-p:text-slate-600 prose-li:text-slate-600 prose-strong:text-slate-900">
                       <>
@@ -393,11 +392,18 @@ export default function Module1Detail() {
                     </div>
                   </TabsContent>
 
-                  <TabsContent value="practice" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none">
-                    <FullscreenContent 
+                  <TabsContent value="practice" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
+                    <FullscreenContent
                       title={`Praxis-Analyse: ${currentContent.title}`}
-                      content={<AudioPlayer text={currentContent.practice || ""} label="Praxis vorlesen" />
-                    <SmartContent content={currentContent.practice} />}
+                      content={
+                        <div>
+                          <SmartContent content={currentContent.practice} />
+                        </div>
+                      }
+                    />
+                    <AudioPlayer
+                      text={currentContent.practice || ""}
+                      label="Praxis vorlesen"
                     />
                     <Card className="bg-emerald-50/50 border-emerald-100">
                       <CardHeader>
@@ -407,9 +413,7 @@ export default function Module1Detail() {
                         </CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <div className="prose prose-sm max-w-none break-words prose-headings:text-emerald-900 prose-p:text-slate-700">
-                          <SmartContent content={currentContent.practice} />
-                        </div>
+                        <SmartContent content={currentContent.practice} />
                       </CardContent>
                     </Card>
                   </TabsContent>
