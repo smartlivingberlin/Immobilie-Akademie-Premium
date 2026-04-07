@@ -459,7 +459,14 @@ const currentContent = allContent[selectedDay as keyof typeof allContent] || all
                   </TabsContent>
 
                   <TabsContent value="practice" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
-                    <FullscreenContent content={<AudioPlayer text={currentContent.practice || ""} label="Praxis vorlesen" />
+                    <<FullscreenContent
+                    title={`Praxis: ${currentContent.title}`}
+                    content={
+                      <div>
+                        <SmartContent content={currentContent.practice} />
+                      </div>
+                    }
+                  />
                     <SmartContent content={currentContent.practice} />} title={`Praxis-Analyse: ${currentContent.title}`} />
                     <div className="content-container prose prose-slate max-w-none break-words prose-headings:text-slate-900 prose-a:text-blue-600 prose-strong:text-slate-900 bg-emerald-50/50 p-6 rounded-lg border border-emerald-100">
                       <SmartContent content={currentContent.practice} />
