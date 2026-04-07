@@ -1,4 +1,18 @@
 import type { Express, Request, Response } from "express";
+import { verifySessionToken } from "./_core/auth-local";
+
+async function requireAdmin(req: Request, res: Response, next: any) {
+  const token = req.cookies?.app_session_id;
+  const user = await verifySessionToken(token);
+  if (!user) return res.status(401).json({ error: "Nicht eingeloggt" });
+  // Admin-Check via DB
+  const { getUserByOpenId } = await import("./db");
+  const dbUser = await getUserByOpenId(user.openId);
+  if (!dbUser || dbUser.role !== "admin") {
+    return res.status(403).json({ error: "Kein Admin-Zugang" });
+  }
+  next();
+}
 import crypto from "crypto";
 import { getDb } from "./db";
 import { sql } from "drizzle-orm";
@@ -175,7 +189,7 @@ export function registerTrialRoutes(app: Express) {
   });
 
   // GET /api/admin/trial-leads
-  app.get("/api/admin/trial-leads", async (req: Request, res: Response) => {
+  app.get("/api/admin/trial-leads", requireAdmin, async (req: Request, res: Response) => {
     try {
       const db = await getDb();
       const result = await db.execute(

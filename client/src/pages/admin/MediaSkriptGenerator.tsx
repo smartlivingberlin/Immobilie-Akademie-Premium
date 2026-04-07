@@ -21,7 +21,7 @@ const THEMEN: Record<number, string[]> = {
 const FORMATE = [
   { id: "podcast", label: "NotebookLM Podcast", icon: Radio, color: "#7c3aed", desc: "Optimiert für NotebookLM Audio Overview — 2 Sprecher, 8-12 Min, Deep Dive Format", badge: "Für NotebookLM" },
   { id: "videoskript", label: "Video mit echter Stimme", icon: Video, color: "#dc2626", desc: "Professionelles Sprechtextskript mit Szenenanweisungen, Pausen, Einblendungen", badge: "Für Menschen" },
-  { id: "synthesia", label: "KI-Avatar Video", icon: Mic, color: "#059669", desc: "Optimiert für Synthesia/HeyGen — kurze Sätze, klare Struktur, KI-Stimmen-freundlich", badge: "Für Synthesia" },
+  // { id: "synthesia", label: "KI-Avatar Video" }, // DEAKTIVIERT - zu kostspielig (Synthesia 30€/Monat)
   { id: "zusammenfassung", label: "Kurzzusammenfassung", icon: FileText, color: "#d97706", desc: "500 Wörter — für alle 3 Formate nutzbar, Social Media, Teaser-Videos", badge: "Universal" },
 ];
 
