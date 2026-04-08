@@ -1,3 +1,15 @@
+import * as Sentry from "@sentry/node";
+
+// Sentry Server-seitiges Error Monitoring
+if (process.env.SENTRY_DSN) {
+  Sentry.init({
+    dsn: process.env.SENTRY_DSN,
+    environment: process.env.NODE_ENV || "production",
+    tracesSampleRate: 0.05,
+  });
+  console.log("[Sentry] Error Monitoring aktiv");
+}
+
 import "./polyfills";
 import { webcrypto } from "node:crypto";
 
