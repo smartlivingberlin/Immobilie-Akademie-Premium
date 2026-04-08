@@ -1,4 +1,5 @@
 import React, { lazy, Suspense } from "react";
+import ErrorBoundary from "@/components/ErrorBoundary";
 import { Route, Switch } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Toaster } from "@/components/ui/toaster";
@@ -49,33 +50,6 @@ const Calculators = lazy(() => import("@/pages/Calculators"));
 const Certificates = lazy(() => import("@/pages/Certificates"));
 import ComplaintForm from "@/components/ComplaintForm";
 import FeedbackWidget from "@/components/FeedbackWidget";
-class ErrorBoundary extends React.Component
-  { children: React.ReactNode },
-  { error: Error | null }
-> {
-  state = { error: null };
-  static getDerivedStateFromError(error: Error) { return { error }; }
-  componentDidCatch(error: Error, info: React.ErrorInfo) {
-    console.error("[ErrorBoundary]", error, info);
-  }
-  render() {
-    if (this.state.error) {
-      return (
-        <div style={{ padding: 40, fontFamily: "monospace" }}>
-          <h2 style={{ color: "red" }}>Fehler aufgetreten</h2>
-          <pre style={{ color: "#333", fontSize: 13 }}>
-            {(this.state.error as Error).message}
-          </pre>
-          <button onClick={() => window.location.href = "/"}>
-            Zurück zur Startseite
-          </button>
-        </div>
-      );
-    }
-    return this.props.children;
-  }
-}
-
 
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
 import QuizPage from "@/pages/QuizPage";
@@ -127,7 +101,6 @@ function PublicLayout({ children }: { children: React.ReactNode }) {
       <StructuredData />
       {children}
     </>
-    </ErrorBoundary>
   );
 }
 
@@ -139,7 +112,6 @@ function AppLayout({ children }: { children: React.ReactNode }) {
       <StructuredData />
       {children}
     </DashboardLayout>
-    </ErrorBoundary>
   );
 }
 
@@ -214,10 +186,3 @@ function Router() {
     </ErrorBoundary>
   );
 }
-
-
-function App() {
-  // QueryClientProvider ist in main.tsx gesetzt – nicht doppelt wrappen
-  return <Router />;
-}
-export default App;
