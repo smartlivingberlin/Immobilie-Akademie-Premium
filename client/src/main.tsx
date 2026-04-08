@@ -9,6 +9,18 @@ import { getLoginUrl } from "./const";
 import "./index.css";
 import { registerServiceWorker } from "./lib/registerSW";
 import { WhiteLabelProvider } from "@/contexts/WhiteLabelContext";
+
+const queryClient = new QueryClient();
+
+const redirectToLoginIfUnauthorized = (error: unknown) => {
+  if (!(error instanceof TRPCClientError)) return;
+  if (typeof window === "undefined") return;
+  const isUnauthorized = error.message === UNAUTHED_ERR_MSG;
+  if (!isUnauthorized) return;
+  if (window.location.pathname === "/login") return;
+  window.location.href = getLoginUrl();
+};
+
 queryClient.getMutationCache().subscribe(event => {
   if (event.type === "updated" && event.action.type === "error") {
     const error = event.mutation.state.error;
