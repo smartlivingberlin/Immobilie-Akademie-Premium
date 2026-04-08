@@ -62,6 +62,7 @@ stripeRouter.post("/api/stripe/checkout", async (req, res) => {
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
+      invoice_creation: { enabled: true },
       mode: "payment",
       customer_email: userEmail,
       line_items: [
@@ -109,6 +110,16 @@ stripeRouter.post("/api/stripe/webhook", async (req, res) => {
 
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
+    // Idempotenz: verhindert doppelte Freischaltung bei doppeltem Webhook
+    const paymentIntent = session.payment_intent as string;
+    if (paymentIntent) {
+      const processed = global._processedPayments || (global._processedPayments = new Set());
+      if (processed.has(paymentIntent)) {
+        console.log("[Stripe] Duplikat-Webhook ignoriert:", paymentIntent);
+        return res.json({ received: true });
+      }
+      processed.add(paymentIntent);
+    }
     const email = session.customer_email;
     const modules = session.metadata?.modules;
 
