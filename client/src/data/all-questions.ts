@@ -8116,3 +8116,20 @@ export const allQuestions: Question[] = [
 ];
 
 export default allQuestions;
+
+
+// Alias für Kompatibilität mit Quiz.tsx
+export type UnifiedQuestion = Question;
+
+// Alias für Kompatibilität mit Quiz.tsx
+export const ALL_QUESTIONS = allQuestions;
+
+// Shuffle-Funktion für Quiz
+export function shuffleQuestions(questions: Question[]): Question[] {
+  const arr = [...questions];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
