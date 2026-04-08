@@ -166,58 +166,7 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
-    chunkSizeWarningLimit: 600,
-    rollupOptions: {
-      output: {
-        manualChunks: (id) => {
-          // React Core + State ZUSAMMEN → kein Reihenfolge-Problem
-          // vendor-state braucht React.createContext → müssen im selben Chunk sein
-          if (id.includes("node_modules/react/") ||
-              id.includes("node_modules/react-dom") ||
-              id.includes("node_modules/@tanstack") ||
-              id.includes("node_modules/zustand") ||
-              id.includes("node_modules/jotai")) return "vendor-react";
-
-          // UI-Bibliotheken
-          if (id.includes("node_modules/@radix-ui")) return "vendor-radix";
-          if (id.includes("node_modules/lucide-react")) return "vendor-icons";
-
-          // PDF-Bibliotheken (schwer, selten gebraucht)
-          if (id.includes("node_modules/pdfmake") ||
-              id.includes("node_modules/pdfjs") ||
-              id.includes("node_modules/pdf-lib") ||
-              id.includes("node_modules/jspdf")) return "vendor-pdf";
-
-          // Canvas / Rendering
-          if (id.includes("node_modules/html2canvas") ||
-              id.includes("node_modules/konva") ||
-              id.includes("node_modules/canvas")) return "vendor-canvas";
-
-          // Stripe
-          if (id.includes("node_modules/@stripe") ||
-              id.includes("node_modules/stripe")) return "vendor-stripe";
-
-          // Utilities
-          if (id.includes("node_modules/date-fns") ||
-              id.includes("node_modules/dayjs") ||
-              id.includes("node_modules/lodash")) return "vendor-utils";
-
-          // Alle anderen node_modules → kleinere Gruppen
-          if (id.includes("node_modules")) return "vendor-other";
-
-          // Modul-Inhalte → je eigener Chunk
-          if (id.includes("Modul1Content") || id.includes("Module1Content")) return "content-m1";
-          if (id.includes("Modul2") && id.includes("Content")) return "content-m2";
-          if (id.includes("Modul3") && id.includes("Content")) return "content-m3";
-          if (id.includes("Modul4") && id.includes("Content")) return "content-m4";
-          if (id.includes("Modul5") && id.includes("Content")) return "content-m5";
-
-          // Prüfungsdaten → eigener Chunk
-          if (id.includes("all-questions")) return "data-questions";
-          if (id.includes("Rechtsprechung") || id.includes("rechtsprechung")) return "data-law";
-        },
-      },
-    },
+    chunkSizeWarningLimit: 2000,
   },
   server: {
     host: true,
