@@ -9,51 +9,6 @@ import { getLoginUrl } from "./const";
 import "./index.css";
 import { registerServiceWorker } from "./lib/registerSW";
 import { WhiteLabelProvider } from "@/contexts/WhiteLabelContext";
-import * as Sentry from "@sentry/react";
-
-// Sentry Error Monitoring
-Sentry.init({
-  dsn: import.meta.env.VITE_SENTRY_DSN || "",
-  enabled: !!import.meta.env.VITE_SENTRY_DSN,
-  environment: import.meta.env.MODE,
-  tracesSampleRate: 0.1,
-  integrations: [
-    Sentry.browserTracingIntegration(),
-  ],
-  beforeSend(event) {
-    // Keine sensiblen Daten senden
-    if (event.user) {
-      delete event.user.ip_address;
-      delete event.user.email;
-    }
-    return event;
-  },
-});
-
-
-
-const queryClient = new QueryClient();
-
-const redirectToLoginIfUnauthorized = (error: unknown) => {
-  if (!(error instanceof TRPCClientError)) return;
-  if (typeof window === "undefined") return;
-
-  const isUnauthorized = error.message === UNAUTHED_ERR_MSG;
-
-  if (!isUnauthorized) return;
-
-  if (window.location.pathname === "/login") return;
-  window.location.href = getLoginUrl();
-};
-
-queryClient.getQueryCache().subscribe(event => {
-  if (event.type === "updated" && event.action.type === "error") {
-    const error = event.query.state.error;
-    redirectToLoginIfUnauthorized(error);
-    console.error("[API Query Error]", error);
-  }
-});
-
 queryClient.getMutationCache().subscribe(event => {
   if (event.type === "updated" && event.action.type === "error") {
     const error = event.mutation.state.error;

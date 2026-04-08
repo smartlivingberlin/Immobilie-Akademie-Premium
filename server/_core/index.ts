@@ -1,13 +1,16 @@
-import * as Sentry from "@sentry/node";
-
-// Sentry Server-seitiges Error Monitoring
-if (process.env.SENTRY_DSN) {
-  Sentry.init({
-    dsn: process.env.SENTRY_DSN,
-    environment: process.env.NODE_ENV || "production",
-    tracesSampleRate: 0.05,
-  });
-  console.log("[Sentry] Error Monitoring aktiv");
+// Sentry Error Monitoring (optional — aktiviert wenn SENTRY_DSN gesetzt)
+try {
+  if (process.env.SENTRY_DSN) {
+    const Sentry = await import("@sentry/node");
+    Sentry.init({
+      dsn: process.env.SENTRY_DSN,
+      environment: process.env.NODE_ENV || "production",
+      tracesSampleRate: 0.05,
+    });
+    console.log("[Sentry] Error Monitoring aktiv");
+  }
+} catch (e) {
+  console.log("[Sentry] Nicht verfügbar:", e);
 }
 
 import "./polyfills";
