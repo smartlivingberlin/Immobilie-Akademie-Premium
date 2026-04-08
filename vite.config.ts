@@ -170,9 +170,13 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // React Core → eigener Chunk (sehr häufig gecacht)
-          if (id.includes("node_modules/react-dom")) return "vendor-react-dom";
-          if (id.includes("node_modules/react/")) return "vendor-react";
+          // React Core + State ZUSAMMEN → kein Reihenfolge-Problem
+          // vendor-state braucht React.createContext → müssen im selben Chunk sein
+          if (id.includes("node_modules/react/") ||
+              id.includes("node_modules/react-dom") ||
+              id.includes("node_modules/@tanstack") ||
+              id.includes("node_modules/zustand") ||
+              id.includes("node_modules/jotai")) return "vendor-react";
 
           // UI-Bibliotheken
           if (id.includes("node_modules/@radix-ui")) return "vendor-radix";
@@ -192,11 +196,6 @@ export default defineConfig({
           // Stripe
           if (id.includes("node_modules/@stripe") ||
               id.includes("node_modules/stripe")) return "vendor-stripe";
-
-          // Query / State Management
-          if (id.includes("node_modules/@tanstack") ||
-              id.includes("node_modules/zustand") ||
-              id.includes("node_modules/jotai")) return "vendor-state";
 
           // Utilities
           if (id.includes("node_modules/date-fns") ||
