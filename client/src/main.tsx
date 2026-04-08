@@ -7,7 +7,7 @@ import superjson from "superjson";
 import App from "./App";
 import { getLoginUrl } from "./const";
 import "./index.css";
-// import { registerServiceWorker } from "./lib/registerSW"; // DEAKTIVIERT
+import { registerServiceWorker } from "./lib/registerSW";
 import { WhiteLabelProvider } from "@/contexts/WhiteLabelContext";
 
 const queryClient = new QueryClient();
@@ -68,4 +68,4 @@ createRoot(document.getElementById("root")!).render(
   </trpc.Provider>
 );
 
-// registerServiceWorker(); // DEAKTIVIERT
+registerServiceWorker();
