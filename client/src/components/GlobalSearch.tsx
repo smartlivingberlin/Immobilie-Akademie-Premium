@@ -19,8 +19,8 @@ import {
 } from "@/components/ui/tooltip";
 
 // Import Content Data
-import { contentDataModule2 } from "@/pages/modules/Module2Detail";
-// import { contentDataModule3 } from "@/pages/modules/Module3Detail"; // Assuming this is exported similarly
+// contentDataModule2 — dynamisch geladen um Bundle zu reduzieren
+// // contentDataModule3 — dynamisch geladen um Bundle zu reduzieren
 // Placeholder for other modules if not yet fully exported in same structure
 // In a real scenario, we would import all module contents here.
 
