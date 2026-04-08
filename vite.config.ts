@@ -170,26 +170,52 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // React + React-DOM → eigener Chunk
-          if (id.includes("node_modules/react") || id.includes("node_modules/react-dom")) {
-            return "vendor-react";
-          }
-          // UI-Bibliotheken → eigener Chunk
-          if (id.includes("node_modules/@radix-ui") || id.includes("node_modules/lucide-react")) {
-            return "vendor-ui";
-          }
-          // Andere große node_modules → vendor Chunk
-          if (id.includes("node_modules")) {
-            return "vendor-misc";
-          }
-          // Modul-Inhalte → je eigener Chunk (größte Dateien!)
+          // React Core → eigener Chunk (sehr häufig gecacht)
+          if (id.includes("node_modules/react-dom")) return "vendor-react-dom";
+          if (id.includes("node_modules/react/")) return "vendor-react";
+
+          // UI-Bibliotheken
+          if (id.includes("node_modules/@radix-ui")) return "vendor-radix";
+          if (id.includes("node_modules/lucide-react")) return "vendor-icons";
+
+          // PDF-Bibliotheken (schwer, selten gebraucht)
+          if (id.includes("node_modules/pdfmake") ||
+              id.includes("node_modules/pdfjs") ||
+              id.includes("node_modules/pdf-lib") ||
+              id.includes("node_modules/jspdf")) return "vendor-pdf";
+
+          // Canvas / Rendering
+          if (id.includes("node_modules/html2canvas") ||
+              id.includes("node_modules/konva") ||
+              id.includes("node_modules/canvas")) return "vendor-canvas";
+
+          // Stripe
+          if (id.includes("node_modules/@stripe") ||
+              id.includes("node_modules/stripe")) return "vendor-stripe";
+
+          // Query / State Management
+          if (id.includes("node_modules/@tanstack") ||
+              id.includes("node_modules/zustand") ||
+              id.includes("node_modules/jotai")) return "vendor-state";
+
+          // Utilities
+          if (id.includes("node_modules/date-fns") ||
+              id.includes("node_modules/dayjs") ||
+              id.includes("node_modules/lodash")) return "vendor-utils";
+
+          // Alle anderen node_modules → kleinere Gruppen
+          if (id.includes("node_modules")) return "vendor-other";
+
+          // Modul-Inhalte → je eigener Chunk
           if (id.includes("Modul1Content") || id.includes("Module1Content")) return "content-m1";
           if (id.includes("Modul2") && id.includes("Content")) return "content-m2";
           if (id.includes("Modul3") && id.includes("Content")) return "content-m3";
           if (id.includes("Modul4") && id.includes("Content")) return "content-m4";
           if (id.includes("Modul5") && id.includes("Content")) return "content-m5";
-          // all-questions.ts → eigener Chunk (415 KB!)
+
+          // Prüfungsdaten → eigener Chunk
           if (id.includes("all-questions")) return "data-questions";
+          if (id.includes("Rechtsprechung") || id.includes("rechtsprechung")) return "data-law";
         },
       },
     },
