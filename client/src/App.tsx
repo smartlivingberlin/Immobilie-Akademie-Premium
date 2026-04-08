@@ -183,6 +183,9 @@ function Router() {
         <Route component={NotFound} />
       </Switch>
     </Suspense>
-    </ErrorBoundary>
   );
+}
+
+export default function App() {
+  return <Router />;
 }
