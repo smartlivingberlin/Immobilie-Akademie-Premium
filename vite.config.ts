@@ -166,6 +166,33 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    chunkSizeWarningLimit: 600,
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          // React + React-DOM → eigener Chunk
+          if (id.includes("node_modules/react") || id.includes("node_modules/react-dom")) {
+            return "vendor-react";
+          }
+          // UI-Bibliotheken → eigener Chunk
+          if (id.includes("node_modules/@radix-ui") || id.includes("node_modules/lucide-react")) {
+            return "vendor-ui";
+          }
+          // Andere große node_modules → vendor Chunk
+          if (id.includes("node_modules")) {
+            return "vendor-misc";
+          }
+          // Modul-Inhalte → je eigener Chunk (größte Dateien!)
+          if (id.includes("Modul1Content") || id.includes("Module1Content")) return "content-m1";
+          if (id.includes("Modul2") && id.includes("Content")) return "content-m2";
+          if (id.includes("Modul3") && id.includes("Content")) return "content-m3";
+          if (id.includes("Modul4") && id.includes("Content")) return "content-m4";
+          if (id.includes("Modul5") && id.includes("Content")) return "content-m5";
+          // all-questions.ts → eigener Chunk (415 KB!)
+          if (id.includes("all-questions")) return "data-questions";
+        },
+      },
+    },
   },
   server: {
     host: true,
