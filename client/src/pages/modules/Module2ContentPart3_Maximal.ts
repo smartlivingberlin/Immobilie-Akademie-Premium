@@ -78,7 +78,11 @@ Steuer: 200.000 * 42% = 84.000 € ans Finanzamt.
 *   **Buy & Hold:** Kaufen und behalten (Rente).
 *   **Fix & Flip:** Kaufen, sanieren, teurer verkaufen (Handel).
     `,
-    law: [],
+    law: [
+        "§ 21 EStG – Einkünfte aus Vermietung und Verpachtung",
+        "§ 7 EStG – Absetzung für Abnutzung (AfA)",
+        "§ 23 EStG – Private Veräußerungsgeschäfte",
+      ],
     practice: "Nutzen Sie einen Renditerechner (Excel).",
     tasks: [
       {
@@ -399,7 +403,11 @@ Käufer kauft Appartment in Hotelanlage. Betreiber kümmert sich um alles. Rendi
 ### Steuer
 Bei Vermietung ("Gewinnerzielungsabsicht") kann man Werbungskosten absetzen. Bei reiner Eigennutzung ("Liebhaberei") nicht.
     `,
-    law: [],
+    law: [
+        "§ 651a BGB – Pauschalreisevertrag",
+        "§ 34c GewO – Immobilienmakler, Darlehensvermittler",
+        "§ 12 UStG – Steuersätze",
+      ],
     practice: "Recherchieren Sie die Auslastungsquoten auf Sylt vs. Bayerischer Wald.",
     tasks: [
       {
@@ -492,7 +500,11 @@ Käufer kauft Finca. Pool ist illegal. Abrissverfügung.
 Werden Makler durch Algorithmen ersetzt? (McMakler, Homeday).
 -> Hybrid-Modell: Technik + Menschliche Empathie gewinnt.
     `,
-    law: [],
+    law: [
+        "Art. 13 DSGVO – Informationspflichten",
+        "Art. 22 DSGVO – Automatisierte Entscheidungen",
+        "§ 147 GewO – Ordnungswidrigkeiten",
+      ],
     practice: "Lassen Sie ChatGPT einen Exposé-Text für eine 'Bruchbude' schreiben, der positiv klingt.",
     tasks: [
       {
@@ -539,7 +551,11 @@ Oft sind Emotionen das Hindernis, nicht der Preis.
 *   Allparteilichkeit (Neutralität).
 *   Interessen statt Positionen ("Warum wollen Sie das?").
     `,
-    law: [],
+    law: [
+        "§ 278 BGB – Verantwortlichkeit des Schuldners für Dritte",
+        "§ 254 BGB – Mitverschulden",
+        "§ 19 MediationsG – Verschwiegenheitspflicht",
+      ],
     practice: "Rollenspiel: Scheidungspaar. Sie vermitteln.",
     tasks: [
       {
@@ -588,7 +604,11 @@ Mann sabotiert Besichtigungen (läuft in Unterhose rum).
 ### Burnout-Prävention
 Erreichbarkeit regeln. "Am Wochenende nur Notfälle".
     `,
-    law: [],
+    law: [
+        "§ 34c GewO – Maklererlaubnis",
+        "§ 34c MaBV – Mindestanforderungen",
+        "§ 15b MaBV – Weiterbildungspflicht",
+      ],
     practice: "Analysieren Sie Ihren Tag. Wo haben Sie Zeit verschwendet?",
     tasks: [
       {
@@ -636,7 +656,11 @@ So: Frei.
 *   Handschlag (fest).
 *   Visitenkarte übergeben.
     `,
-    law: [],
+    law: [
+        "§ 241 BGB – Pflichten aus dem Schuldverhältnis",
+        "§ 311 BGB – Vorvertragliche Pflichten",
+        "§ 5 MaBV – Informationspflichten",
+      ],
     practice: "Wie begrüßen Sie eine Gruppe (Ehepaar + Eltern)? (Erst die Damen, dann die Älteren).",
     tasks: [
       {
@@ -679,7 +703,12 @@ No-Go: Kurze Hosen, Flip-Flops, tiefer Ausschnitt.
 4.  Wettbewerbsrecht (Impressum).
 5.  Bestellerprinzip (Wohnraummiete).
     `,
-    law: [],
+    law: [
+        "§ 652 BGB – Maklerlohn",
+        "§ 311b BGB – Grundstückskaufvertrag",
+        "§ 34c GewO – Maklerpflichten",
+        "§ 2 Abs. 1 MaBV – Erlaubnispflicht",
+      ],
     practice: "Lösen Sie 10 Multiple-Choice-Fragen zum Recht.",
     tasks: [
       {
@@ -717,7 +746,11 @@ No-Go: Kurze Hosen, Flip-Flops, tiefer Ausschnitt.
 *   Asbest erkennen.
 *   Feuchtigkeit messen.
     `,
-    law: [],
+    law: [
+        "§ 194 BauGB – Verkehrswertdefinition",
+        "ImmoWertV 2021 – Immobilienwertermittlungsverordnung",
+        "§ 16 MaBV – Buchführungspflichten",
+      ],
     practice: "Bewerten Sie ein fiktives Objekt in 30 Minuten komplett.",
     tasks: [
       {
@@ -753,7 +786,11 @@ No-Go: Kurze Hosen, Flip-Flops, tiefer Ausschnitt.
 *   Headline sitzt?
 *   Bilder top?
     `,
-    law: [],
+    law: [
+        "§ 655a BGB – Darlehensvermittlungsvertrag",
+        "§ 6 TMG – Kommerzielle Kommunikation",
+        "§ 5a UWG – Irreführung durch Unterlassen",
+      ],
     practice: "Verkaufsgespräch simulieren (Video aufnehmen).",
     tasks: [
       {
@@ -785,7 +822,12 @@ No-Go: Kurze Hosen, Flip-Flops, tiefer Ausschnitt.
 Zeit: 60 Minuten.
 Themen: Recht, Bewertung, Marketing.
     `,
-    law: [],
+    law: [
+        "§ 34c GewO – Gewerbliche Immobilienvermittlung",
+        "§ 652 BGB – Maklerlohn",
+        "§ 311b BGB – Grundstückskaufvertrag",
+        "MaBV – Makler- und Bauträgerverordnung",
+      ],
     practice: "Führen Sie den Test durch (ohne Hilfsmittel).",
     tasks: [
       {
@@ -815,7 +857,12 @@ Themen: Recht, Bewertung, Marketing.
     extendedTheory: `
 Erstellung eines Exposés und einer Bewertung für ein gegebenes Objekt.
     `,
-    law: [],
+    law: [
+        "§ 14 GwG – Sorgfaltspflichten",
+        "§ 2 GwG – Verpflichtete nach GwG",
+        "§ 656a BGB – Maklervertrag bei Wohnungen",
+        "§ 656c BGB – Lohnanspruch bei Tätigkeit für beide Parteien",
+      ],
     practice: "Erstellen Sie das Exposé.",
     tasks: [
       {
@@ -853,7 +900,11 @@ Erstellung eines Exposés und einer Bewertung für ein gegebenes Objekt.
 ### Lebenslanges Lernen
 Der Markt ändert sich. Bleiben Sie dran (20h Weiterbildung!).
     `,
-    law: [],
+    law: [
+        "§ 34c GewO – Erlaubnispflicht Immobilienmakler",
+        "§ 15b MaBV – Weiterbildungspflicht (20 Std/3 Jahre)",
+        "§ 34d GewO – Versicherungsvermittler (Abgrenzung)",
+      ],
     practice: "Feiern Sie Ihren Erfolg!",
     tasks: [
       {

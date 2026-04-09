@@ -720,7 +720,13 @@ Jetzt prüfen wir die Kompetenz, bevor wir nächste Woche zum Sachwert (Substanz
 3.  Können Sie einen Ertragswert rechnen?
 4.  Wissen Sie, wann man welches Verfahren nimmt?
     `,
-    law: [],
+    law: [
+        "§ 194 BauGB – Verkehrswert",
+        "ImmoWertV 2021 – Wertermittlungsverordnung",
+        "§ 16 ImmoWertV – Vergleichswertverfahren",
+        "§ 17 ImmoWertV – Ertragswertverfahren",
+        "§ 35 ImmoWertV – Sachwertverfahren",
+      ],
     practice: `
 # Komplexe Übungsaufgabe
 
