@@ -498,7 +498,11 @@ Makler wirft 10.000 billige Flyer in die ganze Stadt. Rücklauf: 0.
 Nicht betteln. Augenhöhe!
 "Herr Eigentümer, ich arbeite nur mit Alleinauftrag. Wenn Sie 5 Makler beauftragen, kümmert sich keiner richtig. Ich investiere 5.000 € in Marketing, dafür brauche ich Exklusivität."
     `,
-    law: [],
+    law: [
+        "§ 652 BGB – Maklerlohn",
+        "§ 654 BGB – Verwirkung des Maklerlohns",
+        "§ 311 BGB – Rechtsgeschäftliche Schuldverhältnisse",
+      ],
     practice: "Rollenspiel mit Partner: Überzeugen Sie einen 'Selbstverkäufer'.",
     tasks: [
       {
@@ -643,7 +647,11 @@ Makler retuschiert Strommast weg und macht den Rasen knallgrün.
 ### Off-Market
 Diskretvermarktung ohne Portale. Für Luxusobjekte oder Prominente. Nur über direktes Netzwerk.
     `,
-    law: [],
+    law: [
+        "§ 5 TMG – Allgemeine Informationspflichten",
+        "§ 6 TMG – Besondere Informationspflichten",
+        "Art. 13 DSGVO – Informationspflichten bei Datenerhebung",
+      ],
     practice: "Erstellen Sie einen Social-Media-Post für ein neues Objekt (Bild + Text + Hashtags).",
     tasks: [
       {
@@ -695,7 +703,11 @@ Makler stellt Objekt nur bei ImmoScout ein. Keine Anfragen.
 
 **Regel:** Keine Besichtigung ohne vorheriges Telefonat/Check!
     `,
-    law: [],
+    law: [
+        "§ 652 BGB – Maklerlohn",
+        "§ 655 BGB – Herabsetzung des Maklerlohns",
+        "Art. 6 DSGVO – Rechtmäßigkeit der Verarbeitung",
+      ],
     practice: "Entwerfen Sie einen Telefonleitfaden für das Erstgespräch.",
     tasks: [
       {
@@ -746,7 +758,11 @@ Makler lädt alle 50 Anfragen zur Einzelbesichtigung ein.
 *   "Können Sie sich vorstellen, hier zu wohnen?"
 *   Verbindlichkeit schaffen: "Wann wollen Sie zum Notar?"
     `,
-    law: [],
+    law: [
+        "§ 535 BGB – Inhalt und Hauptpflichten des Mietvertrags",
+        "§ 241 BGB – Pflichten aus dem Schuldverhältnis",
+        "§ 311 BGB – Rechtsgeschäftliche Schuldverhältnisse",
+      ],
     practice: "Führen Sie eine fiktive Besichtigung in Ihrer Wohnung durch. Planen Sie den Weg.",
     tasks: [
       {
@@ -800,7 +816,11 @@ Offenes Verfahren: "Mindestpreis 300k, bitte geben Sie Ihr Gebot ab."
 *   Maximiert den Preis bei hoher Nachfrage.
 *   Keine Auktion (kein Zuschlagszwang)! Eigentümer entscheidet am Ende.
     `,
-    law: [],
+    law: [
+        "§ 123 BGB – Anfechtbarkeit wegen Täuschung oder Drohung",
+        "§ 138 BGB – Sittenwidriges Rechtsgeschäft",
+        "§ 311 BGB – Rechtsgeschäftliche Schuldverhältnisse",
+      ],
     practice: "Üben Sie das 'Schweigen' im Gespräch.",
     tasks: [
       {
@@ -975,7 +995,12 @@ Mit Trennung: 480k * 6% = 28.800 € Steuer.
 2.  Unterschriften (Käufer, Verkäufer, Notar).
 3.  Sekt? (Professionell bleiben).
     `,
-    law: [],
+    law: [
+        "§ 311b BGB – Verträge über Grundstücke",
+        "§ 925 BGB – Auflassung",
+        "§ 873 BGB – Erwerb durch Einigung und Eintragung",
+        "§ 17 BeurkG – Beurkundungsverfahren",
+      ],
     practice: "Was zieht man zum Notar an? (Business Casual bis Suit).",
     tasks: [
       {
@@ -1017,7 +1042,11 @@ Erst wenn Geld auf dem Konto ist! (Niemals vorher Schlüssel geben -> Risiko!).
 *   **Übergabeprotokoll:** Zählerstände (Strom, Wasser, Gas), Schlüsselanzahl, Mängel.
 *   Ummeldung Versorger.
     `,
-    law: [],
+    law: [
+        "§ 433 BGB – Vertragstypische Pflichten beim Kaufvertrag",
+        "§ 446 BGB – Gefahr- und Lastenübergang",
+        "§ 535 BGB – Inhalt und Hauptpflichten des Mietvertrags",
+      ],
     practice: "Erstellen Sie ein Übergabeprotokoll-Formular.",
     tasks: [
       {

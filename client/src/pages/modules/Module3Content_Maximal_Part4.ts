@@ -872,7 +872,11 @@ Die Branche wandelt sich von Papierordnern zu digitalen Plattformen.
 *   Fernauslesbare Zähler (Smart Metering).
 *   Sensorik (Feuchtigkeit, Heizungsausfall).
 `,
-    law: [],
+    law: [
+        "Art. 13 DSGVO – Informationspflichten",
+        "§ 23 WEG – Beschlüsse in der Versammlung",
+        "Art. 6 DSGVO – Rechtmäßigkeit der Verarbeitung",
+      ],
     practice: `
     tasks: [
       {
@@ -1053,7 +1057,11 @@ Erstellen Sie Karteikarten zu den wichtigsten Fristen:
 3.  **Wirtschaftsplan:** Prognose, Hausgeldvorschüsse, Liquiditätsplanung.
 4.  **Mahnwesen:** Verzug, Mahnbescheid, Zwangsvollstreckung.
 `,
-    law: [],
+    law: [
+        "§ 28 WEG – Wirtschaftsplan, Jahresabrechnung",
+        "§ 1922 BGB – Erbfolge (bei Eigentümerwechsel)",
+        "§ 16 WEG – Nutzungen, Lasten, Kosten",
+      ],
     practice: `
     tasks: [
       {
@@ -1102,7 +1110,12 @@ In einer WEG tropft es durch die Decke (Technik/Versicherung). Der Mieter oben v
 3.  **Rechtsgrundlagen suchen:** Teilungserklärung, BGB, WEG.
 4.  **Lösungsweg skizzieren:** Schritt für Schritt.
 `,
-    law: [],
+    law: [
+        "§ 18 WEG – Verwaltung des gemeinschaftlichen Eigentums",
+        "§ 20 WEG – Bauliche Veränderungen",
+        "§ 23 WEG – Beschlussfassung",
+        "§ 28 WEG – Wirtschaftsplan",
+      ],
     practice: `
     tasks: [
       {

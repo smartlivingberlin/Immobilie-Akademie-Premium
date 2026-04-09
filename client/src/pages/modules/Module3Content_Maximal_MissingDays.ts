@@ -1428,7 +1428,11 @@ Als Verwalter müssen Sie überzeugen, beruhigen und führen.
 - Lassen Sie Dampf ablassen ("Ich verstehe, dass Sie verärgert sind").
 - Suchen Sie lösungsorientiert nach Wegen.
     `,
-    law: [],
+    law: [
+        "§ 241 BGB – Pflichten aus dem Schuldverhältnis",
+        "§ 23 WEG – Wohnungseigentümerversammlung",
+        "§ 18 WEG – Verwaltung des gemeinschaftlichen Eigentums",
+      ],
     practice: `
     tasks: [
       {
@@ -1632,7 +1636,12 @@ Wir haben die Grundlagen der WEG-Verwaltung, die kaufmännische Verwaltung und d
 
 Nutzen Sie diesen Tag, um offene Fragen zu klären und die Gesetzestexte noch einmal querzulesen.
     `,
-    law: [],
+    law: [
+        "§ 1 WEG – Begriffsbestimmungen",
+        "§ 18 WEG – Verwaltung",
+        "§ 23 WEG – Eigentümerversammlung",
+        "§ 28 WEG – Wirtschaftsplan",
+      ],
     practice: `
     tasks: [
       {
