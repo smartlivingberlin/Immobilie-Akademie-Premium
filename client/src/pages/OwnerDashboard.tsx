@@ -1,0 +1,176 @@
+import { useEffect, useState } from "react";
+import { trpc } from "@/lib/trpc";
+import { Link } from "wouter";
+
+interface DashboardStats {
+  totalUsers: number;
+  activeToday: number;
+  trialLeads: number;
+  revenue: number;
+  modulesUnlocked: Record<string, number>;
+  recentUsers: Array<{name: string; email: string; role: string; createdAt: string; enabledModules: string}>;
+  systemHealth: {server: boolean; db: boolean; stripe: boolean};
+}
+
+export default function OwnerDashboard() {
+  const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [actionMsg, setActionMsg] = useState("");
+
+  useEffect(() => {
+    fetch("/api/owner/dashboard", { credentials: "include" })
+      .then(r => r.json())
+      .then(d => { setStats(d); setLoading(false); })
+      .catch(() => setLoading(false));
+  }, []);
+
+  const lockUser = async (email: string) => {
+    await fetch("/api/owner/lock-user", {
+      method: "POST", credentials: "include",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ email })
+    });
+    setActionMsg(`✅ ${email} gesperrt`);
+    setTimeout(() => window.location.reload(), 1500);
+  };
+
+  const unlockUser = async (email: string) => {
+    await fetch("/api/owner/unlock-user", {
+      method: "POST", credentials: "include",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ email })
+    });
+    setActionMsg(`✅ ${email} freigeschaltet`);
+    setTimeout(() => window.location.reload(), 1500);
+  };
+
+  const generateMagicLink = async () => {
+    const res = await fetch("/api/owner/generate-link", {
+      method: "POST", credentials: "include"
+    });
+    const d = await res.json();
+    navigator.clipboard.writeText(d.link);
+    setActionMsg("✅ Magic Link kopiert!");
+  };
+
+  if (loading) return (
+    <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:18,color:"#64748b"}}>
+      Lade Owner Dashboard...
+    </div>
+  );
+
+  return (
+    <div style={{minHeight:"100vh",background:"#0f172a",color:"white",fontFamily:"system-ui",padding:"32px"}}>
+      {/* Header */}
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:32}}>
+        <div>
+          <h1 style={{fontSize:28,fontWeight:900,margin:0,color:"#3b82f6"}}>
+            👑 Owner Dashboard
+          </h1>
+          <p style={{color:"#94a3b8",margin:"4px 0 0",fontSize:14}}>
+            Immobilien Akademie Smart — vollständige Kontrolle
+          </p>
+        </div>
+        <div style={{display:"flex",gap:12}}>
+          <button onClick={generateMagicLink}
+            style={{background:"#1e40af",color:"white",border:"none",padding:"10px 18px",borderRadius:8,cursor:"pointer",fontSize:13,fontWeight:600}}>
+            🔗 Magic Link generieren
+          </button>
+          <Link href="/admin">
+            <button style={{background:"#334155",color:"white",border:"none",padding:"10px 18px",borderRadius:8,cursor:"pointer",fontSize:13}}>
+              ⚙️ Admin Panel
+            </button>
+          </Link>
+        </div>
+      </div>
+
+      {actionMsg && (
+        <div style={{background:"#065f46",border:"1px solid #10b981",borderRadius:8,padding:"12px 20px",marginBottom:20,fontSize:14}}>
+          {actionMsg}
+        </div>
+      )}
+
+      {/* Stats Grid */}
+      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:16,marginBottom:32}}>
+        {[
+          {label:"Nutzer gesamt", value: stats?.totalUsers ?? 0, icon:"👥", color:"#3b82f6"},
+          {label:"Heute aktiv", value: stats?.activeToday ?? 0, icon:"🟢", color:"#10b981"},
+          {label:"Trial Leads", value: stats?.trialLeads ?? 0, icon:"📧", color:"#f59e0b"},
+          {label:"Modul 1 frei", value: stats?.modulesUnlocked?.["1"] ?? 0, icon:"📚", color:"#8b5cf6"},
+        ].map((s, i) => (
+          <div key={i} style={{background:"#1e293b",borderRadius:12,padding:"20px",border:`1px solid ${s.color}33`}}>
+            <div style={{fontSize:28}}>{s.icon}</div>
+            <div style={{fontSize:32,fontWeight:900,color:s.color,margin:"8px 0 4px"}}>{s.value}</div>
+            <div style={{color:"#94a3b8",fontSize:13}}>{s.label}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* System Health */}
+      <div style={{background:"#1e293b",borderRadius:12,padding:20,marginBottom:24,border:"1px solid #334155"}}>
+        <h3 style={{margin:"0 0 16px",fontSize:16,color:"#94a3b8",textTransform:"uppercase",letterSpacing:1}}>
+          System Status
+        </h3>
+        <div style={{display:"flex",gap:24,flexWrap:"wrap"}}>
+          {[
+            {label:"Server", ok: stats?.systemHealth?.server},
+            {label:"Datenbank", ok: stats?.systemHealth?.db},
+            {label:"Stripe", ok: stats?.systemHealth?.stripe},
+          ].map((h, i) => (
+            <div key={i} style={{display:"flex",alignItems:"center",gap:8}}>
+              <div style={{width:10,height:10,borderRadius:"50%",background: h.ok ? "#10b981" : "#ef4444"}}/>
+              <span style={{fontSize:14, color: h.ok ? "#10b981" : "#ef4444"}}>{h.label}: {h.ok ? "OK" : "FEHLER"}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Nutzer-Liste */}
+      <div style={{background:"#1e293b",borderRadius:12,padding:20,border:"1px solid #334155"}}>
+        <h3 style={{margin:"0 0 16px",fontSize:16,color:"#94a3b8",textTransform:"uppercase",letterSpacing:1}}>
+          Alle Nutzer
+        </h3>
+        <div style={{overflowX:"auto"}}>
+          <table style={{width:"100%",borderCollapse:"collapse",fontSize:13}}>
+            <thead>
+              <tr style={{borderBottom:"1px solid #334155"}}>
+                {["Name","E-Mail","Rolle","Module","Erstellt","Aktionen"].map(h => (
+                  <th key={h} style={{padding:"8px 12px",textAlign:"left",color:"#64748b",fontWeight:600}}>{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {(stats?.recentUsers ?? []).map((u, i) => (
+                <tr key={i} style={{borderBottom:"1px solid #1e293b"}}>
+                  <td style={{padding:"10px 12px",color:"#e2e8f0"}}>{u.name || "—"}</td>
+                  <td style={{padding:"10px 12px",color:"#94a3b8"}}>{u.email}</td>
+                  <td style={{padding:"10px 12px"}}>
+                    <span style={{background: u.role === "admin" ? "#1e40af" : "#334155",color:"white",padding:"2px 8px",borderRadius:4,fontSize:11}}>
+                      {u.role}
+                    </span>
+                  </td>
+                  <td style={{padding:"10px 12px",color:"#94a3b8"}}>{u.enabledModules || "—"}</td>
+                  <td style={{padding:"10px 12px",color:"#64748b",fontSize:11}}>
+                    {u.createdAt ? new Date(u.createdAt).toLocaleDateString("de-DE") : "—"}
+                  </td>
+                  <td style={{padding:"10px 12px"}}>
+                    <div style={{display:"flex",gap:6}}>
+                      <button onClick={() => unlockUser(u.email)}
+                        style={{background:"#065f46",color:"#10b981",border:"none",padding:"4px 10px",borderRadius:4,cursor:"pointer",fontSize:11}}>
+                        ✅ Freischalten
+                      </button>
+                      <button onClick={() => lockUser(u.email)}
+                        style={{background:"#7f1d1d",color:"#ef4444",border:"none",padding:"4px 10px",borderRadius:4,cursor:"pointer",fontSize:11}}>
+                        🔒 Sperren
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+}
