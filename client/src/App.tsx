@@ -143,6 +143,7 @@ function Router() {
         <Route path="/glossary"><PublicLayout><Glossary /></PublicLayout></Route>
         <Route path="/hilfe"><PublicLayout><UserGuide /></PublicLayout></Route>
         <Route path="/beschwerde"><PublicLayout><ComplaintForm /></PublicLayout></Route>
+        <Route path="/owner-dashboard"><PublicLayout><OwnerDashboard /></PublicLayout></Route>
         <Route path="/statistiken"><AppLayout><ProtectedRoute component={Dashboard} /></AppLayout></Route>
         <Route path="/quiz/:moduleId"><AppLayout><ProtectedRoute component={QuizPage} /></AppLayout></Route>
         <Route path="/quiz"><AppLayout><ProtectedRoute component={Quiz} /></AppLayout></Route>
