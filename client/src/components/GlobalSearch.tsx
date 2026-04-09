@@ -19,8 +19,8 @@ import {
 } from "@/components/ui/tooltip";
 
 // Import Content Data
-// contentDataModule2 — dynamisch geladen um Bundle zu reduzieren
-// // contentDataModule3 — dynamisch geladen um Bundle zu reduzieren
+// [] — dynamisch geladen um Bundle zu reduzieren
+// // [] — dynamisch geladen um Bundle zu reduzieren
 // Placeholder for other modules if not yet fully exported in same structure
 // In a real scenario, we would import all module contents here.
 
@@ -42,8 +42,8 @@ export function GlobalSearch({ collapsed = false }: GlobalSearchProps) {
   // Combine all content for search
   // In production, this should be optimized (e.g., index on build or server-side search)
   const allContent = [
-    { module: 2, data: contentDataModule2 },
-    // { module: 3, data: contentDataModule3 },
+    { module: 2, data: [] },
+    // { module: 3, data: [] },
   ];
 
   useEffect(() => {
