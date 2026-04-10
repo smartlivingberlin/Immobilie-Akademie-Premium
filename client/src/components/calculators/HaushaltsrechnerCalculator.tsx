@@ -118,18 +118,18 @@ export default function HaushaltsrechnerCalculator() {
           {einnahmen.map((einnahme) => (
             <div key={einnahme.id} className="grid grid-cols-12 gap-2">
               <div className="col-span-7">
-                <Input aria-label="Eingabefeld"
+                <Input
                   value={einnahme.bezeichnung}
                   onChange={(e) => updateEinnahme(einnahme.id, "bezeichnung", e.target.value)}
                   placeholder="Bezeichnung"
                 />
               </div>
-              <div className="col-<Input aria-label="Eingabefeld"
+              <div className="col-span-4">
+                <Input
                   type="number"
                   value={einnahme.betrag}
                   onChange={(e) => updateEinnahme(einnahme.id, "betrag", parseFloat(e.target.value) || 0)}
                   placeholder="Betrag (€)"
-                />g (€)"
                 />
               </div>
               <div className="col-span-1 flex items-center">
@@ -160,18 +160,18 @@ export default function HaushaltsrechnerCalculator() {
 
           {ausgaben.map((ausgabe) => (
             <div key={ausgabe.id} className="grid grid-cols-12 gap-2">
-         <Input aria-label="Eingabefeld"
+              <div className="col-span-7">
+                <Input
                   value={ausgabe.bezeichnung}
                   onChange={(e) => updateAusgabe(ausgabe.id, "bezeichnung", e.target.value)}
                   placeholder="Bezeichnung"
-                />      placeholder="Bezeichnung"
                 />
-     <Input aria-label="Eingabefeld"
+              </div>
+              <div className="col-span-4">
+                <Input
                   type="number"
                   value={ausgabe.betrag}
                   onChange={(e) => updateAusgabe(ausgabe.id, "betrag", parseFloat(e.target.value) || 0)}
-                  placeholder="Betrag (€)"
-                />value) || 0)}
                   placeholder="Betrag (€)"
                 />
               </div>
