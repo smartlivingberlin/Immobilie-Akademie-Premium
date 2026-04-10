@@ -78,8 +78,8 @@ stripeRouter.post("/api/stripe/checkout", async (req, res) => {
           quantity: 1,
         },
       ],
-      success_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/zahlung-erfolgreich?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/kurse`,
+      success_url: `${process.env.APP_URL || "https://immobilie-akademie-production.up.railway.app"}/zahlung-erfolgreich?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.APP_URL || "https://immobilie-akademie-production.up.railway.app"}/kurse`,
       metadata: {
         modules: product.modules,
         productId: product.id,
