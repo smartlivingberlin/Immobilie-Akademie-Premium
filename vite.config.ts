@@ -195,8 +195,8 @@ export default defineConfig({
               id.includes("node_modules/jspdf") ||
               id.includes("node_modules/html2canvas")) return "vendor-pdf";
           
-          // Sonstiges
-          if (id.includes("node_modules")) return "vendor-other";
+          // Alles andere auch in vendor-react → keine Ladereihenfolge-Probleme
+          if (id.includes("node_modules")) return "vendor-react";
           
           // Prüfungsfragen
           if (id.includes("all-questions")) return "data-questions";
