@@ -41,7 +41,7 @@ const Module2WithIntro = lazy(() => import("@/pages/modules/Module2WithIntro"));
 const Module3WithIntro = lazy(() => import("@/pages/modules/Module3WithIntro"));
 const Module4WithIntro = lazy(() => import("@/pages/modules/Module4WithIntro"));
 const Module5WithIntro = lazy(() => import("@/pages/modules/Module5WithIntro"));
-const ModuleGuard = lazy(() => import("@/components/ModuleGuard"));
+import ModuleGuard from "@/components/ModuleGuard";
 const Syllabus = lazy(() => import("@/pages/Syllabus"));
 const Glossary = lazy(() => import("@/pages/Glossary"));
 const UserGuide = lazy(() => import("@/pages/UserGuide"));
