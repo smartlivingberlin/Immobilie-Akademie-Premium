@@ -48,28 +48,28 @@ const UserGuide = lazy(() => import("@/pages/UserGuide"));
 const Rechner = lazy(() => import("@/pages/Rechner"));
 const Calculators = lazy(() => import("@/pages/Calculators"));
 const Certificates = lazy(() => import("@/pages/Certificates"));
-const ComplaintForm = lazy(() => import("@/components/ComplaintForm"));
-const FeedbackWidget = lazy(() => import("@/components/FeedbackWidget"));
+import ComplaintForm from "@/components/ComplaintForm";
+import FeedbackWidget from "@/components/FeedbackWidget";
 
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
-const QuizPage = lazy(() => import("@/pages/QuizPage"));
-const Quiz = lazy(() => import("@/pages/Quiz"));
-const GamificationDashboard = lazy(() => import("@/pages/GamificationDashboard"));
-const StrategiePlattform = lazy(() => import("@/pages/StrategiePlattform"));
-const VideoManagement = lazy(() => import("@/pages/admin/VideoManagement"));
-const WhiteLabelAdmin = lazy(() => import("@/pages/admin/WhiteLabelAdmin"));
-const PortalPhaseAdmin = lazy(() => import("@/pages/admin/PortalPhaseAdmin"));
+import QuizPage from "@/pages/QuizPage";
+import Quiz from "@/pages/Quiz";
+import GamificationDashboard from "@/pages/GamificationDashboard";
+import StrategiePlattform from "@/pages/StrategiePlattform";
+import VideoManagement from "@/pages/admin/VideoManagement";
+import WhiteLabelAdmin from "@/pages/admin/WhiteLabelAdmin";
+import PortalPhaseAdmin from "@/pages/admin/PortalPhaseAdmin";
 
-const Datenschutz = lazy(() => import("@/pages/legal/Datenschutz"));
-const Impressum = lazy(() => import("@/pages/legal/Impressum"));
-const AGB = lazy(() => import("@/pages/legal/AGB"));
+import Datenschutz from "@/pages/legal/Datenschutz";
+import Impressum from "@/pages/legal/Impressum";
+import AGB from "@/pages/legal/AGB";
 import CookieConsent from "@/components/CookieConsent";
 import Footer from "@/components/Footer";
 import { StructuredData } from "@/components/StructuredData";
-const NotFound = lazy(() => import("@/pages/not-found"));
-const ExamMode = lazy(() => import("@/pages/ExamMode"));
-const ExamQuestion = lazy(() => import("@/pages/ExamQuestion"));
-const ExamResults = lazy(() => import("@/pages/ExamResults"));
+import NotFound from "@/pages/not-found";
+import ExamMode from "@/pages/ExamMode";
+import ExamQuestion from "@/pages/ExamQuestion";
+import ExamResults from "@/pages/ExamResults";
 
 
 function ProtectedRoute({ component: Component }: { component: React.ComponentType }) {
@@ -143,7 +143,6 @@ function Router() {
         <Route path="/glossary"><PublicLayout><Glossary /></PublicLayout></Route>
         <Route path="/hilfe"><PublicLayout><UserGuide /></PublicLayout></Route>
         <Route path="/beschwerde"><PublicLayout><ComplaintForm /></PublicLayout></Route>
-        <Route path="/owner-dashboard"><PublicLayout><OwnerDashboard /></PublicLayout></Route>
         <Route path="/statistiken"><AppLayout><ProtectedRoute component={Dashboard} /></AppLayout></Route>
         <Route path="/quiz/:moduleId"><AppLayout><ProtectedRoute component={QuizPage} /></AppLayout></Route>
         <Route path="/quiz"><AppLayout><ProtectedRoute component={Quiz} /></AppLayout></Route>
