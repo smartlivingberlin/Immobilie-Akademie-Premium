@@ -10,13 +10,18 @@ async function sendFollowupEmail(
   name: string, email: string, code: string, hoursLeft: number
 ): Promise<void> {
   const transporter = nodemailer.createTransport({
-    service: "gmail",
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    family: 4,
     auth: {
       user: "alisadgadyri38@gmail.com",
       pass: process.env.GMAIL_APP_PASSWORD,
     },
+    tls: { rejectUnauthorized: false },
   });
-  await transporter.sendMail({
+  // fire-and-forget — kein await, kein Crash
+  transporter.sendMail({
     from: '"Immobilien Akademie Smart" <alisadgadyri38@gmail.com>',
     to: email,
     subject: `${name}, dein Testzugang läuft in ${hoursLeft}h ab ⏰`,
