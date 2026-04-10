@@ -9,6 +9,24 @@ import { getLoginUrl } from "./const";
 import "./index.css";
 import { registerServiceWorker } from "./lib/registerSW";
 import { WhiteLabelProvider } from "@/contexts/WhiteLabelContext";
+import * as Sentry from "@sentry/react";
+
+Sentry.init({
+  dsn: import.meta.env.VITE_SENTRY_DSN || "",
+  enabled: !!import.meta.env.VITE_SENTRY_DSN,
+  environment: import.meta.env.MODE,
+  tracesSampleRate: 0.1,
+  replaysOnErrorSampleRate: 1.0,
+  beforeSend(event) {
+    if (event.user) {
+      delete event.user.ip_address;
+      delete event.user.email;
+    }
+    return event;
+  },
+});
+
+
 
 const queryClient = new QueryClient();
 
