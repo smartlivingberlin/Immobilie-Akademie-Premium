@@ -8,6 +8,7 @@ import { Calculator } from 'lucide-react';
 
 export default function Rechner() {
   return (
+    <main aria-label="Praxisrechner">
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
@@ -40,5 +41,6 @@ export default function Rechner() {
         </div>
       </div>
     </div>
+  </main>
   );
 }

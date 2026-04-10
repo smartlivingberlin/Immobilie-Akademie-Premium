@@ -172,7 +172,7 @@ test.describe('ADMIN — Eingeloggter Bereich', () => {
     
     // Teste verschiedene KI-Endpunkte
     const endpoints = [
-      { path: '/api/ai/chat', method: 'POST', body: { message: 'Was ist §34c GewO?', moduleId: 1, dayId: 1 } },
+      { path: '/api/ai/rag-tutor', method: 'POST', body: { question: 'Was ist §34c GewO?', moduleId: 1, dayId: 1 } },
       { path: '/api/health', method: 'GET', body: null },
     ];
     
