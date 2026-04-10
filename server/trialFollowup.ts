@@ -75,6 +75,9 @@ async function sendFollowupEmail(
 
 // Diese Funktion wird als Cron-Job aufgerufen
 export async function runTrialFollowupCron(): Promise<void> {
+  // SMTP deaktiviert bis Domain + eigene E-Mail
+  console.log("[TrialFollowup] Cron deaktiviert (kein SMTP)");
+  return;
   try {
   if (!RESEND_KEY) return;
   
