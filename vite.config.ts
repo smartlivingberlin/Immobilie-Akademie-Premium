@@ -166,7 +166,34 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
-    chunkSizeWarningLimit: 2000,
+    chunkSizeWarningLimit: 600,
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          // React + State zusammen (Reihenfolge-Problem vermeiden)
+          if (id.includes("node_modules/react/") ||
+              id.includes("node_modules/react-dom") ||
+              id.includes("node_modules/@tanstack") ||
+              id.includes("node_modules/zustand")) return "vendor-react";
+          
+          // UI
+          if (id.includes("node_modules/@radix-ui")) return "vendor-radix";
+          if (id.includes("node_modules/lucide-react")) return "vendor-icons";
+          
+          // PDF (groß, selten)
+          if (id.includes("node_modules/pdfmake") ||
+              id.includes("node_modules/pdfjs") ||
+              id.includes("node_modules/jspdf") ||
+              id.includes("node_modules/html2canvas")) return "vendor-pdf";
+          
+          // Sonstiges
+          if (id.includes("node_modules")) return "vendor-other";
+          
+          // Prüfungsfragen
+          if (id.includes("all-questions")) return "data-questions";
+        },
+      },
+    },
   },
   server: {
     host: true,
