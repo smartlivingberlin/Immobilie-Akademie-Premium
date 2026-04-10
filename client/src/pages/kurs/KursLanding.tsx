@@ -402,7 +402,7 @@ export default function KursLanding({ slug }: { slug: string }) {
               </p>
             </div>
             <TrialForm moduleSlug={slug} />
-            <p className="text-center text-slate-400 text-xs mt-4">
+            <p className="text-center text-slate-600 text-xs mt-4">
               Bereits überzeugt?{" "}
               <button onClick={handleKaufen} className="underline hover:text-slate-600">
                 Direkt kaufen für {kurs.preis} EUR →
