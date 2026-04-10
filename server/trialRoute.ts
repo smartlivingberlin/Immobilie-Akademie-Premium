@@ -41,7 +41,8 @@ function generateTrialCode(): string {
 async function sendTrialEmail(name: string, email: string, code: string, hours: number): Promise<void> {
   const baseUrl = process.env.PUBLIC_URL || "https://immobilie-akademie-production.up.railway.app";
   const transporter = createTransport();
-  await transporter.sendMail({
+  // Fire-and-forget: Sofort antworten, E-Mail im Hintergrund
+  transporter.sendMail({
     from: '"Immobilien Akademie Smart" <alisadgadyri38@gmail.com>',
     to: email,
     subject: `${name}, dein kostenloser Testzugang wartet! 🎓`,
