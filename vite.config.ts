@@ -171,12 +171,19 @@ export default defineConfig({
       output: {
         manualChunks: (id) => {
           // React + State zusammen (Reihenfolge-Problem vermeiden)
+          // React-Kern ZUERST — alles was createContext braucht
           if (id.includes("node_modules/react/") ||
               id.includes("node_modules/react-dom") ||
-              id.includes("node_modules/@tanstack") ||
+              id.includes("node_modules/react-is") ||
+              id.includes("node_modules/scheduler")) return "vendor-react";
+          // Pakete die React als Peer brauchen — nach React laden
+          if (id.includes("node_modules/@tanstack") ||
               id.includes("node_modules/zustand") ||
-              id.includes("node_modules/framer-motion") ||
-              id.includes("node_modules/wouter")) return "vendor-react";
+              id.includes("node_modules/framer") ||
+              id.includes("node_modules/motion") ||
+              id.includes("node_modules/wouter") ||
+              id.includes("node_modules/@trpc") ||
+              id.includes("node_modules/superjson")) return "vendor-state";
           
           // UI
           if (id.includes("node_modules/@radix-ui")) return "vendor-radix";
