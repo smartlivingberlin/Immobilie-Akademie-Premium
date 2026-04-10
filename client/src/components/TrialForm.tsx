@@ -121,7 +121,7 @@ export function TrialForm({ moduleSlug }: { moduleSlug?: string }) {
         >
           {loading ? "Wird erstellt..." : "Code per E-Mail erhalten"}
         </button>
-        <p className="text-xs text-slate-400 text-center">
+        <p className="text-xs text-slate-600 text-center">
           Kein Spam. Kein Abo.
         </p>
       </div>
