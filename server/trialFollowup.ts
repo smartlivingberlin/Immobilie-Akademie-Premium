@@ -9,19 +9,19 @@ const RESEND_KEY = process.env.RESEND_API_KEY || "";
 async function sendFollowupEmail(
   name: string, email: string, code: string, hoursLeft: number
 ): Promise<void> {
-  const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
-    family: 4,
-    auth: {
-      user: "alisadgadyri38@gmail.com",
-      pass: process.env.GMAIL_APP_PASSWORD,
-    },
-    tls: { rejectUnauthorized: false },
-  });
-  // fire-and-forget mit catch
-  transporter.sendMail({
+  try {
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+      family: 4,
+      auth: {
+        user: "alisadgadyri38@gmail.com",
+        pass: process.env.GMAIL_APP_PASSWORD,
+      },
+      tls: { rejectUnauthorized: false },
+    });
+    transporter.sendMail({
     from: '"Immobilien Akademie Smart" <alisadgadyri38@gmail.com>',
     to: email,
     subject: `${name}, dein Testzugang läuft in ${hoursLeft}h ab ⏰`,
@@ -70,6 +70,7 @@ async function sendFollowupEmail(
 </div>
 </body></html>`,
   }).catch((e: any) => console.log("[FollowupEmail] Fehler:", e.message));
+  } catch(e: any) { console.log("[FollowupEmail] Transport Fehler:", e.message); }
 }
 
 // Diese Funktion wird als Cron-Job aufgerufen
