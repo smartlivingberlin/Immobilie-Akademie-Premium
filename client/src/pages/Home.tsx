@@ -113,7 +113,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <Award className="w-8 h-8 text-amber-600" />
+              <Award className="w-8 h-8 text-amber-800" />
               <div>
                 <div className="font-bold text-slate-900">IHK-Vorbereitung</div>
                 <div className="text-sm text-slate-600">Offiziell geprüft</div>
@@ -187,7 +187,7 @@ export default function Home() {
             <Card className="border-slate-200">
               <CardContent className="p-6">
                 <div className="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center mb-4">
-                  <TrendingUp className="w-6 h-6 text-amber-600" />
+                  <TrendingUp className="w-6 h-6 text-amber-800" />
                 </div>
                 <h3 className="font-bold text-slate-900 mb-2">Gamification</h3>
                 <p className="text-sm text-slate-600">
@@ -234,14 +234,14 @@ export default function Home() {
               <Card className="h-full hover:shadow-xl transition-all duration-300 border-slate-200 cursor-pointer group">
                 <CardContent className="p-8">
                   <div className="w-14 h-14 rounded-2xl bg-amber-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Trophy className="w-7 h-7 text-amber-600" />
+                    <Trophy className="w-7 h-7 text-amber-800" />
                   </div>
                   <Badge variant="outline" className="mb-4 bg-amber-50 text-amber-700 border-amber-200">Modul 2 • Premium</Badge>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-amber-600 transition-colors">Maklerrecht & §34c</h3>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-amber-800 transition-colors">Maklerrecht & §34c</h3>
                   <p className="text-slate-600 mb-6 leading-relaxed">
                     Werden Sie zum rechtssicheren Makler. Alles zu GewO, MaBV, Wettbewerbsrecht und Verbraucherschutz.
                   </p>
-                  <div className="flex items-center text-sm font-medium text-amber-600">
+                  <div className="flex items-center text-sm font-medium text-amber-800">
                     Zum Modul <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </CardContent>

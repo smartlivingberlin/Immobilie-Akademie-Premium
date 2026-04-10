@@ -113,9 +113,9 @@ export default function LoginPage() {
             {mode === "login" ? (
               <>
                 <div>Noch kein Konto? <button type="button" onClick={() => { setMode("register"); setError(""); }} style={{ background: "none", border: "none", color: "#2563eb", cursor: "pointer", fontWeight: "600", fontSize: "13px" }}>Jetzt registrieren</button></div>
-                <div style={{ marginTop: "8px" }}><a href="/forgot-password" style={{ color: "#94a3b8", fontSize: "12px" }}>Passwort vergessen?</a></div>
+                <div style={{ marginTop: "8px" }}><a href="/forgot-password" style={{ color: "#4b5563", fontSize: "12px" }}>Passwort vergessen?</a></div>
                 <div style={{ marginTop: "12px" }}>
-                  <button type="button" onClick={() => setShowCodeInput(v => !v)} style={{ background: "none", border: "none", color: "#94a3b8", cursor: "pointer", fontSize: "12px", textDecoration: "underline" }}>🔑 Präsentations-Code eingeben</button>
+                  <button type="button" onClick={() => setShowCodeInput(v => !v)} style={{ background: "none", border: "none", color: "#4b5563", cursor: "pointer", fontSize: "12px", textDecoration: "underline" }}>🔑 Präsentations-Code eingeben</button>
                   {showCodeInput && (
                     <div style={{ marginTop: "8px", display: "flex", gap: "8px" }}>
                       <input type="text" placeholder="z.B. DEMO-2026-XYZ" value={demoCode} onChange={e => setDemoCode(e.target.value.toUpperCase())} style={{ flex: 1, padding: "8px 10px", border: "1.5px solid #d1d5db", borderRadius: "8px", fontSize: "13px", outline: "none" }} />
