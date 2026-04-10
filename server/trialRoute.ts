@@ -22,6 +22,7 @@ function createTransport() {
   return nodemailer.createTransport({
     service: "gmail",
     family: 4,
+    family: 4,
     auth: {
       user: "alisadgadyri38@gmail.com",
       pass: process.env.GMAIL_APP_PASSWORD,
