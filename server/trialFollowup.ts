@@ -1,3 +1,4 @@
+import nodemailer from "nodemailer";
 import { getDb } from "./db";
 import { sql } from "drizzle-orm";
 
@@ -8,7 +9,7 @@ const RESEND_KEY = process.env.RESEND_API_KEY || "";
 async function sendFollowupEmail(
   name: string, email: string, code: string, hoursLeft: number
 ): Promise<void> {
-  const transporter = require("nodemailer").createTransport({
+  const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
       user: "alisadgadyri38@gmail.com",
