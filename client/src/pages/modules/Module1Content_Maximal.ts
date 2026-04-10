@@ -219,7 +219,7 @@ Herr M. (45) ist Bankkaufmann und will sich als Immobilienmakler selbstständig 
     law: [
       "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Makler & Verwalter)",
       "[§ 34i GewO](https://www.gesetze-im-internet.de/gewo/__34i.html) (Darlehensvermittler)",
-      "[MaBV](https://www.gesetze-im-internet.de/mabv/) (Makler- und Bauträgerverordnung)"
+      "[MaBV](https://www.gesetze-im-internet.de/maklerv/) (Makler- und Bauträgerverordnung)"
     ],
     practice: `
 ### Praxis-Übung: Persönliches Kompetenzprofil
@@ -1136,9 +1136,9 @@ Frau L. ist Eigentümerin einer Ferienwohnung in den Alpen. Sie vermietet die Wo
     `,
     law: [
       "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Erlaubnispflicht)",
-      "[MaBV § 10](https://www.gesetze-im-internet.de/mabv/__10.html) (Buchführung)",
-      "[MaBV § 15b](https://www.gesetze-im-internet.de/mabv/__15b.html) (Weiterbildung)",
-      "[MaBV § 16](https://www.gesetze-im-internet.de/mabv/__16.html) (Prüfung)"
+      "[MaBV § 10](https://www.gesetze-im-internet.de/maklerv/__10.html) (Buchführung)",
+      "[MaBV § 15b](https://www.gesetze-im-internet.de/maklerv/__15b.html) (Weiterbildung)",
+      "[MaBV § 16](https://www.gesetze-im-internet.de/maklerv/__16.html) (Prüfung)"
     ],
     practice: `
 ### Praxis-Übung: §34c-Antrag ausfüllen
@@ -1504,11 +1504,11 @@ Immobilien sind ein beliebtes Mittel zur Geldwäsche. Kriminelle investieren ill
 - Bei gewerbsmäßiger Geldwäsche: bis 10 Jahre
     `,
     law: [
-      "[GwG § 2](https://www.gesetze-im-internet.de/gwg/__2.html) (Verpflichtete)",
-      "[GwG § 10](https://www.gesetze-im-internet.de/gwg/__10.html) (Risikoanalyse)",
-      "[GwG § 11](https://www.gesetze-im-internet.de/gwg/__11.html) (Identifizierung)",
-      "[GwG § 23](https://www.gesetze-im-internet.de/gwg/__23.html) (Transparenzregister)",
-      "[GwG § 43](https://www.gesetze-im-internet.de/gwg/__43.html) (Verdachtsmeldung)"
+      "[GwG § 2](https://www.gesetze-im-internet.de/gwg_2017/__2.html) (Verpflichtete)",
+      "[GwG § 10](https://www.gesetze-im-internet.de/gwg_2017/__10.html) (Risikoanalyse)",
+      "[GwG § 11](https://www.gesetze-im-internet.de/gwg_2017/__11.html) (Identifizierung)",
+      "[GwG § 23](https://www.gesetze-im-internet.de/gwg_2017/__23.html) (Transparenzregister)",
+      "[GwG § 43](https://www.gesetze-im-internet.de/gwg_2017/__43.html) (Verdachtsmeldung)"
     ],
     practice: `
 ### Praxis-Übung: Identifizierung eines Kunden
@@ -1915,7 +1915,7 @@ Bausparkassen bieten Bausparverträge (Sparphase + Darlehensphase).
 
 **Beispiel:** München fordert 30% Sozialwohnungen bei Neubauten. Projektentwickler müssen diese Quote erfüllen oder Ausgleichszahlung leisten.
     `,
-    law: ["[WEG](https://www.gesetze-im-internet.de/weg/)", "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html)"],
+    law: ["[WEG](https://www.gesetze-im-internet.de/woeigg/)", "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html)"],
     practice: "Erstellen Sie eine Aufgabenliste für einen WEG-Verwalter (kaufmännisch und technisch).",
     task: "Recherchieren Sie: Was ist der Unterschied zwischen WEG-Verwaltung und Mietverwaltung?",
     type: "Berufsbild"
@@ -2122,7 +2122,7 @@ Ein Investor mit 5 Mio. € Eigenkapital könnte folgendes Portfolio aufbauen:
 
 **Fazit:** Diversifikation reduziert Risiken. Wohnimmobilien sind das Fundament, Gewerbeimmobilien bieten höhere Renditen.
     `,
-    law: ["[ImmoWertV](https://www.gesetze-im-internet.de/immowertv/)", "[BauGB](https://www.gesetze-im-internet.de/baugb/)"],
+    law: ["[ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/)", "[BauGB](https://www.gesetze-im-internet.de/bbaug/)"],
     practice: "Unterscheiden Sie: Kurzbewertung (Makler) vs. Vollgutachten (Sachverständiger).",
     task: "Recherchieren Sie die Voraussetzungen, um öffentlich bestellter Gutachter zu werden.",
     type: "Berufsbild"
@@ -3623,7 +3623,7 @@ Die Digitalisierung verändert die Immobilienbranche fundamental. Wer die neuen 
 
 **Fazit:** Digitalisierung ist kein Luxus, sondern Notwendigkeit. Wer nicht digitalisiert, verliert Kunden.
     `,
-    law: ["[MaBV Anlage 1](https://www.gesetze-im-internet.de/mabv/anlage_1.html) (Weiterbildung)"],
+    law: ["[MaBV Anlage 1](https://www.gesetze-im-internet.de/maklerv/anlage_1.html) (Weiterbildung)"],
     practice: "Recherchieren Sie passende Weiterbildungsangebote für Ihre Spezialisierung.",
     task: "Erstellen Sie einen persönlichen Weiterbildungsplan für die nächsten 3 Jahre.",
     type: "Karriere"

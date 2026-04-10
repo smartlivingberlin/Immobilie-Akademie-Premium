@@ -78,10 +78,10 @@ Der Verwalter darf in dringenden Fällen ohne Beschluss handeln:
 - Fenstertausch: 60.000 € (6.000 €/WE)
     `,
     law: [
-      "[§ 27 Abs. 1 Nr. 3 WEG](https://www.gesetze-im-internet.de/weg/__27.html) (Notgeschäftsführung)",
-      "[§ 18 Abs. 2 WEG](https://www.gesetze-im-internet.de/weg/__18.html) (Erhaltung des Gemeinschaftseigentums)",
-      "[§ 19 WEG](https://www.gesetze-im-internet.de/weg/__19.html) (Ordnungsmäßige Verwaltung)",
-      "[§ 20 WEG](https://www.gesetze-im-internet.de/weg/__20.html) (Beschlussfassung)"
+      "[§ 27 Abs. 1 Nr. 3 WEG](https://www.gesetze-im-internet.de/woeigg/__27.html) (Notgeschäftsführung)",
+      "[§ 18 Abs. 2 WEG](https://www.gesetze-im-internet.de/woeigg/__18.html) (Erhaltung des Gemeinschaftseigentums)",
+      "[§ 19 WEG](https://www.gesetze-im-internet.de/woeigg/__19.html) (Ordnungsmäßige Verwaltung)",
+      "[§ 20 WEG](https://www.gesetze-im-internet.de/woeigg/__20.html) (Beschlussfassung)"
     ],
     practice: `
     tasks: [
@@ -268,7 +268,7 @@ Gesamtkosten: 120.000 € (brutto)
     law: [
       "[§ 631 BGB](https://www.gesetze-im-internet.de/bgb/__631.html) (Werkvertrag)",
       "[§ 611 BGB](https://www.gesetze-im-internet.de/bgb/__611.html) (Dienstvertrag)",
-      "[BetrSichV](https://www.gesetze-im-internet.de/betrsichv/) (Betriebssicherheitsverordnung)",
+      "[BetrSichV](https://www.gesetze-im-internet.de/betrsichv_2015/) (Betriebssicherheitsverordnung)",
       "[DGUV V3](https://publikationen.dguv.de/regelwerk/dguv-vorschriften/) (Elektrische Anlagen)"
     ],
     practice: `
@@ -662,7 +662,7 @@ Wenn ein formal selbstständiger Hausmeister faktisch wie ein Arbeitnehmer behan
 - Zisterne (Regenwassernutzung für Garten)
     `,
     law: [
-      "[TrinkwV](https://www.gesetze-im-internet.de/trinkwv_2001/) (Trinkwasserverordnung)",
+      "[TrinkwV](https://www.gesetze-im-internet.de/trinkwv_2023/) (Trinkwasserverordnung)",
       "[HeizkostenV](https://www.gesetze-im-internet.de/heizkostenv/) (Heizkostenverordnung)"
     ],
     practice: "Legionellenbefall: Sofortmaßnahmen, Informationspflicht an Mieter und Gesundheitsamt, thermische Desinfektion.",
@@ -1062,7 +1062,7 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
     title: "Praxisprojekt: Instandhaltungsplan",
     theory: "Ein langfristiger Instandhaltungsplan ist das zentrale Instrument zur Werterhaltung und Kostenkontrolle. Er sollte alle 5 Jahre aktualisiert werden.",
     law: [
-      "[§ 19 WEG](https://www.gesetze-im-internet.de/weg/__19.html) (Ordnungsmäßige Verwaltung)"
+      "[§ 19 WEG](https://www.gesetze-im-internet.de/woeigg/__19.html) (Ordnungsmäßige Verwaltung)"
     ],
     practice: "Erstellung eines realen Instandhaltungsplans für ein fiktives Objekt (MFH 10 WE, Bj. 1970, letzte Sanierung 1995).",
     tasks: [
@@ -1150,7 +1150,7 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
     title: "Digitale Eigentümerversammlung",
     theory: "Seit 2020 sind hybride und reine Online-Versammlungen möglich. Die technische Umsetzung erfordert sorgfältige Planung.",
     law: [
-      "[§ 23 Abs. 1a WEG](https://www.gesetze-im-internet.de/weg/__23.html) (Online-Versammlung)"
+      "[§ 23 Abs. 1a WEG](https://www.gesetze-im-internet.de/woeigg/__23.html) (Online-Versammlung)"
     ],
     practice: "Simulation einer hybriden Versammlung. Umgang mit technischen Störungen (Verbindungsabbruch, Ton-/Bildprobleme).",
     tasks: [
@@ -1321,8 +1321,8 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
     title: "Konfliktmanagement: Eigentümer vs. Eigentümer",
     theory: "Konflikte in der WEG sind unvermeidlich. Der Verwalter muss neutral vermitteln und Eskalationen verhindern.",
     law: [
-      "[§ 14 WEG](https://www.gesetze-im-internet.de/weg/__14.html) (Gemeinschaftliches Eigentum)",
-      "[§ 15 WEG](https://www.gesetze-im-internet.de/weg/__15.html) (Sondereigentum)"
+      "[§ 14 WEG](https://www.gesetze-im-internet.de/woeigg/__14.html) (Gemeinschaftliches Eigentum)",
+      "[§ 15 WEG](https://www.gesetze-im-internet.de/woeigg/__15.html) (Sondereigentum)"
     ],
     practice: "Mediation zwischen zwei Eigentümern (Lärm, Parkplatz, Haustiere). Gesprächsführung nach Harvard-Konzept.",
     tasks: [

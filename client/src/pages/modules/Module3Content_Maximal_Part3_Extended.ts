@@ -127,8 +127,8 @@ export const contentDataModule3MaximalPart3Extended: Record<string, WEGDayConten
 **Fazit:** Nach 5 Jahren trotz Entnahme von 30.000 € ein Bestand von 75.481 € (Anfang: 50.000 €).
     `,
     law: [
-      "[§ 19 Abs. 2 Nr. 4 WEG](https://www.gesetze-im-internet.de/weg/__19.html) (Erhaltungsrücklage)",
-      "[§ 21 Abs. 5 Nr. 4 WEG](https://www.gesetze-im-internet.de/weg/__21.html) (Wirtschaftsplan)",
+      "[§ 19 Abs. 2 Nr. 4 WEG](https://www.gesetze-im-internet.de/woeigg/__19.html) (Erhaltungsrücklage)",
+      "[§ 21 Abs. 5 Nr. 4 WEG](https://www.gesetze-im-internet.de/woeigg/__21.html) (Wirtschaftsplan)",
       "[§ 1807 BGB](https://www.gesetze-im-internet.de/bgb/__1807.html) (Mündelsichere Anlagen)"
     ],
     practice: `
@@ -273,8 +273,8 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
     title: "Jahreswirtschaftsplan (JWP) - Erstellung",
     theory: "Der Jahreswirtschaftsplan ist das zentrale Planungsinstrument der WEG. Er prognostiziert alle Einnahmen und Ausgaben für das kommende Kalenderjahr.",
     law: [
-      "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) (Wirtschaftsplan und Jahresabrechnung)",
-      "[§ 16 WEG](https://www.gesetze-im-internet.de/weg/__16.html) (Verteilerschlüssel)"
+      "[§ 28 WEG](https://www.gesetze-im-internet.de/woeigg/__28.html) (Wirtschaftsplan und Jahresabrechnung)",
+      "[§ 16 WEG](https://www.gesetze-im-internet.de/woeigg/__16.html) (Verteilerschlüssel)"
     ],
     practice: "Anpassung der Hausgelder aufgrund gestiegener Energiekosten (+30%). Kommunikation an Eigentümer mit Begründung.",
     tasks: [
@@ -302,8 +302,8 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
     title: "Jahresabrechnung - Gesamtabrechnung",
     theory: "Die Jahresabrechnung ist die Rechenschaftslegung des Verwalters über das abgelaufene Wirtschaftsjahr. Sie muss transparent und nachvollziehbar sein.",
     law: [
-      "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) (Jahresabrechnung)",
-      "[§ 27 Abs. 5 WEG](https://www.gesetze-im-internet.de/weg/__27.html) (Vermögensverwaltung)"
+      "[§ 28 WEG](https://www.gesetze-im-internet.de/woeigg/__28.html) (Jahresabrechnung)",
+      "[§ 27 Abs. 5 WEG](https://www.gesetze-im-internet.de/woeigg/__27.html) (Vermögensverwaltung)"
     ],
     practice: "Plausibilitätsprüfung: Stimmen Anfangs- und Endbestände der Bankkonten? Lückenlose Dokumentation aller Buchungen.",
     tasks: [
@@ -331,8 +331,8 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
     title: "Jahresabrechnung - Einzelabrechnung",
     theory: "Die Einzelabrechnung verteilt die Kosten auf die Sondereigentümer nach den beschlossenen Verteilerschlüsseln. Sie ist die Grundlage für Nachzahlungen oder Guthaben.",
     law: [
-      "[§ 16 WEG](https://www.gesetze-im-internet.de/weg/__16.html) (Verteilerschlüssel)",
-      "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) (Einzelabrechnung)"
+      "[§ 16 WEG](https://www.gesetze-im-internet.de/woeigg/__16.html) (Verteilerschlüssel)",
+      "[§ 28 WEG](https://www.gesetze-im-internet.de/woeigg/__28.html) (Einzelabrechnung)"
     ],
     practice: "Berechnung der Nachzahlung/Guthaben. Umgang mit Eigentümerwechsel im laufenden Jahr (anteilige Abrechnung).",
     tasks: [
@@ -389,7 +389,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
     title: "Rechnungsprüfung durch den Beirat",
     theory: "Der Verwaltungsbeirat prüft die Jahresabrechnung vor der Eigentümerversammlung. Die Prüfung ist keine Pflicht, aber üblich und sinnvoll.",
     law: [
-      "[§ 29 WEG](https://www.gesetze-im-internet.de/weg/__29.html) (Verwaltungsbeirat)"
+      "[§ 29 WEG](https://www.gesetze-im-internet.de/woeigg/__29.html) (Verwaltungsbeirat)"
     ],
     practice: "Durchführung einer Beiratsprüfung. Stichproben vs. Vollprüfung. Umgang mit fehlenden Belegen oder Unklarheiten.",
     tasks: [
@@ -445,7 +445,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
     title: "Praxisprojekt: Die fehlerhafte Abrechnung",
     theory: "Fehler in der Jahresabrechnung sind häufig. Die Korrektur erfordert rechtliches und buchhalterisches Know-how.",
     law: [
-      "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) (Jahresabrechnung)"
+      "[§ 28 WEG](https://www.gesetze-im-internet.de/woeigg/__28.html) (Jahresabrechnung)"
     ],
     practice: "Fallstudie: Eine Abrechnung wird angefochten, weil der Verteilerschlüssel für Wasser falsch war (Personen statt MEA). Was nun?",
     tasks: [
@@ -475,8 +475,8 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
     title: "Einladung & Tagesordnung (TOPs)",
     theory: "Die ordnungsgemäße Einladung ist Voraussetzung für wirksame Beschlüsse. Formfehler führen zur Anfechtbarkeit.",
     law: [
-      "[§ 24 WEG](https://www.gesetze-im-internet.de/weg/__24.html) (Einberufung)",
-      "[§ 23 WEG](https://www.gesetze-im-internet.de/weg/__23.html) (Eigentümerversammlung)"
+      "[§ 24 WEG](https://www.gesetze-im-internet.de/woeigg/__24.html) (Einberufung)",
+      "[§ 23 WEG](https://www.gesetze-im-internet.de/woeigg/__23.html) (Eigentümerversammlung)"
     ],
     practice: "Erstellung einer rechtssicheren Tagesordnung. Aufnahme von Anträgen der Eigentümer (Frist: bis 1 Woche vor Versammlung).",
     tasks: [
@@ -504,7 +504,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
     title: "Vollmachten & Vertretung",
     theory: "Eigentümer können sich in der Versammlung vertreten lassen. Die Vollmacht muss bestimmten Anforderungen genügen.",
     law: [
-      "[§ 25 WEG](https://www.gesetze-im-internet.de/weg/__25.html) (Beschlussfassung)"
+      "[§ 25 WEG](https://www.gesetze-im-internet.de/woeigg/__25.html) (Beschlussfassung)"
     ],
     practice: "Prüfung der Anwesenheitsliste. Zurückweisung ungültiger Vollmachten (z.B. ohne Originalunterschrift, zu alt).",
     tasks: [
@@ -532,7 +532,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
     title: "Versammlungsleitung & Ablauf",
     theory: "Die Versammlungsleitung liegt beim Verwalter (oder Beirat). Sie erfordert Autorität, Neutralität und Geschick.",
     law: [
-      "[§ 24 Abs. 5 WEG](https://www.gesetze-im-internet.de/weg/__24.html) (Vorsitz)"
+      "[§ 24 Abs. 5 WEG](https://www.gesetze-im-internet.de/woeigg/__24.html) (Vorsitz)"
     ],
     practice: "Simulation: Eine hitzige Debatte über eine Sonderumlage moderieren. Umgang mit Störern und persönlichen Angriffen.",
     tasks: [
@@ -560,8 +560,8 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
     title: "Beschlussfassung & Abstimmung",
     theory: "Die Beschlussfassung folgt klaren Regeln. Je nach Beschlussgegenstand gelten unterschiedliche Mehrheitserfordernisse.",
     law: [
-      "[§ 25 Abs. 2 WEG](https://www.gesetze-im-internet.de/weg/__25.html) (Stimmrecht)",
-      "[§ 20 WEG](https://www.gesetze-im-internet.de/weg/__20.html) (Bauliche Veränderungen)"
+      "[§ 25 Abs. 2 WEG](https://www.gesetze-im-internet.de/woeigg/__25.html) (Stimmrecht)",
+      "[§ 20 WEG](https://www.gesetze-im-internet.de/woeigg/__20.html) (Bauliche Veränderungen)"
     ],
     practice: "Auszählung einer komplizierten Abstimmung mit verschiedenen Miteigentumsanteilen. Berechnung der qualifizierten Mehrheit.",
     tasks: [
@@ -589,7 +589,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
     title: "Verkündung & Protokollierung",
     theory: "Die Verkündung des Beschlusses in der Versammlung macht ihn erst existent. Das Protokoll dokumentiert die Beschlüsse rechtssicher.",
     law: [
-      "[§ 24 Abs. 6 WEG](https://www.gesetze-im-internet.de/weg/__24.html) (Niederschrift)"
+      "[§ 24 Abs. 6 WEG](https://www.gesetze-im-internet.de/woeigg/__24.html) (Niederschrift)"
     ],
     practice: "Formulierung klarer Beschlusstexte im Protokoll. Vermeidung von 'Zitterbeschlüssen' (unklare Formulierungen).",
     tasks: [
@@ -617,7 +617,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
     title: "Beschluss-Sammlung führen",
     theory: "Die Beschluss-Sammlung ist das 'Gedächtnis' der WEG. Sie muss vollständig und aktuell sein.",
     law: [
-      "[§ 24 Abs. 7 WEG](https://www.gesetze-im-internet.de/weg/__24.html) (Beschluss-Sammlung)"
+      "[§ 24 Abs. 7 WEG](https://www.gesetze-im-internet.de/woeigg/__24.html) (Beschluss-Sammlung)"
     ],
     practice: "Pflege der digitalen Beschluss-Sammlung. Löschung aufgehobener Beschlüsse (Kennzeichnung 'aufgehoben am...').",
     tasks: [
@@ -645,8 +645,8 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
     title: "Anfechtungsklage & Nichtigkeitsklage",
     theory: "Beschlüsse können angefochten oder für nichtig erklärt werden. Die Fristen und Voraussetzungen sind streng.",
     law: [
-      "[§ 44 WEG](https://www.gesetze-im-internet.de/weg/__44.html) (Klage)",
-      "[§ 23 Abs. 4 WEG](https://www.gesetze-im-internet.de/weg/__23.html) (Nichtigkeit)"
+      "[§ 44 WEG](https://www.gesetze-im-internet.de/woeigg/__44.html) (Klage)",
+      "[§ 23 Abs. 4 WEG](https://www.gesetze-im-internet.de/woeigg/__23.html) (Nichtigkeit)"
     ],
     practice: "Reaktion auf eine Klagezustellung. Information der Eigentümer. Beauftragung eines Anwalts. Kostenrisiko abschätzen.",
     tasks: [
@@ -674,7 +674,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
     title: "Sonderumlage beschließen & einziehen",
     theory: "Sonderumlagen sind außerordentliche Zahlungen zur Deckung unvorhergesehener Kosten. Sie erfordern einen Beschluss.",
     law: [
-      "[§ 16 Abs. 2 WEG](https://www.gesetze-im-internet.de/weg/__16.html) (Kostenverteilung)"
+      "[§ 16 Abs. 2 WEG](https://www.gesetze-im-internet.de/woeigg/__16.html) (Kostenverteilung)"
     ],
     practice: "Kommunikation einer Sonderumlage an die Eigentümer. Ratenzahlungsvereinbarungen bei finanziellen Härtefällen.",
     tasks: [

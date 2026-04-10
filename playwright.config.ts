@@ -8,3 +8,5 @@ export default defineConfig({
   },
   projects: [{ name: 'chromium', use: { browserName: 'chromium' } }],
 });
+// Multi-browser wird separat konfiguriert
+// Multi-browser wird separat konfiguriert
