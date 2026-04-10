@@ -888,7 +888,7 @@ Break-Even: 2-5 Gutachten
     `,
     law: [
       "[HypZert S Anforderungen](https://www.hypzert.de/de/zertifizierung/angebotsuebersicht/hypzert-s) (Offizielle Voraussetzungen)",
-      "[§ 194 BauGB](https://www.gesetze-im-internet.de/baugb/__194.html) (Verkehrswert — Basis aller Gutachten)",
+      "[§ 194 BauGB](https://www.gesetze-im-internet.de/bbaug/__194.html) (Verkehrswert — Basis aller Gutachten)",
       "[ImmoWertV 2021](https://www.gesetze-im-internet.de/immowertv_2021/) (Wertermittlungsverordnung)"
     ],
     practice: `

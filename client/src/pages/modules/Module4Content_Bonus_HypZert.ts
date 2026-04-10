@@ -54,7 +54,7 @@ Ein professionelles Verkehrswertgutachten besteht aus diesen Pflichtteilen:
 **Teil III:** Einzelfragen aus dem Prüfstoffverzeichnis (2 Stunden)
     `,
     law: [
-      "[§ 194 BauGB](https://www.gesetze-im-internet.de/baugb/__194.html) (Verkehrswertdefinition)",
+      "[§ 194 BauGB](https://www.gesetze-im-internet.de/bbaug/__194.html) (Verkehrswertdefinition)",
       "[ImmoWertV 2021](https://www.gesetze-im-internet.de/immowertv_2021/) (Wertermittlungsverordnung)",
       "[§ 6 BelWertV](https://www.gesetze-im-internet.de/belwertv/__6.html) (Gutachterqualifikation für Banken)",
       "[DIN ISO/IEC 17024](https://www.din.de/) (Zertifizierungsstandard HypZert)",
@@ -229,7 +229,7 @@ Beleihungsgrenze (80%) = 560.000 €
     `,
     law: [
       "[ImmoWertV §3](https://www.gesetze-im-internet.de/immowertv_2021/__3.html) (Allgemeine Verfahrensregeln)",
-      "[§ 193 BauGB](https://www.gesetze-im-internet.de/baugb/__193.html) (Gutachterausschüsse)",
+      "[§ 193 BauGB](https://www.gesetze-im-internet.de/bbaug/__193.html) (Gutachterausschüsse)",
       "[WoFlV](https://www.gesetze-im-internet.de/woflv/) (Wohnflächenverordnung)",
       "[gif-Richtlinie Mietflächen](https://www.gif-ev.de/) (Gewerbliche Flächen)"
     ],
@@ -599,7 +599,7 @@ Einfache Lage: Deutliche Nachteile, höhere Vermarktungsrisiken
     `,
     law: [
       "[ImmoWertV §7](https://www.gesetze-im-internet.de/immowertv_2021/__7.html) (Grundsätze der Wertermittlung)",
-      "[§ 196 BauGB](https://www.gesetze-im-internet.de/baugb/__196.html) (Gutachterausschüsse, Bodenrichtwerte)",
+      "[§ 196 BauGB](https://www.gesetze-im-internet.de/bbaug/__196.html) (Gutachterausschüsse, Bodenrichtwerte)",
       "[WertR 2021](https://www.bundesfinanzministerium.de/) (Wertermittlungsrichtlinien)",
       "[gif-Richtlinie](https://www.gif-ev.de/) (gif-Lagebeurteilung)"
     ],
