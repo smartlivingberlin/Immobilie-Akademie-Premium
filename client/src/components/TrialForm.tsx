@@ -98,7 +98,7 @@ export function TrialForm({ moduleSlug }: { moduleSlug?: string }) {
         </div>
         <div>
           <label className="block text-sm font-medium text-slate-700 mb-1">Modul-Interesse</label>
-          <select
+          <select aria-label="Modul-Interesse auswählen"
             value={moduleInterest}
             onChange={(e) => setModuleInterest(e.target.value)}
             className="w-full border border-slate-300 rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
