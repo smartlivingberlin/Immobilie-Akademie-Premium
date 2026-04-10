@@ -2,7 +2,7 @@
 // Strategie: Cache-First für Assets, Network-First für HTML/API
 // Auth-Routen niemals cachen!
 
-const CACHE_VERSION = 'ias-v2';
+const CACHE_VERSION = 'ias-v3';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const DYNAMIC_CACHE = `${CACHE_VERSION}-dynamic`;
 
