@@ -75,6 +75,7 @@ async function sendFollowupEmail(
 
 // Diese Funktion wird als Cron-Job aufgerufen
 export async function runTrialFollowupCron(): Promise<void> {
+  try {
   if (!RESEND_KEY) return;
   
   const db = await getDb();
@@ -108,5 +109,8 @@ export async function runTrialFollowupCron(): Promise<void> {
     } catch(e) {
       console.error(`[TrialFollowup] ❌ ${lead.email}:`, e);
     }
+  }
+  } catch(e: any) {
+    console.log("[TrialFollowup] Fehler ignoriert:", e.message);
   }
 }
