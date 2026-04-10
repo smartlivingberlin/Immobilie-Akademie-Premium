@@ -197,3 +197,12 @@ app.use(express.json({ limit: "50mb" }));
 
 startServer().catch(console.error);
 // force deploy Mon Apr  6 20:58:44 CEST 2026
+
+// Keep-Alive: alle 8 Minuten selbst pingen (verhindert Railway Cold Start)
+setInterval(async () => {
+  try {
+    const url = process.env.PUBLIC_URL || "https://immobilie-akademie-production.up.railway.app";
+    await fetch(`${url}/api/health`).catch(() => {});
+  } catch(e) {}
+}, 8 * 60 * 1000);
+
