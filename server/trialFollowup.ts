@@ -9,6 +9,7 @@ const RESEND_KEY = process.env.RESEND_API_KEY || "";
 async function sendFollowupEmail(
   name: string, email: string, code: string, hoursLeft: number
 ): Promise<void> {
+  try {
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,
@@ -20,7 +21,7 @@ async function sendFollowupEmail(
     },
     tls: { rejectUnauthorized: false },
   });
-  // fire-and-forget — kein await, kein Crash
+  // fire-and-forget mit catch
   transporter.sendMail({
     from: '"Immobilien Akademie Smart" <alisadgadyri38@gmail.com>',
     to: email,
@@ -69,7 +70,7 @@ async function sendFollowupEmail(
   </div>
 </div>
 </body></html>`,
-  });
+  }).catch((e: any) => console.log("[FollowupEmail] Fehler:", e.message));
 }
 
 // Diese Funktion wird als Cron-Job aufgerufen
