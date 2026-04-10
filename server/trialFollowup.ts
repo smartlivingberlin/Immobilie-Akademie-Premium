@@ -9,7 +9,6 @@ const RESEND_KEY = process.env.RESEND_API_KEY || "";
 async function sendFollowupEmail(
   name: string, email: string, code: string, hoursLeft: number
 ): Promise<void> {
-  try {
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,
