@@ -79,7 +79,7 @@ export default function LoginPage() {
               </button>
               <div style={{ display: "flex", alignItems: "center", margin: "16px 0", gap: "12px" }}>
                 <div style={{ flex: 1, height: "1px", background: "#e5e7eb" }} />
-                <span style={{ fontSize: "12px", color: "#9ca3af" }}>oder</span>
+                <span style={{ fontSize: "12px", color: "#4b5563" }}>oder</span>
                 <div style={{ flex: 1, height: "1px", background: "#e5e7eb" }} />
               </div>
             </div>
@@ -99,7 +99,7 @@ export default function LoginPage() {
               <label style={labelStyle}>Passwort</label>
               <div style={{ position: "relative" }}>
                 <input ref={passwordRef} type={showPassword ? "text" : "password"} placeholder="Ihr Passwort" autoComplete="new-password" style={{ ...inputStyle, paddingRight: "42px" }} />
-                <button aria-label="Passwort anzeigen/verbergen" type="button" onClick={() => setShowPassword(v => !v)} style={{ position: "absolute", right: "12px", top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: "pointer", color: "#9ca3af", padding: 0, display: "flex", alignItems: "center" }}>
+                <button aria-label="Passwort anzeigen/verbergen" type="button" onClick={() => setShowPassword(v => !v)} style={{ position: "absolute", right: "12px", top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: "pointer", color: "#4b5563", padding: 0, display: "flex", alignItems: "center" }}>
                   {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
               </div>
@@ -113,7 +113,7 @@ export default function LoginPage() {
             {mode === "login" ? (
               <>
                 <div>Noch kein Konto? <button type="button" onClick={() => { setMode("register"); setError(""); }} style={{ background: "none", border: "none", color: "#2563eb", cursor: "pointer", fontWeight: "600", fontSize: "13px" }}>Jetzt registrieren</button></div>
-                <div style={{ marginTop: "8px" }}><a href="/forgot-password" style={{ color: "#4b5563", fontSize: "12px" }}>Passwort vergessen?</a></div>
+                <div style={{ marginTop: "8px" }}><a href="/forgot-password" style={{ color: "#374151", fontSize: "12px" }}>Passwort vergessen?</a></div>
                 <div style={{ marginTop: "12px" }}>
                   <button type="button" onClick={() => setShowCodeInput(v => !v)} style={{ background: "none", border: "none", color: "#4b5563", cursor: "pointer", fontSize: "12px", textDecoration: "underline" }}>🔑 Präsentations-Code eingeben</button>
                   {showCodeInput && (
