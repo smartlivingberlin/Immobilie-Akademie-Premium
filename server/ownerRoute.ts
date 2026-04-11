@@ -44,3 +44,51 @@ export function registerOwnerRoutes(app: Express) {
     return res.redirect(`/api/owner/access?key=${ownerCode}&redirect=/admin`);
   });
 }
+
+  // POST /api/owner/inspect-token → erstellt 72h Inspect-Link
+  app.post("/api/owner/inspect-token", async (req: Request, res: Response) => {
+    const { key } = req.body as { key?: string };
+    const ownerCode = process.env.OWNER_MAGIC_CODE || ENV.ownerMagicCode;
+    if (!key || !ownerCode || key !== ownerCode) {
+      return res.status(403).json({ error: "Ungültiger Schlüssel" });
+    }
+    // JWT mit 72h Ablauf + inspect-Rolle
+    const { SignJWT } = await import("jose");
+    const secret = new TextEncoder().encode(process.env.JWT_SECRET || ENV.cookieSecret || "inspect-secret");
+    const expiresAt = Date.now() + 72 * 60 * 60 * 1000;
+    const token = await new SignJWT({ role: "inspect", expiresAt })
+      .setProtectedHeader({ alg: "HS256" })
+      .setExpirationTime("72h")
+      .setIssuedAt()
+      .sign(secret);
+    console.log("[Owner] Inspect-Token erstellt, läuft ab:", new Date(expiresAt).toLocaleString("de-DE"));
+    return res.json({ token, expiresAt });
+  });
+
+  // GET /api/owner/inspect/:token → einloggen als Read-Only
+  app.get("/api/owner/inspect/:token", async (req: Request, res: Response) => {
+    const { token } = req.params;
+    try {
+      const { jwtVerify } = await import("jose");
+      const secret = new TextEncoder().encode(process.env.JWT_SECRET || ENV.cookieSecret || "inspect-secret");
+      const { payload } = await jwtVerify(token, secret);
+      if (payload.role !== "inspect") throw new Error("Falsche Rolle");
+      // Als Inspect-User einloggen — spezieller openId
+      const inspectId = `inspect:${token.slice(0, 8)}`;
+      const sessionToken = await createSessionToken(inspectId, "Vorschau-Besucher");
+      const { getSessionCookieOptions } = await import("./_core/cookies");
+      const cookieOptions = getSessionCookieOptions(req);
+      res.cookie("app_session_id", sessionToken, { ...cookieOptions, maxAge: 72 * 60 * 60 * 1000 });
+      // Inspect-Token auch als Cookie setzen (für Banner)
+      res.cookie("inspect_mode", token.slice(0, 16), { httpOnly: false, sameSite: "strict", maxAge: 72 * 60 * 60 * 1000 });
+      return res.redirect("/dashboard");
+    } catch (e: any) {
+      console.log("[Owner] Inspect-Token ungültig:", e.message);
+      return res.status(403).send(`
+        <html><body style="font-family:Arial;padding:40px;text-align:center">
+          <h2 style="color:#dc2626">Link abgelaufen oder ungültig</h2>
+          <p>Bitte einen neuen Inspect-Link anfordern.</p>
+        </body></html>
+      `);
+    }
+  });

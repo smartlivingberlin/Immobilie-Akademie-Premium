@@ -13,6 +13,43 @@ interface DashboardStats {
 }
 
 export default function OwnerDashboard() {
+  // Inspect-Token Generator
+  const [inspectToken, setInspectToken] = useState<string | null>(null);
+  const [inspectExpiry, setInspectExpiry] = useState<string | null>(null);
+  const [inspectLoading, setInspectLoading] = useState(false);
+  const [inspectCopied, setInspectCopied] = useState(false);
+  const OWNER_CODE = "OWNER-3875C3D02394C47C89E21848";
+  const BASE_URL = window.location.origin;
+
+  const createInspectLink = async () => {
+    setInspectLoading(true);
+    try {
+      const res = await fetch("/api/owner/inspect-token", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ key: OWNER_CODE }),
+      });
+      const data = await res.json();
+      if (data.token) {
+        setInspectToken(data.token);
+        const exp = new Date(data.expiresAt).toLocaleString("de-DE");
+        setInspectExpiry(exp);
+      }
+    } catch(e) {
+      console.error("Inspect-Token Fehler:", e);
+    } finally {
+      setInspectLoading(false);
+    }
+  };
+
+  const copyInspectLink = () => {
+    if (!inspectToken) return;
+    const link = `${BASE_URL}/inspect/${inspectToken}`;
+    navigator.clipboard.writeText(link);
+    setInspectCopied(true);
+    setTimeout(() => setInspectCopied(false), 2000);
+  };
+
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [actionMsg, setActionMsg] = useState("");
@@ -171,6 +208,56 @@ export default function OwnerDashboard() {
           </table>
         </div>
       </div>
+
+      {/* === INSPECT-LINK GENERATOR === */}
+      <div style={{background:"#1e1b4b",border:"1px solid #4338ca",borderRadius:12,padding:"20px 24px",marginTop:24}}>
+        <h3 style={{color:"#a5b4fc",fontSize:16,fontWeight:600,marginBottom:4}}>
+          🔍 72h Inspect-Link Generator
+        </h3>
+        <p style={{color:"#6366f1",fontSize:12,marginBottom:16}}>
+          Erstelle einen temporären Link für Investoren, Partner oder Tester — sie sehen alles, können aber nichts ändern.
+        </p>
+
+        {!inspectToken ? (
+          <button
+            onClick={createInspectLink}
+            disabled={inspectLoading}
+            style={{background:"#4338ca",color:"white",border:"none",padding:"10px 20px",
+                    borderRadius:8,fontSize:13,fontWeight:600,cursor:"pointer"}}>
+            {inspectLoading ? "⏳ Erstelle Link..." : "🔑 72h Inspect-Link erstellen"}
+          </button>
+        ) : (
+          <div>
+            <div style={{background:"#312e81",borderRadius:8,padding:"12px 14px",marginBottom:10}}>
+              <div style={{color:"#c7d2fe",fontSize:11,marginBottom:6,fontWeight:500}}>
+                🔗 Inspect-Link (gültig bis {inspectExpiry}):
+              </div>
+              <div style={{color:"#a5b4fc",fontSize:11,wordBreak:"break-all",fontFamily:"monospace",lineHeight:1.6}}>
+                {window.location.origin}/inspect/{inspectToken.slice(0,40)}...
+              </div>
+            </div>
+            <div style={{display:"flex",gap:8}}>
+              <button
+                onClick={copyInspectLink}
+                style={{background: inspectCopied ? "#065f46" : "#4338ca",color:"white",
+                        border:"none",padding:"8px 16px",borderRadius:8,fontSize:12,
+                        fontWeight:600,cursor:"pointer"}}>
+                {inspectCopied ? "✅ Kopiert!" : "📋 Link kopieren"}
+              </button>
+              <button
+                onClick={() => { setInspectToken(null); setInspectExpiry(null); }}
+                style={{background:"transparent",color:"#6366f1",border:"1px solid #4338ca",
+                        padding:"8px 16px",borderRadius:8,fontSize:12,cursor:"pointer"}}>
+                🔄 Neuen Link
+              </button>
+            </div>
+            <p style={{color:"#6366f1",fontSize:11,marginTop:8}}>
+              ⚠️ Link gilt 72 Stunden · Besucher sehen alle Bereiche · Keine Änderungen möglich
+            </p>
+          </div>
+        )}
+      </div>
+
     </div>
   );
 }
