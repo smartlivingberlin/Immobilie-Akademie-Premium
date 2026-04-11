@@ -86,7 +86,7 @@ export function registerOwnerRoutes(app: Express) {
     <p>Portal wird geladen...</p>
   </div>
   <script>
-    setTimeout(() => { window.location.href = "/statistiken"; }, 1500);
+    setTimeout(() => { window.location.href = "/kurse"; }, 1500);
   </script>
 </body>
 </html>`);
