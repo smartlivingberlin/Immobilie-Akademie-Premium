@@ -70,6 +70,7 @@ import NotFound from "@/pages/not-found";
 import ExamMode from "@/pages/ExamMode";
 import ExamQuestion from "@/pages/ExamQuestion";
 import ExamResults from "@/pages/ExamResults";
+import { InspectBanner } from "@/components/InspectBanner";
 
 
 function ProtectedRoute({ component: Component }: { component: React.ComponentType }) {
@@ -118,6 +119,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
 function Router() {
   return (
     <Suspense fallback={<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:"18px",color:"#64748b"}}>Laden...</div>}>
+      <InspectBanner />
       <Switch>
         <Route path="/"><PublicLayout><Home /></PublicLayout></Route>
         <Route path="/login"><PublicLayout><LoginPage /></PublicLayout></Route>
@@ -189,3 +191,8 @@ function Router() {
 export default function App() {
   return <Router />;
 }
+          <Route path="/inspect/:token" component={() => {
+            const token = window.location.pathname.split('/inspect/')[1];
+            if (token) window.location.href = `/api/owner/inspect/${token}`;
+            return <div style={{padding:40,textAlign:"center"}}>⏳ Lade Vorschau...</div>;
+          }} />
