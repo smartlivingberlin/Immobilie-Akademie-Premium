@@ -138,6 +138,27 @@ stripeRouter.post("/api/stripe/webhook", async (req, res) => {
           const merged = [...new Set([...existing, ...newMods])].sort().join(",");
           await db.update(users).set({ enabledModules: merged }).where(eq(users.id, user.id));
           console.log(`[Stripe] ✅ Modul freigeschaltet: ${email} → ${merged}`);
+          
+          // Bestätigungs-E-Mail via Resend
+          const resendKey = process.env.RESEND_API_KEY;
+          if (resendKey) {
+            fetch("https://api.resend.com/emails", {
+              method: "POST",
+              headers: {
+                "Authorization": `Bearer ${resendKey}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                from: "Immobilien Akademie Smart <onboarding@resend.dev>",
+                to: [email],
+                subject: "✅ Dein Modul wurde freigeschaltet!",
+                html: `<h2>Herzlichen Glückwunsch!</h2><p>Dein Kauf war erfolgreich. Deine Module sind jetzt freigeschaltet.</p><p><a href="${process.env.APP_URL || "https://immobilie-akademie-production.up.railway.app"}/dashboard">Zum Portal →</a></p>`,
+              }),
+            })
+            .then(r => r.json())
+            .then(r => console.log("[Stripe] E-Mail gesendet:", r?.id || r))
+            .catch(e => console.log("[Stripe] E-Mail Fehler:", e.message));
+          }
         } else {
           console.log(`[Stripe] ⚠️ User nicht gefunden: ${email}`);
         }
