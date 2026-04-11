@@ -136,6 +136,34 @@ app.use("/api/auth/register", loginLimiter);
   const server = createServer(app);
   // Configure body parser with larger size limit for file uploads
   app.use(cookieParser());
+
+  // Inspect-Modus: schreibende Operationen blockieren
+  app.use((req, res, next) => {
+    const isInspect = req.cookies?.inspect_mode === "1";
+    if (!isInspect) return next();
+    
+    // GET/HEAD erlauben, POST/PUT/DELETE/PATCH für kritische Routen blockieren
+    if (req.method === "GET" || req.method === "HEAD") return next();
+    
+    const blocked = [
+      "/api/stripe/checkout",  // kein echter Kauf
+      "/api/admin",            // keine Admin-Änderungen
+      "/api/users",            // keine User-Änderungen  
+      "/api/auth/register",    // keine Registrierung
+      "/api/codes",            // keine Codes erstellen
+      "/api/owner/inspect-token", // kein neuer Token
+    ];
+    
+    const isBlocked = blocked.some(b => req.path.startsWith(b));
+    if (isBlocked) {
+      return res.status(403).json({ 
+        error: "Vorschau-Modus — diese Aktion ist deaktiviert",
+        inspect: true 
+      });
+    }
+    next();
+  });
+
 app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
   // OAuth callback (Manus) – nur wenn OAUTH_SERVER_URL konfiguriert
