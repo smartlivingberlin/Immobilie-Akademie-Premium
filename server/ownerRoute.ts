@@ -35,7 +35,7 @@ export function registerOwnerRoutes(app: Express) {
       return res.status(403).json({ error: "Ungültiger Schlüssel" });
     }
     const { SignJWT } = await import("jose");
-    const secret = new TextEncoder().encode(process.env.JWT_SECRET || ENV.cookieSecret || "inspect-secret");
+    const secret = new TextEncoder().encode("immobilien-akademie-inspect-2026");
     const expiresAt = Date.now() + 72 * 60 * 60 * 1000;
     const inspectToken = await new SignJWT({ role: "inspect", expiresAt })
       .setProtectedHeader({ alg: "HS256" })
@@ -50,7 +50,7 @@ export function registerOwnerRoutes(app: Express) {
     const { token } = req.params;
     try {
       const { jwtVerify } = await import("jose");
-      const secret = new TextEncoder().encode(process.env.JWT_SECRET || ENV.cookieSecret || "inspect-secret");
+      const secret = new TextEncoder().encode("immobilien-akademie-inspect-2026");
       const { payload } = await jwtVerify(token, secret);
       if ((payload as any).role !== "inspect") throw new Error("Falsche Rolle");
       // Benutze EXAKT denselben Mechanismus wie /owner — bewährt!
