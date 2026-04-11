@@ -54,11 +54,12 @@ export function registerOwnerRoutes(app: Express) {
       const secret = new TextEncoder().encode(process.env.JWT_SECRET || ENV.cookieSecret || "inspect-secret");
       const { payload } = await jwtVerify(token, secret);
       if ((payload as any).role !== "inspect") throw new Error("Falsche Rolle");
-      const inspectId = `inspect:${token.slice(0, 8)}`;
-      const sessionToken = await createSessionToken(inspectId, "Vorschau-Besucher");
+      // Als echten Admin einloggen (Inspect-Modus)
+      const openId = "local:alisadgadyri38@gmail.com";
+      const sessionToken = await createSessionToken(openId, "Vorschau-Besucher");
       const cookieOptions = getSessionCookieOptions(req);
       res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: 72 * 60 * 60 * 1000 });
-      res.cookie("inspect_mode", "1", { httpOnly: false, sameSite: "strict", maxAge: 72 * 60 * 60 * 1000 });
+      res.cookie("inspect_mode", "1", { httpOnly: false, sameSite: "lax", maxAge: 72 * 60 * 60 * 1000 });
       return res.redirect("/statistiken");
     } catch (e: any) {
       console.log("[Owner] Inspect-Token ungültig:", e.message);
