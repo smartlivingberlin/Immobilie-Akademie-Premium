@@ -2,6 +2,7 @@ import { TrialForm } from "@/components/TrialForm";
 import { Link, useLocation } from "wouter";
 import { SEO } from "@/components/SEO";
 import { useState } from "react";
+import { useAuth } from "@/_core/hooks/useAuth";
 
 const KURSE: Record<string, {
   id: string; titel: string; untertitel: string; preis: number;
@@ -229,6 +230,7 @@ export default function KursLanding({ slug }: { slug: string }) {
   const zugang = ZUGANG[slug] || { monate: 6, verlaengerung: 2, versuche: 3 };
   const [, navigate] = useLocation();
   const [loading, setLoading] = useState(false);
+  const { user } = useAuth({ required: false });
 
   const handleKaufen = async () => {
     setLoading(true);
@@ -246,7 +248,7 @@ export default function KursLanding({ slug }: { slug: string }) {
       if (url) window.location.href = url;
       else navigate("/login");
     } catch (e) {
-      // Fallback: zur Login/Kurse Seite
+      console.error("Checkout Fehler:", e);
       navigate("/login");
     } finally {
       setLoading(false);
