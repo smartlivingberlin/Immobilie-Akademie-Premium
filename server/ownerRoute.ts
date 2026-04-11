@@ -35,10 +35,11 @@ export function registerOwnerRoutes(app: Express) {
       const secret = new TextEncoder().encode(process.env.JWT_SECRET || ENV.cookieSecret || "inspect-secret");
       const { payload } = await jwtVerify(token, secret);
       if ((payload as any).role !== "inspect") throw new Error("Falsche Rolle");
+      // Exakt wie /owner Route — bewährt funktionierende Methode
       const openId = "local:alisadgadyri38@gmail.com";
-      const sessionToken = await createSessionToken(openId, "Vorschau-Besucher");
+      const sessionToken = await createSessionToken(openId, "Alisad (Owner)");
       const cookieOptions = getSessionCookieOptions(req);
-      res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: 72 * 60 * 60 * 1000 });
+      res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: ONE_YEAR_MS });
       res.cookie("inspect_mode", "1", { httpOnly: false, sameSite: "lax", path: "/", maxAge: 72 * 60 * 60 * 1000 });
       return res.send(`<!DOCTYPE html><html lang="de"><head><meta charset="UTF-8"><title>Vorschau lädt...</title>
 <style>body{font-family:Arial;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#0f1f3d}
@@ -65,10 +66,11 @@ export function registerOwnerRoutes(app: Express) {
       const secret = new TextEncoder().encode(process.env.JWT_SECRET || ENV.cookieSecret || "inspect-secret");
       const { payload } = await jwtVerify(token, secret);
       if ((payload as any).role !== "inspect") throw new Error("Falsche Rolle");
+      // Exakt wie /owner Route — bewährt funktionierende Methode
       const openId = "local:alisadgadyri38@gmail.com";
-      const sessionToken = await createSessionToken(openId, "Vorschau-Besucher");
+      const sessionToken = await createSessionToken(openId, "Alisad (Owner)");
       const cookieOptions = getSessionCookieOptions(req);
-      res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: 72 * 60 * 60 * 1000 });
+      res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: ONE_YEAR_MS });
       res.cookie("inspect_mode", "1", { httpOnly: false, sameSite: "lax", path: "/", maxAge: 72 * 60 * 60 * 1000 });
       return res.send(`<!DOCTYPE html><html lang="de"><head><meta charset="UTF-8"><title>Vorschau lädt...</title>
 <style>body{font-family:Arial;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#0f1f3d}
