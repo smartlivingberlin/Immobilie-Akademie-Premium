@@ -60,7 +60,7 @@ export function registerOwnerRoutes(app: Express) {
       const cookieOptions = getSessionCookieOptions(req);
       res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: 72 * 60 * 60 * 1000 });
       res.cookie("inspect_mode", "1", { httpOnly: false, sameSite: "lax", maxAge: 72 * 60 * 60 * 1000 });
-      return res.redirect("/statistiken");
+      return res.redirect("/");
     } catch (e: any) {
       console.log("[Owner] Inspect-Token ungültig:", e.message);
       return res.status(403).send(`<html><body style="font-family:Arial;padding:40px;text-align:center"><h2 style="color:#dc2626">Link abgelaufen</h2><p>Bitte einen neuen Link anfordern.</p></body></html>`);
