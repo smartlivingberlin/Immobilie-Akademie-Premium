@@ -236,7 +236,10 @@ export default function KursLanding({ slug }: { slug: string }) {
       const res = await fetch("/api/stripe/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ productId: kurs.id }),
+        body: JSON.stringify({ 
+          productId: kurs.id,
+          userEmail: user?.email || "",
+        }),
       });
       if (!res.ok) throw new Error("Checkout fehlgeschlagen");
       const { url } = await res.json();
