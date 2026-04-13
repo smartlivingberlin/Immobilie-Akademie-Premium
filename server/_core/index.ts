@@ -143,7 +143,8 @@ app.use("/api/auth/register", loginLimiter);
       origin.startsWith('http://localhost') ||
       origin.startsWith('http://127.0.0.1') ||
       origin.includes('.railway.app') ||
-      origin.includes('immobilien-akademie');
+      origin.includes('immobilien-akademie') ||
+      origin.includes('netlify.app');
     if (allowed || !origin) {
       res.setHeader('Access-Control-Allow-Origin', origin || '*');
       res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
