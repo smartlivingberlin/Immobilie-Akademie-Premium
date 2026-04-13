@@ -1032,6 +1032,7 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
   day_29: {
     title: "Schimmel & Feuchtigkeit",
     theory: "Schimmel ist eines der häufigsten Streitthemen zwischen Verwalter und Bewohnern. Die Ursachenermittlung ist entscheidend für die Haftungsfrage.",
+    extendedTheory: `Schimmel und Feuchtigkeit gehoeren zu den haeufigsten Streitthemen in der WEG-Verwaltung. Ursachen koennen baubedingter (Waermebruecken, undichte Daecker) oder nutzungsbedingter Art (mangelndes Lueften) sein. Der WEG-Verwalter muss gemaess Para 19 WEG Sofortmassnahmen einleiten, einen Sachverstaendigen beauftragen und die Eigentuemerversammlung informieren. Beweislast: Der Vermieter muss die bauliche Mangelfreiheit nachweisen (BGH). Relevante Normen: Para 536 BGB (Mietminderung), Para 19 WEG (Ordnungsgerechte Verwaltung), DIN EN ISO 13788 (Schimmelrisiko). Vorgehen: Dokumentation, Ursachenanalyse, Information, Sanierungsangebot (min. 3 Angebote), Beschluss in ETV, Durchfuehrung.`,
     law: [
       "[§ 536 BGB](https://www.gesetze-im-internet.de/bgb/__536.html) (Mangel)",
       "[DIN 4108](https://www.din.de/) (Wärmeschutz)"
@@ -1061,6 +1062,7 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
   day_30: {
     title: "Praxisprojekt: Instandhaltungsplan",
     theory: "Ein langfristiger Instandhaltungsplan ist das zentrale Instrument zur Werterhaltung und Kostenkontrolle. Er sollte alle 5 Jahre aktualisiert werden.",
+    extendedTheory: `Der Instandhaltungsplan ist ein zentrales Instrument professioneller WEG-Verwaltung gemaess Para 19 Abs. 2 Nr. 4 WEG. Er schuetzt vor Wertverfall, Haftungsrisiken und ueberraschenden Sonderumlagen. Aufbau: Bauteil-Inventar mit Nutzungsdauern, Inspektionsintervallen und Kostenplanung. Ruecklagenberechnung nach Peters-Formel: Jahresruecklage = (Herstellungskosten mal 0,8) geteilt durch Nutzungsdauer. Beispiel Dach 80.000 Euro, 40 Jahre Nutzungsdauer = 2.000 Euro pro Jahr. Regelmaessige Gebaeudebegehungen (jaehrlich empfohlen), Dokumentation aller Massnahmen, Abstimmung mit Eigentuemerversammlung bei groesseren Projekten.`,
     law: [
       "[§ 19 WEG](https://www.gesetze-im-internet.de/woeigg/__19.html) (Ordnungsmäßige Verwaltung)"
     ],
@@ -1092,6 +1094,7 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
   day_31: {
     title: "Verwalter-Software & ERP-Systeme",
     theory: "Moderne Verwaltungssoftware ist unverzichtbar für effiziente Prozesse. Die Auswahl der richtigen Software entscheidet über Produktivität und Fehlerquote.",
+    extendedTheory: `Moderne Verwaltungssoftware ist unverzichtbar fuer effizientes WEG-Management. Fuehrende Systeme: DOMUS, Immoware24, Karthago, PowerHaus, Hausverwaltung Plus. Pflichtfunktionen: Buchhaltung (Hausgeld, Jahresabrechnung, Wirtschaftsplan), Dokumentenmanagement (DSGVO-konform), Eigentuemerportal, Fristenmanagement. DSGVO-Anforderungen: Auftragsverarbeitungsvertrag (AVV) nach Art. 28 DSGVO abschliessen, Datenspeicherung auf EU-Servern, Zugriffsrechte protokollieren, Loeschfristen definieren. Implementierung: 3-6 Monate fuer Migration planen, Datenuebertragung pruefen, Mitarbeiter schulen.`,
     law: [
       "[GoBD](https://www.bundesfinanzministerium.de/) (Grundsätze ordnungsmäßiger Buchführung)"
     ],
@@ -1120,6 +1123,7 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
   day_32: {
     title: "Datenschutz & DSGVO im Alltag",
     theory: "Verwalter verarbeiten täglich personenbezogene Daten. Verstöße gegen die DSGVO können Bußgelder bis 20 Mio. € nach sich ziehen.",
+    extendedTheory: `Der WEG-Verwalter verarbeitet taeglich personenbezogene Daten: Namen, Adressen, Bankverbindungen, Abstimmungsverhalten. Rechtsgrundlagen: Art. 6 Abs. 1 lit. b DSGVO (Vertragserfuellung), Art. 6 Abs. 1 lit. c DSGVO (gesetzliche Verpflichtung), Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse). Pflichten: Verarbeitungsverzeichnis fuehren (Art. 30 DSGVO), Datenschutzhinweise an Eigentuemer (Art. 13 DSGVO), AVV mit Softwareanbietern, technisch-organisatorische Massnahmen (TOM), Datenpannen melden (Art. 33 DSGVO, 72h-Frist). ETV-Besonderheit: Anwesenheitsliste nur fuer Protokollzwecke, Einzelabstimmungen nur bei gesetzlicher Pflicht offenlegen.`,
     law: [
       "[DSGVO Art. 13, 15, 28](https://dsgvo-gesetz.de/)",
       "[BDSG](https://www.gesetze-im-internet.de/bdsg_2018/)"
@@ -1149,6 +1153,7 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
   day_33: {
     title: "Digitale Eigentümerversammlung",
     theory: "Seit 2020 sind hybride und reine Online-Versammlungen möglich. Die technische Umsetzung erfordert sorgfältige Planung.",
+    extendedTheory: `Seit der WEG-Reform 2020 ermoeglichen Para 23 Abs. 1 Satz 2 WEG volldigitale Eigentuemer-versammlungen. Drei Formate: Praesenz (Standard), Hybrid (Beschluss empfohlen), Volldigital (Zustimmung aller Eigentuemer). Technische Anforderungen: Sichere Plattform (Zoom, Teams), manipulationssichere Abstimmungstools, digitales Protokoll, sichere Zugangsdatenverteilung. Aufzeichnung nur mit Einwilligung aller Teilnehmer (DSGVO). Umlaufbeschluss (Para 23 Abs. 3 WEG): Seit 2020 per E-Mail moeglich, Einstimmigkeit erforderlich. Praxisempfehlung: Hybride ETV als Kompromiss - Teilnahme vor Ort und digital ohne Einstimmigkeitserfordernis.`,
     law: [
       "[§ 23 Abs. 1a WEG](https://www.gesetze-im-internet.de/woeigg/__23.html) (Online-Versammlung)"
     ],
@@ -1177,6 +1182,7 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
   day_34: {
     title: "Prozessoptimierung & Zeitmanagement",
     theory: "Verwalter jonglieren täglich mit Dutzenden Aufgaben. Systematisches Zeitmanagement und standardisierte Prozesse sind erfolgsentscheidend.",
+    extendedTheory: `Prozessoptimierung steigert die Effizienz in der WEG-Verwaltung erheblich. Groesste Zeitfresser: Manuelle Buchungen, telefonische Standardauskuenfte, Papierkorrespondenz, reaktives Stoerungsmanagement. Lean-Prinzipien: Verschwendung identifizieren (unnoetige Berichte, Wartezeiten, Mehrfachpruefungen) und eliminieren. Digitale Tools: Aufgabenmanagement (Asana, Trello), Eigentuemerportal (reduziert Telefonanfragen um 60 Prozent), E-Signatur fuer Verwaltervertraege, automatische Wiedervorlagen. Zeitplanung: 60 Prozent geplante Arbeit, 20 Prozent Reaktionszeit, 20 Prozent strategische Entwicklung. Klare Erreichbarkeitszeiten kommunizieren.`,
     law: [
       "Keine spezifischen Gesetze - Management-Theorie"
     ],
@@ -1205,6 +1211,7 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
   day_35: {
     title: "Mietrecht Spezial: Gewerbemietrecht",
     theory: "Gewerbemietrecht unterscheidet sich fundamental vom Wohnraummietrecht. Die Vertragsfreiheit ist deutlich größer, aber auch die Risiken.",
+    extendedTheory: `Das Gewerbemietrecht (Para 535 ff. BGB) ist weitgehend dispositiv - Vertragsparteien koennen fast alles frei vereinbaren. Schriftform zwingend (Para 550 BGB bei Laufzeit ueber 1 Jahr). Wesentliche Unterschiede zu Wohnraummietrecht: Keine gesetzliche Mietpreisbremse, Kaution unbegrenzt, Schoenheitsreparaturen uebertragbar, schwacher Kuendigungsschutz. Wichtige Klauseln: Indexmiete (VPI-Koppelung), Wertsicherungsklausel, Konkurrenzschutzklausel, Betriebspflicht, Rueckbaupflicht. Kuendigung: Para 580a BGB, zum Quartalsende mit 6 Monaten Vorlauf. Ausserordentliche Kuendigung bei wichtigem Grund (Para 543 BGB).`,
     law: [
       "[§ 578 BGB](https://www.gesetze-im-internet.de/bgb/__578.html) (Mietverhältnisse über Grundstücke und Räume)"
     ],
@@ -1233,6 +1240,7 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
   day_36: {
     title: "Mietrecht Spezial: Möbliertes Wohnen",
     theory: "Möbliertes Wohnen liegt im Trend (Studenten, Expats, Pendler). Die rechtliche Einordnung ist komplex.",
+    extendedTheory: `Moeblierte Vermietung unterliegt den allgemeinen Mietrechtsvorschriften (Para 535 ff. BGB) mit Besonderheiten. Moebliierungszuschlag: Zusaetzlich zur Kaltmiete zulaessig, separat ausweisen (Mietpreisbremse!), empfohlen 1-3 Prozent des Inventarwerts pro Monat. Mietpreisbremse gilt auch fuer moeblierte Wohnungen in angespannten Maerkten, Zuschlag jedoch separat zulaessig. Zeitmietvertrag (Para 575 BGB): Nur bei Eigenbedarf, konkretem Umbauplan oder Mitarbeitervermietung zulaessig. Inventarliste: Detaillierte Erfassung aller Gegenstaende mit Fotos bei Ein- und Auszug, normaler Verschleiss ist einzukalkulieren.`,
     law: [
       "[§ 549 BGB](https://www.gesetze-im-internet.de/bgb/__549.html) (Ausnahmen Kündigungsschutz)",
       "[§ 573a BGB](https://www.gesetze-im-internet.de/bgb/__573a.html) (Kündigungssperrfrist)"
@@ -1262,6 +1270,7 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
   day_37: {
     title: "Mietrecht Spezial: Öffentlich gefördert",
     theory: "Öffentlich geförderter Wohnraum unterliegt besonderen Bindungen. Die Kostenmiete ist gesetzlich gedeckelt.",
+    extendedTheory: `Oeffentlich gefoerderter Wohnungsbau unterliegt neben Mietrecht zusaetzlichen oeffentlich-rechtlichen Bindungen. Belegungsbindung: Nur Mieter mit Wohnberechtigungsschein (WBS), Einkommensgrenzen nach Bundesland. Mietpreisbindung: Kostenmiete (tatsaechliche Kosten) statt Marktmiete, Erhoehungen nur nach Para 10 WoBindG. Wohnberechtigungsschein: Einkommensgrenzen variieren je Bundesland, Gueltigkeit 1 Jahr. Auslaufende Bindungen: Soziale Bindungen laufen nach 15-40 Jahren aus, danach gelten normale Marktmietregeln. Verwalter muessen Bindungsfristen im Blick halten und Eigentuemer rechtzeitig informieren.`,
     law: [
       "[WoBindG](https://www.gesetze-im-internet.de/wobindg/) (Wohnungsbindungsgesetz)",
       "II. BV (Zweite Berechnungsverordnung)"
@@ -1291,6 +1300,7 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
   day_38: {
     title: "Mietrecht Spezial: Staffel- & Indexmiete",
     theory: "Staffel- und Indexmiete ermöglichen planbare Mieterhöhungen ohne Begründung. Die Vertragsgestaltung muss präzise sein.",
+    extendedTheory: `Staffelmiete (Para 557a BGB): Mieterhoeungen im Voraus festgelegt, Mindeststabstand 12 Monate zwischen Stufen, schriftliche Vereinbarung erforderlich, kein Para 558 BGB-Erhoehungsverlangen waehrend Laufzeit. Beispiel: Jahr 1 = 900 Euro, Jahr 2 = 950 Euro, Jahr 3 = 1000 Euro. Indexmiete (Para 557b BGB): Koppelung an Verbraucherpreisindex (VPI) des Statistischen Bundesamts, Anpassung fruestens nach 1 Jahr, schriftliche Vereinbarung, ebenfalls kein Para 558 BGB moeglich. Berechnung: Neue Miete = Alte Miete mal (neuer VPI dividiert durch alter VPI). Beide Formen: Mietpreisbremse bei Neuvermietung beachten, Ausgangsmiete max. 10 Prozent ueber ortsueblicherVergleichsmiete.`,
     law: [
       "[§ 557a BGB](https://www.gesetze-im-internet.de/bgb/__557a.html) (Staffelmiete)",
       "[§ 557b BGB](https://www.gesetze-im-internet.de/bgb/__557b.html) (Indexmiete)"
@@ -1320,6 +1330,7 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
   day_39: {
     title: "Konfliktmanagement: Eigentümer vs. Eigentümer",
     theory: "Konflikte in der WEG sind unvermeidlich. Der Verwalter muss neutral vermitteln und Eskalationen verhindern.",
+    extendedTheory: `Typische Konfliktursachen in der WEG: Laermbelaestigung, Nutzung von Gemeinschaftsflaechen, bauliche Veraenderungen ohne Genehmigung (Para 20 WEG), Kostenteilung, Haustierhaltung. Rolle des Verwalters: Neutral bleiben, sachlich informieren, Kommunikation ermoeglichen, dokumentieren, Eskalation vermeiden. Konfliktloesungsebenen: 1. Direkte Ansprache durch Verwalter, 2. Mediation durch Dritten, 3. Ausserordentliche ETV (Para 24 WEG), 4. Beschlussklage beim Amtsgericht (Para 44 WEG), 5. Entziehung des Wohnungseigentums (Para 17 WEG - letztes Mittel). Praevention: Klare Hausordnung per ETV-Beschluss mit Regelungen zu Ruhezeiten, Muell, Gemeinschaftsflaechen.`,
     law: [
       "[§ 14 WEG](https://www.gesetze-im-internet.de/woeigg/__14.html) (Gemeinschaftliches Eigentum)",
       "[§ 15 WEG](https://www.gesetze-im-internet.de/woeigg/__15.html) (Sondereigentum)"
@@ -1349,6 +1360,7 @@ Seit 2021 gilt in allen Bundesländern die Rauchwarnmelderpflicht für Wohnungen
   day_40: {
     title: "Abschluss Block 2: Prüfungsvorbereitung WEG",
     theory: "Zusammenfassung der Wochen 5-8. Wiederholung der wichtigsten Themen: Technik, EDV, Mietrecht Spezial.",
+    extendedTheory: `Pruefungsvorbereitung WEG-Verwaltung: Die 10 wichtigsten Paragraphen - Para 1 WEG (Begriff), Para 10 WEG (Grundsaetze), Para 16 WEG (Nutzungen und Kosten), Para 18 WEG (Verwaltung), Para 19 WEG (Ordnungsgerechte Verwaltung), Para 20 WEG (Bauliche Veraenderungen), Para 23 WEG (ETV), Para 24 WEG (Einberufung), Para 26 WEG (Verwalterbestellung), Para 28 WEG (Wirtschaftsplan). Haeufige Pruefungsfragen: Sonder- vs Gemeinschaftseigentum, Voraussetzungen bauliche Veraenderungen, ETV-Ablauf und Fristen, Hausgeldberechnung, Verwalterrechte und -pflichten. Lernstrategie: Para 1-20 Grundstruktur, Para 21-35 Verwaltung, Abrechnungen ueben, Pruefungssimulation.`,
     law: [
       "Alle relevanten Gesetze aus Tag 21-39"
     ],
