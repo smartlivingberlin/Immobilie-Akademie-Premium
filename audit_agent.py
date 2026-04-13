@@ -175,13 +175,26 @@ def extract_days(filepath):
             if not m: return []
             return re.findall(r'"([^"]+)"', m.group(1))
         
+        # Theory: Backtick oder Quote
+        theory_raw = get_field("theory") or ""
+        # Backtick theory (längerer Text)
+        bt_m = re.search(r'theory:\s*`([\s\S]*?)`', block)
+        if bt_m and len(bt_m.group(1).strip()) > len(theory_raw):
+            theory_raw = bt_m.group(1).strip()[:500]
+        
+        # Normen: norms[] oder law[] 
+        norms_list = get_array("norms")
+        law_list = get_array("law")
+        all_norms = norms_list or law_list
+        
         day = {
             "day": day_num,
             "title": get_field("title"),
-            "theory": get_field("theory"),
+            "theory": theory_raw,
             "extended": get_field("extendedTheory")[:800],
             "task": get_field("task"),
-            "norms": get_array("norms"),
+            "norms": all_norms,
+            "law": law_list,
             "examples": get_array("examples"),
             "keywords": get_array("keywords"),
         }
@@ -225,9 +238,10 @@ def static_check(day, module):
         issues.append(f"⚠️ Theorie zu kurz ({len(day.get('theory',''))} Zeichen, min. 200)")
         score -= 10
     
-    # Keine Normen
+    # Keine Normen (norms: oder law: Feld)
     no_norm = NO_NORM_DAYS.get(module, [])
-    if not day.get("norms") and day["day"] not in no_norm:
+    has_any_norms = bool(day.get("norms") or day.get("law"))
+    if not has_any_norms and day["day"] not in no_norm:
         # Auto-detect welche Normen passen
         title_lower = day.get("title", "").lower()
         ext_lower = day.get("extended", "").lower()

@@ -27,7 +27,7 @@ Der Vertrag wird zwischen dem Eigentümer (Auftraggeber) und dem Verwalter gesch
 *   **Miete:** Nettokaltmiete + Vorauszahlungen/Pauschalen.
 `,
     law: [
-      "§ 535 BGB (Inhalt und Hauptpflichten des Mietvertrags)",
+      "[§ 535 BGB](https://www.gesetze-im-internet.de/bgb/__535.html) (Inhalt und Hauptpflichten des Mietvertrags)",
       "§ 550 BGB (Form des Mietvertrags)",
       "§ 675 BGB (Entgeltliche Geschäftsbesorgung)"
     ],
@@ -87,7 +87,7 @@ Die Abrechnung muss dem Mieter spätestens bis zum Ablauf des zwölften Monats n
 *   Heizkosten: Zwingend nach HeizkostenV (meist 50-70% Verbrauch, Rest Fläche).
 `,
     law: [
-      "§ 556 BGB (Vereinbarungen über Betriebskosten)",
+      "[§ 556 BGB](https://www.gesetze-im-internet.de/bgb/__556.html) (Vereinbarungen über Betriebskosten)",
       "Betriebskostenverordnung (BetrKV)",
       "Heizkostenverordnung (HeizkostenV)"
     ],
@@ -185,8 +185,8 @@ Vermieter können die Miete nicht willkürlich erhöhen. Es gelten strenge geset
 *   **Index:** Kopplung an den Verbraucherpreisindex (VPI).
 `,
     law: [
-      "§ 558 BGB (Mieterhöhung bis zur ortsüblichen Vergleichsmiete)",
-      "§ 559 BGB (Mieterhöhung nach Modernisierungsmaßnahmen)",
+      "[§ 558 BGB](https://www.gesetze-im-internet.de/bgb/__558.html) (Mieterhöhung bis zur ortsüblichen Vergleichsmiete)",
+      "[§ 559 BGB](https://www.gesetze-im-internet.de/bgb/__559.html) (Mieterhöhung nach Modernisierungsmaßnahmen)",
       "§ 557b BGB (Indexmiete)"
     ],
     practice: `
@@ -252,8 +252,8 @@ Schriftliche Erklärung an den Mieter mit Berechnungsgrundlage. Die neue Miete w
 *   Schlüsselrückgabe.
 `,
     law: [
-      "§ 573 BGB (Ordentliche Kündigung des Vermieters)",
-      "§ 543 BGB (Außerordentliche fristlose Kündigung)",
+      "[§ 573 BGB](https://www.gesetze-im-internet.de/bgb/__573.html) (Ordentliche Kündigung des Vermieters)",
+      "[§ 543 BGB](https://www.gesetze-im-internet.de/bgb/__543.html) (Außerordentliche fristlose Kündigung)",
       "§ 573c BGB (Fristen der ordentlichen Kündigung)"
     ],
     practice: `
@@ -581,8 +581,8 @@ Ein 10-Jahres-Plan für die WEG oder das Mietshaus.
 Abgleich der geplanten Kosten mit der Instandhaltungsrücklage. Ggf. Erhöhung des Hausgeldes oder Sonderumlage einplanen.
 `,
     law: [
-      "§ 19 WEG (Erhaltung und Modernisierung)",
-      "§ 28 WEG (Wirtschaftsplan)"
+      "[§ 19 WEG](https://www.gesetze-im-internet.de/weg/__19.html) (Erhaltung und Modernisierung)",
+      "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) (Wirtschaftsplan)"
     ],
     practice: `
     tasks: [
@@ -704,7 +704,7 @@ Verwalter sind oft Mediatoren zwischen Eigentümern, Mietern und Nachbarn.
 *   **Lösungsorientierung:** "Wie können wir das künftig regeln?" statt "Wer ist schuld?"
 `,
     law: [
-      "§ 14 WEG (Pflichten der Eigentümer)",
+      "[§ 14 WEG](https://www.gesetze-im-internet.de/weg/__14.html) (Pflichten der Eigentümer)",
       "Hausordnung"
     ],
     practice: `
@@ -757,7 +757,7 @@ ETVs können emotional und chaotisch werden. Der Verwalter muss die Versammlung 
 *   **Der Besserwisser:** Fachkompetenz zeigen, aber auch gute Hinweise annehmen.
 `,
     law: [
-      "§ 24 WEG (Einberufung, Vorsitz, Niederschrift)"
+      "[§ 24 WEG](https://www.gesetze-im-internet.de/weg/__24.html) (Einberufung, Vorsitz, Niederschrift)"
     ],
     practice: `
     tasks: [
