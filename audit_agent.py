@@ -317,7 +317,9 @@ def static_check(day, module):
     
     # Stopwords die nicht geprüft werden
     stopwords = {"grundlagen","einführung","berufsfeld","überblick","grundkurs",
-                 "teil","modul","tag","und","der","die","das","für","in","im"}
+                 "teil","modul","tag","und","der","die","das","für","in","im",
+                 "wiederholung","abschluss","zertifikat","zwischentest","prüfungsvorbereitung",
+                 "simulation","spezial","start","praxis","block","deep","dive"}
     
     key_title_words = {w for w in title_lower.split() 
                        if len(w) > 5 and w not in stopwords
