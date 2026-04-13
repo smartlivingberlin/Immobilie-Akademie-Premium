@@ -4178,7 +4178,7 @@ Ein Projektentwickler baut ein Studentenwohnheim (100 Zimmer) aus Modulen. Bauko
         explanation: "Der IHK-Sachkundenachweis ist ein freiwilliger Qualitätsnachweis, der die Kompetenz dokumentiert. Die §34c-Erlaubnis selbst erfordert keinen IHK-Abschluss."
       }
     ],
-    type: "Abschluss"
+    type: "Abschluss",
     task: "Erstellen Sie Ihr persönliches Karriere-Portfolio: Fassen Sie die 10 wichtigsten Erkenntnisse aus Modul 1 zusammen, definieren Sie Ihre Spezialisierung (Makler/Verwalter/Gutachter/Finanzierer) und formulieren Sie 3 SMART-Ziele für die nächsten 6 Monate."
   }
 };
