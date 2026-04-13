@@ -260,6 +260,7 @@ Die Aufsichtsbehörden prüfen streng. Bußgelder beginnen oft bei 10.000 €.
     `,
     law: ["GwG § 2, 10, 11, 43"],
     practice: "Registrieren Sie sich (fiktiv) im 'goAML' Portal der FIU. Das ist Pflicht für jeden Makler!",
+    task: "Erstellen Sie einen GwG-Prüflaufzettel für Ihr Maklerbüro: Wann müssen Sie identifizieren? Welche Dokumente sind erforderlich? Erstellen Sie eine Checkliste für jeden Kundenauftrag.",
     tasks: [
       {
         type: "reflection" as const,
