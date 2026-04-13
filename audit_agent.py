@@ -171,9 +171,18 @@ def extract_days(filepath):
             return ""
         
         def get_array(name):
-            m = re.search(rf'{name}:\s*\[([\s\S]*?)\]', block)
-            if not m: return []
-            return re.findall(r'"([^"]+)"', m.group(1))
+            idx = block.find(f'{name}:')
+            if idx < 0: return []
+            b_start = block.find('[', idx)
+            if b_start < 0: return []
+            depth = 0
+            for i in range(b_start, len(block)):
+                if block[i] == '[': depth += 1
+                elif block[i] == ']':
+                    depth -= 1
+                    if depth == 0:
+                        return re.findall(r'"([^"]+)"', block[b_start+1:i])
+            return []
         
         # Theory: Backtick oder Quote
         theory_raw = get_field("theory") or ""

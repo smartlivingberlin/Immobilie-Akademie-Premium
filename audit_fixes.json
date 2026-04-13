@@ -1,217 +1,5 @@
 [
   {
-    "module": 1,
-    "day": 6,
-    "title": "Einführung in das BGB",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 1 BGB",
-        "§ 104 BGB",
-        "§ 105 BGB",
-        "§ 145 BGB",
-        "§ 241 BGB",
-        "§ 242 BGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 216,
-    "content_len": 800,
-    "source": "Module1Content_Maximal.ts"
-  },
-  {
-    "module": 1,
-    "day": 7,
-    "title": "Sachenrecht & Eigentum",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 1 BGB",
-        "§ 104 BGB",
-        "§ 105 BGB",
-        "§ 145 BGB",
-        "§ 241 BGB",
-        "§ 242 BGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 184,
-    "content_len": 800,
-    "source": "Module1Content_Maximal.ts"
-  },
-  {
-    "module": 1,
-    "day": 8,
-    "title": "Gewerberecht & §34c GewO",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 854 BGB",
-        "§ 873 BGB",
-        "§ 903 BGB",
-        "§ 925 BGB",
-        "§ 985 BGB",
-        "§ 34c GewO"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 163,
-    "content_len": 800,
-    "source": "Module1Content_Maximal.ts"
-  },
-  {
-    "module": 1,
-    "day": 9,
-    "title": "Maklerrecht Grundlagen",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 1 BGB",
-        "§ 104 BGB",
-        "§ 105 BGB",
-        "§ 145 BGB",
-        "§ 241 BGB",
-        "§ 242 BGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 141,
-    "content_len": 800,
-    "source": "Module1Content_Maximal.ts"
-  },
-  {
-    "module": 1,
-    "day": 10,
-    "title": "Geldwäschegesetz (GwG)",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 2 GwG, § 10 GwG, § 11 GwG"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 2 GwG",
-        "§ 10 GwG",
-        "§ 11 GwG",
-        "§ 43 GwG",
-        "§ 56 GwG"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 181,
-    "content_len": 800,
-    "source": "Module1Content_Maximal.ts"
-  },
-  {
-    "module": 1,
-    "day": 11,
-    "title": "Berufsfeld: Immobilienmakler",
-    "score": 90,
-    "issues": [
-      "⚠️ Normen prüfen"
-    ],
-    "fixes": {},
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 145,
-    "content_len": 800,
-    "source": "Module1Content_Maximal.ts"
-  },
-  {
-    "module": 1,
-    "day": 12,
-    "title": "Berufsfeld: Immobilienverwalter",
-    "score": 90,
-    "issues": [
-      "⚠️ Normen prüfen"
-    ],
-    "fixes": {},
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 127,
-    "content_len": 800,
-    "source": "Module1Content_Maximal.ts"
-  },
-  {
-    "module": 1,
-    "day": 13,
-    "title": "Berufsfeld: Gutachter & Sachverständiger",
-    "score": 90,
-    "issues": [
-      "⚠️ Normen prüfen"
-    ],
-    "fixes": {},
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 105,
-    "content_len": 800,
-    "source": "Module1Content_Maximal.ts"
-  },
-  {
-    "module": 1,
-    "day": 14,
-    "title": "Berufsfeld: Darlehensvermittler",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 34c GewO, § 34i GewO, § 14 GewO"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 34c GewO",
-        "§ 34i GewO",
-        "§ 14 GewO",
-        "§ 29 GewO",
-        "§ 488 BGB",
-        "§ 489 BGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 136,
-    "content_len": 800,
-    "source": "Module1Content_Maximal.ts"
-  },
-  {
-    "module": 1,
-    "day": 15,
-    "title": "Datenschutz (DSGVO) & Verbraucherschutz",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 535 BGB",
-        "§ 536 BGB",
-        "§ 556 BGB",
-        "§ 558 BGB",
-        "§ 573 BGB",
-        "§ 23 EStG"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 149,
-    "content_len": 800,
-    "source": "Module1Content_Maximal.ts"
-  },
-  {
     "module": 2,
     "day": 2,
     "title": "Gewerberecht & MaBV",
@@ -695,477 +483,14 @@
   },
   {
     "module": 3,
-    "day": 1,
-    "title": "Einführung in die WEG-Verwaltung",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 854 BGB",
-        "§ 873 BGB",
-        "§ 903 BGB",
-        "§ 925 BGB",
-        "§ 985 BGB",
-        "§ 1 WEG"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 2134,
-    "content_len": 800,
-    "source": "Module3Content_Maximal.ts"
-  },
-  {
-    "module": 3,
-    "day": 2,
-    "title": "Die Teilungserklärung & Gemeinschaftsordnung",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 854 BGB",
-        "§ 873 BGB",
-        "§ 903 BGB",
-        "§ 925 BGB",
-        "§ 985 BGB",
-        "§ 1 WEG"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 1460,
-    "content_len": 800,
-    "source": "Module3Content_Maximal.ts"
-  },
-  {
-    "module": 3,
-    "day": 3,
-    "title": "Die Eigentümerversammlung (ETV)",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 1 WEG",
-        "§ 8 WEG",
-        "§ 10 WEG",
-        "§ 16 WEG",
-        "§ 26a WEG"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 1191,
-    "content_len": 800,
-    "source": "Module3Content_Maximal.ts"
-  },
-  {
-    "module": 3,
-    "day": 4,
-    "title": "Der Wirtschaftsplan: Die Finanzplanung der WEG",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 1 WEG",
-        "§ 8 WEG",
-        "§ 10 WEG",
-        "§ 16 WEG",
-        "§ 26a WEG"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 1360,
-    "content_len": 800,
-    "source": "Module3Content_Maximal_MissingDays.ts"
-  },
-  {
-    "module": 3,
-    "day": 9,
-    "title": "Organisation der Eigentümerversammlung",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 1 WEG",
-        "§ 8 WEG",
-        "§ 10 WEG",
-        "§ 16 WEG",
-        "§ 26a WEG"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 736,
-    "content_len": 800,
-    "source": "Module3Content_Maximal_MissingDays.ts"
-  },
-  {
-    "module": 3,
-    "day": 10,
-    "title": "Beschlussfassung & Stimmrecht",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 854 BGB",
-        "§ 873 BGB",
-        "§ 903 BGB",
-        "§ 925 BGB",
-        "§ 985 BGB",
-        "§ 1 WEG"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 639,
-    "content_len": 800,
-    "source": "Module3Content_Maximal_MissingDays.ts"
-  },
-  {
-    "module": 3,
-    "day": 12,
-    "title": "Die Beschlussanfechtung",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 1 WEG",
-        "§ 8 WEG",
-        "§ 10 WEG",
-        "§ 16 WEG",
-        "§ 26a WEG"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 862,
-    "content_len": 800,
-    "source": "Module3Content_Maximal_MissingDays.ts"
-  },
-  {
-    "module": 3,
-    "day": 13,
-    "title": "Die Sondereigentumsverwaltung (SEV)",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 1 BGB",
-        "§ 104 BGB",
-        "§ 105 BGB",
-        "§ 145 BGB",
-        "§ 241 BGB",
-        "§ 242 BGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 798,
-    "content_len": 800,
-    "source": "Module3Content_Maximal_MissingDays.ts"
-  },
-  {
-    "module": 3,
-    "day": 14,
-    "title": "Der Wohnraum-Mietvertrag",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 1 BGB",
-        "§ 104 BGB",
-        "§ 105 BGB",
-        "§ 145 BGB",
-        "§ 241 BGB",
-        "§ 242 BGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 955,
-    "content_len": 800,
-    "source": "Module3Content_Maximal_MissingDays.ts"
-  },
-  {
-    "module": 3,
-    "day": 15,
-    "title": "Kündigung & Räumung",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 854 BGB",
-        "§ 873 BGB",
-        "§ 903 BGB",
-        "§ 925 BGB",
-        "§ 985 BGB",
-        "§ 535 BGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 676,
-    "content_len": 800,
-    "source": "Module3Content_Maximal_MissingDays.ts"
-  },
-  {
-    "module": 3,
-    "day": 16,
-    "title": "Die Mieterhöhung",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 1 BGB",
-        "§ 104 BGB",
-        "§ 105 BGB",
-        "§ 145 BGB",
-        "§ 241 BGB",
-        "§ 242 BGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 884,
-    "content_len": 800,
-    "source": "Module3Content_Maximal_MissingDays.ts"
-  },
-  {
-    "module": 3,
-    "day": 18,
-    "title": "Kommunikation & Rhetorik für Verwalter",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 1 WEG",
-        "§ 8 WEG",
-        "§ 10 WEG",
-        "§ 16 WEG",
-        "§ 26a WEG"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 733,
-    "content_len": 800,
-    "source": "Module3Content_Maximal_MissingDays.ts"
-  },
-  {
-    "module": 3,
-    "day": 20,
-    "title": "Zwischenprüfung: Grundlagen & Verwaltung",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 535 BGB",
-        "§ 536 BGB",
-        "§ 556 BGB",
-        "§ 558 BGB",
-        "§ 573 BGB",
-        "§ 1 WEG"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 575,
-    "content_len": 800,
-    "source": "Module3Content_Maximal_MissingDays.ts"
-  },
-  {
-    "module": 3,
-    "day": 21,
-    "title": "Technische Verwaltung: Grundlagen & Pflichten",
-    "score": 90,
-    "issues": [
-      "⚠️ Normen prüfen"
-    ],
-    "fixes": {},
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 1414,
-    "content_len": 800,
-    "source": "Module3Content_Maximal_MissingDays.ts"
-  },
-  {
-    "module": 3,
-    "day": 22,
-    "title": "Beschlussfassung über Sanierungen",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 854 BGB",
-        "§ 873 BGB",
-        "§ 903 BGB",
-        "§ 925 BGB",
-        "§ 985 BGB",
-        "§ 1 WEG"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 1124,
-    "content_len": 800,
-    "source": "Module3Content_Maximal_MissingDays.ts"
-  },
-  {
-    "module": 3,
-    "day": 23,
-    "title": "Instandhaltung & Instandsetzung",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 535 BGB",
-        "§ 536 BGB",
-        "§ 556 BGB",
-        "§ 558 BGB",
-        "§ 573 BGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 158,
-    "content_len": 800,
-    "source": "Module3Content_Maximal_Part2_Extended.ts"
-  },
-  {
-    "module": 3,
-    "day": 24,
-    "title": "Wartungsverträge & Dienstleister",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 1 BGB",
-        "§ 104 BGB",
-        "§ 105 BGB",
-        "§ 145 BGB",
-        "§ 241 BGB",
-        "§ 242 BGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 152,
-    "content_len": 800,
-    "source": "Module3Content_Maximal_Part2_Extended.ts"
-  },
-  {
-    "module": 3,
-    "day": 25,
-    "title": "Hausmeister & Reinigungspersonal",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 1 BGB",
-        "§ 104 BGB",
-        "§ 105 BGB",
-        "§ 145 BGB",
-        "§ 241 BGB",
-        "§ 242 BGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 156,
-    "content_len": 800,
-    "source": "Module3Content_Maximal_Part2_Extended.ts"
-  },
-  {
-    "module": 3,
-    "day": 26,
-    "title": "Technische Anlagen: Heizung & Sanitär",
-    "score": 90,
-    "issues": [
-      "⚠️ Normen prüfen"
-    ],
-    "fixes": {},
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 165,
-    "content_len": 800,
-    "source": "Module3Content_Maximal_Part2_Extended.ts"
-  },
-  {
-    "module": 3,
-    "day": 27,
-    "title": "Technische Anlagen: Elektrik & Brandschutz",
-    "score": 90,
-    "issues": [
-      "⚠️ Normen prüfen"
-    ],
-    "fixes": {},
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 144,
-    "content_len": 800,
-    "source": "Module3Content_Maximal_Part2_Extended.ts"
-  },
-  {
-    "module": 3,
-    "day": 28,
-    "title": "Modernisierung & Energieeffizienz (GEG)",
-    "score": 90,
-    "issues": [
-      "⚠️ Normen prüfen"
-    ],
-    "fixes": {},
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 134,
-    "content_len": 800,
-    "source": "Module3Content_Maximal_Part2_Extended.ts"
-  },
-  {
-    "module": 3,
     "day": 29,
     "title": "Schimmel & Feuchtigkeit",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 143,
     "content_len": 0,
@@ -1175,13 +500,12 @@
     "module": 3,
     "day": 30,
     "title": "Praxisprojekt: Instandhaltungsplan",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 148,
     "content_len": 0,
@@ -1191,13 +515,12 @@
     "module": 3,
     "day": 31,
     "title": "Verwalter-Software & ERP-Systeme",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 153,
     "content_len": 0,
@@ -1207,14 +530,13 @@
     "module": 3,
     "day": 32,
     "title": "Datenschutz & DSGVO im Alltag",
-    "score": 50,
+    "score": 55,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)",
       "⚠️ Inhalt prüfen: Titel-Thema nicht im Inhalt erkennbar"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 127,
     "content_len": 0,
@@ -1224,21 +546,12 @@
     "module": 3,
     "day": 33,
     "title": "Digitale Eigentümerversammlung",
-    "score": 50,
+    "score": 70,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "norms": [
-        "§ 1 WEG",
-        "§ 8 WEG",
-        "§ 10 WEG",
-        "§ 16 WEG",
-        "§ 26a WEG"
-      ]
-    },
-    "has_norms": false,
+    "fixes": {},
+    "has_norms": true,
     "has_task": true,
     "theory_len": 118,
     "content_len": 0,
@@ -1263,21 +576,12 @@
     "module": 3,
     "day": 35,
     "title": "Mietrecht Spezial: Gewerbemietrecht",
-    "score": 50,
+    "score": 70,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "norms": [
-        "§ 535 BGB",
-        "§ 536 BGB",
-        "§ 556 BGB",
-        "§ 558 BGB",
-        "§ 573 BGB"
-      ]
-    },
-    "has_norms": false,
+    "fixes": {},
+    "has_norms": true,
     "has_task": true,
     "theory_len": 135,
     "content_len": 0,
@@ -1287,21 +591,12 @@
     "module": 3,
     "day": 36,
     "title": "Mietrecht Spezial: Möbliertes Wohnen",
-    "score": 50,
+    "score": 70,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "norms": [
-        "§ 535 BGB",
-        "§ 536 BGB",
-        "§ 556 BGB",
-        "§ 558 BGB",
-        "§ 573 BGB"
-      ]
-    },
-    "has_norms": false,
+    "fixes": {},
+    "has_norms": true,
     "has_task": true,
     "theory_len": 101,
     "content_len": 0,
@@ -1311,21 +606,12 @@
     "module": 3,
     "day": 37,
     "title": "Mietrecht Spezial: Öffentlich gefördert",
-    "score": 50,
+    "score": 70,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "norms": [
-        "§ 535 BGB",
-        "§ 536 BGB",
-        "§ 556 BGB",
-        "§ 558 BGB",
-        "§ 573 BGB"
-      ]
-    },
-    "has_norms": false,
+    "fixes": {},
+    "has_norms": true,
     "has_task": true,
     "theory_len": 106,
     "content_len": 0,
@@ -1335,21 +621,12 @@
     "module": 3,
     "day": 38,
     "title": "Mietrecht Spezial: Staffel- & Indexmiete",
-    "score": 50,
+    "score": 70,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "norms": [
-        "§ 535 BGB",
-        "§ 536 BGB",
-        "§ 556 BGB",
-        "§ 558 BGB",
-        "§ 573 BGB"
-      ]
-    },
-    "has_norms": false,
+    "fixes": {},
+    "has_norms": true,
     "has_task": true,
     "theory_len": 118,
     "content_len": 0,
@@ -1359,13 +636,12 @@
     "module": 3,
     "day": 39,
     "title": "Konfliktmanagement: Eigentümer vs. Eigentümer",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 107,
     "content_len": 0,
@@ -1390,23 +666,14 @@
     "module": 3,
     "day": 41,
     "title": "Hausgeldabrechnung: Grundlagen und Pflichten",
-    "score": 60,
+    "score": 80,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB",
       "❌ Keine Aufgabenstellung"
     ],
     "fixes": {
-      "norms": [
-        "§ 854 BGB",
-        "§ 873 BGB",
-        "§ 903 BGB",
-        "§ 925 BGB",
-        "§ 985 BGB",
-        "§ 535 BGB"
-      ],
       "task": "Erklären Sie das Thema 'Hausgeldabrechnung: Grundlagen und Pflichten' anhand eines Praxisbeispiels aus dem Makleralltag."
     },
-    "has_norms": false,
+    "has_norms": true,
     "has_task": false,
     "theory_len": 240,
     "content_len": 800,
@@ -1416,22 +683,14 @@
     "module": 3,
     "day": 42,
     "title": "Sonderumlage und Wirtschaftsplan: Planung und Durchsetzung",
-    "score": 60,
+    "score": 80,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG",
       "❌ Keine Aufgabenstellung"
     ],
     "fixes": {
-      "norms": [
-        "§ 1 WEG",
-        "§ 8 WEG",
-        "§ 10 WEG",
-        "§ 16 WEG",
-        "§ 26a WEG"
-      ],
       "task": "Erklären Sie das Thema 'Sonderumlage und Wirtschaftsplan: Planung und Durchsetzung' anhand eines Praxisbeispiels aus dem Makleralltag."
     },
-    "has_norms": false,
+    "has_norms": true,
     "has_task": false,
     "theory_len": 242,
     "content_len": 800,
@@ -1439,30 +698,14 @@
   },
   {
     "module": 3,
-    "day": 43,
-    "title": "Rücklagenbildung & Verwendung",
-    "score": 90,
-    "issues": [
-      "⚠️ Normen prüfen"
-    ],
-    "fixes": {},
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 154,
-    "content_len": 800,
-    "source": "Module3Content_Maximal_Part3_Extended.ts"
-  },
-  {
-    "module": 3,
     "day": 44,
     "title": "Jahreswirtschaftsplan (JWP) - Erstellung",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 147,
     "content_len": 0,
@@ -1472,13 +715,12 @@
     "module": 3,
     "day": 45,
     "title": "Jahresabrechnung - Gesamtabrechnung",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 148,
     "content_len": 0,
@@ -1488,13 +730,12 @@
     "module": 3,
     "day": 46,
     "title": "Jahresabrechnung - Einzelabrechnung",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 164,
     "content_len": 0,
@@ -1504,13 +745,12 @@
     "module": 3,
     "day": 47,
     "title": "Heizkostenabrechnung & HKVO",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 120,
     "content_len": 0,
@@ -1520,13 +760,12 @@
     "module": 3,
     "day": 48,
     "title": "Rechnungsprüfung durch den Beirat",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 136,
     "content_len": 0,
@@ -1551,13 +790,12 @@
     "module": 3,
     "day": 50,
     "title": "Praxisprojekt: Die fehlerhafte Abrechnung",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 110,
     "content_len": 0,
@@ -1567,13 +805,12 @@
     "module": 3,
     "day": 51,
     "title": "Einladung & Tagesordnung (TOPs)",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 109,
     "content_len": 0,
@@ -1583,13 +820,12 @@
     "module": 3,
     "day": 52,
     "title": "Vollmachten & Vertretung",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 112,
     "content_len": 0,
@@ -1599,13 +835,12 @@
     "module": 3,
     "day": 53,
     "title": "Versammlungsleitung & Ablauf",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 110,
     "content_len": 0,
@@ -1615,13 +850,12 @@
     "module": 3,
     "day": 54,
     "title": "Beschlussfassung & Abstimmung",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 117,
     "content_len": 0,
@@ -1631,13 +865,12 @@
     "module": 3,
     "day": 55,
     "title": "Verkündung & Protokollierung",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 130,
     "content_len": 0,
@@ -1647,13 +880,12 @@
     "module": 3,
     "day": 56,
     "title": "Beschluss-Sammlung führen",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 181,
     "content_len": 0,
@@ -1663,13 +895,12 @@
     "module": 3,
     "day": 57,
     "title": "Anfechtungsklage & Nichtigkeitsklage",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 107,
     "content_len": 0,
@@ -1679,13 +910,12 @@
     "module": 3,
     "day": 58,
     "title": "Sonderumlage beschließen & einziehen",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 114,
     "content_len": 0,
@@ -1726,16 +956,15 @@
     "module": 3,
     "day": 61,
     "title": "Mietverwaltung: Grundlagen & Vertrag",
-    "score": 50,
+    "score": 55,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
       "task": "Erklären Sie das Thema 'Mietverwaltung: Grundlagen & Vertrag' anhand eines Praxisbeispiels aus dem Makleralltag."
     },
-    "has_norms": false,
+    "has_norms": true,
     "has_task": false,
     "theory_len": 1374,
     "content_len": 0,
@@ -1745,23 +974,15 @@
     "module": 3,
     "day": 62,
     "title": "Betriebskostenabrechnung (BKA)",
-    "score": 35,
+    "score": 55,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB",
       "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
-      "norms": [
-        "§ 535 BGB",
-        "§ 536 BGB",
-        "§ 556 BGB",
-        "§ 558 BGB",
-        "§ 573 BGB"
-      ],
       "task": "Erklären Sie das Thema 'Betriebskostenabrechnung (BKA)' anhand eines Praxisbeispiels aus dem Makleralltag."
     },
-    "has_norms": false,
+    "has_norms": true,
     "has_task": false,
     "theory_len": 876,
     "content_len": 0,
@@ -1771,23 +992,15 @@
     "module": 3,
     "day": 63,
     "title": "Mieterhöhungsverlangen",
-    "score": 35,
+    "score": 55,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB",
       "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
-      "norms": [
-        "§ 535 BGB",
-        "§ 536 BGB",
-        "§ 556 BGB",
-        "§ 558 BGB",
-        "§ 573 BGB"
-      ],
       "task": "Erklären Sie das Thema 'Mieterhöhungsverlangen' anhand eines Praxisbeispiels aus dem Makleralltag."
     },
-    "has_norms": false,
+    "has_norms": true,
     "has_task": false,
     "theory_len": 1064,
     "content_len": 0,
@@ -1797,23 +1010,15 @@
     "module": 3,
     "day": 64,
     "title": "Kündigung & Abwicklung",
-    "score": 35,
+    "score": 55,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB",
       "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
-      "norms": [
-        "§ 535 BGB",
-        "§ 536 BGB",
-        "§ 556 BGB",
-        "§ 558 BGB",
-        "§ 573 BGB"
-      ],
       "task": "Erklären Sie das Thema 'Kündigung & Abwicklung' anhand eines Praxisbeispiels aus dem Makleralltag."
     },
-    "has_norms": false,
+    "has_norms": true,
     "has_task": false,
     "theory_len": 906,
     "content_len": 0,
@@ -1823,16 +1028,15 @@
     "module": 3,
     "day": 65,
     "title": "Forderungsmanagement & Mahnwesen",
-    "score": 50,
+    "score": 55,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
       "task": "Erklären Sie das Thema 'Forderungsmanagement & Mahnwesen' anhand eines Praxisbeispiels aus dem Makleralltag."
     },
-    "has_norms": false,
+    "has_norms": true,
     "has_task": false,
     "theory_len": 776,
     "content_len": 0,
@@ -1860,16 +1064,15 @@
     "module": 3,
     "day": 67,
     "title": "Verkehrssicherungspflichten",
-    "score": 50,
+    "score": 55,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
       "task": "Erklären Sie das Thema 'Verkehrssicherungspflichten' anhand eines Praxisbeispiels aus dem Makleralltag."
     },
-    "has_norms": false,
+    "has_norms": true,
     "has_task": false,
     "theory_len": 752,
     "content_len": 0,
@@ -1897,16 +1100,15 @@
     "module": 3,
     "day": 69,
     "title": "Instandhaltungsplanung",
-    "score": 50,
+    "score": 55,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
       "task": "Erklären Sie das Thema 'Instandhaltungsplanung' anhand eines Praxisbeispiels aus dem Makleralltag."
     },
-    "has_norms": false,
+    "has_norms": true,
     "has_task": false,
     "theory_len": 697,
     "content_len": 0,
@@ -1934,16 +1136,15 @@
     "module": 3,
     "day": 71,
     "title": "Kommunikation & Konfliktlösung",
-    "score": 50,
+    "score": 55,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
       "task": "Erklären Sie das Thema 'Kommunikation & Konfliktlösung' anhand eines Praxisbeispiels aus dem Makleralltag."
     },
-    "has_norms": false,
+    "has_norms": true,
     "has_task": false,
     "theory_len": 757,
     "content_len": 0,
@@ -1953,23 +1154,15 @@
     "module": 3,
     "day": 72,
     "title": "Die schwierige Eigentümerversammlung",
-    "score": 35,
+    "score": 55,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG",
       "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
-      "norms": [
-        "§ 1 WEG",
-        "§ 8 WEG",
-        "§ 10 WEG",
-        "§ 16 WEG",
-        "§ 26a WEG"
-      ],
       "task": "Erklären Sie das Thema 'Die schwierige Eigentümerversammlung' anhand eines Praxisbeispiels aus dem Makleralltag."
     },
-    "has_norms": false,
+    "has_norms": true,
     "has_task": false,
     "theory_len": 852,
     "content_len": 0,
@@ -2069,16 +1262,15 @@
     "module": 3,
     "day": 78,
     "title": "Repetitorium: Kaufmännische Verwaltung",
-    "score": 50,
+    "score": 55,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
       "task": "Erklären Sie das Thema 'Repetitorium: Kaufmännische Verwaltung' anhand eines Praxisbeispiels aus dem Makleralltag."
     },
-    "has_norms": false,
+    "has_norms": true,
     "has_task": false,
     "theory_len": 368,
     "content_len": 0,
@@ -2088,16 +1280,15 @@
     "module": 3,
     "day": 79,
     "title": "Prüfungssimulation: Fallstudien",
-    "score": 50,
+    "score": 55,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
       "task": "Erklären Sie das Thema 'Prüfungssimulation: Fallstudien' anhand eines Praxisbeispiels aus dem Makleralltag."
     },
-    "has_norms": false,
+    "has_norms": true,
     "has_task": false,
     "theory_len": 660,
     "content_len": 0,
@@ -2126,13 +1317,12 @@
     "module": 4,
     "day": 1,
     "title": "Einführung in das Sachverständigenwesen",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 2931,
     "content_len": 0,
@@ -2142,13 +1332,12 @@
     "module": 4,
     "day": 2,
     "title": "Rechtliche Grundlagen & Flächenberechnung",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 1863,
     "content_len": 0,
@@ -2158,13 +1347,12 @@
     "module": 4,
     "day": 3,
     "title": "Marktanalyse & Makro-Standort",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 1347,
     "content_len": 0,
@@ -2174,19 +1362,12 @@
     "module": 4,
     "day": 4,
     "title": "Vergleichswertverfahren",
-    "score": 50,
+    "score": 70,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "norms": [
-        "ImmoWertV 2021",
-        "§ 194 BauGB",
-        "§ 193 BauGB"
-      ]
-    },
-    "has_norms": false,
+    "fixes": {},
+    "has_norms": true,
     "has_task": true,
     "theory_len": 1093,
     "content_len": 0,
@@ -2196,19 +1377,12 @@
     "module": 4,
     "day": 5,
     "title": "Ertragswertverfahren: Rohertrag & Bewirtschaftungskosten",
-    "score": 50,
+    "score": 70,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "norms": [
-        "ImmoWertV 2021",
-        "§ 194 BauGB",
-        "§ 193 BauGB"
-      ]
-    },
-    "has_norms": false,
+    "fixes": {},
+    "has_norms": true,
     "has_task": true,
     "theory_len": 1094,
     "content_len": 0,
@@ -2218,19 +1392,12 @@
     "module": 4,
     "day": 6,
     "title": "Ertragswertverfahren: Bodenwertverzinsung & Vervielfältiger",
-    "score": 50,
+    "score": 70,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "norms": [
-        "ImmoWertV 2021",
-        "§ 194 BauGB",
-        "§ 193 BauGB"
-      ]
-    },
-    "has_norms": false,
+    "fixes": {},
+    "has_norms": true,
     "has_task": true,
     "theory_len": 1063,
     "content_len": 0,
@@ -2240,19 +1407,12 @@
     "module": 4,
     "day": 7,
     "title": "Ertragswert: Sonderfälle & Übungen",
-    "score": 50,
+    "score": 70,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "norms": [
-        "ImmoWertV 2021",
-        "§ 194 BauGB",
-        "§ 193 BauGB"
-      ]
-    },
-    "has_norms": false,
+    "fixes": {},
+    "has_norms": true,
     "has_task": true,
     "theory_len": 862,
     "content_len": 0,
@@ -2262,14 +1422,13 @@
     "module": 4,
     "day": 8,
     "title": "Wiederholung & Zwischentest (Verfahren)",
-    "score": 50,
+    "score": 55,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)",
       "⚠️ Inhalt prüfen: Titel-Thema nicht im Inhalt erkennbar"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 657,
     "content_len": 0,
@@ -2279,19 +1438,12 @@
     "module": 4,
     "day": 9,
     "title": "Bodenwertermittlung Deep Dive",
-    "score": 50,
+    "score": 70,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "norms": [
-        "ImmoWertV 2021",
-        "§ 194 BauGB",
-        "§ 193 BauGB"
-      ]
-    },
-    "has_norms": false,
+    "fixes": {},
+    "has_norms": true,
     "has_task": true,
     "theory_len": 713,
     "content_len": 0,
@@ -2301,13 +1453,12 @@
     "module": 4,
     "day": 10,
     "title": "Zwischenprüfung: Verfahrenskompetenz",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 381,
     "content_len": 0,
@@ -2317,19 +1468,12 @@
     "module": 4,
     "day": 11,
     "title": "Sachwertverfahren: Normalherstellungskosten (NHK)",
-    "score": 50,
+    "score": 70,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "norms": [
-        "ImmoWertV 2021",
-        "§ 194 BauGB",
-        "§ 193 BauGB"
-      ]
-    },
-    "has_norms": false,
+    "fixes": {},
+    "has_norms": true,
     "has_task": true,
     "theory_len": 1024,
     "content_len": 0,
@@ -2339,19 +1483,12 @@
     "module": 4,
     "day": 12,
     "title": "Sachwertverfahren: Alterswertminderung & Marktanpassung",
-    "score": 50,
+    "score": 70,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "norms": [
-        "ImmoWertV 2021",
-        "§ 194 BauGB",
-        "§ 193 BauGB"
-      ]
-    },
-    "has_norms": false,
+    "fixes": {},
+    "has_norms": true,
     "has_task": true,
     "theory_len": 934,
     "content_len": 0,
@@ -2361,19 +1498,12 @@
     "module": 4,
     "day": 13,
     "title": "Aufbau eines Verkehrswertgutachtens",
-    "score": 50,
+    "score": 70,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "norms": [
-        "ImmoWertV 2021",
-        "§ 194 BauGB",
-        "§ 193 BauGB"
-      ]
-    },
-    "has_norms": false,
+    "fixes": {},
+    "has_norms": true,
     "has_task": true,
     "theory_len": 1072,
     "content_len": 0,
@@ -2383,13 +1513,12 @@
     "module": 4,
     "day": 14,
     "title": "Objektbeschreibung & Bauschäden",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 974,
     "content_len": 0,
@@ -2399,13 +1528,12 @@
     "module": 4,
     "day": 15,
     "title": "Spezialfälle: Rechte und Belastungen",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 757,
     "content_len": 0,
@@ -2415,13 +1543,12 @@
     "module": 4,
     "day": 16,
     "title": "Gewerbeimmobilien & DCF-Verfahren",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 830,
     "content_len": 0,
@@ -2431,13 +1558,12 @@
     "module": 4,
     "day": 17,
     "title": "Digitale Bewertungstools (AVM)",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 725,
     "content_len": 0,
@@ -2447,13 +1573,12 @@
     "module": 4,
     "day": 18,
     "title": "Haftung & Berufsbild",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 780,
     "content_len": 0,
@@ -2463,13 +1588,12 @@
     "module": 4,
     "day": 19,
     "title": "Abschlussprüfung & Fallstudie",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 515,
     "content_len": 0,
@@ -2479,456 +1603,15 @@
     "module": 4,
     "day": 20,
     "title": "Zertifikat & Karriere",
-    "score": 65,
+    "score": 70,
     "issues": [
-      "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
-    "has_norms": false,
+    "has_norms": true,
     "has_task": true,
     "theory_len": 743,
     "content_len": 0,
     "source": "Module4Content_Valuation_Maximalist_Part2.ts"
-  },
-  {
-    "module": 4,
-    "day": 21,
-    "title": "Gutachten-Struktur: Aufbau & Formale Anforderungen",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 854 BGB",
-        "§ 873 BGB",
-        "§ 903 BGB",
-        "§ 925 BGB",
-        "§ 985 BGB",
-        "ImmoWertV 2021"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 240,
-    "content_len": 800,
-    "source": "Module4Content_Bonus_HypZert.ts"
-  },
-  {
-    "module": 4,
-    "day": 22,
-    "title": "Beleihungswert vs. Verkehrswert: Prüfungsrelevante Unterschiede",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
-    ],
-    "fixes": {
-      "norms": [
-        "ImmoWertV 2021",
-        "§ 194 BauGB",
-        "§ 193 BauGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 212,
-    "content_len": 800,
-    "source": "Module4Content_Bonus_HypZert.ts"
-  },
-  {
-    "module": 4,
-    "day": 23,
-    "title": "Plausibilitätsprüfung: Fehler in Gutachten erkennen",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
-    ],
-    "fixes": {
-      "norms": [
-        "ImmoWertV 2021",
-        "§ 194 BauGB",
-        "§ 193 BauGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 161,
-    "content_len": 800,
-    "source": "Module4Content_Bonus_HypZert.ts"
-  },
-  {
-    "module": 4,
-    "day": 24,
-    "title": "Gewerbeimmobilien: Büro, Handel, Logistik bewerten",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 535 BGB",
-        "§ 536 BGB",
-        "§ 556 BGB",
-        "§ 558 BGB",
-        "§ 573 BGB",
-        "ImmoWertV 2021"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 179,
-    "content_len": 800,
-    "source": "Module4Content_Bonus_HypZert.ts"
-  },
-  {
-    "module": 4,
-    "day": 25,
-    "title": "Übungsgutachten 1: Einfamilienhaus vollständig bewerten",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
-    ],
-    "fixes": {
-      "norms": [
-        "ImmoWertV 2021",
-        "§ 194 BauGB",
-        "§ 193 BauGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 181,
-    "content_len": 800,
-    "source": "Module4Content_Bonus_HypZert.ts"
-  },
-  {
-    "module": 4,
-    "day": 26,
-    "title": "Sondereinflüsse: Baulasten, Altlasten, Denkmalschutz",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 23 EStG, § 4 GrEStG"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 23 EStG",
-        "§ 4 GrEStG"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 159,
-    "content_len": 800,
-    "source": "Module4Content_Bonus_HypZert.ts"
-  },
-  {
-    "module": 4,
-    "day": 27,
-    "title": "Marktanalyse & Makro/Mikro-Standortbewertung Profis",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
-    ],
-    "fixes": {
-      "norms": [
-        "ImmoWertV 2021",
-        "§ 194 BauGB",
-        "§ 193 BauGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 147,
-    "content_len": 800,
-    "source": "Module4Content_Bonus_HypZert.ts"
-  },
-  {
-    "module": 4,
-    "day": 28,
-    "title": "Übungsgutachten 2: Mehrfamilienhaus im Ertragswertverfahren",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 535 BGB",
-        "§ 536 BGB",
-        "§ 556 BGB",
-        "§ 558 BGB",
-        "§ 573 BGB",
-        "ImmoWertV 2021"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 168,
-    "content_len": 800,
-    "source": "Module4Content_Bonus_HypZert.ts"
-  },
-  {
-    "module": 4,
-    "day": 29,
-    "title": "IHK öffentliche Bestellung & Vereidigung — der nächste Schritt",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
-    ],
-    "fixes": {
-      "norms": [
-        "ImmoWertV 2021",
-        "§ 194 BauGB",
-        "§ 193 BauGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 194,
-    "content_len": 800,
-    "source": "Module4Content_Bonus_HypZert.ts"
-  },
-  {
-    "module": 4,
-    "day": 30,
-    "title": "HypZert S Prüfungssimulation: Vollständiger Testdurchlauf",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
-    ],
-    "fixes": {
-      "norms": [
-        "ImmoWertV 2021",
-        "§ 194 BauGB",
-        "§ 193 BauGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 165,
-    "content_len": 800,
-    "source": "Module4Content_Bonus_HypZert.ts"
-  },
-  {
-    "module": 4,
-    "day": 31,
-    "title": "Fallstudie: Wohnanlage mit Mietmix & Leerstand",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
-    ],
-    "fixes": {
-      "norms": [
-        "ImmoWertV 2021",
-        "§ 194 BauGB",
-        "§ 193 BauGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 187,
-    "content_len": 800,
-    "source": "Module4Content_Bonus_HypZert_Part2.ts"
-  },
-  {
-    "module": 4,
-    "day": 32,
-    "title": "Digitale Bewertungstools: AVM & PropTech für Gutachter",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
-    ],
-    "fixes": {
-      "norms": [
-        "ImmoWertV 2021",
-        "§ 194 BauGB",
-        "§ 193 BauGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 158,
-    "content_len": 800,
-    "source": "Module4Content_Bonus_HypZert_Part2.ts"
-  },
-  {
-    "module": 4,
-    "day": 33,
-    "title": "Haftung & Berufshaftpflicht: Risiken des Gutachters",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 1 BGB",
-        "§ 104 BGB",
-        "§ 105 BGB",
-        "§ 145 BGB",
-        "§ 241 BGB",
-        "§ 242 BGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 168,
-    "content_len": 800,
-    "source": "Module4Content_Bonus_HypZert_Part2.ts"
-  },
-  {
-    "module": 4,
-    "day": 34,
-    "title": "Übungsgutachten 3: Gewerbeimmobilie vollständig bewerten",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 535 BGB",
-        "§ 536 BGB",
-        "§ 556 BGB",
-        "§ 558 BGB",
-        "§ 573 BGB",
-        "ImmoWertV 2021"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 169,
-    "content_len": 800,
-    "source": "Module4Content_Bonus_HypZert_Part2.ts"
-  },
-  {
-    "module": 4,
-    "day": 35,
-    "title": "Repetitorium: Alle Wertermittlungsverfahren kompakt",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
-    ],
-    "fixes": {
-      "norms": [
-        "ImmoWertV 2021",
-        "§ 194 BauGB",
-        "§ 193 BauGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 153,
-    "content_len": 800,
-    "source": "Module4Content_Bonus_HypZert_Part2.ts"
-  },
-  {
-    "module": 4,
-    "day": 36,
-    "title": "Praktische Objektaufnahme: Checkliste & Protokoll",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 854 BGB",
-        "§ 873 BGB",
-        "§ 903 BGB",
-        "§ 925 BGB",
-        "§ 985 BGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 146,
-    "content_len": 800,
-    "source": "Module4Content_Bonus_HypZert_Part2.ts"
-  },
-  {
-    "module": 4,
-    "day": 37,
-    "title": "Spezialimmobilien: Hotels, Pflegeheime, Parkhäuser",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
-    ],
-    "fixes": {
-      "norms": [
-        "ImmoWertV 2021",
-        "§ 194 BauGB",
-        "§ 193 BauGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 181,
-    "content_len": 800,
-    "source": "Module4Content_Bonus_HypZert_Part2.ts"
-  },
-  {
-    "module": 4,
-    "day": 38,
-    "title": "Vollständige Prüfungssimulation Teil II & III",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 535 BGB",
-        "§ 536 BGB",
-        "§ 556 BGB",
-        "§ 558 BGB",
-        "§ 573 BGB",
-        "ImmoWertV 2021"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 163,
-    "content_len": 800,
-    "source": "Module4Content_Bonus_HypZert_Part2.ts"
-  },
-  {
-    "module": 4,
-    "day": 39,
-    "title": "Karrierewege & Netzwerke: Berufsverbände & Zertifizierungen",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: § 34c GewO, § 34i GewO, § 14 GewO"
-    ],
-    "fixes": {
-      "norms": [
-        "§ 34c GewO",
-        "§ 34i GewO",
-        "§ 14 GewO",
-        "§ 29 GewO"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 159,
-    "content_len": 800,
-    "source": "Module4Content_Bonus_HypZert_Part2.ts"
-  },
-  {
-    "module": 4,
-    "day": 40,
-    "title": "Bonus-Paket Abschluss: Ihr Weg zum anerkannten Gutachter",
-    "score": 75,
-    "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
-    ],
-    "fixes": {
-      "norms": [
-        "ImmoWertV 2021",
-        "§ 194 BauGB",
-        "§ 193 BauGB"
-      ]
-    },
-    "has_norms": false,
-    "has_task": true,
-    "theory_len": 154,
-    "content_len": 800,
-    "source": "Module4Content_Bonus_HypZert_Part2.ts"
   }
 ]
