@@ -549,7 +549,8 @@ Das DISG-Modell unterscheidet 4 Persönlichkeitstypen:
 - **Empfehlung:** "Done is better than perfect" - 80/20-Regel anwenden
     `,
     law: [
-      "Keine spezifischen Gesetze (Persönlichkeitsentwicklung)"
+      "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Zuverlässigkeit als Berufsvoraussetzung)",
+      "[§ 1 MaBV](https://www.gesetze-im-internet.de/mabv/__1.html) (Berufspflichten Makler)"
     ],
     practice: `
 ### Praxis-Test: DISG-Selbsteinschätzung
@@ -722,7 +723,8 @@ Ein Vision Board ist eine Collage aus Bildern, Zitaten und Symbolen, die Ihre Zi
 - Kann ein Mentor, Kollege oder Coach sein
     `,
     law: [
-      "Keine spezifischen Gesetze (Persönlichkeitsentwicklung)"
+      "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Berufspflichten)",
+      "[§ 15b MaBV](https://www.gesetze-im-internet.de/mabv/__15b.html) (20h Weiterbildungspflicht alle 3 Jahre)"
     ],
     practice: `
 ### Praxis-Übung: Jahresplanung 2026
@@ -1853,7 +1855,9 @@ Wann ist ein Markt überhitzt? Achten Sie auf diese Warnsignale:
 
 **Beispiel München 2022:** Kaufpreisfaktor bei 40-50, Zinsen stiegen von 1% auf 4% → Preisrückgang um 10-15% in 2023.
     `,
-    law: ["[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html)"],
+    law: ["[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Maklererlaubnis)",
+      "[§ 652 BGB](https://www.gesetze-im-internet.de/bgb/__652.html) (Maklervertrag)",
+      "[§ 1 MaBV](https://www.gesetze-im-internet.de/mabv/__1.html) (Berufspflichten)"],
     practice: "Erstellen Sie einen typischen Tagesablauf eines Maklers mit Zeitblöcken für Akquise, Besichtigungen, Verwaltung.",
     task: "Interviewen Sie einen Makler (oder recherchieren Sie online): Was sind die 3 größten Herausforderungen im Berufsalltag?",
     type: "Berufsbild"
@@ -2047,7 +2051,9 @@ Bausparkassen bieten Bausparverträge (Sparphase + Darlehensphase).
 
 **Beispiel:** München fordert 30% Sozialwohnungen bei Neubauten. Projektentwickler müssen diese Quote erfüllen oder Ausgleichszahlung leisten.
     `,
-    law: ["[WEG](https://www.gesetze-im-internet.de/woeigg/)", "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html)"],
+    law: ["[§ 1 WEG](https://www.gesetze-im-internet.de/weg/__1.html) (Wohnungseigentum)",
+      "[§ 26a WEG](https://www.gesetze-im-internet.de/weg/__26a.html) (Verwalter Pflichtfortbildung)",
+      "[§ 535 BGB](https://www.gesetze-im-internet.de/bgb/__535.html) (Mietvertrag Grundpflichten)"],
     practice: "Erstellen Sie eine Aufgabenliste für einen WEG-Verwalter (kaufmännisch und technisch).",
     task: "Recherchieren Sie: Was ist der Unterschied zwischen WEG-Verwaltung und Mietverwaltung?",
     type: "Berufsbild"
@@ -4131,7 +4137,10 @@ Ein Projektentwickler baut ein Studentenwohnheim (100 Zimmer) aus Modulen. Bauko
 
 **Fazit:** Die Zukunft gehört den Spezialisten. Wer sich frühzeitig positioniert, profitiert langfristig.
     `,
-    law: ["Keine spezifischen Gesetze"],
+    law: ["[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Maklererlaubnis Zusammenfassung)",
+      "[§ 652 BGB](https://www.gesetze-im-internet.de/bgb/__652.html) (Maklervertrag)",
+      "[§ 15b MaBV](https://www.gesetze-im-internet.de/mabv/__15b.html) (Weiterbildungspflicht)",
+      "[Art. 14 GG](https://www.gesetze-im-internet.de/gg/art_14.html) (Eigentumsgarantie)"],
     practice: "Präsentieren Sie Ihr persönliches Portfolio (Lebenslauf, Ziele, Kompetenzen, Vision Board).",
     tasks: [
       {
