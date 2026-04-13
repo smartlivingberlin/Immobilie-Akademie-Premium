@@ -183,6 +183,11 @@ function Router() {
         <Route path="/admin/codes"><AppLayout><AdminRoute component={AdminCodes} /></AppLayout></Route>
         <Route path="/admin/nutzer"><AppLayout><AdminRoute component={UserManagement} /></AppLayout></Route>
         <Route path="/admin"><AppLayout><AdminRoute component={AdminDashboard} /></AppLayout></Route>
+        <Route path="/owner-dashboard">
+          <Suspense fallback={<div>Lädt...</div>}>
+            <OwnerDashboard />
+          </Suspense>
+        </Route>
         <Route component={NotFound} />
       </Switch>
     </Suspense>
@@ -192,9 +197,3 @@ function Router() {
 export default function App() {
   return <Router />;
 }
-          <Route path="/owner-dashboard" component={() => (<Suspense fallback={<div>Lädt...</div>}><OwnerDashboard /></Suspense>)} />
-          <Route path="/inspect/:token" component={() => {
-            const token = window.location.pathname.split('/inspect/')[1];
-            if (token) window.location.href = `/api/owner/inspect/${token}`;
-            return <div style={{padding:40,textAlign:"center"}}>⏳ Lade Vorschau...</div>;
-          }} />
