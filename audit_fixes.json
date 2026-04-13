@@ -1647,16 +1647,15 @@
     "module": 3,
     "day": 56,
     "title": "Beschluss-Sammlung führen",
-    "score": 55,
+    "score": 65,
     "issues": [
-      "⚠️ Theorie zu kurz (91 Zeichen, min. 200)",
       "⚠️ Normen prüfen",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {},
     "has_norms": false,
     "has_task": true,
-    "theory_len": 91,
+    "theory_len": 181,
     "content_len": 0,
     "source": "Module3Content_Maximal_Part3_Extended.ts"
   },

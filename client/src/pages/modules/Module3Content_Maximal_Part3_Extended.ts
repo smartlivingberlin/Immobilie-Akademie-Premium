@@ -615,7 +615,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
 
   day_56: {
     title: "Beschluss-Sammlung führen",
-    theory: "Die Beschluss-Sammlung ist das 'Gedächtnis' der WEG. Sie muss vollständig und aktuell sein.",
+    theory: "Die systematische Beschluss-Sammlung nach §24 Abs. 7 WEG ist Pflicht jedes WEG-Verwalters. Sie dokumentiert alle gefassten Beschlüsse und schützt vor Rechtsverlust durch Verjährung.",
     law: [
       "[§ 24 Abs. 7 WEG](https://www.gesetze-im-internet.de/woeigg/__24.html) (Beschluss-Sammlung)"
     ],
