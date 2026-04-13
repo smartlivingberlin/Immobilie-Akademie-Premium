@@ -65,9 +65,9 @@ Die Wertermittlung in Deutschland ruht auf drei normierten Verfahren (ImmoWertV)
 3.  **Sachwertverfahren:** Was kostet es, das Objekt heute neu zu bauen? (Ideal für selbstgenutzte Einfamilienhäuser).
     `,
     law: [
-      "§ 194 BauGB (Verkehrswertdefinition)",
-      "ImmoWertV 2021 (Immobilienwertermittlungsverordnung)",
-      "BauGB (Baugesetzbuch) - Besonderes Städtebaurecht"
+      "[§ 194 BauGB](https://www.gesetze-im-internet.de/baugb/__194.html) (Verkehrswert)",
+      "[§ 193 BauGB](https://www.gesetze-im-internet.de/baugb/__193.html) (Gutachterausschüsse)",
+      "[ImmoWertV 2021](https://www.gesetze-im-internet.de/immowertv_2021/) (Wertermittlungsverordnung)"
     ],
     practice: `
 # Praxisbeispiel: Preis vs. Wert
@@ -142,9 +142,9 @@ Lasten in Abteilung II beeinflussen den Wert massiv:
 *Wichtig:* Hypotheken/Grundschulden (Abt. III) mindern den *Verkehrswert* nicht! Sie werden aus dem Kaufpreis abgelöst. Der Verkehrswert wird immer "lastenfrei in Abt. III" ermittelt.
     `,
     law: [
-      "Wohnflächenverordnung (WoFlV)",
-      "DIN 277 (Grundflächen und Rauminhalte im Hochbau)",
-      "Baunutzungsverordnung (BauNVO) - Art der baulichen Nutzung"
+      "[§ 2 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__2.html) (Begriffsbestimmungen)",
+      "[WoFlV](https://www.gesetze-im-internet.de/woflv/) (Wohnflächenverordnung)",
+      "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Sachkundenachweis)"
     ],
     practice: `
 # Praxis: Flächenberechnung Dachgeschoss
@@ -217,9 +217,8 @@ Der "Zins", mit dem der Markt Immobilienvermögen verzinst.
 Faktoren, die den Sachwert an die Marktlage anpassen. Wenn Bauen 500.000 € kostet, der Markt aber nur 400.000 € zahlt, ist der Faktor 0,8.
     `,
     law: [
-      "§ 196 BauGB (Bodenrichtwerte)",
-      "§ 193 Abs. 5 BauGB (Kaufpreissammlung)",
-      "ImmoWertV § 14 (Marktanpassungsfaktoren)"
+      "[§ 194 BauGB](https://www.gesetze-im-internet.de/baugb/__194.html) (Marktwert)",
+      "[§ 15 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__15.html) (Vergleichswertverfahren)"
     ],
     practice: `
 # Praxis: Bodenrichtwertkarte lesen
@@ -289,8 +288,9 @@ Wenn Vergleichsobjekte nicht ganz passen:
 Hierfür gibt es Tabellen zur Umrechnung.
     `,
     law: [
-      "§ 15 ImmoWertV (Vergleichswertverfahren)",
-      "Vergleichswertrichtlinie (VW-RL)"
+      "[§ 15 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__15.html) (Vergleichswertverfahren)",
+      "[§ 16 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__16.html) (Vergleichspreise)",
+      "[§ 193 BauGB](https://www.gesetze-im-internet.de/baugb/__193.html) (Gutachterausschuss)"
     ],
     practice: `
 # Rechenübung: Vergleichswertverfahren
@@ -384,9 +384,9 @@ Rohertrag - Bewirtschaftungskosten = **Reinertrag des Grundstücks**.
 Das ist das Geld, das am Ende des Jahres in der Tasche des Eigentümers bleibt (vor Steuer/Finanzierung).
     `,
     law: [
-      "§ 17 ImmoWertV (Ertragswertverfahren)",
-      "§ 18 ImmoWertV (Rohertrag)",
-      "§ 19 ImmoWertV (Bewirtschaftungskosten)"
+      "[§ 27 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__27.html) (Ertragswertverfahren)",
+      "[§ 28 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__28.html) (Rohertrag)",
+      "[§ 31 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__31.html) (Liegenschaftszins)"
     ],
     practice: `
 # Rechenübung: Reinertrag ermitteln
@@ -465,8 +465,8 @@ Gebäudereinertrag × Vervielfältiger = **Ertragswert Gebäude**.
 Ertragswert Gebäude + Bodenwert = **Vorläufiger Ertragswert**.
     `,
     law: [
-      "§ 20 ImmoWertV (Reinertrag)",
-      "Anlage 1 ImmoWertV (Vervielfältigertabelle)"
+      "[§ 27 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__27.html) (Ertragswertverfahren)",
+      "[§ 30 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__30.html) (Bodenwertverzinsung)"
     ],
     practice: `
 # Rechenübung: Ertragswert komplett
@@ -545,7 +545,8 @@ Ein struktureller Leerstand (niemand will dort wohnen) fließt in den Rohertrag 
 Ist das Gebäude "abgewohnt", kann die wirtschaftliche RND kürzer sein als die technische.
     `,
     law: [
-      "§ 8 Abs. 3 ImmoWertV (Berücksichtigung abweichender Erträge)"
+      "[§ 27 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__27.html) (Ertragswert Sonderfälle)",
+      "[§ 194 BauGB](https://www.gesetze-im-internet.de/baugb/__194.html) (Verkehrswert)"
     ],
     practice: `
 # Fallstudie: Das "billige" Mietshaus
@@ -608,7 +609,8 @@ Oft sind mehrere Verfahren möglich.
 *   Das verfahrensgeprägte Ergebnis (Marktanpassung) ist entscheidend.
     `,
     law: [
-      "§ 8 ImmoWertV (Verfahrenswahl)"
+      "[ImmoWertV 2021](https://www.gesetze-im-internet.de/immowertv_2021/) (Alle Wertermittlungsverfahren)",
+      "[§ 194 BauGB](https://www.gesetze-im-internet.de/baugb/__194.html) (Verkehrswert)"
     ],
     practice: `
 # Analyseübung: Welches Verfahren?
@@ -664,8 +666,9 @@ Bei sehr tiefen Grundstücken ist der vordere Teil (Bauland) wertvoller als der 
 Eckgrundstücke haben oft einen höheren Wert (bessere Bebaubarkeit, zwei Fronten).
     `,
     law: [
-      "§ 196 BauGB",
-      "BRW-Richtlinie"
+      "[§ 40 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__40.html) (Bodenwert)",
+      "[§ 196 BauGB](https://www.gesetze-im-internet.de/baugb/__196.html) (Bodenrichtwerte)",
+      "[§ 193 BauGB](https://www.gesetze-im-internet.de/baugb/__193.html) (Gutachterausschuss)"
     ],
     practice: `
 # Rechenübung: GFZ-Anpassung
@@ -721,12 +724,9 @@ Jetzt prüfen wir die Kompetenz, bevor wir nächste Woche zum Sachwert (Substanz
 4.  Wissen Sie, wann man welches Verfahren nimmt?
     `,
     law: [
-        "§ 194 BauGB – Verkehrswert",
-        "ImmoWertV 2021 – Wertermittlungsverordnung",
-        "§ 16 ImmoWertV – Vergleichswertverfahren",
-        "§ 17 ImmoWertV – Ertragswertverfahren",
-        "§ 35 ImmoWertV – Sachwertverfahren",
-      ],
+      "[ImmoWertV 2021](https://www.gesetze-im-internet.de/immowertv_2021/) (Prüfungswissen)",
+      "[§ 194 BauGB](https://www.gesetze-im-internet.de/baugb/__194.html) (Verkehrswert)"
+    ],
     practice: `
 # Komplexe Übungsaufgabe
 
