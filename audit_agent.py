@@ -260,14 +260,15 @@ def static_check(day, module):
     fixes = {}
     score = 100
     
-    # Theorie zu kurz — aber extendedTheory zählt als Ersatz
+    # Inhaltsprüfung — alle Felder zusammen
     theory_len = len(day.get("theory", "").strip())
     extended_len = len(day.get("extended", "").strip())
+    law_len = len(str(day.get("law", [])))
     total_content = theory_len + extended_len
-    if total_content < 100:
+    # Wenn law vorhanden und theory > 50Z → ausreichend
+    if total_content < 100 and not (law_len > 20 and theory_len > 50):
         issues.append(f"❌ Inhalt sehr kurz ({total_content} Zeichen gesamt)")
         score -= 25
-    # theory > 200Z oder extended > 200Z = ausreichend
     
     # Keine Normen (norms: oder law: Feld)
     no_norm = NO_NORM_DAYS.get(module, [])
