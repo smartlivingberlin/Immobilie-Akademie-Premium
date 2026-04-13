@@ -272,6 +272,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
   day_44: {
     title: "Jahreswirtschaftsplan (JWP) - Erstellung",
     theory: "Der Jahreswirtschaftsplan ist das zentrale Planungsinstrument der WEG. Er prognostiziert alle Einnahmen und Ausgaben für das kommende Kalenderjahr.",
+    extendedTheory: `Der Jahreswirtschaftsplan (JWP) ist gemaess Para 28 Abs. 1 WEG die jaehrliche Einnahmen-Ausgaben-Vorschau der WEG. Er bildet die Grundlage fuer die monatlichen Hausgeldzahlungen der Eigentuemer. Aufbau: Bewirtschaftungskosten (Versicherungen, Hausmeister, Energie), Instandhaltungsruecklage, Verwaltungshonorar. Abstimmung: Einfache Mehrheit in ETV. Jeder Eigentuemer zahlt anteilig nach Miteigentumsanteilen (MEA) oder anderem Schlussel. Frist: Verwalter muss JWP rechtzeitig vor Beginn des Wirtschaftsjahres erstellen und der ETV vorlegen.`,
     law: [
       "[§ 28 WEG](https://www.gesetze-im-internet.de/woeigg/__28.html) (Wirtschaftsplan und Jahresabrechnung)",
       "[§ 16 WEG](https://www.gesetze-im-internet.de/woeigg/__16.html) (Verteilerschlüssel)"
@@ -301,6 +302,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
   day_45: {
     title: "Jahresabrechnung - Gesamtabrechnung",
     theory: "Die Jahresabrechnung ist die Rechenschaftslegung des Verwalters über das abgelaufene Wirtschaftsjahr. Sie muss transparent und nachvollziehbar sein.",
+    extendedTheory: `Die Gesamtabrechnung ist gemaess Para 28 Abs. 2 WEG die jaehrliche Gegenuebertueberstellung aller tatsaechlichen Einnahmen und Ausgaben der WEG. Sie umfasst alle Konten der Gemeinschaft. Bestandteile: Einnahmen (Hausgeld, Sonderumlagen, Zinsen), Ausgaben (alle Betriebskosten, Instandhaltung, Verwaltung), Entwicklung der Erhaltungsruecklage. Abstimmung: Genehmigung durch einfache Mehrheit in der ETV. Frist: Gesetzlich nicht definiert, ueblich bis 30. Juni des Folgejahres. Fehler in der Abrechnung koennen angefochten werden (Para 44 WEG).`,
     law: [
       "[§ 28 WEG](https://www.gesetze-im-internet.de/woeigg/__28.html) (Jahresabrechnung)",
       "[§ 27 Abs. 5 WEG](https://www.gesetze-im-internet.de/woeigg/__27.html) (Vermögensverwaltung)"
@@ -330,6 +332,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
   day_46: {
     title: "Jahresabrechnung - Einzelabrechnung",
     theory: "Die Einzelabrechnung verteilt die Kosten auf die Sondereigentümer nach den beschlossenen Verteilerschlüsseln. Sie ist die Grundlage für Nachzahlungen oder Guthaben.",
+    extendedTheory: `Die Einzelabrechnung zeigt jedem Eigentuemer seinen persoenlichen Anteil an den Gesamtkosten der WEG. Berechnungsgrundlage: Verteilerschluessel gemaess Gemeinschaftsordnung (Miteigentumsanteile, Wohnflaeche, Kopfanteil je nach Kostenart). Hausgeldabrechnung: Geleistete Vorauszahlungen werden den tatsaechlichen Kosten gegenueberstellt - Nachzahlung oder Guthaben. Para 28 Abs. 2 Satz 2 WEG: Eigentuemer koennen Nachzahlungsansprueche abtreten. Besonderheit: Sondereigentumskosten (z.B. individuelle Heizkosten) werden separat ausgewiesen.`,
     law: [
       "[§ 16 WEG](https://www.gesetze-im-internet.de/woeigg/__16.html) (Verteilerschlüssel)",
       "[§ 28 WEG](https://www.gesetze-im-internet.de/woeigg/__28.html) (Einzelabrechnung)"
@@ -359,6 +362,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
   day_47: {
     title: "Heizkostenabrechnung & HKVO",
     theory: "Die Heizkostenverordnung (HKVO) hat Vorrang vor WEG-Recht. Sie schreibt die verbrauchsabhängige Abrechnung zwingend vor.",
+    extendedTheory: `Die Heizkostenabrechnung unterliegt der Heizkostenverordnung (HKVO) und ist besonders komplex. Para 6 HKVO: Mindestens 50 Prozent der Heizkosten muessen verbrauchsabhaengig abgerechnet werden (meist 70:30 - 70 Prozent verbrauchsabhaengig). Pflicht zur Verbrauchserfassung: Waermemengenzaehler oder Heizkostenverteiler in jeder Einheit. Seit 2021 (Para 6a HKVO): Fernauslesbare Geraete bei Neuinstallation Pflicht, Interoperabilitaet mit Smart-Home-Systemen. Verstoss gegen HKVO: Mieter/Eigentuemer hat Kuerzungsrecht von 15 Prozent (Para 12 HKVO).`,
     law: [
       "[HeizkostenV § 7](https://www.gesetze-im-internet.de/heizkostenv/__7.html) (Verteilung)",
       "[HeizkostenV § 12](https://www.gesetze-im-internet.de/heizkostenv/__12.html) (Kürzungsrecht)"
@@ -388,6 +392,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
   day_48: {
     title: "Rechnungsprüfung durch den Beirat",
     theory: "Der Verwaltungsbeirat prüft die Jahresabrechnung vor der Eigentümerversammlung. Die Prüfung ist keine Pflicht, aber üblich und sinnvoll.",
+    extendedTheory: `Der Verwaltungsbeirat hat gemaess Para 29 WEG die Aufgabe, den Verwalter zu kontrollieren und zu unterstuetzen. Rechnungspruefung als Kernaufgabe: Pruefung von Jahresabrechnung und Wirtschaftsplan vor der ETV. Pruefungsschwerpunkte: Belege pruefen (Originalrechnungen), Kontobewegungen nachvollziehen, Ruecklagenentwicklung kontrollieren, Fehler und Unstimmigkeiten dokumentieren. Tipp fuer Verwalter: Beirat fruehzeitig einbinden, transparente Ablage aller Belege, digitalen Belegzugang ermoeglichen. Haftung des Beirats: Nur bei grober Fahrlaessigkeit oder Vorsatz (Para 29 Abs. 3 WEG).`,
     law: [
       "[§ 29 WEG](https://www.gesetze-im-internet.de/woeigg/__29.html) (Verwaltungsbeirat)"
     ],
@@ -416,6 +421,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
   day_49: {
     title: "Entlastung des Verwalters",
     theory: "Die Entlastung ist ein Vertrauensvotum der Eigentümer. Sie bedeutet Verzicht auf Ersatzansprüche für das abgelaufene Jahr (mit Ausnahmen).",
+    extendedTheory: `Die Entlastung des Verwalters ist ein Beschluss der Eigentuemer, mit dem sie erklaren, keine Ansprueche gegen den Verwalter fuer das abgelaufene Wirtschaftsjahr geltend zu machen. Rechtswirkung: Verzicht auf bekannte Ansprueche, nicht auf unbekannte Maengel. Abstimmung: Einfache Mehrheit, Verwalter selbst darf nicht abstimmen (Interessenkonflikt). Praxis: Entlastung wird oft nach Genehmigung der Jahresabrechnung abgestimmt. Verweigerung der Entlastung: Moegliches Indiz fuer Vertrauensverlust, kann zur Abberufung fuehren. Wichtig: Entlastung schutzt nicht vor strafrechtlicher Verfolgung.`,
     law: [
       "BGH-Rechtsprechung zur Entlastung (z.B. BGH V ZR 173/18)"
     ],
@@ -444,6 +450,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
   day_50: {
     title: "Praxisprojekt: Die fehlerhafte Abrechnung",
     theory: "Fehler in der Jahresabrechnung sind häufig. Die Korrektur erfordert rechtliches und buchhalterisches Know-how.",
+    extendedTheory: `Fehlerhafte Jahresabrechnungen sind ein haeufiges Praxisproblem. Typische Fehler: Falsche Verteilerschluessel, fehlende Kostenpositionen, Doppelzahlungen, falsche Ruecklagenentwicklung, fehlende Belegpruefung. Vorgehen bei Fehler: 1. Fehler dokumentieren und mit Belegen nachweisen. 2. Verwalter schriftlich auf Fehler hinweisen und Korrektur verlangen. 3. Beirat einschalten fuer unabhaengige Pruefung. 4. In ETV korrigierte Abrechnung vorlegen und beschliessen. 5. Anfechtungsklage (Para 44 WEG) innerhalb 1 Monat nach ETV-Beschluss als letztes Mittel. Verjährung: 3 Jahre nach Kenntnisnahme (Para 195 BGB).`,
     law: [
       "[§ 28 WEG](https://www.gesetze-im-internet.de/woeigg/__28.html) (Jahresabrechnung)"
     ],
@@ -474,6 +481,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
   day_51: {
     title: "Einladung & Tagesordnung (TOPs)",
     theory: "Die ordnungsgemäße Einladung ist Voraussetzung für wirksame Beschlüsse. Formfehler führen zur Anfechtbarkeit.",
+    extendedTheory: `Die Einladung zur Eigentuemerverdsammlung ist gemaess Para 24 WEG formgebunden. Frist: Mindestens 3 Wochen vor der Versammlung (Para 24 Abs. 4 WEG). Form: Textform (E-Mail zulaessig seit WEG-Reform 2020). Inhalt Pflichtangaben: Datum, Uhrzeit, Ort, Tagesordnung mit allen Beschlusspunkten. Fehlende TOPs: Koennen nachtraglich nur mit Zustimmung aller Eigentuemer aufgenommen werden. Tipp: Tagesordnung klar und praezise formulieren - unklare TOPs fuehren zu anfechtbaren Beschluessen. Eilsitzung: Bei dringendem Bedarf kueerzere Fristen moeglich, muss begruendet werden.`,
     law: [
       "[§ 24 WEG](https://www.gesetze-im-internet.de/woeigg/__24.html) (Einberufung)",
       "[§ 23 WEG](https://www.gesetze-im-internet.de/woeigg/__23.html) (Eigentümerversammlung)"
@@ -503,6 +511,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
   day_52: {
     title: "Vollmachten & Vertretung",
     theory: "Eigentümer können sich in der Versammlung vertreten lassen. Die Vollmacht muss bestimmten Anforderungen genügen.",
+    extendedTheory: `Vollmachten ermoeglichen Eigentuemern die Vertretung in der ETV. Para 25 Abs. 3 WEG: Vollmacht muss in Textform erteilt werden. Wer kann vertreten: Andere Eigentuemer, Ehegatten, eingetragene Lebenspartner, Verwandte 1. Grades, im Haushalt lebende Personen. Beschraenkungen: Gemeinschaftsordnung kann Vollmachten einschraenken oder auf bestimmte Personen beschraenken. Stimmrechtsvertretung des Verwalters: Nur wenn in Gemeinschaftsordnung oder Beschluss ausdruecklich gestattet. Pruefpflicht des Versammlungsleiters: Vollmacht pruefen, Kopie zum Protokoll nehmen, bei Zweifeln zurueckweisen.`,
     law: [
       "[§ 25 WEG](https://www.gesetze-im-internet.de/woeigg/__25.html) (Beschlussfassung)"
     ],
@@ -531,6 +540,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
   day_53: {
     title: "Versammlungsleitung & Ablauf",
     theory: "Die Versammlungsleitung liegt beim Verwalter (oder Beirat). Sie erfordert Autorität, Neutralität und Geschick.",
+    extendedTheory: `Der Versammlungsleiter traegt die Verantwortung fuer einen ordnungsgerechten Ablauf der ETV. Aufgaben: Feststellen der Beschlussfaehigkeit (Para 25 WEG - keine Mindestquorum seit 2020), Hausrecht ausueben, Redezeit regeln, Abstimmungen leiten und verkunueden, Ordnung wahren. Versammlungsfaehigkeit: Seit WEG-Reform 2020 ist jede ETV beschlussfaehig unabhaengig von der Zahl der Erschienenen. Redeordnung: Jeder Eigentuemer hat Rederecht, Versammlungsleiter kann Redezeit begrenzen. Stoerungen: Bei massiven Stoerungen kann Hausrecht ausgeubt und Person des Saales verwiesen werden.`,
     law: [
       "[§ 24 Abs. 5 WEG](https://www.gesetze-im-internet.de/woeigg/__24.html) (Vorsitz)"
     ],
@@ -559,6 +569,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
   day_54: {
     title: "Beschlussfassung & Abstimmung",
     theory: "Die Beschlussfassung folgt klaren Regeln. Je nach Beschlussgegenstand gelten unterschiedliche Mehrheitserfordernisse.",
+    extendedTheory: `Beschlussfassung in der ETV unterliegt strengen formalen Anforderungen. Mehrheitsregeln: Einfache Mehrheit (Para 25 WEG) fuer Standardbeschluesse, Doppelt-qualifizierte Mehrheit fuer bauliche Veraenderungen. Berechnung: Nach Koepfen (ein Eigentuemer = eine Stimme) als Grundsatz, abweichende Regelungen in Gemeinschaftsordnung moeglich. Abstimmungsverfahren: Offen (Handzeichen) oder geheim (Stimmzettel bei Antrag). Ungueltige Stimmzettel: Eindeutig ungueltige Stimmen werden nicht gezaehlt. Protokollierung: Abstimmungsergebnis (Ja/Nein/Enthaltungen) muss exakt dokumentiert werden.`,
     law: [
       "[§ 25 Abs. 2 WEG](https://www.gesetze-im-internet.de/woeigg/__25.html) (Stimmrecht)",
       "[§ 20 WEG](https://www.gesetze-im-internet.de/woeigg/__20.html) (Bauliche Veränderungen)"
@@ -588,6 +599,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
   day_55: {
     title: "Verkündung & Protokollierung",
     theory: "Die Verkündung des Beschlusses in der Versammlung macht ihn erst existent. Das Protokoll dokumentiert die Beschlüsse rechtssicher.",
+    extendedTheory: `Beschlussverkuendung und Protokollierung sind fuer die Rechtswirksamkeit entscheidend. Verkuendung: Versammlungsleiter verkunudet Beschlussergebnis unmittelbar nach Abstimmung (Ja-Stimmen, Nein-Stimmen, Enthaltungen). Protokoll: Muss unverzueglich erstellt werden, Para 24 Abs. 6 WEG. Pflichtinhalt: Datum, Ort, Teilnehmer, Tagesordnungspunkte, Abstimmungsergebnisse, gefasste Beschluesse im Wortlaut. Unterschrift: Verwalter und Beiratsvorsitzender (falls vorhanden). Zugang: Alle Eigentuemer erhalten Protokoll-Kopie. Aufbewahrung: Protokolle 10 Jahre, Beschluss-Sammlung dauerhaft.`,
     law: [
       "[§ 24 Abs. 6 WEG](https://www.gesetze-im-internet.de/woeigg/__24.html) (Niederschrift)"
     ],
@@ -616,6 +628,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
   day_56: {
     title: "Beschluss-Sammlung führen",
     theory: "Die systematische Beschluss-Sammlung nach §24 Abs. 7 WEG ist Pflicht jedes WEG-Verwalters. Sie dokumentiert alle gefassten Beschlüsse und schützt vor Rechtsverlust durch Verjährung.",
+    extendedTheory: `Die Beschluss-Sammlung ist gemaess Para 24 Abs. 7 WEG eine Pflichtaufgabe des Verwalters. Sie enthaelt alle seit 01.07.2007 gefassten Beschluesse der Gemeinschaft in chronologischer Reihenfolge. Inhalt: Datum, Versammlungsort, Beschlusstext, Abstimmungsergebnis. Zweck: Transparenz fuer Kauufer (Einsichtsrecht Para 18 Abs. 4 WEG), Rechtssicherheit, Vermeidung von Doppelbeschluessen. Fuehrung: Koerperlich (Ordner) oder elektronisch. Einsichtsrecht: Jeder Eigentuemer und Kaufinteressent hat Recht auf Einsicht. Fehlende Beschluss-Sammlung: Pflichtverletzung des Verwalters, kann zur Abberufung fuehren.`,
     law: [
       "[§ 24 Abs. 7 WEG](https://www.gesetze-im-internet.de/woeigg/__24.html) (Beschluss-Sammlung)"
     ],
@@ -644,6 +657,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
   day_57: {
     title: "Anfechtungsklage & Nichtigkeitsklage",
     theory: "Beschlüsse können angefochten oder für nichtig erklärt werden. Die Fristen und Voraussetzungen sind streng.",
+    extendedTheory: `Beschlussanfechtung (Para 44 WEG) und Nichtigkeitsklage sind die wichtigsten Rechtsbehelfe gegen fehlerhafte ETV-Beschluesse. Anfechtungsklage: Frist 1 Monat ab Beschlussfassung, beim Amtsgericht (Wohnungseigentumsgericht). Anfechtungsgruende: Verfahrensfehler (falsche Einladung, fehlende TOPs), materiell-rechtliche Fehler (Verstoss gegen Gesetz oder Gemeinschaftsordnung). Nichtigkeit: Schwerwiegende Fehler (fehlende ETV, Beschluss ohne Tagesordnungspunkt), keine Frist. Kosten: Unterlegene Partei traegt Kosten, Streitwert nach Interesse. Tipp fuer Verwalter: Formelle Voraussetzungen stets einhalten, Zweifelsfaelle vorab rechtlich pruefen.`,
     law: [
       "[§ 44 WEG](https://www.gesetze-im-internet.de/woeigg/__44.html) (Klage)",
       "[§ 23 Abs. 4 WEG](https://www.gesetze-im-internet.de/woeigg/__23.html) (Nichtigkeit)"
@@ -673,6 +687,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
   day_58: {
     title: "Sonderumlage beschließen & einziehen",
     theory: "Sonderumlagen sind außerordentliche Zahlungen zur Deckung unvorhergesehener Kosten. Sie erfordern einen Beschluss.",
+    extendedTheory: `Sonderumlage ist eine einmalige Zahlung aller Eigentuemer bei unvorhergesehenem Finanzbedarf. Beschluss: Einfache Mehrheit in ETV genuegt (Para 19 Abs. 1 WEG). Berechnung: Nach Miteigentumsanteilen (MEA) oder anderen Verteilerschluesseln. Einzug: Verwalter setzt Faelligkeitsdatum, schreibt Eigentuemer an. Nichtzahlung: Mahnverfahren, Zwangsvollstreckung moeglich, Wohnungseigentuemer haftet persoenlich. Alternativfinanzierung: Bankdarlehen der Gemeinschaft moeglich (Para 18 Abs. 1 WEG), bedarf Beschluss. Praxis: Sonderumlage vermeiden durch ausreichende Erhaltungsruecklage und vorausschauende Instandhaltungsplanung.`,
     law: [
       "[§ 16 Abs. 2 WEG](https://www.gesetze-im-internet.de/woeigg/__16.html) (Kostenverteilung)"
     ],
@@ -701,6 +716,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
   day_59: {
     title: "Konfliktmanagement in der Versammlung",
     theory: "Eigentümerversammlungen sind oft emotional. Professionelles Konfliktmanagement ist entscheidend für den Erfolg.",
+    extendedTheory: `Konflikte in der Eigentueemerversammlung erfordern besonderes Geschick vom Verwalter. Typische Eskalationssituationen: Streit ueber Tagesordnungspunkte, persoenliche Angriffe zwischen Eigentuemern, Ablehnung notwendiger Beschluesse. Deeskalationstechniken: Sachlich bleiben, Redebeitraege strukturieren, Pausen einlegen bei Erhitzung, Mehrheitsmeinung verdeutlichen. Hausrecht: Bei massiver Stoerung Person des Saales verweisen. Vertagung: Bei unloeslichem Konflikt ETV vertagen (Antrag, einfache Mehrheit). Nachbereitung: Konfliktthemen in Einzelgespraechen vor naechster ETV klaeren. Dokumentation: Alle Vorfaelle im Protokoll festhalten.`,
     law: [
       "Keine spezifischen Gesetze - Kommunikationstheorie"
     ],
@@ -729,6 +745,7 @@ WEG mit 8 Einheiten, Baujahr 1975. Rücklage: 15.000 € (seit 20 Jahren unverä
   day_60: {
     title: "Abschluss Block 3: Prüfungsvorbereitung",
     theory: "Zusammenfassung der Wochen 9-12. Wiederholung der wichtigsten Themen: Buchhaltung, Abrechnung, Eigentümerversammlung.",
+    extendedTheory: `Pruefungsvorbereitung Block 3 - WEG-Abrechnung und Versammlungsrecht. Kernthemen: Wirtschaftsplan (Para 28 Abs. 1 WEG), Jahresabrechnung (Para 28 Abs. 2 WEG), Eigentueemerversammlung (Para 23-24 WEG), Beschlussfassung (Para 25 WEG), Anfechtung (Para 44 WEG). Typische Pruefungsaufgaben: Hausgeldberechnung aus gegebenen Kostenpositionen, Fehler in Abrechnung identifizieren, Einladungsfrist berechnen, Anfechtungsfristen pruefen. Lernstrategie: Berechnungsaufgaben taeglich ueben, Gesetzestexte lesen und verstehen, Musterbeschluesse analysieren. Wichtige Urteile: BGH-Rechtsprechung zu Abrechnungsmaengeln kennen.`,
     law: [
       "Alle relevanten Gesetze aus Tag 41-59"
     ],

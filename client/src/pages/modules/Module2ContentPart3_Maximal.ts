@@ -734,7 +734,7 @@ No-Go: Kurze Hosen, Flip-Flops, tiefer Ausschnitt.
   },
   day_56: {
     title: "Wiederholung: Bewertung & Technik",
-    theory: "Systematische Wiederholung der Bewertungsverfahren: Vergleichswert, Sachwert, Ertragswert nach ImmoWertV 2021 — mit Prüfungsaufgaben im IHK-Format zur Vorbereitung auf die Sachkundeprüfung.",
+    theory: "Wiederholung Bewertung und Technik fuer die IHK-Sachkundeproefung Para 34c GewO. Kernthemen Wertermittlung: Vergleichswert-, Sachwert- und Ertragswertverfahren nach ImmoWertV 2021. Bodenwertermittlung: Bodenrichtwerte, Gutachterausschuss, Para 196 BauGB. Technische Grundlagen: Energieausweis GEG 2023, Wohnflaechenberechnung WoFlV vs DIN 277, Grundbuch lesen (Abt I-III), Baurecht Bebauungsplan vs Para 34 BauGB. Pruefungsformat: Multiple-Choice-Fragen und Rechenaufgaben. Letzte Vorbereitung: Formeln wiederholen, Beispielberechnungen durchfuehren.",
     extendedTheory: `
 ### Formeln
 *   Ertragswert.
@@ -776,7 +776,7 @@ No-Go: Kurze Hosen, Flip-Flops, tiefer Ausschnitt.
   },
   day_57: {
     title: "Wiederholung: Marketing & Vertrieb",
-    theory: "Marketingstrategien im Überblick: Farming, Social Media, Referral Marketing, Online-Portale und persönliches Netzwerk — mit Prüfungsfragen zur Vertiefung und Wiederholung.",
+    theory: "Wiederholung Marketing und Vertrieb fuer IHK-Sachkunde Para 34c GewO. Kernthemen: Vermarktungsstrategien (Farming, Social Media, Portale), Exposeverstellung, Besichtigungsdramaturgie, Verkaufspsychologie, Preisverhandlung. Rechtliche Aspekte: Fernabsatzrecht (Para 312 BGB), Widerrufsrecht, UWG-Werberecht, DSGVO-konformes Marketing. Digitales Marketing: ImmoScout24, Immowelt, Social-Media-Strategie, SEO fuer Makler. Pruefungsschwerpunkte: Provision (Para 656c BGB Halbierungsprinzip), Wettbewerbsrecht, Datenschutz im Marketing.",
     extendedTheory: `
 ### Einwandbehandlung
 *   "Zu teuer" -> Nutzen argumentieren.
@@ -816,7 +816,7 @@ No-Go: Kurze Hosen, Flip-Flops, tiefer Ausschnitt.
   },
   day_58: {
     title: "Abschlussprüfung Simulation (Teil 1)",
-    theory: "Abschlussprüfungssimulation Teil 1: Recht und Verträge. 30 IHK-typische Fragen zu §34c GewO, BGB-Maklerrecht, GwG, DSGVO und Verbraucherschutz — unter Prüfungsbedingungen.",
+    theory: "Abschlusspruefungssimulation Teil 1 - Recht und Vertraege. 30 IHK-typische Multiple-Choice-Fragen zu: Para 34c GewO (Voraussetzungen, Pflichten, Erlaubnisversagungsgruende), BGB-Maklerrecht Para 652-656d BGB (Provision, Widerrufsrecht, Halbierungsprinzip), GwG Geldwaeschegesetz (Sorgfaltspflichten, Meldepflicht), DSGVO (Rechtsgrundlagen, Betroffenenrechte), Verbraucherschutz (Fernabsatz, Widerruf). Zeitlimit: 60 Minuten fuer 30 Fragen. Bestehengrenze IHK: 70 Prozent korrekte Antworten. Tipp: Gesetzestexte nochmals lesen.",
     extendedTheory: `
 50 Fragen Multiple Choice.
 Zeit: 60 Minuten.
@@ -853,7 +853,7 @@ Themen: Recht, Bewertung, Marketing.
   },
   day_59: {
     title: "Abschlussprüfung Simulation (Teil 2)",
-    theory: "Abschlussprüfungssimulation Teil 2: Bewertung und Praxis. 30 IHK-typische Fragen zu Wertermittlung, Grundbuch, Baurecht, Vermarktung und Verhandlungsführung — unter Prüfungsbedingungen.",
+    theory: "Abschlusspruefungssimulation Teil 2 - Bewertung und Praxis. 30 IHK-typische Aufgaben zu: Wertermittlungsverfahren (Vergleichswert, Sachwert, Ertragswert berechnen), Grundbuchrecht (Abteilungen I-III interpretieren), Baurecht (B-Plan vs Para 34 BauGB), Finanzierung (Annuitaetendarlehen, Beleihungsauslauf), Praxissituationen (Kundengespräch, Exposepruefung). Zeitlimit: 60 Minuten. Rechenaufgaben: Taschenrechner erlaubt. Vorbereitung: IHK-Musterpruefungen aus den letzten 3 Jahren loesen.",
     extendedTheory: `
 Erstellung eines Exposés und einer Bewertung für ein gegebenes Objekt.
     `,
