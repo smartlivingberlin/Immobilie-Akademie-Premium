@@ -1,0 +1,2544 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>IHK Vollaudit — Immobilien Akademie Smart</title>
+<style>
+body{font-family:'Segoe UI',sans-serif;margin:0;background:#f5f5f5;color:#222}
+.header{background:linear-gradient(135deg,#1a472a,#2d6a4f);color:white;padding:30px 40px}
+.header h1{font-size:26px;margin:0 0 4px}
+.header .meta{font-size:13px;opacity:.8;font-family:monospace}
+.content{max-width:1400px;margin:0 auto;padding:30px 20px}
+.stat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px}
+.stat{background:white;border-radius:10px;padding:16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.stat-val{font-size:32px;font-weight:800;font-family:monospace}
+.stat-lbl{font-size:11px;color:#999;text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
+.mod-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px}
+.section-title{font-size:16px;font-weight:700;margin-bottom:12px;color:#1a472a}
+table{width:100%;border-collapse:collapse;background:white;border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+th{background:#1a472a;color:white;padding:10px 12px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+td{padding:8px 12px;border-bottom:1px solid #eee;vertical-align:top}
+tr:hover td{background:#f9f9f9}
+.filter-row{display:flex;gap:8px;margin-bottom:12px}
+input[type=text]{padding:8px 12px;border:1px solid #ddd;border-radius:6px;font-size:13px;width:300px}
+select{padding:8px 12px;border:1px solid #ddd;border-radius:6px;font-size:13px}
+</style>
+</head>
+<body>
+<div class="header">
+    <h1>🎓 IHK Vollaudit — Immobilien Akademie Smart</h1>
+    <div class="meta">Generiert: 13.04.2026 16:47 · 240 Tage analysiert · 0 tokens verbraucht · Modell: claude-haiku-4-5-20251001</div>
+</div>
+<div class="content">
+    <div class="stat-grid">
+        <div class="stat"><div class="stat-val" style="color:#f57f17">68</div><div class="stat-lbl">Gesamt-Score /100</div></div>
+        <div class="stat"><div class="stat-val">240</div><div class="stat-lbl">Tage analysiert</div></div>
+        <div class="stat"><div class="stat-val" style="color:#c62828">440</div><div class="stat-lbl">Probleme gesamt</div></div>
+        <div class="stat"><div class="stat-val" style="color:#1565c0">209</div><div class="stat-lbl">Auto-Fixes verfügbar</div></div>
+        <div class="stat"><div class="stat-val" style="color:#6a1b9a">0</div><div class="stat-lbl">Tokens verbraucht</div></div>
+    </div>
+    
+    <div class="section-title">Modul-Übersicht</div>
+    <div class="mod-grid">
+        <div style="background:white;border:1px solid #ddd;border-radius:10px;padding:18px;border-left:4px solid #2e7d32">
+            <div style="font-size:11px;color:#999;font-family:monospace">MODUL 1</div>
+            <div style="font-size:16px;font-weight:700;margin:4px 0">Einführung & Grundlagen</div>
+            <div style="font-size:28px;font-weight:800;color:#2e7d32;font-family:monospace">86<span style="font-size:14px">/100</span></div>
+            <div style="font-size:12px;color:#666;margin-top:8px">
+                20/20 Tage ·
+                11 Probleme ·
+                8 Auto-Fixes
+            </div>
+            
+        </div>
+        <div style="background:white;border:1px solid #ddd;border-radius:10px;padding:18px;border-left:4px solid #f57f17">
+            <div style="font-size:11px;color:#999;font-family:monospace">MODUL 2</div>
+            <div style="font-size:16px;font-weight:700;margin:4px 0">Makler §34c GewO</div>
+            <div style="font-size:28px;font-weight:800;color:#f57f17;font-family:monospace">66<span style="font-size:14px">/100</span></div>
+            <div style="font-size:12px;color:#666;margin-top:8px">
+                60/60 Tage ·
+                133 Probleme ·
+                42 Auto-Fixes
+            </div>
+            
+        </div>
+        <div style="background:white;border:1px solid #ddd;border-radius:10px;padding:18px;border-left:4px solid #f57f17">
+            <div style="font-size:11px;color:#999;font-family:monospace">MODUL 3</div>
+            <div style="font-size:16px;font-weight:700;margin:4px 0">WEG & Mietrecht</div>
+            <div style="font-size:28px;font-weight:800;color:#f57f17;font-family:monospace">63<span style="font-size:14px">/100</span></div>
+            <div style="font-size:12px;color:#666;margin-top:8px">
+                80/80 Tage ·
+                155 Probleme ·
+                58 Auto-Fixes
+            </div>
+            
+        </div>
+        <div style="background:white;border:1px solid #ddd;border-radius:10px;padding:18px;border-left:4px solid #c62828">
+            <div style="font-size:11px;color:#999;font-family:monospace">MODUL 4</div>
+            <div style="font-size:16px;font-weight:700;margin:4px 0">Wertermittlung</div>
+            <div style="font-size:28px;font-weight:800;color:#c62828;font-family:monospace">51<span style="font-size:14px">/100</span></div>
+            <div style="font-size:12px;color:#666;margin-top:8px">
+                40/40 Tage ·
+                101 Probleme ·
+                68 Auto-Fixes
+            </div>
+            
+        </div>
+        <div style="background:white;border:1px solid #ddd;border-radius:10px;padding:18px;border-left:4px solid #f57f17">
+            <div style="font-size:11px;color:#999;font-family:monospace">MODUL 5</div>
+            <div style="font-size:16px;font-weight:700;margin:4px 0">§34i Finanzierung</div>
+            <div style="font-size:28px;font-weight:800;color:#f57f17;font-family:monospace">77<span style="font-size:14px">/100</span></div>
+            <div style="font-size:12px;color:#666;margin-top:8px">
+                40/40 Tage ·
+                40 Probleme ·
+                33 Auto-Fixes
+            </div>
+            
+        </div></div>
+    
+    <div class="section-title">Vollständige Tages-Analyse</div>
+    <div class="filter-row">
+        <input type="text" id="search" placeholder="🔍 Suche (Titel, Probleme...)" oninput="filterTable()">
+        <select id="mod-filter" onchange="filterTable()">
+            <option value="">Alle Module</option>
+            <option value="M1">Modul 1</option>
+            <option value="M2">Modul 2</option>
+            <option value="M3">Modul 3</option>
+            <option value="M4">Modul 4</option>
+            <option value="M5">Modul 5</option>
+        </select>
+        <select id="score-filter" onchange="filterTable()">
+            <option value="">Alle Scores</option>
+            <option value="critical">Kritisch (unter 60)</option>
+            <option value="warn">Warnung (60-79)</option>
+            <option value="ok">OK (80+)</option>
+        </select>
+    </div>
+    <table id="main-table">
+        <thead><tr>
+            <th>Mod</th><th>Tag</th><th>Titel</th><th>Score</th>
+            <th>Normen</th><th>Aufgabe</th><th>Probleme</th><th>Auto-Fix</th>
+        </tr></thead>
+        <tbody>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M1</td>
+                <td style="font-family:monospace">T01</td>
+                <td style="font-size:13px">Einführung in die Immobilienbranche</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">95</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">✅ Keine</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M1</td>
+                <td style="font-family:monospace">T02</td>
+                <td style="font-size:13px">Karrierepfade & Berufsfelder</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">95</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">✅ Keine</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M1</td>
+                <td style="font-family:monospace">T03</td>
+                <td style="font-size:13px">Persönliche Eignung & Soft Skills</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">95</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">✅ Keine</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M1</td>
+                <td style="font-family:monospace">T04</td>
+                <td style="font-size:13px">Eignungstest & Selbstreflexion</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">95</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">✅ Keine</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M1</td>
+                <td style="font-family:monospace">T05</td>
+                <td style="font-size:13px">Ziele und Visionen</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">95</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">✅ Keine</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M1</td>
+                <td style="font-family:monospace">T06</td>
+                <td style="font-size:13px">Einführung in das BGB</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M1</td>
+                <td style="font-family:monospace">T07</td>
+                <td style="font-size:13px">Sachenrecht & Eigentum</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M1</td>
+                <td style="font-family:monospace">T08</td>
+                <td style="font-size:13px">Gewerberecht & §34c GewO</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 854 BGB', '§ 873 BGB', '§ 903 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M1</td>
+                <td style="font-family:monospace">T09</td>
+                <td style="font-size:13px">Maklerrecht Grundlagen</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M1</td>
+                <td style="font-family:monospace">T10</td>
+                <td style="font-size:13px">Geldwäschegesetz (GwG)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 2 GwG, § 10 GwG, § 11 GwG</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 2 GwG', '§ 10 GwG', '§ 11 GwG', '§ 4</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M1</td>
+                <td style="font-family:monospace">T11</td>
+                <td style="font-size:13px">Berufsfeld: Immobilienmakler</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">90</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M1</td>
+                <td style="font-family:monospace">T12</td>
+                <td style="font-size:13px">Berufsfeld: Immobilienverwalter</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">90</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M1</td>
+                <td style="font-family:monospace">T13</td>
+                <td style="font-size:13px">Berufsfeld: Gutachter & Sachverständiger</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">90</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M1</td>
+                <td style="font-family:monospace">T14</td>
+                <td style="font-size:13px">Berufsfeld: Darlehensvermittler</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 34c GewO, § 34i GewO, § 14 GewO</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 34c GewO', '§ 34i GewO', '§ 14 GewO'</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M1</td>
+                <td style="font-family:monospace">T15</td>
+                <td style="font-size:13px">Datenschutz (DSGVO) & Verbraucherschutz</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M1</td>
+                <td style="font-family:monospace">T16</td>
+                <td style="font-size:13px">Arbeitsalltag & Zeitmanagement</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">95</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">✅ Keine</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M1</td>
+                <td style="font-family:monospace">T17</td>
+                <td style="font-size:13px">Digitale Tools & Technologien</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">95</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">✅ Keine</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M1</td>
+                <td style="font-family:monospace">T18</td>
+                <td style="font-size:13px">Prozessautomatisierung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">95</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">✅ Keine</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M1</td>
+                <td style="font-family:monospace">T19</td>
+                <td style="font-size:13px">Karriereplanung & Weiterbildung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">95</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">✅ Keine</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M1</td>
+                <td style="font-family:monospace">T20</td>
+                <td style="font-size:13px">Abschluss Modul 1 & Portfolio</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">80</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Abschluss Modul </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T01</td>
+                <td style="font-size:13px">Berufsbild & §34c GewO</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 34c GewO, § 34i GewO, § 14 GewO</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 34c GewO', '§ 34i GewO', '§ 14 GewO'</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T02</td>
+                <td style="font-size:13px">Gewerberecht & MaBV</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (90 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 34c GewO, § 34i GewO, § 14 GewO</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 34c GewO', '§ 34i GewO', '§ 14 GewO'</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T03</td>
+                <td style="font-size:13px">Maklervertrag: BGB Grundlagen</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (74 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T04</td>
+                <td style="font-size:13px">Widerrufsrecht Deep Dive</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (81 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 652 BGB, § 653 BGB, § 654 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 652 BGB', '§ 653 BGB', '§ 654 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T05</td>
+                <td style="font-size:13px">Geldwäschegesetz (GwG) Deep Dive</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (66 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 2 GwG, § 10 GwG, § 11 GwG<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 2 GwG', '§ 10 GwG', '§ 11 GwG', '§ 4, task: Erklären Sie das Thema 'G</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T06</td>
+                <td style="font-size:13px">Datenschutz (DSGVO) für Makler</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (70 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 2 GwG, § 10 GwG, § 11 GwG</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 2 GwG', '§ 10 GwG', '§ 11 GwG', '§ 4</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T07</td>
+                <td style="font-size:13px">Wettbewerbsrecht (UWG) Basics</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (68 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 652 BGB, § 653 BGB, § 654 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 652 BGB', '§ 653 BGB', '§ 654 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T08</td>
+                <td style="font-size:13px">Verbraucherschutz Spezial</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (63 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T09</td>
+                <td style="font-size:13px">Das Maklerbüro: Organisation</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (46 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 34c GewO, § 34i GewO, § 14 GewO<br>⚠️ Inhalt prüfen: Titel-Thema nicht im Inhalt erkennbar</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 34c GewO', '§ 34i GewO', '§ 14 GewO'</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T10</td>
+                <td style="font-size:13px">Netzwerke & Gemeinschaftsgeschäfte</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (48 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 652 BGB, § 653 BGB, § 654 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 652 BGB', '§ 653 BGB', '§ 654 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T11</td>
+                <td style="font-size:13px">Standortanalyse Deep Dive</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">80</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (43 Zeichen, min. 200)<br>⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T12</td>
+                <td style="font-size:13px">Marktforschung & Datenquellen</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">80</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (41 Zeichen, min. 200)<br>⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T13</td>
+                <td style="font-size:13px">Immobilienarten & Nutzungsarten</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (63 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 854 BGB', '§ 873 BGB', '§ 903 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T14</td>
+                <td style="font-size:13px">Baurecht Basics (BauGB, BauNVO)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (35 Zeichen, min. 200)<br>⚠️ Normen prüfen<br>⚠️ Inhalt prüfen: Titel-Thema nicht im Inhalt erkennbar</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T15</td>
+                <td style="font-size:13px">Grundbuch lesen (Abt I & II)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (30 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 854 BGB', '§ 873 BGB', '§ 903 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T16</td>
+                <td style="font-size:13px">Grundbuch Abt III & Finanzierungslasten</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (29 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 854 BGB', '§ 873 BGB', '§ 903 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T17</td>
+                <td style="font-size:13px">Bauunterlagen & Flurkarte</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">80</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (47 Zeichen, min. 200)<br>⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T18</td>
+                <td style="font-size:13px">Energieausweis (GEG)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">80</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (49 Zeichen, min. 200)<br>⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T19</td>
+                <td style="font-size:13px">Wohnflächenberechnung (WoFlV vs DIN 277)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">80</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (42 Zeichen, min. 200)<br>⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T20</td>
+                <td style="font-size:13px">Objektunterlagen-Management</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (63 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 854 BGB', '§ 873 BGB', '§ 903 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T21</td>
+                <td style="font-size:13px">Einführung Wertermittlung (ImmoWertV)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (58 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 854 BGB', '§ 873 BGB', '§ 903 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T22</td>
+                <td style="font-size:13px">Vergleichswertverfahren (§ 15 ImmoWertV)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193, task: Erklären Sie das Thema 'V</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T23</td>
+                <td style="font-size:13px">Sachwertverfahren (§ 21 ImmoWertV)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (44 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T24</td>
+                <td style="font-size:13px">Ertragswertverfahren (§ 27 ImmoWertV)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (48 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193, task: Erklären Sie das Thema 'E</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T25</td>
+                <td style="font-size:13px">Bauschäden & Mängel erkennen</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">80</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (75 Zeichen, min. 200)<br>⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T26</td>
+                <td style="font-size:13px">Einkaufsstrategien: Farming</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (66 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T27</td>
+                <td style="font-size:13px">Einkaufsgespräch & Einwandbehandlung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (59 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 652 BGB, § 653 BGB, § 654 BGB<br>⚠️ Inhalt prüfen: Titel-Thema nicht im Inhalt erkennbar</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 652 BGB', '§ 653 BGB', '§ 654 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T28</td>
+                <td style="font-size:13px">Der Makleralleinauftrag</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (61 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 652 BGB, § 653 BGB, § 654 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 652 BGB', '§ 653 BGB', '§ 654 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T29</td>
+                <td style="font-size:13px">Exposé-Erstellung: Text & Bild</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (72 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 652 BGB, § 653 BGB, § 654 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 652 BGB', '§ 653 BGB', '§ 654 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T30</td>
+                <td style="font-size:13px">Vermarktungskanäle</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">80</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (50 Zeichen, min. 200)<br>⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T31</td>
+                <td style="font-size:13px">Anfragen-Management & Qualifizierung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">80</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (44 Zeichen, min. 200)<br>⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T32</td>
+                <td style="font-size:13px">Besichtigungs-Dramaturgie</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">80</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (59 Zeichen, min. 200)<br>⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T33</td>
+                <td style="font-size:13px">Verkaufspsychologie & Verhandlung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">80</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (50 Zeichen, min. 200)<br>⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T34</td>
+                <td style="font-size:13px">Reservierung & Anzahlung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">80</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (42 Zeichen, min. 200)<br>⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T35</td>
+                <td style="font-size:13px">Finanzierungssicherung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (47 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 854 BGB', '§ 873 BGB', '§ 903 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T36</td>
+                <td style="font-size:13px">Kaufvertragsentwurf & Notar</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (52 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 854 BGB', '§ 873 BGB', '§ 903 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T37</td>
+                <td style="font-size:13px">Der Notartermin</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (44 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 652 BGB, § 653 BGB, § 654 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 652 BGB', '§ 653 BGB', '§ 654 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T38</td>
+                <td style="font-size:13px">After-Sales & Übergabe</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">80</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (59 Zeichen, min. 200)<br>⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T39</td>
+                <td style="font-size:13px">Mietrecht für Makler (Bestellerprinzip)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (57 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T40</td>
+                <td style="font-size:13px">Gewerbevermietung & Pacht</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (58 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 652 BGB, § 653 BGB, § 654 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 652 BGB', '§ 653 BGB', '§ 654 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T41</td>
+                <td style="font-size:13px">Steuern für Makler & Kunden (EStG)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (81 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 23 EStG, § 4 GrEStG</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 23 EStG', '§ 4 GrEStG']</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T42</td>
+                <td style="font-size:13px">Immobilien als Kapitalanlage</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (48 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T43</td>
+                <td style="font-size:13px">Denkmalschutz & Sanierung (AfA)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (61 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 23 EStG, § 4 GrEStG</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 23 EStG', '§ 4 GrEStG']</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T44</td>
+                <td style="font-size:13px">Neubau-Projekte & Bauträger</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (51 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 34c GewO, § 34i GewO, § 14 GewO</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 34c GewO', '§ 34i GewO', '§ 14 GewO'</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T45</td>
+                <td style="font-size:13px">Erbbaurecht</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">80</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (57 Zeichen, min. 200)<br>⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T46</td>
+                <td style="font-size:13px">Landwirtschaftliche Flächen</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">80</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (46 Zeichen, min. 200)<br>⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T47</td>
+                <td style="font-size:13px">Zwangsversteigerung (ZVG)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (44 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 854 BGB', '§ 873 BGB', '§ 903 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T48</td>
+                <td style="font-size:13px">Leibrente & Immobilienverrentung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (56 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T49</td>
+                <td style="font-size:13px">Ferienimmobilien</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">80</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (37 Zeichen, min. 200)<br>⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T50</td>
+                <td style="font-size:13px">Internationaler Markt</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (44 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 652 BGB, § 653 BGB, § 654 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 652 BGB', '§ 653 BGB', '§ 654 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T51</td>
+                <td style="font-size:13px">PropTech & KI im Maklerbüro</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (59 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 652 BGB, § 653 BGB, § 654 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 652 BGB', '§ 653 BGB', '§ 654 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T52</td>
+                <td style="font-size:13px">Konfliktmanagement & Mediation</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">80</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (43 Zeichen, min. 200)<br>⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T53</td>
+                <td style="font-size:13px">Selbstmanagement & Zeitmanagement</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (41 Zeichen, min. 200)<br>⚠️ Normen prüfen<br>⚠️ Inhalt prüfen: Titel-Thema nicht im Inhalt erkennbar</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T54</td>
+                <td style="font-size:13px">Business-Knigge & Etikette</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (48 Zeichen, min. 200)<br>⚠️ Normen prüfen<br>⚠️ Inhalt prüfen: Titel-Thema nicht im Inhalt erkennbar</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T55</td>
+                <td style="font-size:13px">Wiederholung: Recht & Verträge</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (59 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 652 BGB, § 653 BGB, § 654 BGB<br>⚠️ Inhalt prüfen: Titel-Thema nicht im Inhalt erkennbar</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 652 BGB', '§ 653 BGB', '§ 654 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T56</td>
+                <td style="font-size:13px">Wiederholung: Bewertung & Technik</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">40</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (20 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Inhalt sehr kurz (129 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T57</td>
+                <td style="font-size:13px">Wiederholung: Marketing & Vertrieb</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">25</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (31 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 652 BGB, § 653 BGB, § 654 BGB<br>❌ Inhalt sehr kurz (158 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 652 BGB', '§ 653 BGB', '§ 654 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T58</td>
+                <td style="font-size:13px">Abschlussprüfung Simulation (Teil 1)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">55</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (27 Zeichen, min. 200)<br>⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (81 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T59</td>
+                <td style="font-size:13px">Abschlussprüfung Simulation (Teil 2)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">55</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (28 Zeichen, min. 200)<br>⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (70 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M2</td>
+                <td style="font-family:monospace">T60</td>
+                <td style="font-size:13px">Zertifikat & Start in die Praxis</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (43 Zeichen, min. 200)<br>❌ Normen fehlen — Vorschlag: § 34c GewO, § 34i GewO, § 14 GewO<br>⚠️ Inhalt prüfen: Titel-Thema nicht im Inhalt erkennbar</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 34c GewO', '§ 34i GewO', '§ 14 GewO'</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T01</td>
+                <td style="font-size:13px">Einführung in die WEG-Verwaltung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 854 BGB', '§ 873 BGB', '§ 903 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T02</td>
+                <td style="font-size:13px">Die Teilungserklärung & Gemeinschaftsordnung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 854 BGB', '§ 873 BGB', '§ 903 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T03</td>
+                <td style="font-size:13px">Die Eigentümerversammlung (ETV)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 WEG', '§ 8 WEG', '§ 10 WEG', '§ 16</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T04</td>
+                <td style="font-size:13px">Der Wirtschaftsplan: Die Finanzplanung der WE</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 WEG', '§ 8 WEG', '§ 10 WEG', '§ 16</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T05</td>
+                <td style="font-size:13px">Die Jahresabrechnung: Grundlagen & Struktur</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 WEG', '§ 8 WEG', '§ 10 WEG', '§ 16</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T06</td>
+                <td style="font-size:13px">Verteilerschlüssel in der WEG</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 854 BGB', '§ 873 BGB', '§ 903 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T07</td>
+                <td style="font-size:13px">Die Heizkostenabrechnung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 WEG', '§ 8 WEG', '§ 10 WEG', '§ 16</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T08</td>
+                <td style="font-size:13px">Vermögensbericht & Erhaltungsrücklage</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">90</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T09</td>
+                <td style="font-size:13px">Organisation der Eigentümerversammlung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 WEG', '§ 8 WEG', '§ 10 WEG', '§ 16</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T10</td>
+                <td style="font-size:13px">Beschlussfassung & Stimmrecht</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 854 BGB', '§ 873 BGB', '§ 903 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T11</td>
+                <td style="font-size:13px">Das Versammlungsprotokoll</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 WEG', '§ 8 WEG', '§ 10 WEG', '§ 16</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T12</td>
+                <td style="font-size:13px">Die Beschlussanfechtung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 WEG', '§ 8 WEG', '§ 10 WEG', '§ 16</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T13</td>
+                <td style="font-size:13px">Die Sondereigentumsverwaltung (SEV)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T14</td>
+                <td style="font-size:13px">Der Wohnraum-Mietvertrag</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T15</td>
+                <td style="font-size:13px">Kündigung & Räumung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 854 BGB', '§ 873 BGB', '§ 903 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T16</td>
+                <td style="font-size:13px">Die Mieterhöhung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T17</td>
+                <td style="font-size:13px">Konfliktmanagement: Der Verwalter als Mediato</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 WEG', '§ 8 WEG', '§ 10 WEG', '§ 16</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T18</td>
+                <td style="font-size:13px">Kommunikation & Rhetorik für Verwalter</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 WEG', '§ 8 WEG', '§ 10 WEG', '§ 16</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T19</td>
+                <td style="font-size:13px">Facility Management: Mehr als nur Hausmeister</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 WEG', '§ 8 WEG', '§ 10 WEG', '§ 16</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T20</td>
+                <td style="font-size:13px">Zwischenprüfung: Grundlagen & Verwaltung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T21</td>
+                <td style="font-size:13px">Technische Verwaltung: Grundlagen & Pflichten</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">90</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T22</td>
+                <td style="font-size:13px">Beschlussfassung über Sanierungen</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 854 BGB', '§ 873 BGB', '§ 903 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T23</td>
+                <td style="font-size:13px">Instandhaltung & Instandsetzung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T24</td>
+                <td style="font-size:13px">Wartungsverträge & Dienstleister</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T25</td>
+                <td style="font-size:13px">Hausmeister & Reinigungspersonal</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T26</td>
+                <td style="font-size:13px">Technische Anlagen: Heizung & Sanitär</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">90</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T27</td>
+                <td style="font-size:13px">Technische Anlagen: Elektrik & Brandschutz</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">90</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T28</td>
+                <td style="font-size:13px">Modernisierung & Energieeffizienz (GEG)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">90</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T29</td>
+                <td style="font-size:13px">Schimmel & Feuchtigkeit</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T30</td>
+                <td style="font-size:13px">Praxisprojekt: Instandhaltungsplan</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T31</td>
+                <td style="font-size:13px">Verwalter-Software & ERP-Systeme</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T32</td>
+                <td style="font-size:13px">Datenschutz & DSGVO im Alltag</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)<br>⚠️ Inhalt prüfen: Titel-Thema nicht im Inhalt erkennbar</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T33</td>
+                <td style="font-size:13px">Digitale Eigentümerversammlung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 WEG', '§ 8 WEG', '§ 10 WEG', '§ 16</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T34</td>
+                <td style="font-size:13px">Prozessoptimierung & Zeitmanagement</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T35</td>
+                <td style="font-size:13px">Mietrecht Spezial: Gewerbemietrecht</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T36</td>
+                <td style="font-size:13px">Mietrecht Spezial: Möbliertes Wohnen</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T37</td>
+                <td style="font-size:13px">Mietrecht Spezial: Öffentlich gefördert</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T38</td>
+                <td style="font-size:13px">Mietrecht Spezial: Staffel- & Indexmiete</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T39</td>
+                <td style="font-size:13px">Konfliktmanagement: Eigentümer vs. Eigentümer</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T40</td>
+                <td style="font-size:13px">Abschluss Block 2: Prüfungsvorbereitung WEG</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T41</td>
+                <td style="font-size:13px">Hausgeldabrechnung: Grundlagen und Pflichten</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 854 BGB', '§ 873 BGB', '§ 903 BGB', , task: Erklären Sie das Thema 'H</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T42</td>
+                <td style="font-size:13px">Sonderumlage und Wirtschaftsplan: Planung und</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 WEG', '§ 8 WEG', '§ 10 WEG', '§ 16, task: Erklären Sie das Thema 'S</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T43</td>
+                <td style="font-size:13px">Rücklagenbildung & Verwendung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">90</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T44</td>
+                <td style="font-size:13px">Jahreswirtschaftsplan (JWP) - Erstellung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T45</td>
+                <td style="font-size:13px">Jahresabrechnung - Gesamtabrechnung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T46</td>
+                <td style="font-size:13px">Jahresabrechnung - Einzelabrechnung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T47</td>
+                <td style="font-size:13px">Heizkostenabrechnung & HKVO</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T48</td>
+                <td style="font-size:13px">Rechnungsprüfung durch den Beirat</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T49</td>
+                <td style="font-size:13px">Entlastung des Verwalters</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T50</td>
+                <td style="font-size:13px">Praxisprojekt: Die fehlerhafte Abrechnung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T51</td>
+                <td style="font-size:13px">Einladung & Tagesordnung (TOPs)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T52</td>
+                <td style="font-size:13px">Vollmachten & Vertretung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T53</td>
+                <td style="font-size:13px">Versammlungsleitung & Ablauf</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T54</td>
+                <td style="font-size:13px">Beschlussfassung & Abstimmung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T55</td>
+                <td style="font-size:13px">Verkündung & Protokollierung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T56</td>
+                <td style="font-size:13px">Beschluss-Sammlung führen</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">55</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Theorie zu kurz (91 Zeichen, min. 200)<br>⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T57</td>
+                <td style="font-size:13px">Anfechtungsklage & Nichtigkeitsklage</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T58</td>
+                <td style="font-size:13px">Sonderumlage beschließen & einziehen</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T59</td>
+                <td style="font-size:13px">Konfliktmanagement in der Versammlung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">65</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T60</td>
+                <td style="font-size:13px">Abschluss Block 3: Prüfungsvorbereitung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Inhalt sehr kurz (0 Zeichen)<br>⚠️ Inhalt prüfen: Titel-Thema nicht im Inhalt erkennbar</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T61</td>
+                <td style="font-size:13px">Mietverwaltung: Grundlagen & Vertrag</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Mietverwaltung: </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T62</td>
+                <td style="font-size:13px">Betriebskostenabrechnung (BKA)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">35</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', , task: Erklären Sie das Thema 'B</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T63</td>
+                <td style="font-size:13px">Mieterhöhungsverlangen</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">35</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', , task: Erklären Sie das Thema 'M</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T64</td>
+                <td style="font-size:13px">Kündigung & Abwicklung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">35</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', , task: Erklären Sie das Thema 'K</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T65</td>
+                <td style="font-size:13px">Forderungsmanagement & Mahnwesen</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Forderungsmanage</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T66</td>
+                <td style="font-size:13px">Grundlagen Facility Management (FM)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Grundlagen Facil</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T67</td>
+                <td style="font-size:13px">Verkehrssicherungspflichten</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Verkehrssicherun</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T68</td>
+                <td style="font-size:13px">Energiemanagement & Nachhaltigkeit</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Energiemanagemen</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T69</td>
+                <td style="font-size:13px">Instandhaltungsplanung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Instandhaltungsp</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T70</td>
+                <td style="font-size:13px">Versicherungsmanagement</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Versicherungsman</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T71</td>
+                <td style="font-size:13px">Kommunikation & Konfliktlösung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Kommunikation & </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T72</td>
+                <td style="font-size:13px">Die schwierige Eigentümerversammlung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">35</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 WEG', '§ 8 WEG', '§ 10 WEG', '§ 16, task: Erklären Sie das Thema 'D</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T73</td>
+                <td style="font-size:13px">Datenschutz (DSGVO) in der Verwaltung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Datenschutz (DSG</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T74</td>
+                <td style="font-size:13px">Digitalisierung & PropTech</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Digitalisierung </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T75</td>
+                <td style="font-size:13px">Steuern rund um die Immobilie</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Steuern rund um </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T76</td>
+                <td style="font-size:13px">Repetitorium: WEG-Recht</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">35</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 WEG', '§ 8 WEG', '§ 10 WEG', '§ 16, task: Erklären Sie das Thema 'R</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T77</td>
+                <td style="font-size:13px">Repetitorium: Mietrecht</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">35</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', , task: Erklären Sie das Thema 'R</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T78</td>
+                <td style="font-size:13px">Repetitorium: Kaufmännische Verwaltung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Repetitorium: Ka</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T79</td>
+                <td style="font-size:13px">Prüfungssimulation: Fallstudien</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Prüfungssimulati</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M3</td>
+                <td style="font-family:monospace">T80</td>
+                <td style="font-size:13px">Abschluss & Ausblick</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">35</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Abschluss & Ausb</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T01</td>
+                <td style="font-size:13px">Einführung in das Sachverständigenwesen</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Einführung in da</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T02</td>
+                <td style="font-size:13px">Rechtliche Grundlagen & Flächenberechnung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Rechtliche Grund</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T03</td>
+                <td style="font-size:13px">Marktanalyse & Makro-Standort</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Marktanalyse & M</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T04</td>
+                <td style="font-size:13px">Vergleichswertverfahren</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">35</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193, task: Erklären Sie das Thema 'V</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T05</td>
+                <td style="font-size:13px">Ertragswertverfahren: Rohertrag & Bewirtschaf</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">35</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193, task: Erklären Sie das Thema 'E</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T06</td>
+                <td style="font-size:13px">Ertragswertverfahren: Bodenwertverzinsung & V</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">35</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193, task: Erklären Sie das Thema 'E</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T07</td>
+                <td style="font-size:13px">Ertragswert: Sonderfälle & Übungen</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">35</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193, task: Erklären Sie das Thema 'E</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T08</td>
+                <td style="font-size:13px">Wiederholung & Zwischentest (Verfahren)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">35</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Wiederholung & Z</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T09</td>
+                <td style="font-size:13px">Bodenwertermittlung Deep Dive</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">35</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193, task: Erklären Sie das Thema 'B</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T10</td>
+                <td style="font-size:13px">Zwischenprüfung: Verfahrenskompetenz</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Zwischenprüfung:</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T11</td>
+                <td style="font-size:13px">Sachwertverfahren: Normalherstellungskosten (</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">35</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193, task: Erklären Sie das Thema 'S</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T12</td>
+                <td style="font-size:13px">Sachwertverfahren: Alterswertminderung & Mark</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">35</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193, task: Erklären Sie das Thema 'S</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T13</td>
+                <td style="font-size:13px">Aufbau eines Verkehrswertgutachtens</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">35</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193, task: Erklären Sie das Thema 'A</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T14</td>
+                <td style="font-size:13px">Objektbeschreibung & Bauschäden</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Objektbeschreibu</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T15</td>
+                <td style="font-size:13px">Spezialfälle: Rechte und Belastungen</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Spezialfälle: Re</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T16</td>
+                <td style="font-size:13px">Gewerbeimmobilien & DCF-Verfahren</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Gewerbeimmobilie</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T17</td>
+                <td style="font-size:13px">Digitale Bewertungstools (AVM)</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Digitale Bewertu</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T18</td>
+                <td style="font-size:13px">Haftung & Berufsbild</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Haftung & Berufs</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T19</td>
+                <td style="font-size:13px">Abschlussprüfung & Fallstudie</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Abschlussprüfung</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T20</td>
+                <td style="font-size:13px">Zertifikat & Karriere</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#c62828">50</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen<br>❌ Keine Aufgabenstellung<br>❌ Inhalt sehr kurz (0 Zeichen)</td>
+                <td style="font-size:11px;color:#1565c0">task: Erklären Sie das Thema 'Zertifikat & Kar</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T21</td>
+                <td style="font-size:13px">Gutachten-Struktur: Aufbau & Formale Anforder</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 854 BGB', '§ 873 BGB', '§ 903 BGB', , task: Erklären Sie das Thema 'G</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T22</td>
+                <td style="font-size:13px">Beleihungswert vs. Verkehrswert: Prüfungsrele</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193, task: Erklären Sie das Thema 'B</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T23</td>
+                <td style="font-size:13px">Plausibilitätsprüfung: Fehler in Gutachten er</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193, task: Erklären Sie das Thema 'P</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T24</td>
+                <td style="font-size:13px">Gewerbeimmobilien: Büro, Handel, Logistik bew</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', , task: Erklären Sie das Thema 'G</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T25</td>
+                <td style="font-size:13px">Übungsgutachten 1: Einfamilienhaus vollständi</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193, task: Erklären Sie das Thema 'Ü</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T26</td>
+                <td style="font-size:13px">Sondereinflüsse: Baulasten, Altlasten, Denkma</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 23 EStG, § 4 GrEStG<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 23 EStG', '§ 4 GrEStG'], task: Erklären Sie das Thema 'Sondereinflüss</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T27</td>
+                <td style="font-size:13px">Marktanalyse & Makro/Mikro-Standortbewertung </td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193, task: Erklären Sie das Thema 'M</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T28</td>
+                <td style="font-size:13px">Übungsgutachten 2: Mehrfamilienhaus im Ertrag</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', , task: Erklären Sie das Thema 'Ü</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T29</td>
+                <td style="font-size:13px">IHK öffentliche Bestellung & Vereidigung — de</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193, task: Erklären Sie das Thema 'I</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T30</td>
+                <td style="font-size:13px">HypZert S Prüfungssimulation: Vollständiger T</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193, task: Erklären Sie das Thema 'H</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T31</td>
+                <td style="font-size:13px">Fallstudie: Wohnanlage mit Mietmix & Leerstan</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193, task: Erklären Sie das Thema 'F</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T32</td>
+                <td style="font-size:13px">Digitale Bewertungstools: AVM & PropTech für </td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193, task: Erklären Sie das Thema 'D</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T33</td>
+                <td style="font-size:13px">Haftung & Berufshaftpflicht: Risiken des Guta</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§, task: Erklären Sie das Thema 'H</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T34</td>
+                <td style="font-size:13px">Übungsgutachten 3: Gewerbeimmobilie vollständ</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', , task: Erklären Sie das Thema 'Ü</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T35</td>
+                <td style="font-size:13px">Repetitorium: Alle Wertermittlungsverfahren k</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193, task: Erklären Sie das Thema 'R</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T36</td>
+                <td style="font-size:13px">Praktische Objektaufnahme: Checkliste & Proto</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 854 BGB', '§ 873 BGB', '§ 903 BGB', , task: Erklären Sie das Thema 'P</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T37</td>
+                <td style="font-size:13px">Spezialimmobilien: Hotels, Pflegeheime, Parkh</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193, task: Erklären Sie das Thema 'S</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T38</td>
+                <td style="font-size:13px">Vollständige Prüfungssimulation Teil II & III</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', , task: Erklären Sie das Thema 'V</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T39</td>
+                <td style="font-size:13px">Karrierewege & Netzwerke: Berufsverbände & Ze</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 34c GewO, § 34i GewO, § 14 GewO<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 34c GewO', '§ 34i GewO', '§ 14 GewO', task: Erklären Sie das Thema 'K</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M4</td>
+                <td style="font-family:monospace">T40</td>
+                <td style="font-size:13px">Bonus-Paket Abschluss: Ihr Weg zum anerkannte</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">60</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#c62828">❌</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB<br>❌ Keine Aufgabenstellung</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['ImmoWertV 2021', '§ 194 BauGB', '§ 193, task: Erklären Sie das Thema 'B</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T01</td>
+                <td style="font-size:13px">Einführung §34i GewO: Rechtliche Grundlagen d</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T02</td>
+                <td style="font-size:13px">Rechtsfähigkeit, Geschäftsfähigkeit und Vertr</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T03</td>
+                <td style="font-size:13px">Grundstücke, Erbbaurecht, Wohnungseigentum - </td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T04</td>
+                <td style="font-size:13px">Grundbuch: Aufbau, Funktion und Eintragungen</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T05</td>
+                <td style="font-size:13px">Immobiliar-Verbraucherdarlehensvertrag und Ve</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T06</td>
+                <td style="font-size:13px">Verhaltens- und Informationspflichten als Imm</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T07</td>
+                <td style="font-size:13px">Kreditwesengesetz (KWG) und Geldwäschegesetz </td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 2 GwG, § 10 GwG, § 11 GwG</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 2 GwG', '§ 10 GwG', '§ 11 GwG', '§ 4</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T08</td>
+                <td style="font-size:13px">Verbraucherschutz, Schlichtungsstellen und Un</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T09</td>
+                <td style="font-size:13px">Datenschutz (DSGVO), Verschwiegenheit und Zus</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">90</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T10</td>
+                <td style="font-size:13px">Steuerliche Aspekte des Immobilienerwerbs</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 854 BGB', '§ 873 BGB', '§ 903 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T11</td>
+                <td style="font-size:13px">Darlehensarten: Annuitätendarlehen, Tilgungsd</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 34i GewO, § 488 BGB, § 489 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 34i GewO', '§ 488 BGB', '§ 489 BGB']</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T12</td>
+                <td style="font-size:13px">Bauspardarlehen, KfW-Darlehen und Förderprogr</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 34i GewO, § 488 BGB, § 489 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 34i GewO', '§ 488 BGB', '§ 489 BGB']</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T13</td>
+                <td style="font-size:13px">Zinsbindung, Sollzins, Effektivzins und Kondi</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 34i GewO, § 488 BGB, § 489 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 34i GewO', '§ 488 BGB', '§ 489 BGB']</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T14</td>
+                <td style="font-size:13px">Bonitätsprüfung, Schufa-Auskunft und Kreditwü</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 34i GewO, § 488 BGB, § 489 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 34i GewO', '§ 488 BGB', '§ 489 BGB']</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T15</td>
+                <td style="font-size:13px">Sicherheiten: Grundschuld, Hypothek, Bürgscha</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 854 BGB', '§ 873 BGB', '§ 903 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T16</td>
+                <td style="font-size:13px">Anschlussfinanzierung, Prolongation und Forwa</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 34i GewO, § 488 BGB, § 489 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 34i GewO', '§ 488 BGB', '§ 489 BGB']</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T17</td>
+                <td style="font-size:13px">Vorfälligkeitsentschädigung, Sondertilgung un</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 34i GewO, § 488 BGB, § 489 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 34i GewO', '§ 488 BGB', '§ 489 BGB']</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T18</td>
+                <td style="font-size:13px">Risiken der Immobilienfinanzierung und Absich</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 34i GewO, § 488 BGB, § 489 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 34i GewO', '§ 488 BGB', '§ 489 BGB']</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T19</td>
+                <td style="font-size:13px">Besondere Finanzierungsformen: Mietkauf, Leib</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T20</td>
+                <td style="font-size:13px">Zusammenfassung Theorie und Vorbereitung auf </td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T21</td>
+                <td style="font-size:13px">Übungsaufgaben: Haushaltsrechnung und Finanzi</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 34i GewO, § 488 BGB, § 489 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 34i GewO', '§ 488 BGB', '§ 489 BGB']</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T22</td>
+                <td style="font-size:13px">Übungsaufgaben: Konditionsvergleich und Effek</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">90</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T23</td>
+                <td style="font-size:13px">Übungsaufgaben: Bonitätsprüfung und Schufa</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">90</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T24</td>
+                <td style="font-size:13px">Übungsaufgaben: Beratungsprotokoll und Dokume</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 34i GewO, § 488 BGB, § 489 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 34i GewO', '§ 488 BGB', '§ 489 BGB']</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T25</td>
+                <td style="font-size:13px">Übungsaufgaben: Rechtsfälle und Gesetze</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T26</td>
+                <td style="font-size:13px">Fallstudie: Erstberatung Eigenheimfinanzierun</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">90</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T27</td>
+                <td style="font-size:13px">Fallstudie: Anschlussfinanzierung und Umschul</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 34i GewO, § 488 BGB, § 489 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 34i GewO', '§ 488 BGB', '§ 489 BGB']</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T28</td>
+                <td style="font-size:13px">Fallstudie: Baufinanzierung mit KfW-Förderung</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 34i GewO, § 488 BGB, § 489 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 34i GewO', '§ 488 BGB', '§ 489 BGB']</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T29</td>
+                <td style="font-size:13px">Fallstudie: Finanzierung für Selbstständige</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">90</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T30</td>
+                <td style="font-size:13px">Fallstudie: Komplexe Finanzierung mit mehrere</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">90</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T31</td>
+                <td style="font-size:13px">Prüfungssimulation 1: Multiple-Choice-Fragen </td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T32</td>
+                <td style="font-size:13px">Prüfungssimulation 2: Rechenaufgaben (20 Aufg</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T33</td>
+                <td style="font-size:13px">Prüfungssimulation 3: Fallstudien (3 Fallstud</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T34</td>
+                <td style="font-size:13px">Prüfungssimulation 4: Mündliche Prüfung (10 F</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T35</td>
+                <td style="font-size:13px">Prüfungssimulation 5: Gesamtprüfung (Alle Ber</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#2e7d32">90</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">⚠️ Normen prüfen</td>
+                <td style="font-size:11px;color:#1565c0">—</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T36</td>
+                <td style="font-size:13px">Wiederholung: Gesetze und Paragraphen</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T37</td>
+                <td style="font-size:13px">Wiederholung: Formeln und Berechnungen</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T38</td>
+                <td style="font-size:13px">Wiederholung: Praxisbeispiele und Fallstudien</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 535 BGB', '§ 536 BGB', '§ 556 BGB', </td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T39</td>
+                <td style="font-size:13px">Wiederholung: Schwachstellen identifizieren u</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr>
+            <tr>
+                <td style="font-family:monospace;font-size:12px">M5</td>
+                <td style="font-family:monospace">T40</td>
+                <td style="font-size:13px">Abschluss: Letzte Wiederholung und Prüfungsvo</td>
+                <td style="text-align:center"><span style="font-family:monospace;font-weight:700;color:#f57f17">75</span></td>
+                <td style="color:#c62828">❌</td>
+                <td style="color:#2e7d32">✅</td>
+                <td style="font-size:11px;color:#555">❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB</td>
+                <td style="font-size:11px;color:#1565c0">norms: ['§ 1 BGB', '§ 104 BGB', '§ 105 BGB', '§</td>
+            </tr></tbody>
+    </table>
+</div>
+<script>
+function filterTable(){
+    const search = document.getElementById('search').value.toLowerCase();
+    const mod = document.getElementById('mod-filter').value;
+    const scoreF = document.getElementById('score-filter').value;
+    document.querySelectorAll('#main-table tbody tr').forEach(tr=>{
+        const text = tr.textContent.toLowerCase();
+        const scoreEl = tr.querySelector('td:nth-child(4) span');
+        const score = scoreEl ? parseInt(scoreEl.textContent) : 100;
+        const modMatch = !mod || tr.cells[0].textContent === mod;
+        const scoreMatch = !scoreF || 
+            (scoreF==='critical' && score<60) ||
+            (scoreF==='warn' && score>=60 && score<80) ||
+            (scoreF==='ok' && score>=80);
+        tr.style.display = (text.includes(search) && modMatch && scoreMatch) ? '' : 'none';
+    });
+}
+</script>
+</body>
+</html>
