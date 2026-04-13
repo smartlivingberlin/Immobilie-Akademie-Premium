@@ -35,10 +35,10 @@ Die Reform hat die Position des Verwalters gestärkt, aber auch die Rechte der E
 - **Beschlussfähigkeit:** Die ETV ist nun immer beschlussfähig, unabhängig von der Anzahl der anwesenden Miteigentumsanteile (MEA).
     `,
     law: [
-      "§ 1 WEG (Begriffsbestimmungen)",
+      "[§ 1 WEG](https://www.gesetze-im-internet.de/weg/__1.html) (Begriffsbestimmungen)",
       "§ 5 WEG (Sondereigentum)",
-      "§ 18 WEG (Verwaltung)",
-      "§ 26 WEG (Bestellung und Abberufung des Verwalters)",
+      "[§ 18 WEG](https://www.gesetze-im-internet.de/weg/__18.html) (Verwaltung)",
+      "[§ 26 WEG](https://www.gesetze-im-internet.de/weg/__26.html) (Bestellung und Abberufung des Verwalters)",
       "§ 27 WEG (Aufgaben und Befugnisse des Verwalters)"
     ],
     practice: `
@@ -148,9 +148,9 @@ Ein SNR gibt einem Eigentümer das exklusive Recht, eine Fläche des Gemeinschaf
     `,
     law: [
       "§ 3 WEG (Vertragliche Einräumung von Sondereigentum)",
-      "§ 8 WEG (Teilung durch den Eigentümer)",
-      "§ 10 WEG (Allgemeine Grundsätze)",
-      "§ 16 WEG (Nutzungen, Lasten und Kosten)"
+      "[§ 8 WEG](https://www.gesetze-im-internet.de/weg/__8.html) (Teilung durch den Eigentümer)",
+      "[§ 10 WEG](https://www.gesetze-im-internet.de/weg/__10.html) (Allgemeine Grundsätze)",
+      "[§ 16 WEG](https://www.gesetze-im-internet.de/weg/__16.html) (Nutzungen, Lasten und Kosten)"
     ],
     practice: `
     tasks: [
@@ -255,9 +255,9 @@ Die ETV ist der Ort der Willensbildung. Nur hier können wirksame Beschlüsse ge
 - **Allstimmigkeit:** Nur noch selten nötig (z.B. Änderung der Teilungserklärung).
     `,
     law: [
-      "§ 23 WEG (Wohnungseigentümerversammlung)",
-      "§ 24 WEG (Einberufung, Vorsitz, Niederschrift)",
-      "§ 25 WEG (Mehrheitsbeschluss)"
+      "[§ 23 WEG](https://www.gesetze-im-internet.de/weg/__23.html) (Wohnungseigentümerversammlung)",
+      "[§ 24 WEG](https://www.gesetze-im-internet.de/weg/__24.html) (Einberufung, Vorsitz, Niederschrift)",
+      "[§ 25 WEG](https://www.gesetze-im-internet.de/weg/__25.html) (Mehrheitsbeschluss)"
     ],
     practice: `
     tasks: [

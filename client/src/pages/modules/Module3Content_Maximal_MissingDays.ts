@@ -30,9 +30,9 @@ Der Wirtschaftsplan (§ 28 WEG) ist die Prognose der Einnahmen und Ausgaben für
 Wenn die Kosten steigen (z.B. Energiepreise), muss der Verwalter den Wirtschaftsplan anpassen und ein höheres Hausgeld vorschlagen, um Liquiditätsengpässe zu vermeiden.
     `,
     law: [
-      "§ 28 WEG (Wirtschaftsplan, Jahresabrechnung)",
-      "§ 16 WEG (Nutzen, Lasten, Kosten)",
-      "§ 19 WEG (Wirkung des Urteils)"
+      "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) (Wirtschaftsplan, Jahresabrechnung)",
+      "[§ 16 WEG](https://www.gesetze-im-internet.de/weg/__16.html) (Nutzen, Lasten, Kosten)",
+      "[§ 19 WEG](https://www.gesetze-im-internet.de/weg/__19.html) (Wirkung des Urteils)"
     ],
     practice: `
     tasks: [
@@ -527,7 +527,7 @@ Zu Beginn muss jeder Eigentümer unterschreiben. Prüfen Sie Vollmachten von Ver
 Die ETV ist eine nichtöffentliche Veranstaltung. Externe (Mieter, Anwälte, Berater) dürfen nur teilnehmen, wenn die Gemeinschaft dies per Beschluss gestattet oder die Teilungserklärung es erlaubt.
     `,
     law: [
-      "§ 24 WEG (Einberufung, Vorsitz)",
+      "[§ 24 WEG](https://www.gesetze-im-internet.de/weg/__24.html) (Einberufung, Vorsitz)",
       "BGH V ZR 110/11 (Teilnahme Dritter)"
     ],
     practice: `
@@ -621,7 +621,7 @@ Eine Wohnung = Eine Stimme.
 Hat ein Eigentümer die Mehrheit (z.B. Bauträger hält noch 60% der Anteile), kann er alles allein bestimmen. Die Rechtsprechung greift hier nur bei offensichtlichem Missbrauch ein.
     `,
     law: [
-      "§ 25 WEG (Stimmrecht)",
+      "[§ 25 WEG](https://www.gesetze-im-internet.de/weg/__25.html) (Stimmrecht)",
       "§ 25 Abs. 4 WEG (Stimmrechtsausschluss bei Interessenkollision)"
     ],
     practice: `
@@ -919,7 +919,7 @@ Wird separat vergütet (meist % der Kaltmiete oder Festbetrag pro Monat).
     `,
     law: [
       "§ 675 BGB (Geschäftsbesorgungsvertrag)",
-      "§ 535 BGB (Mietvertrag)"
+      "[§ 535 BGB](https://www.gesetze-im-internet.de/bgb/__535.html) (Mietvertrag)"
     ],
     practice: `
     tasks: [
@@ -1017,9 +1017,9 @@ Die meisten Mietverträge sind AGB. Unklare Klauseln sind unwirksam (§ 307 BGB)
 Ein "Zeitmietvertrag" ist nur noch mit qualifiziertem Grund möglich (z.B. Eigenbedarf, geplante Sanierung) gem. § 575 BGB. Einfache Befristung "einfach so" ist unwirksam -> Vertrag läuft auf unbestimmte Zeit.
     `,
     law: [
-      "§ 535 BGB (Inhalt Mietvertrag)",
+      "[§ 535 BGB](https://www.gesetze-im-internet.de/bgb/__535.html) (Inhalt Mietvertrag)",
       "§ 551 BGB (Kaution)",
-      "§ 556 BGB (Betriebskosten)",
+      "[§ 556 BGB](https://www.gesetze-im-internet.de/bgb/__556.html) (Betriebskosten)",
       "§ 575 BGB (Zeitmietvertrag)"
     ],
     practice: `
@@ -1113,9 +1113,9 @@ Möglich, wenn der Mieter:
 - Über einen längeren Zeitraum mit insgesamt 2 Monatsmieten im Rückstand ist.
     `,
     law: [
-      "§ 573 BGB (Ordentliche Kündigung)",
-      "§ 543 BGB (Außerordentliche fristlose Kündigung)",
-      "§ 569 BGB (Zahlungsverzug)"
+      "[§ 573 BGB](https://www.gesetze-im-internet.de/bgb/__573.html) (Ordentliche Kündigung)",
+      "[§ 543 BGB](https://www.gesetze-im-internet.de/bgb/__543.html) (Außerordentliche fristlose Kündigung)",
+      "[§ 569 BGB](https://www.gesetze-im-internet.de/bgb/__569.html) (Zahlungsverzug)"
     ],
     practice: `
     tasks: [
@@ -1217,8 +1217,8 @@ Einfach "Ich will mehr Geld" sagen, geht nicht.
 - In Zeiten hoher Inflation für Vermieter attraktiv.
     `,
     law: [
-      "§ 558 BGB (Vergleichsmiete)",
-      "§ 559 BGB (Modernisierung)",
+      "[§ 558 BGB](https://www.gesetze-im-internet.de/bgb/__558.html) (Vergleichsmiete)",
+      "[§ 559 BGB](https://www.gesetze-im-internet.de/bgb/__559.html) (Modernisierung)",
       "§ 557b BGB (Indexmiete)"
     ],
     practice: `
@@ -1325,7 +1325,7 @@ Bei rein privaten Streitigkeiten (z.B. Beleidigung unter Nachbarn) ist der Verwa
     `,
     law: [
       "§ 15 Abs. 3 WEG (Gebrauchsregelung)",
-      "§ 14 WEG (Pflichten der Eigentümer)"
+      "[§ 14 WEG](https://www.gesetze-im-internet.de/weg/__14.html) (Pflichten der Eigentümer)"
     ],
     practice: `
     tasks: [
@@ -1756,7 +1756,7 @@ Für technische Anlagen sind regelmäßige Wartungen gesetzlich vorgeschrieben:
     `,
     law: [
       "§ 13 WEG (Ordnungsgemäße Verwaltung)",
-      "§ 21 WEG (Bauliche Veränderungen)",
+      "[§ 21 WEG](https://www.gesetze-im-internet.de/weg/__21.html) (Bauliche Veränderungen)",
       "§ 823 BGB (Verkehrssicherungspflicht)",
       "GEG (Gebäudeenergiegesetz)",
       "DIN EN 1176 (Spielplatzsicherheit)"
@@ -1887,10 +1887,10 @@ Seit 2020 können mit einfacher Mehrheit beschlossen werden:
 - **Ausnahme:** Wenn einzelne Eigentümer nicht profitieren, können sie von den Kosten befreit werden (§ 16 Abs. 6 WEG).
     `,
     law: [
-      "§ 20 WEG (Bauliche Veränderungen)",
-      "§ 21 WEG (Instandhaltung und Instandsetzung)",
-      "§ 16 WEG (Kostentragung)",
-      "§ 25 WEG (Beschlussfassung)"
+      "[§ 20 WEG](https://www.gesetze-im-internet.de/weg/__20.html) (Bauliche Veränderungen)",
+      "[§ 21 WEG](https://www.gesetze-im-internet.de/weg/__21.html) (Instandhaltung und Instandsetzung)",
+      "[§ 16 WEG](https://www.gesetze-im-internet.de/weg/__16.html) (Kostentragung)",
+      "[§ 25 WEG](https://www.gesetze-im-internet.de/weg/__25.html) (Beschlussfassung)"
     ],
     practice: `
     tasks: [
