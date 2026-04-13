@@ -233,7 +233,7 @@ Gerundet: 437.000 €`
   },
   day_23: {
     title: "Sachwertverfahren (§ 21 ImmoWertV)",
-    theory: "Substanzwert + Bodenwert. Klassiker für EFH.",
+    theory: "Das Sachwertverfahren nach §21 ImmoWertV bewertet Immobilien über Bodenwert plus Gebäudesachwert. Es wird vor allem bei eigengenutzten Immobilien ohne Vergleichswerte und Ertragsperspektive angewendet.",
     extendedTheory: `
 ### Ablauf
 1.  **Bodenwert:** Bodenrichtwert x Fläche.
@@ -283,7 +283,7 @@ Ein Schloss im Nirgendwo. Herstellungskosten 5 Mio. €. Bodenwert gering.
   },
   day_24: {
     title: "Ertragswertverfahren (§ 27 ImmoWertV)",
-    theory: "Rendite zählt. Für Zinshäuser (MFH) und Gewerbe.",
+    theory: "Das Ertragswertverfahren nach §27 ImmoWertV ist das zentrale Bewertungsverfahren für Renditeobjekte. Jahresreinertrag, Liegenschaftszins und Vervielfältiger bestimmen den Verkehrswert von Mietimmobilien.",
     extendedTheory: `
 ### Logik
 Der Käufer kauft den zukünftigen Zahlungsstrom (Miete). Der Boden wird nur verzinst (liegenschaftszins).
@@ -634,7 +634,7 @@ Makler retuschiert Strommast weg und macht den Rasen knallgrün.
   },
   day_30: {
     title: "Vermarktungskanäle",
-    theory: "Wo finde ich den Käufer? Portale sind nicht alles.",
+    theory: "Professionelles Vermarktungsmanagement nutzt alle Kanäle strategisch. ImmoScout24, Immowelt, eBay Kleinanzeigen, Social Media und Off-Market-Netzwerke haben unterschiedliche Zielgruppen und Kostenstrukturen.",
     extendedTheory: `
 ### Kanäle
 1.  **Portale:** ImmoScout24, Immowelt (Teuer, aber Reichweite).
@@ -690,7 +690,7 @@ Makler stellt Objekt nur bei ImmoScout ein. Keine Anfragen.
 
   day_31: {
     title: "Anfragen-Management & Qualifizierung",
-    theory: "Zeit ist Geld. Keine Besichtigungstouristen!",
+    theory: "Qualifiziertes Anfragenmanagement spart Zeit und erhöht die Abschlussquote. Bonitätsprüfung, Bedarfsanalyse und systematische Qualifizierung von Interessenten sind entscheidend für effiziente Vermarktung.",
     extendedTheory: `
 ### Der Qualifizierungs-Funnel
 1.  **Anfrage:** Auto-Reply mit Widerrufsbelehrung und Exposé-Link.
@@ -800,7 +800,7 @@ Makler lädt alle 50 Anfragen zur Einzelbesichtigung ein.
   },
   day_33: {
     title: "Verkaufspsychologie & Verhandlung",
-    theory: "Der Preis ist nicht fix. Verhandeln ist ein Spiel.",
+    theory: "Verkaufspsychologie und professionelle Verhandlungsführung entscheiden über Provision und Preis. Ankerwirkung, Schweigetechnik, Harvard-Methode und Einwandbehandlung sind die wichtigsten Werkzeuge.",
     extendedTheory: `
 ### Harvard-Konzept
 Hart in der Sache, weich zum Menschen. Win-Win suchen.
@@ -852,7 +852,7 @@ Bietet 30% unter Angebotspreis. Verkäufer ist beleidigt und bricht ab.
   },
   day_34: {
     title: "Reservierung & Anzahlung",
-    theory: "Ein heißes Eisen. Rechtlich oft unwirksam.",
+    theory: "Reservierungsvereinbarungen sichern das Kaufinteresse rechtlich ab. Formvorschriften, Rücktrittsrecht, Anzahlungsregelungen und die Abgrenzung zum verbindlichen Kaufvertrag müssen klar sein.",
     extendedTheory: `
 ### Die Reservierungsgebühr
 Makler verlangen oft Geld (z.B. 1% der Summe) für die Reservierung (Exklusivität für 2 Wochen).
@@ -894,7 +894,7 @@ Kunde reserviert, zahlt 2.000 €, springt dann ab. Fordert Geld zurück.
   },
   day_35: {
     title: "Finanzierungssicherung",
-    theory: "Kein Notartermin ohne Finanzierungsbestätigung!",
+    theory: "Finanzierungssicherung vor dem Notartermin schützt alle Parteien. Finanzierungsbestätigung, Eigenkapitalnachweis und die Kommunikation mit finanzierenden Banken gehören zum professionellen Verkaufsprozess.",
     extendedTheory: `
 ### Die Finanzierungsbestätigung
 Ein Zettel der Bank: "Wir finanzieren Herrn X den Kaufpreis Y."
@@ -983,7 +983,7 @@ Mit Trennung: 480k * 6% = 28.800 € Steuer.
   },
   day_37: {
     title: "Der Notartermin",
-    theory: "Der Höhepunkt. Der Makler sollte dabei sein.",
+    theory: "Der Notartermin ist der rechtliche Höhepunkt der Transaktion. Kaufvertragsprüfung, Vollmachten, Auflassungsvormerkung und Zug-um-Zug-Abwicklung müssen der Makler kennen und dem Kunden erklären können.",
     extendedTheory: `
 ### Rolle des Maklers im Termin
 *   Moralische Unterstützung.
