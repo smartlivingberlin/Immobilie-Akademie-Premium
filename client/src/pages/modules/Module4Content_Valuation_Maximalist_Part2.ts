@@ -64,6 +64,7 @@ Architekt, Statiker, Baugenehmigung.
 
 **Gesamtherstellungskosten:** 480.000 + 72.000 = **552.000 €**.
     `,
+    task: "Was ist der Unterschied zwischen Wohnfläche und BGF?",
     tasks: [
       {
         question: "Was ist der Unterschied zwischen Wohnfläche und BGF?",
@@ -218,6 +219,7 @@ Der vorläufige Sachwert ist nur eine Substanzrechnung. Der Markt interessiert s
 
 *Ergebnis:* Der Verkehrswert liegt bei ca. 692.000 €.
     `,
+    task: "Ein Haus ist 40 Jahre alt (GND 80), wurde aber vor 5 Jahren kernsaniert. Wie gehen Sie vor?",
     tasks: [
       {
         question: "Ein Haus ist 40 Jahre alt (GND 80), wurde aber vor 5 Jahren kernsaniert. Wie gehen Sie vor?",
@@ -296,6 +298,7 @@ Sie müssen diesen Mangel nicht nur dokumentieren (Fotodokumentation), sondern a
 3.  **Begründung im Gutachten:**
     "Aufgrund der festgestellten Feuchtigkeit im Kellerbereich (siehe Fotodokumentation Anlage 4) ist eine vertikale Abdichtung erforderlich. Die Kosten hierfür werden auf Basis von Erfahrungswerten (BKI Baukostenindex) mit ca. 25.000 € geschätzt und als 'Besondere objektspezifische Grundstücksmerkmale' (boG) vom vorläufigen Sachwert in Abzug gebracht."
     `,
+    task: "Was gehört zwingend auf das Deckblatt eines Gutachtens?",
     tasks: [
       {
         question: "Was gehört zwingend auf das Deckblatt eines Gutachtens?",
@@ -373,6 +376,7 @@ Abzug boG (Summe): 40.000 € (Asbest) + 64.000 € (Elektrik) = 104.000 €.
 
 **Neuer Verkehrswert:** ca. 1.096.000 €.
     `,
+    task: "Was ist der Unterschied zwischen 'Sanierungskosten' und 'Marktwertminderung'?",
     tasks: [
       {
         question: "Was ist der Unterschied zwischen 'Sanierungskosten' und 'Marktwertminderung'?",
@@ -446,6 +450,7 @@ Wir nutzen die aktuelle Sterbetafel des Statistischen Bundesamtes.
 
 *Fazit:* Der Neffe zahlt rund 94.000 € weniger, hat aber eine Bewohnerin, die er nicht kündigen kann.
     `,
+    task: "Was passiert, wenn die Wohnberechtigte ins Pflegeheim muss?",
     tasks: [
       {
         question: "Was passiert, wenn die Wohnberechtigte ins Pflegeheim muss?",
@@ -508,6 +513,7 @@ Internationale Investoren nutzen oft das DCF-Verfahren statt des deutschen Ertra
 
 **Fazit:** Bei komplexen Cashflows ist DCF überlegen.
     `,
+    task: "Was ist ein 'Anchor Tenant'?",
     tasks: [
       {
         question: "Was ist ein 'Anchor Tenant'?",
@@ -564,6 +570,7 @@ Nutzen Sie einen kostenlosen Online-Rechner (z.B. Homeday, McMakler) für Ihr ei
 Warum die Abweichung? Das Tool kennt vielleicht nicht den Sanierungsstau im Keller oder die Lärmbelästigung durch die neue Umgehungsstraße.
 Als Makler ist es Ihre Aufgabe, dem Kunden zu erklären, warum der "Computer-Preis" falsch ist.
     `,
+    task: "Kann ein AVM ein Gutachten ersetzen?",
     tasks: [
       {
         question: "Was bedeutet AVM?",
@@ -619,6 +626,7 @@ Oft sind reine Gutachtertätigkeiten ausgeschlossen oder müssen extra versicher
 Schreiben Sie unter jede Bewertung:
 *"Diese Marktpreiseinschätzung dient der Orientierung und ersetzt kein Verkehrswertgutachten nach § 194 BauGB durch einen zertifizierten Sachverständigen."*
     `,
+    task: "Wer darf sich 'Sachverständiger' nennen?",
     tasks: [
       {
         question: "Wer darf sich 'Sachverständiger' nennen?",
@@ -691,6 +699,7 @@ Ermitteln Sie den Verkehrswert im Sachwertverfahren (grob).
 **Verkehrswert:** 327.375 € - 20.000 € = **307.375 €**.
 *(Gerundet: 307.000 €)*.
     `,
+    task: "Welches Verfahren war hier führend?",
     tasks: [
       {
         question: "Welches Verfahren war hier führend?",
@@ -745,6 +754,7 @@ Vergleichen Sie es mit dem Markt.
 
 *Übung macht den Meister.*
     `,
+    task: "Wie oft sollten Sie sich fortbilden?",
     tasks: [
       {
         question: "Wie oft sollten Sie sich fortbilden?",

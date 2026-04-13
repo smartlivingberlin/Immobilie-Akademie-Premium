@@ -83,6 +83,7 @@ Der Gutachter ermittelt einen Verkehrswert von **780.000 €**.
 **Konsequenz für die Finanzierung:**
 Die Bank wird sich am Verkehrswert (bzw. Beleihungswert) von 780.000 € orientieren. Die Differenz von 70.000 € muss der Käufer als zusätzliches Eigenkapital einbringen, da sie nicht werthaltig besichert ist.
     `,
+    task: "Definieren Sie den Begriff 'Verkehrswert' gemäß § 194 BauGB.",
     tasks: [
       {
         question: "Definieren Sie den Begriff 'Verkehrswert' gemäß § 194 BauGB.",
@@ -167,6 +168,7 @@ Sie bewerten ein Dachstudio.
 
 *Fehlerquelle:* Würde man die Grundfläche (40 m² + 10 m² = 50 m²) im Exposé angeben, wäre das eine Täuschung über ca. 45%!
     `,
+    task: "Wie wird ein Balkon bei der Wohnflächenberechnung nach WoFlV angesetzt?",
     tasks: [
       {
         question: "Wie wird ein Balkon bei der Wohnflächenberechnung nach WoFlV angesetzt?",
@@ -237,6 +239,7 @@ Es erfolgt eine **Umrechnung** (meist mit Umrechnungskoeffizienten des Gutachter
 **Recherche:**
 Nutzen Sie BORIS-D (Bodenrichtwertinformationssystem Deutschland) für die Recherche.
     `,
+    task: "Was ist der Unterschied zwischen Makro- und Mikrolage?",
     tasks: [
       {
         question: "Was ist der Unterschied zwischen Makro- und Mikrolage?",
@@ -317,6 +320,7 @@ Basiswert: 80 m² * 3.900 €/m² = 312.000 €.
 
 **Verkehrswert:** 312.000 + 15.600 - 31.200 + 10.000 = **306.400 €**.
     `,
+    task: "Für welche Immobilienart ist das Vergleichswertverfahren am besten geeignet?",
     tasks: [
       {
         question: "Für welche Immobilienart ist das Vergleichswertverfahren am besten geeignet?",
@@ -408,6 +412,7 @@ Das ist das Geld, das am Ende des Jahres in der Tasche des Eigentümers bleibt (
 
 *Interpretation:* Das Haus erwirtschaftet operativ 51.000 € pro Jahr. Dieser Betrag ist die Basis für die weitere Wertermittlung.
     `,
+    task: "Warum darf man nicht einfach die aktuelle Miete für den Ertragswert nehmen?",
     tasks: [
       {
         question: "Warum darf man nicht einfach die aktuelle Miete für den Ertragswert nehmen?",
@@ -493,6 +498,7 @@ Ertragswert Gebäude + Bodenwert = **Vorläufiger Ertragswert**.
 
 *Ergebnis:* Der Ertragswert der Immobilie beträgt ca. 876.000 €.
     `,
+    task: "Warum zieht man die Bodenwertverzinsung ab?",
     tasks: [
       {
         question: "Warum zieht man die Bodenwertverzinsung ab?",
@@ -563,6 +569,7 @@ Die Mieter haben alte Verträge mit Kündigungsschutz.
 
 *Fehler:* Wer nur mit 30.000 € rechnet, bewertet das Potenzial falsch. Wer mit 50.000 € rechnet, ignoriert das rechtliche Hindernis.
     `,
+    task: "Was bedeutet 'Under-rented'?",
     tasks: [
       {
         question: "Was bedeutet 'Under-rented'?",
@@ -623,6 +630,7 @@ Entscheiden Sie für folgende Objekte:
 5.  **Villa am Starnberger See:** Sachwert (für Substanz) + Vergleichswert (für Lage).
 6.  **Reihenhaus (vermietet):** Ertragswert (weil vermietet) ODER Vergleichswert (weil Reihenhaus). Hier oft beides zur Plausibilisierung.
     `,
+    task: "Nennen Sie die drei normierten Wertermittlungsverfahren.",
     tasks: [
       {
         question: "Nennen Sie die drei normierten Wertermittlungsverfahren.",
@@ -688,6 +696,7 @@ Bodenwert = 500 € × (1,15 / 1,00) = **575 €/m²**.
 
 *Ergebnis:* Durch die höhere Ausnutzbarkeit ist der Quadratmeter 75 € mehr wert.
     `,
+    task: "Ist Hinterland wertlos?",
     tasks: [
       {
         question: "Was bedeutet GFZ?",
@@ -747,6 +756,7 @@ Jetzt prüfen wir die Kompetenz, bevor wir nächste Woche zum Sachwert (Substanz
 5.  Ertragswert Gebäude: 8.400 × 19,79 = 166.236 €.
 6.  Gesamtwert: 166.236 + 150.000 (Boden) = **316.236 €**.
     `,
+    task: "Berechnen Sie den Ertragswert (siehe Praxisbeispiel).",
     tasks: [
       {
         question: "Berechnen Sie den Ertragswert (siehe Praxisbeispiel).",

@@ -63,6 +63,7 @@ Berechnen Sie erneut den Verkehrswert, aber jetzt:
 Welche Auswirkung hat das auf den Verkehrswert?
 Begründen Sie jeden veränderten Ansatz.
     `,
+    task: "Wie unterscheidet sich der Leerstandsansatz im Ertragswert von der tatsächlichen Leerstandssituation? Warum ist das HypZert-konform?",
     tasks: [
       {
         type: "reflection" as const,
@@ -139,6 +140,7 @@ Testen Sie für ein konkretes Objekt:
 - Welche Objektmerkmale kann das AVM nicht erfassen?
 - Wann würde eine Bank trotzdem ein Gutachten verlangen?
     `,
+    task: "In welchen Situationen würden Sie als Gutachter ein AVM-Ergebnis als Plausibilitätsprüfung nutzen?",
     tasks: [
       {
         type: "reflection" as const,
@@ -231,6 +233,7 @@ Faustregel: Mindestens das 3-fache des höchsten Einzelgutachtenwertes
 ☐ Haftungsausschluss für nicht sichtbare Mängel
 ☐ Berufshaftpflicht prüfen (Deckungssumme ausreichend?)
     `,
+    task: "Welche 5 Maßnahmen können Sie sofort umsetzen um Ihr Haftungsrisiko als Gutachter zu minimieren?",
     tasks: [
       {
         type: "reflection" as const,
@@ -330,6 +333,7 @@ Szenario | Reinertrag | LZ-Satz | Ertragswert | Δ zur Basis
 Basis    | 810.762   | 4,2%    | 17.550.000  | -
 S1 (...)  | ?         | 4,2%    | ?           | ?
     `,
+    task: "Warum ist die Sensitivitätsanalyse für Gewerbeimmobilien besonders wichtig?",
     tasks: [
       {
         type: "reflection" as const,
@@ -445,6 +449,7 @@ Nennen Sie für jedes Objekt das primäre Verfahren und begründen Sie:
 6. Reihenhaus, Baujahr 2019, eigengenutzt
 7. Supermarkt, 1.200m², Ankermieter 15J Restlaufzeit
     `,
+    task: "Bei einem MFH führen Sie Ertrags- und Sachwertverfahren durch. Ertrag: 1.200.000€, Sachwert: 950.000€. Wie gewichten Sie?",
     tasks: [
       {
         type: "reflection" as const,
@@ -532,6 +537,7 @@ Formulieren Sie für jeden Punkt:
 2. Bewertung (gut/mittel/schlecht/mangelhaft)
 3. Wertrelevanz (welchen Einfluss hat das auf den Wert?)
     `,
+    task: "Welche Mängel müssen Sie zwingend im Gutachten erwähnen auch wenn Sie kein Bausachverständiger sind?",
     tasks: [
       {
         type: "reflection" as const,
@@ -627,6 +633,7 @@ Schritt 4: Summierung = Verkehrswert
 2. Ermitteln Sie den Verkehrswert
 3. Begründen Sie den LZ-Satz
     `,
+    task: "Warum sind Liegenschaftszinssätze bei Hotels und Pflegeheimen deutlich höher als bei Wohnimmobilien?",
     tasks: [
       {
         type: "reflection" as const,
@@ -706,6 +713,7 @@ Mindestens 6 Fehler sind enthalten.
 **Fehler 6:** Vergleichswert: 3.200 × 118m² statt 108m² → 345.600 € wären korrekt
 **Fehler 7:** Gewichtung: Keine Begründung der Gewichtung Sach- zu Vergleichswert
     `,
+    task: "Wie gehen Sie in der echten Prüfung systematisch vor damit Sie keinen Fehler übersehen?",
     tasks: [
       {
         type: "reflection" as const,
@@ -804,6 +812,7 @@ Freier Gutachter → HypZert S → HypZert F/ö.b.u.v. → MRICS/FRICS
 ☐ Spezialisierung festlegen
 ☐ Eigenes Gutachterbüro oder Partnerschaft
     `,
+    task: "Welcher Berufsverband passt am besten zu Ihrer geplanten Spezialisierung und warum?",
     tasks: [
       {
         type: "reflection" as const,
@@ -921,6 +930,7 @@ Erstellen Sie Ihren individuellen Plan mit konkreten Meilensteinen:
 - HypZert F oder IHK-Bestellung anstreben
 - Spezialisierung festigen
     `,
+    task: "Was waren Ihre 3 größten Erkenntnisse aus diesem Bonus-Paket? Wie verändern sie Ihre berufliche Perspektive?",
     tasks: [
       {
         type: "reflection" as const,

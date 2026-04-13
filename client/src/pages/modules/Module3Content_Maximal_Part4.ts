@@ -28,8 +28,8 @@ Der Vertrag wird zwischen dem Eigentümer (Auftraggeber) und dem Verwalter gesch
 `,
     law: [
       "[§ 535 BGB](https://www.gesetze-im-internet.de/bgb/__535.html) (Inhalt und Hauptpflichten des Mietvertrags)",
-      "§ 550 BGB (Form des Mietvertrags)",
-      "§ 675 BGB (Entgeltliche Geschäftsbesorgung)"
+      "[§ 550 BGB](https://www.gesetze-im-internet.de/bgb/__550.html) (Form des Mietvertrags)",
+      "[§ 675 BGB](https://www.gesetze-im-internet.de/bgb/__675.html) (Entgeltliche Geschäftsbesorgung)"
     ],
     practice: `
     tasks: [
@@ -187,7 +187,7 @@ Vermieter können die Miete nicht willkürlich erhöhen. Es gelten strenge geset
     law: [
       "[§ 558 BGB](https://www.gesetze-im-internet.de/bgb/__558.html) (Mieterhöhung bis zur ortsüblichen Vergleichsmiete)",
       "[§ 559 BGB](https://www.gesetze-im-internet.de/bgb/__559.html) (Mieterhöhung nach Modernisierungsmaßnahmen)",
-      "§ 557b BGB (Indexmiete)"
+      "[§ 557b BGB](https://www.gesetze-im-internet.de/bgb/__557b.html) (Indexmiete)"
     ],
     practice: `
     tasks: [
@@ -254,7 +254,7 @@ Schriftliche Erklärung an den Mieter mit Berechnungsgrundlage. Die neue Miete w
     law: [
       "[§ 573 BGB](https://www.gesetze-im-internet.de/bgb/__573.html) (Ordentliche Kündigung des Vermieters)",
       "[§ 543 BGB](https://www.gesetze-im-internet.de/bgb/__543.html) (Außerordentliche fristlose Kündigung)",
-      "§ 573c BGB (Fristen der ordentlichen Kündigung)"
+      "[§ 573c BGB](https://www.gesetze-im-internet.de/bgb/__573c.html) (Fristen der ordentlichen Kündigung)"
     ],
     practice: `
     tasks: [
@@ -351,8 +351,8 @@ Mietrückstände und offene Hausgeldzahlungen gefährden die Liquidität.
 *   Vollstreckungsbescheid -> Titel -> Zwangsvollstreckung.
 `,
     law: [
-      "§ 286 BGB (Verzug des Schuldners)",
-      "§ 556b BGB (Fälligkeit der Miete)",
+      "[§ 286 BGB](https://www.gesetze-im-internet.de/bgb/__286.html) (Verzug des Schuldners)",
+      "[§ 556b BGB](https://www.gesetze-im-internet.de/bgb/__556b.html) (Fälligkeit der Miete)",
       "§ 690 ZPO (Mahnantrag)"
     ],
     practice: `
@@ -465,8 +465,8 @@ Die Pflicht kann auf Dritte (Hausmeister, Dienstleister, Mieter) übertragen wer
 *   **Exkulpation:** Nur möglich, wenn sorgfältige Auswahl und Überwachung nachgewiesen wird.
 `,
     law: [
-      "§ 823 BGB (Schadensersatzpflicht)",
-      "§ 836 BGB (Haftung des Tierhalters/Gebäudebesitzers)"
+      "[§ 823 BGB](https://www.gesetze-im-internet.de/bgb/__823.html) (Schadensersatzpflicht)",
+      "[§ 836 BGB](https://www.gesetze-im-internet.de/bgb/__836.html) (Haftung des Tierhalters/Gebäudebesitzers)"
     ],
     practice: `
     tasks: [
@@ -874,7 +874,7 @@ Die Branche wandelt sich von Papierordnern zu digitalen Plattformen.
 `,
     law: [
         "Art. 13 DSGVO – Informationspflichten",
-        "§ 23 WEG – Beschlüsse in der Versammlung",
+        "[§ 23 WEG](https://www.gesetze-im-internet.de/weg/__23.html) – Beschlüsse in der Versammlung",
         "Art. 6 DSGVO – Rechtmäßigkeit der Verarbeitung",
       ],
     practice: `
@@ -1058,9 +1058,9 @@ Erstellen Sie Karteikarten zu den wichtigsten Fristen:
 4.  **Mahnwesen:** Verzug, Mahnbescheid, Zwangsvollstreckung.
 `,
     law: [
-        "§ 28 WEG – Wirtschaftsplan, Jahresabrechnung",
-        "§ 1922 BGB – Erbfolge (bei Eigentümerwechsel)",
-        "§ 16 WEG – Nutzungen, Lasten, Kosten",
+        "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) – Wirtschaftsplan, Jahresabrechnung",
+        "[§ 1922 BGB](https://www.gesetze-im-internet.de/bgb/__1922.html) – Erbfolge (bei Eigentümerwechsel)",
+        "[§ 16 WEG](https://www.gesetze-im-internet.de/weg/__16.html) – Nutzungen, Lasten, Kosten",
       ],
     practice: `
     tasks: [
@@ -1111,10 +1111,10 @@ In einer WEG tropft es durch die Decke (Technik/Versicherung). Der Mieter oben v
 4.  **Lösungsweg skizzieren:** Schritt für Schritt.
 `,
     law: [
-        "§ 18 WEG – Verwaltung des gemeinschaftlichen Eigentums",
-        "§ 20 WEG – Bauliche Veränderungen",
-        "§ 23 WEG – Beschlussfassung",
-        "§ 28 WEG – Wirtschaftsplan",
+        "[§ 18 WEG](https://www.gesetze-im-internet.de/weg/__18.html) – Verwaltung des gemeinschaftlichen Eigentums",
+        "[§ 20 WEG](https://www.gesetze-im-internet.de/weg/__20.html) – Bauliche Veränderungen",
+        "[§ 23 WEG](https://www.gesetze-im-internet.de/weg/__23.html) – Beschlussfassung",
+        "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) – Wirtschaftsplan",
       ],
     practice: `
     tasks: [
