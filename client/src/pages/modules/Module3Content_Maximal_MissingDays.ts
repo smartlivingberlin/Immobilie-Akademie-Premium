@@ -818,8 +818,8 @@ Werden die Fristen versäumt, wird der Beschluss **bestandskräftig** (gültig),
 Die Klage richtet sich gegen die **Gemeinschaft der Wohnungseigentümer**, nicht gegen den Verwalter oder den Nachbarn.
     `,
     law: [
-      "§ 44 WEG (Beschlussklage)",
-      "§ 45 WEG (Wirkung des Urteils)",
+      "[§ 44 WEG](https://www.gesetze-im-internet.de/weg/__44.html) (Beschlussklage)",
+      "[§ 45 WEG](https://www.gesetze-im-internet.de/weg/__45.html) (Wirkung des Urteils)",
       "§ 23 Abs. 4 WEG (Nichtigkeit)"
     ],
     practice: `
@@ -918,7 +918,7 @@ Oft beauftragen Kapitalanleger den WEG-Verwalter zusätzlich mit der Verwaltung 
 Wird separat vergütet (meist % der Kaltmiete oder Festbetrag pro Monat).
     `,
     law: [
-      "§ 675 BGB (Geschäftsbesorgungsvertrag)",
+      "[§ 675 BGB](https://www.gesetze-im-internet.de/bgb/__675.html) (Geschäftsbesorgungsvertrag)",
       "[§ 535 BGB](https://www.gesetze-im-internet.de/bgb/__535.html) (Mietvertrag)"
     ],
     practice: `
@@ -1018,9 +1018,9 @@ Ein "Zeitmietvertrag" ist nur noch mit qualifiziertem Grund möglich (z.B. Eigen
     `,
     law: [
       "[§ 535 BGB](https://www.gesetze-im-internet.de/bgb/__535.html) (Inhalt Mietvertrag)",
-      "§ 551 BGB (Kaution)",
+      "[§ 551 BGB](https://www.gesetze-im-internet.de/bgb/__551.html) (Kaution)",
       "[§ 556 BGB](https://www.gesetze-im-internet.de/bgb/__556.html) (Betriebskosten)",
-      "§ 575 BGB (Zeitmietvertrag)"
+      "[§ 575 BGB](https://www.gesetze-im-internet.de/bgb/__575.html) (Zeitmietvertrag)"
     ],
     practice: `
     tasks: [
@@ -1219,7 +1219,7 @@ Einfach "Ich will mehr Geld" sagen, geht nicht.
     law: [
       "[§ 558 BGB](https://www.gesetze-im-internet.de/bgb/__558.html) (Vergleichsmiete)",
       "[§ 559 BGB](https://www.gesetze-im-internet.de/bgb/__559.html) (Modernisierung)",
-      "§ 557b BGB (Indexmiete)"
+      "[§ 557b BGB](https://www.gesetze-im-internet.de/bgb/__557b.html) (Indexmiete)"
     ],
     practice: `
     tasks: [
@@ -1429,9 +1429,9 @@ Als Verwalter müssen Sie überzeugen, beruhigen und führen.
 - Suchen Sie lösungsorientiert nach Wegen.
     `,
     law: [
-        "§ 241 BGB – Pflichten aus dem Schuldverhältnis",
-        "§ 23 WEG – Wohnungseigentümerversammlung",
-        "§ 18 WEG – Verwaltung des gemeinschaftlichen Eigentums",
+        "[§ 241 BGB](https://www.gesetze-im-internet.de/bgb/__241.html) – Pflichten aus dem Schuldverhältnis",
+        "[§ 23 WEG](https://www.gesetze-im-internet.de/weg/__23.html) – Wohnungseigentümerversammlung",
+        "[§ 18 WEG](https://www.gesetze-im-internet.de/weg/__18.html) – Verwaltung des gemeinschaftlichen Eigentums",
       ],
     practice: `
     tasks: [
@@ -1637,10 +1637,10 @@ Wir haben die Grundlagen der WEG-Verwaltung, die kaufmännische Verwaltung und d
 Nutzen Sie diesen Tag, um offene Fragen zu klären und die Gesetzestexte noch einmal querzulesen.
     `,
     law: [
-        "§ 1 WEG – Begriffsbestimmungen",
-        "§ 18 WEG – Verwaltung",
-        "§ 23 WEG – Eigentümerversammlung",
-        "§ 28 WEG – Wirtschaftsplan",
+        "[§ 1 WEG](https://www.gesetze-im-internet.de/weg/__1.html) – Begriffsbestimmungen",
+        "[§ 18 WEG](https://www.gesetze-im-internet.de/weg/__18.html) – Verwaltung",
+        "[§ 23 WEG](https://www.gesetze-im-internet.de/weg/__23.html) – Eigentümerversammlung",
+        "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) – Wirtschaftsplan",
       ],
     practice: `
     tasks: [
@@ -1755,9 +1755,9 @@ Für technische Anlagen sind regelmäßige Wartungen gesetzlich vorgeschrieben:
 - **Blitzschutzanlagen:** Alle 4 Jahre.
     `,
     law: [
-      "§ 13 WEG (Ordnungsgemäße Verwaltung)",
+      "[§ 13 WEG](https://www.gesetze-im-internet.de/weg/__13.html) (Ordnungsgemäße Verwaltung)",
       "[§ 21 WEG](https://www.gesetze-im-internet.de/weg/__21.html) (Bauliche Veränderungen)",
-      "§ 823 BGB (Verkehrssicherungspflicht)",
+      "[§ 823 BGB](https://www.gesetze-im-internet.de/bgb/__823.html) (Verkehrssicherungspflicht)",
       "GEG (Gebäudeenergiegesetz)",
       "DIN EN 1176 (Spielplatzsicherheit)"
     ],
@@ -2037,8 +2037,8 @@ Mindestens 50%, höchstens 70% nach Verbrauch abrechnen — Rest nach Wohnfläch
 4. Vergessene Einnahmen (Versicherungserstattungen)
 5. Kein Vermögensbericht`,
     law: [
-      "§ 28 WEG — Wirtschaftsplan, Rechnungslegung, Vermögensbericht: https://www.gesetze-im-internet.de/woeigg/__28.html",
-      "§ 19 WEG — Ordnungsmäßige Verwaltung: https://www.gesetze-im-internet.de/woeigg/__19.html",
+      "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) — Wirtschaftsplan, Rechnungslegung, Vermögensbericht: https://www.gesetze-im-internet.de/woeigg/__28.html",
+      "[§ 19 WEG](https://www.gesetze-im-internet.de/weg/__19.html) — Ordnungsmäßige Verwaltung: https://www.gesetze-im-internet.de/woeigg/__19.html",
       "Heizkostenverordnung (HeizkostenV): https://www.gesetze-im-internet.de/heizkostenv/",
     ],
     practice: `Praxisfall Hausgeldabrechnung:
@@ -2128,9 +2128,9 @@ Zahlt ein Eigentümer nicht:
 ### Besonderheit: Erwerber haftet mit
 Wer eine Eigentumswohnung kauft, haftet für rückständiges Hausgeld des Voreigentümers bis zu einem bestimmten Betrag — wichtig bei der Due Diligence!`,
     law: [
-      "§ 28 WEG — Wirtschaftsplan: https://www.gesetze-im-internet.de/woeigg/__28.html",
-      "§ 19 WEG — Ordnungsmäßige Verwaltung: https://www.gesetze-im-internet.de/woeigg/__19.html",
-      "§ 45 WEG — Anfechtungsklage: https://www.gesetze-im-internet.de/woeigg/__45.html",
+      "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) — Wirtschaftsplan: https://www.gesetze-im-internet.de/woeigg/__28.html",
+      "[§ 19 WEG](https://www.gesetze-im-internet.de/weg/__19.html) — Ordnungsmäßige Verwaltung: https://www.gesetze-im-internet.de/woeigg/__19.html",
+      "[§ 45 WEG](https://www.gesetze-im-internet.de/weg/__45.html) — Anfechtungsklage: https://www.gesetze-im-internet.de/woeigg/__45.html",
       "§ 10 Abs. 3 ZVG — Haftung des Erwerbers: https://www.gesetze-im-internet.de/zvg/__10.html",
     ],
     practice: `Praxisfall Sonderumlage:
@@ -2162,7 +2162,7 @@ Eigentümer Schmidt (MEA: 95) fragt:
         question: "Wie lange beträgt die Anfechtungsfrist für WEG-Beschlüsse?",
         options: ["2 Wochen", "1 Monat", "3 Monate", "6 Monate"],
         answer: "1",
-        explanation: "§ 45 WEG: Die Anfechtungsklage muss innerhalb eines Monats nach Beschlussfassung erhoben werden."
+        explanation: "[§ 45 WEG](https://www.gesetze-im-internet.de/weg/__45.html): Die Anfechtungsklage muss innerhalb eines Monats nach Beschlussfassung erhoben werden."
       }
     ]
   }

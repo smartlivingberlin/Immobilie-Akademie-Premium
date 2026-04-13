@@ -36,10 +36,10 @@ Die Reform hat die Position des Verwalters gestärkt, aber auch die Rechte der E
     `,
     law: [
       "[§ 1 WEG](https://www.gesetze-im-internet.de/weg/__1.html) (Begriffsbestimmungen)",
-      "§ 5 WEG (Sondereigentum)",
+      "[§ 5 WEG](https://www.gesetze-im-internet.de/weg/__5.html) (Sondereigentum)",
       "[§ 18 WEG](https://www.gesetze-im-internet.de/weg/__18.html) (Verwaltung)",
       "[§ 26 WEG](https://www.gesetze-im-internet.de/weg/__26.html) (Bestellung und Abberufung des Verwalters)",
-      "§ 27 WEG (Aufgaben und Befugnisse des Verwalters)"
+      "[§ 27 WEG](https://www.gesetze-im-internet.de/weg/__27.html) (Aufgaben und Befugnisse des Verwalters)"
     ],
     practice: `
     tasks: [
@@ -147,7 +147,7 @@ Ein SNR gibt einem Eigentümer das exklusive Recht, eine Fläche des Gemeinschaf
 - **Eintragung:** Sollte im Grundbuch eingetragen werden, um gegen Rechtsnachfolger (neue Käufer) zu wirken.
     `,
     law: [
-      "§ 3 WEG (Vertragliche Einräumung von Sondereigentum)",
+      "[§ 3 WEG](https://www.gesetze-im-internet.de/weg/__3.html) (Vertragliche Einräumung von Sondereigentum)",
       "[§ 8 WEG](https://www.gesetze-im-internet.de/weg/__8.html) (Teilung durch den Eigentümer)",
       "[§ 10 WEG](https://www.gesetze-im-internet.de/weg/__10.html) (Allgemeine Grundsätze)",
       "[§ 16 WEG](https://www.gesetze-im-internet.de/weg/__16.html) (Nutzungen, Lasten und Kosten)"

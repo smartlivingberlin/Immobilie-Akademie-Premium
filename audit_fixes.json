@@ -719,6 +719,30 @@
   },
   {
     "module": 3,
+    "day": 2,
+    "title": "Die Teilungserklärung & Gemeinschaftsordnung",
+    "score": 75,
+    "issues": [
+      "❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB"
+    ],
+    "fixes": {
+      "norms": [
+        "§ 854 BGB",
+        "§ 873 BGB",
+        "§ 903 BGB",
+        "§ 925 BGB",
+        "§ 985 BGB",
+        "§ 1 WEG"
+      ]
+    },
+    "has_norms": false,
+    "has_task": true,
+    "theory_len": 1460,
+    "content_len": 800,
+    "source": "Module3Content_Maximal.ts"
+  },
+  {
+    "module": 3,
     "day": 3,
     "title": "Die Eigentümerversammlung (ETV)",
     "score": 75,
@@ -812,6 +836,53 @@
   },
   {
     "module": 3,
+    "day": 12,
+    "title": "Die Beschlussanfechtung",
+    "score": 75,
+    "issues": [
+      "❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG"
+    ],
+    "fixes": {
+      "norms": [
+        "§ 1 WEG",
+        "§ 8 WEG",
+        "§ 10 WEG",
+        "§ 16 WEG",
+        "§ 26a WEG"
+      ]
+    },
+    "has_norms": false,
+    "has_task": true,
+    "theory_len": 862,
+    "content_len": 800,
+    "source": "Module3Content_Maximal_MissingDays.ts"
+  },
+  {
+    "module": 3,
+    "day": 13,
+    "title": "Die Sondereigentumsverwaltung (SEV)",
+    "score": 75,
+    "issues": [
+      "❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB"
+    ],
+    "fixes": {
+      "norms": [
+        "§ 1 BGB",
+        "§ 104 BGB",
+        "§ 105 BGB",
+        "§ 145 BGB",
+        "§ 241 BGB",
+        "§ 242 BGB"
+      ]
+    },
+    "has_norms": false,
+    "has_task": true,
+    "theory_len": 798,
+    "content_len": 800,
+    "source": "Module3Content_Maximal_MissingDays.ts"
+  },
+  {
+    "module": 3,
     "day": 14,
     "title": "Der Wohnraum-Mietvertrag",
     "score": 75,
@@ -879,6 +950,68 @@
     "has_norms": false,
     "has_task": true,
     "theory_len": 884,
+    "content_len": 800,
+    "source": "Module3Content_Maximal_MissingDays.ts"
+  },
+  {
+    "module": 3,
+    "day": 18,
+    "title": "Kommunikation & Rhetorik für Verwalter",
+    "score": 75,
+    "issues": [
+      "❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG"
+    ],
+    "fixes": {
+      "norms": [
+        "§ 1 WEG",
+        "§ 8 WEG",
+        "§ 10 WEG",
+        "§ 16 WEG",
+        "§ 26a WEG"
+      ]
+    },
+    "has_norms": false,
+    "has_task": true,
+    "theory_len": 733,
+    "content_len": 800,
+    "source": "Module3Content_Maximal_MissingDays.ts"
+  },
+  {
+    "module": 3,
+    "day": 20,
+    "title": "Zwischenprüfung: Grundlagen & Verwaltung",
+    "score": 75,
+    "issues": [
+      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB"
+    ],
+    "fixes": {
+      "norms": [
+        "§ 535 BGB",
+        "§ 536 BGB",
+        "§ 556 BGB",
+        "§ 558 BGB",
+        "§ 573 BGB",
+        "§ 1 WEG"
+      ]
+    },
+    "has_norms": false,
+    "has_task": true,
+    "theory_len": 575,
+    "content_len": 800,
+    "source": "Module3Content_Maximal_MissingDays.ts"
+  },
+  {
+    "module": 3,
+    "day": 21,
+    "title": "Technische Verwaltung: Grundlagen & Pflichten",
+    "score": 90,
+    "issues": [
+      "⚠️ Normen prüfen"
+    ],
+    "fixes": {},
+    "has_norms": false,
+    "has_task": true,
+    "theory_len": 1414,
     "content_len": 800,
     "source": "Module3Content_Maximal_MissingDays.ts"
   },
@@ -1257,14 +1390,23 @@
     "module": 3,
     "day": 41,
     "title": "Hausgeldabrechnung: Grundlagen und Pflichten",
-    "score": 80,
+    "score": 60,
     "issues": [
+      "❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB",
       "❌ Keine Aufgabenstellung"
     ],
     "fixes": {
+      "norms": [
+        "§ 854 BGB",
+        "§ 873 BGB",
+        "§ 903 BGB",
+        "§ 925 BGB",
+        "§ 985 BGB",
+        "§ 535 BGB"
+      ],
       "task": "Erklären Sie das Thema 'Hausgeldabrechnung: Grundlagen und Pflichten' anhand eines Praxisbeispiels aus dem Makleralltag."
     },
-    "has_norms": true,
+    "has_norms": false,
     "has_task": false,
     "theory_len": 240,
     "content_len": 800,
@@ -1274,14 +1416,22 @@
     "module": 3,
     "day": 42,
     "title": "Sonderumlage und Wirtschaftsplan: Planung und Durchsetzung",
-    "score": 80,
+    "score": 60,
     "issues": [
+      "❌ Normen fehlen — Vorschlag: § 1 WEG, § 8 WEG, § 10 WEG",
       "❌ Keine Aufgabenstellung"
     ],
     "fixes": {
+      "norms": [
+        "§ 1 WEG",
+        "§ 8 WEG",
+        "§ 10 WEG",
+        "§ 16 WEG",
+        "§ 26a WEG"
+      ],
       "task": "Erklären Sie das Thema 'Sonderumlage und Wirtschaftsplan: Planung und Durchsetzung' anhand eines Praxisbeispiels aus dem Makleralltag."
     },
-    "has_norms": true,
+    "has_norms": false,
     "has_task": false,
     "theory_len": 242,
     "content_len": 800,
@@ -1674,15 +1824,16 @@
     "module": 3,
     "day": 65,
     "title": "Forderungsmanagement & Mahnwesen",
-    "score": 55,
+    "score": 50,
     "issues": [
+      "⚠️ Normen prüfen",
       "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
       "task": "Erklären Sie das Thema 'Forderungsmanagement & Mahnwesen' anhand eines Praxisbeispiels aus dem Makleralltag."
     },
-    "has_norms": true,
+    "has_norms": false,
     "has_task": false,
     "theory_len": 776,
     "content_len": 0,
@@ -1710,15 +1861,16 @@
     "module": 3,
     "day": 67,
     "title": "Verkehrssicherungspflichten",
-    "score": 55,
+    "score": 50,
     "issues": [
+      "⚠️ Normen prüfen",
       "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
       "task": "Erklären Sie das Thema 'Verkehrssicherungspflichten' anhand eines Praxisbeispiels aus dem Makleralltag."
     },
-    "has_norms": true,
+    "has_norms": false,
     "has_task": false,
     "theory_len": 752,
     "content_len": 0,
@@ -1918,15 +2070,16 @@
     "module": 3,
     "day": 78,
     "title": "Repetitorium: Kaufmännische Verwaltung",
-    "score": 55,
+    "score": 50,
     "issues": [
+      "⚠️ Normen prüfen",
       "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
       "task": "Erklären Sie das Thema 'Repetitorium: Kaufmännische Verwaltung' anhand eines Praxisbeispiels aus dem Makleralltag."
     },
-    "has_norms": true,
+    "has_norms": false,
     "has_task": false,
     "theory_len": 368,
     "content_len": 0,
@@ -1936,15 +2089,16 @@
     "module": 3,
     "day": 79,
     "title": "Prüfungssimulation: Fallstudien",
-    "score": 55,
+    "score": 50,
     "issues": [
+      "⚠️ Normen prüfen",
       "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
       "task": "Erklären Sie das Thema 'Prüfungssimulation: Fallstudien' anhand eines Praxisbeispiels aus dem Makleralltag."
     },
-    "has_norms": true,
+    "has_norms": false,
     "has_task": false,
     "theory_len": 660,
     "content_len": 0,
@@ -1973,17 +2127,14 @@
     "module": 4,
     "day": 1,
     "title": "Einführung in das Sachverständigenwesen",
-    "score": 50,
+    "score": 65,
     "issues": [
       "⚠️ Normen prüfen",
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Einführung in das Sachverständigenwesen' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 2931,
     "content_len": 0,
     "source": "Module4Content_Valuation_Maximalist.ts"
@@ -1992,17 +2143,14 @@
     "module": 4,
     "day": 2,
     "title": "Rechtliche Grundlagen & Flächenberechnung",
-    "score": 50,
+    "score": 65,
     "issues": [
       "⚠️ Normen prüfen",
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Rechtliche Grundlagen & Flächenberechnung' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 1863,
     "content_len": 0,
     "source": "Module4Content_Valuation_Maximalist.ts"
@@ -2011,17 +2159,14 @@
     "module": 4,
     "day": 3,
     "title": "Marktanalyse & Makro-Standort",
-    "score": 50,
+    "score": 65,
     "issues": [
       "⚠️ Normen prüfen",
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Marktanalyse & Makro-Standort' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 1347,
     "content_len": 0,
     "source": "Module4Content_Valuation_Maximalist.ts"
@@ -2030,10 +2175,9 @@
     "module": 4,
     "day": 4,
     "title": "Vergleichswertverfahren",
-    "score": 35,
+    "score": 50,
     "issues": [
       "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
@@ -2041,11 +2185,10 @@
         "ImmoWertV 2021",
         "§ 194 BauGB",
         "§ 193 BauGB"
-      ],
-      "task": "Erklären Sie das Thema 'Vergleichswertverfahren' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 1093,
     "content_len": 0,
     "source": "Module4Content_Valuation_Maximalist.ts"
@@ -2054,10 +2197,9 @@
     "module": 4,
     "day": 5,
     "title": "Ertragswertverfahren: Rohertrag & Bewirtschaftungskosten",
-    "score": 35,
+    "score": 50,
     "issues": [
       "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
@@ -2065,11 +2207,10 @@
         "ImmoWertV 2021",
         "§ 194 BauGB",
         "§ 193 BauGB"
-      ],
-      "task": "Erklären Sie das Thema 'Ertragswertverfahren: Rohertrag & Bewirtschaftungskosten' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 1094,
     "content_len": 0,
     "source": "Module4Content_Valuation_Maximalist.ts"
@@ -2078,10 +2219,9 @@
     "module": 4,
     "day": 6,
     "title": "Ertragswertverfahren: Bodenwertverzinsung & Vervielfältiger",
-    "score": 35,
+    "score": 50,
     "issues": [
       "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
@@ -2089,11 +2229,10 @@
         "ImmoWertV 2021",
         "§ 194 BauGB",
         "§ 193 BauGB"
-      ],
-      "task": "Erklären Sie das Thema 'Ertragswertverfahren: Bodenwertverzinsung & Vervielfältiger' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 1063,
     "content_len": 0,
     "source": "Module4Content_Valuation_Maximalist.ts"
@@ -2102,10 +2241,9 @@
     "module": 4,
     "day": 7,
     "title": "Ertragswert: Sonderfälle & Übungen",
-    "score": 35,
+    "score": 50,
     "issues": [
       "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
@@ -2113,11 +2251,10 @@
         "ImmoWertV 2021",
         "§ 194 BauGB",
         "§ 193 BauGB"
-      ],
-      "task": "Erklären Sie das Thema 'Ertragswert: Sonderfälle & Übungen' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 862,
     "content_len": 0,
     "source": "Module4Content_Valuation_Maximalist.ts"
@@ -2126,18 +2263,15 @@
     "module": 4,
     "day": 8,
     "title": "Wiederholung & Zwischentest (Verfahren)",
-    "score": 35,
+    "score": 50,
     "issues": [
       "⚠️ Normen prüfen",
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)",
       "⚠️ Inhalt prüfen: Titel-Thema nicht im Inhalt erkennbar"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Wiederholung & Zwischentest (Verfahren)' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 657,
     "content_len": 0,
     "source": "Module4Content_Valuation_Maximalist.ts"
@@ -2146,10 +2280,9 @@
     "module": 4,
     "day": 9,
     "title": "Bodenwertermittlung Deep Dive",
-    "score": 35,
+    "score": 50,
     "issues": [
       "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
@@ -2157,11 +2290,10 @@
         "ImmoWertV 2021",
         "§ 194 BauGB",
         "§ 193 BauGB"
-      ],
-      "task": "Erklären Sie das Thema 'Bodenwertermittlung Deep Dive' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 713,
     "content_len": 0,
     "source": "Module4Content_Valuation_Maximalist.ts"
@@ -2170,17 +2302,14 @@
     "module": 4,
     "day": 10,
     "title": "Zwischenprüfung: Verfahrenskompetenz",
-    "score": 50,
+    "score": 65,
     "issues": [
       "⚠️ Normen prüfen",
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Zwischenprüfung: Verfahrenskompetenz' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 381,
     "content_len": 0,
     "source": "Module4Content_Valuation_Maximalist.ts"
@@ -2189,10 +2318,9 @@
     "module": 4,
     "day": 11,
     "title": "Sachwertverfahren: Normalherstellungskosten (NHK)",
-    "score": 35,
+    "score": 50,
     "issues": [
       "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
@@ -2200,11 +2328,10 @@
         "ImmoWertV 2021",
         "§ 194 BauGB",
         "§ 193 BauGB"
-      ],
-      "task": "Erklären Sie das Thema 'Sachwertverfahren: Normalherstellungskosten (NHK)' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 1024,
     "content_len": 0,
     "source": "Module4Content_Valuation_Maximalist_Part2.ts"
@@ -2213,10 +2340,9 @@
     "module": 4,
     "day": 12,
     "title": "Sachwertverfahren: Alterswertminderung & Marktanpassung",
-    "score": 35,
+    "score": 50,
     "issues": [
       "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
@@ -2224,11 +2350,10 @@
         "ImmoWertV 2021",
         "§ 194 BauGB",
         "§ 193 BauGB"
-      ],
-      "task": "Erklären Sie das Thema 'Sachwertverfahren: Alterswertminderung & Marktanpassung' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 934,
     "content_len": 0,
     "source": "Module4Content_Valuation_Maximalist_Part2.ts"
@@ -2237,10 +2362,9 @@
     "module": 4,
     "day": 13,
     "title": "Aufbau eines Verkehrswertgutachtens",
-    "score": 35,
+    "score": 50,
     "issues": [
       "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
     "fixes": {
@@ -2248,11 +2372,10 @@
         "ImmoWertV 2021",
         "§ 194 BauGB",
         "§ 193 BauGB"
-      ],
-      "task": "Erklären Sie das Thema 'Aufbau eines Verkehrswertgutachtens' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 1072,
     "content_len": 0,
     "source": "Module4Content_Valuation_Maximalist_Part2.ts"
@@ -2261,17 +2384,14 @@
     "module": 4,
     "day": 14,
     "title": "Objektbeschreibung & Bauschäden",
-    "score": 50,
+    "score": 65,
     "issues": [
       "⚠️ Normen prüfen",
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Objektbeschreibung & Bauschäden' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 974,
     "content_len": 0,
     "source": "Module4Content_Valuation_Maximalist_Part2.ts"
@@ -2280,17 +2400,14 @@
     "module": 4,
     "day": 15,
     "title": "Spezialfälle: Rechte und Belastungen",
-    "score": 50,
+    "score": 65,
     "issues": [
       "⚠️ Normen prüfen",
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Spezialfälle: Rechte und Belastungen' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 757,
     "content_len": 0,
     "source": "Module4Content_Valuation_Maximalist_Part2.ts"
@@ -2299,17 +2416,14 @@
     "module": 4,
     "day": 16,
     "title": "Gewerbeimmobilien & DCF-Verfahren",
-    "score": 50,
+    "score": 65,
     "issues": [
       "⚠️ Normen prüfen",
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Gewerbeimmobilien & DCF-Verfahren' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 830,
     "content_len": 0,
     "source": "Module4Content_Valuation_Maximalist_Part2.ts"
@@ -2318,17 +2432,14 @@
     "module": 4,
     "day": 17,
     "title": "Digitale Bewertungstools (AVM)",
-    "score": 50,
+    "score": 65,
     "issues": [
       "⚠️ Normen prüfen",
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Digitale Bewertungstools (AVM)' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 725,
     "content_len": 0,
     "source": "Module4Content_Valuation_Maximalist_Part2.ts"
@@ -2337,17 +2448,14 @@
     "module": 4,
     "day": 18,
     "title": "Haftung & Berufsbild",
-    "score": 50,
+    "score": 65,
     "issues": [
       "⚠️ Normen prüfen",
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Haftung & Berufsbild' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 780,
     "content_len": 0,
     "source": "Module4Content_Valuation_Maximalist_Part2.ts"
@@ -2356,17 +2464,14 @@
     "module": 4,
     "day": 19,
     "title": "Abschlussprüfung & Fallstudie",
-    "score": 50,
+    "score": 65,
     "issues": [
       "⚠️ Normen prüfen",
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Abschlussprüfung & Fallstudie' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 515,
     "content_len": 0,
     "source": "Module4Content_Valuation_Maximalist_Part2.ts"
@@ -2375,17 +2480,14 @@
     "module": 4,
     "day": 20,
     "title": "Zertifikat & Karriere",
-    "score": 50,
+    "score": 65,
     "issues": [
       "⚠️ Normen prüfen",
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Zertifikat & Karriere' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 743,
     "content_len": 0,
     "source": "Module4Content_Valuation_Maximalist_Part2.ts"
@@ -2394,10 +2496,9 @@
     "module": 4,
     "day": 21,
     "title": "Gutachten-Struktur: Aufbau & Formale Anforderungen",
-    "score": 60,
+    "score": 75,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB",
-      "❌ Keine Aufgabenstellung"
+      "❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB"
     ],
     "fixes": {
       "norms": [
@@ -2407,11 +2508,10 @@
         "§ 925 BGB",
         "§ 985 BGB",
         "ImmoWertV 2021"
-      ],
-      "task": "Erklären Sie das Thema 'Gutachten-Struktur: Aufbau & Formale Anforderungen' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 240,
     "content_len": 800,
     "source": "Module4Content_Bonus_HypZert.ts"
@@ -2420,21 +2520,19 @@
     "module": 4,
     "day": 22,
     "title": "Beleihungswert vs. Verkehrswert: Prüfungsrelevante Unterschiede",
-    "score": 60,
+    "score": 75,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
-      "❌ Keine Aufgabenstellung"
+      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
     ],
     "fixes": {
       "norms": [
         "ImmoWertV 2021",
         "§ 194 BauGB",
         "§ 193 BauGB"
-      ],
-      "task": "Erklären Sie das Thema 'Beleihungswert vs. Verkehrswert: Prüfungsrelevante Unterschiede' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 212,
     "content_len": 800,
     "source": "Module4Content_Bonus_HypZert.ts"
@@ -2443,21 +2541,19 @@
     "module": 4,
     "day": 23,
     "title": "Plausibilitätsprüfung: Fehler in Gutachten erkennen",
-    "score": 60,
+    "score": 75,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
-      "❌ Keine Aufgabenstellung"
+      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
     ],
     "fixes": {
       "norms": [
         "ImmoWertV 2021",
         "§ 194 BauGB",
         "§ 193 BauGB"
-      ],
-      "task": "Erklären Sie das Thema 'Plausibilitätsprüfung: Fehler in Gutachten erkennen' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 161,
     "content_len": 800,
     "source": "Module4Content_Bonus_HypZert.ts"
@@ -2466,10 +2562,9 @@
     "module": 4,
     "day": 24,
     "title": "Gewerbeimmobilien: Büro, Handel, Logistik bewerten",
-    "score": 60,
+    "score": 75,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB",
-      "❌ Keine Aufgabenstellung"
+      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB"
     ],
     "fixes": {
       "norms": [
@@ -2479,11 +2574,10 @@
         "§ 558 BGB",
         "§ 573 BGB",
         "ImmoWertV 2021"
-      ],
-      "task": "Erklären Sie das Thema 'Gewerbeimmobilien: Büro, Handel, Logistik bewerten' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 179,
     "content_len": 800,
     "source": "Module4Content_Bonus_HypZert.ts"
@@ -2492,21 +2586,19 @@
     "module": 4,
     "day": 25,
     "title": "Übungsgutachten 1: Einfamilienhaus vollständig bewerten",
-    "score": 60,
+    "score": 75,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
-      "❌ Keine Aufgabenstellung"
+      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
     ],
     "fixes": {
       "norms": [
         "ImmoWertV 2021",
         "§ 194 BauGB",
         "§ 193 BauGB"
-      ],
-      "task": "Erklären Sie das Thema 'Übungsgutachten 1: Einfamilienhaus vollständig bewerten' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 181,
     "content_len": 800,
     "source": "Module4Content_Bonus_HypZert.ts"
@@ -2515,20 +2607,18 @@
     "module": 4,
     "day": 26,
     "title": "Sondereinflüsse: Baulasten, Altlasten, Denkmalschutz",
-    "score": 60,
+    "score": 75,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: § 23 EStG, § 4 GrEStG",
-      "❌ Keine Aufgabenstellung"
+      "❌ Normen fehlen — Vorschlag: § 23 EStG, § 4 GrEStG"
     ],
     "fixes": {
       "norms": [
         "§ 23 EStG",
         "§ 4 GrEStG"
-      ],
-      "task": "Erklären Sie das Thema 'Sondereinflüsse: Baulasten, Altlasten, Denkmalschutz' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 159,
     "content_len": 800,
     "source": "Module4Content_Bonus_HypZert.ts"
@@ -2537,21 +2627,19 @@
     "module": 4,
     "day": 27,
     "title": "Marktanalyse & Makro/Mikro-Standortbewertung Profis",
-    "score": 60,
+    "score": 75,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
-      "❌ Keine Aufgabenstellung"
+      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
     ],
     "fixes": {
       "norms": [
         "ImmoWertV 2021",
         "§ 194 BauGB",
         "§ 193 BauGB"
-      ],
-      "task": "Erklären Sie das Thema 'Marktanalyse & Makro/Mikro-Standortbewertung Profis' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 147,
     "content_len": 800,
     "source": "Module4Content_Bonus_HypZert.ts"
@@ -2560,10 +2648,9 @@
     "module": 4,
     "day": 28,
     "title": "Übungsgutachten 2: Mehrfamilienhaus im Ertragswertverfahren",
-    "score": 60,
+    "score": 75,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB",
-      "❌ Keine Aufgabenstellung"
+      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB"
     ],
     "fixes": {
       "norms": [
@@ -2573,11 +2660,10 @@
         "§ 558 BGB",
         "§ 573 BGB",
         "ImmoWertV 2021"
-      ],
-      "task": "Erklären Sie das Thema 'Übungsgutachten 2: Mehrfamilienhaus im Ertragswertverfahren' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 168,
     "content_len": 800,
     "source": "Module4Content_Bonus_HypZert.ts"
@@ -2586,21 +2672,19 @@
     "module": 4,
     "day": 29,
     "title": "IHK öffentliche Bestellung & Vereidigung — der nächste Schritt",
-    "score": 60,
+    "score": 75,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
-      "❌ Keine Aufgabenstellung"
+      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
     ],
     "fixes": {
       "norms": [
         "ImmoWertV 2021",
         "§ 194 BauGB",
         "§ 193 BauGB"
-      ],
-      "task": "Erklären Sie das Thema 'IHK öffentliche Bestellung & Vereidigung — der nächste Schritt' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 194,
     "content_len": 800,
     "source": "Module4Content_Bonus_HypZert.ts"
@@ -2609,21 +2693,19 @@
     "module": 4,
     "day": 30,
     "title": "HypZert S Prüfungssimulation: Vollständiger Testdurchlauf",
-    "score": 60,
+    "score": 75,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
-      "❌ Keine Aufgabenstellung"
+      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
     ],
     "fixes": {
       "norms": [
         "ImmoWertV 2021",
         "§ 194 BauGB",
         "§ 193 BauGB"
-      ],
-      "task": "Erklären Sie das Thema 'HypZert S Prüfungssimulation: Vollständiger Testdurchlauf' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 165,
     "content_len": 800,
     "source": "Module4Content_Bonus_HypZert.ts"
@@ -2632,21 +2714,19 @@
     "module": 4,
     "day": 31,
     "title": "Fallstudie: Wohnanlage mit Mietmix & Leerstand",
-    "score": 60,
+    "score": 75,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
-      "❌ Keine Aufgabenstellung"
+      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
     ],
     "fixes": {
       "norms": [
         "ImmoWertV 2021",
         "§ 194 BauGB",
         "§ 193 BauGB"
-      ],
-      "task": "Erklären Sie das Thema 'Fallstudie: Wohnanlage mit Mietmix & Leerstand' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 187,
     "content_len": 800,
     "source": "Module4Content_Bonus_HypZert_Part2.ts"
@@ -2655,21 +2735,19 @@
     "module": 4,
     "day": 32,
     "title": "Digitale Bewertungstools: AVM & PropTech für Gutachter",
-    "score": 60,
+    "score": 75,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
-      "❌ Keine Aufgabenstellung"
+      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
     ],
     "fixes": {
       "norms": [
         "ImmoWertV 2021",
         "§ 194 BauGB",
         "§ 193 BauGB"
-      ],
-      "task": "Erklären Sie das Thema 'Digitale Bewertungstools: AVM & PropTech für Gutachter' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 158,
     "content_len": 800,
     "source": "Module4Content_Bonus_HypZert_Part2.ts"
@@ -2678,10 +2756,9 @@
     "module": 4,
     "day": 33,
     "title": "Haftung & Berufshaftpflicht: Risiken des Gutachters",
-    "score": 60,
+    "score": 75,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB",
-      "❌ Keine Aufgabenstellung"
+      "❌ Normen fehlen — Vorschlag: § 1 BGB, § 104 BGB, § 105 BGB"
     ],
     "fixes": {
       "norms": [
@@ -2691,11 +2768,10 @@
         "§ 145 BGB",
         "§ 241 BGB",
         "§ 242 BGB"
-      ],
-      "task": "Erklären Sie das Thema 'Haftung & Berufshaftpflicht: Risiken des Gutachters' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 168,
     "content_len": 800,
     "source": "Module4Content_Bonus_HypZert_Part2.ts"
@@ -2704,10 +2780,9 @@
     "module": 4,
     "day": 34,
     "title": "Übungsgutachten 3: Gewerbeimmobilie vollständig bewerten",
-    "score": 60,
+    "score": 75,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB",
-      "❌ Keine Aufgabenstellung"
+      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB"
     ],
     "fixes": {
       "norms": [
@@ -2717,11 +2792,10 @@
         "§ 558 BGB",
         "§ 573 BGB",
         "ImmoWertV 2021"
-      ],
-      "task": "Erklären Sie das Thema 'Übungsgutachten 3: Gewerbeimmobilie vollständig bewerten' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 169,
     "content_len": 800,
     "source": "Module4Content_Bonus_HypZert_Part2.ts"
@@ -2730,21 +2804,19 @@
     "module": 4,
     "day": 35,
     "title": "Repetitorium: Alle Wertermittlungsverfahren kompakt",
-    "score": 60,
+    "score": 75,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
-      "❌ Keine Aufgabenstellung"
+      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
     ],
     "fixes": {
       "norms": [
         "ImmoWertV 2021",
         "§ 194 BauGB",
         "§ 193 BauGB"
-      ],
-      "task": "Erklären Sie das Thema 'Repetitorium: Alle Wertermittlungsverfahren kompakt' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 153,
     "content_len": 800,
     "source": "Module4Content_Bonus_HypZert_Part2.ts"
@@ -2753,10 +2825,9 @@
     "module": 4,
     "day": 36,
     "title": "Praktische Objektaufnahme: Checkliste & Protokoll",
-    "score": 60,
+    "score": 75,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB",
-      "❌ Keine Aufgabenstellung"
+      "❌ Normen fehlen — Vorschlag: § 854 BGB, § 873 BGB, § 903 BGB"
     ],
     "fixes": {
       "norms": [
@@ -2765,11 +2836,10 @@
         "§ 903 BGB",
         "§ 925 BGB",
         "§ 985 BGB"
-      ],
-      "task": "Erklären Sie das Thema 'Praktische Objektaufnahme: Checkliste & Protokoll' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 146,
     "content_len": 800,
     "source": "Module4Content_Bonus_HypZert_Part2.ts"
@@ -2778,21 +2848,19 @@
     "module": 4,
     "day": 37,
     "title": "Spezialimmobilien: Hotels, Pflegeheime, Parkhäuser",
-    "score": 60,
+    "score": 75,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
-      "❌ Keine Aufgabenstellung"
+      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
     ],
     "fixes": {
       "norms": [
         "ImmoWertV 2021",
         "§ 194 BauGB",
         "§ 193 BauGB"
-      ],
-      "task": "Erklären Sie das Thema 'Spezialimmobilien: Hotels, Pflegeheime, Parkhäuser' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 181,
     "content_len": 800,
     "source": "Module4Content_Bonus_HypZert_Part2.ts"
@@ -2801,10 +2869,9 @@
     "module": 4,
     "day": 38,
     "title": "Vollständige Prüfungssimulation Teil II & III",
-    "score": 60,
+    "score": 75,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB",
-      "❌ Keine Aufgabenstellung"
+      "❌ Normen fehlen — Vorschlag: § 535 BGB, § 536 BGB, § 556 BGB"
     ],
     "fixes": {
       "norms": [
@@ -2814,11 +2881,10 @@
         "§ 558 BGB",
         "§ 573 BGB",
         "ImmoWertV 2021"
-      ],
-      "task": "Erklären Sie das Thema 'Vollständige Prüfungssimulation Teil II & III' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 163,
     "content_len": 800,
     "source": "Module4Content_Bonus_HypZert_Part2.ts"
@@ -2827,10 +2893,9 @@
     "module": 4,
     "day": 39,
     "title": "Karrierewege & Netzwerke: Berufsverbände & Zertifizierungen",
-    "score": 60,
+    "score": 75,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: § 34c GewO, § 34i GewO, § 14 GewO",
-      "❌ Keine Aufgabenstellung"
+      "❌ Normen fehlen — Vorschlag: § 34c GewO, § 34i GewO, § 14 GewO"
     ],
     "fixes": {
       "norms": [
@@ -2838,11 +2903,10 @@
         "§ 34i GewO",
         "§ 14 GewO",
         "§ 29 GewO"
-      ],
-      "task": "Erklären Sie das Thema 'Karrierewege & Netzwerke: Berufsverbände & Zertifizierungen' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 159,
     "content_len": 800,
     "source": "Module4Content_Bonus_HypZert_Part2.ts"
@@ -2851,21 +2915,19 @@
     "module": 4,
     "day": 40,
     "title": "Bonus-Paket Abschluss: Ihr Weg zum anerkannten Gutachter",
-    "score": 60,
+    "score": 75,
     "issues": [
-      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB",
-      "❌ Keine Aufgabenstellung"
+      "❌ Normen fehlen — Vorschlag: ImmoWertV 2021, § 194 BauGB, § 193 BauGB"
     ],
     "fixes": {
       "norms": [
         "ImmoWertV 2021",
         "§ 194 BauGB",
         "§ 193 BauGB"
-      ],
-      "task": "Erklären Sie das Thema 'Bonus-Paket Abschluss: Ihr Weg zum anerkannten Gutachter' anhand eines Praxisbeispiels aus dem Makleralltag."
+      ]
     },
     "has_norms": false,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 154,
     "content_len": 800,
     "source": "Module4Content_Bonus_HypZert_Part2.ts"

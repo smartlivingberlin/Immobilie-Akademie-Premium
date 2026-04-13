@@ -82,6 +82,7 @@ Ein professionelles Verkehrswertgutachten besteht aus diesen Pflichtteilen:
 - Veraltete Vergleichspreise
 - Fehlende Begründung der Verfahrenswahl
     `,
+    task: "Analysieren Sie: Welche Teile eines Gutachtens sind für die HypZert S Prüfung am wichtigsten und warum?",
     tasks: [
       {
         type: "reflection" as const,
@@ -169,6 +170,7 @@ Sachwert = 380.000 + 320.000 = 700.000 €
 Beleihungswert = Min(919.440, 700.000) = 700.000 €
 Beleihungsgrenze (80%) = 560.000 €
     `,
+    task: "Warum liegt der Beleihungswert systematisch unter dem Verkehrswert? Erklären Sie das Nachhaltigkeitsprinzip.",
     tasks: [
       {
         type: "reflection" as const,
@@ -250,6 +252,7 @@ Bodenwert: 850 × 2.400 = 2.040.000 €
 4. Grundstücksfläche: 850m² vs. 820m² in Flurkarte
 5. Bodenwert-Fehler: Falsche Grundstücksfläche × falscher BRW
     `,
+    task: "Erstellen Sie eine persönliche Checkliste mit den 10 häufigsten Fehlern die Sie bei der Plausibilitätsprüfung zuerst prüfen würden.",
     tasks: [
       {
         type: "reflection" as const,
@@ -344,6 +347,7 @@ Vervielfältiger (4%, 45J) = 21,36
 Gebäudeertragswert = 11.979.000 €
 Ertragswert = 11.979.000 + 3.200.000 = 15.179.000 €
     `,
+    task: "Warum ist die Drittverwendbarkeit bei Gewerbeimmobilien so wichtig für die Wertermittlung?",
     tasks: [
       {
         type: "reflection" as const,
@@ -440,6 +444,7 @@ Erstellen Sie ein vollständiges Gutachten für folgendes Objekt:
 
 Nutzen Sie die Formeln aus dem Beispiel oben.
     `,
+    task: "Warum gewichtet man beim Verkehrswert Vergleichs- und Sachwertverfahren unterschiedlich stark? Wann dominiert welches Verfahren?",
     tasks: [
       {
         type: "reflection" as const,
@@ -538,6 +543,7 @@ Baulast: 3% × 1.800.000 = 54.000 € Minderung
 
 **Verkehrswert:** 1.800.000 - 38.600 - 102.000 - 54.000 = **1.605.400 €**
     `,
+    task: "Ein Denkmalschutz-Objekt kann trotz erhöhter Kosten attraktiv sein. Wann überwiegen die Vorteile?",
     tasks: [
       {
         type: "reflection" as const,
@@ -622,6 +628,7 @@ Mitte = 100%, Marzahn = ?
 **Diskussion:** Welche Nachteile hat Mitte trotzdem?
 (Lärmbelastung, Parkierung, Innenstadtprobleme)
     `,
+    task: "Welche Datenquellen sind für eine HypZert-konforme Marktanalyse unverzichtbar und warum?",
     tasks: [
       {
         type: "reflection" as const,
@@ -708,6 +715,7 @@ Berechnen Sie den Verkehrswert:
 
 Führen Sie alle 7 Schritte durch und begründen Sie jeden Rechenschritt.
     `,
+    task: "Wann würde man beim MFH zusätzlich das Sachwertverfahren durchführen und wie wird es gewichtet?",
     tasks: [
       {
         type: "reflection" as const,
@@ -806,6 +814,7 @@ Jahr 5: IHK-Bestellung
 - IHK-Bestellung: 500-1.500€
 - Berufshaftpflicht: 1.200€/Jahr
     `,
+    task: "Warum brauchen gerichtliche Gutachten zwingend einen ö.b.u.v. Sachverständigen? Was unterscheidet ihn von einem freien Gutachter?",
     tasks: [
       {
         type: "reflection" as const,
@@ -901,6 +910,7 @@ Systematisch vorgehen:
 **Bewertungsmaßstab HypZert:**
 "Nachvollziehbar — Formal korrekt — Widerspruchsfrei"
     `,
+    task: "Nach dem Testdurchlauf: In welchem Prüfungsteil fühlen Sie sich am unsichersten? Was ist Ihr konkreter Plan zur Verbesserung?",
     tasks: [
       {
         type: "reflection" as const,
