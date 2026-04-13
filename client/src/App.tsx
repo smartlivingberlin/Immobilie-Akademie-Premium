@@ -71,7 +71,7 @@ import ExamMode from "@/pages/ExamMode";
 import ExamQuestion from "@/pages/ExamQuestion";
 import ExamResults from "@/pages/ExamResults";
 import { InspectBanner } from "@/components/InspectBanner";
-import { OwnerDashboard } from "@/pages/OwnerDashboard";
+const OwnerDashboard = lazy(() => import("@/pages/OwnerDashboard").then(m => ({ default: m.default })));
 
 
 function ProtectedRoute({ component: Component }: { component: React.ComponentType }) {
@@ -192,7 +192,7 @@ function Router() {
 export default function App() {
   return <Router />;
 }
-          <Route path="/owner-dashboard" component={() => <OwnerDashboard />} />
+          <Route path="/owner-dashboard" component={() => (<Suspense fallback={<div>Lädt...</div>}><OwnerDashboard /></Suspense>)} />
           <Route path="/inspect/:token" component={() => {
             const token = window.location.pathname.split('/inspect/')[1];
             if (token) window.location.href = `/api/owner/inspect/${token}`;
