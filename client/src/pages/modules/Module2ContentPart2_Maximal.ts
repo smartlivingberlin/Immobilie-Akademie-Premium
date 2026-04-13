@@ -114,6 +114,7 @@ Formel: Angepasster Preis = Vergleichspreis × (Index aktuell / Index Kaufjahr)
     `,
     law: ["§15 ImmoWertV (Vergleichswertverfahren)", "§194 BauGB (Verkehrswertdefinition)", "§9 ImmoWertV (Vergleichspreise, Kaufpreissammlung)"],
     practice: "Recherchieren Sie aktuelle ETW-Kaufpreise in Ihrem Bezirk über immobilienscout24.de oder Gutachterausschuss Berlin (gutachterausschuss.fi.berlin.de). Welcher Preis/m² gilt für eine 3-Zimmer-ETW in mittlerer Lage?",
+    task: "Berechnen Sie den Vergleichswert einer 80m² Wohnung: Recherchieren Sie 3 Vergleichspreise aus dem Gutachterausschuss, wenden Sie §15 ImmoWertV an und dokumentieren Sie Ihre Herleitung.",
     tasks: [
       {
         type: "reflection" as const,
@@ -300,6 +301,7 @@ Der Käufer kauft den zukünftigen Zahlungsstrom (Miete). Der Boden wird nur ver
     `,
     law: ["ImmoWertV § 27-34"],
     practice: "Was ist der aktuelle Liegenschaftszins für MFH in Ihrer Stadt? (Marktbericht).",
+    task: "Berechnen Sie den Ertragswert: Jahresreinertrag 48.000 EUR, Liegenschaftszins 4%, Restnutzungsdauer 40 Jahre — wenden Sie §27 ImmoWertV an und erklären Sie jeden Rechenschritt.",
     tasks: [
       {
         type: "reflection" as const,
