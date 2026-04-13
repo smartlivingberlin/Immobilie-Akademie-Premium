@@ -252,8 +252,7 @@ export default function KursLanding({ slug }: { slug: string }) {
       // Im Vorschau-Modus: kein Login-Redirect
       if (document.cookie.includes("inspect_mode") || 
           sessionStorage.getItem("inspect_mode") === "1") {
-        alert("👁️ Vorschau-Modus — Käufe sind deaktiviert.
-In der echten Version funktioniert der Kauf mit Stripe.");
+        alert("Vorschau-Modus: Kaeufe sind deaktiviert. In der echten Version funktioniert der Kauf mit Stripe.");
         return;
       }
       navigate("/login");
