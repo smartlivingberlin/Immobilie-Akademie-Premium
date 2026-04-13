@@ -136,6 +136,25 @@ app.use("/api/auth/register", loginLimiter);
   const server = createServer(app);
   // Configure body parser with larger size limit for file uploads
   app.use(cookieParser());
+  // CORS für Owner Control Panel (lokale HTML-Datei)
+  app.use((req, res, next) => {
+    const origin = req.headers.origin || '';
+    const allowed = ['null', 'file://', ''].includes(origin) ||
+      origin.startsWith('http://localhost') ||
+      origin.startsWith('http://127.0.0.1') ||
+      origin.includes('.railway.app') ||
+      origin.includes('immobilien-akademie');
+    if (allowed || !origin) {
+      res.setHeader('Access-Control-Allow-Origin', origin || '*');
+      res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+      res.setHeader('Access-Control-Allow-Credentials', 'true');
+    }
+    if (req.method === 'OPTIONS') return res.sendStatus(200);
+    next();
+  });
+
+
 
   // Inspect-Modus: schreibende Operationen blockieren
   app.use((req, res, next) => {
