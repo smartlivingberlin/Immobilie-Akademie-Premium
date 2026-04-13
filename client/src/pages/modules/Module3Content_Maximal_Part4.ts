@@ -32,6 +32,7 @@ Der Vertrag wird zwischen dem Eigentümer (Auftraggeber) und dem Verwalter gesch
       "[§ 675 BGB](https://www.gesetze-im-internet.de/bgb/__675.html) (Entgeltliche Geschäftsbesorgung)"
     ],
     practice: `
+    task: "Welche drei Hauptpflichten hat der Vermieter gemäß § 535 BGB?",
     tasks: [
       {
         type: "reflection" as const,
@@ -92,6 +93,7 @@ Die Abrechnung muss dem Mieter spätestens bis zum Ablauf des zwölften Monats n
       "Heizkostenverordnung (HeizkostenV)"
     ],
     practice: `
+    task: "Reflektieren Sie: Welche drei Kernaussagen aus 'Betriebskostenabrechnung (BKA)' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
     tasks: [
       {
         type: "reflection" as const,
@@ -190,6 +192,7 @@ Vermieter können die Miete nicht willkürlich erhöhen. Es gelten strenge geset
       "[§ 557b BGB](https://www.gesetze-im-internet.de/bgb/__557b.html) (Indexmiete)"
     ],
     practice: `
+    task: "Kann bei einer vereinbarten Indexmiete zusätzlich eine Erhöhung wegen Modernisierung (§ 559 BGB) verlangt werden?",
     tasks: [
       {
         type: "reflection" as const,
@@ -257,6 +260,7 @@ Schriftliche Erklärung an den Mieter mit Berechnungsgrundlage. Die neue Miete w
       "[§ 573c BGB](https://www.gesetze-im-internet.de/bgb/__573c.html) (Fristen der ordentlichen Kündigung)"
     ],
     practice: `
+    task: "Reflektieren Sie: Welche drei Kernaussagen aus 'Kündigung & Abwicklung' sind für Ihre Tätigkeit als WEG-Verwaltung-Profi am wichtigsten?",
     tasks: [
       {
         type: "reflection" as const,
@@ -356,6 +360,7 @@ Mietrückstände und offene Hausgeldzahlungen gefährden die Liquidität.
       "§ 690 ZPO (Mahnantrag)"
     ],
     practice: `
+    task: "Ab wann befindet sich der Wohnraummieter mit der Mietzahlung in Verzug?",
     tasks: [
       {
         type: "reflection" as const,
@@ -412,6 +417,7 @@ FM ist mehr als nur Hausmeistertätigkeit. Es ist die ganzheitliche Betrachtung 
       "Betriebssicherheitsverordnung (BetrSichV)"
     ],
     practice: `
+    task: "Zu welchem Bereich des FM gehört die Wartung der Aufzugsanlage?",
     tasks: [
       {
         type: "reflection" as const,
@@ -469,6 +475,7 @@ Die Pflicht kann auf Dritte (Hausmeister, Dienstleister, Mieter) übertragen wer
       "[§ 836 BGB](https://www.gesetze-im-internet.de/bgb/__836.html) (Haftung des Tierhalters/Gebäudebesitzers)"
     ],
     practice: `
+    task: "Kann die Streupflicht im Mietvertrag auf den Mieter im Erdgeschoss übertragen werden?",
     tasks: [
       {
         type: "reflection" as const,
@@ -526,6 +533,7 @@ Vermieter müssen sich je nach energetischem Zustand des Gebäudes an den CO2-Ko
       "Kohlendioxidkostenaufteilungsgesetz (CO2KostAufG)"
     ],
     practice: `
+    task: "Wer trägt nach dem CO2KostAufG die CO2-Kosten bei einem Gebäude mit sehr schlechter Energiebilanz (Klasse H)?",
     tasks: [
       {
         type: "reflection" as const,
@@ -585,6 +593,7 @@ Abgleich der geplanten Kosten mit der Instandhaltungsrücklage. Ggf. Erhöhung d
       "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) (Wirtschaftsplan)"
     ],
     practice: `
+    task: "Warum ist ein langfristiger Instandhaltungsplan für die WEG wichtig?",
     tasks: [
       {
         type: "reflection" as const,
@@ -643,6 +652,7 @@ Der Verwalter muss für ausreichenden Versicherungsschutz sorgen.
       "VVG (Versicherungsvertragsgesetz)"
     ],
     practice: `
+    task: "Deckt die Gebäudeversicherung Schäden durch Hochwasser oder Erdbeben automatisch ab?",
     tasks: [
       {
         type: "reflection" as const,
@@ -708,6 +718,7 @@ Verwalter sind oft Mediatoren zwischen Eigentümern, Mietern und Nachbarn.
       "Hausordnung"
     ],
     practice: `
+    task: "Kann ein Eigentümer, der ständig den Hausfrieden stört, aus der WEG ausgeschlossen werden?",
     tasks: [
       {
         type: "reflection" as const,
@@ -760,6 +771,7 @@ ETVs können emotional und chaotisch werden. Der Verwalter muss die Versammlung 
       "[§ 24 WEG](https://www.gesetze-im-internet.de/weg/__24.html) (Einberufung, Vorsitz, Niederschrift)"
     ],
     practice: `
+    task: "Darf der Verwalter einen Eigentümer des Saales verweisen?",
     tasks: [
       {
         type: "reflection" as const,
@@ -815,6 +827,7 @@ Verwalter verarbeiten sensible Daten (Namen, Konten, Vermögensverhältnisse).
       "BDSG (Bundesdatenschutzgesetz)"
     ],
     practice: `
+    task: "Darf die Mieterliste mit Telefonnummern an alle Hausbewohner verteilt werden?",
     tasks: [
       {
         type: "reflection" as const,
@@ -878,6 +891,7 @@ Die Branche wandelt sich von Papierordnern zu digitalen Plattformen.
         "Art. 6 DSGVO – Rechtmäßigkeit der Verarbeitung",
       ],
     practice: `
+    task: "Ersetzt ein Kundenportal die gesetzliche Pflicht zur Versendung der Einladung per Textform?",
     tasks: [
       {
         type: "reflection" as const,
@@ -933,6 +947,7 @@ Grundwissen im Steuerrecht ist unerlässlich, auch wenn keine Steuerberatung gel
       "UStG (Umsatzsteuergesetz)"
     ],
     practice: `
+    task: "Sind Materialkosten bei Handwerkerrechnungen nach § 35a EStG absetzbar?",
     tasks: [
       {
         type: "reflection" as const,
@@ -978,6 +993,7 @@ Zentrale Punkte für die Prüfung und Praxis:
 `,
     law: ["WEG (Wohnungseigentumsgesetz)"],
     practice: `
+    task: "Wie lange ist die Anfechtungsfrist für Beschlüsse der Eigentümerversammlung?",
     tasks: [
       {
         type: "reflection" as const,
@@ -1017,6 +1033,7 @@ Gehen Sie alte Protokolle und Teilungserklärungen durch. Versuchen Sie, Streitf
 `,
     law: ["BGB Mietrecht (§§ 535 ff.)"],
     practice: `
+    task: "Wann verjähren Ersatzansprüche des Vermieters wegen Veränderungen oder Verschlechterungen der Mietsache?",
     tasks: [
       {
         type: "reflection" as const,
@@ -1063,6 +1080,7 @@ Erstellen Sie Karteikarten zu den wichtigsten Fristen:
         "[§ 16 WEG](https://www.gesetze-im-internet.de/weg/__16.html) – Nutzungen, Lasten, Kosten",
       ],
     practice: `
+    task: "Was gehört zwingend in den Vermögensstatus einer WEG-Abrechnung?",
     tasks: [
       {
         type: "reflection" as const,
@@ -1117,6 +1135,7 @@ In einer WEG tropft es durch die Decke (Technik/Versicherung). Der Mieter oben v
         "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) – Wirtschaftsplan",
       ],
     practice: `
+    task: "Darf der Verwalter ohne Beschluss einen Anwalt für die WEG beauftragen?",
     tasks: [
       {
         type: "reflection" as const,
@@ -1170,6 +1189,7 @@ Bleiben Sie neugierig! Die Rechtsprechung (insb. BGH-Urteile zum WEG-Recht) änd
 `,
     law: ["§ 34c GewO (Weiterbildungspflicht)"],
     practice: `
+    task: "Wie viele Stunden Weiterbildung müssen Immobilienverwalter gemäß § 34c GewO nachweisen?",
     tasks: [
       {
         type: "reflection" as const,
