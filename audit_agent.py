@@ -184,14 +184,22 @@ def extract_days(filepath):
                         return re.findall(r'"([^"]+)"', block[b_start+1:i])
             return []
         
-        # Theory: Backtick oder Quote
-        theory_raw = get_field("theory") or ""
-        # Backtick theory (längerer Text)
-        bt_m = re.search(r'theory:\s*`([\s\S]*?)`', block)
-        if bt_m and len(bt_m.group(1).strip()) > len(theory_raw):
-            theory_raw = bt_m.group(1).strip()[:500]
+        # Theory: alle Formate robust extrahieren
+        theory_raw = ""
+        # Backtick-Format zuerst
+        idx_th = block.find("theory:")
+        if idx_th >= 0:
+            th_rest = block[idx_th+7:].lstrip()
+            if th_rest.startswith("`"):
+                end_bt = th_rest.find("`", 1)
+                if end_bt > 0:
+                    theory_raw = th_rest[1:end_bt].strip()[:500]
+            elif th_rest.startswith('"'):
+                end_q = th_rest.find('"', 1)
+                if end_q > 0:
+                    theory_raw = th_rest[1:end_q].strip()[:500]
         
-        # Normen: norms[] oder law[] 
+                # Normen: norms[] oder law[] 
         norms_list = get_array("norms")
         law_list = get_array("law")
         all_norms = norms_list or law_list
