@@ -465,7 +465,7 @@ Ein Haus hat eine Einliegerwohnung. Gilt die Provisionsteilung?
   },
   day_9: {
     title: "Das Maklerbüro: Organisation",
-    theory: "Struktur ist alles. CRM, Versicherung, Ablage.",
+    theory: "Professionelles Büromanagement ist die Basis des Maklererfolgs. CRM-Systeme, Haftpflichtversicherung, DSGVO-konforme Ablage und strukturierte Prozesse entscheiden über Effizienz und Rechtssicherheit.",
     extendedTheory: `
 ### Vermögensschaden-Haftpflichtversicherung
 Nicht Pflicht nach §34c, aber überlebenswichtig.
@@ -523,7 +523,7 @@ Makler speichert alles in Excel auf dem Laptop. Laptop wird gestohlen.
   },
   day_10: {
     title: "Netzwerke & Gemeinschaftsgeschäfte",
-    theory: "Einzelkämpfer sterben. Netzwerke bringen Umsatz.",
+    theory: "Netzwerke multiplizieren den Maklererfolg. Gemeinschaftsgeschäfte mit Kollegen, Kooperationen mit Banken und Notaren sowie ein starkes lokales Netzwerk sind entscheidende Umsatztreiber.",
     extendedTheory: `
 ### Gemeinschaftsgeschäft
 Makler A hat das Objekt, Makler B den Käufer.
@@ -579,7 +579,7 @@ Gemeinschaftsgeschäft vereinbart per Telefon. Kunde kauft. Makler A zahlt Makle
 
   day_11: {
     title: "Standortanalyse Deep Dive",
-    theory: "Makro- und Mikrolage im Detail analysieren.",
+    theory: "Die fundierte Standortanalyse ist das A und O der Immobilienbewertung. Makrolage (Region, Stadt) und Mikrolage (Straße, Nachbarschaft) bestimmen Wert und Vermarktbarkeit einer Immobilie.",
     extendedTheory: `
 ### Harte und weiche Standortfaktoren
 *   **Hart:** Verkehrsanbindung, Steuern, Fördergebiete, Bodenpreise.
@@ -636,7 +636,7 @@ Makler lobt "ruhige Waldrandlage" für junge Studenten-WG.
   },
   day_12: {
     title: "Marktforschung & Datenquellen",
-    theory: "Datenbasierte Beratung statt Bauchgefühl.",
+    theory: "Datenbasierte Marktberatung schafft Vertrauen und Kompetenz. Bodenrichtwerte, Gutachterausschussberichte, ImmoScout-Preisatlas und demografische Daten sind die Werkzeuge des Profis.",
     extendedTheory: `
 ### Datenquellen
 1.  **Gutachterausschuss (GAA):** Der "Heilige Gral". Kaufpreissammlung (echte Notarverträge!). Grundstücksmarktbericht (jährlich).
@@ -748,7 +748,7 @@ Käufer kauft Wohnung, um dort eine Arztpraxis zu eröffnen. Teilungserklärung 
   },
   day_14: {
     title: "Baurecht Basics (BauGB, BauNVO)",
-    theory: "Was darf ich bauen? §34 vs. B-Plan.",
+    theory: "Baurecht schützt vor Haftung. Der Bebauungsplan (B-Plan), §34 BauGB (unbeplanter Innenbereich) und die Baunutzungsverordnung (BauNVO) bestimmen was wo wie gebaut werden darf.",
     extendedTheory: `
 ### Der Bebauungsplan (B-Plan)
 Enthält zeichnerische und textliche Festsetzungen.
@@ -800,7 +800,7 @@ Also evtl. bis 450qm gesamt. (Landesrecht prüfen!).
   },
   day_15: {
     title: "Grundbuch lesen (Abt I & II)",
-    theory: "Eigentum und Lasten verstehen.",
+    theory: "Das Grundbuch ist das zentrale Register des Immobilienrechts. Abteilung I zeigt den Eigentümer, Abteilung II alle Lasten und Beschränkungen. Lesen ohne Fehler ist Pflicht für jeden Makler.",
     extendedTheory: `
 ### Abteilung I: Eigentümer
 *   **Alleineigentum:** Einer.
@@ -847,7 +847,7 @@ Also evtl. bis 450qm gesamt. (Landesrecht prüfen!).
   },
   day_16: {
     title: "Grundbuch Abt III & Finanzierungslasten",
-    theory: "Hypotheken und Grundschulden.",
+    theory: "Abteilung III des Grundbuchs enthält Hypotheken, Grundschulden und Rentenschulden. Diese Finanzierungslasten beeinflussen direkt die Kaufabwicklung und müssen vor Vertragsschluss geprüft werden.",
     extendedTheory: `
 ### Grundschuld vs. Hypothek
 *   **Hypothek:** Hängt an der Forderung. Kredit weg = Hypothek weg. (Heute selten).
@@ -898,7 +898,7 @@ Verkauf steht an. Bank sagt: "Wir haben keinen Brief." Eigentümer auch nicht.
   },
   day_17: {
     title: "Bauunterlagen & Flurkarte",
-    theory: "Was man für den Verkauf (und die Bank) braucht.",
+    theory: "Vollständige Objektunterlagen sind Voraussetzung für den Verkaufserfolg. Grundrisse, Flurkarte, Bauakte, Teilungserklärung und Energieausweis — ohne diese Dokumente kein rechtssicherer Verkauf.",
     extendedTheory: `
 ### Die Bauakte
 Liegt beim Bauamt. Einsicht nur mit Vollmacht.
@@ -950,7 +950,7 @@ Eigentümer hat Wintergarten ohne Genehmigung angebaut. Käufer Bank prüft Unte
   },
   day_18: {
     title: "Energieausweis (GEG)",
-    theory: "Pflicht bei Verkauf und Vermietung. Bußgeldfalle!",
+    theory: "Der Energieausweis ist seit GEG 2023 bei Verkauf und Vermietung Pflicht. Verbrauchsausweis vs. Bedarfsausweis, Energieeffizienzklassen A+ bis H und die Konsequenzen bei Nichtvorlage müssen bekannt sein.",
     extendedTheory: `
 ### Gebäudeenergiegesetz (GEG)
 *   **Bedarfsausweis:** Theoretisch berechnet (Bausubstanz, Heizung). Pflicht für unsanierte Häuser < 5 Wohnungen, Bauantrag vor 1.11.1977.
@@ -998,7 +998,7 @@ Makler inseriert "Energieausweis liegt zur Besichtigung vor". Schreibt keine Wer
   },
   day_19: {
     title: "Wohnflächenberechnung (WoFlV vs DIN 277)",
-    theory: "Fläche ist Geld. Falsche Fläche = Haftung.",
+    theory: "Wohnflächenberechnung ist Haftungsfalle Nr. 1. WoFlV (Wohnflächenverordnung) und DIN 277 führen zu unterschiedlichen Ergebnissen — der Unterschied kann tausende Euro im Kaufpreis ausmachen.",
     extendedTheory: `
 ### Wohnflächenverordnung (WoFlV)
 Standard für Wohnraum (Miete/Kauf).

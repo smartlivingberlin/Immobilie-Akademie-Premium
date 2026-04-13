@@ -66,7 +66,7 @@ Steuer: 200.000 * 42% = 84.000 € ans Finanzamt.
   },
   day_42: {
     title: "Immobilien als Kapitalanlage",
-    theory: "Rendite vs. Risiko. Cashflow vs. Wertsteigerung.",
+    theory: "Immobilien als Kapitalanlage bieten steuerliche Vorteile und langfristigen Vermögensaufbau. Bruttomietrendite, Nettomietrendite, AfA-Abschreibung und Leverage-Effekt sind die wichtigsten Kennzahlen.",
     extendedTheory: `
 ### Kennzahlen
 1.  **Bruttomietrendite:** Jahreskaltmiete / Kaufpreis * 100. (Schnellcheck).
@@ -256,7 +256,7 @@ Nachteil: Monatliche Belastung bleibt ewig ("zweite Miete").
   },
   day_46: {
     title: "Landwirtschaftliche Flächen",
-    theory: "Acker und Wiese. Sonderregeln (Vorkaufsrecht).",
+    theory: "Landwirtschaftliche Flächen unterliegen dem Landwirtschaftsrecht mit Vorkaufsrechten und behördlichen Genehmigungspflichten. §9 GrdstVG und landesspezifische Regelungen schränken die freie Veräußerung ein.",
     extendedTheory: `
 ### Grundstückverkehrsgesetz (GrdstVG)
 Verkauf von Landwirtschaftsflächen (> 1 Hektar, je nach Land) muss genehmigt werden.
@@ -300,7 +300,7 @@ Anwalt will Wiese für Pferde kaufen. Landwirt meldet Bedarf an.
   },
   day_47: {
     title: "Zwangsversteigerung (ZVG)",
-    theory: "Schnäppchen oder Risiko? Makler als Berater.",
+    theory: "Die Zwangsversteigerung nach ZVG bietet Chancen und Risiken. Versteigerungstermine, Mindestgebote, 5/10-Grenze, Wohnrecht und Übernahme von Altlasten müssen Makler und Bieter kennen.",
     extendedTheory: `
 ### Ablauf
 1.  **Verkehrswertgutachten:** Vom Gericht bestellt. (Oft ohne Innenbesichtigung!).
@@ -392,7 +392,7 @@ Käufer zahlt Rente. Oma wird 105. Käufer zahlt drauf.
   },
   day_49: {
     title: "Ferienimmobilien",
-    theory: "Traum oder Albtraum? FeWo-Vermietung.",
+    theory: "Ferienimmobilien unterliegen besonderen Regelungen. Zweckentfremdungsverbote, Betreiberkonzepte, Finanzierungsbeschränkungen und steuerliche Besonderheiten machen dieses Segment komplex.",
     extendedTheory: `
 ### Lage, Lage, Lage
 Erste Reihe Meerblick vs. Hinterland. Auslastung ist alles.
@@ -440,7 +440,7 @@ Deckungsbeitrag: 80 €/Nacht.
   },
   day_50: {
     title: "Internationaler Markt",
-    theory: "Mallorca, Dubai, Florida. Makeln im Ausland.",
+    theory: "Der internationale Immobilienmarkt bietet Diversifikationsmöglichkeiten. Rechtsunterschiede, Währungsrisiken, steuerliche Behandlung und die Bedeutung lokaler Expertise sind entscheidende Faktoren.",
     extendedTheory: `
 ### Rechtssysteme
 *   **Spanien:** Privater Kaufvertrag bindend. Notar nur für Register.
@@ -539,7 +539,7 @@ Kunde vertraut Algorithmus, verkauft zu billig an Aufkäufer.
   },
   day_52: {
     title: "Konfliktmanagement & Mediation",
-    theory: "Wenn Erben streiten oder Scheidung ansteht.",
+    theory: "Konfliktmanagement ist tägliche Praxis im Maklerbüro. Käufer-Verkäufer-Konflikte, Nachbarschaftsstreitigkeiten und Provisionsstreitigkeiten erfordern Deeskalationstechniken und manchmal professionelle Mediation.",
     extendedTheory: `
 ### Der Makler als Mediator
 Oft sind Emotionen das Hindernis, nicht der Preis.
@@ -589,7 +589,7 @@ Mann sabotiert Besichtigungen (läuft in Unterhose rum).
   },
   day_53: {
     title: "Selbstmanagement & Zeitmanagement",
-    theory: "Makler sein heißt Unternehmer sein. 24/7?",
+    theory: "Selbstmanagement und Zeitmanagement entscheiden über nachhaltigen Maklererfolg. Eisenhower-Matrix, CRM-gestützte Wiedervorlage, Work-Life-Balance und Anti-Burnout-Strategien sind überlebenswichtig.",
     extendedTheory: `
 ### Zeitfresser
 *   Unqualifizierte Anrufe.
@@ -644,7 +644,7 @@ So: Frei.
   },
   day_54: {
     title: "Business-Knigge & Etikette",
-    theory: "Kleider machen Leute. Manieren machen Geschäfte.",
+    theory: "Professionelles Auftreten schafft Vertrauen. Business-Knigge für Besichtigungen, Notartermine, Netzwerkveranstaltungen und die digitale Etikette bei E-Mail und Social Media sind messbar erfolgswirksam.",
     extendedTheory: `
 ### Auftreten
 *   Kleidung: Dem Kunden angepasst (Anzug bei Bankern, Casual bei jungen Familien). Sauber!
@@ -734,7 +734,7 @@ No-Go: Kurze Hosen, Flip-Flops, tiefer Ausschnitt.
   },
   day_56: {
     title: "Wiederholung: Bewertung & Technik",
-    theory: "Rechnen muss sitzen.",
+    theory: "Systematische Wiederholung der Bewertungsverfahren: Vergleichswert, Sachwert, Ertragswert nach ImmoWertV 2021 — mit Prüfungsaufgaben im IHK-Format zur Vorbereitung auf die Sachkundeprüfung.",
     extendedTheory: `
 ### Formeln
 *   Ertragswert.
@@ -776,7 +776,7 @@ No-Go: Kurze Hosen, Flip-Flops, tiefer Ausschnitt.
   },
   day_57: {
     title: "Wiederholung: Marketing & Vertrieb",
-    theory: "Verkaufen, nicht nur verteilen.",
+    theory: "Marketingstrategien im Überblick: Farming, Social Media, Referral Marketing, Online-Portale und persönliches Netzwerk — mit Prüfungsfragen zur Vertiefung und Wiederholung.",
     extendedTheory: `
 ### Einwandbehandlung
 *   "Zu teuer" -> Nutzen argumentieren.
@@ -816,7 +816,7 @@ No-Go: Kurze Hosen, Flip-Flops, tiefer Ausschnitt.
   },
   day_58: {
     title: "Abschlussprüfung Simulation (Teil 1)",
-    theory: "Test unter Realbedingungen.",
+    theory: "Abschlussprüfungssimulation Teil 1: Recht und Verträge. 30 IHK-typische Fragen zu §34c GewO, BGB-Maklerrecht, GwG, DSGVO und Verbraucherschutz — unter Prüfungsbedingungen.",
     extendedTheory: `
 50 Fragen Multiple Choice.
 Zeit: 60 Minuten.
@@ -853,7 +853,7 @@ Themen: Recht, Bewertung, Marketing.
   },
   day_59: {
     title: "Abschlussprüfung Simulation (Teil 2)",
-    theory: "Praktische Prüfung (fiktiv).",
+    theory: "Abschlussprüfungssimulation Teil 2: Bewertung und Praxis. 30 IHK-typische Fragen zu Wertermittlung, Grundbuch, Baurecht, Vermarktung und Verhandlungsführung — unter Prüfungsbedingungen.",
     extendedTheory: `
 Erstellung eines Exposés und einer Bewertung für ein gegebenes Objekt.
     `,
@@ -888,7 +888,7 @@ Erstellung eines Exposés und einer Bewertung für ein gegebenes Objekt.
   },
   day_60: {
     title: "Zertifikat & Start in die Praxis",
-    theory: "Herzlichen Glückwunsch! Wie geht es weiter?",
+    theory: "Abschluss und Ausblick: Sie haben das komplette Handwerkszeug für die Maklertätigkeit erworben. §34c-Erlaubnis, IHK-Sachkunde, Weiterbildungspflicht nach §15b MaBV und nächste Karriereschritte.",
     extendedTheory: `
 ### Die ersten 100 Tage
 1.  Gewerbe anmelden (§34c liegt vor?).
