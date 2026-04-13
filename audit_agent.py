@@ -196,12 +196,30 @@ def extract_days(filepath):
         law_list = get_array("law")
         all_norms = norms_list or law_list
         
+        # Task: String oder Backtick
+        task_raw = get_field("task") or ""
+        if not task_raw:
+            bt_task = re.search(r'task:\s*`([\s\S]*?)`', block)
+            if bt_task:
+                task_raw = bt_task.group(1).strip()[:300]
+        
+        # Extended: auch practice als Fallback
+        extended_raw = get_field("extendedTheory") or ""
+        if not extended_raw:
+            bt_ext = re.search(r'extendedTheory:\s*`([\s\S]*?)`', block)
+            if bt_ext:
+                extended_raw = bt_ext.group(1).strip()
+        if not extended_raw:
+            bt_prac = re.search(r'practice:\s*`([\s\S]*?)`', block)
+            if bt_prac:
+                extended_raw = bt_prac.group(1).strip()
+        
         day = {
             "day": day_num,
             "title": get_field("title"),
             "theory": theory_raw,
-            "extended": get_field("extendedTheory")[:800],
-            "task": get_field("task"),
+            "extended": extended_raw[:800],
+            "task": task_raw,
             "norms": all_norms,
             "law": law_list,
             "examples": get_array("examples"),
