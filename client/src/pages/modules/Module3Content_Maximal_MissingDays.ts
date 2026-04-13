@@ -2053,6 +2053,7 @@ Eine WEG mit 10 Wohnungen (gesamt 800 m²) hat folgende Jahreskosten:
 Wohnung Nr. 3: 85 m², MEA: 110/1000, Heizverbrauch: 12% des Gesamtverbrauchs
 
 Aufgabe: Berechnen Sie das Hausgeld für Wohnung Nr. 3.`,
+    task: "Erstellen Sie eine vollstaendige Hausgeldabrechnung fuer eine WEG mit 4 Einheiten: Gesamtkosten 12.000 EUR, MEA-Anteile 250/250/250/250. Berechnen Sie Vorauszahlungen und Nachzahlungen je Eigentuemer.",
     tasks: [
       {
         type: "calculation",
@@ -2140,6 +2141,7 @@ Eigentümer Schmidt (MEA: 95) fragt:
 1. Wie hoch ist seine Sonderumlage?
 2. Wann muss er zahlen?
 3. Kann er die Zahlung verweigern bis er das Protokoll erhalten hat?`,
+    task: "Beschliessen Sie eine Sonderumlage von 20.000 EUR fuer Dachsanierung: Verteilen Sie nach MEA (300/200/200/300), berechnen Sie Einzelbetraege und erstellen Sie den Beschlusstext fuer die ETV.",
     tasks: [
       {
         type: "calculation",

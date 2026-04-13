@@ -31,66 +31,6 @@
   },
   {
     "module": 2,
-    "day": 56,
-    "title": "Wiederholung: Bewertung & Technik",
-    "score": 70,
-    "issues": [
-      "❌ Inhalt sehr kurz (129 Zeichen)"
-    ],
-    "fixes": {},
-    "has_norms": true,
-    "has_task": true,
-    "theory_len": 500,
-    "content_len": 129,
-    "source": "Module2ContentPart3_Maximal.ts"
-  },
-  {
-    "module": 2,
-    "day": 57,
-    "title": "Wiederholung: Marketing & Vertrieb",
-    "score": 70,
-    "issues": [
-      "❌ Inhalt sehr kurz (158 Zeichen)"
-    ],
-    "fixes": {},
-    "has_norms": true,
-    "has_task": true,
-    "theory_len": 500,
-    "content_len": 158,
-    "source": "Module2ContentPart3_Maximal.ts"
-  },
-  {
-    "module": 2,
-    "day": 58,
-    "title": "Abschlussprüfung Simulation (Teil 1)",
-    "score": 70,
-    "issues": [
-      "❌ Inhalt sehr kurz (81 Zeichen)"
-    ],
-    "fixes": {},
-    "has_norms": true,
-    "has_task": true,
-    "theory_len": 500,
-    "content_len": 81,
-    "source": "Module2ContentPart3_Maximal.ts"
-  },
-  {
-    "module": 2,
-    "day": 59,
-    "title": "Abschlussprüfung Simulation (Teil 2)",
-    "score": 70,
-    "issues": [
-      "❌ Inhalt sehr kurz (70 Zeichen)"
-    ],
-    "fixes": {},
-    "has_norms": true,
-    "has_task": true,
-    "theory_len": 489,
-    "content_len": 70,
-    "source": "Module2ContentPart3_Maximal.ts"
-  },
-  {
-    "module": 2,
     "day": 60,
     "title": "Zertifikat & Start in die Praxis",
     "score": 80,
@@ -121,40 +61,6 @@
   },
   {
     "module": 3,
-    "day": 41,
-    "title": "Hausgeldabrechnung: Grundlagen und Pflichten",
-    "score": 80,
-    "issues": [
-      "❌ Keine Aufgabenstellung"
-    ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Hausgeldabrechnung: Grundlagen und Pflichten' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
-    "has_norms": true,
-    "has_task": false,
-    "theory_len": 240,
-    "content_len": 800,
-    "source": "Module3Content_Maximal_MissingDays.ts"
-  },
-  {
-    "module": 3,
-    "day": 42,
-    "title": "Sonderumlage und Wirtschaftsplan: Planung und Durchsetzung",
-    "score": 80,
-    "issues": [
-      "❌ Keine Aufgabenstellung"
-    ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Sonderumlage und Wirtschaftsplan: Planung und Durchsetzung' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
-    "has_norms": true,
-    "has_task": false,
-    "theory_len": 242,
-    "content_len": 800,
-    "source": "Module3Content_Maximal_MissingDays.ts"
-  },
-  {
-    "module": 3,
     "day": 60,
     "title": "Abschluss Block 3: Prüfungsvorbereitung",
     "score": 80,
@@ -182,21 +88,5 @@
     "theory_len": 500,
     "content_len": 538,
     "source": "Module4Content_Valuation_Maximalist.ts"
-  },
-  {
-    "module": 4,
-    "day": 20,
-    "title": "Zertifikat & Karriere",
-    "score": 55,
-    "issues": [
-      "❌ Inhalt sehr kurz (199 Zeichen)",
-      "⚠️ Inhalt prüfen: Titel-Thema nicht im Inhalt erkennbar"
-    ],
-    "fixes": {},
-    "has_norms": true,
-    "has_task": true,
-    "theory_len": 500,
-    "content_len": 199,
-    "source": "Module4Content_Valuation_Maximalist_Part2.ts"
   }
 ]
