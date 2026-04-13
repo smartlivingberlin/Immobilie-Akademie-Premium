@@ -2982,7 +2982,11 @@ Steuern sind ein komplexes, aber essentielles Thema für jeden Immobilienprofi. 
 
 **Fazit:** Durch Sonderabschreibung sparen Sie 4.500 € Steuern pro Jahr (1.000 € + 3.500 €).
     `,
-    law: ["Keine spezifischen Gesetze"],
+    law: [
+      "[§ 23 EStG](https://www.gesetze-im-internet.de/estg/__23.html) (Spekulationssteuer 10 Jahre)",
+      "[§ 4 GrEStG](https://www.gesetze-im-internet.de/grestg_1983/__4.html) (Grunderwerbsteuer)",
+      "[§ 15b MaBV](https://www.gesetze-im-internet.de/mabv/__15b.html) (Zeitmanagement Berufspflichten)"
+    ],
     practice: "Erstellen Sie einen Wochenplan mit festen Blöcken für Akquise, Besichtigungen und Verwaltung.",
     task: "Planen Sie eine ideale Arbeitswoche mit Work-Life-Balance.",
     type: "Organisation"
@@ -3215,7 +3219,9 @@ Ein Vermieter gibt an, dass das Gebäude bewohnt ist. Tatsächlich steht es leer
 
 **Fazit:** Versicherungen sind eine Investition in Sicherheit. Sparen Sie nicht am falschen Ende!
     `,
-    law: ["[GoBD](https://www.bundesfinanzministerium.de/) (Digitale Buchführung)"],
+    law: ["[GoBD](https://www.bundesfinanzministerium.de/Content/DE/Downloads/BMF_Schreiben/Weitere_Steuerthemen/Abgabenordnung/2019-11-28-GoBD.html) (Grundsätze digitale Buchführung)",
+      "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Berufspflichten digital)",
+      "[Art. 32 DSGVO](https://dsgvo-gesetz.de/art-32-dsgvo/) (Datensicherheit)"],
     practice: "Testen Sie eine CRM-Software (Demo-Zugang oder Simulation).",
     task: "Vergleichen Sie 3 Immobilien-CRM-Systeme hinsichtlich Funktionen und Kosten.",
     type: "Digital"
@@ -4173,5 +4179,6 @@ Ein Projektentwickler baut ein Studentenwohnheim (100 Zimmer) aus Modulen. Bauko
       }
     ],
     type: "Abschluss"
+    task: "Erstellen Sie Ihr persönliches Karriere-Portfolio: Fassen Sie die 10 wichtigsten Erkenntnisse aus Modul 1 zusammen, definieren Sie Ihre Spezialisierung (Makler/Verwalter/Gutachter/Finanzierer) und formulieren Sie 3 SMART-Ziele für die nächsten 6 Monate."
   }
 };
