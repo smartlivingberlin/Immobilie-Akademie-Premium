@@ -156,7 +156,19 @@ Herr M. (45) ist Bankkaufmann und will sich als Immobilienmakler selbstständig 
       hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
     }
   ],
-    quiz: [],},
+    quiz: [
+      {
+        question: "Wie viel Prozent der deutschen Bruttowertschöpfung entfällt auf die Immobilienwirtschaft?",
+        options: [
+          "ca. 5%",
+          "ca. 10%",
+          "ca. 20%",
+          "ca. 35%"
+        ],
+        correct: 2,
+        explanation: "Die Immobilienwirtschaft macht rund 20% der Bruttowertschöpfung aus — mehr als die Automobilindustrie."
+      }
+    ],},
 
   day_2: {
     title: "Karrierepfade & Berufsfelder",
@@ -311,7 +323,19 @@ Frau S. (28) hat BWL studiert und 3 Jahre in einer Bank gearbeitet. Sie will in 
       hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
     }
   ],
-    quiz: [],},
+    quiz: [
+      {
+        question: "Welche Erlaubnis benötigt ein Immobilienmakler zwingend?",
+        options: [
+          "§ 34a GewO",
+          "§ 34c GewO",
+          "§ 34i GewO",
+          "Keine — freier Beruf"
+        ],
+        correct: 1,
+        explanation: "§ 34c GewO regelt die Erlaubnispflicht für Immobilienmakler, Darlehensvermittler und Bauträger."
+      }
+    ],},
 
   day_3: {
     title: "Persönliche Eignung & Soft Skills",
@@ -459,7 +483,19 @@ Sie arbeiten in einem Maklerbüro. Ein Kollege erzählt Ihnen stolz, dass er ein
       hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
     }
   ],
-    quiz: [],},
+    quiz: [
+      {
+        question: "Welche Eigenschaft ist für Immobilienprofis nach dem DISG-Modell besonders wichtig?",
+        options: [
+          "Ausschließlich dominanter Typ",
+          "Nur gewissenhafter Typ",
+          "Kommunikationsfähigkeit und Empathie",
+          "Introversion"
+        ],
+        correct: 2,
+        explanation: "Erfolgreiche Immobilienprofis brauchen ausgeprägte Kommunikationsfähigkeit und Empathie für Kundenbedürfnisse."
+      }
+    ],},
 
   day_4: {
     title: "Eignungstest & Selbstreflexion",
@@ -615,7 +651,19 @@ Ich bin ein **Initiativ-Dominant-Typ** (I/D). Ich bin kontaktfreudig, entscheidu
       hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
     }
   ],
-    quiz: [],},
+    quiz: [
+      {
+        question: "Was bedeutet 'D' im DISG-Modell?",
+        options: [
+          "Delegierend",
+          "Dominant",
+          "Detailorientiert",
+          "Diplomatisch"
+        ],
+        correct: 1,
+        explanation: "D steht für Dominant — entscheidungsfreudig, durchsetzungsstark und zielorientiert."
+      }
+    ],},
 
   day_5: {
     title: "Ziele und Visionen",
@@ -773,7 +821,19 @@ Frau K. (32) hat sich vor 3 Jahren als Maklerin selbstständig gemacht. Sie hatt
       hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
     }
   ],
-    quiz: [],},
+    quiz: [
+      {
+        question: "Was bedeutet SMART bei der Zielsetzung?",
+        options: [
+          "Schnell, Messbar, Attraktiv, Realistisch, Terminiert",
+          "Spezifisch, Messbar, Attainable, Relevant, Terminiert",
+          "Spezifisch, Modern, Angemessen, Realistisch, Terminiert",
+          "Simpel, Messbar, Attraktiv, Richtig, Terminiert"
+        ],
+        correct: 1,
+        explanation: "SMART = Spezifisch, Messbar, Attainable (erreichbar), Relevant, Terminiert."
+      }
+    ],},
 
   // === Woche 2: Rechtliche Grundlagen (Tag 6-10) ===
   
@@ -921,7 +981,19 @@ Frau S. (82) will ihre Wohnung verkaufen. Im Gespräch fällt Ihnen auf, dass si
       hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
     }
   ],
-    quiz: [],},
+    quiz: [
+      {
+        question: "Wie viele Bücher hat das BGB?",
+        options: [
+          "3 Bücher",
+          "4 Bücher",
+          "5 Bücher",
+          "7 Bücher"
+        ],
+        correct: 2,
+        explanation: "Das BGB besteht aus 5 Büchern: Allg. Teil, Schuldrecht, Sachenrecht, Familienrecht, Erbrecht (§§ 1-2385)."
+      }
+    ],},
 
   day_7: {
     title: "Sachenrecht & Eigentum",
@@ -1055,7 +1127,19 @@ Frau L. ist Eigentümerin einer Ferienwohnung in den Alpen. Sie vermietet die Wo
       hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
     }
   ],
-    quiz: [],},
+    quiz: [
+      {
+        question: "Was ist der Unterschied zwischen Besitz und Eigentum?",
+        options: [
+          "Kein Unterschied",
+          "Besitz = tatsächliche Herrschaft (§854), Eigentum = rechtliche Herrschaft (§903)",
+          "Besitz = rechtliche Herrschaft, Eigentum = tatsächliche Herrschaft",
+          "Besitz und Eigentum sind immer beim selben Rechtsträger"
+        ],
+        correct: 1,
+        explanation: "Besitz (§854 BGB) ist die tatsächliche Sachherrschaft, Eigentum (§903 BGB) die rechtliche. Mieter = Besitzer, Vermieter = Eigentümer."
+      }
+    ],},
 
   day_8: {
     title: "Gewerberecht & §34c GewO",
@@ -1247,7 +1331,19 @@ Kreisverwaltungsreferat München, Gewerbemeldestelle
       hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
     }
   ],
-    quiz: [],},
+    quiz: [
+      {
+        question: "Welche Voraussetzung ist KEINE Anforderung für die §34c-Erlaubnis?",
+        options: [
+          "Zuverlässigkeit",
+          "Geordnete Vermögensverhältnisse",
+          "Abgeschlossenes Studium",
+          "Haftpflichtversicherung"
+        ],
+        correct: 2,
+        explanation: "Ein abgeschlossenes Studium ist KEINE Voraussetzung für §34c. Erforderlich sind: Zuverlässigkeit, geordnete Vermögensverhältnisse und Haftpflichtversicherung."
+      }
+    ],},
 
   day_9: {
     title: "Maklerrecht Grundlagen",
@@ -1415,7 +1511,19 @@ Die Maklertätigkeit muss ursächlich für den Abschluss des Hauptvertrags gewes
       hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
     }
   ],
-    quiz: [],},
+    quiz: [
+      {
+        question: "Welche Voraussetzungen müssen für den Maklerprovionsanspruch nach §652 BGB erfüllt sein?",
+        options: [
+          "Nur Maklervertrag reicht",
+          "Maklervertrag + Nachweis/Vermittlung + Kausalität + Hauptvertrag",
+          "Nur der Hauptvertrag muss zustande kommen",
+          "Provision entsteht automatisch bei Vertragsabschluss"
+        ],
+        correct: 1,
+        explanation: "§652 BGB: Alle 4 Voraussetzungen müssen erfüllt sein: gültiger Maklervertrag, Nachweis/Vermittlung, Kausalität (Ursächlichkeit), wirksamer Hauptvertrag."
+      }
+    ],},
 
   day_10: {
     title: "Geldwäschegesetz (GwG)",
@@ -1645,7 +1753,19 @@ Ein Käufer (Herr X.) will eine Wohnung für 300.000 € kaufen. Er sagt, er wil
       hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
     }
   ],
-    quiz: [],},
+    quiz: [
+      {
+        question: "Ab welchem Betrag müssen Makler bei Barzahlungen den Kunden nach GwG identifizieren?",
+        options: [
+          "Ab 1.000 EUR",
+          "Ab 5.000 EUR",
+          "Ab 10.000 EUR",
+          "Immer, unabhängig vom Betrag"
+        ],
+        correct: 2,
+        explanation: "§10 GwG: Bei Transaktionen ab 10.000 EUR in bar besteht Identifizierungspflicht. Bei Verdacht unabhängig vom Betrag."
+      }
+    ],},
 
   // Weitere Tage (11-20) folgen dem gleichen Muster...
   // Aus Platzgründen hier abgekürzt, aber in der finalen Version vollständig
@@ -1755,7 +1875,19 @@ Wann ist ein Markt überhitzt? Achten Sie auf diese Warnsignale:
       hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
     }
   ],
-    quiz: [],},
+    quiz: [
+      {
+        question: "Was ist eine Makro-Lage bei der Standortanalyse?",
+        options: [
+          "Die genaue Straßenlage",
+          "Die Stadt/Region/Wirtschaftsraum-Ebene",
+          "Die Zimmergröße",
+          "Der Zustand des Gebäudes"
+        ],
+        correct: 1,
+        explanation: "Makrolage = übergeordnete Ebene (Stadt, Region, Wirtschaftsraum). Mikrolage = konkrete Lage (Straße, Nachbarschaft, Anbindung)."
+      }
+    ],},
 
   day_12: {
     title: "Berufsfeld: Immobilienverwalter",
@@ -1937,7 +2069,19 @@ Bausparkassen bieten Bausparverträge (Sparphase + Darlehensphase).
       hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
     }
   ],
-    quiz: [],},
+    quiz: [
+      {
+        question: "Was unterscheidet WEG-Verwaltung von Mietverwaltung?",
+        options: [
+          "Kein Unterschied",
+          "WEG = Verwaltung für Eigentümergemeinschaft; Mietverwaltung = für einzelnen Vermieter",
+          "WEG nur für Neubauten",
+          "Mietverwaltung nur für Gewerbe"
+        ],
+        correct: 1,
+        explanation: "WEG-Verwaltung verwaltet gemeinschaftliches Eigentum einer Eigentümergemeinschaft. Mietverwaltung verwaltet Mietobjekte für einzelne Eigentümer."
+      }
+    ],},
 
   day_13: {
     title: "Berufsfeld: Gutachter & Sachverständiger",
@@ -2144,7 +2288,19 @@ Ein Investor mit 5 Mio. € Eigenkapital könnte folgendes Portfolio aufbauen:
       hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
     }
   ],
-    quiz: [],},
+    quiz: [
+      {
+        question: "Welches Gesetz regelt die Immobilienwertermittlung in Deutschland?",
+        options: [
+          "BGB",
+          "GewO",
+          "ImmoWertV 2021",
+          "WEG"
+        ],
+        correct: 2,
+        explanation: "Die Immobilienwertermittlungsverordnung (ImmoWertV) 2021 regelt die Verfahren zur Ermittlung von Grundstückswerten (§194 BauGB)."
+      }
+    ],},
 
   day_14: {
     title: "Berufsfeld: Darlehensvermittler",
@@ -2320,7 +2476,19 @@ Vonovia AG: Marktkapitalisierung 20 Mrd. €, 550.000 Wohnungen, 10 Mrd. € Ums
       hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
     }
   ],
-    quiz: [],},
+    quiz: [
+      {
+        question: "Welche Erlaubnis benötigt ein Darlehensvermittler?",
+        options: [
+          "§ 34c GewO",
+          "§ 34i GewO",
+          "§ 34d GewO",
+          "Keine Erlaubnis erforderlich"
+        ],
+        correct: 1,
+        explanation: "§34i GewO regelt die Erlaubnispflicht für Immobiliardarlehensvermittler gemäß EU-WIKR."
+      }
+    ],},
 
   day_15: {
     title: "Datenschutz (DSGVO) & Verbraucherschutz",
@@ -2583,7 +2751,19 @@ Je mehr Eigenkapital, desto besser die Konditionen.
       hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
     }
   ],
-    quiz: [],},
+    quiz: [
+      {
+        question: "Welcher Artikel der DSGVO regelt die Rechtmäßigkeit der Datenverarbeitung?",
+        options: [
+          "Art. 4 DSGVO",
+          "Art. 6 DSGVO",
+          "Art. 13 DSGVO",
+          "Art. 17 DSGVO"
+        ],
+        correct: 1,
+        explanation: "Art. 6 DSGVO listet die Rechtsgrundlagen für die Verarbeitung personenbezogener Daten abschließend auf."
+      }
+    ],},
 
   day_16: {
     title: "Arbeitsalltag & Zeitmanagement",
@@ -2818,7 +2998,19 @@ Steuern sind ein komplexes, aber essentielles Thema für jeden Immobilienprofi. 
       hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
     }
   ],
-    quiz: [],},
+    quiz: [
+      {
+        question: "Nach welchem Zeitraum entfällt die Spekulationssteuer bei privaten Immobilienverkäufen?",
+        options: [
+          "Nach 5 Jahren",
+          "Nach 7 Jahren",
+          "Nach 10 Jahren",
+          "Nach 15 Jahren"
+        ],
+        correct: 2,
+        explanation: "§23 EStG: Bei privaten Veräußerungsgeschäften entfällt die Steuer nach einer Haltefrist von 10 Jahren."
+      }
+    ],},
 
   day_17: {
     title: "Digitale Tools & Technologien",
@@ -3039,7 +3231,19 @@ Ein Vermieter gibt an, dass das Gebäude bewohnt ist. Tatsächlich steht es leer
       hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
     }
   ],
-    quiz: [],},
+    quiz: [
+      {
+        question: "Welches CRM-System ist speziell für Immobilienmakler in Deutschland verbreitet?",
+        options: [
+          "Salesforce",
+          "OnOffice/FlowFact",
+          "SAP",
+          "Microsoft Dynamics"
+        ],
+        correct: 1,
+        explanation: "OnOffice und FlowFact sind die marktführenden CRM-Systeme speziell für deutsche Immobilienmakler."
+      }
+    ],},
 
   day_18: {
     title: "Prozessautomatisierung",
@@ -3341,7 +3545,19 @@ Marketing ist der Schlüssel zum Erfolg in der Immobilienbranche. Wer nicht sich
       hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
     }
   ],
-    quiz: [],},
+    quiz: [
+      {
+        question: "Was regelt §7 UWG im Zusammenhang mit Immobilienmarketing?",
+        options: [
+          "Preisangaben in der Werbung",
+          "Verbot unzumutbarer Belästigung (Spam, unerlaubte Werbeanrufe)",
+          "Pflichtangaben im Exposé",
+          "Widerrufsrecht"
+        ],
+        correct: 1,
+        explanation: "§7 UWG verbietet unzumutbare Belästigungen durch Werbung — relevant für E-Mail-Marketing und Werbeanrufe ohne Einwilligung."
+      }
+    ],},
 
   day_19: {
     title: "Karriereplanung & Weiterbildung",
@@ -3645,7 +3861,19 @@ Die Digitalisierung verändert die Immobilienbranche fundamental. Wer die neuen 
       hint: "Nutzen Sie Quellen wie Haufe.de, Immobilienscout24.de oder die IHK-Webseite."
     }
   ],
-    quiz: [],},
+    quiz: [
+      {
+        question: "Wie viele Stunden Weiterbildung sind für Makler nach §15b MaBV alle 3 Jahre Pflicht?",
+        options: [
+          "10 Stunden",
+          "15 Stunden",
+          "20 Stunden",
+          "40 Stunden"
+        ],
+        correct: 2,
+        explanation: "§15b MaBV: Immobilienmakler und Wohnimmobilienverwalter müssen alle 3 Jahre 20 Stunden Weiterbildung nachweisen."
+      }
+    ],},
 
   day_20: {
     title: "Abschluss Modul 1 & Portfolio",
@@ -3922,7 +4150,19 @@ Ein Projektentwickler baut ein Studentenwohnheim (100 Zimmer) aus Modulen. Bauko
         hint: "Besuchen Sie die Website der IHK Berlin oder das Gewerbeamt Berlin."
       }
     ],
-    quiz: [],
+    quiz: [
+      {
+        question: "Was ist das Ziel des IHK-Sachkundenachweises für Immobilienmakler?",
+        options: [
+          "Pflichtvoraussetzung für §34c-Erlaubnis",
+          "Freiwilliger Qualitätsnachweis",
+          "Ersatz für Berufserfahrung",
+          "Nur für Verwalter relevant"
+        ],
+        correct: 1,
+        explanation: "Der IHK-Sachkundenachweis ist ein freiwilliger Qualitätsnachweis, der die Kompetenz dokumentiert. Die §34c-Erlaubnis selbst erfordert keinen IHK-Abschluss."
+      }
+    ],
     type: "Abschluss"
   }
 };
