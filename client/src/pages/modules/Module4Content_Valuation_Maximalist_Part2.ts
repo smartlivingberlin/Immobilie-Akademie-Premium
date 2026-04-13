@@ -739,6 +739,7 @@ Sie haben das Modul "Immobilienbewertung" abgeschlossen.
 ## Der nächste Schritt
 Starten Sie Ihre Karriere. Nutzen Sie das Wissen. Und bleiben Sie neugierig!
     `,
+    extendedTheory: `HypZert-Zertifizierung ist Deutschlands fuehrendes Qualitaetszertifikat fuer Immobiliengutachter. HypZert F (Finanzierungszwecke, Beleihungswertgutachten) und HypZert S (allgemeine Verkehrswertgutachten nach Para 194 BauGB). Anforderungen HypZert: Hochschulabschluss oder gleichwertige Ausbildung, 2-3 Jahre Berufserfahrung, schriftliche und muendliche Pruefung, Weiterbildung 20 Stunden alle 2 Jahre. Oeffentliche Bestellung und Vereidigung: IHK-Verfahren mit 5 Jahren Berufserfahrung, hoechstes Ansehen in der Branche. Karrierewege: Banken (Gutachtenabteilung), freiberuflicher Sachverstaendiger, Immobilienfonds, Versicherungen. Gehaltsrahmen: Angestellt 50.000-80.000 EUR, freiberuflich 80.000-150.000 EUR plus.`,
     law: [
       "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Berufszulassung Gutachter)",
       "[§ 194 BauGB](https://www.gesetze-im-internet.de/baugb/__194.html) (Sachverständiger)",
