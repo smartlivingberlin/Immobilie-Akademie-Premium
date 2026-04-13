@@ -36,9 +36,8 @@ Architekt, Statiker, Baugenehmigung.
 *   Pauschaler Aufschlag (meist 15-20% auf die Bauwerkskosten).
     `,
     law: [
-      "§ 21 ImmoWertV (Sachwertverfahren)",
-      "§ 22 ImmoWertV (Herstellungskosten)",
-      "Sachwertrichtlinie (SW-RL)"
+      "[§ 21 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__21.html) (Sachwertverfahren)",
+      "[§ 22 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__22.html) (Herstellungskosten)"
     ],
     practice: `
 # Rechenübung: Herstellungskosten ermitteln
@@ -190,8 +189,8 @@ Der vorläufige Sachwert ist nur eine Substanzrechnung. Der Markt interessiert s
 **Endgültiger Sachwert = Vorläufiger Sachwert × Sachwertfaktor**
     `,
     law: [
-      "§ 23 ImmoWertV (Alterswertminderung)",
-      "§ 14 Abs. 2 ImmoWertV (Marktanpassungsfaktoren)"
+      "[§ 23 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__23.html) (Alterswertminderung)",
+      "[§ 21 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__21.html) (Sachwertverfahren)"
     ],
     practice: `
 # Rechenübung: Sachwert komplett
@@ -269,8 +268,8 @@ Ein Gutachten muss für Laien verständlich und für Fachleute nachprüfbar sein
 *   **Transparenz:** Quellen nennen (Mietspiegel 2023, Marktbericht GAA).
     `,
     law: [
-      "§ 193 BauGB (Gutachterausschuss)",
-      "Mustergutachten der Sprengnetter Akademie"
+      "[§ 194 BauGB](https://www.gesetze-im-internet.de/baugb/__194.html) (Gutachten Verkehrswert)",
+      "[ImmoWertV 2021](https://www.gesetze-im-internet.de/immowertv_2021/) (Gutachtenaufbau)"
     ],
     practice: `
 # Fallstudie: Das "Musterhaus am Park"
@@ -338,8 +337,8 @@ Wir ermitteln **keine Sanierungskosten** (das machen Bauingenieure), sondern **M
 4.  **Asbest:** In Fassadenplatten, Bodenbelägen (Floor-Flex) oder Dächern (Eternit). Entsorgung teuer!
     `,
     law: [
-      "§ 8 Abs. 3 ImmoWertV (boG)",
-      "BKI Baukostenindex (als Hilfsmittel)"
+      "[§ 634 BGB](https://www.gesetze-im-internet.de/bgb/__634.html) (Mängelrechte)",
+      "[§ 194 BauGB](https://www.gesetze-im-internet.de/baugb/__194.html) (Wertminderung durch Mängel)"
     ],
     practice: `
 # Praxis-Szenario: Die versteckten Kosten
@@ -417,8 +416,9 @@ Kombination aus Zinseszins (Abzinsung) und Sterbewahrscheinlichkeit (Sterbetafel
 *   Je höher der Zins, desto kleiner der Faktor.
     `,
     law: [
-      "§ 193 BauGB",
-      "Sterbetafel (Statistisches Bundesamt)"
+      "[§ 1018 BGB](https://www.gesetze-im-internet.de/bgb/__1018.html) (Grunddienstbarkeit)",
+      "[§ 1090 BGB](https://www.gesetze-im-internet.de/bgb/__1090.html) (Beschränkte persönliche Dienstbarkeit)",
+      "[§ 8 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__8.html) (Rechte und Belastungen)"
     ],
     practice: `
 # Rechenbeispiel: Lebenslanges Wohnrecht
@@ -490,8 +490,8 @@ Internationale Investoren nutzen oft das DCF-Verfahren statt des deutschen Ertra
 *   **Nachteil:** Anfällig für Manipulationen (viele Annahmen).
     `,
     law: [
-      "Gif-Richtlinien (Mietflächen)",
-      "International Valuation Standards (IVS)"
+      "[§ 27 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__27.html) (Ertragswert Gewerbe)",
+      "[§ 253 BGB](https://www.gesetze-im-internet.de/bgb/__253.html) (DCF Grundlagen)"
     ],
     practice: `
 # Übung: Ertragswert vs. DCF
@@ -547,8 +547,8 @@ Algorithmen, die aus riesigen Datenbanken (Big Data) Preise schätzen.
 *   *Fazit:* Gut für eine erste Indikation, ungeeignet für gerichtsfeste Gutachten oder Spezialobjekte.
     `,
     law: [
-      "MaRisk (Anforderungen an Banken)",
-      "ImmoWertV (erfordert Marktanpassung)"
+      "[§ 194 BauGB](https://www.gesetze-im-internet.de/baugb/__194.html) (Automatisierte Wertermittlung)",
+      "[ImmoWertV 2021](https://www.gesetze-im-internet.de/immowertv_2021/) (Digitale Methoden)"
     ],
     practice: `
 # Test: Mensch vs. Maschine
@@ -606,8 +606,8 @@ Gegenüber Käufern oder Banken.
 *   **Öffentlich bestellter und vereidigter (ö.b.u.v.) SV:** Die "Königsklasse". Von der IHK bestellt. Bevorzugt bei Gericht.
     `,
     law: [
-      "§ 839a BGB (Haftung des gerichtlichen SV)",
-      "GewO (Gewerbeordnung)"
+      "[§ 823 BGB](https://www.gesetze-im-internet.de/bgb/__823.html) (Schadensersatz Gutachter)",
+      "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Berufshaftpflicht)"
     ],
     practice: `
 # Praxistipp: Versicherung
@@ -658,7 +658,10 @@ Wenden Sie alles an, was Sie gelernt haben.
 ## Aufgabe
 Ermitteln Sie den Verkehrswert im Sachwertverfahren (grob).
     `,
-    law: ["Alle Module"],
+    law: [
+      "[ImmoWertV 2021](https://www.gesetze-im-internet.de/immowertv_2021/) (Prüfungsfallstudie)",
+      "[§ 194 BauGB](https://www.gesetze-im-internet.de/baugb/__194.html) (Abschlussprüfung)"
+    ],
     practice: `
 # Lösungsweg
 
@@ -727,7 +730,11 @@ Sie haben das Modul "Immobilienbewertung" abgeschlossen.
 ## Der nächste Schritt
 Starten Sie Ihre Karriere. Nutzen Sie das Wissen. Und bleiben Sie neugierig!
     `,
-    law: ["Lebenslanges Lernen"],
+    law: [
+      "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Berufszulassung Gutachter)",
+      "[§ 194 BauGB](https://www.gesetze-im-internet.de/baugb/__194.html) (Sachverständiger)",
+      "[ImmoWertV 2021](https://www.gesetze-im-internet.de/immowertv_2021/) (Karriere)"
+    ],
     practice: `
 # Ihre erste Bewertung
 
