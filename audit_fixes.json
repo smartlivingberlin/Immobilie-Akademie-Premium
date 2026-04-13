@@ -586,7 +586,7 @@
     "fixes": {},
     "has_norms": true,
     "has_task": true,
-    "theory_len": 657,
+    "theory_len": 500,
     "content_len": 538,
     "source": "Module4Content_Valuation_Maximalist.ts"
   },
@@ -594,14 +594,15 @@
     "module": 4,
     "day": 20,
     "title": "Zertifikat & Karriere",
-    "score": 70,
+    "score": 55,
     "issues": [
-      "❌ Inhalt sehr kurz (199 Zeichen)"
+      "❌ Inhalt sehr kurz (199 Zeichen)",
+      "⚠️ Inhalt prüfen: Titel-Thema nicht im Inhalt erkennbar"
     ],
     "fixes": {},
     "has_norms": true,
     "has_task": true,
-    "theory_len": 743,
+    "theory_len": 500,
     "content_len": 199,
     "source": "Module4Content_Valuation_Maximalist_Part2.ts"
   }
