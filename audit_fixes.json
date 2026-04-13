@@ -579,16 +579,13 @@
     "module": 3,
     "day": 61,
     "title": "Mietverwaltung: Grundlagen & Vertrag",
-    "score": 55,
+    "score": 70,
     "issues": [
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Mietverwaltung: Grundlagen & Vertrag' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": true,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 1374,
     "content_len": 0,
     "source": "Module3Content_Maximal_Part4.ts"
@@ -597,16 +594,13 @@
     "module": 3,
     "day": 62,
     "title": "Betriebskostenabrechnung (BKA)",
-    "score": 55,
+    "score": 70,
     "issues": [
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Betriebskostenabrechnung (BKA)' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": true,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 876,
     "content_len": 0,
     "source": "Module3Content_Maximal_Part4.ts"
@@ -615,16 +609,13 @@
     "module": 3,
     "day": 63,
     "title": "Mieterhöhungsverlangen",
-    "score": 55,
+    "score": 70,
     "issues": [
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Mieterhöhungsverlangen' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": true,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 1064,
     "content_len": 0,
     "source": "Module3Content_Maximal_Part4.ts"
@@ -633,16 +624,13 @@
     "module": 3,
     "day": 64,
     "title": "Kündigung & Abwicklung",
-    "score": 55,
+    "score": 70,
     "issues": [
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Kündigung & Abwicklung' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": true,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 906,
     "content_len": 0,
     "source": "Module3Content_Maximal_Part4.ts"
@@ -651,16 +639,13 @@
     "module": 3,
     "day": 65,
     "title": "Forderungsmanagement & Mahnwesen",
-    "score": 55,
+    "score": 70,
     "issues": [
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Forderungsmanagement & Mahnwesen' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": true,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 776,
     "content_len": 0,
     "source": "Module3Content_Maximal_Part4.ts"
@@ -669,16 +654,13 @@
     "module": 3,
     "day": 66,
     "title": "Grundlagen Facility Management (FM)",
-    "score": 55,
+    "score": 70,
     "issues": [
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Grundlagen Facility Management (FM)' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": true,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 651,
     "content_len": 0,
     "source": "Module3Content_Maximal_Part4.ts"
@@ -687,16 +669,13 @@
     "module": 3,
     "day": 67,
     "title": "Verkehrssicherungspflichten",
-    "score": 55,
+    "score": 70,
     "issues": [
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Verkehrssicherungspflichten' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": true,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 752,
     "content_len": 0,
     "source": "Module3Content_Maximal_Part4.ts"
@@ -705,16 +684,13 @@
     "module": 3,
     "day": 68,
     "title": "Energiemanagement & Nachhaltigkeit",
-    "score": 55,
+    "score": 70,
     "issues": [
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Energiemanagement & Nachhaltigkeit' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": true,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 696,
     "content_len": 0,
     "source": "Module3Content_Maximal_Part4.ts"
@@ -723,16 +699,13 @@
     "module": 3,
     "day": 69,
     "title": "Instandhaltungsplanung",
-    "score": 55,
+    "score": 70,
     "issues": [
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Instandhaltungsplanung' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": true,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 697,
     "content_len": 0,
     "source": "Module3Content_Maximal_Part4.ts"
@@ -741,16 +714,13 @@
     "module": 3,
     "day": 70,
     "title": "Versicherungsmanagement",
-    "score": 55,
+    "score": 70,
     "issues": [
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Versicherungsmanagement' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": true,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 825,
     "content_len": 0,
     "source": "Module3Content_Maximal_Part4.ts"
@@ -759,16 +729,13 @@
     "module": 3,
     "day": 71,
     "title": "Kommunikation & Konfliktlösung",
-    "score": 55,
+    "score": 70,
     "issues": [
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Kommunikation & Konfliktlösung' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": true,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 757,
     "content_len": 0,
     "source": "Module3Content_Maximal_Part4.ts"
@@ -777,16 +744,13 @@
     "module": 3,
     "day": 72,
     "title": "Die schwierige Eigentümerversammlung",
-    "score": 55,
+    "score": 70,
     "issues": [
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Die schwierige Eigentümerversammlung' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": true,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 852,
     "content_len": 0,
     "source": "Module3Content_Maximal_Part4.ts"
@@ -795,16 +759,13 @@
     "module": 3,
     "day": 73,
     "title": "Datenschutz (DSGVO) in der Verwaltung",
-    "score": 55,
+    "score": 70,
     "issues": [
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Datenschutz (DSGVO) in der Verwaltung' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": true,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 803,
     "content_len": 0,
     "source": "Module3Content_Maximal_Part4.ts"
@@ -813,16 +774,13 @@
     "module": 3,
     "day": 74,
     "title": "Digitalisierung & PropTech",
-    "score": 55,
+    "score": 70,
     "issues": [
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Digitalisierung & PropTech' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": true,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 707,
     "content_len": 0,
     "source": "Module3Content_Maximal_Part4.ts"
@@ -831,16 +789,13 @@
     "module": 3,
     "day": 75,
     "title": "Steuern rund um die Immobilie",
-    "score": 55,
+    "score": 70,
     "issues": [
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Steuern rund um die Immobilie' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": true,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 750,
     "content_len": 0,
     "source": "Module3Content_Maximal_Part4.ts"
@@ -849,16 +804,13 @@
     "module": 3,
     "day": 76,
     "title": "Repetitorium: WEG-Recht",
-    "score": 55,
+    "score": 70,
     "issues": [
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Repetitorium: WEG-Recht' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": true,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 596,
     "content_len": 0,
     "source": "Module3Content_Maximal_Part4.ts"
@@ -867,16 +819,13 @@
     "module": 3,
     "day": 77,
     "title": "Repetitorium: Mietrecht",
-    "score": 55,
+    "score": 70,
     "issues": [
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Repetitorium: Mietrecht' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": true,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 449,
     "content_len": 0,
     "source": "Module3Content_Maximal_Part4.ts"
@@ -885,16 +834,13 @@
     "module": 3,
     "day": 78,
     "title": "Repetitorium: Kaufmännische Verwaltung",
-    "score": 55,
+    "score": 70,
     "issues": [
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Repetitorium: Kaufmännische Verwaltung' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": true,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 368,
     "content_len": 0,
     "source": "Module3Content_Maximal_Part4.ts"
@@ -903,16 +849,13 @@
     "module": 3,
     "day": 79,
     "title": "Prüfungssimulation: Fallstudien",
-    "score": 55,
+    "score": 70,
     "issues": [
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Prüfungssimulation: Fallstudien' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": true,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 660,
     "content_len": 0,
     "source": "Module3Content_Maximal_Part4.ts"
@@ -921,17 +864,14 @@
     "module": 3,
     "day": 80,
     "title": "Abschluss & Ausblick",
-    "score": 40,
+    "score": 55,
     "issues": [
-      "❌ Keine Aufgabenstellung",
       "❌ Inhalt sehr kurz (0 Zeichen)",
       "⚠️ Inhalt prüfen: Titel-Thema nicht im Inhalt erkennbar"
     ],
-    "fixes": {
-      "task": "Erklären Sie das Thema 'Abschluss & Ausblick' anhand eines Praxisbeispiels aus dem Makleralltag."
-    },
+    "fixes": {},
     "has_norms": true,
-    "has_task": false,
+    "has_task": true,
     "theory_len": 902,
     "content_len": 0,
     "source": "Module3Content_Maximal_Part4.ts"
