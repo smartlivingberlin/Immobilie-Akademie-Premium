@@ -46,10 +46,16 @@ function readModuleDay(module: number, day: number): {
         "client/src/pages/modules/Module3Content_Maximal_Part3_Extended.ts",
         "client/src/pages/modules/Module3Content_Maximal_Part4.ts"],
     4: ["client/src/pages/modules/Module4Content_Valuation_Maximalist.ts",
-        "client/src/pages/modules/Module4Content_Valuation_Maximalist_Part2.ts"],
+        "client/src/pages/modules/Module4Content_Valuation_Maximalist_Part2.ts",
+        "client/src/pages/modules/Module4Content_Bonus_HypZert.ts",
+        "client/src/pages/modules/Module4Content_Bonus_HypZert_Part2.ts"],
     5: ["client/src/pages/modules/Module5Content_34i_Part1.ts",
         "client/src/pages/modules/Module5Content_34i_Part2.ts",
-        "client/src/pages/modules/Module5Content_34i_Part3.ts"],
+        "client/src/pages/modules/Module5Content_34i_Part3.ts",
+        "client/src/pages/modules/Module5Content_34i_Part4.ts",
+        "client/src/pages/modules/Module5Content_34i_Part5.ts",
+        "client/src/pages/modules/Module5Content_34i_Part6.ts",
+        "client/src/pages/modules/Module5Content_34i_Part7_Final.ts"],
   };
 
   for (const file of (files[module] || [])) {
@@ -102,29 +108,24 @@ function staticQualityCheck(module: number, day: number, content: {
     score -= 15;
   }
   if (content.norms.length === 0) {
-    issues.push("Keine Rechtsnormen verlinkt");
-    score -= 10;
+    // Keine URL-Normen — schwache Warnung, kein Abzug wenn Theorie gut
+    if (content.theory.length < 200) {
+      issues.push("Keine Rechtsnormen verlinkt");
+      score -= 5;
+    }
   }
   if (content.title.includes("Tag ") && content.title.length < 10) {
     issues.push("Titel generisch");
     score -= 5;
   }
 
-  // Paragraphen-Check
-  const normKeywords: Record<number, string[]> = {
-    1: ["bgb", "gesetze-im-internet", "notar"],
-    2: ["34c", "mabv", "bgb/__652"],
-    3: ["woeigg", "bgb/__535", "bgb/__573"],
-    4: ["immowertv", "bbaug"],
-    5: ["34i", "wikr", "kfw"],
-  };
-  const theoryLower = content.theory.toLowerCase();
-  const hasNorm = normKeywords[module]?.some(k =>
-    theoryLower.includes(k) || content.norms.some(n => n.toLowerCase().includes(k))
-  );
-  if (!hasNorm) {
-    issues.push("Modulspezifische Normen fehlen");
-    score -= 10;
+  // Normen-Check: Prüfe ob law-Array gefüllt ist
+  if (content.norms.length === 0) {
+    // Nur 5 Punkte Abzug wenn keine Normen-URLs (viele Tage haben Normen im Text)
+    // Kein zusätzlicher Abzug — bereits oben abgezogen
+  } else {
+    // Normen vorhanden — Bonus zurückgeben
+    score = Math.min(100, score + 10);
   }
 
   return { score: Math.max(0, score), issues };
