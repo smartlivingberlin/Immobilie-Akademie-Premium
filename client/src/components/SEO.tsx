@@ -23,7 +23,7 @@ export function SEO({ title, description, keywords, ogImage, canonical }: SEOPro
   const metaDescription = description || DEFAULT_SEO.description;
   const metaKeywords = keywords || DEFAULT_SEO.keywords;
   const metaImage = ogImage || DEFAULT_SEO.ogImage;
-  const canonicalUrl = canonical || `https://immobilie-akademie-production.up.railway.app${location}`;
+  const canonicalUrl = canonical || `${window.location.origin}${location}`;
 
   useEffect(() => {
     // Update document title

@@ -71,6 +71,7 @@ import ExamMode from "@/pages/ExamMode";
 import ExamQuestion from "@/pages/ExamQuestion";
 import ExamResults from "@/pages/ExamResults";
 import { InspectBanner } from "@/components/InspectBanner";
+import { CookieBanner } from "@/components/CookieBanner";
 const OwnerDashboard = lazy(() => import("@/pages/OwnerDashboard").then(m => ({ default: m.default })));
 
 
@@ -121,6 +122,7 @@ function Router() {
   return (
     <Suspense fallback={<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:"18px",color:"#64748b"}}>Laden...</div>}>
       <InspectBanner />
+      <CookieBanner />
       <Switch>
         <Route path="/"><PublicLayout><Home /></PublicLayout></Route>
         <Route path="/login"><PublicLayout><LoginPage /></PublicLayout></Route>
