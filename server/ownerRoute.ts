@@ -1,4 +1,5 @@
 import type { Express, Request, Response } from "express";
+import { generateOTP, verifyOTP, sendOTPEmail } from "./twoFactor";
 import { createSessionToken } from "./_core/auth-local";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { ENV } from "./_core/env";
@@ -73,6 +74,33 @@ export function registerOwnerRoutes(app: Express) {
     } catch (e: any) {
       return res.status(403).send(`<html><body style="font-family:Arial;padding:40px;text-align:center"><h2 style="color:#dc2626">Link abgelaufen</h2><p>Bitte einen neuen Link anfordern.</p></body></html>`);
     }
+  });
+
+  // POST /api/auth/admin-2fa/request → sendet OTP an Admin-Email
+  app.post("/api/auth/admin-2fa/request", async (req: Request, res: Response) => {
+    const { email, name } = req.body as { email?: string; name?: string };
+    if (!email) return res.status(400).json({ error: "E-Mail fehlt" });
+    
+    // Nur für verifizierte Admin-Accounts (muss in DB sein)
+    const code = generateOTP(email);
+    const sent = await sendOTPEmail(email, code, name || "Admin");
+    
+    return res.json({ 
+      ok: true, 
+      message: "Code wurde gesendet. Prüfe E-Mail oder Railway Logs.",
+      hint: process.env.NODE_ENV !== "production" ? `DEV: ${code}` : undefined
+    });
+  });
+
+  // POST /api/auth/admin-2fa/verify → verifiziert OTP
+  app.post("/api/auth/admin-2fa/verify", async (req: Request, res: Response) => {
+    const { email, code } = req.body as { email?: string; code?: string };
+    if (!email || !code) return res.status(400).json({ error: "E-Mail und Code erforderlich" });
+    
+    const result = verifyOTP(email, code);
+    if (!result.ok) return res.status(401).json({ error: result.error });
+    
+    return res.json({ ok: true, message: "Code korrekt — Zugang gewährt" });
   });
 
 }
