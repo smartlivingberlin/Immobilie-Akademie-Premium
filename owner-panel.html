@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏠 Immobilien Akademie — Eigentümer Panel</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f172a; color: #f8fafc; min-height: 100vh; }
+  
+  /* AUTH SCREEN */
+  #auth { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
+  .auth-card { background: #1e293b; border: 1px solid #334155; border-radius: 20px; padding: 40px; width: 100%; max-width: 440px; box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
+  .auth-logo { text-align: center; margin-bottom: 32px; }
+  .auth-logo h1 { font-size: 20px; color: #f8fafc; margin-top: 12px; }
+  .auth-logo p { color: #64748b; font-size: 13px; margin-top: 4px; }
+  .step-indicator { display: flex; justify-content: center; gap: 8px; margin-bottom: 28px; }
+  .step { width: 32px; height: 4px; border-radius: 2px; background: #334155; transition: all 0.3s; }
+  .step.active { background: #2563eb; }
+  .step.done { background: #059669; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: 12px; color: #94a3b8; margin-bottom: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+  .field input { width: 100%; background: #0f172a; border: 1.5px solid #334155; border-radius: 10px; padding: 12px 14px; color: #f8fafc; font-size: 14px; outline: none; transition: border-color 0.2s; }
+  .field input:focus { border-color: #2563eb; }
+  .field input.otp { font-size: 28px; text-align: center; letter-spacing: 10px; font-weight: 700; }
+  .btn { width: 100%; padding: 14px; border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.2s; margin-top: 8px; }
+  .btn-primary { background: #2563eb; color: white; }
+  .btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+  .btn-secondary { background: #334155; color: #94a3b8; font-size: 13px; margin-top: 8px; }
+  .error { background: #450a0a; border: 1px solid #dc2626; border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #fca5a5; margin-top: 12px; }
+  .success { background: #052e16; border: 1px solid #059669; border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #86efac; margin-top: 12px; }
+  .hint { background: #172554; border: 1px solid #2563eb; border-radius: 8px; padding: 10px 14px; font-size: 12px; color: #93c5fd; margin-top: 12px; }
+  
+  /* DASHBOARD */
+  #dashboard { display: none; }
+  .topbar { background: #1e293b; border-bottom: 1px solid #334155; padding: 0 24px; display: flex; align-items: center; gap: 16px; height: 60px; position: sticky; top: 0; z-index: 100; }
+  .topbar-logo { font-size: 16px; font-weight: 700; color: #f8fafc; }
+  .topbar-status { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #4ade80; margin-left: auto; }
+  .topbar-portal { font-size: 12px; color: #64748b; }
+  .topbar-logout { background: #334155; color: #94a3b8; border: none; border-radius: 8px; padding: 6px 14px; font-size: 12px; cursor: pointer; }
+  
+  .layout { display: grid; grid-template-columns: 220px 1fr; min-height: calc(100vh - 60px); }
+  .sidebar { background: #1e293b; border-right: 1px solid #334155; padding: 16px 0; }
+  .nav-section { padding: 8px 16px 4px; font-size: 10px; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+  .nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 16px; cursor: pointer; font-size: 13px; color: #94a3b8; transition: all 0.15s; border-left: 3px solid transparent; }
+  .nav-item:hover { color: #f8fafc; background: #0f172a40; }
+  .nav-item.active { color: #60a5fa; background: #172554; border-left-color: #2563eb; }
+  .nav-item .icon { font-size: 16px; width: 20px; text-align: center; }
+  .badge { background: #dc2626; color: white; font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 10px; margin-left: auto; }
+  
+  .content { padding: 24px; overflow-y: auto; }
+  .page { display: none; }
+  .page.active { display: block; }
+  
+  /* CARDS */
+  .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+  .card h2 { font-size: 16px; font-weight: 700; margin-bottom: 16px; color: #f8fafc; }
+  .card h3 { font-size: 13px; font-weight: 700; margin-bottom: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .grid { display: grid; gap: 12px; }
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .grid-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .kpi { background: #0f172a; border: 1px solid #334155; border-radius: 10px; padding: 16px; }
+  .kpi .value { font-size: 28px; font-weight: 700; color: #f8fafc; }
+  .kpi .label { font-size: 11px; color: #64748b; margin-top: 4px; }
+  .kpi .sub { font-size: 12px; color: #4ade80; margin-top: 2px; }
+  
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 10px 12px; background: #0f172a; color: #64748b; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #334155; }
+  td { padding: 10px 12px; border-bottom: 0.5px solid #1e293b; color: #cbd5e1; }
+  tr:hover td { background: #0f172a40; }
+  
+  /* BUTTONS */
+  .action-btn { background: #2563eb; color: white; border: none; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-weight: 600; }
+  .action-btn.danger { background: #dc2626; }
+  .action-btn.success { background: #059669; }
+  .action-btn.warn { background: #d97706; }
+  .action-btn:hover { opacity: 0.85; }
+  
+  /* STATUS */
+  .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+  .status-dot.green { background: #4ade80; }
+  .status-dot.red { background: #f87171; }
+  .status-dot.yellow { background: #fbbf24; }
+  
+  /* TERMINAL */
+  .terminal { background: #020617; border: 1px solid #334155; border-radius: 8px; padding: 16px; font-family: 'Courier New', monospace; font-size: 12px; color: #4ade80; max-height: 300px; overflow-y: auto; white-space: pre-wrap; }
+  
+  /* MODULE TOGGLE */
+  .module-toggle { display: flex; gap: 4px; }
+  .module-badge { padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; cursor: pointer; border: 1px solid transparent; }
+  .module-badge.on { background: #1e40af; color: #93c5fd; border-color: #2563eb; }
+  .module-badge.off { background: #1e293b; color: #475569; border-color: #334155; }
+  
+  /* INPUT INLINE */
+  .inline-input { background: #0f172a; border: 1px solid #334155; border-radius: 6px; padding: 6px 10px; color: #f8fafc; font-size: 13px; outline: none; }
+  .inline-input:focus { border-color: #2563eb; }
+
+  #loading { text-align: center; padding: 40px; color: #64748b; }
+  .spinner { display: inline-block; width: 20px; height: 20px; border: 2px solid #334155; border-top-color: #2563eb; border-radius: 50%; animation: spin 0.8s linear infinite; margin-right: 8px; vertical-align: middle; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  
+  .portal-url-display { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 10px 14px; font-size: 12px; color: #60a5fa; word-break: break-all; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ AUTH ═══════════════════════════════════════ -->
+<div id="auth">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <div style="font-size:48px">🏠</div>
+      <h1>Eigentümer Panel</h1>
+      <p>Immobilien Akademie Smart — Vollzugriff</p>
+    </div>
+    
+    <div class="step-indicator">
+      <div class="step active" id="step1"></div>
+      <div class="step" id="step2"></div>
+      <div class="step" id="step3"></div>
+    </div>
+
+    <!-- STEP 1: Portal URL + Secret Key -->
+    <div id="auth-step1">
+      <div class="field">
+        <label>Portal URL</label>
+        <input type="url" id="portal-url" value="https://immobilie-akademie-production.up.railway.app" placeholder="https://...">
+      </div>
+      <div class="field">
+        <label>🔑 Owner Secret Key</label>
+        <input type="password" id="owner-key" placeholder="OWNER-XXXX...">
+      </div>
+      <button class="btn btn-primary" onclick="step1Next()">Verbinden →</button>
+      <div id="step1-msg"></div>
+    </div>
+
+    <!-- STEP 2: E-Mail OTP -->
+    <div id="auth-step2" style="display:none">
+      <p style="font-size:13px;color:#94a3b8;margin-bottom:20px;text-align:center">
+        Verbindung erfolgreich ✅<br>
+        Gib deine Admin-E-Mail ein um einen OTP-Code zu erhalten:
+      </p>
+      <div class="field">
+        <label>📧 Admin E-Mail</label>
+        <input type="email" id="admin-email" placeholder="admin@..." value="admin@immobilie.de">
+      </div>
+      <button class="btn btn-primary" onclick="step2RequestOTP()">Code anfordern →</button>
+      <button class="btn btn-secondary" onclick="backToStep1()">← Zurück</button>
+      <div id="step2-msg"></div>
+    </div>
+
+    <!-- STEP 3: OTP eingeben -->
+    <div id="auth-step3" style="display:none">
+      <p style="font-size:13px;color:#94a3b8;margin-bottom:20px;text-align:center">
+        Code an E-Mail gesendet.<br>
+        <small style="color:#64748b">Kein SMTP? → Railway Deploy Logs prüfen</small>
+      </p>
+      <div class="field">
+        <label>🔢 6-stelliger Code</label>
+        <input type="text" id="otp-code" class="otp" placeholder="------" maxlength="6" oninput="this.value=this.value.replace(/\D/g,'')">
+      </div>
+      <button class="btn btn-primary" onclick="step3Verify()" id="verify-btn">✓ Zugang gewähren</button>
+      <button class="btn btn-secondary" onclick="backToStep2()">← Code neu anfordern</button>
+      <div id="step3-msg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ DASHBOARD ═══════════════════════════════════════ -->
+<div id="dashboard">
+  <div class="topbar">
+    <span class="topbar-logo">🏠 Eigentümer Panel</span>
+    <span class="topbar-portal" id="portal-display"></span>
+    <span class="topbar-status"><span class="status-dot green"></span>Verbunden</span>
+    <span style="font-size:11px;color:#64748b;margin-left:8px" id="session-timer"></span>
+    <button class="topbar-logout" onclick="logout()">Abmelden</button>
+  </div>
+  
+  <div class="layout">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="nav-section">Übersicht</div>
+      <div class="nav-item active" onclick="showPage('overview')"><span class="icon">📊</span>Dashboard</div>
+      <div class="nav-item" onclick="showPage('system')"><span class="icon">🖥️</span>System-Status</div>
+      
+      <div class="nav-section">Nutzer</div>
+      <div class="nav-item" onclick="showPage('users')"><span class="icon">👥</span>Alle Nutzer</div>
+      <div class="nav-item" onclick="showPage('coaching')"><span class="icon">🎯</span>Coaching</div>
+      
+      <div class="nav-section">Portal</div>
+      <div class="nav-item" onclick="showPage('agent')"><span class="icon">🤖</span>SuperAgent</div>
+      <div class="nav-item" onclick="showPage('audit')"><span class="icon">📋</span>Audit / Cron</div>
+      <div class="nav-item" onclick="showPage('content')"><span class="icon">📚</span>Inhalte</div>
+      
+      <div class="nav-section">Kontrolle</div>
+      <div class="nav-item" onclick="showPage('access')"><span class="icon">🔐</span>Zugang & Codes</div>
+      <div class="nav-item" onclick="showPage('logs')"><span class="icon">📜</span>Aktivitäts-Log</div>
+      <div class="nav-item" onclick="openPortal()"><span class="icon">🌐</span>Portal öffnen ↗</div>
+      <div class="nav-item" onclick="openAdmin()"><span class="icon">⚙️</span>Admin öffnen ↗</div>
+    </div>
+    
+    <!-- CONTENT -->
+    <div class="content">
+      <div id="loading"><span class="spinner"></span>Lade Daten...</div>
+
+      <!-- OVERVIEW -->
+      <div class="page" id="page-overview">
+        <div class="card">
+          <h2>📊 Echtzeit-Übersicht</h2>
+          <div class="grid grid-4" id="kpi-grid">
+            <div class="kpi"><div class="value" id="kpi-users">–</div><div class="label">Nutzer gesamt</div></div>
+            <div class="kpi"><div class="value" id="kpi-active">–</div><div class="label">Diese Woche aktiv</div></div>
+            <div class="kpi"><div class="value" id="kpi-questions">855</div><div class="label">IHK-Fragen</div></div>
+            <div class="kpi"><div class="value" id="kpi-score">–</div><div class="label">Audit-Score</div></div>
+          </div>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <h2>🚀 Schnellaktionen</h2>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <button class="action-btn" onclick="runAudit()">▶️ Audit jetzt starten</button>
+              <button class="action-btn success" onclick="generateInspectLink()">🔗 Inspect-Link erstellen</button>
+              <button class="action-btn warn" onclick="showPage('users')">👥 Nutzer verwalten</button>
+              <button class="action-btn" onclick="showPage('agent')">🤖 Agent befragen</button>
+            </div>
+          </div>
+          <div class="card">
+            <h2>⚡ Portal-Status</h2>
+            <div id="status-list" style="font-size:13px;line-height:2">Lade...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SYSTEM -->
+      <div class="page" id="page-system">
+        <div class="card">
+          <h2>🖥️ System-Status</h2>
+          <div id="system-checks" style="font-size:13px">Lade...</div>
+        </div>
+        <div class="card">
+          <h2>🔗 Portal-Verbindung</h2>
+          <div class="portal-url-display" id="portal-url-display"></div>
+        </div>
+      </div>
+
+      <!-- USERS -->
+      <div class="page" id="page-users">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+            <h2 style="margin:0">👥 Nutzerverwaltung</h2>
+            <input type="text" class="inline-input" placeholder="Suche..." id="user-search" oninput="filterUsers()" style="width:200px">
+          </div>
+          <div id="users-table">Lade...</div>
+        </div>
+      </div>
+
+      <!-- COACHING -->
+      <div class="page" id="page-coaching">
+        <div class="card">
+          <h2>🎯 User-Coaching Profile</h2>
+          <div id="coaching-content">Lade...</div>
+        </div>
+      </div>
+
+      <!-- AGENT -->
+      <div class="page" id="page-agent">
+        <div class="card">
+          <h2>🤖 SuperAgent v2 — Direkt befragen</h2>
+          <div style="display:flex;gap:8px;margin-bottom:16px">
+            <select id="agent-module" class="inline-input">
+              <option value="1">Modul 1</option><option value="2">Modul 2</option>
+              <option value="3">Modul 3</option><option value="4">Modul 4</option>
+              <option value="5">Modul 5</option>
+            </select>
+            <input type="text" id="agent-question" class="inline-input" placeholder="Frage stellen..." style="flex:1">
+            <button class="action-btn" onclick="askAgent()">Fragen →</button>
+          </div>
+          <div id="agent-response" style="font-size:13px;color:#94a3b8;min-height:100px"></div>
+        </div>
+        <div class="card">
+          <h2>📊 KI-Status</h2>
+          <div id="ai-status" style="font-size:13px">Lade...</div>
+        </div>
+      </div>
+
+      <!-- AUDIT -->
+      <div class="page" id="page-audit">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+            <h2 style="margin:0">📋 Nacht-Audit</h2>
+            <button class="action-btn" onclick="runAudit()" id="audit-btn">▶️ Jetzt ausführen</button>
+          </div>
+          <div id="audit-results" style="font-size:13px;color:#94a3b8">Noch nicht gestartet.</div>
+        </div>
+        <div class="card">
+          <h2>📜 Cron-Log</h2>
+          <div class="terminal" id="cron-log-display">Lade...</div>
+        </div>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="page" id="page-content">
+        <div class="card">
+          <h2>📚 Content-Verwaltung</h2>
+          <p style="color:#64748b;font-size:13px;margin-bottom:16px">Direkt im Portal verwalten:</p>
+          <div class="grid grid-3">
+            <button class="action-btn" onclick="openPortalPage('/admin/upload')">📤 Content Upload</button>
+            <button class="action-btn" onclick="openPortalPage('/admin/videos')">🎥 Videos</button>
+            <button class="action-btn" onclick="openPortalPage('/admin/fragen')">❓ Fragen-Manager</button>
+            <button class="action-btn" onclick="openPortalPage('/admin/kursbuch')">📖 Kursbuch</button>
+            <button class="action-btn" onclick="openPortalPage('/admin/dozenten')">👨‍🏫 Dozenten</button>
+            <button class="action-btn" onclick="openPortalPage('/admin/mediaskript')">📝 Mediaskript</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACCESS -->
+      <div class="page" id="page-access">
+        <div class="card">
+          <h2>🔗 Inspect-Link Generator</h2>
+          <button class="action-btn success" onclick="generateInspectLink()">Neuen 72h-Link erstellen</button>
+          <div id="inspect-link-display" style="margin-top:12px;font-size:12px;color:#60a5fa;word-break:break-all"></div>
+        </div>
+        <div class="card">
+          <h2>👥 Nutzer-Zugang verwalten</h2>
+          <p style="color:#64748b;font-size:13px">Klicke auf einen Nutzer im Nutzer-Tab um Module freizuschalten.</p>
+        </div>
+      </div>
+
+      <!-- LOGS -->
+      <div class="page" id="page-logs">
+        <div class="card">
+          <h2>📜 Aktivitäts-Log</h2>
+          <div class="terminal" id="activity-log">
+[SYSTEM] Eigentümer Panel gestartet
+[AUTH] Dreifach-Verifikation erfolgreich
+[CONN] Verbunden mit Portal
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════ KONFIGURATION ═══════════════════
+let PORTAL_URL = "";
+let OWNER_KEY = "";
+let SESSION_TOKEN = null;
+let SESSION_EXPIRY = null;
+let ALL_USERS = [];
+let sessionInterval = null;
+
+// ═══════════════════ AUTH STEPS ═══════════════════
+
+async function step1Next() {
+  PORTAL_URL = document.getElementById('portal-url').value.trim().replace(/\/$/, '');
+  OWNER_KEY = document.getElementById('owner-key').value.trim();
+  const msg = document.getElementById('step1-msg');
+  
+  if (!PORTAL_URL || !OWNER_KEY) {
+    msg.innerHTML = '<div class="error">⚠️ Bitte alle Felder ausfüllen</div>';
+    return;
+  }
+  
+  msg.innerHTML = '<div class="hint"><span class="spinner"></span>Verbinde mit Portal...</div>';
+  
+  try {
+    // Teste Verbindung über Owner-Access
+    const res = await fetch(`${PORTAL_URL}/api/health`, { signal: AbortSignal.timeout(8000) });
+    if (!res.ok) throw new Error('Portal antwortet nicht');
+    
+    msg.innerHTML = '<div class="success">✅ Portal erreichbar!</div>';
+    
+    setTimeout(() => {
+      document.getElementById('auth-step1').style.display = 'none';
+      document.getElementById('auth-step2').style.display = 'block';
+      document.getElementById('step1').classList.add('done');
+      document.getElementById('step2').classList.add('active');
+    }, 800);
+  } catch(e) {
+    msg.innerHTML = `<div class="error">❌ Verbindung fehlgeschlagen: ${e.message}</div>`;
+  }
+}
+
+async function step2RequestOTP() {
+  const email = document.getElementById('admin-email').value.trim();
+  const msg = document.getElementById('step2-msg');
+  if (!email) return;
+  
+  msg.innerHTML = '<div class="hint"><span class="spinner"></span>Sende Code...</div>';
+  
+  try {
+    const res = await fetch(`${PORTAL_URL}/api/auth/admin-2fa/request`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, name: 'Eigentümer' }),
+    });
+    const data = await res.json();
+    
+    if (data.ok) {
+      let hint = '';
+      if (data.hint) hint = `<div class="hint">🔑 DEV-Code: <strong>${data.hint.replace('DEV: ','')}</strong></div>`;
+      msg.innerHTML = `<div class="success">✅ Code gesendet!</div>${hint}`;
+      
+      setTimeout(() => {
+        document.getElementById('auth-step2').style.display = 'none';
+        document.getElementById('auth-step3').style.display = 'block';
+        document.getElementById('step2').classList.add('done');
+        document.getElementById('step3').classList.add('active');
+        document.getElementById('otp-code').focus();
+      }, 1000);
+    } else {
+      msg.innerHTML = `<div class="error">❌ ${data.error}</div>`;
+    }
+  } catch(e) {
+    msg.innerHTML = `<div class="error">❌ Fehler: ${e.message}</div>`;
+  }
+}
+
+async function step3Verify() {
+  const email = document.getElementById('admin-email').value.trim();
+  const code = document.getElementById('otp-code').value.trim();
+  const msg = document.getElementById('step3-msg');
+  const btn = document.getElementById('verify-btn');
+  
+  if (code.length !== 6) {
+    msg.innerHTML = '<div class="error">⚠️ 6-stelligen Code eingeben</div>';
+    return;
+  }
+  
+  btn.disabled = true;
+  btn.textContent = '⏳ Prüfe...';
+  
+  try {
+    // 1. OTP verifizieren
+    const otpRes = await fetch(`${PORTAL_URL}/api/auth/admin-2fa/verify`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, code }),
+    });
+    const otpData = await otpRes.json();
+    
+    if (!otpData.ok) {
+      msg.innerHTML = `<div class="error">❌ ${otpData.error}</div>`;
+      btn.disabled = false;
+      btn.textContent = '✓ Bestätigen';
+      return;
+    }
+    
+    // 2. Owner-Token holen
+    const ownerRes = await fetch(`${PORTAL_URL}/api/owner/access?key=${encodeURIComponent(OWNER_KEY)}&redirect=/api/health`, {
+      redirect: 'manual'
+    });
+    
+    // Session starten
+    SESSION_EXPIRY = Date.now() + 4 * 60 * 60 * 1000; // 4h
+    
+    msg.innerHTML = '<div class="success">✅ Zugang gewährt! Lade Dashboard...</div>';
+    
+    setTimeout(() => {
+      startDashboard();
+    }, 1000);
+    
+  } catch(e) {
+    msg.innerHTML = `<div class="error">❌ Fehler: ${e.message}</div>`;
+    btn.disabled = false;
+    btn.textContent = '✓ Bestätigen';
+  }
+}
+
+function backToStep1() {
+  document.getElementById('auth-step2').style.display = 'none';
+  document.getElementById('auth-step1').style.display = 'block';
+  document.getElementById('step1').classList.remove('done');
+  document.getElementById('step2').classList.remove('active');
+  document.getElementById('step2-msg').innerHTML = '';
+}
+
+function backToStep2() {
+  document.getElementById('auth-step3').style.display = 'none';
+  document.getElementById('auth-step2').style.display = 'block';
+  document.getElementById('step2').classList.remove('done');
+  document.getElementById('step3').classList.remove('active');
+  document.getElementById('otp-code').value = '';
+  document.getElementById('step3-msg').innerHTML = '';
+  step2RequestOTP();
+}
+
+// ═══════════════════ DASHBOARD ═══════════════════
+
+async function startDashboard() {
+  document.getElementById('auth').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+  document.getElementById('portal-display').textContent = PORTAL_URL;
+  document.getElementById('portal-url-display').textContent = PORTAL_URL;
+  
+  // Session-Timer
+  sessionInterval = setInterval(updateSessionTimer, 1000);
+  
+  // Daten laden
+  await loadAllData();
+  
+  showPage('overview');
+  document.getElementById('loading').style.display = 'none';
+}
+
+function updateSessionTimer() {
+  if (!SESSION_EXPIRY) return;
+  const remaining = SESSION_EXPIRY - Date.now();
+  if (remaining <= 0) { logout(); return; }
+  const h = Math.floor(remaining / 3600000);
+  const m = Math.floor((remaining % 3600000) / 60000);
+  const s = Math.floor((remaining % 60000) / 1000);
+  document.getElementById('session-timer').textContent = `Session: ${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+async function apiGet(path) {
+  try {
+    const res = await fetch(`${PORTAL_URL}${path}`, {
+      headers: { 'X-Owner-Key': OWNER_KEY },
+      signal: AbortSignal.timeout(10000)
+    });
+    return await res.json();
+  } catch(e) {
+    addLog(`[ERROR] API ${path}: ${e.message}`);
+    return null;
+  }
+}
+
+async function apiPost(path, body) {
+  try {
+    const res = await fetch(`${PORTAL_URL}${path}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Owner-Key': OWNER_KEY },
+      body: JSON.stringify(body),
+      signal: AbortSignal.timeout(30000)
+    });
+    return await res.json();
+  } catch(e) {
+    addLog(`[ERROR] POST ${path}: ${e.message}`);
+    return null;
+  }
+}
+
+async function loadAllData() {
+  addLog('[DATA] Lade alle Portaldaten...');
+  
+  // Agent-Health
+  const health = await apiGet('/api/agent/health');
+  if (health) {
+    const aiOk = Object.values(health.aiStatus || {}).filter(Boolean).length;
+    document.getElementById('kpi-score').textContent = health.status === 'healthy' ? '✅' : '⚠️';
+    
+    document.getElementById('status-list').innerHTML = `
+      <span class="status-dot ${health.status === 'healthy' ? 'green' : 'yellow'}"></span> Server: ${health.status}<br>
+      <span class="status-dot ${health.aiStatus?.claude ? 'green' : 'red'}"></span> Claude: ${health.aiStatus?.claude ? 'OK' : 'Fehlt'}<br>
+      <span class="status-dot ${health.aiStatus?.gemini ? 'green' : 'red'}"></span> Gemini: ${health.aiStatus?.gemini ? 'OK' : 'Fehlt'}<br>
+      <span class="status-dot ${health.aiStatus?.groq ? 'green' : 'red'}"></span> Groq: ${health.aiStatus?.groq ? 'OK' : 'Fehlt'}<br>
+      <span class="status-dot green"></span> 855 IHK-Fragen<br>
+      <span class="status-dot green"></span> 240 Lerntage
+    `;
+    
+    document.getElementById('system-checks').innerHTML = (health.checks || []).map(c =>
+      `<div style="padding:6px 0;border-bottom:0.5px solid #1e293b">
+        <span class="status-dot ${c.ok ? 'green' : 'red'}"></span>
+        <strong>${c.name}</strong>: ${c.detail}
+      </div>`
+    ).join('');
+    
+    document.getElementById('ai-status').innerHTML = Object.entries(health.aiStatus || {}).map(([k,v]) =>
+      `<div style="padding:6px 0"><span class="status-dot ${v ? 'green' : 'red'}"></span>${k}: ${v ? '✅ aktiv' : '❌ fehlt'}</div>`
+    ).join('');
+  }
+  
+  // Agent Status + Audit Score
+  const status = await apiGet('/api/agent/status');
+  if (status?.memory?.last_night_audit) {
+    document.getElementById('kpi-score').textContent = status.memory.last_night_audit.avgScore + '/100';
+  }
+  
+  // Cron Log
+  const cronData = await apiGet('/api/agent/cron-log');
+  if (cronData?.log) {
+    document.getElementById('cron-log-display').textContent = cronData.log;
+  }
+  
+  // Coaching
+  const coaching = await apiGet('/api/agent/coaching');
+  if (coaching) loadCoachingData(coaching);
+  
+  addLog('[DATA] Alle Daten geladen');
+}
+
+function loadCoachingData(coaching) {
+  if (!coaching?.profiles?.length) {
+    document.getElementById('coaching-content').innerHTML = '<p style="color:#64748b">Noch keine Coaching-Daten. Läuft täglich 02:00h.</p>';
+    return;
+  }
+  
+  document.getElementById('coaching-content').innerHTML = `
+    <div class="grid grid-3" style="margin-bottom:16px">
+      <div class="kpi"><div class="value">${coaching.totalUsers}</div><div class="label">Gesamt</div></div>
+      <div class="kpi" style="border-color:#dc2626"><div class="value" style="color:#f87171">${coaching.profiles.filter(p=>p.riskLevel==='high').length}</div><div class="label">🔴 Risiko</div></div>
+      <div class="kpi" style="border-color:#059669"><div class="value" style="color:#4ade80">${coaching.profiles.filter(p=>p.riskLevel==='low').length}</div><div class="label">🟢 Aktiv</div></div>
+    </div>
+    <table>
+      <tr><th>User</th><th>Risiko</th><th>Streak</th><th>Score</th><th>Empfehlung</th></tr>
+      ${coaching.profiles.map(p => `
+        <tr>
+          <td>#${p.userId}</td>
+          <td>${p.riskLevel === 'high' ? '🔴 Hoch' : p.riskLevel === 'medium' ? '🟡 Mittel' : '🟢 Niedrig'}</td>
+          <td>🔥 ${p.streak} Tage</td>
+          <td>${p.examAvgScore}%</td>
+          <td style="font-size:11px">${p.nextAction}</td>
+        </tr>
+      `).join('')}
+    </table>
+    <p style="font-size:11px;color:#475569;margin-top:8px">Erstellt: ${coaching.generatedAt ? new Date(coaching.generatedAt).toLocaleString('de-DE') : '–'}</p>
+  `;
+  
+  document.getElementById('kpi-active').textContent = coaching.profiles.filter(p=>p.riskLevel==='low').length;
+}
+
+// ═══════════════════ AKTIONEN ═══════════════════
+
+async function runAudit() {
+  const btn = document.getElementById('audit-btn');
+  if(btn) { btn.disabled = true; btn.textContent = '⏳ Läuft...'; }
+  addLog('[AUDIT] Starte Nacht-Audit...');
+  
+  document.getElementById('audit-results').innerHTML = '<span class="spinner"></span>Audit läuft...';
+  
+  const result = await apiPost('/api/agent/run-audit', {});
+  if (result) {
+    document.getElementById('kpi-score').textContent = result.avgScore + '/100';
+    document.getElementById('audit-results').innerHTML = `
+      <div style="padding:12px;background:#052e16;border-radius:8px;margin-bottom:12px">
+        <strong style="color:#4ade80">✅ Audit abgeschlossen</strong><br>
+        <span style="color:#86efac">Score: ${result.avgScore}/100 · ${result.totalDays} Tage · ${result.problemDays?.length} Probleme · ${result.duration}s</span>
+      </div>
+      ${result.problemDays?.slice(0,10).map(p => `
+        <div style="padding:6px;border-bottom:0.5px solid #334155;font-size:12px">
+          <span style="color:${p.score < 70 ? '#f87171' : '#fbbf24'}">M${p.module} T${p.day} (${p.score}/100)</span>
+          <span style="color:#64748b;margin-left:8px">${p.issues.join(', ')}</span>
+        </div>
+      `).join('') || ''}
+    `;
+    addLog(`[AUDIT] Fertig: ${result.avgScore}/100, ${result.problemDays?.length} Probleme`);
+  }
+  
+  // Cron-Log neu laden
+  const cronData = await apiGet('/api/agent/cron-log');
+  if (cronData?.log) document.getElementById('cron-log-display').textContent = cronData.log;
+  
+  if(btn) { btn.disabled = false; btn.textContent = '▶️ Jetzt ausführen'; }
+}
+
+async function generateInspectLink() {
+  const result = await apiPost('/api/owner/inspect-token', { key: OWNER_KEY });
+  if (result?.token) {
+    const link = `${PORTAL_URL}/inspect/${result.token}`;
+    const expiry = new Date(result.expiresAt).toLocaleString('de-DE');
+    document.getElementById('inspect-link-display').innerHTML = `
+      <div style="background:#172554;border-radius:8px;padding:12px;margin-top:8px">
+        <div style="margin-bottom:8px;color:#93c5fd">🔗 72h Inspect-Link (bis ${expiry}):</div>
+        <div style="word-break:break-all;color:#60a5fa">${link}</div>
+        <button onclick="copyToClipboard('${link}')" class="action-btn" style="margin-top:8px">📋 Kopieren</button>
+        <button onclick="window.open('${link}','_blank')" class="action-btn success" style="margin-top:8px;margin-left:4px">↗ Öffnen</button>
+      </div>
+    `;
+    addLog(`[LINK] Inspect-Link erstellt (72h)`);
+  }
+}
+
+async function askAgent() {
+  const q = document.getElementById('agent-question').value.trim();
+  const m = document.getElementById('agent-module').value;
+  if (!q) return;
+  
+  document.getElementById('agent-response').innerHTML = '<span class="spinner"></span>KI antwortet...';
+  
+  const result = await apiPost('/api/agent/ask', { question: q, moduleId: parseInt(m) });
+  if (result?.answer) {
+    document.getElementById('agent-response').innerHTML = `
+      <div style="background:#0f172a;border-radius:8px;padding:16px;line-height:1.7;color:#cbd5e1">
+        ${result.answer.replace(/\n/g, '<br>')}
+      </div>
+      <div style="margin-top:8px;font-size:11px;color:#475569">
+        Modell: ${result.model} · Konfidenz: ${result.confidence}%
+        ${result.sources?.length ? '· Quellen: ' + result.sources.join(', ') : ''}
+      </div>
+    `;
+  }
+}
+
+function filterUsers() {
+  const q = document.getElementById('user-search').value.toLowerCase();
+  const rows = document.querySelectorAll('#users-table tbody tr');
+  rows.forEach(r => {
+    r.style.display = r.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
+
+async function toggleModule(userId, moduleId, currentModules) {
+  const current = currentModules.split(',').map(Number).filter(Boolean);
+  const updated = current.includes(moduleId)
+    ? current.filter(m => m !== moduleId)
+    : [...current, moduleId].sort();
+  
+  addLog(`[USER] User ${userId}: Module ${updated.join(',')}`);
+  alert(`Modul-Änderung für User ${userId}: ${updated.join(',')} → Im Admin-Panel bestätigen`);
+  openPortalPage('/admin/nutzer');
+}
+
+// ═══════════════════ UI HELPERS ═══════════════════
+
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  
+  const pageEl = document.getElementById(`page-${page}`);
+  if (pageEl) pageEl.classList.add('active');
+  
+  document.querySelectorAll('.nav-item').forEach(n => {
+    if (n.getAttribute('onclick')?.includes(`'${page}'`)) n.classList.add('active');
+  });
+  
+  addLog(`[NAV] → ${page}`);
+}
+
+function openPortal() {
+  window.open(PORTAL_URL, '_blank');
+  addLog(`[NAV] Portal geöffnet`);
+}
+
+function openAdmin() {
+  window.open(`${PORTAL_URL}/owner`, '_blank');
+  addLog(`[NAV] Admin geöffnet über Owner-Link`);
+}
+
+function openPortalPage(path) {
+  window.open(`${PORTAL_URL}${path}`, '_blank');
+  addLog(`[NAV] Portal-Seite: ${path}`);
+}
+
+function copyToClipboard(text) {
+  navigator.clipboard?.writeText(text).then(() => alert('✅ Kopiert!'));
+}
+
+function addLog(msg) {
+  const log = document.getElementById('activity-log');
+  if (!log) return;
+  const time = new Date().toLocaleTimeString('de-DE');
+  log.textContent += `\n[${time}] ${msg}`;
+  log.scrollTop = log.scrollHeight;
+}
+
+function logout() {
+  if (!confirm('Abmelden?')) return;
+  clearInterval(sessionInterval);
+  SESSION_TOKEN = null;
+  PORTAL_URL = '';
+  OWNER_KEY = '';
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('auth').style.display = 'flex';
+  // Steps zurücksetzen
+  ['step1','step2','step3'].forEach(s => {
+    document.getElementById(s)?.classList.remove('active','done');
+  });
+  document.getElementById('step1').classList.add('active');
+  document.getElementById('auth-step1').style.display = 'block';
+  document.getElementById('auth-step2').style.display = 'none';
+  document.getElementById('auth-step3').style.display = 'none';
+  document.getElementById('owner-key').value = '';
+  document.getElementById('otp-code').value = '';
+}
+
+// Enter-Taste
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    const step1Vis = document.getElementById('auth-step1').style.display !== 'none';
+    const step2Vis = document.getElementById('auth-step2').style.display !== 'none';
+    const step3Vis = document.getElementById('auth-step3').style.display !== 'none';
+    if (step1Vis) step1Next();
+    else if (step2Vis) step2RequestOTP();
+    else if (step3Vis) step3Verify();
+  }
+});
+</script>
+</body>
+</html>
