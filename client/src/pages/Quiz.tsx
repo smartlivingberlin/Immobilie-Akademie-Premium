@@ -54,12 +54,19 @@ export default function Quiz() {
     setQuizState("quiz");
   };
 
+  // correctAnswer ist "A"/"B"/"C"/"D" → in Index 0/1/2/3 umrechnen
+  const correctAnswerToIdx = (ca: string): number => {
+    const map: Record<string, number> = { A: 0, B: 1, C: 2, D: 3 };
+    return map[ca?.toUpperCase()] ?? 0;
+  };
+
   const handleAnswer = (answerIdx: number) => {
     if (showFeedback) return;
     setSelectedAnswer(answerIdx);
     setShowFeedback(true);
     const q = questions[currentIdx];
-    setAnswers(prev => [...prev, { questionId: q.id, answer: answerIdx, correct: answerIdx === q.correctAnswer }]);
+    const correctIdx = correctAnswerToIdx(q.correctAnswer);
+    setAnswers(prev => [...prev, { questionId: q.id, answer: answerIdx, correct: answerIdx === correctIdx }]);
   };
 
   const nextQuestion = () => {
@@ -186,21 +193,22 @@ export default function Quiz() {
             <CardContent className="space-y-3">
               {q.options.map((option, idx) => {
                 let cls = "w-full text-left p-4 rounded-lg border-2 transition-all text-sm ";
+                const correctIdx = correctAnswerToIdx(q.correctAnswer);
                 if (!showFeedback) cls += selectedAnswer === idx ? "border-blue-500 bg-blue-50" : "border-slate-200 hover:border-blue-300 hover:bg-slate-50";
-                else if (idx === q.correctAnswer) cls += "border-green-500 bg-green-50 text-green-900";
+                else if (idx === correctIdx) cls += "border-green-500 bg-green-50 text-green-900";
                 else if (idx === selectedAnswer) cls += "border-red-500 bg-red-50 text-red-900";
                 else cls += "border-slate-200 bg-white opacity-60";
                 return (
                   <button key={idx} className={cls} onClick={() => handleAnswer(idx)} disabled={showFeedback}>
                     <span className="font-bold mr-2">{["A","B","C","D"][idx]}.</span>{option}
-                    {showFeedback && idx === q.correctAnswer && <CheckCircle2 className="inline ml-2 h-4 w-4 text-green-600" />}
-                    {showFeedback && idx === selectedAnswer && idx !== q.correctAnswer && <XCircle className="inline ml-2 h-4 w-4 text-red-600" />}
+                    {showFeedback && idx === correctAnswerToIdx(q.correctAnswer) && <CheckCircle2 className="inline ml-2 h-4 w-4 text-green-600" />}
+                    {showFeedback && idx === selectedAnswer && idx !== correctAnswerToIdx(q.correctAnswer) && <XCircle className="inline ml-2 h-4 w-4 text-red-600" />}
                   </button>
                 );
               })}
               {showFeedback && (
-                <div className={"p-4 rounded-lg border mt-4 text-sm " + (selectedAnswer === q.correctAnswer ? "bg-green-50 border-green-200 text-green-800" : "bg-orange-50 border-orange-200 text-orange-800")}>
-                  <p className="font-semibold mb-1">{selectedAnswer === q.correctAnswer ? "✓ Richtig!" : "✗ Falsch"}</p>
+                <div className={"p-4 rounded-lg border mt-4 text-sm " + (selectedAnswer === correctAnswerToIdx(q.correctAnswer) ? "bg-green-50 border-green-200 text-green-800" : "bg-orange-50 border-orange-200 text-orange-800")}>
+                  <p className="font-semibold mb-1">{selectedAnswer === correctAnswerToIdx(q.correctAnswer) ? "✓ Richtig!" : "✗ Falsch"}</p>
                   <p>{q.explanation}</p>
                 </div>
               )}
@@ -250,7 +258,7 @@ export default function Quiz() {
                       <div key={a.questionId} className="p-3 bg-red-50 border border-red-200 rounded-lg text-sm">
                         <p className="font-medium text-red-900 mb-1">{q.question}</p>
                         <p className="text-red-700 text-xs">✗ Deine Antwort: {q.options[a.answer]}</p>
-                        <p className="text-green-700 text-xs">✓ Richtig: {q.options[q.correctAnswer]}</p>
+                        <p className="text-green-700 text-xs">✓ Richtig: {q.options[correctAnswerToIdx(q.correctAnswer)]}</p>
                         <p className="text-slate-600 mt-2 text-xs italic">{q.explanation}</p>
                       </div>
                     );
