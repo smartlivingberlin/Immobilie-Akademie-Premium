@@ -57,6 +57,7 @@ import Quiz from "@/pages/Quiz";
 import GamificationDashboard from "@/pages/GamificationDashboard";
 import StrategiePlattform from "@/pages/StrategiePlattform";
 import VideoManagement from "@/pages/admin/VideoManagement";
+import Admin2FA from "@/pages/Admin2FA";
 import WhiteLabelAdmin from "@/pages/admin/WhiteLabelAdmin";
 import PortalPhaseAdmin from "@/pages/admin/PortalPhaseAdmin";
 
@@ -184,6 +185,7 @@ function Router() {
         <Route path="/admin/ki-monitor"><AppLayout><AdminRoute component={KiMonitor} /></AppLayout></Route>
         <Route path="/admin/codes"><AppLayout><AdminRoute component={AdminCodes} /></AppLayout></Route>
         <Route path="/admin/nutzer"><AppLayout><AdminRoute component={UserManagement} /></AppLayout></Route>
+        <Route path="/admin-2fa"><Admin2FA /></Route>
         <Route path="/admin"><AppLayout><AdminRoute component={AdminDashboard} /></AppLayout></Route>
         <Route path="/owner-dashboard">
           <Suspense fallback={<div>Lädt...</div>}>
