@@ -117,3 +117,58 @@ export function registerAgentRoutes(app: Express) {
     }
   });
 }
+
+  // ── NACHT-CRON + COACHING Routes ──────────────────────────
+
+  // Manueller Cron-Trigger (Admin)
+  app.post("/api/agent/run-audit", async (req: Request, res: Response) => {
+    try {
+      const { runNightAudit } = await import("./NightCron");
+      const result = await runNightAudit();
+      return res.json(result);
+    } catch (e: any) {
+      return res.status(500).json({ error: e.message });
+    }
+  });
+
+  // Alle Coaching-Profile abrufen
+  app.get("/api/agent/coaching", async (_req: Request, res: Response) => {
+    try {
+      const { readFileSync, existsSync } = await import("fs");
+      const { join } = await import("path");
+      const file = join(process.cwd(), "server/agent/coaching.json");
+      if (!existsSync(file)) return res.json({ profiles: [], generatedAt: null });
+      return res.json(JSON.parse(readFileSync(file, "utf-8")));
+    } catch (e: any) {
+      return res.status(500).json({ error: e.message });
+    }
+  });
+
+  // Coaching für einzelnen User
+  app.get("/api/agent/coaching/:userId", async (req: Request, res: Response) => {
+    try {
+      const { readFileSync, existsSync } = await import("fs");
+      const { join } = await import("path");
+      const file = join(process.cwd(), "server/agent/coaching.json");
+      if (!existsSync(file)) return res.json(null);
+      const data = JSON.parse(readFileSync(file, "utf-8"));
+      const profile = data.profiles?.find((p: any) => p.userId === parseInt(req.params.userId));
+      return res.json(profile || null);
+    } catch (e: any) {
+      return res.status(500).json({ error: e.message });
+    }
+  });
+
+  // Cron-Log abrufen
+  app.get("/api/agent/cron-log", async (_req: Request, res: Response) => {
+    try {
+      const { readFileSync, existsSync } = await import("fs");
+      const { join } = await import("path");
+      const file = join(process.cwd(), "server/agent/cron.log");
+      if (!existsSync(file)) return res.json({ log: "Noch kein Log vorhanden" });
+      const log = readFileSync(file, "utf-8").split("\n").filter(Boolean).slice(-50);
+      return res.json({ log: log.join("\n"), lines: log.length });
+    } catch (e: any) {
+      return res.status(500).json({ error: e.message });
+    }
+  });

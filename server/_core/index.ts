@@ -36,6 +36,7 @@ import { registerLocalAuthRoutes } from "./auth-local";
 import { registerPasswordResetRoutes } from "../passwordReset";
 import { registerPortalPhaseRoutes } from "../portalPhase";
 import { registerAgentRoutes } from "../agent/agentRoutes";
+import { startNightCron } from "../agent/NightCron";
 import { registerRagTutorRoutes } from "../ragTutor";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
@@ -244,6 +245,8 @@ app.use(express.json({ limit: "50mb" }));
 }
 
 startServer().catch(console.error);
+// Nacht-Cron: täglich 02:00 Uhr alle 240 Lerntage + User-Coaching
+startNightCron();
 // force deploy Mon Apr  6 20:58:44 CEST 2026
 
 // Keep-Alive: alle 8 Minuten selbst pingen (verhindert Railway Cold Start)
