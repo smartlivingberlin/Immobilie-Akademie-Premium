@@ -27,7 +27,7 @@ export default function Quiz() {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showFeedback, setShowFeedback] = useState(false);
-  const [answers, setAnswers] = useState<{ questionId: string; answer: number; correct: boolean }[]>([]);
+  const [answers, setAnswers] = useState<{ questionId: number; answer: number; correct: boolean }[]>([]); 
 
   const availablePool = useMemo(() => {
     let pool = ALL_QUESTIONS;
@@ -188,7 +188,7 @@ export default function Quiz() {
                   {getDiffLabel(q.difficulty)}
                 </Badge>
               </div>
-              <CardTitle className="text-lg leading-snug">{q.question}</CardTitle>
+              <CardTitle className="text-lg leading-snug">{q.questionText}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               {q.options.map((option, idx) => {
@@ -256,7 +256,7 @@ export default function Quiz() {
                     if (!q) return null;
                     return (
                       <div key={a.questionId} className="p-3 bg-red-50 border border-red-200 rounded-lg text-sm">
-                        <p className="font-medium text-red-900 mb-1">{q.question}</p>
+                        <p className="font-medium text-red-900 mb-1">{q.questionText}</p>
                         <p className="text-red-700 text-xs">✗ Deine Antwort: {q.options[a.answer]}</p>
                         <p className="text-green-700 text-xs">✓ Richtig: {q.options[correctAnswerToIdx(q.correctAnswer)]}</p>
                         <p className="text-slate-600 mt-2 text-xs italic">{q.explanation}</p>
