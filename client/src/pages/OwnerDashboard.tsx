@@ -18,7 +18,7 @@ export default function OwnerDashboard() {
   const [inspectExpiry, setInspectExpiry] = useState<string | null>(null);
   const [inspectLoading, setInspectLoading] = useState(false);
   const [inspectCopied, setInspectCopied] = useState(false);
-  const OWNER_CODE = "OWNER-3875C3D02394C47C89E21848";
+  const OWNER_CODE = import.meta.env.VITE_OWNER_CODE || "";
   const BASE_URL = window.location.origin;
 
   const createInspectLink = async () => {
