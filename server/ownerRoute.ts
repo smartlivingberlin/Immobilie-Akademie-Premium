@@ -45,6 +45,12 @@ export function registerOwnerRoutes(app: Express) {
     return res.json({ token: inspectToken, expiresAt });
   });
 
+  // GET /inspect/exit → Demo-Modus beenden (MUSS vor :token stehen!)
+  app.get("/inspect/exit", (_req: Request, res: Response) => {
+    res.clearCookie("inspect_mode", { path: "/" });
+    return res.redirect("/");
+  });
+
   // GET /inspect/:token → Inspect-Link (Server fängt VOR SPA ab)
   app.get("/inspect/:token", async (req: Request, res: Response) => {
     const { token } = req.params;
@@ -70,15 +76,3 @@ export function registerOwnerRoutes(app: Express) {
   });
 
 }
-
-  // GET /inspect/exit → Beendet Inspect-Modus (löscht Cookie)
-  app.get("/inspect/exit", (req: Request, res: Response) => {
-    res.clearCookie("inspect_mode", { path: "/" });
-    return res.redirect("/");
-  });
-
-  // GET /inspect/exit → Beendet Inspect-Modus (löscht Cookie)
-  app.get("/inspect/exit", (req: Request, res: Response) => {
-    res.clearCookie("inspect_mode", { path: "/" });
-    return res.redirect("/");
-  });
