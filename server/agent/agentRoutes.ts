@@ -116,9 +116,8 @@ export function registerAgentRoutes(app: Express) {
       return res.status(500).json({ error: e.message });
     }
   });
-}
 
-  // ── NACHT-CRON + COACHING Routes ──────────────────────────
+// ── NACHT-CRON + COACHING Routes ──────────────────────────
 
   // Manueller Cron-Trigger (Admin)
   app.post("/api/agent/run-audit", async (req: Request, res: Response) => {
@@ -172,3 +171,4 @@ export function registerAgentRoutes(app: Express) {
       return res.status(500).json({ error: e.message });
     }
   });
+}
