@@ -36,13 +36,23 @@ export function registerAgentRoutes(app: Express) {
 
   // ── SUPER-AGENT v2 Routes ──────────────────────────────
 
-  // Status + Memory
-  app.get("/api/agent/status", (_req: Request, res: Response) => {
+  // Status + Memory (nur mit Owner-Key)
+  app.get("/api/agent/status", (req: Request, res: Response) => {
+    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
+    const key = req.headers["x-owner-key"] || req.query.key;
+    if (ownerCode && key !== ownerCode) {
+      return res.status(401).json({ error: "Nicht autorisiert" });
+    }
     return res.json(SuperAgent.getStatus());
   });
 
-  // System Health Check
-  app.get("/api/agent/health", async (_req: Request, res: Response) => {
+  // System Health Check (nur mit Owner-Key)
+  app.get("/api/agent/health", async (req: Request, res: Response) => {
+    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
+    const key = req.headers["x-owner-key"] || req.query.key;
+    if (ownerCode && key !== ownerCode) {
+      return res.status(401).json({ error: "Nicht autorisiert" });
+    }
     try {
       const health = await SuperAgent.systemHealthCheck();
       return res.json(health);
