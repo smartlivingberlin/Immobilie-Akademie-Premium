@@ -5042,7 +5042,7 @@ export const allQuestions: Question[] = [
     options: ["Darlehen, das am Ende der Zinsbindung vollständig getilgt ist", "Darlehen ohne Tilgung", "Darlehen mit variabler Tilgung", "Darlehen mit Sondertilgung"],
     correctAnswer: `A`,
     explanation: `Ein Volltilgerdarlehen ist so konzipiert, dass die Darlehenssumme am Ende der Zinsbindungsfrist vollständig getilgt ist.`,
-  }
+  },
   {
     id: 815,
     moduleId: 1,
