@@ -15,11 +15,40 @@ export default function PortalAgentDashboard() {
   const [genTopic, setGenTopic] = useState("§34c GewO Erlaubnis");
   const [genModule, setGenModule] = useState(2);
   const [genDiff, setGenDiff] = useState("medium");
+  const [cronLog, setCronLog] = useState<string>("");
+  const [auditResult, setAuditResult] = useState<any>(null);
+  const [coachingData, setCoachingData] = useState<any>(null);
 
   useEffect(() => {
     fetch("/api/agent/health").then(r => r.json()).then(setHealth).catch(() => {});
     fetch("/api/agent/status").then(r => r.json()).then(setStatus).catch(() => {});
   }, []);
+
+  const runAudit = async () => {
+    setLoading(true);
+    try {
+      const r = await fetch("/api/agent/run-audit", { method: "POST" });
+      setAuditResult(await r.json());
+      // Log auch laden
+      const lr = await fetch("/api/agent/cron-log");
+      const ld = await lr.json();
+      setCronLog(ld.log || "");
+    } finally { setLoading(false); }
+  };
+
+  const loadCronLog = async () => {
+    const r = await fetch("/api/agent/cron-log");
+    const d = await r.json();
+    setCronLog(d.log || "");
+  };
+
+  const loadCoaching = async () => {
+    setLoading(true);
+    try {
+      const r = await fetch("/api/agent/coaching");
+      setCoachingData(await r.json());
+    } finally { setLoading(false); }
+  };
 
   const askAgent = async () => {
     if (!question.trim()) return;
@@ -111,6 +140,8 @@ export default function PortalAgentDashboard() {
             { id: "quality", label: "📋 Qualität" },
             { id: "legal", label: "⚖️ Recht" },
             { id: "memory", label: "🧠 Memory" },
+            { id: "cron", label: "🌙 Nacht-Cron" },
+            { id: "coaching", label: "👤 Coaching" },
           ].map(t => (
             <button key={t.id} onClick={() => setActiveTab(t.id as any)}
               className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all ${
@@ -416,6 +447,164 @@ export default function PortalAgentDashboard() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        )}
+
+        {/* CRON */}
+        {activeTab === "cron" && (
+          <div className="space-y-4">
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h3 className="font-bold text-slate-900">🌙 Nacht-Cron</h3>
+                  <p className="text-sm text-slate-500">Läuft täglich 02:00 Uhr — 240 Tage + User-Analyse</p>
+                </div>
+                <div className="flex gap-2">
+                  <button onClick={loadCronLog}
+                    className="bg-slate-200 text-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">
+                    📋 Log laden
+                  </button>
+                  <button onClick={runAudit} disabled={loading}
+                    className="bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-semibold disabled:opacity-50">
+                    {loading ? "⏳ Läuft..." : "▶️ Jetzt ausführen"}
+                  </button>
+                </div>
+              </div>
+
+              {auditResult && (
+                <div className="mb-4 grid grid-cols-3 gap-3">
+                  <div className="bg-green-50 rounded-xl p-3 text-center">
+                    <div className="text-2xl font-bold text-green-700">{auditResult.avgScore}/100</div>
+                    <div className="text-xs text-slate-500">Ø Score</div>
+                  </div>
+                  <div className="bg-blue-50 rounded-xl p-3 text-center">
+                    <div className="text-2xl font-bold text-blue-700">{auditResult.totalDays}</div>
+                    <div className="text-xs text-slate-500">Tage geprüft</div>
+                  </div>
+                  <div className="bg-red-50 rounded-xl p-3 text-center">
+                    <div className="text-2xl font-bold text-red-700">{auditResult.problemDays?.length || 0}</div>
+                    <div className="text-xs text-slate-500">Probleme</div>
+                  </div>
+                </div>
+              )}
+
+              {auditResult?.problemDays?.length > 0 && (
+                <div className="mb-4">
+                  <h4 className="font-semibold text-sm mb-2">⚠️ Problem-Tage</h4>
+                  <div className="max-h-48 overflow-y-auto space-y-1">
+                    {auditResult.problemDays.map((d: any, i: number) => (
+                      <div key={i} className={`flex items-center gap-3 text-xs p-2 rounded ${
+                        d.score < 60 ? "bg-red-50 text-red-800" : "bg-yellow-50 text-yellow-800"
+                      }`}>
+                        <span className="font-bold">M{d.module} T{d.day}</span>
+                        <span className="font-semibold">{d.score}/100</span>
+                        <span className="text-slate-500">{d.issues?.join(", ")}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {cronLog && (
+                <div>
+                  <h4 className="font-semibold text-sm mb-2">📋 Cron-Log</h4>
+                  <pre className="bg-slate-900 text-green-400 text-xs p-4 rounded-xl max-h-64 overflow-y-auto font-mono whitespace-pre-wrap">
+                    {cronLog}
+                  </pre>
+                </div>
+              )}
+
+              <div className="mt-4 bg-blue-50 rounded-xl p-4 text-sm text-blue-800">
+                <p className="font-semibold mb-1">⏰ Automatischer Zeitplan</p>
+                <p>Täglich 02:00 Uhr → 240 Tage Static-Check → User-Coaching → Memory aktualisiert</p>
+                <p className="mt-1 text-xs text-blue-600">Mit KI-Analyse: Manuell via Terminal: <code className="bg-blue-100 px-1 rounded">python3 audit_agent.py</code></p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* COACHING */}
+        {activeTab === "coaching" && (
+          <div className="space-y-4">
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h3 className="font-bold text-slate-900">👤 User-Coaching</h3>
+                  <p className="text-sm text-slate-500">KI analysiert jeden User — Risiko, Streak, Empfehlung</p>
+                </div>
+                <button onClick={loadCoaching} disabled={loading}
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold disabled:opacity-50">
+                  {loading ? "⏳" : "🔄 Laden"}
+                </button>
+              </div>
+
+              {!coachingData ? (
+                <div className="bg-slate-50 rounded-xl p-8 text-center text-slate-400 text-sm">
+                  <div className="text-4xl mb-3">👤</div>
+                  <p>Klicke "Laden" um Coaching-Profile zu sehen.</p>
+                  <p className="text-xs mt-1">Wird täglich 02:00h automatisch aktualisiert.</p>
+                </div>
+              ) : coachingData.profiles?.length === 0 ? (
+                <div className="bg-yellow-50 rounded-xl p-4 text-yellow-800 text-sm">
+                  ⚠️ Noch keine aktiven User in den letzten 30 Tagen gefunden.
+                </div>
+              ) : (
+                <div>
+                  <div className="grid grid-cols-3 gap-3 mb-4">
+                    {[
+                      { label: "Gesamt User", value: coachingData.totalUsers, color: "blue" },
+                      { label: "Hohes Risiko", value: coachingData.profiles?.filter((p: any) => p.riskLevel === "high").length || 0, color: "red" },
+                      { label: "Auf Kurs", value: coachingData.profiles?.filter((p: any) => p.riskLevel === "low").length || 0, color: "green" },
+                    ].map(s => (
+                      <div key={s.label} className={`bg-${s.color}-50 rounded-xl p-3 text-center`}>
+                        <div className={`text-2xl font-bold text-${s.color}-700`}>{s.value}</div>
+                        <div className="text-xs text-slate-500">{s.label}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="space-y-3 max-h-96 overflow-y-auto">
+                    {coachingData.profiles?.map((p: any) => (
+                      <div key={p.userId} className={`p-4 rounded-xl border-2 ${
+                        p.riskLevel === "high" ? "border-red-200 bg-red-50" :
+                        p.riskLevel === "medium" ? "border-yellow-200 bg-yellow-50" :
+                        "border-green-200 bg-green-50"
+                      }`}>
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center gap-2">
+                            <span className="font-bold text-sm">
+                              {p.riskLevel === "high" ? "🔴" : p.riskLevel === "medium" ? "🟡" : "🟢"}
+                              {" "}User #{p.userId}
+                            </span>
+                            {p.badges?.map((b: string) => (
+                              <span key={b} className="text-xs bg-white px-1.5 py-0.5 rounded-full border">{b}</span>
+                            ))}
+                          </div>
+                          <div className="flex gap-3 text-xs text-slate-600">
+                            <span>🔥 {p.streak} Tage</span>
+                            <span>📚 {p.completedDays} Tage</span>
+                            <span>🎯 {p.examAvgScore}%</span>
+                          </div>
+                        </div>
+                        <p className="text-sm font-medium mb-1">{p.recommendation}</p>
+                        <p className="text-xs text-slate-600">👉 {p.nextAction}</p>
+                        {p.weakTopics?.length > 0 && (
+                          <div className="mt-2 flex gap-1 flex-wrap">
+                            {p.weakTopics.map((t: string) => (
+                              <span key={t} className="text-xs bg-white px-1.5 py-0.5 rounded border text-slate-600">{t}</span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+
+                  <p className="text-xs text-slate-400 mt-3">
+                    Erstellt: {coachingData.generatedAt ? new Date(coachingData.generatedAt).toLocaleString("de-DE") : "–"}
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         )}
