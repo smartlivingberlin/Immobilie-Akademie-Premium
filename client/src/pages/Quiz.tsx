@@ -174,17 +174,19 @@ export default function Quiz() {
         <div className="max-w-2xl mx-auto px-4">
           <div className="mb-6">
             <div className="flex justify-between text-sm text-slate-600 mb-2">
-              <span>Frage {currentIdx + 1} von {questions.length}</span>
-              <span className="font-medium text-green-600">{answers.filter(a => a.correct).length} richtig</span>
+              <span className="font-semibold">Frage {currentIdx + 1} von {questions.length}</span>
+              <span className="font-medium text-green-600">✓ {answers.filter(a => a.correct).length} richtig</span>
             </div>
             <Progress value={(currentIdx / questions.length) * 100} className="h-2" />
           </div>
           <Card>
             <CardHeader>
-              <div className="flex gap-2 flex-wrap mb-2">
+              <div className="flex gap-2 flex-wrap mb-3 items-center">
                 <Badge variant="outline" className="text-xs">M{q.moduleId}</Badge>
-                <Badge variant="outline" className="text-xs">{q.category}</Badge>
-                <Badge variant={q.difficulty === "easy" ? "secondary" : q.difficulty === "hard" ? "destructive" : "default"} className="text-xs">
+                <Badge variant="outline" className="text-xs">{q.category.replace("[OFFEN] ","")}</Badge>
+                <Badge 
+                  variant="outline" 
+                  className={`text-xs font-medium ${q.difficulty === "easy" ? "border-green-400 text-green-700" : q.difficulty === "hard" ? "border-red-400 text-red-700" : "border-blue-400 text-blue-700"}`}>
                   {getDiffLabel(q.difficulty)}
                 </Badge>
               </div>
