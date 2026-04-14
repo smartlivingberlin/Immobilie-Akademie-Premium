@@ -4,23 +4,25 @@ export function InspectBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // Cookie oder URL-Parameter
     const hasCookie = document.cookie.includes("inspect_mode=");
-    const hasParam = window.location.search.includes("inspect=1");
+    const hasParam  = window.location.search.includes("inspect=1");
+    const hasSession = sessionStorage.getItem("inspect_mode") === "1";
+
     if (hasParam && !hasCookie) {
-      // Setze Cookie für weitere Navigation
       document.cookie = "inspect_mode=1; path=/; max-age=" + (72*60*60) + "; samesite=lax";
-    }
-    setVisible(hasCookie || hasParam);
-    
-    // Behalte inspect=1 Parameter bei Navigation
-    if (hasParam) {
       sessionStorage.setItem("inspect_mode", "1");
     }
-    if (sessionStorage.getItem("inspect_mode") === "1") {
-      setVisible(true);
-    }
+    setVisible(hasCookie || hasParam || hasSession);
   }, []);
+
+  function exitDemo() {
+    // Cookie löschen
+    document.cookie = "inspect_mode=; path=/; max-age=0; samesite=lax";
+    // SessionStorage löschen
+    sessionStorage.removeItem("inspect_mode");
+    // Seite neu laden → normaler Modus
+    window.location.href = "/";
+  }
 
   if (!visible) return null;
 
@@ -32,7 +34,7 @@ export function InspectBanner() {
         top: 0, left: 0, right: 0,
         background: "#fbbf24",
         color: "#78350f",
-        padding: "12px 16px",
+        padding: "10px 16px",
         fontSize: 13,
         fontWeight: 600,
         textAlign: "center",
@@ -54,6 +56,23 @@ export function InspectBanner() {
           marginLeft: 8,
           fontWeight: 700
         }}>DEMO</span>
+        <button
+          onClick={exitDemo}
+          style={{
+            marginLeft: 16,
+            background: "#78350f",
+            color: "#fef3c7",
+            border: "none",
+            borderRadius: 4,
+            padding: "3px 12px",
+            fontSize: 11,
+            fontWeight: 700,
+            cursor: "pointer"
+          }}
+          title="Vorschau-Modus beenden"
+        >
+          ✕ Demo verlassen
+        </button>
       </div>
     </>
   );
