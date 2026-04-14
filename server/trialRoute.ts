@@ -58,7 +58,7 @@ async function sendTrialEmail(name: string, email: string, code: string, hours: 
     <h2 style="color:#0f1f3d;margin:0 0 16px">Hallo ${name}! 👋</h2>
     <p style="color:#475569;line-height:1.7;margin:0 0 24px">
       Ihr <strong>${hours}-Stunden-Testzugang</strong> zum vollständigen Portal ist bereit.
-      Alle 5 Module, KI-Tutor, 810 Prüfungsfragen — jetzt kostenlos testen.
+      Alle 5 Module, KI-Tutor, 580 geprüfte IHK-Fragen — jetzt kostenlos testen.
     </p>
     <div style="background:#f1f5f9;border-radius:8px;padding:24px;text-align:center;margin:0 0 24px">
       <p style="color:#64748b;font-size:13px;margin:0 0 8px;text-transform:uppercase;letter-spacing:1px">Ihr Zugangscode</p>
@@ -76,7 +76,7 @@ async function sendTrialEmail(name: string, email: string, code: string, hours: 
       <ul style="color:#64748b;font-size:14px;line-height:2;margin:0;padding-left:20px">
         <li>📖 Alle 5 Module mit 240 Lerntagen</li>
         <li>🤖 KI-Tutor (Gemini 2.5 Flash)</li>
-        <li>🎓 Prüfungs-Simulation (810 Fragen)</li>
+        <li>🎓 Prüfungs-Simulation (580 geprüfte IHK-Fragen)</li>
         <li>🔢 10 Praxis-Rechner</li>
         <li>🃏 Lernkarten, Fallstudien, Glossar</li>
         <li>📊 Gamification &amp; Zertifikate</li>
