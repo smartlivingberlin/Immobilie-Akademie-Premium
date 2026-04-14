@@ -76,3 +76,9 @@ export function registerOwnerRoutes(app: Express) {
     res.clearCookie("inspect_mode", { path: "/" });
     return res.redirect("/");
   });
+
+  // GET /inspect/exit → Beendet Inspect-Modus (löscht Cookie)
+  app.get("/inspect/exit", (req: Request, res: Response) => {
+    res.clearCookie("inspect_mode", { path: "/" });
+    return res.redirect("/");
+  });
