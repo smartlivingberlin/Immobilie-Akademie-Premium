@@ -187,11 +187,7 @@ function Router() {
         <Route path="/admin/nutzer"><AppLayout><AdminRoute component={UserManagement} /></AppLayout></Route>
         <Route path="/admin-2fa"><Admin2FA /></Route>
         <Route path="/admin"><AppLayout><AdminRoute component={AdminDashboard} /></AppLayout></Route>
-        <Route path="/owner-dashboard">
-          <Suspense fallback={<div>Lädt...</div>}>
-            <OwnerDashboard />
-          </Suspense>
-        </Route>
+        <Route path="/owner-dashboard"><AppLayout><AdminRoute component={OwnerDashboard} /></AppLayout></Route>
         <Route component={NotFound} />
       </Switch>
     </Suspense>
