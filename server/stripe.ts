@@ -120,5 +120,3 @@ stripeRouter.post("/api/stripe/checkout", async (req, res) => {
       return res.status(500).json({ error: e.message });
     }
   });
-
-}
