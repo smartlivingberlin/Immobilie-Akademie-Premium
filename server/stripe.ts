@@ -91,105 +91,27 @@ stripeRouter.post("/api/stripe/checkout", async (req, res) => {
     console.error("[Stripe] Checkout error:", err.message);
     res.status(500).json({ error: err.message });
   }
-});
-
-// Webhook — nach erfolgreicher Zahlung Module freischalten
-stripeRouter.post("/api/stripe/webhook", async (req, res) => {
-  const sig = req.headers["stripe-signature"] as string;
-  let event;
-
-  try {
-    event = stripe.webhooks.constructEvent(
-      req.body,
-      sig,
-      process.env.STRIPE_WEBHOOK_SECRET || ""
-    );
-  } catch (err: any) {
-    return res.status(400).json({ error: `Webhook Error: ${err.message}` });
-  }
-
-  if (event.type === "checkout.session.completed") {
-    const session = event.data.object as Stripe.Checkout.Session;
-    // Idempotenz: verhindert doppelte Freischaltung bei doppeltem Webhook
-    const paymentIntent = session.payment_intent as string;
-    if (paymentIntent) {
-      const processed = global._processedPayments || (global._processedPayments = new Set());
-      if (processed.has(paymentIntent)) {
-        console.log("[Stripe] Duplikat-Webhook ignoriert:", paymentIntent);
-        return res.json({ received: true });
-      }
-      processed.add(paymentIntent);
-    }
-    const email = session.customer_email;
-    const modules = session.metadata?.modules;
-
-    if (email && modules) {
-      try {
-        const { getDb } = await import("./db");
-        const { users } = await import("../drizzle/schema");
-        const { eq } = await import("drizzle-orm");
-        const db = await getDb();
-
-        const userList = await db.select().from(users).where(eq(users.email, email)).limit(1);
-        if (userList.length > 0) {
-          const user = userList[0];
-          const existing = (user.enabledModules || "").split(",").filter(Boolean);
-          const newMods = modules.split(",").filter(Boolean);
-          const merged = [...new Set([...existing, ...newMods])].sort().join(",");
-          await db.update(users).set({ enabledModules: merged }).where(eq(users.id, user.id));
-          console.log(`[Stripe] ✅ Modul freigeschaltet: ${email} → ${merged}`);
-          
-          // Bestätigungs-E-Mail via Resend
-          const resendKey = process.env.RESEND_API_KEY;
-          if (resendKey) {
-            fetch("https://api.resend.com/emails", {
-              method: "POST",
-              headers: {
-                "Authorization": `Bearer ${resendKey}`,
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                from: "Immobilien Akademie Smart <onboarding@resend.dev>",
-                to: [email],
-                subject: "✅ Dein Modul wurde freigeschaltet!",
-                html: `<h2>Herzlichen Glückwunsch!</h2><p>Dein Kauf war erfolgreich. Deine Module sind jetzt freigeschaltet.</p><p><a href="${process.env.APP_URL || "https://immobilie-akademie-production.up.railway.app"}/dashboard">Zum Portal →</a></p>`,
-              }),
-            })
-            .then(r => r.json())
-            .then(r => console.log("[Stripe] E-Mail gesendet:", r?.id || r))
-            .catch(e => console.log("[Stripe] E-Mail Fehler:", e.message));
-          }
-        } else {
-          console.log(`[Stripe] ⚠️ User nicht gefunden: ${email}`);
-        }
-      } catch (err: any) {
-        console.error("[Stripe] Webhook DB Fehler:", err.message);
-      }
-    }
-  }
-
-  res.json({ received: true });
-  // ── Bundle-Checkout-Pakete ─────────────────────────────────
+  // ── Bundle-Checkout-Pakete ──────────────────────────────────
   const BUNDLES: Record<string, { modules: number[], price: number, name: string }> = {
-    "starter":       { modules: [1,2],       price: 24900, name: "Starter-Paket (Modul 1+2)" },
-    "professional":  { modules: [1,2,3],     price: 36900, name: "Professional-Paket (Modul 1-3)" },
-    "complete":      { modules: [1,2,3,4,5], price: 59900, name: "Komplett-Paket (alle 5 Module)" },
+    "starter":      { modules: [1,2],       price: 24900, name: "Starter-Paket (M1+M2)" },
+    "professional": { modules: [1,2,3],     price: 36900, name: "Professional-Paket (M1-3)" },
+    "complete":     { modules: [1,2,3,4,5], price: 59900, name: "Komplett-Paket (alle 5)" },
   };
 
-  app.post("/api/stripe/bundle-:bundleId", async (req: Request, res: Response) => {
+  stripeRouter.post("/bundle-:bundleId", async (req: Request, res: Response) => {
     const { bundleId } = req.params;
     const bundle = BUNDLES[bundleId];
     if (!bundle) return res.status(404).json({ error: "Bundle nicht gefunden" });
     try {
-      const session = await stripeClient.checkout.sessions.create({
+      const session = await stripe.checkout.sessions.create({
         mode: "payment",
         line_items: [{ price_data: {
           currency: "eur",
           unit_amount: bundle.price,
           product_data: { name: bundle.name },
         }, quantity: 1 }],
-        success_url: req.headers.origin + "/zahlung-erfolgreich?bundle=" + bundleId,
-        cancel_url: req.headers.origin + "/pakete",
+        success_url: String(req.headers.origin) + "/zahlung-erfolgreich?bundle=" + bundleId,
+        cancel_url: String(req.headers.origin) + "/pakete",
         metadata: { bundle: bundleId, modules: bundle.modules.join(",") },
       });
       return res.json({ url: session.url });
