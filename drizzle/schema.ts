@@ -486,3 +486,39 @@ export const passwordResetTokens = mysqlTable("password_reset_tokens", {
   usedAt: timestamp("usedAt"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
+
+// ── Offene Fragen ─────────────────────────────────────────────
+export const openQuestions = mysqlTable("open_questions", {
+  id:              int("id").autoincrement().primaryKey(),
+  modulId:         int("modul_id").notNull(),
+  tagId:           int("tag_id").default(0),
+  frage:           text("frage").notNull(),
+  kontext:         text("kontext"),           // optionaler Hintergrundtext
+  musterloesung:   text("musterloesung").notNull(),
+  bewertungsSchema text("bewertungs_schema").notNull(), // JSON: Kriterien
+  maxPunkte:       int("max_punkte").default(10).notNull(),
+  zeitlimitMin:    int("zeitlimit_min").default(10).notNull(),
+  schwierigkeit:   varchar("schwierigkeit", { length: 10 }).default("mittel"),
+  kategorie:       varchar("kategorie", { length: 60 }).default("allgemein"),
+  aktiv:           boolean("aktiv").default(true),
+  erstelltAm:      timestamp("erstellt_am").defaultNow(),
+});
+
+export const openAnswers = mysqlTable("open_answers", {
+  id:           int("id").autoincrement().primaryKey(),
+  userId:       int("user_id").notNull(),
+  questionId:   int("question_id").notNull(),
+  antwort:      text("antwort").notNull(),
+  kiPunkte:     int("ki_punkte"),
+  kiGut:        text("ki_gut"),
+  kiFehlt:      text("ki_fehlt"),
+  kiVerbesserung: text("ki_verbesserung"),
+  kiRohinput:   text("ki_rohinput"),        // raw KI JSON für Debug
+  dauer:        int("dauer"),               // Sekunden
+  erstelltAm:   timestamp("erstellt_am").defaultNow(),
+});
+
+export type OpenQuestion    = typeof openQuestions.$inferSelect;
+export type InsertOpenQuestion = typeof openQuestions.$inferInsert;
+export type OpenAnswer      = typeof openAnswers.$inferSelect;
+export type InsertOpenAnswer   = typeof openAnswers.$inferInsert;
