@@ -21,7 +21,7 @@ import {
 // Import Content Data
 // [] — dynamisch geladen um Bundle zu reduzieren
 // // [] — dynamisch geladen um Bundle zu reduzieren
-// Placeholder for other modules if not yet fully exported in same structure
+// Alle Module werden dynamisch geladen
 // In a real scenario, we would import all module contents here.
 
 // Mocking other modules for search demonstration if not fully available in context
