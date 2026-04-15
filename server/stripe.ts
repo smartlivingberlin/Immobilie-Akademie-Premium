@@ -52,6 +52,18 @@ const PRODUCTS = [
     modules: "1,2,3,4,5",
   },
 ];
+// GET /api/stripe/products — Produktliste für Kurse-Seite
+stripeRouter.get("/api/stripe/products", (_req, res) => {
+  const formatted = PRODUCTS.map(p => ({
+    ...p,
+    priceFormatted: (p.price / 100).toLocaleString("de-DE", {
+      style: "currency", currency: "EUR"
+    }),
+  }));
+  res.json(formatted);
+});
+
+
 
 // Checkout Session erstellen
 stripeRouter.post("/api/stripe/checkout", async (req, res) => {
