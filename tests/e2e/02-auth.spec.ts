@@ -20,7 +20,7 @@ test.describe("🔐 Authentifizierung", () => {
     await page.waitForLoadState("networkidle");
     
     await page.fill('input[type="email"]', "admin@immobilie.de");
-    await page.fill('input[type="password"]', "Admin1234!");
+    await page.fill('input[type="password"]', "TestAdmin2026!");
     await page.click('button[type="submit"], button:has-text("Anmelden")');
     
     await page.waitForURL(/statistiken|dashboard/, { timeout: 10000 });
@@ -66,7 +66,7 @@ test.describe("🔐 Authentifizierung", () => {
     const response = await fetch(`${BASE}/api/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: "admin@immobilie.de", password: "Admin1234!" }),
+      body: JSON.stringify({ email: "admin@immobilie.de", password: "TestAdmin2026!" }),
     });
   });
 });
