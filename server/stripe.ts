@@ -177,4 +177,29 @@ stripeRouter.get("/api/stripe/products", (_req, res) => {
     ...p,
     priceFormatted: `${(p.price / 100).toFixed(2).replace(".", ",")} €`,
   })));
+// Bundle-Checkout-Sessions
+const BUNDLES: Record<string, { modules: number[], price: number, name: string }> = {
+  "bundle-starter":       { modules: [1,2],     price: 24900, name: "Starter-Paket (M1+M2)" },
+  "bundle-professional":  { modules: [1,2,3],   price: 36900, name: "Professional-Paket (M1-M3)" },
+  "bundle-complete":      { modules: [1,2,3,4,5], price: 59900, name: "Komplett-Paket (alle 5 Module)" },
+};
+
+app.post("/api/stripe/bundle-:bundleId", async (req: Request, res: Response) => {
+  const { bundleId } = req.params;
+  const bundle = BUNDLES[`bundle-${bundleId}`];
+  if (!bundle) return res.status(404).json({ error: "Bundle nicht gefunden" });
+  
+  const session = await stripe.checkout.sessions.create({
+    mode: "payment",
+    line_items: [{ price_data: {
+      currency: "eur", unit_amount: bundle.price,
+      product_data: { name: bundle.name },
+    }, quantity: 1 }],
+    success_url: `${req.headers.origin}/zahlung-erfolgreich?bundle=${bundleId}`,
+    cancel_url: `${req.headers.origin}/pakete`,
+    metadata: { bundle: bundleId, modules: bundle.modules.join(",") },
+  });
+  return res.json({ url: session.url });
 });
+
+}
