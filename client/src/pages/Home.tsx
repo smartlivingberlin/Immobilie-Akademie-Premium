@@ -62,7 +62,7 @@ export default function Home() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/modul/1">
+              <Link href="/kurs/modul-1-immobilien-grundkurs">
                 <div className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-blue-600 hover:bg-blue-700 text-white h-14 px-8 text-lg w-full sm:w-auto cursor-pointer">
                   Jetzt starten — ab 149 EUR <ArrowRight className="ml-2 h-5 w-5" />
                 </div>
@@ -211,7 +211,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Modul 1 */}
-            <Link href="/modul/1">
+            <Link href="/kurs/modul-1-immobilien-grundkurs">
               <Card className="h-full hover:shadow-xl transition-all duration-300 border-slate-200 cursor-pointer group">
                 <CardContent className="p-8">
                   <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -230,7 +230,7 @@ export default function Home() {
             </Link>
 
             {/* Modul 2 */}
-            <Link href="/modul/2">
+            <Link href="/kurs/modul-2-makler-34c">
               <Card className="h-full hover:shadow-xl transition-all duration-300 border-slate-200 cursor-pointer group">
                 <CardContent className="p-8">
                   <div className="w-14 h-14 rounded-2xl bg-amber-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -249,7 +249,7 @@ export default function Home() {
             </Link>
 
             {/* Modul 3 */}
-            <Link href="/modul/3">
+            <Link href="/kurs/modul-3-weg-verwalter">
               <Card className="h-full hover:shadow-xl transition-all duration-300 border-slate-200 cursor-pointer group ring-2 ring-blue-500/10">
                 <CardContent className="p-8">
                   <div className="w-14 h-14 rounded-2xl bg-indigo-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -268,7 +268,7 @@ export default function Home() {
             </Link>
 
             {/* Modul 4 */}
-            <Link href="/modul/4">
+            <Link href="/kurs/modul-4-gutachter">
               <Card className="h-full hover:shadow-xl transition-all duration-300 border-slate-200 cursor-pointer group">
                 <CardContent className="p-8">
                   <div className="w-14 h-14 rounded-2xl bg-emerald-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -287,7 +287,7 @@ export default function Home() {
             </Link>
 
             {/* Modul 5 */}
-            <Link href="/modul/5">
+            <Link href="/kurs/modul-5-34i-darlehensvermittler">
               <Card className="h-full hover:shadow-xl transition-all duration-300 border-slate-200 cursor-pointer group">
                 <CardContent className="p-8">
                   <div className="w-14 h-14 rounded-2xl bg-purple-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -431,7 +431,7 @@ export default function Home() {
                     <span className="text-slate-400">Zertifikate</span>
                   </li>
                 </ul>
-                <Link href="/modul/1">
+                <Link href="/kurs/modul-1-immobilien-grundkurs">
                   <div className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-transparent hover:bg-accent hover:text-accent-foreground w-full h-12 text-lg cursor-pointer">
                     Jetzt starten — ab 149 EUR
                   </div>
@@ -584,7 +584,7 @@ export default function Home() {
             Starten Sie jetzt Ihre Immobilien-Karriere und bereiten Sie sich gezielt auf die IHK-Sachkundeprüfung vor.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/modul/1">
+            <Link href="/kurs/modul-1-immobilien-grundkurs">
               <div className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary text-secondary-foreground hover:bg-secondary/80 h-14 px-8 text-lg cursor-pointer">
                 Jetzt starten <ArrowRight className="ml-2 h-5 w-5" />
               </div>
