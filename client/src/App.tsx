@@ -74,6 +74,7 @@ import ExamQuestion from "@/pages/ExamQuestion";
 import ExamResults from "@/pages/ExamResults";
 import { InspectBanner } from "@/components/InspectBanner";
 import { usePageTracking } from "@/hooks/useAnalytics";
+import PublicHeader from "@/components/layout/PublicHeader";
 import { CookieBanner } from "@/components/CookieBanner";
 const OwnerDashboard = lazy(() => import("@/pages/OwnerDashboard").then(m => ({ default: m.default })));
 
