@@ -23,6 +23,7 @@ const Flashcards = lazy(() => import("@/pages/Flashcards"));
 const ExposeTrainer = lazy(() => import("@/pages/ExposeTrainer"));
 const DokumentViewer = lazy(() => import("@/pages/DokumentViewer"));
 const ContentUpload = lazy(() => import("@/pages/admin/ContentUpload"));
+const KursPakete = lazy(() => import("@/pages/KursPakete"));
 const Kurse = lazy(() => import("@/pages/Kurse"));
 const ZahlungErfolgreich = lazy(() => import("@/pages/ZahlungErfolgreich"));
 const Widerruf = lazy(() => import("@/pages/Widerruf"));
@@ -72,6 +73,7 @@ import ExamMode from "@/pages/ExamMode";
 import ExamQuestion from "@/pages/ExamQuestion";
 import ExamResults from "@/pages/ExamResults";
 import { InspectBanner } from "@/components/InspectBanner";
+import { usePageTracking } from "@/hooks/useAnalytics";
 import { CookieBanner } from "@/components/CookieBanner";
 const OwnerDashboard = lazy(() => import("@/pages/OwnerDashboard").then(m => ({ default: m.default })));
 
@@ -120,6 +122,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
 }
 
 function Router() {
+  usePageTracking();
   return (
     <Suspense fallback={<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:"18px",color:"#64748b"}}>Laden...</div>}>
       <InspectBanner />
@@ -131,6 +134,7 @@ function Router() {
         <Route path="/reset-password"><PublicLayout><ResetPassword /></PublicLayout></Route>
         <Route path="/code-einloesen"><PublicLayout><RedeemCode /></PublicLayout></Route>
         <Route path="/konto-loeschen"><PublicLayout><DeleteAccount /></PublicLayout></Route>
+        <Route path="/pakete"><PublicLayout><KursPakete /></PublicLayout></Route>
         <Route path="/kurse"><PublicLayout><Kurse /></PublicLayout></Route>
         <Route path="/kurs/modul-1-immobilien-grundkurs"><PublicLayout><KursLanding slug="modul-1-immobilien-grundkurs" /></PublicLayout></Route>
         <Route path="/kurs/modul-2-makler-34c"><PublicLayout><KursLanding slug="modul-2-makler-34c" /></PublicLayout></Route>
