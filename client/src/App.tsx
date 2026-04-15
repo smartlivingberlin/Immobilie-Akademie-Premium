@@ -23,6 +23,7 @@ const Flashcards = lazy(() => import("@/pages/Flashcards"));
 const ExposeTrainer = lazy(() => import("@/pages/ExposeTrainer"));
 const DokumentViewer = lazy(() => import("@/pages/DokumentViewer"));
 const ContentUpload = lazy(() => import("@/pages/admin/ContentUpload"));
+const OpenQuizPage = lazy(() => import("@/pages/OpenQuizPage"));
 const KursPakete = lazy(() => import("@/pages/KursPakete"));
 const Kurse = lazy(() => import("@/pages/Kurse"));
 const ZahlungErfolgreich = lazy(() => import("@/pages/ZahlungErfolgreich"));
@@ -135,6 +136,7 @@ function Router() {
         <Route path="/reset-password"><PublicLayout><ResetPassword /></PublicLayout></Route>
         <Route path="/code-einloesen"><PublicLayout><RedeemCode /></PublicLayout></Route>
         <Route path="/konto-loeschen"><PublicLayout><DeleteAccount /></PublicLayout></Route>
+        <Route path="/offene-fragen/:modulId">{({ params }) => <AppLayout><OpenQuizPage modulId={Number(params?.modulId ?? 1)} /></AppLayout>}</Route>
         <Route path="/pakete"><PublicLayout><KursPakete /></PublicLayout></Route>
         <Route path="/kurse"><PublicLayout><Kurse /></PublicLayout></Route>
         <Route path="/kurs/modul-1-immobilien-grundkurs"><PublicLayout><KursLanding slug="modul-1-immobilien-grundkurs" /></PublicLayout></Route>

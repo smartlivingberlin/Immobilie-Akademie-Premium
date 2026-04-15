@@ -26,6 +26,7 @@ import { eq } from "drizzle-orm";
 import { invokeLLM } from "./_core/llm";
 import { storagePut } from "./storage";
 import { videoRouter } from "./videoRouter";
+import { openQuestionsRouter } from "./openQuestionsRouter";
 import { examRouter } from "./examRouter";
 import { pdfRouter } from "./pdfRouter";
 import { certificateRouter } from "./certificateRouter";
@@ -62,6 +63,7 @@ export const appRouter = router({
   system: systemRouter,
   videos: videoRouter,
   exam: examRouter,
+  openQuestions: openQuestionsRouter,
   pdf: pdfRouter,
   certificate: certificateRouter,
   quiz: quizRouter,
