@@ -48,7 +48,7 @@ const PRODUCTS = [
     id: "modul_komplett",
     name: "Komplett-Ausbildung: Alle 5 Module — Der komplette Immobilienprofi",
     description: "Die komplette Immobilienausbildung in einem Paket: Makler, Verwalter, Gutachter, Finanzierer — alles was der Markt verlangt. 240 Lerntage, 1920 UE, 5 Zertifikate, 814+ Prüfungsfragen, KI-Tutor. Einmalig kaufen, lebenslang nutzen.",
-    price: 149900,
+    price: 195500,
     modules: "1,2,3,4,5",
   },
 ];
@@ -106,10 +106,13 @@ stripeRouter.post("/api/stripe/checkout", async (req, res) => {
 });
 
   // ── Bundle-Checkout-Pakete ──────────────────────────────────
-  const BUNDLES: Record<string, { modules: number[], price: number, name: string }> = {
-    "starter":      { modules: [1,2],       price: 24900, name: "Starter-Paket (M1+M2)" },
-    "professional": { modules: [1,2,3],     price: 36900, name: "Professional-Paket (M1-3)" },
-    "complete":     { modules: [1,2,3,4,5], price: 59900, name: "Komplett-Paket (alle 5)" },
+  const BUNDLES: Record<string, { modules: number[], price: number, name: string, desc: string }> = {
+    "starter":      { modules:[1,2],       price:54900,  name:"Starter-Paket (M1+M2)",              desc:"Grundkurs + Makler §34c — Einstieg in die Immobilienvermittlung" },
+    "verwalter":    { modules:[1,3],       price:74900,  name:"Verwalter-Paket (M1+M3)",             desc:"Grundkurs + WEG-Verwalter — Hausverwaltung professionell" },
+    "makler-plus":  { modules:[1,2,5],     price:104900, name:"Makler-Plus (M1+M2+M5)",              desc:"Makler + Darlehensvermittler — Doppellizenz §34c + §34i" },
+    "profi":        { modules:[1,2,3],     price:119900, name:"Immobilienprofi (M1+M2+M3)",          desc:"Makler + Verwalter — die beliebteste Kombination" },
+    "gutachter":    { modules:[1,2,4],     price:99900,  name:"Gutachter-Paket (M1+M2+M4)",         desc:"Makler + Immobilienbewertung — Bewertung und Vermittlung" },
+    "komplett":     { modules:[1,2,3,4,5], price:195500, name:"Komplett-Ausbildung (alle 5 Module)", desc:"Alle 5 Berufsbilder — maximale Karrierechancen in der Immobilienwirtschaft" },
   };
 
   stripeRouter.post("/bundle-:bundleId", async (req: Request, res: Response) => {
