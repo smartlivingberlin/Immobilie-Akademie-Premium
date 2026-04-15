@@ -91,6 +91,8 @@ stripeRouter.post("/api/stripe/checkout", async (req, res) => {
     console.error("[Stripe] Checkout error:", err.message);
     res.status(500).json({ error: err.message });
   }
+});
+
   // ── Bundle-Checkout-Pakete ──────────────────────────────────
   const BUNDLES: Record<string, { modules: number[], price: number, name: string }> = {
     "starter":      { modules: [1,2],       price: 24900, name: "Starter-Paket (M1+M2)" },
