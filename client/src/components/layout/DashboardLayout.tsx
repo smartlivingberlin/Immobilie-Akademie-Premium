@@ -29,7 +29,7 @@ import {
   KeyRound,
   Film,
   BookText,
-  Upload} from "lucide-react";
+  Upload, FlaskConical, FileText} from "lucide-react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import Footer from "@/components/layout/Footer";
 import { useWhiteLabel } from "@/contexts/WhiteLabelContext";
@@ -76,10 +76,13 @@ const modulesWithAccess = allModules.map((m) => ({
   locked: !canAccessModule(m.id),
 }));
 
+const modulId = modulesWithAccess.find(m => !m.locked)?.id ?? 1;
 const navigation = [
   { name: "Startseite", href: "/", icon: Home },
   ...(user?.role === "admin" ? [{ name: "Nutzerverwaltung", href: "/admin/nutzer", icon: Home }] : []),
   ...modulesWithAccess.map((m) => ({ name: m.name, href: m.href, icon: m.icon, locked: m.locked })),
+  { name: "🔬 Praxis-Lab", href: `/offene-fragen/${modulId}`, icon: FlaskConical },
+  { name: "📄 Dokument-Werkstatt", href: `/dokument-werkstatt/${modulId}`, icon: FileText },
 ];
 
   // Determine sidebar background color (White-Label or default)
