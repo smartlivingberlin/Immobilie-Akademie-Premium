@@ -140,7 +140,7 @@ stripeRouter.post("/api/stripe/checkout", async (req, res) => {
 
 // ── Stripe Webhook (Kauf-Bestätigung → Modul freischalten) ──
 stripeRouter.post("/api/stripe/webhook",
-  require("express").raw({ type: "application/json" }),
+  (req: any, res: any, next: any) => { let data = ""; req.setEncoding("utf8"); req.on("data", (chunk: string) => { data += chunk; }); req.on("end", () => { (req as any).rawBody = data; req.body = data; next(); }) },
   async (req: Request, res: Response) => {
     const sig = req.headers["stripe-signature"];
     const secret = process.env.STRIPE_WEBHOOK_SECRET;
