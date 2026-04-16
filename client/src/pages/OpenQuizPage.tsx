@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { trpc } from "@/_core/trpc";
+import { trpc } from "@/lib/trpc";
 import { Brain, Clock, CheckCircle2, AlertCircle, ChevronRight, Trophy, RefreshCw } from "lucide-react";
 
 const MODUL_NAMES: Record<number, string> = {
