@@ -131,7 +131,26 @@ const aiLimiter = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
 });
-app.use("/api/ai", aiLimiter);
+
+// DSGVO-Consent Logging (Cookie-Banner)
+app.post("/api/consent", async (req: Request, res: Response) => {
+  try {
+    const { type, version, timestamp } = req.body;
+    const userId = (req as any).user?.id ?? null;
+    // Anonymes Logging auch ohne Login (für Cookie-Banner vor Registrierung)
+    await (await import("../db")).getDb().execute(
+      `INSERT INTO consent_log (userId, consentType, consentVersion, ipAddress)
+       VALUES (?, ?, ?, ?)`,
+      [userId ?? 0, type === "accepted" ? "marketing" : "revoked_marketing",
+       version ?? "2026-04", req.ip ?? ""]
+    );
+    res.json({ ok: true });
+  } catch {
+    res.json({ ok: true }); // Fehler still loggen, UX nicht blockieren
+  }
+});
+
+  app.use("/api/ai", aiLimiter);
 app.use("/api/auth/login", loginLimiter);
 app.use("/api/auth/register", loginLimiter);
   const server = createServer(app);
