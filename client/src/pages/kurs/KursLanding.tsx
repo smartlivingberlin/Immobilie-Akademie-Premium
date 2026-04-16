@@ -230,9 +230,16 @@ export default function KursLanding({ slug }: { slug: string }) {
   const zugang = ZUGANG[slug] || { monate: 6, verlaengerung: 2, versuche: 3 };
   const [, navigate] = useLocation();
   const [loading, setLoading] = useState(false);
+  const [widerrufsAkzeptiert, setWiderrufsAkzeptiert] = useState(false);
+  const [widerrufsError, setWiderrufsError] = useState(false);
   const { user } = useAuth({ required: false });
 
   const handleKaufen = async () => {
+    if (!widerrufsAkzeptiert) {
+      setWiderrufsError(true);
+      return;
+    }
+    setWiderrufsError(false);
     setLoading(true);
     try {
       const res = await fetch("/api/stripe/checkout", {

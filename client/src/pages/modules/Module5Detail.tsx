@@ -460,7 +460,20 @@ export default function Module5Detail() {
                         Vertiefen Sie Ihr Wissen mit professionellen Video-Tutorials. 
                         Ihr Fortschritt wird automatisch gespeichert.
                       </p>
-                      <VideoList moduleId={5} dayNumber={currentDayNum} />
+                      <div style={{
+                        background: "#faf5ff", border: "1px solid #e9d5ff",
+                        borderRadius: 12, padding: "24px", textAlign: "center"
+                      }}>
+                        <div style={{ fontSize: 40, marginBottom: 12 }}>🎬</div>
+                        <p style={{ fontWeight: 700, color: "#7c3aed", marginBottom: 6 }}>
+                          Video-Tutorials — demnächst verfügbar
+                        </p>
+                        <p style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.6 }}>
+                          Die Live-Webinar-Aufzeichnungen werden nach Start der ersten
+                          Staffel (geplant: Juni 2026) hier eingestellt.
+                          Bis dahin steht der KI-Tutor 24/7 zur Verfügung.
+                        </p>
+                      </div>
                     </div>
                   </TabsContent>
 

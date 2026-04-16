@@ -13,7 +13,7 @@ export default function AGB() {
           <p>
             (1) Diese Allgemeinen Geschäftsbedingungen (nachfolgend „AGB") gelten für alle Verträge über die 
             Nutzung des Online-Lernportals für Immobilienfachleute (nachfolgend „Portal" oder „Plattform"), 
-            das von [Firmenname] (nachfolgend „Anbieter") betrieben wird.
+            das von Immobilien Akademie Smart (Alisad Gadyri) (nachfolgend „Anbieter") betrieben wird.
           </p>
           <p>
             (2) Abweichende, entgegenstehende oder ergänzende Allgemeine Geschäftsbedingungen des Nutzers werden 
@@ -148,7 +148,7 @@ export default function AGB() {
             gesetzlichen Mehrwertsteuer.
           </p>
           <p>
-            (3) Die Zahlung erfolgt per [Zahlungsmethoden, z.B. Kreditkarte, PayPal, Überweisung]. Der 
+            (3) Die Zahlung erfolgt per Kreditkarte, Lastschrift, Apple Pay, Google Pay (via Stripe). Der 
             Rechnungsbetrag ist sofort nach Vertragsschluss fällig, sofern nichts anderes vereinbart wurde.
           </p>
           <p>
@@ -166,7 +166,7 @@ export default function AGB() {
             mit automatischer Verlängerung, sofern nicht gekündigt wird</li>
           </ul>
           <p>
-            (2) Abonnements können mit einer Frist von [z.B. 14 Tagen] zum Ende des jeweiligen 
+            (2) Abonnements können mit einer Frist von 14 Tagen zum Ende des jeweiligen 
             Abrechnungszeitraums gekündigt werden. Die Kündigung muss in Textform (z.B. per E-Mail) erfolgen.
           </p>
           <p>
@@ -197,7 +197,7 @@ export default function AGB() {
               Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsabschlusses.
             </p>
             <p>
-              Um Ihr Widerrufsrecht auszuüben, müssen Sie uns ([Firmenname], [Adresse], [E-Mail], [Telefon]) 
+              Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Immobilien Akademie Smart (Alisad Gadyri), Durlacher Str. 36, 10715 Berlin, info@immobilien-akademie-smart.de, wird ergänzt) 
               mittels einer eindeutigen Erklärung (z.B. ein mit der Post versandter Brief oder E-Mail) über Ihren 
               Entschluss, diesen Vertrag zu widerrufen, informieren.
             </p>
@@ -249,7 +249,7 @@ export default function AGB() {
           <p>
             (1) Der Anbieter erhebt, verarbeitet und nutzt personenbezogene Daten des Nutzers nur im Rahmen der 
             gesetzlichen Bestimmungen, insbesondere der Datenschutz-Grundverordnung (DSGVO) und des 
-            Telekommunikation-Telemedien-Datenschutz-Gesetzes (TTDSG).
+            Telekommunikation-Telemedien-Datenschutz-Gesetzes (TDDDG).
           </p>
           <p>
             (2) Nähere Informationen zur Datenverarbeitung finden sich in der Datenschutzerklärung, die auf der 
@@ -289,15 +289,7 @@ export default function AGB() {
             die dem wirtschaftlichen Zweck der unwirksamen Bestimmung am nächsten kommt.
           </p>
 
-          <p className="text-sm text-muted-foreground mt-8 pt-8 border-t border-slate-200">
-            <strong>Hinweis:</strong> Diese AGB sind eine Vorlage und müssen an die spezifischen Gegebenheiten 
-            des Anbieters angepasst werden. Die Platzhalter in [eckigen Klammern] sind durch die korrekten Angaben 
-            zu ersetzen. Es wird empfohlen, die AGB durch einen Rechtsanwalt prüfen zu lassen.
-          </p>
-
-          <p className="text-sm text-muted-foreground">
-            Quelle: Erstellt mit Unterstützung von e-recht24.de und angepasst für dieses Lernportal.
-          </p>
+          
         
               <div>
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">§ 4 Preise und Zahlungsbedingungen</h3>
