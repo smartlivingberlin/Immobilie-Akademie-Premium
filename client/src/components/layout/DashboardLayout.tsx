@@ -2,34 +2,7 @@ import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { Link, useLocation } from "wouter";
 import AIAssistant from "@/components/AIAssistant";
-import { 
-  BookOpen, 
-  GraduationCap, 
-  Home, 
-  LayoutDashboard, 
-  Settings, 
-  LogOut,
-  Menu,
-  X,
-  Search,
-  ChevronLeft,
-  ChevronRight,
-  Gavel,
-  Calculator,
-  FileText,
-  Sparkles,
-  HelpCircle,
-  Building2,
-  Award,
-  BarChart3,
-  Trophy,
-  Video,
-  ClipboardCheck,
-  Brain,
-  KeyRound,
-  Film,
-  BookText,
-  Upload, FlaskConical, FileText} from "lucide-react";
+import { BookOpen, GraduationCap, Home, LayoutDashboard, Settings, LogOut, Menu, X, Search, ChevronLeft, ChevronRight, Gavel, Calculator, FileText, Sparkles, HelpCircle, Building2, Award, BarChart3, Trophy, Video, ClipboardCheck, Brain, KeyRound, Film, BookText, Upload, FlaskConical } from "lucide-react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import Footer from "@/components/layout/Footer";
 import { useWhiteLabel } from "@/contexts/WhiteLabelContext";
