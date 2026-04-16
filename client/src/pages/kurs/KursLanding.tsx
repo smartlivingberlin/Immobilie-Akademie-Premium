@@ -312,6 +312,35 @@ export default function KursLanding({ slug }: { slug: string }) {
               ))}
             </div>
 
+              {/* §356 Abs. 5 BGB — Pflicht bei digitalen Inhalten */}
+              <div style={{
+                background: widerrufsError ? "#fef2f2" : "rgba(255,255,255,0.1)",
+                border: `1px solid ${widerrufsError ? "#fca5a5" : "rgba(255,255,255,0.2)"}`,
+                borderRadius: 10, padding: "12px 16px", marginBottom: 12
+              }}>
+                <label style={{ display:"flex", alignItems:"flex-start", gap:10, cursor:"pointer" }}>
+                  <input
+                    type="checkbox"
+                    checked={widerrufsAkzeptiert}
+                    onChange={e => { setWiderrufsAkzeptiert(e.target.checked); setWiderrufsError(false); }}
+                    style={{ marginTop:3, width:16, height:16, flexShrink:0, cursor:"pointer" }}
+                  />
+                  <span style={{ fontSize:12, color:"rgba(255,255,255,0.8)", lineHeight:1.5 }}>
+                    Ich stimme ausdrücklich zu, dass der Anbieter mit der Ausführung
+                    vor Ablauf der Widerrufsfrist beginnt und bestätige, dass ich
+                    dadurch mein Widerrufsrecht gemäß §356 Abs. 5 BGB verliere.{" "}
+                    <a href="/widerruf" target="_blank"
+                      style={{ color:"#93c5fd", textDecoration:"underline" }}>
+                      Widerrufsbelehrung
+                    </a>
+                  </span>
+                </label>
+                {widerrufsError && (
+                  <p style={{ color:"#fca5a5", fontSize:11, marginTop:4, marginLeft:26 }}>
+                    Bitte bestätigen Sie die Widerrufsbelehrung vor dem Kauf.
+                  </p>
+                )}
+              </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 onClick={handleKaufen}
@@ -450,6 +479,35 @@ export default function KursLanding({ slug }: { slug: string }) {
                 <span key={t} className="bg-white/10 text-white/80 px-4 py-2 rounded-full text-sm">{t}</span>
               ))}
             </div>
+              {/* §356 Abs. 5 BGB — Pflicht bei digitalen Inhalten */}
+              <div style={{
+                background: widerrufsError ? "#fef2f2" : "rgba(255,255,255,0.1)",
+                border: `1px solid ${widerrufsError ? "#fca5a5" : "rgba(255,255,255,0.2)"}`,
+                borderRadius: 10, padding: "12px 16px", marginBottom: 12
+              }}>
+                <label style={{ display:"flex", alignItems:"flex-start", gap:10, cursor:"pointer" }}>
+                  <input
+                    type="checkbox"
+                    checked={widerrufsAkzeptiert}
+                    onChange={e => { setWiderrufsAkzeptiert(e.target.checked); setWiderrufsError(false); }}
+                    style={{ marginTop:3, width:16, height:16, flexShrink:0, cursor:"pointer" }}
+                  />
+                  <span style={{ fontSize:12, color:"rgba(255,255,255,0.8)", lineHeight:1.5 }}>
+                    Ich stimme ausdrücklich zu, dass der Anbieter mit der Ausführung
+                    vor Ablauf der Widerrufsfrist beginnt und bestätige, dass ich
+                    dadurch mein Widerrufsrecht gemäß §356 Abs. 5 BGB verliere.{" "}
+                    <a href="/widerruf" target="_blank"
+                      style={{ color:"#93c5fd", textDecoration:"underline" }}>
+                      Widerrufsbelehrung
+                    </a>
+                  </span>
+                </label>
+                {widerrufsError && (
+                  <p style={{ color:"#fca5a5", fontSize:11, marginTop:4, marginLeft:26 }}>
+                    Bitte bestätigen Sie die Widerrufsbelehrung vor dem Kauf.
+                  </p>
+                )}
+              </div>
               <button
                 onClick={handleKaufen}
                 disabled={loading}
