@@ -495,7 +495,7 @@ export const openQuestions = mysqlTable("open_questions", {
   frage:           text("frage").notNull(),
   kontext:         text("kontext"),           // optionaler Hintergrundtext
   musterloesung:   text("musterloesung").notNull(),
-  bewertungsSchema text("bewertungs_schema").notNull(), // JSON: Kriterien
+  bewertungsSchema: text("bewertungs_schema").notNull(), // JSON: Kriterien
   maxPunkte:       int("max_punkte").default(10).notNull(),
   zeitlimitMin:    int("zeitlimit_min").default(10).notNull(),
   schwierigkeit:   varchar("schwierigkeit", { length: 10 }).default("mittel"),
