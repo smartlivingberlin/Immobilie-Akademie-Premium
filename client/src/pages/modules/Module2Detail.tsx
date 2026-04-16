@@ -3,20 +3,7 @@ import AudioPlayer from "@/components/AudioPlayer";
 import { useState, useRef, useEffect } from "react";
 import { Link, useRoute } from "wouter";
 import { useActivityHeartbeat } from "@/hooks/useActivityHeartbeat";
-import { 
-  ArrowLeft, 
-  BookOpen, 
-  CheckCircle2, 
-  FileText, 
-  Gavel,
-  Briefcase,
-  ChevronRight,
-  Lightbulb,
-  AlertTriangle,
-  ArrowRight,
-  Maximize2,
-  Minimize2
-} from "lucide-react";
+import { ArrowLeft, BookOpen, CheckCircle2, FileText, Gavel, Briefcase, ChevronRight, Lightbulb, AlertTriangle, ArrowRight, Maximize2, Minimize2, FlaskConical, Brain } from "lucide-react";
 import { AITutor } from "@/components/AITutor";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -356,7 +343,7 @@ export default function Module2Detail() {
             </CardHeader>
             <CardContent className="p-6 flex-1">
               <Tabs defaultValue="theory" className="w-full">
-                <TabsList className="grid w-full grid-cols-5 mb-8 bg-slate-100 p-1 rounded-xl">
+                <TabsList className="grid w-full grid-cols-6 mb-8 bg-slate-100 p-1 rounded-xl">
                   <TabsTrigger value="theory" className="data-[state=active]:bg-white data-[state=active]:text-blue-700 data-[state=active]:shadow-sm rounded-lg">
                     <BookOpen className="h-4 w-4 mr-2" />
                     Theorie
@@ -378,6 +365,10 @@ export default function Module2Detail() {
                       Videos
                     </TabsTrigger>
 
+                                  <TabsTrigger value="praxislab" className="data-[state=active]:bg-white data-[state=active]:text-violet-700 data-[state=active]:shadow-sm rounded-lg">
+                    <FlaskConical className="h-4 w-4 mr-2" />
+                    Praxis-Lab
+                  </TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="theory" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
