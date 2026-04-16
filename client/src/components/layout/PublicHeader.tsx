@@ -11,6 +11,7 @@ export default function PublicHeader() {
     { href: "/lehrplan", label: "Lehrplan" },
     { href: "/rechner", label: "Rechner" },
     { href: "/hilfe", label: "Hilfe" },
+    { href: "/offene-fragen/1", label: "🔬 Praxis-Lab" },
   ];
 
   return (
