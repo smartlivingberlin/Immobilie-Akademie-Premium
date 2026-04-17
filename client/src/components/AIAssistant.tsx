@@ -122,14 +122,13 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
     }
     const clean = text.replace(/#{1,3} /g, "").replace(/[*`]/g, "").replace(/---/g, "").slice(0, 300).trim();
     setSpeaking(true);
-    const elevenKey = import.meta.env.VITE_ELEVENLABS_API_KEY;
+    // ElevenLabs API-Key wurde auf Server-Proxy verlagert (/api/tts)
     if (elevenKey) {
       try {
         const voiceId = "pNInz6obpgDQGcFmaJgB";
-        const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+        const res = await fetch(`/api/tts`, {
           method: "POST",
           headers: {
-            "xi-api-key": elevenKey,
             "Content-Type": "application/json",
             "Accept": "audio/mpeg",
           },

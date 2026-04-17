@@ -67,6 +67,12 @@ stripeRouter.get("/api/stripe/products", (_req, res) => {
 
 // Checkout Session erstellen
 stripeRouter.post("/api/stripe/checkout", async (req, res) => {
+    const { widerrufsAkzeptiert } = req.body;
+    if (!widerrufsAkzeptiert) {
+      return res.status(400).json({
+        error: "Widerrufsrecht-Einwilligung erforderlich (§356 Abs. 5 BGB)"
+      });
+    }
   try {
     const { productId, userEmail } = req.body;
     const product = PRODUCTS.find((p) => p.id === productId);

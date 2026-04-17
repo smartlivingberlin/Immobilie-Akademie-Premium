@@ -132,6 +132,27 @@ const aiLimiter = rateLimit({
   legacyHeaders: false,
 });
 
+
+// ── ElevenLabs TTS-Proxy (API-Key nur server-seitig) ──────────────
+app.post("/api/tts", async (req: Request, res: Response) => {
+  const { text, voiceId = "21m00Tcm4TlvDq8ikWAM" } = req.body;
+  const apiKey = process.env.ELEVENLABS_API_KEY;
+  if (!apiKey) return res.status(503).json({ error: "TTS nicht konfiguriert" });
+  if (!text || text.length > 500) return res.status(400).json({ error: "Text ungültig" });
+  try {
+    const r = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+      method: "POST",
+      headers: { "xi-api-key": apiKey, "Content-Type": "application/json" },
+      body: JSON.stringify({ text, model_id: "eleven_multilingual_v2",
+        voice_settings: { stability: 0.5, similarity_boost: 0.75 } }),
+    });
+    if (!r.ok) return res.status(502).json({ error: "TTS-Fehler" });
+    res.setHeader("Content-Type", "audio/mpeg");
+    const buf = await r.arrayBuffer();
+    res.send(Buffer.from(buf));
+  } catch { res.status(502).json({ error: "TTS-Verbindungsfehler" }); }
+});
+
 // DSGVO-Consent Logging (Cookie-Banner)
 app.post("/api/consent", async (req: Request, res: Response) => {
   try {

@@ -701,17 +701,77 @@ Antworte im folgenden JSON-Format:
   }),
 
   account: router({
-    deleteMyAccount: protectedProcedure.mutation(async ({ ctx }) => {
-      const db = await (await import('./db')).getDb();
-      const { users, authCredentials, learningLogs, userSessions } = await import('../drizzle/schema');
-      const { eq } = await import('drizzle-orm');
+        deleteMyAccount: protectedProcedure.mutation(async ({ ctx }) => {
+      const { getDb } = await import('./db');
+      const db = await getDb();
+      const schema = await import('../drizzle/schema');
+      const { eq, inArray } = await import('drizzle-orm');
       const userId = ctx.user.id;
       const openId = ctx.user.openId;
-      await db.delete(learningLogs).where(eq(learningLogs.userId, userId));
-      await db.delete(userSessions).where(eq(userSessions.userId, userId));
-      await db.delete(authCredentials).where(eq(authCredentials.openId, openId));
-      await db.delete(users).where(eq(users.id, userId));
-      return { ok: true };
+
+      // 1. Chat-Messages (Kind von chat_conversations)
+      const convs = await db.select({ id: schema.chatConversations.id })
+        .from(schema.chatConversations)
+        .where(eq(schema.chatConversations.userId, userId));
+      if (convs.length > 0) {
+        const convIds = convs.map((c: any) => c.id);
+        await db.delete(schema.chatMessages)
+          .where(inArray(schema.chatMessages.conversationId, convIds));
+      }
+      await db.delete(schema.chatConversations)
+        .where(eq(schema.chatConversations.userId, userId));
+
+      // 2. Exam-Questions (Kind von exam_sessions)
+      const sessions = await db.select({ id: schema.examSessions.id })
+        .from(schema.examSessions)
+        .where(eq(schema.examSessions.userId, userId));
+      if (sessions.length > 0) {
+        const sessionIds = sessions.map((s: any) => s.id);
+        await db.delete(schema.examQuestions)
+          .where(inArray(schema.examQuestions.sessionId, sessionIds));
+      }
+      await db.delete(schema.examSessions)
+        .where(eq(schema.examSessions.userId, userId));
+      await db.delete(schema.examWeakTopics)
+        .where(eq(schema.examWeakTopics.userId, userId));
+
+      // 3. Activity Heartbeats
+      await db.delete(schema.activityHeartbeats)
+        .where(eq(schema.activityHeartbeats.userId, userId));
+
+      // 4. Open Answers
+      await db.delete(schema.openAnswers)
+        .where(eq(schema.openAnswers.userId, userId));
+
+      // 5. Certificates
+      await db.delete(schema.certificates)
+        .where(eq(schema.certificates.userId, userId));
+
+      // 6. Feedback + Complaints (falls userId-Feld existiert)
+      try {
+        await db.delete(schema.feedback)
+          .where(eq((schema.feedback as any).userId, userId));
+      } catch {}
+      try {
+        await db.delete(schema.complaints)
+          .where(eq((schema.complaints as any).userId, userId));
+      } catch {}
+
+      // 7. Consent-Log
+      await db.delete(schema.consentLog)
+        .where(eq(schema.consentLog.userId, userId));
+
+      // 8. Core-Daten (Reihenfolge: Kinder vor Eltern)
+      await db.delete(schema.learningLogs)
+        .where(eq(schema.learningLogs.userId, userId));
+      await db.delete(schema.userSessions)
+        .where(eq(schema.userSessions.userId, userId));
+      await db.delete(schema.authCredentials)
+        .where(eq(schema.authCredentials.openId, openId));
+      await db.delete(schema.users)
+        .where(eq(schema.users.id, userId));
+
+      return { ok: true, deleted: "Alle personenbezogenen Daten gemäß Art. 17 DSGVO gelöscht." };
     }),
   }),
 
