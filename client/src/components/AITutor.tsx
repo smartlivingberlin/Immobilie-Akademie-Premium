@@ -133,7 +133,7 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
       </div>
 
       {/* Messages */}
-      <ScrollArea className="flex-1 p-4" ref={scrollRef as any}>
+      <ScrollArea aria-live="polite" aria-atomic="false" aria-label="KI-Tutor Antworten" className="flex-1 p-4" ref={scrollRef as any}>
         <div className="space-y-3">
           {messages.map((msg) => (
             <div key={msg.id} className={`flex gap-2 ${msg.role === "user" ? "flex-row-reverse" : ""}`}>

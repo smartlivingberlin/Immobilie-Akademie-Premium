@@ -1,3 +1,4 @@
+import DOMPurify from "dompurify";
 import { useState, useRef, useEffect } from "react";
 import { X, Send, Bot, User, Loader2, Sparkles, ChevronDown, Mic, MicOff, Volume2, VolumeX, Paperclip } from "lucide-react";
 

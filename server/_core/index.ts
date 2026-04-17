@@ -173,7 +173,8 @@ app.post("/api/consent", async (req: Request, res: Response) => {
 
   app.use("/api/ai", aiLimiter);
 app.use("/api/auth/login", loginLimiter);
-app.use("/api/auth/register", loginLimiter);
+app.use("/api/auth/forgot-password", resetLimiter);
+app.use("/api/auth/register", registerLimiter);
   const server = createServer(app);
   // Configure body parser with larger size limit for file uploads
   app.use(cookieParser());
@@ -185,7 +186,7 @@ app.use("/api/auth/register", loginLimiter);
       origin.startsWith('http://127.0.0.1') ||
       origin.includes('.railway.app') ||
       origin.includes('immobilien-akademie') ||
-      origin.includes('netlify.app');
+      false; // TODO: Nach Domain-Kauf auf exakte Domain beschränken
     if (allowed || !origin) {
       res.setHeader('Access-Control-Allow-Origin', origin || '*');
       res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
