@@ -25,7 +25,7 @@ function createTransport() {
     secure: false,
     family: 4,
     auth: {
-      user: "alisadgadyri38@gmail.com",
+      user: process.env.SMTP_USER || "info@immobilien-akademie-smart.de",
       pass: process.env.GMAIL_APP_PASSWORD,
     },
     tls: {

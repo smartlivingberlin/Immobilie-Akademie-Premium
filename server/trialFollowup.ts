@@ -16,7 +16,7 @@ async function sendFollowupEmail(
       secure: false,
       family: 4,
       auth: {
-        user: "alisadgadyri38@gmail.com",
+        user: process.env.SMTP_USER || "info@immobilien-akademie-smart.de",
         pass: process.env.GMAIL_APP_PASSWORD,
       },
       tls: { rejectUnauthorized: false },
@@ -75,9 +75,7 @@ async function sendFollowupEmail(
 
 // Diese Funktion wird als Cron-Job aufgerufen
 export async function runTrialFollowupCron(): Promise<void> {
-  // SMTP deaktiviert bis Domain + eigene E-Mail
-  console.log("[TrialFollowup] Cron deaktiviert (kein SMTP)");
-  return;
+  // SMTP jetzt konfiguriert — Cron aktiv
   try {
   if (!RESEND_KEY) return;
   

@@ -88,8 +88,9 @@ export async function sendOTPEmail(email: string, code: string, name: string): P
     try {
       const nodemailer = await import("nodemailer");
       const transporter = nodemailer.default.createTransport({
-        host: process.env.SMTP_HOST || "smtp.gmail.com",
-        port: 587,
+        host: process.env.SMTP_HOST || "smtps.udag.de",
+        port: Number(process.env.SMTP_PORT) || 465,
+        secure: true,
         auth: { user: smtpUser, pass: smtpPass },
       });
       
