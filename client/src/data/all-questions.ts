@@ -5751,7 +5751,7 @@ export const allQuestions: Question[] = [
     difficulty: `hard`,
     questionText: `Ein Immobilienmakler berechnet die Wohnfläche eines Mehrfamilienhauses. Der gemeinsame Hausflur wird mit 20 m² gemessen. Wie wird dieser bei der gesamten Wohnflächenberechnung behandelt?`,
     options: ["100% wird anteilig auf alle Wohnungen umgelegt", "50% wird anteilig auf alle Wohnungen umgelegt", "Der Hausflur wird nicht als Wohnfläche angerechnet", "25% wird anteilig auf alle Wohnungen umgelegt"],
-    correctAnswer: `c`,
+    correctAnswer: `C`,
     explanation: `Nach § 1 WoFlV gehören gemeine Räume (Hausflure, Treppenhäuser, die nicht zu einer einzelnen Wohnung gehören) nicht zur Wohnfläche einzelner Wohnungen. Sie sind gemeinsame Betriebsflächen.`,
   },
   {
@@ -6501,7 +6501,7 @@ export const allQuestions: Question[] = [
     difficulty: `easy`,
     questionText: `Nach §556d BGB darf der Vermieter die Miete bei einer Neuvermietung während der Mietpreisbremse um maximal wie viel Prozent über der vergleichbaren Miete liegen?`,
     options: ["10 Prozent", "15 Prozent", "20 Prozent", "5 Prozent"],
-    correctAnswer: `c`,
+    correctAnswer: `C`,
     explanation: `§556d Abs. 2 BGB begrenzt die Miete auf maximal 120% der vergleichbaren Miete in der Gemeinde. Dies sind 20 Prozent über der Vergleichsmiete.`,
   },
   {
@@ -8501,7 +8501,7 @@ export const allQuestions: Question[] = [
     moduleId: 5,
     category: `KfW Foerderung 2024`,
     difficulty: `medium`,
-    questionText: `Welches KfW-Programm foerdert 2024 den Einzelnen Austausch von Fenstern oder Heizungsanlagen?`,
+    questionText: `Welches KfW-Programm foerdert 2025 den Einzelnen Austausch von Fenstern oder Heizungsanlagen?`,
     options: ["KfW 263 Einzelmassnahmen", "KfW 268 Sanierungsbegleitung", "KfW 300 Energieberatung", "KfW 270 Industrie und Gewerbe"],
     correctAnswer: `A`,
     explanation: `Das KfW-Programm 263 foerdert gezielt Einzelmassnahmen wie Fensterwechsel oder Heizungsmodernisierung mit bis zu 50 Prozent Kostenuebernahme.`,

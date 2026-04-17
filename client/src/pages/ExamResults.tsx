@@ -110,6 +110,7 @@ export default function ExamResults() {
           <h1 className={`text-4xl font-bold mb-2 ${passed ? "text-green-900" : "text-red-900"}`}>
             {passed ? "Herzlichen Glückwunsch!" : "Leider nicht bestanden"}
           </h1>
+          <p className="text-sm text-slate-500 mt-2">Quiz bestanden ab 50% | Zertifikat wird ab 70% ausgestellt</p>
           <p className="text-lg text-slate-600">
             {passed 
               ? "Sie haben die Prüfung erfolgreich bestanden!" 

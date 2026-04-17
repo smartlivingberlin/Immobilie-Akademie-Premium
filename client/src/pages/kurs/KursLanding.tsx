@@ -22,7 +22,7 @@ const KURSE: Record<string, {
     zielgruppe: [
       "Quereinsteiger die in die Immobilienbranche einsteigen wollen",
       "Makler die ihr Grundlagenwissen auffrischen möchten",
-      "Umschüler mit Jobcenter-Förderung (AZAV)",
+      "Umschüler und Quereinsteiger (AZAV-Zulassung in Vorbereitung)",
       "Alle die §34c, WEG oder §34i anstreben",
     ],
     inhalte: [
@@ -49,7 +49,7 @@ const KURSE: Record<string, {
       { f: "Wie lange dauert das Lernen täglich?", a: "Empfohlen sind 30–60 Minuten täglich. Bei 45 Minuten pro Tag sind Sie in ca. 5–6 Wochen durch." },
     ],
     seo_title: "Immobilien Grundkurs online | IHK-Vorbereitung mit KI-Tutor",
-    seo_desc: "Der smarte Einstieg in die Immobilienwirtschaft: 20 Lerntage, 160 UE, KI-Tutor, Zertifikat. Jetzt für 149 EUR starten.",
+    seo_desc: "Der smarte Einstieg in die Immobilienwirtschaft: 20 Lerntage, 160 UE, KI-Tutor, Zertifikat. Jetzt für 149 EUR inkl. MwSt. starten.",
   },
   "modul-2-makler-34c": {
     id: "modul_2",
@@ -88,7 +88,7 @@ const KURSE: Record<string, {
       { f: "Wie viele Fragen hat die echte IHK-Prüfung?", a: "Die IHK-Prüfung hat typischerweise 72 Multiple-Choice-Fragen. Unser Prüfungsmodus simuliert genau dieses Format." },
     ],
     seo_title: "§34c GewO Prüfungsvorbereitung online | IHK Makler Sachkundeprüfung",
-    seo_desc: "Bestehen Sie die IHK-Sachkundeprüfung nach §34c GewO: 60 Lerntage, 480 UE, 300+ Prüfungsfragen, KI-Tutor. Jetzt für 499 EUR.",
+    seo_desc: "Bestehen Sie die IHK-Sachkundeprüfung nach §34c GewO: 60 Lerntage, 480 UE, 300+ Prüfungsfragen, KI-Tutor. Jetzt für 499 EUR inkl. MwSt..",
   },
   "modul-3-weg-verwalter": {
     id: "modul_3",
@@ -127,7 +127,7 @@ const KURSE: Record<string, {
       { f: "Brauche ich Vorwissen?", a: "Modul 1 als Grundlage wird empfohlen. Grundkenntnisse im deutschen Recht sind hilfreich aber nicht zwingend." },
     ],
     seo_title: "WEG-Verwalter Weiterbildung online | §26a WEG Pflichtfortbildung",
-    seo_desc: "Professionelle Hausverwaltung: WEG-Reform 2020, Mietrecht, Nebenkostenabrechnung. 80 Lerntage, 640 UE. Jetzt für 699 EUR.",
+    seo_desc: "Professionelle Hausverwaltung: WEG-Reform 2020, Mietrecht, Nebenkostenabrechnung. 80 Lerntage, 640 UE. Jetzt für 699 EUR inkl. MwSt..",
   },
   "modul-4-gutachter": {
     id: "modul_4",
@@ -166,7 +166,7 @@ const KURSE: Record<string, {
       { f: "Brauche ich Mathematik-Kenntnisse?", a: "Grundrechenarten reichen. Unser KI-Tutor erklärt jeden Rechenschritt verständlich, der integrierte Rechner hilft beim Üben." },
     ],
     seo_title: "Immobilienbewertung lernen online | ImmoWertV 2021 & HypZert Vorbereitung",
-    seo_desc: "Vergleichswert, Ertragswert, Sachwert nach ImmoWertV 2021: 40 Lerntage, 320 UE, HypZert-Vorbereitung. Jetzt für 399 EUR.",
+    seo_desc: "Vergleichswert, Ertragswert, Sachwert nach ImmoWertV 2021: 40 Lerntage, 320 UE, HypZert-Vorbereitung. Jetzt für 399 EUR inkl. MwSt..",
   },
   "modul-5-34i-darlehensvermittler": {
     id: "modul_5",
@@ -205,7 +205,7 @@ const KURSE: Record<string, {
       { f: "Gilt das als Weiterbildung nach §34i?", a: "Die Inhalte decken die gesetzliche Weiterbildungspflicht von 15 Stunden pro Jahr vollständig ab." },
     ],
     seo_title: "§34i GewO Prüfungsvorbereitung online | Darlehensvermittler IHK Kurs",
-    seo_desc: "Bestehen Sie die §34i IHK-Sachkundeprüfung: 40 Lerntage, 320 UE, KfW 2025, KI-Tutor. Jetzt für 499 EUR starten.",
+    seo_desc: "Bestehen Sie die §34i IHK-Sachkundeprüfung: 40 Lerntage, 320 UE, KfW 2025, KI-Tutor. Jetzt für 499 EUR inkl. MwSt. starten.",
   },
 };
 

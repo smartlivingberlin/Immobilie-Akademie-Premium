@@ -87,14 +87,14 @@ export default function KursPakete() {
     <div style={{ minHeight: "100vh", background: "#f8fafc" }}>
       <SEO
         title="Kurs-Pakete — Alle Module im Vorteilspaket | Immobilien Akademie"
-        description="Spare bis zu 290 EUR mit unseren Kurs-Paketen. 6 Kombinationen für jeden Karriereweg — IHK §34c, §34i, WEG-Verwalter, Gutachter."
+        description="Spare bis zu 290 EUR inkl. MwSt. mit unseren Kurs-Paketen. 6 Kombinationen für jeden Karriereweg — IHK §34c, §34i, WEG-Verwalter, Gutachter."
       />
 
       {/* Hero */}
       <div style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)", padding: "64px 20px 48px" }}>
         <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
           <div style={{ display:"inline-block", background:"rgba(37,99,235,0.2)", border:"1px solid rgba(96,165,250,0.4)", color:"#93c5fd", borderRadius:20, padding:"4px 16px", fontSize:12, fontWeight:700, marginBottom:20, letterSpacing:"0.08em" }}>
-            💰 VORTEILSPAKETE — BIS ZU 290 EUR SPAREN
+            💰 VORTEILSPAKETE — BIS ZU 290 EUR inkl. MwSt. SPAREN
           </div>
           <h1 style={{ fontSize:36, fontWeight:800, color:"#f8fafc", marginBottom:12, lineHeight:1.2 }}>
             Kurs-Pakete für jeden Karriereweg
@@ -105,8 +105,8 @@ export default function KursPakete() {
           </p>
           <div style={{ display:"flex", gap:24, justifyContent:"center", flexWrap:"wrap" }}>
             {[
-              { label:"Einzelpreise gesamt", value:"2.245 EUR" },
-              { label:"Bestes Paket spart", value:"290 EUR" },
+              { label:"Einzelpreise gesamt", value:"2.245 EUR inkl. MwSt." },
+              { label:"Bestes Paket spart", value:"290 EUR inkl. MwSt." },
               { label:"855 IHK-Fragen", value:"enthalten" },
             ].map(s => (
               <div key={s.label} style={{ textAlign:"center" }}>
