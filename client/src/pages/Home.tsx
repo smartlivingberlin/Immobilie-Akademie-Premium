@@ -32,7 +32,7 @@ const MODULE_DATA = [
     preis: 499,
     tage: 60, ue: 480,
     headline: "Die IHK-Sachkundeprüfung §34c GewO bestehen",
-    beschreibung: "Maklerrecht, Provision, Exposé-Pflichten, Kaufvertrag, Geldwäschegesetz, Bestellerprinzip — alles für die IHK-Sachkundeprüfung. Mit 300+ spezifischen Prüfungsfragen und Live-Webinaren.",
+    beschreibung: "Maklerrecht, Provision, Exposé-Pflichten, Kaufvertrag, Geldwäschegesetz, Bestellerprinzip — alles für die IHK-Sachkundeprüfung. Mit 300+ spezifischen Prüfungsfragen und geplanten Live-Webinaren (ab Sommer 2026).",
     inhalte: ["§34c GewO Erlaubnis & Voraussetzungen", "Maklervertrag & Provisionsrecht", "Bestellerprinzip seit 2020", "GwG: Geldwäscheprävention", "Exposé-Pflichtangaben EnEV/GEG", "Kaufvertragsrecht & Notar", "DSGVO im Maklerbetrieb", "300+ IHK-Prüfungsfragen"],
     fuer: "Angehende Makler, Quereinsteiger in die Vermittlung",
     keywords: "§34c GewO Prüfung, Immobilienmakler IHK, Makler Sachkunde, Makler Lizenz",
@@ -83,23 +83,23 @@ const PAKETE = [
   { id: "verwalter", name: "Verwalter-Paket", module: [1,3], preis: 749, einzeln: 848, tag: null, farbe: "#4338ca", emoji: "🏢" },
   { id: "gutachter", name: "Gutachter-Paket", module: [1,2,4], preis: 999, einzeln: 1047, tag: null, farbe: "#059669", emoji: "📊" },
   { id: "makler-plus", name: "Makler-Plus", module: [1,2,5], preis: 1049, einzeln: 1147, tag: "Doppellizenz", farbe: "#7c3aed", emoji: "🎯" },
-  { id: "profi", name: "Immobilienprofi", module: [1,2,3], preis: 1199, einzeln: 1347, tag: "Beliebtestes", farbe: "#dc2626", emoji: "⭐" },
+  { id: "profi", name: "Immobilienprofi", module: [1,2,3], preis: 1199, einzeln: 1347, tag: "Empfohlen", farbe: "#dc2626", emoji: "⭐" },
   { id: "komplett", name: "Komplett-Ausbildung", module: [1,2,3,4,5], preis: 1955, einzeln: 2245, tag: "Bestes Preis-Leistungs", farbe: "#d4a853", emoji: "👑" },
 ];
 
 const USPS = [
   { icon: "🧠", titel: "3 KI-Modelle als Tutor", text: "Claude, Gemini und Groq antworten sofort auf jede Fachfrage — 24/7, auf Deutsch, ohne Wartezeit. Wie ein privater Nachhilfelehrer." },
-  { icon: "📋", titel: "855+ IHK-Prüfungsfragen", text: "Alle Fragen im exakten IHK-Format (Multiple Choice, 4 Optionen). Mit ausführlicher Erklärung warum A richtig und B falsch ist." },
+  { icon: "📋", titel: "855+ IHK-orientierte Übungsfragen", text: "Alle Fragen am IHK-Format orientiert (Multiple Choice, 4 Optionen). Mit ausführlicher Erklärung warum A richtig und B falsch ist." },
   { icon: "🔬", titel: "Praxis-Lab & Dokumentenarbeit", text: "Offene Fragen mit KI-Bewertung. Echte Muster-Grundbuchauszüge, Kaufverträge, WEG-Protokolle zum Analysieren." },
   { icon: "📅", titel: "240 strukturierte Lerntage", text: "Kein Chaos, kein Raten. Täglich 30-45 Minuten, klarer Aufbau, messbarer Fortschritt. Wie ein Stundenplan — nur flexibler." },
-  { icon: "🏆", titel: "IHK-Prüfungssimulation", text: "Originalgetreues Prüfungsformat mit Zeitdruck, Auswertung und Schwächenanalyse. Weißt genau ob du bereit bist." },
+  { icon: "🏆", titel: "IHK-Prüfungssimulation", text: "IHK-orientiertes Prüfungsformat mit Zeitdruck, Auswertung und Schwächenanalyse. Weißt genau ob du bereit bist." },
   { icon: "📱", titel: "100% digital, 100% flexibel", text: "Browser auf PC, Mac, Tablet, Smartphone. Kein Download, kein Installationsaufwand. Überall lernen wo du bist." },
   { icon: "🔒", titel: "DSGVO-konform & sicher", text: "Server in der EU, verschlüsselte Verbindung, keine Datenweitergabe an Dritte. Geprüfte Datensicherheit." },
   { icon: "♾️", titel: "Lebenslanger Zugang", text: "Einmal kaufen, immer nutzen. Keine Abo-Falle, keine Verlängerungsgebühren. Das Material steht dir dauerhaft zur Verfügung." },
 ];
 
 const FAQ_ITEMS = [
-  { f: "Wie unterscheidet sich die Immobilien Akademie Smart von anderen Anbietern?", a: "Drei Alleinstellungsmerkmale: (1) Drei KI-Modelle als 24/7-Tutor — kein anderer Anbieter bietet das. (2) 855+ aktuelle IHK-Prüfungsfragen mit Erklärungen. (3) Praxis-Lab mit offenen Fragen und echter Dokumentenarbeit — das trainiert die mündliche IHK-Prüfung." },
+  { f: "Wie unterscheidet sich die Immobilien Akademie Smart von anderen Anbietern?", a: "Drei Alleinstellungsmerkmale: (1) Drei KI-Modelle als 24/7-Tutor — kaum ein anderer Anbieter bietet das. (2) 855+ IHK-orientierte Übungsfragen mit Erklärungen. (3) Praxis-Lab mit offenen Fragen und echter Dokumentenarbeit — das trainiert die mündliche IHK-Prüfung." },
   { f: "Bin ich nach dem Kurs wirklich auf die IHK-Prüfung vorbereitet?", a: "Ja — das ist unser Hauptziel. Die Prüfungssimulation ist eng am IHK-Format orientiert (Multiple Choice, 72 Fragen, Zeitlimit). Die offenen Fragen trainieren schriftliche Begründungsaufgaben. Unsere Inhalte orientieren sich am IHK-Stoffkatalog für §34c und §34i GewO." },
   { f: "Kann ich mehrere Module gleichzeitig belegen?", a: "Ja. Du kannst alle Module gleichzeitig kaufen (Komplett-Paket spart 290 EUR) oder einzeln nacheinander. Empfohlen: Modul 1 zuerst als Basis, dann die Fachmodule." },
   { f: "Wann ist die Weiterbildungspflicht nach MaBV relevant?", a: "Wenn du bereits §34c-Lizenz hast, musst du alle 3 Jahre 20 Stunden Weiterbildung nachweisen (§15b MaBV). Die Inhalte von Modul 1 + 2 decken die relevanten Themen ab. Für den offiziellen Nachweis gegenüber der IHK ist nach ZFU-Zulassung (beantragt) ein anerkanntes Zertifikat erforderlich." },
@@ -132,7 +132,7 @@ export default function Home() {
     <div style={s.page}>
       <SEO
         title="Immobilien Akademie Smart — IHK §34c §34i WEG-Verwalter Online-Vorbereitung"
-        description="Die beste Online-Vorbereitung für IHK-Sachkundeprüfungen in der Immobilienwirtschaft. §34c Makler, §34i Darlehensvermittler, WEG-Verwalter, Gutachter. 855+ Prüfungsfragen, KI-Tutor, 240 Lerntage. Ab 149 EUR."
+        description="Umfassende Online-Vorbereitung für IHK-Sachkundeprüfungen in der Immobilienwirtschaft. §34c Makler, §34i Darlehensvermittler, WEG-Verwalter, Gutachter. 855+ Prüfungsfragen, KI-Tutor, 240 Lerntage. Ab 149 EUR inkl. MwSt.."
         keywords="§34c GewO Prüfung, §34i GewO Kurs, WEG Verwalter Ausbildung, Immobilienmakler IHK, Darlehensvermittler Sachkunde, Immobilien Weiterbildung online, IHK Sachkundeprüfung vorbereitung"
       />
 
@@ -169,7 +169,7 @@ export default function Home() {
 
             {/* Trust-Zeile */}
             <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
-              {["✓ IHK-Prüfungsformat", "✓ KI-Tutor 24/7", "✓ Lebenslanger Zugang", "✓ Ab 149 EUR"].map(t => (
+              {["✓ IHK-Prüfungsformat", "✓ KI-Tutor 24/7", "✓ Lebenslanger Zugang", "✓ Ab 149 EUR inkl. MwSt."].map(t => (
                 <span key={t} style={{ fontSize: 13, color: "#64748b", fontWeight: 500 }}>{t}</span>
               ))}
             </div>
@@ -288,9 +288,9 @@ export default function Home() {
               return (
                 <div key={p.id} style={{
                   ...s.card,
-                  border: p.tag === "Beliebtestes" ? `2px solid ${p.farbe}` : "1px solid #e2e8f0",
+                  border: p.tag === "Empfohlen" ? `2px solid ${p.farbe}` : "1px solid #e2e8f0",
                   position: "relative",
-                  boxShadow: p.tag === "Beliebtestes" ? `0 8px 32px ${p.farbe}25` : s.card.boxShadow,
+                  boxShadow: p.tag === "Empfohlen" ? `0 8px 32px ${p.farbe}25` : s.card.boxShadow,
                 }}>
                   {p.tag && (
                     <div style={{
@@ -417,12 +417,12 @@ export default function Home() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
             {[
-              { ziel: "Du willst Makler werden", text: "§34c GewO Erlaubnis benötigt IHK-Sachkundeprüfung. Modul 1 + 2 bereiten dich vollständig vor. Starter-Paket: 549 EUR.", empfehlung: "Starter-Paket", href: "/pakete", icon: "🔑" },
+              { ziel: "Du willst Makler werden", text: "§34c GewO Erlaubnis benötigt IHK-Sachkundeprüfung. Modul 1 + 2 bereiten dich vollständig vor. Starter-Paket: 549 EUR inkl. MwSt..", empfehlung: "Starter-Paket", href: "/pakete", icon: "🔑" },
               { ziel: "Du willst WEG-Verwalter werden", text: "WEMoG 2020 hat neue Anforderungen gebracht. Modul 3 deckt alles ab — inkl. Pflichtweiterbildung §26a WEG.", empfehlung: "Verwalter-Paket", href: "/pakete", icon: "🏢" },
               { ziel: "Du willst Immobilienfinanzierer werden", text: "§34i GewO IHK-Sachkunde für Darlehensvermittler. Modul 5 bereitet gezielt vor — inkl. KfW 2025.", empfehlung: "Modul 5", href: "/kurs/modul-5-34i-darlehensvermittler", icon: "💶" },
               { ziel: "Du hast bereits §34c und willst Wert ermitteln", text: "ImmoWertV 2021, alle 3 Verfahren, HypZert-Vorbereitung. Modul 4 macht dich zum Gutachten-Profi.", empfehlung: "Gutachter-Paket", href: "/pakete", icon: "📊" },
               { ziel: "Du willst alle Lizenzen", text: "Makler + Verwalter + Gutachter + Finanzierung. Die Komplett-Ausbildung ist das vollständigste Immobilien-Bildungspaket am Markt.", empfehlung: "Komplett 1.955 €", href: "/pakete", icon: "👑" },
-              { ziel: "Du erfüllst MaBV-Weiterbildungspflicht", text: "Als bestehender §34c-Makler brauchst du alle 3 Jahre 20 Stunden. Modul 1 erfüllt die Pflicht vollständig.", empfehlung: "Modul 1: 149 €", href: "/kurs/modul-1-immobilien-grundkurs", icon: "📋" },
+              { ziel: "Du erfüllst MaBV-Weiterbildungspflicht", text: "Als bestehender §34c-Makler brauchst du alle 3 Jahre 20 Stunden. Modul 1 bereitet auf die MaBV-Pflichtweiterbildung vor.", empfehlung: "Modul 1: 149 €", href: "/kurs/modul-1-immobilien-grundkurs", icon: "📋" },
             ].map(z => (
               <div key={z.ziel} style={{ ...s.card, padding: 24 }}>
                 <div style={{ fontSize: 32, marginBottom: 12 }}>{z.icon}</div>

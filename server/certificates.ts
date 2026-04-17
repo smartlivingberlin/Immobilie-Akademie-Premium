@@ -69,7 +69,7 @@ export async function generateCertificatePDF(
   doc.setFontSize(14);
   doc.setTextColor(71, 85, 105);
   doc.setFont("helvetica", "normal");
-  doc.text("Immobilien-Bildungsportal", pageWidth / 2, 50, { align: "center" });
+  doc.text("Immobilien Akademie Smart", pageWidth / 2, 50, { align: "center" });
 
   // Divider line
   doc.setDrawColor(226, 232, 240);
@@ -129,8 +129,8 @@ export async function generateCertificatePDF(
   // Disclaimer (Pflicht auf JEDEM Zertifikat laut Protokoll Abschnitt 4.5)
   const disclaimerText =
     certType === "participation"
-      ? `Typ A – Teilnahmebescheinigung: Diese Bescheinigung bestätigt die erfolgreiche Bearbeitung der Lerneinheiten auf MaklerLern.de zur Vorbereitung auf die Sachkundeprüfung nach §34c/§34i/§26a. Sie ersetzt nicht die offizielle IHK-Prüfung. Ausgestellt von: Alisad Gadyri, IHK-Immobilienkaufmann (Berlin, 2023).`
-      : `Typ B – Abschlusszertifikat: Diese Bescheinigung bestätigt den erfolgreichen Abschluss der Prüfungssimulation auf MaklerLern.de (≥70%). Sie ersetzt nicht die offizielle IHK-Prüfung. Ausgestellt von: Alisad Gadyri, IHK-Immobilienkaufmann (Berlin, 2023).`;
+      ? `Typ A – Teilnahmebescheinigung: Diese Bescheinigung bestätigt die erfolgreiche Bearbeitung der Lerneinheiten auf immobilien-akademie-smart.de zur Vorbereitung auf die Sachkundeprüfung nach §34c/§34i/§26a. Sie ersetzt nicht die offizielle IHK-Prüfung. Ausgestellt von: Alisad Gadyri, IHK-Immobilienkaufmann (Berlin, 2023).`
+      : `Typ B – Abschlusszertifikat: Diese Bescheinigung bestätigt den erfolgreichen Abschluss der Prüfungssimulation auf immobilien-akademie-smart.de (≥70%). Sie ersetzt nicht die offizielle IHK-Prüfung. Ausgestellt von: Alisad Gadyri, IHK-Immobilienkaufmann (Berlin, 2023).`;
 
   doc.setFontSize(8);
   doc.setTextColor(148, 163, 184);

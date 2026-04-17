@@ -137,7 +137,7 @@ export default function Bildungskonzept() {
           <div className="grid grid-cols-2 gap-4 text-xs">
             {[
               ["Asynchrones Selbststudium", "Strukturierte Tages-Lerneinheiten, abrufbar jederzeit auf allen Geräten (Desktop, Tablet, Smartphone)"],
-              ["Synchroner Unterricht", "Live-Sessions via Zoom/Teams durch Alisad Gadyri (IHK-Immobilienkaufmann) — Mindestvoraussetzung für AZAV"],
+              ["Synchroner Unterricht", "Geplant: Live-Sessions via Zoom/Teams (nach ZFU-Zulassung) (IHK-Immobilienkaufmann) — Mindestvoraussetzung für AZAV"],
               ["KI-gestützter Tutor", "Gemini 2.0 Flash mit Modulwissensbasis — beantwortet Fachfragen paragraphengenau in Echtzeit"],
               ["Prüfungssimulation", "91 IHK-orientierte Fragen (M1: 20, M2: 17, M3: 17, M4: 22, M5: 15) mit sofortigem Feedback"],
               ["Praxisrechner", "9 interaktive Rechner (Maklercourtage, Mietrendite, Annuität, Nebenkostenabrechnung u.a.)"],
