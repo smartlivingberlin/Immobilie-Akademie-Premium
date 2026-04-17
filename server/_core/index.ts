@@ -141,7 +141,7 @@ app.post("/api/consent", async (req: Request, res: Response) => {
     await (await import("../db")).getDb().execute(
       `INSERT INTO consent_log (userId, consentType, consentVersion, ipAddress)
        VALUES (?, ?, ?, ?)`,
-      [userId ?? 0, type === "accepted" ? "marketing" : "revoked_marketing",
+      [userId ?? null, type === "accepted" ? "marketing" : "revoked_marketing",
        version ?? "2026-04", req.ip ?? ""]
     );
     res.json({ ok: true });
