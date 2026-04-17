@@ -1,112 +1,110 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 export default function Datenschutz() {
   return (
-    <div className="max-w-3xl mx-auto px-6 py-12">
-      <h1 className="text-3xl font-bold mb-8">Datenschutzerklärung</h1>
+    <div className="container mx-auto py-8 max-w-4xl">
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-3xl font-bold">Datenschutzerklärung</CardTitle>
+          <p className="text-sm text-muted-foreground mt-2">Stand: April 2026</p>
+        </CardHeader>
+        <CardContent className="prose prose-slate max-w-none space-y-6">
 
-      <section className="mb-6">
-        <h2 className="text-lg font-semibold mb-2">1. Verantwortlicher</h2>
-        <p className="text-slate-700">
-          Immobilien-Akademie GmbH<br />
-          Geschäftsführer: Alisad Gadyri<br />
-          [Adresse], Berlin<br />
-          E-Mail: info@immobilien-akademie.de
-        </p>
-      </section>
+          <h2>1. Verantwortliche Stelle</h2>
+          <p>
+            <strong>Alisad Gadyri</strong> (Inhaber: Immobilien Akademie Smart)<br />
+            Durlacher Str. 36, 10715 Berlin<br />
+            E-Mail: info@immobilien-akademie-smart.de
+          </p>
 
-      <section className="mb-6">
-        <h2 className="text-lg font-semibold mb-2">2. Erhobene Daten</h2>
-        <p className="text-slate-700">Wir erheben folgende personenbezogene Daten:</p>
-        <ul className="list-disc pl-6 mt-2 text-slate-700 space-y-1">
-          <li>Name und E-Mail-Adresse</li>
-          <li>Lernfortschritt und Kursdaten</li>
-          <li>Login-Zeitpunkte</li>
-          <li>Technische Daten (IP-Adresse, Browser)</li>
-        </ul>
-      </section>
+          <h2>2. Welche Daten wir erheben</h2>
+          <h3>2.1 Konto- und Registrierungsdaten</h3>
+          <p>E-Mail-Adresse, Passwort (PBKDF2-SHA256-Hash, nie im Klartext).
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
 
-      <section className="mb-6">
-        <h2 className="text-lg font-semibold mb-2">3. Zweck der Verarbeitung</h2>
-        <p className="text-slate-700">
-          Die Daten werden ausschließlich zur Bereitstellung der Lernplattform,
-          Kursverwaltung und Zertifizierung verwendet (Art. 6 Abs. 1 lit. b DSGVO).
-        </p>
-      </section>
+          <h3>2.2 Lernfortschritt (Server-seitig gespeichert)</h3>
+          <p><strong>Ihr Lernfortschritt wird auf unseren Servern gespeichert</strong> —
+          nicht nur lokal in Ihrem Browser. Dazu gehören: abgeschlossene Lerntage,
+          Quiz-Ergebnisse, Prüfungssimulationen, Lernzeiten, KI-Tutor-Gespräche.
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung).</p>
 
-      <section className="mb-6">
-        <h2 className="text-lg font-semibold mb-2">4. Speicherdauer</h2>
-        <p className="text-slate-700">
-          Daten werden gespeichert solange ein aktives Nutzerkonto besteht.
-          Nach Kontolöschung werden alle personenbezogenen Daten binnen 30 Tagen gelöscht.
-        </p>
-      </section>
+          <h3>2.3 Technische Zugriffsdaten</h3>
+          <p>IP-Adresse (anonymisiert nach 7 Tagen), Browser-Typ, Betriebssystem, Uhrzeit.
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.</p>
 
-      <section className="mb-6">
-        <h2 className="text-lg font-semibold mb-2">5. Drittanbieter</h2>
-        <ul className="list-disc pl-6 mt-2 text-slate-700 space-y-1">
-          <li><strong>Railway (USA)</strong> — Hosting (Standardvertragsklauseln gem. Art. 46 DSGVO)</li>
-          <li><strong>Resend</strong> — E-Mail-Versand (AVV vorhanden)</li>
-          <li><strong>Google Gemini API</strong> — KI-Tutor für Lernunterstützung (AVV gem. Art. 28 DSGVO vorhanden; Verarbeitung in der EU/USA mit Standardvertragsklauseln)</li>
-          <li><strong>Anthropic Claude API</strong> — KI-gestützte Inhaltsanalyse und Lernunterstützung (Verarbeitung in den USA; Standardvertragsklauseln gem. Art. 46 DSGVO; keine dauerhafte Speicherung von Nutzerdaten durch Anthropic laut DPA)</li>
-          <li><strong>Stripe Inc. (USA)</strong> — Zahlungsabwicklung (AVV vorhanden; PCI-DSS-zertifiziert; Standardvertragsklauseln gem. Art. 46 DSGVO)</li>
-          <li><strong>Groq (USA)</strong> — Sprachverarbeitung (Audio-Transkription); Standardvertragsklauseln gem. Art. 46 DSGVO</li>
-          <li><strong>ElevenLabs (USA)</strong> — Text-zu-Sprache für Lernmaterialien; Standardvertragsklauseln gem. Art. 46 DSGVO</li>
-        </ul>
-      </section>
+          <h2>3. Cookies</h2>
+          <ul>
+            <li><strong>app_session_id</strong> — technisch notwendig, 30 Tage, HTTP-only</li>
+            <li><strong>cookie_consent</strong> — speichert Ihre Cookie-Entscheidung</li>
+            <li><strong>Google Analytics 4</strong> — nur nach Einwilligung (Cookie-Banner)</li>
+          </ul>
 
-      <section className="mb-6">
-        <h2 className="text-lg font-semibold mb-2">6. KI-gestützte Dienste & Datenverarbeitung</h2>
-        <p className="text-slate-700 mb-2">
-          Diese Plattform nutzt KI-Dienste zur Lernunterstützung. Folgende Daten können dabei verarbeitet werden:
-        </p>
-        <ul className="list-disc pl-6 text-slate-700 space-y-1 mb-3">
-          <li><strong>Google Gemini API:</strong> Ihre Fragen und Lerneingaben werden zur Generierung von Antworten an Google übermittelt. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung). Google verarbeitet diese Daten gem. AVV nicht für eigene Zwecke.</li>
-          <li><strong>Anthropic Claude API:</strong> Für KI-gestützte Lernanalysen werden Lerninhalte (keine personenbezogenen Daten) übermittelt. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an Qualitätssicherung). Kein Profiling einzelner Nutzer.</li>
-          <li><strong>Keine dauerhafte KI-Speicherung:</strong> Beide KI-Anbieter nutzen übermittelte Daten nicht zum Training ihrer Modelle (vertraglich vereinbart).</li>
-        </ul>
-        <p className="text-slate-700">
-          Sie können die Nutzung KI-gestützter Funktionen jederzeit in den Einstellungen deaktivieren.
-        </p>
-      </section>
-      <section className="mb-6">
-        <h2 className="text-lg font-semibold mb-2">7. Zertifizierung & Qualitätssicherung (AZAV/ZFU)</h2>
-        <p className="text-slate-700 mb-2">
-          Immobilien Akademie Smart strebt die Anerkennung als förderungsfähige Bildungsmaßnahme an.
-          Im Rahmen von AZAV- und ZFU-Zertifizierungsverfahren können folgende Daten verarbeitet werden:
-        </p>
-        <ul className="list-disc pl-6 text-slate-700 space-y-1">
-          <li><strong>AZAV (Akkreditierungs- und Zulassungsverordnung Arbeitsförderung):</strong> Für die Anerkennung durch die Bundesagentur für Arbeit werden anonymisierte Teilnahme- und Abschlussdaten an akkreditierte Stellen übermittelt.</li>
-          <li><strong>ZFU (Zentralstelle für Fernunterricht):</strong> Für die ZFU-Zulassung als Fernlehrgang werden Kursinhalte und Lehrgangsstruktur geprüft. Personenbezogene Teilnehmerdaten werden dabei nicht übermittelt.</li>
-          <li>Rechtsgrundlage: Art. 6 Abs. 1 lit. c DSGVO (rechtliche Verpflichtung) sowie Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung).</li>
-        </ul>
-      </section>
-      <section className="mb-6">
-        <h2 className="text-lg font-semibold mb-2">8. Ihre Rechte</h2>
-        <ul className="list-disc pl-6 mt-2 text-slate-700 space-y-1">
-          <li>Auskunft (Art. 15 DSGVO)</li>
-          <li>Berichtigung (Art. 16 DSGVO)</li>
-          <li>Löschung (Art. 17 DSGVO) — über Konto-Einstellungen</li>
-          <li>Einschränkung (Art. 18 DSGVO)</li>
-          <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
-          <li>Widerspruch (Art. 21 DSGVO)</li>
-        </ul>
-      </section>
+          <h2>4. Drittanbieter</h2>
 
-      <section className="mb-6">
-        <h2 className="text-lg font-semibold mb-2">9. Cookies</h2>
-        <p className="text-slate-700">
-          Wir verwenden technisch notwendige Cookies für die Sitzungsverwaltung
-          sowie optionale Analyse-Cookies. Einstellungen jederzeit über den Cookie-Banner anpassbar.
-        </p>
-      </section>
+          <h3>4.1 Railway (Hosting & Datenbank)</h3>
+          <p>Railway Corp., USA. Server-Standort: Europe (europe-west4). Alle Nutzerdaten
+          und Lernfortschritte werden dort gespeichert. Art. 6 Abs. 1 lit. b + f DSGVO.
+          Nach EU-US Data Privacy Framework zertifiziert. railway.app/legal/privacy</p>
 
-      <section className="mb-6">
-        <h2 className="text-lg font-semibold mb-2">10. Beschwerderecht</h2>
-        <p className="text-slate-700">
-          Berliner Beauftragte für Datenschutz und Informationsfreiheit<br />
-          Friedrichstr. 219, 10969 Berlin<br />
-          E-Mail: mailbox@datenschutz-berlin.de
-        </p>
-      </section>
+          <h3>4.2 Stripe (Zahlungsabwicklung)</h3>
+          <p>Stripe, Inc., San Francisco, USA. Verarbeitet Zahlungsdaten.
+          Art. 6 Abs. 1 lit. b DSGVO. stripe.com/de/privacy</p>
+
+          <h3>4.3 Anthropic — Claude (KI-Tutor, primär)</h3>
+          <p>Anthropic, PBC, San Francisco, USA. Ihre Fragen im KI-Tutor werden
+          an Anthropic-Server übermittelt. <strong>Bitte keine personenbezogenen Daten Dritter
+          eingeben.</strong> Art. 6 Abs. 1 lit. b DSGVO. anthropic.com/privacy</p>
+
+          <h3>4.4 Google Gemini (KI-Tutor, Fallback)</h3>
+          <p>Google LLC, USA. Fallback für den KI-Tutor. Anfragen können an Google
+          übermittelt werden. Art. 6 Abs. 1 lit. b DSGVO. policies.google.com/privacy</p>
+
+          <h3>4.5 Groq (KI-Tutor, zweiter Fallback)</h3>
+          <p>Groq, Inc., Palo Alto, USA. Zweiter Fallback. Nutzeranfragen können
+          übermittelt werden. Art. 6 Abs. 1 lit. b DSGVO. groq.com/privacy</p>
+
+          <h3>4.6 Sentry (Fehler-Monitoring)</h3>
+          <p>Functional Software, Inc. (Sentry), San Francisco, USA. Bei technischen
+          Fehlern werden Fehlerberichte (IP-Adresse, Browser-Daten) übermittelt.
+          Art. 6 Abs. 1 lit. f DSGVO. sentry.io/privacy/</p>
+
+          <h3>4.7 api.qrserver.com (QR-Codes für Zertifikate)</h3>
+          <p>goQR.me / kaywa GmbH. Beim Zertifikat-Download wird eine kodierte
+          Zertifikat-ID (kein Name, keine E-Mail) übermittelt.
+          Art. 6 Abs. 1 lit. b DSGVO.</p>
+
+          <h3>4.8 Google Analytics 4 (nur mit Einwilligung)</h3>
+          <p>Google LLC, USA. Anonymisierte Nutzungsstatistiken. Nur nach Ihrer
+          ausdrücklichen Einwilligung über den Cookie-Banner aktiv.
+          Art. 6 Abs. 1 lit. a DSGVO + § 25 Abs. 1 TDDDG.</p>
+
+          <h2>5. Ihre Rechte (Art. 15–21 DSGVO)</h2>
+          <ul>
+            <li><strong>Auskunft</strong> (Art. 15): Auf Anfrage teilen wir mit, welche Daten wir speichern.</li>
+            <li><strong>Berichtigung</strong> (Art. 16): Falsche Daten werden korrigiert.</li>
+            <li><strong>Löschung</strong> (Art. 17): Unter /konto-loeschen können Sie alle Daten löschen.</li>
+            <li><strong>Einschränkung</strong> (Art. 18): Verarbeitung kann eingeschränkt werden.</li>
+            <li><strong>Datenübertragbarkeit</strong> (Art. 20): Export auf Anfrage per E-Mail.</li>
+            <li><strong>Widerspruch</strong> (Art. 21): Widerspruch gegen Verarbeitung möglich.</li>
+            <li><strong>Beschwerde</strong> (Art. 77): Berliner Beauftragter für Datenschutz,
+            Friedrichstr. 219, 10969 Berlin, mailbox@datenschutz-berlin.de</li>
+          </ul>
+
+          <h2>6. Speicherdauer</h2>
+          <p>Kontodaten: bis zur Konto-Löschung. Lernfortschritt: bis zur Konto-Löschung.
+          Server-Logs: max. 7 Tage. Zahlungsdaten: 10 Jahre (§ 147 AO).</p>
+
+          <h2>7. Datensicherheit</h2>
+          <p>SSL/TLS-Verschlüsselung (HTTPS). Passwörter: PBKDF2-SHA256 (100.000 Iterationen).
+          Session-Cookies: HTTP-only, nicht per JavaScript zugreifbar.</p>
+
+          <h2>8. Kontakt Datenschutz</h2>
+          <p>E-Mail: info@immobilien-akademie-smart.de<br />
+          (bis Domain-Aktivierung: Kontakt über das Portal-Beschwerdeformular unter /beschwerde)</p>
+
+          <p className="text-xs text-slate-400 mt-8">Stand: April 2026 | Immobilien Akademie Smart</p>
+        </CardContent>
+      </Card>
     </div>
   );
 }
