@@ -100,11 +100,11 @@ const USPS = [
 
 const FAQ_ITEMS = [
   { f: "Wie unterscheidet sich die Immobilien Akademie Smart von anderen Anbietern?", a: "Drei Alleinstellungsmerkmale: (1) Drei KI-Modelle als 24/7-Tutor — kein anderer Anbieter bietet das. (2) 855+ aktuelle IHK-Prüfungsfragen mit Erklärungen. (3) Praxis-Lab mit offenen Fragen und echter Dokumentenarbeit — das trainiert die mündliche IHK-Prüfung." },
-  { f: "Bin ich nach dem Kurs wirklich auf die IHK-Prüfung vorbereitet?", a: "Ja — das ist unser Hauptziel. Die Prüfungssimulation bildet das exakte IHK-Format ab. Die offenen Fragen trainieren die mündliche Prüfung. Unsere Inhalte decken den vollständigen IHK-Stoffkatalog ab." },
+  { f: "Bin ich nach dem Kurs wirklich auf die IHK-Prüfung vorbereitet?", a: "Ja — das ist unser Hauptziel. Die Prüfungssimulation ist eng am IHK-Format orientiert (Multiple Choice, 72 Fragen, Zeitlimit). Die offenen Fragen trainieren schriftliche Begründungsaufgaben. Unsere Inhalte orientieren sich am IHK-Stoffkatalog für §34c und §34i GewO." },
   { f: "Kann ich mehrere Module gleichzeitig belegen?", a: "Ja. Du kannst alle Module gleichzeitig kaufen (Komplett-Paket spart 290 EUR) oder einzeln nacheinander. Empfohlen: Modul 1 zuerst als Basis, dann die Fachmodule." },
-  { f: "Wann ist die Weiterbildungspflicht nach MaBV relevant?", a: "Wenn du bereits §34c-Lizenz hast, musst du alle 3 Jahre 20 Stunden Weiterbildung nachweisen (§15b MaBV). Modul 1 + 2 erfüllen diese Pflicht vollständig." },
+  { f: "Wann ist die Weiterbildungspflicht nach MaBV relevant?", a: "Wenn du bereits §34c-Lizenz hast, musst du alle 3 Jahre 20 Stunden Weiterbildung nachweisen (§15b MaBV). Die Inhalte von Modul 1 + 2 decken die relevanten Themen ab. Für den offiziellen Nachweis gegenüber der IHK ist nach ZFU-Zulassung (beantragt) ein anerkanntes Zertifikat erforderlich." },
   { f: "Kann ich das Portal über Bildungsgutschein oder Förderung finanzieren?", a: "Nach Abschluss unserer AZAV-Zertifizierung (in Vorbereitung) wird das Portal vollständig über Bildungsgutscheine der Bundesagentur für Arbeit förderbar. Selbstzahler können die Kosten steuerlich als Weiterbildungskosten absetzen." },
-  { f: "Gibt es Live-Webinare?", a: "Ja — regelmäßige Live-Webinare (Mo/Mi/Do/Fr ab 8:00 Uhr) ergänzen das Selbststudium. Alle Sessions werden aufgezeichnet und stehen danach im Portal zur Verfügung." },
+  { f: "Gibt es Live-Webinare?", a: "Live-Webinare sind ab Staffel 1 (geplant: Sommer 2026) geplant. Bis dahin steht der KI-Tutor 24/7 zur Verfügung — er beantwortet jede Fachfrage sofort, ohne Wartezeit." },
 ];
 
 const s: Record<string, React.CSSProperties> = {
