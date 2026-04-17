@@ -179,7 +179,7 @@ export default function Home() {
 
       {/* ── STATS ──────────────────────────────────────────────── */}
       <section style={{ ...s.sectionAlt, padding: "48px 20px" }}>
-        <div style={{ ...s.inner, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }}>
+        <div style={{ ...s.inner, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 24 }}>
           {STATS.map(stat => (
             <div key={stat.label} style={{ textAlign: "center", padding: "20px 12px" }}>
               <div style={{ fontSize: 44, fontWeight: 900, color: "#2563eb", lineHeight: 1, marginBottom: 6 }}>
@@ -281,7 +281,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 24 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16, marginBottom: 24 }}>
             {PAKETE.map(p => {
               const ersparnis = p.einzeln - p.preis;
               const pct = Math.round(ersparnis / p.einzeln * 100);
@@ -348,7 +348,7 @@ export default function Home() {
             <div style={s.sectionLabel}>Warum Immobilien Akademie Smart</div>
             <h2 style={s.sectionH2}>Das gibt es kein zweites Mal</h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 20 }}>
             {USPS.map(u => (
               <div key={u.titel} style={{ ...s.card, padding: 24 }}>
                 <div style={{ fontSize: 32, marginBottom: 12 }}>{u.icon}</div>
@@ -363,7 +363,7 @@ export default function Home() {
       {/* ── STORYTELLING LERNWEG ───────────────────────────────── */}
       <section style={{ ...s.sectionAlt }}>
         <div style={s.inner}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 40, alignItems: "center" }}>
             <div>
               <div style={s.sectionLabel}>So funktioniert es</div>
               <h2 style={s.sectionH2}>Von Null zur IHK-Prüfung in 48 Tagen</h2>
@@ -415,7 +415,7 @@ export default function Home() {
             <div style={s.sectionLabel}>Für wen ist das Portal?</div>
             <h2 style={s.sectionH2}>Dein Karriereziel — unser Programm</h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}>
             {[
               { ziel: "Du willst Makler werden", text: "§34c GewO Erlaubnis benötigt IHK-Sachkundeprüfung. Modul 1 + 2 bereiten dich vollständig vor. Starter-Paket: 549 EUR inkl. MwSt..", empfehlung: "Starter-Paket", href: "/pakete", icon: "🔑" },
               { ziel: "Du willst WEG-Verwalter werden", text: "WEMoG 2020 hat neue Anforderungen gebracht. Modul 3 deckt alles ab — inkl. Pflichtweiterbildung §26a WEG.", empfehlung: "Verwalter-Paket", href: "/pakete", icon: "🏢" },
