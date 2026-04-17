@@ -18,7 +18,6 @@ export default function OwnerDashboard() {
   const [inspectExpiry, setInspectExpiry] = useState<string | null>(null);
   const [inspectLoading, setInspectLoading] = useState(false);
   const [inspectCopied, setInspectCopied] = useState(false);
-  const OWNER_CODE = import.meta.env.VITE_OWNER_CODE || "";
   const BASE_URL = window.location.origin;
 
   const createInspectLink = async () => {
@@ -27,7 +26,7 @@ export default function OwnerDashboard() {
       const res = await fetch("/api/owner/inspect-token", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ key: OWNER_CODE }),
+        body: JSON.stringify({ key: "" }),
       });
       const data = await res.json();
       if (data.token) {
