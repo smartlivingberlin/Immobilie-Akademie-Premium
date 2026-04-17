@@ -1,4 +1,0 @@
-* main                  32bf67a [origin/main] fix: LoginPage komplett neu mit useRef - Browser-Autofill Problem behoben
-  remotes/origin/HEAD   -> origin/main
-  remotes/origin/main   32bf67a fix: LoginPage komplett neu mit useRef - Browser-Autofill Problem behoben
-  remotes/origin/master f2fdab1 Fix: exclude vite.config from production bundle

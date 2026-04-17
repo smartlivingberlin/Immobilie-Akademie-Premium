@@ -1,7 +1,0 @@
-=== 27. STRIPE ENVIRONMENT CHECK ===
-server/stripe.ts:1:import Stripe from "stripe";
-server/stripe.ts:4:const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-server/stripe.ts:8:export const stripeRouter = Router();
-server/stripe.ts:104:      process.env.STRIPE_WEBHOOK_SECRET || ""
-server/_core/index.ts:64:  if (process.env.STRIPE_SECRET_KEY) {
-server/_core/index.ts:65:    const { stripeRouter } = await import("../stripe");

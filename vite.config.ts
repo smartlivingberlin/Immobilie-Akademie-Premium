@@ -152,6 +152,7 @@ function vitePluginManusDebugCollector(): Plugin {
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), ...(process.env.NODE_ENV !== "production" ? [vitePluginManusDebugCollector()] : [])];
 
 export default defineConfig({
+  // _archive Verzeichnis aus Build ausschließen
   plugins,
   resolve: {
     alias: {
