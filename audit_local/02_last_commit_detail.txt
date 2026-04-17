@@ -1,9 +1,0 @@
-commit 32bf67a717955778072d5a328da756d1af05e02c
-Author:     Alisad Gadyri <alisadgadyri38@gmail.com>
-AuthorDate: Tue Mar 24 12:04:49 2026 +0100
-Commit:     Alisad Gadyri <alisadgadyri38@gmail.com>
-CommitDate: Tue Mar 24 12:04:49 2026 +0100
-
-    fix: LoginPage komplett neu mit useRef - Browser-Autofill Problem behoben
-
-client/src/pages/LoginPage.tsx

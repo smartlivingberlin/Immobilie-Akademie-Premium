@@ -145,3 +145,23 @@ ultimate_audit/
 deep_audit/
 *.png
 MASTER_FIX_PLAN.sh
+# Audit-Artefakte (lokal behalten, nicht ins Repo)
+audit_*/
+*_audit/
+complete_audit/
+correct_audit/
+deep_audit/
+mega_audit/
+stakeholder_audit/
+ultimate_audit/
+*.mjs
+repomix-output.txt
+scan_*.png
+projekt_paket*.md
+portal_scan_report.txt
+MASTER_FIX_PLAN.sh
+owner-panel.html
+audit_fixes.json
+audit_report.html
+audit_agent.py
+continue_audit.mjs
