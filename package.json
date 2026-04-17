@@ -172,7 +172,7 @@
       "drizzle-orm@<0.45.2": ">=0.45.2",
       "nodemailer@<=8.0.4": ">=8.0.5",
       "axios@<1.15.0": ">=1.15.0",
-      "path-to-regexp": "0.1.12",
+      "path-to-regexp": "0.1.13",
       "follow-redirects": ">=1.16.0"
     },
     "onlyBuiltDependencies": [
