@@ -89,7 +89,7 @@ const PAKETE = [
 
 const USPS = [
   { icon: "📋", titel: "855+ IHK-orientierte Übungsfragen", text: "Alle Fragen am IHK-Format orientiert (Multiple Choice, 4 Optionen). Mit ausführlicher Erklärung warum A richtig und B falsch ist." },
-  { icon: "📋", titel: "{stats.totalUsers > 100 ? stats.totalUsers + "+" : "855+"} IHK-orientierte Übungsfragen", text: "Alle Fragen am IHK-Format orientiert (Multiple Choice, 4 Optionen). Mit ausführlicher Erklärung warum A richtig und B falsch ist." },
+  { icon: "📋", titel: "855+ IHK-orientierte Übungsfragen", text: "Alle Fragen am IHK-Format orientiert (Multiple Choice, 4 Optionen). Mit ausführlicher Erklärung warum A richtig und B falsch ist." },
   { icon: "🔬", titel: "Praxis-Lab & Dokumentenarbeit", text: "Offene Fragen mit KI-Bewertung. Echte Muster-Grundbuchauszüge, Kaufverträge, WEG-Protokolle zum Analysieren." },
   { icon: "📅", titel: "240 strukturierte Lerntage", text: "Kein Chaos, kein Raten. Täglich 30-45 Minuten, klarer Aufbau, messbarer Fortschritt. Wie ein Stundenplan — nur flexibler." },
   { icon: "🏆", titel: "IHK-Prüfungssimulation", text: "IHK-orientiertes Prüfungsformat mit Zeitdruck, Auswertung und Schwächenanalyse. Weißt genau ob du bereit bist." },
@@ -99,7 +99,7 @@ const USPS = [
 ];
 
 const FAQ_ITEMS = [
-  { f: "Wie unterscheidet sich die Immobilien Akademie Smart von anderen Anbietern?", a: "Drei Alleinstellungsmerkmale: (1) Drei KI-Modelle als 24/7-Tutor — kaum ein anderer Anbieter bietet das. (2) {stats.totalUsers > 100 ? stats.totalUsers + "+" : "855+"} IHK-orientierte Übungsfragen mit Erklärungen. (3) Praxis-Lab mit offenen Fragen und echter Dokumentenarbeit — das trainiert die mündliche IHK-Prüfung." },
+  { f: "Wie unterscheidet sich die Immobilien Akademie Smart von anderen Anbietern?", a: "Drei Alleinstellungsmerkmale: (1) Drei KI-Modelle als 24/7-Tutor. (2) 855+ IHK-orientierte Übungsfragen mit Erklärungen. (3) Praxis-Lab mit offenen Fragen und echter Dokumentenarbeit." },
   { f: "Bin ich nach dem Kurs wirklich auf die IHK-Prüfung vorbereitet?", a: "Ja — das ist unser Hauptziel. Die Prüfungssimulation ist eng am IHK-Format orientiert (Multiple Choice, 72 Fragen, Zeitlimit). Die offenen Fragen trainieren schriftliche Begründungsaufgaben. Unsere Inhalte orientieren sich am IHK-Stoffkatalog für §34c und §34i GewO." },
   { f: "Kann ich mehrere Module gleichzeitig belegen?", a: "Ja. Du kannst alle Module gleichzeitig kaufen (Komplett-Paket spart 290 EUR) oder einzeln nacheinander. Empfohlen: Modul 1 zuerst als Basis, dann die Fachmodule." },
   { f: "Wann ist die Weiterbildungspflicht nach MaBV relevant?", a: "Wenn du bereits §34c-Lizenz hast, musst du alle 3 Jahre 20 Stunden Weiterbildung nachweisen (§15b MaBV). Die Inhalte von Modul 1 + 2 decken die relevanten Themen ab. Für den offiziellen Nachweis gegenüber der IHK ist nach ZFU-Zulassung (beantragt) ein anerkanntes Zertifikat erforderlich." },
@@ -136,7 +136,7 @@ export default function Home() {
     <div style={s.page}>
       <SEO
         title="Immobilien Akademie Smart — IHK §34c §34i WEG-Verwalter Online-Vorbereitung"
-        description="Umfassende Online-Vorbereitung für IHK-Sachkundeprüfungen in der Immobilienwirtschaft. §34c Makler, §34i Darlehensvermittler, WEG-Verwalter, Gutachter. {stats.totalUsers > 100 ? stats.totalUsers + "+" : "855+"} Prüfungsfragen, KI-Tutor, 240 Lerntage. Ab 149 EUR inkl. MwSt.."
+        description="Umfassende Online-Vorbereitung für IHK-Sachkundeprüfungen. §34c Makler, §34i Darlehensvermittler, WEG-Verwalter, Gutachter. 855+ Prüfungsfragen, KI-Tutor, 240 Lerntage. Ab 149 EUR inkl. MwSt."
         keywords="§34c GewO Prüfung, §34i GewO Kurs, WEG Verwalter Ausbildung, Immobilienmakler IHK, Darlehensvermittler Sachkunde, Immobilien Weiterbildung online, IHK Sachkundeprüfung vorbereitung"
       />
 
@@ -158,7 +158,7 @@ export default function Home() {
             </h1>
             <p style={s.heroSub}>
               §34c Makler · §34i Darlehensvermittler · WEG-Verwalter · Gutachter — 
-              alle 5 Berufsbilder in einem Portal. Mit KI-Tutor, {stats.totalUsers > 100 ? stats.totalUsers + "+" : "855+"} Prüfungsfragen 
+              alle 5 Berufsbilder in einem Portal. Mit KI-Tutor, 855+ Prüfungsfragen
               und strukturierten 240 Lerntagen.
             </p>
 
