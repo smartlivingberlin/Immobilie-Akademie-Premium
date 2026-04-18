@@ -88,7 +88,7 @@ const PAKETE = [
 ];
 
 const USPS = [
-  { icon: "🧠", titel: "3 KI-Modelle als Tutor", text: "Claude, Gemini und Groq antworten sofort auf jede Fachfrage — 24/7, auf Deutsch, ohne Wartezeit. Wie ein privater Nachhilfelehrer." },
+  { icon: "📋", titel: "855+ IHK-orientierte Übungsfragen", text: "Alle Fragen am IHK-Format orientiert (Multiple Choice, 4 Optionen). Mit ausführlicher Erklärung warum A richtig und B falsch ist." },
   { icon: "📋", titel: "{stats.totalUsers > 100 ? stats.totalUsers + "+" : "855+"} IHK-orientierte Übungsfragen", text: "Alle Fragen am IHK-Format orientiert (Multiple Choice, 4 Optionen). Mit ausführlicher Erklärung warum A richtig und B falsch ist." },
   { icon: "🔬", titel: "Praxis-Lab & Dokumentenarbeit", text: "Offene Fragen mit KI-Bewertung. Echte Muster-Grundbuchauszüge, Kaufverträge, WEG-Protokolle zum Analysieren." },
   { icon: "📅", titel: "240 strukturierte Lerntage", text: "Kein Chaos, kein Raten. Täglich 30-45 Minuten, klarer Aufbau, messbarer Fortschritt. Wie ein Stundenplan — nur flexibler." },
