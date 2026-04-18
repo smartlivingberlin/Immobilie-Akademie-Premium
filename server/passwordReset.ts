@@ -1,4 +1,4 @@
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import crypto from "crypto";
 import type { Express, Request, Response } from "express";
 import { hashPassword } from "./_core/auth-local";
@@ -35,17 +35,9 @@ export function registerPasswordResetRoutes(app: Express) {
       const domain = process.env.APP_URL ? process.env.APP_URL.replace("https://","") : "immobilien-akademie-smart.de";
       const resetUrl = `https://${domain}/reset-password?token=${token}`;
 
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST || "smtps.udag.de",
-        port: Number(process.env.SMTP_PORT) || 587,
-        secure: false,
-        auth: {
-          user: process.env.SMTP_USER || "",
-          pass: process.env.SMTP_PASS || "",
-        },
-      });
-      await transporter.sendMail({
-        from: `"Immobilien Akademie Smart" <${process.env.SMTP_USER || "info@immobilien-akademie-smart.de"}>`,
+      const resend = new Resend(process.env.RESEND_API_KEY || "");
+      await resend.emails.send({
+        from: "Immobilien Akademie Smart <info@immobilien-akademie-smart.de>",
         to: email,
         subject: "Passwort zurücksetzen",
         html: `
