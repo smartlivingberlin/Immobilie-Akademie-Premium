@@ -25,6 +25,22 @@ export const users = mysqlTable("users", {
   lastSignedIn: timestamp("lastSignedIn").defaultNow().notNull(),
 });
 
+
+// ── Spaced Repetition — SM-2 Algorithmus ─────────────────────
+// Wissenschaftlich bewährt (Duolingo, Anki)
+// nextReviewAt bestimmt wann eine Frage wieder kommt
+export const spacedRepetition = mysqlTable("spaced_repetition", {
+  id:              int("id").primaryKey().autoincrement(),
+  userId:          int("userId").notNull(),
+  questionId:      int("questionId").notNull(),
+  easinessFactor:  float("easinessFactor").default(2.5).notNull(),
+  interval:        int("interval").default(1).notNull(),
+  repetitions:     int("repetitions").default(0).notNull(),
+  nextReviewAt:    timestamp("nextReviewAt").default(sql`NOW()`).notNull(),
+  lastResult:      varchar("lastResult", { length: 10 }),  // correct/wrong
+  updatedAt:       timestamp("updatedAt").default(sql`NOW()`).notNull(),
+});
+
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
