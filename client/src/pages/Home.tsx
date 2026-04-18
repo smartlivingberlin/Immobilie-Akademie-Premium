@@ -469,7 +469,7 @@ export default function Home() {
             Deine IHK-Lizenz wartet
           </h2>
           <p style={{ fontSize: 17, color: "#94a3b8", marginBottom: 36, maxWidth: 500, margin: "0 auto 36px" }}>
-            Starte heute — kostenlos. Kein Abo, keine Kreditkarte.
+            Starte heute mit dem 24h-Testzugang. Kein Abo, keine Kreditkarte.
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/kurs/modul-1-immobilien-grundkurs">
