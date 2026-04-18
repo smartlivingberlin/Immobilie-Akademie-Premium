@@ -23,7 +23,7 @@ export default function ModuleGuard({ moduleId, children }: ModuleGuardProps) {
     return null;
   }
 
-  const enabled = (user.enabledModules || "1").split(",").map((m) => m.trim()).filter(Boolean);
+  const enabled = (user.enabledModules || "").split(",").map((m) => m.trim()).filter(Boolean);
   const hasAccess = user.role === "admin" || enabled.includes(String(moduleId));
 
   if (hasAccess) {

@@ -160,7 +160,7 @@ export default function Home() {
 
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 48 }}>
               <Link href="/kurs/modul-1-immobilien-grundkurs">
-                <a style={s.btn}>Jetzt kostenlos testen →</a>
+                <a style={s.btn}>24h kostenlos testen →</a>
               </Link>
               <Link href="/kurse">
                 <a style={s.btnGhost}>Alle Module ansehen</a>
@@ -169,7 +169,7 @@ export default function Home() {
 
             {/* Trust-Zeile */}
             <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
-              {["✓ IHK-Prüfungsformat", "✓ KI-Tutor 24/7", "✓ Lebenslanger Zugang", "✓ Ab 149 EUR inkl. MwSt."].map(t => (
+              {["✓ IHK-Prüfungsformat", "✓ KI-Tutor 24/7", "✓ Lebenslanger Zugang", "✓ 24h Trial verfügbar"].map(t => (
                 <span key={t} style={{ fontSize: 13, color: "#64748b", fontWeight: 500 }}>{t}</span>
               ))}
             </div>
