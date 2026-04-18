@@ -1,4 +1,4 @@
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 import crypto from "crypto";
 import type { Express, Request, Response } from "express";
 import { hashPassword } from "./_core/auth-local";
@@ -32,20 +32,34 @@ export function registerPasswordResetRoutes(app: Express) {
 
       await db.insert(passwordResetTokens).values({ email, token, expiresAt });
 
-      const domain = process.env.RAILWAY_PUBLIC_DOMAIN ?? "immobilie-akademie-production.up.railway.app";
+      const domain = process.env.APP_URL ? process.env.APP_URL.replace("https://","") : "immobilien-akademie-smart.de";
       const resetUrl = `https://${domain}/reset-password?token=${token}`;
 
-      const resend = new Resend(process.env.RESEND_API_KEY ?? "");
-      await resend.emails.send({
-        from: "Immobilien Akademie Smart <onboarding@resend.dev>",
+      const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST || "smtps.udag.de",
+        port: Number(process.env.SMTP_PORT) || 465,
+        secure: true,
+        auth: {
+          user: process.env.SMTP_USER || "",
+          pass: process.env.SMTP_PASS || "",
+        },
+      });
+      await transporter.sendMail({
+        from: `"Immobilien Akademie Smart" <${process.env.SMTP_USER || "info@immobilien-akademie-smart.de"}>`,
         to: email,
         subject: "Passwort zurücksetzen",
         html: `
-          <h2>Passwort zurücksetzen</h2>
-          <p>Du hast eine Passwort-Zurücksetzung angefordert.</p>
-          <p><a href="${resetUrl}" style="background:#2563eb;color:white;padding:12px 24px;border-radius:6px;text-decoration:none;">Passwort zurücksetzen</a></p>
-          <p>Dieser Link ist 1 Stunde gültig.</p>
-          <p>Falls du diese Anfrage nicht gestellt hast, ignoriere diese E-Mail.</p>
+          <div style="font-family:Arial,sans-serif;max-width:520px;margin:0 auto;padding:24px">
+            <h2 style="color:#1e3a5f">Passwort zurücksetzen</h2>
+            <p>Du hast eine Passwort-Zurücksetzung angefordert.</p>
+            <a href="${resetUrl}" style="display:inline-block;background:#2563eb;color:white;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;margin:16px 0">
+              Passwort zurücksetzen
+            </a>
+            <p style="color:#64748b;font-size:14px">Dieser Link ist 1 Stunde gültig.</p>
+            <p style="color:#64748b;font-size:14px">Falls du diese Anfrage nicht gestellt hast, ignoriere diese E-Mail.</p>
+            <hr style="border:none;border-top:1px solid #e2e8f0;margin-top:24px"/>
+            <p style="color:#94a3b8;font-size:12px">Immobilien Akademie Smart · immobilien-akademie-smart.de</p>
+          </div>
         `,
       });
 
