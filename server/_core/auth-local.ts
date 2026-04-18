@@ -169,6 +169,7 @@ export function registerLocalAuthRoutes(app: Express) {
       if (!result.success) return res.status(400).json({ error: result.message });
       const openId = `presentation:${code.trim().toUpperCase()}`;
       // User anlegen OHNE enabledModules zu überschreiben, dann direkt setzen
+      // trialExpiresAt aus presentation_code übernehmen falls vorhanden
       const { getDb } = await import("../db");
       const { sql } = await import("drizzle-orm");
       const dbConn = await getDb();
@@ -180,6 +181,8 @@ export function registerLocalAuthRoutes(app: Express) {
           VALUES (${openId}, 'Gast', 'user', ${enabledStr}, NOW())
           ON DUPLICATE KEY UPDATE
             enabledModules = ${enabledStr},
+            trialExpiresAt = CASE WHEN ${result.expiresAt ?? null} IS NOT NULL
+              THEN ${result.expiresAt ?? null} ELSE trialExpiresAt END,
             lastSignedIn = NOW()
         `);
       }

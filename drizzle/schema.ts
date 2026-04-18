@@ -13,6 +13,7 @@ export const users = mysqlTable("users", {
   role: mysqlEnum("role", ["user", "admin", "trainer"]).default("user").notNull(),
   enabledModules: varchar("enabledModules", { length: 255 }).default("").notNull(),
   onboardingCompleted: int("onboardingCompleted").default(0),
+  trialExpiresAt: timestamp("trialExpiresAt"),
   learningGoal: varchar("learningGoal", { length: 64 }),
   dailyMinutes: int("dailyMinutes").default(30),
   preferredTime: varchar("preferredTime", { length: 32 }),

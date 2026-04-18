@@ -88,7 +88,19 @@ async function sendTrialEmail(name: string, email: string, code: string, hours: 
 
 export function registerTrialRoutes(app: Express) {
 
-  // POST /api/trial/request
+  // Hilfsfunktion: trialExpiresAt in users-Tabelle setzen
+async function setTrialExpiry(db: any, email: string, expiresAt: Date) {
+  try {
+    await db.execute(
+      \`UPDATE users SET trialExpiresAt = ? WHERE email = ?\`,
+      [expiresAt, email]
+    );
+  } catch (e) {
+    console.error("[Trial] trialExpiresAt setzen fehlgeschlagen:", e);
+  }
+}
+
+// POST /api/trial/request
   app.post("/api/trial/request", async (req: Request, res: Response) => {
     const { name, email, moduleInterest } = req.body ?? {};
     if (!name?.trim() || !email?.trim() || !email.includes("@")) {
