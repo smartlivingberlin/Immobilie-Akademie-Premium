@@ -92,7 +92,7 @@ export function registerTrialRoutes(app: Express) {
 async function setTrialExpiry(db: any, email: string, expiresAt: Date) {
   try {
     await db.execute(
-      \`UPDATE users SET trialExpiresAt = ? WHERE email = ?\`,
+      `UPDATE users SET trialExpiresAt = ? WHERE email = ?`,
       [expiresAt, email]
     );
   } catch (e) {
