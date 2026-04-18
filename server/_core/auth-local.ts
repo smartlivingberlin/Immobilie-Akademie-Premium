@@ -172,7 +172,7 @@ export function registerLocalAuthRoutes(app: Express) {
       const { getDb } = await import("../db");
       const { sql } = await import("drizzle-orm");
       const dbConn = await getDb();
-      const enabledStr = result.enabledModules ?? "1";
+      const enabledStr = result.enabledModules ?? "";
       if (dbConn) {
         // INSERT OR UPDATE - enabledModules explizit setzen
         await dbConn.execute(sql`

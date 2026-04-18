@@ -11,7 +11,7 @@ export const users = mysqlTable("users", {
   email: varchar("email", { length: 320 }),
   loginMethod: varchar("loginMethod", { length: 64 }),
   role: mysqlEnum("role", ["user", "admin", "trainer"]).default("user").notNull(),
-  enabledModules: varchar("enabledModules", { length: 255 }).default("1").notNull(),
+  enabledModules: varchar("enabledModules", { length: 255 }).default("").notNull(),
   onboardingCompleted: int("onboardingCompleted").default(0),
   learningGoal: varchar("learningGoal", { length: 64 }),
   dailyMinutes: int("dailyMinutes").default(30),
