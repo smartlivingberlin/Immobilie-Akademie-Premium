@@ -130,7 +130,6 @@ function Router() {
     <Suspense fallback={<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:"18px",color:"#64748b"}}>Laden...</div>}>
       <InspectBanner />
       <CookieBanner />
-      <>
       <ExitIntentPopup />
       <Switch>
         <Route path="/"><PublicLayout><Home /></PublicLayout></Route>
@@ -201,7 +200,6 @@ function Router() {
         <Route path="/owner-dashboard"><AppLayout><AdminRoute component={OwnerDashboard} /></AppLayout></Route>
         <Route component={NotFound} />
       </Switch>
-      </>
     </Suspense>
   );
 }
