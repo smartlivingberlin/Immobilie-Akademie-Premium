@@ -1,4 +1,3 @@
-import nodemailer from "nodemailer";
 import { getDb } from "./db";
 import { sql } from "drizzle-orm";
 
@@ -10,20 +9,11 @@ async function sendFollowupEmail(
   name: string, email: string, code: string, hoursLeft: number
 ): Promise<void> {
   try {
-    const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
-      family: 4,
-      auth: {
-        user: process.env.SMTP_USER || "info@immobilien-akademie-smart.de",
-        pass: process.env.GMAIL_APP_PASSWORD,
-      },
-      tls: { rejectUnauthorized: false },
-    });
-    transporter.sendMail({
-    from: '"Immobilien Akademie Smart" <alisadgadyri38@gmail.com>',
-    to: email,
+    const { Resend } = await import("resend");
+    const resend = new Resend(RESEND_KEY);
+    await resend.emails.send({
+      from: "Immobilien Akademie Smart <info@immobilien-akademie-smart.de>",
+      to: email,
     subject: `${name}, dein Testzugang läuft in ${hoursLeft}h ab ⏰`,
       html: `
 <!DOCTYPE html><html lang="de"><body style="font-family:Arial,sans-serif;background:#f8fafc;padding:20px">
