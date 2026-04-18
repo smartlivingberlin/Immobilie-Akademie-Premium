@@ -16,22 +16,10 @@ async function requireAdmin(req: Request, res: Response, next: any) {
 import crypto from "crypto";
 import { getDb } from "./db";
 import { sql } from "drizzle-orm";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
-function createTransport() {
-  return nodemailer.createTransport({
-    host: "smtps.udag.de",
-    port: 587,
-    secure: false,
-    family: 4,
-    auth: {
-      user: process.env.SMTP_USER || "info@immobilien-akademie-smart.de",
-      pass: process.env.SMTP_PASS,
-    },
-    tls: {
-      rejectUnauthorized: false,
-    },
-  });
+function createResend() {
+  return new Resend(process.env.RESEND_API_KEY || "");
 }
 
 function generateTrialCode(): string {
@@ -39,11 +27,10 @@ function generateTrialCode(): string {
 }
 
 async function sendTrialEmail(name: string, email: string, code: string, hours: number): Promise<void> {
-  const baseUrl = process.env.PUBLIC_URL || "https://immobilie-akademie-production.up.railway.app";
-  const transporter = createTransport();
-  // Fire-and-forget: Sofort antworten, E-Mail im Hintergrund
-  transporter.sendMail({
-    from: '"Immobilien Akademie Smart" <info@immobilien-akademie-smart.de>',
+  const baseUrl = process.env.APP_URL || "https://immobilien-akademie-smart.de";
+  const resend = createResend();
+  resend.emails.send({
+    from: "Immobilien Akademie Smart <info@immobilien-akademie-smart.de>",
     to: email,
     subject: `${name}, dein kostenloser Testzugang wartet! 🎓`,
       html: `
