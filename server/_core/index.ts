@@ -131,6 +131,19 @@ const aiLimiter = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
 });
+const registerLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, max: 5,
+  message: { error: "Zu viele Registrierungen. Bitte warte 1 Stunde." }
+});
+const trialLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, max: 5,
+  message: { error: "Zu viele Trial-Anfragen. Bitte warte 1 Stunde." }
+});
+const resetLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, max: 3,
+  message: { error: "Zu viele Reset-Anfragen. Bitte warte 1 Stunde." }
+});
+
 
 
 // ── ElevenLabs TTS-Proxy (API-Key nur server-seitig) ──────────────
@@ -172,6 +185,7 @@ app.post("/api/consent", async (req: Request, res: Response) => {
 });
 
   app.use("/api/ai", aiLimiter);
+
 app.use("/api/auth/login", loginLimiter);
 app.use("/api/auth/forgot-password", resetLimiter);
 app.use("/api/auth/register", registerLimiter);
