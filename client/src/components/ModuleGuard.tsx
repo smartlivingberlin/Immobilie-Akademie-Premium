@@ -23,11 +23,45 @@ export default function ModuleGuard({ moduleId, children }: ModuleGuardProps) {
     return null;
   }
 
+  // Trial-Ablauf prüfen
+  const trialExpired = (user as any).trialExpiresAt
+    ? new Date((user as any).trialExpiresAt) < new Date()
+    : false;
+
   const enabled = (user.enabledModules || "").split(",").map((m) => m.trim()).filter(Boolean);
-  const hasAccess = user.role === "admin" || enabled.includes(String(moduleId));
+  const hasAccess = user.role === "admin" || 
+    (enabled.includes(String(moduleId)) && !trialExpired);
 
   if (hasAccess) {
     return <>{children}</>;
+  }
+
+  // Trial abgelaufen
+  if (trialExpired && enabled.includes(String(moduleId))) {
+    return (
+      <div className="relative min-h-[70vh] flex items-center justify-center px-4">
+        <div className="bg-white rounded-2xl shadow-2xl border border-amber-200 max-w-md w-full p-8 text-center">
+          <div className="w-16 h-16 bg-amber-50 rounded-full flex items-center justify-center mx-auto mb-5">
+            <span className="text-3xl">⏰</span>
+          </div>
+          <h2 className="text-xl font-bold text-slate-900 mb-2">Testzugang abgelaufen</h2>
+          <p className="text-slate-500 text-sm mb-6">
+            Dein 24h-Testzugang ist abgelaufen. Kaufe das Modul um weiterzulernen.
+          </p>
+          <div className="space-y-3">
+            <a href="/kurse">
+              <button className="w-full bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-6 rounded-xl transition-colors text-sm">
+                Jetzt kaufen und weiterlernen →
+              </button>
+            </a>
+            <button onClick={() => window.history.back()}
+              className="w-full text-slate-400 hover:text-slate-600 text-sm py-2 transition-colors">
+              ← Zurück
+            </button>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   const names: Record<number, string> = {

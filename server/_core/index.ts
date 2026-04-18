@@ -300,6 +300,16 @@ app.use(express.json({ limit: "50mb" }));
 }
 
 startServer().catch(console.error);
+
+// ── Keep-Alive Cron (verhindert Railway Cold Start) ────────────
+setInterval(async () => {
+  try {
+    const url = (process.env.APP_URL || "https://immobilien-akademie-smart.de") + "/api/health";
+    await fetch(url);
+    console.log("[KeepAlive] Ping OK");
+  } catch { /* silent */ }
+}, 14 * 60 * 1000); // alle 14 Minuten
+
 // Nacht-Cron: täglich 02:00 Uhr alle 240 Lerntage + User-Coaching
 startNightCron();
 // force deploy Mon Apr  6 20:58:44 CEST 2026
