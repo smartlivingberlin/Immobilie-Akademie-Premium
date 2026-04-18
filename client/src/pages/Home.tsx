@@ -4,7 +4,7 @@ import { TrialForm } from "@/components/TrialForm";
 
 // ── Daten ────────────────────────────────────────────────────
 const STATS = [
-  { zahl: "{stats.totalUsers > 100 ? stats.totalUsers + "+" : "855+"}", label: "IHK-Prüfungsfragen", sub: "geprüft & aktuell" },
+  { zahl: "855+", label: "IHK-Prüfungsfragen", sub: "geprüft & aktuell" },
   { zahl: "240", label: "Strukturierte Lerntage", sub: "5 vollständige Module" },
   { zahl: "3", label: "KI-Modelle", sub: "Claude · Gemini · Groq" },
   { zahl: "24/7", label: "Tutor verfügbar", sub: "keine Wartezeiten" },
