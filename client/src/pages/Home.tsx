@@ -394,14 +394,14 @@ export default function Home() {
             {/* Trial-Formular */}
             <div style={{ ...s.card, background: "linear-gradient(135deg, #0f172a, #1e293b)", border: "none" }}>
               <h3 style={{ fontSize: 22, fontWeight: 800, color: "white", marginBottom: 8 }}>
-                7 Tage kostenlos testen
+                24h kostenlos testen
               </h3>
               <p style={{ fontSize: 14, color: "#94a3b8", marginBottom: 24, lineHeight: 1.6 }}>
-                Modul 1 Grundkurs kostenlos erleben — ohne Kreditkarte, ohne Abo.
+                24h Testzugang — alle Module testen, ohne Kreditkarte.
               </p>
               <TrialForm />
               <p style={{ fontSize: 11, color: "#64748b", marginTop: 16, textAlign: "center" }}>
-                Kein Abo · Keine Kreditkarte · Jederzeit kündbar
+                Kein Abo · Keine Kreditkarte · Einmalzahlung
               </p>
             </div>
           </div>
@@ -473,7 +473,7 @@ export default function Home() {
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/kurs/modul-1-immobilien-grundkurs">
-              <a style={s.btn}>Kostenlos testen →</a>
+              <a style={s.btn}>24h kostenlos testen →</a>
             </Link>
             <Link href="/kurse">
               <a style={s.btnGhost}>Alle Module & Preise</a>
