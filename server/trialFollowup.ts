@@ -54,7 +54,7 @@ async function sendFollowupEmail(
   </div>
   <div style="background:#f8fafc;padding:16px 36px;border-top:1px solid #e2e8f0">
     <p style="color:#94a3b8;font-size:12px;text-align:center;margin:0">
-      Immobilien Akademie Smart · +49 171 1526327 · alisadgadyri38@gmail.com
+      Immobilien Akademie Smart · +49 171 1526327 · info@immobilien-akademie-smart.de
     </p>
   </div>
 </div>

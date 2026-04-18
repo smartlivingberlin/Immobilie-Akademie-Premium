@@ -20,13 +20,13 @@ import nodemailer from "nodemailer";
 
 function createTransport() {
   return nodemailer.createTransport({
-    host: "smtp.gmail.com",
+    host: "smtps.udag.de",
     port: 587,
     secure: false,
     family: 4,
     auth: {
       user: process.env.SMTP_USER || "info@immobilien-akademie-smart.de",
-      pass: process.env.GMAIL_APP_PASSWORD,
+      pass: process.env.SMTP_PASS,
     },
     tls: {
       rejectUnauthorized: false,
@@ -43,7 +43,7 @@ async function sendTrialEmail(name: string, email: string, code: string, hours: 
   const transporter = createTransport();
   // Fire-and-forget: Sofort antworten, E-Mail im Hintergrund
   transporter.sendMail({
-    from: '"Immobilien Akademie Smart" <alisadgadyri38@gmail.com>',
+    from: '"Immobilien Akademie Smart" <info@immobilien-akademie-smart.de>',
     to: email,
     subject: `${name}, dein kostenloser Testzugang wartet! 🎓`,
       html: `
@@ -91,7 +91,7 @@ async function sendTrialEmail(name: string, email: string, code: string, hours: 
   <div style="background:#f8fafc;padding:20px 40px;border-top:1px solid #e2e8f0">
     <p style="color:#94a3b8;font-size:12px;text-align:center;margin:0">
       Immobilien Akademie Smart · Durlacher Str. 36, 10715 Berlin<br>
-      +49 171 1526327 · alisadgadyri38@gmail.com
+      +49 171 1526327 · info@immobilien-akademie-smart.de
     </p>
   </div>
 </div>
