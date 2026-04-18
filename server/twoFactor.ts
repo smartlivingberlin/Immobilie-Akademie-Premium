@@ -80,22 +80,14 @@ export function verifyOTP(email: string, code: string): { ok: boolean; error?: s
 
 // E-Mail senden (über bestehende Nodemailer-Config oder Console-Log als Fallback)
 export async function sendOTPEmail(email: string, code: string, name: string): Promise<boolean> {
-  // Versuche SMTP falls konfiguriert
-  const smtpUser = process.env.SMTP_USER || process.env.EMAIL_USER;
-  const smtpPass = process.env.SMTP_PASS || process.env.EMAIL_PASS;
-  
-  if (smtpUser && smtpPass) {
+  // Resend API (Railway-kompatibel)
+  const resendKey = process.env.RESEND_API_KEY;
+  if (resendKey) {
     try {
-      const nodemailer = await import("nodemailer");
-      const transporter = nodemailer.default.createTransport({
-        host: process.env.SMTP_HOST || "smtps.udag.de",
-        port: Number(process.env.SMTP_PORT) || 587,
-        secure: false,
-        auth: { user: smtpUser, pass: smtpPass },
-      });
-      
-      await transporter.sendMail({
-        from: `"Immobilien Akademie" <${smtpUser}>`,
+      const { Resend } = await import("resend");
+      const resend = new Resend(resendKey);
+      await resend.emails.send({
+        from: "Immobilien Akademie Smart <info@immobilien-akademie-smart.de>",
         to: email,
         subject: `Ihr Login-Code: ${code}`,
         html: `
@@ -108,7 +100,7 @@ export async function sendOTPEmail(email: string, code: string, name: string): P
             </div>
             <p style="color:#64748b;font-size:13px">Gültig für 10 Minuten. Nicht weitergeben.</p>
             <hr style="border:none;border-top:1px solid #e2e8f0">
-            <p style="color:#94a3b8;font-size:11px">Immobilien Akademie Smart · Durlacher Str. 36, Berlin</p>
+            <p style="color:#94a3b8;font-size:11px">Immobilien Akademie Smart · immobilien-akademie-smart.de</p>
           </div>
         `,
       });
