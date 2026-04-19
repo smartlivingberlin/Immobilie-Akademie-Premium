@@ -8,7 +8,7 @@ export interface CertificateOptions {
   certificateData: CertificateData;
 }
 
-export function async generateCertificatePDF(options: CertificateOptions): void {
+export async function generateCertificatePDF(options: CertificateOptions): Promise<void> {
   const { userName, certificateData } = options;
   
   // Create PDF in landscape A4 format
@@ -176,7 +176,7 @@ function drawCornerDecoration(
   color: string,
   flipX: boolean = false,
   flipY: boolean = false
-): void {
+): Promise<void> {
   pdf.setDrawColor(color);
   pdf.setLineWidth(1);
   
