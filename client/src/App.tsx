@@ -20,6 +20,7 @@ const DozentenLoesungen = lazy(() => import("@/pages/admin/DozentenLoesungen"));
 const FragenManager = lazy(() => import("@/pages/admin/FragenManager"));
 const Fallstudien = lazy(() => import("@/pages/Fallstudien"));
 const Flashcards = lazy(() => import("@/pages/Flashcards"));
+const SpacedRepetition = lazy(() => import("@/pages/SpacedRepetition"));
 const ExposeTrainer = lazy(() => import("@/pages/ExposeTrainer"));
 const DokumentViewer = lazy(() => import("@/pages/DokumentViewer"));
 const ContentUpload = lazy(() => import("@/pages/admin/ContentUpload"));
@@ -170,6 +171,7 @@ function Router() {
         <Route path="/strategie"><AppLayout><ProtectedRoute component={StrategiePlattform} /></AppLayout></Route>
         <Route path="/zertifikate"><AppLayout><ProtectedRoute component={Certificates} /></AppLayout></Route>
         <Route path="/fallstudien"><AppLayout><ProtectedRoute component={Fallstudien} /></AppLayout></Route>
+        <Route path="/wiederholung"><AppLayout><ProtectedRoute component={SpacedRepetition} /></AppLayout></Route>
         <Route path="/lernkarten"><AppLayout><ProtectedRoute component={Flashcards} /></AppLayout></Route>
         <Route path="/expose-trainer"><AppLayout><ProtectedRoute component={ExposeTrainer} /></AppLayout></Route>
         <Route path="/dokument-viewer"><AppLayout><ProtectedRoute component={DokumentViewer} /></AppLayout></Route>

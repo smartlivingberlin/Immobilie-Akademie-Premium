@@ -334,6 +334,25 @@ app.use("/og-image", (req, res, next) => {
   next();
 });
 
+
+// ── Spaced Repetition: Fragen nach IDs ──────────────────────
+app.get("/api/quiz/questions-by-ids", async (req, res) => {
+  try {
+    const ids = String(req.query.ids || "").split(",")
+      .map(Number).filter(Boolean);
+    if (!ids.length) return res.json({ questions: [] });
+    const db = getDb();
+    const questions = await db.execute(
+      `SELECT id, questionText, options, correctAnswer, explanation, moduleId
+       FROM question_bank WHERE id IN (${ids.map(() => "?").join(",")})`,
+      ids
+    );
+    res.json({ questions: (questions as any)[0] });
+  } catch (e) {
+    res.json({ questions: [] });
+  }
+});
+
 // ── Keep-Alive Cron (verhindert Railway Cold Start) ────────────
 setInterval(async () => {
   try {
