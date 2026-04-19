@@ -34,7 +34,7 @@ export default function Certificates() {
     { id: 5, name: "Modul 5: Darlehensvermittlung §34i GewO", days: 40, color: "bg-pink-500" },
   ];
 
-  const handleDownloadCertificate = (moduleId: number) => {
+  const handleDownloadCertificate = async (moduleId: number) => {
     if (!userName.trim()) {
       toast({
         title: "Name erforderlich",
