@@ -132,6 +132,7 @@ export default function Footer() {
       </div>
       <div style={{borderTop: "1px solid #f1f5f9", paddingTop: 16, marginTop: 16,
     display: "flex", gap: 16, flexWrap: "wrap", justifyContent: "center"}}>
+    <a href="/konto/datenschutz" style={{color: "#64748b", fontSize: 12}}>🔐 Meine Daten</a>
     <a href="/barrierefreiheit" style={{color: "#64748b", fontSize: 12}}>
       ♿ Barrierefreiheit
     </a>
