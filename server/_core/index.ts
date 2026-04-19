@@ -323,6 +323,17 @@ app.get("/api/stats/public", async (_req, res) => {
   }
 });
 
+
+// ── Performance: Static Asset Caching ─────────────────────
+app.use("/assets", (req, res, next) => {
+  res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+  next();
+});
+app.use("/og-image", (req, res, next) => {
+  res.setHeader("Cache-Control", "public, max-age=86400");
+  next();
+});
+
 // ── Keep-Alive Cron (verhindert Railway Cold Start) ────────────
 setInterval(async () => {
   try {
