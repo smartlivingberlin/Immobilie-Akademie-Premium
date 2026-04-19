@@ -1,3 +1,4 @@
+import { useDarkMode } from "@/hooks/useDarkMode";
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
 import { useEffect, useState, useRef } from "react";
@@ -52,7 +53,7 @@ function CircularProgress({ pct, color, size = 72 }: { pct: number; color: strin
         position: "absolute", inset: 0,
         display: "flex", alignItems: "center", justifyContent: "center",
       }}>
-        <span style={{ fontSize: 13, fontWeight: 800, color: "#0f172a" }}>{pct}%</span>
+        <span style={{ fontSize: 13, fontWeight: 800, color: "var(--color-text)" }}>{pct}%</span>
       </div>
     </div>
   );
@@ -66,7 +67,7 @@ function StatCard({ icon, label, value, sub, color, bg }: any) {
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
       style={{
-        background: "white",
+        background: "var(--color-card)",
         border: `2px solid ${hov ? color : "#f1f5f9"}`,
         borderRadius: 18, padding: "24px 20px",
         display: "flex", alignItems: "center", gap: 16,
@@ -85,8 +86,8 @@ function StatCard({ icon, label, value, sub, color, bg }: any) {
         transform: hov ? "scale(1.1) rotate(-5deg)" : "scale(1)",
       }}>{icon}</div>
       <div>
-        <div style={{ fontSize: 13, color: "#64748b", fontWeight: 500, marginBottom: 2 }}>{label}</div>
-        <div style={{ fontSize: 28, fontWeight: 800, color: "#0f172a", letterSpacing: "-0.03em", lineHeight: 1 }}>
+        <div style={{ fontSize: 13, color: "var(--color-text-muted)", fontWeight: 500, marginBottom: 2 }}>{label}</div>
+        <div style={{ fontSize: 28, fontWeight: 800, color: "var(--color-text)", letterSpacing: "-0.03em", lineHeight: 1 }}>
           {value}
         </div>
         <div style={{ fontSize: 11, color: "#94a3b8", marginTop: 3 }}>{sub}</div>
@@ -113,7 +114,7 @@ function ModulKarte({ module, stats, enabled }: any) {
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
       style={{
-        background: "white",
+        background: "var(--color-card)",
         border: `2px solid ${hov && !isLocked ? c.main : "#f1f5f9"}`,
         borderRadius: 20, overflow: "hidden",
         transition: "all 0.25s ease",
@@ -159,7 +160,7 @@ function ModulKarte({ module, stats, enabled }: any) {
                 }}>Aktiv</span>
               )}
             </div>
-            <h3 style={{ fontSize: 16, fontWeight: 700, color: "#0f172a", margin: 0, lineHeight: 1.3 }}>
+            <h3 style={{ fontSize: 16, fontWeight: 700, color: "var(--color-text)", margin: 0, lineHeight: 1.3 }}>
               {module.name}
             </h3>
             <p style={{ fontSize: 12, color: "#94a3b8", margin: "4px 0 0" }}>
@@ -189,7 +190,7 @@ function ModulKarte({ module, stats, enabled }: any) {
 
       {/* ── ACHIEVEMENTS ───────────────────────────────────── */}
       <div>
-        <h2 style={{ fontSize: 22, fontWeight: 800, color: "#0f172a", margin: "0 0 16px", letterSpacing: "-0.02em" }}>
+        <h2 style={{ fontSize: 22, fontWeight: 800, color: "var(--color-text)", margin: "0 0 16px", letterSpacing: "-0.02em" }}>
           Erfolge & Meilensteine
         </h2>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: 12 }}>

@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { SEO } from "@/components/SEO";
 import { TrialForm } from "@/components/TrialForm";
+import { useDarkMode } from "@/hooks/useDarkMode";
 import { useSocialProof } from "@/hooks/useSocialProof";
 import { useEffect, useState, useRef } from "react";
 
