@@ -190,11 +190,8 @@ export default defineConfig({
           if (id.includes("node_modules/@radix-ui")) return "vendor-radix";
           if (id.includes("node_modules/lucide-react")) return "vendor-icons";
           
-          // PDF (groß, selten)
-          if (id.includes("node_modules/pdfmake") ||
-              id.includes("node_modules/pdfjs") ||
-              id.includes("node_modules/jspdf") ||
-              id.includes("node_modules/html2canvas")) return "vendor-pdf";
+          // PDF: NICHT in manualChunks — dynamischer import() regelt das selbst
+          // pdfjs-dist, jspdf, html2canvas werden lazy geladen
           
           // Alles andere auch in vendor-react → keine Ladereihenfolge-Probleme
           if (id.includes("node_modules")) return "vendor-react";
