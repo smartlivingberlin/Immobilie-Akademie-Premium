@@ -1,0 +1,36 @@
+{
+  "last_night_audit": {
+    "date": "2026-04-19T08:48:23.497Z",
+    "avgScore": 96,
+    "totalDays": 240,
+    "problemCount": 139,
+    "duration": 0
+  },
+  "audit_history": [
+    {
+      "date": "2026-04-19",
+      "avgScore": 96,
+      "problemCount": 139
+    },
+    {
+      "date": "2026-04-19",
+      "avgScore": 96,
+      "problemCount": 139
+    },
+    {
+      "date": "2026-04-19",
+      "avgScore": 96,
+      "problemCount": 139
+    },
+    {
+      "date": "2026-04-19",
+      "avgScore": 96,
+      "problemCount": 139
+    },
+    {
+      "date": "2026-04-19",
+      "avgScore": 96,
+      "problemCount": 139
+    }
+  ]
+}
