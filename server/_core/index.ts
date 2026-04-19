@@ -353,6 +353,115 @@ app.get("/api/quiz/questions-by-ids", async (req, res) => {
   }
 });
 
+
+// ── DSGVO Art. 15: Auskunftsrecht ─────────────────────────────
+app.get("/api/user/my-data", async (req: any, res: any) => {
+  try {
+    const token = req.cookies?.app_session_id;
+    if (!token) return res.status(401).json({ error: "Nicht eingeloggt" });
+    const { verifySessionToken } = await import("./_core/auth-local");
+    const session = await verifySessionToken(token);
+    if (!session) return res.status(401).json({ error: "Ungültige Session" });
+    const db = getDb();
+    const userId = session.id;
+
+    const [user] = await db.execute(
+      `SELECT id, name, email, role, enabledModules, createdAt, lastSignedIn
+       FROM users WHERE id = ?`, [userId]
+    ) as any;
+
+    const [progress] = await db.execute(
+      `SELECT moduleId, dayNumber, completed, durationSeconds, openedAt
+       FROM learning_logs WHERE userId = ? ORDER BY openedAt DESC LIMIT 100`,
+      [userId]
+    ) as any;
+
+    const [exams] = await db.execute(
+      `SELECT id, moduleId, score, totalQuestions, startedAt, completedAt
+       FROM exam_sessions WHERE userId = ? ORDER BY startedAt DESC LIMIT 20`,
+      [userId]
+    ) as any;
+
+    const [certs] = await db.execute(
+      `SELECT moduleId, score, issuedAt FROM certificates WHERE userId = ?`,
+      [userId]
+    ) as any;
+
+    const [chats] = await db.execute(
+      `SELECT id, moduleId, createdAt FROM chat_conversations
+       WHERE userId = ? ORDER BY createdAt DESC LIMIT 50`,
+      [userId]
+    ) as any;
+
+    const [sr] = await db.execute(
+      `SELECT questionId, easinessFactor, interval, repetitions, nextReviewAt
+       FROM spaced_repetition WHERE userId = ?`,
+      [userId]
+    ) as any;
+
+    res.json({
+      exportDate: new Date().toISOString(),
+      legalBasis: "Art. 15 DSGVO — Auskunftsrecht",
+      user: (user as any[])[0] || {},
+      learningProgress: progress || [],
+      examHistory: exams || [],
+      certificates: certs || [],
+      aiConversations: { count: (chats as any[]).length, sessions: chats || [] },
+      spacedRepetition: sr || [],
+    });
+  } catch (e: any) {
+    res.status(500).json({ error: "Daten konnten nicht geladen werden" });
+  }
+});
+
+// ── DSGVO Art. 20: Datenportabilität (JSON-Export) ────────────
+app.get("/api/user/export", async (req: any, res: any) => {
+  try {
+    const token = req.cookies?.app_session_id;
+    if (!token) return res.status(401).json({ error: "Nicht eingeloggt" });
+    const { verifySessionToken } = await import("./_core/auth-local");
+    const session = await verifySessionToken(token);
+    if (!session) return res.status(401).json({ error: "Ungültige Session" });
+    const db = getDb();
+    const userId = session.id;
+
+    const [user] = await db.execute(
+      `SELECT name, email, role, enabledModules, createdAt FROM users WHERE id = ?`,
+      [userId]
+    ) as any;
+    const [progress] = await db.execute(
+      `SELECT * FROM learning_logs WHERE userId = ?`, [userId]
+    ) as any;
+    const [exams] = await db.execute(
+      `SELECT * FROM exam_sessions WHERE userId = ?`, [userId]
+    ) as any;
+    const [certs] = await db.execute(
+      `SELECT * FROM certificates WHERE userId = ?`, [userId]
+    ) as any;
+
+    const exportData = {
+      exportDate: new Date().toISOString(),
+      legalBasis: "Art. 20 DSGVO — Recht auf Datenübertragbarkeit",
+      format: "JSON",
+      data: {
+        account: (user as any[])[0] || {},
+        learningProgress: progress || [],
+        exams: exams || [],
+        certificates: certs || [],
+      }
+    };
+
+    const name = ((user as any[])[0]?.name || "nutzer").replace(/\s+/g, "_");
+    res.setHeader("Content-Type", "application/json");
+    res.setHeader("Content-Disposition",
+      `attachment; filename="meine_daten_${name}_${new Date().toISOString().slice(0,10)}.json"`
+    );
+    res.json(exportData);
+  } catch (e: any) {
+    res.status(500).json({ error: "Export fehlgeschlagen" });
+  }
+});
+
 // ── Keep-Alive Cron (verhindert Railway Cold Start) ────────────
 setInterval(async () => {
   try {

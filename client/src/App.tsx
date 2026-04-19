@@ -10,6 +10,7 @@ const LoginPage = lazy(() => import("@/pages/LoginPage"));
 const ForgotPassword = lazy(() => import("@/pages/ForgotPassword"));
 const ResetPassword = lazy(() => import("@/pages/ResetPassword"));
 const DeleteAccount = lazy(() => import("@/pages/DeleteAccount"));
+const MeineDaten = lazy(() => import("@/pages/MeineDaten"));
 const RedeemCode = lazy(() => import("@/pages/RedeemCode"));
 const AdminCodes = lazy(() => import("@/pages/admin/AdminCodes"));
 const AdminDashboard = lazy(() => import("@/pages/admin/AdminDashboard"));
@@ -138,6 +139,7 @@ function Router() {
         <Route path="/forgot-password"><PublicLayout><ForgotPassword /></PublicLayout></Route>
         <Route path="/reset-password"><PublicLayout><ResetPassword /></PublicLayout></Route>
         <Route path="/code-einloesen"><PublicLayout><RedeemCode /></PublicLayout></Route>
+        <Route path="/konto/datenschutz"><AppLayout><ProtectedRoute component={MeineDaten} /></AppLayout></Route>
         <Route path="/konto-loeschen"><PublicLayout><DeleteAccount /></PublicLayout></Route>
         <Route path="/dokument-werkstatt/:modulId">{({ params }) => <AppLayout><DokumentWerkstatt modulId={Number(params?.modulId ?? 1)} /></AppLayout>}</Route>
         <Route path="/offene-fragen/:modulId">{({ params }) => <AppLayout><OpenQuizPage modulId={Number(params?.modulId ?? 1)} /></AppLayout>}</Route>
