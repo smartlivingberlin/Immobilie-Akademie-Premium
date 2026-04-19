@@ -1,6 +1,8 @@
 import { Link } from "wouter";
 import { SEO } from "@/components/SEO";
 import { TrialForm } from "@/components/TrialForm";
+import { useSocialProof } from "@/hooks/useSocialProof";
+import { useEffect, useState, useRef } from "react";
 
 // ── Daten ────────────────────────────────────────────────────
 const STATS = [
@@ -127,7 +129,6 @@ const s: Record<string, React.CSSProperties> = {
   card: { background: "white", border: "1px solid #e2e8f0", borderRadius: 16, padding: 28, boxShadow: "0 2px 12px rgba(0,0,0,0.05)" },
 };
 
-import { useSocialProof } from "@/hooks/useSocialProof";
 
 export default function Home() {
   const stats = useSocialProof();
