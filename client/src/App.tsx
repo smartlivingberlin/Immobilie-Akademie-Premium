@@ -127,7 +127,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
 function Router() {
   usePageTracking();
   return (
-    <Suspense fallback={<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:"18px",color:"#64748b"}}>Laden...</div>}>
+    <main id="main-content"><Suspense fallback={<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:"18px",color:"#64748b"}}>Laden...</div>}>
       <InspectBanner />
       <CookieBanner />
       <ExitIntentPopup />
@@ -151,6 +151,7 @@ function Router() {
         <Route path="/impressum"><PublicLayout><Impressum /></PublicLayout></Route>
         <Route path="/datenschutz"><PublicLayout><Datenschutz /></PublicLayout></Route>
         <Route path="/agb"><PublicLayout><AGB /></PublicLayout></Route>
+        <Route path="/barrierefreiheit"><PublicLayout><Barrierefreiheit /></PublicLayout></Route>
         <Route path="/widerruf"><PublicLayout><Widerruf /></PublicLayout></Route>
         <Route path="/bildungskonzept"><PublicLayout><Bildungskonzept /></PublicLayout></Route>
         <Route path="/rechner"><PublicLayout><Rechner /></PublicLayout></Route>
@@ -200,7 +201,7 @@ function Router() {
         <Route path="/owner-dashboard"><AppLayout><AdminRoute component={OwnerDashboard} /></AppLayout></Route>
         <Route component={NotFound} />
       </Switch>
-    </Suspense>
+    </Suspense></main>
   );
 }
 

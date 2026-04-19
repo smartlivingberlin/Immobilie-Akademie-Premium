@@ -130,6 +130,25 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+      <div style={{borderTop: "1px solid #f1f5f9", paddingTop: 16, marginTop: 16,
+    display: "flex", gap: 16, flexWrap: "wrap", justifyContent: "center"}}>
+    <a href="/barrierefreiheit" style={{color: "#64748b", fontSize: 12}}>
+      ♿ Barrierefreiheit
+    </a>
+    <button
+      onClick={() => {
+        localStorage.removeItem("cookie-consent");
+        window.location.reload();
+      }}
+      style={{background: "none", border: "none", color: "#64748b",
+              fontSize: 12, cursor: "pointer", padding: 0}}>
+      🍪 Cookie-Einstellungen
+    </button>
+    <a href="mailto:support@immobilien-akademie-smart.de"
+       style={{color: "#64748b", fontSize: 12}}>
+      📧 Support
+    </a>
+  </div>
+</footer>
   );
 }
