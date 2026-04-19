@@ -115,8 +115,6 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
   if (!isOpen) return null;
 
   return (
-    <>
-    
     {/* EU AI Act Transparenz-Hinweis — Pflicht ab Aug 2026 */}
     <div style={{
       background: "#fffbeb", border: "1px solid #fde68a",
