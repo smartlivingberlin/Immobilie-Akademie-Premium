@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { FileText, Download, Loader2, PenTool } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { jsPDF } from "jspdf";
 
 export interface DocumentGeneratorProps {
   title: string;
@@ -29,11 +28,11 @@ export function DocumentGenerator({ title, description = "Erstellen Sie ein prof
     date: new Date().toISOString().split('T')[0]
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleGenerate = () => {
+  const handleGenerate = async () => {
     // For interactive forms (not summary), validate input
     if (finalType !== "summary" && (!formData.name || !formData.address)) {
       toast({
@@ -48,7 +47,8 @@ export function DocumentGenerator({ title, description = "Erstellen Sie ein prof
     
     try {
       // Create new PDF document
-      const doc = new jsPDF();
+      const { jsPDF: JsPDF } = await import("jspdf");
+    const doc = new JsPDF();
       
       // Add title
       doc.setFontSize(20);
