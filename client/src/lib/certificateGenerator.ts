@@ -205,7 +205,7 @@ function generateCertificateId(data: CertificateData): string {
 }
 
 // Preview certificate data (for UI display before download)
-export function async getCertificatePreviewData(options: CertificateOptions): {
+export async function getCertificatePreviewData(options: CertificateOptions): {
   userName: string;
   moduleName: string;
   completionDate: string;
