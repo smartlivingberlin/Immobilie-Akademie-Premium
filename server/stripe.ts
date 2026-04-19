@@ -164,26 +164,99 @@ stripeRouter.post("/api/stripe/webhook",
     if (event.type === "checkout.session.completed") {
       const session = event.data.object as any;
       const modules = session.metadata?.modules ?? session.metadata?.bundle;
-      const email = session.customer_email;
+      const email = session.customer_email ?? session.metadata?.email;
+      const userName = session.metadata?.userName ?? "Lernender";
       console.log(`[Stripe Webhook] Kauf bestätigt: ${email}, Module: ${modules}`);
-      // Modul-Freischaltung in DB (getUserByEmail + unlock)
+
       if (email && modules) {
         try {
           const { getDb } = await import("../db");
           const db = getDb();
-          const users = await db.execute(
-            "SELECT id, modulesUnlocked FROM users WHERE email = ?", [email]
-          );
-          if (users[0] && (users[0] as any[]).length > 0) {
-            const user = (users[0] as any[])[0];
-            const current = JSON.parse(user.modulesUnlocked || "[]");
-            const newModules = modules.split(",").map(Number);
-            const merged = [...new Set([...current, ...newModules])];
+
+          // ── 1. Nutzer in DB finden ─────────────────────────────
+          const [rows] = await db.execute(
+            "SELECT id, name, enabledModules FROM users WHERE email = ?", [email]
+          ) as any;
+          const userRows = rows as any[];
+
+          if (userRows.length > 0) {
+            const user = userRows[0];
+            // ── 2. Module freischalten (enabledModules = "1,2,3") ──
+            const current = (user.enabledModules || "")
+              .split(",").map((s: string) => s.trim()).filter(Boolean);
+            const newMods = modules.split(",").map((s: string) => s.trim()).filter(Boolean);
+            const merged = [...new Set([...current, ...newMods])].join(",");
+
             await db.execute(
-              "UPDATE users SET modulesUnlocked = ? WHERE id = ?",
-              [JSON.stringify(merged), user.id]
+              "UPDATE users SET enabledModules = ? WHERE id = ?",
+              [merged, user.id]
             );
-            console.log(`[Stripe Webhook] ✅ Module ${merged} für ${email} freigeschaltet`);
+            console.log(`[Stripe Webhook] ✅ enabledModules="${merged}" für ${email} gesetzt`);
+
+            // ── 3. Kaufbestätigung E-Mail senden ──────────────────
+            try {
+              const { Resend } = await import("resend");
+              const resend = new Resend(process.env.RESEND_API_KEY);
+              const moduleNames: Record<string, string> = {
+                "1": "Modul 1: Immobilien-Grundkurs (149 €)",
+                "2": "Modul 2: Immobilienmakler §34c (499 €)",
+                "3": "Modul 3: WEG-Verwalter (699 €)",
+                "4": "Modul 4: Gutachter (399 €)",
+                "5": "Modul 5: §34i Darlehensvermittler (499 €)",
+              };
+              const gekauft = newMods.map((m: string) => moduleNames[m] || `Modul ${m}`).join(", ");
+              const displayName = user.name || userName;
+              const appUrl = process.env.APP_URL || "https://immobilien-akademie-smart.de";
+
+              await resend.emails.send({
+                from: "Immobilien Akademie Smart <info@immobilien-akademie-smart.de>",
+                to: email,
+                subject: "✅ Kauf bestätigt — Dein Zugang ist freigeschaltet!",
+                html: `
+                  <div style="font-family:sans-serif;max-width:560px;margin:0 auto;padding:32px">
+                    <div style="background:linear-gradient(135deg,#0f172a,#1e3a5f);padding:28px 32px;border-radius:14px 14px 0 0;text-align:center">
+                      <h1 style="color:#f5c842;font-size:22px;margin:0">🎓 Immobilien Akademie Smart</h1>
+                    </div>
+                    <div style="background:#fff;border:1px solid #e2e8f0;border-top:none;padding:32px;border-radius:0 0 14px 14px">
+                      <h2 style="color:#0f172a;font-size:20px;margin:0 0 16px">
+                        ✅ Dein Zugang ist freigeschaltet, ${displayName}!
+                      </h2>
+                      <p style="color:#475569;line-height:1.7">
+                        Vielen Dank für deinen Kauf. Du hast sofort Zugang zu:
+                      </p>
+                      <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:16px;margin:16px 0">
+                        <strong style="color:#065f46">📚 ${gekauft}</strong>
+                      </div>
+                      <p style="color:#475569;line-height:1.7">
+                        Dein Zugang ist lebenslang — lerne in deinem eigenen Tempo.
+                        Alle 5 Berufsbilder, KI-Tutor 24/7, 810+ IHK-Prüfungsfragen.
+                      </p>
+                      <div style="text-align:center;margin:28px 0">
+                        <a href="${appUrl}/login"
+                           style="background:linear-gradient(135deg,#2563eb,#4f46e5);color:white;
+                                  padding:14px 32px;border-radius:10px;text-decoration:none;
+                                  font-weight:700;font-size:16px;display:inline-block">
+                          Jetzt lernen →
+                        </a>
+                      </div>
+                      <hr style="border:none;border-top:1px solid #f1f5f9;margin:24px 0">
+                      <p style="color:#94a3b8;font-size:12px;text-align:center">
+                        Fragen? <a href="mailto:support@immobilien-akademie-smart.de" style="color:#2563eb">
+                        support@immobilien-akademie-smart.de</a> · Antwort in 5 Werktagen<br>
+                        Immobilien Akademie Smart · Durlacher Str. 36 · 10715 Berlin
+                      </p>
+                    </div>
+                  </div>`,
+              });
+              console.log(`[Stripe Webhook] ✅ Kaufbestätigung E-Mail → ${email}`);
+            } catch (emailErr: any) {
+              console.error("[Stripe Webhook] E-Mail fehlgeschlagen:", emailErr.message);
+              // Kein Re-Throw — Modul bleibt freigeschaltet
+            }
+
+          } else {
+            // Nutzer nicht gefunden → trotzdem loggen
+            console.warn(`[Stripe Webhook] ⚠️ Nutzer ${email} nicht in DB — Module: ${modules}`);
           }
         } catch (err: any) {
           console.error("[Stripe Webhook] DB-Fehler:", err.message);
