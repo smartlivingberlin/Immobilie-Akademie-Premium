@@ -1,3 +1,4 @@
+import { DarkModeToggle } from "@/components/DarkModeToggle";
 import { Link, useLocation } from "wouter";
 import { useState } from "react";
 
@@ -70,7 +71,8 @@ export default function PublicHeader() {
               </div>
             </Link>
           ))}
-        </nav>
+        <DarkModeToggle />
+  </nav>
 
         {/* CTA Buttons */}
         <div style={{ display: "flex", gap: 8, marginLeft: "auto" }}>

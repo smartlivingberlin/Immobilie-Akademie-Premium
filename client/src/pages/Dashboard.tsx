@@ -17,7 +17,7 @@ function AnimatedBar({ pct, color }: { pct: number; color: string }) {
     return () => clearTimeout(t);
   }, [pct]);
   return (
-    <div style={{ height: 8, background: "#f1f5f9", borderRadius: 100, overflow: "hidden" }}>
+    <div style={{ height: 8, background: "var(--color-bg)", borderRadius: 100, overflow: "hidden" }}>
       <div style={{
         height: "100%", width: `${width}%`,
         background: color, borderRadius: 100,
@@ -90,7 +90,7 @@ function StatCard({ icon, label, value, sub, color, bg }: any) {
         <div style={{ fontSize: 28, fontWeight: 800, color: "var(--color-text)", letterSpacing: "-0.03em", lineHeight: 1 }}>
           {value}
         </div>
-        <div style={{ fontSize: 11, color: "#94a3b8", marginTop: 3 }}>{sub}</div>
+        <div style={{ fontSize: 11, color: "var(--color-text-muted)", marginTop: 3 }}>{sub}</div>
       </div>
     </div>
   );
@@ -140,7 +140,7 @@ function ModulKarte({ module, stats, enabled }: any) {
               }}>M{module.id}</span>
               {isLocked && (
                 <span style={{
-                  background: "#f1f5f9", color: "#94a3b8",
+                  background: "var(--color-bg)", color: "var(--color-text-muted)",
                   fontSize: 10, fontWeight: 600,
                   padding: "3px 10px", borderRadius: 100,
                 }}>🔒 Gesperrt</span>
@@ -163,7 +163,7 @@ function ModulKarte({ module, stats, enabled }: any) {
             <h3 style={{ fontSize: 16, fontWeight: 700, color: "var(--color-text)", margin: 0, lineHeight: 1.3 }}>
               {module.name}
             </h3>
-            <p style={{ fontSize: 12, color: "#94a3b8", margin: "4px 0 0" }}>
+            <p style={{ fontSize: 12, color: "var(--color-text-muted)", margin: "4px 0 0" }}>
               {stats.daysCompleted} von {stats.totalDays} Tagen
             </p>
           </div>
