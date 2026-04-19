@@ -1,3 +1,4 @@
+import type { jsPDF } from "jspdf";
 // Certificate Generator using jsPDF
 // Generates professional PDF certificates for completed modules
 
