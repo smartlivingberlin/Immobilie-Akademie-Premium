@@ -1,7 +1,6 @@
 // Certificate Generator using jsPDF
 // Generates professional PDF certificates for completed modules
 
-import { jsPDF } from "jspdf";
 import type { CertificateData } from "./progressTracking";
 
 export interface CertificateOptions {
@@ -9,11 +8,12 @@ export interface CertificateOptions {
   certificateData: CertificateData;
 }
 
-export function generateCertificatePDF(options: CertificateOptions): void {
+export function async generateCertificatePDF(options: CertificateOptions): void {
   const { userName, certificateData } = options;
   
   // Create PDF in landscape A4 format
-  const pdf = new jsPDF({
+  const { jsPDF: JsPDF } = await import("jspdf");
+  const doc = new JsPDF({
     orientation: "landscape",
     unit: "mm",
     format: "a4",
@@ -205,7 +205,7 @@ function generateCertificateId(data: CertificateData): string {
 }
 
 // Preview certificate data (for UI display before download)
-export function getCertificatePreviewData(options: CertificateOptions): {
+export function async getCertificatePreviewData(options: CertificateOptions): {
   userName: string;
   moduleName: string;
   completionDate: string;
