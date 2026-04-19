@@ -18,7 +18,7 @@ import {
   isModuleEligibleForCertificate, 
   getCertificateData 
 } from "@/lib/progressTracking";
-import { generateCertificatePDF, getCertificatePreviewData } from "@/lib/certificateGenerator";
+// certificateGenerator lazy geladen (enthält jsPDF)
 import { useToast } from "@/hooks/use-toast";
 
 export default function Certificates() {
@@ -55,7 +55,7 @@ export default function Certificates() {
     }
 
     try {
-      generateCertificatePDF({
+      (await import("@/lib/certificateGenerator")).generateCertificatePDF({
         userName: userName.trim(),
         certificateData,
       });
