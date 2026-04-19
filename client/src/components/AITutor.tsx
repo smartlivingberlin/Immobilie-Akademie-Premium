@@ -115,20 +115,6 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
   if (!isOpen) return null;
 
   return (
-    {/* EU AI Act Transparenz-Hinweis — Pflicht ab Aug 2026 */}
-    <div style={{
-      background: "#fffbeb", border: "1px solid #fde68a",
-      borderRadius: 10, padding: "10px 16px", marginBottom: 16,
-      display: "flex", alignItems: "flex-start", gap: 10,
-    }}>
-      <span style={{fontSize: 18, flexShrink: 0}}>🤖</span>
-      <p style={{fontSize: 12, color: "#92400e", margin: 0, lineHeight: 1.5}}>
-        <strong>KI-System:</strong> Dieser Tutor wird durch Künstliche Intelligenz 
-        unterstützt (Claude/Gemini/Groq). Die Antworten wurden nicht von einem 
-        Menschen verfasst. Bitte prüfe wichtige Informationen eigenständig.
-      </p>
-    </div>
-    
     <div className="fixed bottom-4 right-4 w-96 h-[580px] bg-white rounded-2xl shadow-2xl border border-slate-200 flex flex-col z-50">
       {/* Header */}
       <div className="flex items-center gap-3 p-4 border-b border-slate-100 bg-gradient-to-r from-blue-600 to-blue-700 rounded-t-2xl">
