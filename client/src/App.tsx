@@ -132,7 +132,6 @@ function Router() {
     <main id="main-content"><Suspense fallback={<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:"18px",color:"#64748b"}}>Laden...</div>}>
       <InspectBanner />
       <CookieBanner />
-      <ExitIntentPopup />
       <Switch>
         <Route path="/"><PublicLayout><Home /></PublicLayout></Route>
         <Route path="/login"><PublicLayout><LoginPage /></PublicLayout></Route>
@@ -154,7 +153,6 @@ function Router() {
         <Route path="/impressum"><PublicLayout><Impressum /></PublicLayout></Route>
         <Route path="/datenschutz"><PublicLayout><Datenschutz /></PublicLayout></Route>
         <Route path="/agb"><PublicLayout><AGB /></PublicLayout></Route>
-        <Route path="/barrierefreiheit"><PublicLayout><Barrierefreiheit /></PublicLayout></Route>
         <Route path="/widerruf"><PublicLayout><Widerruf /></PublicLayout></Route>
         <Route path="/bildungskonzept"><PublicLayout><Bildungskonzept /></PublicLayout></Route>
         <Route path="/rechner"><PublicLayout><Rechner /></PublicLayout></Route>
