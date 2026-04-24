@@ -3,7 +3,8 @@ import { Router, type Request, type Response } from "express";
 import { sql } from "drizzle-orm";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-});
+  apiVersion: "2026-02-25.clover",
+}) as any;
 
 export const stripeRouter = Router();
 
@@ -135,12 +136,12 @@ stripeRouter.post("/api/stripe/checkout", async (req, res) => {
         }, quantity: 1 }],
         success_url: String(req.headers.origin) + "/zahlung-erfolgreich?bundle=" + bundleId,
         cancel_url: String(req.headers.origin) + "/pakete",
-        metadata: { bundle: bundleId, modules: bundle.modules.join(",") },
+        metadata: { bundle: bundleId, modules: bundle.modules.map(String).join(",") },
       });
-      return res.json({ url: session.url });
+      res.json({ url: session.url }); return;
     } catch(e: any) {
       console.error("[Stripe Bundle]", e.message);
-      return res.status(500).json({ error: e.message });
+      res.status(500).json({ error: e.message }); return;
     }
   });
 
