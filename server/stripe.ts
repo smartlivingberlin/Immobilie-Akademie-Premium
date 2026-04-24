@@ -3,7 +3,6 @@ import { Router, type Request, type Response } from "express";
 import { sql } from "drizzle-orm";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-  apiVersion: "2026-02-25.clover",
 });
 
 export const stripeRouter = Router();
