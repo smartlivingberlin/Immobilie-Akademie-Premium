@@ -146,17 +146,7 @@ stripeRouter.post("/api/stripe/checkout", async (req, res) => {
   });
 
 // ── Stripe Webhook (Kauf-Bestätigung → Modul freischalten) ──
-stripeRouter.post("/api/stripe/webhook",
-  (req: any, res: any, next: any) => {
-    let data = "";
-    req.setEncoding("utf8");
-    req.on("data", (chunk: string) => { data += chunk; });
-    req.on("end", () => { (req as any).rawBody = data; req.body = data; next(); });
-  },
-  async (req: any, res: any) => {
-    return stripeWebhookHandler(req, res);
-  }
-);
+// Webhook wird direkt in index.ts vor express.json() gemountet
 
 // ── Exportierter Webhook-Handler ──
 export async function stripeWebhookHandler(req: any, res: any) {
