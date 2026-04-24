@@ -266,3 +266,48 @@ stripeRouter.post("/api/stripe/webhook",
     res.json({ received: true });
   }
 );
+
+// ── Exportierter Webhook-Handler (für direkten Mount vor express.json) ──
+export async function stripeWebhookHandler(req: any, res: any) {
+  const sig = req.headers["stripe-signature"];
+  const secret = process.env.STRIPE_WEBHOOK_SECRET;
+  if (!secret) {
+    console.error("[Stripe Webhook] STRIPE_WEBHOOK_SECRET nicht gesetzt!");
+    return res.status(500).json({ error: "Webhook secret missing" });
+  }
+  let event;
+  try {
+    event = stripe.webhooks.constructEvent(req.body, sig, secret);
+  } catch (err: any) {
+    console.error("[Stripe Webhook] Signatur ungültig:", err.message);
+    return res.status(400).send(`Webhook Error: ${err.message}`);
+  }
+  if (event.type === "checkout.session.completed") {
+    const session = event.data.object as any;
+    const modules = session.metadata?.modules ?? session.metadata?.bundle;
+    const email = session.customer_email ?? session.customer_details?.email ?? session.metadata?.email;
+    const userName = session.metadata?.userName ?? "Lernender";
+    console.log(\`[Stripe Webhook] Kauf bestätigt: \${email}, Module: \${modules}\`);
+    if (email && modules) {
+      try {
+        const { getDb } = await import("./db");
+        const db = await getDb();
+        const rows = await db.execute(
+          sql\`SELECT id, name, enabledModules FROM users WHERE email = \${email}\`
+        ) as any;
+        const userRows = (rows as any).rows ?? rows as any[];
+        if (userRows.length > 0) {
+          const user = userRows[0];
+          const current = (user.enabledModules || "").split(",").map((s: string) => s.trim()).filter(Boolean);
+          const newMods = modules.split(",").map((s: string) => s.trim()).filter(Boolean);
+          const merged = [...new Set([...current, ...newMods])].join(",");
+          await db.execute(sql\`UPDATE users SET enabledModules = \${merged} WHERE id = \${user.id}\`);
+          console.log(\`[Stripe Webhook] ✅ Module "\${merged}" für \${email} freigeschaltet\`);
+        }
+      } catch (err: any) {
+        console.error("[Stripe Webhook] DB-Fehler:", err.message);
+      }
+    }
+  }
+  res.json({ received: true });
+}
