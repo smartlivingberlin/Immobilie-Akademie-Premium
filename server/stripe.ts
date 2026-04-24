@@ -125,7 +125,7 @@ stripeRouter.post("/api/stripe/checkout", async (req, res) => {
   stripeRouter.post("/bundle-:bundleId", async (req: Request, res: Response) => {
     const { bundleId } = req.params;
     const bundle = BUNDLES[bundleId as string];
-    if (!bundle) return res.status(404).json({ error: "Bundle nicht gefunden" });
+    if (!bundle) return void res.status(404).json({ error: "Bundle nicht gefunden" });
     try {
       const session = await stripe.checkout.sessions.create({
         mode: "payment",
