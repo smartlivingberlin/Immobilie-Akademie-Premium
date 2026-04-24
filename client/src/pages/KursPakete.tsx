@@ -101,7 +101,7 @@ export default function KursPakete() {
           </h1>
           <p style={{ fontSize:16, color:"#94a3b8", maxWidth:560, margin:"0 auto 24px" }}>
             6 Kombinationen — für Makler, Verwalter, Gutachter und Allrounder.
-            Einmalzahlung, lebenslanger Zugang.
+            Einmalzahlung, dauerhafter Zugang ohne Ablaufdatum.
           </p>
           <div style={{ display:"flex", gap:24, justifyContent:"center", flexWrap:"wrap" }}>
             {[
