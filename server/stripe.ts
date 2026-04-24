@@ -1,5 +1,6 @@
 import Stripe from "stripe";
 import { Router, type Request, type Response } from "express";
+import { sql } from "drizzle-orm";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
   apiVersion: "2026-02-25.clover",
@@ -123,7 +124,7 @@ stripeRouter.post("/api/stripe/checkout", async (req, res) => {
 
   stripeRouter.post("/bundle-:bundleId", async (req: Request, res: Response) => {
     const { bundleId } = req.params;
-    const bundle = BUNDLES[bundleId];
+    const bundle = BUNDLES[bundleId as string];
     if (!bundle) return res.status(404).json({ error: "Bundle nicht gefunden" });
     try {
       const session = await stripe.checkout.sessions.create({
@@ -171,13 +172,13 @@ stripeRouter.post("/api/stripe/webhook",
       if (email && modules) {
         try {
           const { getDb } = await import("./db");
-          const db = getDb();
+          const db = await getDb();
 
           // ── 1. Nutzer in DB finden ─────────────────────────────
-          const [rows] = await db.execute(
-            "SELECT id, name, enabledModules FROM users WHERE email = ?", [email]
+          const rows = await db.execute(
+            sql`SELECT id, name, enabledModules FROM users WHERE email = ${email}`
           ) as any;
-          const userRows = rows as any[];
+          const userRows = (rows as any).rows ?? rows as any[];
 
           if (userRows.length > 0) {
             const user = userRows[0];
@@ -188,8 +189,7 @@ stripeRouter.post("/api/stripe/webhook",
             const merged = [...new Set([...current, ...newMods])].join(",");
 
             await db.execute(
-              "UPDATE users SET enabledModules = ? WHERE id = ?",
-              [merged, user.id]
+              sql`UPDATE users SET enabledModules = ${merged} WHERE id = ${user.id}`
             );
             console.log(`[Stripe Webhook] ✅ enabledModules="${merged}" für ${email} gesetzt`);
 
