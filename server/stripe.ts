@@ -1,5 +1,5 @@
 import Stripe from "stripe";
-import { Router } from "express";
+import { Router, type Request, type Response } from "express";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
   apiVersion: "2026-02-25.clover",
@@ -170,7 +170,7 @@ stripeRouter.post("/api/stripe/webhook",
 
       if (email && modules) {
         try {
-          const { getDb } = await import("../db");
+          const { getDb } = await import("./db");
           const db = getDb();
 
           // ── 1. Nutzer in DB finden ─────────────────────────────
