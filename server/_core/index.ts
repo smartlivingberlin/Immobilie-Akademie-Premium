@@ -241,10 +241,15 @@ app.use("/api/auth/register", registerLimiter);
     next();
   });
 
-// ── Stripe Webhook: raw body VOR express.json() ──────────────
-app.post("/api/stripe/webhook", express.raw({ type: "application/json" }), async (req, res) => {
-  const { stripeWebhookHandler } = await import("../stripe");
-  return stripeWebhookHandler(req, res);
+// ── Stripe Webhook VOR express.json — raw body nötig ──────────
+app.post("/api/stripe/webhook", express.raw({ type: "*/*" }), async (req: any, res: any) => {
+  try {
+    const { stripeWebhookHandler } = await import("../stripe");
+    await stripeWebhookHandler(req, res);
+  } catch (err: any) {
+    console.error("[Webhook] Fehler:", err.message);
+    res.status(500).json({ error: err.message });
+  }
 });
 app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
