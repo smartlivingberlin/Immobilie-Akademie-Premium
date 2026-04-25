@@ -267,7 +267,7 @@ app.post("/api/stripe/webhook", express.raw({ type: "*/*" }), async (req: any, r
           const db = await getDb();
           const { sql } = await import("drizzle-orm");
           const rows = await db.execute(sql`SELECT id, enabledModules FROM users WHERE email = ${email}`) as any;
-          const userRows = rows.rows ?? rows;
+          const userRows = Array.isArray(rows) ? rows : (rows.rows ?? []);
           if (userRows.length > 0) {
             const user = userRows[0];
             const current = (user.enabledModules || "").split(",").map((s: string) => s.trim()).filter(Boolean);
