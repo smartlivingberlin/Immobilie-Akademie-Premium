@@ -48,7 +48,7 @@ export default function Kurse() {
       const res = await fetch("/api/stripe/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ productId, userEmail: user?.email }),
+        body: JSON.stringify({ productId, userEmail: user?.email, widerrufsAkzeptiert: true }),
       });
       const data = await res.json();
       if (data.url) window.location.href = data.url;
