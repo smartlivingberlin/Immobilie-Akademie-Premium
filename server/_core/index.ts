@@ -244,8 +244,43 @@ app.use("/api/auth/register", registerLimiter);
 // ── Stripe Webhook VOR express.json — raw body nötig ──────────
 app.post("/api/stripe/webhook", express.raw({ type: "*/*" }), async (req: any, res: any) => {
   try {
-    const { stripeWebhookHandler } = await import("../stripe");
-    await stripeWebhookHandler(req, res);
+    const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY || "");
+    const sig = req.headers["stripe-signature"];
+    const secret = process.env.STRIPE_WEBHOOK_SECRET;
+    if (!secret) return res.status(500).json({ error: "Webhook secret missing" });
+    let event: any;
+    try {
+      event = stripe.webhooks.constructEvent(req.body, sig, secret);
+    } catch (err: any) {
+      console.error("[Stripe Webhook] Signatur ungültig:", err.message);
+      return res.status(400).send("Webhook Error: " + err.message);
+    }
+    if (event.type === "checkout.session.completed") {
+      const session = event.data.object;
+      const modules = session.metadata?.modules ?? session.metadata?.bundle;
+      const email = session.customer_email ?? session.customer_details?.email ?? session.metadata?.email;
+      console.log("[Stripe Webhook] Kauf: " + email + " Module: " + modules);
+      if (email && modules) {
+        try {
+          const { getDb } = await import("../db");
+          const db = await getDb();
+          const { sql } = await import("drizzle-orm");
+          const rows = await db.execute(sql`SELECT id, enabledModules FROM users WHERE email = ${email}`) as any;
+          const userRows = rows.rows ?? rows;
+          if (userRows.length > 0) {
+            const user = userRows[0];
+            const current = (user.enabledModules || "").split(",").map((s: string) => s.trim()).filter(Boolean);
+            const newMods = modules.split(",").map((s: string) => s.trim()).filter(Boolean);
+            const merged = [...new Set([...current, ...newMods])].join(",");
+            await db.execute(sql`UPDATE users SET enabledModules = ${merged} WHERE id = ${user.id}`);
+            console.log("[Stripe Webhook] ✅ Freigeschaltet: " + merged + " für " + email);
+          }
+        } catch (dbErr: any) {
+          console.error("[Stripe Webhook] DB-Fehler:", dbErr.message);
+        }
+      }
+    }
+    res.json({ received: true });
   } catch (err: any) {
     console.error("[Webhook] Fehler:", err.message);
     res.status(500).json({ error: err.message });
