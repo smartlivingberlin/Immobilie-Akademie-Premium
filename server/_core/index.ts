@@ -343,11 +343,6 @@ app.use(express.json({ limit: "50mb" }));
   const port = Number(process.env.PORT ?? 8080);
   const host = "0.0.0.0";
 
-  server.listen(port, host, () => {
-  });
-}
-
-startServer().catch(console.error);
 
 // ── Public Stats (Social Proof) ────────────────────────────
 app.get("/api/stats/public", async (_req, res) => {
@@ -529,3 +524,7 @@ setInterval(async () => {
   } catch(e) {}
 }, 8 * 60 * 1000);
 
+  server.listen(port, host, () => {
+  });
+}
+startServer().catch(console.error);
