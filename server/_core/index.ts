@@ -244,7 +244,8 @@ app.use("/api/auth/register", registerLimiter);
 // ── Stripe Webhook VOR express.json — raw body nötig ──────────
 app.post("/api/stripe/webhook", express.raw({ type: "*/*" }), async (req: any, res: any) => {
   try {
-    const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY || "");
+    const { default: Stripe } = await import("stripe");
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", { apiVersion: "2026-02-25.clover" } as any);
     const sig = req.headers["stripe-signature"];
     const secret = process.env.STRIPE_WEBHOOK_SECRET;
     if (!secret) return res.status(500).json({ error: "Webhook secret missing" });
