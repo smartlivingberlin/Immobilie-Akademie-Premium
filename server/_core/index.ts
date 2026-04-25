@@ -267,7 +267,6 @@ app.post("/api/stripe/webhook", express.raw({ type: "*/*" }), async (req: any, r
           const db = await getDb();
           const { sql } = await import("drizzle-orm");
           const rows = await db.execute(sql`SELECT id, enabledModules FROM users WHERE email = ${email}`) as any;
-          console.log("[Stripe Debug] rows type:", typeof rows, Array.isArray(rows), JSON.stringify(rows).substring(0,200));
           const userRows = Array.isArray(rows[0]) ? rows[0] : (Array.isArray(rows) ? rows : (rows.rows ?? []));
           if (userRows.length > 0) {
             const user = userRows[0];
