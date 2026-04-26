@@ -1,0 +1,1 @@
+ALTER TABLE `whitelabel_configs` MODIFY COLUMN `enabledModules` varchar(255) NOT NULL DEFAULT '1,2,3,4,5';
