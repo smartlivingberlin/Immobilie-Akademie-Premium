@@ -1,170 +1,112 @@
-import { DarkModeToggle } from "@/components/DarkModeToggle";
 import { Link, useLocation } from "wouter";
 import { useState } from "react";
+import { Menu, X, Headphones, BookOpen, Award } from "lucide-react";
+import { DarkModeToggle } from "@/components/DarkModeToggle";
+
+const NAV = [
+  { href: "/kurse",           label: "Kurse" },
+  { href: "/pakete",          label: "Pakete" },
+  { href: "/glossary",        label: "Glossar",      icon: BookOpen },
+  { href: "/foerderung",      label: "Förderung",    icon: Award },
+  { href: "/audio-modus",     label: "Audio-Modus",  icon: Headphones },
+  { href: "/rechner",         label: "Rechner" },
+];
 
 export default function PublicHeader() {
   const [location] = useLocation();
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const navLinks = [
-    { href: "/kurse", label: "Kurse" },
-    { href: "/pakete", label: "Pakete 💰" },
-    { href: "/lehrplan", label: "Lehrplan" },
-    { href: "/rechner", label: "Rechner" },
-    { href: "/hilfe", label: "Hilfe" },
-    { href: "/offene-fragen/1", label: "🔬 Praxis-Lab" },
-  ];
+  const [open, setOpen] = useState(false);
 
   return (
-    <header style={{
-      background: "#0f172a",
-      borderBottom: "1px solid #1e293b",
-      position: "sticky", top: 0, zIndex: 50,
-    }}>
-      <div style={{
-        maxWidth: 1200, margin: "0 auto",
-        padding: "0 20px",
-        display: "flex", alignItems: "center",
-        height: 64, gap: 32,
-      }}>
-        {/* Logo */}
-        <Link href="/">
-          <div style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }}>
-            <div style={{
-              width: 36, height: 36, borderRadius: 8,
-              background: "linear-gradient(135deg, #2563eb, #7c3aed)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: 18, flexShrink: 0,
-            }}>🏠</div>
-            <div>
-              <div style={{ fontSize: 14, fontWeight: 800, color: "#f8fafc", lineHeight: 1.2 }}>
-                Immobilien Akademie
-              </div>
-              <div style={{ fontSize: 10, color: "#60a5fa", fontWeight: 600, letterSpacing: "0.05em" }}>
-                SMART · IHK-VORBEREITUNG
-              </div>
-            </div>
-          </div>
-        </Link>
+    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
 
-        {/* Desktop Nav */}
-        <nav style={{ display: "flex", gap: 4, marginLeft: 16, flex: 1 }}
-             className="hidden-mobile">
-          {navLinks.map(link => (
-            <Link key={link.href} href={link.href}>
-              <div style={{
-                padding: "6px 14px", borderRadius: 8,
-                fontSize: 13, fontWeight: 500, cursor: "pointer",
-                color: location === link.href ? "#60a5fa" : "#94a3b8",
-                background: location === link.href ? "rgba(59,130,246,0.1)" : "transparent",
-                transition: "all 0.15s",
-              }}
-                onMouseEnter={e => {
-                  if (location !== link.href)
-                    (e.target as HTMLElement).style.color = "#f8fafc";
-                }}
-                onMouseLeave={e => {
-                  if (location !== link.href)
-                    (e.target as HTMLElement).style.color = "#94a3b8";
-                }}>
-                {link.label}
+          {/* Logo */}
+          <Link href="/">
+            <a className="flex items-center gap-2.5 group">
+              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
+                <span className="font-display font-bold text-primary-foreground text-sm">IA</span>
               </div>
-            </Link>
-          ))}
-        <DarkModeToggle />
-  </nav>
-
-        {/* CTA Buttons */}
-        <div style={{ display: "flex", gap: 8, marginLeft: "auto" }}>
-          <Link href="/login">
-            <button style={{
-              background: "transparent", color: "#94a3b8",
-              border: "1px solid #334155", borderRadius: 8,
-              padding: "8px 16px", fontSize: 13, fontWeight: 600,
-              cursor: "pointer", transition: "all 0.15s",
-            }}
-              onMouseEnter={e => {
-                (e.currentTarget.style.color = "#f8fafc");
-                (e.currentTarget.style.borderColor = "#64748b");
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget.style.color = "#94a3b8");
-                (e.currentTarget.style.borderColor = "#334155");
-              }}>
-              Anmelden
-            </button>
+              <div className="hidden sm:block">
+                <div className="font-display font-semibold text-sm text-foreground leading-none">Immobilien Akademie</div>
+                <div className="text-xs text-muted-foreground leading-none mt-0.5">Smart</div>
+              </div>
+            </a>
           </Link>
-          <Link href="/kurs/modul-1-immobilien-grundkurs">
-            <button style={{
-              background: "linear-gradient(135deg, #2563eb, #7c3aed)",
-              color: "white", border: "none", borderRadius: 8,
-              padding: "8px 16px", fontSize: 13, fontWeight: 700,
-              cursor: "pointer", transition: "opacity 0.15s",
-            }}
-              onMouseEnter={e => (e.currentTarget.style.opacity = "0.85")}
-              onMouseLeave={e => (e.currentTarget.style.opacity = "1")}>
-              Kostenlos testen →
-            </button>
-          </Link>
-        </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          style={{
-            display: "none", background: "transparent",
-            border: "none", color: "#94a3b8", cursor: "pointer",
-            fontSize: 20, padding: 4,
-          }}
-          className="show-mobile"
-          aria-label="Menü öffnen">
-          {menuOpen ? "✕" : "☰"}
-        </button>
-      </div>
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-1">
+            {NAV.map(({ href, label, icon: Icon }) => {
+              const active = location === href;
+              return (
+                <Link key={href} href={href}>
+                  <a className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                    active
+                      ? "bg-primary/10 text-primary"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                  }`}>
+                    {Icon && <Icon className="h-3.5 w-3.5" />}
+                    {label}
+                  </a>
+                </Link>
+              );
+            })}
+          </nav>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div style={{
-          background: "#1e293b", borderTop: "1px solid #334155",
-          padding: "12px 20px",
-        }}>
-          {navLinks.map(link => (
-            <Link key={link.href} href={link.href}>
-              <div
-                onClick={() => setMenuOpen(false)}
-                style={{
-                  padding: "10px 0", fontSize: 14, color: "#cbd5e1",
-                  borderBottom: "0.5px solid #334155", cursor: "pointer",
-                }}>
-                {link.label}
-              </div>
-            </Link>
-          ))}
-          <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
+          {/* Right side */}
+          <div className="flex items-center gap-2">
+            <DarkModeToggle />
             <Link href="/login">
-              <button style={{
-                flex: 1, background: "transparent", color: "#94a3b8",
-                border: "1px solid #334155", borderRadius: 8,
-                padding: "10px", fontSize: 13, cursor: "pointer",
-              }}>Anmelden</button>
+              <a className="hidden sm:inline-flex items-center px-4 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors">
+                Login
+              </a>
             </Link>
             <Link href="/kurs/modul-1-immobilien-grundkurs">
-              <button style={{
-                flex: 1, background: "#2563eb", color: "white",
-                border: "none", borderRadius: 8,
-                padding: "10px", fontSize: 13, fontWeight: 700, cursor: "pointer",
-              }}>Testen →</button>
+              <a className="hidden sm:inline-flex items-center px-4 py-1.5 rounded-lg text-sm font-semibold bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
+                Kostenlos testen
+              </a>
             </Link>
+
+            {/* Mobile menu toggle */}
+            <button onClick={() => setOpen(!open)}
+              className="md:hidden rounded-lg p-1.5 hover:bg-muted transition-colors"
+              aria-label={open ? "Menü schließen" : "Menü öffnen"}>
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
           </div>
         </div>
-      )}
 
-      <style>{`
-        @media (max-width: 768px) {
-          .hidden-mobile { display: none !important; }
-          .show-mobile { display: block !important; }
-        }
-      `}</style>
+        {/* Mobile Nav */}
+        {open && (
+          <div className="md:hidden border-t border-border py-3 space-y-1">
+            {NAV.map(({ href, label, icon: Icon }) => (
+              <Link key={href} href={href}>
+                <a onClick={() => setOpen(false)}
+                  className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    location === href
+                      ? "bg-primary/10 text-primary"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                  }`}>
+                  {Icon && <Icon className="h-4 w-4" />}
+                  {label}
+                </a>
+              </Link>
+            ))}
+            <div className="pt-2 border-t border-border flex flex-col gap-2 px-3">
+              <Link href="/login">
+                <a className="flex items-center justify-center px-4 py-2 rounded-lg text-sm font-medium border border-border hover:bg-muted transition-colors">
+                  Login
+                </a>
+              </Link>
+              <Link href="/kurs/modul-1-immobilien-grundkurs">
+                <a className="flex items-center justify-center px-4 py-2 rounded-lg text-sm font-semibold bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
+                  Kostenlos testen
+                </a>
+              </Link>
+            </div>
+          </div>
+        )}
+      </div>
     </header>
   );
 }
