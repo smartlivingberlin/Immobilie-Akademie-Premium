@@ -9,7 +9,7 @@ export async function runMigrations() {
   if (!url) return;
   try {
     const __dirname = dirname(fileURLToPath(import.meta.url));
-    const migrationsFolder = join(__dirname, "../../drizzle/migrations");
+    const migrationsFolder = join(process.cwd(), "drizzle/migrations");
     console.log("[DB] Migrations-Pfad:", migrationsFolder);
     const connection = await mysql.createConnection({
       uri: url,
