@@ -67,9 +67,9 @@ export async function getDb(): Promise<ReturnType<typeof drizzle>> {
   const mysql = await import("mysql2/promise");
   const pool = mysql.createPool({
     uri: url,
-    ssl: { rejectUnauthorized: false },
     waitForConnections: true,
     connectionLimit: 10,
+    enableKeepAlive: true,
   });
   _db = drizzle(pool);
   return _db;
