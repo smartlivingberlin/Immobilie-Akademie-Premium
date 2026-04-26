@@ -62,27 +62,7 @@ export async function getDb(): Promise<ReturnType<typeof drizzle>> {
   if (!url) {
     throw new Error("[Database] DATABASE_URL fehlt. Bitte in Railway Variables setzen.");
   }
-  const mysql = await import("mysql2/promise");
-  const isExternal = !url.includes("railway.internal");
-  const pool = mysql.createPool({
-    uri: url,
-    ...(isExternal ? { ssl: { rejectUnauthorized: false } } : {}),
-    waitForConnections: true,
-    connectionLimit: 5,
-    connectTimeout: 30000,
-    enableKeepAlive: true,
-    keepAliveInitialDelay: 0,
-  });
-  pool.on("connection", (conn) => {
-    conn.on("error", (err: any) => {
-      if (err.code === "PROTOCOL_CONNECTION_LOST" || err.code === "ECONNRESET") {
-        console.warn("[DB] Verbindung verloren — Pool stellt neu her");
-        _db = null;
-      }
-    });
-  });
-  console.log("[DB] Pool: " + (isExternal ? "extern+SSL" : "intern"));
-  _db = drizzle(pool);
+  _db = drizzle(url);
   return _db;
 }
 
