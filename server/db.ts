@@ -76,8 +76,6 @@ export async function getDb(): Promise<ReturnType<typeof drizzle>> {
   _db = drizzle(pool);
   return _db;
 }
-  return _db;
-}
 
 export async function upsertUser(user: InsertUser): Promise<void> {
   if (!user.openId) {
