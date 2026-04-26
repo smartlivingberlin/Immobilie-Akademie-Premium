@@ -62,6 +62,8 @@ async function startServer() {
   try {
     const { getDb } = await import("../db");
     const db = await getDb();
+    // Raw SQL über drizzle-orm sql tag
+    const { sql } = await import("drizzle-orm");
     // Alle benötigten Spalten direkt sicherstellen
     const patches = [
       "CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, openId VARCHAR(255) NOT NULL UNIQUE, name VARCHAR(255), email VARCHAR(255), loginMethod VARCHAR(50), role VARCHAR(50) DEFAULT 'user', enabledModules VARCHAR(255) DEFAULT '1', onboardingCompleted TINYINT(1) DEFAULT 0, trialExpiresAt DATETIME NULL, learningGoal VARCHAR(255) NULL, dailyMinutes INT NULL, preferredTime VARCHAR(100) NULL, experienceLevel VARCHAR(100) NULL, tenantId INT NULL, createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP, updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, lastSignedIn TIMESTAMP NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4",
@@ -76,7 +78,7 @@ async function startServer() {
       "ALTER TABLE users ADD COLUMN IF NOT EXISTS lastSignedIn TIMESTAMP NULL",
     ];
     for (const sql of patches) {
-      try { await db.execute(sql as any); } catch(e:any) { /* Spalte existiert bereits */ }
+      try { await db.execute(sql`${sql.raw(p)}`); } catch(e:any) { /* Spalte existiert bereits */ }
     }
     console.log("[DB] ✅ Tabellen & Spalten bereit");
   } catch(e:any) { console.warn("[DB] Setup:", e.message); }
