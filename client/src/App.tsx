@@ -80,6 +80,8 @@ import { InspectBanner } from "@/components/InspectBanner";
 import { usePageTracking } from "@/hooks/useAnalytics";
 import PublicHeader from "@/components/layout/PublicHeader";
 import { CookieBanner } from "@/components/CookieBanner";
+import Foerderung from "./pages/Foerderung";
+import { AccessibilityPanel } from "./components/AccessibilityPanel";
 const OwnerDashboard = lazy(() => import("@/pages/OwnerDashboard").then(m => ({ default: m.default })));
 
 
@@ -201,6 +203,7 @@ function Router() {
         <Route path="/admin-2fa"><Admin2FA /></Route>
         <Route path="/admin"><AppLayout><AdminRoute component={AdminDashboard} /></AppLayout></Route>
         <Route path="/owner-dashboard"><AppLayout><AdminRoute component={OwnerDashboard} /></AppLayout></Route>
+        <Route path="/foerderung"><PublicLayout><Foerderung /></PublicLayout></Route>
         <Route component={NotFound} />
       </Switch>
     </Suspense></main>
@@ -208,5 +211,5 @@ function Router() {
 }
 
 export default function App() {
-  return <Router />;
+  return <><Router /><AccessibilityPanel /></>;
 }
