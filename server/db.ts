@@ -63,7 +63,7 @@ export async function getDb(): Promise<ReturnType<typeof drizzle>> {
     throw new Error("[Database] DATABASE_URL fehlt. Bitte in Railway Variables setzen.");
   }
   const mysql = await import("mysql2/promise");
-  const isExternal = url.includes(":39873") || url.includes(":3306") && !url.includes("railway.internal");
+  const isExternal = !url.includes("railway.internal");
   const pool = mysql.createPool({
     uri: url,
     ...(isExternal ? { ssl: { rejectUnauthorized: false } } : {}),
