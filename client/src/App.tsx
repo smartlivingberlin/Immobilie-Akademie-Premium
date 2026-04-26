@@ -82,6 +82,7 @@ import PublicHeader from "@/components/layout/PublicHeader";
 import { CookieBanner } from "@/components/CookieBanner";
 import Foerderung from "./pages/Foerderung";
 import { AccessibilityPanel } from "./components/AccessibilityPanel";
+import AudioModus from "./pages/AudioModus";
 const OwnerDashboard = lazy(() => import("@/pages/OwnerDashboard").then(m => ({ default: m.default })));
 
 
@@ -204,6 +205,7 @@ function Router() {
         <Route path="/admin"><AppLayout><AdminRoute component={AdminDashboard} /></AppLayout></Route>
         <Route path="/owner-dashboard"><AppLayout><AdminRoute component={OwnerDashboard} /></AppLayout></Route>
         <Route path="/foerderung"><PublicLayout><Foerderung /></PublicLayout></Route>
+        <Route path="/audio-modus"><AudioModus /></Route>
         <Route component={NotFound} />
       </Switch>
     </Suspense></main>
