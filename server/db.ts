@@ -64,7 +64,7 @@ export async function getDb(): Promise<ReturnType<typeof drizzle>> {
     throw new Error("[Database] DATABASE_URL fehlt. Bitte in Railway Variables setzen.");
   }
 
-  _db = drizzle(url);
+  _db = drizzle({ connection: { uri: url, ssl: { rejectUnauthorized: false } } });
   return _db;
 }
 
