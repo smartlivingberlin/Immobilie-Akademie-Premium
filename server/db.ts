@@ -72,10 +72,6 @@ export async function upsertUser(user: InsertUser): Promise<void> {
   }
 
   const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot upsert user: database not available");
-    return;
-  }
 
   try {
     const values: InsertUser = {
@@ -127,10 +123,6 @@ export async function upsertUser(user: InsertUser): Promise<void> {
 
 export async function getUserByOpenId(openId: string) {
   const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot get user: database not available");
-    return undefined;
-  }
 
   const result = await db.select().from(users).where(eq(users.openId, openId)).limit(1);
 
@@ -154,10 +146,6 @@ export async function createChatConversation(
   moduleContext?: string
 ): Promise<ChatConversation | undefined> {
   const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot create conversation: database not available");
-    return undefined;
-  }
 
   const conversation: InsertChatConversation = {
     userId,
@@ -187,10 +175,6 @@ export async function addChatMessage(
   content: string
 ): Promise<ChatMessage | undefined> {
   const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot add message: database not available");
-    return undefined;
-  }
 
   const message: InsertChatMessage = {
     conversationId,
@@ -217,10 +201,6 @@ export async function getConversationMessages(
   conversationId: number
 ): Promise<ChatMessage[]> {
   const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot get messages: database not available");
-    return [];
-  }
 
   return db
     .select()
@@ -236,10 +216,6 @@ export async function getUserConversations(
   userId: number
 ): Promise<ChatConversation[]> {
   const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot get conversations: database not available");
-    return [];
-  }
 
   return db
     .select()
@@ -256,10 +232,6 @@ export async function updateConversationTitle(
   title: string
 ): Promise<void> {
   const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot update conversation: database not available");
-    return;
-  }
 
   await db
     .update(chatConversations)
@@ -276,10 +248,6 @@ export async function updateConversationTitle(
  */
 export async function getAllWhitelabelConfigs(): Promise<WhitelabelConfig[]> {
   const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot get whitelabel configs: database not available");
-    return [];
-  }
 
   return db
     .select()
@@ -294,10 +262,6 @@ export async function getWhitelabelConfigById(
   id: number
 ): Promise<WhitelabelConfig | null> {
   const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot get whitelabel config: database not available");
-    return null;
-  }
 
   const result = await db
     .select()
@@ -315,10 +279,6 @@ export async function getWhitelabelConfigBySlug(
   slug: string
 ): Promise<WhitelabelConfig | null> {
   const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot get whitelabel config: database not available");
-    return null;
-  }
 
   const result = await db
     .select()
@@ -336,10 +296,6 @@ export async function createWhitelabelConfig(
   config: InsertWhitelabelConfig
 ): Promise<WhitelabelConfig | undefined> {
   const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot create whitelabel config: database not available");
-    return undefined;
-  }
 
   const result = await db.insert(whitelabelConfigs).values(config);
   const insertId = Number(result[0].insertId);
@@ -378,10 +334,6 @@ export async function updateWhitelabelConfig(
   updates: Partial<InsertWhitelabelConfig>
 ): Promise<void> {
   const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot update whitelabel config: database not available");
-    return;
-  }
 
   await db
     .update(whitelabelConfigs)
@@ -396,10 +348,6 @@ export async function deleteWhitelabelConfig(
   id: number
 ): Promise<void> {
   const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot delete whitelabel config: database not available");
-    return;
-  }
 
   await db
     .delete(whitelabelConfigs)
@@ -413,10 +361,6 @@ export async function getWhitelabelConfigForUser(
   userId: number
 ): Promise<WhitelabelConfig | null> {
   const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot get whitelabel config for user: database not available");
-    return null;
-  }
 
   // First get the user's tenantId
   const userResult = await db
@@ -441,10 +385,6 @@ export async function assignUserToTenant(
   tenantId: number | null
 ): Promise<void> {
   const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot assign user to tenant: database not available");
-    return;
-  }
 
   await db
     .update(users)
@@ -459,10 +399,6 @@ export async function getUsersByTenantId(
   tenantId: number
 ): Promise<typeof users.$inferSelect[]> {
   const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot get users by tenant: database not available");
-    return [];
-  }
 
   return db
     .select()
@@ -480,7 +416,6 @@ export async function getUsersByTenantId(
  */
 export async function getAllVideoTutorials(): Promise<VideoTutorial[]> {
   const db = await getDb();
-  if (!db) return [];
 
   try {
     return await db
@@ -498,7 +433,6 @@ export async function getAllVideoTutorials(): Promise<VideoTutorial[]> {
  */
 export async function getVideoTutorialsByModule(moduleId: number): Promise<VideoTutorial[]> {
   const db = await getDb();
-  if (!db) return [];
 
   try {
     return await db
@@ -517,7 +451,6 @@ export async function getVideoTutorialsByModule(moduleId: number): Promise<Video
  */
 export async function getVideoTutorialsByDay(moduleId: number, dayNumber: number): Promise<VideoTutorial[]> {
   const db = await getDb();
-  if (!db) return [];
 
   try {
     return await db
@@ -538,7 +471,6 @@ export async function getVideoTutorialsByDay(moduleId: number, dayNumber: number
  */
 export async function getVideoTutorialById(id: number): Promise<VideoTutorial | null> {
   const db = await getDb();
-  if (!db) return null;
 
   try {
     const result = await db
@@ -559,7 +491,6 @@ export async function getVideoTutorialById(id: number): Promise<VideoTutorial | 
  */
 export async function createVideoTutorial(data: InsertVideoTutorial): Promise<VideoTutorial | null> {
   const db = await getDb();
-  if (!db) return null;
 
   try {
     await db.insert(videoTutorials).values(data);
@@ -582,7 +513,6 @@ export async function createVideoTutorial(data: InsertVideoTutorial): Promise<Vi
  */
 export async function updateVideoTutorial(id: number, data: Partial<InsertVideoTutorial>): Promise<VideoTutorial | null> {
   const db = await getDb();
-  if (!db) return null;
 
   try {
     await db
@@ -602,7 +532,6 @@ export async function updateVideoTutorial(id: number, data: Partial<InsertVideoT
  */
 export async function deleteVideoTutorial(id: number): Promise<boolean> {
   const db = await getDb();
-  if (!db) return false;
 
   try {
     await db.delete(videoTutorials).where(eq(videoTutorials.id, id));
@@ -618,7 +547,6 @@ export async function deleteVideoTutorial(id: number): Promise<boolean> {
  */
 export async function getUserVideoProgress(userId: number, videoId: number): Promise<VideoProgress | null> {
   const db = await getDb();
-  if (!db) return null;
 
   try {
     const result = await db
@@ -646,7 +574,6 @@ export async function updateVideoProgress(
   percentageWatched: number
 ): Promise<VideoProgress | null> {
   const db = await getDb();
-  if (!db) return null;
 
   try {
     const existing = await getUserVideoProgress(userId, videoId);
@@ -690,7 +617,6 @@ export async function updateVideoProgress(
  */
 export async function getAllUserVideoProgress(userId: number): Promise<VideoProgress[]> {
   const db = await getDb();
-  if (!db) return [];
 
   try {
     return await db
@@ -721,7 +647,6 @@ export async function createExamSession(
   isIHKMode: boolean = false
 ): Promise<ExamSession | undefined> {
   const db = await getDb();
-  if (!db) return undefined;
 
   try {
     const session: InsertExamSession = {
@@ -764,7 +689,6 @@ export async function createExamSession(
  */
 export async function getExamSession(sessionId: number): Promise<ExamSession | null> {
   const db = await getDb();
-  if (!db) return null;
 
   try {
     const result = await db
@@ -785,7 +709,6 @@ export async function getExamSession(sessionId: number): Promise<ExamSession | n
  */
 export async function getUserExamSessions(userId: number, moduleId?: number): Promise<ExamSession[]> {
   const db = await getDb();
-  if (!db) return [];
 
   try {
     if (moduleId) {
@@ -811,7 +734,6 @@ export async function getUserExamSessions(userId: number, moduleId?: number): Pr
  */
 export async function saveExamQuestion(questionData: InsertExamQuestion): Promise<ExamQuestion | undefined> {
   const db = await getDb();
-  if (!db) return undefined;
 
   try {
     const result = await db.insert(examQuestions).values(questionData);
@@ -839,7 +761,6 @@ export async function saveExamQuestion(questionData: InsertExamQuestion): Promis
  */
 export async function getExamQuestions(sessionId: number): Promise<ExamQuestion[]> {
   const db = await getDb();
-  if (!db) return [];
 
   try {
     return await db
@@ -859,7 +780,6 @@ export async function getExamQuestions(sessionId: number): Promise<ExamQuestion[
  */
 export async function getExamQuestionById(questionId: number): Promise<ExamQuestion | undefined> {
   const db = await getDb();
-  if (!db) return undefined;
 
   try {
     const result = await db
@@ -884,7 +804,6 @@ export async function updateExamQuestion(
   feedback?: string
 ): Promise<void> {
   const db = await getDb();
-  if (!db) return;
 
   try {
     await db
@@ -906,7 +825,6 @@ export async function completeExamSession(
   timeSpent: number
 ): Promise<void> {
   const db = await getDb();
-  if (!db) return;
 
   try {
     await db
@@ -929,7 +847,6 @@ export async function completeExamSession(
  */
 export async function getWeakTopics(userId: number, moduleId?: number): Promise<ExamWeakTopic[]> {
   const db = await getDb();
-  if (!db) return [];
 
   try {
     if (moduleId) {
@@ -955,7 +872,6 @@ export async function getWeakTopics(userId: number, moduleId?: number): Promise<
  */
 export async function updateWeakTopic(userId: number, moduleId: number, topic: string): Promise<void> {
   const db = await getDb();
-  if (!db) return;
 
   try {
     const existing = await db
@@ -1002,7 +918,6 @@ export async function openLearningLog(
   userId: number, moduleId: number, dayId: number
 ): Promise<number | null> {
   const db = await getDb();
-  if (!db) return null;
   try {
     const result = await db.insert(learningLogs).values({
       userId, moduleId, dayId, completed: false, heartbeatCount: 0
@@ -1019,7 +934,6 @@ export async function closeLearningLog(
   logId: number, durationSeconds: number, completed: boolean
 ): Promise<void> {
   const db = await getDb();
-  if (!db) return;
   try {
     await db.update(learningLogs)
       .set({ closedAt: new Date(), durationSeconds, completed })
@@ -1032,7 +946,6 @@ export async function closeLearningLog(
 /** Heartbeat-Zähler erhöhen (zeigt aktive Lernzeit) */
 export async function incrementHeartbeat(logId: number): Promise<void> {
   const db = await getDb();
-  if (!db) return;
   try {
     await db.update(learningLogs)
       .set({ heartbeatCount: sql`${learningLogs.heartbeatCount} + 1` })
@@ -1047,7 +960,6 @@ export async function getCompletedDays(
   userId: number, moduleId?: number
 ): Promise<{ moduleId: number; dayId: number; totalSeconds: number }[]> {
   const db = await getDb();
-  if (!db) return [];
   try {
     const conditions = moduleId
       ? and(eq(learningLogs.userId, userId), eq(learningLogs.moduleId, moduleId), eq(learningLogs.completed, true))
@@ -1078,7 +990,6 @@ export async function saveHeartbeat(
   userId: number, moduleId: number, dayId: number
 ): Promise<void> {
   const db = await getDb();
-  if (!db) return;
   try {
     await db.insert(activityHeartbeats).values({ userId, moduleId, dayId });
     // Auch learningLogs aktualisieren falls offen
@@ -1107,7 +1018,6 @@ export async function writeExamAuditLog(
   entry: InsertExamAuditEntry
 ): Promise<void> {
   const db = await getDb();
-  if (!db) return;
   try {
     await db.insert(examAuditLog).values(entry);
   } catch (error) {
@@ -1118,7 +1028,6 @@ export async function writeExamAuditLog(
 /** Audit-Log für eine Session abrufen (Admin-Export) */
 export async function getExamAuditLog(sessionId: number): Promise<ExamAuditEntry[]> {
   const db = await getDb();
-  if (!db) return [];
   try {
     return await db.select().from(examAuditLog)
       .where(eq(examAuditLog.sessionId, sessionId));
@@ -1133,7 +1042,6 @@ export async function getExamAuditLog(sessionId: number): Promise<ExamAuditEntry
 /** Nutzerfeedback speichern */
 export async function saveFeedback(data: InsertFeedback): Promise<void> {
   const db = await getDb();
-  if (!db) return;
   try {
     await db.insert(feedback).values(data);
   } catch (error) {
@@ -1146,7 +1054,6 @@ export async function getFeedbackStats(): Promise<
   { moduleId: number; avgRating: number; count: number }[]
 > {
   const db = await getDb();
-  if (!db) return [];
   try {
     const rows = await db.select({
       moduleId: feedback.moduleId,
@@ -1169,7 +1076,6 @@ export async function getFeedbackStats(): Promise<
 /** Beschwerde einreichen */
 export async function createComplaint(data: InsertComplaint): Promise<void> {
   const db = await getDb();
-  if (!db) return;
   try {
     await db.insert(complaints).values(data);
   } catch (error) {
@@ -1180,7 +1086,6 @@ export async function createComplaint(data: InsertComplaint): Promise<void> {
 /** Alle offenen Beschwerden (Admin) */
 export async function getOpenComplaints(): Promise<Complaint[]> {
   const db = await getDb();
-  if (!db) return [];
   try {
     return await db.select().from(complaints)
       .where(eq(complaints.status, "open"))
@@ -1196,7 +1101,6 @@ export async function updateComplaintStatus(
   id: number, status: Complaint["status"], adminNote?: string
 ): Promise<void> {
   const db = await getDb();
-  if (!db) return;
   try {
     await db.update(complaints)
       .set({
@@ -1215,7 +1119,6 @@ export async function updateComplaintStatus(
 /** Einwilligung protokollieren (DSGVO Art. 7) */
 export async function logConsent(data: InsertConsentLogEntry): Promise<void> {
   const db = await getDb();
-  if (!db) return;
   try {
     await db.insert(consentLog).values(data);
   } catch (error) {
@@ -1226,7 +1129,6 @@ export async function logConsent(data: InsertConsentLogEntry): Promise<void> {
 /** Einwilligungen eines Nutzers abrufen */
 export async function getUserConsents(userId: number) {
   const db = await getDb();
-  if (!db) return [];
   try {
     return await db.select().from(consentLog)
       .where(eq(consentLog.userId, userId))
@@ -1242,7 +1144,6 @@ export async function getUserConsents(userId: number) {
 /** AVV für Mandanten signieren */
 export async function signAvvAgreement(data: InsertAvvAgreement): Promise<void> {
   const db = await getDb();
-  if (!db) return;
   try {
     await db.insert(avvAgreements).values(data);
   } catch (error) {
@@ -1253,7 +1154,6 @@ export async function signAvvAgreement(data: InsertAvvAgreement): Promise<void> 
 /** Prüfen ob Mandant AVV unterschrieben hat */
 export async function hasSignedAvv(tenantId: number): Promise<boolean> {
   const db = await getDb();
-  if (!db) return false;
   try {
     const result = await db.select().from(avvAgreements)
       .where(eq(avvAgreements.tenantId, tenantId))
@@ -1270,7 +1170,6 @@ export async function hasSignedAvv(tenantId: number): Promise<boolean> {
 /** Anzahl aller Nutzer (um ersten Admin zu erkennen) */
 export async function getUserCount(): Promise<number> {
   const db = await getDb();
-  if (!db) return 0;
   try {
     const result = await db.select({ count: sql<number>`COUNT(*)` }).from(users);
     return Number(result[0]?.count ?? 0);
@@ -1282,10 +1181,6 @@ export async function getUserCount(): Promise<number> {
 /** Passwort-Hash in MySQL speichern (persistent, kein ephemeral filesystem) */
 export async function savePasswordHash(openId: string, hash: string, salt: string): Promise<void> {
   const db = await getDb();
-  if (!db) {
-    console.error("[DB] savePasswordHash: keine DB-Verbindung");
-    return;
-  }
   try {
     const { authCredentials } = await import("../drizzle/schema");
     await db.insert(authCredentials)
@@ -1298,7 +1193,6 @@ export async function savePasswordHash(openId: string, hash: string, salt: strin
 /** Passwort-Hash aus MySQL laden */
 export async function getPasswordHash(openId: string): Promise<{ hash: string; salt: string } | null> {
   const db = await getDb();
-  if (!db) return null;
   try {
     const { authCredentials } = await import("../drizzle/schema");
     const result = await db.select()
@@ -1314,7 +1208,6 @@ export async function getPasswordHash(openId: string): Promise<{ hash: string; s
 /** Nutzer-Rolle setzen */
 export async function setUserRole(openId: string, role: "user" | "admin" | "trainer"): Promise<void> {
   const db = await getDb();
-  if (!db) return;
   try {
     await db.update(users).set({ role }).where(eq(users.openId, openId));
   } catch (error) {
@@ -1325,7 +1218,6 @@ export async function setUserRole(openId: string, role: "user" | "admin" | "trai
 /** Letzten Login aktualisieren */
 export async function updateLastSignedIn(openId: string): Promise<void> {
   const db = await getDb();
-  if (!db) return;
   try {
     await db.update(users).set({ lastSignedIn: new Date() }).where(eq(users.openId, openId));
   } catch (error) {
@@ -1335,7 +1227,6 @@ export async function updateLastSignedIn(openId: string): Promise<void> {
 
 export async function updateUserEnabledModules(userId: number, moduleIds: number[]): Promise<void> {
   const db = await getDb();
-  if (!db) return;
   const result = await db.select({ enabledModules: users.enabledModules }).from(users).where(eq(users.id, userId)).limit(1);
   const current = result[0]?.enabledModules ?? "1";
   const currentList = current.split(",").map((s:string)=>parseInt(s.trim(),10)).filter((n:number)=>!isNaN(n));
@@ -1345,7 +1236,6 @@ export async function updateUserEnabledModules(userId: number, moduleIds: number
 
 export async function redeemPresentationCode(code: string): Promise<{success: boolean; enabledModules?: string; message: string;}> {
   const db = await getDb();
-  if (!db) return { success: false, message: "Datenbankfehler" };
   const { sql } = await import("drizzle-orm");
   const rawResult = await db.execute(sql`SELECT * FROM presentation_codes WHERE code = ${code} AND isActive = 1 LIMIT 1`) as any;
   // Drizzle mysql2: gibt [RowDataPacket[], FieldPacket[]] zurueck
@@ -1360,19 +1250,16 @@ export async function redeemPresentationCode(code: string): Promise<{success: bo
 
 export async function listPresentationCodes(): Promise<any[]> {
   const db = await getDb();
-  if (!db) return [];
   const rows = await db.execute(`SELECT * FROM presentation_codes ORDER BY createdAt DESC`) as any;
   return Array.isArray(rows) ? rows : (rows as any).rows ?? [];
 }
 
 export async function createPresentationCode(code: string, label: string, modules: string, expiresAt: Date | null, maxUsage: number | null): Promise<void> {
   const db = await getDb();
-  if (!db) return;
   await db.execute(sql`INSERT INTO presentation_codes (code, label, enabledModules, expiresAt, maxUsage) VALUES (${code}, ${label}, ${modules}, ${expiresAt}, ${maxUsage})`);
 }
 
 export async function deactivatePresentationCode(id: number): Promise<void> {
   const db = await getDb();
-  if (!db) return;
   await db.execute(sql`UPDATE presentation_codes SET isActive = false WHERE id = ${id}`);
 }
