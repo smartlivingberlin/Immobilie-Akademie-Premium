@@ -58,20 +58,24 @@ let _db: ReturnType<typeof drizzle> | null = null;
 // (Damit es später keine "db ist vielleicht null"-Fehler gibt.)
 export async function getDb(): Promise<ReturnType<typeof drizzle>> {
   if (_db) return _db;
-
   const url = process.env.DATABASE_URL;
   if (!url) {
     throw new Error("[Database] DATABASE_URL fehlt. Bitte in Railway Variables setzen.");
   }
-
   const mysql = await import("mysql2/promise");
+  const isExternal = url.includes("rlwy.net") || url.includes("proxy.railway");
   const pool = mysql.createPool({
     uri: url,
+    ...(isExternal ? { ssl: { rejectUnauthorized: false } } : {}),
     waitForConnections: true,
     connectionLimit: 10,
+    connectTimeout: 30000,
     enableKeepAlive: true,
   });
+  console.log("[DB] Verbindung: " + (isExternal ? "extern (SSL)" : "intern (kein SSL)"));
   _db = drizzle(pool);
+  return _db;
+}
   return _db;
 }
 
