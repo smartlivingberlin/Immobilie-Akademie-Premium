@@ -1,20 +1,14 @@
 
 -- DB-Indizes für häufige Queries (performance)
-ALTER TABLE learning_logs
-  ADD INDEX IF NOT EXISTS idx_ll_userId (userId),
-  ADD INDEX IF NOT EXISTS idx_ll_moduleId (moduleId);
+CREATE INDEX IF NOT EXISTS idx_ll_userId ON learning_logs (userId);
+CREATE INDEX IF NOT EXISTS idx_ll_moduleId ON learning_logs (moduleId);
 
-ALTER TABLE chat_conversations
-  ADD INDEX IF NOT EXISTS idx_cc_userId (userId);
+CREATE INDEX IF NOT EXISTS idx_cc_userId ON chat_conversations (userId);
 
-ALTER TABLE chat_messages
-  ADD INDEX IF NOT EXISTS idx_cm_convId (conversationId);
+CREATE INDEX IF NOT EXISTS idx_cm_convId ON chat_messages (conversationId);
 
-ALTER TABLE exam_sessions
-  ADD INDEX IF NOT EXISTS idx_es_userId (userId);
+CREATE INDEX IF NOT EXISTS idx_es_userId ON exam_sessions (userId);
 
-ALTER TABLE activity_heartbeats
-  ADD INDEX IF NOT EXISTS idx_ah_userId (userId);
+CREATE INDEX IF NOT EXISTS idx_ah_userId ON activity_heartbeats (userId);
 
-ALTER TABLE question_bank
-  ADD INDEX IF NOT EXISTS idx_qb_moduleId (moduleId);
+CREATE INDEX IF NOT EXISTS idx_qb_moduleId ON question_bank (moduleId);
