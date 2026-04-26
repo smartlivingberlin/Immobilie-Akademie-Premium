@@ -68,11 +68,20 @@ export async function getDb(): Promise<ReturnType<typeof drizzle>> {
     uri: url,
     ...(isExternal ? { ssl: { rejectUnauthorized: false } } : {}),
     waitForConnections: true,
-    connectionLimit: 10,
+    connectionLimit: 5,
     connectTimeout: 30000,
     enableKeepAlive: true,
+    keepAliveInitialDelay: 0,
   });
-  console.log("[DB] Verbindung: " + (isExternal ? "extern (SSL)" : "intern (kein SSL)"));
+  pool.on("connection", (conn) => {
+    conn.on("error", (err: any) => {
+      if (err.code === "PROTOCOL_CONNECTION_LOST" || err.code === "ECONNRESET") {
+        console.warn("[DB] Verbindung verloren — Pool stellt neu her");
+        _db = null;
+      }
+    });
+  });
+  console.log("[DB] Pool: " + (isExternal ? "extern+SSL" : "intern"));
   _db = drizzle(pool);
   return _db;
 }
