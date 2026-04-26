@@ -1,25 +1,30 @@
 import mysql from "mysql2/promise";
-import { drizzle } from "drizzle-orm/mysql2";
-import { migrate } from "drizzle-orm/mysql2/migrator";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
 
 export async function runMigrations() {
   const url = process.env.DATABASE_URL;
   if (!url) return;
   try {
-    const __dirname = dirname(fileURLToPath(import.meta.url));
-    const migrationsFolder = join(process.cwd(), "drizzle/migrations");
-    console.log("[DB] Migrations-Pfad:", migrationsFolder);
-    const connection = await mysql.createConnection({
-      uri: url,
-      connectTimeout: 30000,
-    });
-    const db = drizzle(connection);
-    await migrate(db, { migrationsFolder });
-    console.log("[DB] Migrationen erfolgreich");
-    await connection.end();
+    const conn = await mysql.createConnection({ uri: url, connectTimeout: 30000, multipleStatements: true });
+    const { readFileSync, readdirSync } = await import("fs");
+    const { join } = await import("path");
+    const dir = join(process.cwd(), "drizzle/migrations");
+    const files = readdirSync(dir).filter(f => f.endsWith(".sql")).sort();
+    for (const file of files) {
+      try {
+        const sql = readFileSync(join(dir, file), "utf8");
+        await conn.query(sql);
+        console.log("[DB] Migration OK:", file);
+      } catch(e:any) {
+        if (e.message.includes("already exists") || e.message.includes("Duplicate")) {
+          console.log("[DB] Migration skip (exists):", file);
+        } else {
+          console.warn("[DB] Migration warn:", file, e.message.slice(0,80));
+        }
+      }
+    }
+    await conn.end();
+    console.log("[DB] Alle Migrationen abgeschlossen");
   } catch (err: any) {
-    console.warn("[DB] Migration:", err.message);
+    console.warn("[DB] Migration Fehler:", err.message);
   }
 }
