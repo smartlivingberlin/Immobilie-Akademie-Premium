@@ -58,6 +58,7 @@ process.on('unhandledRejection', (reason) => {
 
 
 async function startServer() {
+  try { const { runMigrations } = await import("../migrate"); await runMigrations(); } catch(e:any) { console.warn("[DB] Migration:", e.message); }
   const app = express();
 
   // Permissions-Policy Header
