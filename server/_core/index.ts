@@ -58,7 +58,31 @@ process.on('unhandledRejection', (reason) => {
 
 
 async function startServer() {
+  // Schritt 1: DB-Verbindung herstellen
+  try {
+    const { getDb } = await import("../db");
+    const db = await getDb();
+    // Alle benötigten Spalten direkt sicherstellen
+    const patches = [
+      "CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, openId VARCHAR(255) NOT NULL UNIQUE, name VARCHAR(255), email VARCHAR(255), loginMethod VARCHAR(50), role VARCHAR(50) DEFAULT 'user', enabledModules VARCHAR(255) DEFAULT '1', onboardingCompleted TINYINT(1) DEFAULT 0, trialExpiresAt DATETIME NULL, learningGoal VARCHAR(255) NULL, dailyMinutes INT NULL, preferredTime VARCHAR(100) NULL, experienceLevel VARCHAR(100) NULL, tenantId INT NULL, createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP, updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, lastSignedIn TIMESTAMP NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4",
+      "ALTER TABLE users ADD COLUMN IF NOT EXISTS enabledModules VARCHAR(255) NOT NULL DEFAULT '1'",
+      "ALTER TABLE users ADD COLUMN IF NOT EXISTS onboardingCompleted TINYINT(1) NOT NULL DEFAULT 0",
+      "ALTER TABLE users ADD COLUMN IF NOT EXISTS trialExpiresAt DATETIME NULL",
+      "ALTER TABLE users ADD COLUMN IF NOT EXISTS learningGoal VARCHAR(255) NULL",
+      "ALTER TABLE users ADD COLUMN IF NOT EXISTS dailyMinutes INT NULL",
+      "ALTER TABLE users ADD COLUMN IF NOT EXISTS preferredTime VARCHAR(100) NULL",
+      "ALTER TABLE users ADD COLUMN IF NOT EXISTS experienceLevel VARCHAR(100) NULL",
+      "ALTER TABLE users ADD COLUMN IF NOT EXISTS tenantId INT NULL",
+      "ALTER TABLE users ADD COLUMN IF NOT EXISTS lastSignedIn TIMESTAMP NULL",
+    ];
+    for (const sql of patches) {
+      try { await db.execute(sql as any); } catch(e:any) { /* Spalte existiert bereits */ }
+    }
+    console.log("[DB] ✅ Tabellen & Spalten bereit");
+  } catch(e:any) { console.warn("[DB] Setup:", e.message); }
+  // Schritt 2: Migrationen
   try { const { runMigrations } = await import("../migrate"); await runMigrations(); } catch(e:any) { console.warn("[DB] Migration:", e.message); }
+  try { const { getDb } = await import("../db"); const db = await getDb(); await db.execute(import("drizzle-orm/sql").then(m => m.sql`ALTER TABLE users ADD COLUMN IF NOT EXISTS enabledModules varchar(255) NOT NULL DEFAULT '1'`)); console.log("[DB] enabledModules OK"); } catch(e:any) { console.warn("[DB] Patch:", e.message); }
   const app = express();
 
   // Permissions-Policy Header
