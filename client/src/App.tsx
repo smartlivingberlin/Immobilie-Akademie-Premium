@@ -1,90 +1,100 @@
 import React, { lazy, Suspense } from "react";
-import ErrorBoundary from "@/components/ErrorBoundary";
 import { Route, Switch } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Toaster } from "@/components/ui/toaster";
 import DashboardLayout from "@/components/layout/DashboardLayout";
+import ModuleGuard from "@/components/ModuleGuard";
+import { usePageTracking } from "@/hooks/useAnalytics";
 
+// ── Public pages ─────────────────────────────────────────────────────────────
 const Home = lazy(() => import("@/pages/Home"));
 const LoginPage = lazy(() => import("@/pages/LoginPage"));
 const ForgotPassword = lazy(() => import("@/pages/ForgotPassword"));
 const ResetPassword = lazy(() => import("@/pages/ResetPassword"));
 const DeleteAccount = lazy(() => import("@/pages/DeleteAccount"));
-const MeineDaten = lazy(() => import("@/pages/MeineDaten"));
 const RedeemCode = lazy(() => import("@/pages/RedeemCode"));
-const AdminCodes = lazy(() => import("@/pages/admin/AdminCodes"));
-const AdminDashboard = lazy(() => import("@/pages/admin/AdminDashboard"));
-const KursbuchGenerator = lazy(() => import("@/pages/admin/KursbuchGenerator"));
-const DozentenCockpit = lazy(() => import("@/pages/admin/DozentenCockpit"));
-const MediaSkriptGenerator = lazy(() => import("@/pages/admin/MediaSkriptGenerator"));
-const DozentenLoesungen = lazy(() => import("@/pages/admin/DozentenLoesungen"));
-const FragenManager = lazy(() => import("@/pages/admin/FragenManager"));
-const Fallstudien = lazy(() => import("@/pages/Fallstudien"));
-const Flashcards = lazy(() => import("@/pages/Flashcards"));
-const SpacedRepetition = lazy(() => import("@/pages/SpacedRepetition"));
-const ExposeTrainer = lazy(() => import("@/pages/ExposeTrainer"));
-const DokumentViewer = lazy(() => import("@/pages/DokumentViewer"));
-const ContentUpload = lazy(() => import("@/pages/admin/ContentUpload"));
-const DokumentWerkstatt = lazy(() => import("@/pages/DokumentWerkstatt"));
-const OpenQuizPage = lazy(() => import("@/pages/OpenQuizPage"));
 const KursPakete = lazy(() => import("@/pages/KursPakete"));
 const Kurse = lazy(() => import("@/pages/Kurse"));
 const ZahlungErfolgreich = lazy(() => import("@/pages/ZahlungErfolgreich"));
 const Widerruf = lazy(() => import("@/pages/Widerruf"));
 const Bildungskonzept = lazy(() => import("@/pages/Bildungskonzept"));
-const UserManagement = lazy(() => import("@/pages/admin/UserManagement"));
-const Module3Detail = lazy(() => import("@/pages/modules/Module3Detail"));
-const Module4Detail = lazy(() => import("@/pages/modules/Module4Detail"));
-const Module5Detail = lazy(() => import("@/pages/modules/Module5Detail"));
-const Module2Detail = lazy(() => import("@/pages/modules/Module2Detail"));
-const Module1Detail = lazy(() => import("@/pages/modules/Module1Detail"));
-const Module1WithIntro = lazy(() => import("@/pages/modules/Module1WithIntro"));
-const PortalAgentDashboard = lazy(() => import("@/pages/admin/PortalAgentDashboard"));
-const KiMonitor = lazy(() => import("@/pages/admin/KiMonitor"));
-const KursLanding = lazy(() => import("@/pages/kurs/KursLanding"));
-const Module2WithIntro = lazy(() => import("@/pages/modules/Module2WithIntro"));
-const Module3WithIntro = lazy(() => import("@/pages/modules/Module3WithIntro"));
-const Module4WithIntro = lazy(() => import("@/pages/modules/Module4WithIntro"));
-const Module5WithIntro = lazy(() => import("@/pages/modules/Module5WithIntro"));
-import ModuleGuard from "@/components/ModuleGuard";
+const Rechner = lazy(() => import("@/pages/Rechner"));
+const Calculators = lazy(() => import("@/pages/Calculators"));
 const Syllabus = lazy(() => import("@/pages/Syllabus"));
 const Glossary = lazy(() => import("@/pages/Glossary"));
 const UserGuide = lazy(() => import("@/pages/UserGuide"));
-const Rechner = lazy(() => import("@/pages/Rechner"));
-const Calculators = lazy(() => import("@/pages/Calculators"));
-const Certificates = lazy(() => import("@/pages/Certificates"));
-import ComplaintForm from "@/components/ComplaintForm";
-import FeedbackWidget from "@/components/FeedbackWidget";
+const Foerderung = lazy(() => import("@/pages/Foerderung"));
+const KursLanding = lazy(() => import("@/pages/kurs/KursLanding"));
 
+// ── Legal pages ───────────────────────────────────────────────────────────────
+const Datenschutz = lazy(() => import("@/pages/legal/Datenschutz"));
+const Impressum = lazy(() => import("@/pages/legal/Impressum"));
+const AGB = lazy(() => import("@/pages/legal/AGB"));
+
+// ── Shared UI components (lazy — not needed on every route) ──────────────────
+const ComplaintForm = lazy(() => import("@/components/ComplaintForm"));
+const CookieConsent = lazy(() => import("@/components/CookieConsent"));
+const CookieBanner = lazy(() => import("@/components/CookieBanner").then(m => ({ default: m.CookieBanner })));
+const InspectBanner = lazy(() => import("@/components/InspectBanner").then(m => ({ default: m.InspectBanner })));
+const StructuredData = lazy(() => import("@/components/StructuredData").then(m => ({ default: m.StructuredData })));
+const AccessibilityPanel = lazy(() => import("@/components/AccessibilityPanel").then(m => ({ default: m.AccessibilityPanel })));
+const NotFound = lazy(() => import("@/pages/not-found"));
+
+// ── Protected app pages ───────────────────────────────────────────────────────
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
-import QuizPage from "@/pages/QuizPage";
-import Quiz from "@/pages/Quiz";
-import GamificationDashboard from "@/pages/GamificationDashboard";
-import StrategiePlattform from "@/pages/StrategiePlattform";
-import VideoManagement from "@/pages/admin/VideoManagement";
-import Admin2FA from "@/pages/Admin2FA";
-import WhiteLabelAdmin from "@/pages/admin/WhiteLabelAdmin";
-import PortalPhaseAdmin from "@/pages/admin/PortalPhaseAdmin";
+const MeineDaten = lazy(() => import("@/pages/MeineDaten"));
+const Certificates = lazy(() => import("@/pages/Certificates"));
+const Fallstudien = lazy(() => import("@/pages/Fallstudien"));
+const Flashcards = lazy(() => import("@/pages/Flashcards"));
+const SpacedRepetition = lazy(() => import("@/pages/SpacedRepetition"));
+const ExposeTrainer = lazy(() => import("@/pages/ExposeTrainer"));
+const DokumentViewer = lazy(() => import("@/pages/DokumentViewer"));
+const DokumentWerkstatt = lazy(() => import("@/pages/DokumentWerkstatt"));
+const OpenQuizPage = lazy(() => import("@/pages/OpenQuizPage"));
 
-import Datenschutz from "@/pages/legal/Datenschutz";
-import Impressum from "@/pages/legal/Impressum";
-import AGB from "@/pages/legal/AGB";
-import CookieConsent from "@/components/CookieConsent";
-import Footer from "@/components/Footer";
-import { StructuredData } from "@/components/StructuredData";
-import NotFound from "@/pages/not-found";
-import ExamMode from "@/pages/ExamMode";
-import ExamQuestion from "@/pages/ExamQuestion";
-import ExamResults from "@/pages/ExamResults";
-import { InspectBanner } from "@/components/InspectBanner";
-import { usePageTracking } from "@/hooks/useAnalytics";
-import PublicHeader from "@/components/layout/PublicHeader";
-import { CookieBanner } from "@/components/CookieBanner";
-import Foerderung from "./pages/Foerderung";
-import { AccessibilityPanel } from "./components/AccessibilityPanel";
-import AudioModus from "./pages/AudioModus";
+// ── Quiz / Exam (heavy — lazy) ────────────────────────────────────────────────
+const QuizPage = lazy(() => import("@/pages/QuizPage"));
+const Quiz = lazy(() => import("@/pages/Quiz"));
+const ExamMode = lazy(() => import("@/pages/ExamMode"));
+const ExamQuestion = lazy(() => import("@/pages/ExamQuestion"));
+const ExamResults = lazy(() => import("@/pages/ExamResults"));
+
+// ── Gamification / Strategy (heavy — lazy) ───────────────────────────────────
+const GamificationDashboard = lazy(() => import("@/pages/GamificationDashboard"));
+const StrategiePlattform = lazy(() => import("@/pages/StrategiePlattform"));
+
+// ── Audio / special modes ─────────────────────────────────────────────────────
+const AudioModus = lazy(() => import("@/pages/AudioModus"));
+const Admin2FA = lazy(() => import("@/pages/Admin2FA"));
+
+// ── Module detail pages (177–442 KB each — lazy) ─────────────────────────────
+const Module1Detail = lazy(() => import("@/pages/modules/Module1Detail"));
+const Module1WithIntro = lazy(() => import("@/pages/modules/Module1WithIntro"));
+const Module2Detail = lazy(() => import("@/pages/modules/Module2Detail"));
+const Module2WithIntro = lazy(() => import("@/pages/modules/Module2WithIntro"));
+const Module3Detail = lazy(() => import("@/pages/modules/Module3Detail"));
+const Module3WithIntro = lazy(() => import("@/pages/modules/Module3WithIntro"));
+const Module4Detail = lazy(() => import("@/pages/modules/Module4Detail"));
+const Module4WithIntro = lazy(() => import("@/pages/modules/Module4WithIntro"));
+const Module5Detail = lazy(() => import("@/pages/modules/Module5Detail"));
+const Module5WithIntro = lazy(() => import("@/pages/modules/Module5WithIntro"));
+
+// ── Admin pages (lazy — only for admin users) ────────────────────────────────
+const AdminDashboard = lazy(() => import("@/pages/admin/AdminDashboard"));
+const AdminCodes = lazy(() => import("@/pages/admin/AdminCodes"));
+const KursbuchGenerator = lazy(() => import("@/pages/admin/KursbuchGenerator"));
+const DozentenCockpit = lazy(() => import("@/pages/admin/DozentenCockpit"));
+const MediaSkriptGenerator = lazy(() => import("@/pages/admin/MediaSkriptGenerator"));
+const DozentenLoesungen = lazy(() => import("@/pages/admin/DozentenLoesungen"));
+const FragenManager = lazy(() => import("@/pages/admin/FragenManager"));
+const ContentUpload = lazy(() => import("@/pages/admin/ContentUpload"));
+const UserManagement = lazy(() => import("@/pages/admin/UserManagement"));
+const VideoManagement = lazy(() => import("@/pages/admin/VideoManagement"));
+const WhiteLabelAdmin = lazy(() => import("@/pages/admin/WhiteLabelAdmin"));
+const PortalPhaseAdmin = lazy(() => import("@/pages/admin/PortalPhaseAdmin"));
+const PortalAgentDashboard = lazy(() => import("@/pages/admin/PortalAgentDashboard"));
+const KiMonitor = lazy(() => import("@/pages/admin/KiMonitor"));
 const OwnerDashboard = lazy(() => import("@/pages/OwnerDashboard").then(m => ({ default: m.default })));
-
 
 function ProtectedRoute({ component: Component }: { component: React.ComponentType }) {
   const { data: user, isLoading } = trpc.auth.me.useQuery(undefined, { retry: false });
@@ -111,8 +121,8 @@ function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Toaster />
-      <CookieConsent />
-      <StructuredData />
+      <Suspense fallback={null}><CookieConsent /></Suspense>
+      <Suspense fallback={null}><StructuredData /></Suspense>
       {children}
     </>
   );
@@ -122,8 +132,8 @@ function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <DashboardLayout>
       <Toaster />
-      <CookieConsent />
-      <StructuredData />
+      <Suspense fallback={null}><CookieConsent /></Suspense>
+      <Suspense fallback={null}><StructuredData /></Suspense>
       {children}
     </DashboardLayout>
   );
@@ -213,5 +223,10 @@ function Router() {
 }
 
 export default function App() {
-  return <><Router /><AccessibilityPanel /></>;
+  return (
+    <>
+      <Router />
+      <Suspense fallback={null}><AccessibilityPanel /></Suspense>
+    </>
+  );
 }

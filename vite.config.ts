@@ -171,32 +171,61 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // React + State zusammen (Reihenfolge-Problem vermeiden)
-          // React-Kern ZUERST — alles was createContext braucht
-          if (id.includes("node_modules/react/") ||
-              id.includes("node_modules/react-dom") ||
-              id.includes("node_modules/react-is") ||
-              id.includes("node_modules/scheduler")) return "vendor-react";
-          // Pakete die React als Peer brauchen — nach React laden
-          if (id.includes("node_modules/@tanstack") ||
-              id.includes("node_modules/zustand") ||
-              id.includes("node_modules/framer") ||
-              id.includes("node_modules/motion") ||
-              id.includes("node_modules/wouter") ||
-              id.includes("node_modules/@trpc") ||
-              id.includes("node_modules/superjson")) return "vendor-state";
-          
-          // UI
-          if (id.includes("node_modules/@radix-ui")) return "vendor-radix";
+          // ── 1. React core — must load first (createContext, hooks, scheduler) ──
+          if (
+            id.includes("node_modules/react/") ||
+            id.includes("node_modules/react-dom") ||
+            id.includes("node_modules/react-is") ||
+            id.includes("node_modules/scheduler")
+          ) return "vendor-react-core";
+
+          // ── 2. Radix UI primitives ──────────────────────────────────────────
+          if (id.includes("node_modules/@radix-ui")) return "vendor-react-ui";
+
+          // ── 3. State / data-fetching layer ──────────────────────────────────
+          if (
+            id.includes("node_modules/@tanstack") ||
+            id.includes("node_modules/zustand") ||
+            id.includes("node_modules/@trpc") ||
+            id.includes("node_modules/superjson") ||
+            id.includes("node_modules/wouter")
+          ) return "vendor-react-state";
+
+          // ── 4. Icons ────────────────────────────────────────────────────────
           if (id.includes("node_modules/lucide-react")) return "vendor-icons";
-          
-          // PDF: NICHT in manualChunks — dynamischer import() regelt das selbst
-          // pdfjs-dist, jspdf, html2canvas werden lazy geladen
-          
-          // Alles andere auch in vendor-react → keine Ladereihenfolge-Probleme
-          if (id.includes("node_modules")) return "vendor-react";
-          
-          // Prüfungsfragen
+
+          // ── 5. Animation (large — only loaded when used) ────────────────────
+          if (
+            id.includes("node_modules/framer-motion") ||
+            id.includes("node_modules/motion")
+          ) return "vendor-animation";
+
+          // ── 6. Charts (recharts + d3 dependencies) ──────────────────────────
+          if (
+            id.includes("node_modules/recharts") ||
+            id.includes("node_modules/d3-") ||
+            id.includes("node_modules/victory-")
+          ) return "vendor-charts";
+
+          // ── 7. Markdown / rich-text rendering ───────────────────────────────
+          if (
+            id.includes("node_modules/react-markdown") ||
+            id.includes("node_modules/remark") ||
+            id.includes("node_modules/rehype") ||
+            id.includes("node_modules/unified") ||
+            id.includes("node_modules/mdast") ||
+            id.includes("node_modules/hast") ||
+            id.includes("node_modules/micromark") ||
+            id.includes("node_modules/vfile")
+          ) return "vendor-markdown";
+
+          // ── 8. PDF / document generation ────────────────────────────────────
+          // pdfjs-dist, jspdf, html2canvas — dynamic import() handles splitting
+
+          // ── 9. General utilities (everything else from node_modules) ─────────
+          if (id.includes("node_modules")) return "vendor-react-utils";
+
+          // ── 10. Exam / quiz question data ────────────────────────────────────
           if (id.includes("all-questions")) return "data-questions";
         },
       },
