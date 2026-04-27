@@ -1,6 +1,7 @@
 import Stripe from "stripe";
 import { Router, type Request, type Response } from "express";
 import { sql } from "drizzle-orm";
+import { logger } from "./_core/logger";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
   apiVersion: "2026-02-25.clover",
@@ -107,7 +108,7 @@ stripeRouter.post("/api/stripe/checkout", async (req, res) => {
 
     res.json({ url: session.url });
   } catch (err: any) {
-    console.error("[Stripe] Checkout error:", err.message);
+    logger.error("[Stripe] Checkout error", err);
     res.status(500).json({ error: err.message });
   }
 });
@@ -140,7 +141,7 @@ stripeRouter.post("/api/stripe/checkout", async (req, res) => {
       });
       res.json({ url: session.url }); return;
     } catch(e: any) {
-      console.error("[Stripe Bundle]", e.message);
+      logger.error("[Stripe Bundle] Checkout error", e);
       res.status(500).json({ error: e.message }); return;
     }
   });
@@ -159,7 +160,7 @@ export async function stripeWebhookHandler(req: any, res: any) {
   try {
     event = (stripe as any).webhooks.constructEvent(req.body, sig, secret);
   } catch (err: any) {
-    console.error("[Stripe Webhook] Signatur ungueltig:", err.message);
+    logger.error("[Stripe Webhook] Signatur ungültig", err);
     return res.status(400).send("Webhook Error: " + err.message);
   }
   if (event.type !== "checkout.session.completed") {
@@ -168,7 +169,7 @@ export async function stripeWebhookHandler(req: any, res: any) {
   const session = event.data.object;
   const modules = session.metadata?.modules ?? session.metadata?.bundle;
   const email = session.customer_email ?? session.customer_details?.email ?? session.metadata?.email;
-  console.log("[Stripe Webhook] Kauf: " + email + " Module: " + modules);
+  logger.info("[Stripe Webhook] Kauf", { email, modules });
   if (email && modules) {
     try {
       const { getDb } = await import("./db");
@@ -183,12 +184,12 @@ export async function stripeWebhookHandler(req: any, res: any) {
         const newMods = modules.split(",").map((s: string) => s.trim()).filter(Boolean);
         const merged = [...new Set([...current, ...newMods])].join(",");
         await db.execute(sql`UPDATE users SET enabledModules = ${merged} WHERE id = ${user.id}`);
-        console.log("[Stripe Webhook] Freigeschaltet: " + merged + " fuer " + email);
+        logger.info("[Stripe Webhook] Freigeschaltet", { email, modules: merged });
       } else {
-        console.warn("[Stripe Webhook] Nutzer nicht gefunden: " + email);
+        logger.warn("[Stripe Webhook] Nutzer nicht gefunden", { email });
       }
     } catch (err: any) {
-      console.error("[Stripe Webhook] DB-Fehler:", err.message);
+      logger.error("[Stripe Webhook] DB-Fehler", err);
     }
   }
   res.json({ received: true });

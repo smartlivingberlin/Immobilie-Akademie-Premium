@@ -1,5 +1,6 @@
 import { desc, eq, sql, and } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
+import { logger } from "./_core/logger";
 import { 
   InsertUser, 
   users, 
@@ -116,7 +117,7 @@ export async function upsertUser(user: InsertUser): Promise<void> {
       set: updateSet,
     });
   } catch (error) {
-    console.error("[Database] Failed to upsert user:", error);
+    logger.error("[Database] Failed to upsert user", error);
     throw error;
   }
 }
@@ -423,7 +424,7 @@ export async function getAllVideoTutorials(): Promise<VideoTutorial[]> {
       .from(videoTutorials)
       .orderBy(videoTutorials.moduleId, videoTutorials.dayNumber, videoTutorials.displayOrder);
   } catch (error) {
-    console.error("[Database] Error getting all video tutorials:", error);
+    logger.error("[Database] Error getting all video tutorials", error);
     return [];
   }
 }
@@ -441,7 +442,7 @@ export async function getVideoTutorialsByModule(moduleId: number): Promise<Video
       .where(eq(videoTutorials.moduleId, moduleId))
       .orderBy(videoTutorials.dayNumber, videoTutorials.displayOrder);
   } catch (error) {
-    console.error("[Database] Error getting video tutorials by module:", error);
+    logger.error("[Database] Error getting video tutorials by module", error);
     return [];
   }
 }
@@ -461,7 +462,7 @@ export async function getVideoTutorialsByDay(moduleId: number, dayNumber: number
       )
       .orderBy(videoTutorials.displayOrder);
   } catch (error) {
-    console.error("[Database] Error getting video tutorials by day:", error);
+    logger.error("[Database] Error getting video tutorials by day", error);
     return [];
   }
 }
@@ -481,7 +482,7 @@ export async function getVideoTutorialById(id: number): Promise<VideoTutorial | 
 
     return result[0] || null;
   } catch (error) {
-    console.error("[Database] Error getting video tutorial by ID:", error);
+    logger.error("[Database] Error getting video tutorial by ID", error);
     return null;
   }
 }
@@ -503,7 +504,7 @@ export async function createVideoTutorial(data: InsertVideoTutorial): Promise<Vi
 
     return result[0] || null;
   } catch (error) {
-    console.error("[Database] Error creating video tutorial:", error);
+    logger.error("[Database] Error creating video tutorial", error);
     return null;
   }
 }
@@ -522,7 +523,7 @@ export async function updateVideoTutorial(id: number, data: Partial<InsertVideoT
 
     return await getVideoTutorialById(id);
   } catch (error) {
-    console.error("[Database] Error updating video tutorial:", error);
+    logger.error("[Database] Error updating video tutorial", error);
     return null;
   }
 }
@@ -537,7 +538,7 @@ export async function deleteVideoTutorial(id: number): Promise<boolean> {
     await db.delete(videoTutorials).where(eq(videoTutorials.id, id));
     return true;
   } catch (error) {
-    console.error("[Database] Error deleting video tutorial:", error);
+    logger.error("[Database] Error deleting video tutorial", error);
     return false;
   }
 }
@@ -559,7 +560,7 @@ export async function getUserVideoProgress(userId: number, videoId: number): Pro
 
     return result[0] || null;
   } catch (error) {
-    console.error("[Database] Error getting user video progress:", error);
+    logger.error("[Database] Error getting user video progress", error);
     return null;
   }
 }
@@ -607,7 +608,7 @@ export async function updateVideoProgress(
       return await getUserVideoProgress(userId, videoId);
     }
   } catch (error) {
-    console.error("[Database] Error updating video progress:", error);
+    logger.error("[Database] Error updating video progress", error);
     return null;
   }
 }
@@ -625,7 +626,7 @@ export async function getAllUserVideoProgress(userId: number): Promise<VideoProg
       .where(eq(videoProgress.userId, userId))
       .orderBy(desc(videoProgress.lastWatchedAt));
   } catch (error) {
-    console.error("[Database] Error getting all user video progress:", error);
+    logger.error("[Database] Error getting all user video progress", error);
     return [];
   }
 }
@@ -679,7 +680,7 @@ export async function createExamSession(
       createdAt: new Date(),
     };
   } catch (error) {
-    console.error("[Database] Error creating exam session:", error);
+    logger.error("[Database] Error creating exam session", error);
     return undefined;
   }
 }
@@ -699,7 +700,7 @@ export async function getExamSession(sessionId: number): Promise<ExamSession | n
 
     return result.length > 0 ? result[0] : null;
   } catch (error) {
-    console.error("[Database] Error getting exam session:", error);
+    logger.error("[Database] Error getting exam session", error);
     return null;
   }
 }
@@ -724,7 +725,7 @@ export async function getUserExamSessions(userId: number, moduleId?: number): Pr
       .where(eq(examSessions.userId, userId))
       .orderBy(desc(examSessions.createdAt));
   } catch (error) {
-    console.error("[Database] Error getting user exam sessions:", error);
+    logger.error("[Database] Error getting user exam sessions", error);
     return [];
   }
 }
@@ -751,7 +752,7 @@ export async function saveExamQuestion(questionData: InsertExamQuestion): Promis
       createdAt: new Date(),
     };
   } catch (error) {
-    console.error("[Database] Error saving exam question:", error);
+    logger.error("[Database] Error saving exam question", error);
     return undefined;
   }
 }
@@ -769,7 +770,7 @@ export async function getExamQuestions(sessionId: number): Promise<ExamQuestion[
       .where(eq(examQuestions.sessionId, sessionId))
       .orderBy(examQuestions.questionNumber);
   } catch (error) {
-    console.error("[Database] Error getting exam questions:", error);
+    logger.error("[Database] Error getting exam questions", error);
     return [];
   }
 }
@@ -789,7 +790,7 @@ export async function getExamQuestionById(questionId: number): Promise<ExamQuest
       .limit(1);
     return result.length > 0 ? result[0] : undefined;
   } catch (error) {
-    console.error("[Database] Error getting exam question by ID:", error);
+    logger.error("[Database] Error getting exam question by ID", error);
     return undefined;
   }
 }
@@ -811,7 +812,7 @@ export async function updateExamQuestion(
       .set({ userAnswer, isCorrect, feedback: feedback ?? null })
       .where(eq(examQuestions.id, questionId));
   } catch (error) {
-    console.error("[Database] Error updating exam question:", error);
+    logger.error("[Database] Error updating exam question", error);
   }
 }
 
@@ -838,7 +839,7 @@ export async function completeExamSession(
       })
       .where(eq(examSessions.id, sessionId));
   } catch (error) {
-    console.error("[Database] Error completing exam session:", error);
+    logger.error("[Database] Error completing exam session", error);
   }
 }
 
@@ -862,7 +863,7 @@ export async function getWeakTopics(userId: number, moduleId?: number): Promise<
       .where(eq(examWeakTopics.userId, userId))
       .orderBy(desc(examWeakTopics.incorrectCount));
   } catch (error) {
-    console.error("[Database] Error getting weak topics:", error);
+    logger.error("[Database] Error getting weak topics", error);
     return [];
   }
 }
@@ -903,7 +904,7 @@ export async function updateWeakTopic(userId: number, moduleId: number, topic: s
       });
     }
   } catch (error) {
-    console.error("[Database] Error updating weak topic:", error);
+    logger.error("[Database] Error updating weak topic", error);
   }
 }
 
@@ -924,7 +925,7 @@ export async function openLearningLog(
     });
     return Number((result as any).insertId ?? 0);
   } catch (error) {
-    console.error("[DB] openLearningLog error:", error);
+    logger.error("[DB] openLearningLog error", error);
     return null;
   }
 }
@@ -939,7 +940,7 @@ export async function closeLearningLog(
       .set({ closedAt: new Date(), durationSeconds, completed })
       .where(eq(learningLogs.id, logId));
   } catch (error) {
-    console.error("[DB] closeLearningLog error:", error);
+    logger.error("[DB] closeLearningLog error", error);
   }
 }
 
@@ -951,7 +952,7 @@ export async function incrementHeartbeat(logId: number): Promise<void> {
       .set({ heartbeatCount: sql`${learningLogs.heartbeatCount} + 1` })
       .where(eq(learningLogs.id, logId));
   } catch (error) {
-    console.error("[DB] incrementHeartbeat error:", error);
+    logger.error("[DB] incrementHeartbeat error", error);
   }
 }
 
@@ -978,7 +979,7 @@ export async function getCompletedDays(
     }
     return Array.from(map.values());
   } catch (error) {
-    console.error("[DB] getCompletedDays error:", error);
+    logger.error("[DB] getCompletedDays error", error);
     return [];
   }
 }
@@ -1007,7 +1008,7 @@ export async function saveHeartbeat(
         .where(eq(learningLogs.id, openLog[0].id));
     }
   } catch (error) {
-    console.error("[DB] saveHeartbeat error:", error);
+    logger.error("[DB] saveHeartbeat error", error);
   }
 }
 
@@ -1021,7 +1022,7 @@ export async function writeExamAuditLog(
   try {
     await db.insert(examAuditLog).values(entry);
   } catch (error) {
-    console.error("[DB] writeExamAuditLog error:", error);
+    logger.error("[DB] writeExamAuditLog error", error);
   }
 }
 
@@ -1032,7 +1033,7 @@ export async function getExamAuditLog(sessionId: number): Promise<ExamAuditEntry
     return await db.select().from(examAuditLog)
       .where(eq(examAuditLog.sessionId, sessionId));
   } catch (error) {
-    console.error("[DB] getExamAuditLog error:", error);
+    logger.error("[DB] getExamAuditLog error", error);
     return [];
   }
 }
@@ -1045,7 +1046,7 @@ export async function saveFeedback(data: InsertFeedback): Promise<void> {
   try {
     await db.insert(feedback).values(data);
   } catch (error) {
-    console.error("[DB] saveFeedback error:", error);
+    logger.error("[DB] saveFeedback error", error);
   }
 }
 
@@ -1066,7 +1067,7 @@ export async function getFeedbackStats(): Promise<
       count: Number(r.count),
     }));
   } catch (error) {
-    console.error("[DB] getFeedbackStats error:", error);
+    logger.error("[DB] getFeedbackStats error", error);
     return [];
   }
 }
@@ -1079,7 +1080,7 @@ export async function createComplaint(data: InsertComplaint): Promise<void> {
   try {
     await db.insert(complaints).values(data);
   } catch (error) {
-    console.error("[DB] createComplaint error:", error);
+    logger.error("[DB] createComplaint error", error);
   }
 }
 
@@ -1091,7 +1092,7 @@ export async function getOpenComplaints(): Promise<Complaint[]> {
       .where(eq(complaints.status, "open"))
       .orderBy(desc(complaints.createdAt));
   } catch (error) {
-    console.error("[DB] getOpenComplaints error:", error);
+    logger.error("[DB] getOpenComplaints error", error);
     return [];
   }
 }
@@ -1110,7 +1111,7 @@ export async function updateComplaintStatus(
       })
       .where(eq(complaints.id, id));
   } catch (error) {
-    console.error("[DB] updateComplaintStatus error:", error);
+    logger.error("[DB] updateComplaintStatus error", error);
   }
 }
 
@@ -1122,7 +1123,7 @@ export async function logConsent(data: InsertConsentLogEntry): Promise<void> {
   try {
     await db.insert(consentLog).values(data);
   } catch (error) {
-    console.error("[DB] logConsent error:", error);
+    logger.error("[DB] logConsent error", error);
   }
 }
 
@@ -1134,7 +1135,7 @@ export async function getUserConsents(userId: number) {
       .where(eq(consentLog.userId, userId))
       .orderBy(desc(consentLog.givenAt));
   } catch (error) {
-    console.error("[DB] getUserConsents error:", error);
+    logger.error("[DB] getUserConsents error", error);
     return [];
   }
 }
@@ -1147,7 +1148,7 @@ export async function signAvvAgreement(data: InsertAvvAgreement): Promise<void> 
   try {
     await db.insert(avvAgreements).values(data);
   } catch (error) {
-    console.error("[DB] signAvvAgreement error:", error);
+    logger.error("[DB] signAvvAgreement error", error);
   }
 }
 
@@ -1160,7 +1161,7 @@ export async function hasSignedAvv(tenantId: number): Promise<boolean> {
       .limit(1);
     return result.length > 0;
   } catch (error) {
-    console.error("[DB] hasSignedAvv error:", error);
+    logger.error("[DB] hasSignedAvv error", error);
     return false;
   }
 }
@@ -1187,7 +1188,7 @@ export async function savePasswordHash(openId: string, hash: string, salt: strin
       .values({ openId, hash, salt })
       .onDuplicateKeyUpdate({ set: { hash, salt } });
   } catch (error) {
-    console.error("[DB] savePasswordHash error:", error);
+    logger.error("[DB] savePasswordHash error", error);
   }
 }
 /** Passwort-Hash aus MySQL laden */
@@ -1201,7 +1202,7 @@ export async function getPasswordHash(openId: string): Promise<{ hash: string; s
       .limit(1);
     return result.length > 0 ? { hash: result[0].hash, salt: result[0].salt } : null;
   } catch (error) {
-    console.error("[DB] getPasswordHash error:", error);
+    logger.error("[DB] getPasswordHash error", error);
     return null;
   }
 }
@@ -1211,7 +1212,7 @@ export async function setUserRole(openId: string, role: "user" | "admin" | "trai
   try {
     await db.update(users).set({ role }).where(eq(users.openId, openId));
   } catch (error) {
-    console.error("[DB] setUserRole error:", error);
+    logger.error("[DB] setUserRole error", error);
   }
 }
 
@@ -1221,7 +1222,7 @@ export async function updateLastSignedIn(openId: string): Promise<void> {
   try {
     await db.update(users).set({ lastSignedIn: new Date() }).where(eq(users.openId, openId));
   } catch (error) {
-    console.error("[DB] updateLastSignedIn error:", error);
+    logger.error("[DB] updateLastSignedIn error", error);
   }
 }
 
