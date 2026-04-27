@@ -44,17 +44,4 @@ router.get("/api/glossar/categories", async (_req, res) => {
   }
 });
 
-router.post("/api/admin/cleanup-glossar", async (_req, res) => {
-  try {
-    const db = await getDb();
-    const before = await db.execute(sql`SELECT COUNT(*) as cnt FROM glossar_terms`);
-    const bc = (before as any)[0]?.[0]?.cnt ?? (before as any)[0]?.cnt ?? 0;
-    await db.execute(sql`DELETE FROM glossar_terms WHERE id NOT IN (SELECT min_id FROM (SELECT MIN(id) as min_id FROM glossar_terms GROUP BY term) as keeper)`);
-    try { await db.execute(sql`ALTER TABLE glossar_terms ADD UNIQUE INDEX idx_glossar_term_unique (term)`); } catch(_) {}
-    const after = await db.execute(sql`SELECT COUNT(*) as cnt FROM glossar_terms`);
-    const ac = (after as any)[0]?.[0]?.cnt ?? (after as any)[0]?.cnt ?? 0;
-    res.json({ before: bc, after: ac, removed: Number(bc) - Number(ac) });
-  } catch(e: any) { res.status(500).json({ error: e.message }); }
-});
-
 export { router as glossarRouter };
