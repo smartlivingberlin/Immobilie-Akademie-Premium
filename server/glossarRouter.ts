@@ -1,28 +1,32 @@
 import { Router } from "express";
 import { getDb } from "./db";
+import { sql } from "drizzle-orm";
 
 const router = Router();
 
 router.get("/api/glossar", async (req, res) => {
   try {
-    const db = getDb();
+    const db = await getDb();
     const cat = req.query.category as string | undefined;
     const q = req.query.q as string | undefined;
-    let sql = "SELECT * FROM glossar_terms";
-    const params: any[] = [];
+    let rows: any[];
     if (cat && q) {
-      sql += " WHERE category = ? AND (term LIKE ? OR definition LIKE ?)";
-      params.push(cat, "%"+q+"%", "%"+q+"%");
+      const like = "%"+q+"%";
+      const r = await db.execute(sql`SELECT * FROM glossar_terms WHERE category =  AND (term LIKE  OR definition LIKE ) ORDER BY term ASC`);
+      rows = r as any[];
     } else if (cat) {
-      sql += " WHERE category = ?";
-      params.push(cat);
+      const r = await db.execute(sql`SELECT * FROM glossar_terms WHERE category =  ORDER BY term ASC`);
+      rows = r as any[];
     } else if (q) {
-      sql += " WHERE term LIKE ? OR definition LIKE ?";
-      params.push("%"+q+"%", "%"+q+"%");
+      const like = "%"+q+"%";
+      const r = await db.execute(sql`SELECT * FROM glossar_terms WHERE term LIKE  OR definition LIKE  ORDER BY term ASC`);
+      rows = r as any[];
+    } else {
+      const r = await db.execute(sql`SELECT * FROM glossar_terms ORDER BY term ASC`);
+      rows = r as any[];
     }
-    sql += " ORDER BY term ASC";
-    const [rows] = await db.execute(sql, params) as any;
-    res.json({ terms: rows, total: rows.length });
+    const terms = Array.isArray(rows[0]) ? rows[0] : rows;
+    res.json({ terms, total: terms.length });
   } catch (e: any) {
     console.error("[Glossar] Fehler:", e.message);
     res.status(500).json({ error: "Glossar konnte nicht geladen werden" });
@@ -31,10 +35,9 @@ router.get("/api/glossar", async (req, res) => {
 
 router.get("/api/glossar/categories", async (_req, res) => {
   try {
-    const db = getDb();
-    const [rows] = await db.execute(
-      "SELECT category, COUNT(*) as count FROM glossar_terms GROUP BY category ORDER BY category"
-    ) as any;
+    const db = await getDb();
+    const r = await db.execute(sql`SELECT category, COUNT(*) as count FROM glossar_terms GROUP BY category ORDER BY category`);
+    const rows = Array.isArray(r[0]) ? r[0] : r;
     res.json({ categories: rows });
   } catch (e: any) {
     res.status(500).json({ error: "Kategorien konnten nicht geladen werden" });
