@@ -52,7 +52,7 @@ router.post("/api/admin/glossar", async (req: any, res: any) => {
     if (!token) return res.status(401).json({ error: "Nicht eingeloggt" });
     const { verifySessionToken } = await import("./_core/auth-local");
     const session = await verifySessionToken(token);
-    if (!session || session.role !== "admin") return res.status(403).json({ error: "Kein Zugriff" });
+    if (!session || (session as any).role !== "admin") return res.status(403).json({ error: "Kein Zugriff" });
     const { term, definition, category, lawReference, lawLink } = req.body;
     if (!term || !definition || !category) return res.status(400).json({ error: "term, definition, category erforderlich" });
     const db = await getDb();
@@ -67,7 +67,7 @@ router.put("/api/admin/glossar/:id", async (req: any, res: any) => {
     if (!token) return res.status(401).json({ error: "Nicht eingeloggt" });
     const { verifySessionToken } = await import("./_core/auth-local");
     const session = await verifySessionToken(token);
-    if (!session || session.role !== "admin") return res.status(403).json({ error: "Kein Zugriff" });
+    if (!session || (session as any).role !== "admin") return res.status(403).json({ error: "Kein Zugriff" });
     const id = Number(req.params.id);
     const { term, definition, category, lawReference, lawLink } = req.body;
     const db = await getDb();
@@ -82,7 +82,7 @@ router.delete("/api/admin/glossar/:id", async (req: any, res: any) => {
     if (!token) return res.status(401).json({ error: "Nicht eingeloggt" });
     const { verifySessionToken } = await import("./_core/auth-local");
     const session = await verifySessionToken(token);
-    if (!session || session.role !== "admin") return res.status(403).json({ error: "Kein Zugriff" });
+    if (!session || (session as any).role !== "admin") return res.status(403).json({ error: "Kein Zugriff" });
     const id = Number(req.params.id);
     const db = await getDb();
     await db.execute(sql`DELETE FROM glossar_terms WHERE id=${id}`);

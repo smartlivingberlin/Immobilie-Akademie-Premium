@@ -179,7 +179,7 @@ app.post("/api/consent", async (req: any, res: any) => {
     const { type, version, timestamp } = req.body;
     const userId = (req as any).user?.id ?? null;
     // Anonymes Logging auch ohne Login (für Cookie-Banner vor Registrierung)
-    await (await import("../db")).getDb().execute(
+    await (await (await import("../db")).getDb()).execute(
       `INSERT INTO consent_log (userId, consentType, consentVersion, ipAddress)
        VALUES (?, ?, ?, ?)`,
       [userId ?? null, type === "accepted" ? "marketing" : "revoked_marketing",
@@ -355,7 +355,7 @@ app.use(express.json({ limit: "50mb" }));
 // ── Public Stats (Social Proof) ────────────────────────────
 app.get("/api/stats/public", async (_req, res) => {
   try {
-    const db = getDb();
+    const db = await (await import("../db")).getDb();
     const [[users]] = await db.execute(
       "SELECT COUNT(*) as total FROM users WHERE role='user'"
     ) as any;
@@ -379,10 +379,10 @@ app.get("/api/stats/dashboard", async (req: any, res: any) => {
   try {
     const token = req.cookies?.app_session_id;
     if (!token) return res.status(401).json({ error: "Nicht eingeloggt" });
-    const { verifySessionToken } = await import("./_core/auth-local");
+    const { verifySessionToken } = await import("./auth-local");
     const session = await verifySessionToken(token);
     if (!session) return res.status(401).json({ error: "Ungueltige Session" });
-    const db = getDb();
+    const db = await (await import("../db")).getDb();
     const userId = session.id;
     const [[logs]] = await db.execute(
       "SELECT COUNT(*) as total, SUM(completed) as completed, SUM(durationSeconds) as totalSeconds FROM learning_logs WHERE userId = ?",
@@ -425,13 +425,13 @@ app.get("/api/quiz/questions-by-ids", async (req: any, res: any) => {
   try {
     const token = req.cookies?.app_session_id;
     if (!token) return res.status(401).json({ error: "Nicht eingeloggt" });
-    const { verifySessionToken } = await import("./_core/auth-local");
+    const { verifySessionToken } = await import("./auth-local");
     const session = await verifySessionToken(token);
     if (!session) return res.status(401).json({ error: "Ungueltige Session" });
     const ids = String(req.query.ids || "").split(",")
       .map(Number).filter(Boolean);
     if (!ids.length) return res.json({ questions: [] });
-    const db = getDb();
+    const db = await (await import("../db")).getDb();
     const questions = await db.execute(
       `SELECT id, questionText, options, correctAnswer, explanation, moduleId
        FROM question_bank WHERE id IN (${ids.map(() => "?").join(",")})`,
@@ -449,10 +449,10 @@ app.get("/api/user/my-data", async (req: any, res: any) => {
   try {
     const token = req.cookies?.app_session_id;
     if (!token) return res.status(401).json({ error: "Nicht eingeloggt" });
-    const { verifySessionToken } = await import("./_core/auth-local");
+    const { verifySessionToken } = await import("./auth-local");
     const session = await verifySessionToken(token);
     if (!session) return res.status(401).json({ error: "Ungültige Session" });
-    const db = getDb();
+    const db = await (await import("../db")).getDb();
     const userId = session.id;
 
     const [user] = await db.execute(
@@ -509,10 +509,10 @@ app.get("/api/user/export", async (req: any, res: any) => {
   try {
     const token = req.cookies?.app_session_id;
     if (!token) return res.status(401).json({ error: "Nicht eingeloggt" });
-    const { verifySessionToken } = await import("./_core/auth-local");
+    const { verifySessionToken } = await import("./auth-local");
     const session = await verifySessionToken(token);
     if (!session) return res.status(401).json({ error: "Ungültige Session" });
-    const db = getDb();
+    const db = await (await import("../db")).getDb();
     const userId = session.id;
 
     const [user] = await db.execute(
