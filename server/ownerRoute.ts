@@ -111,17 +111,20 @@ export function registerOwnerRoutes(app: Express) {
     try {
       const { getDb } = await import("./db");
       const db = await getDb();
-      const [users] = await db.$client.promise().query(`
+      const [usersRows] = await db.$client.promise().query(`
         SELECT id, name, email, role, enabledModules, createdAt, lastSignedIn, locked
         FROM users ORDER BY createdAt DESC LIMIT 100
       `) as any;
-      const [[totals]] = await db.$client.promise().query(`
+      const users = usersRows as any[];
+      const [totalsRows] = await db.$client.promise().query(`
         SELECT COUNT(*) as totalUsers,
           SUM(CASE WHEN DATE(lastSignedIn) = CURDATE() THEN 1 ELSE 0 END) as activeToday,
           SUM(CASE WHEN role = 'admin' THEN 1 ELSE 0 END) as admins
         FROM users
       `) as any;
-      const [[leads]] = await db.$client.promise().query(`SELECT COUNT(*) as c FROM trial_leads`) as any;
+      const totals = (totalsRows as any[])[0];
+      const [leadsRows] = await db.$client.promise().query(`SELECT COUNT(*) as c FROM trial_leads`) as any;
+      const leads = (leadsRows as any[])[0];
       res.json({
         totalUsers: Number(totals?.totalUsers || 0),
         activeToday: Number(totals?.activeToday || 0),

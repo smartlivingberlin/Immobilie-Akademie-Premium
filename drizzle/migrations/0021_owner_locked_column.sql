@@ -1,2 +1,2 @@
--- Migration 0021: locked Spalte für User-Sperrung
-ALTER TABLE users ADD COLUMN IF NOT EXISTS locked TINYINT(1) NOT NULL DEFAULT 0;
+-- Migration 0021: locked Spalte (safe)
+ALTER IGNORE TABLE users ADD COLUMN locked TINYINT(1) NOT NULL DEFAULT 0;
