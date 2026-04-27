@@ -96,7 +96,7 @@ app.use(helmet({
 // Erklärt: Nach 10 falschen Versuchen in 15 Minuten wird die IP gesperrt
 // Das schützt alle Nutzerkonten vor automatisierten Passwort-Angriffen
 app.set("trust proxy", 1);
-app.use(compression()); // Gzip/Brotli Kompression // Railway Fastly CDN
+app.use(compression() as any); // Gzip/Brotli Kompression // Railway Fastly CDN
 // Rate Limiter mit eigenem In-Memory Store (Railway-kompatibel)
 const _loginAttempts = new Map<string, { count: number; resetAt: number }>();
 const loginLimiter = (req: any, res: any, next: any) => {
@@ -179,7 +179,7 @@ app.post("/api/consent", async (req: any, res: any) => {
     const { type, version, timestamp } = req.body;
     const userId = (req as any).user?.id ?? null;
     // Anonymes Logging auch ohne Login (für Cookie-Banner vor Registrierung)
-    await (await (await import("../db")).getDb()).execute(
+    await (await (await import("../db")).getDb()).$client.query(
       `INSERT INTO consent_log (userId, consentType, consentVersion, ipAddress)
        VALUES (?, ?, ?, ?)`,
       [userId ?? null, type === "accepted" ? "marketing" : "revoked_marketing",
@@ -383,18 +383,16 @@ app.get("/api/stats/dashboard", async (req: any, res: any) => {
     const session = await verifySessionToken(token);
     if (!session) return res.status(401).json({ error: "Ungueltige Session" });
     const db = await (await import("../db")).getDb();
-    const userId = session.id;
+    const userId = (session as any).id ?? (session as any).openId;
+    const { sql: sqlFn } = await import("drizzle-orm");
     const [[logs]] = await db.execute(
-      "SELECT COUNT(*) as total, SUM(completed) as completed, SUM(durationSeconds) as totalSeconds FROM learning_logs WHERE userId = ?",
-      [userId]
+      sqlFn`SELECT COUNT(*) as total, SUM(completed) as completed, SUM(durationSeconds) as totalSeconds FROM learning_logs WHERE userId = ${userId}`
     ) as any;
     const [[exams]] = await db.execute(
-      "SELECT COUNT(*) as total, AVG(score) as avgScore FROM exam_sessions WHERE userId = ? AND completedAt IS NOT NULL",
-      [userId]
+      sqlFn`SELECT COUNT(*) as total, AVG(score) as avgScore FROM exam_sessions WHERE userId = ${userId} AND completedAt IS NOT NULL`
     ) as any;
     const [[certs]] = await db.execute(
-      "SELECT COUNT(*) as total FROM certificates WHERE userId = ?",
-      [userId]
+      sqlFn`SELECT COUNT(*) as total FROM certificates WHERE userId = ${userId}`
     ) as any;
     res.json({
       daysCompleted: Number(logs?.completed || 0),
@@ -432,7 +430,7 @@ app.get("/api/quiz/questions-by-ids", async (req: any, res: any) => {
       .map(Number).filter(Boolean);
     if (!ids.length) return res.json({ questions: [] });
     const db = await (await import("../db")).getDb();
-    const questions = await db.execute(
+    const questions = await db.$client.query(
       `SELECT id, questionText, options, correctAnswer, explanation, moduleId
        FROM question_bank WHERE id IN (${ids.map(() => "?").join(",")})`,
       ids
@@ -453,37 +451,35 @@ app.get("/api/user/my-data", async (req: any, res: any) => {
     const session = await verifySessionToken(token);
     if (!session) return res.status(401).json({ error: "Ungültige Session" });
     const db = await (await import("../db")).getDb();
-    const userId = session.id;
+    const userId = (session as any).id ?? (session as any).openId;
 
-    const [user] = await db.execute(
-      `SELECT id, name, email, role, enabledModules, createdAt, lastSignedIn
-       FROM users WHERE id = ?`, [userId]
-    ) as any;
+    const [user] = await db.$client.query(`SELECT id, name, email, role, enabledModules, createdAt, lastSignedIn
+       FROM users WHERE id = ?`, [userId]) as any;
 
-    const [progress] = await db.execute(
+    const [progress] = await db.$client.query(
       `SELECT moduleId, dayNumber, completed, durationSeconds, openedAt
        FROM learning_logs WHERE userId = ? ORDER BY openedAt DESC LIMIT 100`,
       [userId]
     ) as any;
 
-    const [exams] = await db.execute(
+    const [exams] = await db.$client.query(
       `SELECT id, moduleId, score, totalQuestions, startedAt, completedAt
        FROM exam_sessions WHERE userId = ? ORDER BY startedAt DESC LIMIT 20`,
       [userId]
     ) as any;
 
-    const [certs] = await db.execute(
+    const [certs] = await db.$client.query(
       `SELECT moduleId, score, issuedAt FROM certificates WHERE userId = ?`,
       [userId]
     ) as any;
 
-    const [chats] = await db.execute(
+    const [chats] = await db.$client.query(
       `SELECT id, moduleId, createdAt FROM chat_conversations
        WHERE userId = ? ORDER BY createdAt DESC LIMIT 50`,
       [userId]
     ) as any;
 
-    const [sr] = await db.execute(
+    const [sr] = await db.$client.query(
       `SELECT questionId, easinessFactor, interval, repetitions, nextReviewAt
        FROM spaced_repetition WHERE userId = ?`,
       [userId]
@@ -513,21 +509,15 @@ app.get("/api/user/export", async (req: any, res: any) => {
     const session = await verifySessionToken(token);
     if (!session) return res.status(401).json({ error: "Ungültige Session" });
     const db = await (await import("../db")).getDb();
-    const userId = session.id;
+    const userId = (session as any).id ?? (session as any).openId;
 
-    const [user] = await db.execute(
+    const [user] = await db.$client.query(
       `SELECT name, email, role, enabledModules, createdAt FROM users WHERE id = ?`,
       [userId]
     ) as any;
-    const [progress] = await db.execute(
-      `SELECT * FROM learning_logs WHERE userId = ?`, [userId]
-    ) as any;
-    const [exams] = await db.execute(
-      `SELECT * FROM exam_sessions WHERE userId = ?`, [userId]
-    ) as any;
-    const [certs] = await db.execute(
-      `SELECT * FROM certificates WHERE userId = ?`, [userId]
-    ) as any;
+    const [progress] = await db.$client.query(`SELECT * FROM learning_logs WHERE userId = ?`, [userId]) as any;
+    const [exams] = await db.$client.query(`SELECT * FROM exam_sessions WHERE userId = ?`, [userId]) as any;
+    const [certs] = await db.$client.query(`SELECT * FROM certificates WHERE userId = ?`, [userId]) as any;
 
     const exportData = {
       exportDate: new Date().toISOString(),
