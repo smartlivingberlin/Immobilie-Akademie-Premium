@@ -1,6 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "wouter";
-import { glossaryData, GlossaryTerm } from "@/data/glossary-data";
+
+type GlossaryTerm = {
+  id: number;
+  term: string;
+  definition: string;
+  category: string;
+  lawReference?: string;
+  lawLink?: string;
+};
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -26,11 +34,18 @@ export default function Glossary() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
-  const categories = Array.from(
-    new Set(glossaryData.map((term) => term.category))
-  ).sort();
+  const [allTerms, setAllTerms] = useState<GlossaryTerm[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const filteredTerms = glossaryData.filter((term) => {
+  useEffect(() => {
+    fetch("/api/glossar")
+      .then(r => r.json())
+      .then(d => { setAllTerms(d.terms || []); setLoading(false); })
+      .catch(() => setLoading(false));
+  }, []);
+
+  const categories = Array.from(new Set(allTerms.map(t => t.category))).sort();
+  const filteredTerms = allTerms.filter((term) => {
     const matchesSearch =
       term.term.toLowerCase().includes(searchQuery.toLowerCase()) ||
       term.definition.toLowerCase().includes(searchQuery.toLowerCase());
@@ -69,7 +84,7 @@ export default function Glossary() {
               <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200">
                 Wissensdatenbank
               </Badge>
-              <span className="text-sm text-slate-500">{glossaryData.length} Einträge</span>
+              <span className="text-sm text-slate-500">{allTerms.length} Einträge</span>
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-slate-900 flex items-center gap-3">
               <BookOpen className="h-8 w-8 text-blue-600" />
