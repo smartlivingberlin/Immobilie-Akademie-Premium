@@ -69,6 +69,7 @@ export default function AdminDashboard() {
       { name: "Kursbuch-Generator", desc: "Lernmaterial als PDF", href: "/admin/kursbuch", icon: BookOpen, color: "#7c3aed" },
       { name: "Dozenten-Cockpit", desc: "Lehrplan + Lösungen", href: "/admin/dozenten", icon: Brain, color: "#d97706" },
       { name: "Mediaskript-Generator", desc: "KI-Skripte erstellen", href: "/admin/mediaskript", icon: MessageSquare, color: "#059669" },
+      { name: "Glossar-Manager", desc: "93 Fachbegriffe verwalten", href: "/admin/glossar", icon: BookOpen, color: "#0f766e" },
     ]},
     { group: "🤖 KI & Agent", items: [
       { name: "Portal-Agent v2", desc: "Claude · Gemini · Groq", href: "/admin/portal-agent", icon: Bot, color: "#7c3aed", badge: auditScore ? `${auditScore}/100` : null },

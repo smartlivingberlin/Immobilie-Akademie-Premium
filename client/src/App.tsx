@@ -81,6 +81,7 @@ const Module5WithIntro = lazy(() => import("@/pages/modules/Module5WithIntro"));
 
 // ── Admin pages (lazy — only for admin users) ────────────────────────────────
 const AdminDashboard = lazy(() => import("@/pages/admin/AdminDashboard"));
+const GlossarAdmin = lazy(() => import("@/pages/admin/GlossarAdmin"));
 const AdminCodes = lazy(() => import("@/pages/admin/AdminCodes"));
 const KursbuchGenerator = lazy(() => import("@/pages/admin/KursbuchGenerator"));
 const DozentenCockpit = lazy(() => import("@/pages/admin/DozentenCockpit"));
@@ -208,6 +209,7 @@ function Router() {
         <Route path="/admin/whitelabel"><AppLayout><AdminRoute component={WhiteLabelAdmin} /></AppLayout></Route>
         <Route path="/admin/phase"><AppLayout><AdminRoute component={PortalPhaseAdmin} /></AppLayout></Route>
         <Route path="/admin/portal-agent"><AppLayout><AdminRoute component={PortalAgentDashboard} /></AppLayout></Route>
+        <Route path="/admin/glossar"><AppLayout><AdminRoute component={GlossarAdmin} /></AppLayout></Route>
         <Route path="/admin/ki-monitor"><AppLayout><AdminRoute component={KiMonitor} /></AppLayout></Route>
         <Route path="/admin/codes"><AppLayout><AdminRoute component={AdminCodes} /></AppLayout></Route>
         <Route path="/admin/nutzer"><AppLayout><AdminRoute component={UserManagement} /></AppLayout></Route>
