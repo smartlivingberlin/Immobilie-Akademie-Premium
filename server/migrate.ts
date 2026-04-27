@@ -18,7 +18,7 @@ export async function runMigrations() {
         if (e.message.includes("already exists") || e.message.includes("Duplicate")) {
           console.log("[DB] Migration skip (exists):", file);
         } else {
-          console.warn("[DB] Migration warn:", file, e.message.slice(0,80));
+          console.warn("[DB] Migration warn:", file, e.message.slice(0,300));
         }
       }
     }
