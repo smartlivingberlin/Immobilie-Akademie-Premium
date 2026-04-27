@@ -131,6 +131,16 @@ export function registerAgentRoutes(app: Express) {
 
   // Manueller Cron-Trigger (Admin)
   app.post("/api/agent/run-audit", async (req: Request, res: Response) => {
+    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
+    const key = req.headers["x-owner-key"] || req.query.key;
+    if (ownerCode && key !== ownerCode) {
+      return res.status(401).json({ error: "Nicht autorisiert" });
+    }
+    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
+    const key = req.headers["x-owner-key"] || req.query.key;
+    if (ownerCode && key !== ownerCode) {
+      return res.status(401).json({ error: "Nicht autorisiert" });
+    }
     try {
       const { runNightAudit } = await import("./NightCron");
       const result = await runNightAudit();
@@ -181,9 +191,11 @@ export function registerAgentRoutes(app: Express) {
       return res.status(500).json({ error: e.message });
     }
   });
-  // POST /api/ai/bewerte-fallstudie — KI bewertet Nutzerantwort
+  // POST /api/ai/bewerte-fallstudie — KI bewertet Nutzerantwort (Auth erforderlich)
   app.post("/api/ai/bewerte-fallstudie", async (req: any, res: any) => {
     try {
+      const token = req.cookies?.app_session_id;
+      if (!token) return res.status(401).json({ error: "Login erforderlich" });
       const { aufgabe, musterantwort, nutzerAntwort, titel } = req.body;
       if (!aufgabe || !nutzerAntwort) return res.status(400).json({ error: "aufgabe und nutzerAntwort erforderlich" });
       const apiKey = process.env.ANTHROPIC_API_KEY;
