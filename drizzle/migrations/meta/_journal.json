@@ -127,6 +127,13 @@
       "when": 1777271273840,
       "tag": "0017_glossar",
       "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "6",
+      "when": 1777273877870,
+      "tag": "0018_glossar_seed",
+      "breakpoints": true
     }
   ]
 }
