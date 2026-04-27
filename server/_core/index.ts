@@ -48,6 +48,7 @@ import { registerOwnerRoutes } from "../ownerRoute";
 import { runTrialFollowupCron } from "../trialFollowup";
 import { registerSpacedRepetitionRoutes } from "../spacedRepetitionRoute";
 import { glossarRouter } from "../glossarRouter";
+import { audioRouter } from "../audioRouter";
 import { registerTrialRoutes } from "../trialRoute";
 import { logger } from "./logger";
 
@@ -307,6 +308,7 @@ app.use(express.json({ limit: "50mb" }));
   registerTrialRoutes(app);
   registerSpacedRepetitionRoutes(app);
   app.use(glossarRouter);
+  app.use(audioRouter);
   registerAgentRoutes(app);
   // Healthcheck für Railway / Monitoring
   // Trial Follow-up Cron: alle 30 Minuten
