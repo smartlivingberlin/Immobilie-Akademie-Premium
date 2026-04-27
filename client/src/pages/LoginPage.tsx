@@ -50,13 +50,13 @@ export default function LoginPage() {
   const labelStyle = { display: "block", fontSize: "13px", fontWeight: "500" as const, color: "#374151", marginBottom: "6px" };
 
   return (
-    <div style={{ minHeight: "100vh", background: "linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px", fontFamily: "system-ui, sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: "linear-gradient(135deg, #0c1628 0%, #0f2744 40%, #1a1040 100%)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px", fontFamily: "system-ui, sans-serif" }}>
       <div style={{ width: "100%", maxWidth: "420px" }}>
         <div style={{ textAlign: "center", marginBottom: "32px" }}>
-          <div style={{ width: "64px", height: "64px", background: "#2563eb", borderRadius: "16px", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px", boxShadow: "0 8px 32px rgba(37,99,235,0.4)" }}>
-            <span style={{ color: "white", fontSize: "24px", fontWeight: "bold" }}>IA</span>
+          <div style={{ width: "72px", height: "72px", background: "linear-gradient(135deg, #2563eb, #7c3aed)", borderRadius: "18px", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px", boxShadow: "0 8px 32px rgba(37,99,235,0.5)" }}>
+            <span style={{ color: "white", fontSize: "22px", fontWeight: "900", fontFamily: "Fraunces, Georgia, serif" }}>IA</span>
           </div>
-          <h1 style={{ color: "white", fontSize: "24px", fontWeight: "bold", margin: "0 0 4px" }}>Immobilien-Akademie</h1>
+          <h1 style={{ color: "white", fontSize: "26px", fontWeight: "900", margin: "0 0 4px", fontFamily: "Fraunces, Georgia, serif", letterSpacing: "-0.02em" }}>Immobilien-Akademie</h1>
           <p style={{ color: "#93c5fd", fontSize: "13px", margin: 0 }}>Vorbereitung auf die IHK-Sachkundeprüfung §34c/§34i</p>
         </div>
         <div style={{ background: "white", borderRadius: "20px", padding: "36px", boxShadow: "0 25px 50px rgba(0,0,0,0.4)" }}>
@@ -105,7 +105,7 @@ export default function LoginPage() {
               </div>
             </div>
             {error && <div style={{ background: "#fef2f2", border: "1px solid #fecaca", borderRadius: "8px", padding: "10px 12px", fontSize: "13px", color: "#dc2626", marginBottom: "16px" }}>{error}</div>}
-            <button type="submit" disabled={loading} style={{ width: "100%", padding: "12px", background: loading ? "#93c5fd" : "#2563eb", color: "white", border: "none", borderRadius: "10px", fontSize: "14px", fontWeight: "600", cursor: loading ? "not-allowed" : "pointer" }}>
+            <button type="submit" disabled={loading} style={{ width: "100%", padding: "12px", background: loading ? "#93c5fd" : "linear-gradient(135deg, #2563eb, #1d4ed8)", color: "white", border: "none", borderRadius: "10px", fontSize: "14px", fontWeight: "700", cursor: loading ? "not-allowed" : "pointer", boxShadow: "0 4px 14px rgba(37,99,235,0.4)" }}>
               {loading ? (mode === "login" ? "Anmelden..." : "Erstellen...") : (mode === "login" ? "Anmelden" : "Konto erstellen")}
             </button>
           </form>
