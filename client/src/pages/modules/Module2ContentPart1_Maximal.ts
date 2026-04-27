@@ -8,7 +8,7 @@ export const contentDataPart1Maximal: Record<string, {
   practice: any;
   task?: any;
   tasks?: Array<{type?: string; question: string; hint?: string}>;
-  quiz?: Array<{question: string; options?: string[]; answer?: string; explanation?: string}>;
+  quiz?: Array<{question: string; options?: string[]; answer?: string; correct?: number; explanation?: string}>;
   type?: string;
   extendedTheory?: string;
   caseStudy?: string;

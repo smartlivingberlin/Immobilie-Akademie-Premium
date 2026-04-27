@@ -5,7 +5,7 @@ export const contentDataModule4: Record<string, {
   practice: string;
   task?: string;
   tasks?: Array<{type?: string; question: string; hint?: string}>;
-  quiz?: Array<{question: string; options?: string[]; answer?: string; explanation?: string}>;
+  quiz?: Array<{question: string; options?: string[]; answer?: string; correct?: number; explanation?: string}>;
   type?: string;
 }> = {
   // Block 1: Grundlagen & Markt (Tag 1-4)

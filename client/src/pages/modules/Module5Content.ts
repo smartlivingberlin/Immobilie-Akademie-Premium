@@ -8,7 +8,7 @@ export const contentDataModule5: Record<string, {
   practice: string;
   task?: string;
   tasks?: Array<{type?: string; question: string; hint?: string}>;
-  quiz?: Array<{question: string; options?: string[]; answer?: string; explanation?: string}>;
+  quiz?: Array<{question: string; options?: string[]; answer?: string; correct?: number; explanation?: string}>;
   type?: string;
 }> = {
   // Woche 1: Einführung & Rechtliche Grundlagen (Tag 1-5)

@@ -10,7 +10,7 @@ export const contentDataModule1Maximal: Record<string, {
   caseStudy?: string;
   task?: string;
   tasks?: Array<{type?: string; question: string; hint?: string}>;
-  quiz?: Array<{question: string; options?: string[]; answer?: string; explanation?: string}>;
+  quiz?: Array<{question: string; options?: string[]; answer?: string; correct?: number; explanation?: string}>;
   solution?: string;
   type?: string;
 }> = {
