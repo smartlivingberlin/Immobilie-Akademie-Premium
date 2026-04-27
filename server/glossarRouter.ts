@@ -12,14 +12,14 @@ router.get("/api/glossar", async (req, res) => {
     let rows: any[];
     if (cat && q) {
       const like = "%"+q+"%";
-      const r = await db.execute(sql`SELECT * FROM glossar_terms WHERE category =  AND (term LIKE  OR definition LIKE ) ORDER BY term ASC`);
+      const r = await db.execute(sql`SELECT * FROM glossar_terms WHERE category = ${cat} AND (term LIKE ${like} OR definition LIKE ${like}) ORDER BY term ASC`);
       rows = r as any[];
     } else if (cat) {
-      const r = await db.execute(sql`SELECT * FROM glossar_terms WHERE category =  ORDER BY term ASC`);
+      const r = await db.execute(sql`SELECT * FROM glossar_terms WHERE category = ${cat} ORDER BY term ASC`);
       rows = r as any[];
     } else if (q) {
       const like = "%"+q+"%";
-      const r = await db.execute(sql`SELECT * FROM glossar_terms WHERE term LIKE  OR definition LIKE  ORDER BY term ASC`);
+      const r = await db.execute(sql`SELECT * FROM glossar_terms WHERE term LIKE ${like} OR definition LIKE ${like} ORDER BY term ASC`);
       rows = r as any[];
     } else {
       const r = await db.execute(sql`SELECT * FROM glossar_terms ORDER BY term ASC`);
@@ -44,17 +44,16 @@ router.get("/api/glossar/categories", async (_req, res) => {
   }
 });
 
-
-// EINMALIG: Duplikate bereinigen
-router.delete('/api/glossar/cleanup-duplicates', async (_req, res) => {
+router.post("/api/admin/cleanup-glossar", async (_req, res) => {
   try {
     const db = await getDb();
     const before = await db.execute(sql`SELECT COUNT(*) as cnt FROM glossar_terms`);
-    await db.execute(sql`DELETE t1 FROM glossar_terms t1 INNER JOIN glossar_terms t2 ON t1.term = t2.term AND t1.id > t2.id`);
+    const bc = (before as any)[0]?.[0]?.cnt ?? (before as any)[0]?.cnt ?? 0;
+    await db.execute(sql`DELETE FROM glossar_terms WHERE id NOT IN (SELECT min_id FROM (SELECT MIN(id) as min_id FROM glossar_terms GROUP BY term) as keeper)`);
+    try { await db.execute(sql`ALTER TABLE glossar_terms ADD UNIQUE INDEX idx_glossar_term_unique (term)`); } catch(_) {}
     const after = await db.execute(sql`SELECT COUNT(*) as cnt FROM glossar_terms`);
-    const b = (before as any)[0]?.[0]?.cnt ?? (before as any)[0]?.cnt;
-    const a = (after as any)[0]?.[0]?.cnt ?? (after as any)[0]?.cnt;
-    res.json({ before: b, after: a, removed: b - a });
+    const ac = (after as any)[0]?.[0]?.cnt ?? (after as any)[0]?.cnt ?? 0;
+    res.json({ before: bc, after: ac, removed: Number(bc) - Number(ac) });
   } catch(e: any) { res.status(500).json({ error: e.message }); }
 });
 
