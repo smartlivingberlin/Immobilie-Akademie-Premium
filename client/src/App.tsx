@@ -227,18 +227,7 @@ function Router() {
 export default function App() {
   return (
     <>
-      {/* Skip-Link: Für blinde Nutzer und Keyboard-Nutzer */}
-      
-        href="#main-content"
-        style={{
-          position: "fixed", top: "-100px", left: "16px", zIndex: 9999,
-          background: "#2563eb", color: "white", padding: "12px 20px",
-          borderRadius: "8px", fontSize: "14px", fontWeight: "700",
-          textDecoration: "none", transition: "top 0.1s",
-        }}
-        onFocus={e => { e.currentTarget.style.top = "16px"; }}
-        onBlur={e => { e.currentTarget.style.top = "-100px"; }}
-      >
+      <a href="#main-content" className="skip-link">
         Zum Hauptinhalt springen
       </a>
       <Router />
