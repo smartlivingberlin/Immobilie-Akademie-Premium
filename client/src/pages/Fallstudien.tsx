@@ -112,7 +112,9 @@ export default function Fallstudien() {
       const res = await fetch("/api/ai/bewerte-fallstudie", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({
+          titel: selected.titel,
           aufgabe: selected.aufgabe,
           musterantwort: selected.musterantwort,
           nutzerAntwort: antwort,
