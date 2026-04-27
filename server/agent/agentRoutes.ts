@@ -136,11 +136,6 @@ export function registerAgentRoutes(app: Express) {
     if (ownerCode && key !== ownerCode) {
       return res.status(401).json({ error: "Nicht autorisiert" });
     }
-    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
-    const key = req.headers["x-owner-key"] || req.query.key;
-    if (ownerCode && key !== ownerCode) {
-      return res.status(401).json({ error: "Nicht autorisiert" });
-    }
     try {
       const { runNightAudit } = await import("./NightCron");
       const result = await runNightAudit();
