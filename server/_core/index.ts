@@ -45,6 +45,7 @@ import { seedQuizQuestionsIfEmpty } from "../seed-quiz";
 import { registerOwnerRoutes } from "../ownerRoute";
 import { runTrialFollowupCron } from "../trialFollowup";
 import { registerSpacedRepetitionRoutes } from "../spacedRepetitionRoute";
+import { glossarRouter } from "../glossarRouter";
 import { registerTrialRoutes } from "../trialRoute";
 
 
@@ -302,6 +303,7 @@ app.use(express.json({ limit: "50mb" }));
   registerRagTutorRoutes(app);
   registerTrialRoutes(app);
   registerSpacedRepetitionRoutes(app);
+  app.use(glossarRouter);
   registerAgentRoutes(app);
   // Healthcheck für Railway / Monitoring
   // Trial Follow-up Cron: alle 30 Minuten
