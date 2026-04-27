@@ -415,7 +415,7 @@ export default function Module2Detail() {
                       extendedTheory={(currentContent as any).extendedTheory}
                       law={currentContent.law}
                       practice={currentContent.practice}
-                      task={currentContent.task}
+                      task={typeof currentContent.task === "string" ? currentContent.task : undefined}
                     />
               <SmartContent content={currentContent.theory} />
               </>
@@ -553,7 +553,7 @@ export default function Module2Detail() {
                              </CardHeader>
                              <CardContent className="pt-4">
                                <SolutionToggler solution={task.solution} />
-                    <AudioPlayer text={currentContent.task || ""} label="Aufgaben vorlesen" />
+                    <AudioPlayer text={typeof currentContent.task === "string" ? currentContent.task : ""} label="Aufgaben vorlesen" />
                              </CardContent>
                            </Card>
                          ))}

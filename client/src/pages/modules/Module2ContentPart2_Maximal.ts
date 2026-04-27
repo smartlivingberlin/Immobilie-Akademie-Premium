@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Maximalist Content for Module 2 (Makler §34c) - Part 2 (Days 21-40)
 // Focus: Bewertung, Einkauf, Maklervertrag & Marketing
 

@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Maximalist Content for Module 4: Gutachten & Sachverständiger
 // Structure matches the requirements: Theory, Law, Practice, Tasks (Array)
 

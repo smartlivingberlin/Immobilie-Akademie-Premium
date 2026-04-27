@@ -120,8 +120,8 @@ export default function OpenQuizPage({ modulId }: { modulId: number }) {
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           {fragen.map((f, i) => {
-            const bereitsBeantwortet = (progress as any)?.antworten?.some(a => a.questionId === f.id);
-            const letztePunkte = (progress as any)?.antworten?.findLast?.(a => a.questionId === f.id);
+            const bereitsBeantwortet = (progress as any)?.antworten?.some((a: any) => a.questionId === f.id);
+            const letztePunkte = (progress as any)?.antworten?.findLast?.((a: any) => a.questionId === f.id);
             return (
               <div key={f.id} style={{
                 background: "white", border: "1px solid #e2e8f0",

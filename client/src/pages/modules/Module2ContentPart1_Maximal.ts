@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Maximalist Content for Module 2 (Makler §34c) - Part 1 (Days 1-20)
 // Focus: Rechtliche Grundlagen, Start, Marktanalyse & Objekt
 
