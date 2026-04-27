@@ -54,7 +54,11 @@ export default function OwnerDashboard() {
   const [actionMsg, setActionMsg] = useState("");
 
   useEffect(() => {
-    fetch("/api/owner/dashboard", { credentials: "include" })
+    // Owner-Key aus URL speichern fuer spaetere API-Calls
+    const urlKey = new URLSearchParams(window.location.search).get("key");
+    if (urlKey) localStorage.setItem("ownerKey", urlKey);
+    const ownerKey = urlKey || localStorage.getItem("ownerKey") || "";
+    fetch(`/api/owner/dashboard?key=${ownerKey}`, { credentials: "include", headers: { "x-owner-key": ownerKey } })
       .then(r => r.json())
       .then(d => { setStats(d); setLoading(false); })
       .catch(() => setLoading(false));
@@ -78,6 +82,29 @@ export default function OwnerDashboard() {
     });
     setActionMsg(`✅ ${email} freigeschaltet`);
     setTimeout(() => window.location.reload(), 1500);
+  };
+
+  const impersonateUser = async (email: string) => {
+    if (!confirm(`Als ${email} einloggen?`)) return;
+    const res = await fetch("/api/owner/impersonate", {
+      method: "POST", credentials: "include",
+      headers: { "Content-Type": "application/json", "x-owner-key": localStorage.getItem("ownerKey") || "" },
+      body: JSON.stringify({ email }),
+    });
+    const d = await res.json();
+    if (d.ok) { setActionMsg(`✅ Eingeloggt als ${email}`); setTimeout(() => window.location.href = "/", 1000); }
+    else setActionMsg(`❌ Fehler: ${d.error}`);
+  };
+
+  const setModules = async (email: string, modules: string) => {
+    const res = await fetch("/api/owner/set-modules", {
+      method: "POST", credentials: "include",
+      headers: { "Content-Type": "application/json", "x-owner-key": localStorage.getItem("ownerKey") || "" },
+      body: JSON.stringify({ email, modules }),
+    });
+    const d = await res.json();
+    setActionMsg(d.ok ? `✅ Module gesetzt: ${modules}` : `❌ ${d.error}`);
+    if (d.ok) setTimeout(() => window.location.reload(), 800);
   };
 
   const generateMagicLink = async () => {
@@ -190,15 +217,29 @@ export default function OwnerDashboard() {
                     {u.createdAt ? new Date(u.createdAt).toLocaleDateString("de-DE") : "—"}
                   </td>
                   <td style={{padding:"10px 12px"}}>
-                    <div style={{display:"flex",gap:6}}>
+                    <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
                       <button onClick={() => unlockUser(u.email)}
-                        style={{background:"#065f46",color:"#10b981",border:"none",padding:"4px 10px",borderRadius:4,cursor:"pointer",fontSize:11}}>
-                        ✅ Freischalten
+                        style={{background:"#065f46",color:"#10b981",border:"none",padding:"4px 8px",borderRadius:4,cursor:"pointer",fontSize:10}}>
+                        ✅ Frei
                       </button>
                       <button onClick={() => lockUser(u.email)}
-                        style={{background:"#7f1d1d",color:"#ef4444",border:"none",padding:"4px 10px",borderRadius:4,cursor:"pointer",fontSize:11}}>
+                        style={{background:"#7f1d1d",color:"#ef4444",border:"none",padding:"4px 8px",borderRadius:4,cursor:"pointer",fontSize:10}}>
                         🔒 Sperren
                       </button>
+                      <button onClick={() => impersonateUser(u.email)}
+                        style={{background:"#1e3a5f",color:"#60a5fa",border:"none",padding:"4px 8px",borderRadius:4,cursor:"pointer",fontSize:10}}>
+                        👤 Login
+                      </button>
+                      <select onChange={e => e.target.value && setModules(u.email, e.target.value)}
+                        defaultValue=""
+                        style={{background:"#1e293b",color:"#94a3b8",border:"1px solid #334155",padding:"3px 6px",borderRadius:4,fontSize:10,cursor:"pointer"}}>
+                        <option value="">Module...</option>
+                        <option value="1">M1</option>
+                        <option value="1,2">M1+2</option>
+                        <option value="1,2,3">M1-3</option>
+                        <option value="1,2,3,4">M1-4</option>
+                        <option value="1,2,3,4,5">Alle</option>
+                      </select>
                     </div>
                   </td>
                 </tr>

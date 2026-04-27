@@ -103,4 +103,117 @@ export function registerOwnerRoutes(app: Express) {
     return res.json({ ok: true, message: "Code korrekt — Zugang gewährt" });
   });
 
+  // ── OWNER DASHBOARD ──────────────────────────────────────────
+  app.get("/api/owner/dashboard", async (req: Request, res: Response) => {
+    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
+    const key = req.headers["x-owner-key"] || req.query.key;
+    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    try {
+      const { getDb } = await import("./db");
+      const db = await getDb();
+      const [users] = await db.$client.query(`
+        SELECT id, name, email, role, enabledModules, createdAt, lastSignedIn, locked
+        FROM users ORDER BY createdAt DESC LIMIT 100
+      `) as any;
+      const [[totals]] = await db.$client.query(`
+        SELECT COUNT(*) as totalUsers,
+          SUM(CASE WHEN DATE(lastSignedIn) = CURDATE() THEN 1 ELSE 0 END) as activeToday,
+          SUM(CASE WHEN role = 'admin' THEN 1 ELSE 0 END) as admins
+        FROM users
+      `) as any;
+      const [[leads]] = await db.$client.query(`SELECT COUNT(*) as c FROM trial_leads`) as any;
+      res.json({
+        totalUsers: Number(totals?.totalUsers || 0),
+        activeToday: Number(totals?.activeToday || 0),
+        admins: Number(totals?.admins || 0),
+        trialLeads: Number(leads?.c || 0),
+        modulesUnlocked: { "1": 0 },
+        recentUsers: users || [],
+        systemHealth: { server: true, db: true, stripe: !!process.env.STRIPE_SECRET_KEY },
+      });
+    } catch (e: any) {
+      res.status(500).json({ error: e.message });
+    }
+  });
+
+  // ── LOCK USER ────────────────────────────────────────────────
+  app.post("/api/owner/lock-user", async (req: Request, res: Response) => {
+    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
+    const key = req.headers["x-owner-key"] || req.query.key;
+    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    try {
+      const { email } = req.body;
+      if (!email) return res.status(400).json({ error: "email erforderlich" });
+      const { getDb } = await import("./db");
+      const db = await getDb();
+      await db.$client.query(`UPDATE users SET locked = 1 WHERE email = ?`, [email]);
+      res.json({ ok: true, msg: `${email} gesperrt` });
+    } catch (e: any) { res.status(500).json({ error: e.message }); }
+  });
+
+  // ── UNLOCK USER ──────────────────────────────────────────────
+  app.post("/api/owner/unlock-user", async (req: Request, res: Response) => {
+    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
+    const key = req.headers["x-owner-key"] || req.query.key;
+    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    try {
+      const { email } = req.body;
+      if (!email) return res.status(400).json({ error: "email erforderlich" });
+      const { getDb } = await import("./db");
+      const db = await getDb();
+      await db.$client.query(`UPDATE users SET locked = 0 WHERE email = ?`, [email]);
+      res.json({ ok: true, msg: `${email} freigeschaltet` });
+    } catch (e: any) { res.status(500).json({ error: e.message }); }
+  });
+
+  // ── GENERATE MAGIC LOGIN LINK ────────────────────────────────
+  app.post("/api/owner/generate-link", async (req: Request, res: Response) => {
+    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
+    const key = req.headers["x-owner-key"] || req.query.key;
+    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    try {
+      const token = await createSessionToken("owner@system", "Owner");
+      const link = `${process.env.APP_URL || ""}/api/owner/access?key=${ownerCode}`;
+      res.json({ link, token });
+    } catch (e: any) { res.status(500).json({ error: e.message }); }
+  });
+
+  // ── IMPERSONATE USER ─────────────────────────────────────────
+  app.post("/api/owner/impersonate", async (req: Request, res: Response) => {
+    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
+    const key = req.headers["x-owner-key"] || req.query.key;
+    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    try {
+      const { email } = req.body;
+      if (!email) return res.status(400).json({ error: "email erforderlich" });
+      const { getDb } = await import("./db");
+      const db = await getDb();
+      const [[user]] = await db.$client.query(
+        `SELECT openId, name, email FROM users WHERE email = ? LIMIT 1`, [email]
+      ) as any;
+      if (!user) return res.status(404).json({ error: "Nutzer nicht gefunden" });
+      const token = await createSessionToken(user.openId, user.name || user.email);
+      const cookieOptions = getSessionCookieOptions(req);
+      res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
+      res.json({ ok: true, msg: `Eingeloggt als ${user.email}`, redirect: "/" });
+    } catch (e: any) { res.status(500).json({ error: e.message }); }
+  });
+
+  // ── SET MODULES ──────────────────────────────────────────────
+  app.post("/api/owner/set-modules", async (req: Request, res: Response) => {
+    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
+    const key = req.headers["x-owner-key"] || req.query.key;
+    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    try {
+      const { email, modules } = req.body;
+      if (!email || !modules) return res.status(400).json({ error: "email und modules erforderlich" });
+      const { getDb } = await import("./db");
+      const db = await getDb();
+      await db.$client.query(
+        `UPDATE users SET enabledModules = ? WHERE email = ?`, [modules, email]
+      );
+      res.json({ ok: true, msg: `Module fuer ${email} gesetzt: ${modules}` });
+    } catch (e: any) { res.status(500).json({ error: e.message }); }
+  });
+
 }
