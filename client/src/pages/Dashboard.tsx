@@ -96,6 +96,41 @@ function StatCard({ icon, label, value, sub, color, bg }: any) {
   );
 }
 
+// ── Quick Action Item ────────────────────────────────────────
+function QuickActionItem({ icon, label, sub, href, color }: { icon: string; label: string; sub: string; href: string; color: string }) {
+  const [hov, setHov] = useState(false);
+  return (
+    <a href={href} style={{ textDecoration: "none" }}>
+      <div onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
+        style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "12px 8px",
+          background: hov ? color + "10" : "var(--color-card)",
+          border: `1px solid ${hov ? color + "40" : "#f1f5f9"}`,
+          borderRadius: 12, cursor: "pointer", transition: "all 0.2s", textAlign: "center" }}>
+        <span style={{ fontSize: 22, marginBottom: 4 }}>{icon}</span>
+        <span style={{ fontSize: 12, fontWeight: 700, color: "var(--color-text)" }}>{label}</span>
+        <span style={{ fontSize: 10, color: "#94a3b8", marginTop: 2 }}>{sub}</span>
+      </div>
+    </a>
+  );
+}
+
+// ── Achievement Badge ─────────────────────────────────────────
+function AchievementBadge({ icon, title, desc, unlocked, color }: { icon: string; title: string; desc: string; unlocked: boolean; color: string }) {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "12px 16px",
+      background: unlocked ? color + "10" : "#f8fafc",
+      border: `1px solid ${unlocked ? color + "30" : "#e2e8f0"}`,
+      borderRadius: 12, opacity: unlocked ? 1 : 0.5, transition: "all 0.2s" }}>
+      <span style={{ fontSize: 24, filter: unlocked ? "none" : "grayscale(1)" }}>{icon}</span>
+      <div>
+        <div style={{ fontSize: 13, fontWeight: 700, color: unlocked ? color : "#94a3b8" }}>{title}</div>
+        <div style={{ fontSize: 11, color: "#94a3b8" }}>{desc}</div>
+      </div>
+      {unlocked && <span style={{ marginLeft: "auto", color, fontSize: 16 }}>✓</span>}
+    </div>
+  );
+}
+
 // ── Modul Karte ──────────────────────────────────────────────
 function ModulKarte({ module, stats, enabled }: any) {
   const [hov, setHov] = useState(false);
@@ -174,38 +209,118 @@ function ModulKarte({ module, stats, enabled }: any) {
         <AnimatedBar pct={stats.completionPercentage} color={c.main} />
 
         {/* Stats */}
-        <div style={{
-          display: "grid", gridTemplateColumns: "1fr 1fr 1fr",
-          gap: 8, marginTop: 16, paddingTop: 16,
-          borderTop: "1px solid #f1f5f9",
-        }}>
-                    <QuickActionItem icon="🧠" label="KI-Tutor" sub="Fragen stellen" href="/modul/1" color="#2563eb" />
-          <QuickActionItem icon="📝" label="IHK-Quiz" sub="855+ Fragen" href="/quiz" color="#7c3aed" />
-          <QuickActionItem icon="🎯" label="Prüfung üben" sub="Simulation" href="/pruefung" color="#059669" />
-          <QuickActionItem icon="📚" label="Lernkarten" sub="Spaced Repetition" href="/lernkarten" color="#d97706" />
-          <QuickActionItem icon="📊" label="Rechner" sub="Immobilien-Tools" href="/rechner" color="#0891b2" />
-          <QuickActionItem icon="🏆" label="Gamification" sub="Badges & Punkte" href="/gamification" color="#db2777" />
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, marginTop: 16, paddingTop: 16, borderTop: "1px solid #f1f5f9" }}>
+          <div style={{ textAlign: "center" }}>
+            <div style={{ fontSize: 18, fontWeight: 800, color: c.main }}>{stats.daysCompleted}</div>
+            <div style={{ fontSize: 10, color: "#94a3b8" }}>Tage</div>
+          </div>
+          <div style={{ textAlign: "center" }}>
+            <div style={{ fontSize: 18, fontWeight: 800, color: c.main }}>{stats.completionPercentage}%</div>
+            <div style={{ fontSize: 10, color: "#94a3b8" }}>Fortschritt</div>
+          </div>
+          <div style={{ textAlign: "center" }}>
+            <div style={{ fontSize: 18, fontWeight: 800, color: c.main }}>{stats.totalDays}</div>
+            <div style={{ fontSize: 10, color: "#94a3b8" }}>Gesamt</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+export default function Dashboard() {
+  const { data: progressData } = trpc.modules.myAccess.useQuery();
+  const { data: meData } = trpc.auth.me.useQuery();
+
+  const enabledModules = (meData?.enabledModules || "").split(",").map(Number).filter(Boolean);
+
+  const allModules = [
+    { id: 1, name: "Grundkurs", days: 20, href: "/modul/1" },
+    { id: 2, name: "Makler §34c", days: 60, href: "/modul/2" },
+    { id: 3, name: "WEG-Verwalter", days: 80, href: "/modul/3" },
+    { id: 4, name: "Gutachter", days: 40, href: "/modul/4" },
+    { id: 5, name: "§34i Darlehen", days: 40, href: "/modul/5" },
+  ];
+
+  const moduleStats = allModules.map(m => {
+    const logs = (progressData as any)?.logs?.filter((l: any) => l.moduleId === m.id) || [];
+    const completed = logs.filter((l: any) => l.completed).length;
+    return {
+      ...m,
+      daysCompleted: completed,
+      totalDays: m.days,
+      completionPercentage: Math.round((completed / m.days) * 100),
+      started: completed > 0,
+    };
+  });
+
+  const totalDaysCompleted = moduleStats.reduce((s, m) => s + m.daysCompleted, 0);
+  const totalDays = moduleStats.reduce((s, m) => s + m.totalDays, 0);
+  const overallPct = Math.round((totalDaysCompleted / totalDays) * 100);
+  const completedModules = moduleStats.filter(m => m.completionPercentage >= 80).length;
+  const totalLearningHours = Math.round(totalDaysCompleted * 0.5);
+
+  return (
+    <div style={{ maxWidth: 1100, margin: "0 auto", padding: "24px 20px" }}>
+      <OnboardingWizard onComplete={() => {}} />
+      {/* Header */}
+      <div style={{ marginBottom: 24 }}>
+        <h1 style={{ fontSize: 28, fontWeight: 800, color: "var(--color-text)", margin: "0 0 4px" }}>
+          Mein Lernbereich
+        </h1>
+        <p style={{ color: "var(--color-text-muted)", margin: 0 }}>
+          Willkommen, {meData?.name || "Lernender"}
+        </p>
+      </div>
+
+      {/* Stats */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 24 }}>
+        <StatCard icon={<Calendar size={20} />} label="Lerntage" value={totalDaysCompleted} sub={`von ${totalDays}`} color="#2563eb" bg="#dbeafe" />
+        <StatCard icon={<TrendingUp size={20} />} label="Fortschritt" value={`${overallPct}%`} sub="Gesamt" color="#059669" bg="#d1fae5" />
+        <StatCard icon={<Clock size={20} />} label="Lernstunden" value={totalLearningHours} sub="Geschätzt" color="#7c3aed" bg="#ede9fe" />
+        <StatCard icon={<Trophy size={20} />} label="Module" value={completedModules} sub="Abgeschlossen" color="#d97706" bg="#fef3c7" />
+      </div>
+
+      {/* Module */}
+      <div style={{ marginBottom: 24 }}>
+        <h2 style={{ fontSize: 20, fontWeight: 700, color: "var(--color-text)", margin: "0 0 16px" }}>
+          Meine Module
+        </h2>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 16 }}>
+          {moduleStats.map(m => (
+            <ModulKarte key={m.id} module={m} stats={m} enabled={enabledModules.includes(m.id) || enabledModules.length === 0} />
+          ))}
         </div>
       </div>
 
-      {/* ── ACHIEVEMENTS ───────────────────────────────────── */}
+      {/* Quick Actions */}
+      <div style={{ background: "var(--color-card)", borderRadius: 16, padding: 20, marginBottom: 24, border: "1px solid #f1f5f9" }}>
+        <h2 style={{ fontSize: 18, fontWeight: 700, color: "var(--color-text)", margin: "0 0 16px" }}>
+          Schnellzugriff
+        </h2>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 8 }}>
+          <QuickActionItem icon="🧠" label="KI-Tutor" sub="Fragen stellen" href="/modul/1" color="#2563eb" />
+          <QuickActionItem icon="📝" label="IHK-Quiz" sub="855+ Fragen" href="/quiz" color="#7c3aed" />
+          <QuickActionItem icon="🎯" label="Prüfung" sub="Simulation" href="/pruefung" color="#059669" />
+          <QuickActionItem icon="📚" label="Lernkarten" sub="Spaced Rep." href="/lernkarten" color="#d97706" />
+          <QuickActionItem icon="📊" label="Rechner" sub="Tools" href="/rechner" color="#0891b2" />
+          <QuickActionItem icon="🏆" label="Gamification" sub="Badges" href="/gamification" color="#db2777" />
+        </div>
+      </div>
+
+      {/* Achievements */}
       <div>
-        <h2 style={{ fontSize: 22, fontWeight: 800, color: "var(--color-text)", margin: "0 0 16px", letterSpacing: "-0.02em" }}>
+        <h2 style={{ fontSize: 20, fontWeight: 700, color: "var(--color-text)", margin: "0 0 16px" }}>
           Erfolge & Meilensteine
         </h2>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: 12 }}>
-          <AchievementBadge icon="📅" title="Erster Tag" desc="Lernreise begonnen"
-            unlocked={totalDaysCompleted >= 1} color="#2563eb" />
-          <AchievementBadge icon="🔥" title="7-Tage-Streak" desc="7 Tage in Folge"
-            unlocked={false} color="#d97706" />
-          <AchievementBadge icon="🎯" title="Halbzeit" desc="50% erreicht"
-            unlocked={overallPct >= 50} color="#059669" />
-          <AchievementBadge icon="🏆" title="Erstes Zertifikat" desc="Modul abgeschlossen"
-            unlocked={completedModules >= 1} color="#7c3aed" />
-          <AchievementBadge icon="⚡" title="Speed Learner" desc="5 Tage in einer Woche"
-            unlocked={false} color="#0891b2" />
-          <AchievementBadge icon="👑" title="Meister" desc="Alle Module fertig"
-            unlocked={completedModules >= 5} color="#f5c842" />
+          <AchievementBadge icon="📅" title="Erster Tag" desc="Lernreise begonnen" unlocked={totalDaysCompleted >= 1} color="#2563eb" />
+          <AchievementBadge icon="🔥" title="7-Tage-Streak" desc="7 Tage in Folge" unlocked={false} color="#d97706" />
+          <AchievementBadge icon="🎯" title="Halbzeit" desc="50% erreicht" unlocked={overallPct >= 50} color="#059669" />
+          <AchievementBadge icon="🏆" title="Erstes Zertifikat" desc="Modul abgeschlossen" unlocked={completedModules >= 1} color="#7c3aed" />
+          <AchievementBadge icon="⚡" title="Speed Learner" desc="5 Tage in Woche" unlocked={false} color="#0891b2" />
+          <AchievementBadge icon="👑" title="Meister" desc="Alle Module fertig" unlocked={completedModules >= 5} color="#f5c842" />
         </div>
       </div>
     </div>
