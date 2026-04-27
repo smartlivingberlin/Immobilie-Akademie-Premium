@@ -112,7 +112,7 @@ export function registerOwnerRoutes(app: Express) {
       const { getDb } = await import("./db");
       const db = await getDb();
       const [usersRows] = await db.$client.promise().query(`
-        SELECT id, name, email, role, enabledModules, createdAt, lastSignedIn, locked
+        SELECT id, name, email, role, enabledModules, createdAt, lastSignedIn, 0 as locked
         FROM users ORDER BY createdAt DESC LIMIT 100
       `) as any;
       const users = usersRows as any[];
@@ -149,7 +149,7 @@ export function registerOwnerRoutes(app: Express) {
       if (!email) return res.status(400).json({ error: "email erforderlich" });
       const { getDb } = await import("./db");
       const db = await getDb();
-      await db.$client.promise().query(`UPDATE users SET locked = 1 WHERE email = ?`, [email]);
+      await db.$client.promise().query(`UPDATE users SET enabledModules = '' WHERE email = ?`, [email]);
       res.json({ ok: true, msg: `${email} gesperrt` });
     } catch (e: any) { res.status(500).json({ error: e.message }); }
   });
@@ -164,7 +164,7 @@ export function registerOwnerRoutes(app: Express) {
       if (!email) return res.status(400).json({ error: "email erforderlich" });
       const { getDb } = await import("./db");
       const db = await getDb();
-      await db.$client.promise().query(`UPDATE users SET locked = 0 WHERE email = ?`, [email]);
+      await db.$client.promise().query(`UPDATE users SET enabledModules = '1,2,3,4,5' WHERE email = ?`, [email]);
       res.json({ ok: true, msg: `${email} freigeschaltet` });
     } catch (e: any) { res.status(500).json({ error: e.message }); }
   });
