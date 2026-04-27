@@ -385,8 +385,13 @@ app.use("/og-image", (req, res, next) => {
 
 
 // ── Spaced Repetition: Fragen nach IDs ──────────────────────
-app.get("/api/quiz/questions-by-ids", async (req, res) => {
+app.get("/api/quiz/questions-by-ids", async (req: any, res: any) => {
   try {
+    const token = req.cookies?.app_session_id;
+    if (!token) return res.status(401).json({ error: "Nicht eingeloggt" });
+    const { verifySessionToken } = await import("./_core/auth-local");
+    const session = await verifySessionToken(token);
+    if (!session) return res.status(401).json({ error: "Ungueltige Session" });
     const ids = String(req.query.ids || "").split(",")
       .map(Number).filter(Boolean);
     if (!ids.length) return res.json({ questions: [] });
