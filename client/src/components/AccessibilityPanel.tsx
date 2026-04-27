@@ -28,7 +28,20 @@ export function AccessibilityPanel() {
     { patterns:[/^(stopp|stop|halt)$/], action:()=>{stopSpeak();toast("Gestoppt");}, description:"‚Stopp'" },
     { patterns:[/^schrift (größer|groesser)/], action:()=>{const n=Math.min(1.5,prefs.fontScale+0.1);update({fontScale:n});toast(`Schrift ${Math.round(n*100)}%`);}, description:"‚Schrift größer'" },
     { patterns:[/^schrift kleiner/], action:()=>{const n=Math.max(0.85,prefs.fontScale-0.1);update({fontScale:n});toast(`Schrift ${Math.round(n*100)}%`);}, description:"‚Schrift kleiner'" },
-    { patterns:[/^hilfe$/], action:()=>speak("Befehle: Öffne Kurse, Glossar, Dashboard, Förderung, Startseite. Vorlesen, Stopp. Schrift größer, Schrift kleiner."), description:"‚Hilfe'" },
+    { patterns:[/^(gehe? zu|öffne) modul 1/,/^modul 1$/], action:()=>{navigate("/modul/1");toast("Modul 1");}, description:"‚Öffne Modul 1'" },
+    { patterns:[/^(gehe? zu|öffne) modul 2/,/^modul 2$/], action:()=>{navigate("/modul/2");toast("Modul 2");}, description:"‚Öffne Modul 2'" },
+    { patterns:[/^(gehe? zu|öffne) modul 3/,/^modul 3$/], action:()=>{navigate("/modul/3");toast("Modul 3");}, description:"‚Öffne Modul 3'" },
+    { patterns:[/^(gehe? zu|öffne) modul 4/,/^modul 4$/], action:()=>{navigate("/modul/4");toast("Modul 4");}, description:"‚Öffne Modul 4'" },
+    { patterns:[/^(gehe? zu|öffne) modul 5/,/^modul 5$/], action:()=>{navigate("/modul/5");toast("Modul 5");}, description:"‚Öffne Modul 5'" },
+    { patterns:[/^(starte|öffne) quiz/,/^quiz$/], action:()=>{navigate("/quiz");toast("Quiz");}, description:"‚Starte Quiz'" },
+    { patterns:[/^(starte|öffne) prüfung/,/^prüfung$/], action:()=>{navigate("/pruefung");toast("Prüfung");}, description:"‚Starte Prüfung'" },
+    { patterns:[/^(öffne) lernkarten/,/^lernkarten$/], action:()=>{navigate("/lernkarten");toast("Lernkarten");}, description:"‚Öffne Lernkarten'" },
+    { patterns:[/^(öffne) statistiken/,/^statistiken$/], action:()=>{navigate("/statistiken");toast("Statistiken");}, description:"‚Öffne Statistiken'" },
+    { patterns:[/^(öffne) audio/,/^audio modus$/], action:()=>{navigate("/audio-modus");toast("Audio-Modus");}, description:"‚Öffne Audio-Modus'" },
+    { patterns:[/^(öffne) rechner/,/^rechner$/], action:()=>{navigate("/rechner");toast("Rechner");}, description:"‚Öffne Rechner'" },
+    { patterns:[/^(öffne) zertifikate/,/^zertifikate$/], action:()=>{navigate("/zertifikate");toast("Zertifikate");}, description:"‚Öffne Zertifikate'" },
+    { patterns:[/^(öffne) pakete/,/^pakete$/], action:()=>{navigate("/pakete");toast("Pakete");}, description:"‚Öffne Pakete'" },
+    { patterns:[/^(öffne) hilfe/,/^hilfe$/,/^hilfe$/], action:()=>speak("Verfügbare Befehle: Öffne Modul 1 bis 5. Starte Quiz oder Prüfung. Öffne Lernkarten, Glossar, Dashboard, Statistiken, Audio-Modus, Rechner, Zertifikate, Pakete, Kurse, Förderung. Vorlesen zum Vorlesen der Seite. Stopp zum Anhalten. Schrift größer oder kleiner."), description:"‚Hilfe'" },
   ],[navigate,prefs,update,speak,stopSpeak]);
 
   const { listening, supported, start, stop } = useVoiceCommands(commands, prefs.voiceCommandsEnabled);
