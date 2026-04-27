@@ -120,6 +120,13 @@
       "when": 1777233081101,
       "tag": "0015_access_codes",
       "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "6",
+      "when": 1777271273840,
+      "tag": "0017_glossar",
+      "breakpoints": true
     }
   ]
 }
