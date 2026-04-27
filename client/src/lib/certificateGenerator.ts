@@ -206,7 +206,7 @@ function generateCertificateId(data: CertificateData): string {
 }
 
 // Preview certificate data (for UI display before download)
-export async function getCertificatePreviewData(options: CertificateOptions): {
+export async function getCertificatePreviewData(options: CertificateOptions): Promise<{
   userName: string;
   moduleName: string;
   completionDate: string;
@@ -216,7 +216,7 @@ export async function getCertificatePreviewData(options: CertificateOptions): {
     completionPercentage: string;
     totalTimeSpent: string;
   };
-} {
+}> {
   const { userName, certificateData } = options;
   
   const completionDate = new Date(certificateData.completedAt).toLocaleDateString("de-DE", {
