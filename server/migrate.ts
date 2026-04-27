@@ -1,4 +1,5 @@
 import mysql from "mysql2/promise";
+import { logger } from "./_core/logger";
 
 export async function runMigrations() {
   const url = process.env.DATABASE_URL;
@@ -13,18 +14,18 @@ export async function runMigrations() {
       try {
         const sql = readFileSync(join(dir, file), "utf8");
         await conn.query(sql);
-        console.log("[DB] Migration OK:", file);
+        logger.info("[DB] Migration OK", { file });
       } catch(e:any) {
         if (e.message.includes("already exists") || e.message.includes("Duplicate")) {
-          console.log("[DB] Migration skip (exists):", file);
+          logger.debug("[DB] Migration skip (exists)", { file });
         } else {
-          console.warn("[DB] Migration warn:", file, e.message.slice(0,300));
+          logger.warn("[DB] Migration warn", { file, detail: e.message.slice(0, 300) });
         }
       }
     }
     await conn.end();
-    console.log("[DB] Alle Migrationen abgeschlossen");
+    logger.info("[DB] Alle Migrationen abgeschlossen");
   } catch (err: any) {
-    console.warn("[DB] Migration Fehler:", err.message);
+    logger.warn("[DB] Migration Fehler", { error: err.message });
   }
 }

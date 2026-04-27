@@ -1,5 +1,6 @@
 import type { Express, Request, Response } from "express";
 import { verifySessionToken } from "./_core/auth-local";
+import { logger } from "./_core/logger";
 
 async function requireAdmin(req: Request, res: Response, next: any) {
   const token = req.cookies?.app_session_id;
@@ -96,7 +97,7 @@ async function setTrialExpiry(db: any, email: string, expiresAt: Date) {
       [expiresAt, email]
     );
   } catch (e) {
-    console.error("[Trial] trialExpiresAt setzen fehlgeschlagen:", e);
+    logger.error("[Trial] trialExpiresAt setzen fehlgeschlagen", e);
   }
 }
 
@@ -136,7 +137,7 @@ async function setTrialExpiry(db: any, email: string, expiresAt: Date) {
         await db.execute(
           sql`UPDATE presentation_codes SET expiresAt = ${newExpiry}, usageCount = 0 WHERE code = ${row.code}`
           );
-          await sendTrialEmail(nameClean, emailClean, row.code, 48).catch(console.error);
+          await sendTrialEmail(nameClean, emailClean, row.code, 48).catch((e) => logger.error("[Trial] E-Mail Fehler (Verlängerung)", e));
           return res.json({ ok: true, extended: true, message: "Ihr Testzugang wurde um 24 Stunden verlängert. Bitte prüfen Sie Ihre E-Mails." });
         }
       }
@@ -164,16 +165,16 @@ async function setTrialExpiry(db: any, email: string, expiresAt: Date) {
           sql`INSERT INTO presentation_codes (code, label, enabledModules, expiresAt, isActive, maxUsage, usageCount)
               VALUES (${code}, ${"Trial " + emailClean}, ${"1,2,3,4,5"}, ${expiresAt}, ${1}, ${3}, ${0})`
         );
-        console.log("[Trial] presentation_codes OK:", code);
+        logger.info("[Trial] presentation_codes OK", { code });
       } catch (e: any) {
-        console.error("[Trial] presentation_codes Fehler:", e?.message);
+        logger.error("[Trial] presentation_codes Fehler", e);
       }
 
-      await sendTrialEmail(nameClean, emailClean, code, 24).catch(console.error);
+      await sendTrialEmail(nameClean, emailClean, code, 24).catch((e) => logger.error("[Trial] E-Mail Fehler", e));
       return res.json({ ok: true, message: "Ihr Testzugang wurde per E-Mail versendet. Bitte prüfen Sie Ihren Posteingang (auch Spam-Ordner)." });
 
     } catch (err: any) {
-      console.error("[Trial] Fehler:", err);
+      logger.error("[Trial] Fehler", err);
       return res.status(500).json({ error: "Fehler. Bitte versuchen Sie es erneut." });
     }
   });

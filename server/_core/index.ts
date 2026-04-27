@@ -7,10 +7,12 @@ try {
       environment: process.env.NODE_ENV || "production",
       tracesSampleRate: 0.05,
     });
-    console.log("[Sentry] Error Monitoring aktiv");
+    const { logger: _l } = await import("./logger");
+    _l.info("[Sentry] Error Monitoring aktiv");
   }
 } catch (e) {
-  console.log("[Sentry] Nicht verfügbar:", e);
+  // logger may not be available yet at this early stage — use raw console
+  console.warn(JSON.stringify({ level: "warn", msg: "[Sentry] Nicht verfügbar", error: (e as any)?.message, ts: new Date().toISOString() }));
 }
 
 import "./polyfills";
@@ -47,19 +49,20 @@ import { runTrialFollowupCron } from "../trialFollowup";
 import { registerSpacedRepetitionRoutes } from "../spacedRepetitionRoute";
 import { glossarRouter } from "../glossarRouter";
 import { registerTrialRoutes } from "../trialRoute";
+import { logger } from "./logger";
 
 
 // Globaler Error Handler
 process.on('uncaughtException', (err) => {
-  console.error('[CRITICAL] Uncaught Exception:', err.message, err.stack);
+  logger.error('[CRITICAL] Uncaught Exception', err);
 });
 process.on('unhandledRejection', (reason) => {
-  console.error('[CRITICAL] Unhandled Rejection:', reason);
+  logger.error('[CRITICAL] Unhandled Rejection', reason instanceof Error ? reason : new Error(String(reason)));
 });
 
 
 async function startServer() {
-  try { const { runMigrations } = await import("../migrate"); await runMigrations(); } catch(e:any) { console.warn("[DB] Migration:", e.message); }
+  try { const { runMigrations } = await import("../migrate"); await runMigrations(); } catch(e:any) { logger.warn("[DB] Migration fehlgeschlagen", { error: e.message }); }
   const app = express();
 
   // Permissions-Policy Header
@@ -255,14 +258,14 @@ app.post("/api/stripe/webhook", express.raw({ type: "*/*" }), async (req: any, r
     try {
       event = stripe.webhooks.constructEvent(req.body, sig, secret);
     } catch (err: any) {
-      console.error("[Stripe Webhook] Signatur ungültig:", err.message);
+      logger.error("[Stripe Webhook] Signatur ungültig", err);
       return res.status(400).send("Webhook Error: " + err.message);
     }
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
       const modules = session.metadata?.modules ?? session.metadata?.bundle;
       const email = session.customer_email ?? session.customer_details?.email ?? session.metadata?.email;
-      console.log("[Stripe Webhook] Kauf: " + email + " Module: " + modules);
+      logger.info("[Stripe Webhook] Kauf", { email, modules });
       if (email && modules) {
         try {
           const { getDb } = await import("../db");
@@ -276,16 +279,16 @@ app.post("/api/stripe/webhook", express.raw({ type: "*/*" }), async (req: any, r
             const newMods = modules.split(",").map((s: string) => s.trim()).filter(Boolean);
             const merged = [...new Set([...current, ...newMods])].join(",");
             await db.execute(sql`UPDATE users SET enabledModules = ${merged} WHERE id = ${user.id}`);
-            console.log("[Stripe Webhook] ✅ Freigeschaltet: " + merged + " für " + email);
+            logger.info("[Stripe Webhook] Freigeschaltet", { email, modules: merged });
           }
         } catch (dbErr: any) {
-          console.error("[Stripe Webhook] DB-Fehler:", dbErr.message);
+          logger.error("[Stripe Webhook] DB-Fehler", dbErr);
         }
       }
     }
     res.json({ received: true });
   } catch (err: any) {
-    console.error("[Webhook] Fehler:", err.message);
+    logger.error("[Webhook] Fehler", err);
     res.status(500).json({ error: err.message });
   }
 });
@@ -307,8 +310,8 @@ app.use(express.json({ limit: "50mb" }));
   registerAgentRoutes(app);
   // Healthcheck für Railway / Monitoring
   // Trial Follow-up Cron: alle 30 Minuten
-  setInterval(() => { runTrialFollowupCron().catch(console.error); }, 30 * 60 * 1000);
-  setTimeout(() => runTrialFollowupCron().catch(console.error), 5000); // Beim Start
+  setInterval(() => { runTrialFollowupCron().catch((e) => logger.error("[Cron] Trial Follow-up Fehler", e)); }, 30 * 60 * 1000);
+  setTimeout(() => runTrialFollowupCron().catch((e) => logger.error("[Cron] Trial Follow-up Fehler (Start)", e)), 5000); // Beim Start
   
   app.get("/api/health", (_req, res) => {
     return res.status(200).json({ ok: true, ts: new Date().toISOString() });
@@ -324,7 +327,7 @@ app.use(express.json({ limit: "50mb" }));
     const { stripeRouter } = await import("../stripe");
     app.use(stripeRouter);
   } else {
-    console.log("[dev] Stripe deaktiviert: STRIPE_SECRET_KEY nicht gesetzt");
+    logger.info("[dev] Stripe deaktiviert: STRIPE_SECRET_KEY nicht gesetzt");
   }
 
   // tRPC API
@@ -511,7 +514,7 @@ setInterval(async () => {
   try {
     const url = (process.env.APP_URL || "https://immobilien-akademie-smart.de") + "/api/health";
     await fetch(url);
-    console.log("[KeepAlive] Ping OK");
+    logger.debug("[KeepAlive] Ping OK");
   } catch { /* silent */ }
 }, 14 * 60 * 1000); // alle 14 Minuten
 
@@ -530,4 +533,4 @@ setInterval(async () => {
   server.listen(port, host, () => {
   });
 }
-startServer().catch(console.error);
+startServer().catch((err) => logger.error("[Server] Startup fehlgeschlagen", err));
