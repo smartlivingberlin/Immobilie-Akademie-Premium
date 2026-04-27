@@ -23,7 +23,7 @@ export function registerSpacedRepetitionRoutes(app: Express) {
   // GET /api/sr/due — Fragen die heute fällig sind
   app.get("/api/sr/due", async (req: Request, res: Response) => {
     try {
-      const db = getDb();
+      const db = await getDb();
       const userId = (req as any).user?.id;
       if (!userId) return res.status(401).json({ error: "Nicht eingeloggt" });
 
@@ -46,7 +46,7 @@ export function registerSpacedRepetitionRoutes(app: Express) {
   app.post("/api/sr/answer", async (req: Request, res: Response) => {
     try {
       const { questionId, quality } = req.body;
-      const db = getDb();
+      const db = await getDb();
       const userId = (req as any).user?.id;
       if (!userId) return res.status(401).json({ error: "Nicht eingeloggt" });
 

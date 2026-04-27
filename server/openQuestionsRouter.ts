@@ -38,11 +38,9 @@ Bewerte die Antwort objektiv und lehrreich. Antworte NUR als JSON ohne Markdown-
   try {
     const result = await invokeLLM({
       messages: [{ role: "user", content: prompt }],
-      model: "claude-haiku",
       maxTokens: 600,
-      temperature: 0.2,
     });
-    const text = typeof result.content === "string" ? result.content : JSON.stringify(result.content);
+    const text = typeof result.choices?.[0]?.message?.content === "string" ? result.choices[0].message.content as string : JSON.stringify(result.choices?.[0]?.message?.content ?? "");
     const clean = text.replace(/```json|```/g, "").trim();
     const parsed = JSON.parse(clean);
     return {
@@ -63,7 +61,7 @@ export const openQuestionsRouter = router({
   getByModul: protectedProcedure
     .input(z.object({ modulId: z.number().min(1).max(5) }))
     .query(async ({ input }) => {
-      const db = getDb();
+      const db = await getDb();
       return db.select().from(openQuestions)
         .where(and(
           eq(openQuestions.modulId, input.modulId),
@@ -75,7 +73,7 @@ export const openQuestionsRouter = router({
   getById: protectedProcedure
     .input(z.object({ id: z.number() }))
     .query(async ({ input }) => {
-      const db = getDb();
+      const db = await getDb();
       const [q] = await db.select().from(openQuestions)
         .where(eq(openQuestions.id, input.id));
       if (!q) throw new Error("Frage nicht gefunden");
@@ -92,7 +90,7 @@ export const openQuestionsRouter = router({
       dauer: z.number().optional(),
     }))
     .mutation(async ({ ctx, input }) => {
-      const db = getDb();
+      const db = await getDb();
 
       // Frage holen (mit Musterlösung für KI)
       const [frage] = await db.select().from(openQuestions)
@@ -136,7 +134,7 @@ export const openQuestionsRouter = router({
   getProgress: protectedProcedure
     .input(z.object({ modulId: z.number().min(1).max(5) }))
     .query(async ({ ctx, input }) => {
-      const db = getDb();
+      const db = await getDb();
       const fragen = await db.select({ id: openQuestions.id })
         .from(openQuestions)
         .where(and(eq(openQuestions.modulId, input.modulId), eq(openQuestions.aktiv, true)));
