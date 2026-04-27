@@ -154,7 +154,7 @@ const resetLimiter = rateLimit({
 
 
 // ── ElevenLabs TTS-Proxy (API-Key nur server-seitig) ──────────────
-app.post("/api/tts", async (req: Request, res: Response) => {
+app.post("/api/tts", async (req: any, res: any) => {
   const { text, voiceId = "21m00Tcm4TlvDq8ikWAM" } = req.body;
   const apiKey = process.env.ELEVENLABS_API_KEY;
   if (!apiKey) return res.status(503).json({ error: "TTS nicht konfiguriert" });
@@ -174,7 +174,7 @@ app.post("/api/tts", async (req: Request, res: Response) => {
 });
 
 // DSGVO-Consent Logging (Cookie-Banner)
-app.post("/api/consent", async (req: Request, res: Response) => {
+app.post("/api/consent", async (req: any, res: any) => {
   try {
     const { type, version, timestamp } = req.body;
     const userId = (req as any).user?.id ?? null;

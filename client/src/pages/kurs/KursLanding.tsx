@@ -232,7 +232,7 @@ export default function KursLanding({ slug }: { slug: string }) {
   const [loading, setLoading] = useState(false);
   const [widerrufsAkzeptiert, setWiderrufsAkzeptiert] = useState(false);
   const [widerrufsError, setWiderrufsError] = useState(false);
-  const { user } = useAuth({ required: false });
+  const { user } = useAuth();
 
   const handleKaufen = async () => {
     if (!widerrufsAkzeptiert) {

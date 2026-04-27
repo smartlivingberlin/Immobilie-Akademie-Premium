@@ -181,8 +181,8 @@ export function registerLocalAuthRoutes(app: Express) {
           VALUES (${openId}, 'Gast', 'user', ${enabledStr}, NOW())
           ON DUPLICATE KEY UPDATE
             enabledModules = ${enabledStr},
-            trialExpiresAt = CASE WHEN ${result.expiresAt ?? null} IS NOT NULL
-              THEN ${result.expiresAt ?? null} ELSE trialExpiresAt END,
+            trialExpiresAt = CASE WHEN ${(result as any).expiresAt ?? null} IS NOT NULL
+              THEN ${(result as any).expiresAt ?? null} ELSE trialExpiresAt END,
             lastSignedIn = NOW()
         `);
       }

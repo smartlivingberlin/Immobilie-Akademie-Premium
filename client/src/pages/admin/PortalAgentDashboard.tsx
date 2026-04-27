@@ -8,7 +8,7 @@ export default function PortalAgentDashboard() {
   const [question, setQuestion] = useState("");
   const [moduleId, setModuleId] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState<"overview"|"ask"|"quality"|"legal"|"memory">("overview");
+  const [activeTab, setActiveTab] = useState<"overview"|"ask"|"quality"|"legal"|"memory"|"cron"|"coaching">("overview");
   const [qualityResult, setQualityResult] = useState<any>(null);
   const [legalUpdates, setLegalUpdates] = useState<any>(null);
   const [genQuestion, setGenQuestion] = useState<any>(null);
