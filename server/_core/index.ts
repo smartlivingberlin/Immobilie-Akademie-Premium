@@ -373,6 +373,42 @@ app.get("/api/stats/public", async (_req, res) => {
 });
 
 
+
+// ── User Dashboard Stats ────────────────────────────────────
+app.get("/api/stats/dashboard", async (req: any, res: any) => {
+  try {
+    const token = req.cookies?.app_session_id;
+    if (!token) return res.status(401).json({ error: "Nicht eingeloggt" });
+    const { verifySessionToken } = await import("./_core/auth-local");
+    const session = await verifySessionToken(token);
+    if (!session) return res.status(401).json({ error: "Ungueltige Session" });
+    const db = getDb();
+    const userId = session.id;
+    const [[logs]] = await db.execute(
+      "SELECT COUNT(*) as total, SUM(completed) as completed, SUM(durationSeconds) as totalSeconds FROM learning_logs WHERE userId = ?",
+      [userId]
+    ) as any;
+    const [[exams]] = await db.execute(
+      "SELECT COUNT(*) as total, AVG(score) as avgScore FROM exam_sessions WHERE userId = ? AND completedAt IS NOT NULL",
+      [userId]
+    ) as any;
+    const [[certs]] = await db.execute(
+      "SELECT COUNT(*) as total FROM certificates WHERE userId = ?",
+      [userId]
+    ) as any;
+    res.json({
+      daysCompleted: Number(logs?.completed || 0),
+      daysTotal: Number(logs?.total || 0),
+      totalLearningMinutes: Math.round(Number(logs?.totalSeconds || 0) / 60),
+      examsCompleted: Number(exams?.total || 0),
+      avgExamScore: Math.round(Number(exams?.avgScore || 0)),
+      certificatesEarned: Number(certs?.total || 0),
+    });
+  } catch(e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
 // ── Performance: Static Asset Caching ─────────────────────
 app.use("/assets", (req, res, next) => {
   res.setHeader("Cache-Control", "public, max-age=31536000, immutable");

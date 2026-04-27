@@ -44,4 +44,50 @@ router.get("/api/glossar/categories", async (_req, res) => {
   }
 });
 
+
+// ── Admin: Glossar verwalten (nur Admin) ─────────────────────
+router.post("/api/admin/glossar", async (req: any, res: any) => {
+  try {
+    const token = req.cookies?.app_session_id;
+    if (!token) return res.status(401).json({ error: "Nicht eingeloggt" });
+    const { verifySessionToken } = await import("./_core/auth-local");
+    const session = await verifySessionToken(token);
+    if (!session || session.role !== "admin") return res.status(403).json({ error: "Kein Zugriff" });
+    const { term, definition, category, lawReference, lawLink } = req.body;
+    if (!term || !definition || !category) return res.status(400).json({ error: "term, definition, category erforderlich" });
+    const db = await getDb();
+    await db.execute(sql`INSERT INTO glossar_terms (term, definition, category, lawReference, lawLink) VALUES (${term}, ${definition}, ${category}, ${lawReference||null}, ${lawLink||null})`);
+    res.json({ ok: true });
+  } catch(e: any) { res.status(500).json({ error: e.message }); }
+});
+
+router.put("/api/admin/glossar/:id", async (req: any, res: any) => {
+  try {
+    const token = req.cookies?.app_session_id;
+    if (!token) return res.status(401).json({ error: "Nicht eingeloggt" });
+    const { verifySessionToken } = await import("./_core/auth-local");
+    const session = await verifySessionToken(token);
+    if (!session || session.role !== "admin") return res.status(403).json({ error: "Kein Zugriff" });
+    const id = Number(req.params.id);
+    const { term, definition, category, lawReference, lawLink } = req.body;
+    const db = await getDb();
+    await db.execute(sql`UPDATE glossar_terms SET term=${term}, definition=${definition}, category=${category}, lawReference=${lawReference||null}, lawLink=${lawLink||null} WHERE id=${id}`);
+    res.json({ ok: true });
+  } catch(e: any) { res.status(500).json({ error: e.message }); }
+});
+
+router.delete("/api/admin/glossar/:id", async (req: any, res: any) => {
+  try {
+    const token = req.cookies?.app_session_id;
+    if (!token) return res.status(401).json({ error: "Nicht eingeloggt" });
+    const { verifySessionToken } = await import("./_core/auth-local");
+    const session = await verifySessionToken(token);
+    if (!session || session.role !== "admin") return res.status(403).json({ error: "Kein Zugriff" });
+    const id = Number(req.params.id);
+    const db = await getDb();
+    await db.execute(sql`DELETE FROM glossar_terms WHERE id=${id}`);
+    res.json({ ok: true });
+  } catch(e: any) { res.status(500).json({ error: e.message }); }
+});
+
 export { router as glossarRouter };
