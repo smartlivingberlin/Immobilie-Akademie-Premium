@@ -61,31 +61,55 @@ export default function Kurse() {
   };
 
   return (
+    <div style={{ minHeight:"100vh", background:"var(--color-bg, #f8fafc)" }}>
+
+      {/* Hero */}
+      <div style={{ background:"linear-gradient(135deg, #0c1628 0%, #0f2744 100%)", padding:"64px 20px 48px" }}>
+        <div style={{ maxWidth:860, margin:"0 auto", textAlign:"center" }}>
+          <div style={{ display:"inline-block", background:"rgba(37,99,235,0.15)", border:"1px solid rgba(96,165,250,0.3)", color:"#93c5fd", borderRadius:24, padding:"6px 18px", fontSize:12, fontWeight:700, marginBottom:20 }}>
+            🎓 IHK-VORBEREITUNG · §34c · §34i · WEG-VERWALTER
+          </div>
+          <h1 style={{ fontFamily:"Fraunces, Georgia, serif", fontSize:"clamp(28px, 4vw, 44px)", fontWeight:900, color:"#f1f5f9", marginBottom:12, lineHeight:1.2 }}>
+            Einzelne Kurse kaufen
+          </h1>
+          <p style={{ fontSize:16, color:"#94a3b8", maxWidth:500, margin:"0 auto", lineHeight:1.6 }}>
+            Wählen Sie ein einzelnes Modul oder sparen Sie mit unseren Paketen.
+            Einmalzahlung — dauerhafter Zugang.
+          </p>
+        </div>
+      </div>
+
     <div className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-2xl font-bold text-slate-900 mb-2">Kurse & Pakete</h1>
-      <p className="text-slate-500 mb-10 text-sm">Wähle dein Paket und starte sofort mit der Ausbildung. Alle Module einzeln oder als Komplettpaket buchbar.</p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
         {products.map((p) => (
-          <div key={p.id} className={`bg-white rounded-2xl p-7 flex flex-col gap-4 shadow-sm ${
-            p.id === "modul_komplett"
-              ? "border-2 border-blue-500 ring-1 ring-blue-100"
-              : "border border-slate-200"
-          }`}>
+          <div key={p.id} style={{
+            background:"white",
+            border: p.id === "modul_komplett" ? "2px solid #2563eb" : "1px solid #e2e8f0",
+            borderRadius:20, padding:"28px 24px",
+            display:"flex", flexDirection:"column", gap:16,
+            boxShadow: p.id === "modul_komplett" ? "0 8px 32px rgba(37,99,235,0.15)" : "0 2px 8px rgba(0,0,0,0.04)",
+            transition:"all 0.2s",
+          }}
+            onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 16px 40px rgba(0,0,0,0.12)"; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = p.id === "modul_komplett" ? "0 8px 32px rgba(37,99,235,0.15)" : "0 2px 8px rgba(0,0,0,0.04)"; }}
+          >
             {p.id === "modul_komplett" && (
-              <span className="self-start bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+              <span style={{ alignSelf:"flex-start", background:"linear-gradient(135deg,#2563eb,#7c3aed)", color:"white", fontSize:11, fontWeight:800, padding:"4px 14px", borderRadius:20 }}>
                 ⭐ Empfohlen
               </span>
             )}
             <div>
-              <h2 className="text-base font-bold text-slate-900 mb-1">{p.name}</h2>
-              <p className="text-xs text-slate-500 leading-relaxed">{p.description}</p>
+              <h2 style={{ fontSize:16, fontWeight:800, color:"#0f172a", margin:"0 0 6px", fontFamily:"Fraunces, Georgia, serif" }}>{p.name}</h2>
+              <p style={{ fontSize:12, color:"#64748b", lineHeight:1.5, margin:0 }}>{p.description}</p>
             </div>
-            <div className="text-3xl font-extrabold text-blue-700">{p.priceFormatted}</div>
-            <div className="text-xs text-slate-400">Enthaltene Module: {p.modules}</div>
+            <div style={{ fontSize:34, fontWeight:900, color:"#2563eb", fontFamily:"Fraunces, Georgia, serif", letterSpacing:"-0.02em" }}>{p.priceFormatted}</div>
+            <div style={{ fontSize:11, color:"#94a3b8", background:"#f8fafc", borderRadius:8, padding:"6px 10px" }}>
+              📚 {p.modules}
+            </div>
             {KURS_SLUGS[p.id] && (
               <Link href={`/kurs/${KURS_SLUGS[p.id]}`}>
-                <button className="w-full border border-blue-200 text-blue-700 hover:bg-blue-50 font-semibold rounded-xl py-2.5 text-sm transition-colors">
+                <button style={{ width:"100%", border:"1px solid #dbeafe", color:"#2563eb", background:"white", fontWeight:600, borderRadius:10, padding:"10px", fontSize:13, cursor:"pointer", transition:"all 0.2s" }}>
                   📖 Kurs-Details & Inhalte
                 </button>
               </Link>
@@ -93,7 +117,7 @@ export default function Kurse() {
             <button
               onClick={() => handleBuy(p.id)}
               disabled={loading}
-              className="mt-auto bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white font-bold rounded-xl py-3 text-sm transition-colors"
+              style={{ marginTop:"auto", background:"linear-gradient(135deg,#2563eb,#1d4ed8)", color:"white", fontWeight:700, borderRadius:10, padding:"13px", fontSize:14, cursor:"pointer", border:"none", opacity:loading ? 0.6 : 1, boxShadow:"0 4px 14px rgba(37,99,235,0.35)" }}
             >
               {loading ? "Weiterleitung..." : "Jetzt kaufen →"}
             </button>
@@ -166,6 +190,7 @@ export default function Kurse() {
           <span className="hover:text-slate-600 cursor-pointer">AGB</span>
         </Link>
       </div>
+    </div>
     </div>
   );
 }
