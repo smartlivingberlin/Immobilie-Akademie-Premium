@@ -44,4 +44,18 @@ router.get("/api/glossar/categories", async (_req, res) => {
   }
 });
 
+
+// EINMALIG: Duplikate bereinigen
+router.delete('/api/glossar/cleanup-duplicates', async (_req, res) => {
+  try {
+    const db = await getDb();
+    const before = await db.execute(sql`SELECT COUNT(*) as cnt FROM glossar_terms`);
+    await db.execute(sql`DELETE t1 FROM glossar_terms t1 INNER JOIN glossar_terms t2 ON t1.term = t2.term AND t1.id > t2.id`);
+    const after = await db.execute(sql`SELECT COUNT(*) as cnt FROM glossar_terms`);
+    const b = (before as any)[0]?.[0]?.cnt ?? (before as any)[0]?.cnt;
+    const a = (after as any)[0]?.[0]?.cnt ?? (after as any)[0]?.cnt;
+    res.json({ before: b, after: a, removed: b - a });
+  } catch(e: any) { res.status(500).json({ error: e.message }); }
+});
+
 export { router as glossarRouter };
