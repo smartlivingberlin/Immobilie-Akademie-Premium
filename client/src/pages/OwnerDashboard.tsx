@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
+import { AzavPdfExport } from "@/components/AzavPdfExport";
 
 interface DashboardStats {
   totalUsers: number;
@@ -229,7 +230,10 @@ export default function OwnerDashboard() {
               <h3 style={{margin:"0 0 4px",fontSize:16,color:"#f1f5f9",fontWeight:700}}>🎓 AZAV-Anwesenheitsbericht</h3>
               <p style={{margin:0,fontSize:12,color:"#64748b"}}>Gemäß §§ 176-180 SGB III — automatisch generiert</p>
             </div>
-            <button
+            <div style={{marginBottom:16}}>
+            <AzavPdfExport ownerKey={localStorage.getItem("ownerKey")||""} />
+          </div>
+          <button
               onClick={()=>{
                 setAzavLoading(true);
                 const ownerKey = localStorage.getItem("ownerKey")||"";
