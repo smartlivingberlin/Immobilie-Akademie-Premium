@@ -1,0 +1,34 @@
+# Build-Output — wird neu gebaut
+dist/
+.dist/
+
+# Dependencies — werden neu installiert  
+node_modules/
+
+# Git
+.git/
+.gitignore
+
+# Entwicklungs-Dateien
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.md
+*.bak
+*.log
+*.tmp
+
+# Test-Dateien
+*.test.ts
+*.spec.ts
+coverage/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Lokale Konfiguration
+.env
+.env.local
