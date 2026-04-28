@@ -1,5 +1,6 @@
 import { TrialForm } from "@/components/TrialForm";
 import { AudioPreview } from "@/components/AudioPreview";
+import { VideoPreview } from "@/components/VideoPreview";
 import { Link, useLocation } from "wouter";
 import { SEO } from "@/components/SEO";
 import { useState } from "react";
@@ -411,7 +412,16 @@ export default function KursLanding({ slug }: { slug: string }) {
 
         <div style={{ maxWidth:960, margin:"0 auto", padding:"0 20px" }}>
 
-          {/* ── ZIELGRUPPE ────────────────────────────────────── */}
+          {/* ── VIDEO VORSCHAU ───────────────────────────────── */}
+        <div style={{ maxWidth:960, margin:"0 auto", padding:"32px 20px 0" }}>
+          <VideoPreview
+            hauptfarbe={hauptfarbe}
+            titel={kurs.titel}
+            beschreibung={`${kurs.tage} Lerntage · ${kurs.ue} UE · KI-Tutor inklusive`}
+          />
+        </div>
+
+        {/* ── ZIELGRUPPE ────────────────────────────────────── */}
           <div style={{ padding:"56px 0 48px" }}>
             <h2 style={{ fontFamily:"Fraunces, Georgia, serif", fontSize:28, fontWeight:800, color:"#0f172a", margin:"0 0 6px" }}>Für wen ist dieser Kurs?</h2>
             <p style={{ color:"#64748b", marginBottom:24, fontSize:15 }}>Dieser Kurs wurde entwickelt für:</p>
