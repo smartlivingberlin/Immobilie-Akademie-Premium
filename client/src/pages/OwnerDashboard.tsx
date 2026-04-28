@@ -50,6 +50,7 @@ export default function OwnerDashboard() {
   };
 
   const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [live, setLive] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [actionMsg, setActionMsg] = useState("");
 
@@ -58,6 +59,13 @@ export default function OwnerDashboard() {
     const urlKey = new URLSearchParams(window.location.search).get("key");
     if (urlKey) localStorage.setItem("ownerKey", urlKey);
     const ownerKey = urlKey || localStorage.getItem("ownerKey") || "";
+    // Live-Monitoring alle 30s aktualisieren
+    const fetchLive = () => fetch(`/api/owner/live?key=${ownerKey}`, {
+      credentials: "include", headers: { "x-owner-key": ownerKey }
+    }).then(r => r.json()).then(setLive).catch(() => {});
+    fetchLive();
+    const liveInterval = setInterval(fetchLive, 30000);
+    setTimeout(() => clearInterval(liveInterval), 1800000); // 30min max
     fetch(`/api/owner/dashboard?key=${ownerKey}`, { credentials: "include", headers: { "x-owner-key": ownerKey } })
       .then(r => r.json())
       .then(d => { setStats(d); setLoading(false); })
@@ -248,6 +256,64 @@ export default function OwnerDashboard() {
           </table>
         </div>
       </div>
+
+      {/* === LIVE MONITORING === */}
+      {live && (
+        <div style={{background:"#0f2744",border:"1px solid #1e40af",borderRadius:12,padding:"20px 24px",marginTop:24}}>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:16}}>
+            <h3 style={{color:"#60a5fa",fontSize:16,fontWeight:700,margin:0}}>
+              🟢 Live-Monitoring
+            </h3>
+            <span style={{fontSize:11,color:"#475569"}}>Aktualisiert: {new Date(live.now).toLocaleTimeString("de-DE")}</span>
+          </div>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:12,marginBottom:16}}>
+            {[
+              {label:"Jetzt online (5min)", value: live.online5min, color:"#10b981"},
+              {label:"Letzte 15min", value: live.online15min, color:"#3b82f6"},
+              {label:"Letzte Stunde", value: live.online60min, color:"#8b5cf6"},
+              {label:"Heute aktiv", value: live.todayActive, color:"#f59e0b"},
+            ].map((s,i) => (
+              <div key={i} style={{background:"#1e293b",borderRadius:8,padding:"12px",textAlign:"center"}}>
+                <div style={{fontSize:24,fontWeight:900,color:s.color}}>{s.value}</div>
+                <div style={{fontSize:10,color:"#64748b",marginTop:4}}>{s.label}</div>
+              </div>
+            ))}
+          </div>
+          {live.activeUsers?.length > 0 && (
+            <div style={{marginBottom:12}}>
+              <div style={{fontSize:12,color:"#94a3b8",marginBottom:8,fontWeight:600}}>GERADE ONLINE:</div>
+              {live.activeUsers.map((u: any, i: number) => (
+                <div key={i} style={{display:"flex",alignItems:"center",gap:8,padding:"6px 0",borderBottom:"1px solid #1e293b"}}>
+                  <div style={{width:8,height:8,borderRadius:"50%",background:"#10b981"}}/>
+                  <span style={{fontSize:12,color:"#e2e8f0",flex:1}}>{u.name || u.email}</span>
+                  <span style={{fontSize:10,color:"#64748b"}}>{u.email}</span>
+                  <span style={{fontSize:10,color:"#475569"}}>{u.enabledModules ? `M${u.enabledModules}` : "—"}</span>
+                </div>
+              ))}
+            </div>
+          )}
+          {live.newUsersToday?.length > 0 && (
+            <div style={{marginBottom:12}}>
+              <div style={{fontSize:12,color:"#f59e0b",marginBottom:8,fontWeight:600}}>NEUE NUTZER HEUTE:</div>
+              {live.newUsersToday.map((u: any, i: number) => (
+                <div key={i} style={{fontSize:12,color:"#fbbf24",padding:"3px 0"}}>
+                  ✨ {u.name || u.email} — {new Date(u.createdAt).toLocaleTimeString("de-DE")}
+                </div>
+              ))}
+            </div>
+          )}
+          {live.recentActivity?.length > 0 && (
+            <div>
+              <div style={{fontSize:12,color:"#94a3b8",marginBottom:8,fontWeight:600}}>LETZTE AKTIVITÄTEN:</div>
+              {live.recentActivity.slice(0,5).map((a: any, i: number) => (
+                <div key={i} style={{fontSize:11,color:"#64748b",padding:"2px 0"}}>
+                  {new Date(a.openedAt).toLocaleTimeString("de-DE")} — {a.name || a.email} — Modul {a.moduleId} Tag {a.dayNumber}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* === INSPECT-LINK GENERATOR === */}
       <div style={{background:"#1e1b4b",border:"1px solid #4338ca",borderRadius:12,padding:"20px 24px",marginTop:24}}>

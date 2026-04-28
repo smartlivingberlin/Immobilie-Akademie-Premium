@@ -219,4 +219,53 @@ export function registerOwnerRoutes(app: Express) {
     } catch (e: any) { res.status(500).json({ error: e.message }); }
   });
 
+  // ── LIVE MONITORING ──────────────────────────────────────────
+  app.get("/api/owner/live", async (req: Request, res: Response) => {
+    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
+    const key = req.headers["x-owner-key"] || req.query.key;
+    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    try {
+      const { getDb } = await import("./db");
+      const db = await getDb();
+      const [active5] = await db.$client.promise().query(
+        `SELECT id, name, email, role, enabledModules, lastSignedIn
+         FROM users WHERE lastSignedIn > DATE_SUB(NOW(), INTERVAL 5 MINUTE)
+         ORDER BY lastSignedIn DESC`
+      ) as any;
+      const [active15] = await db.$client.promise().query(
+        `SELECT id, name, email, lastSignedIn
+         FROM users WHERE lastSignedIn > DATE_SUB(NOW(), INTERVAL 15 MINUTE)
+         ORDER BY lastSignedIn DESC`
+      ) as any;
+      const [active60] = await db.$client.promise().query(
+        `SELECT COUNT(*) as cnt FROM users
+         WHERE lastSignedIn > DATE_SUB(NOW(), INTERVAL 60 MINUTE)`
+      ) as any;
+      const [today] = await db.$client.promise().query(
+        `SELECT COUNT(*) as cnt FROM users WHERE DATE(lastSignedIn) = CURDATE()`
+      ) as any;
+      const [newUsers] = await db.$client.promise().query(
+        `SELECT id, name, email, createdAt FROM users
+         WHERE createdAt > DATE_SUB(NOW(), INTERVAL 24 HOUR)
+         ORDER BY createdAt DESC`
+      ) as any;
+      const [recentLogs] = await db.$client.promise().query(
+        `SELECT u.name, u.email, l.moduleId, l.dayNumber, l.openedAt
+         FROM learning_logs l JOIN users u ON l.userId = u.id
+         WHERE l.openedAt > DATE_SUB(NOW(), INTERVAL 1 HOUR)
+         ORDER BY l.openedAt DESC LIMIT 20`
+      ) as any;
+      res.json({
+        now: new Date().toISOString(),
+        online5min: (active5 as any[]).length,
+        online15min: (active15 as any[]).length,
+        online60min: Number((active60 as any[])[0]?.cnt || 0),
+        todayActive: Number((today as any[])[0]?.cnt || 0),
+        activeUsers: active5 as any[],
+        newUsersToday: newUsers as any[],
+        recentActivity: recentLogs as any[],
+      });
+    } catch (e: any) { res.status(500).json({ error: e.message }); }
+  });
+
 }
