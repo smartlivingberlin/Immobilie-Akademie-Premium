@@ -268,4 +268,91 @@ export function registerOwnerRoutes(app: Express) {
     } catch (e: any) { res.status(500).json({ error: e.message }); }
   });
 
+  // ── ROLLE SETZEN ─────────────────────────────────────────────
+  app.post("/api/owner/set-role", async (req: Request, res: Response) => {
+    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
+    const key = req.headers["x-owner-key"] || req.query.key;
+    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    try {
+      const { email, role } = req.body;
+      if (!email || !role) return res.status(400).json({ error: "email und role erforderlich" });
+      if (!["user","admin","trainer"].includes(role)) return res.status(400).json({ error: "Ungueltige Rolle. Erlaubt: user, admin, trainer" });
+      const { getDb } = await import("./db");
+      const db = await getDb();
+      await db.$client.promise().query(`UPDATE users SET role = ? WHERE email = ?`, [role, email]);
+      res.json({ ok: true, msg: `Rolle von ${email} auf ${role} gesetzt` });
+    } catch (e: any) { res.status(500).json({ error: e.message }); }
+  });
+
+  // ── AKTIVITAETS-LOG ──────────────────────────────────────────
+  app.get("/api/owner/activity", async (req: Request, res: Response) => {
+    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
+    const key = req.headers["x-owner-key"] || req.query.key;
+    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    try {
+      const { getDb } = await import("./db");
+      const db = await getDb();
+      const [logs] = await db.$client.promise().query(`
+        SELECT u.name, u.email, u.role,
+          l.moduleId, l.dayId, l.openedAt, l.closedAt, l.durationSeconds, l.completed
+        FROM learning_logs l
+        JOIN users u ON l.userId = u.id
+        ORDER BY l.openedAt DESC
+        LIMIT 50
+      `) as any;
+      const [exams] = await db.$client.promise().query(`
+        SELECT u.name, u.email, e.moduleId, e.score, e.totalQuestions, e.startedAt, e.completedAt
+        FROM exam_sessions e
+        JOIN users u ON e.userId = u.id
+        ORDER BY e.startedAt DESC
+        LIMIT 20
+      `) as any;
+      const [registrations] = await db.$client.promise().query(`
+        SELECT name, email, role, createdAt
+        FROM users
+        ORDER BY createdAt DESC
+        LIMIT 20
+      `) as any;
+      res.json({
+        learningActivity: logs as any[],
+        examActivity: exams as any[],
+        registrations: registrations as any[],
+      });
+    } catch (e: any) { res.status(500).json({ error: e.message }); }
+  });
+
+  // ── SYSTEM STATS ─────────────────────────────────────────────
+  app.get("/api/owner/stats", async (req: Request, res: Response) => {
+    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
+    const key = req.headers["x-owner-key"] || req.query.key;
+    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    try {
+      const { getDb } = await import("./db");
+      const db = await getDb();
+      const [daily] = await db.$client.promise().query(`
+        SELECT DATE(openedAt) as tag,
+          COUNT(*) as sitzungen,
+          COUNT(DISTINCT userId) as nutzer,
+          SUM(durationSeconds) as sekunden
+        FROM learning_logs
+        WHERE openedAt > DATE_SUB(NOW(), INTERVAL 30 DAY)
+        GROUP BY DATE(openedAt)
+        ORDER BY tag DESC
+      `) as any;
+      const [modStats] = await db.$client.promise().query(`
+        SELECT moduleId,
+          COUNT(DISTINCT userId) as nutzer,
+          AVG(durationSeconds) as avgSekunden,
+          SUM(CASE WHEN completed = 1 THEN 1 ELSE 0 END) as abgeschlossen
+        FROM learning_logs
+        GROUP BY moduleId
+        ORDER BY moduleId
+      `) as any;
+      res.json({
+        dailyStats: daily as any[],
+        moduleStats: modStats as any[],
+      });
+    } catch (e: any) { res.status(500).json({ error: e.message }); }
+  });
+
 }

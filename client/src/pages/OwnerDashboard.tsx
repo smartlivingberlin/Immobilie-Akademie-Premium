@@ -51,6 +51,9 @@ export default function OwnerDashboard() {
 
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [live, setLive] = useState<any>(null);
+  const [activity, setActivity] = useState<any>(null);
+  const [statsData, setStatsData] = useState<any>(null);
+  const [activeTab, setActiveTab] = useState<"users"|"live"|"activity"|"stats">("users");
   const [loading, setLoading] = useState(true);
   const [actionMsg, setActionMsg] = useState("");
 
@@ -66,6 +69,12 @@ export default function OwnerDashboard() {
     fetchLive();
     const liveInterval = setInterval(fetchLive, 30000);
     setTimeout(() => clearInterval(liveInterval), 1800000); // 30min max
+    // Aktivitaets-Log laden
+    fetch(`/api/owner/activity?key=${ownerKey}`, { credentials:"include", headers:{"x-owner-key":ownerKey} })
+      .then(r => r.json()).then(setActivity).catch(()=>{});
+    // Stats laden
+    fetch(`/api/owner/stats?key=${ownerKey}`, { credentials:"include", headers:{"x-owner-key":ownerKey} })
+      .then(r => r.json()).then(setStatsData).catch(()=>{});
     fetch(`/api/owner/dashboard?key=${ownerKey}`, { credentials: "include", headers: { "x-owner-key": ownerKey } })
       .then(r => r.json())
       .then(d => { setStats(d); setLoading(false); })
@@ -90,6 +99,19 @@ export default function OwnerDashboard() {
     });
     setActionMsg(`✅ ${email} freigeschaltet`);
     setTimeout(() => window.location.reload(), 1500);
+  };
+
+  const setRole = async (email: string, role: string) => {
+    if (!confirm(`Rolle von ${email} auf "${role}" setzen?`)) return;
+    const ownerKey = localStorage.getItem("ownerKey") || "";
+    const res = await fetch("/api/owner/set-role", {
+      method:"POST", credentials:"include",
+      headers:{"Content-Type":"application/json","x-owner-key":ownerKey},
+      body: JSON.stringify({ email, role }),
+    });
+    const d = await res.json();
+    setActionMsg(d.ok ? `✅ ${d.msg}` : `❌ ${d.error}`);
+    if (d.ok) setTimeout(() => window.location.reload(), 1000);
   };
 
   const impersonateUser = async (email: string) => {
@@ -197,66 +219,6 @@ export default function OwnerDashboard() {
       </div>
 
       {/* Nutzer-Liste */}
-      <div style={{background:"#1e293b",borderRadius:12,padding:20,border:"1px solid #334155"}}>
-        <h3 style={{margin:"0 0 16px",fontSize:16,color:"#94a3b8",textTransform:"uppercase",letterSpacing:1}}>
-          Alle Nutzer
-        </h3>
-        <div style={{overflowX:"auto"}}>
-          <table style={{width:"100%",borderCollapse:"collapse",fontSize:13}}>
-            <thead>
-              <tr style={{borderBottom:"1px solid #334155"}}>
-                {["Name","E-Mail","Rolle","Module","Erstellt","Aktionen"].map(h => (
-                  <th key={h} style={{padding:"8px 12px",textAlign:"left",color:"#64748b",fontWeight:600}}>{h}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {(stats?.recentUsers ?? []).map((u, i) => (
-                <tr key={i} style={{borderBottom:"1px solid #1e293b"}}>
-                  <td style={{padding:"10px 12px",color:"#e2e8f0"}}>{u.name || "—"}</td>
-                  <td style={{padding:"10px 12px",color:"#94a3b8"}}>{u.email}</td>
-                  <td style={{padding:"10px 12px"}}>
-                    <span style={{background: u.role === "admin" ? "#1e40af" : "#334155",color:"white",padding:"2px 8px",borderRadius:4,fontSize:11}}>
-                      {u.role}
-                    </span>
-                  </td>
-                  <td style={{padding:"10px 12px",color:"#94a3b8"}}>{u.enabledModules || "—"}</td>
-                  <td style={{padding:"10px 12px",color:"#64748b",fontSize:11}}>
-                    {u.createdAt ? new Date(u.createdAt).toLocaleDateString("de-DE") : "—"}
-                  </td>
-                  <td style={{padding:"10px 12px"}}>
-                    <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
-                      <button onClick={() => unlockUser(u.email)}
-                        style={{background:"#065f46",color:"#10b981",border:"none",padding:"4px 8px",borderRadius:4,cursor:"pointer",fontSize:10}}>
-                        ✅ Frei
-                      </button>
-                      <button onClick={() => lockUser(u.email)}
-                        style={{background:"#7f1d1d",color:"#ef4444",border:"none",padding:"4px 8px",borderRadius:4,cursor:"pointer",fontSize:10}}>
-                        🔒 Sperren
-                      </button>
-                      <button onClick={() => impersonateUser(u.email)}
-                        style={{background:"#1e3a5f",color:"#60a5fa",border:"none",padding:"4px 8px",borderRadius:4,cursor:"pointer",fontSize:10}}>
-                        👤 Login
-                      </button>
-                      <select onChange={e => e.target.value && setModules(u.email, e.target.value)}
-                        defaultValue=""
-                        style={{background:"#1e293b",color:"#94a3b8",border:"1px solid #334155",padding:"3px 6px",borderRadius:4,fontSize:10,cursor:"pointer"}}>
-                        <option value="">Module...</option>
-                        <option value="1">M1</option>
-                        <option value="1,2">M1+2</option>
-                        <option value="1,2,3">M1-3</option>
-                        <option value="1,2,3,4">M1-4</option>
-                        <option value="1,2,3,4,5">Alle</option>
-                      </select>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
       {/* === LIVE MONITORING === */}
       {live && (
         <div style={{background:"#0f2744",border:"1px solid #1e40af",borderRadius:12,padding:"20px 24px",marginTop:24}}>
