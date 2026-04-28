@@ -1,0 +1,16 @@
+INSERT INTO open_questions (modulId, frage, hinweis, schwierigkeit, aktiv) VALUES
+  (1, 'Was ist ein Grundbuch und welche Funktion hat es?', 'Erkläre Aufbau, Abteilungen und rechtliche Bedeutung des Grundbuchs.', 'mittel', 1),
+  (1, 'Erkläre den Unterschied zwischen Eigentum und Besitz.', 'Nenne Beispiele und die rechtliche Grundlage im BGB.', 'leicht', 1),
+  (1, 'Was versteht man unter dem Wohnwert einer Immobilie?', 'Beschreibe die wichtigsten wertbestimmenden Faktoren.', 'mittel', 1),
+  (2, 'Was ist ein Maklervertrag und wann entsteht der Provisionsanspruch?', 'Erkläre die Voraussetzungen gemäß §652 BGB.', 'mittel', 1),
+  (2, 'Erkläre die Pflichten eines Maklers nach dem GwG.', 'Beschreibe Identifizierungspflicht und Risikoanalyse.', 'schwer', 1),
+  (2, 'Was ist eine Reservierungsvereinbarung und ist sie rechtlich bindend?', 'Erkläre die aktuelle Rechtslage und BGH-Urteile.', 'schwer', 1),
+  (3, 'Was ist eine Eigentümerversammlung und was wird dort beschlossen?', 'Erkläre Ablauf, Mehrheitserfordernisse und Protokollpflicht.', 'mittel', 1),
+  (3, 'Erkläre den Unterschied zwischen Sondereigentum und Gemeinschaftseigentum.', 'Nenne konkrete Beispiele aus der Praxis.', 'leicht', 1),
+  (3, 'Was ist eine Jahresabrechnung in der WEG-Verwaltung?', 'Erkläre Aufbau und Pflichten des Verwalters.', 'mittel', 1),
+  (4, 'Erkläre das Vergleichswertverfahren zur Immobilienbewertung.', 'Beschreibe Voraussetzungen, Ablauf und typische Anwendungsfälle.', 'mittel', 1),
+  (4, 'Was ist der Bodenwert und wie wird er ermittelt?', 'Erkläre die Bodenrichtwerte und ihre Bedeutung.', 'leicht', 1),
+  (4, 'Erkläre den Unterschied zwischen Verkehrswert und Beleihungswert.', 'Nenne die rechtlichen Grundlagen und praktische Unterschiede.', 'schwer', 1),
+  (5, 'Was ist ein Annuitätendarlehen und wie funktioniert die Tilgung?', 'Erkläre Tilgungsanteil, Zinsanteil und Restschuld.', 'mittel', 1),
+  (5, 'Erkläre die Pflichten eines Darlehensvermittlers nach §34i GewO.', 'Beschreibe Erlaubnispflicht, Beratungspflicht und Dokumentation.', 'schwer', 1),
+  (5, 'Was ist das ESIS-Merkblatt und wozu dient es?', 'Erkläre den Inhalt und die gesetzliche Grundlage der EU-WIKR.', 'mittel', 1);
