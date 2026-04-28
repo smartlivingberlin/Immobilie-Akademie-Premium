@@ -370,7 +370,7 @@ export function registerOwnerRoutes(app: Express) {
         SELECT DISTINCT u.id, u.name, u.email, u.enabledModules
         FROM users u
         JOIN learning_logs l ON l.userId = u.id
-        WHERE u.role = 'user'
+        WHERE u.role IN ('user','admin','trainer')
         ${userId ? 'AND u.id = ?' : ''}
         ORDER BY u.name
       `, userId ? [userId] : []) as any;
