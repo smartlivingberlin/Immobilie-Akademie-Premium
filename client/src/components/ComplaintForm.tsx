@@ -1,7 +1,7 @@
 /**
  * ComplaintForm.tsx
  *
- * Formalisiertes Beschwerde-Formular (QM-Pflicht nach AZAV §3).
+ * Formalisiertes Beschwerde-Formular (interne Qualitätssicherung).
  * Beschwerden werden mit Status-Tracking gespeichert.
  * Nutzer erhalten Bestätigung und Info über Bearbeitungszeit.
  */
@@ -32,7 +32,7 @@ export default function ComplaintForm() {
           Beschwerden dokumentiert und bearbeitet.
         </p>
         <p className="text-blue-500 text-xs mt-3">
-          Rechtsgrundlage: AZAV §3 Abs. 4 – Beschwerdemanagement
+          Internes Beschwerdemanagement
         </p>
       </div>
     );
@@ -98,7 +98,7 @@ export default function ComplaintForm() {
         </div>
 
         <p className="text-xs text-slate-400 mt-4 text-center">
-          Ihre Beschwerde wird vertraulich behandelt und gemäß AZAV §3 dokumentiert.
+          Ihre Beschwerde wird vertraulich behandelt und intern dokumentiert.
         </p>
       </div>
     </div>

@@ -27,7 +27,7 @@ const TRUST = [
   { icon:"🎓", label:"IHK-anerkannt", sub:"§34c + §34i vorbereitet" },
   { icon:"📱", label:"Lebenslanger Zugang", sub:"Einmal kaufen, immer lernen" },
   { icon:"🤖", label:"KI-Tutor inklusive", sub:"Claude + Gemini + Groq" },
-  { icon:"📋", label:"855 Prüfungsfragen", sub:"IHK-Niveau garantiert" },
+  { icon:"📋", label:"855+ Prüfungsfragen", sub:"an IHK-Themen orientiert" },
   { icon:"🎯", label:"Prüfungssimulation", sub:"Realistische Testumgebung" },
   { icon:"🏆", label:"Zertifikat", sub:"Nach Modulabschluss" },
 ];

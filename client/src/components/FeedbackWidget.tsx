@@ -1,7 +1,7 @@
 /**
  * FeedbackWidget.tsx
  *
- * Feedback-Formular für Lerneinheiten (QM-Pflicht nach AZAV §3).
+ * Feedback-Formular für Lerneinheiten (interne Qualitätssicherung).
  * Nutzer können jede Lerneinheit mit 1–5 Sternen bewerten + Kommentar.
  * Zeigt nach Absenden eine Bestätigung.
  */
