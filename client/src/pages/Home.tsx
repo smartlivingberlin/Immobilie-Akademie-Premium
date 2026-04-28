@@ -148,7 +148,9 @@ export default function Home() {
                 <div className="flex">
                   {[1,2,3,4,5].map(i => <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />)}
                 </div>
-                <span className="text-sm text-white/70">{socialProof}</span>
+                <span className="text-sm text-white/70">
+                  {socialProof.activeUsers}+ aktive Lernende · {socialProof.certsThisWeek} Zertifikate diese Woche
+                </span>
               </div>
             )}
             <div className="flex flex-wrap gap-5">
