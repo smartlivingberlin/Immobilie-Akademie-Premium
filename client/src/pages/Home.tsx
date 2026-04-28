@@ -1,25 +1,26 @@
 import { Link } from "wouter";
 import { SEO } from "@/components/SEO";
 import { useSocialProof } from "@/hooks/useSocialProof";
+import { useState, useEffect, useRef } from "react";
 import {
   ArrowRight, BookOpenCheck, Bot, Sparkles, ShieldCheck,
   Clock, Award, GraduationCap, Users, CheckCircle2, Star,
-  TrendingUp, Zap, Building2
+  TrendingUp, Zap, Building2, Play, Mic
 } from "lucide-react";
 
 const MODULES = [
-  { id:1, title:"Modul 1: Immobilien-Grundkurs", kurz:"Das Fundament", preis:"149", tage:20, ue:160, slug:"modul-1-immobilien-grundkurs", desc:"Grundstücksrecht, Grundbuch, Baurecht, Wertermittlung — die Pflichtbasis für alle weiteren Module.", badge:"Einstieg" },
-  { id:2, title:"Modul 2: Makler §34c GewO", kurz:"Die Lizenz", preis:"499", tage:60, ue:480, slug:"modul-2-makler-34c", desc:"Maklerrecht, Provision, Exposé, Kaufvertrag, GwG, MaBV — alles für die IHK-Sachkundeprüfung.", badge:"Beliebt" },
-  { id:3, title:"Modul 3: WEG-Verwalter", kurz:"Die Verwaltung", preis:"699", tage:80, ue:640, slug:"modul-3-weg-verwalter", desc:"WEG-Reform 2020, Eigentümerversammlung, Nebenkostenabrechnung, Mietrecht §535ff BGB.", badge:"Vollständig" },
-  { id:4, title:"Modul 4: Gutachter", kurz:"Die Bewertung", preis:"399", tage:40, ue:320, slug:"modul-4-gutachter", desc:"ImmoWertV 2021: Vergleichs-, Ertrags- und Sachwertverfahren. HypZert-Vorbereitung.", badge:"Präzise" },
-  { id:5, title:"Modul 5: §34i GewO", kurz:"Die Finanzierung", preis:"499", tage:40, ue:320, slug:"modul-5-34i-darlehensvermittler", desc:"Annuitätendarlehen, KfW-Förderung, EU-WIKR, ESIS-Merkblatt — Ihre Finanzierungslizenz.", badge:"Komplett" },
+  { id:1, title:"Modul 1: Immobilien-Grundkurs", kurz:"Das Fundament", preis:"149", tage:20, ue:160, slug:"modul-1-immobilien-grundkurs", desc:"Grundstücksrecht, Grundbuch, Baurecht, Wertermittlung — die Pflichtbasis für alle weiteren Module.", badge:"Einstieg", farbe:"#2563eb" },
+  { id:2, title:"Modul 2: Makler §34c GewO", kurz:"Die Lizenz", preis:"499", tage:60, ue:480, slug:"modul-2-makler-34c", desc:"Maklerrecht, Provision, Exposé, Kaufvertrag, GwG, MaBV — alles für die IHK-Sachkundeprüfung.", badge:"Beliebt", farbe:"#7c3aed" },
+  { id:3, title:"Modul 3: WEG-Verwalter", kurz:"Die Verwaltung", preis:"699", tage:80, ue:640, slug:"modul-3-weg-verwalter", desc:"WEG-Reform 2020, Eigentümerversammlung, Nebenkostenabrechnung, Mietrecht §535ff BGB.", badge:"Vollständig", farbe:"#059669" },
+  { id:4, title:"Modul 4: Gutachter", kurz:"Die Bewertung", preis:"399", tage:40, ue:320, slug:"modul-4-gutachter", desc:"ImmoWertV 2021: Vergleichs-, Ertrags- und Sachwertverfahren. HypZert-Vorbereitung.", badge:"Präzise", farbe:"#d97706" },
+  { id:5, title:"Modul 5: §34i GewO", kurz:"Die Finanzierung", preis:"499", tage:40, ue:320, slug:"modul-5-34i-darlehensvermittler", desc:"Annuitätendarlehen, KfW-Förderung, EU-WIKR, ESIS-Merkblatt — Ihre Finanzierungslizenz.", badge:"Komplett", farbe:"#db2777" },
 ];
 
 const STATS = [
-  { n:"855+", label:"IHK-Prüfungsfragen", sub:"geprüft & aktuell" },
-  { n:"240", label:"Strukturierte Lerntage", sub:"5 vollständige Module" },
-  { n:"3", label:"KI-Modelle", sub:"Claude · Gemini · Groq" },
-  { n:"24/7", label:"Tutor verfügbar", sub:"keine Wartezeiten" },
+  { n:855, suffix:"+", label:"IHK-Prüfungsfragen", sub:"geprüft & aktuell" },
+  { n:240, suffix:"", label:"Strukturierte Lerntage", sub:"5 vollständige Module" },
+  { n:3, suffix:"", label:"KI-Modelle", sub:"Claude · Gemini · Groq" },
+  { n:24, suffix:"/7", label:"Tutor verfügbar", sub:"keine Wartezeiten" },
 ];
 
 const FEATURES = [
@@ -31,8 +32,70 @@ const FEATURES = [
   { icon:ShieldCheck, title:"DSGVO & rechtssicher", desc:"Alle Inhalte juristisch geprüft. WCAG 2.2 AA. Barrierefreiheit inklusive." },
 ];
 
+// Animierter Zaehler-Hook
+function useCountUp(target: number, duration: number = 1500) {
+  const [count, setCount] = useState(0);
+  const [started, setStarted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting && !started) setStarted(true); },
+      { threshold: 0.3 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [started]);
+
+  useEffect(() => {
+    if (!started) return;
+    let start = 0;
+    const step = target / (duration / 16);
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) { setCount(target); clearInterval(timer); }
+      else setCount(Math.floor(start));
+    }, 16);
+    return () => clearInterval(timer);
+  }, [started, target, duration]);
+
+  return { count, ref };
+}
+
+function AnimatedStat({ n, suffix, label, sub }: { n:number; suffix:string; label:string; sub:string }) {
+  const { count, ref } = useCountUp(n);
+  return (
+    <div ref={ref} className="text-center rounded-2xl bg-background border border-border p-6 shadow-soft">
+      <div className="font-display text-4xl font-semibold text-primary mb-1">
+        {count}{suffix}
+      </div>
+      <div className="font-medium text-foreground text-sm">{label}</div>
+      <div className="text-xs text-muted-foreground mt-0.5">{sub}</div>
+    </div>
+  );
+}
+
 export default function Home() {
   const socialProof = useSocialProof();
+  const [audioPlaying, setAudioPlaying] = useState(false);
+
+  const handleAudioPreview = () => {
+    if (audioPlaying) {
+      window.speechSynthesis.cancel();
+      setAudioPlaying(false);
+      return;
+    }
+    const text = "Willkommen bei der Immobilien Akademie Smart. Hier bereiten Sie sich gezielt auf Ihre IHK-Sachkundeprüfung vor. Mit unserem KI-Tutor, 855 Prüfungsfragen und 240 strukturierten Lerntagen sind Sie optimal vorbereitet. Starten Sie jetzt kostenlos mit Modul 1.";
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "de-DE";
+    utterance.rate = 0.9;
+    const voices = window.speechSynthesis.getVoices();
+    const deVoice = voices.find(v => v.lang.startsWith("de"));
+    if (deVoice) utterance.voice = deVoice;
+    utterance.onend = () => setAudioPlaying(false);
+    setAudioPlaying(true);
+    window.speechSynthesis.speak(utterance);
+  };
 
   return (
     <>
@@ -61,7 +124,7 @@ export default function Home() {
               alle 5 Berufsbilder in einem Portal. Mit KI-Tutor, 855+ Prüfungsfragen
               und 240 strukturierten Lerntagen.
             </p>
-            <div className="flex flex-wrap gap-3 mb-10">
+            <div className="flex flex-wrap gap-3 mb-6">
               <Link href="/kurs/modul-1-immobilien-grundkurs">
                 <a className="inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold text-sm shadow-glow transition-all hover:scale-105"
                   style={{background:"oklch(0.78 0.15 75)",color:"oklch(0.22 0.05 60)"}}>
@@ -73,7 +136,21 @@ export default function Home() {
                   Alle Module ansehen
                 </a>
               </Link>
+              <button
+                onClick={handleAudioPreview}
+                className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-sm text-white/70 hover:bg-white/10 transition-all"
+              >
+                {audioPlaying ? "⏹ Stop" : <><Mic className="h-4 w-4" /> Hören</>}
+              </button>
             </div>
+            {socialProof && (
+              <div className="flex items-center gap-2 mb-6">
+                <div className="flex">
+                  {[1,2,3,4,5].map(i => <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />)}
+                </div>
+                <span className="text-sm text-white/70">{socialProof}</span>
+              </div>
+            )}
             <div className="flex flex-wrap gap-5">
               {["IHK-Prüfungsformat","KI-Tutor 24/7","Sofortiger Zugang","DSGVO-konform"].map(t=>(
                 <span key={t} className="flex items-center gap-1.5 text-sm text-white/70">
@@ -107,16 +184,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* STATS */}
+      {/* STATS — animiert */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {STATS.map((s,i)=>(
-              <div key={i} className="text-center rounded-2xl bg-background border border-border p-6 shadow-soft">
-                <div className="font-display text-4xl font-semibold text-primary mb-1">{s.n}</div>
-                <div className="font-medium text-foreground text-sm">{s.label}</div>
-                <div className="text-xs text-muted-foreground mt-0.5">{s.sub}</div>
-              </div>
+              <AnimatedStat key={i} n={s.n} suffix={s.suffix} label={s.label} sub={s.sub} />
             ))}
           </div>
         </div>
@@ -134,12 +207,14 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {MODULES.map(m=>(
-              <div key={m.id} className="rounded-2xl border border-border bg-card p-6 shadow-soft hover:shadow-elegant transition-all hover:-translate-y-1 flex flex-col">
+              <div key={m.id} className="rounded-2xl border border-border bg-card p-6 shadow-soft hover:shadow-elegant transition-all hover:-translate-y-1 flex flex-col group">
                 <div className="flex items-start justify-between mb-4">
-                  <div className="h-10 w-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-                    <Building2 className="h-5 w-5" />
+                  <div className="h-10 w-10 rounded-xl flex items-center justify-center"
+                    style={{background:`${m.farbe}15`}}>
+                    <Building2 className="h-5 w-5" style={{color:m.farbe}} />
                   </div>
-                  <span className="text-xs font-semibold bg-primary/10 text-primary px-2.5 py-1 rounded-full">{m.badge}</span>
+                  <span className="text-xs font-semibold px-2.5 py-1 rounded-full"
+                    style={{background:`${m.farbe}15`,color:m.farbe}}>{m.badge}</span>
                 </div>
                 <h3 className="font-display font-semibold text-lg text-foreground mb-2">{m.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-4">{m.desc}</p>
@@ -149,7 +224,8 @@ export default function Home() {
                   <span className="font-semibold text-foreground text-base">ab {m.preis} €</span>
                 </div>
                 <Link href={`/kurs/${m.slug}`}>
-                  <a className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-primary text-primary-foreground px-4 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity">
+                  <a className="inline-flex items-center justify-center gap-2 w-full rounded-xl px-4 py-2.5 text-sm font-semibold transition-all"
+                    style={{background:m.farbe,color:"white"}}>
                     Kurs ansehen <ArrowRight className="h-4 w-4" />
                   </a>
                 </Link>
@@ -171,7 +247,7 @@ export default function Home() {
                 <div className="text-2xl font-display font-semibold text-primary">1.955 €</div>
                 <div className="text-xs text-muted-foreground">statt 2.245 € · Sie sparen 290 €</div>
               </div>
-              <Link href="/kurse">
+              <Link href="/pakete">
                 <a className="inline-flex items-center justify-center gap-2 w-full rounded-xl px-4 py-2.5 text-sm font-semibold transition-all hover:scale-[1.02]"
                   style={{background:"oklch(0.78 0.15 75)",color:"oklch(0.22 0.05 60)"}}>
                   Komplett-Paket wählen <ArrowRight className="h-4 w-4" />
