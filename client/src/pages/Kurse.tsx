@@ -177,6 +177,34 @@ export default function Kurse() {
         )}
       </div>
 
+      {/* ── PAKETE HINWEIS ─────────────────────────────── */}
+      <div style={{
+        background:"linear-gradient(135deg,#0f172a,#1e3a5f)",
+        borderRadius:16, padding:"24px 28px", marginBottom:20,
+        display:"flex", alignItems:"center", justifyContent:"space-between",
+        flexWrap:"wrap", gap:16
+      }}>
+        <div>
+          <div style={{fontSize:16,fontWeight:800,color:"#f1f5f9",marginBottom:4}}>
+            💰 Mehrere Module? Bis zu 290 € sparen!
+          </div>
+          <div style={{fontSize:13,color:"#94a3b8"}}>
+            Mit unseren Vorteilspaketen bekommen Sie alle Module günstiger — einmalig kaufen, dauerhaft nutzen.
+          </div>
+        </div>
+        <Link href="/pakete">
+          <button style={{
+            background:"linear-gradient(135deg,#2563eb,#7c3aed)",
+            color:"white", border:"none", borderRadius:10,
+            padding:"12px 24px", fontSize:14, fontWeight:700,
+            cursor:"pointer", whiteSpace:"nowrap",
+            boxShadow:"0 4px 14px rgba(37,99,235,0.4)"
+          }}>
+            Alle Pakete ansehen →
+          </button>
+        </Link>
+      </div>
+
       <div className="flex items-center justify-center gap-6 text-xs text-slate-400 flex-wrap">
         <span>🔒 Sichere Zahlung via Stripe</span>
         <span>•</span>

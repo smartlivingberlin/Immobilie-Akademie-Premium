@@ -382,11 +382,22 @@ export default function KursLanding({ slug }: { slug: string }) {
         </div>
 
         {/* ── AUDIO VORSCHAU ───────────────────────────────── */}
-        <div style={{ maxWidth:960, margin:"0 auto", padding:"32px 20px 0" }}>
-          <AudioPreview
-            moduleId={parseInt(kurs.id.replace("modul_",""))||1}
-            hauptfarbe={hauptfarbe}
-          />
+        <div style={{ background:"#f0f9ff", borderTop:"1px solid #bae6fd", borderBottom:"1px solid #bae6fd", padding:"20px" }}>
+          <div style={{ maxWidth:960, margin:"0 auto", display:"flex", alignItems:"center", gap:16 }}>
+            <div style={{ fontSize:32 }}>🎧</div>
+            <div style={{ flex:1 }}>
+              <div style={{ fontSize:14, fontWeight:700, color:"#0369a1" }}>
+                Jetzt kostenlos reinhören — erste Lektion als Vorschau
+              </div>
+              <div style={{ fontSize:12, color:"#0284c7" }}>
+                Hören Sie wie der KI-gestützte Audio-Lernmodus klingt — kein Login nötig
+              </div>
+            </div>
+            <AudioPreview
+              moduleId={parseInt(kurs.id.replace("modul_",""))||1}
+              hauptfarbe={hauptfarbe}
+            />
+          </div>
         </div>
 
         {/* ── STORY ─────────────────────────────────────────── */}
