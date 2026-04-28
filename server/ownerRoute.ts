@@ -250,7 +250,7 @@ export function registerOwnerRoutes(app: Express) {
          ORDER BY createdAt DESC`
       ) as any;
       const [recentLogs] = await db.$client.promise().query(
-        `SELECT u.name, u.email, l.moduleId, l.dayNumber, l.openedAt
+        `SELECT u.name, u.email, l.moduleId, l.dayId, l.openedAt
          FROM learning_logs l JOIN users u ON l.userId = u.id
          WHERE l.openedAt > DATE_SUB(NOW(), INTERVAL 1 HOUR)
          ORDER BY l.openedAt DESC LIMIT 20`
