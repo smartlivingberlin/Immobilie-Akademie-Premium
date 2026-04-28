@@ -355,4 +355,91 @@ export function registerOwnerRoutes(app: Express) {
     } catch (e: any) { res.status(500).json({ error: e.message }); }
   });
 
+  // ── AZAV ANWESENHEITSBERICHT ─────────────────────────────────
+  app.get("/api/owner/azav-report", async (req: Request, res: Response) => {
+    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
+    const key = req.headers["x-owner-key"] || req.query.key;
+    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    try {
+      const { getDb } = await import("./db");
+      const db = await getDb();
+      const { userId, startDate, endDate } = req.query as any;
+
+      // Alle Nutzer mit Lernaktivitaet
+      const [nutzer] = await db.$client.promise().query(`
+        SELECT DISTINCT u.id, u.name, u.email, u.enabledModules
+        FROM users u
+        JOIN learning_logs l ON l.userId = u.id
+        WHERE u.role = 'user'
+        ${userId ? 'AND u.id = ?' : ''}
+        ORDER BY u.name
+      `, userId ? [userId] : []) as any;
+
+      const berichte = [];
+      for (const n of (nutzer as any[])) {
+        const [logs] = await db.$client.promise().query(`
+          SELECT l.moduleId, l.dayId, l.openedAt, l.closedAt,
+            l.durationSeconds, l.completed
+          FROM learning_logs l
+          WHERE l.userId = ?
+          ${startDate ? 'AND DATE(l.openedAt) >= ?' : ''}
+          ${endDate ? 'AND DATE(l.openedAt) <= ?' : ''}
+          ORDER BY l.openedAt ASC
+        `, [n.id, ...(startDate?[startDate]:[]), ...(endDate?[endDate]:[])]) as any;
+
+        const logArr = logs as any[];
+        const totalSekunden = logArr.reduce((s:number, l:any) => s + (l.durationSeconds||0), 0);
+        const totalUE = Math.round(totalSekunden / 2700); // 45min = 2700s = 1 UE
+        const totalStunden = Math.round(totalSekunden / 3600 * 10) / 10;
+        const abgeschlossen = logArr.filter((l:any) => l.completed).length;
+
+        // Tagesweise gruppieren
+        const tage: Record<string, any> = {};
+        for (const l of logArr) {
+          const tag = l.openedAt ? new Date(l.openedAt).toISOString().split('T')[0] : 'unbekannt';
+          if (!tage[tag]) tage[tag] = { datum:tag, sitzungen:0, sekunden:0, module:new Set(), abgeschlossen:0 };
+          tage[tag].sitzungen++;
+          tage[tag].sekunden += l.durationSeconds||0;
+          tage[tag].module.add(`M${l.moduleId} Tag ${l.dayId}`);
+          if (l.completed) tage[tag].abgeschlossen++;
+        }
+
+        const tagesNachweis = Object.values(tage).map((t:any) => ({
+          datum: t.datum,
+          sitzungen: t.sitzungen,
+          lernzeit: `${Math.round(t.sekunden/60)} Min`,
+          ue: Math.round(t.sekunden/2700),
+          module: Array.from(t.module).join(', '),
+          abgeschlossen: t.abgeschlossen,
+        }));
+
+        berichte.push({
+          nutzer: { name:n.name, email:n.email, module:n.enabledModules },
+          zusammenfassung: {
+            gesamtSitzungen: logArr.length,
+            gesamtStunden: totalStunden,
+            gesamtUE: totalUE,
+            abgeschlosseneEinheiten: abgeschlossen,
+            aktiveTage: Object.keys(tage).length,
+          },
+          tagesNachweis,
+          azavKonformitaet: {
+            mindestUEErreicht: totalUE >= 1,
+            nachweisVorhanden: logArr.length > 0,
+            zeitraumVon: tagesNachweis[0]?.datum || 'k.A.',
+            zeitraumBis: tagesNachweis[tagesNachweis.length-1]?.datum || 'k.A.',
+          }
+        });
+      }
+
+      res.json({
+        berichtDatum: new Date().toISOString(),
+        zeitraum: { von: startDate||'alle', bis: endDate||'alle' },
+        gesamtNutzer: berichte.length,
+        berichte,
+        hinweis: "Dieser Bericht dient als Grundlage fuer AZAV-Anwesenheitsnachweise gemaess §§ 176-180 SGB III"
+      });
+    } catch (e: any) { res.status(500).json({ error: e.message }); }
+  });
+
 }

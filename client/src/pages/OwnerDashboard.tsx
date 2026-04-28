@@ -53,7 +53,9 @@ export default function OwnerDashboard() {
   const [live, setLive] = useState<any>(null);
   const [activity, setActivity] = useState<any>(null);
   const [statsData, setStatsData] = useState<any>(null);
-  const [activeTab, setActiveTab] = useState<"users"|"live"|"activity"|"stats">("users");
+  const [azavReport, setAzavReport] = useState<any>(null);
+  const [azavLoading, setAzavLoading] = useState(false);
+  const [activeTab, setActiveTab] = useState<"users"|"live"|"activity"|"stats"|"azav">("users");
   const [loading, setLoading] = useState(true);
   const [actionMsg, setActionMsg] = useState("");
 
@@ -219,6 +221,80 @@ export default function OwnerDashboard() {
       </div>
 
       {/* Nutzer-Liste */}
+      {/* ── TAB: AZAV ───────────────────────────────────── */}
+      {activeTab === "azav" && (
+        <div style={{background:"#1e293b",borderRadius:12,padding:20,border:"1px solid #334155"}}>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:20}}>
+            <div>
+              <h3 style={{margin:"0 0 4px",fontSize:16,color:"#f1f5f9",fontWeight:700}}>🎓 AZAV-Anwesenheitsbericht</h3>
+              <p style={{margin:0,fontSize:12,color:"#64748b"}}>Gemäß §§ 176-180 SGB III — automatisch generiert</p>
+            </div>
+            <button
+              onClick={()=>{
+                setAzavLoading(true);
+                const ownerKey = localStorage.getItem("ownerKey")||"";
+                fetch(`/api/owner/azav-report?key=${ownerKey}`,{credentials:"include",headers:{"x-owner-key":ownerKey}})
+                  .then(r=>r.json()).then(d=>{setAzavReport(d);setAzavLoading(false);}).catch(()=>setAzavLoading(false));
+              }}
+              style={{background:"#2563eb",color:"white",border:"none",borderRadius:8,padding:"10px 20px",fontSize:13,fontWeight:700,cursor:"pointer"}}>
+              {azavLoading?"⏳ Lädt...":"📋 Bericht erstellen"}
+            </button>
+          </div>
+          {azavReport && (
+            <div>
+              <div style={{background:"#0f172a",borderRadius:8,padding:"12px 16px",marginBottom:16,fontSize:12,color:"#64748b"}}>
+                Erstellt: {new Date(azavReport.berichtDatum).toLocaleString("de-DE")} ·
+                Nutzer: {azavReport.gesamtNutzer} ·
+                Zeitraum: {azavReport.zeitraum?.von} bis {azavReport.zeitraum?.bis}
+              </div>
+              {(azavReport.berichte||[]).map((b:any,i:number)=>(
+                <div key={i} style={{background:"#0f172a",borderRadius:10,padding:"16px",marginBottom:12}}>
+                  <div style={{display:"flex",justifyContent:"space-between",marginBottom:12}}>
+                    <div>
+                      <div style={{fontSize:14,fontWeight:700,color:"#f1f5f9"}}>{b.nutzer?.name||"—"}</div>
+                      <div style={{fontSize:11,color:"#64748b"}}>{b.nutzer?.email}</div>
+                    </div>
+                    <div style={{textAlign:"right"}}>
+                      <div style={{fontSize:18,fontWeight:900,color:"#10b981"}}>{b.zusammenfassung?.gesamtUE} UE</div>
+                      <div style={{fontSize:10,color:"#64748b"}}>{b.zusammenfassung?.gesamtStunden}h gesamt</div>
+                    </div>
+                  </div>
+                  <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:8,marginBottom:12}}>
+                    {[
+                      {label:"Sitzungen",value:b.zusammenfassung?.gesamtSitzungen},
+                      {label:"Aktive Tage",value:b.zusammenfassung?.aktiveTage},
+                      {label:"Abgeschlossen",value:b.zusammenfassung?.abgeschlosseneEinheiten},
+                      {label:"UE gesamt",value:b.zusammenfassung?.gesamtUE},
+                    ].map((s,j)=>(
+                      <div key={j} style={{background:"#1e293b",borderRadius:6,padding:"8px",textAlign:"center"}}>
+                        <div style={{fontSize:16,fontWeight:800,color:"#60a5fa"}}>{s.value||0}</div>
+                        <div style={{fontSize:9,color:"#64748b"}}>{s.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{fontSize:11,color:"#475569",marginBottom:8,fontWeight:600}}>TAGESNACHWEIS:</div>
+                  {(b.tagesNachweis||[]).map((t:any,j:number)=>(
+                    <div key={j} style={{display:"flex",gap:12,padding:"4px 0",borderBottom:"1px solid #1e293b",fontSize:11}}>
+                      <span style={{color:"#94a3b8",width:80}}>{t.datum}</span>
+                      <span style={{color:"#60a5fa"}}>{t.lernzeit}</span>
+                      <span style={{color:"#10b981"}}>{t.ue} UE</span>
+                      <span style={{color:"#64748b",flex:1}}>{t.module}</span>
+                    </div>
+                  ))}
+                  <div style={{marginTop:8,padding:"6px 10px",background:b.azavKonformitaet?.nachweisVorhanden?"#065f46":"#7f1d1d",borderRadius:6,fontSize:11,color:b.azavKonformitaet?.nachweisVorhanden?"#10b981":"#ef4444"}}>
+                    {b.azavKonformitaet?.nachweisVorhanden?"✅ AZAV-konformer Nachweis vorhanden":"⚠️ Kein Nachweis — Nutzer hat noch nicht gelernt"}
+                    · Zeitraum: {b.azavKonformitaet?.zeitraumVon} bis {b.azavKonformitaet?.zeitraumBis}
+                  </div>
+                </div>
+              ))}
+              <div style={{fontSize:11,color:"#334155",marginTop:12,padding:"8px 12px",background:"#0f172a",borderRadius:6}}>
+                ⚖️ {azavReport.hinweis}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* === LIVE MONITORING === */}
       {live && (
         <div style={{background:"#0f2744",border:"1px solid #1e40af",borderRadius:12,padding:"20px 24px",marginTop:24}}>
