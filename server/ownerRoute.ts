@@ -369,8 +369,8 @@ export function registerOwnerRoutes(app: Express) {
       const [nutzer] = await db.$client.promise().query(`
         SELECT DISTINCT u.id, u.name, u.email, u.enabledModules
         FROM users u
-        JOIN learning_logs l ON l.userId = u.id
         WHERE u.role IN ('user','admin','trainer')
+        AND EXISTS (SELECT 1 FROM learning_logs l WHERE l.userId = u.id)
         ${userId ? 'AND u.id = ?' : ''}
         ORDER BY u.name
       `, userId ? [userId] : []) as any;
