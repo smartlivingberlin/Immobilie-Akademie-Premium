@@ -406,6 +406,69 @@ export default function OwnerDashboard() {
         )}
       </div>
 
+      {/* SCHNELLLINKS */}
+      <div style={{background:"#1e293b",borderRadius:12,padding:20,border:"1px solid #334155",marginTop:20}}>
+        <h3 style={{margin:"0 0 16px",fontSize:16,color:"#f1f5f9",fontWeight:700}}>
+          Schnelllinks
+        </h3>
+        <div style={{marginBottom:12}}>
+          <div style={{fontSize:11,color:"#94a3b8",marginBottom:6,fontWeight:700}}>KURS-LANDINGPAGES</div>
+          <div style={{display:"flex",flexWrap:"wrap",gap:6}}>
+            {[
+              ["Modul 1 Grundkurs","/kurs/modul-1-immobilien-grundkurs"],
+              ["Modul 2 Makler","/kurs/modul-2-makler-34c"],
+              ["Modul 3 WEG","/kurs/modul-3-weg-verwalter"],
+              ["Modul 4 Gutachter","/kurs/modul-4-gutachter"],
+              ["Modul 5 S34i","/kurs/modul-5-34i-darlehensvermittler"],
+            ].map(([label,path]) => (
+              <a key={path} href={path} target="_blank" rel="noreferrer"
+                style={{background:"#0f172a",color:"#60a5fa",border:"1px solid #1e3a5f",
+                  borderRadius:8,padding:"5px 10px",fontSize:11,textDecoration:"none"}}>
+                {label}
+              </a>
+            ))}
+          </div>
+        </div>
+        <div style={{marginBottom:12}}>
+          <div style={{fontSize:11,color:"#94a3b8",marginBottom:6,fontWeight:700}}>OEFFENTLICHE SEITEN</div>
+          <div style={{display:"flex",flexWrap:"wrap",gap:6}}>
+            {[["Startseite","/"],["Kurse","/kurse"],["Pakete","/pakete"],["Glossar","/glossary"],["Foerderung","/foerderung"]].map(([label,path]) => (
+              <a key={path} href={path} target="_blank" rel="noreferrer"
+                style={{background:"#0f172a",color:"#34d399",border:"1px solid #065f46",
+                  borderRadius:8,padding:"5px 10px",fontSize:11,textDecoration:"none"}}>
+                {label}
+              </a>
+            ))}
+          </div>
+        </div>
+        <div style={{marginBottom:12}}>
+          <div style={{fontSize:11,color:"#94a3b8",marginBottom:6,fontWeight:700}}>ADMIN-BEREICHE</div>
+          <div style={{display:"flex",flexWrap:"wrap",gap:6}}>
+            {[["Admin","/admin"],["Nutzer","/admin/users"],["Fragen","/admin/fragen"],
+              ["Glossar","/admin/glossar"],["Videos","/admin/videos"],
+              ["White-Label","/admin/whitelabel"],["KI-Monitor","/admin/ki-monitor"]].map(([label,path]) => (
+              <a key={path} href={path} target="_blank" rel="noreferrer"
+                style={{background:"#0f172a",color:"#f59e0b",border:"1px solid #78350f",
+                  borderRadius:8,padding:"5px 10px",fontSize:11,textDecoration:"none"}}>
+                {label}
+              </a>
+            ))}
+          </div>
+        </div>
+        <div>
+          <div style={{fontSize:11,color:"#94a3b8",marginBottom:6,fontWeight:700}}>RECHTLICHES</div>
+          <div style={{display:"flex",flexWrap:"wrap",gap:6}}>
+            {[["Impressum","/impressum"],["Datenschutz","/datenschutz"],["AGB","/agb"],["Widerruf","/widerruf"]].map(([label,path]) => (
+              <a key={path} href={path} target="_blank" rel="noreferrer"
+                style={{background:"#0f172a",color:"#94a3b8",border:"1px solid #334155",
+                  borderRadius:8,padding:"5px 10px",fontSize:11,textDecoration:"none"}}>
+                {label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 }
