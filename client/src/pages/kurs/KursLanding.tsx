@@ -279,154 +279,167 @@ export default function KursLanding({ slug }: { slug: string }) {
   );
 
   const f = FARBEN[kurs.farbe] || FARBEN.blue;
+  const FARB_MAP: Record<string, string> = {
+    blue: "#2563eb", green: "#059669", orange: "#ea580c",
+    purple: "#7c3aed", teal: "#0d9488"
+  };
+  const hauptfarbe = FARB_MAP[kurs.farbe] || "#2563eb";
 
   return (
     <>
       <SEO title={kurs.seo_title} description={kurs.seo_desc} ogImage="https://immobilie-akademie-production.up.railway.app/icon-512.png" />
-      <div className="min-h-screen bg-white">
+      <div style={{ minHeight:"100vh", background:"#f8fafc" }}>
 
-        {/* HERO SECTION */}
-        <div className={`bg-gradient-to-br ${f.grad} text-white`}>
-          <div className="max-w-5xl mx-auto px-6 py-16">
+        {/* ── HERO ─────────────────────────────────────────── */}
+        <div style={{ background:`linear-gradient(135deg, #0c1628 0%, #0f2744 50%, #1a3a5c 100%)`, padding:"72px 20px 56px", position:"relative", overflow:"hidden" }}>
+          <div style={{ position:"absolute", top:-80, right:-80, width:300, height:300, borderRadius:"50%", background:`${hauptfarbe}12`, pointerEvents:"none" }} />
+          <div style={{ maxWidth:960, margin:"0 auto" }}>
             <Link href="/kurse">
-              <button className="text-white/60 hover:text-white text-sm mb-8 flex items-center gap-2 transition-colors">
+              <button style={{ color:"rgba(255,255,255,0.5)", background:"none", border:"none", cursor:"pointer", fontSize:13, marginBottom:24, display:"flex", alignItems:"center", gap:6 }}>
                 ← Alle Kurse
               </button>
             </Link>
-            <div className="text-6xl mb-6">{kurs.emoji}</div>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight max-w-3xl">{kurs.titel}</h1>
-            <p className="text-xl text-white/80 mb-8 font-medium">{kurs.untertitel}</p>
-            <p className="text-lg text-white/90 max-w-3xl leading-relaxed mb-12">{kurs.hero}</p>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-              {[
-                { label: "Lerntage", value: kurs.tage },
-                { label: "Unterrichtseinheiten", value: kurs.ue },
-                { label: "Prüfungsfragen", value: "200+" },
-                { label: "Zugang", value: `${zugang.monate} Monate` },
-              ].map(s => (
-                <div key={s.label} className="bg-white/10 backdrop-blur rounded-xl p-4 text-center border border-white/20">
-                  <div className="text-3xl font-bold">{s.value}</div>
-                  <div className="text-white/60 text-xs mt-1">{s.label}</div>
+            <div style={{ display:"grid", gridTemplateColumns:"1fr auto", gap:40, alignItems:"start" }}>
+              <div>
+                <div style={{ fontSize:56, marginBottom:16 }}>{kurs.emoji}</div>
+                <h1 style={{ fontFamily:"Fraunces, Georgia, serif", fontSize:"clamp(26px,4vw,44px)", fontWeight:900, color:"#f1f5f9", margin:"0 0 12px", lineHeight:1.15, letterSpacing:"-0.02em" }}>
+                  {kurs.titel}
+                </h1>
+                <p style={{ fontSize:18, color:`${hauptfarbe === "#2563eb" ? "#93c5fd" : "rgba(255,255,255,0.7)"}`, fontWeight:600, margin:"0 0 16px" }}>
+                  {kurs.untertitel}
+                </p>
+                <p style={{ fontSize:16, color:"rgba(255,255,255,0.75)", lineHeight:1.7, maxWidth:600, margin:"0 0 32px" }}>
+                  {kurs.hero}
+                </p>
+                <div style={{ display:"flex", gap:16, flexWrap:"wrap", marginBottom:32 }}>
+                  {[
+                    { label:"Lerntage", value: String(kurs.tage) },
+                    { label:"Unterrichtseinheiten", value: String(kurs.ue) },
+                    { label:"IHK-Fragen", value:"200+" },
+                    { label:"Zugang", value:`${zugang.monate} Mon.` },
+                  ].map(s => (
+                    <div key={s.label} style={{ background:"rgba(255,255,255,0.08)", border:"1px solid rgba(255,255,255,0.15)", borderRadius:12, padding:"12px 20px", textAlign:"center", minWidth:80 }}>
+                      <div style={{ fontSize:22, fontWeight:900, color:"white", fontFamily:"Fraunces, Georgia, serif" }}>{s.value}</div>
+                      <div style={{ fontSize:10, color:"rgba(255,255,255,0.5)", marginTop:3 }}>{s.label}</div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-
-              {/* §356 Abs. 5 BGB — Pflicht bei digitalen Inhalten */}
-              <div style={{
-                background: widerrufsError ? "#fef2f2" : "rgba(255,255,255,0.1)",
-                border: `1px solid ${widerrufsError ? "#fca5a5" : "rgba(255,255,255,0.2)"}`,
-                borderRadius: 10, padding: "12px 16px", marginBottom: 12
-              }}>
-                <label style={{ display:"flex", alignItems:"flex-start", gap:10, cursor:"pointer" }}>
-                  <input
-                    type="checkbox"
-                    checked={widerrufsAkzeptiert}
-                    onChange={e => { setWiderrufsAkzeptiert(e.target.checked); setWiderrufsError(false); }}
-                    style={{ marginTop:3, width:16, height:16, flexShrink:0, cursor:"pointer" }}
-                  />
-                  <span style={{ fontSize:12, color:"rgba(255,255,255,0.8)", lineHeight:1.5 }}>
-                    Ich stimme ausdrücklich zu, dass der Anbieter mit der Ausführung
-                    vor Ablauf der Widerrufsfrist beginnt und bestätige, dass ich
-                    dadurch mein Widerrufsrecht gemäß §356 Abs. 5 BGB verliere.{" "}
-                    <a href="/widerruf" target="_blank"
-                      style={{ color:"#93c5fd", textDecoration:"underline" }}>
-                      Widerrufsbelehrung
-                    </a>
-                  </span>
-                </label>
-                {widerrufsError && (
-                  <p style={{ color:"#fca5a5", fontSize:11, marginTop:4, marginLeft:26 }}>
-                    Bitte bestätigen Sie die Widerrufsbelehrung vor dem Kauf.
-                  </p>
-                )}
               </div>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                onClick={handleKaufen}
-                disabled={loading}
-                className="bg-white text-slate-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/90 transition-all shadow-xl disabled:opacity-70 disabled:cursor-not-allowed"
-              >
-                {loading ? "Weiterleitung..." : `Jetzt kaufen — ${kurs.preis} EUR`}
-              </button>
-              <button
-                onClick={() => {
-                  const el = document.getElementById("kostenlos-testen");
-                  if (el) el.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="border-2 border-white/40 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 transition-all"
-              >
-                🎁 Kostenlos 24h testen
-              </button>
+
+              {/* ── STICKY KAUF-BOX ── */}
+              <div style={{ background:"white", borderRadius:20, padding:"28px 24px", width:300, boxShadow:"0 20px 60px rgba(0,0,0,0.4)", flexShrink:0, border:`2px solid ${hauptfarbe}30` }}>
+                <div style={{ fontSize:11, fontWeight:700, color:hauptfarbe, textTransform:"uppercase", letterSpacing:"0.08em", marginBottom:8 }}>
+                  {kurs.emoji} {kurs.titel.split(":")[0]}
+                </div>
+                <div style={{ fontSize:38, fontWeight:900, color:"#0f172a", fontFamily:"Fraunces, Georgia, serif", letterSpacing:"-0.02em", margin:"4px 0 4px" }}>
+                  {kurs.preis} €
+                </div>
+                <div style={{ fontSize:11, color:"#94a3b8", marginBottom:16 }}>inkl. MwSt. · Einmalzahlung · kein Abo</div>
+
+                {/* Widerrufs-Checkbox */}
+                <div style={{ background: widerrufsError ? "#fef2f2" : "#f8fafc", border:`1px solid ${widerrufsError ? "#fca5a5" : "#e2e8f0"}`, borderRadius:8, padding:"10px 12px", marginBottom:12 }}>
+                  <label style={{ display:"flex", alignItems:"flex-start", gap:8, cursor:"pointer" }}>
+                    <input type="checkbox" checked={widerrufsAkzeptiert}
+                      onChange={e => { setWiderrufsAkzeptiert(e.target.checked); setWiderrufsError(false); }}
+                      style={{ marginTop:2, width:14, height:14, flexShrink:0, cursor:"pointer", accentColor:hauptfarbe }} />
+                    <span style={{ fontSize:10, color:"#64748b", lineHeight:1.5 }}>
+                      Ich stimme zu, dass mit der Ausführung sofort begonnen wird und bestätige den Verlust des Widerrufsrechts gemäß{" "}
+                      <a href="/widerruf" target="_blank" style={{ color:hauptfarbe }}>§356 Abs. 5 BGB</a>.
+                    </span>
+                  </label>
+                  {widerrufsError && <p style={{ color:"#dc2626", fontSize:10, marginTop:4, marginLeft:22 }}>Bitte zuerst bestätigen.</p>}
+                </div>
+
+                <button onClick={handleKaufen} disabled={loading}
+                  style={{ width:"100%", background:`linear-gradient(135deg, ${hauptfarbe}, ${hauptfarbe}cc)`, color:"white", border:"none", borderRadius:12, padding:"14px", fontSize:15, fontWeight:700, cursor:loading?"not-allowed":"pointer", boxShadow:`0 4px 16px ${hauptfarbe}50`, marginBottom:10, opacity:loading?0.7:1 }}>
+                  {loading ? "Weiterleitung..." : `Jetzt kaufen — ${kurs.preis} €`}
+                </button>
+                <button onClick={() => { const el = document.getElementById("kostenlos-testen"); if(el) el.scrollIntoView({behavior:"smooth"}); }}
+                  style={{ width:"100%", background:"transparent", color:hauptfarbe, border:`1px solid ${hauptfarbe}40`, borderRadius:12, padding:"11px", fontSize:13, fontWeight:600, cursor:"pointer" }}>
+                  🎁 24h kostenlos testen
+                </button>
+
+                <div style={{ marginTop:16, display:"flex", flexDirection:"column", gap:6 }}>
+                  {[`✓ ${zugang.monate} Monate Vollzugang`, "✓ Sofortzugang nach Kauf", "✓ Zertifikat inklusive", "✓ Sichere Zahlung via Stripe"].map(t => (
+                    <div key={t} style={{ fontSize:11, color:"#64748b", display:"flex", alignItems:"center", gap:6 }}>
+                      <span style={{ color:"#10b981" }}>✓</span> {t.replace("✓ ","")}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-            <p className="text-white/50 text-sm mt-4">
-              ✓ 14 Tage Widerrufsrecht &nbsp;·&nbsp; ✓ Sichere Zahlung via Stripe &nbsp;·&nbsp; ✓ Sofortzugang nach Kauf
-            </p>
           </div>
         </div>
 
-        {/* STORY */}
-        <div className="bg-slate-50 border-y border-slate-100">
-          <div className="max-w-5xl mx-auto px-6 py-12">
-            <p className="text-xl text-slate-600 leading-relaxed italic border-l-4 border-blue-400 pl-6">
+        {/* ── TRUST BAR ─────────────────────────────────────── */}
+        <div style={{ background:"white", borderBottom:"1px solid #e2e8f0", padding:"14px 20px" }}>
+          <div style={{ maxWidth:960, margin:"0 auto", display:"flex", gap:24, justifyContent:"center", flexWrap:"wrap" }}>
+            {["🎓 IHK-Vorbereitung","🤖 KI-Tutor inklusive","🔒 Stripe-Zahlung","📋 Zertifikat","⚡ Sofortzugang"].map(t => (
+              <span key={t} style={{ fontSize:12, color:"#64748b", fontWeight:600 }}>{t}</span>
+            ))}
+          </div>
+        </div>
+
+        {/* ── STORY ─────────────────────────────────────────── */}
+        <div style={{ background:"#eff6ff", borderBottom:"1px solid #dbeafe", padding:"40px 20px" }}>
+          <div style={{ maxWidth:760, margin:"0 auto" }}>
+            <p style={{ fontSize:18, color:"#1e40af", lineHeight:1.8, fontStyle:"italic", borderLeft:`4px solid ${hauptfarbe}`, paddingLeft:24, margin:0 }}>
               "{kurs.story}"
             </p>
           </div>
         </div>
 
-        <div className="max-w-5xl mx-auto px-6">
+        <div style={{ maxWidth:960, margin:"0 auto", padding:"0 20px" }}>
 
-          {/* ZIELGRUPPE */}
-          <div className="py-16">
-            <h2 className="text-2xl font-bold text-slate-900 mb-2">Für wen ist dieser Kurs?</h2>
-            <p className="text-slate-500 mb-8">Dieser Kurs wurde entwickelt für:</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* ── ZIELGRUPPE ────────────────────────────────────── */}
+          <div style={{ padding:"56px 0 48px" }}>
+            <h2 style={{ fontFamily:"Fraunces, Georgia, serif", fontSize:28, fontWeight:800, color:"#0f172a", margin:"0 0 6px" }}>Für wen ist dieser Kurs?</h2>
+            <p style={{ color:"#64748b", marginBottom:24, fontSize:15 }}>Dieser Kurs wurde entwickelt für:</p>
+            <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill, minmax(280px,1fr))", gap:12 }}>
               {kurs.zielgruppe.map((z, i) => (
-                <div key={i} className="flex items-start gap-3 bg-slate-50 border border-slate-100 rounded-xl p-5">
-                  <span className="text-green-500 text-xl font-bold mt-0.5">✓</span>
-                  <span className="text-slate-700 font-medium">{z}</span>
+                <div key={i} style={{ display:"flex", alignItems:"flex-start", gap:12, background:"white", border:"1px solid #e2e8f0", borderRadius:12, padding:"16px 18px", boxShadow:"0 1px 4px rgba(0,0,0,0.04)" }}>
+                  <span style={{ color:"#10b981", fontSize:18, flexShrink:0 }}>✓</span>
+                  <span style={{ color:"#374151", fontSize:14, fontWeight:500, lineHeight:1.5 }}>{z}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* LERNINHALTE */}
-          <div className="py-16 border-t border-slate-100">
-            <h2 className="text-2xl font-bold text-slate-900 mb-2">Was Sie lernen</h2>
-            <p className="text-slate-500 mb-8">
-              {kurs.tage} Lerntage · {kurs.ue} Unterrichtseinheiten à 45 Min · Strukturierter Lernpfad
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* ── LERNINHALTE ───────────────────────────────────── */}
+          <div style={{ padding:"48px 0", borderTop:"1px solid #f1f5f9" }}>
+            <h2 style={{ fontFamily:"Fraunces, Georgia, serif", fontSize:28, fontWeight:800, color:"#0f172a", margin:"0 0 6px" }}>Was Sie lernen</h2>
+            <p style={{ color:"#64748b", marginBottom:24, fontSize:15 }}>{kurs.tage} Lerntage · {kurs.ue} Unterrichtseinheiten à 45 Min</p>
+            <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill, minmax(280px,1fr))", gap:10 }}>
               {kurs.inhalte.map((item, i) => (
-                <div key={i} className="flex items-start gap-3 bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
-                  <span className="text-blue-500 font-bold text-lg mt-0.5">→</span>
-                  <span className="text-slate-700">{item}</span>
+                <div key={i} style={{ display:"flex", alignItems:"flex-start", gap:10, background:"white", border:"1px solid #e2e8f0", borderRadius:10, padding:"14px 16px" }}>
+                  <span style={{ color:hauptfarbe, fontWeight:700, fontSize:16, flexShrink:0 }}>→</span>
+                  <span style={{ color:"#374151", fontSize:13, lineHeight:1.5 }}>{item}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* VORTEILE */}
-          <div className="py-16 border-t border-slate-100">
-            <h2 className="text-2xl font-bold text-slate-900 mb-8">Ihre Vorteile</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* ── VORTEILE ──────────────────────────────────────── */}
+          <div style={{ padding:"48px 0", borderTop:"1px solid #f1f5f9" }}>
+            <h2 style={{ fontFamily:"Fraunces, Georgia, serif", fontSize:28, fontWeight:800, color:"#0f172a", margin:"0 0 24px" }}>Ihre Vorteile</h2>
+            <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill, minmax(220px,1fr))", gap:14 }}>
               {kurs.vorteile.map((v, i) => (
-                <div key={i} className="bg-slate-50 border border-slate-100 rounded-xl p-6">
-                  <div className="text-2xl mb-3">⭐</div>
-                  <p className="text-slate-700 text-sm leading-relaxed">{v}</p>
+                <div key={i} style={{ background:"white", border:`1px solid ${hauptfarbe}20`, borderRadius:14, padding:"20px 18px", boxShadow:"0 2px 8px rgba(0,0,0,0.04)" }}>
+                  <div style={{ fontSize:24, marginBottom:10 }}>⭐</div>
+                  <p style={{ color:"#374151", fontSize:13, lineHeight:1.6, margin:0 }}>{v}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* FAQ */}
-          <div className="py-16 border-t border-slate-100">
-            <h2 className="text-2xl font-bold text-slate-900 mb-8">Häufige Fragen</h2>
-            <div className="space-y-4">
+          {/* ── FAQ ───────────────────────────────────────────── */}
+          <div style={{ padding:"48px 0", borderTop:"1px solid #f1f5f9" }}>
+            <h2 style={{ fontFamily:"Fraunces, Georgia, serif", fontSize:28, fontWeight:800, color:"#0f172a", margin:"0 0 24px" }}>Häufige Fragen</h2>
+            <div style={{ display:"flex", flexDirection:"column", gap:12 }}>
               {kurs.faq.map((item, i) => (
-                <div key={i} className="border border-slate-200 rounded-xl p-6 hover:border-blue-200 transition-colors">
-                  <h3 className="font-bold text-slate-900 mb-2 text-lg">{item.f}</h3>
-                  <p className="text-slate-600 leading-relaxed">{item.a}</p>
+                <div key={i} style={{ background:"white", border:"1px solid #e2e8f0", borderRadius:14, padding:"20px 22px" }}>
+                  <h3 style={{ fontWeight:700, color:"#0f172a", margin:"0 0 8px", fontSize:16 }}>{item.f}</h3>
+                  <p style={{ color:"#64748b", lineHeight:1.6, margin:0, fontSize:14 }}>{item.a}</p>
                 </div>
               ))}
             </div>
@@ -434,113 +447,82 @@ export default function KursLanding({ slug }: { slug: string }) {
 
         </div>
 
-        {/* TRIAL FORMULAR */}
-        <div id="kostenlos-testen" className="py-16 bg-slate-50 scroll-mt-8">
-          <div className="max-w-2xl mx-auto px-6">
-            <div className="text-center mb-8">
-              <div className="inline-block bg-amber-100 text-amber-800 text-sm font-semibold px-4 py-2 rounded-full mb-4">
-                🎁 Kostenlos testen
-              </div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">
-                Erst testen, dann entscheiden
-              </h2>
-              <p className="text-slate-500 text-lg">
-                24 Stunden vollständiger Zugang zu allen Modulen — kein Risiko, keine Kreditkarte.
-              </p>
+        {/* ── TRIAL FORMULAR ────────────────────────────────── */}
+        <div id="kostenlos-testen" style={{ padding:"56px 20px", background:"linear-gradient(135deg, #0c1628, #0f2744)", scrollMarginTop:32 }}>
+          <div style={{ maxWidth:580, margin:"0 auto", textAlign:"center" }}>
+            <div style={{ display:"inline-block", background:"rgba(245,158,11,0.2)", color:"#fbbf24", borderRadius:20, padding:"6px 16px", fontSize:12, fontWeight:700, marginBottom:16 }}>
+              🎁 KOSTENLOS TESTEN
             </div>
+            <h2 style={{ fontFamily:"Fraunces, Georgia, serif", fontSize:30, fontWeight:800, color:"#f1f5f9", margin:"0 0 12px" }}>
+              Erst testen, dann entscheiden
+            </h2>
+            <p style={{ color:"#94a3b8", fontSize:16, margin:"0 0 28px", lineHeight:1.6 }}>
+              24 Stunden vollständiger Zugang — kein Risiko, keine Kreditkarte.
+            </p>
             <TrialForm moduleSlug={slug} />
-            <p className="text-center text-slate-600 text-xs mt-4">
+            <p style={{ color:"#64748b", fontSize:12, marginTop:12 }}>
               Bereits überzeugt?{" "}
-              <button onClick={handleKaufen} className="underline hover:text-slate-600">
-                Direkt kaufen für {kurs.preis} EUR →
+              <button onClick={handleKaufen} style={{ background:"none", border:"none", color:"#93c5fd", cursor:"pointer", textDecoration:"underline", fontSize:12 }}>
+                Direkt kaufen für {kurs.preis} € →
               </button>
             </p>
           </div>
         </div>
 
-        {/* FINALER CTA */}
-        <div className={`bg-gradient-to-br ${f.grad} text-white`}>
-          <div className="max-w-5xl mx-auto px-6 py-16 text-center">
-            <div className="text-5xl mb-6">{kurs.emoji}</div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Bereit für den nächsten Schritt?</h2>
-            <p className="text-white/70 mb-2 text-lg">Einmalige Investition — {zugang.monate} Monate Vollzugang Nutzen</p>
-            <div className="text-7xl font-bold my-6">{kurs.preis} EUR</div>
-            <p className="text-white/50 mb-6">
-              Einmalige Zahlung · {zugang.monate} Monate Vollzugang · {zugang.versuche}× Prüfungsversuch inklusive
-            </p>
-            <div className="flex flex-wrap justify-center gap-3 mb-8">
-              {[
-                `✓ ${zugang.monate} Monate Zugang`,
-                `✓ ${zugang.verlaengerung} Monate verlängerbar`,
-                `✓ ${zugang.versuche} Prüfungsversuche`,
-                "✓ Zertifikat inklusive",
-                "✓ Sofortzugang nach Kauf",
-              ].map(t => (
-                <span key={t} className="bg-white/10 text-white/80 px-4 py-2 rounded-full text-sm">{t}</span>
+        {/* ── FINALER CTA ───────────────────────────────────── */}
+        <div style={{ background:`linear-gradient(135deg, #0c1628, #0f2744)`, padding:"64px 20px", textAlign:"center", borderTop:"1px solid #1e3a5f" }}>
+          <div style={{ maxWidth:680, margin:"0 auto" }}>
+            <div style={{ fontSize:52, marginBottom:16 }}>{kurs.emoji}</div>
+            <h2 style={{ fontFamily:"Fraunces, Georgia, serif", fontSize:36, fontWeight:900, color:"#f1f5f9", margin:"0 0 12px" }}>
+              Bereit für den nächsten Schritt?
+            </h2>
+            <p style={{ color:"#94a3b8", fontSize:16, margin:"0 0 8px" }}>Einmalige Investition — {zugang.monate} Monate Vollzugang</p>
+            <div style={{ fontSize:60, fontWeight:900, color:"white", fontFamily:"Fraunces, Georgia, serif", margin:"16px 0" }}>{kurs.preis} €</div>
+            <div style={{ display:"flex", gap:10, justifyContent:"center", flexWrap:"wrap", marginBottom:24 }}>
+              {[`${zugang.monate} Monate Zugang`,`${zugang.verlaengerung} Mon. verlängerbar`,`${zugang.versuche}× Prüfungsversuch`,"Zertifikat inklusive","Sofortzugang"].map(t => (
+                <span key={t} style={{ background:"rgba(255,255,255,0.08)", color:"rgba(255,255,255,0.7)", padding:"6px 14px", borderRadius:20, fontSize:12 }}>✓ {t}</span>
               ))}
             </div>
-              {/* §356 Abs. 5 BGB — Pflicht bei digitalen Inhalten */}
-              <div style={{
-                background: widerrufsError ? "#fef2f2" : "rgba(255,255,255,0.1)",
-                border: `1px solid ${widerrufsError ? "#fca5a5" : "rgba(255,255,255,0.2)"}`,
-                borderRadius: 10, padding: "12px 16px", marginBottom: 12
-              }}>
-                <label style={{ display:"flex", alignItems:"flex-start", gap:10, cursor:"pointer" }}>
-                  <input
-                    type="checkbox"
-                    checked={widerrufsAkzeptiert}
-                    onChange={e => { setWiderrufsAkzeptiert(e.target.checked); setWiderrufsError(false); }}
-                    style={{ marginTop:3, width:16, height:16, flexShrink:0, cursor:"pointer" }}
-                  />
-                  <span style={{ fontSize:12, color:"rgba(255,255,255,0.8)", lineHeight:1.5 }}>
-                    Ich stimme ausdrücklich zu, dass der Anbieter mit der Ausführung
-                    vor Ablauf der Widerrufsfrist beginnt und bestätige, dass ich
-                    dadurch mein Widerrufsrecht gemäß §356 Abs. 5 BGB verliere.{" "}
-                    <a href="/widerruf" target="_blank"
-                      style={{ color:"#93c5fd", textDecoration:"underline" }}>
-                      Widerrufsbelehrung
-                    </a>
-                  </span>
-                </label>
-                {widerrufsError && (
-                  <p style={{ color:"#fca5a5", fontSize:11, marginTop:4, marginLeft:26 }}>
-                    Bitte bestätigen Sie die Widerrufsbelehrung vor dem Kauf.
-                  </p>
-                )}
-              </div>
-              <button
-                onClick={handleKaufen}
-                disabled={loading}
-                className="bg-white text-slate-900 px-12 py-5 rounded-xl font-bold text-xl hover:bg-white/90 transition-all shadow-2xl disabled:opacity-70"
-              >
-                {loading ? "Weiterleitung zu Stripe..." : `Jetzt kaufen — ${kurs.preis} EUR`}
-              </button>
-              <p className="mt-4 text-white/60 text-sm">
-                Oder{" "}
-                <a href="#kostenlos-testen" className="underline hover:text-white">
-                  24h kostenlos testen
-                </a>
-              </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-6 text-white/60 text-sm">
-              <span>✓ 14 Tage Widerrufsrecht</span>
-              <span>✓ Sichere Zahlung via Stripe</span>
-              <span>✓ Sofortzugang nach Kauf</span>
-              <span>✓ Auf allen Geräten nutzbar</span>
-              <span>✓ Verlängerung auf Anfrage möglich</span>
+            <div style={{ background:"rgba(255,255,255,0.05)", border:"1px solid rgba(255,255,255,0.1)", borderRadius:10, padding:"12px 16px", marginBottom:16, maxWidth:480, margin:"0 auto 16px" }}>
+              <label style={{ display:"flex", alignItems:"flex-start", gap:10, cursor:"pointer" }}>
+                <input type="checkbox" checked={widerrufsAkzeptiert}
+                  onChange={e => { setWiderrufsAkzeptiert(e.target.checked); setWiderrufsError(false); }}
+                  style={{ marginTop:2, width:14, height:14, flexShrink:0, accentColor:hauptfarbe }} />
+                <span style={{ fontSize:11, color:"rgba(255,255,255,0.6)", lineHeight:1.5 }}>
+                  Ich stimme der sofortigen Ausführung zu und bestätige den Verlust des Widerrufsrechts gemäß{" "}
+                  <a href="/widerruf" target="_blank" style={{ color:"#93c5fd" }}>§356 Abs. 5 BGB</a>.
+                </span>
+              </label>
+              {widerrufsError && <p style={{ color:"#fca5a5", fontSize:10, marginTop:4, marginLeft:24 }}>Bitte zuerst bestätigen.</p>}
+            </div>
+            <button onClick={handleKaufen} disabled={loading}
+              style={{ background:"white", color:"#0f172a", border:"none", borderRadius:14, padding:"16px 48px", fontSize:17, fontWeight:800, cursor:loading?"not-allowed":"pointer", boxShadow:"0 8px 32px rgba(0,0,0,0.3)", fontFamily:"Fraunces, Georgia, serif", opacity:loading?0.7:1 }}>
+              {loading ? "Weiterleitung zu Stripe..." : `Jetzt kaufen — ${kurs.preis} €`}
+            </button>
+            <p style={{ marginTop:12, color:"rgba(255,255,255,0.4)", fontSize:12 }}>
+              Oder{" "}
+              <a href="#kostenlos-testen" style={{ color:"#93c5fd", textDecoration:"underline" }}>24h kostenlos testen</a>
+            </p>
+            <div style={{ marginTop:24, display:"flex", gap:20, justifyContent:"center", flexWrap:"wrap" }}>
+              {["14 Tage Widerrufsrecht","Sichere Zahlung via Stripe","Sofortzugang","Auf allen Geräten"].map(t => (
+                <span key={t} style={{ fontSize:11, color:"rgba(255,255,255,0.4)" }}>✓ {t}</span>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* NAVIGATION ZU ANDEREN KURSEN */}
-        <div className="max-w-5xl mx-auto px-6 py-16">
-          <h2 className="text-xl font-bold text-slate-900 mb-6">Weitere Kurse</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* ── WEITERE KURSE ─────────────────────────────────── */}
+        <div style={{ maxWidth:960, margin:"0 auto", padding:"48px 20px" }}>
+          <h2 style={{ fontFamily:"Fraunces, Georgia, serif", fontSize:22, fontWeight:700, color:"#0f172a", margin:"0 0 20px" }}>Weitere Kurse</h2>
+          <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill, minmax(200px,1fr))", gap:12 }}>
             {Object.entries(KURSE).filter(([s]) => s !== slug).map(([s, k]) => (
               <Link key={s} href={`/kurs/${s}`}>
-                <div className="border border-slate-100 rounded-xl p-4 hover:border-blue-200 hover:shadow-md transition-all cursor-pointer">
-                  <div className="text-2xl mb-2">{k.emoji}</div>
-                  <h3 className="font-bold text-slate-900 text-sm mb-1">{k.titel}</h3>
-                  <p className="text-slate-500 text-xs">{k.tage} Tage · {k.ue} UE · {k.preis} EUR</p>
+                <div style={{ background:"white", border:"1px solid #e2e8f0", borderRadius:14, padding:"16px", cursor:"pointer", transition:"all 0.2s" }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor=hauptfarbe; e.currentTarget.style.boxShadow=`0 4px 16px ${hauptfarbe}20`; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor="#e2e8f0"; e.currentTarget.style.boxShadow="none"; }}>
+                  <div style={{ fontSize:24, marginBottom:8 }}>{k.emoji}</div>
+                  <h3 style={{ fontWeight:700, color:"#0f172a", fontSize:13, margin:"0 0 6px", lineHeight:1.3 }}>{k.titel}</h3>
+                  <p style={{ color:"#94a3b8", fontSize:11, margin:0 }}>{k.tage} Tage · {k.ue} UE · {k.preis} €</p>
                 </div>
               </Link>
             ))}
