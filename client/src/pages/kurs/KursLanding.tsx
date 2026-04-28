@@ -1,4 +1,5 @@
 import { TrialForm } from "@/components/TrialForm";
+import { AudioPreview } from "@/components/AudioPreview";
 import { Link, useLocation } from "wouter";
 import { SEO } from "@/components/SEO";
 import { useState } from "react";
@@ -378,6 +379,14 @@ export default function KursLanding({ slug }: { slug: string }) {
               <span key={t} style={{ fontSize:12, color:"#64748b", fontWeight:600 }}>{t}</span>
             ))}
           </div>
+        </div>
+
+        {/* ── AUDIO VORSCHAU ───────────────────────────────── */}
+        <div style={{ maxWidth:960, margin:"0 auto", padding:"32px 20px 0" }}>
+          <AudioPreview
+            moduleId={parseInt(kurs.id.replace("modul_",""))||1}
+            hauptfarbe={hauptfarbe}
+          />
         </div>
 
         {/* ── STORY ─────────────────────────────────────────── */}
