@@ -18,7 +18,7 @@ export default function Impressum() {
         <h2 className="text-lg font-semibold mb-2">Kontakt</h2>
         <p className="text-slate-700">
           E-Mail: info@immobilien-akademie-smart.de<br />
-          Telefon: wird nach Gewerbe-Anmeldung ergänzt
+          Telefon: Auf Anfrage per E-Mail erhältlich
         </p>
       </section>
 
@@ -26,7 +26,7 @@ export default function Impressum() {
         <h2 className="text-lg font-semibold mb-2">Umsatzsteuer</h2>
         <p className="text-slate-700">
           Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:<br />
-          wird nach Finanzamt-Zuteilung ergänzt
+          Kleinunternehmer gemäß § 19 UStG — derzeit keine USt-ID erforderlich
         </p>
       </section>
 

@@ -6,12 +6,12 @@ export function CookieBanner() {
   const logConsent = trpc.azav.logConsent?.useMutation?.() ?? null;
 
   useEffect(() => {
-    const consent = localStorage.getItem("cookie_consent");
+    const consent = localStorage.getItem("cookie-consent");
     if (!consent) setVisible(true);
   }, []);
 
   const saveConsent = async (type: "accepted" | "declined") => {
-    localStorage.setItem("cookie_consent", type);
+    localStorage.setItem("cookie-consent", type);
     setVisible(false);
     // Server-seitiges Logging für DSGVO-Nachweis
     try {
