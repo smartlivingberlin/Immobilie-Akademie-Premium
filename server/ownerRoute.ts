@@ -442,4 +442,19 @@ export function registerOwnerRoutes(app: Express) {
     } catch (e: any) { res.status(500).json({ error: e.message }); }
   });
 
+  // ── MONITORING HISTORY ───────────────────────────────────────
+  app.get("/api/owner/monitoring", async (req: Request, res: Response) => {
+    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
+    const key = req.headers["x-owner-key"] || req.query.key;
+    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    try {
+      const { getDb } = await import("./db");
+      const db = await getDb();
+      const [logs] = await db.$client.promise().query(
+        `SELECT * FROM monitoring_log ORDER BY createdAt DESC LIMIT 30`
+      ) as any;
+      res.json({ logs: logs as any[] });
+    } catch (e: any) { res.status(500).json({ error: e.message }); }
+  });
+
 }

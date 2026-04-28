@@ -384,11 +384,100 @@ export function startNightCron() {
   }
 }
 
+
+// ── MONITORING SNAPSHOT ──────────────────────────────────────
+export async function runMonitoringSnapshot(): Promise<void> {
+  try {
+    const { getDb } = await import("../db");
+    const db = await getDb();
+
+    // Statistiken sammeln
+    const [[users]] = await db.$client.promise().query(
+      `SELECT COUNT(*) as total,
+        SUM(CASE WHEN DATE(createdAt) = CURDATE() THEN 1 ELSE 0 END) as newToday,
+        SUM(CASE WHEN DATE(lastSignedIn) = CURDATE() THEN 1 ELSE 0 END) as activeToday
+       FROM users`
+    ) as any;
+
+    const [[sessions]] = await db.$client.promise().query(
+      `SELECT COUNT(*) as total FROM learning_logs WHERE DATE(openedAt) = CURDATE()`
+    ) as any;
+
+    const totalUsers = Number(users?.total || 0);
+    const newToday = Number(users?.newToday || 0);
+    const activeToday = Number(users?.activeToday || 0);
+    const totalSessions = Number(sessions?.total || 0);
+
+    // Snapshot speichern
+    await db.$client.promise().query(
+      `INSERT INTO monitoring_log
+        (totalUsers, activeToday, newToday, totalSessions, systemOk, notes)
+       VALUES (?, ?, ?, ?, 1, ?)`,
+      [totalUsers, activeToday, newToday, totalSessions,
+       `Nacht-Cron ${new Date().toISOString()}`]
+    );
+
+    log(`📊 Monitoring Snapshot: ${totalUsers} Nutzer | ${activeToday} aktiv | ${newToday} neu | ${totalSessions} Sitzungen`);
+
+    // E-Mail senden wenn RESEND_API_KEY gesetzt
+    const resendKey = process.env.RESEND_API_KEY;
+    const ownerEmail = process.env.OWNER_EMAIL || "alisadgadyri38@gmail.com";
+    if (resendKey) {
+      try {
+        await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: { "Authorization": `Bearer ${resendKey}`, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            from: "monitoring@immobilien-akademie-smart.de",
+            to: ownerEmail,
+            subject: `📊 Tagesbericht ${new Date().toLocaleDateString("de-DE")} — Immobilien Akademie`,
+            html: `
+              <h2>📊 Tagesbericht — Immobilien Akademie Smart</h2>
+              <p><strong>Datum:</strong> ${new Date().toLocaleString("de-DE")}</p>
+              <hr/>
+              <h3>Nutzer</h3>
+              <ul>
+                <li>Gesamt: <strong>${totalUsers}</strong></li>
+                <li>Heute aktiv: <strong>${activeToday}</strong></li>
+                <li>Heute neu: <strong>${newToday}</strong></li>
+              </ul>
+              <h3>Lernaktivität</h3>
+              <ul>
+                <li>Sitzungen heute: <strong>${totalSessions}</strong></li>
+              </ul>
+              <h3>System</h3>
+              <ul>
+                <li>Status: <strong style="color:green">✅ Online</strong></li>
+                <li>Server: immobilie-akademie-premium-production.up.railway.app</li>
+              </ul>
+              <hr/>
+              <p style="color:#94a3b8;font-size:12px">
+                Automatisch generiert von Immobilien Akademie Smart Monitoring System
+              </p>
+            `
+          })
+        });
+        await db.$client.promise().query(
+          `UPDATE monitoring_log SET emailSent = 1 WHERE id = LAST_INSERT_ID()`
+        );
+        log(`📧 Monitoring E-Mail gesendet an ${ownerEmail}`);
+      } catch (mailErr: any) {
+        log(`⚠️ E-Mail Fehler: ${mailErr.message}`);
+      }
+    } else {
+      log(`ℹ️ RESEND_API_KEY nicht gesetzt — E-Mail übersprungen`);
+    }
+  } catch (e: any) {
+    log(`❌ Monitoring Fehler: ${e.message}`);
+  }
+}
+
 export async function runAllCronJobs(): Promise<{
   audit: Awaited<ReturnType<typeof runNightAudit>>;
   coaching: Awaited<ReturnType<typeof runUserCoaching>>;
 }> {
   log("🌙 === NACHT-CRON START ===");
+  await runMonitoringSnapshot();
   const auditResult = await runNightAudit();
   const coachingResult = await runUserCoaching();
   log(`🌙 === NACHT-CRON FERTIG ===`);
