@@ -65,7 +65,7 @@ export const openQuestionsRouter = router({
       return db.select().from(openQuestions)
         .where(and(
           eq(openQuestions.modulId, input.modulId),
-          eq(openQuestions.aktiv, true)
+          eq(openQuestions.aktiv, 1 as any)
         ));
     }),
 
