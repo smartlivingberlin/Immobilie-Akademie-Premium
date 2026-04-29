@@ -133,6 +133,35 @@ async function askClaude(systemPrompt: string, question: string, context: any[],
   return data.content?.[0]?.text || "";
 }
 
+async function askGroq(systemPrompt: string, question: string, context: any[], maxTokens: number = 2000): Promise<string> {
+  const groqKey = process.env.GROQ_API_KEY;
+  if (!groqKey) throw new Error("GROQ_API_KEY fehlt");
+  const messages = [
+    { role: "system", content: systemPrompt },
+    ...context.map((m: any) => ({ role: m.role === "assistant" ? "assistant" : "user", content: m.content })),
+    { role: "user", content: question }
+  ];
+  const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${groqKey}`
+    },
+    body: JSON.stringify({
+      model: "llama-3.3-70b-versatile",
+      messages,
+      max_tokens: maxTokens,
+      temperature: 0.7
+    })
+  });
+  if (!response.ok) {
+    const err = await response.text();
+    throw new Error(`Groq Error: ${err}`);
+  }
+  const data = await response.json() as any;
+  return data.choices?.[0]?.message?.content || "";
+}
+
 async function askGemini(systemPrompt: string, question: string, context: any[], maxTokens: number = 2000): Promise<string> {
   const response = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
@@ -248,10 +277,19 @@ VERFÜGBARE DIREKT-LINKS (nur passende verwenden):
         }
       }
 
-      // Fallback: Claude Haiku (nur wenn Gemini versagt)
+      // Fallback 1: Groq Llama 3.3 70B (KOSTENLOS)
+      if (!answer && process.env.GROQ_API_KEY) {
+        try {
+          answer = await askGroq(systemPrompt, question, context || [], 4000);
+          usedModel = "groq-llama-3.3";
+        } catch (err) {
+          console.error("[RAG-Tutor] Groq Fehler, versuche Claude:", err);
+        }
+      }
+      // Fallback 2: Claude Haiku (nur wenn alles andere versagt)
       if (!answer && process.env.ANTHROPIC_API_KEY) {
         try {
-          answer = await askClaude(systemPrompt, question, context || [], 4000); // Vollständige Antworten mit Quellen
+          answer = await askClaude(systemPrompt, question, context || [], 4000);
           usedModel = "claude-haiku";
         } catch (err) {
           console.error("[RAG-Tutor] Claude Fehler:", err);
