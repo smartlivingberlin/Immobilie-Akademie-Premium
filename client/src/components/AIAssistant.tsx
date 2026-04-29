@@ -46,6 +46,7 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
   const [showScrollBtn, setShowScrollBtn] = useState(false);
   const [listening, setListening] = useState(false);
   const [speaking, setSpeaking] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const recognitionRef = useRef<any>(null);
@@ -118,6 +119,8 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
   };
   const speak = async (text: string) => {
     if (speaking) {
+      audioRef.current?.pause();
+      audioRef.current = null;
       setSpeaking(false);
       return;
     }
@@ -144,6 +147,7 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
         const blob = await res.blob();
         const url = URL.createObjectURL(blob);
         const audio = new Audio(url);
+        audioRef.current = audio;
         audio.onended = () => { setSpeaking(false); URL.revokeObjectURL(url); };
         audio.onerror = () => setSpeaking(false);
         await audio.play();
@@ -350,7 +354,7 @@ ${data.analysis}`,
                   onMouseEnter={e=>{(e.currentTarget as HTMLElement).style.background="#dbeafe";(e.currentTarget as HTMLElement).style.color="#2563eb"}}
                   onMouseLeave={e=>{(e.currentTarget as HTMLElement).style.background="#f1f5f9";(e.currentTarget as HTMLElement).style.color="#475569"}}
                   >
-                    <Volume2 size={16}/><span>🔊 Vorlesen</span>
+                    <Volume2 size={16}/><span>{speaking ? '⏹ Stop' : '🔊 Vorlesen'}</span>
                   </button>
                   </>
                 ) : (
