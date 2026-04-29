@@ -68,7 +68,7 @@ export default function AdminDashboard() {
       { name: "Fragen-Manager", desc: `${questions?.total ?? 855} IHK-Fragen`, href: "/admin/fragen", icon: FileQuestion, color: "#0891b2" },
       { name: "Kursbuch-Generator", desc: "Lernmaterial als PDF", href: "/admin/kursbuch", icon: BookOpen, color: "#7c3aed" },
       { name: "Dozenten-Cockpit", desc: "Lehrplan + Lösungen", href: "/admin/dozenten", icon: Brain, color: "#d97706" },
-      { name: "Mediaskript-Generator", desc: "KI-Skripte erstellen", href: "/admin/mediaskript", icon: MessageSquare, color: "#059669" },
+      // Mediaskript-Generator entfernt — ersetzt durch Content-Generator
       { name: "Glossar-Manager", desc: "93 Fachbegriffe verwalten", href: "/admin/glossar", icon: BookOpen, color: "#0f766e" },
     ]},
     { group: "🤖 KI & Agent", items: [
@@ -353,7 +353,6 @@ export default function AdminDashboard() {
             { name: "Fragen-Manager", desc: `${questions?.total ?? 855} IHK-Prüfungsfragen verwalten.`, href: "/admin/fragen", icon: FileQuestion, color: "#0891b2", stats: "855 Fragen" },
             { name: "Kursbuch-Generator", desc: "Lernmaterial als druckbares PDF exportieren.", href: "/admin/kursbuch", icon: BookOpen, color: "#7c3aed", stats: "5 Module" },
             { name: "Dozenten-Cockpit", desc: "Lehrplan einsehen, Lösungen verwalten.", href: "/admin/dozenten", icon: Brain, color: "#d97706", stats: "240 Tage" },
-            { name: "Mediaskript-Generator", desc: "KI-gestützte Video-Skripte erstellen.", href: "/admin/mediaskript", icon: MessageSquare, color: "#059669", stats: "KI-generiert" },
             { name: "Lösungsübersicht", desc: "Alle Musterantworten und Lösungen.", href: "/admin/loesungen", icon: CheckCircle, color: "#2563eb", stats: "Prüfungen" },
           ].map(item => (
             <Link key={item.name} href={item.href}>

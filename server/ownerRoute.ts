@@ -459,10 +459,14 @@ export function registerOwnerRoutes(app: Express) {
 
 }
 // ── Portal Settings: Lesen ─────────────────────────────────────
-ownerRouter.get("/api/owner/settings", async (req: any, res: any) => {
+app.get("/api/owner/settings", async (req: any, res: any) => {
   try {
     const db = getDb();
-    const [rows] = await db.execute("SELECT setting_key, setting_value, setting_type, description FROM portal_settings ORDER BY setting_key") as any;
+    let rows: any[] = [];
+    try {
+      const [r] = await db.execute("SELECT setting_key, setting_value, setting_type, description FROM portal_settings ORDER BY setting_key") as any;
+      rows = r;
+    } catch { return res.json({ ok: true, settings: {} }); }
     const settings: Record<string, string> = {};
     for (const row of (rows as any[])) {
       settings[row.setting_key] = row.setting_value;
@@ -474,7 +478,7 @@ ownerRouter.get("/api/owner/settings", async (req: any, res: any) => {
 });
 
 // ── Portal Settings: Schreiben ────────────────────────────────
-ownerRouter.post("/api/owner/settings", async (req: any, res: any) => {
+app.post("/api/owner/settings", async (req: any, res: any) => {
   try {
     const { key, value } = req.body;
     if (!key || value === undefined) return res.status(400).json({ error: "key und value erforderlich" });

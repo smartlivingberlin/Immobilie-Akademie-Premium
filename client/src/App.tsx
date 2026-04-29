@@ -85,7 +85,6 @@ const GlossarAdmin = lazy(() => import("@/pages/admin/GlossarAdmin"));
 const AdminCodes = lazy(() => import("@/pages/admin/AdminCodes"));
 const KursbuchGenerator = lazy(() => import("@/pages/admin/KursbuchGenerator"));
 const DozentenCockpit = lazy(() => import("@/pages/admin/DozentenCockpit"));
-const MediaSkriptGenerator = lazy(() => import("@/pages/admin/MediaSkriptGenerator"));
 const DozentenLoesungen = lazy(() => import("@/pages/admin/DozentenLoesungen"));
 const FragenManager = lazy(() => import("@/pages/admin/FragenManager"));
 const ContentUpload = lazy(() => import("@/pages/admin/ContentUpload"));
@@ -202,7 +201,6 @@ function Router() {
         <Route path="/admin/upload"><AppLayout><AdminRoute component={ContentUpload} /></AppLayout></Route>
         <Route path="/admin/kursbuch"><AppLayout><AdminRoute component={KursbuchGenerator} /></AppLayout></Route>
         <Route path="/admin/dozenten"><AppLayout><AdminRoute component={DozentenCockpit} /></AppLayout></Route>
-        <Route path="/admin/mediaskript"><AppLayout><AdminRoute component={MediaSkriptGenerator} /></AppLayout></Route>
         <Route path="/admin/loesungen"><AppLayout><AdminRoute component={DozentenLoesungen} /></AppLayout></Route>
         <Route path="/admin/fragen"><AppLayout><AdminRoute component={FragenManager} /></AppLayout></Route>
         <Route path="/admin/videos"><AppLayout><AdminRoute component={VideoManagement} /></AppLayout></Route>

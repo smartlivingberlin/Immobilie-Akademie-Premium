@@ -293,11 +293,6 @@ const navigation = [
                         <BookOpen className="h-4 w-4 mr-2" /> Lösungsübersicht
                       </div>
                     </Link>
-                    <Link href="/admin/mediaskript">
-                      <div className={`flex items-center w-full justify-start text-slate-300 hover:text-white hover:bg-slate-800 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${location === '/admin/mediaskript' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
-                        <Film className="h-4 w-4 mr-2" /> Mediaskript-Generator
-                      </div>
-                    </Link>
                     <Link href="/admin/dozenten">
                       <div className={`flex items-center w-full justify-start text-slate-300 hover:text-white hover:bg-slate-800 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${location === '/admin/dozenten' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
                         <GraduationCap className="h-4 w-4 mr-2" /> Dozenten-Cockpit
