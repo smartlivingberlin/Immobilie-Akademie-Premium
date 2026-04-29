@@ -1,143 +1,272 @@
 # MODUL 2: Immobilienmakler §34c GewO
+# Vollständige Wissensbasis für KI-Tutor
+# Stand: April 2026 | 60 Lerntage | 480 UE
 
-LERNTAGE & THEMEN:
-• Berufsbild & §34c GewO
-• Gewerberecht & MaBV
-• Maklervertrag: BGB Grundlagen
-• Widerrufsrecht Deep Dive
-• Geldwäschegesetz (GwG) Deep Dive
-• Datenschutz (DSGVO) für Makler
-• Wettbewerbsrecht (UWG) Basics
-• Verbraucherschutz Spezial
-• Das Maklerbüro: Organisation
-• Netzwerke & Gemeinschaftsgeschäfte
-• Standortanalyse Deep Dive
-• Marktforschung & Datenquellen
-• Immobilienarten & Nutzungsarten
-• Baurecht Basics (BauGB, BauNVO)
-• Grundbuch lesen (Abt I & II)
-• Grundbuch Abt III & Finanzierungslasten
-• Bauunterlagen & Flurkarte
-• Energieausweis (GEG)
-• Wohnflächenberechnung (WoFlV vs DIN 277)
-• Objektunterlagen-Management
-• Einführung Wertermittlung (ImmoWertV)
-• Vergleichswertverfahren (§ 15 ImmoWertV)
-• Sachwertverfahren (§ 21 ImmoWertV)
-• Ertragswertverfahren (§ 27 ImmoWertV)
-• Bauschäden & Mängel erkennen
-• Einkaufsstrategien: Farming
-• Einkaufsgespräch & Einwandbehandlung
-• Der Makleralleinauftrag
-• Exposé-Erstellung: Text & Bild
-• Vermarktungskanäle
+---
 
-KERNINHALTE:
-- Der Immobilienmakler ist ein Vermittler zwischen Angebot und Nachfrage. Die Tätigkeit ist erlaubnispflichtig nach § 34c GewO.
-- Nach Erhalt der Erlaubnis gelten Pflichten aus der Makler- und Bauträgerverordnung (MaBV).
-- Der Maklervertrag ist die Basis für die Provision. Er ist im BGB geregelt.
-- Das Widerrufsrecht ist der größte Provisionskiller. Makler müssen es beherrschen.
-- Makler sind die 'Gatekeeper' gegen Geldwäsche im Immobiliensektor.
-- Daten sind das Gold des Maklers, aber der Umgang ist streng reguliert.
-- Werbung muss wahr sein. Das UWG schützt Mitbewerber und Verbraucher.
-- Besondere Regeln beim Verbrauchsgüterkauf und Dienstleistungen.
-- Wohnen, Gewerbe, Spezialimmobilien. Baurechtliche Unterschiede.
-- Die vollständige Objektakte ist der Schlüssel zur Finanzierung.
-- Der 'richtige' Preis ist der Schlüssel zum Verkaufserfolg.
-- Das Vergleichswertverfahren ist das genaueste Verfahren bei ausreichenden Marktdaten. Grundlage: vergleichbare Kaufpreise aus der Kaufpreissammlung des Gutachterausschusses, angepasst auf das Bewertun
-- Makler müssen keine Gutachter sein, aber 'offensichtliche Mängel' erkennen.
-- Wer das Objekt hat, hat die Macht. Akquise ist der wichtigste Job.
-- Verkäufer wollen keine Makler. Sie wollen den besten Preis.
-- Der Goldstandard. Nur so investiert der Makler Zeit und Geld.
-- Das Exposé ist der erste Eindruck. Es muss verkaufen, aber ehrlich sein.
-- Wo finde ich den Käufer? Portale sind nicht alles.
-- Eine Besichtigung ist eine Inszenierung, kein Aufschließen.
-- Der Preis ist nicht fix. Verhandeln ist ein Spiel.
+## 1. BERUFSRECHT & ZULASSUNG
 
-PRAXISBEISPIELE:
-- Recherchieren Sie bei Ihrem lokalen Ordnungsamt/Gewerbeamt: Welche Unterlagen werden genau gefordert und was kostet die Erlaubnis?
-- Erstellen Sie ein Muster für ein Makler-Journal (Auftragsbuch).
-- Formulieren Sie einen Provisionshinweis für ein Exposé, der ein konkludentes Handeln ermöglichen würde (bei Gewerbe).
-- Testen Sie den Prozess bei Immobilienscout24 als Nutzer. Was passiert, wenn man eine Anfrage stellt?
-- Registrieren Sie sich (fiktiv) im 'goAML' Portal der FIU. Das ist Pflicht für jeden Makler!
-- Prüfen Sie Ihre E-Mail-Signatur. Ist ein Link zur Datenschutzerklärung enthalten?
-- Suchen Sie auf Portalen nach 'verkauften' Objekten. Wenn sie länger als 1-2 Wochen online sind -> Wettbewerbsverstoß.
-- Ein Arzt kauft eine Praxisfläche. Ist er Verbraucher? (Nein, Unternehmer). Ein Arzt kauft eine Wohnung zur Vermietung. Ist er Verbraucher? (Ja, privat
-- Vergleichen Sie 3 CRM-Anbieter anhand ihrer Features und Preise.
-- Sprechen Sie einen lokalen Handwerker an. 'Wenn Sie ein Haus sehen, das leer steht, sagen Sie mir Bescheid. Ich zahle 10% meiner Provision bei Erfolg.
+### §34c GewO — Erlaubnispflicht
+Der Immobilienmakler benötigt eine behördliche Erlaubnis nach §34c Abs.1 Nr.1 GewO.
+Zuständig: Gewerbeamt / Ordnungsamt der Gemeinde.
+Voraussetzungen: Zuverlässigkeit, geordnete Vermögensverhältnisse, kein Insolvenzverfahren.
+Kosten: ca. 200–500 EUR je nach Bundesland.
+Seit 2018: Zusätzlich Pflicht zur Weiterbildung (20 Stunden in 3 Jahren) nach §34c Abs.2a GewO.
 
-FACHWISSEN:
-- 
-### Der Immobilienmakler: Berufsbild und Zugangsvoraussetzungen
-Der Beruf des Immobilienmaklers ist in Deutschland kein klassischer Ausbildungsberuf mit Kammerzwang (wie Handwerker oder Ärzte), sondern ein Gewerbe, das einer Erlaubnispflicht unterliegt.
+### MaBV — Makler- und Bauträgerverordnung
+Regelt das Verhalten NACH Erhalt der Erlaubnis.
+§10 MaBV: Buchführungspflicht — Auftragsbuch mit Auftraggeber, Objekt, Datum, Provision.
+§11 MaBV: Informationspflichten gegenüber Auftraggeber.
+§15 MaBV: Werbung muss korrekt sein — keine irreführenden Angaben zur Immobilie.
+Verstoß gegen MaBV = Ordnungswidrigkeit, kann zur Erlaubnisentziehung führen.
 
-**1. Die Erlaubnis nach § 34c GewO**
-Wer gew
-- 
-### Die Pflichten nach MaBV
-Die MaBV regelt nicht den Vertragsabschluss, sondern das Verhalten des Gewerbetreibenden *nach* Erhalt der Erlaubnis.
-
-**1. Buchführungspflicht (§ 10 MaBV)**
-Der Makler muss Aufzeichnungen über seine Aufträge führen.
-*   Daten des Auftraggebers
-*   Daten des Objekts
-*   
-- 
-### Der Maklervertrag (§§ 652 ff. BGB)
-Der Maklervertrag verpflichtet den Makler zum Nachweis oder zur Vermittlung und den Auftraggeber zur Zahlung der Provision *im Erfolgsfall*.
-
-**1. Zustandekommen**
-*   Mündlich (Handschlag) - *Achtung: Nicht bei Wohnungskauf!*
-*   Konkludent (Schlüssiges Verha
-- 
-### Das 14-tägige Widerrufsrecht
-Verbraucher haben bei Fernabsatzverträgen (Telefon, E-Mail, Internet) und Verträgen außerhalb von Geschäftsräumen ein Widerrufsrecht.
-
-**Das Problem:**
-Der Makler will sofort arbeiten (Exposé senden, besichtigen). Die Widerrufsfrist läuft aber 14 Tage.
-Wenn der Makl
-- 
-### Die Pflichten des Maklers nach GwG
-1.  **Risikomanagement:** Risikoanalyse des eigenen Geschäfts erstellen.
-2.  **Sorgfaltspflichten (KYC - Know Your Customer):**
-    *   Identifizierung des Vertragspartners (Ausweis).
-    *   Prüfung des wirtschaftlich Berechtigten (Transparenzregister).
-    *
-- 
-### Schlichtungsstellen
-Makler müssen in ihren AGB/Impressum informieren, ob sie an einem Streitbeilegungsverfahren teilnehmen (§ 36 VSBG). Meistens: 
-- 
 ### Vermögensschaden-Haftpflichtversicherung
-Nicht Pflicht nach §34c, aber überlebenswichtig.
-*   Deckt Schäden aus Falschberatung (z.B. falsche Wohnfläche, vergessener Nießbrauch).
-*   Deckungssumme mind. 250.000 €, besser 500.000 €.
+Keine Pflicht nach §34c, aber existenziell wichtig.
+Deckt: Falsche Wohnflächenangabe, vergessener Nießbrauch, falsche Grundbuchauskunft.
+Empfohlene Deckungssumme: mindestens 500.000 EUR.
 
-### CRM-Software (Customer Relationship Management)
-Ohne Softwa
-- 
-### Gemeinschaftsgeschäft
-Makler A hat das Objekt, Makler B den Käufer.
-*   Man teilt die Provision (meist 50/50 vom Gesamtumsatz oder jeder behält seine Seite).
-*   Regeln vorher schriftlich fixieren! (Kundenschutz).
+---
 
-### Netzwerke
-*   **IVD (Immobilienverband Deutschland):** Gütesiegel, Lobby, Re
-- 
-### Harte und weiche Standortfaktoren
-*   **Hart:** Verkehrsanbindung, Steuern, Fördergebiete, Bodenpreise.
-*   **Weich:** Image, Freizeitwert, Kultur, 
-- 
-### Wohnimmobilien
-*   EFH (Freistehend, DHH, RH).
-*   ETW (Eigentumswohnung).
-*   MFH (Zinshaus).
+## 2. MAKLERVERTRAG (§§652 ff. BGB)
 
-### Gewerbeimmobilien
-*   Büro.
-*   Handel (Retail).
-*   Logistik/Halle.
-*   Spezial (Hotel, Pflegeheim).
+### Zustandekommen
+Mündlich möglich (Ausnahme: Wohnungskaufvertrag — Textform Pflicht seit 2020).
+Konkludent: Durch schlüssiges Verhalten (Käufer nimmt Exposé entgegen und besichtigt).
+Schriftlich: Empfohlen — Makleralleinauftrag immer schriftlich.
 
-### Mischobjekte
-Wohn- und Geschäftshaus (WGH).
-*   Bewertung schwierig (Ertragswert gemisch
+### Provisionsanspruch — Voraussetzungen (§652 BGB)
+1. Wirksamer Maklervertrag muss vorliegen.
+2. Makler muss Nachweis ODER Vermittlung erbracht haben.
+3. Hauptvertrag (Kauf/Miet) muss zustande gekommen sein.
+4. Kausalität: Maklertätigkeit war ursächlich für Hauptvertrag.
+5. Keine Identität von Makler und Vertragspartner.
+
+### Provisionsteilung seit 2020 (§656c BGB)
+Bei Wohnungskauf: Makler darf Provision nur noch von BEIDEN Seiten gleich hoch verlangen.
+Oder: Nur von einer Seite — dann kann die andere maximal 50% erstattet verlangen.
+Zweck: Verbraucherschutz, Käufer nicht mehr allein belastet.
+
+### Widerrufsrecht (§312g BGB)
+Bei Fernabsatzverträgen (Telefon, E-Mail, Online): 14 Tage Widerruf.
+Bei außerhalb Geschäftsräumen geschlossenen Verträgen: 14 Tage Widerruf.
+Problem: Makler will sofort arbeiten, Widerrufsfrist läuft.
+Lösung: Verbraucher kann vorzeitigen Beginn verlangen + auf Resterstattung verzichten.
+Wichtig: Widerrufsbelehrung schriftlich aushändigen!
+
+### Makleralleinauftrag
+Verkäufer verpflichtet sich, kein anderes Maklerbüro zu beauftragen.
+Qualifizierter Alleinauftrag: Verkäufer darf auch nicht selbst verkaufen ohne Provision.
+Laufzeit: Üblich 3–6 Monate, mit Verlängerungsoption.
+Vorteil für Makler: Investition in Marketing lohnt sich.
+
+---
+
+## 3. GELDWÄSCHEGESETZ (GwG)
+
+### Pflichten des Maklers
+Makler sind seit 2017 vollständig GwG-pflichtig.
+Risikoanalyse: Eigenes Geschäft auf Geldwäscherisiken analysieren und dokumentieren.
+KYC (Know Your Customer): Identifizierung aller Vertragspartner mit Ausweis.
+Transparenzregister: Wirtschaftlich Berechtigten bei juristischen Personen prüfen.
+Politisch exponierte Personen (PEP): Erhöhte Sorgfalt erforderlich.
+Schwellenwert: Bei Barzahlungen über 10.000 EUR sofort melden.
+Verdachtsmeldung: Bei Verdacht auf Geldwäsche an FIU (Financial Intelligence Unit) über goAML-Portal.
+Verstoß: Bußgeld bis 1 Million EUR oder 10% des Jahresumsatzes.
+
+### Typische Geldwäschesignale
+Käufer zahlt bar ohne Erklärung.
+Kaufpreis deutlich über Marktwert ohne Grund.
+Dritte zahlen ohne erkennbare Verbindung.
+Käufer zeigt kein Interesse an der Immobilie (nur Transaktion).
+
+---
+
+## 4. DATENSCHUTZ (DSGVO) FÜR MAKLER
+
+### Grundsätze
+Zweckbindung: Daten nur für vereinbarten Zweck (Vermittlung) verwenden.
+Datensparsamkeit: Nur notwendige Daten erheben.
+Löschpflicht: Nach Abschluss/Scheitern des Auftrags Daten löschen (Aufbewahrungsfristen beachten).
+
+### Pflichten
+Datenschutzerklärung auf Website: Pflicht.
+Auftragsverarbeitungsvertrag mit CRM-Anbieter: Pflicht.
+E-Mail-Signatur: Link zur Datenschutzerklärung empfohlen.
+Interessentendaten: Nur mit Einwilligung für Werbung nutzen.
+Fotos von Immobilien: Keine erkennbaren Personen ohne Einwilligung.
+
+### Aufbewahrungsfristen
+GwG-Unterlagen: 5 Jahre nach Auftragsende.
+Buchführungsunterlagen: 10 Jahre (§147 AO).
+Maklerjournale: 6 Jahre Empfehlung.
+
+---
+
+## 5. WETTBEWERBSRECHT (UWG)
+
+### Grundsatz
+Werbung muss wahr, klar und nicht irreführend sein.
+Verboten: Falsche Quadratmeterangaben, übertriebene Lageversprechen.
+Verboten: "Provisionsfrei" wenn tatsächlich Provision enthalten ist.
+Irreführende Preisangaben: Kaufpreis ohne Nebenkosten = Verstoß.
+
+### Praktische Fallstricke
+Verkaufte Objekte dürfen nicht weiter beworben werden (max. 1–2 Wochen nach Verkauf).
+Alleinstellungsbehauptungen ("Berlins Nr. 1 Makler") müssen belegbar sein.
+Spam-E-Mails ohne Einwilligung: Abmahnrisiko.
+
+---
+
+## 6. OBJEKTUNTERLAGEN & GRUNDBUCH
+
+### Grundbuch — Aufbau
+Bestandsverzeichnis: Flurstück, Lage, Größe.
+Abteilung I: Eigentümer.
+Abteilung II: Lasten und Beschränkungen (Wegerechte, Nießbrauch, Vorkaufsrechte).
+Abteilung III: Grundpfandrechte (Hypotheken, Grundschulden).
+
+### Wichtige Eintragungen für Makler
+Nießbrauch (Abt. II): Berechtigter darf Immobilie lebenslang nutzen — Verkauf möglich, aber Käufer übernimmt Nießbrauch.
+Wohnrecht (Abt. II): Wie Nießbrauch, aber weniger umfassend.
+Vorkaufsrecht (Abt. II): Berechtigter kann vor Drittkäufer einsteigen.
+Grundschuld (Abt. III): Bank hat Sicherungsrecht — muss bei Verkauf abgelöst werden.
+
+### Energieausweis (GEG)
+Pflicht bei Verkauf und Vermietung seit 2009.
+Zwei Arten: Bedarfsausweis (teurer, genauer) und Verbrauchsausweis.
+Bedarfsausweis Pflicht bei: Gebäude mit weniger als 5 Wohneinheiten, Baujahr vor 1977.
+In Expose: Energieeffizienzklasse, Energieverbrauch/bedarf, Heizungsart angeben.
+Verstoß: Bußgeld bis 15.000 EUR.
+
+### Wohnflächenberechnung
+WoFlV (Wohnflächenverordnung): Standard für Wohnraum.
+Balkon/Terrasse: 25% oder 50% anrechenbar je nach Qualität.
+Kellerräume: Nicht anrechenbar wenn keine Aufenthaltsräume.
+DIN 277: Für Gewerbe und technische Zwecke — Bruttogrundfläche.
+Fehler bei Wohnfläche: Häufigster Haftungsfall für Makler.
+
+---
+
+## 7. WERTERMITTLUNG
+
+### Vergleichswertverfahren (§15 ImmoWertV 2021)
+Geeignet für: Eigentumswohnungen, Einfamilienhäuser bei ausreichend Vergleichsdaten.
+Grundlage: Kaufpreissammlung des Gutachterausschusses.
+Anpassungsfaktoren: Lage, Baujahr, Ausstattung, Größe, Zustand.
+Bodenrichtwert: Veröffentlicht vom Gutachterausschuss, jährlich aktualisiert.
+Formel: Vergleichspreis × Anpassungsfaktoren = Marktwert.
+
+### Sachwertverfahren (§21 ImmoWertV 2021)
+Geeignet für: Selbstgenutzte Immobilien ohne Vergleichsdaten, Spezialimmobilien.
+Berechnung: Bodenwert + Gebäudesachwert - Alterswertminderung.
+Normalherstellungskosten (NHK 2010): Tabellenwerte je m² nach Gebäudetyp.
+Sachwertfaktor: Marktanpassung (Regional unterschiedlich).
+
+### Ertragswertverfahren (§17 ImmoWertV 2021)
+Geeignet für: Renditeimmobilien, Mehrfamilienhäuser, Gewerbe.
+Formel: Jahresreinertrag × Barwertfaktor + Bodenwert.
+Jahresreinertrag: Jahreskaltmiete - Bewirtschaftungskosten.
+Bewirtschaftungskosten: Verwaltung (3-5%), Instandhaltung (0,8-1,5% NHK), Mietausfall (2-4%).
+Liegenschaftszinssatz: Vom Gutachterausschuss veröffentlicht (3-6% je nach Lage/Typ).
+Barwertfaktor: Aus Tabelle nach Restnutzungsdauer und Liegenschaftszinssatz.
+
+---
+
+## 8. AKQUISE & VERTRIEB
+
+### Farming
+Systematische Bearbeitung eines geografischen Gebiets.
+Maßnahmen: Flyer, Postkarten, Türklingeln, Veranstaltungen, Kooperationen.
+Ziel: Bekanntheitsgrad aufbauen, erster Ansprechpartner im Gebiet sein.
+Zeitraum: Mindestens 12–24 Monate für ersten messbaren Erfolg.
+
+### Einkaufsgespräch
+Ziel: Alleinauftrag zum marktgerechten Preis.
+Phasen: Begrüßung → Beziehungsaufbau → Bedarfsanalyse → Präsentation → Einwandbehandlung → Abschluss.
+Häufige Einwände: "Ich verkaufe selbst", "Andere Makler nehmen weniger", "Der Preis muss höher sein".
+Preisargumentation: Mit Vergleichsobjekten, Marktdaten, Gutachterausschuss-Daten.
+
+### Exposé-Erstellung
+Pflichtangaben: Objektbeschreibung, Wohnfläche, Baujahr, Energieausweis-Daten, Provision, Anschrift des Maklers.
+Fotos: Professionell, hell, entrümpelt, Außenaufnahme bei gutem Wetter.
+Grundriss: Pflicht bei Wohnimmobilien laut Portalbedingungen.
+Text: Emotionalisieren aber nicht übertreiben. Keine falschen Angaben.
+
+### Vermarktungskanäle
+Online-Portale: Immobilienscout24, Immowelt, Kleinanzeigen.
+Social Media: Facebook-Gruppen, Instagram, LinkedIn.
+Eigene Website: SEO, lokale Suchbegriffe.
+Netzwerk: IVD, lokale Unternehmer, Handwerker-Tipp-Geber.
+Schaufenster: Bei Lauflagenbüros.
+
+### Besichtigung
+Vorbereitung: Alle Unterlagen bereit, Objekt vorbereitet, Heizung an.
+Inszenierung: Licht an, Blumen, angenehme Temperatur.
+Führung: Stärken zuerst, Schwächen offen ansprechen (Haftung!).
+Nachbereitung: Feedback einholen, Interesse qualifizieren, Finanzierung prüfen.
+
+### Kaufpreisverhandlung
+BATNA-Prinzip: Best Alternative to Negotiated Agreement — Wer Alternativen hat, verhandelt stärker.
+Ankereffekt: Erste Zahl prägt die Verhandlung.
+Zugeständnisse: Nie ohne Gegenleistung.
+Finanzierungsnachweis: Vor Kaufvertrag immer prüfen.
+
+---
+
+## 9. KAUFVERTRAG & NOTARIAT
+
+### Ablauf
+1. Reservierungsvereinbarung (rechtlich nicht bindend, aber üblich).
+2. Kaufvertragsentwurf durch Notar (auf Wunsch einer Partei).
+3. Beurkundung: Beide Parteien beim Notar, Vorlesen, Unterschrift.
+4. Auflassungsvormerkung: Sichert Käufer im Grundbuch ab.
+5. Kaufpreiszahlung nach Fälligkeit (Lastenfreiheit, Genehmigungen).
+6. Eigentumsumschreibung im Grundbuch.
+
+### Makleraufgaben beim Kaufvertrag
+Koordination zwischen Käufer, Verkäufer und Notar.
+Unterlagen an Notar: Grundbuchauszug, Energieausweis, Teilungserklärung (bei ETW).
+Nachweisdokumentation: Wann wurde welcher Käufer nachgewiesen? (Für Provision wichtig).
+
+---
+
+## 10. PRÜFUNGSRELEVANTE PARAGRAFEN
+
+| Paragraf | Inhalt |
+|----------|--------|
+| §34c GewO | Erlaubnispflicht Makler |
+| §652 BGB | Maklervertrag, Provisionsanspruch |
+| §656a BGB | Textformerfordernis Wohnungsvermittlung |
+| §656b BGB | Abtretungsverbot Maklerprovision |
+| §656c BGB | Provisionsteilung bei Wohnungskauf |
+| §656d BGB | Bestellerprinzip Mietwohnungen |
+| §312g BGB | Widerrufsrecht Fernabsatz |
+| §5 GwG | Risikoanalyse |
+| §10 GwG | Allgemeine Sorgfaltspflichten (KYC) |
+| §15 GwG | Verstärkte Sorgfaltspflichten (PEP) |
+| §43 GwG | Meldepflicht bei Verdacht |
+| §15 ImmoWertV | Vergleichswertverfahren |
+| §17 ImmoWertV | Ertragswertverfahren |
+| §21 ImmoWertV | Sachwertverfahren |
+
+---
+
+## 11. TYPISCHE PRÜFUNGSFRAGEN
+
+F: Was ist der Unterschied zwischen Nachweis und Vermittlung beim Maklervertrag?
+A: Nachweis = Makler nennt Vertragspartner. Vermittlung = Makler wirkt aktiv auf Vertragsabschluss hin. Beide begründen Provisionsanspruch.
+
+F: Wann entfällt der Provisionsanspruch des Maklers?
+A: Wenn kein wirksamer Maklervertrag, kein Hauptvertrag, keine Kausalität, oder Makler ist selbst Vertragspartner (Verbot der Doppeltätigkeit §654 BGB).
+
+F: Was bedeutet das Bestellerprinzip bei Mietwohnungen?
+A: Seit 2015 (§656d BGB): Wer den Makler bestellt, zahlt die Provision. Meist also Vermieter.
+
+F: Welche Pflichten hat ein Makler nach GwG?
+A: Risikoanalyse erstellen, KYC durchführen (Ausweis prüfen), Transparenzregister prüfen, Verdacht melden über goAML-Portal.
+
+F: Was muss ein Energieausweis bei Verkauf enthalten?
+A: Energieeffizienzklasse (A+ bis H), Endenergieverbrauch oder -bedarf, Heizungsart, Baujahr, Ausstellungsdatum.
+
+F: Wie berechnet sich die Nettomiete beim Ertragswertverfahren?
+A: Bruttokaltmiete minus Bewirtschaftungskosten (Verwaltung + Instandhaltung + Mietausfallwagnis).
