@@ -457,38 +457,38 @@ export function registerOwnerRoutes(app: Express) {
     } catch (e: any) { res.status(500).json({ error: e.message }); }
   });
 
-}
-// ── Portal Settings: Lesen ─────────────────────────────────────
-app.get("/api/owner/settings", async (req: any, res: any) => {
-  try {
-    const db = getDb();
-    let rows: any[] = [];
+  // ── Portal Settings: Lesen ───────────────────────────────────
+  app.get("/api/owner/settings", async (req: any, res: any) => {
     try {
-      const [r] = await db.execute("SELECT setting_key, setting_value, setting_type, description FROM portal_settings ORDER BY setting_key") as any;
-      rows = r;
-    } catch { return res.json({ ok: true, settings: {} }); }
-    const settings: Record<string, string> = {};
-    for (const row of (rows as any[])) {
-      settings[row.setting_key] = row.setting_value;
+      const db = getDb();
+      let rows: any[] = [];
+      try {
+        const [r] = await db.execute("SELECT setting_key, setting_value, setting_type, description FROM portal_settings ORDER BY setting_key") as any;
+        rows = r;
+      } catch { return res.json({ ok: true, settings: {} }); }
+      const settings: Record<string, string> = {};
+      for (const row of (rows as any[])) {
+        settings[row.setting_key] = row.setting_value;
+      }
+      res.json({ ok: true, settings });
+    } catch (e: any) {
+      res.status(500).json({ error: e.message });
     }
-    res.json({ ok: true, settings });
-  } catch (e: any) {
-    res.status(500).json({ error: e.message });
-  }
-});
+  });
 
-// ── Portal Settings: Schreiben ────────────────────────────────
-app.post("/api/owner/settings", async (req: any, res: any) => {
-  try {
-    const { key, value } = req.body;
-    if (!key || value === undefined) return res.status(400).json({ error: "key und value erforderlich" });
-    const db = getDb();
-    await db.execute(
-      "INSERT INTO portal_settings (setting_key, setting_value) VALUES (?, ?) ON DUPLICATE KEY UPDATE setting_value = ?",
-      [key, value, value]
-    );
-    res.json({ ok: true, key, value });
-  } catch (e: any) {
-    res.status(500).json({ error: e.message });
-  }
-});
+  // ── Portal Settings: Schreiben ──────────────────────────────
+  app.post("/api/owner/settings", async (req: any, res: any) => {
+    try {
+      const { key, value } = req.body;
+      if (!key || value === undefined) return res.status(400).json({ error: "key und value erforderlich" });
+      const db = getDb();
+      await db.execute(
+        "INSERT INTO portal_settings (setting_key, setting_value) VALUES (?, ?) ON DUPLICATE KEY UPDATE setting_value = ?",
+        [key, value, value]
+      );
+      res.json({ ok: true, key, value });
+    } catch (e: any) {
+      res.status(500).json({ error: e.message });
+    }
+  });
+}
