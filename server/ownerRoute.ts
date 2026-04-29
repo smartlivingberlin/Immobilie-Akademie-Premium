@@ -494,3 +494,15 @@ export function registerOwnerRoutes(app: Express) {
     }
   });
 }
+
+  // ── Debug: open_questions zählen ─────────────────────────────
+  app.get("/api/debug/open-questions-count", async (_req: any, res: any) => {
+    try {
+      const { getDb } = await import("./db");
+      const db = await getDb();
+      const [rows] = await db.execute("SELECT modulId, COUNT(*) as n FROM open_questions GROUP BY modulId") as any;
+      res.json({ ok: true, counts: rows });
+    } catch (e: any) {
+      res.status(500).json({ error: e.message });
+    }
+  });
