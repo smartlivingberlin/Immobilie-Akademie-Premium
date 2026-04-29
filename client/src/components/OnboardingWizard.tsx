@@ -77,6 +77,9 @@ export default function OnboardingWizard({ onComplete }: { onComplete: () => voi
 
   const completeOnboarding = trpc.auth.completeOnboarding.useMutation({
     onSuccess: () => onComplete(),
+    onError: (err) => {
+      alert("Fehler: " + err.message + " — Bitte Seite neu laden und erneut versuchen.");
+    },
   });
 
   const currentStep = STEPS[step];
