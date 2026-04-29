@@ -62,8 +62,14 @@ export const openQuestionsRouter = router({
     .input(z.object({ modulId: z.number().min(1).max(5) }))
     .query(async ({ input }) => {
       const db = await getDb();
-      return db.select().from(openQuestions)
+      const rows = await db.select().from(openQuestions)
         .where(eq(openQuestions.modulId, input.modulId));
+      // Fallback für fehlende Felder
+      return rows.map(r => ({
+        ...r,
+        musterloesung: r.musterloesung ?? r.frage,
+        bewertungsSchema: r.bewertungsSchema ?? '{"kriterien":["Vollständigkeit","Korrektheit"]}',
+      }));
     }),
 
   // Einzelne Frage
@@ -134,7 +140,7 @@ export const openQuestionsRouter = router({
       const db = await getDb();
       const fragen = await db.select({ id: openQuestions.id })
         .from(openQuestions)
-        .where(and(eq(openQuestions.modulId, input.modulId), eq(openQuestions.aktiv, true)));
+        .where(eq(openQuestions.modulId, input.modulId));
 
       const antworten = await db.select()
         .from(openAnswers)
