@@ -129,6 +129,7 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
       const voiceId = "pNInz6obpgDQGcFmaJgB";
       const res = await fetch(`/api/tts`, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
           "Accept": "audio/mpeg",
