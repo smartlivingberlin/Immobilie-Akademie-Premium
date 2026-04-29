@@ -568,3 +568,15 @@ setInterval(async () => {
   });
 }
 startServer().catch((err) => logger.error("[Server] Startup fehlgeschlagen", err));
+
+// ── Debug: open_questions direkt ──────────────────────────────
+app.get("/api/debug/oq", async (_req: any, res: any) => {
+  try {
+    const { getDb } = await import("../db");
+    const db = await getDb();
+    const [rows] = await db.execute("SELECT id, modulId, frage FROM open_questions LIMIT 5") as any;
+    res.json({ ok: true, rows, count: (rows as any[]).length });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
