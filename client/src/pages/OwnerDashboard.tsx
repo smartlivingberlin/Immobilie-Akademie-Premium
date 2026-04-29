@@ -56,7 +56,9 @@ export default function OwnerDashboard() {
   const [statsData, setStatsData] = useState<any>(null);
   const [azavReport, setAzavReport] = useState<any>(null);
   const [azavLoading, setAzavLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState<"users"|"live"|"activity"|"stats"|"azav">("users");
+  const [activeTab, setActiveTab] = useState<"users"|"live"|"activity"|"stats"|"azav"|"settings">("users");
+  const [settings, setSettings] = useState<Record<string,string>>({});
+  const [settingsSaved, setSettingsSaved] = useState(false);
   const [loading, setLoading] = useState(true);
   const [actionMsg, setActionMsg] = useState("");
 
@@ -73,6 +75,9 @@ export default function OwnerDashboard() {
     const liveInterval = setInterval(fetchLive, 30000);
     setTimeout(() => clearInterval(liveInterval), 1800000); // 30min max
     // Aktivitaets-Log laden
+    fetch(`/api/owner/settings?key=${ownerKey}`, { credentials:"include", headers:{"x-owner-key":ownerKey} })
+      .then(r => r.json()).then(d => { if(d.settings) setSettings(d.settings); }).catch(() => {});
+
     fetch(`/api/owner/activity?key=${ownerKey}`, { credentials:"include", headers:{"x-owner-key":ownerKey} })
       .then(r => r.json()).then(setActivity).catch(()=>{});
     // Stats laden
@@ -186,6 +191,22 @@ export default function OwnerDashboard() {
         </div>
       )}
 
+      {/* Tab Navigation */}
+      <div style={{display:"flex",gap:8,marginBottom:24,flexWrap:"wrap"}}>
+        {[
+          {id:"users", label:"👥 Nutzer"},
+          {id:"settings", label:"⚙️ Portal-Einstellungen"},
+          {id:"azav", label:"🎓 AZAV"},
+          {id:"live", label:"🟢 Live"},
+          {id:"activity", label:"📋 Aktivität"},
+        ].map(t => (
+          <button key={t.id} onClick={() => setActiveTab(t.id as any)}
+            style={{background: activeTab===t.id ? "#3b82f6" : "#1e293b", color:"white", border: activeTab===t.id ? "none" : "1px solid #334155", padding:"8px 16px", borderRadius:8, cursor:"pointer", fontSize:13, fontWeight:600}}>
+            {t.label}
+          </button>
+        ))}
+      </div>
+
       {/* Stats Grid */}
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:16,marginBottom:32}}>
         {[
@@ -222,6 +243,83 @@ export default function OwnerDashboard() {
       </div>
 
       {/* Nutzer-Liste */}
+      {/* ── TAB: SETTINGS ──────────────────────────────── */}
+      {activeTab === "settings" && (
+        <div style={{display:"grid",gap:24}}>
+          {/* Preise */}
+          <div style={{background:"#1e293b",borderRadius:12,padding:24,border:"1px solid #334155"}}>
+            <h3 style={{margin:"0 0 20px",fontSize:16,color:"#f1f5f9",fontWeight:700}}>💰 Preise verwalten</h3>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))",gap:16}}>
+              {[
+                {key:"price_modul_1", label:"Modul 1 (Grundkurs)"},
+                {key:"price_modul_2", label:"Modul 2 (Makler §34c)"},
+                {key:"price_modul_3", label:"Modul 3 (WEG-Verwalter)"},
+                {key:"price_modul_4", label:"Modul 4 (Gutachter)"},
+                {key:"price_modul_5", label:"Modul 5 (§34i)"},
+                {key:"price_bundle", label:"Komplett-Paket"},
+              ].map(({key, label}) => (
+                <div key={key}>
+                  <label style={{color:"#94a3b8",fontSize:12,display:"block",marginBottom:6}}>{label}</label>
+                  <div style={{display:"flex",gap:8,alignItems:"center"}}>
+                    <input type="number" value={settings[key] || ""} onChange={e => setSettings(s => ({...s,[key]:e.target.value}))}
+                      style={{background:"#0f172a",border:"1px solid #475569",borderRadius:6,padding:"8px 12px",color:"white",fontSize:14,width:"100px"}} />
+                    <span style={{color:"#64748b",fontSize:13}}>EUR</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Video URLs */}
+          <div style={{background:"#1e293b",borderRadius:12,padding:24,border:"1px solid #334155"}}>
+            <h3 style={{margin:"0 0 20px",fontSize:16,color:"#f1f5f9",fontWeight:700}}>🎬 Video-URLs (YouTube)</h3>
+            <div style={{display:"grid",gap:12}}>
+              {[1,2,3,4,5].map(n => (
+                <div key={n} style={{display:"grid",gridTemplateColumns:"150px 1fr",gap:12,alignItems:"center"}}>
+                  <label style={{color:"#94a3b8",fontSize:13}}>Modul {n}</label>
+                  <input type="url" value={settings[`video_modul_${n}`] || ""} placeholder="https://youtube.com/watch?v=..."
+                    onChange={e => setSettings(s => ({...s,[`video_modul_${n}`]:e.target.value}))}
+                    style={{background:"#0f172a",border:"1px solid #475569",borderRadius:6,padding:"8px 12px",color:"white",fontSize:13,width:"100%"}} />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Landingpage Titel */}
+          <div style={{background:"#1e293b",borderRadius:12,padding:24,border:"1px solid #334155"}}>
+            <h3 style={{margin:"0 0 20px",fontSize:16,color:"#f1f5f9",fontWeight:700}}>📄 Landingpage Titel</h3>
+            <div style={{display:"grid",gap:12}}>
+              {[1,2,3,4,5].map(n => (
+                <div key={n} style={{display:"grid",gridTemplateColumns:"150px 1fr",gap:12,alignItems:"center"}}>
+                  <label style={{color:"#94a3b8",fontSize:13}}>Modul {n}</label>
+                  <input type="text" value={settings[`landing_modul_${n}_titel`] || ""}
+                    onChange={e => setSettings(s => ({...s,[`landing_modul_${n}_titel`]:e.target.value}))}
+                    style={{background:"#0f172a",border:"1px solid #475569",borderRadius:6,padding:"8px 12px",color:"white",fontSize:13,width:"100%"}} />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Speichern Button */}
+          <div style={{display:"flex",gap:12,alignItems:"center"}}>
+            <button onClick={async () => {
+              for (const [key, value] of Object.entries(settings)) {
+                await fetch("/api/owner/settings", {
+                  method:"POST", credentials:"include",
+                  headers:{"Content-Type":"application/json","x-owner-key":ownerKey},
+                  body: JSON.stringify({key, value})
+                });
+              }
+              setSettingsSaved(true);
+              setTimeout(() => setSettingsSaved(false), 3000);
+            }} style={{background:"#2563eb",color:"white",border:"none",borderRadius:8,padding:"12px 28px",fontSize:14,fontWeight:700,cursor:"pointer"}}>
+              💾 Alle Einstellungen speichern
+            </button>
+            {settingsSaved && <span style={{color:"#10b981",fontSize:14,fontWeight:600}}>✅ Gespeichert!</span>}
+          </div>
+        </div>
+      )}
+
       {/* ── TAB: AZAV ───────────────────────────────────── */}
       {activeTab === "azav" && (
         <div style={{background:"#1e293b",borderRadius:12,padding:20,border:"1px solid #334155"}}>
