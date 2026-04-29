@@ -460,7 +460,8 @@ export function registerOwnerRoutes(app: Express) {
   // ── Portal Settings: Lesen ───────────────────────────────────
   app.get("/api/owner/settings", async (req: any, res: any) => {
     try {
-      const db = getDb();
+      const { getDb } = await import("./db");
+      const db = await getDb();
       let rows: any[] = [];
       try {
         const [r] = await db.execute("SELECT setting_key, setting_value, setting_type, description FROM portal_settings ORDER BY setting_key") as any;
@@ -481,7 +482,8 @@ export function registerOwnerRoutes(app: Express) {
     try {
       const { key, value } = req.body;
       if (!key || value === undefined) return res.status(400).json({ error: "key und value erforderlich" });
-      const db = getDb();
+      const { getDb } = await import("./db");
+      const db = await getDb();
       await db.execute(
         "INSERT INTO portal_settings (setting_key, setting_value) VALUES (?, ?) ON DUPLICATE KEY UPDATE setting_value = ?",
         [key, value, value]
