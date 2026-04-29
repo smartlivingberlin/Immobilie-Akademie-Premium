@@ -14,7 +14,7 @@ import type { Express, Request, Response } from "express";
 // ════════════════════════════════════════════════════════
 
 // Auth-Check für KI-Routen (Login erforderlich)
-async function requireAuth(req: Request, res: Response, next: import("express").NextFunction) {
+export async function requireAuth(req: Request, res: Response, next: import("express").NextFunction) {
   try {
     const { parse: parseCookie } = await import("cookie");
     const rawCookies = parseCookie(req.headers.cookie ?? "");

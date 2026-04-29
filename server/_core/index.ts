@@ -51,6 +51,7 @@ import { glossarRouter } from "../glossarRouter";
 import { audioRouter } from "../audioRouter";
 import { registerTrialRoutes } from "../trialRoute";
 import { logger } from "./logger";
+import { requireAuth } from "../ragTutor";
 
 
 // Globaler Error Handler
