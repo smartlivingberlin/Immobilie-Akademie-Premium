@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-const BASE = 'https://immobilie-akademie-production.up.railway.app';
+const BASE = 'https://immobilie-akademie-premium-production.up.railway.app';
 
 test('Login Formular — alle Elemente', async ({ page }) => {
   await page.goto(`${BASE}/login`, { waitUntil: 'networkidle', timeout: 15000 });
@@ -31,8 +31,8 @@ test('Login — mit Admin-Credentials', async ({ page }) => {
   const emailInput = page.locator('input').first();
   const passwordInput = page.locator('input').nth(1);
   
-  await emailInput.fill('admin@immobilie.de');
-  await passwordInput.fill('84%D#Lq2#0n1rUmMBqOT');
+  await emailInput.fill('alisadgadyri38@gmail.com');
+  await passwordInput.fill('Admin2026!');
   
   await page.screenshot({ path: 'tests/screenshots/login-filled.png' });
   
