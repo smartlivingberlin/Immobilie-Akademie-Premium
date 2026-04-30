@@ -364,11 +364,6 @@ export default function Module2Detail() {
                       <Video className="h-4 w-4 mr-2" />
                       Videos
                     </TabsTrigger>
-
-                                  <TabsTrigger value="praxislab" className="data-[state=active]:bg-white data-[state=active]:text-violet-700 data-[state=active]:shadow-sm rounded-lg">
-                    <FlaskConical className="h-4 w-4 mr-2" />
-                    Praxis-Lab
-                  </TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="theory" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
