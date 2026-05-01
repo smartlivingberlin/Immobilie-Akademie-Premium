@@ -196,11 +196,6 @@ export default function DokumentWerkstatt({ modulId }: { modulId: number }) {
 
       {/* Link zu offenem Fragen */}
       <div style={{ marginTop: 24, textAlign: "center" }}>
-        <Link href={`/offene-fragen/${modulId}`}>
-          <span style={{ fontSize: 13, color: "#7c3aed", fontWeight: 600, cursor: "pointer" }}>
-            → Zu den Offenen Fragen wechseln
-          </span>
-        </Link>
       </div>
     </div>
   );
@@ -346,7 +341,7 @@ export default function DokumentWerkstatt({ modulId }: { modulId: number }) {
               <ul style={{ margin: 0, paddingLeft: 20, fontSize: 13, color: "#374151", lineHeight: 2 }}>
                 <li>Vergleiche deine Antworten mit dem Dokument nochmals</li>
                 <li>Nutze den <strong>KI-Tutor</strong> für tiefere Erklärungen</li>
-                <li>Gehe zu <Link href={`/offene-fragen/${modulId}`}><span style={{ color: "#7c3aed", fontWeight: 600, cursor: "pointer" }}>Offene Fragen</span></Link> für benotetes Feedback</li>
+                
               </ul>
               <div style={{ marginTop: 14, display: "flex", gap: 10 }}>
                 <button
