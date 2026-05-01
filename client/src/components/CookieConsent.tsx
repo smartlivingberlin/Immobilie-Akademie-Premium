@@ -101,6 +101,7 @@ export default function CookieConsent() {
                 size="icon"
                 onClick={() => setShowBanner(false)}
                 className="flex-shrink-0"
+                aria-label="Cookie-Banner schließen"
               >
                 <X className="w-4 h-4" />
               </Button>
