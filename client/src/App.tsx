@@ -154,7 +154,7 @@ function Router() {
         <Route path="/konto/datenschutz"><AppLayout><ProtectedRoute component={MeineDaten} /></AppLayout></Route>
         <Route path="/konto-loeschen"><PublicLayout><DeleteAccount /></PublicLayout></Route>
         <Route path="/dokument-werkstatt/:modulId">{(params: any) => <AppLayout><DokumentWerkstatt modulId={Number(params?.modulId ?? 1)} /></AppLayout>}</Route>
-        {/* DEAKTIVIERT: <Route path="/offene-fragen/:modulId">{(params: any) => <AppLayout><OpenQuizPage modulId={Number(params?.modulId ?? 1)} /></AppLayout>}</Route>
+        {/* DEAKTIVIERT: <Route path="/offene-fragen/:modulId">{(params: any) => <AppLayout><OpenQuizPage modulId={Number(params?.modulId ?? 1)} /></AppLayout>}</Route> */}
         <Route path="/pakete"><PublicLayout><KursPakete /></PublicLayout></Route>
         <Route path="/kurse"><PublicLayout><Kurse /></PublicLayout></Route>
         <Route path="/kurs/modul-1-immobilien-grundkurs"><PublicLayout><KursLanding slug="modul-1-immobilien-grundkurs" /></PublicLayout></Route>
