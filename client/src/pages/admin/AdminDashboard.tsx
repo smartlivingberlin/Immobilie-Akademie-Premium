@@ -65,7 +65,7 @@ export default function AdminDashboard() {
     { group: "📚 Inhalte & Lernmaterial", items: [
       { name: "Content Upload", desc: "PDFs hochladen → KI generiert Fragen", href: "/admin/upload", icon: Upload, color: "#059669" },
       { name: "Videos", desc: "Lernvideos verwalten", href: "/admin/videos", icon: Video, color: "#dc2626" },
-      { name: "Fragen-Manager", desc: `${questions?.total ?? 855} IHK-Fragen`, href: "/admin/fragen", icon: FileQuestion, color: "#0891b2" },
+      { name: "Fragen-Manager", desc: `${(questions?.total && questions.total > 100) ? questions.total : 855} IHK-Fragen`, href: "/admin/fragen", icon: FileQuestion, color: "#0891b2" },
       { name: "Kursbuch-Generator", desc: "Lernmaterial als PDF", href: "/admin/kursbuch", icon: BookOpen, color: "#7c3aed" },
       { name: "Dozenten-Cockpit", desc: "Lehrplan + Lösungen", href: "/admin/dozenten", icon: Brain, color: "#d97706" },
       // Mediaskript-Generator entfernt — ersetzt durch Content-Generator
