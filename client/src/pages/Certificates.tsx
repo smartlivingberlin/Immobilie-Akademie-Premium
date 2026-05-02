@@ -30,7 +30,7 @@ export default function Certificates() {
     { id: 1, name: "Modul 1: Einführung in die Immobilienwirtschaft", days: 20, color: "bg-blue-500" },
     { id: 2, name: "Modul 2: Immobilienmakler §34c GewO", days: 60, color: "bg-purple-500" },
     { id: 3, name: "Modul 3: WEG- und Mietverwaltung", days: 80, color: "bg-emerald-500" },
-    { id: 4, name: "Modul 4: Gutachten & Sachverständige", days: 20, color: "bg-orange-500" },
+    { id: 4, name: "Modul 4: Gutachten & Sachverständiger", days: 40, color: "bg-orange-500" },
     { id: 5, name: "Modul 5: Darlehensvermittlung §34i GewO", days: 40, color: "bg-pink-500" },
   ];
 

@@ -42,7 +42,7 @@ export default function GamificationDashboard() {
   const nextLevelPoints = getPointsForNextLevel(data.level);
   const pointsInCurrentLevel = data.totalPoints - currentLevelPoints;
   const pointsNeededForNextLevel = nextLevelPoints - currentLevelPoints;
-  const progressPercentage = (pointsInCurrentLevel / pointsNeededForNextLevel) * 100;
+  const progressPercentage = Math.max(0, Math.min(100, (pointsInCurrentLevel / pointsNeededForNextLevel) * 100));
   
   const unlockedBadges = data.badges.filter(b => b.unlocked).length;
   const totalBadges = data.badges.length;
