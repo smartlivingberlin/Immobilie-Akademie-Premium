@@ -567,3 +567,5 @@ setInterval(async () => {
   server.listen(port, host, () => {
   });
 }
+
+startServer().catch((err) => console.error("[Server] Startup fehlgeschlagen", err));
