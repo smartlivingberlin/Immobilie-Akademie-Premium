@@ -5,7 +5,7 @@ import { Loader2, Download, CheckCircle, Sparkles } from "lucide-react";
 const MODULES = [
   { id: 1, title: "Modul 1 — Einführung in die Immobilienwirtschaft", days: 20 },
   { id: 2, title: "Modul 2 — Makler §34c GewO", days: 60 },
-  { id: 3, title: "Modul 3 — WEG & Mietrecht Verwaltung", days: 60 },
+  { id: 3, title: "Modul 3 — WEG & Mietrecht Verwaltung", days: 80 },
   { id: 4, title: "Modul 4 — Gutachter & Sachverständiger", days: 40 },
   { id: 5, title: "Modul 5 — Darlehensvermittler §34i GewO", days: 40 },
 ];
