@@ -319,7 +319,8 @@ async function analyzeUser(user: any, db: any): Promise<CoachingProfile> {
 
   // Risiko-Level
   let riskLevel: "low" | "medium" | "high" = "low";
-  if (streak === 0 && completedDays < 3) riskLevel = "high";
+  if (completedDays >= 10) riskLevel = "low"; // aktiver Lernender → kein Risiko
+  else if (streak === 0 && completedDays < 3) riskLevel = "high";
   else if (streak < 3 || avgSessionMinutes < 5) riskLevel = "medium";
 
   // Empfehlung
