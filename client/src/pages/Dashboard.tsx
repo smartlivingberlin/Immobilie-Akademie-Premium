@@ -263,7 +263,7 @@ export default function Dashboard() {
 
   return (
     <div style={{ maxWidth: 1100, margin: "0 auto", padding: "24px 20px" }}>
-      <OnboardingWizard onComplete={() => {}} />
+      {!localStorage.getItem("onboarding_done") && <OnboardingWizard onComplete={() => { localStorage.setItem("onboarding_done", "1"); window.location.reload(); }} />}
       {/* Header */}
       <div style={{ marginBottom: 24 }}>
         <h1 style={{ fontSize: 28, fontWeight: 800, color: "var(--color-text)", margin: "0 0 4px" }}>
