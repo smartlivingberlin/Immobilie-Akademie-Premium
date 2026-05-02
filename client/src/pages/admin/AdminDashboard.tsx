@@ -21,11 +21,11 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     fetch("/api/agent/health", { headers: { "x-owner-key": "Owner2026Premium!" } }).then(r => r.json()).then(setAgentHealth).catch(() => {});
-    fetch("/api/agent/status").then(r => r.json()).then(d => {
+    fetch("/api/agent/status", { headers: { "x-owner-key": "Owner2026Premium!" } }).then(r => r.json()).then(d => {
       if (d?.memory?.last_night_audit) setAuditScore(d.memory.last_night_audit.avgScore);
     }).catch(() => {});
-    fetch("/api/agent/coaching").then(r => r.json()).then(setCoaching).catch(() => {});
-    fetch("/api/agent/cron-log").then(r => r.json()).then(d => setCronLog(d.log || "")).catch(() => {});
+    fetch("/api/agent/coaching", { headers: { "x-owner-key": "Owner2026Premium!" } }).then(r => r.json()).then(setCoaching).catch(() => {});
+    fetch("/api/agent/cron-log", { headers: { "x-owner-key": "Owner2026Premium!" } }).then(r => r.json()).then(d => setCronLog(d.log || "")).catch(() => {});
   }, []);
 
   const totalUsers = users?.length ?? 0;
