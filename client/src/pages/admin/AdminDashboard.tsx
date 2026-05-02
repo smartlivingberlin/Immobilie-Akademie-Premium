@@ -104,7 +104,7 @@ export default function AdminDashboard() {
             style={{ display: "flex", alignItems: "center", gap: 6, background: "#635bff", color: "white", padding: "8px 14px", borderRadius: 8, fontSize: 12, textDecoration: "none", fontWeight: 600 }}>
             <DollarSign size={14} /> Stripe
           </a>
-          <a href="https://github.com/smartlivingberlin/Immobilie-Akademie" target="_blank" rel="noreferrer"
+          <a href="https://github.com/smartlivingberlin/Immobilie-Akademie-Premium" target="_blank" rel="noreferrer"
             style={{ display: "flex", alignItems: "center", gap: 6, background: "#24292f", color: "white", padding: "8px 14px", borderRadius: 8, fontSize: 12, textDecoration: "none", fontWeight: 600 }}>
             <ExternalLink size={14} /> GitHub
           </a>
@@ -238,7 +238,7 @@ export default function AdminDashboard() {
               {[
                 { name: "Railway Dashboard", url: "https://railway.app", color: "#7c3aed" },
                 { name: "Stripe Dashboard", url: "https://dashboard.stripe.com", color: "#635bff" },
-                { name: "GitHub Repo", url: "https://github.com/smartlivingberlin/Immobilie-Akademie", color: "#24292f" },
+                { name: "GitHub Repo", url: "https://github.com/smartlivingberlin/Immobilie-Akademie-Premium", color: "#24292f" },
                 { name: "Gewerbe Berlin", url: "https://service.berlin.de/dienstleistung/305614/", color: "#dc2626" },
                 { name: "Domain kaufen", url: "https://www.namecheap.com", color: "#d97706" },
                 { name: "Anthropic Console", url: "https://console.anthropic.com", color: "#d97706" },
