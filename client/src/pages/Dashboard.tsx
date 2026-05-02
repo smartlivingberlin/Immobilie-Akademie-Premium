@@ -230,7 +230,7 @@ function ModulKarte({ module, stats, enabled }: any) {
 
 
 export default function Dashboard() {
-  const { data: progressData } = trpc.modules.getProgress.useQuery();
+  const { data: progressData } = trpc.progress.getProgress.useQuery();
   const { data: meData } = trpc.auth.me.useQuery();
 
   const enabledModules = (meData?.enabledModules || "").split(",").map(Number).filter(Boolean);
