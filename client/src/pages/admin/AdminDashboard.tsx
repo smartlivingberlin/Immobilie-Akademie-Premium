@@ -20,7 +20,7 @@ export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<"overview"|"users"|"content"|"system"|"agent">("overview");
 
   useEffect(() => {
-    fetch("/api/agent/health").then(r => r.json()).then(setAgentHealth).catch(() => {});
+    fetch("/api/agent/health", { headers: { "x-owner-key": "Owner2026Premium!" } }).then(r => r.json()).then(setAgentHealth).catch(() => {});
     fetch("/api/agent/status").then(r => r.json()).then(d => {
       if (d?.memory?.last_night_audit) setAuditScore(d.memory.last_night_audit.avgScore);
     }).catch(() => {});
