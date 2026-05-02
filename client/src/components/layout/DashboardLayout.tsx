@@ -54,7 +54,6 @@ const navigation = [
   { name: "Startseite", href: "/", icon: Home },
   ...(user?.role === "admin" ? [{ name: "Nutzerverwaltung", href: "/admin/nutzer", icon: Home }] : []),
   ...modulesWithAccess.map((m) => ({ name: m.name, href: m.href, icon: m.icon, locked: m.locked })),
-  { name: "🔬 Praxis-Lab", href: `/offene-fragen/${modulId}`, icon: FlaskConical },
   { name: "📄 Dokument-Werkstatt", href: `/dokument-werkstatt/${modulId}`, icon: FileText },
 ];
 
