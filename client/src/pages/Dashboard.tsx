@@ -230,7 +230,7 @@ function ModulKarte({ module, stats, enabled }: any) {
 
 
 export default function Dashboard() {
-  const { data: progressData } = trpc.modules.myAccess.useQuery();
+  const { data: progressData } = trpc.modules.getProgress.useQuery();
   const { data: meData } = trpc.auth.me.useQuery();
 
   const enabledModules = (meData?.enabledModules || "").split(",").map(Number).filter(Boolean);
@@ -244,7 +244,7 @@ export default function Dashboard() {
   ];
 
   const moduleStats = allModules.map(m => {
-    const logs = (progressData as any)?.logs?.filter((l: any) => l.moduleId === m.id) || [];
+    const logs = (Array.isArray(progressData) ? progressData : []).filter((l: any) => l.moduleId === m.id);
     const completed = logs.filter((l: any) => l.completed).length;
     return {
       ...m,
