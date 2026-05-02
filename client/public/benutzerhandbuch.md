@@ -1,8 +1,8 @@
 # Benutzerhandbuch: Immobilien-Bildungsportal
 
-## Willkommen im Makler Lernportal
+## Willkommen im Immobilien Akademie Smart
 
-Dieses Portal bietet Ihnen eine umfassende Ausbildung für die Immobilienbranche mit 5 Modulen und insgesamt 1760 Unterrichtseinheiten. Diese Anleitung erklärt Ihnen, wie Sie das Portal optimal nutzen.
+Dieses Portal bietet Ihnen eine umfassende Ausbildung für die Immobilienbranche mit 5 Modulen und insgesamt 1920 Unterrichtseinheiten. Diese Anleitung erklärt Ihnen, wie Sie das Portal optimal nutzen.
 
 ---
 
@@ -15,7 +15,7 @@ Das Portal ist in 5 Hauptmodule unterteilt:
 - **Inhalt**: Grundlagen der Immobilienwirtschaft, Marktübersicht, rechtliche Rahmenbedingungen
 
 ### Modul 2: Immobilienmakler (§34c GewO)
-- **Dauer**: 40 Tage  
+- **Dauer**: 60 Tage  
 - **Inhalt**: Maklertätigkeit, Vertragsrecht, Kundenakquise, Vermarktungsstrategien
 - **Abschluss**: IHK-Sachkundeprüfung §34c GewO
 
@@ -56,7 +56,7 @@ Klicken Sie in der Sidebar auf ein Modul, um zu beginnen. Sie sehen dann:
 
 ### 3. Lerninhalte nutzen
 
-Jeder Lerntag ist in **3 Bereiche** unterteilt:
+Jeder Lerntag ist in **5 Tabs** unterteilt:
 
 #### 📖 Theorie
 - Grundlagenwissen zum Thema
@@ -269,7 +269,7 @@ Das **Glossar** ist Ihre Nachschlagehilfe:
 - `Tab`: Zwischen Tabs wechseln
 
 ### Datenschutz:
-- Ihre Lernfortschritte werden lokal gespeichert
+- Ihre Lernfortschritte werden sicher in der Datenbank gespeichert
 - KI-Konversationen sind verschlüsselt
 - Keine Weitergabe von Daten an Dritte
 
