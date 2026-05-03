@@ -249,9 +249,6 @@ importers:
       officeparser:
         specifier: ^6.1.0
         version: 6.1.0
-      otplib:
-        specifier: ^13.4.0
-        version: 13.4.0
       pdf-parse:
         specifier: ^2.4.5
         version: 2.4.5
@@ -288,6 +285,9 @@ importers:
       sonner:
         specifier: ^2.0.7
         version: 2.0.7(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      speakeasy:
+        specifier: ^2.0.0
+        version: 2.0.0
       stripe:
         specifier: ^20.4.1
         version: 20.4.1(@types/node@24.7.0)
@@ -960,10 +960,6 @@ packages:
     resolution: {integrity: sha512-jCs9ldd7NwzpgXDIf6P3+NrHh9/sD6CQdxHyjQI+h/6rDNo88ypBxxz45UDuZHz9r3tNz7N/VInSVoVdtXEI4A==}
     engines: {node: ^14.21.3 || >=16}
 
-  '@noble/hashes@2.2.0':
-    resolution: {integrity: sha512-IYqDGiTXab6FniAgnSdZwgWbomxpy9FtYvLKs7wCUs2a8RkITG+DFGO1DM9cr+E3/RgADRpFjrKVaJ1z6sjtEg==}
-    engines: {node: '>= 20.19.0'}
-
   '@opentelemetry/api-logs@0.207.0':
     resolution: {integrity: sha512-lAb0jQRVyleQQGiuuvCOTDVspc14nx6XJjP4FspJ1sNARo3Regq4ZZbrc3rN4b1TYSuUCvgH+UXUPug4SLOqEQ==}
     engines: {node: '>=8.0.0'}
@@ -1155,24 +1151,6 @@ packages:
     engines: {node: ^18.19.0 || >=20.6.0}
     peerDependencies:
       '@opentelemetry/api': ^1.1.0
-
-  '@otplib/core@13.4.0':
-    resolution: {integrity: sha512-JqOGcvZQi2wIkEQo8f3/iAjstavpXy6gouIDMHygjNuH6Q0FjbHOiXMdcE94RwfgDNMABhzwUmvaPsxvgm9NYw==}
-
-  '@otplib/hotp@13.4.0':
-    resolution: {integrity: sha512-MJjE0x06mn2ptymz5qZmQveb+vWFuaIftqE0b5/TZZqUOK7l97cV8lRTmid5BpAQMwJDNLW6RnYxGeCRiNdekw==}
-
-  '@otplib/plugin-base32-scure@13.4.0':
-    resolution: {integrity: sha512-/t9YWJmMbB8bF5z8mXrBZc2FXBe8B/3hG5FhWr9K8cFwFhyxScbPysmZe8s1UTzSA6N+s8Uv8aIfCtVXPNjJWw==}
-
-  '@otplib/plugin-crypto-noble@13.4.0':
-    resolution: {integrity: sha512-KrvE4m7Zv+TT1944HzgqFJWJpKb6AyoxDbvhPStmBqdMlv5Gekb80d66cuFRL08kkPgJ5gXUSb5SFpYeB+bACg==}
-
-  '@otplib/totp@13.4.0':
-    resolution: {integrity: sha512-dK+vl0f0ekzf6mCENRI9AKS2NJUC7OjI3+X8e7QSnhQ2WM7I+i4PGpb3QxKi5hxjTtwVuoZwXR2CFtXdcRtNdQ==}
-
-  '@otplib/uri@13.4.0':
-    resolution: {integrity: sha512-x1ozBa5bPbdZCrrTL/HK21qchiK7jYElTu+0ft22abeEhiLYgH1+SIULvOcVk3CK8YwF4kdcidvkq4ciejucJA==}
 
   '@oxc-project/types@0.124.0':
     resolution: {integrity: sha512-VBFWMTBvHxS11Z5Lvlr3IWgrwhMTXV+Md+EQF0Xf60+wAdsGFTBx7X7K/hP4pi8N7dcm1RvcHwDxZ16Qx8keUg==}
@@ -1910,9 +1888,6 @@ packages:
   '@rolldown/pluginutils@1.0.0-rc.15':
     resolution: {integrity: sha512-UromN0peaE53IaBRe9W7CjrZgXl90fqGpK+mIZbA3qSTeYqg3pqpROBdIPvOG3F5ereDHNwoHBI2e50n1BDr1g==}
 
-  '@scure/base@2.2.0':
-    resolution: {integrity: sha512-b8XEupJibegiXV+tDUseI8oLQc8ei3d/4Jkb2RpbHh3MfE054ov3uIz2dhFkB3FI8iwYkEh0gGCApkrYggkPNg==}
-
   '@sentry-internal/browser-utils@10.51.0':
     resolution: {integrity: sha512-lNKBS4P7RUvf1niojXQWe9bU3gnBUCbST4Dj0pSiyat1N96cXVyHkeE+uGxowD0RrVWhs+kGHiVX3FcmRWF6sA==}
     engines: {node: '>=18'}
@@ -2407,6 +2382,9 @@ packages:
   balanced-match@4.0.4:
     resolution: {integrity: sha512-BLrgEcRTwX2o6gGxGOCNyMvGSp35YofuYzw9h1IMTRmKqttAZZVU67bdb9Pr2vUHA8+j3i2tJfjO6C6+4myGTA==}
     engines: {node: 18 || 20 || >=22}
+
+  base32.js@0.0.1:
+    resolution: {integrity: sha512-EGHIRiegFa62/SsA1J+Xs2tIzludPdzM064N9wjbiEgHnGnJ1V0WEpA4pEwCYT5nDvZk3ubf0shqaCS7k6xeUQ==}
 
   base64-arraybuffer@1.0.2:
     resolution: {integrity: sha512-I3yl4r9QB5ZRY3XuJVEPfc2XhZO6YweFPI+UovAzn+8/hb3oJ6lnysaFcjVpkCPfVWFUDvoZ8kmVDP7WyRtYtQ==}
@@ -3671,9 +3649,6 @@ packages:
   option@0.2.4:
     resolution: {integrity: sha512-pkEqbDyl8ou5cpq+VsnQbe/WlEy5qS7xPzMS1U55OCG9KPvwFD46zDbxQIj3egJSFc3D+XhYOPUzz49zQAVy7A==}
 
-  otplib@13.4.0:
-    resolution: {integrity: sha512-RUcYcRMCgRWhUE/XabRppXpUwCwaWBNHe5iPXhdvP8wwDGpGpsIf/kxX/ec3zFsOaM1Oq8lEhUqDwk6W7DHkwg==}
-
   p-limit@2.3.0:
     resolution: {integrity: sha512-//88mFWSJx8lxCzwdAABTJL2MyWB12+eIY7MDL2SqLmAkeKU9qxRvWuSyTjm3FUmpBEMuFfckAIqEaVGUDxb6w==}
     engines: {node: '>=6'}
@@ -4071,6 +4046,10 @@ packages:
 
   space-separated-tokens@2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
+
+  speakeasy@2.0.0:
+    resolution: {integrity: sha512-lW2A2s5LKi8rwu77ewisuUOtlCydF/hmQSOJjpTqTj1gZLkNgTaYnyvfxy2WBr4T/h+9c4g8HIITfj83OkFQFw==}
+    engines: {node: '>= 0.10.0'}
 
   sprintf-js@1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
@@ -4953,8 +4932,6 @@ snapshots:
 
   '@noble/hashes@1.8.0': {}
 
-  '@noble/hashes@2.2.0': {}
-
   '@opentelemetry/api-logs@0.207.0':
     dependencies:
       '@opentelemetry/api': 1.9.1
@@ -5200,33 +5177,6 @@ snapshots:
     dependencies:
       '@opentelemetry/api': 1.9.1
       '@opentelemetry/core': 2.7.1(@opentelemetry/api@1.9.1)
-
-  '@otplib/core@13.4.0': {}
-
-  '@otplib/hotp@13.4.0':
-    dependencies:
-      '@otplib/core': 13.4.0
-      '@otplib/uri': 13.4.0
-
-  '@otplib/plugin-base32-scure@13.4.0':
-    dependencies:
-      '@otplib/core': 13.4.0
-      '@scure/base': 2.2.0
-
-  '@otplib/plugin-crypto-noble@13.4.0':
-    dependencies:
-      '@noble/hashes': 2.2.0
-      '@otplib/core': 13.4.0
-
-  '@otplib/totp@13.4.0':
-    dependencies:
-      '@otplib/core': 13.4.0
-      '@otplib/hotp': 13.4.0
-      '@otplib/uri': 13.4.0
-
-  '@otplib/uri@13.4.0':
-    dependencies:
-      '@otplib/core': 13.4.0
 
   '@oxc-project/types@0.124.0': {}
 
@@ -5971,8 +5921,6 @@ snapshots:
 
   '@rolldown/pluginutils@1.0.0-rc.15': {}
 
-  '@scure/base@2.2.0': {}
-
   '@sentry-internal/browser-utils@10.51.0':
     dependencies:
       '@sentry/core': 10.51.0
@@ -6508,6 +6456,8 @@ snapshots:
   bail@2.0.2: {}
 
   balanced-match@4.0.4: {}
+
+  base32.js@0.0.1: {}
 
   base64-arraybuffer@1.0.2:
     optional: true
@@ -7775,15 +7725,6 @@ snapshots:
 
   option@0.2.4: {}
 
-  otplib@13.4.0:
-    dependencies:
-      '@otplib/core': 13.4.0
-      '@otplib/hotp': 13.4.0
-      '@otplib/plugin-base32-scure': 13.4.0
-      '@otplib/plugin-crypto-noble': 13.4.0
-      '@otplib/totp': 13.4.0
-      '@otplib/uri': 13.4.0
-
   p-limit@2.3.0:
     dependencies:
       p-try: 2.2.0
@@ -8219,6 +8160,10 @@ snapshots:
   source-map@0.6.1: {}
 
   space-separated-tokens@2.0.2: {}
+
+  speakeasy@2.0.0:
+    dependencies:
+      base32.js: 0.0.1
 
   sprintf-js@1.0.3: {}
 

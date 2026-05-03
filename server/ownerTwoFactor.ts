@@ -3,27 +3,37 @@ import QRCode from "qrcode";
 import { logger } from "./_core/logger";
 
 const require = createRequire(import.meta.url);
-const { authenticator } = require("otplib/dist/index.cjs");
+const speakeasy = require("speakeasy");
 
 const APP_NAME = "Immobilien Akademie Smart";
-const OWNER_ACCOUNT = "owner@immobilien-akademie-smart.de";
 
 export function getTotpSecret(): string | null {
   return process.env.OWNER_TOTP_SECRET || null;
 }
 
 export function generateTotpSecret(): string {
-  return authenticator.generateSecret();
+  const secret = speakeasy.generateSecret({ name: APP_NAME, length: 20 });
+  return secret.base32;
 }
 
 export async function generateQRCode(secret: string): Promise<string> {
-  const otpauth = authenticator.keyuri(OWNER_ACCOUNT, APP_NAME, secret);
+  const otpauth = speakeasy.otpauthURL({
+    secret,
+    label: "owner@immobilien-akademie-smart.de",
+    issuer: APP_NAME,
+    encoding: "base32",
+  });
   return QRCode.toDataURL(otpauth);
 }
 
 export function verifyTotp(token: string, secret: string): boolean {
   try {
-    return authenticator.verify({ token: token.trim(), secret });
+    return speakeasy.totp.verify({
+      secret,
+      encoding: "base32",
+      token: token.trim(),
+      window: 1,
+    });
   } catch (e) {
     logger.warn("[TOTP] Verifikationsfehler:", e);
     return false;
