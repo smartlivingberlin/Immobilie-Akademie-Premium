@@ -222,7 +222,19 @@ export default defineConfig({
           // ── 8. PDF / document generation ────────────────────────────────────
           // pdfjs-dist, jspdf, html2canvas — dynamic import() handles splitting
 
-          // ── 9. General utilities (everything else from node_modules) ─────────
+          // ── 10. Date utilities ───────────────────────────────────────────────
+          if (id.includes("node_modules/date-fns")) return "vendor-dates";
+
+          // ── 11. UI extras (cmdk, vaul, sonner, input-otp) ───────────────────
+          if (
+            id.includes("node_modules/cmdk") ||
+            id.includes("node_modules/vaul") ||
+            id.includes("node_modules/sonner") ||
+            id.includes("node_modules/input-otp") ||
+            id.includes("node_modules/next-themes")
+          ) return "vendor-ui-extras";
+
+          // ── 12. General utilities (everything else from node_modules) ────────
           if (id.includes("node_modules")) return "vendor-react-utils";
 
           // ── 10. Exam / quiz question data ────────────────────────────────────
