@@ -8,7 +8,7 @@
  */
 
 import { randomBytes, pbkdf2Sync } from "crypto";
-import { logger } from "./_core/logger";
+import { logger } from "./logger";
 import { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
 import type { Express, Request, Response } from "express";
 import { SignJWT, jwtVerify } from "jose";
