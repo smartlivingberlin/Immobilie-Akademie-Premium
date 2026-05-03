@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useAuth } from "@/_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
 import {
@@ -10,6 +11,8 @@ import {
 } from "lucide-react";
 
 export default function AdminDashboard() {
+  const { user } = useAuth();
+  const isOwner = user?.openId === "local:alisadgadyri38@gmail.com";
   const { data: users } = trpc.adminUsers.list.useQuery();
   const { data: codes } = trpc.presentationCode.list.useQuery();
   const { data: questions } = trpc.adminQuestions.list.useQuery({ limit: 1, offset: 0 });
@@ -78,7 +81,7 @@ export default function AdminDashboard() {
     { group: "⚙️ System & Einstellungen", items: [
       { name: "White-Label", desc: "Branding anpassen", href: "/admin/whitelabel", icon: Globe, color: "#d97706" },
       { name: "Portal-Phase", desc: "Coming Soon / Beta / Live", href: "/admin/phase", icon: Settings, color: "#64748b" },
-      { name: "Owner Dashboard", desc: "Inspect-Links · Revenue", href: "/owner-dashboard", icon: Shield, color: "#059669" },
+      ...(isOwner ? [{ name: "Owner Dashboard", desc: "Inspect-Links · Revenue", href: "/owner-dashboard", icon: Shield, color: "#059669" }] : []),
     ]},
   ];
 
@@ -383,7 +386,7 @@ export default function AdminDashboard() {
             {[
               { name: "White-Label Admin", desc: "Logo, Farben, Branding für B2B-Kunden", href: "/admin/whitelabel", icon: Globe, color: "#d97706" },
               { name: "Portal-Phase", desc: "Coming Soon / Beta / Live umschalten", href: "/admin/phase", icon: Settings, color: "#64748b" },
-              { name: "Owner Dashboard", desc: "Revenue, Inspect-Links, System-Status", href: "/owner-dashboard", icon: Shield, color: "#059669" },
+              ...(isOwner ? [{ name: "Owner Dashboard", desc: "Revenue, Inspect-Links, System-Status", href: "/owner-dashboard", icon: Shield, color: "#059669" }] : []),
             ].map(item => (
               <Link key={item.name} href={item.href}>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "12px 0", borderBottom: "0.5px solid #f1f5f9", cursor: "pointer" }}>
