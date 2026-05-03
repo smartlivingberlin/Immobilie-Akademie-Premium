@@ -86,7 +86,22 @@ export default function Module1Detail() {
     );
     // Heartbeat alle 30 Sekunden
     const interval = setInterval(() => { heartbeatRef.current += 1; }, 30000);
-    return () => clearInterval(interval);
+    // Auto-complete beim Verlassen der Seite oder Tag-Wechsel
+    const autoComplete = () => {
+      const duration = Math.round((Date.now() - startTimeRef.current) / 1000);
+      if (duration >= 30) {
+        completeDayByIdsMutation.mutate({
+          moduleId: 1, dayId: dayNum,
+          durationSeconds: Math.max(duration, 1),
+        });
+      }
+    };
+    window.addEventListener('beforeunload', autoComplete);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('beforeunload', autoComplete);
+      autoComplete();
+    };
   }, [selectedDay]);
 
   // Tag abschließen
