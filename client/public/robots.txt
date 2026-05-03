@@ -4,4 +4,4 @@ Disallow: /dashboard
 Disallow: /admin
 Disallow: /api/
 
-Sitemap: https://immobilien-akademie-smart.de/sitemap.xml
+Sitemap: https://immobilie-akademie-premium-production.up.railway.app/sitemap.xml
