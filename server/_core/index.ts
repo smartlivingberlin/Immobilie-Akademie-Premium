@@ -1,9 +1,6 @@
-// Error Monitoring — Sentry wenn DSN gesetzt, sonst strukturiertes Logging
-import { logger as _startupLogger } from "./logger";
+import * as Sentry from "@sentry/node";
 if (process.env.SENTRY_DSN) {
-  _startupLogger.warn("[Monitoring] SENTRY_DSN gesetzt aber @sentry/node nicht installiert. Bitte: pnpm add @sentry/node");
-} else {
-  _startupLogger.info("[Monitoring] Kein SENTRY_DSN — strukturiertes Logging aktiv");
+  Sentry.init({ dsn: process.env.SENTRY_DSN, tracesSampleRate: 0.1 });
 }
 
 import "./polyfills";
