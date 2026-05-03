@@ -232,18 +232,6 @@ export function registerLocalAuthRoutes(app: Express) {
     return res.json({ ok: true, name: user.name, role: user.role });
   });
 
-  // TEMP: Passwort-Reset für Admin
-  app.post("/api/auth/reset-admin-pw", async (req: Request, res: Response) => {
-    const { secret, newPassword } = req.body as { secret?: string; newPassword?: string };
-    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
-    if (secret !== ownerCode) return res.status(403).json({ error: "Forbidden" });
-    if (!newPassword || newPassword.length < 8) return res.status(400).json({ error: "Zu kurz" });
-    const openId = "local:alisadgadyri38@gmail.com";
-    const { hash, salt } = hashPassword(newPassword);
-    await db.savePasswordHash(openId, hash, salt);
-    return res.json({ ok: true, hash: hash.substring(0, 20), salt });
-  });
-
   /**
    * POST /api/auth/logout
    * Löscht Session-Cookie.
