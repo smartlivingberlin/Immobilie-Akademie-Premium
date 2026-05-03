@@ -48,7 +48,7 @@ export function CookieBanner() {
     >
       <p style={{ margin: 0, flex: 1, minWidth: 200 }}>
         🍪 Wir verwenden technisch notwendige Cookies für den Betrieb des Portals
-        sowie Analytics-Cookies (Google Analytics) bei Ihrer Zustimmung.{" "}
+        sowie technisch notwendige Cookies für den sicheren Betrieb.{" "}
         <a href="/datenschutz" style={{ color: "#60a5fa", textDecoration: "underline" }}>
           Datenschutzerklärung
         </a>

@@ -36,7 +36,7 @@ export default function Datenschutz() {
           <ul>
             <li><strong>app_session_id</strong> — technisch notwendig, 30 Tage, HTTP-only</li>
             <li><strong>cookie_consent</strong> — speichert Ihre Cookie-Entscheidung</li>
-            <li><strong>Google Analytics 4</strong> — nur nach Einwilligung (Cookie-Banner)</li>
+            
           </ul>
 
           <h2>4. Drittanbieter</h2>
