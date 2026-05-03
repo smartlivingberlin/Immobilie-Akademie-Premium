@@ -1,5 +1,6 @@
 import type { Express, Request, Response } from "express";
 import { generateOTP, verifyOTP, sendOTPEmail } from "./twoFactor";
+import { getTotpSecret, generateTotpSecret, generateQRCode, verifyTotp, getOwner2FAMethod } from "./ownerTwoFactor";
 import { createSessionToken } from "./_core/auth-local";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { ENV } from "./_core/env";
@@ -7,18 +8,168 @@ import { COOKIE_NAME, ONE_YEAR_MS } from "../shared/const";
 
 export function registerOwnerRoutes(app: Express) {
 
-  // POST /api/owner/access — Key im Request-Body, nie in URL
+  // POST /api/owner/access — Key im Request-Body, danach optionale 2FA
   app.post("/api/owner/access", async (req: Request, res: Response) => {
     const { key, redirect: redir } = req.body as { key?: string; redirect?: string };
     const ownerCode = process.env.OWNER_MAGIC_CODE || ENV.ownerMagicCode;
     if (!key || !ownerCode || key !== ownerCode) {
       return res.status(403).send(`<html><body style="font-family:Arial;padding:40px;text-align:center"><h2 style="color:#dc2626">Zugang verweigert</h2></body></html>`);
     }
+    const method = getOwner2FAMethod();
+    if (method === "none") {
+      const openId = "local:alisadgadyri38@gmail.com";
+      const token = await createSessionToken(openId, "Alisad (Owner)");
+      const cookieOptions = getSessionCookieOptions(req);
+      res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
+      return res.redirect(redir || "/admin");
+    }
+    // 2FA erforderlich — weiterleiten zu 2FA-Formular
+    const params = new URLSearchParams({ method, redirect: redir || "/admin" });
+    return res.redirect(`/owner-2fa?${params}`);
+  });
+
+  // GET /owner-2fa — zeigt 2FA-Formular
+  app.get("/owner-2fa", (req: Request, res: Response) => {
+    const method = (req.query.method as string) || "email";
+    const redir = (req.query.redirect as string) || "/admin";
+    const isTotp = method === "totp" || method === "both";
+    const isEmail = method === "email" || method === "both";
+    const ownerEmail = process.env.OWNER_EMAIL || "alisadgadyri38@gmail.com";
+    if (isEmail) {
+      const code = generateOTP(ownerEmail);
+      sendOTPEmail(ownerEmail, code, "Alisad").catch(() => {});
+    }
+    return res.send(`<!DOCTYPE html>
+<html lang="de">
+<head><meta charset="UTF-8"><title>Owner 2FA</title>
+<style>
+body{font-family:Arial,sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0;background:#f1f5f9}
+.box{background:white;padding:40px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.1);width:340px}
+h2{margin:0 0 8px;color:#1e293b;font-size:20px}
+p{margin:0 0 20px;color:#64748b;font-size:14px}
+.tabs{display:flex;gap:8px;margin-bottom:20px}
+.tab{flex:1;padding:8px;border:1px solid #cbd5e1;border-radius:8px;background:white;cursor:pointer;font-size:13px;color:#64748b}
+.tab.active{background:#1d4ed8;color:white;border-color:#1d4ed8}
+.panel{display:none}.panel.active{display:block}
+input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;font-size:14px;box-sizing:border-box;margin-bottom:16px;text-align:center;letter-spacing:4px;font-size:22px}
+button{width:100%;padding:12px;background:#1d4ed8;color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer}
+button:hover{background:#1e40af}
+.hint{font-size:12px;color:#94a3b8;text-align:center;margin-top:12px}
+.err{color:#dc2626;font-size:13px;margin-bottom:12px;display:none}
+</style></head>
+<body><div class="box">
+<h2>🔐 Sicherheitscode</h2>
+${isEmail && isTotp ? `
+<div class="tabs">
+  <button class="tab active" onclick="switchTab('email',this)">E-Mail Code</button>
+  <button class="tab" onclick="switchTab('totp',this)">Authenticator</button>
+</div>` : ""}
+${isEmail ? `
+<div class="panel active" id="panel-email">
+  <p>Code wurde an deine E-Mail gesendet.</p>
+  <div class="err" id="err-email"></div>
+  <input type="text" id="code-email" maxlength="6" placeholder="000000" autocomplete="one-time-code" inputmode="numeric">
+  <button onclick="verify('email')">Bestätigen →</button>
+  <p class="hint">10 Minuten gültig · <a href="#" onclick="resend()">Neu senden</a></p>
+</div>` : ""}
+${isTotp ? `
+<div class="panel${!isEmail ? " active" : ""}" id="panel-totp">
+  <p>Code aus deiner Authenticator-App eingeben.</p>
+  <div class="err" id="err-totp"></div>
+  <input type="text" id="code-totp" maxlength="6" placeholder="000000" inputmode="numeric">
+  <button onclick="verify('totp')">Bestätigen →</button>
+</div>` : ""}
+</div>
+<script>
+const REDIR = ${JSON.stringify(redir)};
+const OWNER_EMAIL = ${JSON.stringify(ownerEmail)};
+function switchTab(type, btn) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-'+type).classList.add('active');
+}
+async function verify(type) {
+  const code = document.getElementById('code-'+type).value.trim();
+  const err = document.getElementById('err-'+type);
+  err.style.display='none';
+  const r = await fetch('/api/owner/verify-2fa', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ type, code, redirect: REDIR, email: OWNER_EMAIL })
+  });
+  const d = await r.json();
+  if (d.ok) { window.location.href = d.redirect || REDIR; }
+  else { err.textContent = d.error || 'Falscher Code'; err.style.display='block'; }
+}
+async function resend() {
+  await fetch('/api/owner/resend-2fa', { method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ email: OWNER_EMAIL }) });
+  alert('Neuer Code wurde gesendet.');
+}
+document.addEventListener('keydown', e => { if(e.key==='Enter') {
+  const active = document.querySelector('.panel.active');
+  if(active) verify(active.id.replace('panel-',''));
+}});
+</script>
+</body></html>`);
+  });
+
+  // POST /api/owner/verify-2fa — verifiziert OTP oder TOTP und setzt Session
+  app.post("/api/owner/verify-2fa", async (req: Request, res: Response) => {
+    const { type, code, redirect: redir, email } = req.body as { type?: string; code?: string; redirect?: string; email?: string };
+    if (!code) return res.status(400).json({ error: "Code fehlt" });
+    if (type === "email") {
+      const ownerEmail = email || process.env.OWNER_EMAIL || "alisadgadyri38@gmail.com";
+      const result = verifyOTP(ownerEmail, code);
+      if (!result.ok) return res.status(401).json({ error: result.error });
+    } else if (type === "totp") {
+      const secret = getTotpSecret();
+      if (!secret) return res.status(500).json({ error: "TOTP nicht konfiguriert. Bitte Setup durchführen." });
+      if (!verifyTotp(code, secret)) return res.status(401).json({ error: "Falscher Code. Bitte App prüfen." });
+    } else {
+      return res.status(400).json({ error: "Unbekannter 2FA-Typ" });
+    }
     const openId = "local:alisadgadyri38@gmail.com";
     const token = await createSessionToken(openId, "Alisad (Owner)");
     const cookieOptions = getSessionCookieOptions(req);
     res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
-    return res.redirect(redir || "/admin");
+    return res.json({ ok: true, redirect: redir || "/admin" });
+  });
+
+  // POST /api/owner/resend-2fa — sendet neuen OTP
+  app.post("/api/owner/resend-2fa", async (req: Request, res: Response) => {
+    const { email } = req.body as { email?: string };
+    const ownerEmail = email || process.env.OWNER_EMAIL || "alisadgadyri38@gmail.com";
+    const code = generateOTP(ownerEmail);
+    await sendOTPEmail(ownerEmail, code, "Alisad");
+    return res.json({ ok: true });
+  });
+
+  // GET /api/owner/totp-setup — QR-Code für ersten TOTP-Setup
+  app.get("/api/owner/totp-setup", async (req: Request, res: Response) => {
+    const ownerCode = req.query.key as string;
+    const validCode = process.env.OWNER_MAGIC_CODE || ENV.ownerMagicCode;
+    if (!ownerCode || ownerCode !== validCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    const existing = getTotpSecret();
+    if (existing) return res.status(400).json({ error: "TOTP bereits konfiguriert. Secret: OWNER_TOTP_SECRET in Railway." });
+    const secret = generateTotpSecret();
+    const qr = await generateQRCode(secret);
+    return res.send(`<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8"><title>TOTP Setup</title>
+<style>body{font-family:Arial;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0;background:#f1f5f9}
+.box{background:white;padding:40px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.1);max-width:400px;text-align:center}
+h2{color:#1e293b}code{background:#f8fafc;padding:8px 16px;border-radius:6px;font-size:13px;display:block;word-break:break-all;margin:16px 0;border:1px solid #e2e8f0}
+.warn{background:#fef3c7;border:1px solid #fde68a;border-radius:8px;padding:12px;font-size:13px;color:#92400e;margin-top:16px}</style>
+</head><body><div class="box">
+<h2>📱 TOTP Setup</h2>
+<p>Scanne diesen QR-Code mit Google Authenticator oder Authy:</p>
+<img src="${qr}" style="width:200px;height:200px">
+<p>Oder manuell eingeben:</p>
+<code>${secret}</code>
+<div class="warn">⚠ Dieses Secret jetzt in Railway speichern:<br><strong>OWNER_TOTP_SECRET = ${secret}</strong><br>Danach diese Seite schließen.</div>
+<p style="font-size:13px;color:#64748b">Nach dem Speichern in Railway:<br>OWNER_2FA_METHOD = totp</p>
+</div></body></html>`);
   });
 
   // GET /owner → zeigt Login-Formular (Key wird per POST gesendet)
