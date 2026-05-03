@@ -63,17 +63,14 @@ export default function Datenschutz() {
           <p>Groq, Inc., Palo Alto, USA. Zweiter Fallback. Nutzeranfragen können
           übermittelt werden. Art. 6 Abs. 1 lit. b DSGVO. groq.com/privacy</p>
 
-          <h3>4.6 Sentry (Fehler-Monitoring)</h3>
-          <p>Functional Software, Inc. (Sentry), San Francisco, USA. Bei technischen
-          Fehlern werden Fehlerberichte (IP-Adresse, Browser-Daten) übermittelt.
-          Art. 6 Abs. 1 lit. f DSGVO. sentry.io/privacy/</p>
 
+          <h3>4.6 ElevenLabs (Text-to-Speech)</h3>
+          <p>ElevenLabs, Inc., New York, USA. Für die Vorlesefunktion werden Lerntexte übermittelt. Keine personenbezogenen Daten. Art. 6 Abs. 1 lit. b DSGVO. elevenlabs.io/privacy</p>
           <h3>4.7 api.qrserver.com (QR-Codes für Zertifikate)</h3>
           <p>goQR.me / kaywa GmbH. Beim Zertifikat-Download wird eine kodierte
           Zertifikat-ID (kein Name, keine E-Mail) übermittelt.
           Art. 6 Abs. 1 lit. b DSGVO.</p>
 
-          <h3></p>
 
           <h2>5. Ihre Rechte (Art. 15–21 DSGVO)</h2>
           <ul>
