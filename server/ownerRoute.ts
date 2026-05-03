@@ -7,9 +7,9 @@ import { COOKIE_NAME, ONE_YEAR_MS } from "../shared/const";
 
 export function registerOwnerRoutes(app: Express) {
 
-  // GET /api/owner/access?key=OWNER-XXXX
-  app.get("/api/owner/access", async (req: Request, res: Response) => {
-    const { key, redirect: redir } = req.query as { key?: string; redirect?: string };
+  // POST /api/owner/access — Key im Request-Body, nie in URL
+  app.post("/api/owner/access", async (req: Request, res: Response) => {
+    const { key, redirect: redir } = req.body as { key?: string; redirect?: string };
     const ownerCode = process.env.OWNER_MAGIC_CODE || ENV.ownerMagicCode;
     if (!key || !ownerCode || key !== ownerCode) {
       return res.status(403).send(`<html><body style="font-family:Arial;padding:40px;text-align:center"><h2 style="color:#dc2626">Zugang verweigert</h2></body></html>`);
@@ -21,11 +21,27 @@ export function registerOwnerRoutes(app: Express) {
     return res.redirect(redir || "/admin");
   });
 
-  // GET /owner → Kurzlink
+  // GET /owner → zeigt Login-Formular (Key wird per POST gesendet)
   app.get("/owner", async (req: Request, res: Response) => {
-    const ownerCode = process.env.OWNER_MAGIC_CODE || ENV.ownerMagicCode;
-    if (!ownerCode) return res.status(500).send("OWNER_MAGIC_CODE fehlt");
-    return res.redirect(`/api/owner/access?key=${ownerCode}&redirect=/admin`);
+    const redir = (req.query.redirect as string) || "/admin";
+    return res.send(`<!DOCTYPE html>
+<html lang="de">
+<head><meta charset="UTF-8"><title>Owner Login</title>
+<style>body{font-family:Arial,sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0;background:#f1f5f9}
+.box{background:white;padding:40px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.1);width:320px}
+h2{margin:0 0 24px;color:#1e293b;font-size:20px}
+input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;font-size:14px;box-sizing:border-box;margin-bottom:16px}
+button{width:100%;padding:12px;background:#1d4ed8;color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer}
+button:hover{background:#1e40af}</style>
+</head>
+<body><div class="box">
+<h2>🔐 Owner-Zugang</h2>
+<form method="POST" action="/api/owner/access">
+<input type="hidden" name="redirect" value="${redir}">
+<input type="password" name="key" placeholder="Owner-Code eingeben" autofocus required>
+<button type="submit">Einloggen →</button>
+</form>
+</div></body></html>`);
   });
 
   // POST /api/owner/inspect-token → erstellt 72h Inspect-Link
@@ -70,7 +86,7 @@ export function registerOwnerRoutes(app: Express) {
         maxAge: 72 * 60 * 60 * 1000
       });
       // Dann redirect zu owner/access — der setzt Session-Cookie korrekt
-      return res.redirect(`/api/owner/access?key=${ownerCode}&redirect=/kurse`);
+      return res.redirect(`/owner?redirect=/kurse`);
     } catch (e: any) {
       return res.status(403).send(`<html><body style="font-family:Arial;padding:40px;text-align:center"><h2 style="color:#dc2626">Link abgelaufen</h2><p>Bitte einen neuen Link anfordern.</p></body></html>`);
     }
@@ -176,7 +192,7 @@ export function registerOwnerRoutes(app: Express) {
     if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
     try {
       const token = await createSessionToken("owner@system", "Owner");
-      const link = `${process.env.APP_URL || ""}/api/owner/access?key=${ownerCode}`;
+      const link = `${process.env.APP_URL || ""}/owner`;
       res.json({ link, token });
     } catch (e: any) { res.status(500).json({ error: e.message }); }
   });

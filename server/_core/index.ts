@@ -98,39 +98,20 @@ app.use(helmet({
 // Das schützt alle Nutzerkonten vor automatisierten Passwort-Angriffen
 app.set("trust proxy", 1);
 app.use(compression() as any); // Gzip/Brotli Kompression // Railway Fastly CDN
-// Rate Limiter mit eigenem In-Memory Store (Railway-kompatibel)
-const _loginAttempts = new Map<string, { count: number; resetAt: number }>();
-const loginLimiter = (req: any, res: any, next: any) => {
-  const forwarded = req.headers['x-forwarded-for'] || '';
-  const ip = (Array.isArray(forwarded) 
-    ? forwarded[0] 
-    : forwarded.split(',')[0]).trim() || req.socket?.remoteAddress || 'unknown';
-  
-  const now = Date.now();
-  const windowMs = 15 * 60 * 1000; // 15 Minuten
-  const maxAttempts = 10;
-  
-  const record = _loginAttempts.get(ip);
-  if (record && now < record.resetAt) {
-    if (record.count >= maxAttempts) {
-      const retryAfter = Math.ceil((record.resetAt - now) / 1000 / 60);
-      return res.status(429).json({ 
-        error: `Zu viele Login-Versuche. Bitte warte ${retryAfter} Minuten.` 
-      });
-    }
-    record.count++;
-  } else {
-    _loginAttempts.set(ip, { count: 1, resetAt: now + windowMs });
-  }
-  
-  // Cleanup alter Einträge alle 100 Requests
-  if (_loginAttempts.size > 1000) {
-    for (const [key, val] of _loginAttempts.entries()) {
-      if (now > val.resetAt) _loginAttempts.delete(key);
-    }
-  }
-  next();
-};
+// Login Rate Limiter — express-rate-limit (konsistent mit anderen Limitern)
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Zu viele Login-Versuche. Bitte warte 15 Minuten." },
+  keyGenerator: (req: any) => {
+    const fwd = req.headers["x-forwarded-for"] || "";
+    return (Array.isArray(fwd) ? fwd[0] : fwd.split(",")[0]).trim()
+      || req.socket?.remoteAddress || "unknown";
+  },
+});
+
 
 const aiLimiter = rateLimit({
   windowMs: 60 * 1000,
@@ -294,8 +275,8 @@ app.post("/api/stripe/webhook", express.raw({ type: "*/*" }), async (req: any, r
     res.status(500).json({ error: err.message });
   }
 });
-app.use(express.json({ limit: "50mb" }));
-  app.use(express.urlencoded({ limit: "50mb", extended: true }));
+app.use(express.json({ limit: "1mb" }));
+  app.use(express.urlencoded({ limit: "1mb", extended: true }));
   // OAuth callback (Manus) – nur wenn OAUTH_SERVER_URL konfiguriert
   if (process.env.OAUTH_SERVER_URL) {
     registerOAuthRoutes(app);
@@ -365,11 +346,11 @@ app.get("/api/stats/public", async (_req, res) => {
     ) as any;
     res.json({
       totalUsers: users?.total || 0,
-      activeUsers: Math.max(active?.cnt || 0, 3), // min 3 für Glaubwürdigkeit
+      activeUsers: active?.cnt || 0,
       certsThisWeek: 0,
     });
   } catch {
-    res.json({ totalUsers: 0, activeUsers: 5, certsThisWeek: 0 });
+    res.json({ totalUsers: 0, activeUsers: 0, certsThisWeek: 0 });
   }
 });
 
