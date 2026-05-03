@@ -31,7 +31,7 @@ async function sendTrialEmail(name: string, email: string, code: string, hours: 
   const baseUrl = process.env.APP_URL || "https://immobilien-akademie-smart.de";
   const resend = createResend();
   resend.emails.send({
-    from: "Immobilien Akademie Smart <info@immobilien-akademie-smart.de>",
+    from: "Immobilien Akademie Smart <premium@immobilien-akademie-smart.de>",
     to: email,
     subject: `${name}, dein kostenloser Testzugang wartet! 🎓`,
       html: `
@@ -79,7 +79,7 @@ async function sendTrialEmail(name: string, email: string, code: string, hours: 
   <div style="background:#f8fafc;padding:20px 40px;border-top:1px solid #e2e8f0">
     <p style="color:#94a3b8;font-size:12px;text-align:center;margin:0">
       Immobilien Akademie Smart · Durlacher Str. 36, 10715 Berlin<br>
-      +49 171 1526327 · info@immobilien-akademie-smart.de
+      +49 171 1526327 · premium@immobilien-akademie-smart.de
     </p>
   </div>
 </div>

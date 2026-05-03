@@ -429,7 +429,7 @@ export async function runMonitoringSnapshot(): Promise<void> {
           method: "POST",
           headers: { "Authorization": `Bearer ${resendKey}`, "Content-Type": "application/json" },
           body: JSON.stringify({
-            from: "monitoring@immobilien-akademie-smart.de",
+            from: "premium@immobilien-akademie-smart.de",
             to: ownerEmail,
             subject: `📊 Tagesbericht ${new Date().toLocaleDateString("de-DE")} — Immobilien Akademie`,
             html: `
