@@ -35,7 +35,11 @@ export function verifyPassword(password: string, storedHash: string, storedSalt:
 // ── JWT Session ───────────────────────────────────────────────────────────────
 
 function getSecret() {
-  return new TextEncoder().encode(ENV.cookieSecret || "CHANGE_THIS_SECRET_IN_ENV");
+  if (!ENV.cookieSecret) {
+    console.error("FATAL: JWT_SECRET/cookieSecret not set. Server cannot start securely.");
+    process.exit(1);
+  }
+  return new TextEncoder().encode(ENV.cookieSecret);
 }
 
 export async function createSessionToken(openId: string, name: string): Promise<string> {
