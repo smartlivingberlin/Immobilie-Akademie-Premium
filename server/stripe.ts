@@ -49,7 +49,7 @@ const PRODUCTS = [
   {
     id: "modul_komplett",
     name: "Komplett-Ausbildung: Alle 5 Module — Der komplette Immobilienprofi",
-    description: "Die komplette Immobilienausbildung in einem Paket: Makler, Verwalter, Gutachter, Finanzierer — alles was der Markt verlangt. 240 Lerntage, 1920 UE, 5 Zertifikate, 814+ Prüfungsfragen, KI-Tutor. Einmalig kaufen, lebenslang nutzen.",
+    description: "Die komplette Immobilienausbildung in einem Paket: Makler, Verwalter, Gutachter, Finanzierer — alles was der Markt verlangt. 240 Lerntage, 1920 UE, 5 Zertifikate, 855+ Prüfungsfragen, KI-Tutor. Einmalig kaufen, lebenslang nutzen.",
     price: 195500,
     modules: "1,2,3,4,5",
   },
