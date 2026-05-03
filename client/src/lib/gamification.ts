@@ -564,11 +564,11 @@ export function getLeaderboard(type: 'global' | 'weekly' | 'monthly' = 'global')
   const currentUser = loadGamificationData();
   
   return [
-    { rank: 1, username: 'Anna Schmidt', level: 20, totalPoints: 45200, badgeCount: 28, streak: 42 },
-    { rank: 2, username: 'Max Müller', level: 18, totalPoints: 38800, badgeCount: 25, streak: 35 },
-    { rank: 3, username: 'Lisa Weber', level: 17, totalPoints: 34500, badgeCount: 23, streak: 28 },
-    { rank: 4, username: 'Tom Fischer', level: 16, totalPoints: 30200, badgeCount: 21, streak: 21 },
-    { rank: 5, username: 'Sarah Klein', level: 15, totalPoints: 27500, badgeCount: 20, streak: 18 },
+    { rank: 1, username: 'Lernender #1 🏆', level: 20, totalPoints: 45200, badgeCount: 28, streak: 42 },
+    { rank: 2, username: 'Lernender #2 🥈', level: 18, totalPoints: 38800, badgeCount: 25, streak: 35 },
+    { rank: 3, username: 'Lernender #3 🥉', level: 17, totalPoints: 34500, badgeCount: 23, streak: 28 },
+    { rank: 4, username: 'Lernender #4', level: 16, totalPoints: 30200, badgeCount: 21, streak: 21 },
+    { rank: 5, username: 'Lernender #5', level: 15, totalPoints: 27500, badgeCount: 20, streak: 18 },
     { rank: 23, username: 'Du', level: currentUser.level, totalPoints: currentUser.totalPoints, badgeCount: currentUser.badges.filter(b => b.unlocked).length, streak: currentUser.streak, isCurrentUser: true },
   ];
 }
