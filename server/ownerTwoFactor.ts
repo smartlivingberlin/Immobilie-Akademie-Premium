@@ -3,8 +3,7 @@ import QRCode from "qrcode";
 import { logger } from "./_core/logger";
 
 const require = createRequire(import.meta.url);
-const otplib = require("otplib");
-const authenticator = otplib.authenticator || otplib.default?.authenticator || otplib;
+const { authenticator } = require("otplib/dist/index.cjs");
 
 const APP_NAME = "Immobilien Akademie Smart";
 const OWNER_ACCOUNT = "owner@immobilien-akademie-smart.de";
