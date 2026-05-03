@@ -182,7 +182,7 @@ button:hover{background:#1e40af}</style>
       return res.status(403).json({ error: "Ungültiger Schlüssel" });
     }
     const { SignJWT } = await import("jose");
-    const secret = new TextEncoder().encode("immobilien-akademie-inspect-2026");
+    const secret = new TextEncoder().encode(process.env.INSPECT_JWT_SECRET || "immobilien-akademie-inspect-2026");
     const expiresAt = Date.now() + 72 * 60 * 60 * 1000;
     const inspectToken = await new SignJWT({ role: "inspect", expiresAt })
       .setProtectedHeader({ alg: "HS256" })
@@ -203,7 +203,7 @@ button:hover{background:#1e40af}</style>
     const { token } = req.params;
     try {
       const { jwtVerify } = await import("jose");
-      const secret = new TextEncoder().encode("immobilien-akademie-inspect-2026");
+      const secret = new TextEncoder().encode(process.env.INSPECT_JWT_SECRET || "immobilien-akademie-inspect-2026");
       const { payload } = await jwtVerify(token, secret);
       if ((payload as any).role !== "inspect") throw new Error("Falsche Rolle");
       // Benutze EXAKT denselben Mechanismus wie /owner — bewährt!
