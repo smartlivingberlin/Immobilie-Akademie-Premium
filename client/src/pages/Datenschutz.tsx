@@ -73,10 +73,7 @@ export default function Datenschutz() {
           Zertifikat-ID (kein Name, keine E-Mail) übermittelt.
           Art. 6 Abs. 1 lit. b DSGVO.</p>
 
-          <h3>4.8 Google Analytics 4 (nur mit Einwilligung)</h3>
-          <p>Google LLC, USA. Anonymisierte Nutzungsstatistiken. Nur nach Ihrer
-          ausdrücklichen Einwilligung über den Cookie-Banner aktiv.
-          Art. 6 Abs. 1 lit. a DSGVO + § 25 Abs. 1 TDDDG.</p>
+          <h3></p>
 
           <h2>5. Ihre Rechte (Art. 15–21 DSGVO)</h2>
           <ul>
