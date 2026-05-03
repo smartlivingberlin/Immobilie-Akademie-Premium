@@ -1,4 +1,5 @@
-import { authenticator } from "otplib";
+import otplib from "otplib";
+const authenticator = otplib.authenticator;
 import QRCode from "qrcode";
 import { logger } from "./_core/logger";
 
