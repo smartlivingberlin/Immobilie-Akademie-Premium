@@ -53,7 +53,7 @@ export function StructuredData() {
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+49-171-1526327",
-        "email": "gadyri@icloud.com",
+        "email": "alisadgadyri38@gmail.com",
         "contactType": "customer service",
         "availableLanguage": ["de"],
       },
