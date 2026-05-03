@@ -15,6 +15,7 @@
  */
 
 import { readFileSync, existsSync, writeFileSync, appendFileSync } from "fs";
+import { logger } from "../_core/logger";
 import { join } from "path";
 
 // ─── KI-MODELLE KONFIGURATION ──────────────────────────────
@@ -70,7 +71,7 @@ function loadMemory(): AgentMemory {
     if (existsSync(MEMORY_FILE)) {
       return JSON.parse(readFileSync(MEMORY_FILE, "utf-8"));
     }
-  } catch {}
+  } catch (e) { /* Memory-Datei nicht lesbar — leerer Zustand als Fallback */ }
   return {
     tasks_completed: 0,
     tokens_used: 0,
@@ -84,7 +85,7 @@ function loadMemory(): AgentMemory {
 function saveMemory(mem: AgentMemory) {
   try {
     writeFileSync(MEMORY_FILE, JSON.stringify(mem, null, 2));
-  } catch {}
+  } catch (e) { console.error(JSON.stringify({level:'error',msg:'[SuperAgent] Memory speichern fehlgeschlagen',error:(e as any)?.message,ts:new Date().toISOString()})); }
 }
 
 // ─── KI-AUFRUFE ────────────────────────────────────────────
@@ -189,7 +190,7 @@ async function smartCall(
         else if (fallback === "gemini") result = await callGemini(prompt);
         else result = await callGroq(prompt);
         return { result, model: `${fallback}(fallback)`, tokens_est };
-      } catch {}
+      } catch (e) { console.error(JSON.stringify({level:'warn',msg:'[SuperAgent] KI-Fallback fehlgeschlagen',error:(e as any)?.message,ts:new Date().toISOString()})); }
     }
     return { result: "Alle KI-Dienste nicht verfügbar", model: "none", tokens_est: 0 };
   }
@@ -457,7 +458,7 @@ Wenn keine Änderung: GESETZ|aktuell|niedrig|0`;
           const raw = readFileSync(file, "utf-8");
           // Extrahiere relevante Abschnitte
           context = raw.slice(0, 8000);
-        } catch {}
+        } catch (e) { /* Datei nicht lesbar — ignoriert */ }
       }
     }
     

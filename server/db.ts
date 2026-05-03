@@ -1,5 +1,6 @@
 import { desc, eq, sql, and } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
+import mysql from "mysql2/promise";
 import { logger } from "./_core/logger";
 import { 
   InsertUser, 
@@ -54,16 +55,44 @@ import {
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
+let _pool: mysql.Pool | null = null;
 
-// Liefert IMMER eine DB-Verbindung oder wirft einen Fehler.
-// (Damit es später keine "db ist vielleicht null"-Fehler gibt.)
-export async function getDb(): Promise<ReturnType<typeof drizzle>> {
-  if (_db) return _db;
+// Connection Pool Konfiguration
+const POOL_CONFIG = {
+  connectionLimit: 10,       // max gleichzeitige Verbindungen
+  queueLimit: 0,             // unbegrenzte Warteschlange
+  waitForConnections: true,  // warten statt Fehler bei vollem Pool
+  connectTimeout: 10000,     // 10s Verbindungs-Timeout
+  idleTimeout: 60000,        // 60s idle → Connection schließen
+  enableKeepAlive: true,     // Verbindungen aktiv halten
+  keepAliveInitialDelay: 0,
+};
+
+export function getPool(): mysql.Pool {
+  if (_pool) return _pool;
   const url = process.env.DATABASE_URL;
   if (!url) {
     throw new Error("[Database] DATABASE_URL fehlt. Bitte in Railway Variables setzen.");
   }
-  _db = drizzle(url);
+  _pool = mysql.createPool({ uri: url, ...POOL_CONFIG });
+
+  // Pool-Fehler abfangen — verhindert unhandled rejection
+  _pool.on("error" as any, (err: Error) => {
+    logger.error("[DB Pool] Verbindungsfehler", err);
+  });
+
+  logger.info("[DB Pool] Connection Pool initialisiert", {
+    connectionLimit: POOL_CONFIG.connectionLimit,
+  });
+
+  return _pool;
+}
+
+// Liefert IMMER eine DB-Verbindung oder wirft einen Fehler.
+export async function getDb(): Promise<ReturnType<typeof drizzle>> {
+  if (_db) return _db;
+  const pool = getPool();
+  _db = drizzle(pool);
   return _db;
 }
 

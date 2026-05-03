@@ -186,7 +186,7 @@ export class PortalAgent {
       if (existsSync(modul_info.knowledge_file)) {
         kontext = readFileSync(modul_info.knowledge_file, "utf-8").slice(0, 6000);
       }
-    } catch {}
+    } catch (e) { console.error(JSON.stringify({level:'error',msg:'[PortalAgent] Fehler',error:(e as any)?.message,ts:new Date().toISOString()})); }
 
     // Quellen-Liste erstellen
     const quellen = [

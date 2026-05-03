@@ -1,18 +1,9 @@
-// Sentry Error Monitoring (optional — aktiviert wenn SENTRY_DSN gesetzt)
-try {
-  if (process.env.SENTRY_DSN) {
-    const Sentry = await import("@sentry/node");
-    Sentry.init({
-      dsn: process.env.SENTRY_DSN,
-      environment: process.env.NODE_ENV || "production",
-      tracesSampleRate: 0.05,
-    });
-    const { logger: _l } = await import("./logger");
-    _l.info("[Sentry] Error Monitoring aktiv");
-  }
-} catch (e) {
-  // logger may not be available yet at this early stage — use raw console
-  console.warn(JSON.stringify({ level: "warn", msg: "[Sentry] Nicht verfügbar", error: (e as any)?.message, ts: new Date().toISOString() }));
+// Error Monitoring — Sentry wenn DSN gesetzt, sonst strukturiertes Logging
+import { logger as _startupLogger } from "./logger";
+if (process.env.SENTRY_DSN) {
+  _startupLogger.warn("[Monitoring] SENTRY_DSN gesetzt aber @sentry/node nicht installiert. Bitte: pnpm add @sentry/node");
+} else {
+  _startupLogger.info("[Monitoring] Kein SENTRY_DSN — strukturiertes Logging aktiv");
 }
 
 import "./polyfills";

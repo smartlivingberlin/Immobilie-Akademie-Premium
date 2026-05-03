@@ -1,4 +1,5 @@
 import { COOKIE_NAME } from "@shared/const";
+import { logger } from "./_core/logger";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
@@ -46,13 +47,13 @@ function safeJsonParse<T>(raw: unknown, fallback: T): T {
 
   try {
     return JSON.parse(raw) as T;
-  } catch {}
+  } catch { /* JSON parse fehlgeschlagen — versuche Regex */ }
 
   const match = raw.match(/\{[\s\S]*\}/);
   if (match) {
     try {
       return JSON.parse(match[0]) as T;
-    } catch {}
+    } catch { /* zweiter Parse-Versuch fehlgeschlagen — Fallback */ }
   }
 
   return fallback;
@@ -751,11 +752,11 @@ Antworte im folgenden JSON-Format:
       try {
         await db.delete(schema.feedback)
           .where(eq((schema.feedback as any).userId, userId));
-      } catch {}
+      } catch (e) { console.error(JSON.stringify({level:'warn',msg:'[Router] feedback delete fehlgeschlagen',error:(e as any)?.message,ts:new Date().toISOString()})); }
       try {
         await db.delete(schema.complaints)
           .where(eq((schema.complaints as any).userId, userId));
-      } catch {}
+      } catch (e) { console.error(JSON.stringify({level:'warn',msg:'[Router] complaints delete fehlgeschlagen',error:(e as any)?.message,ts:new Date().toISOString()})); }
 
       // 7. Consent-Log
       await db.delete(schema.consentLog)

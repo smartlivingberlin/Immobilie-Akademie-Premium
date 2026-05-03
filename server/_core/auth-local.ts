@@ -8,6 +8,7 @@
  */
 
 import { randomBytes, pbkdf2Sync } from "crypto";
+import { logger } from "./_core/logger";
 import { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
 import type { Express, Request, Response } from "express";
 import { SignJWT, jwtVerify } from "jose";
@@ -36,7 +37,7 @@ export function verifyPassword(password: string, storedHash: string, storedSalt:
 
 function getSecret() {
   if (!ENV.cookieSecret) {
-    console.error("FATAL: JWT_SECRET/cookieSecret not set. Server cannot start securely.");
+    logger.error("FATAL: JWT_SECRET/cookieSecret not set. Server cannot start securely.");
     process.exit(1);
   }
   return new TextEncoder().encode(ENV.cookieSecret);

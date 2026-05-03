@@ -341,7 +341,7 @@ VERFÜGBARE DIREKT-LINKS (nur passende verwenden):
             model: Math.random() > 0.2 ? "gemini-2.5-flash" : "claude-haiku",
             tokens: Math.round((r.content?.length || 500) * 4),
           }));
-        } catch {}
+        } catch (e) { /* ragTutor Stats ignoriert */ }
       }
       
       const claudeCalls = Math.round(totalCalls * 0.2);
@@ -553,7 +553,7 @@ ${textSnippet}`
         try {
           await db.insert(questionBank).values({ moduleId: Number(moduleId), category: q.category || category || "Allgemein", difficulty: q.difficulty || "medium", questionText: q.questionText, options: JSON.stringify(q.options), correctAnswer: q.correctAnswer, explanation: q.explanation || "" });
           saved++;
-        } catch {}
+        } catch (e) { console.error(JSON.stringify({level:'warn',msg:'[ragTutor] Frage-Insert fehlgeschlagen',error:(e as any)?.message,ts:new Date().toISOString()})); }
       }
       res.json({ success: true, generated: questions.length, saved, moduleId: Number(moduleId), message: `${saved} Fragen in Modul ${moduleId} gespeichert` });
     } catch { res.status(500).json({ error: "Fehler beim Generieren" }); }

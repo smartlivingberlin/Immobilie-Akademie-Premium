@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { logger } from "./_core/logger";
 import crypto from "crypto";
 import type { Express, Request, Response } from "express";
 import { hashPassword } from "./_core/auth-local";

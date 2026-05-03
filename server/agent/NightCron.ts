@@ -10,6 +10,7 @@
  */
 
 import { readFileSync, existsSync, writeFileSync } from "fs";
+import { logger } from "../_core/logger";
 import { join } from "path";
 import { getDb } from "../db";
 import { learningLogs, examWeakTopics, examSessions, users } from "../../drizzle/schema";
@@ -28,7 +29,7 @@ function log(msg: string) {
       ? readFileSync(CRON_LOG, "utf-8").split("\n").slice(-200).join("\n")
       : "";
     writeFileSync(CRON_LOG, existing + "\n" + line);
-  } catch {}
+  } catch (e) { /* File I/O Fehler im Log-Schreiben — bewusst ignoriert um Cron nicht zu unterbrechen */ }
 }
 
 // ─── MODULE CONTENT READER ─────────────────────────────────
@@ -191,7 +192,7 @@ export async function runNightAudit(): Promise<{
       problemCount: problemDays.length,
     }];
     writeFileSync(MEMORY_FILE, JSON.stringify(mem, null, 2));
-  } catch {}
+  } catch (e) { console.error(JSON.stringify({level:'error',msg:'[NightCron] Memory-Datei konnte nicht gespeichert werden',error:(e as any)?.message,ts:new Date().toISOString()})); }
 
   log(`✅ Audit fertig: ${totalDays} Tage | Ø ${avgScore}/100 | ${problemDays.length} Probleme | ${duration}s`);
   return { totalDays, avgScore, problemDays, duration };

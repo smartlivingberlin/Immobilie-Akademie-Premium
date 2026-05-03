@@ -3,6 +3,7 @@
  * Für Admin/Owner: nach Login kommt 6-stelliger Code per E-Mail
  */
 import { randomInt } from "crypto";
+import { logger } from "./_core/logger";
 import { readFileSync, writeFileSync, existsSync } from "fs";
 import { join } from "path";
 
@@ -19,12 +20,12 @@ interface OTPEntry {
 function loadStore(): Record<string, OTPEntry> {
   try {
     if (existsSync(OTP_STORE)) return JSON.parse(readFileSync(OTP_STORE, "utf-8"));
-  } catch {}
+  } catch (e) { /* OTP-Store nicht lesbar — leerer Store als Fallback */ }
   return {};
 }
 
 function saveStore(store: Record<string, OTPEntry>) {
-  try { writeFileSync(OTP_STORE, JSON.stringify(store, null, 2)); } catch {}
+  try { writeFileSync(OTP_STORE, JSON.stringify(store, null, 2)); } catch (e) { /* OTP-Store Schreibfehler — nicht kritisch */ }
 }
 
 // Generiert 6-stelligen Code für email
@@ -39,7 +40,7 @@ export function generateOTP(email: string): string {
   const key = `${email}_${now}`;
   store[key] = { code, email, expiresAt: now + 10 * 60 * 1000, used: false, attempts: 0 };
   saveStore(store);
-  console.log(`[2FA] OTP für ${email}: ${code} (10 Min gültig)`);
+  logger.info(`[2FA] OTP für ${email}: ${code} (10 Min gültig)`);
   return code;
 }
 
@@ -104,7 +105,7 @@ export async function sendOTPEmail(email: string, code: string, name: string): P
           </div>
         `,
       });
-      console.log(`[2FA] E-Mail gesendet an ${email}`);
+      logger.info(`[2FA] E-Mail gesendet an ${email}`);
       return true;
     } catch (e) {
       console.error("[2FA] E-Mail Fehler:", e);
@@ -112,9 +113,9 @@ export async function sendOTPEmail(email: string, code: string, name: string): P
   }
   
   // Fallback: Code im Server-Log (für Entwicklung)
-  console.log(`\n${"=".repeat(50)}`);
-  console.log(`[2FA] CODE FÜR ${email}: ${code}`);
-  console.log(`[2FA] (Railway Logs → Deployments → Deploy Logs)`);
-  console.log(`${"=".repeat(50)}\n`);
+  logger.info(`\n${"=".repeat(50)}`);
+  logger.info(`[2FA] CODE FÜR ${email}: ${code}`);
+  logger.info(`[2FA] (Railway Logs → Deployments → Deploy Logs)`);
+  logger.info(`${"=".repeat(50)}\n`);
   return true;
 }
