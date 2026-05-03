@@ -47,75 +47,54 @@ body{font-family:Arial,sans-serif;display:flex;justify-content:center;align-item
 .box{background:white;padding:40px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.1);width:340px}
 h2{margin:0 0 8px;color:#1e293b;font-size:20px}
 p{margin:0 0 20px;color:#64748b;font-size:14px}
-.tabs{display:flex;gap:8px;margin-bottom:20px}
-.tab{flex:1;padding:8px;border:1px solid #cbd5e1;border-radius:8px;background:white;cursor:pointer;font-size:13px;color:#64748b}
-.tab.active{background:#1d4ed8;color:white;border-color:#1d4ed8}
-.panel{display:none}.panel.active{display:block}
-input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;font-size:14px;box-sizing:border-box;margin-bottom:16px;text-align:center;letter-spacing:4px;font-size:22px}
+input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;box-sizing:border-box;margin-bottom:16px;text-align:center;letter-spacing:4px;font-size:22px}
 button{width:100%;padding:12px;background:#1d4ed8;color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer}
 button:hover{background:#1e40af}
 .hint{font-size:12px;color:#94a3b8;text-align:center;margin-top:12px}
-.err{color:#dc2626;font-size:13px;margin-bottom:12px;display:none}
 </style></head>
 <body><div class="box">
 <h2>🔐 Sicherheitscode</h2>
-${isEmail && isTotp ? `
-<div class="tabs">
-  <button class="tab active" onclick="switchTab('email',this)">E-Mail Code</button>
-  <button class="tab" onclick="switchTab('totp',this)">Authenticator</button>
-</div>` : ""}
-${isEmail ? `
-<div class="panel active" id="panel-email">
+${isEmail ? `<form method="POST" action="/api/owner/verify-2fa-form">
   <p>Code wurde an deine E-Mail gesendet.</p>
-  <div class="err" id="err-email"></div>
-  <input type="text" id="code-email" maxlength="6" placeholder="000000" autocomplete="one-time-code" inputmode="numeric">
-  <button onclick="verify('email')">Bestätigen →</button>
-  <p class="hint">10 Minuten gültig · <a href="#" onclick="resend()">Neu senden</a></p>
-</div>` : ""}
-${isTotp ? `
-<div class="panel${!isEmail ? " active" : ""}" id="panel-totp">
+  <input type="hidden" name="type" value="email">
+  <input type="hidden" name="redirect" value="${redir}">
+  <input type="hidden" name="email" value="${ownerEmail}">
+  <input type="text" name="code" maxlength="6" placeholder="000000" autocomplete="one-time-code" inputmode="numeric" autofocus required>
+  <button type="submit">Bestätigen →</button>
+  <p class="hint">10 Minuten gültig</p>
+</form>` : ""}
+${isTotp ? `<form method="POST" action="/api/owner/verify-2fa-form">
   <p>Code aus deiner Authenticator-App eingeben.</p>
-  <div class="err" id="err-totp"></div>
-  <input type="text" id="code-totp" maxlength="6" placeholder="000000" inputmode="numeric">
-  <button onclick="verify('totp')">Bestätigen →</button>
-</div>` : ""}
-</div>
-<script>
-const REDIR = ${JSON.stringify(redir)};
-const OWNER_EMAIL = ${JSON.stringify(ownerEmail)};
-function switchTab(type, btn) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('panel-'+type).classList.add('active');
-}
-async function verify(type) {
-  const code = document.getElementById('code-'+type).value.trim();
-  const err = document.getElementById('err-'+type);
-  err.style.display='none';
-  const r = await fetch('/api/owner/verify-2fa', {
-    method:'POST', headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({ type, code, redirect: REDIR, email: OWNER_EMAIL })
-  });
-  const d = await r.json();
-  if (d.ok) { window.location.href = d.redirect || REDIR; }
-  else { err.textContent = d.error || 'Falscher Code'; err.style.display='block'; }
-}
-async function resend() {
-  await fetch('/api/owner/resend-2fa', { method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({ email: OWNER_EMAIL }) });
-  alert('Neuer Code wurde gesendet.');
-}
-document.addEventListener('keydown', e => { if(e.key==='Enter') {
-  const active = document.querySelector('.panel.active');
-  if(active) verify(active.id.replace('panel-',''));
-}});
-</script>
-</body></html>`);
+  <input type="hidden" name="type" value="totp">
+  <input type="hidden" name="redirect" value="${redir}">
+  <input type="hidden" name="email" value="${ownerEmail}">
+  <input type="text" name="code" maxlength="6" placeholder="000000" inputmode="numeric" autofocus required>
+  <button type="submit">Bestätigen →</button>
+</form>` : ""}
+</div></body></html>`);
   });
 
-  // POST /api/owner/verify-2fa — verifiziert OTP oder TOTP und setzt Session
+  // POST /api/owner/verify-2fa-form — form-basierte Verifikation (kein JS nötig)
+  app.post("/api/owner/verify-2fa-form", async (req: Request, res: Response) => {
+    const { type, code, redirect: redir, email } = req.body as { type?: string; code?: string; redirect?: string; email?: string };
+    if (!code) return res.redirect("/owner-2fa?error=code_fehlt");
+    if (type === "email") {
+      const ownerEmail = email || process.env.OWNER_EMAIL || "alisadgadyri38@gmail.com";
+      const result = verifyOTP(ownerEmail, code);
+      if (!result.ok) return res.redirect(`/owner-2fa?error=${encodeURIComponent(result.error || "Falscher Code")}`);
+    } else if (type === "totp") {
+      const secret = getTotpSecret();
+      if (!secret) return res.redirect("/owner-2fa?error=TOTP+nicht+konfiguriert");
+      if (!verifyTotp(code, secret)) return res.redirect("/owner-2fa?error=Falscher+Code");
+    }
+    const openId = "local:alisadgadyri38@gmail.com";
+    const token = await createSessionToken(openId, "Alisad (Owner)");
+    const cookieOptions = getSessionCookieOptions(req);
+    res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
+    return res.redirect(redir || "/admin");
+  });
+
+    // POST /api/owner/verify-2fa — verifiziert OTP oder TOTP und setzt Session
   app.post("/api/owner/verify-2fa", async (req: Request, res: Response) => {
     const { type, code, redirect: redir, email } = req.body as { type?: string; code?: string; redirect?: string; email?: string };
     if (!code) return res.status(400).json({ error: "Code fehlt" });
