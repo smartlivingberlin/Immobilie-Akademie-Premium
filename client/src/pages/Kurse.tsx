@@ -105,7 +105,7 @@ export default function Kurse() {
             </div>
             <div style={{ fontSize:34, fontWeight:900, color:"#2563eb", fontFamily:"Fraunces, Georgia, serif", letterSpacing:"-0.02em" }}>{p.priceFormatted}</div>
             <div style={{ fontSize:11, color:"#94a3b8", background:"#f8fafc", borderRadius:8, padding:"6px 10px" }}>
-              📚 {p.modules}
+              {p.modules === "1,2,3,4,5" ? "📚 Alle 5 Module enthalten" : p.modules.split(",").length > 1 ? `📚 Inkl. Modul ${p.modules.split(",").join(" + ")}` : `📚 Modul ${p.modules}`}
             </div>
             {KURS_SLUGS[p.id] && (
               <Link href={`/kurs/${KURS_SLUGS[p.id]}`}>
