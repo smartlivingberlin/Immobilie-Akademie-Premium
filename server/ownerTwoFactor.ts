@@ -1,7 +1,9 @@
-import otplib from "otplib";
-const authenticator = otplib.authenticator;
+import { createRequire } from "module";
 import QRCode from "qrcode";
 import { logger } from "./_core/logger";
+
+const require = createRequire(import.meta.url);
+const { authenticator } = require("otplib");
 
 const APP_NAME = "Immobilien Akademie Smart";
 const OWNER_ACCOUNT = "owner@immobilien-akademie-smart.de";
