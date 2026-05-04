@@ -9,11 +9,11 @@ import {
 } from "lucide-react";
 
 const MODULES = [
-  { id:1, title:"Modul 1: Immobilien-Grundkurs", kurz:"Das Fundament", preis:"149", tage:20, ue:160, slug:"modul-1-immobilien-grundkurs", desc:"Grundstücksrecht, Grundbuch, Baurecht, Wertermittlung — die Pflichtbasis für alle weiteren Module.", badge:"Einstieg", farbe:"#2563eb" },
-  { id:2, title:"Modul 2: Makler §34c GewO", kurz:"Die Lizenz", preis:"499", tage:60, ue:480, slug:"modul-2-makler-34c", desc:"Maklerrecht, Provision, Exposé, Kaufvertrag, GwG, MaBV — alles für die IHK-Sachkundeprüfung.", badge:"Beliebt", farbe:"#7c3aed" },
-  { id:3, title:"Modul 3: WEG-Verwalter", kurz:"Die Verwaltung", preis:"699", tage:80, ue:640, slug:"modul-3-weg-verwalter", desc:"WEG-Reform 2020, Eigentümerversammlung, Nebenkostenabrechnung, Mietrecht §535ff BGB.", badge:"Vollständig", farbe:"#059669" },
-  { id:4, title:"Modul 4: Gutachter", kurz:"Die Bewertung", preis:"399", tage:40, ue:320, slug:"modul-4-gutachter", desc:"ImmoWertV 2021: Vergleichs-, Ertrags- und Sachwertverfahren. HypZert-Vorbereitung.", badge:"Präzise", farbe:"#d97706" },
-  { id:5, title:"Modul 5: §34i GewO", kurz:"Die Finanzierung", preis:"499", tage:40, ue:320, slug:"modul-5-34i-darlehensvermittler", desc:"Annuitätendarlehen, KfW-Förderung, EU-WIKR, ESIS-Merkblatt — Ihre Finanzierungslizenz.", badge:"Komplett", farbe:"#db2777" },
+  { id:1, title:"Modul 1: Immobilien-Grundkurs", kurz:"Das Fundament", preis:"149", tage:20, ue:160, slug:"modul-1-immobilien-grundkurs", desc:"Grundstücksrecht, Grundbuch, Baurecht, Wertermittlung — die Pflichtbasis für alle weiteren Module.", badge:"Einstieg", farbe:"#1d4ed8", textFarbe:"white" },
+  { id:2, title:"Modul 2: Makler §34c GewO", kurz:"Die Lizenz", preis:"499", tage:60, ue:480, slug:"modul-2-makler-34c", desc:"Maklerrecht, Provision, Exposé, Kaufvertrag, GwG, MaBV — alles für die IHK-Sachkundeprüfung.", badge:"Beliebt", farbe:"#6d28d9", textFarbe:"white" },
+  { id:3, title:"Modul 3: WEG-Verwalter", kurz:"Die Verwaltung", preis:"699", tage:80, ue:640, slug:"modul-3-weg-verwalter", desc:"WEG-Reform 2020, Eigentümerversammlung, Nebenkostenabrechnung, Mietrecht §535ff BGB.", badge:"Vollständig", farbe:"#047857", textFarbe:"white" },
+  { id:4, title:"Modul 4: Gutachter", kurz:"Die Bewertung", preis:"399", tage:40, ue:320, slug:"modul-4-gutachter", desc:"ImmoWertV 2021: Vergleichs-, Ertrags- und Sachwertverfahren. HypZert-Vorbereitung.", badge:"Präzise", farbe:"#b45309", textFarbe:"white" },
+  { id:5, title:"Modul 5: §34i GewO", kurz:"Die Finanzierung", preis:"499", tage:40, ue:320, slug:"modul-5-34i-darlehensvermittler", desc:"Annuitätendarlehen, KfW-Förderung, EU-WIKR, ESIS-Merkblatt — Ihre Finanzierungslizenz.", badge:"Komplett", farbe:"#9d174d", textFarbe:"white" },
 ];
 
 const STATS = [
@@ -216,7 +216,7 @@ export default function Home() {
                     <Building2 className="h-5 w-5" style={{color:m.farbe}} />
                   </div>
                   <span className="text-xs font-semibold px-2.5 py-1 rounded-full"
-                    style={{background:m.farbe,color:'white'}}>{m.badge}</span>
+                    style={{background:m.farbe,color:m.textFarbe}}>{m.badge}</span>
                 </div>
                 <h3 className="font-display font-semibold text-lg text-foreground mb-2">{m.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-4">{m.desc}</p>
@@ -227,7 +227,7 @@ export default function Home() {
                 </div>
                 <Link href={`/kurs/${m.slug}`}>
                   <a className="inline-flex items-center justify-center gap-2 w-full rounded-xl px-4 py-2.5 text-sm font-semibold transition-all"
-                    style={{background:m.farbe,color:"white"}}>
+                    style={{background:m.farbe,color:m.textFarbe}}>
                     Kurs ansehen <ArrowRight className="h-4 w-4" />
                   </a>
                 </Link>
