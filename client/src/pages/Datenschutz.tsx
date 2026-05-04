@@ -96,7 +96,7 @@ export default function Datenschutz() {
           <p>E-Mail: info@immobilien-akademie-smart.de<br />
           (bis Domain-Aktivierung: Kontakt über das Portal-Beschwerdeformular unter /beschwerde)</p>
 
-          <p className="text-xs text-slate-400 mt-8">Stand: April 2026 | Immobilien Akademie Smart</p>
+          <p className="text-xs text-slate-500 mt-8">Stand: April 2026 | Immobilien Akademie Smart</p>
         </CardContent>
       </Card>
     </div>

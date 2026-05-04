@@ -66,13 +66,13 @@ export default function Kurse() {
       {/* Hero */}
       <div style={{ background:"linear-gradient(135deg, #0c1628 0%, #0f2744 100%)", padding:"64px 20px 48px" }}>
         <div style={{ maxWidth:860, margin:"0 auto", textAlign:"center" }}>
-          <div style={{ display:"inline-block", background:"rgba(37,99,235,0.15)", border:"1px solid rgba(96,165,250,0.3)", color:"#93c5fd", borderRadius:24, padding:"6px 18px", fontSize:12, fontWeight:700, marginBottom:20 }}>
+          <div style={{ display:"inline-block", background:"rgba(37,99,235,0.15)", border:"1px solid rgba(96,165,250,0.3)", color:"#bfdbfe", borderRadius:24, padding:"6px 18px", fontSize:12, fontWeight:700, marginBottom:20 }}>
             🎓 IHK-VORBEREITUNG · §34c · §34i · WEG-VERWALTER
           </div>
           <h1 style={{ fontFamily:"Fraunces, Georgia, serif", fontSize:"clamp(28px, 4vw, 44px)", fontWeight:900, color:"#f1f5f9", marginBottom:12, lineHeight:1.2 }}>
             Einzelne Kurse kaufen
           </h1>
-          <p style={{ fontSize:16, color:"#94a3b8", maxWidth:500, margin:"0 auto", lineHeight:1.6 }}>
+          <p style={{ fontSize:16, color:"#64748b", maxWidth:500, margin:"0 auto", lineHeight:1.6 }}>
             Wählen Sie ein einzelnes Modul oder sparen Sie mit unseren Paketen.
             Einmalzahlung — dauerhafter Zugang.
           </p>
@@ -104,7 +104,7 @@ export default function Kurse() {
               <p style={{ fontSize:12, color:"#64748b", lineHeight:1.5, margin:0 }}>{p.description}</p>
             </div>
             <div style={{ fontSize:34, fontWeight:900, color:"#2563eb", fontFamily:"Fraunces, Georgia, serif", letterSpacing:"-0.02em" }}>{p.priceFormatted}</div>
-            <div style={{ fontSize:11, color:"#94a3b8", background:"#f8fafc", borderRadius:8, padding:"6px 10px" }}>
+            <div style={{ fontSize:11, color:"#475569", background:"#f8fafc", borderRadius:8, padding:"6px 10px" }}>
               {p.modules === "1,2,3,4,5" ? "📚 Alle 5 Module enthalten" : p.modules.split(",").length > 1 ? `📚 Inkl. Modul ${p.modules.split(",").join(" + ")}` : `📚 Modul ${p.modules}`}
             </div>
             {KURS_SLUGS[p.id] && (
@@ -146,7 +146,7 @@ export default function Kurse() {
             gelesen und verstanden. Ich stimme ausdrücklich zu, dass mit der Ausführung des Vertrags
             (Freischaltung des Kurszugangs) sofort begonnen wird. Mir ist bekannt, dass ich dadurch
             mein Widerrufsrecht verliere, sobald der digitale Inhalt vollständig geliefert wurde.{" "}
-            <span className="text-slate-400 text-xs">(§356 Abs. 5 BGB)</span>
+            <span className="text-slate-600 text-xs">(§356 Abs. 5 BGB)</span>
           </span>
         </label>
 
@@ -188,7 +188,7 @@ export default function Kurse() {
           <div style={{fontSize:16,fontWeight:800,color:"#f1f5f9",marginBottom:4}}>
             💰 Mehrere Module? Bis zu 290 € sparen!
           </div>
-          <div style={{fontSize:13,color:"#94a3b8"}}>
+          <div style={{fontSize:13,color:"#64748b"}}>
             Mit unseren Vorteilspaketen bekommen Sie alle Module günstiger — einmalig kaufen, dauerhaft nutzen.
           </div>
         </div>
@@ -205,7 +205,7 @@ export default function Kurse() {
         </Link>
       </div>
 
-      <div className="flex items-center justify-center gap-6 text-xs text-slate-400 flex-wrap">
+      <div className="flex items-center justify-center gap-6 text-xs text-slate-600 flex-wrap">
         <span>🔒 Sichere Zahlung via Stripe</span>
         <span>•</span>
         <span>📋 Sofortiger Kurszugang nach Zahlung</span>
