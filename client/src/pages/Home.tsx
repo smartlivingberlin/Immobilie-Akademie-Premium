@@ -216,7 +216,7 @@ export default function Home() {
                     <Building2 className="h-5 w-5" style={{color:m.farbe}} />
                   </div>
                   <span className="text-xs font-semibold px-2.5 py-1 rounded-full"
-                    style={{background:`${m.farbe}25`,color:`${m.farbe}`}}>{m.badge}</span>
+                    style={{background:m.farbe,color:'white'}}>{m.badge}</span>
                 </div>
                 <h3 className="font-display font-semibold text-lg text-foreground mb-2">{m.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-4">{m.desc}</p>
