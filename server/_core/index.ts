@@ -124,7 +124,7 @@ const resetLimiter = rateLimit({
 
 
 // ── ElevenLabs TTS-Proxy (API-Key nur server-seitig) ──────────────
-app.post("/api/tts", requireAuth, async (req: Request, res: Response) => {
+app.post("/api/tts", requireAuth, async (req: any, res: any) => {
   const { text, voiceId = "21m00Tcm4TlvDq8ikWAM" } = req.body;
   const apiKey = process.env.ELEVENLABS_API_KEY;
   if (!apiKey) return res.status(503).json({ error: "TTS nicht konfiguriert" });

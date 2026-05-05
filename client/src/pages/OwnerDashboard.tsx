@@ -75,13 +75,13 @@ export default function OwnerDashboard() {
     const liveInterval = setInterval(fetchLive, 30000);
     setTimeout(() => clearInterval(liveInterval), 1800000); // 30min max
     // Aktivitaets-Log laden
-    fetch(`/api/owner/settings?key=${ownerKey}`, { credentials:"include", headers:{"x-owner-key":ownerKey} })
+    fetch(`/api/owner/settings?key=${ownerKey}`, { credentials:"include", headers:{"x-owner-key":localStorage.getItem("ownerKey")||""} })
       .then(r => r.json()).then(d => { if(d.settings) setSettings(d.settings); }).catch(() => {});
 
-    fetch(`/api/owner/activity?key=${ownerKey}`, { credentials:"include", headers:{"x-owner-key":ownerKey} })
+    fetch(`/api/owner/activity?key=${ownerKey}`, { credentials:"include", headers:{"x-owner-key":localStorage.getItem("ownerKey")||""} })
       .then(r => r.json()).then(setActivity).catch(()=>{});
     // Stats laden
-    fetch(`/api/owner/stats?key=${ownerKey}`, { credentials:"include", headers:{"x-owner-key":ownerKey} })
+    fetch(`/api/owner/stats?key=${ownerKey}`, { credentials:"include", headers:{"x-owner-key":localStorage.getItem("ownerKey")||""} })
       .then(r => r.json()).then(setStatsData).catch(()=>{});
     fetch(`/api/owner/dashboard?key=${ownerKey}`, { credentials: "include", headers: { "x-owner-key": ownerKey } })
       .then(r => r.json())
@@ -114,7 +114,7 @@ export default function OwnerDashboard() {
     const ownerKey = localStorage.getItem("ownerKey") || "";
     const res = await fetch("/api/owner/set-role", {
       method:"POST", credentials:"include",
-      headers:{"Content-Type":"application/json","x-owner-key":ownerKey},
+      headers:{"Content-Type":"application/json","x-owner-key":localStorage.getItem("ownerKey")||""},
       body: JSON.stringify({ email, role }),
     });
     const d = await res.json();
@@ -306,7 +306,7 @@ export default function OwnerDashboard() {
               for (const [key, value] of Object.entries(settings)) {
                 await fetch("/api/owner/settings", {
                   method:"POST", credentials:"include",
-                  headers:{"Content-Type":"application/json","x-owner-key":ownerKey},
+                  headers:{"Content-Type":"application/json","x-owner-key":localStorage.getItem("ownerKey")||""},
                   body: JSON.stringify({key, value})
                 });
               }
@@ -335,7 +335,7 @@ export default function OwnerDashboard() {
               onClick={()=>{
                 setAzavLoading(true);
                 const ownerKey = localStorage.getItem("ownerKey")||"";
-                fetch(`/api/owner/azav-report?key=${ownerKey}`,{credentials:"include",headers:{"x-owner-key":ownerKey}})
+                fetch(`/api/owner/azav-report?key=${ownerKey}`,{credentials:"include",headers:{"x-owner-key":localStorage.getItem("ownerKey")||""}})
                   .then(r=>r.json()).then(d=>{setAzavReport(d);setAzavLoading(false);}).catch(()=>setAzavLoading(false));
               }}
               style={{background:"#2563eb",color:"white",border:"none",borderRadius:8,padding:"10px 20px",fontSize:13,fontWeight:700,cursor:"pointer"}}>

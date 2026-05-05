@@ -1,3 +1,4 @@
+import { sql } from "drizzle-orm";
 import type { Express, Request, Response } from "express";
 import { generateOTP, verifyOTP, sendOTPEmail } from "./twoFactor";
 import { getTotpSecret, generateTotpSecret, generateQRCode, verifyTotp, getOwner2FAMethod } from "./ownerTwoFactor";
@@ -631,8 +632,7 @@ button:hover{background:#1e40af}</style>
       const { getDb } = await import("./db");
       const db = await getDb();
       await db.execute(
-        "INSERT INTO portal_settings (setting_key, setting_value) VALUES (?, ?) ON DUPLICATE KEY UPDATE setting_value = ?",
-        [key, value, value]
+        sql`INSERT INTO portal_settings (setting_key, setting_value) VALUES (${key}, ${value}) ON DUPLICATE KEY UPDATE setting_value = ${value}`
       );
       res.json({ ok: true, key, value });
     } catch (e: any) {

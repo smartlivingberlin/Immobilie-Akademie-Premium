@@ -356,7 +356,7 @@ const navigation = [
                       <TooltipTrigger asChild>
                         <Link href="/rechner">
                           <div className="w-full flex justify-center mb-2">
-                            <Button variant="ghost" size="icon" aria-label="Praxisrechner" className={`text-slate-300 hover:text-white hover:bg-slate-800 ${location === '/rechner' ? 'bg-blue-600 text-white' : ''}`} aria-label="Praxisrechner">
+                            <Button variant="ghost" size="icon" className={`text-slate-300 hover:text-white hover:bg-slate-800 ${location === '/rechner' ? 'bg-blue-600 text-white' : ''}`} aria-label="Praxisrechner">
                               <Calculator className="h-5 w-5" />
                             </Button>
                           </div>

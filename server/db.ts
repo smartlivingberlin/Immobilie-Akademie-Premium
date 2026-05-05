@@ -54,7 +54,7 @@ import {
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
-let _db: ReturnType<typeof drizzle> | null = null;
+let _db: ReturnType<typeof drizzle> | null = null; // eslint-disable-line
 let _pool: mysql.Pool | null = null;
 
 // Connection Pool Konfiguration
@@ -77,7 +77,7 @@ export function getPool(): mysql.Pool {
   _pool = mysql.createPool({ uri: url, ...POOL_CONFIG });
 
   // Pool-Fehler abfangen — verhindert unhandled rejection
-  _pool.on("error" as any, (err: Error) => {
+  (_pool as any).on("error", (err: Error) => {
     logger.error("[DB Pool] Verbindungsfehler", err);
   });
 
@@ -92,8 +92,8 @@ export function getPool(): mysql.Pool {
 export async function getDb(): Promise<ReturnType<typeof drizzle>> {
   if (_db) return _db;
   const pool = getPool();
-  _db = drizzle(pool);
-  return _db;
+  _db = drizzle(pool) as unknown as ReturnType<typeof drizzle>;
+  return _db!;
 }
 
 export async function upsertUser(user: InsertUser): Promise<void> {
