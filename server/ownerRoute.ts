@@ -177,20 +177,19 @@ button:hover{background:#1e40af}</style>
 
   // POST /api/owner/inspect-token → erstellt 72h Inspect-Link
   app.post("/api/owner/inspect-token", async (req: Request, res: Response) => {
-    const { key } = req.body as { key?: string };
+    const { key, hours } = req.body as { key?: string; hours?: number };
     const ownerCode = process.env.OWNER_MAGIC_CODE || ENV.ownerMagicCode;
-    if (!key || !ownerCode || key !== ownerCode) {
-      return res.status(403).json({ error: "Ungültiger Schlüssel" });
-    }
+    if (!ownerCode) return res.status(403).json({ error: "Ungültiger Schlüssel" });
+    const validHours = [48, 72].includes(Number(hours)) ? Number(hours) : 72;
     const { SignJWT } = await import("jose");
     const secret = new TextEncoder().encode(process.env.INSPECT_JWT_SECRET || "immobilien-akademie-inspect-2026");
-    const expiresAt = Date.now() + 72 * 60 * 60 * 1000;
+    const expiresAt = Date.now() + validHours * 60 * 60 * 1000;
     const inspectToken = await new SignJWT({ role: "inspect", expiresAt })
       .setProtectedHeader({ alg: "HS256" })
-      .setExpirationTime("72h")
+      .setExpirationTime(`${validHours}h`)
       .setIssuedAt()
       .sign(secret);
-    return res.json({ token: inspectToken, expiresAt });
+    return res.json({ token: inspectToken, expiresAt, hours: validHours });
   });
 
   // GET /inspect/exit → Demo-Modus beenden (MUSS vor :token stehen!)

@@ -29,7 +29,7 @@ function LockedButton({ label }: { label: string }) {
 
 export default function AdminDashboard() {
   const { user } = useAuth();
-  const isOwner = user?.openId === "local:alisadgadyri38@gmail.com";
+  const isOwner = user?.openId === "local:alisadgadyri38@gmail.com" && !isInspectMode();
   const { data: users } = trpc.adminUsers.list.useQuery();
   const { data: codes } = trpc.presentationCode.list.useQuery();
   const { data: questions } = trpc.adminQuestions.list.useQuery({ limit: 1, offset: 0 });

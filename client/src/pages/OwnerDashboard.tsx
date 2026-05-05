@@ -19,6 +19,7 @@ export default function OwnerDashboard() {
   const [inspectExpiry, setInspectExpiry] = useState<string | null>(null);
   const [inspectLoading, setInspectLoading] = useState(false);
   const [inspectCopied, setInspectCopied] = useState(false);
+  const [inspectHours, setInspectHours] = useState<48|72>(72);
   const BASE_URL = window.location.origin;
 
   const createInspectLink = async () => {
@@ -27,7 +28,7 @@ export default function OwnerDashboard() {
       const res = await fetch("/api/owner/inspect-token", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ key: "" }),
+        body: JSON.stringify({ key: "", hours: inspectHours }),
       });
       const data = await res.json();
       if (data.token) {
@@ -458,20 +459,33 @@ export default function OwnerDashboard() {
       {/* === INSPECT-LINK GENERATOR === */}
       <div style={{background:"#1e1b4b",border:"1px solid #4338ca",borderRadius:12,padding:"20px 24px",marginTop:24}}>
         <h3 style={{color:"#a5b4fc",fontSize:16,fontWeight:600,marginBottom:4}}>
-          🔍 72h Inspect-Link Generator
+          🔍 Inspect-Link Generator
         </h3>
         <p style={{color:"#6366f1",fontSize:12,marginBottom:16}}>
           Erstelle einen temporären Link für Investoren, Partner oder Tester — sie sehen alles, können aber nichts ändern.
         </p>
 
         {!inspectToken ? (
-          <button
-            onClick={createInspectLink}
-            disabled={inspectLoading}
-            style={{background:"#4338ca",color:"white",border:"none",padding:"10px 20px",
-                    borderRadius:8,fontSize:13,fontWeight:600,cursor:"pointer"}}>
-            {inspectLoading ? "⏳ Erstelle Link..." : "🔑 72h Inspect-Link erstellen"}
-          </button>
+          <div>
+            <div style={{display:"flex",gap:8,marginBottom:12}}>
+              {([48,72] as const).map(h => (
+                <button key={h} onClick={() => setInspectHours(h)}
+                  style={{padding:"8px 20px",borderRadius:8,fontSize:13,fontWeight:700,cursor:"pointer",
+                    background: inspectHours===h ? "#4338ca" : "transparent",
+                    color: inspectHours===h ? "white" : "#6366f1",
+                    border: inspectHours===h ? "none" : "1px solid #4338ca"}}>
+                  {h}h
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={createInspectLink}
+              disabled={inspectLoading}
+              style={{background:"#4338ca",color:"white",border:"none",padding:"10px 20px",
+                      borderRadius:8,fontSize:13,fontWeight:600,cursor:"pointer"}}>
+              {inspectLoading ? "⏳ Erstelle Link..." : `🔑 ${inspectHours}h Inspect-Link erstellen`}
+            </button>
+          </div>
         ) : (
           <div>
             <div style={{background:"#312e81",borderRadius:8,padding:"12px 14px",marginBottom:10}}>
@@ -498,7 +512,7 @@ export default function OwnerDashboard() {
               </button>
             </div>
             <p style={{color:"#6366f1",fontSize:11,marginTop:8}}>
-              ⚠️ Link gilt 72 Stunden · Besucher sehen alle Bereiche · Keine Änderungen möglich
+              ⚠️ Link gilt {inspectHours} Stunden · Besucher sehen alle Bereiche · Keine Änderungen möglich
             </p>
           </div>
         )}
