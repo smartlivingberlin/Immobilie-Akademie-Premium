@@ -83,6 +83,7 @@ const Module5WithIntro = lazy(() => import("@/pages/modules/Module5WithIntro"));
 const AdminDashboard = lazy(() => import("@/pages/admin/AdminDashboard"));
 const GlossarAdmin = lazy(() => import("@/pages/admin/GlossarAdmin"));
 const AdminCodes = lazy(() => import("@/pages/admin/AdminCodes"));
+const LandingPageAdmin = lazy(() => import("@/pages/admin/LandingPageAdmin"));
 const KursbuchGenerator = lazy(() => import("@/pages/admin/KursbuchGenerator"));
 const DozentenCockpit = lazy(() => import("@/pages/admin/DozentenCockpit"));
 const DozentenLoesungen = lazy(() => import("@/pages/admin/DozentenLoesungen"));
@@ -210,6 +211,7 @@ function Router() {
         <Route path="/admin/glossar"><AppLayout><AdminRoute component={GlossarAdmin} /></AppLayout></Route>
         <Route path="/admin/ki-monitor"><AppLayout><AdminRoute component={KiMonitor} /></AppLayout></Route>
         <Route path="/admin/codes"><AppLayout><AdminRoute component={AdminCodes} /></AppLayout></Route>
+        <Route path="/admin/landing-pages"><AppLayout><AdminRoute component={LandingPageAdmin} /></AppLayout></Route>
         <Route path="/admin/nutzer"><AppLayout><AdminRoute component={UserManagement} /></AppLayout></Route>
         <Route path="/admin-2fa"><Admin2FA /></Route>
         <Route path="/admin"><AppLayout><AdminRoute component={AdminDashboard} /></AppLayout></Route>
