@@ -223,8 +223,8 @@ export default function AdminDashboard() {
             ))}
           </div>
 
-          {/* Launch Checklist */}
-          <div>
+          {/* Launch Checklist — nur für Owner */}
+          {isOwner && <div>
             <h2 style={{ fontSize: 12, fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 10 }}>
               🚀 Launch-Checkliste
             </h2>
@@ -296,7 +296,7 @@ export default function AdminDashboard() {
                 )
               ))}
             </div>
-          </div>
+          </div>}
         </div>
       )}
 
