@@ -244,7 +244,7 @@ const navigation = [
                 </TooltipProvider>
               ) : (
                 <div className="px-3 mb-4">
-                  <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+                  <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                     Hilfe & Ressourcen
                   </div>
                   <Link href="/hilfe">
@@ -279,7 +279,7 @@ const navigation = [
                   </TooltipProvider>
                 ) : (
                   <div className="px-3 mb-4">
-                    <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+                    <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                       Administration
                     </div>
                     <Link href="/admin">
@@ -354,7 +354,7 @@ const navigation = [
                       <TooltipTrigger asChild>
                         <Link href="/rechner">
                           <div className="w-full flex justify-center mb-2">
-                            <Button variant="ghost" size="icon" className={`text-slate-300 hover:text-white hover:bg-slate-800 ${location === '/rechner' ? 'bg-blue-600 text-white' : ''}`}>
+                            <Button variant="ghost" size="icon" aria-label="Praxisrechner" className={`text-slate-300 hover:text-white hover:bg-slate-800 ${location === '/rechner' ? 'bg-blue-600 text-white' : ''}`} aria-label="Praxisrechner">
                               <Calculator className="h-5 w-5" />
                             </Button>
                           </div>
@@ -370,7 +370,7 @@ const navigation = [
                       <TooltipTrigger asChild>
                         <Link href="/statistiken">
                           <div className="w-full flex justify-center mb-2">
-                            <Button variant="ghost" size="icon" className={`text-slate-300 hover:text-white hover:bg-slate-800 ${location === '/statistiken' ? 'bg-blue-600 text-white' : ''}`}>
+                            <Button variant="ghost" size="icon" aria-label="Lernstatistiken" className={`text-slate-300 hover:text-white hover:bg-slate-800 ${location === '/statistiken' ? 'bg-blue-600 text-white' : ''}`}>
                               <BarChart3 className="h-5 w-5" />
                             </Button>
                           </div>
@@ -386,7 +386,7 @@ const navigation = [
                       <TooltipTrigger asChild>
                         <Link href="/zertifikate">
                           <div className="w-full flex justify-center mb-2">
-                            <Button variant="ghost" size="icon" className={`text-slate-300 hover:text-white hover:bg-slate-800 ${location === '/zertifikate' ? 'bg-blue-600 text-white' : ''}`}>
+                            <Button variant="ghost" size="icon" aria-label="Zertifikate" className={`text-slate-300 hover:text-white hover:bg-slate-800 ${location === '/zertifikate' ? 'bg-blue-600 text-white' : ''}`}>
                               <Award className="h-5 w-5" />
                             </Button>
                           </div>
@@ -401,7 +401,7 @@ const navigation = [
                     <Tooltip delayDuration={0}>
                       <TooltipTrigger asChild>
                         <div className="w-full flex justify-center">
-                          <Button variant="ghost" size="icon" className="text-slate-300 hover:text-white hover:bg-slate-800">
+                          <Button variant="ghost" size="icon" aria-label="Fachbegriffe & Gesetze" className="text-slate-300 hover:text-white hover:bg-slate-800">
                             <BookOpen className="h-5 w-5" />
                           </Button>
                         </div>
@@ -414,7 +414,7 @@ const navigation = [
                 </>
               ) : (
                 <div className="px-3">
-                  <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+                  <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                     Wissen & Tools
                   </div>
                   <Link href="/rechner">
@@ -566,7 +566,7 @@ const navigation = [
             </div>
             <span className="font-bold text-slate-900">Immobilien Akademie</span>
           </div>
-          <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(true)}>
+          <Button variant="ghost" size="icon" aria-label="Menü öffnen" onClick={() => setIsMobileMenuOpen(true)}>
             <Menu className="h-6 w-6 text-slate-600" />
           </Button>
         </div>

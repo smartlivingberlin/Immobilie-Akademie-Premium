@@ -15,6 +15,7 @@ function Progress({
         "bg-primary/20 relative h-2 w-full overflow-hidden rounded-full",
         className
       )}
+      aria-label={(props as any)["aria-label"] ?? "Fortschritt"}
       {...props}
     >
       <ProgressPrimitive.Indicator
