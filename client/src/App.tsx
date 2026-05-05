@@ -118,6 +118,15 @@ function AdminRoute({ component: Component }: { component: React.ComponentType }
   return <Component />;
 }
 
+function OwnerRoute({ component: Component }: { component: React.ComponentType }) {
+  const { data: user, isLoading } = trpc.auth.me.useQuery(undefined, { retry: false });
+  const isInspect = document.cookie.includes("inspect_mode=") || sessionStorage.getItem("inspect_mode") === "1";
+  if (isLoading) return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
+  if (isInspect) { window.location.href = "/admin"; return null; }
+  if (!user || user.role !== "admin") { window.location.href = "/login"; return null; }
+  return <Component />;
+}
+
 function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
@@ -215,7 +224,7 @@ function Router() {
         <Route path="/admin/nutzer"><AppLayout><AdminRoute component={UserManagement} /></AppLayout></Route>
         <Route path="/admin-2fa"><Admin2FA /></Route>
         <Route path="/admin"><AppLayout><AdminRoute component={AdminDashboard} /></AppLayout></Route>
-        <Route path="/owner-dashboard"><AppLayout><AdminRoute component={OwnerDashboard} /></AppLayout></Route>
+        <Route path="/owner-dashboard"><AppLayout><OwnerRoute component={OwnerDashboard} /></AppLayout></Route>
         <Route path="/foerderung"><PublicLayout><Foerderung /></PublicLayout></Route>
         <Route path="/audio-modus"><AudioModus /></Route>
         <Route component={NotFound} />

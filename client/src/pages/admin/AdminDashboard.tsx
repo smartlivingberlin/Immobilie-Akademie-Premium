@@ -10,6 +10,23 @@ import {
   ChevronRight, Activity, Star, Lock, Unlock
 } from "lucide-react";
 
+// Prüft ob Inspect/Tester-Modus aktiv ist
+function isInspectMode(): boolean {
+  return document.cookie.includes("inspect_mode=") ||
+    sessionStorage.getItem("inspect_mode") === "1" ||
+    window.location.search.includes("inspect=1");
+}
+
+// Gesperrter Button für Tester
+function LockedButton({ label }: { label: string }) {
+  return (
+    <span title="Kein Zugang — nur für Eigentümer"
+      style={{ display: "flex", alignItems: "center", gap: 6, background: "#fee2e2", color: "#dc2626", padding: "8px 14px", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "not-allowed", border: "1px solid #fca5a5" }}>
+      ✕ {label}
+    </span>
+  );
+}
+
 export default function AdminDashboard() {
   const { user } = useAuth();
   const isOwner = user?.openId === "local:alisadgadyri38@gmail.com";
@@ -99,18 +116,28 @@ export default function AdminDashboard() {
           </p>
         </div>
         <div style={{ display: "flex", gap: 8 }}>
-          <a href="https://railway.app" target="_blank" rel="noreferrer"
-            style={{ display: "flex", alignItems: "center", gap: 6, background: "#0f172a", color: "white", padding: "8px 14px", borderRadius: 8, fontSize: 12, textDecoration: "none", fontWeight: 600 }}>
-            <ExternalLink size={14} /> Railway
-          </a>
-          <a href="https://dashboard.stripe.com" target="_blank" rel="noreferrer"
-            style={{ display: "flex", alignItems: "center", gap: 6, background: "#635bff", color: "white", padding: "8px 14px", borderRadius: 8, fontSize: 12, textDecoration: "none", fontWeight: 600 }}>
-            <DollarSign size={14} /> Stripe
-          </a>
-          <a href="https://github.com/smartlivingberlin/Immobilie-Akademie-Premium" target="_blank" rel="noreferrer"
-            style={{ display: "flex", alignItems: "center", gap: 6, background: "#24292f", color: "white", padding: "8px 14px", borderRadius: 8, fontSize: 12, textDecoration: "none", fontWeight: 600 }}>
-            <ExternalLink size={14} /> GitHub
-          </a>
+          {isInspectMode() ? (
+            <>
+              <LockedButton label="Railway" />
+              <LockedButton label="Stripe" />
+              <LockedButton label="GitHub" />
+            </>
+          ) : (
+            <>
+              <a href="https://railway.app" target="_blank" rel="noreferrer"
+                style={{ display: "flex", alignItems: "center", gap: 6, background: "#0f172a", color: "white", padding: "8px 14px", borderRadius: 8, fontSize: 12, textDecoration: "none", fontWeight: 600 }}>
+                <ExternalLink size={14} /> Railway
+              </a>
+              <a href="https://dashboard.stripe.com" target="_blank" rel="noreferrer"
+                style={{ display: "flex", alignItems: "center", gap: 6, background: "#635bff", color: "white", padding: "8px 14px", borderRadius: 8, fontSize: 12, textDecoration: "none", fontWeight: 600 }}>
+                <DollarSign size={14} /> Stripe
+              </a>
+              <a href="https://github.com/smartlivingberlin/Immobilie-Akademie-Premium" target="_blank" rel="noreferrer"
+                style={{ display: "flex", alignItems: "center", gap: 6, background: "#24292f", color: "white", padding: "8px 14px", borderRadius: 8, fontSize: 12, textDecoration: "none", fontWeight: 600 }}>
+                <ExternalLink size={14} /> GitHub
+              </a>
+            </>
+          )}
         </div>
       </div>
 
@@ -239,23 +266,33 @@ export default function AdminDashboard() {
             </h2>
             <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 12 }}>
               {[
-                { name: "Railway Dashboard", url: "https://railway.app", color: "#7c3aed" },
-                { name: "Stripe Dashboard", url: "https://dashboard.stripe.com", color: "#635bff" },
-                { name: "GitHub Repo", url: "https://github.com/smartlivingberlin/Immobilie-Akademie-Premium", color: "#24292f" },
+                { name: "Railway Dashboard", url: "https://railway.app", color: "#7c3aed", ownerOnly: true },
+                { name: "Stripe Dashboard", url: "https://dashboard.stripe.com", color: "#635bff", ownerOnly: true },
+                { name: "GitHub Repo", url: "https://github.com/smartlivingberlin/Immobilie-Akademie-Premium", color: "#24292f", ownerOnly: true },
                 { name: "Gewerbe Berlin", url: "https://service.berlin.de/dienstleistung/305614/", color: "#dc2626" },
                 { name: "Domain kaufen", url: "https://www.namecheap.com", color: "#d97706" },
                 { name: "Anthropic Console", url: "https://console.anthropic.com", color: "#d97706" },
                 { name: "Google AI Studio", url: "https://aistudio.google.com", color: "#059669" },
                 { name: "Groq Console", url: "https://console.groq.com", color: "#0891b2" },
               ].map(link => (
-                <a key={link.name} href={link.url} target="_blank" rel="noreferrer"
-                  style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "7px 0", borderBottom: "0.5px solid #f1f5f9", textDecoration: "none" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                    <div style={{ width: 8, height: 8, borderRadius: "50%", background: link.color }} />
-                    <span style={{ fontSize: 12, color: "#374151", fontWeight: 500 }}>{link.name}</span>
+                (link as any).ownerOnly && isInspectMode() ? (
+                  <div key={link.name} title="Kein Zugang — nur für Eigentümer"
+                    style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "7px 0", borderBottom: "0.5px solid #f1f5f9", cursor: "not-allowed", opacity: 0.5 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                      <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#dc2626" }} />
+                      <span style={{ fontSize: 12, color: "#dc2626", fontWeight: 500 }}>✕ {link.name}</span>
+                    </div>
                   </div>
-                  <ExternalLink size={11} color="#94a3b8" />
-                </a>
+                ) : (
+                  <a key={link.name} href={link.url} target="_blank" rel="noreferrer"
+                    style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "7px 0", borderBottom: "0.5px solid #f1f5f9", textDecoration: "none" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                      <div style={{ width: 8, height: 8, borderRadius: "50%", background: link.color }} />
+                      <span style={{ fontSize: 12, color: "#374151", fontWeight: 500 }}>{link.name}</span>
+                    </div>
+                    <ExternalLink size={11} color="#94a3b8" />
+                  </a>
+                )
               ))}
             </div>
           </div>
