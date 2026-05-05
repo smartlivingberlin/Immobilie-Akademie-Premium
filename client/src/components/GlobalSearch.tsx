@@ -165,7 +165,7 @@ export function GlobalSearch({ collapsed = false }: GlobalSearchProps) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" className="w-full justify-start text-slate-600 bg-background/50 backdrop-blur-sm border-slate-200 hover:bg-background/80 transition-all">
+        <Button variant="outline" className="w-full justify-start text-slate-700 bg-white border-slate-300 border-slate-200 hover:bg-background/80 transition-all">
           <Search className="mr-2 h-4 w-4" />
           <span>Suche im Lehrplan...</span>
           <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground ml-auto opacity-50">

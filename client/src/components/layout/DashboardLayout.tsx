@@ -194,6 +194,7 @@ const navigation = [
           <Button 
             variant="ghost" 
             size="icon" 
+            aria-label={isCollapsed ? "Menü aufklappen" : "Menü einklappen"}
             className="hidden lg:flex text-slate-400 hover:text-white hover:bg-slate-800"
             onClick={() => setIsCollapsed(!isCollapsed)}
           >
@@ -204,6 +205,7 @@ const navigation = [
           <Button 
             variant="ghost" 
             size="icon" 
+            aria-label="Menü schließen"
             className="lg:hidden text-slate-400"
             onClick={() => setIsMobileMenuOpen(false)}
           >
@@ -508,7 +510,7 @@ const navigation = [
                 <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
                   <div className="h-full bg-green-500 w-full rounded-full" />
                 </div>
-                <div className="text-[10px] text-slate-500 mt-1 text-center">
+                <div className="text-[10px] text-slate-300 mt-1 text-center">
                   1920 von 1920 UE absolviert
                 </div>
               </div>
@@ -584,6 +586,7 @@ const navigation = [
       {/* Floating AI Assistant Button */}
       <Button
         onClick={() => setIsAIAssistantOpen(true)}
+        aria-label="KI-Assistent öffnen"
         className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-2xl bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 z-40"
         size="icon"
       >
