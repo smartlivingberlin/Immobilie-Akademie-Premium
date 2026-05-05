@@ -23,26 +23,9 @@ import { NotebookLMExport } from "@/components/NotebookLMExport";
 import { VideoList } from "@/components/VideoPlayer";
 import { Video } from "lucide-react";
 
-// Import Content
-// OLD: import { contentDataModule5Maximal } from "./Module5Content_Maximal";
-import { contentDataModule5_34i_Part1 } from "./Module5Content_34i_Part1";
-import { contentDataModule5_34i_Part2 } from "./Module5Content_34i_Part2";
-import { contentDataModule5_34i_Part3 } from "./Module5Content_34i_Part3";
-import { contentDataModule5_34i_Part4 } from "./Module5Content_34i_Part4";
-import { contentDataModule5_34i_Part5 } from "./Module5Content_34i_Part5";
-import { contentDataModule5_34i_Part6 } from "./Module5Content_34i_Part6";
-import { contentDataModule5_34i_Part7_Final } from "./Module5Content_34i_Part7_Final";
 
-// Merge all parts into one object
-const contentDataModule5Maximal = {
-  ...contentDataModule5_34i_Part1,
-  ...contentDataModule5_34i_Part2,
-  ...contentDataModule5_34i_Part3,
-  ...contentDataModule5_34i_Part4,
-  ...contentDataModule5_34i_Part5,
-  ...contentDataModule5_34i_Part6,
-  ...contentDataModule5_34i_Part7_Final,
-};
+type DayContent = Record<string, unknown>;
+let _module5Cache: DayContent | null = null;
 
 // Define weeks structure for Module 5 (40 Days)
 const weeks = [
@@ -82,6 +65,14 @@ export default function Module5Detail() {
   const urlDay = params?.day ? `day_${params.day}` : "day_1";
   
   const [selectedDay, setSelectedDay] = useState(urlDay);
+  const [moduleData, setModuleData] = useState<DayContent | null>(null);
+
+  useEffect(() => {
+    if (_module5Cache) { setModuleData(_module5Cache); return; }
+    fetch("/data/module5.json")
+      .then(r => r.json())
+      .then(d => { _module5Cache = d; setModuleData(d); });
+  }, []);
   const [showAITutor, setShowAITutor] = useState(false);
 
   // Lernfortschritt Tracking
@@ -139,7 +130,8 @@ export default function Module5Detail() {
   useActivityHeartbeat({ moduleId: 5, dayId: currentDayNum });
   
   // Get content for selected day
-  const currentContent = contentDataModule5Maximal[selectedDay as keyof typeof contentDataModule5Maximal] || contentDataModule5Maximal.day_1;
+  const currentContent = (moduleData?.[selectedDay] ?? moduleData?.["day_1"]) as any;
+  if (!currentContent) return <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:14,color:"#64748b"}}>Laden...</div>;
 
   const handleQuizComplete = (score: number) => {
     if (score >= 50) {

@@ -21,12 +21,14 @@ import { FullscreenContent } from "@/components/FullscreenContent";
 import { NotebookLMExport } from "@/components/NotebookLMExport";
 
 // Import Maximalist Content
-import { contentDataModule1Maximal as contentData } from "./Module1Content_Maximal";
 import { quizQuestionsModule1 } from "../../data/quiz-questions-modul1";
 import { quizCasesModule1 } from "../../data/quiz-cases-modul1";
 import { AIQuizCase } from "@/components/AIQuizCase";
 import { VideoList } from "@/components/VideoPlayer";
 import { Video } from "lucide-react";
+
+type DayContent = Record<string, any>;
+let _cache_module1: DayContent | null = null;
 
 // Define weeks structure for Module 1 (20 Days) - Maximalist Structure
 const weeks = [
@@ -64,6 +66,12 @@ export default function Module1Detail() {
   const [match, params] = useRoute("/modul/1/tag/:day");
   const urlDay = params?.day ? `day_${params.day}` : "day_1";
   const [selectedDay, setSelectedDay] = useState(urlDay);
+  const [moduleData, setModuleData] = useState<DayContent | null>(null);
+
+  useEffect(() => {
+    if (_cache_module1) { setModuleData(_cache_module1); return; }
+    fetch("/data/module1.json").then(r => r.json()).then(d => { _cache_module1 = d; setModuleData(d); });
+  }, []);
   const [isQuizCompleted, setIsQuizCompleted] = useState(false);
   const [showAITutor, setShowAITutor] = useState(false);
 
@@ -116,7 +124,8 @@ export default function Module1Detail() {
   };
 
 
-  const currentContent = contentData[selectedDay as keyof typeof contentData] || contentData.day_1;
+  const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["day_1"];
+  if (!currentContent) return <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:14,color:"#64748b"}}>Laden...</div>;
   const currentDayNum = parseInt(selectedDay.replace('day_', ''));
 
   // AZAV-Anwesenheitsnachweis: Heartbeat alle 60 Sekunden
@@ -194,7 +203,7 @@ export default function Module1Detail() {
                         {Array.from({ length: week.dayRange[1] - week.dayRange[0] + 1 }, (_, i) => {
                           const dayNum = week.dayRange[0] + i;
                           const dayKey = `day_${dayNum}`;
-                          const dayData = contentData[dayKey as keyof typeof contentData];
+                          const dayData = (moduleData ?? {})[dayKey as string];
                           const isActive = selectedDay === dayKey;
                           
                           if (!dayData) return null;
@@ -254,7 +263,7 @@ export default function Module1Detail() {
                      <div className="flex gap-2">
                        <DocumentGenerator 
                          title="Modul 1 Zusammenfassung"
-                         content={Object.values(contentData).map(d => d.theory).join('\n\n')}
+                         content={Object.values((moduleData ?? {})).map(d => d.theory).join('\n\n')}
                          description="Zusammenfassung aller Inhalte aus Modul 1"
                          templateType="summary" 
                        />

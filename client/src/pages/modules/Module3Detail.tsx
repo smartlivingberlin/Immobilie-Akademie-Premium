@@ -26,27 +26,13 @@ import { courtCasesModule3 } from "@/data/rechtsprechung-modul3";
 import { VideoList } from "@/components/VideoPlayer";
 import { Video } from "lucide-react";
 
+type DayContent = Record<string, any>;
+let _cache_module3: DayContent | null = null;
+
 // Import Content Parts
-import { contentDataModule3Maximal as contentDataModule3MaximalPart1 } from "./Module3Content_Maximal";
-import { contentDataModule3MaximalPart2 } from "./Module3Content_Maximal_Part2";
-import { contentDataModule3MaximalPart2Extended } from "./Module3Content_Maximal_Part2_Extended";
-import { contentDataModule3MaximalPart3 } from "./Module3Content_Maximal_Part3";
-import { contentDataModule3MaximalPart3Extended } from "./Module3Content_Maximal_Part3_Extended";
-import { contentDataModule3MaximalPart4 } from "./Module3Content_Maximal_Part4";
-import { contentDataModule3MaximalMissingDays, module3MissingDays41_42 } from "./Module3Content_Maximal_MissingDays";
 
 // Merge all content parts
-export const contentDataModule3 = {
-  ...contentDataModule3MaximalPart1,
-  ...contentDataModule3MaximalMissingDays,
-  ...module3MissingDays41_42,
-  ...contentDataModule3MaximalPart2,
-  ...contentDataModule3MaximalPart2Extended,
-  ...contentDataModule3MaximalPart3,
-  ...contentDataModule3MaximalPart3Extended,
-  ...contentDataModule3MaximalPart4
-};
-
+export 
 // Updated weeks structure for 80 days
 const weeks = [
   {
@@ -103,6 +89,12 @@ export default function Module3Detail() {
   }
 
   const [selectedDay, setSelectedDay] = useState(urlDay);
+  const [moduleData, setModuleData] = useState<DayContent | null>(null);
+
+  useEffect(() => {
+    if (_cache_module3) { setModuleData(_cache_module3); return; }
+    fetch("/data/module3.json").then(r => r.json()).then(d => { _cache_module3 = d; setModuleData(d); });
+  }, []);
   const [isQuizCompleted, setIsQuizCompleted] = useState(false);
   const [showAITutor, setShowAITutor] = useState(false);
 
@@ -159,7 +151,8 @@ export default function Module3Detail() {
   useActivityHeartbeat({ moduleId: 3, dayId: currentDayNum });
   
   // Cast to ContentData to handle the mixed types safely
-  const currentContent = contentDataModule3[selectedDay as keyof typeof contentDataModule3] as unknown as ContentData;
+  const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["day_1"];
+  if (!currentContent) return <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:14,color:"#64748b"}}>Laden...</div>;
 
   // Mock completion status for demo
   const isLastDay = currentDayNum === 80;

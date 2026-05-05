@@ -24,13 +24,12 @@ import { CourtCaseDisplay } from "@/components/CourtCaseDisplay";
 import { courtCasesModule4 } from "@/data/rechtsprechung-modul4";
 
 // Import Content
-import { contentDataModule4Maximalist } from "./Module4Content_Valuation_Maximalist";
-import { contentDataModule4MaximalistPart2 } from "./Module4Content_Valuation_Maximalist_Part2";
-import { contentDataModule4Bonus } from "./Module4Content_Bonus_HypZert";
-import { contentDataModule4BonusPart2 } from "./Module4Content_Bonus_HypZert_Part2";
 import { quizQuestionsModule4 } from "@/data/quiz-questions-modul4";
 import { VideoList } from "@/components/VideoPlayer";
 import { Video } from "lucide-react";
+
+type DayContent = Record<string, any>;
+let _cache_module4: DayContent | null = null;
 
 // Merge content parts
 const allContent = {
@@ -95,6 +94,12 @@ export default function Module4Detail() {
   }
 
   const [selectedDay, setSelectedDay] = useState(urlDay);
+  const [moduleData, setModuleData] = useState<DayContent | null>(null);
+
+  useEffect(() => {
+    if (_cache_module4) { setModuleData(_cache_module4); return; }
+    fetch("/data/module4.json").then(r => r.json()).then(d => { _cache_module4 = d; setModuleData(d); });
+  }, []);
   const [showAITutor, setShowAITutor] = useState(false);
 
   // Lernfortschritt Tracking
@@ -153,7 +158,8 @@ export default function Module4Detail() {
   
   // Get content for selected day
   const firstDay = Object.keys(allContent)[0] as keyof typeof allContent;
-const currentContent = allContent[selectedDay as keyof typeof allContent] || allContent[firstDay];
+const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["day_1"];
+  if (!currentContent) return <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:14,color:"#64748b"}}>Laden...</div>;
 
   const handleQuizComplete = (score: number) => {
     if (score >= 50) {

@@ -27,17 +27,11 @@ import { courtCasesModule2 } from "@/data/rechtsprechung-modul2";
 import { VideoList } from "@/components/VideoPlayer";
 import { Video } from "lucide-react";
 
-// Import Maximalist Content Parts
-import { contentDataPart1Maximal } from "./Module2ContentPart1_Maximal";
-import { contentDataPart2Maximal } from "./Module2ContentPart2_Maximal";
-import { contentDataPart3Maximal } from "./Module2ContentPart3_Maximal";
+type DayContent = Record<string, any>;
+let _cache_module2: DayContent | null = null;
 
-// Merge all content parts
-export const contentDataModule2 = {
-  ...contentDataPart1Maximal,
-  ...contentDataPart2Maximal,
-  ...contentDataPart3Maximal
-};
+// Import Maximalist Content Parts
+
 
 // Updated weeks structure for 60 days
 const weeks = [
@@ -110,6 +104,12 @@ export default function Module2Detail() {
   }
 
   const [selectedDay, setSelectedDay] = useState(urlDay);
+  const [moduleData, setModuleData] = useState<DayContent | null>(null);
+
+  useEffect(() => {
+    if (_cache_module2) { setModuleData(_cache_module2); return; }
+    fetch("/data/module2.json").then(r => r.json()).then(d => { _cache_module2 = d; setModuleData(d); });
+  }, []);
   const [isQuizCompleted, setIsQuizCompleted] = useState(false);
   const [showAITutor, setShowAITutor] = useState(false);
 
@@ -166,7 +166,8 @@ export default function Module2Detail() {
   useActivityHeartbeat({ moduleId: 2, dayId: currentDayNum });
   
   // Cast to ContentData to handle the mixed types safely
-  const currentContent = contentDataModule2[selectedDay as keyof typeof contentDataModule2] as unknown as ContentData;
+  const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["day_1"];
+  if (!currentContent) return <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:14,color:"#64748b"}}>Laden...</div>;
 
   // Mock completion status for demo
   const isLastDay = currentDayNum === 60;
