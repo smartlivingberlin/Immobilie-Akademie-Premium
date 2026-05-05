@@ -99,6 +99,7 @@ export default function AdminDashboard() {
       { name: "White-Label", desc: "Branding anpassen", href: "/admin/whitelabel", icon: Globe, color: "#d97706" },
       { name: "Portal-Phase", desc: "Coming Soon / Beta / Live", href: "/admin/phase", icon: Settings, color: "#64748b" },
       ...(isOwner ? [{ name: "Owner Dashboard", desc: "Inspect-Links · Revenue", href: "/owner-dashboard", icon: Shield, color: "#059669" }] : []),
+      { name: "Partner-Panel", desc: "Für externe Admins & Partner", href: "/partner-panel", icon: Shield, color: "#1d4ed8" },
     ]},
   ];
 
