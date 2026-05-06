@@ -35,7 +35,6 @@ const AGB = lazy(() => import("@/pages/legal/AGB"));
 const ComplaintForm = lazy(() => import("@/components/ComplaintForm"));
 const CookieConsent = lazy(() => import("@/components/CookieConsent"));
 const CookieBanner = lazy(() => import("@/components/CookieBanner").then(m => ({ default: m.CookieBanner })));
-const InspectBanner = lazy(() => import("@/components/InspectBanner").then(m => ({ default: m.InspectBanner })));
 const StructuredData = lazy(() => import("@/components/StructuredData").then(m => ({ default: m.StructuredData })));
 const AccessibilityPanel = lazy(() => import("@/components/AccessibilityPanel").then(m => ({ default: m.AccessibilityPanel })));
 const NotFound = lazy(() => import("@/pages/not-found"));
@@ -85,6 +84,7 @@ const GlossarAdmin = lazy(() => import("@/pages/admin/GlossarAdmin"));
 const AdminCodes = lazy(() => import("@/pages/admin/AdminCodes"));
 const LandingPageAdmin = lazy(() => import("@/pages/admin/LandingPageAdmin"));
 const PartnerDashboard = lazy(() => import("@/pages/PartnerDashboard"));
+const TesterZugang = lazy(() => import("@/pages/TesterZugang"));
 const KursbuchGenerator = lazy(() => import("@/pages/admin/KursbuchGenerator"));
 const DozentenCockpit = lazy(() => import("@/pages/admin/DozentenCockpit"));
 const DozentenLoesungen = lazy(() => import("@/pages/admin/DozentenLoesungen"));
@@ -154,7 +154,6 @@ function Router() {
   usePageTracking();
   return (
     <main id="main-content"><Suspense fallback={<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:"18px",color:"#64748b"}}>Laden...</div>}>
-      <InspectBanner />
       <CookieBanner />
       <Switch>
         <Route path="/"><PublicLayout><Home /></PublicLayout></Route>
@@ -227,6 +226,7 @@ function Router() {
         <Route path="/admin"><AppLayout><AdminRoute component={AdminDashboard} /></AppLayout></Route>
         <Route path="/owner-dashboard"><AppLayout><OwnerRoute component={OwnerDashboard} /></AppLayout></Route>
         <Route path="/partner-panel"><AppLayout><AdminRoute component={PartnerDashboard} /></AppLayout></Route>
+        <Route path="/tester-zugang"><TesterZugang /></Route>
         <Route path="/foerderung"><PublicLayout><Foerderung /></PublicLayout></Route>
         <Route path="/audio-modus"><AudioModus /></Route>
         <Route component={NotFound} />
