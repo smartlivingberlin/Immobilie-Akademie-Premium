@@ -11,7 +11,7 @@ import superjson from "superjson";
 import App from "./App";
 import { getLoginUrl } from "./const";
 import "./index.css";
-import { registerServiceWorker } from "./lib/registerSW";
+import { unregisterServiceWorker } from "./lib/registerSW";
 import { WhiteLabelProvider } from "@/contexts/WhiteLabelContext";
 
 
@@ -73,4 +73,5 @@ createRoot(document.getElementById("root")!).render(
   </trpc.Provider>
 );
 
-registerServiceWorker();
+// Service Worker deaktiviert — verhindert Cache-Probleme
+unregisterServiceWorker();
