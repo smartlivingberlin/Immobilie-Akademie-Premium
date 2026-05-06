@@ -215,8 +215,8 @@ button:hover{background:#1e40af}</style>
         path: "/",
         maxAge: 72 * 60 * 60 * 1000
       });
-      // Dann redirect zu owner/access — der setzt Session-Cookie korrekt
-      return res.redirect(`/owner?redirect=/kurse`);
+      // Direkt zur Startseite — kein Login nötig für Inspect-Modus
+      return res.redirect("/");
     } catch (e: any) {
       return res.status(403).send(`<html><body style="font-family:Arial;padding:40px;text-align:center"><h2 style="color:#dc2626">Link abgelaufen</h2><p>Bitte einen neuen Link anfordern.</p></body></html>`);
     }
