@@ -202,8 +202,8 @@ importers:
         specifier: ^4.21.2
         version: 4.21.2
       express-rate-limit:
-        specifier: ^8.3.2
-        version: 8.3.2(express@4.21.2)
+        specifier: ^8.5.0
+        version: 8.5.0(express@4.21.2)
       form-data:
         specifier: ^4.0.5
         version: 4.0.5
@@ -3213,8 +3213,8 @@ packages:
     resolution: {integrity: sha512-JhFGDVJ7tmDJItKhYgJCGLOWjuK9vPxiXoUFLwLDc99NlmklilbiQJwoctZtt13+xMw91MCk/REan6MWHqDjyA==}
     engines: {node: '>=12.0.0'}
 
-  express-rate-limit@8.3.2:
-    resolution: {integrity: sha512-77VmFeJkO0/rvimEDuUC5H30oqUC4EyOhyGccfqoLebB0oiEYfM7nwPrsDsBL1gsTpwfzX8SFy2MT3TDyRq+bg==}
+  express-rate-limit@8.5.0:
+    resolution: {integrity: sha512-XKhFohWaSBdVJNTi5TaHziqnPkv04I9UQV6q1Wy7Ui6GGQZVW12ojDFwqer14EvCXxjvPG0CyWXx7cAXpALB4Q==}
     engines: {node: '>= 16'}
     peerDependencies:
       express: '>= 4.11'
@@ -7403,7 +7403,7 @@ snapshots:
 
   expect-type@1.2.2: {}
 
-  express-rate-limit@8.3.2(express@4.21.2):
+  express-rate-limit@8.5.0(express@4.21.2):
     dependencies:
       express: 4.21.2
       ip-address: 10.1.0

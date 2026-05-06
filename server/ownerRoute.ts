@@ -35,9 +35,9 @@ export function registerOwnerRoutes(app: Express) {
       const openId = `tester:${email}`;
       const expiresAt = new Date(Date.now() + validHours * 60 * 60 * 1000);
       await db.$client.query(
-        `INSERT INTO users (openId, email, name, role, enabledModules, createdAt, updatedAt) 
-         VALUES (?, ?, ?, 'admin', '1,2,3,4,5', NOW(), NOW())
-         ON DUPLICATE KEY UPDATE role='admin', enabledModules='1,2,3,4,5', updatedAt=NOW()`,
+        `INSERT INTO users (openId, email, name, role, enabledModules, onboardingCompleted, learningGoal, dailyMinutes, experienceLevel, createdAt, updatedAt) 
+         VALUES (?, ?, ?, 'admin', '1,2,3,4,5', 1, 'makler', 30, 'some', NOW(), NOW())
+         ON DUPLICATE KEY UPDATE role='admin', enabledModules='1,2,3,4,5', onboardingCompleted=1, updatedAt=NOW()`,
         [openId, email, email.split('@')[0]]
       );
       const token = await createSessionToken(openId, email.split('@')[0]);
