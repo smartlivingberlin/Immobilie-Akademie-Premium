@@ -6,7 +6,6 @@ import type { Server } from "http";
 import { jwtVerify } from "jose";
 import { COOKIE_NAME } from "@shared/const";
 
-// Module-Bundle-Namen → welche Modul-IDs sie schützen
 const PROTECTED_CHUNKS: Record<string, number[]> = {
   "Module1Detail": [1],
   "Module2Detail": [1, 2],
@@ -28,27 +27,29 @@ async function protectModuleAssets(req: Request, res: Response, next: NextFuncti
   if (!matchedChunk) return next();
 
   const token = req.cookies?.[COOKIE_NAME];
-  if (!token) {
-    res.status(403).json({ error: "Nicht autorisiert" });
-    return;
-  }
+  if (!token) { res.status(403).json({ error: "Nicht autorisiert" }); return; }
 
   try {
     const { payload } = await jwtVerify(token, getSecret(), { algorithms: ["HS256"] });
+    const openId = (payload as any).openId as string;
+
+    // 1. Token-Rolle prüfen
     if ((payload as any).role === "admin") return next();
 
-    const enabledModules: number[] = String((payload as any).enabledModules || "")
-      .split(",")
-      .map((m: string) => parseInt(m.trim(), 10))
-      .filter((n: number) => !isNaN(n));
+    // 2. DB-Rolle prüfen (Fallback wenn Token kein role hat)
+    if (openId) {
+      const { getUserByOpenId } = await import("../db");
+      const user = await getUserByOpenId(openId);
+      if (user?.role === "admin") return next();
 
-    const trialExpiresAt = (payload as any).trialExpiresAt;
-    const trialExpired = trialExpiresAt ? new Date(trialExpiresAt) < new Date() : false;
+      // 3. enabledModules aus DB prüfen
+      const rawModules = user?.enabledModules || (payload as any).enabledModules || "";
+      const enabledModules: number[] = String(rawModules)
+        .split(",").map((m: string) => parseInt(m.trim(), 10)).filter((n: number) => !isNaN(n));
+      const requiredModules = PROTECTED_CHUNKS[matchedChunk];
+      if (requiredModules.some(m => enabledModules.includes(m))) return next();
+    }
 
-    const requiredModules = PROTECTED_CHUNKS[matchedChunk];
-    const hasAccess = requiredModules.some(m => enabledModules.includes(m));
-
-    if (hasAccess && !trialExpired) return next();
     res.status(403).json({ error: "Modul nicht freigeschaltet" });
   } catch {
     res.status(403).json({ error: "Ungueltige Session" });
