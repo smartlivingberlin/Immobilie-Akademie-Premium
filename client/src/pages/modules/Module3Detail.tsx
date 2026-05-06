@@ -1,4 +1,9 @@
 // @ts-nocheck
+import { contentDataModule3Maximal } from "./Module3Content_Maximal";
+import { contentDataModule3MaximalPart2 } from "./Module3Content_Maximal_Part2";
+import { contentDataModule3MaximalPart3 } from "./Module3Content_Maximal_Part3";
+import { contentDataModule3MaximalPart4 } from "./Module3Content_Maximal_Part4";
+const contentDataModule3 = { ...contentDataModule3Maximal, ...contentDataModule3MaximalPart2, ...contentDataModule3MaximalPart3, ...contentDataModule3MaximalPart4 };
 import { trpc } from "@/lib/trpc";
 import AudioPlayer from "@/components/AudioPlayer";
 import { useState, useRef, useEffect } from "react";
