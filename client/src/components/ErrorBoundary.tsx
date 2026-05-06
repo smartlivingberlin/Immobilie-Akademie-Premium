@@ -37,6 +37,14 @@ export class ErrorBoundary extends Component<Props, State> {
               Bitte laden Sie die Seite neu. Falls das Problem bestehen bleibt,
               kontaktieren Sie uns.
             </p>
+            {this.state.error && (
+              <div style={{ background: "#fef2f2", border: "1px solid #fca5a5", borderRadius: 8, padding: 16, marginBottom: 24, textAlign: "left" }}>
+                <div style={{ fontSize: 12, fontWeight: 700, color: "#dc2626", marginBottom: 4 }}>Fehlerdetails:</div>
+                <div style={{ fontSize: 11, color: "#7f1d1d", fontFamily: "monospace", wordBreak: "break-all" }}>
+                  {this.state.error.message}
+                </div>
+              </div>
+            )}
             <button
               onClick={() => window.location.reload()}
               style={{
