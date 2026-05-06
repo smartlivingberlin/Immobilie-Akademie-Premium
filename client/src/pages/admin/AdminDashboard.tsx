@@ -270,7 +270,7 @@ export default function AdminDashboard() {
                 { name: "Google AI Studio", url: "https://aistudio.google.com", color: "#059669" },
                 { name: "Groq Console", url: "https://console.groq.com", color: "#0891b2" },
               ].map(link => (
-                (link as any).ownerOnly && isInspectMode() ? (
+                (link as any).ownerOnly && !isOwner ? (
                   <div key={link.name} title="Kein Zugang — nur für Eigentümer"
                     style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "7px 0", borderBottom: "0.5px solid #f1f5f9", cursor: "not-allowed", opacity: 0.5 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
