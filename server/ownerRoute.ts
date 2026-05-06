@@ -19,7 +19,7 @@ export function registerOwnerRoutes(app: Express) {
     const method = getOwner2FAMethod();
     if (method === "none") {
       const openId = "local:alisadgadyri38@gmail.com";
-      const token = await createSessionToken(openId, "Alisad (Owner)");
+      const token = await createSessionToken(openId, "Alisad (Owner)", "admin", "1,2,3,4,5");
       const cookieOptions = getSessionCookieOptions(req);
       res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
       return res.redirect(redir || "/admin");
@@ -89,7 +89,7 @@ ${isTotp ? `<form method="POST" action="/api/owner/verify-2fa-form">
       if (!verifyTotp(code, secret)) return res.redirect("/owner-2fa?error=Falscher+Code");
     }
     const openId = "local:alisadgadyri38@gmail.com";
-    const token = await createSessionToken(openId, "Alisad (Owner)");
+    const token = await createSessionToken(openId, "Alisad (Owner)", "admin", "1,2,3,4,5");
     const cookieOptions = getSessionCookieOptions(req);
     res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
     return res.redirect(redir || "/admin");
@@ -111,7 +111,7 @@ ${isTotp ? `<form method="POST" action="/api/owner/verify-2fa-form">
       return res.status(400).json({ error: "Unbekannter 2FA-Typ" });
     }
     const openId = "local:alisadgadyri38@gmail.com";
-    const token = await createSessionToken(openId, "Alisad (Owner)");
+    const token = await createSessionToken(openId, "Alisad (Owner)", "admin", "1,2,3,4,5");
     const cookieOptions = getSessionCookieOptions(req);
     res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
     return res.json({ ok: true, redirect: redir || "/admin" });
