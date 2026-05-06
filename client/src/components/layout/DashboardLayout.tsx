@@ -52,7 +52,6 @@ const modulesWithAccess = allModules.map((m) => ({
 const modulId = modulesWithAccess.find(m => !m.locked)?.id ?? 1;
 const navigation = [
   { name: "Startseite", href: "/", icon: Home },
-  ...(user?.role === "admin" ? [{ name: "Nutzerverwaltung", href: "/admin/nutzer", icon: Home }] : []),
   ...modulesWithAccess.map((m) => ({ name: m.name, href: m.href, icon: m.icon, locked: m.locked })),
   { name: "📄 Dokument-Werkstatt", href: `/dokument-werkstatt/${modulId}`, icon: FileText },
 ];
@@ -218,6 +217,17 @@ const navigation = [
           <GlobalSearch collapsed={isCollapsed} />
         </div>
 
+        {/* Admin-Button — nur für Admins */}
+        {user?.role === "admin" && (
+          <div className="px-3 py-2 border-b border-slate-800">
+            <a href="/admin" style={{ textDecoration: "none" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, background: "#1d4ed8", borderRadius: 8, padding: isCollapsed ? "8px" : "8px 12px", cursor: "pointer", justifyContent: isCollapsed ? "center" : "flex-start" }}>
+                <span style={{ fontSize: 16 }}>🏠</span>
+                {!isCollapsed && <span style={{ fontSize: 12, fontWeight: 700, color: "white" }}>Admin-Panel</span>}
+              </div>
+            </a>
+          </div>
+        )}
         {/* Navigation Links */}
         <div className="flex-1 overflow-y-auto py-6 px-3">
           <nav className="space-y-1">
