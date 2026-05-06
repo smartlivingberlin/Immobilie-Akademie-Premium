@@ -155,6 +155,7 @@ function Router() {
   return (
     <main id="main-content"><Suspense fallback={<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:"18px",color:"#64748b"}}>Laden...</div>}>
       <CookieBanner />
+      <ErrorBoundary>
       <Switch>
         <Route path="/"><PublicLayout><Home /></PublicLayout></Route>
         <Route path="/login"><PublicLayout><LoginPage /></PublicLayout></Route>
@@ -231,6 +232,7 @@ function Router() {
         <Route path="/audio-modus"><AudioModus /></Route>
         <Route component={NotFound} />
       </Switch>
+      </ErrorBoundary>
     </Suspense></main>
   );
 }
