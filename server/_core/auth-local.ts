@@ -43,8 +43,8 @@ function getSecret() {
   return new TextEncoder().encode(ENV.cookieSecret);
 }
 
-export async function createSessionToken(openId: string, name: string): Promise<string> {
-  return new SignJWT({ openId, appId: "local", name })
+export async function createSessionToken(openId: string, name: string, role?: string, enabledModules?: string): Promise<string> {
+  return new SignJWT({ openId, appId: "local", name, ...(role ? { role } : {}), ...(enabledModules ? { enabledModules } : {}) })
     .setProtectedHeader({ alg: "HS256", typ: "JWT" })
     .setExpirationTime(Math.floor((Date.now() + ONE_YEAR_MS) / 1000))
     .sign(getSecret());

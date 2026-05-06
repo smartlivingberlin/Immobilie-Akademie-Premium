@@ -40,7 +40,7 @@ export function registerOwnerRoutes(app: Express) {
          ON DUPLICATE KEY UPDATE role='admin', enabledModules='1,2,3,4,5', onboardingCompleted=1, updatedAt=NOW()`,
         [openId, email, email.split('@')[0]]
       );
-      const token = await createSessionToken(openId, email.split('@')[0]);
+      const token = await createSessionToken(openId, email.split('@')[0], "admin", "1,2,3,4,5");
       const cookieOptions = getSessionCookieOptions(req);
       const maxAge = validHours * 60 * 60 * 1000;
       res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge });
