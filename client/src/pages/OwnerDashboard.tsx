@@ -244,6 +244,71 @@ export default function OwnerDashboard() {
       </div>
 
       {/* Nutzer-Liste */}
+      {/* ── TAB: NUTZER ──────────────────────────────── */}
+      {activeTab === "users" && (
+        <div style={{display:"grid",gap:16}}>
+          <div style={{background:"#1e293b",borderRadius:12,padding:24,border:"1px solid #334155"}}>
+            <h3 style={{margin:"0 0 16px",fontSize:16,color:"#f1f5f9",fontWeight:700}}>👥 Registrierte Nutzer</h3>
+            {stats?.recentUsers && stats.recentUsers.length > 0 ? (
+              <div style={{display:"grid",gap:10}}>
+                {stats.recentUsers.map((u: any) => (
+                  <div key={u.email} style={{background:"#0f172a",borderRadius:10,padding:"14px 16px",display:"grid",gridTemplateColumns:"1fr auto",alignItems:"center",gap:12,border:"1px solid #334155"}}>
+                    <div>
+                      <div style={{fontSize:14,fontWeight:700,color:"#f1f5f9"}}>{u.name || "—"}</div>
+                      <div style={{fontSize:12,color:"#64748b"}}>{u.email}</div>
+                      <div style={{fontSize:11,color:"#475569",marginTop:4}}>
+                        Rolle: <span style={{color: u.role==="admin" ? "#f59e0b" : "#10b981"}}>{u.role}</span>
+                        {" · "}Module: {u.enabledModules || "keine"}
+                        {" · "}Seit: {new Date(u.createdAt).toLocaleDateString("de-DE")}
+                      </div>
+                    </div>
+                    <div style={{display:"flex",flexDirection:"column",gap:6}}>
+                      <button onClick={() => impersonateUser(u.email)}
+                        style={{background:"#1d4ed8",color:"white",border:"none",borderRadius:8,padding:"7px 14px",fontSize:12,fontWeight:600,cursor:"pointer",whiteSpace:"nowrap"}}>
+                        👤 Als Nutzer einloggen
+                      </button>
+                      <a href={`/admin/nutzer`} style={{textDecoration:"none"}}>
+                        <button style={{width:"100%",background:"transparent",color:"#64748b",border:"1px solid #334155",borderRadius:8,padding:"7px 14px",fontSize:12,cursor:"pointer"}}>
+                          ⚙️ Verwalten
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div style={{color:"#64748b",fontSize:13,padding:"20px 0"}}>
+                Noch keine Nutzer registriert.
+              </div>
+            )}
+            <div style={{marginTop:16,paddingTop:16,borderTop:"1px solid #334155"}}>
+              <a href="/admin/nutzer" style={{textDecoration:"none"}}>
+                <button style={{background:"#1e293b",color:"#94a3b8",border:"1px solid #334155",borderRadius:8,padding:"10px 20px",fontSize:13,fontWeight:600,cursor:"pointer"}}>
+                  → Vollständige Nutzerverwaltung öffnen
+                </button>
+              </a>
+            </div>
+          </div>
+
+          <div style={{background:"#1e1b4b",borderRadius:12,padding:24,border:"1px solid #4338ca"}}>
+            <h3 style={{margin:"0 0 8px",fontSize:16,color:"#a5b4fc",fontWeight:700}}>👤 Als beliebiger Nutzer einloggen</h3>
+            <p style={{color:"#6366f1",fontSize:12,marginBottom:16}}>
+              Gib eine E-Mail ein — du siehst das Portal exakt wie dieser Nutzer.
+            </p>
+            <div style={{display:"flex",gap:8}}>
+              <input id="impersonate-email" type="email" placeholder="nutzer@email.de"
+                style={{flex:1,background:"#0f172a",border:"1px solid #4338ca",borderRadius:8,padding:"10px 14px",color:"white",fontSize:13}} />
+              <button onClick={() => {
+                const email = (document.getElementById("impersonate-email") as HTMLInputElement)?.value;
+                if (email) impersonateUser(email);
+              }} style={{background:"#4338ca",color:"white",border:"none",borderRadius:8,padding:"10px 20px",fontSize:13,fontWeight:600,cursor:"pointer"}}>
+                Einloggen
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* ── TAB: SETTINGS ──────────────────────────────── */}
       {activeTab === "settings" && (
         <div style={{display:"grid",gap:24}}>
