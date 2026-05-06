@@ -117,13 +117,7 @@ export default function AdminDashboard() {
           </p>
         </div>
         <div style={{ display: "flex", gap: 8 }}>
-          {isInspectMode() ? (
-            <>
-              <LockedButton label="Railway" />
-              <LockedButton label="Stripe" />
-              <LockedButton label="GitHub" />
-            </>
-          ) : (
+          {isOwner && !isInspectMode() && (
             <>
               <a href="https://railway.app" target="_blank" rel="noreferrer"
                 style={{ display: "flex", alignItems: "center", gap: 6, background: "#0f172a", color: "white", padding: "8px 14px", borderRadius: 8, fontSize: 12, textDecoration: "none", fontWeight: 600 }}>
