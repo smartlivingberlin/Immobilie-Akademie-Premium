@@ -16,8 +16,6 @@ export function registerOwnerRoutes(app: Express) {
     if (!email) return res.status(400).json({ error: "E-Mail fehlt" });
     const validHours = [48, 72, 168].includes(Number(hours)) ? Number(hours) : 72;
     const code = generateOTP(email);
-    // Stunden im OTP-Code verstecken (als Prefix im key)
-    generateOTP(`tester_hours_${email}`, validHours);
     const sent = await sendOTPEmail(email, code, "Tester");
     if (!sent) return res.status(500).json({ error: "E-Mail konnte nicht gesendet werden" });
     return res.json({ ok: true, message: "Code gesendet", hours: validHours });
