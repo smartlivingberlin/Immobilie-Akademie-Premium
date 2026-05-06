@@ -34,7 +34,7 @@ export function registerOwnerRoutes(app: Express) {
       // Tester-User anlegen oder updaten
       const openId = `tester:${email}`;
       const expiresAt = new Date(Date.now() + validHours * 60 * 60 * 1000);
-      await db.$client.promise().query(
+      await db.$client.query(
         `INSERT INTO users (openId, email, name, role, createdAt, updatedAt) 
          VALUES (?, ?, ?, 'admin', NOW(), NOW())
          ON DUPLICATE KEY UPDATE role='admin', updatedAt=NOW()`,
@@ -301,19 +301,19 @@ button:hover{background:#1e40af}</style>
     try {
       const { getDb } = await import("./db");
       const db = await getDb();
-      const [usersRows] = await db.$client.promise().query(`
+      const [usersRows] = await db.$client.query(`
         SELECT id, name, email, role, enabledModules, createdAt, lastSignedIn, 0 as locked
         FROM users ORDER BY createdAt DESC LIMIT 100
       `) as any;
       const users = usersRows as any[];
-      const [totalsRows] = await db.$client.promise().query(`
+      const [totalsRows] = await db.$client.query(`
         SELECT COUNT(*) as totalUsers,
           SUM(CASE WHEN DATE(lastSignedIn) = CURDATE() THEN 1 ELSE 0 END) as activeToday,
           SUM(CASE WHEN role = 'admin' THEN 1 ELSE 0 END) as admins
         FROM users
       `) as any;
       const totals = (totalsRows as any[])[0];
-      const [leadsRows] = await db.$client.promise().query(`SELECT COUNT(*) as c FROM trial_leads`) as any;
+      const [leadsRows] = await db.$client.query(`SELECT COUNT(*) as c FROM trial_leads`) as any;
       const leads = (leadsRows as any[])[0];
       res.json({
         totalUsers: Number(totals?.totalUsers || 0),
@@ -339,7 +339,7 @@ button:hover{background:#1e40af}</style>
       if (!email) return res.status(400).json({ error: "email erforderlich" });
       const { getDb } = await import("./db");
       const db = await getDb();
-      await db.$client.promise().query(`UPDATE users SET enabledModules = '' WHERE email = ?`, [email]);
+      await db.$client.query(`UPDATE users SET enabledModules = '' WHERE email = ?`, [email]);
       res.json({ ok: true, msg: `${email} gesperrt` });
     } catch (e: any) { res.status(500).json({ error: e.message }); }
   });
@@ -354,7 +354,7 @@ button:hover{background:#1e40af}</style>
       if (!email) return res.status(400).json({ error: "email erforderlich" });
       const { getDb } = await import("./db");
       const db = await getDb();
-      await db.$client.promise().query(`UPDATE users SET enabledModules = '1,2,3,4,5' WHERE email = ?`, [email]);
+      await db.$client.query(`UPDATE users SET enabledModules = '1,2,3,4,5' WHERE email = ?`, [email]);
       res.json({ ok: true, msg: `${email} freigeschaltet` });
     } catch (e: any) { res.status(500).json({ error: e.message }); }
   });
@@ -381,7 +381,7 @@ button:hover{background:#1e40af}</style>
       if (!email) return res.status(400).json({ error: "email erforderlich" });
       const { getDb } = await import("./db");
       const db = await getDb();
-      const [[user]] = await db.$client.promise().query(
+      const [[user]] = await db.$client.query(
         `SELECT openId, name, email FROM users WHERE email = ? LIMIT 1`, [email]
       ) as any;
       if (!user) return res.status(404).json({ error: "Nutzer nicht gefunden" });
@@ -402,7 +402,7 @@ button:hover{background:#1e40af}</style>
       if (!email || !modules) return res.status(400).json({ error: "email und modules erforderlich" });
       const { getDb } = await import("./db");
       const db = await getDb();
-      await db.$client.promise().query(
+      await db.$client.query(
         `UPDATE users SET enabledModules = ? WHERE email = ?`, [modules, email]
       );
       res.json({ ok: true, msg: `Module fuer ${email} gesetzt: ${modules}` });
@@ -417,29 +417,29 @@ button:hover{background:#1e40af}</style>
     try {
       const { getDb } = await import("./db");
       const db = await getDb();
-      const [active5] = await db.$client.promise().query(
+      const [active5] = await db.$client.query(
         `SELECT id, name, email, role, enabledModules, lastSignedIn
          FROM users WHERE lastSignedIn > DATE_SUB(NOW(), INTERVAL 5 MINUTE)
          ORDER BY lastSignedIn DESC`
       ) as any;
-      const [active15] = await db.$client.promise().query(
+      const [active15] = await db.$client.query(
         `SELECT id, name, email, lastSignedIn
          FROM users WHERE lastSignedIn > DATE_SUB(NOW(), INTERVAL 15 MINUTE)
          ORDER BY lastSignedIn DESC`
       ) as any;
-      const [active60] = await db.$client.promise().query(
+      const [active60] = await db.$client.query(
         `SELECT COUNT(*) as cnt FROM users
          WHERE lastSignedIn > DATE_SUB(NOW(), INTERVAL 60 MINUTE)`
       ) as any;
-      const [today] = await db.$client.promise().query(
+      const [today] = await db.$client.query(
         `SELECT COUNT(*) as cnt FROM users WHERE DATE(lastSignedIn) = CURDATE()`
       ) as any;
-      const [newUsers] = await db.$client.promise().query(
+      const [newUsers] = await db.$client.query(
         `SELECT id, name, email, createdAt FROM users
          WHERE createdAt > DATE_SUB(NOW(), INTERVAL 24 HOUR)
          ORDER BY createdAt DESC`
       ) as any;
-      const [recentLogs] = await db.$client.promise().query(
+      const [recentLogs] = await db.$client.query(
         `SELECT u.name, u.email, l.moduleId, l.dayId, l.openedAt
          FROM learning_logs l JOIN users u ON l.userId = u.id
          WHERE l.openedAt > DATE_SUB(NOW(), INTERVAL 1 HOUR)
@@ -469,7 +469,7 @@ button:hover{background:#1e40af}</style>
       if (!["user","admin","trainer"].includes(role)) return res.status(400).json({ error: "Ungueltige Rolle. Erlaubt: user, admin, trainer" });
       const { getDb } = await import("./db");
       const db = await getDb();
-      await db.$client.promise().query(`UPDATE users SET role = ? WHERE email = ?`, [role, email]);
+      await db.$client.query(`UPDATE users SET role = ? WHERE email = ?`, [role, email]);
       res.json({ ok: true, msg: `Rolle von ${email} auf ${role} gesetzt` });
     } catch (e: any) { res.status(500).json({ error: e.message }); }
   });
@@ -482,7 +482,7 @@ button:hover{background:#1e40af}</style>
     try {
       const { getDb } = await import("./db");
       const db = await getDb();
-      const [logs] = await db.$client.promise().query(`
+      const [logs] = await db.$client.query(`
         SELECT u.name, u.email, u.role,
           l.moduleId, l.dayId, l.openedAt, l.closedAt, l.durationSeconds, l.completed
         FROM learning_logs l
@@ -490,14 +490,14 @@ button:hover{background:#1e40af}</style>
         ORDER BY l.openedAt DESC
         LIMIT 50
       `) as any;
-      const [exams] = await db.$client.promise().query(`
+      const [exams] = await db.$client.query(`
         SELECT u.name, u.email, e.moduleId, e.score, e.totalQuestions, e.startedAt, e.completedAt
         FROM exam_sessions e
         JOIN users u ON e.userId = u.id
         ORDER BY e.startedAt DESC
         LIMIT 20
       `) as any;
-      const [registrations] = await db.$client.promise().query(`
+      const [registrations] = await db.$client.query(`
         SELECT name, email, role, createdAt
         FROM users
         ORDER BY createdAt DESC
@@ -519,7 +519,7 @@ button:hover{background:#1e40af}</style>
     try {
       const { getDb } = await import("./db");
       const db = await getDb();
-      const [daily] = await db.$client.promise().query(`
+      const [daily] = await db.$client.query(`
         SELECT DATE(openedAt) as tag,
           COUNT(*) as sitzungen,
           COUNT(DISTINCT userId) as nutzer,
@@ -529,7 +529,7 @@ button:hover{background:#1e40af}</style>
         GROUP BY DATE(openedAt)
         ORDER BY tag DESC
       `) as any;
-      const [modStats] = await db.$client.promise().query(`
+      const [modStats] = await db.$client.query(`
         SELECT moduleId,
           COUNT(DISTINCT userId) as nutzer,
           AVG(durationSeconds) as avgSekunden,
@@ -556,7 +556,7 @@ button:hover{background:#1e40af}</style>
       const { userId, startDate, endDate } = req.query as any;
 
       // Alle Nutzer mit Lernaktivitaet
-      const [nutzer] = await db.$client.promise().query(`
+      const [nutzer] = await db.$client.query(`
         SELECT DISTINCT u.id, u.name, u.email, u.enabledModules
         FROM users u
         WHERE u.role IN ('user','admin','trainer')
@@ -567,7 +567,7 @@ button:hover{background:#1e40af}</style>
 
       const berichte = [];
       for (const n of (nutzer as any[])) {
-        const [logs] = await db.$client.promise().query(`
+        const [logs] = await db.$client.query(`
           SELECT l.moduleId, l.dayId, l.openedAt, l.closedAt,
             l.durationSeconds, l.completed
           FROM learning_logs l
@@ -640,7 +640,7 @@ button:hover{background:#1e40af}</style>
     try {
       const { getDb } = await import("./db");
       const db = await getDb();
-      const [logs] = await db.$client.promise().query(
+      const [logs] = await db.$client.query(
         `SELECT * FROM monitoring_log ORDER BY createdAt DESC LIMIT 30`
       ) as any;
       res.json({ logs: logs as any[] });
