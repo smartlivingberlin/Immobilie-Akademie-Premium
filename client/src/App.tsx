@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { Route, Switch } from "wouter";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { trpc } from "@/lib/trpc";
 import { Toaster } from "@/components/ui/toaster";
 import DashboardLayout from "@/components/layout/DashboardLayout";
@@ -156,6 +157,7 @@ function Router() {
     <main id="main-content"><Suspense fallback={<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:"18px",color:"#64748b"}}>Laden...</div>}>
       <InspectBanner />
       <CookieBanner />
+      <ErrorBoundary>
       <Switch>
         <Route path="/"><PublicLayout><Home /></PublicLayout></Route>
         <Route path="/login"><PublicLayout><LoginPage /></PublicLayout></Route>
@@ -231,6 +233,7 @@ function Router() {
         <Route path="/audio-modus"><AudioModus /></Route>
         <Route component={NotFound} />
       </Switch>
+      </ErrorBoundary>
     </Suspense></main>
   );
 }
