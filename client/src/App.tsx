@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { Route, Switch } from "wouter";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { trpc } from "@/lib/trpc";
 import { Toaster } from "@/components/ui/toaster";
 import DashboardLayout from "@/components/layout/DashboardLayout";
