@@ -123,11 +123,11 @@ export default function Module1Detail() {
       durationSeconds: Math.max(duration, 1),
     });
   };
-
-
   const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["day_1"];
-  if (!currentContent) return <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:14,color:"#64748b"}}>Laden...</div>;
   const currentDayNum = parseInt(selectedDay.replace('day_', ''));
+  // AZAV-Anwesenheitsnachweis: Heartbeat alle 60 Sekunden — VOR frühem Return
+  useActivityHeartbeat({ moduleId: 1, dayId: currentDayNum });
+  if (!currentContent) return <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:14,color:"#64748b"}}>Laden...</div>;
 
   // AZAV-Anwesenheitsnachweis: Heartbeat alle 60 Sekunden
   useActivityHeartbeat({ moduleId: 1, dayId: currentDayNum });
