@@ -1,4 +1,8 @@
 // @ts-nocheck
+import { contentDataModule4Maximalist } from "./Module4Content_Valuation_Maximalist";
+import { contentDataModule4MaximalistPart2 } from "./Module4Content_Valuation_Maximalist_Part2";
+import { contentDataModule4Bonus } from "./Module4Content_Bonus_HypZert";
+import { contentDataModule4BonusPart2 } from "./Module4Content_Bonus_HypZert_Part2";
 import { trpc } from "@/lib/trpc";
 import AudioPlayer from "@/components/AudioPlayer";
 import { useState, useRef, useEffect } from "react";
