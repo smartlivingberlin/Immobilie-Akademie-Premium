@@ -129,9 +129,6 @@ export default function Module1Detail() {
   useActivityHeartbeat({ moduleId: 1, dayId: currentDayNum });
   if (!currentContent) return <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:14,color:"#64748b"}}>Laden...</div>;
 
-  // AZAV-Anwesenheitsnachweis: Heartbeat alle 60 Sekunden
-  useActivityHeartbeat({ moduleId: 1, dayId: currentDayNum });
-
   // Calculate progress
   const totalDays = 20;
   const completedDays = currentDayNum;
