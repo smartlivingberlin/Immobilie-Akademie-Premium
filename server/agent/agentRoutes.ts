@@ -36,23 +36,37 @@ export function registerAgentRoutes(app: Express) {
 
   // ── SUPER-AGENT v2 Routes ──────────────────────────────
 
-  // Status + Memory (nur mit Owner-Key)
-  app.get("/api/agent/status", (req: Request, res: Response) => {
-    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
-    const key = req.headers["x-owner-key"] || req.query.key;
-    if (ownerCode && key !== ownerCode) {
-      return res.status(401).json({ error: "Nicht autorisiert" });
-    }
+   // Status + Memory (Owner-Key ODER Admin-Session)
+   app.get("/api/agent/status", async (req: Request, res: Response) => {
+        const ownerCode = process.env.OWNER_MAGIC_CODE || "";
+        const key = req.headers["x-owner-key"] || req.query.key;
+        if (ownerCode && key !== ownerCode) {
+          try {
+            const { verifySessionToken } = await import("../_core/auth-local");
+            const { getUserByOpenId } = await import("../db");
+            const session = await verifySessionToken(req.cookies?.["app_session_id"]);
+            if (!session) return res.status(401).json({ error: "Nicht autorisiert" });
+            const user = await getUserByOpenId(session.openId);
+            if (!user || user.role !== "admin") return res.status(401).json({ error: "Nicht autorisiert" });
+          } catch { return res.status(401).json({ error: "Nicht autorisiert" }); }
+        }
     return res.json(SuperAgent.getStatus());
   });
 
-  // System Health Check (nur mit Owner-Key)
+  // System Health Check (Owner-Key ODER Admin-Session)
   app.get("/api/agent/health", async (req: Request, res: Response) => {
-    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
-    const key = req.headers["x-owner-key"] || req.query.key;
-    if (ownerCode && key !== ownerCode) {
-      return res.status(401).json({ error: "Nicht autorisiert" });
-    }
+        const ownerCode = process.env.OWNER_MAGIC_CODE || "";
+        const key = req.headers["x-owner-key"] || req.query.key;
+        if (ownerCode && key !== ownerCode) {
+          try {
+            const { verifySessionToken } = await import("../_core/auth-local");
+            const { getUserByOpenId } = await import("../db");
+            const session = await verifySessionToken(req.cookies?.["app_session_id"]);
+            if (!session) return res.status(401).json({ error: "Nicht autorisiert" });
+            const user = await getUserByOpenId(session.openId);
+            if (!user || user.role !== "admin") return res.status(401).json({ error: "Nicht autorisiert" });
+          } catch { return res.status(401).json({ error: "Nicht autorisiert" }); }
+        }
     try {
       const health = await SuperAgent.systemHealthCheck();
       return res.json(health);
