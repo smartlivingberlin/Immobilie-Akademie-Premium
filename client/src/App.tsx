@@ -86,6 +86,7 @@ const GlossarAdmin = lazy(() => import("@/pages/admin/GlossarAdmin"));
 const AdminCodes = lazy(() => import("@/pages/admin/AdminCodes"));
 const LandingPageAdmin = lazy(() => import("@/pages/admin/LandingPageAdmin"));
 const PartnerDashboard = lazy(() => import("@/pages/PartnerDashboard"));
+const TesterZugang = lazy(() => import("@/pages/TesterZugang"));
 const KursbuchGenerator = lazy(() => import("@/pages/admin/KursbuchGenerator"));
 const DozentenCockpit = lazy(() => import("@/pages/admin/DozentenCockpit"));
 const DozentenLoesungen = lazy(() => import("@/pages/admin/DozentenLoesungen"));
@@ -228,6 +229,7 @@ function Router() {
         <Route path="/admin-2fa"><Admin2FA /></Route>
         <Route path="/admin"><AppLayout><AdminRoute component={AdminDashboard} /></AppLayout></Route>
         <Route path="/owner-dashboard"><AppLayout><OwnerRoute component={OwnerDashboard} /></AppLayout></Route>
+        <Route path="/tester-zugang"><TesterZugang /></Route>
         <Route path="/partner-panel"><AppLayout><AdminRoute component={PartnerDashboard} /></AppLayout></Route>
         <Route path="/foerderung"><PublicLayout><Foerderung /></PublicLayout></Route>
         <Route path="/audio-modus"><AudioModus /></Route>

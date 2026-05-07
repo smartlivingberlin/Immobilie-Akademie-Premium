@@ -9,6 +9,46 @@ import { COOKIE_NAME, ONE_YEAR_MS } from "../shared/const";
 
 export function registerOwnerRoutes(app: Express) {
 
+
+  // ── TESTER-ZUGANG ─────────────────────────────────────────────
+  app.post("/api/tester/request", async (req: Request, res: Response) => {
+    const { email, hours } = req.body as { email?: string; hours?: number };
+    if (!email) return res.status(400).json({ error: "E-Mail fehlt" });
+    const validHours = [48, 72, 168].includes(Number(hours)) ? Number(hours) : 72;
+    const code = generateOTP(email);
+    const sent = await sendOTPEmail(email, code, "Tester");
+    if (!sent) return res.status(500).json({ error: "E-Mail konnte nicht gesendet werden" });
+    return res.json({ ok: true, hours: validHours });
+  });
+
+  app.post("/api/tester/verify", async (req: Request, res: Response) => {
+    const { email, code, hours } = req.body as { email?: string; code?: string; hours?: number };
+    if (!email || !code) return res.status(400).json({ error: "E-Mail und Code erforderlich" });
+    const validHours = [48, 72, 168].includes(Number(hours)) ? Number(hours) : 72;
+    const result = verifyOTP(email, code);
+    if (!result.ok) return res.status(401).json({ error: result.error || "Ungültiger Code" });
+    try {
+      const { getDb } = await import("./db");
+      const db = await getDb();
+      const openId = `tester:${email}`;
+      const expiresAt = new Date(Date.now() + validHours * 60 * 60 * 1000);
+      await db.$client.query(
+        `INSERT INTO users (openId, email, name, role, enabledModules, onboardingCompleted, learningGoal, dailyMinutes, experienceLevel, createdAt, updatedAt)
+         VALUES (?, ?, ?, 'admin', '1,2,3,4,5', 1, 'makler', 30, 'some', NOW(), NOW())
+         ON DUPLICATE KEY UPDATE role='admin', enabledModules='1,2,3,4,5', onboardingCompleted=1, updatedAt=NOW()`,
+        [openId, email, email.split('@')[0]]
+      );
+      const token = await createSessionToken(openId, email.split('@')[0], "admin", "1,2,3,4,5");
+      const cookieOptions = getSessionCookieOptions(req);
+      const maxAge = validHours * 60 * 60 * 1000;
+      res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge });
+      res.cookie("tester_expires", expiresAt.toISOString(), { httpOnly: false, sameSite: "lax", path: "/", maxAge });
+      return res.json({ ok: true, redirect: "/admin", expiresAt: expiresAt.toISOString() });
+    } catch (e: any) {
+      return res.status(500).json({ error: e.message });
+    }
+  });
+
   // POST /api/owner/access — Key im Request-Body, danach optionale 2FA
   app.post("/api/owner/access", async (req: Request, res: Response) => {
     const { key, redirect: redir } = req.body as { key?: string; redirect?: string };
