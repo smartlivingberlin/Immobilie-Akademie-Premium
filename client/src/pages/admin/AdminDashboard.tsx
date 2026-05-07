@@ -40,12 +40,12 @@ export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<"overview"|"users"|"content"|"system"|"agent">("overview");
 
   useEffect(() => {
-    fetch("/api/agent/health", { headers: { "x-owner-key": "Owner2026Premium!" } }).then(r => r.json()).then(setAgentHealth).catch(() => {});
-    fetch("/api/agent/status", { headers: { "x-owner-key": "Owner2026Premium!" } }).then(r => r.json()).then(d => {
+    fetch("/api/agent/health", { credentials: "include" }).then(r => r.json()).then(setAgentHealth).catch(() => {});
+    fetch("/api/agent/status", { credentials: "include" }).then(r => r.json()).then(d => {
       if (d?.memory?.last_night_audit) setAuditScore(d.memory.last_night_audit.avgScore);
     }).catch(() => {});
-    fetch("/api/agent/coaching", { headers: { "x-owner-key": "Owner2026Premium!" } }).then(r => r.json()).then(setCoaching).catch(() => {});
-    fetch("/api/agent/cron-log", { headers: { "x-owner-key": "Owner2026Premium!" } }).then(r => r.json()).then(d => setCronLog(d.log || "")).catch(() => {});
+    fetch("/api/agent/coaching", { credentials: "include" }).then(r => r.json()).then(setCoaching).catch(() => {});
+    fetch("/api/agent/cron-log", { credentials: "include" }).then(r => r.json()).then(d => setCronLog(d.log || "")).catch(() => {});
   }, []);
 
   const totalUsers = users?.length ?? 0;
