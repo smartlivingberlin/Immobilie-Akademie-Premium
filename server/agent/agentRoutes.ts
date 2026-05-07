@@ -21,7 +21,8 @@ export function registerAgentRoutes(app: Express) {
 
 
   // ── LEGACY Routes (bestehend) ──────────────────────────
-  app.get("/api/agent/knowledge-map", (_req: Request, res: Response) => {
+  app.get("/api/agent/knowledge-map", async (req: Request, res: Response) => {
+    if (!await checkAdminAuth(req, res)) return res.status(401).json({ error: "Nicht autorisiert" });
     const allLinks: Record<string, string> = {};
     const moduleLaws: Record<number, string[]> = {};
     for (let m = 1; m <= 5; m++) {
@@ -43,7 +44,8 @@ export function registerAgentRoutes(app: Express) {
     });
   });
 
-  app.post("/api/agent/smart-context", (req: Request, res: Response) => {
+  app.post("/api/agent/smart-context", async (req: Request, res: Response) => {
+    if (!await checkAdminAuth(req, res)) return res.status(401).json({ error: "Nicht autorisiert" });
     const { question, moduleId } = req.body;
     if (!question) return res.status(400).json({ error: "question fehlt" });
     const context = PortalAgent.getBesteQuelle(question, moduleId);
@@ -93,6 +95,7 @@ export function registerAgentRoutes(app: Express) {
 
   // KI-gestützte Frage beantworten
   app.post("/api/agent/ask", async (req: Request, res: Response) => {
+    if (!await checkAdminAuth(req, res)) return res.status(401).json({ error: "Nicht autorisiert" });
     const { question, moduleId } = req.body;
     if (!question) return res.status(400).json({ error: "question fehlt" });
     try {
@@ -105,6 +108,7 @@ export function registerAgentRoutes(app: Express) {
 
   // Tag-Qualität prüfen
   app.post("/api/agent/check-quality", async (req: Request, res: Response) => {
+    if (!await checkAdminAuth(req, res)) return res.status(401).json({ error: "Nicht autorisiert" });
     const { module, day, content } = req.body;
     if (!content) return res.status(400).json({ error: "content fehlt" });
     try {
@@ -117,6 +121,7 @@ export function registerAgentRoutes(app: Express) {
 
   // Neue IHK-Frage generieren
   app.post("/api/agent/generate-question", async (req: Request, res: Response) => {
+    if (!await checkAdminAuth(req, res)) return res.status(401).json({ error: "Nicht autorisiert" });
     const { module, topic, difficulty } = req.body;
     if (!topic) return res.status(400).json({ error: "topic fehlt" });
     try {
@@ -133,6 +138,7 @@ export function registerAgentRoutes(app: Express) {
 
   // Lernempfehlung für Nutzer
   app.post("/api/agent/recommend", async (req: Request, res: Response) => {
+    if (!await checkAdminAuth(req, res)) return res.status(401).json({ error: "Nicht autorisiert" });
     const { completedDays, weakTopics, avgScore, module } = req.body;
     try {
       const result = await SuperAgent.getUserRecommendation({
@@ -148,7 +154,8 @@ export function registerAgentRoutes(app: Express) {
   });
 
   // Rechtliche Updates prüfen
-  app.get("/api/agent/legal-updates", async (_req: Request, res: Response) => {
+  app.get("/api/agent/legal-updates", async (req: Request, res: Response) => {
+    if (!await checkAdminAuth(req, res)) return res.status(401).json({ error: "Nicht autorisiert" });
     try {
       const result = await SuperAgent.checkLegalUpdates();
       return res.json(result);
@@ -161,6 +168,7 @@ export function registerAgentRoutes(app: Express) {
 
   // Manueller Cron-Trigger (Admin)
   app.post("/api/agent/run-audit", async (req: Request, res: Response) => {
+    if (!await checkAdminAuth(req, res)) return res.status(401).json({ error: "Nicht autorisiert" });
     const ownerCode = process.env.OWNER_MAGIC_CODE || "";
     const key = req.headers["x-owner-key"] || req.query.key;
     if (ownerCode && key !== ownerCode) {
