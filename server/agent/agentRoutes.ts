@@ -3,6 +3,22 @@ import PortalAgent, { WISSENS_KARTE } from "./PortalAgent";
 import SuperAgent from "./SuperAgent";
 
 export function registerAgentRoutes(app: Express) {
+  // Auth-Helper: Owner-Key ODER Admin-Session
+  async function checkAdminAuth(req: Request, res: Response): Promise<boolean> {
+    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
+    const key = req.headers["x-owner-key"] || req.query.key;
+    if (ownerCode && key === ownerCode) return true;
+    try {
+      const { verifySessionToken } = await import("../_core/auth-local");
+      const { getUserByOpenId } = await import("../db");
+      const session = await verifySessionToken(req.cookies?.["app_session_id"]);
+      if (!session) return false;
+      const user = await getUserByOpenId(session.openId);
+      return user?.role === "admin";
+    } catch { return false; }
+  }
+
+
 
   // ── LEGACY Routes (bestehend) ──────────────────────────
   app.get("/api/agent/knowledge-map", (_req: Request, res: Response) => {
@@ -160,7 +176,8 @@ export function registerAgentRoutes(app: Express) {
   });
 
   // Alle Coaching-Profile abrufen
-  app.get("/api/agent/coaching", async (_req: Request, res: Response) => {
+  app.get("/api/agent/coaching", async (req: Request, res: Response) => {
+    if (!await checkAdminAuth(req, res)) return res.status(401).json({ error: "Nicht autorisiert" });
     try {
       const { readFileSync, existsSync } = await import("fs");
       const { join } = await import("path");
@@ -188,7 +205,8 @@ export function registerAgentRoutes(app: Express) {
   });
 
   // Cron-Log abrufen
-  app.get("/api/agent/cron-log", async (_req: Request, res: Response) => {
+  app.get("/api/agent/cron-log", async (req: Request, res: Response) => {
+    if (!await checkAdminAuth(req, res)) return res.status(401).json({ error: "Nicht autorisiert" });
     try {
       const { readFileSync, existsSync } = await import("fs");
       const { join } = await import("path");
