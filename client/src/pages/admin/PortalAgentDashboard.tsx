@@ -20,8 +20,8 @@ export default function PortalAgentDashboard() {
   const [coachingData, setCoachingData] = useState<any>(null);
 
   useEffect(() => {
-    fetch("/api/agent/health", { headers: { "x-owner-key": "Owner2026Premium!" } }).then(r => r.json()).then(setHealth).catch(() => {});
-    fetch("/api/agent/status", { headers: { "x-owner-key": "Owner2026Premium!" } }).then(r => r.json()).then(setStatus).catch(() => {});
+    fetch("/api/agent/health", { credentials: "include" }).then(r => r.json()).then(setHealth).catch(() => {});
+    fetch("/api/agent/status", { credentials: "include" }).then(r => r.json()).then(setStatus).catch(() => {});
   }, []);
 
   const runAudit = async () => {

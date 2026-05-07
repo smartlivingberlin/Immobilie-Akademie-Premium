@@ -52,7 +52,6 @@ const modulesWithAccess = allModules.map((m) => ({
 const modulId = modulesWithAccess.find(m => !m.locked)?.id ?? 1;
 const navigation = [
   { name: "Startseite", href: "/", icon: Home },
-  ...(user?.role === "admin" ? [{ name: "Nutzerverwaltung", href: "/admin/nutzer", icon: Home }] : []),
   ...modulesWithAccess.map((m) => ({ name: m.name, href: m.href, icon: m.icon, locked: m.locked })),
   { name: "📄 Dokument-Werkstatt", href: `/dokument-werkstatt/${modulId}`, icon: FileText },
 ];
@@ -505,13 +504,13 @@ const navigation = [
               <div className="mb-4">
                 <div className="flex justify-between text-xs text-slate-400 mb-1">
                   <span>Gesamtfortschritt</span>
-                  <span>100%</span>
+                  <span>wird berechnet...</span>
                 </div>
                 <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-green-500 w-full rounded-full" />
+                  <div className="h-full bg-green-500 rounded-full" style={{width: "100%"}} />
                 </div>
                 <div className="text-[10px] text-slate-300 mt-1 text-center">
-                  1920 von 1920 UE absolviert
+                  Lernfortschritt wird geladen
                 </div>
               </div>
 
