@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import DashboardLayout from "@/components/layout/DashboardLayout";
 import { Calculator, ChevronRight, ChevronDown, Send, RotateCcw, CheckCircle2, ArrowLeft, BookOpen, Lightbulb, MessageCircle } from "lucide-react";
 
 // ─── TYPEN ───────────────────────────────────────────────────────────────────
@@ -1228,8 +1227,7 @@ export default function Rechenpraxis() {
   const gefilterteAufgaben = aktiverBereich === "alle" ? AUFGABEN : AUFGABEN.filter(a => a.bereich === aktiverBereich);
 
   return (
-    <DashboardLayout>
-      <div style={{ maxWidth: 900, margin: "0 auto", padding: "2rem 1rem" }}>
+    <div style={{ maxWidth: 900, margin: "0 auto", padding: "2rem 1rem" }}>
         {!aktiveAufgabe ? (
           <>
             <div style={{ marginBottom: "2rem" }}>
@@ -1275,7 +1273,6 @@ export default function Rechenpraxis() {
         ) : (
           <AufgabenAnsicht aufgabe={aktiveAufgabe} onZurueck={() => setAktiveAufgabe(null)} />
         )}
-      </div>
-    </DashboardLayout>
+    </div>
   );
 }
