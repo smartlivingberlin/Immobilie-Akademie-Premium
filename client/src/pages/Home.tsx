@@ -17,7 +17,7 @@ const MODULES = [
 ];
 
 const STATS = [
-  { n:855, suffix:"+", label:"IHK-Prüfungsfragen", sub:"geprüft & aktuell" },
+  { n:855, suffix:"+", label:"Lernaufgaben", sub:"IHK-Fragen, Rechenübungen & Praxisfälle" },
   { n:240, suffix:"", label:"Strukturierte Lerntage", sub:"5 vollständige Module" },
   { n:3, suffix:"", label:"KI-Modelle", sub:"Claude · Gemini · Groq" },
   { n:24, suffix:"/7", label:"Tutor verfügbar", sub:"keine Wartezeiten" },
@@ -85,7 +85,7 @@ export default function Home() {
       setAudioPlaying(false);
       return;
     }
-    const text = "Willkommen bei der Immobilien Akademie Smart. Hier bereiten Sie sich gezielt auf Ihre IHK-Sachkundeprüfung vor. Mit unserem KI-Tutor, 855 Prüfungsfragen und 240 strukturierten Lerntagen sind Sie optimal vorbereitet. Starten Sie jetzt kostenlos mit Modul 1.";
+    const text = "Willkommen bei der Immobilien Akademie Smart. Hier bereiten Sie sich gezielt auf Ihre IHK-Sachkundeprüfung vor. Mit unserem KI-Tutor, 855+ Lernaufgaben und 240 strukturierten Lerntagen sind Sie optimal vorbereitet. Starten Sie jetzt kostenlos mit Modul 1.";
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = "de-DE";
     utterance.rate = 0.9;
@@ -101,7 +101,7 @@ export default function Home() {
     <>
       <SEO
         title="Immobilien Akademie Smart — IHK §34c §34i WEG-Verwalter"
-        description="Online-Vorbereitung für IHK-Sachkundeprüfungen. §34c Makler, §34i, WEG-Verwalter, Gutachter. 855+ Prüfungsfragen, KI-Tutor, 240 Lerntage. Ab 149€."
+        description="Online-Vorbereitung für IHK-Sachkundeprüfungen. §34c Makler, §34i, WEG-Verwalter, Gutachter. 855+ Lernaufgaben: IHK-Fragen, Rechenübungen & Praxisfälle. KI-Tutor, 240 Lerntage. Ab 149€."
         keywords="§34c GewO, §34i GewO, WEG Verwalter, Immobilienmakler IHK, Sachkundeprüfung"
       />
 
@@ -121,7 +121,7 @@ export default function Home() {
             </h1>
             <p className="text-lg text-white/80 max-w-2xl leading-relaxed mb-8">
               §34c Makler · §34i Darlehensvermittler · WEG-Verwalter · Gutachter —
-              alle 5 Berufsbilder in einem Portal. Mit KI-Tutor, 855+ Prüfungsfragen
+              alle 5 Berufsbilder in einem Portal. Mit KI-Tutor, 855+ Lernaufgaben
               und 240 strukturierten Lerntagen.
             </p>
             <div className="flex flex-wrap gap-3 mb-6">

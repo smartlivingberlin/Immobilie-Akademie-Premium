@@ -27,7 +27,7 @@ const TRUST = [
   { icon:"🎓", label:"IHK-anerkannt", sub:"§34c + §34i vorbereitet" },
   { icon:"📱", label:"Lebenslanger Zugang", sub:"Einmal kaufen, immer lernen" },
   { icon:"🤖", label:"KI-Tutor inklusive", sub:"Claude + Gemini + Groq" },
-  { icon:"📋", label:"855+ Prüfungsfragen", sub:"an IHK-Themen orientiert" },
+  { icon:"📋", label:"855+ Lernaufgaben", sub:"IHK-Fragen, Rechenübungen & Praxisfälle" },
   { icon:"🎯", label:"Prüfungssimulation", sub:"Realistische Testumgebung" },
   { icon:"🏆", label:"Zertifikat", sub:"Nach Modulabschluss" },
 ];
@@ -80,7 +80,7 @@ export default function KursPakete() {
             {[
               { value:"2.245 €", label:"Einzelwert" },
               { value:"bis 290 €", label:"Ersparnis" },
-              { value:"855+", label:"IHK-Fragen" },
+              { value:"855+", label:"Lernaufgaben" },
               { value:"240", label:"Lerntage" },
             ].map(s => (
               <div key={s.label} style={{ textAlign:"center" }}>

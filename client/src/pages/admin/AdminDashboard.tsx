@@ -66,7 +66,7 @@ export default function AdminDashboard() {
     { label: "Datenschutz komplett", ok: true },
     { label: "Cookie-Banner aktiv", ok: true },
     { label: "SSL/HTTPS aktiv", ok: true },
-    { label: "855 IHK-Fragen verifiziert", ok: true },
+    { label: "810 IHK-Fragen + 45+ Praxisaufgaben verifiziert", ok: true },
     { label: "240 Lerntage vollständig", ok: true },
     { label: "KI-Tutor Claude+Gemini+Groq", ok: !!agentHealth?.aiStatus?.claude },
     { label: "Nacht-Cron aktiv", ok: !!cronLog },
