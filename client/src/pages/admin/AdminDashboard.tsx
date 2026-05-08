@@ -85,7 +85,7 @@ export default function AdminDashboard() {
     { group: "📚 Inhalte & Lernmaterial", items: [
       { name: "Content Upload", desc: "PDFs hochladen → KI generiert Fragen", href: "/admin/upload", icon: Upload, color: "#059669" },
       { name: "Videos", desc: "Lernvideos verwalten", href: "/admin/videos", icon: Video, color: "#dc2626" },
-      { name: "Fragen-Manager", desc: `${(questions?.total && questions.total > 100) ? questions.total : 855} IHK-Fragen`, href: "/admin/fragen", icon: FileQuestion, color: "#0891b2" },
+      { name: "Fragen-Manager", desc: `${(questions?.total && questions.total > 100) ? questions.total : 810} IHK-Fragen`, href: "/admin/fragen", icon: FileQuestion, color: "#0891b2" },
       { name: "Kursbuch-Generator", desc: "Lernmaterial als PDF", href: "/admin/kursbuch", icon: BookOpen, color: "#7c3aed" },
       { name: "Dozenten-Cockpit", desc: "Lehrplan + Lösungen", href: "/admin/dozenten", icon: Brain, color: "#d97706" },
       // Mediaskript-Generator entfernt — ersetzt durch Content-Generator
@@ -146,7 +146,7 @@ export default function AdminDashboard() {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 10, marginBottom: 24 }}>
         {[
           { label: "Nutzer", value: totalUsers, sub: `${activeUsers} aktiv`, icon: Users, color: "#2563eb" },
-          { label: "IHK-Fragen", value: (questions?.total && questions.total > 100) ? questions.total : 855, sub: "5 Module", icon: FileQuestion, color: "#059669" },
+          { label: "IHK-Fragen", value: (questions?.total && questions.total > 100) ? questions.total : 810, sub: "5 Module", icon: FileQuestion, color: "#059669" },
           { label: "Lerntage", value: "240", sub: "100% fertig", icon: BookOpen, color: "#7c3aed" },
           { label: "Audit-Score", value: auditScore ? `${auditScore}/100` : "–", sub: "Nacht-Cron", icon: Star, color: "#d97706" },
           { label: "KI-Modelle", value: agentHealth ? Object.values(agentHealth.aiStatus || {}).filter(Boolean).length + "/3" : "–", sub: "C·G·Groq", icon: Bot, color: "#0891b2" },
@@ -391,7 +391,7 @@ export default function AdminDashboard() {
           {[
             { name: "Content Upload", desc: "PDFs, Urteile, Texte hochladen. KI generiert daraus Prüfungsfragen.", href: "/admin/upload", icon: Upload, color: "#059669", stats: "Auto-KI-Fragen" },
             { name: "Videos", desc: "Lernvideos hochladen und verwalten.", href: "/admin/videos", icon: Video, color: "#dc2626", stats: "HD-Videos" },
-            { name: "Fragen-Manager", desc: `${questions?.total ?? 855} IHK-Prüfungsfragen verwalten.`, href: "/admin/fragen", icon: FileQuestion, color: "#0891b2", stats: "855 Fragen" },
+            { name: "Fragen-Manager", desc: `${questions?.total ?? 810} IHK-Prüfungsfragen verwalten.`, href: "/admin/fragen", icon: FileQuestion, color: "#0891b2", stats: "810 IHK-Fragen" },
             { name: "Kursbuch-Generator", desc: "Lernmaterial als druckbares PDF exportieren.", href: "/admin/kursbuch", icon: BookOpen, color: "#7c3aed", stats: "5 Module" },
             { name: "Dozenten-Cockpit", desc: "Lehrplan einsehen, Lösungen verwalten.", href: "/admin/dozenten", icon: Brain, color: "#d97706", stats: "240 Tage" },
             { name: "Lösungsübersicht", desc: "Alle Musterantworten und Lösungen.", href: "/admin/loesungen", icon: CheckCircle, color: "#2563eb", stats: "Prüfungen" },
