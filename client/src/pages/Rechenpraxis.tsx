@@ -440,6 +440,396 @@ const AUFGABEN: Aufgabe[] = [
     gesetze: ["§7 EStG", "§21 EStG", "§9 EStG"],
     praxistipp: "Für Neubauten ab 2023 gilt 3% AfA p.a. (statt 2%). Der Gebäudeanteil muss im Kaufvertrag klar vom Grundstücksanteil getrennt sein — sonst schätzt das Finanzamt."
   }
+
+  {
+    id: 10,
+    bereich: "Kaufnebenkosten",
+    titel: "Bundeslandvergleich Grunderwerbsteuer",
+    berufssituation: "Ein Investor überlegt ob er in Bayern oder Brandenburg kauft. Kaufpreis jeweils 500.000 €. Bayern: 3,5%, Brandenburg: 6,5%. Was spart er in Bayern?",
+    was_lerne_ich: "Die Grunderwerbsteuer variiert stark je Bundesland. Dieser Unterschied kann bei teuren Objekten zehntausende Euro ausmachen.",
+    schritte: [
+      { nr: 1, kontext: "Grunderwerbsteuer Bayern berechnen.", formel: "GrESt Bayern = Kaufpreis × 3,5 ÷ 100", variablen: [{ kuerzel: "KP", bedeutung: "Kaufpreis", wert: "500.000 €" }], aufgabe: "Berechnen Sie GrESt Bayern (500.000 × 3,5 ÷ 100):", einheit: "€", korrekt: 17500, toleranz: 1, tipp: "500.000 × 0,035 = 17.500 €" },
+      { nr: 2, kontext: "Grunderwerbsteuer Brandenburg berechnen.", formel: "GrESt Brandenburg = Kaufpreis × 6,5 ÷ 100", variablen: [{ kuerzel: "KP", bedeutung: "Kaufpreis", wert: "500.000 €" }], aufgabe: "Berechnen Sie GrESt Brandenburg (500.000 × 6,5 ÷ 100):", einheit: "€", korrekt: 32500, toleranz: 1, tipp: "500.000 × 0,065 = 32.500 €" },
+      { nr: 3, kontext: "Die Differenz zeigt die Ersparnis.", formel: "Ersparnis = GrESt Brandenburg − GrESt Bayern", variablen: [{ kuerzel: "B", bedeutung: "Brandenburg", wert: "32.500 €" }, { kuerzel: "BY", bedeutung: "Bayern", wert: "17.500 €" }], aufgabe: "Berechnen Sie die Ersparnis (32.500 − 17.500):", einheit: "€", korrekt: 15000, toleranz: 0, tipp: "32.500 − 17.500 = 15.000 €" }
+    ],
+    abschluss: "In Bayern spart der Investor 15.000 € Grunderwerbsteuer gegenüber Brandenburg.",
+    gesetze: ["GrEStG §1", "GrEStG §11"],
+    praxistipp: "Bayern und Sachsen haben mit 3,5% die niedrigste Grunderwerbsteuer. Berlin, Brandenburg, NRW, Saarland, Schleswig-Holstein haben 6,5% — den höchsten Satz."
+  },
+  {
+    id: 11,
+    bereich: "Kaufnebenkosten",
+    titel: "Gesamtinvestition berechnen",
+    berufssituation: "Herr Bauer kauft ein Mehrfamilienhaus in NRW für 750.000 €. Er möchte wissen was er wirklich insgesamt investiert — inklusive aller Nebenkosten.",
+    was_lerne_ich: "Die Gesamtinvestition umfasst Kaufpreis plus alle Nebenkosten. Banken nennen das 'Gesamtkapitalbedarf' — er bestimmt wie viel Eigenkapital nötig ist.",
+    schritte: [
+      { nr: 1, kontext: "Grunderwerbsteuer NRW: 6,5%", formel: "GrESt = 750.000 × 6,5 ÷ 100", variablen: [], aufgabe: "GrESt NRW (750.000 × 6,5 ÷ 100):", einheit: "€", korrekt: 48750, toleranz: 1, tipp: "750.000 × 0,065 = 48.750 €" },
+      { nr: 2, kontext: "Notar + Grundbuch ca. 2%", formel: "Notar = 750.000 × 2 ÷ 100", variablen: [], aufgabe: "Notar + Grundbuch (750.000 × 2 ÷ 100):", einheit: "€", korrekt: 15000, toleranz: 100, tipp: "750.000 × 0,02 = 15.000 €" },
+      { nr: 3, kontext: "Maklercourtage Käuferseite 3,57%", formel: "Courtage = 750.000 × 3,57 ÷ 100", variablen: [], aufgabe: "Courtage (750.000 × 3,57 ÷ 100):", einheit: "€", korrekt: 26775, toleranz: 10, tipp: "750.000 × 0,0357 = 26.775 €" },
+      { nr: 4, kontext: "Alle Posten addieren.", formel: "Gesamt = KP + GrESt + Notar + Courtage", variablen: [{ kuerzel: "KP", bedeutung: "Kaufpreis", wert: "750.000 €" }, { kuerzel: "GrESt", bedeutung: "48.750 €" }, { kuerzel: "N", bedeutung: "15.000 €" }, { kuerzel: "C", bedeutung: "26.775 €" }], aufgabe: "Gesamtinvestition (750.000 + 48.750 + 15.000 + 26.775):", einheit: "€", korrekt: 840525, toleranz: 100, tipp: "750.000 + 48.750 + 15.000 + 26.775 = 840.525 €" }
+    ],
+    abschluss: "Herr Bauer investiert insgesamt 840.525 € — 90.525 € mehr als der Kaufpreis.",
+    gesetze: ["GrEStG", "GNotKG", "§652 BGB"],
+    praxistipp: "Banken finanzieren meist nur den Kaufpreis, selten die Nebenkosten. Herr Bauer braucht mindestens 90.525 € Eigenkapital — plus weiteres EK für einen guten Beleihungsauslauf."
+  },
+  {
+    id: 12,
+    bereich: "Annuität & Tilgung",
+    titel: "Zinsanteil im ersten Monat",
+    berufssituation: "Frau Keller hat ein Darlehen von 250.000 € zu 4% Zinsen p.a. aufgenommen. Was ist ihr Zinsanteil im ersten Monat? Und was davon ist Tilgung wenn die Monatsrate 1.250 € beträgt?",
+    was_lerne_ich: "Im Annuitätendarlehen besteht jede Rate aus Zins und Tilgung. Am Anfang ist der Zinsanteil hoch, am Ende niedrig. Das nennt man die Zins-Tilgungs-Verschiebung.",
+    schritte: [
+      { nr: 1, kontext: "Der monatliche Zinssatz ergibt sich durch Division des Jahreszinssatzes durch 12.", formel: "Monatszins = Jahreszins ÷ 12", variablen: [{ kuerzel: "z", bedeutung: "Jahreszins", wert: "4%" }], aufgabe: "Monatszins in % (4 ÷ 12, auf 4 Stellen):", einheit: "%", korrekt: 0.3333, toleranz: 0.01, tipp: "4 ÷ 12 = 0,3333% pro Monat" },
+      { nr: 2, kontext: "Zinsanteil der ersten Rate = Darlehensbetrag × Monatszins ÷ 100.", formel: "Zinsanteil = 250.000 × 0,3333 ÷ 100", variablen: [{ kuerzel: "D", bedeutung: "Darlehensbetrag", wert: "250.000 €" }], aufgabe: "Zinsanteil erste Rate (250.000 × 0,003333):", einheit: "€", korrekt: 833.33, toleranz: 1, tipp: "250.000 × 0,003333 = 833,33 €" },
+      { nr: 3, kontext: "Tilgungsanteil = Monatsrate minus Zinsanteil.", formel: "Tilgung = Monatsrate − Zinsanteil", variablen: [{ kuerzel: "MR", bedeutung: "Monatsrate", wert: "1.250 €" }, { kuerzel: "ZA", bedeutung: "Zinsanteil", wert: "833,33 €" }], aufgabe: "Tilgungsanteil erste Rate (1.250 − 833,33):", einheit: "€", korrekt: 416.67, toleranz: 1, tipp: "1.250 − 833,33 = 416,67 €" }
+    ],
+    abschluss: "Im ersten Monat: 833,33 € Zinsen und 416,67 € Tilgung. Im letzten Monat kehrt sich das Verhältnis fast vollständig um.",
+    gesetze: ["§488 BGB", "§34i GewO"],
+    praxistipp: "Je höher der anfängliche Tilgungssatz, desto schneller sinkt die Restschuld und desto weniger Zinsen zahlt man insgesamt. 1% Tilgung bedeutet bei 4% Zinsen ca. 45 Jahre Laufzeit."
+  },
+  {
+    id: 13,
+    bereich: "Annuität & Tilgung",
+    titel: "Restschuld nach Zinsbindung",
+    berufssituation: "Herr Schmidt hat 400.000 € zu 3% Zinsen und 2% Tilgung finanziert. Nach 10 Jahren Zinsbindung läuft die Anschlussfinanzierung. Wie hoch ist seine Restschuld?",
+    was_lerne_ich: "Die Restschuld nach der Zinsbindungszeit ist entscheidend für die Anschlussfinanzierung. Sie bestimmt das Zinsänderungsrisiko.",
+    schritte: [
+      { nr: 1, kontext: "Jahresrate berechnen: Zinssatz + Tilgungssatz aufs Darlehen.", formel: "Jahresrate = 400.000 × (3% + 2%) ÷ 100", variablen: [], aufgabe: "Jahresrate (400.000 × 5 ÷ 100):", einheit: "€", korrekt: 20000, toleranz: 0, tipp: "400.000 × 0,05 = 20.000 €" },
+      { nr: 2, kontext: "Tilgungsanteil im ersten Jahr: Jahresrate minus Zinsen.", formel: "Tilgung Jahr 1 = Jahresrate − (Darlehen × Zinssatz ÷ 100)", variablen: [{ kuerzel: "ZJ1", bedeutung: "Zinsen Jahr 1", wert: "400.000 × 3% = 12.000 €" }], aufgabe: "Tilgung Jahr 1 (20.000 − 12.000):", einheit: "€", korrekt: 8000, toleranz: 0, tipp: "20.000 − 12.000 = 8.000 € Tilgung im ersten Jahr" },
+      { nr: 3, kontext: "Vereinfachte Restschuld nach 10 Jahren (Näherung): Darlehen minus jährliche Tilgung × 10. Die echte Berechnung ist komplexer da der Tilgungsanteil jährlich steigt.", formel: "Restschuld ≈ 400.000 − (8.000 × 10)", variablen: [], aufgabe: "Restschuld ca. (400.000 − 80.000):", einheit: "€", korrekt: 320000, toleranz: 5000, tipp: "400.000 − 80.000 = 320.000 € (Näherung)" }
+    ],
+    abschluss: "Nach 10 Jahren beträgt die Restschuld ca. 320.000 € (genaue Berechnung ca. 318.000 €). Diese Summe muss zu neuen Konditionen refinanziert werden.",
+    gesetze: ["§488 BGB", "§489 BGB", "§34i GewO"],
+    praxistipp: "Das Zinsänderungsrisiko: Steigt der Zins bei Anschlussfinanzierung von 3% auf 6%, verdoppeln sich die Zinskosten. Deshalb empfehlen Experten lange Zinsbindungen bei niedrigem Zinsniveau."
+  },
+  {
+    id: 14,
+    bereich: "Annuität & Tilgung",
+    titel: "Beleihungsauslauf berechnen",
+    berufssituation: "Eine Bank prüft die Finanzierung für Frau Meier. Kaufpreis: 350.000 €, Beleihungswert: 315.000 € (90%), Darlehensbetrag: 280.000 €. Wie hoch ist der Beleihungsauslauf?",
+    was_lerne_ich: "Der Beleihungsauslauf (Loan-to-Value) zeigt das Verhältnis von Kredit zu Beleihungswert. Je niedriger, desto besser die Konditionen und desto geringer das Bankrisiko.",
+    schritte: [
+      { nr: 1, kontext: "Beleihungsauslauf = Darlehensbetrag geteilt durch Beleihungswert mal 100.", formel: "BLA = Darlehen ÷ Beleihungswert × 100", variablen: [{ kuerzel: "D", bedeutung: "Darlehen", wert: "280.000 €" }, { kuerzel: "BW", bedeutung: "Beleihungswert", wert: "315.000 €" }], aufgabe: "BLA berechnen (280.000 ÷ 315.000 × 100):", einheit: "%", korrekt: 88.89, toleranz: 0.5, tipp: "280.000 ÷ 315.000 = 0,8889 × 100 = 88,89%" }
+    ],
+    abschluss: "Der Beleihungsauslauf beträgt ca. 88,9%. Das liegt über der 80%-Grenze — Banken verlangen hier meist einen Zinsaufschlag.",
+    gesetze: ["§34i GewO", "CRR Art. 125", "BelWertV"],
+    praxistipp: "Unter 60% BLA: Beste Konditionen. 60-80%: Gute Konditionen. 80-100%: Aufschlag. Über 100%: Sehr schwierig zu finanzieren. Mehr Eigenkapital senkt den BLA und spart Zinsen."
+  },
+  {
+    id: 15,
+    bereich: "WEG-Hausgeld & Abrechnung",
+    titel: "Instandhaltungsrücklage berechnen",
+    berufssituation: "Sie verwalten eine WEG mit 8 Einheiten und 800 m² Gesamtfläche. Nach der Petersschen Formel soll die Rücklage 0,9€ je m² und Jahr betragen. Einheit 3 hat 120 m². Was zahlt dieser Eigentümer jährlich?",
+    was_lerne_ich: "Die Instandhaltungsrücklage wird für künftige Reparaturen und Sanierungen angespart. Die Peterssche Formel ist eine anerkannte Berechnungsmethode.",
+    schritte: [
+      { nr: 1, kontext: "Gesamtbedarf der WEG pro Jahr berechnen.", formel: "Gesamtrücklage = Gesamtfläche × 0,90 €", variablen: [{ kuerzel: "GF", bedeutung: "Gesamtfläche", wert: "800 m²" }], aufgabe: "Gesamtrücklage p.a. (800 × 0,90):", einheit: "€", korrekt: 720, toleranz: 0, tipp: "800 × 0,90 = 720 €" },
+      { nr: 2, kontext: "MEA von Einheit 3 berechnen.", formel: "MEA = Einheitsfläche ÷ Gesamtfläche × 100", variablen: [{ kuerzel: "EF", bedeutung: "Einheit 3", wert: "120 m²" }], aufgabe: "MEA Einheit 3 in % (120 ÷ 800 × 100):", einheit: "%", korrekt: 15, toleranz: 0, tipp: "120 ÷ 800 = 0,15 × 100 = 15%" },
+      { nr: 3, kontext: "Anteil Einheit 3 an der Gesamtrücklage.", formel: "Anteil = Gesamtrücklage × MEA ÷ 100", variablen: [{ kuerzel: "GR", bedeutung: "720 €" }, { kuerzel: "MEA", bedeutung: "15%" }], aufgabe: "Jahresanteil Einheit 3 (720 × 15 ÷ 100):", einheit: "€", korrekt: 108, toleranz: 0, tipp: "720 × 0,15 = 108 €" }
+    ],
+    abschluss: "Eigentümer von Einheit 3 zahlt 108 € jährlich in die Instandhaltungsrücklage — also 9 € monatlich.",
+    gesetze: ["§19 WEG", "§28 WEG"],
+    praxistipp: "Die Peterssche Formel: Jahresbedarf = 1,5 × Herstellungskosten ÷ Nutzungsdauer (80 Jahre). Vereinfacht: ca. 0,80-1,20 €/m²/Jahr je nach Gebäudealter und Zustand."
+  },
+  {
+    id: 16,
+    bereich: "WEG-Hausgeld & Abrechnung",
+    titel: "Betriebskostenabrechnung erstellen",
+    berufssituation: "Sie sind Vermieter. Jahreskosten: Heizung 3.600 €, Wasser 1.200 €, Hausmeister 2.400 €, Versicherung 800 €. Mieter Herr Vogel hat 80 m² von 400 m² Gesamtfläche. Was zahlt er nach?",
+    was_lerne_ich: "Die Betriebskostenabrechnung verteilt tatsächliche Kosten auf Mieter. Die Differenz zur geleisteten Vorauszahlung ergibt Nachzahlung oder Erstattung.",
+    schritte: [
+      { nr: 1, kontext: "Gesamtbetriebskosten zusammenrechnen.", formel: "Gesamt = Heizung + Wasser + Hausmeister + Versicherung", variablen: [], aufgabe: "Gesamtkosten (3.600 + 1.200 + 2.400 + 800):", einheit: "€", korrekt: 8000, toleranz: 0, tipp: "3.600 + 1.200 + 2.400 + 800 = 8.000 €" },
+      { nr: 2, kontext: "Flächenanteil Herr Vogel berechnen.", formel: "Anteil = 80 ÷ 400", variablen: [], aufgabe: "Flächenanteil als Dezimalzahl (80 ÷ 400):", einheit: "", korrekt: 0.2, toleranz: 0.001, tipp: "80 ÷ 400 = 0,2 (= 20%)" },
+      { nr: 3, kontext: "Jahresanteil Herr Vogel.", formel: "Jahresanteil = Gesamtkosten × Anteil", variablen: [{ kuerzel: "GK", bedeutung: "8.000 €" }, { kuerzel: "A", bedeutung: "0,2" }], aufgabe: "Jahresanteil (8.000 × 0,2):", einheit: "€", korrekt: 1600, toleranz: 0, tipp: "8.000 × 0,2 = 1.600 €" },
+      { nr: 4, kontext: "Herr Vogel zahlte monatlich 120 € Vorauszahlung = 1.440 € im Jahr. Differenz = Nachzahlung.", formel: "Nachzahlung = Jahresanteil − Vorauszahlung", variablen: [{ kuerzel: "VP", bedeutung: "Vorauszahlung", wert: "1.440 €" }], aufgabe: "Nachzahlung (1.600 − 1.440):", einheit: "€", korrekt: 160, toleranz: 0, tipp: "1.600 − 1.440 = 160 €" }
+    ],
+    abschluss: "Herr Vogel muss 160 € nachzahlen. Die Vorauszahlung war zu niedrig kalkuliert.",
+    gesetze: ["§556 BGB", "§556a BGB", "BetrKV"],
+    praxistipp: "Die Abrechnung muss bis 12 Monate nach Ende des Abrechnungszeitraums vorliegen (§556 Abs. 3 BGB). Danach sind Nachzahlungsansprüche des Vermieters ausgeschlossen."
+  },
+  {
+    id: 17,
+    bereich: "WEG-Hausgeld & Abrechnung",
+    titel: "Hausgeldabrechnung prüfen",
+    berufssituation: "Als WEG-Verwalter prüfen Sie die Jahresabrechnung. Gesamtausgaben: 36.000 €. Gesamte Hausgeldzahlungen der Eigentümer: 33.600 €. Was ergibt sich?",
+    was_lerne_ich: "Die Jahresabrechnung vergleicht tatsächliche Ausgaben mit geleisteten Zahlungen. Eine Unterdeckung muss durch Sonderumlagen oder erhöhtes Hausgeld ausgeglichen werden.",
+    schritte: [
+      { nr: 1, kontext: "Differenz zwischen Ausgaben und Einnahmen berechnen.", formel: "Differenz = Ausgaben − Einnahmen", variablen: [{ kuerzel: "A", bedeutung: "Ausgaben", wert: "36.000 €" }, { kuerzel: "E", bedeutung: "Einnahmen", wert: "33.600 €" }], aufgabe: "Unterdeckung (36.000 − 33.600):", einheit: "€", korrekt: 2400, toleranz: 0, tipp: "36.000 − 33.600 = 2.400 €" },
+      { nr: 2, kontext: "Bei 8 gleichen Einheiten: Anteil je Eigentümer.", formel: "Anteil = Unterdeckung ÷ Anzahl Einheiten", variablen: [{ kuerzel: "U", bedeutung: "Unterdeckung", wert: "2.400 €" }], aufgabe: "Nachzahlung je Eigentümer (2.400 ÷ 8):", einheit: "€", korrekt: 300, toleranz: 0, tipp: "2.400 ÷ 8 = 300 €" }
+    ],
+    abschluss: "Jeder Eigentümer muss 300 € nachzahlen. Das monatliche Hausgeld sollte für das Folgejahr angepasst werden.",
+    gesetze: ["§28 WEG", "§16 WEG"],
+    praxistipp: "Verwalter sollten das Hausgeld realistisch kalkulieren und lieber leicht zu hoch ansetzen. Nachzahlungen erzeugen Unmut unter Eigentümern und erhöhen den Verwaltungsaufwand."
+  },
+  {
+    id: 18,
+    bereich: "Mietrendite & Kaufpreisfaktor",
+    titel: "Bruttomietrendite vs. Nettomietrendite",
+    berufssituation: "Eine Wohnung kostet 300.000 €. Jahreskaltmiete: 12.000 €. Jährliche Bewirtschaftungskosten: 1.800 €. Was sind Brutto- und Nettomietrendite?",
+    was_lerne_ich: "Die Bruttomietrendite ignoriert Kosten. Die Nettomietrendite ist realistischer — sie zeigt was nach Abzug der Bewirtschaftungskosten bleibt.",
+    schritte: [
+      { nr: 1, kontext: "Bruttomietrendite: nur Miete geteilt durch Kaufpreis.", formel: "Brutto = Jahreskaltmiete ÷ Kaufpreis × 100", variablen: [{ kuerzel: "JKM", bedeutung: "12.000 €" }, { kuerzel: "KP", bedeutung: "300.000 €" }], aufgabe: "Bruttomietrendite (12.000 ÷ 300.000 × 100):", einheit: "%", korrekt: 4, toleranz: 0.05, tipp: "12.000 ÷ 300.000 = 0,04 × 100 = 4%" },
+      { nr: 2, kontext: "Jahresreinertrag = Kaltmiete minus Bewirtschaftungskosten.", formel: "JRE = 12.000 − 1.800", variablen: [], aufgabe: "Jahresreinertrag (12.000 − 1.800):", einheit: "€", korrekt: 10200, toleranz: 0, tipp: "12.000 − 1.800 = 10.200 €" },
+      { nr: 3, kontext: "Nettomietrendite mit Jahresreinertrag.", formel: "Netto = JRE ÷ Kaufpreis × 100", variablen: [{ kuerzel: "JRE", bedeutung: "10.200 €" }], aufgabe: "Nettomietrendite (10.200 ÷ 300.000 × 100):", einheit: "%", korrekt: 3.4, toleranz: 0.05, tipp: "10.200 ÷ 300.000 = 0,034 × 100 = 3,4%" }
+    ],
+    abschluss: "Bruttomietrendite: 4,0%. Nettomietrendite: 3,4%. Der Unterschied von 0,6 Prozentpunkten entspricht 1.800 € jährlichen Kosten.",
+    gesetze: ["ImmoWertV", "§535 BGB"],
+    praxistipp: "Bewirtschaftungskosten umfassen Verwaltung, Instandhaltung, Mietausfall-Wagnis und nicht umlagefähige Betriebskosten — typisch 15-25% der Kaltmiete."
+  },
+  {
+    id: 19,
+    bereich: "Mietrendite & Kaufpreisfaktor",
+    titel: "Welcher Kaufpreis ist maximal vertretbar?",
+    berufssituation: "Ein Investor will mindestens 4,5% Nettomietrendite. Die Jahresnettomiete beträgt 18.000 €. Was darf das Objekt maximal kosten?",
+    was_lerne_ich: "Aus der Mindestrendite lässt sich der maximale Kaufpreis ableiten. Das ist die Grundlage für Preisverhandlungen und Investitionsentscheidungen.",
+    schritte: [
+      { nr: 1, kontext: "Formel umstellen: Kaufpreis = Jahresnettomiete ÷ Mindestrendite × 100.", formel: "Max. KP = JNM ÷ Mindestrendite × 100", variablen: [{ kuerzel: "JNM", bedeutung: "18.000 €" }, { kuerzel: "r", bedeutung: "4,5%" }], aufgabe: "Max. Kaufpreis (18.000 ÷ 4,5 × 100):", einheit: "€", korrekt: 400000, toleranz: 100, tipp: "18.000 ÷ 0,045 = 400.000 €" }
+    ],
+    abschluss: "Bei 4,5% Mindestrendite darf das Objekt maximal 400.000 € kosten.",
+    gesetze: ["ImmoWertV"],
+    praxistipp: "Diese Berechnung zeigt dem Investor sofort ob ein Angebotspreis zu hoch ist. Liegt der Angebotspreis bei 450.000 €, ist die Rendite nur 4% — unter seiner Mindestanforderung."
+  },
+  {
+    id: 20,
+    bereich: "Wertermittlung",
+    titel: "Vergleichswert berechnen",
+    berufssituation: "Sie bewerten eine 75 m² Eigentumswohnung. Der Gutachterausschuss nennt einen Vergleichswert von 4.200 €/m² für vergleichbare Objekte in der Lage.",
+    was_lerne_ich: "Das Vergleichswertverfahren ist das direkteste Verfahren. Es nutzt echte Marktdaten aus der Kaufpreissammlung des Gutachterausschusses.",
+    schritte: [
+      { nr: 1, kontext: "Vergleichswert = Wohnfläche × Vergleichspreis je m².", formel: "Vergleichswert = Fläche × Preis/m²", variablen: [{ kuerzel: "F", bedeutung: "Wohnfläche", wert: "75 m²" }, { kuerzel: "P", bedeutung: "Vergleichspreis", wert: "4.200 €/m²" }], aufgabe: "Vergleichswert (75 × 4.200):", einheit: "€", korrekt: 315000, toleranz: 0, tipp: "75 × 4.200 = 315.000 €" }
+    ],
+    abschluss: "Der Vergleichswert beträgt 315.000 €. Dieser Wert gilt als Ausgangspunkt — individuelle Merkmale (Lage im Haus, Zustand, Ausstattung) können ihn nach oben oder unten anpassen.",
+    gesetze: ["ImmoWertV §15", "§194 BauGB"],
+    praxistipp: "Das Vergleichswertverfahren ist nur möglich wenn ausreichend Vergleichsdaten vorliegen. Bei Eigentumswohnungen in Städten ist das meist der Fall — bei Spezialimmobilien oft nicht."
+  },
+  {
+    id: 21,
+    bereich: "Wertermittlung",
+    titel: "Sachwert berechnen",
+    berufssituation: "Ein freistehendes Einfamilienhaus: Bodenwert 120.000 €, Gebäude-Herstellungskosten 280.000 €, Alterswertminderung 15%. Was ist der Sachwert?",
+    was_lerne_ich: "Das Sachwertverfahren berechnet was es kosten würde das Objekt neu zu errichten — abzüglich Alterswertminderung. Es wird vor allem bei selbstgenutzten Immobilien angewandt.",
+    schritte: [
+      { nr: 1, kontext: "Alterswertminderung vom Gebäudewert abziehen.", formel: "Gebäude nach AWM = HK × (1 − AWM%÷100)", variablen: [{ kuerzel: "HK", bedeutung: "Herstellungskosten", wert: "280.000 €" }, { kuerzel: "AWM", bedeutung: "15%" }], aufgabe: "Gebäudewert nach Minderung (280.000 × 0,85):", einheit: "€", korrekt: 238000, toleranz: 0, tipp: "280.000 × 0,85 = 238.000 €" },
+      { nr: 2, kontext: "Sachwert = Bodenwert + Gebäudewert nach Alterswertminderung.", formel: "Sachwert = Bodenwert + Gebäudewert", variablen: [{ kuerzel: "BW", bedeutung: "120.000 €" }, { kuerzel: "GW", bedeutung: "238.000 €" }], aufgabe: "Sachwert (120.000 + 238.000):", einheit: "€", korrekt: 358000, toleranz: 0, tipp: "120.000 + 238.000 = 358.000 €" }
+    ],
+    abschluss: "Der Sachwert beträgt 358.000 €. Beachten Sie: Der Sachwert wird noch mit dem Sachwertfaktor des Gutachterausschusses multipliziert um den Marktwert zu ermitteln.",
+    gesetze: ["ImmoWertV §21", "ImmoWertV §35", "§194 BauGB"],
+    praxistipp: "Der Sachwert ist kein Kaufpreis. Durch Multiplikation mit dem Sachwertfaktor (marktspezifisch, meist 0,8-1,4) wird der vorläufige Sachwert zum Marktwert."
+  },
+  {
+    id: 22,
+    bereich: "Wertermittlung",
+    titel: "Liegenschaftszins und Vervielfältiger",
+    berufssituation: "Für ein Bürogebäude beträgt der Liegenschaftszinssatz 5,5%. Die Restnutzungsdauer ist 25 Jahre. Der Vervielfältiger aus der Tabelle beträgt 13,4. Jahresreinertrag: 85.000 €. Was ist der Ertragswert?",
+    was_lerne_ich: "Der Vervielfältiger ist das Herzstück des Ertragswertverfahrens. Er hängt von Liegenschaftszins und Restnutzungsdauer ab und wird aus Tabellen entnommen.",
+    schritte: [
+      { nr: 1, kontext: "Ertragswert = Jahresreinertrag × Vervielfältiger.", formel: "Ertragswert = JRE × V", variablen: [{ kuerzel: "JRE", bedeutung: "85.000 €" }, { kuerzel: "V", bedeutung: "13,4" }], aufgabe: "Ertragswert (85.000 × 13,4):", einheit: "€", korrekt: 1139000, toleranz: 500, tipp: "85.000 × 13,4 = 1.139.000 €" }
+    ],
+    abschluss: "Der Ertragswert des Bürogebäudes beträgt 1.139.000 €.",
+    gesetze: ["ImmoWertV §17", "ImmoWertV §20"],
+    praxistipp: "Höherer Liegenschaftszins = niedrigerer Vervielfältiger = niedrigerer Ertragswert. Gewerbeimmobilien haben höhere Liegenschaftszinssätze als Wohnimmobilien — sie gelten als riskanter."
+  },
+  {
+    id: 23,
+    bereich: "AfA & Steuervorteile",
+    titel: "Neubau AfA ab 2023",
+    berufssituation: "Frau Weber kauft eine neue Eigentumswohnung als Kapitalanlage. Kaufpreis 480.000 €, davon Gebäudeanteil 380.000 €. Baujahr 2024. AfA-Satz: 3% p.a. Was spart sie jährlich (Steuersatz 35%)?",
+    was_lerne_ich: "Für Neubauten ab 2023 gilt der erhöhte AfA-Satz von 3% p.a. Das ist ein wichtiger Steuervorteil gegenüber Bestandsimmobilien mit 2% p.a.",
+    schritte: [
+      { nr: 1, kontext: "Jährliche AfA auf den Gebäudeanteil.", formel: "AfA = Gebäudeanteil × 3 ÷ 100", variablen: [{ kuerzel: "GA", bedeutung: "380.000 €" }], aufgabe: "Jährliche AfA (380.000 × 3 ÷ 100):", einheit: "€", korrekt: 11400, toleranz: 0, tipp: "380.000 × 0,03 = 11.400 €" },
+      { nr: 2, kontext: "Steuerersparnis = AfA × Steuersatz.", formel: "Ersparnis = 11.400 × 35 ÷ 100", variablen: [], aufgabe: "Steuerersparnis (11.400 × 35 ÷ 100):", einheit: "€", korrekt: 3990, toleranz: 1, tipp: "11.400 × 0,35 = 3.990 €" }
+    ],
+    abschluss: "Frau Weber spart jährlich 3.990 € Steuern durch die Neubau-AfA.",
+    gesetze: ["§7 EStG Abs. 4", "§21 EStG"],
+    praxistipp: "3% statt 2% AfA bedeutet 50% mehr Steuerersparnis bei Neubauten. Über 33 Jahre (statt 50) ist der Gebäudeanteil vollständig abgeschrieben."
+  },
+  {
+    id: 24,
+    bereich: "AfA & Steuervorteile",
+    titel: "Werbungskosten berechnen",
+    berufssituation: "Herr Klein vermietet eine Wohnung. Einnahmen: 14.400 € p.a. Kosten: AfA 6.000 €, Zinsen 4.800 €, nicht umlagefähige Nebenkosten 1.200 €, Verwaltung 600 €. Was ist sein steuerlicher Überschuss?",
+    was_lerne_ich: "Bei Vermietung werden alle Werbungskosten von den Mieteinnahmen abgezogen. Nur der verbleibende Überschuss wird versteuert — oder ein Verlust mindert andere Einkünfte.",
+    schritte: [
+      { nr: 1, kontext: "Alle Werbungskosten zusammenrechnen.", formel: "Werbungskosten = AfA + Zinsen + Nebenkosten + Verwaltung", variablen: [], aufgabe: "Werbungskosten gesamt (6.000 + 4.800 + 1.200 + 600):", einheit: "€", korrekt: 12600, toleranz: 0, tipp: "6.000 + 4.800 + 1.200 + 600 = 12.600 €" },
+      { nr: 2, kontext: "Überschuss = Einnahmen minus Werbungskosten.", formel: "Überschuss = 14.400 − 12.600", variablen: [], aufgabe: "Steuerlicher Überschuss (14.400 − 12.600):", einheit: "€", korrekt: 1800, toleranz: 0, tipp: "14.400 − 12.600 = 1.800 €" }
+    ],
+    abschluss: "Herr Klein versteuert nur 1.800 € — trotz 14.400 € Mieteinnahmen.",
+    gesetze: ["§9 EStG", "§21 EStG", "§7 EStG"],
+    praxistipp: "Wenn Werbungskosten die Einnahmen übersteigen, entsteht ein Verlust aus Vermietung. Dieser kann mit anderen Einkünften (z.B. Gehalt) verrechnet werden — das ist der sogenannte negative Cashflow als Steuerstrategie."
+  },
+  {
+    id: 25,
+    bereich: "Maklercourtage & Provision",
+    titel: "Provisionsaufteilung bei Gewerbeimmobilie",
+    berufssituation: "Sie vermitteln ein Bürogebäude für 2.500.000 €. Verkäufer zahlt 2% zzgl. MwSt., Käufer zahlt 2% zzgl. MwSt. Berechnen Sie beide Provisionen und die Gesamtprovision.",
+    was_lerne_ich: "Bei Gewerbeimmobilien gilt §656c BGB nicht — Käufer und Verkäufer können unterschiedliche Provisionssätze zahlen. MwSt. wird immer separat ausgewiesen.",
+    schritte: [
+      { nr: 1, kontext: "Provision Verkäufer: 2% netto + 19% MwSt.", formel: "Netto = KP × 2%  |  Brutto = Netto × 1,19", variablen: [{ kuerzel: "KP", bedeutung: "2.500.000 €" }], aufgabe: "Provision Verkäufer brutto (2.500.000 × 2% × 1,19):", einheit: "€", korrekt: 59500, toleranz: 10, tipp: "2.500.000 × 0,02 = 50.000 × 1,19 = 59.500 €" },
+      { nr: 2, kontext: "Provision Käufer: gleicher Satz.", aufgabe: "Provision Käufer brutto:", formel: "= Provision Verkäufer", variablen: [], einheit: "€", korrekt: 59500, toleranz: 10, tipp: "Gleicher Satz: 59.500 €" },
+      { nr: 3, kontext: "Gesamtprovision des Maklers.", formel: "Gesamt = Verkäufer + Käufer", variablen: [], aufgabe: "Gesamtprovision (59.500 + 59.500):", einheit: "€", korrekt: 119000, toleranz: 10, tipp: "59.500 + 59.500 = 119.000 €" }
+    ],
+    abschluss: "Ihre Gesamtprovision beträgt 119.000 € brutto (100.000 € netto + 19.000 € MwSt.).",
+    gesetze: ["§652 BGB", "§654 BGB"],
+    praxistipp: "Bei Gewerbeimmobilien sind höhere Provisionen üblich — oft 3-5% je Seite. Die Rechnung wird stets netto + MwSt. ausgestellt da Unternehmen die Vorsteuer abziehen können."
+  },
+  {
+    id: 26,
+    bereich: "Maklercourtage & Provision",
+    titel: "Mindestprovision bei Niedrigpreisen",
+    berufssituation: "Sie verkaufen ein Gartenhaus für 45.000 €. Ihr üblicher Provisionssatz ist 3,57%. Der errechnete Betrag erscheint Ihnen zu gering. Was ergibt sich und was ist zu beachten?",
+    was_lerne_ich: "Bei niedrigen Kaufpreisen ergibt ein prozentualer Satz oft unwirtschaftliche Beträge. Viele Makler vereinbaren daher Mindestprovisionen.",
+    schritte: [
+      { nr: 1, kontext: "Courtage nach Prozentsatz.", formel: "C = 45.000 × 3,57 ÷ 100", variablen: [], aufgabe: "Courtage nach Satz (45.000 × 3,57 ÷ 100):", einheit: "€", korrekt: 1606.50, toleranz: 5, tipp: "45.000 × 0,0357 = 1.606,50 €" }
+    ],
+    abschluss: "Die Courtage beträgt 1.606,50 €. Bei einem Arbeitsaufwand von oft 40-80 Stunden für eine Vermittlung ist das unwirtschaftlich. Viele Makler vereinbaren daher eine Mindestprovision von 3.000-5.000 €.",
+    gesetze: ["§652 BGB", "§138 BGB"],
+    praxistipp: "Eine Mindestprovision muss im Maklervertrag vereinbart werden. Sie ist zulässig sofern sie nicht sittenwidrig überhöht ist (§138 BGB). Üblich: 3.000-5.000 € je nach Region."
+  },
+  {
+    id: 27,
+    bereich: "Annuität & Tilgung",
+    titel: "Vorfälligkeitsentschädigung verstehen",
+    berufssituation: "Frau Schulz möchte ihr Darlehen (Restschuld 180.000 €, Zinssatz 4%, noch 5 Jahre Laufzeit) vorzeitig ablösen. Die Bank berechnet eine VFE von 2% der Restschuld. Was zahlt sie?",
+    was_lerne_ich: "Die Vorfälligkeitsentschädigung (VFE) entschädigt die Bank für entgangene Zinsen bei vorzeitiger Rückzahlung. Die genaue Berechnung ist komplex — hier eine vereinfachte Version.",
+    schritte: [
+      { nr: 1, kontext: "Vereinfachte VFE: Restschuld × Strafzins.", formel: "VFE = Restschuld × 2 ÷ 100", variablen: [{ kuerzel: "RS", bedeutung: "180.000 €" }], aufgabe: "VFE (180.000 × 2 ÷ 100):", einheit: "€", korrekt: 3600, toleranz: 0, tipp: "180.000 × 0,02 = 3.600 €" },
+      { nr: 2, kontext: "Gesamtablösebetrag = Restschuld + VFE.", formel: "Ablöse = 180.000 + 3.600", variablen: [], aufgabe: "Gesamtablösebetrag (180.000 + 3.600):", einheit: "€", korrekt: 183600, toleranz: 0, tipp: "180.000 + 3.600 = 183.600 €" }
+    ],
+    abschluss: "Frau Schulz zahlt insgesamt 183.600 € für die vorzeitige Ablösung.",
+    gesetze: ["§502 BGB", "§500 BGB", "§34i GewO"],
+    praxistipp: "Die echte VFE-Berechnung nach BGH-Methode berücksichtigt Wiederanlagezins, Restlaufzeit und Disagio. Bei Darlehen über 10 Jahren gilt: nach 10 Jahren kann mit 6 Monaten Frist kostenlos gekündigt werden (§489 BGB)."
+  },
+  {
+    id: 28,
+    bereich: "WEG-Hausgeld & Abrechnung",
+    titel: "Sonderumlage berechnen",
+    berufssituation: "Das Dach der WEG (12 Einheiten, gleiche MEA) muss saniert werden. Kosten: 96.000 €. Die Rücklage deckt nur 60.000 €. Eine Sonderumlage wird beschlossen. Was zahlt jeder Eigentümer?",
+    was_lerne_ich: "Wenn die Instandhaltungsrücklage nicht ausreicht, beschließt die Eigentümerversammlung eine Sonderumlage. Sie wird nach MEA auf alle Eigentümer verteilt.",
+    schritte: [
+      { nr: 1, kontext: "Fehlbetrag = Gesamtkosten minus verfügbare Rücklage.", formel: "Fehlbetrag = 96.000 − 60.000", variablen: [], aufgabe: "Fehlbetrag (96.000 − 60.000):", einheit: "€", korrekt: 36000, toleranz: 0, tipp: "96.000 − 60.000 = 36.000 €" },
+      { nr: 2, kontext: "Anteil je Eigentümer bei 12 gleichen Anteilen.", formel: "Anteil = 36.000 ÷ 12", variablen: [], aufgabe: "Sonderumlage je Eigentümer (36.000 ÷ 12):", einheit: "€", korrekt: 3000, toleranz: 0, tipp: "36.000 ÷ 12 = 3.000 €" }
+    ],
+    abschluss: "Jeder Eigentümer zahlt eine Sonderumlage von 3.000 €.",
+    gesetze: ["§28 WEG", "§19 WEG", "§16 WEG"],
+    praxistipp: "Sonderumlagen können die Eigentümer finanziell stark belasten. Eine ausreichende Instandhaltungsrücklage vermeidet solche Überraschungen. Kaufinteressenten sollten immer den Rücklagenstand prüfen."
+  },
+  {
+    id: 29,
+    bereich: "Mietrendite & Kaufpreisfaktor",
+    titel: "Cashflow-Analyse",
+    berufssituation: "Eine Wohnung (200.000 €, Eigenkapital 40.000 €) erzielt 800 € Kaltmiete pro Monat. Kreditrate: 650 €/Monat, Verwaltung + Rücklage: 80 €/Monat. Wie hoch ist der monatliche Cashflow?",
+    was_lerne_ich: "Der Cashflow zeigt ob eine Immobilie monatlich Geld bringt oder kostet. Positiver Cashflow bedeutet Einnahmen übersteigen alle Ausgaben.",
+    schritte: [
+      { nr: 1, kontext: "Monatliche Gesamtausgaben zusammenrechnen.", formel: "Ausgaben = Kredit + Verwaltung + Rücklage", variablen: [{ kuerzel: "K", bedeutung: "Kreditrate", wert: "650 €" }, { kuerzel: "V+R", bedeutung: "80 €" }], aufgabe: "Monatliche Ausgaben (650 + 80):", einheit: "€", korrekt: 730, toleranz: 0, tipp: "650 + 80 = 730 €" },
+      { nr: 2, kontext: "Cashflow = Einnahmen minus Ausgaben.", formel: "Cashflow = 800 − 730", variablen: [], aufgabe: "Monatlicher Cashflow (800 − 730):", einheit: "€", korrekt: 70, toleranz: 0, tipp: "800 − 730 = 70 €" }
+    ],
+    abschluss: "Der monatliche Cashflow beträgt +70 €. Die Immobilie trägt sich selbst und bringt zusätzlich 840 € jährlich.",
+    gesetze: ["§535 BGB"],
+    praxistipp: "Ein knapper positiver Cashflow ist riskant. Leerstand, Reparaturen oder steigende Zinsen können ihn schnell negativ machen. Experten empfehlen mindestens 100-200 € Puffer pro Monat."
+  },
+  {
+    id: 30,
+    bereich: "AfA & Steuervorteile",
+    titel: "Denkmal-AfA berechnen",
+    berufssituation: "Herr Richter kauft ein denkmalgeschütztes Gebäude und investiert 200.000 € in Sanierungskosten. Denkmal-AfA: 9% in den ersten 8 Jahren, dann 7% für 4 Jahre. Was bekommt er im ersten Jahr?",
+    was_lerne_ich: "Die Denkmal-AfA nach §7i EStG ist deutlich höher als normale Gebäude-AfA. Sie gilt nur für Sanierungskosten, nicht den Kaufpreis.",
+    schritte: [
+      { nr: 1, kontext: "AfA Jahr 1: 9% auf die Sanierungskosten.", formel: "AfA Jahr 1 = 200.000 × 9 ÷ 100", variablen: [{ kuerzel: "SK", bedeutung: "Sanierungskosten", wert: "200.000 €" }], aufgabe: "Denkmal-AfA Jahr 1 (200.000 × 9 ÷ 100):", einheit: "€", korrekt: 18000, toleranz: 0, tipp: "200.000 × 0,09 = 18.000 €" },
+      { nr: 2, kontext: "Steuerersparnis bei Steuersatz 42%.", formel: "Ersparnis = 18.000 × 42 ÷ 100", variablen: [], aufgabe: "Steuerersparnis Jahr 1 (18.000 × 42 ÷ 100):", einheit: "€", korrekt: 7560, toleranz: 1, tipp: "18.000 × 0,42 = 7.560 €" }
+    ],
+    abschluss: "Herr Richter spart im ersten Jahr 7.560 € Steuern. Über 8 Jahre: 60.480 €, über 12 Jahre noch mehr.",
+    gesetze: ["§7i EStG", "§7h EStG", "§21 EStG"],
+    praxistipp: "Denkmalimmobilien bieten enorme Steuervorteile aber erhöhte Risiken: Auflagen der Denkmalbehörde, unvorhergesehene Sanierungskosten und eingeschränkte Gestaltungsfreiheit."
+  },
+  {
+    id: 31,
+    bereich: "Maklercourtage & Provision",
+    titel: "Jahresumsatz eines Maklerbüros",
+    berufssituation: "Ihr Maklerbüro hat im Jahr 24 Verkäufe abgeschlossen. Durchschnittlicher Kaufpreis: 350.000 €. Durchschnittliche Provision: 3,57% vom Käufer. Wie hoch ist Ihr Jahresumsatz?",
+    was_lerne_ich: "Umsatz ist nicht Gewinn. Aber der Umsatz zeigt die Größenordnung des Geschäfts und ist Grundlage für Businessplanung.",
+    schritte: [
+      { nr: 1, kontext: "Durchschnittsprovision je Transaktion.", formel: "Provision je Deal = 350.000 × 3,57 ÷ 100", variablen: [], aufgabe: "Provision je Verkauf (350.000 × 3,57 ÷ 100):", einheit: "€", korrekt: 12495, toleranz: 10, tipp: "350.000 × 0,0357 = 12.495 €" },
+      { nr: 2, kontext: "Jahresumsatz = Provision × Anzahl Deals.", formel: "Umsatz = 12.495 × 24", variablen: [], aufgabe: "Jahresumsatz (12.495 × 24):", einheit: "€", korrekt: 299880, toleranz: 100, tipp: "12.495 × 24 = 299.880 €" }
+    ],
+    abschluss: "Ihr Jahresumsatz beträgt ca. 299.880 €. Bei ca. 30-40% Kostenquote bleibt ein Gewinn von ca. 180.000-210.000 €.",
+    gesetze: ["§652 BGB"],
+    praxistipp: "Top-Makler in Großstädten erzielen 20-50 Transaktionen pro Jahr. Entscheidend für die Rentabilität sind Wiederkäufer, Empfehlungen und effizientes Marketing."
+  },
+  {
+    id: 32,
+    bereich: "Wertermittlung",
+    titel: "Bodenwert aus Bodenrichtwert",
+    berufssituation: "Ein Grundstück in Berlin hat 600 m² Fläche. Der Bodenrichtwert des Gutachterausschusses beträgt 850 €/m². Wie hoch ist der Bodenwert?",
+    was_lerne_ich: "Der Bodenrichtwert ist der durchschnittliche Lagewert von Grundstücken in einer Zone. Er ist öffentlich zugänglich und bildet die Grundlage für viele Berechnungen.",
+    schritte: [
+      { nr: 1, kontext: "Bodenwert = Grundstücksfläche × Bodenrichtwert.", formel: "BW = Fläche × BRW/m²", variablen: [{ kuerzel: "F", bedeutung: "600 m²" }, { kuerzel: "BRW", bedeutung: "850 €/m²" }], aufgabe: "Bodenwert (600 × 850):", einheit: "€", korrekt: 510000, toleranz: 0, tipp: "600 × 850 = 510.000 €" }
+    ],
+    abschluss: "Der Bodenwert beträgt 510.000 €. Dieser Wert fließt in Sachwert- und Ertragswertberechnungen ein.",
+    gesetze: ["§196 BauGB", "ImmoWertV §16"],
+    praxistipp: "Bodenrichtwerte sind online abrufbar (BORIS-D). Sie werden vom Gutachterausschuss mindestens alle 2 Jahre aktualisiert und spiegeln Markttrends wider."
+  },
+  {
+    id: 33,
+    bereich: "WEG-Hausgeld & Abrechnung",
+    titel: "Wirtschaftsplan aufstellen",
+    berufssituation: "Sie erstellen den Wirtschaftsplan für eine WEG (6 Einheiten, gleiche MEA). Geplante Kosten: Hausmeister 4.800 €, Versicherung 1.800 €, Strom Gemeinschaft 600 €, Verwaltung 2.400 €, Rücklage 3.600 €. Was zahlt jeder Eigentümer monatlich?",
+    was_lerne_ich: "Der Wirtschaftsplan ist die vorausschauende Jahresplanung der WEG-Ausgaben. Aus ihm leitet sich das monatliche Hausgeld ab.",
+    schritte: [
+      { nr: 1, kontext: "Alle geplanten Jahreskosten addieren.", formel: "Gesamt = Hausmeister + Vers. + Strom + Verw. + Rücklage", variablen: [], aufgabe: "Gesamtjahreskosten (4.800 + 1.800 + 600 + 2.400 + 3.600):", einheit: "€", korrekt: 13200, toleranz: 0, tipp: "4.800 + 1.800 + 600 + 2.400 + 3.600 = 13.200 €" },
+      { nr: 2, kontext: "Jahresanteil je Eigentümer bei 6 gleichen MEA.", formel: "Jahresanteil = 13.200 ÷ 6", variablen: [], aufgabe: "Jahresanteil je Eigentümer (13.200 ÷ 6):", einheit: "€", korrekt: 2200, toleranz: 0, tipp: "13.200 ÷ 6 = 2.200 €" },
+      { nr: 3, kontext: "Monatliches Hausgeld = Jahresanteil ÷ 12.", formel: "Hausgeld monatlich = 2.200 ÷ 12", variablen: [], aufgabe: "Monatliches Hausgeld (2.200 ÷ 12):", einheit: "€", korrekt: 183.33, toleranz: 1, tipp: "2.200 ÷ 12 = 183,33 €" }
+    ],
+    abschluss: "Jeder Eigentümer zahlt 183,33 € monatliches Hausgeld.",
+    gesetze: ["§28 WEG", "§19 WEG"],
+    praxistipp: "Der Wirtschaftsplan muss von der Eigentümerversammlung beschlossen werden (§28 WEG). Er dient als Grundlage für die spätere Jahresabrechnung."
+  },
+  {
+    id: 34,
+    bereich: "AfA & Steuervorteile",
+    titel: "Steuerfreier Verkaufsgewinn",
+    berufssituation: "Frau Maier kaufte 2015 eine Wohnung für 200.000 € und verkauft sie 2026 für 350.000 €. Ist der Gewinn steuerpflichtig?",
+    was_lerne_ich: "Private Veräußerungsgewinne bei Immobilien sind nach 10 Jahren steuerfrei. Das ist einer der wichtigsten Steuervorteile für private Immobilieninvestoren.",
+    schritte: [
+      { nr: 1, kontext: "Haltedauer berechnen.", formel: "Haltedauer = Verkaufsjahr − Kaufjahr", variablen: [{ kuerzel: "VJ", bedeutung: "2026" }, { kuerzel: "KJ", bedeutung: "2015" }], aufgabe: "Haltedauer in Jahren (2026 − 2015):", einheit: "Jahre", korrekt: 11, toleranz: 0, tipp: "2026 − 2015 = 11 Jahre" },
+      { nr: 2, kontext: "Veräußerungsgewinn berechnen.", formel: "Gewinn = Verkaufspreis − Kaufpreis", variablen: [], aufgabe: "Gewinn (350.000 − 200.000):", einheit: "€", korrekt: 150000, toleranz: 0, tipp: "350.000 − 200.000 = 150.000 €" }
+    ],
+    abschluss: "Da die Haltedauer 11 Jahre beträgt (> 10 Jahre), ist der Gewinn von 150.000 € komplett steuerfrei.",
+    gesetze: ["§23 EStG", "§22 EStG"],
+    praxistipp: "Die 10-Jahres-Frist läuft ab dem Kaufvertragsdatum. Ausnahme: Selbstgenutzte Immobilien sind sofort steuerfrei wenn sie im Verkaufsjahr und den zwei Vorjahren selbst bewohnt wurden."
+  },
+  {
+    id: 35,
+    bereich: "Wertermittlung",
+    titel: "Mietmultiplikator im Vergleich",
+    berufssituation: "Zwei Objekte: Objekt A kostet 420.000 € bei 1.400 € Monatsmiete. Objekt B kostet 480.000 € bei 1.800 € Monatsmiete. Welches ist günstiger bewertet?",
+    was_lerne_ich: "Der Mietmultiplikator (Kaufpreis ÷ Jahresmiete) ist ein schneller Vergleichsmaßstab. Je niedriger, desto günstiger ist das Objekt im Verhältnis zur Miete.",
+    schritte: [
+      { nr: 1, kontext: "Jahreskaltmiete Objekt A berechnen.", formel: "JKM A = 1.400 × 12", variablen: [], aufgabe: "Jahreskaltmiete A (1.400 × 12):", einheit: "€", korrekt: 16800, toleranz: 0, tipp: "1.400 × 12 = 16.800 €" },
+      { nr: 2, kontext: "Multiplikator Objekt A.", formel: "Mult. A = 420.000 ÷ 16.800", variablen: [], aufgabe: "Multiplikator A (420.000 ÷ 16.800):", einheit: "x", korrekt: 25, toleranz: 0.1, tipp: "420.000 ÷ 16.800 = 25" },
+      { nr: 3, kontext: "Jahreskaltmiete Objekt B.", formel: "JKM B = 1.800 × 12", variablen: [], aufgabe: "Jahreskaltmiete B (1.800 × 12):", einheit: "€", korrekt: 21600, toleranz: 0, tipp: "1.800 × 12 = 21.600 €" },
+      { nr: 4, kontext: "Multiplikator Objekt B.", formel: "Mult. B = 480.000 ÷ 21.600", variablen: [], aufgabe: "Multiplikator B (480.000 ÷ 21.600):", einheit: "x", korrekt: 22.22, toleranz: 0.1, tipp: "480.000 ÷ 21.600 = 22,22" }
+    ],
+    abschluss: "Objekt B hat den niedrigeren Multiplikator (22,2 vs. 25) und ist damit günstiger bewertet — bessere Rendite bei Objekt B.",
+    gesetze: ["ImmoWertV"],
+    praxistipp: "Niedriger Multiplikator = hohe Rendite = mehr Risiko. Hoher Multiplikator = niedrige Rendite = weniger Risiko (meist Toplage). Der Multiplikator ist kein Ersatz für eine vollständige Analyse."
+  },
+  {
+    id: 36,
+    bereich: "Kaufnebenkosten",
+    titel: "Finanzierungskosten Gesamtüberblick",
+    berufssituation: "Herr Jung kauft in Bayern für 320.000 €. Eigenkapital: 80.000 €. Nebenkosten: GrESt 3,5%, Notar 2%, Courtage 3,57%. Er finanziert den Rest zu 3,8% / 2% Tilgung. Was zahlt er monatlich und was sind die Gesamtnebenkosten?",
+    was_lerne_ich: "Diese Aufgabe verbindet Kaufnebenkosten, Eigenkapitalbedarf und Finanzierung in einer vollständigen Berechnung — wie in der echten Beratungssituation.",
+    schritte: [
+      { nr: 1, kontext: "GrESt Bayern 3,5%.", formel: "GrESt = 320.000 × 3,5 ÷ 100", variablen: [], aufgabe: "GrESt (320.000 × 3,5 ÷ 100):", einheit: "€", korrekt: 11200, toleranz: 1, tipp: "320.000 × 0,035 = 11.200 €" },
+      { nr: 2, kontext: "Notar + Grundbuch 2%.", formel: "Notar = 320.000 × 2 ÷ 100", variablen: [], aufgabe: "Notar (320.000 × 2 ÷ 100):", einheit: "€", korrekt: 6400, toleranz: 50, tipp: "320.000 × 0,02 = 6.400 €" },
+      { nr: 3, kontext: "Courtage 3,57%.", formel: "Courtage = 320.000 × 3,57 ÷ 100", variablen: [], aufgabe: "Courtage (320.000 × 3,57 ÷ 100):", einheit: "€", korrekt: 11424, toleranz: 10, tipp: "320.000 × 0,0357 = 11.424 €" },
+      { nr: 4, kontext: "Darlehensbetrag = KP + Nebenkosten − Eigenkapital.", formel: "D = 320.000 + 11.200 + 6.400 + 11.424 − 80.000", variablen: [], aufgabe: "Darlehensbetrag:", einheit: "€", korrekt: 269024, toleranz: 100, tipp: "349.024 − 80.000 = 269.024 €" },
+      { nr: 5, kontext: "Monatliche Annuität.", formel: "Rate = D × (3,8 + 2) ÷ 100 ÷ 12", variablen: [], aufgabe: "Monatsrate ca. (269.024 × 5,8% ÷ 12):", einheit: "€", korrekt: 1300.95, toleranz: 20, tipp: "269.024 × 0,058 ÷ 12 = 1.300,95 €" }
+    ],
+    abschluss: "Herr Jung zahlt ca. 1.301 € monatlich. Gesamtnebenkosten: 29.024 €. Er braucht 80.000 € Eigenkapital für Nebenkosten und zusätzlich EK für den Beleihungsauslauf.",
+    gesetze: ["GrEStG", "GNotKG", "§652 BGB", "§488 BGB"],
+    praxistipp: "Diese Gesamtberechnung ist das Herzstück einer Immobilienberatung. Als Makler oder Darlehensvermittler müssen Sie Ihren Kunden alle Kosten transparent und vollständig darstellen."
+  }
+
 ];
 
 const BEREICHE = [...new Set(AUFGABEN.map(a => a.bereich))];
