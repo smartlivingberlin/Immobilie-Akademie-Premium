@@ -830,6 +830,142 @@ const AUFGABEN: Aufgabe[] = [
     praxistipp: "Diese Gesamtberechnung ist das Herzstück einer Immobilienberatung. Als Makler oder Darlehensvermittler müssen Sie Ihren Kunden alle Kosten transparent und vollständig darstellen."
   }
 
+
+  ,{
+    id: 37,
+    bereich: "Maklercourtage & Provision",
+    titel: "Innenprovision vs. Außenprovision",
+    berufssituation: "Ein Bauträger zahlt Ihnen 3% Innenprovision auf den Verkaufspreis von 550.000 €. Zusätzlich vereinbaren Sie 1,19% Außenprovision vom Käufer. Wie viel verdienen Sie insgesamt?",
+    was_lerne_ich: "Innenprovision zahlt der Verkäufer/Bauträger direkt — sie ist im Kaufpreis eingepreist. Außenprovision zahlt der Käufer zusätzlich. Beide zusammen ergeben Ihre Gesamtvergütung.",
+    schritte: [
+      { nr: 1, kontext: "Innenprovision vom Bauträger.", formel: "Innen = 550.000 × 3 ÷ 100", variablen: [], aufgabe: "Innenprovision (550.000 × 3 ÷ 100):", einheit: "€", korrekt: 16500, toleranz: 1, tipp: "550.000 × 0,03 = 16.500 €" },
+      { nr: 2, kontext: "Außenprovision vom Käufer.", formel: "Außen = 550.000 × 1,19 ÷ 100", variablen: [], aufgabe: "Außenprovision (550.000 × 1,19 ÷ 100):", einheit: "€", korrekt: 6545, toleranz: 10, tipp: "550.000 × 0,0119 = 6.545 €" },
+      { nr: 3, kontext: "Gesamtvergütung.", formel: "Gesamt = Innen + Außen", variablen: [], aufgabe: "Gesamtvergütung (16.500 + 6.545):", einheit: "€", korrekt: 23045, toleranz: 10, tipp: "16.500 + 6.545 = 23.045 €" }
+    ],
+    abschluss: "Ihre Gesamtvergütung beträgt 23.045 €.",
+    gesetze: ["§652 BGB", "§656c BGB"],
+    praxistipp: "Bei Neubauprojekten ist Innenprovision üblich. Der Käufer sieht sie nicht direkt, sie ist aber im Kaufpreis enthalten. Transparenz ist wichtig: seit 2021 muss die Provision im Exposé angegeben werden."
+  },
+  {
+    id: 38,
+    bereich: "Wertermittlung",
+    titel: "Verkehrswert aus drei Verfahren",
+    berufssituation: "Ein Gutachter ermittelt: Vergleichswert 380.000 €, Ertragswert 350.000 €, Sachwert 410.000 €. Wie bildet er den Verkehrswert? (Gewichtung: Vergleich 50%, Ertrag 30%, Sach 20%)",
+    was_lerne_ich: "In der Praxis werden oft mehrere Verfahren kombiniert. Durch Gewichtung entsteht ein plausiblerer Verkehrswert als durch ein einzelnes Verfahren.",
+    schritte: [
+      { nr: 1, kontext: "Gewichteter Vergleichswert.", formel: "VW × 50% = 380.000 × 0,5", variablen: [], aufgabe: "Anteil Vergleichswert (380.000 × 0,5):", einheit: "€", korrekt: 190000, toleranz: 0, tipp: "380.000 × 0,5 = 190.000 €" },
+      { nr: 2, kontext: "Gewichteter Ertragswert.", formel: "EW × 30% = 350.000 × 0,3", variablen: [], aufgabe: "Anteil Ertragswert (350.000 × 0,3):", einheit: "€", korrekt: 105000, toleranz: 0, tipp: "350.000 × 0,3 = 105.000 €" },
+      { nr: 3, kontext: "Gewichteter Sachwert.", formel: "SW × 20% = 410.000 × 0,2", variablen: [], aufgabe: "Anteil Sachwert (410.000 × 0,2):", einheit: "€", korrekt: 82000, toleranz: 0, tipp: "410.000 × 0,2 = 82.000 €" },
+      { nr: 4, kontext: "Verkehrswert als gewichteter Durchschnitt.", formel: "Verkehrswert = 190.000 + 105.000 + 82.000", variablen: [], aufgabe: "Verkehrswert (190.000 + 105.000 + 82.000):", einheit: "€", korrekt: 377000, toleranz: 0, tipp: "190.000 + 105.000 + 82.000 = 377.000 €" }
+    ],
+    abschluss: "Der gewichtete Verkehrswert beträgt 377.000 €.",
+    gesetze: ["§194 BauGB", "ImmoWertV §8"],
+    praxistipp: "Die Gewichtung der Verfahren ist Ermessenssache des Gutachters. Bei Renditeobjekten dominiert der Ertragswert, bei selbstgenutzten Immobilien der Sachwert, bei Standardobjekten der Vergleichswert."
+  },
+  {
+    id: 39,
+    bereich: "Annuität & Tilgung",
+    titel: "KfW-Förderkredit einrechnen",
+    berufssituation: "Herr Lange kauft für 400.000 € und erhält einen KfW-Kredit über 100.000 € zu 1,5% / 2% Tilgung. Den Rest finanziert er zu 3,8% / 2% Tilgung. Wie hoch sind die monatlichen Gesamtraten?",
+    was_lerne_ich: "KfW-Kredite haben günstigere Zinssätze und werden separat berechnet. Die Gesamtbelastung ergibt sich aus beiden Raten zusammen.",
+    schritte: [
+      { nr: 1, kontext: "KfW-Rate: 100.000 € zu 1,5% + 2% Tilgung.", formel: "KfW-Rate = 100.000 × 3,5% ÷ 12", variablen: [], aufgabe: "KfW-Monatsrate (100.000 × 3,5 ÷ 100 ÷ 12):", einheit: "€", korrekt: 291.67, toleranz: 2, tipp: "100.000 × 0,035 ÷ 12 = 291,67 €" },
+      { nr: 2, kontext: "Bankkredit: 300.000 € (400.000 − 100.000) zu 3,8% + 2% Tilgung.", formel: "Bank-Rate = 300.000 × 5,8% ÷ 12", variablen: [], aufgabe: "Bank-Monatsrate (300.000 × 5,8 ÷ 100 ÷ 12):", einheit: "€", korrekt: 1450, toleranz: 5, tipp: "300.000 × 0,058 ÷ 12 = 1.450 €" },
+      { nr: 3, kontext: "Gesamtrate.", formel: "Gesamt = KfW + Bank", variablen: [], aufgabe: "Gesamte Monatsrate (291,67 + 1.450):", einheit: "€", korrekt: 1741.67, toleranz: 10, tipp: "291,67 + 1.450 = 1.741,67 €" }
+    ],
+    abschluss: "Herr Lange zahlt insgesamt 1.741,67 € monatlich. Der KfW-Kredit spart ihm gegenüber Vollfinanzierung zu 3,8% ca. 58 € pro Monat.",
+    gesetze: ["§34i GewO", "KfW-Merkblatt", "EU-WIKR"],
+    praxistipp: "KfW-Kredite müssen vor Baubeginn/Kaufvertragsschluss beantragt werden. Sie können mit Bankdarlehen kombiniert werden. Für Energieeffizienz gibt es zusätzliche Tilgungszuschüsse."
+  },
+  {
+    id: 40,
+    bereich: "WEG-Hausgeld & Abrechnung",
+    titel: "Verwalterhonorar berechnen",
+    berufssituation: "Sie sind WEG-Verwalter einer Anlage mit 20 Einheiten. Ihr Honorar beträgt 28 € je Einheit und Monat. Wie hoch ist Ihr Jahreshonorar und was kostet das je Eigentümer?",
+    was_lerne_ich: "Das Verwalterhonorar ist ein wesentlicher Bestandteil des Hausgelds. Es wird nach Einheiten oder Wohnfläche berechnet und im Wirtschaftsplan ausgewiesen.",
+    schritte: [
+      { nr: 1, kontext: "Monatshonorar gesamt.", formel: "Monat = 28 × 20 Einheiten", variablen: [], aufgabe: "Monatshonorar gesamt (28 × 20):", einheit: "€", korrekt: 560, toleranz: 0, tipp: "28 × 20 = 560 €" },
+      { nr: 2, kontext: "Jahreshonorar.", formel: "Jahr = 560 × 12", variablen: [], aufgabe: "Jahreshonorar (560 × 12):", einheit: "€", korrekt: 6720, toleranz: 0, tipp: "560 × 12 = 6.720 €" },
+      { nr: 3, kontext: "Kosten je Eigentümer pro Jahr.", formel: "Je Eigentümer = 6.720 ÷ 20", variablen: [], aufgabe: "Jahreskosten je Eigentümer (6.720 ÷ 20):", einheit: "€", korrekt: 336, toleranz: 0, tipp: "6.720 ÷ 20 = 336 €" }
+    ],
+    abschluss: "Ihr Jahreshonorar beträgt 6.720 €. Jeder Eigentümer trägt 336 € davon.",
+    gesetze: ["§26 WEG", "§27 WEG"],
+    praxistipp: "Marktübliche Verwaltergebühren: 20-35 € je Einheit/Monat. Bei größeren Anlagen sinkt der Satz. Zusätzlich fallen Gebühren für Sonderleistungen an (z.B. Eigentümerversammlungen, Mahnwesen)."
+  },
+  {
+    id: 41,
+    bereich: "Mietrendite & Kaufpreisfaktor",
+    titel: "Eigenkapitalrendite berechnen",
+    berufssituation: "Sie kaufen eine Wohnung für 250.000 € mit 50.000 € Eigenkapital. Jahresreinertrag nach Kosten und Zinsen: 3.600 €. Wie hoch ist Ihre Eigenkapitalrendite?",
+    was_lerne_ich: "Die Eigenkapitalrendite zeigt die Verzinsung des eingesetzten Eigenkapitals. Sie ist höher als die Gesamtrendite wenn der Fremdkapitalzins unter der Objektrendite liegt — der Leverage-Effekt.",
+    schritte: [
+      { nr: 1, kontext: "Eigenkapitalrendite = Jahresreinertrag ÷ Eigenkapital × 100.", formel: "EKR = 3.600 ÷ 50.000 × 100", variablen: [{ kuerzel: "JRE", bedeutung: "3.600 €" }, { kuerzel: "EK", bedeutung: "50.000 €" }], aufgabe: "Eigenkapitalrendite (3.600 ÷ 50.000 × 100):", einheit: "%", korrekt: 7.2, toleranz: 0.1, tipp: "3.600 ÷ 50.000 = 0,072 × 100 = 7,2%" }
+    ],
+    abschluss: "Die Eigenkapitalrendite beträgt 7,2%. Das ist deutlich höher als die Gesamtrendite von 1,44% (3.600 ÷ 250.000).",
+    gesetze: ["ImmoWertV"],
+    praxistipp: "Der Leverage-Effekt: Fremdkapital hebelt die Eigenkapitalrendite nach oben — solange der Kreditzins unter der Objektrendite liegt. Bei steigenden Zinsen kann dieser Effekt auch negativ werden."
+  },
+  {
+    id: 42,
+    bereich: "AfA & Steuervorteile",
+    titel: "Gesamte Steuerersparnis über Haltezeit",
+    berufssituation: "Frau Berger kauft 2024 eine Wohnung. Gebäudeanteil 320.000 €, AfA-Satz 3% (Neubau), Steuersatz 42%. Sie hält die Immobilie 20 Jahre. Wie viel spart sie insgesamt?",
+    was_lerne_ich: "Die kumulierte Steuerersparnis über die Haltezeit zeigt den echten Steuervorteil einer Immobilieninvestition — ein wichtiges Argument in der Beratung.",
+    schritte: [
+      { nr: 1, kontext: "Jährliche AfA.", formel: "AfA = 320.000 × 3 ÷ 100", variablen: [], aufgabe: "Jährliche AfA (320.000 × 3 ÷ 100):", einheit: "€", korrekt: 9600, toleranz: 0, tipp: "320.000 × 0,03 = 9.600 €" },
+      { nr: 2, kontext: "Jährliche Steuerersparnis.", formel: "Ersparnis p.a. = 9.600 × 42 ÷ 100", variablen: [], aufgabe: "Steuerersparnis p.a. (9.600 × 42 ÷ 100):", einheit: "€", korrekt: 4032, toleranz: 1, tipp: "9.600 × 0,42 = 4.032 €" },
+      { nr: 3, kontext: "Gesamtersparnis über 20 Jahre.", formel: "Gesamt = 4.032 × 20", variablen: [], aufgabe: "Gesamte Steuerersparnis (4.032 × 20):", einheit: "€", korrekt: 80640, toleranz: 10, tipp: "4.032 × 20 = 80.640 €" }
+    ],
+    abschluss: "Frau Berger spart über 20 Jahre insgesamt 80.640 € Steuern durch die AfA.",
+    gesetze: ["§7 EStG", "§21 EStG"],
+    praxistipp: "Bei 3% AfA ist der Gebäudeanteil nach 33 Jahren vollständig abgeschrieben. Danach entfällt der AfA-Vorteil. Viele Investoren verkaufen dann und reinvestieren in neue Objekte."
+  },
+  {
+    id: 43,
+    bereich: "Kaufnebenkosten",
+    titel: "Notarkosten aus GNotKG berechnen",
+    berufssituation: "Ein Kaufvertrag über 280.000 € wird beurkundet. Die Notargebühr beträgt 1,0% des Kaufpreises (vereinfacht). Hinzu kommt Grundbucheintragung mit 0,5%. Was zahlt der Käufer?",
+    was_lerne_ich: "Notarkosten richten sich nach dem GNotKG (Gerichts- und Notarkostengesetz) und sind gesetzlich festgelegt — nicht verhandelbar. Sie sind nach Kaufpreis gestaffelt.",
+    schritte: [
+      { nr: 1, kontext: "Notargebühr für Beurkundung.", formel: "Notar = 280.000 × 1,0 ÷ 100", variablen: [], aufgabe: "Notargebühr (280.000 × 1,0 ÷ 100):", einheit: "€", korrekt: 2800, toleranz: 10, tipp: "280.000 × 0,01 = 2.800 €" },
+      { nr: 2, kontext: "Grundbucheintragung.", formel: "Grundbuch = 280.000 × 0,5 ÷ 100", variablen: [], aufgabe: "Grundbucheintragung (280.000 × 0,5 ÷ 100):", einheit: "€", korrekt: 1400, toleranz: 10, tipp: "280.000 × 0,005 = 1.400 €" },
+      { nr: 3, kontext: "Gesamtkosten Notar + Grundbuch.", formel: "Gesamt = 2.800 + 1.400", variablen: [], aufgabe: "Gesamtkosten (2.800 + 1.400):", einheit: "€", korrekt: 4200, toleranz: 20, tipp: "2.800 + 1.400 = 4.200 €" }
+    ],
+    abschluss: "Notar- und Grundbuchkosten betragen ca. 4.200 € — 1,5% des Kaufpreises.",
+    gesetze: ["GNotKG", "GBO §13"],
+    praxistipp: "Notarkosten sind nicht verhandelbar — sie sind gesetzlich im GNotKG geregelt. Wer Kosten sparen möchte, sollte den Kaufvertragsentwurf selbst mitbringen statt vom Notar erstellen zu lassen."
+  },
+  {
+    id: 44,
+    bereich: "Annuität & Tilgung",
+    titel: "Tilgungsdauer berechnen",
+    berufssituation: "Herr Braun hat ein Darlehen von 200.000 € zu 4% Zinsen. Er tilgt anfänglich 3% p.a. In wie vielen Jahren ist das Darlehen vollständig getilgt?",
+    was_lerne_ich: "Die Tilgungsdauer zeigt wie lange man schuldet. Die vereinfachte Formel gibt einen guten Anhaltspunkt — die genaue Berechnung erfordert logarithmische Mathematik.",
+    schritte: [
+      { nr: 1, kontext: "Vereinfachte Formel: Jahre ≈ 100 ÷ (Tilgungssatz + Zinssatz × Tilgungsfaktor). Noch einfacher: 72 ÷ Tilgungssatz als grobe Faustregel.", formel: "Jahre ≈ 72 ÷ Tilgungssatz", variablen: [{ kuerzel: "t", bedeutung: "Tilgungssatz", wert: "3%" }], aufgabe: "Tilgungsdauer ca. (72 ÷ 3):", einheit: "Jahre", korrekt: 24, toleranz: 2, tipp: "72 ÷ 3 = 24 Jahre (Faustregel)" }
+    ],
+    abschluss: "Mit 3% anfänglicher Tilgung ist das Darlehen nach ca. 24 Jahren vollständig getilgt.",
+    gesetze: ["§488 BGB"],
+    praxistipp: "Die Regel 72: Teile 72 durch den Tilgungssatz um die ungefähre Laufzeit zu erhalten. Bei 1% Tilgung: 72 Jahre — deshalb empfehlen Experten mindestens 2-3% Anfangstilgung."
+  },
+  {
+    id: 45,
+    bereich: "Wertermittlung",
+    titel: "Immobilienwert nach Renovierung",
+    berufssituation: "Eine Wohnung hat einen aktuellen Wert von 280.000 €. Nach einer Renovierung (Kosten: 40.000 €) steigt die erzielbare Miete von 900 € auf 1.100 € monatlich. Wie verändert sich der Ertragswert? (Vervielfältiger 22)",
+    was_lerne_ich: "Renovierungen können den Immobilienwert überproportional steigern wenn die Mieterhöhung den Vervielfältiger rechtfertigt. Diese Berechnung ist Grundlage für Investitionsentscheidungen.",
+    schritte: [
+      { nr: 1, kontext: "Jahresnettomiete vorher.", formel: "JNM vorher = 900 × 12", variablen: [], aufgabe: "Jahresnettomiete vorher (900 × 12):", einheit: "€", korrekt: 10800, toleranz: 0, tipp: "900 × 12 = 10.800 €" },
+      { nr: 2, kontext: "Ertragswert vorher.", formel: "EW vorher = 10.800 × 22", variablen: [], aufgabe: "Ertragswert vorher (10.800 × 22):", einheit: "€", korrekt: 237600, toleranz: 0, tipp: "10.800 × 22 = 237.600 €" },
+      { nr: 3, kontext: "Jahresnettomiete nachher.", formel: "JNM nachher = 1.100 × 12", variablen: [], aufgabe: "Jahresnettomiete nachher (1.100 × 12):", einheit: "€", korrekt: 13200, toleranz: 0, tipp: "1.100 × 12 = 13.200 €" },
+      { nr: 4, kontext: "Ertragswert nachher.", formel: "EW nachher = 13.200 × 22", variablen: [], aufgabe: "Ertragswert nachher (13.200 × 22):", einheit: "€", korrekt: 290400, toleranz: 0, tipp: "13.200 × 22 = 290.400 €" },
+      { nr: 5, kontext: "Wertsteigerung vs. Renovierungskosten.", formel: "Wertsteigerung = EW nachher − EW vorher", variablen: [], aufgabe: "Wertsteigerung (290.400 − 237.600):", einheit: "€", korrekt: 52800, toleranz: 0, tipp: "290.400 − 237.600 = 52.800 €" }
+    ],
+    abschluss: "Die Renovierung kostet 40.000 € und steigert den Wert um 52.800 €. Nettogewinn: 12.800 €.",
+    gesetze: ["ImmoWertV §17", "§194 BauGB"],
+    praxistipp: "Nicht jede Renovierung lohnt sich. Der Schlüssel ist die Mietsteigerung: Wenn die Wertsteigerung (Mieterhöhung × Vervielfältiger) die Renovierungskosten übersteigt, ist es rentabel."
+  }
+
 ];
 
 const BEREICHE = [...new Set(AUFGABEN.map(a => a.bereich))];
