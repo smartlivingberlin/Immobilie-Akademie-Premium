@@ -439,7 +439,7 @@ const AUFGABEN: Aufgabe[] = [
     abschluss: "Herr Fischer spart jährlich 3.360 € Steuern durch die AfA. Über 50 Jahre (volle Abschreibungsdauer) spart er insgesamt 168.000 €.",
     gesetze: ["§7 EStG", "§21 EStG", "§9 EStG"],
     praxistipp: "Für Neubauten ab 2023 gilt 3% AfA p.a. (statt 2%). Der Gebäudeanteil muss im Kaufvertrag klar vom Grundstücksanteil getrennt sein — sonst schätzt das Finanzamt."
-  }
+  },
 
   {
     id: 10,
