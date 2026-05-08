@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS `open_questions` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
-  `modulId` INT NOT NULL,
+  `modul_id` INT NOT NULL,
   `frage` TEXT NOT NULL,
   `hinweis` TEXT,
   `schwierigkeit` VARCHAR(20) DEFAULT 'mittel',
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `open_answers` (
   `createdAt` DATETIME DEFAULT NOW()
 );
 
-INSERT IGNORE INTO open_questions (modulId, frage, hinweis, schwierigkeit, aktiv) VALUES
+INSERT IGNORE INTO open_questions (modul_id, frage, hinweis, schwierigkeit, aktiv) VALUES
   (1, 'Was ist ein Grundbuch und welche Funktion hat es?', 'Erklaere Aufbau, Abteilungen und rechtliche Bedeutung.', 'mittel', 1),
   (1, 'Erklaere den Unterschied zwischen Eigentum und Besitz.', 'Nenne Beispiele und die rechtliche Grundlage im BGB.', 'leicht', 1),
   (1, 'Was versteht man unter dem Wohnwert einer Immobilie?', 'Beschreibe die wichtigsten wertbestimmenden Faktoren.', 'mittel', 1),

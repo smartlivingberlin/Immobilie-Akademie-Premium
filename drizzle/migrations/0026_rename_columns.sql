@@ -1,4 +1,4 @@
--- Spalten von camelCase zu snake_case umbenennen
-ALTER TABLE open_questions CHANGE `modulId` `modul_id` INT NOT NULL;
-ALTER TABLE open_questions CHANGE `hinweis` `kontext` TEXT;
-ALTER TABLE open_questions CHANGE `schwierigkeit` `schwierigkeit` VARCHAR(20) DEFAULT 'mittel';
+-- 0026: Spalten bereits korrekt in 0023 angelegt (modul_id, kontext)
+-- Diese Migration ist ein No-Op fuer bestehende Installationen
+-- Fuer Frisch-Installationen: Spalten bereits korrekt in 0023
+SELECT 1;
