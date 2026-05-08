@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { DashboardLayout } from "@/components/layout/DashboardLayout";
+import DashboardLayout from "@/components/layout/DashboardLayout";
 import { Calculator, ChevronRight, ChevronDown, Send, RotateCcw, CheckCircle2, ArrowLeft, BookOpen, Lightbulb, MessageCircle } from "lucide-react";
 
 // ─── TYPEN ───────────────────────────────────────────────────────────────────
