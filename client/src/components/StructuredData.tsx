@@ -34,6 +34,13 @@ const modules: CourseModule[] = [
   },
 ];
 
+/**
+ * StructuredData Komponente zur Einbettung von JSON-LD Schemata (Organisation & Kurs).
+ * StructuredData component for embedding JSON-LD schemas (Organization & Course).
+ *
+ * Diese Komponente rendert keine sichtbare UI, sondern fügt Metadaten für Suchmaschinen hinzu.
+ * This component does not render visible UI but adds metadata for search engines.
+ */
 export function StructuredData() {
   useEffect(() => {
     // Educational Organization Schema

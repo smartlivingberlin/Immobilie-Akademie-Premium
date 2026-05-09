@@ -128,6 +128,13 @@ function shuffleOptions(q: typeof LOCAL_QUESTIONS[1][0]) {
   return { ...q, options: newOptions, correctAnswer: newCorrect };
 }
 
+/**
+ * Router für den Prüfungsmodus.
+ * Router for the exam mode.
+ *
+ * Bietet Funktionen zum Starten von Prüfungen, Generieren von Fragen und Auswerten von Antworten.
+ * Provides functions for starting exams, generating questions, and evaluating answers.
+ */
 export const examRouter = router({
   getRecommendedDifficulty: protectedProcedure
     .input(z.object({ moduleId: z.number().min(1).max(5) }))

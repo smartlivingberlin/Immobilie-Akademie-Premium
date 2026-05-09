@@ -41,6 +41,18 @@ import { registerTrialRoutes } from "../trialRoute";
 import { logger } from "./logger";
 import { requireAuth } from "../ragTutor";
 
+// Admin-Middleware für Express-Routen
+export async function requireAdmin(req: any, res: any, next: any) {
+  await requireAuth(req, res, async () => {
+    const { getUserByOpenId } = await import("../db");
+    const user = await getUserByOpenId(req.currentUser.openId);
+    if (user?.role !== "admin") {
+      return res.status(403).json({ error: "Nur Administratoren haben Zugriff." });
+    }
+    next();
+  });
+}
+
 
 // Globaler Error Handler
 process.on('uncaughtException', (err) => {
@@ -69,7 +81,12 @@ app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://js.stripe.com", "https://plausible.io"],
+      scriptSrc: [
+        "'self'",
+        "'unsafe-inline'",
+        "https://js.stripe.com",
+        "https://plausible.io"
+      ],
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
       imgSrc: ["'self'", "data:", "https:", "blob:", "https://img.youtube.com"],
       connectSrc: ["'self'", "https://api.stripe.com", "https://api.anthropic.com", "https://generativelanguage.googleapis.com", "https://plausible.io"],
@@ -165,20 +182,34 @@ app.post("/api/consent", async (req: any, res: any) => {
 
 app.use("/api/auth/login", loginLimiter);
 app.use("/api/auth/forgot-password", resetLimiter);
+app.use("/api/auth/reset-password", resetLimiter);
 app.use("/api/auth/register", registerLimiter);
+app.use("/api/auth/redeem-code", loginLimiter);
+app.use("/api/tester/request", trialLimiter);
+app.use("/api/owner/access", loginLimiter);
   const server = createServer(app);
   // Configure body parser with larger size limit for file uploads
   app.use(cookieParser());
   // CORS für Owner Control Panel (lokale HTML-Datei)
   app.use((req, res, next) => {
     const origin = req.headers.origin || '';
-    const allowed = ['null', 'file://', ''].includes(origin) ||
-      origin.startsWith('http://localhost') ||
-      origin.startsWith('http://127.0.0.1') ||
-      origin.includes('.railway.app') ||
-      origin.includes('immobilien-akademie') ||
-      false; // TODO: Nach Domain-Kauf auf exakte Domain beschränken
-    if (allowed || !origin) {
+    const isProd = process.env.NODE_ENV === "production";
+    const allowedOrigins = [
+      "https://immobilie-akademie-production.up.railway.app",
+      "https://immobilien-akademie-smart.de",
+      "https://www.immobilien-akademie-smart.de"
+    ];
+
+    let allowed = false;
+    if (!isProd) {
+      allowed = ['null', 'file://', ''].includes(origin) ||
+        origin.startsWith('http://localhost') ||
+        origin.startsWith('http://127.0.0.1');
+    } else {
+      allowed = allowedOrigins.includes(origin);
+    }
+
+    if (allowed || (!isProd && !origin)) {
       res.setHeader('Access-Control-Allow-Origin', origin || '*');
       res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
       res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization');
@@ -289,6 +320,25 @@ app.use(express.json({ limit: "1mb" }));
     return res.status(200).json({ ok: true, ts: new Date().toISOString() });
   });
 
+  // Public Stats (Social Proof) - Keine Auth nötig, aber Rate Limiting
+  app.get("/api/stats/public", aiLimiter, async (_req, res) => {
+    try {
+      const db = await (await import("../db")).getDb();
+      const [[users]] = await db.execute(
+        "SELECT COUNT(*) as total FROM users WHERE role='user'"
+      ) as any;
+      const [[active]] = await db.execute(
+        "SELECT COUNT(*) as cnt FROM users WHERE lastSignedIn > DATE_SUB(NOW(), INTERVAL 1 HOUR)"
+      ) as any;
+      res.json({
+        totalUsers: users?.total || 0,
+        activeUsers: active?.cnt || 0,
+        certsThisWeek: 0,
+      });
+    } catch {
+      res.json({ totalUsers: 0, activeUsers: 0, certsThisWeek: 0 });
+    }
+  });
 
 
   // Lokaler Dateispeicher (nur wenn kein Manus)
@@ -322,38 +372,14 @@ app.use(express.json({ limit: "1mb" }));
   const host = "0.0.0.0";
 
 
-// ── Public Stats (Social Proof) ────────────────────────────
-app.get("/api/stats/public", async (_req, res) => {
-  try {
-    const db = await (await import("../db")).getDb();
-    const [[users]] = await db.execute(
-      "SELECT COUNT(*) as total FROM users WHERE role='user'"
-    ) as any;
-    const [[active]] = await db.execute(
-      "SELECT COUNT(*) as cnt FROM users WHERE lastSignedIn > DATE_SUB(NOW(), INTERVAL 1 HOUR)"
-    ) as any;
-    res.json({
-      totalUsers: users?.total || 0,
-      activeUsers: active?.cnt || 0,
-      certsThisWeek: 0,
-    });
-  } catch {
-    res.json({ totalUsers: 0, activeUsers: 0, certsThisWeek: 0 });
-  }
-});
 
 
 
 // ── User Dashboard Stats ────────────────────────────────────
-app.get("/api/stats/dashboard", async (req: any, res: any) => {
+app.get("/api/stats/dashboard", requireAuth, async (req: any, res: any) => {
   try {
-    const token = req.cookies?.app_session_id;
-    if (!token) return res.status(401).json({ error: "Nicht eingeloggt" });
-    const { verifySessionToken } = await import("./auth-local");
-    const session = await verifySessionToken(token);
-    if (!session) return res.status(401).json({ error: "Ungueltige Session" });
     const db = await (await import("../db")).getDb();
-    const userId = (session as any).id ?? (session as any).openId;
+    const userId = req.currentUser.openId;
     const { sql: sqlFn } = await import("drizzle-orm");
     const [[logs]] = await db.execute(
       sqlFn`SELECT COUNT(*) as total, SUM(completed) as completed, SUM(durationSeconds) as totalSeconds FROM learning_logs WHERE userId = ${userId}`
@@ -389,13 +415,8 @@ app.use("/og-image", (req, res, next) => {
 
 
 // ── Spaced Repetition: Fragen nach IDs ──────────────────────
-app.get("/api/quiz/questions-by-ids", async (req: any, res: any) => {
+app.get("/api/quiz/questions-by-ids", requireAuth, async (req: any, res: any) => {
   try {
-    const token = req.cookies?.app_session_id;
-    if (!token) return res.status(401).json({ error: "Nicht eingeloggt" });
-    const { verifySessionToken } = await import("./auth-local");
-    const session = await verifySessionToken(token);
-    if (!session) return res.status(401).json({ error: "Ungueltige Session" });
     const ids = String(req.query.ids || "").split(",")
       .map(Number).filter(Boolean);
     if (!ids.length) return res.json({ questions: [] });
@@ -413,15 +434,10 @@ app.get("/api/quiz/questions-by-ids", async (req: any, res: any) => {
 
 
 // ── DSGVO Art. 15: Auskunftsrecht ─────────────────────────────
-app.get("/api/user/my-data", async (req: any, res: any) => {
+app.get("/api/user/my-data", resetLimiter, requireAuth, async (req: any, res: any) => {
   try {
-    const token = req.cookies?.app_session_id;
-    if (!token) return res.status(401).json({ error: "Nicht eingeloggt" });
-    const { verifySessionToken } = await import("./auth-local");
-    const session = await verifySessionToken(token);
-    if (!session) return res.status(401).json({ error: "Ungültige Session" });
     const db = await (await import("../db")).getDb();
-    const userId = (session as any).id ?? (session as any).openId;
+    const userId = req.currentUser.openId;
 
     const [user] = await db.$client.promise().query(`SELECT id, name, email, role, enabledModules, createdAt, lastSignedIn
        FROM users WHERE id = ?`, [userId]) as any;
@@ -471,15 +487,10 @@ app.get("/api/user/my-data", async (req: any, res: any) => {
 });
 
 // ── DSGVO Art. 20: Datenportabilität (JSON-Export) ────────────
-app.get("/api/user/export", async (req: any, res: any) => {
+app.get("/api/user/export", resetLimiter, requireAuth, async (req: any, res: any) => {
   try {
-    const token = req.cookies?.app_session_id;
-    if (!token) return res.status(401).json({ error: "Nicht eingeloggt" });
-    const { verifySessionToken } = await import("./auth-local");
-    const session = await verifySessionToken(token);
-    if (!session) return res.status(401).json({ error: "Ungültige Session" });
     const db = await (await import("../db")).getDb();
-    const userId = (session as any).id ?? (session as any).openId;
+    const userId = req.currentUser.openId;
 
     const [user] = await db.$client.promise().query(
       `SELECT name, email, role, enabledModules, createdAt FROM users WHERE id = ?`,

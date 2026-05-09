@@ -1,6 +1,7 @@
 import type { Express, Request, Response } from "express";
 import { getDb } from "./db";
 import { sql } from "drizzle-orm";
+import { requireAuth } from "./ragTutor";
 
 // SM-2 Algorithmus (SuperMemo 2)
 // quality: 0-5 (0=komplett falsch, 5=perfekt)
@@ -21,11 +22,10 @@ function sm2(easiness: number, interval: number, reps: number, quality: number) 
 export function registerSpacedRepetitionRoutes(app: Express) {
 
   // GET /api/sr/due — Fragen die heute fällig sind
-  app.get("/api/sr/due", async (req: Request, res: Response) => {
+  app.get("/api/sr/due", requireAuth, async (req: Request, res: Response) => {
     try {
       const db = await getDb();
-      const userId = (req as any).user?.id;
-      if (!userId) return res.status(401).json({ error: "Nicht eingeloggt" });
+      const userId = (req as any).currentUser?.id || (req as any).currentUser?.openId;
 
       const due = await db.execute(sql`
         SELECT sr.questionId, sr.easinessFactor, sr.interval, sr.repetitions
@@ -43,12 +43,11 @@ export function registerSpacedRepetitionRoutes(app: Express) {
   });
 
   // POST /api/sr/answer — Antwort verarbeiten
-  app.post("/api/sr/answer", async (req: Request, res: Response) => {
+  app.post("/api/sr/answer", requireAuth, async (req: Request, res: Response) => {
     try {
       const { questionId, quality } = req.body;
       const db = await getDb();
-      const userId = (req as any).user?.id;
-      if (!userId) return res.status(401).json({ error: "Nicht eingeloggt" });
+      const userId = (req as any).currentUser?.id || (req as any).currentUser?.openId;
 
       // Aktuellen Stand holen
       const [existing] = await db.execute(sql`

@@ -39,6 +39,14 @@ function renderMarkdown(text: string): string {
     .replace(/\n/g, '<br/>');
 }
 
+/**
+ * AIAssistant Komponente - Ein interaktiver Chat-Bot für Immobilienfragen.
+ * AIAssistant component - An interactive chat bot for real estate questions.
+ *
+ * @param {string} [moduleContext] - Optionaler Kontext des aktuellen Moduls (z.B. "Modul 1").
+ * @param {boolean} isOpen - Gibt an, ob der Assistent sichtbar ist.
+ * @param {() => void} onClose - Funktion zum Schließen des Assistenten.
+ */
 export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssistantProps) {
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [input, setInput] = useState("");

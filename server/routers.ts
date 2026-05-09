@@ -59,6 +59,13 @@ function safeJsonParse<T>(raw: unknown, fallback: T): T {
   return fallback;
 }
 
+/**
+ * Haupt-tRPC-Router der Anwendung.
+ * Main tRPC router for the application.
+ *
+ * Aggregiert alle Sub-Router für verschiedene Funktionsbereiche.
+ * Aggregates all sub-routers for different functional areas.
+ */
 export const appRouter = router({
   // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,

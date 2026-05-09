@@ -16,6 +16,16 @@ const DEFAULT_SEO = {
   ogImage: "https://d3p5h1kcpb0w9u.cloudfront.net/hero-makler-1.jpg",
 };
 
+/**
+ * SEO Komponente zur Verwaltung von Meta-Tags und strukturierten Daten.
+ * SEO component for managing meta tags and structured data.
+ *
+ * @param {string} [title] - Der Seitentitel.
+ * @param {string} [description] - Die Seitenbeschreibung.
+ * @param {string} [keywords] - Schlüsselwörter für die Seite.
+ * @param {string} [ogImage] - Bild für Open Graph (Social Sharing).
+ * @param {string} [canonical] - Kanonische URL der Seite.
+ */
 export function SEO({ title, description, keywords, ogImage, canonical }: SEOProps) {
   const [location] = useLocation();
   

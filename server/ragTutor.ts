@@ -1,6 +1,7 @@
 import { ENV } from "./_core/env";
 import { join as pathJoin } from 'path';
 import { existsSync, readFileSync } from 'fs';
+import { requireAdmin } from "./_core/index";
 /**
  * RAG-Tutor: KI antwortet aus echten Modulinhalten
  * Primär: Claude Haiku (Anthropic) | Fallback: Gemini
@@ -312,10 +313,7 @@ VERFÜGBARE DIREKT-LINKS (nur passende verwenden):
   });
 
   // KI-Monitor Statistiken — echte DB-Daten
-  app.get("/api/admin/ki-stats", async (req: Request, res: Response) => {
-    // KI-Stats: eingeloggte Nutzer sehen eigene Stats, Admins sehen alle
-    const session = (req as any).session;
-    if (!session?.userId) return res.status(401).json({ error: "Login erforderlich" });
+  app.get("/api/admin/ki-stats", requireAdmin, async (req: Request, res: Response) => {
     try {
       const { getDb } = await import("./db");
       const db = await getDb();

@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { readFileSync } from "fs";
 import { join } from "path";
+import { requireAuth } from "./ragTutor";
 
 const router = Router();
 
@@ -21,7 +22,7 @@ function parseLessons(moduleId: number) {
   } catch { return []; }
 }
 
-router.get("/api/learning/audio-lessons", (req, res) => {
+router.get("/api/learning/audio-lessons", requireAuth, (req, res) => {
   try {
     const moduleId = req.query.moduleId ? Number(req.query.moduleId) : null;
     const modules = moduleId ? [moduleId] : [1, 2, 3, 4, 5];
