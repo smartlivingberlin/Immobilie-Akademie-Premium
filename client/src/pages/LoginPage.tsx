@@ -29,7 +29,11 @@ export default function LoginPage() {
       const res = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), credentials: "include" });
       const data = await res.json();
       if (!res.ok) { setError(data.error || "Fehler beim Anmelden."); return; }
-      window.location.href = "/statistiken";
+      if (data.role === "admin") {
+        window.location.href = "/admin-2fa";
+      } else {
+        window.location.href = "/statistiken";
+      }
     } catch { setError("Verbindungsfehler. Bitte erneut versuchen."); }
     finally { setLoading(false); }
   }
