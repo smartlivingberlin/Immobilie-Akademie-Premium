@@ -199,6 +199,8 @@ export function registerAgentRoutes(app: Express) {
 
   // Coaching für einzelnen User
   app.get("/api/agent/coaching/:userId", async (req: Request, res: Response) => {
+    if (!await checkAdminAuth(req, res)) return res.status(401).json({ error: "Nicht autorisiert" });
+
     try {
       const { readFileSync, existsSync } = await import("fs");
       const { join } = await import("path");

@@ -343,7 +343,7 @@ ${data.analysis}`,
               }}>
                 {m.role === "assistant" ? (
                   <>
-                  <div dangerouslySetInnerHTML={{ __html: renderMarkdown(m.text) }} />
+                  <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(renderMarkdown(m.text)) }} />
                   <button aria-label="Text vorlesen" onClick={(e) => { e.stopPropagation(); speak(m.text); }} style={{
                     background:"#f1f5f9",border:"1px solid #e2e8f0",cursor:"pointer",
                     marginTop:"10px",padding:"6px 12px",borderRadius:"8px",
