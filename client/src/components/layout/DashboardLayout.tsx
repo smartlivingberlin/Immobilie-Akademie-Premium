@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { trpc } from "@/lib/trpc";
 import { Link, useLocation } from "wouter";
 import AIAssistant from "@/components/AIAssistant";
@@ -31,6 +31,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [isAIAssistantOpen, setIsAIAssistantOpen] = useState(false);
 
   const { user } = useAuth();
+  const progressQuery = trpc.learning.getProgress.useQuery(undefined, {
+    enabled: !!user,
+    staleTime: 30000,
+  });
+  const progressPercent = (() => {
+    const logs = progressQuery.data ?? [];
+    const completed = logs.filter((l: any) => l.completed).length;
+    const total = 240;
+    return total > 0 ? Math.round((completed / total) * 100) : 0;
+  })();
   const { isWhiteLabeled, companyName, logoUrl, enabledModules, footerText, config } = useWhiteLabel();
 
   const allModules = [
@@ -510,13 +520,13 @@ const navigation = [
               <div className="mb-4">
                 <div className="flex justify-between text-xs text-slate-400 mb-1">
                   <span>Gesamtfortschritt</span>
-                  <span>wird berechnet...</span>
+                  <span>{progressPercent}%</span>
                 </div>
                 <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-green-500 rounded-full" style={{width: "100%"}} />
+                  <div className="h-full bg-green-500 rounded-full transition-all duration-500" style={{width: `${progressPercent}%`}} />
                 </div>
                 <div className="text-[10px] text-slate-300 mt-1 text-center">
-                  Lernfortschritt wird geladen
+                  {progressPercent === 0 ? "Noch kein Fortschritt" : `${progressPercent}% abgeschlossen`}
                 </div>
               </div>
 

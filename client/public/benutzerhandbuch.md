@@ -1,302 +1,158 @@
-# Benutzerhandbuch: Immobilien-Bildungsportal
+# Benutzerhandbuch — Immobilien Akademie Smart Premium
 
-## Willkommen im Immobilien Akademie Smart
-
-Dieses Portal bietet Ihnen eine umfassende Ausbildung für die Immobilienbranche mit 5 Modulen und insgesamt 1920 Unterrichtseinheiten. Diese Anleitung erklärt Ihnen, wie Sie das Portal optimal nutzen.
+**Stand: Mai 2026** | Vollstaendige Anleitung fuer alle Funktionen
 
 ---
 
-## 📚 Übersicht der Module
+## Erste Schritte
 
-Das Portal ist in 5 Hauptmodule unterteilt:
+### Login
+1. Gehe zu: /login
+2. E-Mail und Passwort eingeben
+3. Du landest auf der Startseite mit allen Modulen
 
-### Modul 1: Einführung in die Immobilienwirtschaft
-- **Dauer**: 20 Tage
-- **Inhalt**: Grundlagen der Immobilienwirtschaft, Marktübersicht, rechtliche Rahmenbedingungen
+### Zugangscode einloesen
+1. Gehe zu: /code-einloesen
+2. Code eingeben
+3. Sofortiger Zugang ohne Kauf
 
-### Modul 2: Immobilienmakler (§34c GewO)
-- **Dauer**: 60 Tage  
-- **Inhalt**: Maklertätigkeit, Vertragsrecht, Kundenakquise, Vermarktungsstrategien
-- **Abschluss**: IHK-Sachkundeprüfung §34c GewO
-
-### Modul 3: Immobilienverwaltung (WEG & Mietverwaltung)
-- **Dauer**: 80 Tage
-- **Inhalt**: WEG-Recht, Mietrecht, Betriebskosten, Instandhaltung, Konfliktmanagement
-- **Abschluss**: IHK-Zertifikat Immobilienverwaltung
-
-### Modul 4: Gutachten & Sachverständiger
-- **Dauer**: 40 Tage
-- **Inhalt**: Immobilienbewertung, Wertermittlungsverfahren, Gutachtenerstellung
-
-### Modul 5: Prüfungsvorbereitung & §34i (Darlehensvermittlung)
-- **Dauer**: 40 Tage
-- **Inhalt**: Finanzierung, Darlehensvermittlung, Prüfungssimulation
+### Tester-Zugang (fuer Partner und Interessierte)
+1. Gehe zu: /tester-zugang
+2. E-Mail eingeben
+3. Zeitraum waehlen: 48h, 72h oder 7 Tage
+4. Code per E-Mail erhalten und eingeben
+5. Voller Zugang zu allen Modulen
 
 ---
 
-## 🎯 Erste Schritte
+## Die 5 Module
 
-### 1. Navigation verstehen
+Modul 1: Grundkurs Immobilienwirtschaft — 20 Tage
+Modul 2: Immobilienmakler §34c GewO — 60 Tage
+Modul 3: WEG-Verwalter und Mietverwaltung — 80 Tage
+Modul 4: Gutachten und Sachverstaendiger — 40 Tage
+Modul 5: §34i GewO Darlehensvermittlung — 40 Tage
 
-**Sidebar (linke Seite)**:
-- **Startseite**: Übersicht aller Module
-- **Modul 1-5**: Direkter Zugriff auf die einzelnen Module
-- **Fachbegriffe & Gesetze**: Glossar mit allen wichtigen Begriffen
-
-**Suchfunktion** (oben links):
-- Drücken Sie `⌘ K` (Mac) oder `Strg K` (Windows)
-- Suchen Sie nach Themen, Gesetzen oder Fachbegriffen
-
-### 2. Modul auswählen
-
-Klicken Sie in der Sidebar auf ein Modul, um zu beginnen. Sie sehen dann:
-- **Wochenübersicht**: Strukturierte Aufteilung in Lernblöcke
-- **Tagesauswahl**: Einzelne Lerntage mit spezifischen Themen
-- **Fortschrittsanzeige**: Ihr aktueller Lernstand
-
-### 3. Lerninhalte nutzen
-
-Jeder Lerntag ist in **5 Tabs** unterteilt:
-
-#### 📖 Theorie
-- Grundlagenwissen zum Thema
-- Gesetzliche Grundlagen (klickbar → externe Gesetzestexte)
-- **Vollbild-Modus**: Klicken Sie auf "Vollbild" oben rechts für optimale Lesbarkeit
-
-#### 💼 Praxis
-- Praxisbeispiele und Fallstudien
-- Anwendung des Gelernten
-- Vorlagen und Musterdokumente (z.B. Verwaltervertrag, Hausordnung)
-
-#### ✅ Aufgaben
-- Übungsfragen mit Lösungen
-- Klicken Sie auf "Lösung anzeigen" um die Antwort zu sehen
-- Selbstkontrolle Ihres Wissens
+### Navigation im Modul
+1. Modul in der Sidebar anklicken
+2. Lerntag auswaehlen
+3. 5 Tabs nutzen:
+   - Theorie: Lerntext mit Gesetzesreferenzen
+   - Normen: Relevante Paragraphen erklaert
+   - Analyse: Vertiefung und Zusammenhaenge
+   - Aufgaben: Interaktive Uebungen mit KI-Bewertung
+   - Videos: Lernvideos (werden ergaenzt)
+4. Pfeil-Buttons links/rechts: Zwischen Tagen wechseln
 
 ---
 
-## 🖥️ Vollbild-Modus nutzen
+## Rechenpraxis (NEU seit Mai 2026)
 
-Der **Vollbild-Modus** ist die wichtigste Funktion für effektives Lernen:
+45 interaktive Rechenübungen in 7 Bereichen.
+Zugang: Sidebar Rechenpraxis oder /rechenpraxis
 
-### Wann verwenden?
-- Beim Lesen längerer Texte
-- Für konzentriertes Lernen ohne Ablenkung
-- Auf Tablets und kleineren Bildschirmen
+Bereiche:
+- Maklercourtage und Provision (6 Aufgaben)
+- Mietrendite und Kaufpreisfaktor (6 Aufgaben)
+- Annuitaet und Tilgung (7 Aufgaben)
+- Kaufnebenkosten (5 Aufgaben)
+- WEG-Hausgeld und Abrechnung (7 Aufgaben)
+- Wertermittlung (8 Aufgaben)
+- AfA und Steuervorteile (6 Aufgaben)
 
-### Wie aktivieren?
-1. Öffnen Sie einen Lerntag (z.B. "Tag 1: Einführung WEG")
-2. Wählen Sie einen Tab (Theorie, Praxis oder Aufgaben)
-3. Klicken Sie oben rechts auf **"Vollbild"**
-4. Der Inhalt öffnet sich im echten Vollbildmodus (100% Bildschirm)
-
-### Vorteile:
-- ✅ Kein horizontales Scrollen
-- ✅ Optimale Textbreite für Lesbarkeit
-- ✅ Nur vertikales Scrollen nach unten
-- ✅ Keine Ablenkungen durch Sidebar oder Navigation
-- ✅ Schließen mit "Schließen"-Button oben rechts
-
----
-
-## 🔗 Gesetzestexte & externe Links
-
-Alle Gesetzesverweise sind **direkt verlinkt** mit den offiziellen Quellen:
-
-### Beispiele:
-- **§34c GewO** → gesetze-im-internet.de
-- **WEG § 10** → Wohnungseigentumsgesetz
-- **BGB § 535** → Bürgerliches Gesetzbuch
-
-### So nutzen Sie die Links:
-1. Klicken Sie auf einen Gesetzeshinweis (z.B. "§34c GewO")
-2. Der offizielle Gesetzestext öffnet sich in einem neuen Tab
-3. Lesen Sie den vollständigen Paragraphen im Original
-4. Kehren Sie zum Portal zurück, um weiterzulernen
-
-**Wichtig**: Alle Links führen zu **echten, offiziellen Rechtsquellen** (gesetze-im-internet.de), nicht zu Platzhaltern.
+So funktioniert eine Uebung:
+1. Kategorie auswaehlen
+2. Aufgabe anklicken und Berufssituation lesen
+3. Formel verstehen
+4. Jeden Schritt ausrechnen und eingeben
+5. Pruefen klicken und sofortiges Feedback erhalten
+6. Bei Fragen: KI-Assistent nutzen
 
 ---
 
-## 🤖 KI-Lern-Assistent nutzen
+## KI-Tutor
 
-Der **KI-Assistent** ist Ihr persönlicher Tutor, verfügbar 24/7.
+Der KI-Tutor ist 24/7 verfuegbar und kennt alle Modulinhalte.
 
-### Wo finden Sie den Assistenten?
-- **Schwebender Button** unten rechts auf jeder Seite (blaues/violettes Sternchen-Symbol)
-- Klicken Sie darauf, um den Chat zu öffnen
+Wo finde ich ihn?
+- Schwebender Button unten rechts auf jeder Seite
+- Direkt in den Aufgaben-Tabs
+- In der Rechenpraxis als Frage stellen
 
-### Was kann der Assistent?
-- ✅ Fragen zu WEG-Recht, Mietrecht, Maklerrecht beantworten
-- ✅ Fachbegriffe erklären
-- ✅ Gesetzestexte verständlich machen
-- ✅ Prüfungsfragen beantworten
-- ✅ Praxisbeispiele geben
+Was kann er?
+- Fachbegriffe erklaeren
+- Gesetzestexte verstaendlich machen
+- Rechenaufgaben Schritt fuer Schritt erklaeren
+- Pruefungsfragen beantworten
+- Praxisbeispiele geben
 
-### So nutzen Sie den Assistenten:
-
-#### Beispiel 1: Fachbegriff klären
-```
-Sie: Was bedeutet "Sondereigentum" im WEG?
-Assistent: Sondereigentum bezeichnet im Wohnungseigentumsgesetz (WEG) 
-den Teil einer Immobilie, der im alleinigen Eigentum eines 
-Wohnungseigentümers steht...
-```
-
-#### Beispiel 2: Gesetz verstehen
-```
-Sie: Erkläre mir §10 WEG einfach
-Assistent: §10 WEG regelt die Verwaltung des Gemeinschaftseigentums. 
-Kurz gesagt: Alle Eigentümer müssen gemeinsam entscheiden, wie das 
-Gemeinschaftseigentum (z.B. Treppenhaus, Dach) verwaltet wird...
-```
-
-#### Beispiel 3: Prüfungsvorbereitung
-```
-Sie: Welche Unterlagen braucht ein Makler für die §34c-Prüfung?
-Assistent: Für die IHK-Sachkundeprüfung nach §34c GewO benötigen Sie...
-```
-
-### Tipps für beste Ergebnisse:
-- 🎯 Stellen Sie **konkrete Fragen**
-- 📝 Geben Sie **Kontext** an (z.B. "Ich lerne gerade Tag 5 zu WEG")
-- 🔄 Der Assistent **kennt Ihr aktuelles Modul** automatisch
-- 💬 Nutzen Sie die **Konversationshistorie** – der Assistent merkt sich Ihre Fragen
+Beispiel-Fragen:
+- Erklaere mir §34c GewO einfach
+- Was ist der Unterschied zwischen Brutto- und Nettomietrendite?
+- Wie berechne ich die Grunderwerbsteuer in Bayern?
 
 ---
 
-## 📝 Dokumente generieren
+## Pruefungssimulation und Pruefungsmodus
 
-Für bestimmte Lerntage können Sie **Musterdokumente** erstellen:
+Pruefungssimulation (/quiz):
+- 810 IHK-Pruefungsfragen als Multiple-Choice
+- Nach Modul filterbar
+- Sofortiges Feedback nach jeder Antwort
 
-### Verfügbare Dokumente:
-- **Tag 12**: Verwaltervertrag
-- **Tag 28**: Einladung zur Eigentümerversammlung
-- **Tag 45**: Hausordnung
-- **Tag 62**: Protokoll Eigentümerversammlung
-
-### So erstellen Sie ein Dokument:
-1. Navigieren Sie zum entsprechenden Tag
-2. Wählen Sie den Tab **"Praxis"**
-3. Scrollen Sie nach unten zum Dokumentgenerator
-4. Füllen Sie die Felder aus (z.B. Name der WEG, Adresse)
-5. Klicken Sie auf **"Dokument generieren"**
-6. Das fertige Dokument wird als PDF erstellt
+Pruefungsmodus (/pruefung):
+- Simuliert echte IHK-Klausurverhältnisse
+- Zeitlimit wie bei echter Pruefung
+- Ergebnis mit Detailauswertung
 
 ---
 
-## 🏆 Prüfungen & Zertifikate
+## Weitere Tools
 
-### Modulabschluss:
-- Am Ende jedes Moduls wartet ein **Abschlussquiz**
-- **Bestehensgrenze**: 50% richtige Antworten
-- Bei Bestehen erhalten Sie ein **Zertifikat**
-
-### Quiz durchführen:
-1. Beenden Sie alle Tage eines Moduls
-2. Klicken Sie auf **"Zum Abschlussquiz"**
-3. Beantworten Sie alle Fragen
-4. Erhalten Sie sofort Ihr Ergebnis
-5. Bei Bestehen: **Zertifikat herunterladen**
-
-### Zertifikat nutzen:
-- ✅ Als Nachweis für Arbeitgeber
-- ✅ Für IHK-Prüfungsanmeldung
-- ✅ Für persönliche Unterlagen
+- Praxisrechner (/rechner): 5 Immobilienrechner
+- Finanzierungsrechner (/finanzierungsrechner): Annuitaet, Tilgungsplan
+- Lernkarten (/lernkarten): Digitale Karteikarten
+- Expose-Trainer (/expose-trainer): Expose erstellen und KI-Bewertung
+- Fallstudien (/fallstudien): Praxisfaelle mit Musterloesungen
+- Audio-Modus (/audio-modus): Text-to-Speech Lernmodus
+- Gamification (/gamification): Punkte, Abzeichen, Streak
+- Zertifikate (/zertifikate): PDF-Zertifikate herunterladen
+- Glossar (/glossary): 93 Fachbegriffe erklaert
+- Lernstatistiken (/statistiken): Persoenlicher Fortschritt
+- Dokument-Werkstatt (/dokument-werkstatt/1): Echte Dokumente analysieren
 
 ---
 
-## 📖 Fachbegriffe & Gesetze
+## Zertifikate
 
-Das **Glossar** ist Ihre Nachschlagehilfe:
+Ab 70% richtige Antworten im Pruefungsmodus gibt es ein Zertifikat als PDF.
 
-### Zugriff:
-- Klicken Sie in der Sidebar auf **"Fachbegriffe & Gesetze"**
-- Oder nutzen Sie die **Suchfunktion** (`⌘ K` / `Strg K`)
-
-### Kategorien:
-- **WEG-Recht**: Wohnungseigentumsgesetz
-- **Mietrecht**: Mietverträge, Betriebskosten
-- **Maklerrecht**: §34c GewO, Maklervertrag
-- **Finanzierung**: §34i GewO, Darlehen
-- **Bewertung**: Wertermittlung, Gutachten
-
-### Jeder Eintrag enthält:
-- **Definition**: Kurze Erklärung des Begriffs
-- **Gesetzesgrundlage**: Relevante Paragraphen (verlinkt)
-- **Praxisbeispiel**: Anwendung im Alltag
+Schritte:
+1. Pruefungsmodus starten (/pruefung)
+2. Mindestens 70% erreichen
+3. Unter /zertifikate herunterladen
 
 ---
 
-## 💡 Tipps für effektives Lernen
+## Technische Hinweise
 
-### 1. Strukturiert vorgehen
-- ✅ Folgen Sie der Tagesreihenfolge
-- ✅ Schließen Sie jeden Tag vollständig ab
-- ✅ Nutzen Sie die Aufgaben zur Selbstkontrolle
+Browser: Chrome, Firefox, Safari, Edge (aktuelle Versionen)
+Tastenkuerzel:
+- Strg K oder Cmd K: Suche oeffnen
+- Esc: Dialoge schliessen
 
-### 2. Vollbild-Modus nutzen
-- ✅ Aktivieren Sie Vollbild für konzentriertes Lesen
-- ✅ Vermeiden Sie Ablenkungen
-- ✅ Optimale Darstellung auf allen Geräten
-
-### 3. KI-Assistent einsetzen
-- ✅ Stellen Sie Fragen bei Unklarheiten
-- ✅ Lassen Sie sich Zusammenfassungen geben
-- ✅ Üben Sie mit dem Assistenten für die Prüfung
-
-### 4. Gesetzestexte lesen
-- ✅ Klicken Sie auf alle Gesetzesverweise
-- ✅ Lesen Sie die Originaltexte
-- ✅ Verstehen Sie die rechtlichen Grundlagen
-
-### 5. Praxisbezug herstellen
-- ✅ Lesen Sie alle Praxisbeispiele
-- ✅ Erstellen Sie Musterdokumente
-- ✅ Übertragen Sie das Gelernte auf eigene Fälle
+Bei Problemen:
+1. Browser-Cache leeren (Strg + Shift + R)
+2. Anderen Browser versuchen
+3. KI-Assistent fragen
 
 ---
 
-## 🔧 Technische Hinweise
+## Kontakt
 
-### Browser-Kompatibilität:
-- ✅ Chrome, Firefox, Safari, Edge (neueste Versionen)
-- ✅ Responsive Design für Desktop, Tablet, Smartphone
-
-### Tastenkombinationen:
-- `⌘ K` / `Strg K`: Suche öffnen
-- `Esc`: Vollbild schließen
-- `Tab`: Zwischen Tabs wechseln
-
-### Datenschutz:
-- Ihre Lernfortschritte werden sicher in der Datenbank gespeichert
-- KI-Konversationen sind verschlüsselt
-- Keine Weitergabe von Daten an Dritte
+Bei Problemen: Beschwerdeformular unter /beschwerde
+KI-Assistent ist 24/7 fuer inhaltliche Fragen verfuegbar.
 
 ---
 
-## 📞 Support & Hilfe
-
-### Bei Fragen:
-1. **KI-Assistent**: Erste Anlaufstelle für inhaltliche Fragen
-2. **Glossar**: Nachschlagen von Fachbegriffen
-3. **Benutzerhandbuch**: Diese Anleitung (immer verfügbar)
-
-### Technische Probleme:
-- Aktualisieren Sie Ihren Browser
-- Löschen Sie den Cache
-- Prüfen Sie Ihre Internetverbindung
-
----
-
-## 🎓 Viel Erfolg!
-
-Sie haben jetzt alle Werkzeuge, um Ihre Immobilienausbildung erfolgreich zu absolvieren. Nutzen Sie:
-
-- ✅ **Vollbild-Modus** für konzentriertes Lernen
-- ✅ **Gesetzeslinks** für rechtliche Grundlagen
-- ✅ **KI-Assistent** für Fragen und Prüfungsvorbereitung
-- ✅ **Strukturierte Tage** für systematisches Lernen
-- ✅ **Praxisbeispiele** für Anwendungskompetenz
-
-**Viel Erfolg bei Ihrer Ausbildung!** 🚀
+Immobilien Akademie Smart Premium — Berlin 2026
