@@ -1,6 +1,7 @@
 import { Express, Request, Response } from "express";
 import PortalAgent, { WISSENS_KARTE } from "./PortalAgent";
 import SuperAgent from "./SuperAgent";
+import { requireAuth } from "../ragTutor";
 
 export function registerAgentRoutes(app: Express) {
   // Auth-Helper: Owner-Key ODER Admin-Session
@@ -229,10 +230,8 @@ export function registerAgentRoutes(app: Express) {
     }
   });
   // POST /api/ai/bewerte-fallstudie — KI bewertet Nutzerantwort (Auth erforderlich)
-  app.post("/api/ai/bewerte-fallstudie", async (req: any, res: any) => {
+  app.post("/api/ai/bewerte-fallstudie", requireAuth, async (req: any, res: any) => {
     try {
-      const token = req.cookies?.app_session_id;
-      if (!token) return res.status(401).json({ error: "Login erforderlich" });
       const { aufgabe, musterantwort, nutzerAntwort, titel } = req.body;
       if (!aufgabe || !nutzerAntwort) return res.status(400).json({ error: "aufgabe und nutzerAntwort erforderlich" });
       const apiKey = process.env.ANTHROPIC_API_KEY;

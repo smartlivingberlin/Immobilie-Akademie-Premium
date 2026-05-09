@@ -22,12 +22,29 @@ const HASH_ITERATIONS = 100_000;
 const HASH_KEYLEN = 64;
 const HASH_DIGEST = "sha256";
 
+/**
+ * Hasht ein Passwort mit PBKDF2-SHA256.
+ * Hashes a password using PBKDF2-SHA256.
+ *
+ * @param {string} password Das Klartext-Passwort.
+ * @param {string} [salt] Optionaler Salt (wenn nicht angegeben, wird ein neuer generiert).
+ * @returns {{ hash: string; salt: string }} Der generierte Hash und der verwendete Salt.
+ */
 export function hashPassword(password: string, salt?: string): { hash: string; salt: string } {
   const usedSalt = salt ?? randomBytes(16).toString("hex");
   const hash = pbkdf2Sync(password, usedSalt, HASH_ITERATIONS, HASH_KEYLEN, HASH_DIGEST).toString("hex");
   return { hash, salt: usedSalt };
 }
 
+/**
+ * Verifiziert ein Passwort gegen einen gespeicherten Hash.
+ * Verifies a password against a stored hash.
+ *
+ * @param {string} password Das zu prüfende Passwort.
+ * @param {string} storedHash Der gespeicherte Hash.
+ * @param {string} storedSalt Der gespeicherte Salt.
+ * @returns {boolean} True, wenn das Passwort korrekt ist.
+ */
 export function verifyPassword(password: string, storedHash: string, storedSalt: string): boolean {
   const { hash } = hashPassword(password, storedSalt);
   return hash === storedHash;
@@ -43,6 +60,16 @@ function getSecret() {
   return new TextEncoder().encode(ENV.cookieSecret);
 }
 
+/**
+ * Erstellt einen JWT-Session-Token für einen Nutzer.
+ * Creates a JWT session token for a user.
+ *
+ * @param {string} openId Die openId des Nutzers.
+ * @param {string} name Der Name des Nutzers.
+ * @param {string} [role] Die Rolle des Nutzers.
+ * @param {string} [enabledModules] Kommagetrennte Liste der freigeschalteten Module.
+ * @returns {Promise<string>} Der signierte JWT-Token.
+ */
 export async function createSessionToken(openId: string, name: string, role?: string, enabledModules?: string): Promise<string> {
   return new SignJWT({ openId, appId: "local", name, ...(role ? { role } : {}), ...(enabledModules ? { enabledModules } : {}) })
     .setProtectedHeader({ alg: "HS256", typ: "JWT" })
@@ -50,6 +77,13 @@ export async function createSessionToken(openId: string, name: string, role?: st
     .sign(getSecret());
 }
 
+/**
+ * Verifiziert einen Session-Token und gibt die Payload zurück.
+ * Verifies a session token and returns the payload.
+ *
+ * @param {string | undefined | null} token Der zu prüfende Token.
+ * @returns {Promise<{ openId: string; name: string } | null>} Die Payload oder null bei Fehler.
+ */
 export async function verifySessionToken(
   token: string | undefined | null
 ): Promise<{ openId: string; name: string } | null> {
@@ -67,6 +101,12 @@ export async function verifySessionToken(
 
 // ── Express Routes ────────────────────────────────────────────────────────────
 
+/**
+ * Registriert die lokalen Authentifizierungs-Routen (Register, Login, Logout, Me).
+ * Registers local authentication routes (Register, Login, Logout, Me).
+ *
+ * @param {Express} app Die Express-App-Instanz.
+ */
 export function registerLocalAuthRoutes(app: Express) {
 
   /**

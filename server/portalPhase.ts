@@ -7,6 +7,7 @@
  */
 
 import type { Express, Request, Response } from "express";
+import { requireAdmin } from "./_core/index";
 
 export type Phase = "A" | "B" | "C" | "D";
 
@@ -233,18 +234,8 @@ export function registerPortalPhaseRoutes(app: Express) {
   });
 
   // POST /api/admin/portal-phase — nur Admin
-  app.post("/api/admin/portal-phase", (req: any, res: any, next: any) => { if (!req.session?.userId || req.session?.role !== "admin") return res.status(403).json({error:"Kein Zugriff"}); next(); }, async (req: Request, res: Response) => {
+  app.post("/api/admin/portal-phase", requireAdmin, async (req: Request, res: Response) => {
     try {
-      const { verifySessionToken } = await import("./_core/auth-local");
-      const { getUserByOpenId } = await import("./db");
-      const cookies = req.cookies || {};
-      const { COOKIE_NAME } = await import("@shared/const");
-      const token = cookies[COOKIE_NAME];
-      const session = await verifySessionToken(token);
-      if (!session) return res.status(401).json({ error: "Nicht eingeloggt" });
-      const user = await getUserByOpenId(session.openId);
-      if (!user || user.role !== "admin") return res.status(403).json({ error: "Kein Admin" });
-
       const { phase } = req.body;
       if (!["A","B","C","D"].includes(phase)) return res.status(400).json({ error: "Ungültige Phase" });
 

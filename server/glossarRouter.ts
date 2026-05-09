@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { getDb } from "./db";
 import { sql } from "drizzle-orm";
+import { requireAdmin } from "./_core/index";
 
 const router = Router();
 
@@ -46,13 +47,8 @@ router.get("/api/glossar/categories", async (_req, res) => {
 
 
 // ── Admin: Glossar verwalten (nur Admin) ─────────────────────
-router.post("/api/admin/glossar", async (req: any, res: any) => {
+router.post("/api/admin/glossar", requireAdmin, async (req: any, res: any) => {
   try {
-    const token = req.cookies?.app_session_id;
-    if (!token) return res.status(401).json({ error: "Nicht eingeloggt" });
-    const { verifySessionToken } = await import("./_core/auth-local");
-    const session = await verifySessionToken(token);
-    if (!session || (session as any).role !== "admin") return res.status(403).json({ error: "Kein Zugriff" });
     const { term, definition, category, lawReference, lawLink } = req.body;
     if (!term || !definition || !category) return res.status(400).json({ error: "term, definition, category erforderlich" });
     const db = await getDb();
@@ -61,13 +57,8 @@ router.post("/api/admin/glossar", async (req: any, res: any) => {
   } catch(e: any) { res.status(500).json({ error: e.message }); }
 });
 
-router.put("/api/admin/glossar/:id", async (req: any, res: any) => {
+router.put("/api/admin/glossar/:id", requireAdmin, async (req: any, res: any) => {
   try {
-    const token = req.cookies?.app_session_id;
-    if (!token) return res.status(401).json({ error: "Nicht eingeloggt" });
-    const { verifySessionToken } = await import("./_core/auth-local");
-    const session = await verifySessionToken(token);
-    if (!session || (session as any).role !== "admin") return res.status(403).json({ error: "Kein Zugriff" });
     const id = Number(req.params.id);
     const { term, definition, category, lawReference, lawLink } = req.body;
     const db = await getDb();
@@ -76,13 +67,8 @@ router.put("/api/admin/glossar/:id", async (req: any, res: any) => {
   } catch(e: any) { res.status(500).json({ error: e.message }); }
 });
 
-router.delete("/api/admin/glossar/:id", async (req: any, res: any) => {
+router.delete("/api/admin/glossar/:id", requireAdmin, async (req: any, res: any) => {
   try {
-    const token = req.cookies?.app_session_id;
-    if (!token) return res.status(401).json({ error: "Nicht eingeloggt" });
-    const { verifySessionToken } = await import("./_core/auth-local");
-    const session = await verifySessionToken(token);
-    if (!session || (session as any).role !== "admin") return res.status(403).json({ error: "Kein Zugriff" });
     const id = Number(req.params.id);
     const db = await getDb();
     await db.execute(sql`DELETE FROM glossar_terms WHERE id=${id}`);
