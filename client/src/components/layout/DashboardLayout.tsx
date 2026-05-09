@@ -31,7 +31,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [isAIAssistantOpen, setIsAIAssistantOpen] = useState(false);
 
   const { user } = useAuth();
-  const progressQuery = trpc.learning.getProgress.useQuery(undefined, {
+  const progressQuery = trpc.progress.getProgress.useQuery(undefined, {
     enabled: !!user,
     staleTime: 30000,
   });
