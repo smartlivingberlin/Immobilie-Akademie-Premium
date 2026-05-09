@@ -11,7 +11,7 @@ interface SEOProps {
 
 const DEFAULT_SEO = {
   title: "Immobilien-Bildungsportal | Makler §34c, Verwalter WEG/Miet, §34i Ausbildung",
-  description: "Komplette Immobilien-Ausbildung: 240 Tage, 1920 UE. Makler §34c GewO, WEG-Verwalter, Mietverwalter, Darlehensvermittler §34i. KI-Tutor, Videos, Quizze, Prüfungsmodus.",
+  description: "Komplette Immobilien-Ausbildung: 240 Tage, 810+ Lernaufgaben. Makler §34c GewO, WEG-Verwalter, Mietverwalter, Darlehensvermittler §34i. KI-Tutor, Videos, Quizze, Prüfungsmodus.",
   keywords: "Immobilienmakler Ausbildung, §34c GewO, WEG-Verwalter, Mietverwalter, §34i Darlehensvermittler, IHK Prüfung, Immobilien Weiterbildung, Online Lernportal",
   ogImage: "https://d3p5h1kcpb0w9u.cloudfront.net/hero-makler-1.jpg",
 };

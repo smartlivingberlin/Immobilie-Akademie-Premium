@@ -243,7 +243,7 @@ export default function Home() {
               </div>
               <h3 className="font-display font-semibold text-lg text-foreground mb-2">Komplett-Ausbildung</h3>
               <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-4">
-                Alle 5 Module — Makler, Verwalter, Gutachter, Finanzierer. 240 Lerntage, 1920 UE, 5 Zertifikate.
+                Alle 5 Module — Makler, Verwalter, Gutachter, Finanzierer. 240 Lerntage, 855+ Aufgaben, 5 Zertifikate.
               </p>
               <div className="border-t border-border pt-4 mb-4">
                 <div className="text-2xl font-display font-semibold text-primary">1.955 €</div>

@@ -322,7 +322,7 @@ export default function Syllabus() {
             <h1 className="text-3xl md:text-4xl font-bold text-slate-900">Gesamter Lehrplan</h1>
             <p className="text-slate-600 mt-2 max-w-2xl">
               Der vollständige Ausbildungsplan über alle 5 Module und 240 Tage. 
-              Insgesamt 1920 Unterrichtseinheiten (UE) für Ihre Karriere.
+              Insgesamt 240 Lerntage mit 855+ Lernaufgaben für Ihre Karriere.
             </p>
           </div>
           
