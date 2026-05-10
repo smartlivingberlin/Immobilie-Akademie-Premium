@@ -526,7 +526,7 @@ ${textSnippet}`
 
 
   // Auto-Fragen-Generator: Text → KI → question_bank DB
-  app.post("/api/ai/generate-questions", requireAuth, async (req: Request, res: Response) => {
+  app.post("/api/ai/generate-questions", requireAdmin, async (req: Request, res: Response) => {
     try {
       const { text, moduleId, category, count = 15 } = req.body;
       if (!text || !moduleId) return res.status(400).json({ error: "text und moduleId erforderlich" });
@@ -558,7 +558,7 @@ ${textSnippet}`
   });
 
   // Kursbuch-Generator: Modul → KI → strukturiertes Kursbuch
-  app.post("/api/ai/generate-kursbuch", requireAuth, async (req: Request, res: Response) => {
+  app.post("/api/ai/generate-kursbuch", requireAdmin, async (req: Request, res: Response) => {
     try {
       const { moduleId, moduleTitle, contentSummary, format = "kursbuch" } = req.body;
       if (!moduleId || !contentSummary) return res.status(400).json({ error: "moduleId und contentSummary erforderlich" });
@@ -610,7 +610,7 @@ Bewerte nach IHK-Maßstäben und antworte NUR mit diesem JSON:
 
   // Kursbuch aus echtem Modulinhalt generieren
 
-  app.post("/api/ai/generate-kursbuch-v2", requireAuth, async (req: Request, res: Response) => {
+  app.post("/api/ai/generate-kursbuch-v2", requireAdmin, async (req: Request, res: Response) => {
     try {
       const { moduleId, format = "kursbuch" } = req.body;
       if (!moduleId) return res.status(400).json({ error: "moduleId erforderlich" });
@@ -670,7 +670,7 @@ Bewerte nach IHK-Maßstäben und antworte NUR mit diesem JSON:
   });
 
   // Dozenten-Cockpit: Lernfortschritt analysieren + Unterrichtsplan generieren
-  app.post("/api/ai/dozenten-cockpit", requireAuth, async (req: Request, res: Response) => {
+  app.post("/api/ai/dozenten-cockpit", requireAdmin, async (req: Request, res: Response) => {
     try {
       const { moduleId, format = "unterrichtsplan" } = req.body;
       if (!moduleId) return res.status(400).json({ error: "moduleId erforderlich" });
@@ -792,7 +792,7 @@ WICHTIG:
   });
 
   // NotebookLM + Video Skript Generator
-  app.post("/api/ai/generate-mediaskript", requireAuth, async (req: Request, res: Response) => {
+  app.post("/api/ai/generate-mediaskript", requireAdmin, async (req: Request, res: Response) => {
     try {
       const { moduleId, thema, format = "podcast" } = req.body;
       if (!moduleId || !thema) return res.status(400).json({ error: "moduleId und thema erforderlich" });
