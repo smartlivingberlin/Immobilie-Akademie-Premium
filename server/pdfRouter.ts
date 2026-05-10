@@ -1,13 +1,13 @@
 import { z } from "zod";
-import { publicProcedure, router } from "./_core/trpc";
+import { protectedProcedure, router } from "./_core/trpc";
 import { TRPCError } from "@trpc/server";
 import { getExamSession, getWeakTopics, getExamQuestions } from "./db";
 import { jsPDF } from "jspdf";
 
 export const pdfRouter = router({
-  generateExamResultPDF: publicProcedure
+  generateExamResultPDF: protectedProcedure
     .input(z.object({ sessionId: z.number() }))
-    .mutation(async ({ input }) => {
+    .mutation(async ({ input, ctx }) => {
       const { sessionId } = input;
 
       // Get exam session data
@@ -16,6 +16,14 @@ export const pdfRouter = router({
         throw new TRPCError({
           code: "NOT_FOUND",
           message: "Exam session not found",
+        });
+      }
+
+      // Check ownership
+      if (session.userId !== ctx.user.id && ctx.user.role !== "admin") {
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message: "You do not have permission to access this exam result.",
         });
       }
 

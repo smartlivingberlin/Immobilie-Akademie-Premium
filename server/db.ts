@@ -179,7 +179,19 @@ export async function upsertUser(user: InsertUser): Promise<void> {
 export async function getUserByOpenId(openId: string) {
   const db = await getDb();
 
-  const result = await db.select().from(users).where(eq(users.openId, openId)).limit(1);
+  const result = await db.select({
+    id: users.id,
+    openId: users.openId,
+    name: users.name,
+    email: users.email,
+    role: users.role,
+    enabledModules: users.enabledModules,
+    tenantId: users.tenantId,
+    onboardingCompleted: users.onboardingCompleted,
+  })
+  .from(users)
+  .where(eq(users.openId, openId))
+  .limit(1);
 
   return result.length > 0 ? result[0] : undefined;
 }
@@ -334,12 +346,34 @@ export async function getWhitelabelConfigById(
   const db = await getDb();
 
   const result = await db
-    .select()
+    .select({
+      id: whitelabelConfigs.id,
+      slug: whitelabelConfigs.slug,
+      companyName: whitelabelConfigs.companyName,
+      logoUrl: whitelabelConfigs.logoUrl,
+      faviconUrl: whitelabelConfigs.faviconUrl,
+      primaryColor: whitelabelConfigs.primaryColor,
+      secondaryColor: whitelabelConfigs.secondaryColor,
+      accentColor: whitelabelConfigs.accentColor,
+      sidebarColor: whitelabelConfigs.sidebarColor,
+      welcomeText: whitelabelConfigs.welcomeText,
+      footerText: whitelabelConfigs.footerText,
+      contactEmail: whitelabelConfigs.contactEmail,
+      contactPhone: whitelabelConfigs.contactPhone,
+      websiteUrl: whitelabelConfigs.websiteUrl,
+      azavEnabled: whitelabelConfigs.azavEnabled,
+      enabledModules: whitelabelConfigs.enabledModules,
+      maxUsers: whitelabelConfigs.maxUsers,
+      isActive: whitelabelConfigs.isActive,
+      adminUserId: whitelabelConfigs.adminUserId,
+      createdAt: whitelabelConfigs.createdAt,
+      updatedAt: whitelabelConfigs.updatedAt,
+    })
     .from(whitelabelConfigs)
     .where(eq(whitelabelConfigs.id, id))
     .limit(1);
 
-  return result.length > 0 ? result[0] : null;
+  return result.length > 0 ? result[0] as WhitelabelConfig : null;
 }
 
 /**
@@ -434,7 +468,7 @@ export async function getWhitelabelConfigForUser(
 
   // First get the user's tenantId
   const userResult = await db
-    .select()
+    .select({ tenantId: users.tenantId })
     .from(users)
     .where(eq(users.id, userId))
     .limit(1);

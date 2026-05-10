@@ -71,7 +71,7 @@ export function VideoPreview({
       }} onClick={() => setPlaying(true)}>
         <img
           src={thumbnailUrl}
-          alt={titel}
+          alt={`Video Vorschau: ${titel}`}
           style={{ width:"100%", display:"block", aspectRatio:"16/9", objectFit:"cover" }}
           onError={e => { (e.target as HTMLImageElement).src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`; }}
         />

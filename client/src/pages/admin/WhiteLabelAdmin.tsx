@@ -398,7 +398,7 @@ export default function WhiteLabelAdmin() {
                         {config.logoUrl ? (
                           <img
                             src={config.logoUrl}
-                            alt={config.companyName}
+                            alt={`Logo von ${config.companyName}`}
                             className="h-10 w-10 rounded-lg object-contain border border-slate-200"
                           />
                         ) : (
@@ -602,7 +602,7 @@ export default function WhiteLabelAdmin() {
                           >
                             <div className="flex items-center gap-2 mb-3">
                               {config.logoUrl ? (
-                                <img src={config.logoUrl} alt="" className="h-6 w-6 rounded object-contain" />
+                                <img src={config.logoUrl} alt={`Logo von ${config.companyName}`} className="h-6 w-6 rounded object-contain" />
                               ) : (
                                 <div
                                   className="h-6 w-6 rounded flex items-center justify-center text-white text-xs font-bold"

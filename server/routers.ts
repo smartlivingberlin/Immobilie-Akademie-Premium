@@ -842,7 +842,16 @@ Antworte im folgenden JSON-Format:
     list: adminProcedure.query(async () => {
       const db = await (await import('./db')).getDb();
       const { accessCodes } = await import('../drizzle/schema');
-      return await db.select().from(accessCodes).orderBy(accessCodes.createdAt);
+      return await db.select({
+        id: accessCodes.id,
+        code: accessCodes.code,
+        modules: accessCodes.modules,
+        maxUses: accessCodes.maxUses,
+        usedCount: accessCodes.usedCount,
+        isActive: accessCodes.isActive,
+        note: accessCodes.note,
+        createdAt: accessCodes.createdAt,
+      }).from(accessCodes).orderBy(accessCodes.createdAt);
     }),
     create: adminProcedure
       .input((val: any) => val as { code: string; modules: string; maxUses: number; note?: string; role?: string })
@@ -944,7 +953,18 @@ Antworte im folgenden JSON-Format:
         if (input.search) conditions.push(like(questionBank.questionText, `%${input.search}%`));
         const where = conditions.length > 0 ? and(...conditions) : undefined;
         const [questions, countResult] = await Promise.all([
-          db.select().from(questionBank).where(where).limit(input.limit).offset(input.offset).orderBy(questionBank.moduleId),
+          db.select({
+            id: questionBank.id,
+            moduleId: questionBank.moduleId,
+            category: questionBank.category,
+            difficulty: questionBank.difficulty,
+            questionText: questionBank.questionText,
+            // options und correctAnswer werden oft fuer Listen nicht benoetigt,
+            // aber hier fuer Admin-Edit evtl doch. Ich behalte sie, aber waehle explizit.
+            options: questionBank.options,
+            correctAnswer: questionBank.correctAnswer,
+            explanation: questionBank.explanation,
+          }).from(questionBank).where(where).limit(input.limit).offset(input.offset).orderBy(questionBank.moduleId),
           db.select({ total: count() }).from(questionBank).where(where),
         ]);
         return { questions, total: countResult[0]?.total ?? 0 };
