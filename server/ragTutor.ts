@@ -118,7 +118,7 @@ async function askClaude(systemPrompt: string, question: string, context: any[],
       "anthropic-version": "2023-06-01",
     },
     body: JSON.stringify({
-      model: "claude-haiku-4-5-20251001",
+      model: "claude-haiku-4-5",
       max_tokens: maxTokens, // Dynamisch je nach Anwendungsfall
       system: systemPrompt,
       messages,
@@ -496,7 +496,7 @@ VERFÜGBARE DIREKT-LINKS (nur passende verwenden):
         const client = new Anthropic({ apiKey });
         const textSnippet = extractedText.slice(0, 8000);
         const message = await client.messages.create({
-          model: "claude-haiku-4-5-20251001",
+          model: "claude-haiku-4-5",
           max_tokens: 2000, // Vollständige Antworten ohne Abschneiden
           messages: [{
             role: "user",
