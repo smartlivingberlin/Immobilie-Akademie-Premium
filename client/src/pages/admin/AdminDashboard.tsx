@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
+import { LoadingHandler } from "@/components/LoadingHandler";
+import { SkeletonCard } from "@/components/ui/SkeletonCard";
+import { SkeletonTable } from "@/components/ui/SkeletonTable";
 import {
   Users, BookOpen, FileQuestion, Award, MessageSquare, Upload,
   Settings, Code, Video, BarChart3, AlertTriangle, CheckCircle,
@@ -30,9 +33,9 @@ function LockedButton({ label }: { label: string }) {
 export default function AdminDashboard() {
   const { user } = useAuth();
   const isOwner = user?.openId === "local:alisadgadyri38@gmail.com" && !isInspectMode();
-  const { data: users } = trpc.adminUsers.list.useQuery();
-  const { data: codes } = trpc.presentationCode.list.useQuery();
-  const { data: questions } = trpc.adminQuestions.list.useQuery({ limit: 1, offset: 0 });
+  const { data: users, isLoading: usersLoading, error: usersError, refetch: refetchUsers } = trpc.adminUsers.list.useQuery();
+  const { data: codes, isLoading: codesLoading } = trpc.presentationCode.list.useQuery();
+  const { data: questions, isLoading: questionsLoading } = trpc.adminQuestions.list.useQuery({ limit: 1, offset: 0 });
   const [agentHealth, setAgentHealth] = useState<any>(null);
   const [cronLog, setCronLog] = useState<string>("");
   const [auditScore, setAuditScore] = useState<number | null>(null);
@@ -103,7 +106,29 @@ export default function AdminDashboard() {
     ]},
   ];
 
+  const dashboardSkeleton = (
+    <div className="space-y-8 p-6 max-w-[1200px] mx-auto">
+      <div className="flex justify-between items-center mb-8">
+        <SkeletonCard />
+        <div className="flex gap-2">
+          <SkeletonCard />
+          <SkeletonCard />
+        </div>
+      </div>
+      <div className="grid grid-cols-6 gap-4 mb-8">
+        {[1,2,3,4,5,6].map(i => <SkeletonCard key={i} />)}
+      </div>
+      <SkeletonTable rows={10} columns={5} />
+    </div>
+  );
+
   return (
+    <LoadingHandler
+      isLoading={usersLoading || codesLoading || questionsLoading}
+      error={usersError}
+      onRetry={refetchUsers}
+      skeleton={dashboardSkeleton}
+    >
     <div style={{ maxWidth: 1200, margin: "0 auto", padding: "24px 20px" }}>
 
       {/* Header */}
@@ -525,5 +550,6 @@ export default function AdminDashboard() {
         </div>
       )}
     </div>
+    </LoadingHandler>
   );
 }

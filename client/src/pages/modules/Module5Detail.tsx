@@ -20,6 +20,9 @@ import { useToast } from "@/hooks/use-toast";
 import { SmartContent } from "@/components/SmartContent";
 import { FullscreenContent } from "@/components/FullscreenContent";
 import { NotebookLMExport } from "@/components/NotebookLMExport";
+import { LoadingHandler } from "@/components/LoadingHandler";
+import { SkeletonCard } from "@/components/ui/SkeletonCard";
+import { SkeletonText } from "@/components/ui/SkeletonText";
 import { VideoList } from "@/components/VideoPlayer";
 import { Video } from "lucide-react";
 
@@ -131,7 +134,6 @@ export default function Module5Detail() {
   
   // Get content for selected day
   const currentContent = (moduleData?.[selectedDay] ?? moduleData?.["day_1"]) as any;
-  if (!currentContent) return <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:14,color:"#64748b"}}>Laden...</div>;
 
   const handleQuizComplete = (score: number) => {
     if (score >= 50) {
@@ -158,7 +160,32 @@ export default function Module5Detail() {
     }
   };
 
+  const moduleSkeleton = (
+    <div className="space-y-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div className="lg:col-span-3">
+          <SkeletonCard />
+        </div>
+        <div className="lg:col-span-9">
+          <Card className="p-6 space-y-6">
+            <SkeletonText lines={2} />
+            <SkeletonCard />
+            <SkeletonText lines={5} />
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
+    <LoadingHandler
+      isLoading={!moduleData || !currentContent}
+      skeleton={
+        <div className="p-8">
+          {moduleSkeleton}
+        </div>
+      }
+    >
     <div className="space-y-6">
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
@@ -517,5 +544,6 @@ export default function Module5Detail() {
       moduleContext={"Modul 5"}
     />
 </div>
+    </LoadingHandler>
   );
 }

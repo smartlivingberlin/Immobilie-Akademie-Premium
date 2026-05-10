@@ -15,6 +15,9 @@ import {
 } from "lucide-react";
 import { getQuizForModule, calculateQuizScore, type QuizQuestion, type ModuleQuiz } from "@/data/quiz-data";
 import { LawLink } from "@/components/LawLink";
+import { LoadingHandler } from "@/components/LoadingHandler";
+import { SkeletonCard } from "@/components/ui/SkeletonCard";
+import { SkeletonText } from "@/components/ui/SkeletonText";
 
 interface QuizProps {
   moduleId: number;
@@ -43,16 +46,31 @@ export function Quiz({ moduleId, onComplete }: QuizProps) {
     }
   }, [moduleId]);
 
+  const quizSkeleton = (
+    <div className="space-y-6 max-w-3xl mx-auto">
+      <SkeletonCard />
+      <SkeletonText lines={4} />
+      <div className="space-y-3">
+        {[1,2,3,4].map(i => <SkeletonCard key={i} />)}
+      </div>
+    </div>
+  );
+
   if (!quizData) {
     return (
-      <Card>
-        <CardHeader>
-          <CardTitle>Quiz nicht gefunden</CardTitle>
-          <CardDescription>
-            Für dieses Modul ist kein Quiz verfügbar.
-          </CardDescription>
-        </CardHeader>
-      </Card>
+      <LoadingHandler
+        isLoading={true}
+        skeleton={quizSkeleton}
+      >
+        <Card>
+          <CardHeader>
+            <CardTitle>Quiz nicht gefunden</CardTitle>
+            <CardDescription>
+              Für dieses Modul ist kein Quiz verfügbar.
+            </CardDescription>
+          </CardHeader>
+        </Card>
+      </LoadingHandler>
     );
   }
 

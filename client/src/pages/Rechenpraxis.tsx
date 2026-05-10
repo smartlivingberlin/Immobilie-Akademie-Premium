@@ -1,5 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { Calculator, ChevronRight, ChevronDown, Send, RotateCcw, CheckCircle2, ArrowLeft, BookOpen, Lightbulb, MessageCircle } from "lucide-react";
+import { LoadingHandler } from "@/components/LoadingHandler";
+import { SkeletonCard } from "@/components/ui/SkeletonCard";
+import { SkeletonText } from "@/components/ui/SkeletonText";
 
 // ─── TYPEN ───────────────────────────────────────────────────────────────────
 
@@ -1223,10 +1226,33 @@ function AufgabenAnsicht({ aufgabe, onZurueck }: { aufgabe: Aufgabe; onZurueck: 
 export default function Rechenpraxis() {
   const [aktiveAufgabe, setAktiveAufgabe] = useState<Aufgabe | null>(null);
   const [aktiverBereich, setAktiverBereich] = useState<string>("alle");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulierte Ladezeit
+    const timer = setTimeout(() => setIsLoading(false), 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   const gefilterteAufgaben = aktiverBereich === "alle" ? AUFGABEN : AUFGABEN.filter(a => a.bereich === aktiverBereich);
 
+  const practiceSkeleton = (
+    <div className="space-y-6 max-w-[900px] mx-auto p-4">
+      <SkeletonCard />
+      <div className="flex gap-2 mb-8">
+        {[1,2,3,4].map(i => <div key={i} className="h-8 w-20 bg-slate-200 animate-pulse rounded-md" />)}
+      </div>
+      <div className="space-y-3">
+        {[1,2,3,4,5].map(i => <SkeletonCard key={i} />)}
+      </div>
+    </div>
+  );
+
   return (
+    <LoadingHandler
+      isLoading={isLoading}
+      skeleton={practiceSkeleton}
+    >
     <div style={{ maxWidth: 900, margin: "0 auto", padding: "2rem 1rem" }}>
         {!aktiveAufgabe ? (
           <>
@@ -1274,5 +1300,6 @@ export default function Rechenpraxis() {
           <AufgabenAnsicht aufgabe={aktiveAufgabe} onZurueck={() => setAktiveAufgabe(null)} />
         )}
     </div>
+    </LoadingHandler>
   );
 }
