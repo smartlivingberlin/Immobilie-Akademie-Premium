@@ -20,6 +20,9 @@ import { DocumentGenerator } from "@/components/DocumentGenerator";
 import { SmartContent } from "@/components/SmartContent";
 import { FullscreenContent } from "@/components/FullscreenContent";
 import { NotebookLMExport } from "@/components/NotebookLMExport";
+import { LoadingHandler } from "@/components/LoadingHandler";
+import { SkeletonCard } from "@/components/ui/SkeletonCard";
+import { SkeletonText } from "@/components/ui/SkeletonText";
 
 // Import Maximalist Content
 import { quizQuestionsModule1 } from "../../data/quiz-questions-modul1";
@@ -80,8 +83,36 @@ export default function Module1Detail() {
   const logIdRef = useRef<number | null>(null);
   const startTimeRef = useRef<number>(Date.now());
   const heartbeatRef = useRef<number>(0);
+  const utils = trpc.useUtils();
   const startDayMutation = trpc.progress.startDay.useMutation();
-  const completeDayByIdsMutation = trpc.progress.completeDayByIds.useMutation();
+  const completeDayByIdsMutation = trpc.progress.completeDayByIds.useMutation({
+    onMutate: async (newProgress) => {
+      await utils.progress.getProgress.cancel();
+      const previousProgress = utils.progress.getProgress.getData();
+
+      utils.progress.getProgress.setData(undefined, (old: any) => {
+        const existingIndex = old?.findIndex(
+          (p: any) => p.moduleId === newProgress.moduleId && p.dayId === newProgress.dayId
+        );
+
+        if (existingIndex !== undefined && existingIndex > -1) {
+          const updated = [...old];
+          updated[existingIndex] = { ...updated[existingIndex], completed: true };
+          return updated;
+        }
+
+        return [...(old || []), { ...newProgress, completed: true, id: Math.random() }];
+      });
+
+      return { previousProgress };
+    },
+    onError: (err, newProgress, context) => {
+      utils.progress.getProgress.setData(undefined, context?.previousProgress);
+    },
+    onSettled: () => {
+      utils.progress.getProgress.invalidate();
+    },
+  });
 
   // Tag öffnen → in DB speichern
   useEffect(() => {
@@ -127,15 +158,39 @@ export default function Module1Detail() {
   const currentDayNum = parseInt(selectedDay.replace('day_', ''));
   // AZAV-Anwesenheitsnachweis: Heartbeat alle 60 Sekunden — VOR frühem Return
   useActivityHeartbeat({ moduleId: 1, dayId: currentDayNum });
-  if (!currentContent) return <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:14,color:"#64748b"}}>Laden...</div>;
 
   // Calculate progress
   const totalDays = 20;
   const completedDays = currentDayNum;
   const progressPercentage = (completedDays / totalDays) * 100;
 
+  const moduleSkeleton = (
+    <div className="space-y-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div className="lg:col-span-3">
+          <SkeletonCard />
+        </div>
+        <div className="lg:col-span-9">
+          <Card className="p-6 space-y-6">
+            <SkeletonText lines={2} />
+            <SkeletonCard />
+            <SkeletonText lines={5} />
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-50">
+      <LoadingHandler
+        isLoading={!moduleData || !currentContent}
+        skeleton={
+          <div className="max-w-[1800px] mx-auto px-4 py-8">
+            {moduleSkeleton}
+          </div>
+        }
+      >
       {/* Header */}
       <div className="bg-white border-b border-slate-200 sticky top-0 z-10 shadow-sm">
         <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -598,6 +653,7 @@ export default function Module1Detail() {
       moduleId={1}
       moduleContext={"Modul 1"}
     />
+    </LoadingHandler>
 </div>
   );
 }

@@ -27,6 +27,9 @@ import { SolutionToggler } from "@/components/SolutionToggler";
 import { SmartContent } from "@/components/SmartContent";
 import { FullscreenContent } from "@/components/FullscreenContent";
 import { NotebookLMExport } from "@/components/NotebookLMExport";
+import { LoadingHandler } from "@/components/LoadingHandler";
+import { SkeletonCard } from "@/components/ui/SkeletonCard";
+import { SkeletonText } from "@/components/ui/SkeletonText";
 import { CourtCaseDisplay } from "@/components/CourtCaseDisplay";
 import { courtCasesModule2 } from "@/data/rechtsprechung-modul2";
 import { VideoList } from "@/components/VideoPlayer";
@@ -172,7 +175,6 @@ export default function Module2Detail() {
   
   // Cast to ContentData to handle the mixed types safely
   const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["day_1"];
-  if (!currentContent) return <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:14,color:"#64748b"}}>Laden...</div>;
 
   // Mock completion status for demo
   const isLastDay = currentDayNum === 60;
@@ -232,7 +234,32 @@ export default function Module2Detail() {
 
   const tasks = getTasks();
 
+  const moduleSkeleton = (
+    <div className="space-y-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div className="lg:col-span-3">
+          <SkeletonCard />
+        </div>
+        <div className="lg:col-span-9">
+          <Card className="p-6 space-y-6">
+            <SkeletonText lines={2} />
+            <SkeletonCard />
+            <SkeletonText lines={5} />
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
+    <LoadingHandler
+      isLoading={!moduleData || !currentContent}
+      skeleton={
+        <div className="p-8">
+          {moduleSkeleton}
+        </div>
+      }
+    >
     <div className="space-y-6">
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
@@ -668,5 +695,6 @@ export default function Module2Detail() {
       moduleContext={"Modul 2"}
     />
 </div>
+    </LoadingHandler>
   );
 }
