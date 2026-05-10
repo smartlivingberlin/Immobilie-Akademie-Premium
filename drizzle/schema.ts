@@ -403,3 +403,32 @@ export const openAnswers = mysqlTable("open_answers", {
   userIdIdx: index("idx_oa_userId").on(table.userId),
   qIdIdx: index("idx_oa_questionId").on(table.questionId),
 }));
+
+// Type-Exports fuer db.ts Kompatibilitaet
+export type ChatConversation = typeof chatConversations.$inferSelect;
+export type InsertChatConversation = typeof chatConversations.$inferInsert;
+export type ChatMessage = typeof chatMessages.$inferSelect;
+export type InsertChatMessage = typeof chatMessages.$inferInsert;
+export type VideoTutorial = typeof videoTutorials.$inferSelect;
+export type InsertVideoTutorial = typeof videoTutorials.$inferInsert;
+export type VideoProgress = typeof videoProgress.$inferSelect;
+export type InsertVideoProgress = typeof videoProgress.$inferInsert;
+export type ExamSession = typeof examSessions.$inferSelect;
+export type InsertExamSession = typeof examSessions.$inferInsert;
+export type ExamQuestion = typeof examQuestions.$inferSelect;
+export type InsertExamQuestion = typeof examQuestions.$inferInsert;
+export type ExamWeakTopic = typeof examWeakTopics.$inferSelect;
+export type InsertExamWeakTopic = typeof examWeakTopics.$inferInsert;
+export type LearningLog = typeof learningLogs.$inferSelect;
+export type InsertLearningLog = typeof learningLogs.$inferInsert;
+export type UserSession = typeof userSessions.$inferSelect;
+export type InsertUserSession = typeof userSessions.$inferInsert;
+export type InsertActivityHeartbeat = typeof activityHeartbeats.$inferInsert;
+export type ExamAuditEntry = typeof examAuditLog.$inferSelect;
+export type InsertExamAuditEntry = typeof examAuditLog.$inferInsert;
+export type Feedback = typeof feedback.$inferSelect;
+export type InsertFeedback = typeof feedback.$inferInsert;
+export type Complaint = typeof complaints.$inferSelect;
+export type InsertComplaint = typeof complaints.$inferInsert;
+export type InsertConsentLogEntry = typeof consentLog.$inferInsert;
+export type InsertAvvAgreement = typeof avvAgreements.$inferInsert;

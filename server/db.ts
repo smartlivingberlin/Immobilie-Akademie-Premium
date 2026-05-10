@@ -8,8 +8,6 @@ import {
   chatConversations, 
   chatMessages, 
   whitelabelConfigs,
-  InsertChatConversation, 
-  InsertChatMessage,
   ChatConversation,
   ChatMessage,
   WhitelabelConfig,
@@ -229,7 +227,7 @@ export async function createChatConversation(
 ): Promise<ChatConversation | undefined> {
   const db = await getDb();
 
-  const conversation: InsertChatConversation = {
+  const conversation: { userId: number; moduleContext: string | null; title: string } = {
     userId,
     moduleContext: moduleContext || null,
     title: "Neue Konversation",
@@ -258,13 +256,13 @@ export async function addChatMessage(
 ): Promise<ChatMessage | undefined> {
   const db = await getDb();
 
-  const message: InsertChatMessage = {
+  const message: { conversationId: number; role: string; content: string } = {
     conversationId,
     role,
     content,
   };
 
-  const result = await db.insert(chatMessages).values(message);
+  const result = await db.insert(chatMessages).values(message as any);
   const insertId = Number(result[0].insertId);
 
   return {

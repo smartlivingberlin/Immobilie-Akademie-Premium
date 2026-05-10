@@ -23,7 +23,7 @@ async function tryLocalAuth(req: CreateExpressContextOptions["req"]): Promise<Us
     const token = cookies[COOKIE_NAME];
     const session = await verifySessionToken(token);
     if (!session) return null;
-    return await db.getUserByOpenId(session.openId) ?? null;
+    return await db.getUserByOpenId(session.openId) as any ?? null;
   } catch {
     return null;
   }

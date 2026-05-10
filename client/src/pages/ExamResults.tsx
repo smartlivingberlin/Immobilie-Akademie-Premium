@@ -86,7 +86,7 @@ export default function ExamResults() {
   // Group incorrect questions by topic
   const incorrectByTopic = questions
     .filter(q => !q.isCorrect && q.topic)
-    .reduce((acc, q) => {
+    .reduce((acc: Record<string, typeof questions>, q) => {
       const topic = q.topic || "Sonstiges";
       if (!acc[topic]) acc[topic] = [];
       acc[topic].push(q);
