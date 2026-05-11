@@ -1,230 +1,99 @@
-# MODUL 4: Gutachter & Sachverständiger ImmoWertV 2021
+# MODUL 4: Gutachten & Immobilienbewertung — Wissensdatenbank fuer KI-Tutor
 
-LERNTAGE & THEMEN:
-• Einführung in das Sachverständigenwesen
-• Rechtliche Grundlagen & Flächenberechnung
-• Marktanalyse & Makro-Standort
-• Vergleichswertverfahren
-• Ertragswertverfahren: Rohertrag & Bewirtschaftungskosten
-• Ertragswertverfahren: Bodenwertverzinsung & Vervielfältiger
-• Ertragswert: Sonderfälle & Übungen
-• Wiederholung & Zwischentest (Verfahren)
-• Bodenwertermittlung Deep Dive
-• Zwischenprüfung: Verfahrenskompetenz
-• Sachwertverfahren: Normalherstellungskosten (NHK)
-• Sachwertverfahren: Alterswertminderung & Marktanpassung
-• Aufbau eines Verkehrswertgutachtens
-• Objektbeschreibung & Bauschäden
-• Spezialfälle: Rechte und Belastungen
-• Gewerbeimmobilien & DCF-Verfahren
-• Digitale Bewertungstools (AVM)
-• Haftung & Berufsbild
-• Abschlussprüfung & Fallstudie
-• Zertifikat & Karriere
-• Gutachten-Struktur: Aufbau & Formale Anforderungen
-• Beleihungswert vs. Verkehrswert: Prüfungsrelevante Unterschiede
-• Plausibilitätsprüfung: Fehler in Gutachten erkennen
-• Gewerbeimmobilien: Büro, Handel, Logistik bewerten
-• Übungsgutachten 1: Einfamilienhaus vollständig bewerten
-• Sondereinflüsse: Baulasten, Altlasten, Denkmalschutz
-• Marktanalyse & Makro/Mikro-Standortbewertung Profis
-• Übungsgutachten 2: Mehrfamilienhaus im Ertragswertverfahren
-• IHK öffentliche Bestellung & Vereidigung — der nächste Schritt
-• HypZert S Prüfungssimulation: Vollständiger Testdurchlauf
-
-KERNINHALTE:
-- 
-# Einführung in das Sachverständigenwesen
-
-Das Modul 
-- 
-# Rechtliche Grundlagen der Bewertung
-
-Die Wertermittlung ist in Deutschland streng reguliert. Die Hierarchie der Normen ist entscheidend für die Rechtssicherheit eines Gutachtens.
-
-## 1. Die Normen-
-- 
-# Marktanalyse und Standortfaktoren
-
-Der Wert einer Immobilie ist untrennbar mit ihrem Standort verbunden (
-- 
-# Das Vergleichswertverfahren (§ 15 ImmoWertV)
-
-Das direkteste und marktnahste Verfahren.
-Die Frage lautet: 
-- 
-# Das Ertragswertverfahren (§ 17 ImmoWertV) - Teil 1
-
-Das Investoren-Verfahren. Die Frage lautet: 
-- 
-# Das Ertragswertverfahren - Teil 2 (Die Kür)
-
-Wir haben den Reinertrag (51.000 €). Dieser Ertrag kommt aus zwei Quellen: Dem Boden und dem Gebäude.
-Da der Boden ewig hält, das Gebäude aber nicht, mü
-- 
-# Sonderfälle im Ertragswertverfahren
-
-Nicht immer läuft alles nach Schema F.
-
-## 1. Over-rented / Under-rented
-*   **Under-rented:** Aktuelle Miete < Marktmiete.
-    *   Wir rechnen mit Marktmiete.
-
-- 
-# Konsolidierung Woche 1 & 2
-
-Wir haben die drei großen Verfahren kennengelernt. Heute verfestigen wir das Wissen.
-
-## Übersicht
-| Verfahren | Basis | Zielobjekte | Fokus |
-| :--- | :--- | :--- | :--
-- 
-# Bodenwertermittlung im Detail
-
-Der Bodenwert ist oft der größte Hebel, besonders in Ballungsgebieten.
-
-## 1. Umrechnungskoeffizienten (GFZ-Umrechnung)
-Der Bodenrichtwert gilt für eine bestimmte GFZ
-- 
-# Woche 1 & 2 Abschluss
-
-Wir haben die Grundlagen und die Ertragswertseite gemeistert.
-Jetzt prüfen wir die Kompetenz, bevor wir nächste Woche zum Sachwert (Substanz) kommen.
-
-## Checkliste Kompetenz
-- 
-# Das Sachwertverfahren (§ 21 ImmoWertV) - Teil 1
-
-Das Substanzwertverfahren. Die Frage lautet: 
-- 
-# Das Sachwertverfahren - Teil 2 (Vom Stein zum Markt)
-
-Wir wissen, was der Neubau kostet. Aber das Haus ist alt.
-
-## 1. Alterswertminderung (Abschreibung)
-Häuser halten nicht ewig. Wir ziehen linear
-- 
-# Das Verkehrswertgutachten
-
-Ein Gutachten muss für Laien verständlich und für Fachleute nachprüfbar sein.
-
-## Gliederung (Standard)
-1.  **Deckblatt:** Objekt, Stichtag, Auftraggeber.
-2.  **Zusammenf
-- 
-# Bauschäden vs. Baumängel
-
-*   **Baumangel:** Abweichung vom Soll-Zustand (technisch falsch gebaut, z.B. fehlende Abdichtung).
-*   **Bauschaden:** Folge eines Mangels oder Verschleiß (z.B. Schimmel 
-- 
-# Rechte in Abteilung II
-
-Lasten mindern den Wert. Aber um wieviel?
-
-## 1. Das Wohnungsrecht (§ 1093 BGB)
-Jemand darf lebenslang umsonst wohnen.
-*   **Wertminderung = Barwert der entgangenen Miete.**
-- 
-# Gewerbeimmobilien: Eine andere Welt
-
-Büros, Handel und Logistik ticken anders als Wohnen.
-
-## 1. Besonderheiten
-*   **Drittverwendungsfähigkeit:** Kann das Gebäude leicht umgenutzt werden? (Büro ->
-- 
-# Die Zukunft: Automatisierte Bewertung (AVM)
-
-Computer bewerten schneller als Menschen. Aber besser?
-
-## 1. AVM (Automated Valuation Model)
-Algorithmen, die aus riesigen Datenbanken (Big Data) Preis
-- 
-# Haftung des Bewerters
-
-Wer Werte schätzt, haftet für Fehler.
-
-## 1. Vertragliche Haftung
-Gegenüber dem Auftraggeber (z.B. Verkäufer).
-*   Wenn das Gutachten grob falsch ist und der Verkäufer deshal
-- 
-# Die große Abschluss-Fallstudie
-
-Wenden Sie alles an, was Sie gelernt haben.
-
-## Fall: Das 
-- Ein rechtlich belastbares Verkehrswertgutachten folgt einem klaren Aufbau nach §194 BauGB und der ImmoWertV 2021. Die formalen Anforderungen der HypZert S Prüfung verlangen vollständige, nachvollziehb
-
-PRAXISBEISPIELE:
-- 
 # Praxisbeispiel: Preis vs. Wert
 
 **Szenario:**
 Ein Reihenmittelhaus in München wird für **850.000 €** verkauft.
-Der Gutachter ermittelt einen Verkeh
-- 
+Der Gutachter ermittelt einen Verkehrswert von **780.000 €**.
+
+**Analyse der Diskrepanz:**
+*   **Marktlage:** In "heißen" Märkten (Verkäufermärkten) liegen die erzielbaren Preise oft über den rechnerischen Werten, da Käufer bereit sind, "Liebhaberaufschläge" zu zahlen, um den Zuschlag zu erhalten.
+*   **Persönliche Verhältnisse:** Der Käufer wollte unbedingt in diese Straße, weil seine Eltern nebenan wohnen. Das ist ein "persönliches Verhältnis" im Sinne des § 194 BauGB und darf im Verkehrswert nicht berücksichtigt werden.
+
+**Konsequenz für die Finanzierung:**
+Die Bank wird sich am Verkehrswert (bzw. Beleihungswert) von 780.000 € orientieren. Die Differenz von 70.000 € muss der Käufer als zusätzliches Eigenkapital einbringen, da sie nicht werthaltig besichert ist.
+
+---
+
 # Praxis: Flächenberechnung Dachgeschoss
 
 **Situation:**
 Sie bewerten ein Dachstudio.
 *   Grundfläche des Raumes: 40 m².
-*   Davon Bereich mit Höhe >
-- 
-# Praxis: Bodenrichtwertkarte lesen
+*   Davon Bereich mit Höhe > 2m: 20 m².
+*   Davon Bereich mit Höhe 1m - 2m: 10 m².
+*   Davon Bereich mit Höhe < 1m: 10 m².
+*   Dachterrasse: 10 m² (Standardwert).
 
-**Szenario:**
-Sie bewerten ein Grundstück in Köln.
-*   **BRW-Karte:** Ausgewiesen sind 600 €/m².
-*   **WGFZ (Wer
-- 
-# Rechenübung: Vergleichswertverfahren
+**Berechnung nach WoFlV:**
+1.  Bereich > 2m: 20 m² × 100% = **20 m²**
+2.  Bereich 1-2m: 10 m² × 50% = **5 m²**
+3.  Bereich < 1m: 10 m² × 0% = **0 m²**
+4.  Terrasse: 10 m² × 25% = **2,5 m²**
 
-**Objekt:** Eigentumswohnung, 80 m², Baujahr 2000, 1. OG.
+**Gesamtwohnfläche:** 20 + 5 + 0 + 2,5 = **27,5 m²**
 
-**Vergleichspreise (bereinigt):**
-1.  Wohnung A (N
-- 
-# Rechenübung: Reinertrag ermitteln
+*Fehlerquelle:* Würde man die Grundfläche (40 m² + 10 m² = 50 m²) im Exposé angeben, wäre das eine Täuschung über ca. 45%!
 
-**Objekt:** Mehrfamilienhaus (MFH), 500 m² Wohnfläche, 6 Einheiten.
-**Miete:** 10 €/m² monatlich (marktüblich).
+---
 
-- 
-# Rechenübung: Ertragswert komplett
+HypZert-Zertifizierung ist Deutschlands fuehrendes Qualitaetszertifikat fuer Immobiliengutachter. HypZert F (Finanzierungszwecke, Beleihungswertgutachten) und HypZert S (allgemeine Verkehrswertgutachten nach Para 194 BauGB). Anforderungen HypZert: Hochschulabschluss oder gleichwertige Ausbildung, 2-3 Jahre Berufserfahrung, schriftliche und muendliche Pruefung, Weiterbildung 20 Stunden alle 2 Jahre. Oeffentliche Bestellung und Vereidigung: IHK-Verfahren mit 5 Jahren Berufserfahrung, hoechstes Ansehen in der Branche. Karrierewege: Banken (Gutachtenabteilung), freiberuflicher Sachverstaendiger, Immobilienfonds, Versicherungen. Gehaltsrahmen: Angestellt 50.000-80.000 EUR, freiberuflich 80.000-150.000 EUR plus.
 
-**Daten aus Tag 5:** Reinertrag = 51.000 €.
-**Zusatzdaten:**
-*   Bodenwert: 400.000 €.
-*   Liegenschaftszins: 5,
-- 
-# Analyseübung: Welches Verfahren?
+---
 
-Entscheiden Sie für folgende Objekte:
-1.  **Leeres Baugrundstück:** Vergleichswert (Bodenrichtwert).
-2.  **Eigent
-- 
-# Rechenübung: GFZ-Anpassung
-
-**Gegeben:**
-*   Bodenrichtwert (BRW): 500 €/m².
-*   BRW-GFZ: 0,8.
-*   Grundstücks-GFZ: 1,2 (zulässig).
-
-**Umrechnungsk
-- 
-# Komplexe Übungsaufgabe
-
-**Objekt:** Kleines Zinshaus (3 Wohnungen).
-*   Miete: 18.000 €/Jahr.
-*   BWK: 20% des Rohertrags.
-*   Liegenschaftszins: 4
-- 
 # Rechenübung: Herstellungskosten ermitteln
 
 **Objekt:** Freistehendes EFH, Standardstufe 3 (mittel).
-**Größe:** 10m × 10m, 2 Vollgeschosse + voll au
+**Größe:** 10m × 10m, 2 Vollgeschosse + voll ausgebautes DG.
+**NHK-Basiswert (fiktiv):** 1.000 €/m² BGF (Basis 2010).
+**Baupreisindex:** 160 (d.h. +60% seit 2010).
 
-FACHWISSEN:
-- 
+1.  **BGF-Berechnung:**
+    *   EG: 10 × 10 = 100 m²
+    *   OG: 10 × 10 = 100 m²
+    *   DG: 10 × 10 = 100 m² (bei Vollnutzung)
+    *   *Summe BGF:* **300 m²**.
+
+2.  **Indexierung der Kosten:**
+    1.000 €/m² × 1,60 = **1.600 €/m²** (heutige Baukosten).
+
+3.  **Bauwerkskosten:**
+    300 m² × 1.600 €/m² = **480.000 €**.
+
+4.  **Baunebenkosten (z.B. 15%):**
+    480.000 € × 15% = 72.000 €.
+
+**Gesamtherstellungskosten:** 480.000 + 72.000 = **552.000 €**.
+
+---
+
+# Rechenübung: Sachwert komplett
+
+**Daten:**
+*   Herstellungskosten (neu): 552.000 € (aus Tag 11).
+*   Alter: 20 Jahre (GND 80 Jahre).
+*   Bodenwert: 200.000 €.
+*   Außenanlagen (Pauschal): 15.000 €.
+*   Sachwertfaktor (Markt): 1,1 (beliebte Lage).
+
+**Rechnung:**
+1.  **Alterswertminderung:**
+    20 / 80 = 25% Minderung.
+    552.000 € × 75% (Restwert) = **414.000 €** (Zeitwert Gebäude).
+
+2.  **Vorläufiger Sachwert:**
+    414.000 € (Gebäude)
+    + 200.000 € (Boden)
+    + 15.000 € (Außenanlagen)
+    = **629.000 €**.
+
+3.  **Marktanpassung:**
+    629.000 € × 1,1 = **691.900 €**.
+
+*Ergebnis:* Der Verkehrswert liegt bei ca. 692.000 €.
+
+---
+
 ### Gutachten-Struktur nach HypZert S Standard
 
 Ein professionelles Verkehrswertgutachten besteht aus diesen Pflichtteilen:
@@ -232,16 +101,76 @@ Ein professionelles Verkehrswertgutachten besteht aus diesen Pflichtteilen:
 **1. Deckblatt & Auftragsangaben**
 - Auftraggeber, Bewertungsobjekt, Bewertungsstichtag
 - Beauftragter Gutachter mit Qualifikationsnachweis
-- Zweck des Gutachtens (Verkauf, B
-- 
+- Zweck des Gutachtens (Verkauf, Beleihung, Erbschaft)
+
+**2. Grundlagenteil**
+- Grundbuchauszug (alle 3 Abteilungen)
+- Baulastenverzeichnis
+- Liegenschaftskarte & Flurkarte
+- Baugenehmigungen & Baupläne
+- Energieausweis (GEG 2024)
+
+**3. Objektbeschreibung**
+- Lage & Mikro-/Makrostandort
+- Gebäudebeschreibung (Baujahr, Bauweise, Zustand)
+- Flächenberechnung nach WoFlV oder gif-Richtlinie
+- Mängel & Schäden
+
+**4. Marktanalyse**
+- Grundstücksmarktbericht des Gutachterausschusses
+- Vergleichspreise & Bodenrichtwerte
+- Marktentwicklung & Leerstandsquoten
+
+**5. Wertermittlung**
+- Begründung der gewählten Verfahren
+- Vollständige Berechnungen
+- Plausibilitätsprüfung
+
+**6. Ergebnis & Verkehrswert**
+- Begründeter Verkehrswert
+- Ableitung aus den Verfahrensergebnissen
+- Unterschrift & Datum
+
+### HypZert S Prüfungsaufbau
+**Teil I:** 2 vollständige Wertermittlungen (2,5 Stunden)
+**Teil II:** Plausibilitätsprüfung eines fehlerhaften Gutachtens (1,25 Stunden)  
+**Teil III:** Einzelfragen aus dem Prüfstoffverzeichnis (2 Stunden)
+
+---
+
 ### Verkehrswert vs. Beleihungswert
 
 | Merkmal | Verkehrswert | Beleihungswert |
 |---------|-------------|----------------|
 | Rechtsgrundlage | §194 BauGB, ImmoWertV | §16 PfandbriefG, BelWertV |
 | Stichtag | Bewertungsstichtag | Nachhaltig, zukunftsorientiert |
-| Marktlage | Aktuell | Normalisiert
-- 
+| Marktlage | Aktuell | Normalisiert (konjunkturunabhängig) |
+| Verwendung | Verkauf, Erbschaft, Steuern | Bankenbeleihung, Pfandbriefe |
+| Verhältnis | 100% | 70-80% des Verkehrswertes üblich |
+
+### Beleihungswertermittlung nach BelWertV
+
+**Schritt 1: Ertragswert (§ 8 BelWertV)**
+- Nachhaltig erzielbarer Reinertrag
+- Keine spekulativen Mieten
+- Kapitalisierung mit nachhaltigem Liegenschaftszinssatz
+
+**Schritt 2: Sachwert (§ 10 BelWertV)**
+- Nachhaltiger Bodenwert (Bodenrichtwert ohne Sondereinflüsse)
+- Gebäudesachwert mit nachhaltigem Bauwert
+
+**Schritt 3: Beleihungswert**
+- Niedrigster Wert aus Ertragswert und Sachwert
+- Abzüge für Risiken und Mängel
+- Maximal 80% des Verkehrswertes (§ 16 Abs. 2 PfandbriefG)
+
+### Nachhaltigkeitsprinzip — das Herzstück
+Keine konjunkturellen Hochpunkte
+Keine spekulativen Mieterwartungen  
+Keine kurzfristigen Sondereinflüsse
+
+---
+
 ### Systematische Plausibilitätsprüfung
 
 **Schritt 1: Formale Prüfung**
@@ -252,8 +181,32 @@ Ein professionelles Verkehrswertgutachten besteht aus diesen Pflichtteilen:
 
 **Schritt 2: Sachliche Prüfung**
 - Stimmen Flächenangaben überein?
-- Ist der Bod
-- 
+- Ist der Bodenrichtwert aktuell und korrekt?
+- Sind Vergleichspreise marktkonform?
+- Ist die Restnutzungsdauer plausibel?
+
+**Schritt 3: Rechnerische Prüfung**
+- Alle Berechnungen nachrechnen
+- Vervielfältiger korrekt?
+- Bodenwert richtig übernommen?
+- Zwischensummen stimmen?
+
+**Typische Fehler in HypZert-Prüfungsgutachten:**
+
+| Fehlerart | Häufigkeit | Auswirkung |
+|-----------|-----------|------------|
+| Falscher Bodenrichtwert | ★★★★★ | Erheblich |
+| Veraltete Vergleichspreise | ★★★★ | Erheblich |
+| Falsche RND | ★★★★ | Mittel |
+| Fehlende Quellenangaben | ★★★ | Formal |
+| Rechenfehler | ★★★ | Je nach Betrag |
+| Widersprüchliche Flächen | ★★★ | Erheblich |
+
+### Bewertungsmaßstab
+"Nachvollziehbar, formal korrekt und widerspruchsfrei" — das sind die drei HypZert-Kriterien für jedes Gutachten.
+
+---
+
 ### Gewerbeimmobilien-Bewertung nach ImmoWertV 2021
 
 **Hauptverfahren für Gewerbe: Ertragswertverfahren**
@@ -264,8 +217,37 @@ Ein professionelles Verkehrswertgutachten besteht aus diesen Pflichtteilen:
 - Restlaufzeit des Mietvertrags
 - Bonität des Mieters (Kreditrating)
 - Indexierungsklauseln (Staffel vs. Index)
-- Verlängeru
-- 
+- Verlängerungsoptionen
+- Kündigungsfristen
+
+**2. Marktmiete vs. Vertragsmiete**
+- Liegt Vertragsmiete über/unter Marktmiete?
+- Übermiete = erhöhtes Risiko
+- Untermiete = stille Reserve
+
+**3. Drittverwendbarkeit**
+- Wie gut kann das Objekt anderweitig genutzt werden?
+- Spezialobjekte (Kino, Hotel) = geringere Drittverwendbarkeit
+- Büro/Logistik = höhere Drittverwendbarkeit
+
+**4. Liegenschaftszinssätze Gewerbe (Richtwerte 2024)**
+
+| Objekttyp | LZ-Satz Bereich |
+|-----------|----------------|
+| Büro Innenstadt | 3,5 - 5,5% |
+| Einzelhandel A-Lage | 3,0 - 4,5% |
+| Logistik modern | 4,0 - 5,5% |
+| Hotel | 5,0 - 7,0% |
+| Sonderimmobilien | 6,0 - 9,0% |
+
+**5. DCF-Verfahren für Gewerbe**
+Discounted Cashflow — für Gewerbe mit stark schwankenden Erträgen:
+- Jahrescashflows für 10 Jahre prognostizieren
+- Restwertkalkulation (Exit-Kapitalisierung)
+- Diskontierung mit Risikoäquivalentem Zinssatz (WACC)
+
+---
+
 ### Vollständiges Übungsgutachten: EFH Potsdam
 
 **Auftrag:** Verkehrswertermittlung zum 01.03.2026
@@ -276,54 +258,87 @@ Ein professionelles Verkehrswertgutachten besteht aus diesen Pflichtteilen:
 - Wohnfläche: 165m² (WoFlV), Keller: 85m² (nicht beheizt)
 - Grundstück: 680m²
 - Garage: 22m²
-- Zustand: gut, zul
-- 
-### Wertbeeinflussende Sondereinflüsse
+- Zustand: gut, zuletzt renoviert 2019
 
-**1. Baulasten**
-Öffentlich-rechtliche Verpflichtungen im Baulastenverzeichnis:
-- Abstandsflächenbaulast: Nachbar darf näher bauen
-- Erschließungsbaulast: Übernahme fremder Erschließung
-- Überfahrtsbaulast: Recht des Nachbarn zur Durchfahrt
+**Schritt 1: Bodenwertermittlung**
+Bodenrichtwert Babelsberg: 380 €/m²
+Grundstücksgröße: 680m²
+Bodenwert = 680 × 380 = 258.400 €
 
-Wertminderung: 5-
-- 
-### Professionelle Standortanalyse für Gutachter
+**Schritt 2: Sachwertverfahren**
+NHK 2010 (EFH, gut): 1.450 €/m² BRI
+Baupreisindex 2026 (2010=100): 162,5
+Aktueller NHK = 1.450 × 1,625 = 2.356 €/m²
 
-**Makrostandort — regionale Ebene**
+Brutto-Rauminhalt (BRI): 165m² × 3,2 = 528m³
+Gebäudebauwert = 528 × 2.356 = 1.243.968 €
 
-Zu analysierende Faktoren:
-- Bevölkerungsentwicklung (Quelle: Statistisches Bundesamt, Destatis)
-- Wirtschaftskraft (BIP/Kopf, Arbeitslosenquote, Kaufkraft IHK)
-- Infrastruktur (Autobahn, Bahn, Flughafen)
-- Zukun
-- 
-### Vollständiges MFH-Gutachten: Hamburg-Harburg
+Alterswertminderung: 28 Jahre / 80 Jahre GND = 35%
+Gebäudesachwert = 1.243.968 × (1-0,35) = 808.579 €
 
-**Objekt:** Mietwohnhaus, 8 Wohneinheiten
-**Baujahr:** 1975, Massivbau, 6 Vollgeschosse
-**Wohnfläche gesamt:** 620m²
-**Grundstück:** 850m²
-**Zustand:** Modernisiert 2018 (Dach, Heizung, Fenster)
+Garage (Pauschal): 18.000 €
+Außenanlagen: 12.000 €
 
-**SCHRITT 1: Rohmietertrag**
-Aktuelle Vertragsmieten:
-- 
-### Öffentliche Bestellung & Vereidigung durch die IHK
+Vorläufiger Sachwert = 258.400 + 808.579 + 30.000 = 1.096.979 €
+Sachwertfaktor (Potsdam, 1,0 Mio Klasse): 1,12
+**Sachwert = 1.228.616 €**
 
-**Was bedeutet öffentliche Bestellung?**
-Der öffentlich bestellte und vereidigte Sachverständige (ö.b.u.v.) hat nachgewiesen:
-- Besondere Sachkunde (über Durchschnitt hinaus)
-- Persönliche Eignung (Zuverlässigkeit, Unparteilichkeit)
-- Geschäft
-- 
-### HypZert S Prüfungssimulation — Vollständiger Ablauf
+**Schritt 3: Vergleichswertverfahren**
+Vergleichspreise (Gutachterausschuss 2025): 4.200-4.800 €/m² WF
+Mittelwert: 4.500 €/m² WF
+**Vergleichswert = 165 × 4.500 = 742.500 €**
 
-**Prüfungsformat (original HypZert S):**
+**Schritt 4: Verkehrswert**
+Vergleichswert: 742.500 € (Gewichtung 60%)
+Sachwert: 1.228.616 € (Gewichtung 40%)
+Gewichteter Wert: 445.500 + 491.446 = 936.946 €
+**Verkehrswert: 937.000 € (gerundet)**
 
-**Teil I: Wertermittlung (150 Minuten)**
-Zwei wohnwirtschaftliche Objekte vollständig bewerten.
+---
 
-**Aufgabe 1a: ETW München-Schwabing**
-- 3-Zimmer-ETW, 82m² WF, 4. OG, Baujahr 1972
-- Modernisiert: Bad 
+### Praxisübung: Gutachten-Checkliste
+
+**Aufgabe:** Erstellen Sie eine vollständige Checkliste für ein Einfamilienhaus-Gutachten.
+
+**Zu prüfende Dokumente:**
+☐ Grundbuchauszug aktuell (nicht älter als 3 Monate)
+☐ Flurkarte / Liegenschaftskarte
+☐ Baugenehmigung(en)
+☐ Baupläne (Grundrisse, Schnitte, Ansichten)
+☐ Energieausweis (Bedarfs- oder Verbrauchsausweis)
+☐ Wohnflächenberechnung
+☐ Mietverträge (falls vermietet)
+☐ Baulastenverzeichnis
+☐ Altlasten-Auskunft
+
+**Typische Fehler in HypZert-Prüfungsgutachten:**
+- Fehlende Quellenangaben für Bodenrichtwerte
+- Widersprüchliche Flächenangaben
+- Veraltete Vergleichspreise
+- Fehlende Begründung der Verfahrenswahl
+
+---
+
+### Rechenübung: Beleihungswert EFH München
+
+**Objekt:** Einfamilienhaus München, Baujahr 2005, 140m² Wohnfläche
+
+**Gegebene Werte:**
+- Verkehrswert: 850.000 €
+- Nachhaltiger Jahresreinertrag: 22.000 €
+- Liegenschaftszinssatz (nachhaltig): 2,8%
+- Restnutzungsdauer: 45 Jahre
+- Bodenwert (nachhaltig): 380.000 €
+- Gebäudesachwert (nachhaltig): 320.000 €
+
+**Aufgabe:** Berechnen Sie Ertragswert, Sachwert und Beleihungswert.
+
+**Lösung:**
+Ertragswert = RND-Vervielfältiger × Reinertrag + Bodenwert
+Vervielfältiger (2,8%, 45 Jahre) = 24,52
+Ertragswert = 24,52 × 22.000 + 380.000 = 919.440 € → gekappt!
+
+Sachwert = 380.000 + 320.000 = 700.000 €
+
+Beleihungswert = Min(919.440, 700.000) = 700.000 €
+Beleihungsgrenze (80%) = 560.000 €

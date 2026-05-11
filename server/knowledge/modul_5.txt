@@ -1,107 +1,87 @@
-# MODUL 5: Darlehensvermittler §34i GewO
+# MODUL 5: §34i Darlehensvermittlung — Wissensdatenbank fuer KI-Tutor
 
-LERNTAGE & THEMEN:
-• Einführung §34i GewO: Rechtliche Grundlagen der Immobiliardarlehensvermittlung
-• Rechtsfähigkeit, Geschäftsfähigkeit und Vertragsrecht
-• Grundstücke, Erbbaurecht, Wohnungseigentum - Rechtliche Grundlagen
-• Grundbuch: Aufbau, Funktion und Eintragungen
-• Immobiliar-Verbraucherdarlehensvertrag und Verbraucherkreditrecht
-• Verhaltens- und Informationspflichten als Immobiliardarlehensvermittler
-• Kreditwesengesetz (KWG) und Geldwäschegesetz (GwG)
-• Verbraucherschutz, Schlichtungsstellen und Unlauterer Wettbewerb
-• Datenschutz (DSGVO), Verschwiegenheit und Zuständigkeiten der Aufsicht
-• Steuerliche Aspekte des Immobilienerwerbs
-• Darlehensarten: Annuitätendarlehen, Tilgungsdarlehen, Endfälliges Darlehen
-• Bauspardarlehen, KfW-Darlehen und Förderprogramme
-• Zinsbindung, Sollzins, Effektivzins und Konditionsvergleich
-• Bonitätsprüfung, Schufa-Auskunft und Kreditwürdigkeitsprüfung
-• Sicherheiten: Grundschuld, Hypothek, Bürgschaft
-• Anschlussfinanzierung, Prolongation und Forward-Darlehen
-• Vorfälligkeitsentschädigung, Sondertilgung und Tilgungssatzwechsel
-• Risiken der Immobilienfinanzierung und Absicherung
-• Besondere Finanzierungsformen: Mietkauf, Leibrente, Reverse Mortgage
-• Zusammenfassung Theorie und Vorbereitung auf Prüfungsvorbereitung
-• Übungsaufgaben: Haushaltsrechnung und Finanzierungsplanung
-• Übungsaufgaben: Konditionsvergleich und Effektivzins
-• Übungsaufgaben: Bonitätsprüfung und Schufa
-• Übungsaufgaben: Beratungsprotokoll und Dokumentation
-• Übungsaufgaben: Rechtsfälle und Gesetze
-• Fallstudie: Erstberatung Eigenheimfinanzierung
-• Fallstudie: Anschlussfinanzierung und Umschuldung
-• Fallstudie: Baufinanzierung mit KfW-Förderung
-• Fallstudie: Finanzierung für Selbstständige
-• Fallstudie: Komplexe Finanzierung mit mehreren Herausforderungen
-
-KERNINHALTE:
-- Die Tätigkeit als Immobiliardarlehensvermittler ist seit dem 21. März 2016 durch das Gesetz zur Umsetzung der Wohnimmobilienkreditrichtlinie geregelt. §34i GewO definiert die Erlaubnispflicht für Pers
-- Rechtsfähigkeit ist die Fähigkeit, Träger von Rechten und Pflichten zu sein. Jeder Mensch ist ab Geburt rechtsfähig (§ 1 BGB). Geschäftsfähigkeit ist die Fähigkeit, Rechtsgeschäfte (z.B. Verträge) wir
-- Ein Grundstück ist ein abgegrenzter Teil der Erdoberfläche, der im Grundbuch eingetragen ist (§ 873 BGB). Jedes Grundstück hat eine eindeutige Bezeichnung (Gemarkung, Flur, Flurstück). Grundstücksglei
-- Das Grundbuch ist ein öffentliches Register, das Auskunft über Eigentumsverhältnisse, Belastungen und Rechte an Grundstücken gibt (§ 873 BGB). Es wird vom Grundbuchamt (Amtsgericht) geführt und ist fü
-- Ein Immobiliar-Verbraucherdarlehensvertrag ist ein Darlehensvertrag zwischen einem Darlehensgeber (Bank) und einem Verbraucher (Privatperson), der durch Grundpfandrechte besichert ist und dem Erwerb, 
-- Als Immobiliardarlehensvermittler unterliegen Sie strengen Verhaltens- und Informationspflichten nach §34i Abs. 3 GewO und §511 BGB. Sie müssen den Kunden umfassend über das Darlehen, die Kosten, Risi
-- Das Kreditwesengesetz (KWG) regelt die Aufsicht über Kreditinstitute und Finanzdienstleister. Als Immobiliardarlehensvermittler sind Sie kein Kreditinstitut, unterliegen aber bestimmten Meldepflichten
-- Der Verbraucherschutz soll Verbraucher vor unfairen Geschäftspraktiken, überhöhten Preisen und intransparenten Vertragsbedingungen schützen. Zentrale Vorschriften sind: Informationspflichten (§ 491a B
-- Die Datenschutz-Grundverordnung (DSGVO) regelt den Schutz personenbezogener Daten in der EU. Als Immobiliardarlehensvermittler verarbeiten Sie sensible Daten Ihrer Kunden (Einkommen, Vermögen, Schulde
-- Beim Immobilienerwerb fallen verschiedene Steuern an: Grunderwerbsteuer (3,5-6,5% je nach Bundesland), Grundsteuer (jährlich, 0,26-1,0% des Einheitswerts), Einkommensteuer auf Mieteinnahmen (persönlic
-- Es gibt verschiedene Darlehensarten, die sich in der Rückzahlungsstruktur unterscheiden. Das **Annuitätendarlehen** ist die häufigste Form: Die monatliche Rate (Annuität) bleibt konstant, setzt sich a
-- Bauspardarlehen sind Darlehen von Bausparkassen, die nach einer Ansparphase ausgezahlt werden. Der Kunde spart zunächst 40-50% der Bausparsumme an, danach erhält er ein zinsgünstiges Darlehen. Vorteil
-- Die Zinsbindung legt fest, wie lange der Zinssatz fest bleibt (5, 10, 15, 20 Jahre). Längere Zinsbindung bietet Planungssicherheit, kostet aber mehr Zinsen. Der Sollzins ist der reine Darlehenszins oh
-- Die Bonitätsprüfung dient der Einschätzung der Kreditwürdigkeit des Kunden. Sie umfasst: Einkommensprüfung (Gehaltsabrechnungen, Steuerbescheide), Ausgabenprüfung (Lebenshaltungskosten, bestehende Kre
-- Banken verlangen Sicherheiten für Immobiliendarlehen. Die **Grundschuld** ist die häufigste Sicherheit: Sie wird im Grundbuch eingetragen und gibt der Bank das Recht, die Immobilie zu verwerten (Zwang
-- Nach Ablauf der Zinsbindung benötigt der Kunde eine Anschlussfinanzierung für die Restschuld. Es gibt drei Optionen: **Prolongation** (Verlängerung bei der bisherigen Bank), **Umschuldung** (Wechsel z
-- Die Vorfälligkeitsentschädigung ist eine Entschädigung an die Bank bei vorzeitiger Rückzahlung des Darlehens. Sie berechnet sich aus dem Zinsverlust der Bank (Vertragszins - Wiederanlagezins) × Restla
-- Immobilienfinanzierungen bergen verschiedene Risiken: **Zinsänderungsrisiko** (Zinsen steigen nach Zinsbindung), **Zahlungsunfähigkeitsrisiko** (Jobverlust, Krankheit), **Zwangsversteigerungsrisiko** 
-- Neben klassischen Darlehen gibt es besondere Finanzierungsformen: **Mietkauf** (Miete + Kaufoption, Miete wird auf Kaufpreis angerechnet), **Leibrente** (Verkauf gegen lebenslange Rente, Verkäufer ble
-- Die Theoriephase (Tage 1-20) hat alle wichtigen Themen der Darlehensvermittlung §34i abgedeckt: Rechtliche Grundlagen (§34i GewO, BGB, GwG), Darlehensarten (Annuitäten-, Tilgungs-, Endfälliges Darlehe
-
-PRAXISBEISPIELE:
-- **Praxisfall 1: Erlaubnispflicht prüfen**
-    tasks: [
-      {
-        type: 
-- **Praxisfall 1: Geschäftsfähigkeit prüfen**
-    tasks: [
-      {
-        type: 
-- **Praxisfall 1: Erbbaurecht finanzieren**
-    tasks: [
-      {
-        type: 
-- **Praxisfall 1: Grundbuchauszug analysieren**
-    tasks: [
-      {
-        type: 
-- **Praxisfall 1: Widerrufsrecht prüfen**
-    tasks: [
-      {
-        type: 
-- **Praxisfall 1: Beratungsprotokoll erstellen**
-    tasks: [
-      {
-        type: 
-- **Praxisfall 1: Identifizierung**
-    tasks: [
-      {
-        type: 
-- **Praxisfall 1: Irreführende Werbung**
-    tasks: [
-      {
-        type: 
-- **Praxisfall 1: Datenpanne**
-    tasks: [
-      {
-        type: 
-- **Praxisfall 1: Grunderwerbsteuer berechnen**
-    tasks: [
-      {
-        type: 
-
-FACHWISSEN:
-- **§34i GewO im Detail:**
+**§34i GewO im Detail:**
 
 **Gesetzliche Grundlage:**
-Das Gesetz zur Umsetzung der Wohnimmobilienkreditrichtlinie (Richtlinie 2014/17/EU) trat am 21. März 2016 in Kraft und verschärfte die Anforderungen an Immobiliardarlehensvermittler erheblich. Ziel war der verbesserte Verbraucherschutz durch quali
-- **Rechtsfähigkeit und Geschäftsfähigkeit im Detail:**
+Das Gesetz zur Umsetzung der Wohnimmobilienkreditrichtlinie (Richtlinie 2014/17/EU) trat am 21. März 2016 in Kraft und verschärfte die Anforderungen an Immobiliardarlehensvermittler erheblich. Ziel war der verbesserte Verbraucherschutz durch qualifizierte Beratung und Transparenz.
+
+**Erlaubnispflichtige Tätigkeiten nach §34i Abs. 1 GewO:**
+1. **Vermittlung:** Nachweis von Gelegenheiten zum Abschluss von Immobiliar-Verbraucherdarlehensverträgen
+2. **Beratung:** Abgabe von Empfehlungen zu Immobiliar-Verbraucherdarlehensverträgen
+3. **Abschluss:** Abschluss von Immobiliar-Verbraucherdarlehensverträgen im Namen des Darlehensgebers
+
+**Definition Immobiliar-Verbraucherdarlehensvertrag (§491 Abs. 3 BGB):**
+- Darlehen an Verbraucher (natürliche Personen, nicht gewerblich)
+- Besicherung durch Grundpfandrechte (Grundschuld, Hypothek, Rentenschuld)
+- Zweck: Erwerb, Erhaltung, Renovierung, Modernisierung von Wohnimmobilien
+- Auch Umschuldungen bestehender Immobiliendarlehen
+
+**Erlaubnisvoraussetzungen (§34i Abs. 2 GewO):**
+
+1. **Persönliche Zuverlässigkeit:**
+   - Keine Vorstrafen (Führungszeugnis)
+   - Keine Insolvenzverfahren in den letzten 5 Jahren
+   - Keine Verstöße gegen Gewerberecht
+
+2. **Geordnete Vermögensverhältnisse:**
+   - Keine Überschuldung
+   - Keine Privatinsolvenz
+   - Schufa-Auskunft ohne negative Einträge
+
+3. **Berufshaftpflichtversicherung:**
+   - Mindestdeckung: 1.000.000 € pro Personenschaden
+   - Mindestdeckung: 250.000 € pro Sachschaden
+   - Jahreshöchstleistung: 1.500.000 € (bei mehreren Schadensfällen)
+   - Versicherung muss vor Tätigkeitsbeginn nachgewiesen werden
+
+4. **Sachkunde:**
+   - IHK-Sachkundeprüfung "Geprüfte/r Fachmann/-frau für Immobiliardarlehensvermittlung IHK"
+   - Alternativ: Gleichwertige Qualifikation (z.B. Bankfachwirt, Immobilienfachwirt)
+   - Nachweis durch Prüfungszeugnis
+
+**Sachkundeprüfung - Aufbau:**
+
+**Schriftlicher Teil (120 Minuten):**
+- 40 Multiple-Choice-Fragen
+- 2 Fallstudien
+- Mindestpunktzahl: 50% (50 von 100 Punkten)
+
+**Praktischer Teil (30 Minuten):**
+- Simuliertes Kundengespräch
+- Bedarfsanalyse
+- Produktempfehlung
+- Dokumentation
+
+**Prüfungsinhalte:**
+1. Kundenberatung (20%)
+2. Rechtliche Grundlagen (30%)
+3. Finanzierung und Kreditprodukte (50%)
+
+**Unterschied §34c (Makler) vs. §34i (Darlehensvermittler):**
+
+| Kriterium | §34c Makler | §34i Darlehensvermittler |
+|-----------|-------------|--------------------------|
+| Tätigkeit | Vermittlung von Immobilien | Vermittlung von Immobiliendarlehen |
+| Prüfung | IHK-Sachkundeprüfung | IHK-Sachkundeprüfung |
+| Haftpflicht | 1 Mio. € / 250.000 € | 1 Mio. € / 250.000 € |
+| Provision | 3-7% vom Kaufpreis | 0,5-2% vom Darlehensbetrag |
+| Vertragspartner | Verkäufer & Käufer | Darlehensgeber & Darlehensnehmer |
+
+**Berufspflichten nach §34i Abs. 3 GewO:**
+- Informationspflichten (§491a BGB)
+- Beratungspflichten (§511 BGB)
+- Dokumentationspflichten (§511 BGB)
+- Weiterbildungspflicht (15 Stunden/Jahr)
+
+**Sanktionen bei Verstößen:**
+- Bußgeld bis 50.000 € (§144 GewO)
+- Erlaubnisentzug (§35 GewO)
+- Schadensersatzansprüche des Kunden (§280 BGB)
+- Strafrechtliche Verfolgung bei Betrug (§263 StGB)
+
+---
+
+**Rechtsfähigkeit und Geschäftsfähigkeit im Detail:**
 
 **1. Rechtsfähigkeit (§ 1 BGB):**
 Rechtsfähigkeit ist die Fähigkeit, Träger von Rechten und Pflichten zu sein. Sie beginnt mit der Vollendung der Geburt und endet mit dem Tod.
@@ -109,31 +89,499 @@ Rechtsfähigkeit ist die Fähigkeit, Träger von Rechten und Pflichten zu sein. 
 **Rechte:**
 - Eigentum (§ 903 BGB)
 - Forderungen (§ 241 BGB)
-- Persö
-- **Grundstücke und grundstücksgleiche Rechte im Detail:**
+- Persönlichkeitsrechte (Art. 1, 2 GG)
+
+**Pflichten:**
+- Vertragspflichten (§ 241 BGB)
+- Schadensersatzpflichten (§ 823 BGB)
+- Steuerpflichten (AO)
+
+**Juristische Personen:**
+Auch juristische Personen (GmbH, AG, Vereine) sind rechtsfähig (§ 21 BGB, § 13 GmbHG, § 1 AktG).
+
+---
+
+**2. Geschäftsfähigkeit:**
+
+**Volle Geschäftsfähigkeit (§ 2 BGB):**
+- Ab Vollendung des 18. Lebensjahres
+- Berechtigung, alle Rechtsgeschäfte wirksam abzuschließen
+- Keine Zustimmung Dritter erforderlich
+
+**Beschränkte Geschäftsfähigkeit (§§ 106-113 BGB):**
+- Minderjährige zwischen 7 und 17 Jahren
+- Rechtsgeschäfte bedürfen der Zustimmung der gesetzlichen Vertreter (Eltern)
+- Ausnahmen:
+  - Lediglich rechtlich vorteilhafte Geschäfte (§ 107 BGB) - z.B. Schenkung annehmen
+  - Taschengeldparagraf (§ 110 BGB) - Geschäfte mit Mitteln, die zur freien Verfügung überlassen wurden
+  - Arbeitsvertrag mit Zustimmung des Vormundschaftsgerichts (§ 113 BGB)
+
+**Geschäftsunfähigkeit (§ 104 BGB):**
+- Kinder unter 7 Jahren
+- Personen in dauerhafter krankhafter Störung der Geistestätigkeit
+- Rechtsgeschäfte sind nichtig (§ 105 BGB)
+
+---
+
+**3. Vertragsrecht - Zustandekommen eines Vertrags:**
+
+**Angebot (§ 145 BGB):**
+- Willenserklärung, die alle wesentlichen Vertragsbestandteile enthält
+- Bindungswirkung: Der Antragende ist an sein Angebot gebunden
+- Beispiel: Bank bietet Darlehen zu 3,5% Zinsen an
+
+**Annahme (§ 147 BGB):**
+- Zustimmende Willenserklärung des Empfängers
+- Muss rechtzeitig erfolgen (unter Anwesenden sofort, unter Abwesenden innerhalb der Annahmefrist)
+- Beispiel: Kunde unterschreibt Darlehensvertrag
+
+**Vertragsschluss:**
+Vertrag kommt zustande, wenn Angebot und Annahme übereinstimmen (Konsens).
+
+---
+
+**4. Formvorschriften bei Immobiliar-Verbraucherdarlehensverträgen:**
+
+**Schriftform (§ 492 Abs. 1 BGB):**
+- Vertrag muss schriftlich abgeschlossen werden
+- Eigenhändige Unterschrift des Darlehensnehmers erforderlich
+- Elektronische Form (§ 126a BGB) ist nicht ausreichend
+- Zweck: Schutz des Verbrauchers vor übereilten Entscheidungen
+
+**Pflichtangaben im Vertrag (§ 492 Abs. 2 BGB):**
+1. Nettodarlehensbetrag
+2. Gesamtbetrag (Darlehensbetrag + Zinsen + Kosten)
+3. Sollzinssatz (fest oder variabel)
+4. Effektiver Jahreszins
+5. Laufzeit
+6. Höhe, Anzahl und Fälligkeit der Raten
+7. Angaben zur Besicherung (Grundschuld, Hypothek)
+8. Widerrufsbelehrung
+
+**Widerrufsrecht (§ 495 BGB):**
+- 14 Tage Widerrufsfrist ab Vertragsschluss
+- Widerruf muss schriftlich erfolgen
+- Keine Angabe von Gründen erforderlich
+- Zweck: Verbraucherschutz, Bedenkzeit
+
+**Informationspflichten (§ 491a BGB):**
+- Vorvertragliche Informationen (Europäisches Standardisiertes Merkblatt ESIS)
+- Angaben zu Zinsen, Kosten, Laufzeit, Risiken
+- Muss rechtzeitig vor Vertragsschluss übergeben werden
+
+---
+
+**5. Besonderheiten bei Minderjährigen:**
+
+**Problem:** Minderjährige können keine Immobiliar-Verbraucherdarlehensverträge abschließen, da diese nicht lediglich rechtlich vorteilhaft sind (§ 107 BGB).
+
+**Lösung:** Zustimmung der gesetzlichen Vertreter (Eltern) erforderlich (§ 107 BGB).
+
+**Ausnahme:** Volljährige Minderjährige (18 Jahre) können ohne Zustimmung Verträge abschließen.
+
+---
+
+**6. Nichtigkeit und Anfechtbarkeit:**
+
+**Nichtigkeit (§§ 134, 138, 125 BGB):**
+- Verstoß gegen gesetzliches Verbot (§ 134 BGB)
+- Sittenwidrigkeit (§ 138 BGB) - z.B. Wucherzinsen
+- Formmangel (§ 125 BGB) - z.B. fehlende Schriftform
+
+**Anfechtbarkeit (§§ 119-123 BGB):**
+- Irrtum (§ 119 BGB) - z.B. Verschreiben bei Zinssatz
+- Täuschung (§ 123 BGB) - z.B. falsche Angaben der Bank
+- Drohung (§ 123 BGB) - z.B. Drohung mit Kündigung
+
+**Rechtsfolge:**
+- Nichtigkeit: Vertrag ist von Anfang an unwirksam
+- Anfechtbarkeit: Vertrag wird rückwirkend unwirksam, wenn angefochten wird
+
+---
+
+**Grundstücke und grundstücksgleiche Rechte im Detail:**
 
 **1. Grundstück (§ 873 BGB):**
 
 **Definition:**
 Ein Grundstück ist ein abgegrenzter Teil der Erdoberfläche, der im Grundbuch eingetragen ist. Es ist ein unbewegliches Wirtschaftsgut und gehört zu den wichtigsten Vermögenswerten.
 
-**Bestandtei
-- **Das Grundbuch im Detail:**
+**Bestandteile eines Grundstücks (§ 94 BGB):**
+- **Wesentliche Bestandteile:** Gebäude, Bäume, Pflanzen (fest mit dem Grundstück verbunden)
+- **Zubehör (§ 97 BGB):** Bewegliche Sachen, die dem Zweck des Grundstücks dienen (z.B. Heizungsanlage, Einbauküche)
+
+**Grundbuchbezeichnung:**
+Jedes Grundstück hat eine eindeutige Bezeichnung:
+- **Gemarkung:** Katasterbezirk (z.B. "München-Schwabing")
+- **Flur:** Unterabteilung der Gemarkung (z.B. "Flur 12")
+- **Flurstück:** Einzelnes Grundstück (z.B. "Flurstück 345")
+- **Beispiel:** Gemarkung München-Schwabing, Flur 12, Flurstück 345
+
+**Grundstücksarten:**
+- **Unbebautes Grundstück:** Bauland, Ackerland, Wald
+- **Bebautes Grundstück:** Wohngebäude, Gewerbegebäude
+- **Erbbaurechtsgrundstück:** Grundstück mit Erbbaurecht belastet
+
+---
+
+**2. Erbbaurecht (§§ 1-27 ErbbauRG):**
+
+**Definition (§ 1 ErbbauRG):**
+Das Erbbaurecht ist das veräußerliche und vererbliche Recht, auf oder unter der Oberfläche eines fremden Grundstücks ein Bauwerk zu haben.
+
+**Funktionsweise:**
+- Der Grundstückseigentümer (Erbbauverpflichteter) bleibt Eigentümer des Grundstücks
+- Der Erbbauberechtigte erhält das Recht, ein Gebäude zu errichten und zu nutzen
+- Der Erbbauberechtigte zahlt einen jährlichen Erbbauzins an den Grundstückseigentümer
+
+**Laufzeit:**
+- Typisch: 66-99 Jahre
+- Verlängerung möglich (Verhandlungssache)
+- Nach Ablauf: Gebäude fällt an den Grundstückseigentümer (Heimfall)
+
+**Erbbauzins:**
+- Jährliche Zahlung an den Grundstückseigentümer
+- Höhe: 3-6% des Grundstückswerts
+- Beispiel: Grundstückswert 200.000 €, Erbbauzins 4% = 8.000 €/Jahr
+- Indexierung möglich (Anpassung an Inflation)
+
+**Vorteile:**
+- Geringere Anschaffungskosten (nur Gebäude, nicht Grundstück)
+- Steuerliche Vorteile (Erbbauzins als Werbungskosten absetzbar)
+- Nutzung ohne Grundstückskauf
+
+**Nachteile:**
+- Laufende Kosten (Erbbauzins)
+- Heimfallrisiko (Gebäude fällt nach Ablauf an Grundstückseigentümer)
+- Finanzierung schwieriger (Banken bevorzugen Volleigentum)
+
+**Grundbucheintragung:**
+Das Erbbaurecht wird in einem eigenen Erbbaugrundbuch eingetragen (§ 10 ErbbauRG). Es kann wie ein Grundstück belastet werden (Grundschuld, Hypothek).
+
+---
+
+**3. Wohnungseigentum (§§ 1-60 WEG):**
+
+**Definition (§ 1 WEG):**
+Wohnungseigentum ist das Sondereigentum an einer Wohnung in Verbindung mit dem Miteigentumsanteil am Gemeinschaftseigentum.
+
+**Entstehung:**
+1. **Teilungserklärung (§ 3 WEG):** Grundstückseigentümer erklärt die Aufteilung in Wohnungseigentum
+2. **Teilungsvertrag (§ 3 WEG):** Mehrere Eigentümer teilen das Grundstück
+3. **Grundbucheintragung:** Wohnungseigentum entsteht erst mit Eintragung im Grundbuch
+
+**Sondereigentum (§ 5 WEG):**
+- Räume innerhalb der Wohnung (Wände, Decken, Böden)
+- Fenster, Türen (innerhalb der Wohnung)
+- Nicht: Tragende Wände, Fassade, Dach
+
+**Gemeinschaftseigentum (§ 5 WEG):**
+- Grundstück
+- Gebäudehülle (Fassade, Dach, Fundament)
+- Treppenhaus, Aufzug, Heizungsanlage
+- Gemeinschaftsräume (Waschküche, Fahrradkeller)
+
+**Miteigentumsanteil:**
+Jeder Wohnungseigentümer hat einen Miteigentumsanteil am Gemeinschaftseigentum, ausgedrückt in Bruchteilen (z.B. 45/1000).
+
+**Verwaltung:**
+- **Eigentümerversammlung:** Beschlussfassung über Gemeinschaftsangelegenheiten (§ 23 WEG)
+- **Verwalter:** Führt die Beschlüsse aus, erstellt Jahresabrechnung (§ 27 WEG)
+- **Hausgeld:** Monatliche Zahlung für Instandhaltung, Verwaltung, Rücklagen
+
+**Finanzierung:**
+Wohnungseigentum kann wie ein Grundstück finanziert werden. Die Bank lässt sich eine Grundschuld im Wohnungsgrundbuch eintragen.
+
+---
+
+**4. Unterschiede Grundstück, Erbbaurecht, Wohnungseigentum:**
+
+| Kriterium | Grundstück | Erbbaurecht | Wohnungseigentum |
+|-----------|------------|-------------|------------------|
+| Eigentum | Volleigentum | Nur Gebäude | Wohnung + Miteigentum |
+| Laufzeit | Unbegrenzt | 66-99 Jahre | Unbegrenzt |
+| Kosten | Kaufpreis | Erbbauzins | Kaufpreis + Hausgeld |
+| Grundbuch | Grundbuch | Erbbaugrundbuch | Wohnungsgrundbuch |
+| Finanzierung | Einfach | Schwieriger | Einfach |
+
+---
+
+**5. Bedeutung für die Immobilienfinanzierung:**
+
+**Grundstück:**
+- Höchste Sicherheit für die Bank
+- Beleihungswert = 80-90% des Verkehrswerts
+- Niedrigste Zinsen
+
+**Erbbaurecht:**
+- Geringere Sicherheit (Heimfallrisiko)
+- Beleihungswert = 60-70% des Verkehrswerts
+- Höhere Zinsen (Risikozuschlag 0,2-0,5%)
+
+**Wohnungseigentum:**
+- Gute Sicherheit
+- Beleihungswert = 80-90% des Verkehrswerts
+- Normale Zinsen
+- Zusätzliche Prüfung: Hausgeld, Instandhaltungsrücklagen, Beschlüsse
+
+---
+
+**Das Grundbuch im Detail:**
 
 **1. Funktion und Bedeutung:**
 
 Das Grundbuch ist das zentrale Register für Immobilien in Deutschland. Es dient:
 - **Publizität:** Öffentliche Bekanntmachung von Eigentumsverhältnissen und Belastungen
-- **Rechtssicherheit:** Schutz des Rechtsverkehrs durch öffentlichen 
-- **Immobiliar-Verbraucherdarlehensvertrag und Verbraucherkreditrecht im Detail:**
+- **Rechtssicherheit:** Schutz des Rechtsverkehrs durch öffentlichen Glauben (§ 892 BGB)
+- **Beweisfunktion:** Nachweis von Eigentum und Rechten
 
-**1. Definition Immobiliar-Verbraucherdarlehensvertrag (§ 491 Abs. 3 BGB):**
+**Grundbuchzwang (§ 873 BGB):**
+Rechte an Grundstücken entstehen, ändern sich oder erlöschen nur durch Eintragung im Grundbuch. Ausnahme: Gesetzlicher Eigentumserwerb (z.B. Erbschaft).
 
-Ein Immobiliar-Verbraucherdarlehensvertrag liegt vor, wenn folgende Voraussetzungen erfüllt sind:
+---
 
-**Verbraucher (§ 13 BGB):**
-- Natürliche 
-- **Verhaltens- und Informationspflichten im Detail:**
+**2. Aufbau des Grundbuchs:**
+
+**Aufschrift:**
+- Grundbuchblatt-Nummer (z.B. "Blatt 1234")
+- Amtsgericht (z.B. "Amtsgericht München")
+- Band und Blatt (z.B. "Band 12, Blatt 345")
+
+**Bestandsverzeichnis:**
+- **Lage:** Gemarkung, Flur, Flurstück (z.B. "Gemarkung München-Schwabing, Flur 12, Flurstück 345")
+- **Größe:** Fläche in m² (z.B. "500 m²")
+- **Nutzungsart:** Wohngebäude, Ackerland, Wald (z.B. "Wohngebäude")
+- **Besonderheiten:** Erbbaurecht, Wohnungseigentum
+
+**Abteilung I - Eigentümer:**
+- Name, Vorname, Geburtsdatum des Eigentümers
+- Erwerbsgrund (z.B. "Kauf", "Erbschaft", "Schenkung")
+- Datum der Eintragung
+- Beispiel: "Max Mustermann, geb. 01.01.1980, Kauf vom 15.03.2026"
+
+**Abteilung II - Lasten und Beschränkungen (außer Grundpfandrechte):**
+- **Dienstbarkeiten:** Wegerecht, Leitungsrecht, Wohnrecht
+- **Reallasten:** Wiederkehrende Leistungen (z.B. Leibrente)
+- **Vorkaufsrecht:** Recht zum Vorkauf bei Verkauf
+- **Auflassungsvormerkung:** Sicherung des Käufers vor Eigentumsübergang
+- Beispiel: "Wegerecht zugunsten des Grundstücks Flurstück 346"
+
+**Abteilung III - Grundpfandrechte:**
+- **Grundschuld:** Belastung des Grundstücks zur Sicherung eines Darlehens
+- **Hypothek:** Akzessorische Sicherheit (abhängig von Darlehensforderung)
+- **Rentenschuld:** Wiederkehrende Zahlungen
+- Beispiel: "Grundschuld 300.000 € zugunsten der Sparkasse München"
+
+---
+
+**3. Rangfolge der Eintragungen:**
+
+**Rangprinzip (§ 879 BGB):**
+Der Rang bestimmt die Reihenfolge der Befriedigung bei Zwangsversteigerung. Frühere Eintragungen haben Vorrang vor späteren.
+
+**Beispiel:**
+- **Rang 1:** Grundschuld 200.000 € (Sparkasse)
+- **Rang 2:** Grundschuld 100.000 € (Volksbank)
+- **Rang 3:** Grundschuld 50.000 € (Privatperson)
+
+Bei Zwangsversteigerung wird zuerst die Sparkasse befriedigt, dann die Volksbank, dann die Privatperson.
+
+**Rangvorbehalt:**
+Möglichkeit, einen Rang freizuhalten für spätere Eintragungen (z.B. für Modernisierungsdarlehen).
+
+---
+
+**4. Nicht eingetragene Lasten:**
+
+**Öffentliche Lasten (§ 10 ZVG):**
+Lasten, die nicht im Grundbuch eingetragen sind, aber dennoch bestehen:
+- **Grundsteuer:** Jährliche Steuer auf Grundbesitz
+- **Erschließungsbeiträge:** Kosten für Straßen, Wasser, Abwasser
+- **Denkmalschutz:** Auflagen für denkmalgeschützte Gebäude
+- **Altlasten:** Kontaminierung des Bodens
+
+Diese Lasten gehen bei Zwangsversteigerung auf den Ersteigerer über!
+
+---
+
+**5. Eintragungsverfahren:**
+
+**Antrag (§ 13 GBO):**
+Eintragungen erfolgen nur auf Antrag des Berechtigten oder aufgrund gerichtlicher/behördlicher Verfügung.
+
+**Bewilligung (§ 19 GBO):**
+Der Betroffene muss der Eintragung zustimmen (z.B. Eigentümer bei Grundschuldbestellung).
+
+**Eintragung:**
+Das Grundbuchamt prüft die Unterlagen und trägt das Recht ein. Die Eintragung wird dem Antragsteller mitgeteilt.
+
+**Dauer:**
+- Einfache Eintragungen: 2-4 Wochen
+- Komplexe Eintragungen: 4-8 Wochen
+
+---
+
+**6. Öffentlicher Glaube des Grundbuchs (§ 892 BGB):**
+
+**Schutz des gutgläubigen Erwerbers:**
+Wer auf die Richtigkeit des Grundbuchs vertraut, wird geschützt, auch wenn das Grundbuch fehlerhaft ist.
+
+**Beispiel:**
+A verkauft ein Grundstück an B. Im Grundbuch steht noch A als Eigentümer. B vertraut darauf und kauft. Später stellt sich heraus, dass C der wahre Eigentümer ist. B ist trotzdem geschützt und wird Eigentümer.
+
+**Ausnahme:**
+Kein Schutz bei Kenntnis der Unrichtigkeit oder grober Fahrlässigkeit.
+
+---
+
+**7. Grundbucheinsicht (§ 12 GBO):**
+
+**Berechtigtes Interesse:**
+Einsicht in das Grundbuch kann nehmen, wer ein berechtigtes Interesse nachweist:
+- **Eigentümer:** Jederzeit
+- **Kaufinteressent:** Mit Vollmacht des Eigentümers
+- **Gläubiger:** Mit Vollmacht des Schuldners
+- **Behörden:** Bei hoheitlichen Aufgaben
+- **Notar:** Bei Beurkundung
+
+**Antrag:**
+Grundbucheinsicht kann beim Grundbuchamt (Amtsgericht) beantragt werden. Kosten: 10-20 €.
+
+---
+
+**8. Bedeutung für die Immobilienfinanzierung:**
+
+**Grundbuchauszug:**
+Die Bank verlangt vor Darlehenszusage einen aktuellen Grundbuchauszug (nicht älter als 3 Monate), um:
+- Eigentumsverhältnisse zu prüfen
+- Bestehende Belastungen zu erkennen (Abteilung II, III)
+- Rang für die neue Grundschuld zu bestimmen
+
+**Grundschuldbestellung:**
+Die Bank lässt sich zur Sicherung des Darlehens eine Grundschuld im Grundbuch eintragen (Abteilung III). Die Eintragung erfolgt nach Darlehenszusage und vor Auszahlung.
+
+**Löschungsbewilligung:**
+Nach vollständiger Rückzahlung des Darlehens erteilt die Bank eine Löschungsbewilligung. Der Eigentümer kann dann die Grundschuld im Grundbuch löschen lassen.
+
+---
+
+**Praxisfall 1: Erlaubnispflicht prüfen**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Einführung §34i GewO: Rechtliche Grundlagen der Immobiliardarlehensvermittlung' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Einführung §34i GewO: Rechtliche Grundlagen der Immobiliardarlehensvermittlung'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Einführung §34i GewO: Rechtliche Grundlagen der Immobiliardarlehensvermittlung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
+
+Herr Müller möchte als selbstständiger Finanzberater tätig werden und Kunden bei der Immobilienfinanzierung unterstützen. Er plant folgende Tätigkeiten:
+- Beratung zu Immobiliendarlehen
+- Vermittlung von Darlehensverträgen an Banken
+- Erstellung von Finanzierungsplänen
+- Begleitung zum Notartermin
+
+**Fragen:**
+1. Benötigt Herr Müller eine Erlaubnis nach §34i GewO?
+2. Welche Voraussetzungen muss er erfüllen?
+3. Welche Versicherung benötigt er?
+4. Wie hoch sind die Mindestdeckungssummen?
+5. Welche Prüfung muss er ablegen?
+
+---
+
+**Praxisfall 2: Abgrenzung §34c vs. §34i**
+
+Frau Schmidt ist bereits als Immobilienmaklerin (§34c GewO) tätig und möchte ihr Geschäftsfeld erweitern. Sie fragt sich, ob sie auch Immobiliendarlehen vermitteln darf.
+
+**Fragen:**
+1. Darf Frau Schmidt mit ihrer §34c-Erlaubnis auch Darlehen vermitteln?
+2. Welche zusätzliche Erlaubnis benötigt sie?
+3. Kann sie die Sachkundeprüfung überspringen, da sie bereits §34c hat?
+4. Welche Haftpflichtversicherung benötigt sie?
+5. Wie hoch ist die typische Provision bei Darlehensvermittlung?
+
+---
+
+**Praxisfall 3: Verstoß gegen §34i GewO**
+
+Herr Becker vermittelt seit 2 Jahren Immobiliendarlehen ohne Erlaubnis nach §34i GewO. Ein Kunde beschwert sich bei der IHK, da er falsch beraten wurde und einen zu teuren Kredit abgeschlossen hat.
+
+**Fragen:**
+1. Welche Sanktionen drohen Herrn Becker?
+2. Kann der Kunde Schadensersatz fordern?
+3. Ist der Darlehensvertrag gültig?
+4. Welche Behörde ist zuständig?
+5. Wie hoch kann das Bußgeld sein?
+
+---
+
+**Praxisfall 1: Geschäftsfähigkeit prüfen**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Rechtsfähigkeit, Geschäftsfähigkeit und Vertragsrecht' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Rechtsfähigkeit, Geschäftsfähigkeit und Vertragsrecht'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Rechtsfähigkeit, Geschäftsfähigkeit und Vertragsrecht' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
+
+Ein 17-jähriger Schüler möchte eine Eigentumswohnung für 200.000 € kaufen und benötigt dafür ein Darlehen von 180.000 €. Seine Eltern sind einverstanden und bereit, den Vertrag mitzuunterschreiben.
+
+**Fragen:**
+1. Ist der Schüler geschäftsfähig?
+2. Kann er den Darlehensvertrag alleine abschließen?
+3. Welche Rolle spielen die Eltern?
+4. Ist der Vertrag wirksam, wenn nur der Schüler unterschreibt?
+5. Was passiert, wenn die Eltern nachträglich zustimmen?
+
+---
+
+**Praxisfall 2: Formvorschriften**
+
+Eine Bank bietet einem Kunden ein Immobiliendarlehen per E-Mail an. Der Kunde antwortet per E-Mail mit "Ich nehme an" und überweist die erste Rate. Die Bank behauptet, der Vertrag sei wirksam zustande gekommen.
+
+**Fragen:**
+1. Ist der Vertrag wirksam?
+2. Welche Form ist für Immobiliar-Verbraucherdarlehensverträge vorgeschrieben?
+3. Kann die elektronische Form (§ 126a BGB) verwendet werden?
+4. Was sind die Rechtsfolgen eines Formmangels?
+5. Kann der Kunde die erste Rate zurückfordern?
+
+---
+
+**Praxisfall 3: Widerrufsrecht**
+
+Ein Kunde unterschreibt am 1. März 2026 einen Darlehensvertrag über 300.000 €. Am 10. März 2026 findet er ein günstigeres Angebot bei einer anderen Bank und möchte den Vertrag widerrufen.
+
+**Fragen:**
+1. Hat der Kunde ein Widerrufsrecht?
+2. Wie lange beträgt die Widerrufsfrist?
+3. Muss der Kunde Gründe für den Widerruf angeben?
+4. Welche Form muss der Widerruf haben?
+5. Was passiert mit bereits ausgezahlten Darlehensbeträgen?
+
+---
+
+**Verhaltens- und Informationspflichten im Detail:**
 
 **1. Informationspflichten (§ 491a BGB, § 511 BGB):**
 
@@ -141,8 +589,179 @@ Ein Immobiliar-Verbraucherdarlehensvertrag liegt vor, wenn folgende Voraussetzun
 Vor Vertragsschluss müssen Sie dem Kunden folgende Informationen übergeben:
 
 **ESIS-Merkblatt (Europäisches Standardisiertes Merkblatt):**
-- Standardisierte
-- **Kreditwesengesetz (KWG) und Geldwäschegesetz (GwG) im Detail:**
+- Standardisiertes Formular mit allen wichtigen Vertragsinformationen
+- Muss mindestens 7 Tage vor Vertragsschluss übergeben werden
+- Inhalt: Darlehensgeber, Nettodarlehensbetrag, Laufzeit, Zinssatz, Rate, Gesamtbetrag, Besicherung, Widerrufsrecht, Risiken
+
+**Zusätzliche Informationen:**
+- Provisionsvereinbarung (wer zahlt die Provision?)
+- Interessenkonflikte (arbeiten Sie nur mit bestimmten Banken zusammen?)
+- Beschwerdemöglichkeiten (Schlichtungsstellen)
+
+**Zeitpunkt:**
+- Rechtzeitig vor Vertragsschluss
+- In Textform (Papier oder E-Mail)
+- Kostenlos
+
+---
+
+**2. Beratungspflichten (§ 511 BGB):**
+
+**Umfassende Beratung:**
+Sie müssen den Kunden umfassend beraten und dabei folgende Aspekte berücksichtigen:
+
+**Bedarfsanalyse:**
+- Finanzielle Situation (Einkommen, Ausgaben, Vermögen, Schulden)
+- Familiensituation (verheiratet, Kinder, Unterhaltspflichten)
+- Berufliche Situation (Angestellter, Selbstständiger, befristet/unbefristet)
+- Zukunftspläne (Kinder, Ruhestand, Jobwechsel)
+- Risikobereitschaft (konservativ, moderat, risikofreudig)
+
+**Produktauswahl:**
+- Geeignete Darlehensprodukte auswählen (Annuitätendarlehen, Tilgungsdarlehen, Bauspardarlehen)
+- Alternativen aufzeigen (verschiedene Banken, Zinssätze, Laufzeiten)
+- Vor- und Nachteile erklären
+
+**Risikoaufklärung:**
+- Zinsänderungsrisiko (nach Zinsbindung)
+- Zahlungsunfähigkeitsrisiko (Jobverlust, Krankheit)
+- Zwangsversteigerungsrisiko
+- Vorfälligkeitsentschädigung bei vorzeitiger Rückzahlung
+
+**Kostenaufklärung:**
+- Zinsen
+- Gebühren (Bearbeitungsgebühr, Schätzgebühr, Notarkosten)
+- Provision
+- Gesamtkosten (effektiver Jahreszins)
+
+---
+
+**3. Dokumentationspflichten (§ 511 BGB):**
+
+**Beratungsprotokoll:**
+Sie müssen die Beratung schriftlich dokumentieren und dem Kunden aushändigen. Das Beratungsprotokoll muss enthalten:
+
+**Kundendaten:**
+- Name, Adresse, Geburtsdatum
+- Familienstand, Anzahl Kinder
+- Beruf, Arbeitgeber
+
+**Finanzielle Situation:**
+- Monatliches Nettoeinkommen
+- Monatliche Ausgaben (Miete, Lebenshaltung, Versicherungen)
+- Vermögen (Eigenkapital, Sparguthaben)
+- Schulden (bestehende Kredite)
+
+**Bedarfsanalyse:**
+- Zweck des Darlehens (Kauf, Bau, Modernisierung)
+- Gewünschter Darlehensbetrag
+- Gewünschte Laufzeit
+- Gewünschte Zinsbindung
+
+**Produktempfehlung:**
+- Empfohlenes Darlehensprodukt
+- Begründung der Empfehlung
+- Alternativen, die geprüft wurden
+- Vor- und Nachteile
+
+**Risikoaufklärung:**
+- Zinsänderungsrisiko
+- Zahlungsunfähigkeitsrisiko
+- Zwangsversteigerungsrisiko
+
+**Unterschrift:**
+- Kunde und Berater unterschreiben das Protokoll
+- Kunde erhält eine Kopie
+
+**Aufbewahrungspflicht:**
+- 10 Jahre (§ 257 HGB)
+
+---
+
+**4. Geeignetheitsprüfung (§ 511 BGB):**
+
+**Tragfähigkeit der Finanzierung:**
+Sie müssen prüfen, ob der Kunde das Darlehen zurückzahlen kann. Dazu müssen Sie:
+
+**Einnahmen prüfen:**
+- Gehalt (Netto, nach Steuern und Sozialabgaben)
+- Mieteinnahmen (bei Vermietung)
+- Sonstige Einnahmen (Kindergeld, Rente)
+
+**Ausgaben prüfen:**
+- Lebenshaltungskosten (Pauschale: 800-1.200 € pro Person)
+- Miete (falls noch nicht Eigentümer)
+- Versicherungen (Krankenversicherung, Haftpflicht, Lebensversicherung)
+- Bestehende Kredite (Raten)
+
+**Haushaltsrechnung:**
+- Einnahmen - Ausgaben = Verfügbares Einkommen
+- Verfügbares Einkommen muss mindestens 120% der Darlehensrate betragen (Sicherheitspuffer)
+
+**Beispiel:**
+- Nettoeinkommen: 4.000 €
+- Lebenshaltung: 1.500 €
+- Versicherungen: 300 €
+- Bestehende Kredite: 500 €
+- **Verfügbares Einkommen:** 4.000 € - 1.500 € - 300 € - 500 € = 1.700 €
+- **Maximale Darlehensrate:** 1.700 € / 1,2 = 1.417 €
+
+**Beleihungsauslauf:**
+- Darlehensbetrag / Immobilienwert ≤ 80% (empfohlen)
+- Beispiel: 300.000 € Darlehen / 400.000 € Immobilienwert = 75% (OK)
+
+---
+
+**5. Interessenkonflikte offenlegen:**
+
+**Provisionsvereinbarung:**
+Sie müssen dem Kunden mitteilen, wer Ihre Provision zahlt:
+- Kunde zahlt Provision (z.B. 1% des Darlehensbetrags)
+- Bank zahlt Provision (z.B. 0,5% des Darlehensbetrags)
+- Beide zahlen Provision
+
+**Bankbindung:**
+Wenn Sie nur mit bestimmten Banken zusammenarbeiten, müssen Sie das offenlegen:
+- "Ich arbeite mit 10 Banken zusammen"
+- "Ich arbeite ausschließlich mit der Sparkasse zusammen"
+
+**Eigene Beteiligung:**
+Wenn Sie an einer Bank beteiligt sind, müssen Sie das offenlegen.
+
+---
+
+**6. Weiterbildungspflicht (§ 34i Abs. 4 GewO):**
+
+**15 Stunden pro Jahr:**
+- Seminare, Webinare, Fachtagungen
+- Themen: Recht, Finanzierung, Beratung, Produktkunde
+- Nachweis durch Teilnahmebescheinigung
+
+**Zweck:**
+- Aktuelle Rechtsprechung
+- Neue Produkte
+- Verbraucherschutz
+
+---
+
+**7. Sanktionen bei Verstößen:**
+
+**Bußgeld (§ 144 GewO):**
+- Bis 50.000 € bei Verstoß gegen Informations- oder Beratungspflichten
+
+**Erlaubnisentzug (§ 35 GewO):**
+- Bei schweren oder wiederholten Verstößen
+
+**Schadensersatz (§ 280 BGB):**
+- Kunde kann Schadensersatz fordern, wenn er durch fehlerhafte Beratung einen Schaden erlitten hat
+- Beispiel: Kunde schließt zu teures Darlehen ab, weil Berater günstigere Alternativen nicht genannt hat
+
+**Strafrechtliche Verfolgung:**
+- Bei Betrug (§ 263 StGB) oder Untreue (§ 266 StGB)
+
+---
+
+**Kreditwesengesetz (KWG) und Geldwäschegesetz (GwG) im Detail:**
 
 **1. Kreditwesengesetz (KWG):**
 
@@ -152,8 +771,206 @@ Das KWG regelt die Aufsicht über:
 - Finanzdienstleister (Vermögensverwalter, Anlageberater)
 - Zahlungsinstitute (PayPal, Klarna)
 
-**Immobi
-- **Verbraucherschutz, Schlichtungsstellen und Unlauterer Wettbewerb im Detail:**
+**Immobiliardarlehensvermittler:**
+Sie sind kein Kreditinstitut nach KWG, da Sie keine Einlagen entgegennehmen und keine Kredite vergeben. Sie sind aber Finanzdienstleister und unterliegen bestimmten Meldepflichten.
+
+**Meldepflichten:**
+- Verdacht auf Geldwäsche (§ 43 GwG)
+- Verdacht auf Terrorismusfinanzierung (§ 43 GwG)
+
+**Aufsicht:**
+- BaFin (Bundesanstalt für Finanzdienstleistungsaufsicht)
+- IHK (Industrie- und Handelskammer) für §34i-Erlaubnis
+
+---
+
+**2. Geldwäschegesetz (GwG):**
+
+**Zweck:**
+Das GwG soll verhindern, dass Gelder aus Straftaten (z.B. Drogenhandel, Korruption, Steuerhinterziehung) in den legalen Wirtschaftskreislauf gelangen.
+
+**Verpflichtete nach § 2 GwG:**
+- Kreditinstitute
+- Finanzdienstleister
+- **Immobiliardarlehensvermittler (§ 2 Abs. 1 Nr. 7 GwG)**
+- Rechtsanwälte, Notare
+- Immobilienmakler
+
+---
+
+**3. Sorgfaltspflichten (§§ 10-17 GwG):**
+
+**Identifizierung des Kunden (§ 11 GwG):**
+
+**Natürliche Personen:**
+- Name, Vorname
+- Geburtsdatum, Geburtsort
+- Staatsangehörigkeit
+- Wohnanschrift
+- **Nachweis:** Personalausweis, Reisepass
+
+**Juristische Personen:**
+- Firma, Rechtsform
+- Registernummer (Handelsregister)
+- Sitz, Geschäftsanschrift
+- Vertretungsberechtigte Personen
+- **Nachweis:** Handelsregisterauszug, Gewerbeanmeldung
+
+**Wirtschaftlich Berechtigter (§ 3 GwG):**
+Bei juristischen Personen müssen Sie auch den wirtschaftlich Berechtigten identifizieren:
+- Person, die mehr als 25% der Anteile hält
+- Person, die die Kontrolle ausübt
+
+**Zeitpunkt:**
+- Vor Begründung der Geschäftsbeziehung
+- Spätestens bei Vertragsschluss
+
+**Methoden:**
+- **Persönliche Anwesenheit:** Kunde zeigt Ausweis, Sie kopieren ihn
+- **Videoident:** Kunde identifiziert sich per Videoanruf
+- **Postident:** Kunde identifiziert sich bei der Post
+
+---
+
+**4. Herkunft der Mittel klären (§ 11 Abs. 5 GwG):**
+
+**Fragen:**
+- Woher stammt das Eigenkapital?
+- Aus welcher Quelle stammen die Mittel?
+- Gibt es Schenkungen, Erbschaften?
+
+**Nachweise:**
+- Kontoauszüge (Nachweis Eigenkapital)
+- Schenkungsvertrag (bei Schenkung)
+- Erbschein (bei Erbschaft)
+- Gehaltsabrechnungen (bei Ansparung)
+
+**Verdächtige Transaktionen:**
+- Barzahlungen über 10.000 € (§ 16 GwG)
+- Ungewöhnlich hohe Beträge ohne plausible Erklärung
+- Kunde verweigert Auskunft über Herkunft der Mittel
+
+---
+
+**5. Risikobasierter Ansatz (§ 10 GwG):**
+
+**Risikoklassifizierung:**
+Sie müssen das Geldwäscherisiko jedes Kunden bewerten:
+
+**Geringes Risiko:**
+- Inländischer Kunde
+- Transparente Einkommensverhältnisse
+- Plausible Herkunft der Mittel
+- **Maßnahmen:** Standardidentifizierung
+
+**Erhöhtes Risiko:**
+- Politisch exponierte Person (PEP) - z.B. Politiker, hohe Beamte
+- Kunde aus Hochrisikoland (z.B. Afghanistan, Nordkorea)
+- Barzahlungen über 10.000 €
+- Komplexe Eigentümerstrukturen (verschachtelte GmbHs)
+- **Maßnahmen:** Verstärkte Sorgfaltspflichten (§ 15 GwG)
+
+**Politisch exponierte Personen (PEP):**
+- Regierungsmitglieder, Parlamentsabgeordnete
+- Richter oberster Gerichte
+- Botschafter
+- Vorstände staatlicher Unternehmen
+- **Besonderheit:** Zustimmung der Geschäftsleitung erforderlich
+
+---
+
+**6. Aufbewahrungspflichten (§ 8 GwG):**
+
+**Unterlagen:**
+- Kopie Personalausweis
+- Vertragsunterlagen
+- Beratungsprotokoll
+- Nachweise Herkunft der Mittel
+
+**Dauer:**
+- 5 Jahre nach Beendigung der Geschäftsbeziehung
+
+**Form:**
+- Papier oder elektronisch
+- Zugriff muss jederzeit möglich sein
+
+---
+
+**7. Meldepflichten (§ 43 GwG):**
+
+**Verdachtsmeldung:**
+Wenn Sie Anhaltspunkte haben, dass Gelder aus Straftaten stammen oder zur Terrorismusfinanzierung dienen, müssen Sie dies der **Financial Intelligence Unit (FIU)** melden.
+
+**Anhaltspunkte:**
+- Kunde verweigert Auskunft über Herkunft der Mittel
+- Barzahlungen über 10.000 € ohne plausible Erklärung
+- Kunde möchte Identität verschleiern
+- Transaktionen passen nicht zum Kundenprofil
+
+**Meldung:**
+- Elektronisch über goAML-Portal (www.fiu.bund.de)
+- Unverzüglich (ohne schuldhaftes Zögern)
+- Vertraulich (Kunde darf nicht informiert werden - § 47 GwG)
+
+**Rechtsfolgen:**
+- Keine Haftung bei gutgläubiger Meldung (§ 46 GwG)
+- Straffreiheit bei Anzeige (§ 261 StGB)
+
+---
+
+**8. Interne Sicherungsmaßnahmen (§ 6 GwG):**
+
+**Geldwäschebeauftragter:**
+- Ab 3 Mitarbeitern erforderlich
+- Überwacht Einhaltung des GwG
+- Erstellt Risikoanalyse
+- Schult Mitarbeiter
+
+**Risikoanalyse:**
+- Bewertung der Geldwäscherisiken
+- Jährliche Aktualisierung
+- Dokumentation
+
+**Schulung:**
+- Mitarbeiter müssen geschult werden
+- Mindestens 1x jährlich
+- Themen: GwG, Identifizierung, Verdachtsmeldung
+
+---
+
+**9. Sanktionen bei Verstößen:**
+
+**Bußgeld (§ 56 GwG):**
+- Bis 1.000.000 € oder
+- Bis 10% des Jahresumsatzes
+- Bei schweren Verstößen
+
+**Straftat (§ 261 StGB - Geldwäsche):**
+- Freiheitsstrafe bis 5 Jahre oder Geldstrafe
+- Bei Kenntnis der Herkunft aus Straftaten
+
+**Erlaubnisentzug (§ 35 GewO):**
+- Bei wiederholten oder schweren Verstößen
+
+---
+
+**10. Praxisbeispiele:**
+
+**Beispiel 1: Barzahlung**
+Kunde möchte 50.000 € Eigenkapital in bar einzahlen.
+- **Maßnahme:** Herkunft klären, bei Verdacht Meldung an FIU
+
+**Beispiel 2: PEP**
+Kunde ist Bürgermeister einer Großstadt.
+- **Maßnahme:** Verstärkte Sorgfaltspflichten, Zustimmung Geschäftsleitung
+
+**Beispiel 3: Ausländischer Kunde**
+Kunde aus Dubai möchte Immobilie in Deutschland kaufen.
+- **Maßnahme:** Herkunft der Mittel klären, wirtschaftlich Berechtigten identifizieren
+
+---
+
+**Verbraucherschutz, Schlichtungsstellen und Unlauterer Wettbewerb im Detail:**
 
 **1. Verbraucherschutz:**
 
@@ -164,22 +981,2515 @@ Schutz von Verbrauchern (Privatpersonen) vor:
 - Intransparenten Vertragsbedingungen
 - Irreführender Werbung
 
-**Zentrale Vorschrift
-- **Datenschutz (DSGVO), Verschwiegenheit und Zuständigkeiten im Detail:**
+**Zentrale Vorschriften:**
+
+**Informationspflichten (§ 491a BGB):**
+- ESIS-Merkblatt vor Vertragsschluss
+- Angaben zu Zinsen, Kosten, Laufzeit, Risiken
+- Rechtzeitig (mindestens 7 Tage vor Vertragsschluss)
+
+**Widerrufsrecht (§ 495 BGB):**
+- 14 Tage Widerrufsfrist
+- Keine Angabe von Gründen erforderlich
+- Schriftform
+
+**Transparenzgebot (§ 307 BGB):**
+- Vertragsklauseln müssen klar und verständlich sein
+- Keine versteckten Kosten
+- Keine überraschenden Klauseln
+
+**Verbot unlauterer Geschäftspraktiken (§ 3 UWG):**
+- Keine irreführende Werbung
+- Keine aggressiven Verkaufsmethoden
+- Keine Ausnutzung von Unerfahrenheit
+
+---
+
+**2. Schlichtungsstellen:**
+
+**Zweck:**
+Außergerichtliche Streitbeilegung zwischen Verbrauchern und Unternehmen:
+- Kostengünstig (meist kostenlos für Verbraucher)
+- Schnell (3-6 Monate statt Jahre)
+- Unabhängig (neutrale Schlichter)
+
+**Verbraucherschlichtungsstelle der Deutschen Bundesbank:**
+Zuständig für:
+- Immobiliardarlehensvermittler
+- Banken
+- Finanzdienstleister
+
+**Adresse:**
+Deutsche Bundesbank
+Verbraucherschlichtungsstelle
+Postfach 11 12 32
+60047 Frankfurt am Main
+E-Mail: schlichtung@bundesbank.de
+Website: www.bundesbank.de/schlichtung
+
+**Verfahren:**
+1. **Antrag:** Verbraucher stellt Antrag bei Schlichtungsstelle (schriftlich oder online)
+2. **Prüfung:** Schlichtungsstelle prüft Zulässigkeit (Streitwert, Zuständigkeit)
+3. **Stellungnahme:** Unternehmen gibt Stellungnahme ab
+4. **Schlichtungsvorschlag:** Schlichtungsstelle unterbreitet Vorschlag
+5. **Annahme:** Beide Parteien können Vorschlag annehmen oder ablehnen
+6. **Abschluss:** Bei Annahme ist Streit beigelegt, bei Ablehnung bleibt Klageweg offen
+
+**Kosten:**
+- Für Verbraucher: Kostenlos
+- Für Unternehmen: Pauschale (ca. 300-500 €)
+
+**Dauer:**
+- 3-6 Monate (deutlich schneller als Gerichtsverfahren)
+
+**Bindungswirkung:**
+- Schlichtungsvorschlag ist nicht bindend
+- Beide Parteien können ablehnen
+- Bei Annahme: Vergleich mit Bindungswirkung
+
+---
+
+**3. Hinweispflicht auf Schlichtungsstelle (§ 36 VSBG):**
+
+**Verpflichtung:**
+Sie müssen Ihre Kunden auf die Möglichkeit der Schlichtung hinweisen:
+- Auf Ihrer Website
+- In Ihren AGB
+- In Vertragsunterlagen
+
+**Formulierung:**
+"Bei Streitigkeiten können Sie sich an die Verbraucherschlichtungsstelle der Deutschen Bundesbank wenden:
+Deutsche Bundesbank, Verbraucherschlichtungsstelle, Postfach 11 12 32, 60047 Frankfurt am Main
+E-Mail: schlichtung@bundesbank.de
+Website: www.bundesbank.de/schlichtung"
+
+---
+
+**4. Gesetz gegen den unlauteren Wettbewerb (UWG):**
+
+**Zweck:**
+Schutz von:
+- Verbrauchern vor unlauteren Geschäftspraktiken
+- Mitbewerbern vor unlauterem Wettbewerb
+- Allgemeinheit vor Verfälschung des Wettbewerbs
+
+**Unlautere Geschäftspraktiken (§ 3 UWG):**
+
+**Irreführende Werbung (§ 5 UWG):**
+- Falsche Angaben zu Produkteigenschaften
+- Verschweigen wesentlicher Informationen
+- Täuschung über Preise
+
+**Beispiele:**
+- "Günstigster Zinssatz Deutschlands" (ohne Beleg)
+- "Nur heute: 0% Zinsen" (obwohl dauerhaft verfügbar)
+- "Keine Gebühren" (obwohl versteckte Kosten)
+
+**Aggressive Geschäftspraktiken (§ 4a UWG):**
+- Belästigung (z.B. unerwünschte Werbeanrufe)
+- Nötigung (z.B. Drohung mit Kündigung)
+- Ausnutzung von Unerfahrenheit
+
+**Beispiele:**
+- Telefonwerbung ohne Einwilligung
+- Haustürgeschäfte mit Druck
+- Ausnutzung von Notlagen
+
+**Verbot unlauterer Geschäftspraktiken (§ 3 UWG):**
+- Verstoß gegen Gesetze (z.B. Preisangabenverordnung)
+- Irreführung über Identität (z.B. Vortäuschung einer Behörde)
+- Verschleierung kommerzieller Absicht (z.B. getarnte Werbung)
+
+---
+
+**5. Rechtsfolgen bei Verstößen:**
+
+**Unterlassungsanspruch (§ 8 UWG):**
+- Mitbewerber oder Verbraucherschutzverbände können Unterlassung verlangen
+- Abmahnung (außergerichtlich)
+- Einstweilige Verfügung (gerichtlich)
+- Unterlassungsklage
+
+**Schadensersatz (§ 9 UWG):**
+- Bei vorsätzlichem oder fahrlässigem Verstoß
+- Ersatz des entstandenen Schadens
+- Beispiel: Kunde schließt teureres Darlehen ab wegen irreführender Werbung
+
+**Gewinnabschöpfung (§ 10 UWG):**
+- Bei vorsätzlichem Verstoß
+- Abschöpfung des durch Verstoß erzielten Gewinns
+- Zugunsten des Bundeshaushalts
+
+**Bußgeld (§ 20 UWG):**
+- Bis 500.000 € bei Verstoß gegen UWG
+- Bei schweren oder wiederholten Verstößen
+
+---
+
+**6. Praxisbeispiele unlauterer Werbung:**
+
+**Beispiel 1: Irreführende Zinsangabe**
+"0% Zinsen für Immobiliendarlehen!"
+- **Problem:** Zinsen gelten nur für erste 6 Monate, danach 5%
+- **Verstoß:** Irreführende Werbung (§ 5 UWG)
+
+**Beispiel 2: Verschweigen von Kosten**
+"Kostenlose Beratung!"
+- **Problem:** Provision von 2% des Darlehensbetrags wird verschwiegen
+- **Verstoß:** Irreführende Werbung (§ 5 UWG)
+
+**Beispiel 3: Aggressive Verkaufsmethode**
+Telefonwerbung ohne Einwilligung des Kunden
+- **Problem:** Belästigung
+- **Verstoß:** Aggressive Geschäftspraktik (§ 4a UWG)
+
+**Beispiel 4: Vergleichende Werbung**
+"Wir sind besser als die Sparkasse!"
+- **Problem:** Herabsetzung eines Mitbewerbers ohne sachliche Begründung
+- **Verstoß:** Unlautere vergleichende Werbung (§ 6 UWG)
+
+---
+
+**7. Datenschutz (DSGVO):**
+
+**Informationspflichten (Art. 13 DSGVO):**
+Sie müssen Ihre Kunden über die Verarbeitung ihrer Daten informieren:
+- Welche Daten werden erhoben?
+- Zu welchem Zweck?
+- Wie lange werden sie gespeichert?
+- An wen werden sie weitergegeben?
+
+**Einwilligung (Art. 6 DSGVO):**
+Für Werbung benötigen Sie die Einwilligung des Kunden:
+- Freiwillig
+- Informiert
+- Eindeutig
+- Widerrufbar
+
+**Auskunftsrecht (Art. 15 DSGVO):**
+Kunden haben das Recht, Auskunft über ihre gespeicherten Daten zu verlangen.
+
+**Löschungsrecht (Art. 17 DSGVO):**
+Kunden haben das Recht, die Löschung ihrer Daten zu verlangen (nach Ablauf der Aufbewahrungsfrist).
+
+**Sanktionen:**
+- Bußgeld bis 20 Mio. € oder 4% des Jahresumsatzes (Art. 83 DSGVO)
+
+---
+
+**Datenschutz (DSGVO), Verschwiegenheit und Zuständigkeiten im Detail:**
 
 **1. Datenschutz-Grundverordnung (DSGVO):**
 
 **Anwendungsbereich:**
 Die DSGVO gilt für die Verarbeitung personenbezogener Daten:
-- **Personenbezogene Daten:** Alle Informationen, die sich auf eine identifizierte oder identifiz
-- **Steuerliche Aspekte des Immobilienerwerbs im Detail:**
+- **Personenbezogene Daten:** Alle Informationen, die sich auf eine identifizierte oder identifizierbare Person beziehen (Name, Adresse, E-Mail, Telefon, Einkommen, Vermögen)
+- **Verarbeitung:** Erhebung, Speicherung, Verwendung, Weitergabe, Löschung
 
-**1. Grunderwerbsteuer:**
+**Grundsätze (Art. 5 DSGVO):**
+1. **Rechtmäßigkeit:** Daten dürfen nur mit Rechtsgrundlage verarbeitet werden
+2. **Zweckbindung:** Daten dürfen nur für festgelegte Zwecke verwendet werden
+3. **Datenminimierung:** Nur notwendige Daten erheben
+4. **Richtigkeit:** Daten müssen korrekt und aktuell sein
+5. **Speicherbegrenzung:** Daten dürfen nur so lange gespeichert werden, wie erforderlich
+6. **Integrität und Vertraulichkeit:** Daten müssen geschützt werden
+
+---
+
+**2. Rechtsgrundlagen der Datenverarbeitung (Art. 6 DSGVO):**
+
+**Einwilligung (Art. 6 Abs. 1 lit. a DSGVO):**
+- Freiwillig
+- Informiert
+- Eindeutig
+- Widerrufbar
+- **Beispiel:** Kunde willigt ein, dass Sie seine Daten an Banken weitergeben
+
+**Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO):**
+- Datenverarbeitung ist erforderlich zur Erfüllung eines Vertrags
+- **Beispiel:** Sie benötigen Einkommensnachweise, um Darlehen zu vermitteln
+
+**Gesetzliche Verpflichtung (Art. 6 Abs. 1 lit. c DSGVO):**
+- Datenverarbeitung ist gesetzlich vorgeschrieben
+- **Beispiel:** Aufbewahrung von Unterlagen für 10 Jahre (§ 257 HGB)
+
+**Berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO):**
+- Datenverarbeitung ist erforderlich zur Wahrung berechtigter Interessen
+- **Beispiel:** Bonitätsprüfung zur Vermeidung von Kreditausfällen
+
+---
+
+**3. Informationspflichten (Art. 13 DSGVO):**
+
+**Pflichtangaben:**
+Sie müssen Ihre Kunden über folgende Punkte informieren:
+
+1. **Verantwortlicher:** Name und Kontaktdaten (Ihr Name, Firma, Adresse)
+2. **Datenschutzbeauftragter:** Name und Kontaktdaten (falls vorhanden)
+3. **Zweck der Datenverarbeitung:** Beratung, Vermittlung, Vertragserfüllung
+4. **Rechtsgrundlage:** Einwilligung, Vertragserfüllung, gesetzliche Verpflichtung
+5. **Empfänger:** An wen werden Daten weitergegeben? (Banken, Versicherungen)
+6. **Speicherdauer:** Wie lange werden Daten gespeichert? (10 Jahre)
+7. **Rechte der Betroffenen:** Auskunft, Berichtigung, Löschung, Widerruf
+8. **Beschwerderecht:** Recht, sich bei Aufsichtsbehörde zu beschweren
+
+**Form:**
+- Schriftlich (Datenschutzerklärung)
+- Bei erster Kontaktaufnahme
+- Klar und verständlich
+
+---
+
+**4. Rechte der Betroffenen:**
+
+**Auskunftsrecht (Art. 15 DSGVO):**
+- Kunde kann Auskunft über gespeicherte Daten verlangen
+- Innerhalb 1 Monat kostenlos
+
+**Berichtigungsrecht (Art. 16 DSGVO):**
+- Kunde kann Berichtigung falscher Daten verlangen
+
+**Löschungsrecht (Art. 17 DSGVO):**
+- Kunde kann Löschung seiner Daten verlangen
+- **Ausnahme:** Aufbewahrungspflichten (§ 257 HGB, § 8 GwG)
+
+**Widerspruchsrecht (Art. 21 DSGVO):**
+- Kunde kann Widerspruch gegen Datenverarbeitung einlegen
+- **Beispiel:** Widerspruch gegen Werbung
+
+**Datenübertragbarkeit (Art. 20 DSGVO):**
+- Kunde kann Daten in strukturiertem Format erhalten
+- **Beispiel:** CSV-Datei mit allen gespeicherten Daten
+
+---
+
+**5. Technische und organisatorische Maßnahmen (Art. 32 DSGVO):**
+
+**Vertraulichkeit:**
+- Passwortschutz für Computer
+- Verschlüsselung von E-Mails
+- Abschließbare Schränke für Papierunterlagen
+
+**Integrität:**
+- Backups (regelmäßige Sicherung)
+- Virenschutz
+- Firewall
+
+**Verfügbarkeit:**
+- Redundante Systeme (bei Ausfall)
+- Notfallplan
+
+**Belastbarkeit:**
+- Regelmäßige Tests
+- Schulung der Mitarbeiter
+
+---
+
+**6. Datenpanne (Art. 33, 34 DSGVO):**
+
+**Meldepflicht:**
+Wenn personenbezogene Daten verloren gehen, gestohlen werden oder unbefugt offengelegt werden, müssen Sie dies melden:
+
+**An Aufsichtsbehörde (Art. 33 DSGVO):**
+- Innerhalb 72 Stunden
+- Beschreibung der Panne
+- Maßnahmen zur Behebung
+
+**An Betroffene (Art. 34 DSGVO):**
+- Wenn hohes Risiko für Rechte und Freiheiten
+- **Beispiel:** Gesundheitsdaten, Finanzdaten
+
+---
+
+**7. Verschwiegenheit:**
+
+**Pflicht zur Verschwiegenheit:**
+Sie dürfen keine Informationen über Ihre Kunden an Dritte weitergeben, außer:
+- Kunde willigt ein
+- Gesetzliche Verpflichtung (z.B. Geldwäschegesetz)
+- Vertragserfüllung (z.B. Weitergabe an Bank zur Darlehensvermittlung)
+
+**Beispiele:**
+- **Zulässig:** Weitergabe von Einkommensnachweisen an Bank (mit Einwilligung)
+- **Unzulässig:** Weitergabe von Kundendaten an Werbefirma (ohne Einwilligung)
+
+**Sanktionen:**
+- Schadensersatz (§ 280 BGB)
+- Bußgeld (DSGVO)
+- Strafrechtliche Verfolgung (§ 203 StGB - Verletzung von Privatgeheimnissen)
+
+---
+
+**8. Zuständigkeiten der Aufsicht:**
+
+**IHK (Industrie- und Handelskammer):**
+- Erteilung der Erlaubnis nach §34i GewO
+- Prüfung der Sachkunde
+- Überwachung der Einhaltung von §34i GewO
+- Bußgelder bei Verstößen (§ 144 GewO)
+- Erlaubnisentzug (§ 35 GewO)
+
+**BaFin (Bundesanstalt für Finanzdienstleistungsaufsicht):**
+- Überwachung der Geldwäscheprävention (GwG)
+- Prüfung der Einhaltung von Sorgfaltspflichten
+- Bußgelder bei Verstößen (§ 56 GwG)
+
+**Datenschutzbehörde (Landesdatenschutzbeauftragte):**
+- Überwachung der Einhaltung der DSGVO
+- Prüfung von Beschwerden
+- Bußgelder bei Verstößen (Art. 83 DSGVO)
+
+**Financial Intelligence Unit (FIU):**
+- Entgegennahme von Verdachtsmeldungen (§ 43 GwG)
+- Auswertung und Weiterleitung an Strafverfolgungsbehörden
+
+---
+
+**9. Sanktionen bei Verstößen:**
+
+**DSGVO (Art. 83 DSGVO):**
+- Bußgeld bis 20 Mio. € oder 4% des Jahresumsatzes
+- Bei schweren Verstößen (z.B. Verarbeitung ohne Rechtsgrundlage)
+
+**GwG (§ 56 GwG):**
+- Bußgeld bis 1 Mio. € oder 10% des Jahresumsatzes
+- Bei Verstößen gegen Sorgfaltspflichten
+
+**§34i GewO (§ 144 GewO):**
+- Bußgeld bis 50.000 €
+- Bei Verstößen gegen Verhaltens- und Informationspflichten
+
+**StGB (§ 203 StGB):**
+- Freiheitsstrafe bis 1 Jahr oder Geldstrafe
+- Bei Verletzung von Privatgeheimnissen
+
+---
+
+**Praxisfall 1: Beratungsprotokoll erstellen**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Verhaltens- und Informationspflichten als Immobiliardarlehensvermittler' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Verhaltens- und Informationspflichten als Immobiliardarlehensvermittler'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Verhaltens- und Informationspflichten als Immobiliardarlehensvermittler' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
+
+Ein Kunde (35 Jahre, verheiratet, 2 Kinder) möchte eine Eigentumswohnung für 350.000 € kaufen. Er hat 70.000 € Eigenkapital und verdient 4.500 € netto/Monat. Seine Frau verdient 2.500 € netto/Monat. Die monatlichen Ausgaben betragen 3.000 €.
+
+**Fragen:**
+1. Welche Informationen müssen Sie im Beratungsprotokoll dokumentieren?
+2. Ist die Finanzierung tragfähig?
+3. Wie hoch darf die maximale Darlehensrate sein?
+4. Welches Darlehensprodukt empfehlen Sie?
+5. Welche Risiken müssen Sie aufklären?
+
+---
+
+**Praxisfall 2: Interessenkonflikt offenlegen**
+
+Sie arbeiten als Immobiliardarlehensvermittler und erhalten von der Sparkasse eine Provision von 1% des Darlehensbetrags. Ein Kunde fragt Sie, ob Sie unabhängig beraten oder nur mit bestimmten Banken zusammenarbeiten.
+
+**Fragen:**
+1. Müssen Sie dem Kunden mitteilen, dass Sie eine Provision erhalten?
+2. Müssen Sie offenlegen, wie hoch die Provision ist?
+3. Müssen Sie offenlegen, von welcher Bank Sie die Provision erhalten?
+4. Dürfen Sie dem Kunden ein teureres Darlehen empfehlen, um eine höhere Provision zu erhalten?
+5. Was passiert, wenn Sie den Interessenkonflikt nicht offenlegen?
+
+---
+
+**Praxisfall 3: Weiterbildungspflicht**
+
+Sie haben im letzten Jahr nur 10 Stunden Weiterbildung absolviert (statt der vorgeschriebenen 15 Stunden). Die IHK führt eine Kontrolle durch und stellt den Verstoß fest.
+
+**Fragen:**
+1. Haben Sie gegen die Weiterbildungspflicht verstoßen?
+2. Welche Sanktionen drohen?
+3. Können Sie die fehlenden 5 Stunden nachholen?
+4. Wie weisen Sie die Weiterbildung nach?
+5. Welche Themen sind für die Weiterbildung relevant?
+
+---
+
+**Praxisfall 1: Identifizierung**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Kreditwesengesetz (KWG) und Geldwäschegesetz (GwG)' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Kreditwesengesetz (KWG) und Geldwäschegesetz (GwG)'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Kreditwesengesetz (KWG) und Geldwäschegesetz (GwG)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
+
+Ein Kunde möchte ein Darlehen aufnehmen. Er zeigt Ihnen seinen Personalausweis (gültig bis 2028). Sie kopieren den Ausweis und legen die Kopie in die Kundenakte.
+
+**Fragen:**
+1. Haben Sie die Identifizierung korrekt durchgeführt?
+2. Welche Angaben müssen Sie erfassen?
+3. Wie lange müssen Sie die Kopie aufbewahren?
+4. Dürfen Sie die Identifizierung auch per Videoident durchführen?
+5. Was müssen Sie bei juristischen Personen zusätzlich prüfen?
+
+---
+
+**Praxisfall 2: Herkunft der Mittel**
+
+Ein Kunde möchte eine Immobilie für 500.000 € kaufen. Er hat 150.000 € Eigenkapital. Auf Ihre Frage nach der Herkunft antwortet er: "Das geht Sie nichts an."
+
+**Fragen:**
+1. Müssen Sie die Herkunft der Mittel klären?
+2. Was tun Sie, wenn der Kunde die Auskunft verweigert?
+3. Ist dies ein Anhaltspunkt für Geldwäsche?
+4. Müssen Sie eine Verdachtsmeldung abgeben?
+5. Dürfen Sie den Kunden über die Meldung informieren?
+
+---
+
+**Praxisfall 3: Politisch exponierte Person**
+
+Ein Kunde ist Landtagsabgeordneter und möchte ein Darlehen aufnehmen. Sie erkennen, dass er eine politisch exponierte Person (PEP) ist.
+
+**Fragen:**
+1. Was ist eine politisch exponierte Person?
+2. Welche besonderen Sorgfaltspflichten gelten?
+3. Müssen Sie die Zustimmung Ihrer Geschäftsleitung einholen?
+4. Dürfen Sie den Kunden ablehnen?
+5. Welche Unterlagen müssen Sie zusätzlich anfordern?
+
+---
+
+**Darlehensarten im Detail:**
+
+**1. Annuitätendarlehen:**
 
 **Definition:**
-Die Grunderwerbsteuer ist eine einmalige Steuer, die beim Kauf einer Immobilie anfällt.
+Das Annuitätendarlehen ist die häufigste Darlehensform in Deutschland. Die monatliche Rate (Annuität) bleibt über die gesamte Zinsbindung konstant.
 
-**Steuersatz:**
-- **Bundesweit unterschiedlich:** 3,5% bis 6,5% des Kaufpreises
-- **Bayern, Sachsen:** 3,5%
-- 
+**Zusammensetzung der Rate:**
+- **Zinsanteil:** Sinkt mit jeder Rate (da Restschuld sinkt)
+- **Tilgungsanteil:** Steigt mit jeder Rate (da Zinsanteil sinkt)
+- **Annuität = Zinsanteil + Tilgungsanteil**
+
+**Beispiel:**
+- Darlehensbetrag: 300.000 €
+- Zinssatz: 3,5% p.a.
+- Anfangstilgung: 2% p.a.
+- **Annuität:** 300.000 € × (3,5% + 2%) = 16.500 €/Jahr = 1.375 €/Monat
+
+**Erste Rate:**
+- Zinsen: 300.000 € × 3,5% / 12 = 875 €
+- Tilgung: 1.375 € - 875 € = 500 €
+- **Restschuld:** 300.000 € - 500 € = 299.500 €
+
+**Zweite Rate:**
+- Zinsen: 299.500 € × 3,5% / 12 = 873,54 €
+- Tilgung: 1.375 € - 873,54 € = 501,46 €
+- **Restschuld:** 299.500 € - 501,46 € = 298.998,54 €
+
+**Vorteile:**
+- Planungssicherheit (konstante Rate)
+- Einfache Kalkulation
+- Weit verbreitet
+
+**Nachteile:**
+- Höhere Gesamtzinsbelastung als Tilgungsdarlehen
+- Tilgungsanteil anfangs gering
+
+---
+
+**2. Tilgungsdarlehen (Abzahlungsdarlehen):**
+
+**Definition:**
+Beim Tilgungsdarlehen bleibt die Tilgung konstant, die Zinsen sinken mit der Restschuld. Dadurch sinkt die monatliche Rate.
+
+**Zusammensetzung der Rate:**
+- **Tilgungsanteil:** Konstant
+- **Zinsanteil:** Sinkt mit jeder Rate
+- **Rate = Tilgung + Zinsen**
+
+**Beispiel:**
+- Darlehensbetrag: 300.000 €
+- Zinssatz: 3,5% p.a.
+- Laufzeit: 25 Jahre
+- **Tilgung pro Jahr:** 300.000 € / 25 = 12.000 €/Jahr = 1.000 €/Monat
+
+**Erste Rate:**
+- Tilgung: 1.000 €
+- Zinsen: 300.000 € × 3,5% / 12 = 875 €
+- **Gesamt:** 1.000 € + 875 € = 1.875 €
+
+**Zweite Rate:**
+- Tilgung: 1.000 €
+- Zinsen: (300.000 € - 1.000 €) × 3,5% / 12 = 872,08 €
+- **Gesamt:** 1.000 € + 872,08 € = 1.872,08 €
+
+**Letzte Rate (nach 25 Jahren):**
+- Tilgung: 1.000 €
+- Zinsen: 1.000 € × 3,5% / 12 = 2,92 €
+- **Gesamt:** 1.000 € + 2,92 € = 1.002,92 €
+
+**Vorteile:**
+- Geringere Gesamtzinsbelastung (da Restschuld schneller sinkt)
+- Schnellere Entschuldung
+- Sinkende monatliche Belastung
+
+**Nachteile:**
+- Höhere Anfangsrate (schwerer finanzierbar)
+- Weniger Planungssicherheit (Rate ändert sich)
+
+---
+
+**3. Endfälliges Darlehen:**
+
+**Definition:**
+Beim endfälligen Darlehen wird während der Laufzeit nur der Zins gezahlt. Die Tilgung erfolgt am Ende der Laufzeit in einer Summe.
+
+**Zusammensetzung der Rate:**
+- **Zinsanteil:** Konstant (da Restschuld konstant bleibt)
+- **Tilgungsanteil:** 0 € (während Laufzeit)
+- **Tilgung am Ende:** Gesamter Darlehensbetrag
+
+**Beispiel:**
+- Darlehensbetrag: 300.000 €
+- Zinssatz: 3,5% p.a.
+- Laufzeit: 25 Jahre
+
+**Monatliche Rate:**
+- Zinsen: 300.000 € × 3,5% / 12 = 875 €/Monat
+- Tilgung: 0 €
+- **Gesamt:** 875 €/Monat
+
+**Am Ende der Laufzeit:**
+- Tilgung: 300.000 € (in einer Summe)
+
+**Kombination mit Lebensversicherung:**
+Oft wird ein endfälliges Darlehen mit einer Lebensversicherung kombiniert:
+- Kunde zahlt monatlich in Lebensversicherung ein
+- Am Ende der Laufzeit: Auszahlung der Lebensversicherung tilgt das Darlehen
+
+**Vorteile:**
+- Niedrige monatliche Belastung (nur Zinsen)
+- Steuerliche Vorteile bei Vermietung (Zinsen voll abzugsfähig)
+- Flexibilität (Tilgung kann aus anderen Quellen erfolgen)
+
+**Nachteile:**
+- Höchste Gesamtzinsbelastung (Restschuld bleibt konstant)
+- Risiko: Lebensversicherung erreicht nicht den gewünschten Betrag
+- Keine Entschuldung während Laufzeit
+
+---
+
+**4. Vergleich der Darlehensarten:**
+
+**Gesamtzinsbelastung (Beispiel 300.000 €, 3,5%, 25 Jahre):**
+
+**Annuitätendarlehen:**
+- Monatliche Rate: 1.500 € (ca.)
+- Gesamtzinsen: ca. 150.000 €
+
+**Tilgungsdarlehen:**
+- Anfangsrate: 1.875 €
+- Endrate: 1.003 €
+- Gesamtzinsen: ca. 132.000 € (18.000 € weniger als Annuitätendarlehen)
+
+**Endfälliges Darlehen:**
+- Monatliche Rate: 875 € (nur Zinsen)
+- Gesamtzinsen: ca. 262.500 € (112.500 € mehr als Annuitätendarlehen)
+
+**Empfehlung:**
+- **Eigennutzung:** Annuitätendarlehen (Planungssicherheit)
+- **Vermietung:** Endfälliges Darlehen (steuerliche Vorteile)
+- **Schnelle Entschuldung:** Tilgungsdarlehen (geringste Zinslast)
+
+---
+
+**5. Sonderformen:**
+
+**Volltilgerdarlehen:**
+- Annuitätendarlehen mit 100% Tilgung bis Ende der Zinsbindung
+- Keine Anschlussfinanzierung erforderlich
+- Höhere Rate, aber Planungssicherheit
+
+**Forward-Darlehen:**
+- Zinssicherung für zukünftige Anschlussfinanzierung
+- Bis zu 5 Jahre im Voraus abschließen
+- Zinsaufschlag (Forward-Prämie)
+
+**KfW-Darlehen:**
+- Förderdarlehen der Kreditanstalt für Wiederaufbau
+- Günstige Zinsen (unter Marktniveau)
+- Tilgungszuschüsse bei energieeffizienten Immobilien
+- Kombination mit Bankdarlehen möglich
+
+---
+
+**Bauspardarlehen, KfW-Darlehen und Förderprogramme im Detail:**
+
+**1. Bauspardarlehen:**
+
+**Funktionsweise:**
+1. **Ansparphase:** Kunde spart 40-50% der Bausparsumme an
+2. **Zuteilung:** Nach Erreichen der Mindestansparung und Bewertungszahl
+3. **Darlehensphase:** Auszahlung des Bauspardarlehens (50-60% der Bausparsumme)
+
+**Beispiel:**
+- Bausparsumme: 100.000 €
+- Ansparung: 40.000 € (40%)
+- Bauspardarlehen: 60.000 €
+- Guthabenzins: 0,1% p.a.
+- Darlehenszins: 2,5% p.a.
+
+**Ansparphase:**
+- Monatliche Sparrate: 500 €
+- Dauer: ca. 7 Jahre (bis 40.000 € angespart)
+- Zinsen auf Guthaben: 0,1% p.a.
+
+**Darlehensphase:**
+- Auszahlung: 60.000 €
+- Zinssatz: 2,5% p.a.
+- Tilgung: 0,5% p.a.
+- Monatliche Rate: 60.000 € × (2,5% + 0,5%) / 12 = 150 €
+
+**Vorteile:**
+- Niedrige Zinsen (unter Marktniveau)
+- Planungssicherheit (Zinssatz fest bei Vertragsabschluss)
+- Staatliche Förderung (Wohnungsbauprämie, Arbeitnehmersparzulage)
+
+**Nachteile:**
+- Lange Ansparphase (7-10 Jahre)
+- Niedrige Guthabenzinsen
+- Abschlussgebühr (1-1,6% der Bausparsumme)
+
+**Staatliche Förderung:**
+
+**Wohnungsbauprämie:**
+- 10% auf Einzahlungen bis 700 €/Jahr (Alleinstehende) bzw. 1.400 €/Jahr (Verheiratete)
+- Einkommensgrenze: 35.000 €/Jahr (Alleinstehende) bzw. 70.000 €/Jahr (Verheiratete)
+- **Beispiel:** 700 € Einzahlung × 10% = 70 € Prämie/Jahr
+
+**Arbeitnehmersparzulage:**
+- 9% auf vermögenswirksame Leistungen bis 470 €/Jahr
+- Einkommensgrenze: 17.900 €/Jahr (Alleinstehende) bzw. 35.800 €/Jahr (Verheiratete)
+- **Beispiel:** 470 € VL × 9% = 42,30 € Sparzulage/Jahr
+
+---
+
+**2. KfW-Darlehen:**
+
+**Kreditanstalt für Wiederaufbau (KfW):**
+- Staatliche Förderbank
+- Fördert energieeffizientes Bauen, Modernisierung, Familien
+- Zinsen unter Marktniveau
+- Tilgungszuschüsse
+
+**Wichtigste Programme:**
+
+**KfW 124 - Wohneigentumsprogramm:**
+- Für Familien mit Kindern
+- Bis 100.000 € pro Wohneinheit
+- Zinssatz: ca. 2,5% p.a. (unter Marktniveau)
+- Laufzeit: bis 35 Jahre
+- Tilgungsfreie Anlaufjahre: bis 5 Jahre
+
+**KfW 153 - Energieeffizient Bauen:**
+- Für Neubau von Effizienzhäusern (KfW 40, KfW 40 Plus)
+- Bis 150.000 € pro Wohneinheit
+- Zinssatz: ca. 1,5% p.a.
+- Tilgungszuschuss: bis 45.000 € (bei KfW 40 Plus)
+- **Beispiel:** 150.000 € Darlehen, 30% Tilgungszuschuss = 45.000 € geschenkt
+
+**KfW 261 - Wohngebäude – Kredit:**
+- Für energetische Sanierung
+- Bis 150.000 € pro Wohneinheit
+- Zinssatz: ca. 1,8% p.a.
+- Tilgungszuschuss: bis 75.000 € (bei Effizienzhaus 40)
+
+**KfW 270 - Erneuerbare Energien – Standard:**
+- Für Photovoltaik, Batteriespeicher
+- Bis 50 Mio. € pro Vorhaben
+- Zinssatz: ca. 4,5% p.a.
+- Keine Tilgungszuschüsse
+
+**Kombination mit Bankdarlehen:**
+- KfW-Darlehen wird über Hausbank ausgezahlt
+- Kombination mit Bankdarlehen möglich
+- **Beispiel:** 300.000 € Finanzierung = 150.000 € KfW + 150.000 € Bank
+
+**Vorteile:**
+- Zinsen unter Marktniveau
+- Tilgungszuschüsse (geschenktes Geld)
+- Lange Zinsbindung (bis 20 Jahre)
+- Tilgungsfreie Anlaufjahre
+
+**Nachteile:**
+- Aufwendiger Antragsprozess
+- Energieberater erforderlich (bei KfW 153, 261)
+- Nachweispflichten (Baubegleitung)
+
+---
+
+**3. Förderprogramme:**
+
+**Bundesförderung:**
+
+**Baukindergeld (ausgelaufen 2020):**
+- 12.000 € pro Kind über 10 Jahre (1.200 €/Jahr)
+- Einkommensgrenze: 75.000 € + 15.000 € pro Kind
+- **Beispiel:** Familie mit 2 Kindern = 24.000 € über 10 Jahre
+
+**Wohneigentumsförderung für Familien (ab 2023):**
+- Bis 100.000 € zinsgünstiges Darlehen (KfW 124)
+- Für Familien mit Kindern
+- Einkommensgrenze: 60.000 € + 10.000 € pro Kind
+
+**Landesförderung:**
+
+**Bayern - Bayerisches Wohnungsbauprogramm:**
+- Bis 180.000 € zinsgünstiges Darlehen
+- Zinssatz: 0,5% p.a.
+- Einkommensgrenze: 60.000 € + 10.000 € pro Kind
+
+**Nordrhein-Westfalen - NRW.BANK.Wohneigentum:**
+- Bis 50.000 € zinsgünstiges Darlehen
+- Zinssatz: 1,0% p.a.
+- Einkommensgrenze: 50.000 € + 10.000 € pro Kind
+
+**Kommunale Förderung:**
+- Grundstücksvergabe zu günstigen Preisen
+- Zuschüsse für Erschließungskosten
+- Erlass von Grunderwerbsteuer (in einigen Gemeinden)
+
+---
+
+**4. Kombination verschiedener Darlehensarten:**
+
+**Beispiel Finanzierung 400.000 €:**
+
+**Variante 1: Nur Bankdarlehen**
+- 400.000 € Bankdarlehen (3,5% p.a.)
+- Monatliche Rate: 1.833 € (2% Tilgung)
+- Gesamtzinsen: ca. 200.000 €
+
+**Variante 2: Bank + KfW**
+- 250.000 € Bankdarlehen (3,5% p.a.)
+- 150.000 € KfW 153 (1,5% p.a., 30% Tilgungszuschuss)
+- Tilgungszuschuss: 45.000 €
+- Effektiv zu finanzieren: 250.000 € + 105.000 € = 355.000 €
+- Monatliche Rate: ca. 1.600 €
+- Gesamtzinsen: ca. 140.000 €
+- **Ersparnis: 60.000 € + 45.000 € Tilgungszuschuss = 105.000 €**
+
+**Variante 3: Bank + KfW + Bausparen**
+- 200.000 € Bankdarlehen (3,5% p.a.)
+- 150.000 € KfW 153 (1,5% p.a., 30% Tilgungszuschuss)
+- 50.000 € Bauspardarlehen (2,5% p.a., nach 7 Jahren)
+- Tilgungszuschuss: 45.000 €
+- Effektiv zu finanzieren: 200.000 € + 105.000 € + 50.000 € = 355.000 €
+- Monatliche Rate: ca. 1.550 €
+- Gesamtzinsen: ca. 130.000 €
+- **Ersparnis: 70.000 € + 45.000 € Tilgungszuschuss = 115.000 €**
+
+**Empfehlung:**
+- Immer KfW-Förderung prüfen (Tilgungszuschüsse sind geschenktes Geld)
+- Bausparen für Anschlussfinanzierung (Zinssicherung)
+- Kombination verschiedener Darlehensarten optimiert Finanzierung
+
+---
+
+### Zinsentwicklung Deutschland 2024/2025 (aktuell)
+
+**EZB-Leitzins (Einlagensatz):**
+| Datum | Leitzins |
+|-------|---------|
+| Jun 2023 | 4,00% (Höchststand) |
+| Jun 2024 | 3,75% (erste Senkung) |
+| Sep 2024 | 3,50% |
+| Dez 2024 | 3,00% |
+| Mär 2025 | 2,50% (aktuell) |
+
+**Bauzinsen Deutschland (10J Zinsbindung, Stand März 2026):**
+- Durchschnitt: ca. 3,8–4,2% p.a.
+- Beste Konditionen (sehr gute Bonität, 60% Beleihung): ab 3,5%
+- Höhere Beleihung (>80%): Aufschlag 0,3–0,8%
+
+**Forward-Darlehen 2025:**
+- Vorlaufzeit 12 Monate: Aufschlag ca. 0,20%
+- Vorlaufzeit 24 Monate: Aufschlag ca. 0,40%
+- Vorlaufzeit 36 Monate: Aufschlag ca. 0,60%
+
+**Prüfungshinweis:** Die IHK-Prüfung fragt keine tagesaktuellen Zinsen,
+sondern das Verständnis der Zinsstruktur und Berechnungsmethoden.
+Aktuelle Marktdaten sind für die Beratungspraxis nach §34i GewO wichtig.
+
+**Zinsbindung, Sollzins, Effektivzins und Konditionsvergleich im Detail:**
+
+**1. Zinsbindung:**
+
+**Definition:**
+Die Zinsbindung (auch Zinsfestschreibung) legt fest, wie lange der Zinssatz unverändert bleibt.
+
+**Übliche Zinsbindungen:**
+- 5 Jahre
+- 10 Jahre (am häufigsten)
+- 15 Jahre
+- 20 Jahre
+- 30 Jahre (Volltilgung)
+
+**Beispiel:**
+- Darlehensbetrag: 300.000 €
+- Zinsbindung: 10 Jahre
+- Zinssatz: 3,5% p.a. (fest für 10 Jahre)
+- Nach 10 Jahren: Anschlussfinanzierung erforderlich
+
+**Vor- und Nachteile:**
+
+**Kurze Zinsbindung (5 Jahre):**
+- **Vorteile:** Niedrigere Zinsen, Flexibilität
+- **Nachteile:** Zinsänderungsrisiko nach 5 Jahren
+
+**Lange Zinsbindung (20 Jahre):**
+- **Vorteile:** Planungssicherheit, Schutz vor Zinsanstieg
+- **Nachteile:** Höhere Zinsen, weniger Flexibilität
+
+**Empfehlung:**
+- **Niedrige Zinsen:** Lange Zinsbindung (15-20 Jahre) sichern
+- **Hohe Zinsen:** Kurze Zinsbindung (5 Jahre), dann neu verhandeln
+
+---
+
+**2. Sollzins (Nominalzins):**
+
+**Definition:**
+Der Sollzins ist der reine Darlehenszins ohne Nebenkosten.
+
+**Beispiel:**
+- Darlehensbetrag: 300.000 €
+- Sollzins: 3,5% p.a.
+- **Zinsen pro Jahr:** 300.000 € × 3,5% = 10.500 €
+
+**Wichtig:**
+- Sollzins ist NICHT die Vergleichsgröße
+- Sollzins berücksichtigt keine Nebenkosten
+
+---
+
+**3. Effektivzins:**
+
+**Definition:**
+Der Effektivzins berücksichtigt alle Kosten des Darlehens und ist die Vergleichsgröße.
+
+**Berücksichtigte Kosten:**
+- Sollzins
+- Bearbeitungsgebühr (nicht mehr zulässig seit 2014)
+- Disagio (Damnum) - Abschlag bei Auszahlung
+- Schätzkosten
+- Vermittlungsgebühr
+
+**Nicht berücksichtigt:**
+- Notarkosten
+- Grundbuchkosten
+- Grunderwerbsteuer
+
+**Berechnung:**
+Effektivzins = Sollzins + (Nebenkosten / Darlehensbetrag / Laufzeit)
+
+**Beispiel:**
+- Darlehensbetrag: 300.000 €
+- Sollzins: 3,5% p.a.
+- Disagio: 3% (9.000 €)
+- Auszahlung: 291.000 €
+- **Effektivzins:** ca. 3,8% p.a.
+
+**Wichtig:**
+- Effektivzins ist die Vergleichsgröße
+- Je höher die Nebenkosten, desto höher der Effektivzins
+
+---
+
+**4. Konditionsvergleich:**
+
+**Pflicht:**
+Sie müssen dem Kunden mindestens 3 Angebote vorlegen (§ 511 BGB).
+
+**Vergleichskriterien:**
+
+**1. Effektivzins:**
+- Wichtigste Vergleichsgröße
+- **Beispiel:** Bank A: 3,5%, Bank B: 3,8%, Bank C: 3,6%
+
+**2. Zinsbindung:**
+- Wie lange ist der Zinssatz fest?
+- **Beispiel:** Bank A: 10 Jahre, Bank B: 15 Jahre, Bank C: 10 Jahre
+
+**3. Sondertilgungsrechte:**
+- Wie viel kann pro Jahr extra getilgt werden?
+- **Beispiel:** Bank A: 5% p.a., Bank B: 10% p.a., Bank C: 0%
+
+**4. Bereitstellungszinsen:**
+- Kosten, wenn Darlehen nicht sofort abgerufen wird
+- **Beispiel:** Bank A: 0,25% p.M. nach 3 Monaten, Bank B: 0,15% p.M. nach 6 Monaten
+
+**5. Vorfälligkeitsentschädigung:**
+- Kosten bei vorzeitiger Rückzahlung
+- **Beispiel:** Bank A: 1% des Restbetrags, Bank B: 0,5%
+
+**6. Tilgungssatzwechsel:**
+- Kann die Tilgung angepasst werden?
+- **Beispiel:** Bank A: 1x kostenlos, Bank B: unbegrenzt
+
+---
+
+**5. Beispiel Konditionsvergleich:**
+
+**Bank A:**
+- Effektivzins: 3,5% p.a.
+- Zinsbindung: 10 Jahre
+- Sondertilgung: 5% p.a.
+- Bereitstellungszinsen: 0,25% p.M. nach 3 Monaten
+- Tilgungssatzwechsel: 1x kostenlos
+
+**Bank B:**
+- Effektivzins: 3,8% p.a.
+- Zinsbindung: 15 Jahre
+- Sondertilgung: 10% p.a.
+- Bereitstellungszinsen: 0,15% p.M. nach 6 Monaten
+- Tilgungssatzwechsel: unbegrenzt
+
+**Bank C:**
+- Effektivzins: 3,6% p.a.
+- Zinsbindung: 10 Jahre
+- Sondertilgung: 0%
+- Bereitstellungszinsen: 0,30% p.M. nach 2 Monaten
+- Tilgungssatzwechsel: nicht möglich
+
+**Empfehlung:**
+- **Bank A:** Bestes Preis-Leistungs-Verhältnis (niedrigster Effektivzins, moderate Konditionen)
+- **Bank B:** Beste Planungssicherheit (15 Jahre Zinsbindung, hohe Flexibilität)
+- **Bank C:** Nicht empfehlenswert (keine Sondertilgung, hohe Bereitstellungszinsen)
+
+---
+
+**6. Auswirkung Zinsunterschied:**
+
+**Beispiel:**
+- Darlehensbetrag: 300.000 €
+- Laufzeit: 25 Jahre
+- Tilgung: 2% p.a.
+
+**Bank A (3,5% Effektivzins):**
+- Monatliche Rate: 1.375 €
+- Gesamtzinsen: ca. 150.000 €
+
+**Bank B (4,0% Effektivzins):**
+- Monatliche Rate: 1.500 €
+- Gesamtzinsen: ca. 175.000 €
+
+**Unterschied:**
+- Mehrkosten: 25.000 € über 25 Jahre
+- **0,5% Zinsunterschied = 25.000 € Mehrkosten**
+
+---
+
+**7. Bereitstellungszinsen:**
+
+**Definition:**
+Kosten, wenn das Darlehen nicht sofort abgerufen wird (z.B. bei Neubau).
+
+**Berechnung:**
+Bereitstellungszinsen = Nicht abgerufener Betrag × Zinssatz × Monate / 12
+
+**Beispiel:**
+- Darlehensbetrag: 300.000 €
+- Abruf: 100.000 € sofort, 200.000 € nach 6 Monaten
+- Bereitstellungszinsen: 0,25% p.M. nach 3 Monaten
+- **Kosten:** 200.000 € × 0,25% × 3 Monate = 1.500 €
+
+**Tipps:**
+- Bereitstellungszinsfreie Zeit verhandeln (6-12 Monate)
+- Abrufplan mit Bank abstimmen
+- Bei Neubau: Baufortschritt mit Abruf synchronisieren
+
+---
+
+**8. Vorfälligkeitsentschädigung:**
+
+**Definition:**
+Entschädigung an die Bank bei vorzeitiger Rückzahlung des Darlehens.
+
+**Berechnung:**
+Vorfälligkeitsentschädigung = Restschuld × (Vertragszins - Wiederanlagezins) × Restlaufzeit
+
+**Beispiel:**
+- Restschuld: 200.000 €
+- Vertragszins: 3,5% p.a.
+- Wiederanlagezins: 2,0% p.a.
+- Restlaufzeit: 5 Jahre
+- **Vorfälligkeitsentschädigung:** 200.000 € × (3,5% - 2,0%) × 5 = 15.000 €
+
+**Ausnahmen:**
+- Nach 10 Jahren: Kündigung mit 6 Monaten Frist (§ 489 BGB)
+- Bei Verkauf der Immobilie: Berechtigtes Interesse (oft akzeptiert)
+
+---
+
+**9. Sondertilgungsrechte:**
+
+**Definition:**
+Recht, jährlich einen bestimmten Betrag zusätzlich zur regulären Rate zu tilgen.
+
+**Beispiel:**
+- Darlehensbetrag: 300.000 €
+- Sondertilgungsrecht: 5% p.a.
+- **Maximale Sondertilgung:** 15.000 €/Jahr
+
+**Vorteile:**
+- Schnellere Entschuldung
+- Geringere Gesamtzinsbelastung
+- Flexibilität (z.B. bei Bonuszahlung)
+
+**Kosten:**
+- Oft kostenlos (bis 5% p.a.)
+- Höhere Sondertilgungsrechte (10% p.a.) kosten ca. 0,1% Zinsaufschlag
+
+**Empfehlung:**
+- Immer Sondertilgungsrecht vereinbaren (mindestens 5% p.a.)
+- Auch wenn nicht genutzt: Flexibilität für unvorhergesehene Einnahmen
+
+---
+
+**Bonitätsprüfung, Schufa-Auskunft und Kreditwürdigkeitsprüfung im Detail:**
+
+**1. Bonitätsprüfung:**
+
+**Zweck:**
+Einschätzung der Kreditwürdigkeit des Kunden: Kann er das Darlehen zurückzahlen?
+
+**Prüfungsbereiche:**
+
+**1. Einkommensprüfung:**
+- **Angestellte:** Gehaltsabrechnungen (letzte 3 Monate), Arbeitsvertrag
+- **Selbstständige:** Steuerbescheide (letzte 2 Jahre), BWA (Betriebswirtschaftliche Auswertung)
+- **Rentner:** Rentenbescheid
+- **Sonstige Einkünfte:** Mieteinnahmen, Kapitalerträge, Kindergeld
+
+**Beispiel Angestellter:**
+- Bruttogehalt: 5.000 €/Monat
+- Netto: 3.500 €/Monat
+- **Jahreseinkommen:** 42.000 €
+
+**2. Ausgabenprüfung:**
+- **Lebenshaltungskosten:** Pauschale 800-1.200 € pro Person
+- **Miete:** Aktuelle Miete (falls noch nicht Eigentümer)
+- **Versicherungen:** Krankenversicherung, Haftpflicht, Lebensversicherung
+- **Bestehende Kredite:** Raten für Auto, Konsumkredite
+
+**Beispiel:**
+- Lebenshaltung: 1.000 € (1 Person)
+- Miete: 800 €
+- Versicherungen: 300 €
+- Bestehende Kredite: 400 €
+- **Gesamtausgaben:** 2.500 €/Monat
+
+**3. Haushaltsrechnung:**
+- **Verfügbares Einkommen:** Einnahmen - Ausgaben
+- **Maximale Darlehensrate:** Verfügbares Einkommen / 1,2 (Sicherheitspuffer 20%)
+
+**Beispiel:**
+- Nettoeinkommen: 3.500 €
+- Ausgaben: 2.500 €
+- **Verfügbares Einkommen:** 1.000 €
+- **Maximale Darlehensrate:** 1.000 € / 1,2 = 833 €
+
+**4. Vermögensprüfung:**
+- **Eigenkapital:** Sparguthaben, Wertpapiere, Lebensversicherung
+- **Immobilien:** Bestehende Immobilien (Wert, Belastung)
+- **Sonstiges:** Fahrzeuge, Schmuck (weniger relevant)
+
+**Beispiel:**
+- Sparguthaben: 50.000 €
+- Wertpapiere: 20.000 €
+- **Eigenkapital:** 70.000 €
+
+---
+
+**2. Schufa-Auskunft:**
+
+**Schufa (Schutzgemeinschaft für allgemeine Kreditsicherung):**
+- Privatwirtschaftliches Unternehmen
+- Sammelt Daten über Kreditverträge, Zahlungsverhalten, Insolvenzen
+- Gibt Auskunft an Banken, Vermieter, Telekommunikationsanbieter
+
+**Gespeicherte Daten:**
+- **Positive Daten:** Girokonten, Kreditkarten, Darlehen (ordnungsgemäß bedient)
+- **Negative Daten:** Mahnbescheide, Insolvenzen, Zahlungsausfälle, gekündigte Kredite
+
+**Schufa-Score:**
+- Wert zwischen 0% und 100%
+- Je höher, desto besser
+- **>97,5%:** Sehr gutes Zahlungsverhalten
+- **95-97,5%:** Gutes Zahlungsverhalten
+- **90-95%:** Befriedigendes Zahlungsverhalten
+- **<90%:** Kritisches Zahlungsverhalten
+
+**Beispiel:**
+- Kunde A: Schufa-Score 98,5% → Sehr gut, Kredit problemlos
+- Kunde B: Schufa-Score 92,0% → Befriedigend, Kredit möglich, evtl. höhere Zinsen
+- Kunde C: Schufa-Score 85,0% → Kritisch, Kredit schwierig
+
+**Negative Schufa-Einträge:**
+- **Mahnbescheid:** Bleibt 3 Jahre gespeichert
+- **Insolvenz:** Bleibt 3 Jahre nach Restschuldbefreiung gespeichert
+- **Gekündigter Kredit:** Bleibt 3 Jahre gespeichert
+- **Zahlungsausfall:** Bleibt 3 Jahre gespeichert
+
+**Auswirkungen:**
+- Kreditvergabe erschwert oder unmöglich
+- Höhere Zinsen
+- Höhere Eigenkapitalanforderung
+
+---
+
+**3. Kreditwürdigkeitsprüfung (§ 505a BGB):**
+
+**Pflicht der Bank:**
+Die Bank muss vor Vertragsschluss die Kreditwürdigkeit des Kunden prüfen.
+
+**Prüfungskriterien:**
+1. **Einkommen:** Ist das Einkommen ausreichend und stabil?
+2. **Ausgaben:** Sind die Ausgaben angemessen?
+3. **Vermögen:** Ist ausreichend Eigenkapital vorhanden?
+4. **Schufa:** Gibt es negative Einträge?
+5. **Beschäftigungsverhältnis:** Unbefristet oder befristet?
+6. **Alter:** Wie alt ist der Kunde? (Rentenalter beachten)
+
+**Ergebnis:**
+- **Positiv:** Kredit wird gewährt
+- **Negativ:** Kredit wird abgelehnt
+- **Bedingt positiv:** Kredit wird gewährt mit Auflagen (höhere Zinsen, mehr Eigenkapital)
+
+---
+
+**4. Eigenkapitalquote:**
+
+**Definition:**
+Anteil des Eigenkapitals am Kaufpreis der Immobilie.
+
+**Empfehlung:**
+- Mindestens 20% Eigenkapital
+- Besser: 30-40% Eigenkapital
+
+**Beispiel:**
+- Kaufpreis: 400.000 €
+- Eigenkapital: 80.000 € (20%)
+- **Darlehensbetrag:** 320.000 €
+
+**Vorteile hoher Eigenkapitalquote:**
+- Niedrigere Zinsen
+- Geringeres Risiko für Bank
+- Schnellere Entschuldung
+
+**Nachteile niedriger Eigenkapitalquote:**
+- Höhere Zinsen
+- Höheres Risiko
+- Längere Laufzeit
+
+---
+
+**5. Beleihungsauslauf:**
+
+**Definition:**
+Verhältnis zwischen Darlehensbetrag und Beleihungswert der Immobilie.
+
+**Berechnung:**
+Beleihungsauslauf = Darlehensbetrag / Beleihungswert × 100%
+
+**Beleihungswert:**
+- Vorsichtige Schätzung des Immobilienwerts
+- Meist 80-90% des Verkehrswerts
+
+**Beispiel:**
+- Verkehrswert: 400.000 €
+- Beleihungswert: 360.000 € (90%)
+- Darlehensbetrag: 300.000 €
+- **Beleihungsauslauf:** 300.000 € / 360.000 € = 83,3%
+
+**Zinsaufschläge:**
+- **Bis 60% Beleihungsauslauf:** Niedrigste Zinsen
+- **60-80%:** Leichter Zinsaufschlag (ca. 0,1%)
+- **80-90%:** Höherer Zinsaufschlag (ca. 0,3%)
+- **>90%:** Deutlicher Zinsaufschlag (ca. 0,5-1,0%)
+
+---
+
+**6. Praxisbeispiel Bonitätsprüfung:**
+
+**Kunde:**
+- Name: Max Mustermann
+- Alter: 35 Jahre
+- Beruf: Angestellter (unbefristet)
+- Nettoeinkommen: 4.000 €/Monat
+- Ehefrau: 2.500 €/Monat
+- Kinder: 2
+- Eigenkapital: 80.000 €
+- Schufa-Score: 96,5%
+
+**Ausgaben:**
+- Lebenshaltung: 3.000 €/Monat (Familie mit 2 Kindern)
+- Versicherungen: 400 €/Monat
+- Bestehende Kredite: 300 €/Monat
+
+**Haushaltsrechnung:**
+- Gesamteinkommen: 6.500 €
+- Ausgaben: 3.700 €
+- **Verfügbares Einkommen:** 2.800 €
+- **Maximale Darlehensrate:** 2.800 € / 1,2 = 2.333 €
+
+**Immobilie:**
+- Kaufpreis: 400.000 €
+- Eigenkapital: 80.000 € (20%)
+- **Darlehensbetrag:** 320.000 €
+
+**Darlehensrate (3,5% Zinsen, 2% Tilgung):**
+- 320.000 € × 5,5% / 12 = 1.467 €/Monat
+
+**Ergebnis:**
+- **Tragfähigkeit:** Ja (1.467 € < 2.333 €)
+- **Schufa:** Gut (96,5%)
+- **Eigenkapital:** Ausreichend (20%)
+- **Empfehlung:** Kredit kann gewährt werden
+
+---
+
+**7. Umgang mit schlechter Bonität:**
+
+**Maßnahmen:**
+1. **Höheres Eigenkapital:** 30-40% statt 20%
+2. **Bürgschaft:** Eltern oder Verwandte bürgen
+3. **Zweiter Kreditnehmer:** Ehepartner als Mitkreditnehmer
+4. **Schuldenbereinigung:** Bestehende Kredite ablösen
+5. **Schufa-Einträge prüfen:** Falsche Einträge löschen lassen
+6. **Längere Zinsbindung:** Planungssicherheit für Bank
+
+**Beispiel:**
+- Kunde hat Schufa-Score 88% (kritisch)
+- **Maßnahme:** Eigenkapital von 20% auf 35% erhöhen
+- **Ergebnis:** Bank gewährt Kredit mit Zinsaufschlag 0,5%
+
+---
+
+**Praxisfall 1: Annuitätendarlehen berechnen**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Darlehensarten: Annuitätendarlehen, Tilgungsdarlehen, Endfälliges Darlehen' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Darlehensarten: Annuitätendarlehen, Tilgungsdarlehen, Endfälliges Darlehen'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Darlehensarten: Annuitätendarlehen, Tilgungsdarlehen, Endfälliges Darlehen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
+
+Ein Kunde möchte ein Annuitätendarlehen über 250.000 € aufnehmen. Zinssatz: 3,0% p.a., Anfangstilgung: 2,5% p.a.
+
+**Fragen:**
+1. Wie hoch ist die jährliche Annuität?
+2. Wie hoch ist die monatliche Rate?
+3. Wie hoch sind Zinsen und Tilgung in der ersten Rate?
+4. Wie entwickelt sich die Restschuld?
+5. Wann ist das Darlehen vollständig getilgt (bei gleichbleibender Tilgung)?
+
+---
+
+**Praxisfall 2: Tilgungsdarlehen vs. Annuitätendarlehen**
+
+Ein Kunde kann sich zwischen einem Tilgungsdarlehen und einem Annuitätendarlehen entscheiden:
+- Darlehensbetrag: 300.000 €
+- Zinssatz: 3,5% p.a.
+- Laufzeit: 20 Jahre
+
+**Fragen:**
+1. Wie hoch ist die Anfangsrate beim Tilgungsdarlehen?
+2. Wie hoch ist die Endrate beim Tilgungsdarlehen?
+3. Wie hoch sind die Gesamtzinsen beim Tilgungsdarlehen?
+4. Wie hoch sind die Gesamtzinsen beim Annuitätendarlehen (2% Anfangstilgung)?
+5. Welches Darlehen empfehlen Sie?
+
+---
+
+**Praxisfall 3: Endfälliges Darlehen mit Lebensversicherung**
+
+Ein Kunde möchte ein endfälliges Darlehen über 200.000 € aufnehmen und mit einer Lebensversicherung kombinieren:
+- Darlehenszinssatz: 3,5% p.a.
+- Laufzeit: 25 Jahre
+- Lebensversicherung: 150 €/Monat, erwartete Auszahlung nach 25 Jahren: 200.000 €
+
+**Fragen:**
+1. Wie hoch ist die monatliche Zinsbelastung?
+2. Wie hoch ist die Gesamtbelastung pro Monat (Zinsen + Lebensversicherung)?
+3. Wie hoch sind die Gesamtzinsen nach 25 Jahren?
+4. Was passiert, wenn die Lebensversicherung nur 180.000 € auszahlt?
+5. Für wen eignet sich dieses Modell?
+
+---
+
+**Praxisfall 1: Bauspardarlehen**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Bauspardarlehen, KfW-Darlehen und Förderprogramme' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Bauspardarlehen, KfW-Darlehen und Förderprogramme'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Bauspardarlehen, KfW-Darlehen und Förderprogramme' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
+
+Ein Kunde möchte in 10 Jahren eine Immobilie kaufen und schließt einen Bausparvertrag ab:
+- Bausparsumme: 100.000 €
+- Ansparung: 40% (40.000 €)
+- Monatliche Sparrate: 400 €
+- Guthabenzins: 0,1% p.a.
+- Darlehenszins: 2,5% p.a.
+
+**Fragen:**
+1. Wie lange dauert die Ansparphase?
+2. Wie hoch ist das Bauspardarlehen?
+3. Wie hoch ist die monatliche Rate in der Darlehensphase?
+4. Welche staatliche Förderung kann der Kunde nutzen?
+5. Lohnt sich der Bausparvertrag?
+
+---
+
+**Praxisfall 2: KfW-Förderung**
+
+Ein Kunde baut ein Effizienzhaus KfW 40 Plus für 400.000 €. Er beantragt KfW 153:
+- Darlehensbetrag: 150.000 €
+- Zinssatz: 1,5% p.a.
+- Tilgungszuschuss: 30%
+- Laufzeit: 25 Jahre
+
+**Fragen:**
+1. Wie hoch ist der Tilgungszuschuss?
+2. Wie viel muss der Kunde effektiv zurückzahlen?
+3. Wie hoch ist die monatliche Rate?
+4. Wie hoch sind die Gesamtzinsen?
+5. Wie viel spart der Kunde im Vergleich zu einem Bankdarlehen (3,5% p.a.)?
+
+---
+
+**Praxisfall 3: Kombination Bank + KfW + Bausparen**
+
+Ein Kunde finanziert eine Immobilie für 350.000 €:
+- 200.000 € Bankdarlehen (3,5% p.a.)
+- 100.000 € KfW 153 (1,5% p.a., 30% Tilgungszuschuss)
+- 50.000 € Bauspardarlehen (2,5% p.a., nach 7 Jahren)
+
+**Fragen:**
+1. Wie hoch ist der KfW-Tilgungszuschuss?
+2. Wie viel muss der Kunde effektiv finanzieren?
+3. Wie hoch ist die monatliche Rate?
+4. Wie hoch sind die Gesamtzinsen?
+5. Wie viel spart der Kunde im Vergleich zu einem reinen Bankdarlehen?
+
+---
+
+**Anschlussfinanzierung, Prolongation und Forward-Darlehen im Detail:**
+
+**1. Anschlussfinanzierung:**
+
+**Situation:**
+Nach Ablauf der Zinsbindung (z.B. 10 Jahre) ist das Darlehen meist noch nicht vollständig getilgt. Der Kunde benötigt eine Anschlussfinanzierung für die Restschuld.
+
+**Beispiel:**
+- Ursprüngliches Darlehen: 300.000 €
+- Zinsbindung: 10 Jahre (3,5% p.a., 2% Tilgung)
+- **Restschuld nach 10 Jahren:** ca. 240.000 €
+- **Anschlussfinanzierung erforderlich:** 240.000 €
+
+**Zeitpunkt:**
+- Beratung: 12-18 Monate vor Ablauf der Zinsbindung
+- Vertragsabschluss: 3-6 Monate vor Ablauf
+
+---
+
+**2. Prolongation:**
+
+**Definition:**
+Verlängerung des Darlehens bei der bisherigen Bank zu neuen Konditionen.
+
+**Ablauf:**
+1. Bank schickt Prolongationsangebot (ca. 3 Monate vor Ablauf)
+2. Kunde prüft Angebot
+3. Kunde akzeptiert oder lehnt ab
+4. Bei Akzeptanz: Neue Vereinbarung wird unterzeichnet
+
+**Beispiel:**
+- Restschuld: 240.000 €
+- Bisheriger Zinssatz: 3,5% p.a.
+- **Prolongationsangebot:** 4,0% p.a. (10 Jahre Zinsbindung)
+
+**Vorteile:**
+- Einfach und bequem
+- Keine Wechselkosten
+- Keine neue Bonitätsprüfung
+
+**Nachteile:**
+- Oft schlechtere Konditionen als am Markt
+- Keine Verhandlungsmacht
+- Bank nutzt Bindung des Kunden aus
+
+**Empfehlung:**
+- Prolongationsangebot immer mit Marktangeboten vergleichen
+- Nicht automatisch akzeptieren
+
+---
+
+**3. Umschuldung:**
+
+**Definition:**
+Wechsel zu einer anderen Bank mit besseren Konditionen.
+
+**Ablauf:**
+1. Angebote von anderen Banken einholen
+2. Bestes Angebot auswählen
+3. Neue Bank übernimmt Restschuld
+4. Grundschuld wird abgetreten oder neu bestellt
+
+**Beispiel:**
+- Restschuld: 240.000 €
+- Prolongationsangebot Bank A: 4,0% p.a.
+- **Angebot Bank B:** 3,6% p.a. (10 Jahre Zinsbindung)
+- **Ersparnis:** 0,4% p.a. = ca. 1.000 €/Jahr = 10.000 € über 10 Jahre
+
+**Kosten:**
+- **Grundschuldabtretung:** ca. 0,2% der Restschuld (ca. 480 € bei 240.000 €)
+- **Neue Grundschuldbestellung:** ca. 1% der Restschuld (ca. 2.400 € bei 240.000 €)
+- **Empfehlung:** Grundschuldabtretung (günstiger)
+
+**Vorteile:**
+- Bessere Zinsen möglich
+- Verhandlungsmacht
+- Neue Konditionen (Sondertilgung, Tilgungssatzwechsel)
+
+**Nachteile:**
+- Aufwand (neue Bonitätsprüfung, Unterlagen)
+- Kosten für Grundschuldabtretung
+- Zeitaufwand
+
+**Wann lohnt sich Umschuldung?**
+- Zinsersparnis > 0,2% p.a.
+- Beispiel: 0,4% Ersparnis = 10.000 € über 10 Jahre - 480 € Kosten = **9.520 € Nettoersparnis**
+
+---
+
+**4. Forward-Darlehen:**
+
+**Definition:**
+Zinssicherung für zukünftige Anschlussfinanzierung (bis zu 5 Jahre im Voraus).
+
+**Funktionsweise:**
+- Kunde schließt heute Vertrag ab
+- Zinssatz wird heute festgelegt
+- Auszahlung erfolgt erst bei Ablauf der aktuellen Zinsbindung
+
+**Beispiel:**
+- Aktuelle Zinsbindung läuft noch 3 Jahre
+- Aktueller Marktzins: 3,5% p.a.
+- **Forward-Darlehen:** 3,8% p.a. (Zinsaufschlag 0,3% für 3 Jahre Vorlaufzeit)
+- **Vorteil:** Schutz vor Zinsanstieg
+
+**Forward-Prämie:**
+- Zinsaufschlag für Vorlaufzeit
+- Ca. 0,01-0,03% pro Monat
+- **Beispiel:** 36 Monate × 0,01% = 0,36% Aufschlag
+
+**Berechnung:**
+- Aktueller Marktzins: 3,5% p.a.
+- Vorlaufzeit: 36 Monate
+- Forward-Prämie: 0,01% × 36 = 0,36%
+- **Forward-Zinssatz:** 3,5% + 0,36% = 3,86% p.a.
+
+**Wann lohnt sich Forward-Darlehen?**
+- Wenn Zinsanstieg erwartet wird
+- **Beispiel:** Aktueller Zins 3,5%, Forward-Zins 3,8%, erwarteter Zins in 3 Jahren 4,5%
+- **Ersparnis:** 4,5% - 3,8% = 0,7% p.a. = ca. 1.700 €/Jahr
+
+**Risiko:**
+- Wenn Zinsen sinken, zahlt Kunde zu viel
+- **Beispiel:** Forward-Zins 3,8%, tatsächlicher Zins in 3 Jahren 3,0%
+- **Mehrkosten:** 3,8% - 3,0% = 0,8% p.a. = ca. 1.900 €/Jahr
+
+**Empfehlung:**
+- Forward-Darlehen bei niedrigen Zinsen und erwarteter Zinswende
+- Nicht bei bereits hohen Zinsen
+
+---
+
+**5. Vergleich der Optionen:**
+
+**Prolongation:**
+- **Vorteile:** Einfach, keine Kosten
+- **Nachteile:** Oft teurer
+- **Empfehlung:** Nur wenn Konditionen marktgerecht
+
+**Umschuldung:**
+- **Vorteile:** Bessere Zinsen
+- **Nachteile:** Aufwand, Kosten
+- **Empfehlung:** Bei Zinsersparnis > 0,2% p.a.
+
+**Forward-Darlehen:**
+- **Vorteile:** Zinssicherung
+- **Nachteile:** Zinsaufschlag, Risiko
+- **Empfehlung:** Bei niedrigen Zinsen und erwarteter Zinswende
+
+---
+
+**6. Praxisbeispiel Anschlussfinanzierung:**
+
+**Kunde:**
+- Ursprüngliches Darlehen: 300.000 € (2016)
+- Zinssatz: 2,5% p.a.
+- Zinsbindung: 10 Jahre (bis 2026)
+- Tilgung: 2% p.a.
+- **Restschuld 2026:** ca. 240.000 €
+
+**Optionen 2026:**
+
+**Option 1: Prolongation Bank A**
+- Zinssatz: 4,5% p.a.
+- Zinsbindung: 10 Jahre
+- **Monatliche Rate:** 240.000 € × (4,5% + 2%) / 12 = 1.300 €
+- **Gesamtzinsen:** ca. 85.000 €
+
+**Option 2: Umschuldung Bank B**
+- Zinssatz: 4,0% p.a.
+- Zinsbindung: 10 Jahre
+- Kosten Grundschuldabtretung: 480 €
+- **Monatliche Rate:** 240.000 € × (4,0% + 2%) / 12 = 1.200 €
+- **Gesamtzinsen:** ca. 75.000 € + 480 € = 75.480 €
+- **Ersparnis:** 85.000 € - 75.480 € = 9.520 €
+
+**Option 3: Forward-Darlehen (2024 abgeschlossen)**
+- Aktueller Marktzins 2024: 3,5% p.a.
+- Vorlaufzeit: 24 Monate
+- Forward-Prämie: 0,01% × 24 = 0,24%
+- **Forward-Zinssatz:** 3,74% p.a.
+- **Monatliche Rate:** 240.000 € × (3,74% + 2%) / 12 = 1.148 €
+- **Gesamtzinsen:** ca. 70.000 €
+- **Ersparnis:** 85.000 € - 70.000 € = 15.000 €
+
+**Empfehlung:**
+- **Beste Option:** Forward-Darlehen (2024 abgeschlossen)
+- **Zweitbeste Option:** Umschuldung Bank B
+- **Schlechteste Option:** Prolongation Bank A
+
+---
+
+**7. Beratungspflichten:**
+
+**Rechtzeitige Beratung (§ 511 BGB):**
+- 12-18 Monate vor Ablauf der Zinsbindung
+- Aufklärung über alle Optionen
+- Vergleichsangebote vorlegen
+
+**Dokumentation:**
+- Beratungsprotokoll erstellen
+- Angebote dokumentieren
+- Empfehlung begründen
+
+**Haftung:**
+- Bei fehlerhafter Beratung: Schadensersatz
+- **Beispiel:** Kunde hätte 10.000 € sparen können durch Umschuldung, Berater hat nicht darauf hingewiesen → Schadensersatz 10.000 €
+
+---
+
+**8. Sonderkündigungsrecht nach 10 Jahren (§ 489 BGB):**
+
+**Regelung:**
+Nach 10 Jahren kann der Kunde das Darlehen mit 6 Monaten Frist kündigen, unabhängig von der vereinbarten Zinsbindung.
+
+**Beispiel:**
+- Zinsbindung: 15 Jahre
+- Nach 10 Jahren: Kunde kann kündigen (6 Monate Frist)
+- **Vorteil:** Flexibilität, keine Vorfälligkeitsentschädigung
+
+**Anwendung:**
+- Wenn Zinsen nach 10 Jahren gesunken sind
+- Umschuldung zu günstigeren Konditionen
+
+**Wichtig:**
+- Frist: 6 Monate vor gewünschtem Kündigungstermin
+- Schriftform erforderlich
+
+---
+
+**Vorfälligkeitsentschädigung, Sondertilgung und Tilgungssatzwechsel im Detail:**
+
+**1. Vorfälligkeitsentschädigung:**
+
+**Definition:**
+Entschädigung an die Bank bei vorzeitiger Rückzahlung des Darlehens vor Ablauf der Zinsbindung.
+
+**Zweck:**
+- Bank verliert Zinseinnahmen
+- Bank muss Geld zu niedrigeren Zinsen wieder anlegen
+- Vorfälligkeitsentschädigung kompensiert diesen Verlust
+
+**Berechnung:**
+
+**Methode 1: Aktiv-Aktiv-Methode**
+Vorfälligkeitsentschädigung = (Vertragszins - Wiederanlagezins) × Restschuld × Restlaufzeit
+
+**Beispiel:**
+- Restschuld: 200.000 €
+- Vertragszins: 3,5% p.a.
+- Wiederanlagezins: 2,0% p.a. (aktueller Hypothekenzins)
+- Restlaufzeit: 5 Jahre
+- **Vorfälligkeitsentschädigung:** (3,5% - 2,0%) × 200.000 € × 5 = 15.000 €
+
+**Methode 2: Aktiv-Passiv-Methode**
+Vorfälligkeitsentschädigung = (Vertragszins - Pfandbriefzins) × Restschuld × Restlaufzeit
+
+**Beispiel:**
+- Restschuld: 200.000 €
+- Vertragszins: 3,5% p.a.
+- Pfandbriefzins: 1,5% p.a.
+- Restlaufzeit: 5 Jahre
+- **Vorfälligkeitsentschädigung:** (3,5% - 1,5%) × 200.000 € × 5 = 20.000 €
+
+**Wichtig:**
+- Banken nutzen meist Aktiv-Passiv-Methode (höhere Entschädigung)
+- Rechtsprechung: Aktiv-Aktiv-Methode ist kundenfreundlicher
+
+---
+
+**2. Ausnahmen von der Vorfälligkeitsentschädigung:**
+
+**Sonderkündigungsrecht nach 10 Jahren (§ 489 BGB):**
+- Nach 10 Jahren kann Kunde mit 6 Monaten Frist kündigen
+- **Keine Vorfälligkeitsentschädigung**
+- Gilt auch bei längerer Zinsbindung (z.B. 15 oder 20 Jahre)
+
+**Beispiel:**
+- Zinsbindung: 15 Jahre
+- Nach 10 Jahren: Kunde kündigt (6 Monate Frist)
+- **Vorfälligkeitsentschädigung:** 0 €
+
+**Berechtigtes Interesse:**
+- Verkauf der Immobilie (z.B. Jobwechsel, Scheidung)
+- Banken akzeptieren meist Vorfälligkeitsentschädigung
+- **Wichtig:** Nicht automatisch, muss verhandelt werden
+
+**Beispiel:**
+- Kunde verkauft Immobilie wegen Jobwechsel
+- Bank verlangt Vorfälligkeitsentschädigung
+- Kunde zahlt, kann aber verhandeln (z.B. 50% Rabatt)
+
+**Fehlerhafte Widerrufsbelehrung:**
+- Wenn Widerrufsbelehrung fehlerhaft war, kann Kunde Darlehen widerrufen
+- **Keine Vorfälligkeitsentschädigung**
+- Frist: 14 Tage nach Vertragsschluss (bei korrekter Belehrung)
+- Bei fehlerhafter Belehrung: Unbegrenzt (bis 2016)
+
+---
+
+**3. Sondertilgungsrechte:**
+
+**Definition:**
+Recht, jährlich einen bestimmten Betrag zusätzlich zur regulären Rate zu tilgen, ohne Vorfälligkeitsentschädigung.
+
+**Übliche Sondertilgungsrechte:**
+- 5% p.a. (Standard, meist kostenlos)
+- 10% p.a. (Zinsaufschlag ca. 0,1%)
+- 20% p.a. (Zinsaufschlag ca. 0,2%)
+
+**Beispiel:**
+- Darlehensbetrag: 300.000 €
+- Sondertilgungsrecht: 5% p.a.
+- **Maximale Sondertilgung:** 15.000 €/Jahr
+
+**Vorteile:**
+- Schnellere Entschuldung
+- Geringere Gesamtzinsbelastung
+- Flexibilität (z.B. bei Bonuszahlung, Erbschaft)
+
+**Berechnung Zinsersparnis:**
+
+**Ohne Sondertilgung:**
+- Darlehensbetrag: 300.000 €
+- Zinssatz: 3,5% p.a.
+- Tilgung: 2% p.a.
+- Laufzeit: ca. 35 Jahre
+- **Gesamtzinsen:** ca. 180.000 €
+
+**Mit Sondertilgung 10.000 €/Jahr:**
+- Darlehensbetrag: 300.000 €
+- Zinssatz: 3,5% p.a.
+- Tilgung: 2% p.a. + 10.000 €/Jahr Sondertilgung
+- Laufzeit: ca. 25 Jahre
+- **Gesamtzinsen:** ca. 130.000 €
+- **Ersparnis:** 50.000 €
+
+**Empfehlung:**
+- Immer Sondertilgungsrecht vereinbaren (mindestens 5% p.a.)
+- Auch wenn nicht genutzt: Flexibilität für unvorhergesehene Einnahmen
+- Zinsaufschlag für 10% p.a. lohnt sich meist
+
+---
+
+**4. Tilgungssatzwechsel:**
+
+**Definition:**
+Recht, die Tilgungsrate während der Laufzeit anzupassen (z.B. von 2% auf 3% oder von 3% auf 1%).
+
+**Gründe für Tilgungssatzwechsel:**
+
+**Erhöhung der Tilgung:**
+- Gehaltserhöhung
+- Wegfall anderer Kredite
+- Erbschaft
+- **Ziel:** Schnellere Entschuldung
+
+**Senkung der Tilgung:**
+- Jobverlust
+- Elternzeit
+- Krankheit
+- **Ziel:** Finanzielle Entlastung
+
+**Beispiel Erhöhung:**
+- Darlehensbetrag: 300.000 €
+- Zinssatz: 3,5% p.a.
+- Tilgung: 2% p.a. → 3% p.a. (nach 5 Jahren)
+- **Monatliche Rate:** 1.375 € → 1.625 € (+250 €)
+- **Laufzeit:** 35 Jahre → 25 Jahre (-10 Jahre)
+- **Zinsersparnis:** ca. 40.000 €
+
+**Beispiel Senkung:**
+- Darlehensbetrag: 300.000 €
+- Zinssatz: 3,5% p.a.
+- Tilgung: 3% p.a. → 1% p.a. (nach Jobverlust)
+- **Monatliche Rate:** 1.625 € → 1.125 € (-500 €)
+- **Laufzeit:** 25 Jahre → 50 Jahre (+25 Jahre)
+- **Mehrkosten:** ca. 80.000 € (höhere Gesamtzinsen)
+
+**Kosten:**
+- Oft kostenlos (1-2x während Zinsbindung)
+- Bei häufigeren Wechseln: Gebühr ca. 100-200 €
+
+**Empfehlung:**
+- Tilgungssatzwechsel im Vertrag vereinbaren
+- Flexibilität für Lebensveränderungen
+
+---
+
+**5. Praxisbeispiel Vorfälligkeitsentschädigung:**
+
+**Kunde:**
+- Darlehen: 250.000 € (2020 abgeschlossen)
+- Zinssatz: 2,5% p.a.
+- Zinsbindung: 15 Jahre (bis 2035)
+- Tilgung: 2% p.a.
+- **Restschuld 2026:** ca. 210.000 €
+
+**Situation:**
+- Kunde verkauft Immobilie 2026 wegen Jobwechsel
+- Bank verlangt Vorfälligkeitsentschädigung
+
+**Berechnung:**
+- Restschuld: 210.000 €
+- Vertragszins: 2,5% p.a.
+- Wiederanlagezins: 3,5% p.a. (aktueller Hypothekenzins)
+- Restlaufzeit: 9 Jahre
+
+**Fall 1: Wiederanlagezins < Vertragszins**
+- Wiederanlagezins: 1,5% p.a.
+- **Vorfälligkeitsentschädigung:** (2,5% - 1,5%) × 210.000 € × 9 = 18.900 €
+
+**Fall 2: Wiederanlagezins > Vertragszins**
+- Wiederanlagezins: 3,5% p.a.
+- **Vorfälligkeitsentschädigung:** 0 € (Bank hat keinen Verlust)
+
+**Verhandlung:**
+- Kunde argumentiert: Berechtigtes Interesse (Jobwechsel)
+- Bank bietet: 50% Rabatt = 9.450 €
+- **Ergebnis:** Kunde zahlt 9.450 € statt 18.900 €
+
+---
+
+**6. Praxisbeispiel Sondertilgung:**
+
+**Kunde:**
+- Darlehensbetrag: 300.000 €
+- Zinssatz: 3,5% p.a.
+- Tilgung: 2% p.a.
+- Sondertilgungsrecht: 10% p.a.
+- **Maximale Sondertilgung:** 30.000 €/Jahr
+
+**Situation:**
+- Kunde erhält Bonuszahlung: 20.000 €
+- Kunde leistet Sondertilgung: 20.000 €
+
+**Auswirkung:**
+- Restschuld: 300.000 € → 280.000 €
+- **Zinsersparnis:** ca. 700 €/Jahr (3,5% von 20.000 €)
+- **Gesamtersparnis über Laufzeit:** ca. 15.000 €
+
+**Empfehlung:**
+- Sondertilgung nutzen (höhere Rendite als Sparbuch)
+- Rücklagen behalten (3 Monatsraten)
+
+---
+
+**7. Praxisbeispiel Tilgungssatzwechsel:**
+
+**Kunde:**
+- Darlehensbetrag: 300.000 €
+- Zinssatz: 3,5% p.a.
+- Tilgung: 2% p.a.
+- **Monatliche Rate:** 1.375 €
+
+**Situation:**
+- Nach 5 Jahren: Gehaltserhöhung
+- Kunde erhöht Tilgung auf 3% p.a.
+- **Neue monatliche Rate:** 1.625 € (+250 €)
+
+**Auswirkung:**
+- Laufzeit: 35 Jahre → 25 Jahre (-10 Jahre)
+- **Zinsersparnis:** ca. 40.000 €
+
+**Empfehlung:**
+- Tilgung erhöhen, wenn finanziell möglich
+- Schnellere Entschuldung spart Zinsen
+
+---
+
+**Risiken der Immobilienfinanzierung und Absicherung im Detail:**
+
+**1. Zinsänderungsrisiko:**
+
+**Definition:**
+Nach Ablauf der Zinsbindung können die Zinsen gestiegen sein, wodurch die monatliche Rate steigt.
+
+**Beispiel:**
+- Ursprüngliches Darlehen: 300.000 € (2016)
+- Zinssatz: 2,0% p.a.
+- Zinsbindung: 10 Jahre (bis 2026)
+- Tilgung: 2% p.a.
+- **Monatliche Rate 2016:** 1.000 €
+- **Restschuld 2026:** ca. 240.000 €
+
+**Szenario 1: Zinsen steigen auf 4,0% p.a.**
+- **Neue monatliche Rate:** 240.000 € × (4,0% + 2%) / 12 = 1.200 €
+- **Mehrbelastung:** 200 €/Monat = 2.400 €/Jahr
+
+**Szenario 2: Zinsen steigen auf 6,0% p.a.**
+- **Neue monatliche Rate:** 240.000 € × (6,0% + 2%) / 12 = 1.600 €
+- **Mehrbelastung:** 600 €/Monat = 7.200 €/Jahr
+
+**Absicherung:**
+- **Lange Zinsbindung:** 15-20 Jahre (Planungssicherheit)
+- **Forward-Darlehen:** Zinssicherung bis 5 Jahre im Voraus
+- **Höhere Tilgung:** Schnellere Entschuldung reduziert Restschuld
+- **Rücklagen:** 3-6 Monatsraten für Zinsanstieg
+
+---
+
+**2. Zahlungsunfähigkeitsrisiko:**
+
+**Ursachen:**
+- Jobverlust
+- Krankheit, Berufsunfähigkeit
+- Scheidung
+- Tod des Hauptverdieners
+
+**Beispiel:**
+- Monatliche Rate: 1.500 €
+- Nettoeinkommen: 4.000 €
+- **Bei Jobverlust:** Arbeitslosengeld ca. 1.200 € (60% des Nettoeinkommens)
+- **Verfügbares Einkommen:** 1.200 € - 1.500 € = -300 € (Zahlungsunfähigkeit)
+
+**Folgen:**
+- Zahlungsverzug (3 Monate)
+- Kündigung des Darlehens (§ 498 BGB)
+- Zwangsversteigerung
+- Verlust der Immobilie
+- Restschuld bleibt bestehen
+
+**Absicherung:**
+- **Risikolebensversicherung:** Bei Tod des Hauptverdieners
+- **Berufsunfähigkeitsversicherung:** Bei Krankheit, Unfall
+- **Arbeitslosenversicherung:** Bei Jobverlust (selten)
+- **Rücklagen:** 3-6 Monatsraten
+- **Sicherheitspuffer:** 120% bei Haushaltsrechnung
+
+---
+
+**3. Risikolebensversicherung:**
+
+**Zweck:**
+Absicherung der Familie bei Tod des Hauptverdieners.
+
+**Funktionsweise:**
+- Versicherungssumme = Restschuld des Darlehens
+- Bei Tod: Auszahlung tilgt Darlehen
+- Familie bleibt schuldenfrei
+
+**Beispiel:**
+- Darlehensbetrag: 300.000 €
+- Versicherungssumme: 300.000 € (fallend mit Restschuld)
+- Beitrag: ca. 30-50 €/Monat (abhängig von Alter, Gesundheit)
+- **Bei Tod:** Versicherung zahlt 300.000 €, Darlehen ist getilgt
+
+**Arten:**
+- **Konstante Versicherungssumme:** 300.000 € über gesamte Laufzeit
+- **Fallende Versicherungssumme:** Sinkt mit Restschuld (günstiger)
+
+**Empfehlung:**
+- Fallende Versicherungssumme (passt zu Restschuld)
+- Laufzeit = Zinsbindung oder Darlehenslaufzeit
+- Versicherungssumme = Restschuld + Puffer (10%)
+
+**Kosten:**
+- 30-50 €/Monat (abhängig von Alter, Gesundheit, Raucherstatus)
+- **Beispiel:** 40 Jahre, Nichtraucher, 300.000 € Versicherungssumme = ca. 35 €/Monat
+
+---
+
+**4. Berufsunfähigkeitsversicherung:**
+
+**Zweck:**
+Absicherung bei Krankheit, Unfall, die zur Berufsunfähigkeit führen.
+
+**Funktionsweise:**
+- Monatliche Rente bei Berufsunfähigkeit (z.B. 1.500 €/Monat)
+- Zahlung bis Rentenalter oder bis Wiederherstellung der Arbeitsfähigkeit
+
+**Beispiel:**
+- Monatliche Darlehensrate: 1.500 €
+- BU-Rente: 1.500 €/Monat
+- **Bei Berufsunfähigkeit:** BU-Rente zahlt Darlehensrate
+
+**Kosten:**
+- 50-150 €/Monat (abhängig von Alter, Beruf, Gesundheit)
+- **Beispiel:** 40 Jahre, Büroangestellter, 1.500 € Rente = ca. 80 €/Monat
+
+**Empfehlung:**
+- BU-Rente = Darlehensrate + Lebenshaltungskosten
+- Laufzeit bis Rentenalter
+- Wichtig für Hauptverdiener
+
+---
+
+**5. Rücklagen:**
+
+**Zweck:**
+Finanzielle Reserve für unvorhergesehene Ausgaben oder Einkommensausfälle.
+
+**Empfehlung:**
+- **Mindestens:** 3 Monatsraten
+- **Besser:** 6 Monatsraten
+- **Zusätzlich:** Rücklage für Instandhaltung (1% des Immobilienwerts/Jahr)
+
+**Beispiel:**
+- Monatliche Rate: 1.500 €
+- **Rücklage:** 3 × 1.500 € = 4.500 € (Minimum)
+- **Besser:** 6 × 1.500 € = 9.000 €
+- **Instandhaltung:** 400.000 € × 1% = 4.000 €/Jahr
+
+**Verwendung:**
+- Jobverlust (Überbrückung bis neuer Job)
+- Unvorhergesehene Reparaturen (Heizung, Dach)
+- Zinsanstieg bei Anschlussfinanzierung
+
+---
+
+**6. Zwangsversteigerungsrisiko:**
+
+**Ablauf:**
+1. Zahlungsverzug (3 Monate)
+2. Kündigung des Darlehens (§ 498 BGB)
+3. Zwangsversteigerungsantrag
+4. Versteigerungstermin (6-12 Monate später)
+5. Erlösverteilung nach Rangfolge
+
+**Beispiel:**
+- Immobilienwert: 400.000 €
+- Restschuld: 300.000 €
+- **Versteigerungserlös:** 300.000 € (oft unter Marktwert)
+- **Verteilung:** Bank erhält 300.000 €, Kunde erhält 0 €
+
+**Folgen:**
+- Verlust der Immobilie
+- Verlust des Eigenkapitals
+- Schufa-Eintrag (3 Jahre)
+- Restschuld bleibt bestehen (wenn Erlös < Restschuld)
+
+**Vermeidung:**
+- Rechtzeitig mit Bank sprechen (Stundung, Ratenzahlung)
+- Freiwilliger Verkauf (höherer Erlös als Zwangsversteigerung)
+- Rücklagen nutzen
+- Absicherungen (Risikolebensversicherung, BU)
+
+---
+
+**7. Wertverlustrisiko:**
+
+**Ursachen:**
+- Wirtschaftliche Entwicklung (Rezession)
+- Demografischer Wandel (Bevölkerungsrückgang)
+- Strukturwandel (Industrieabwanderung)
+- Bauschäden, Altlasten
+
+**Beispiel:**
+- Kaufpreis 2020: 400.000 €
+- Wert 2030: 350.000 € (Wertverlust 12,5%)
+- Restschuld 2030: 280.000 €
+- **Eigenkapital:** 350.000 € - 280.000 € = 70.000 € (statt 120.000 €)
+
+**Folgen:**
+- Geringeres Eigenkapital
+- Schwierigere Anschlussfinanzierung
+- Verlust bei Verkauf
+
+**Absicherung:**
+- **Lage:** Gute Lage (Stadt, Infrastruktur)
+- **Qualität:** Hochwertige Bausubstanz
+- **Eigenkapital:** Mindestens 20% (Puffer für Wertverlust)
+- **Tilgung:** Schnelle Entschuldung reduziert Risiko
+
+---
+
+**8. Haushaltsrechnung mit Sicherheitspuffer:**
+
+**Empfehlung:**
+Verfügbares Einkommen / 1,2 = Maximale Darlehensrate (20% Sicherheitspuffer)
+
+**Beispiel:**
+- Nettoeinkommen: 4.000 €
+- Ausgaben: 2.500 €
+- **Verfügbares Einkommen:** 1.500 €
+- **Maximale Darlehensrate:** 1.500 € / 1,2 = 1.250 €
+
+**Zweck:**
+- Puffer für Zinsanstieg
+- Puffer für unvorhergesehene Ausgaben
+- Puffer für Einkommensrückgang
+
+**Ohne Sicherheitspuffer:**
+- Maximale Rate: 1.500 € (100% des verfügbaren Einkommens)
+- **Risiko:** Keine Reserve für Zinsanstieg oder Ausgaben
+
+---
+
+**9. Praxisbeispiel Risikomanagement:**
+
+**Kunde:**
+- Alter: 35 Jahre
+- Nettoeinkommen: 4.500 €/Monat
+- Ehefrau: 2.500 €/Monat (Teilzeit)
+- Kinder: 2
+- Darlehensbetrag: 320.000 €
+- Zinssatz: 3,5% p.a.
+- Tilgung: 2% p.a.
+- **Monatliche Rate:** 1.467 €
+
+**Risiken:**
+1. **Zinsänderungsrisiko:** Zinsen steigen nach 10 Jahren auf 5,0% p.a.
+2. **Zahlungsunfähigkeitsrisiko:** Hauptverdiener verliert Job
+3. **Tod des Hauptverdieners:** Ehefrau kann Rate nicht alleine zahlen
+
+**Absicherungen:**
+1. **Lange Zinsbindung:** 15 Jahre (statt 10 Jahre)
+2. **Risikolebensversicherung:** 320.000 € (fallend), 35 €/Monat
+3. **Berufsunfähigkeitsversicherung:** 1.500 €/Monat Rente, 80 €/Monat
+4. **Rücklagen:** 9.000 € (6 Monatsraten)
+5. **Sicherheitspuffer:** Maximale Rate 2.333 € (1.467 € < 2.333 € ✓)
+
+**Kosten Absicherungen:**
+- Risikolebensversicherung: 35 €/Monat
+- Berufsunfähigkeitsversicherung: 80 €/Monat
+- **Gesamt:** 115 €/Monat = 1.380 €/Jahr
+
+**Ergebnis:**
+- Kunde ist gut abgesichert
+- Kosten sind tragbar (115 € < 866 € Puffer)
+- Familie ist geschützt
+
+---
+
+**Besondere Finanzierungsformen im Detail:**
+
+**1. Mietkauf:**
+
+**Definition:**
+Kombination aus Mietvertrag und Kaufoption. Der Mieter zahlt monatlich Miete, die teilweise auf den Kaufpreis angerechnet wird. Nach einer bestimmten Zeit (z.B. 10 Jahre) kann er die Immobilie kaufen.
+
+**Funktionsweise:**
+1. **Mietphase:** Mieter zahlt monatlich Miete (z.B. 1.500 €)
+2. **Anrechnung:** Teil der Miete wird auf Kaufpreis angerechnet (z.B. 500 €)
+3. **Kaufoption:** Nach 10 Jahren kann Mieter kaufen
+4. **Kaufpreis:** Ursprünglicher Preis - angerechnete Mieten
+
+**Beispiel:**
+- Kaufpreis: 400.000 €
+- Monatliche Miete: 1.500 €
+- Anrechnung: 500 €/Monat
+- Laufzeit: 10 Jahre
+- **Angerechnete Mieten:** 500 € × 12 × 10 = 60.000 €
+- **Restkaufpreis:** 400.000 € - 60.000 € = 340.000 €
+
+**Vorteile:**
+- Kein Eigenkapital erforderlich
+- Sofortiger Einzug
+- Kaufoption (keine Pflicht)
+- Anrechnung der Miete
+
+**Nachteile:**
+- Höhere Gesamtkosten (Miete + Kaufpreis)
+- Risiko: Mieter kann nach 10 Jahren nicht kaufen (angerechnete Mieten verloren)
+- Verkäufer bleibt Eigentümer (Mieter trägt Risiko)
+- Oft teurer als klassische Finanzierung
+
+**Für wen geeignet:**
+- Käufer ohne Eigenkapital
+- Käufer mit schlechter Bonität
+- Käufer, die Flexibilität wünschen
+
+**Kosten:**
+- Höher als klassische Finanzierung (ca. 10-20% Aufschlag)
+
+---
+
+**2. Leibrente:**
+
+**Definition:**
+Verkauf einer Immobilie gegen lebenslange Rente. Der Verkäufer bleibt in der Immobilie wohnen (Wohnrecht oder Nießbrauch) und erhält monatlich eine Rente vom Käufer.
+
+**Funktionsweise:**
+1. **Verkauf:** Verkäufer verkauft Immobilie an Käufer
+2. **Wohnrecht:** Verkäufer behält lebenslanges Wohnrecht
+3. **Leibrente:** Käufer zahlt monatlich Rente an Verkäufer
+4. **Tod:** Bei Tod des Verkäufers endet Rentenzahlung, Käufer wird Eigentümer
+
+**Beispiel:**
+- Immobilienwert: 400.000 €
+- Verkäufer: 75 Jahre alt
+- Lebenserwartung: 15 Jahre
+- **Leibrente:** 400.000 € / (15 × 12) = 2.222 €/Monat
+
+**Vorteile für Verkäufer:**
+- Lebenslange Rente
+- Wohnrecht (bleibt in Immobilie)
+- Keine Instandhaltungskosten mehr
+- Liquidität im Alter
+
+**Vorteile für Käufer:**
+- Immobilie unter Marktwert (Wohnrecht mindert Wert)
+- Ratenzahlung (keine Finanzierung erforderlich)
+- Erbe für Kinder
+
+**Nachteile für Verkäufer:**
+- Verlust des Eigentums
+- Abhängigkeit vom Käufer
+- Risiko: Käufer zahlt nicht
+
+**Nachteile für Käufer:**
+- Langfristige Verpflichtung
+- Risiko: Verkäufer lebt länger als erwartet
+- Keine sofortige Nutzung
+
+**Für wen geeignet:**
+- Verkäufer: Senioren ohne Erben, Liquiditätsbedarf
+- Käufer: Investoren, Erben
+
+**Kosten:**
+- Notar, Grundbuch (wie beim Kauf)
+- Leibrente (monatlich)
+
+---
+
+**3. Reverse Mortgage (Umkehrhypothek):**
+
+**Definition:**
+Ältere Menschen beleihen ihre schuldenfreie Immobilie und erhalten monatlich eine Rente. Die Rückzahlung erfolgt bei Tod oder Auszug durch Verkauf der Immobilie.
+
+**Funktionsweise:**
+1. **Beleihung:** Immobilie wird beliehen (z.B. 50% des Werts)
+2. **Auszahlung:** Monatliche Rente oder Einmalzahlung
+3. **Keine Rückzahlung:** Während Lebenszeit keine Rückzahlung
+4. **Tod/Auszug:** Immobilie wird verkauft, Darlehen getilgt, Rest geht an Erben
+
+**Beispiel:**
+- Immobilienwert: 400.000 €
+- Beleihung: 50% = 200.000 €
+- Auszahlung: 200.000 € / (15 Jahre × 12 Monate) = 1.111 €/Monat
+- **Bei Tod nach 15 Jahren:** Darlehen + Zinsen = ca. 250.000 €, Verkaufserlös 400.000 €, Erben erhalten 150.000 €
+
+**Vorteile:**
+- Liquidität im Alter
+- Wohnrecht (bleibt in Immobilie)
+- Keine monatlichen Raten
+- Erben erhalten Restwert
+
+**Nachteile:**
+- Hohe Zinsen (ca. 5-7% p.a.)
+- Risiko: Immobilie verliert an Wert
+- Erben erhalten weniger
+- Komplexes Produkt
+
+**Für wen geeignet:**
+- Senioren mit schuldenfreier Immobilie
+- Liquiditätsbedarf im Alter
+- Keine Erben oder Erben einverstanden
+
+**Kosten:**
+- Hohe Zinsen (5-7% p.a.)
+- Abschlussgebühren (ca. 2-3%)
+- Notar, Grundbuch
+
+---
+
+**4. Vergleich der Finanzierungsformen:**
+
+**Mietkauf:**
+- **Vorteile:** Kein Eigenkapital, sofortiger Einzug
+- **Nachteile:** Teurer, Risiko bei Nichtkauf
+- **Für:** Käufer ohne Eigenkapital
+
+**Leibrente:**
+- **Vorteile:** Lebenslange Rente, Wohnrecht
+- **Nachteile:** Verlust Eigentum, Abhängigkeit
+- **Für:** Senioren ohne Erben
+
+**Reverse Mortgage:**
+- **Vorteile:** Liquidität, Wohnrecht, keine Raten
+- **Nachteile:** Hohe Zinsen, Erben erhalten weniger
+- **Für:** Senioren mit Liquiditätsbedarf
+
+**Klassische Finanzierung:**
+- **Vorteile:** Günstigste Option, Eigentum
+- **Nachteile:** Eigenkapital erforderlich, monatliche Raten
+- **Für:** Käufer mit Eigenkapital und Bonität
+
+---
+
+**5. Praxisbeispiel Mietkauf:**
+
+**Käufer:**
+- Alter: 30 Jahre
+- Einkommen: 3.000 €/Monat
+- Eigenkapital: 0 €
+- Bonität: Befriedigend (Schufa 92%)
+
+**Immobilie:**
+- Kaufpreis: 350.000 €
+- Monatliche Miete: 1.400 €
+- Anrechnung: 400 €/Monat
+- Laufzeit: 10 Jahre
+
+**Berechnung:**
+- **Angerechnete Mieten:** 400 € × 12 × 10 = 48.000 €
+- **Restkaufpreis:** 350.000 € - 48.000 € = 302.000 €
+- **Gesamtkosten:** (1.400 € × 12 × 10) + 302.000 € = 470.000 €
+- **Klassische Finanzierung:** 350.000 € + ca. 100.000 € Zinsen = 450.000 €
+- **Mehrkosten Mietkauf:** 20.000 €
+
+**Empfehlung:**
+- Mietkauf nur, wenn klassische Finanzierung nicht möglich
+- Besser: Eigenkapital ansparen, dann klassisch finanzieren
+
+---
+
+**6. Praxisbeispiel Leibrente:**
+
+**Verkäufer:**
+- Alter: 75 Jahre
+- Lebenserwartung: 15 Jahre
+- Immobilienwert: 400.000 €
+- Wohnrecht: Lebenslang
+
+**Käufer:**
+- Investor, 45 Jahre alt
+- Möchte Immobilie für Altersvorsorge
+
+**Berechnung:**
+- **Leibrente:** 400.000 € / (15 × 12) = 2.222 €/Monat
+- **Gesamtzahlung (bei 15 Jahren):** 2.222 € × 12 × 15 = 400.000 €
+- **Risiko Käufer:** Verkäufer lebt 20 Jahre → Gesamtzahlung 533.333 € (statt 400.000 €)
+- **Risiko Verkäufer:** Verkäufer stirbt nach 10 Jahren → Erhält nur 266.667 € (statt 400.000 €)
+
+**Empfehlung:**
+- Für Verkäufer: Nur wenn keine Erben, Liquiditätsbedarf
+- Für Käufer: Nur als Investition, Risiko einkalkulieren
+
+---
+
+**7. Praxisbeispiel Reverse Mortgage:**
+
+**Senior:**
+- Alter: 70 Jahre
+- Immobilienwert: 500.000 € (schuldenfrei)
+- Lebenserwartung: 20 Jahre
+- Liquiditätsbedarf: 1.500 €/Monat
+
+**Berechnung:**
+- **Beleihung:** 50% = 250.000 €
+- **Auszahlung:** 1.500 €/Monat
+- **Laufzeit:** 250.000 € / 1.500 € = 167 Monate = 14 Jahre
+- **Zinsen (6% p.a.):** ca. 150.000 € über 14 Jahre
+- **Gesamtschuld nach 14 Jahren:** 250.000 € + 150.000 € = 400.000 €
+- **Verkaufserlös:** 500.000 €
+- **Erben erhalten:** 100.000 €
+
+**Empfehlung:**
+- Nur wenn: Liquiditätsbedarf, keine andere Option
+- Besser: Immobilie verkaufen, kleinere Wohnung kaufen, Rest als Rücklage
+
+---
+
+**Praxisfall 1: Prolongation vs. Umschuldung**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Anschlussfinanzierung, Prolongation und Forward-Darlehen' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Anschlussfinanzierung, Prolongation und Forward-Darlehen'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Anschlussfinanzierung, Prolongation und Forward-Darlehen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
+
+Ein Kunde hat eine Restschuld von 200.000 € nach 10 Jahren Zinsbindung. Seine Bank bietet Prolongation zu 4,2% p.a. an. Eine andere Bank bietet 3,8% p.a.
+
+**Fragen:**
+1. Wie viel spart der Kunde pro Jahr bei Umschuldung?
+2. Welche Kosten entstehen bei Umschuldung?
+3. Lohnt sich die Umschuldung?
+4. Was müssen Sie als Berater beachten?
+5. Welche Unterlagen benötigt der Kunde für die Umschuldung?
+
+---
+
+**Praxisfall 2: Forward-Darlehen**
+
+Ein Kunde hat noch 3 Jahre Zinsbindung. Aktueller Marktzins: 3,0% p.a. Forward-Zinssatz: 3,36% p.a. (Forward-Prämie 0,01% × 36 Monate).
+
+**Fragen:**
+1. Wie hoch ist die Forward-Prämie?
+2. Wann lohnt sich das Forward-Darlehen?
+3. Was passiert, wenn die Zinsen in 3 Jahren bei 2,5% liegen?
+4. Was passiert, wenn die Zinsen in 3 Jahren bei 4,5% liegen?
+5. Sollte der Kunde das Forward-Darlehen abschließen?
+
+---
+
+**Praxisfall 3: Sonderkündigungsrecht**
+
+Ein Kunde hat 2016 ein Darlehen mit 15 Jahren Zinsbindung (bis 2031) zu 2,5% p.a. abgeschlossen. Jetzt (2026) liegen die Zinsen bei 4,0% p.a.
+
+**Fragen:**
+1. Kann der Kunde das Darlehen vorzeitig kündigen?
+2. Welche Frist muss er einhalten?
+3. Muss er eine Vorfälligkeitsentschädigung zahlen?
+4. Lohnt sich die Kündigung?
+5. Was sollte der Kunde tun?
+
+---
+
+**Praxisfall 1: Vorfälligkeitsentschädigung berechnen**
+    tasks: [
+      {
+        type: "reflection" as const,
+        question: "Reflektieren Sie: Welche drei Kernaussagen aus 'Vorfälligkeitsentschädigung, Sondertilgung und Tilgungssatzwechsel' sind für Ihre Tätigkeit als Darlehensvermittler §34i-Profi am wichtigsten?",
+        hint: "Denken Sie an konkrete Praxissituationen und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        type: "case" as const,
+        question: "Praxisfall: Ein Kunde fragt Sie speziell nach Ihrem Wissen zu 'Vorfälligkeitsentschädigung, Sondertilgung und Tilgungssatzwechsel'. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        hint: "Nutzen Sie die Fachbegriffe aus der heutigen Lektion. Denken Sie an §34i GewO, ImmVermV, ESIS, Kreditwürdigkeit."
+      },
+      {
+        type: "research" as const,
+        question: "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Vorfälligkeitsentschädigung, Sondertilgung und Tilgungssatzwechsel' und bereiten Sie eine kurze Zusammenfassung vor.",
+        hint: "Nutzen Sie Quellen wie Haufe.de, IHK-Website oder gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ],
+
+Ein Kunde möchte sein Darlehen vorzeitig zurückzahlen:
+- Restschuld: 180.000 €
+- Vertragszins: 3,0% p.a.
+- Wiederanlagezins: 1,5% p.a.
+- Restlaufzeit: 7 Jahre
+
+**Fragen:**
+1. Wie hoch ist die Vorfälligkeitsentschädigung?
+2. Kann der Kunde die Entschädigung umgehen?
+3. Was passiert, wenn der Wiederanlagezins höher ist als der Vertragszins?
+4. Kann der Kunde verhandeln?
+5. Welche Alternativen gibt es?
+
+---
+
+**Praxisfall 2: Sondertilgung nutzen**
+
+Ein Kunde hat ein Darlehen über 250.000 € (3,5% p.a., 2% Tilgung) mit 5% Sondertilgungsrecht. Er erhält eine Erbschaft von 30.000 €.
+
+**Fragen:**
+1. Wie viel kann er maximal sondertilgen?
+2. Wie viel Zinsen spart er pro Jahr?
+3. Wie viel spart er über die Gesamtlaufzeit?
+4. Sollte er die gesamte Erbschaft sondertilgen?
+5. Welche Alternativen gibt es?
+
+---
+
+**Praxisfall 3: Tilgungssatzwechsel**
+
+Ein Kunde hat ein Darlehen über 300.000 € (3,5% p.a., 2% Tilgung). Nach 5 Jahren erhält er eine Gehaltserhöhung und möchte die Tilgung auf 3% erhöhen.
+
+**Fragen:**
+1. Wie hoch ist die neue monatliche Rate?
+2. Wie viel Jahre spart er?
+3. Wie viel Zinsen spart er?
+4. Welche Kosten entstehen?
+5. Lohnt sich der Tilgungssatzwechsel?
