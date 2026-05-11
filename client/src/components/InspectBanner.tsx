@@ -16,12 +16,16 @@ export function InspectBanner() {
   }, []);
 
   function exitDemo() {
-    // Cookie löschen
     document.cookie = "inspect_mode=; path=/; max-age=0; samesite=lax";
-    // SessionStorage löschen
     sessionStorage.removeItem("inspect_mode");
-    // Seite neu laden → normaler Modus
-    window.location.href = "/";
+    // Nach Rolle weiterleiten
+    fetch("/api/auth/me", { credentials: "include" })
+      .then(r => r.json())
+      .then(user => {
+        if (user?.role === "admin") window.location.href = "/admin";
+        else window.location.href = "/modul/1";
+      })
+      .catch(() => { window.location.href = "/login"; });
   }
 
   if (!visible) return null;

@@ -32,7 +32,7 @@ export default function LoginPage() {
       if (data.role === "admin") {
         window.location.href = "/admin-2fa";
       } else {
-        window.location.href = "/statistiken";
+        window.location.href = "/modul/1";
       }
     } catch { setError("Verbindungsfehler. Bitte erneut versuchen."); }
     finally { setLoading(false); }
@@ -45,7 +45,7 @@ export default function LoginPage() {
       const res = await fetch("/api/auth/redeem-code", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code: demoCode.trim() }), credentials: "include" });
       const data = await res.json();
       if (!res.ok || data?.error) { setDemoCodeMsg("Ungültiger oder abgelaufener Code."); }
-      else { setDemoCodeMsg("Zugang freigeschaltet!"); setTimeout(() => { window.location.href = "/"; }, 1500); }
+      else { setDemoCodeMsg("Zugang freigeschaltet!"); setTimeout(() => { window.location.href = "/modul/1"; }, 1500); }
     } catch { setDemoCodeMsg("Verbindungsfehler."); }
     finally { setDemoCodeLoading(false); }
   }
