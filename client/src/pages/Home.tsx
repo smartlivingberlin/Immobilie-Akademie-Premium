@@ -143,7 +143,7 @@ export default function Home() {
                 {audioPlaying ? "⏹ Stop" : <><Mic className="h-4 w-4" /> Hören</>}
               </button>
             </div>
-            {socialProof && (
+            {socialProof && socialProof.activeUsers > 5 && (
               <div className="flex items-center gap-2 mb-6">
                 <div className="flex">
                   {[1,2,3,4,5].map(i => <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />)}
