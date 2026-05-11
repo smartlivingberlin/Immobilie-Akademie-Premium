@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Link } from "wouter";
 import { FileText, ChevronRight, CheckCircle2, Brain, ExternalLink } from "lucide-react";
 
@@ -100,6 +100,34 @@ export default function DokumentWerkstatt({ modulId }: { modulId: number }) {
   const [aktiv, setAktiv] = useState<string | null>(null);
   const [antworten, setAntworten] = useState<Record<number, string>>({});
   const [abgegeben, setAbgegeben] = useState(false);
+  const [kiFeedback, setKiFeedback] = useState<string>("");
+  const [kiLoading, setKiLoading] = useState(false);
+
+  const holeFeedback = useCallback(async (uebung: DokumentUebung, antworten: Record<number, string>) => {
+    setKiLoading(true);
+    setKiFeedback("");
+    try {
+      const fragen = uebung.aufgaben.map(a =>
+        `Aufgabe ${a.nr} (${a.punkte} Punkte): ${a.frage}\nAntwort: ${antworten[a.nr] || "Keine Antwort"}`
+      ).join("\n\n");
+
+      const res = await fetch("/api/ai/rag-tutor", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({
+          message: `Bewerte diese Antworten zur Übung "${uebung.titel}" (${uebung.dokumentTyp}):\n\n${fragen}\n\nGib für jede Aufgabe:\n1. Note (1-5)\n2. Was war gut\n3. Was fehlt noch\n\nAm Ende: Gesamtnote und wichtigsten Verbesserungshinweis.`,
+          moduleId: String(uebung.modulId),
+        }),
+      });
+      const data = await res.json();
+      setKiFeedback(data.response || data.answer || data.message || "KI-Feedback nicht verfügbar");
+    } catch {
+      setKiFeedback("KI-Feedback konnte nicht geladen werden. Nutze den KI-Tutor für Fragen.");
+    } finally {
+      setKiLoading(false);
+    }
+  }, []);
 
   const uebungen = UEBUNGEN.filter(u => u.modulId === modulId);
   const aktiveUebung = UEBUNGEN.find(u => u.id === aktiv);
@@ -312,7 +340,10 @@ export default function DokumentWerkstatt({ modulId }: { modulId: number }) {
           {/* Abgabe-Button */}
           {!abgegeben ? (
             <button
-              onClick={() => setAbgegeben(true)}
+              onClick={() => {
+                setAbgegeben(true);
+                if (aktiveUebung) holeFeedback(aktiveUebung, antworten);
+              }}
               disabled={Object.keys(antworten).length < aktiveUebung.aufgaben.length ||
                 Object.values(antworten).some(v => v.trim().length < 5)}
               style={{
@@ -343,9 +374,29 @@ export default function DokumentWerkstatt({ modulId }: { modulId: number }) {
                 <li>Nutze den <strong>KI-Tutor</strong> für tiefere Erklärungen</li>
                 
               </ul>
-              <div style={{ marginTop: 14, display: "flex", gap: 10 }}>
+              {/* KI-Feedback */}
+              <div style={{ marginTop: 14 }}>
+                {kiLoading && (
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 16px", background: "#eff6ff", borderRadius: 10, marginBottom: 12 }}>
+                    <div style={{ width: 16, height: 16, border: "2px solid #3b82f6", borderTopColor: "transparent", borderRadius: "50%", animation: "spin 0.8s linear infinite" }} />
+                    <span style={{ fontSize: 13, color: "#1d4ed8", fontWeight: 600 }}>KI bewertet deine Antworten…</span>
+                  </div>
+                )}
+                {kiFeedback && !kiLoading && (
+                  <div style={{ background: "#fafafa", border: "1px solid #e2e8f0", borderRadius: 10, padding: "14px 16px", marginBottom: 12 }}>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: "#0f172a", marginBottom: 8, display: "flex", alignItems: "center", gap: 6 }}>
+                      🤖 KI-Bewertung
+                    </div>
+                    <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.7, whiteSpace: "pre-wrap" }}>
+                      {kiFeedback}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+            <div style={{ marginTop: 14, display: "flex", gap: 10 }}>
                 <button
-                  onClick={() => { setAktiv(null); setAbgegeben(false); }}
+                  onClick={() => { setAktiv(null); setAbgegeben(false); setKiFeedback(""); }}
                   style={{
                     flex: 1, padding: "10px", background: "#f1f5f9",
                     border: "none", borderRadius: 8, fontSize: 13,
@@ -353,7 +404,7 @@ export default function DokumentWerkstatt({ modulId }: { modulId: number }) {
                   }}
                 >← Zur Übersicht</button>
                 <button
-                  onClick={() => { setAntworten({}); setAbgegeben(false); }}
+                  onClick={() => { setAntworten({}); setAbgegeben(false); setKiFeedback(""); }}
                   style={{
                     flex: 1, padding: "10px",
                     background: "linear-gradient(135deg,#0ea5e9,#2563eb)",
