@@ -123,7 +123,7 @@ stripeRouter.post("/api/stripe/checkout", async (req, res) => {
     "komplett":     { modules:[1,2,3,4,5], price:195500, name:"Komplett-Ausbildung (alle 5 Module)", desc:"Alle 5 Berufsbilder — maximale Karrierechancen in der Immobilienwirtschaft" },
   };
 
-  stripeRouter.post("/bundle-:bundleId", async (req: Request, res: Response) => {
+  stripeRouter.post("/api/stripe/bundle-:bundleId", async (req: Request, res: Response) => {
     const { bundleId } = req.params;
     const bundle = BUNDLES[bundleId as string];
     if (!bundle) return void res.status(404).json({ error: "Bundle nicht gefunden" });
