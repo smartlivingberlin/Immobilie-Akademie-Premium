@@ -60,7 +60,7 @@ function getSmartContext(moduleId?: string | number, maxChars: number = 12000): 
     for (let i = 1; i <= 5; i++) {
       const filePath = pathJoin(__dirname, "..", "knowledge", `modul_${i}.txt`);
       if (existsSync(filePath)) {
-        combined += readFileSync(filePath, "utf-8").slice(0, 2000) + "\n\n";
+        combined += readFileSync(filePath, "utf-8").slice(0, 8000) + "\n\n";
       }
     }
     return combined.slice(0, maxChars);
@@ -207,7 +207,7 @@ export function registerRagTutorRoutes(app: Express) {
       }
 
       // SMART RAG: Echte Modul-Inhalte nutzen (viel besser als Stichworte!)
-      const moduleContext = getSmartContext(moduleId, 5000); // Fokussiert, nicht überladen
+      const moduleContext = getSmartContext(moduleId, 25000); // Fokussiert, nicht überladen
 
       const systemPrompt = `Du bist ein professioneller KI-Tutor der Immobilien Akademie Smart.
 Deine EINZIGE Aufgabe: Unterstützung bei IHK-Prüfungsvorbereitung für Immobilienberufe
@@ -656,7 +656,7 @@ Bewerte nach IHK-Maßstäben und antworte NUR mit diesem JSON:
         }
       }
       // SMART RAG: Extrahierten Content + Smart Context kombinieren
-      const smartCtx = getSmartContext(moduleId, 8000);
+      const smartCtx = getSmartContext(moduleId, 40000);
       const extractedContent = titleTheoryPairs.length > 0 
         ? titleTheoryPairs.slice(0, 40).join("\n\n") + "\n\n---\nZUSÄTZLICHE WISSENSBASIS:\n" + smartCtx
         : smartCtx || rawContent.slice(0, 12000);
