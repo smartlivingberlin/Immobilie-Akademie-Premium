@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { getDb } from "./db";
 import { sql } from "drizzle-orm";
-import { requireAdmin } from "./_core/index";
+import { requireAdmin } from "./authMiddleware";
 
 const router = Router();
 

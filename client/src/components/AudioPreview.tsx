@@ -5,6 +5,13 @@ interface AudioPreviewProps {
   hauptfarbe: string;
 }
 
+interface AudioLesson {
+  id: number;
+  title: string;
+  content: string;
+  day: number;
+}
+
 export function AudioPreview({ moduleId, hauptfarbe }: AudioPreviewProps) {
   const [playing, setPlaying] = useState(false);
   const [previewText, setPreviewText] = useState("");
@@ -14,7 +21,7 @@ export function AudioPreview({ moduleId, hauptfarbe }: AudioPreviewProps) {
   useEffect(() => {
     fetch(`/api/learning/audio-lessons?moduleId=${moduleId}`)
       .then(r => r.json())
-      .then((lessons: any[]) => {
+      .then((lessons: AudioLesson[]) => {
         if (lessons && lessons.length > 0) {
           const first = lessons[0];
           setPreviewTitle(first.title || "Erste Lektion");

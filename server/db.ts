@@ -68,12 +68,6 @@ const POOL_CONFIG = {
   keepAliveInitialDelay: 0,
 };
 
-/**
- * Initialisiert und gibt den MySQL-Verbindungspool zurück.
- * Initializes and returns the MySQL connection pool.
- *
- * @returns {mysql.Pool} Der konfigurierte Verbindungspool.
- */
 export function getPool(): mysql.Pool {
   if (_pool) return _pool;
   const url = process.env.DATABASE_URL;
@@ -94,12 +88,7 @@ export function getPool(): mysql.Pool {
   return _pool;
 }
 
-/**
- * Liefert eine Drizzle-Datenbankinstanz.
- * Returns a Drizzle database instance.
- *
- * @returns {Promise<ReturnType<typeof drizzle>>} Die Drizzle-DB-Instanz.
- */
+// Liefert IMMER eine DB-Verbindung oder wirft einen Fehler.
 export async function getDb(): Promise<ReturnType<typeof drizzle>> {
   if (_db) return _db;
   const pool = getPool();
@@ -107,13 +96,6 @@ export async function getDb(): Promise<ReturnType<typeof drizzle>> {
   return _db!;
 }
 
-/**
- * Erstellt einen neuen Nutzer oder aktualisiert einen bestehenden basierend auf der openId.
- * Creates a new user or updates an existing one based on openId.
- *
- * @param {InsertUser} user Die Nutzerdaten zum Einfügen oder Aktualisieren.
- * @throws {Error} Wenn die openId fehlt.
- */
 export async function upsertUser(user: InsertUser): Promise<void> {
   if (!user.openId) {
     throw new Error("User openId is required for upsert");
@@ -169,40 +151,14 @@ export async function upsertUser(user: InsertUser): Promise<void> {
   }
 }
 
-/**
- * Sucht einen Nutzer anhand seiner openId.
- * Finds a user by their openId.
- *
- * @param {string} openId Die openId des Nutzers.
- * @returns {Promise<User | undefined>} Der gefundene Nutzer oder undefined.
- */
 export async function getUserByOpenId(openId: string) {
   const db = await getDb();
 
-  const result = await db.select({
-    id: users.id,
-    openId: users.openId,
-    name: users.name,
-    email: users.email,
-    role: users.role,
-    enabledModules: users.enabledModules,
-    tenantId: users.tenantId,
-    onboardingCompleted: users.onboardingCompleted,
-  })
-  .from(users)
-  .where(eq(users.openId, openId))
-  .limit(1);
+  const result = await db.select().from(users).where(eq(users.openId, openId)).limit(1);
 
   return result.length > 0 ? result[0] : undefined;
 }
 
-/**
- * Aktualisiert die Rolle eines Nutzers.
- * Updates a user's role.
- *
- * @param {string} openId Die openId des Nutzers.
- * @param {"user" | "admin" | "trainer"} role Die neue Rolle.
- */
 export async function updateUserRole(openId: string, role: "user" | "admin" | "trainer"): Promise<void> {
   const db = await getDb();
   await db.update(users).set({ role }).where(eq(users.openId, openId));
@@ -214,14 +170,6 @@ export async function updateUserRole(openId: string, role: "user" | "admin" | "t
 
 /**
  * Create a new chat conversation for a user
- */
-/**
- * Erstellt eine neue Chat-Konversation für einen Nutzer.
- * Creates a new chat conversation for a user.
- *
- * @param {number} userId Die ID des Nutzers.
- * @param {string} [moduleContext] Optionaler Modul-Kontext.
- * @returns {Promise<ChatConversation | undefined>} Die erstellte Konversation.
  */
 export async function createChatConversation(
   userId: number,
@@ -346,34 +294,12 @@ export async function getWhitelabelConfigById(
   const db = await getDb();
 
   const result = await db
-    .select({
-      id: whitelabelConfigs.id,
-      slug: whitelabelConfigs.slug,
-      companyName: whitelabelConfigs.companyName,
-      logoUrl: whitelabelConfigs.logoUrl,
-      faviconUrl: whitelabelConfigs.faviconUrl,
-      primaryColor: whitelabelConfigs.primaryColor,
-      secondaryColor: whitelabelConfigs.secondaryColor,
-      accentColor: whitelabelConfigs.accentColor,
-      sidebarColor: whitelabelConfigs.sidebarColor,
-      welcomeText: whitelabelConfigs.welcomeText,
-      footerText: whitelabelConfigs.footerText,
-      contactEmail: whitelabelConfigs.contactEmail,
-      contactPhone: whitelabelConfigs.contactPhone,
-      websiteUrl: whitelabelConfigs.websiteUrl,
-      azavEnabled: whitelabelConfigs.azavEnabled,
-      enabledModules: whitelabelConfigs.enabledModules,
-      maxUsers: whitelabelConfigs.maxUsers,
-      isActive: whitelabelConfigs.isActive,
-      adminUserId: whitelabelConfigs.adminUserId,
-      createdAt: whitelabelConfigs.createdAt,
-      updatedAt: whitelabelConfigs.updatedAt,
-    })
+    .select()
     .from(whitelabelConfigs)
     .where(eq(whitelabelConfigs.id, id))
     .limit(1);
 
-  return result.length > 0 ? result[0] as WhitelabelConfig : null;
+  return result.length > 0 ? result[0] : null;
 }
 
 /**
@@ -468,7 +394,7 @@ export async function getWhitelabelConfigForUser(
 
   // First get the user's tenantId
   const userResult = await db
-    .select({ tenantId: users.tenantId })
+    .select()
     .from(users)
     .where(eq(users.id, userId))
     .limit(1);

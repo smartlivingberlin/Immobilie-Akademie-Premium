@@ -5,7 +5,7 @@ import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 
 interface LoadingHandlerProps {
   isLoading: boolean;
-  error?: any;
+  error?: Error | string | null;
   skeleton: ReactNode;
   children: ReactNode;
   onRetry?: () => void;

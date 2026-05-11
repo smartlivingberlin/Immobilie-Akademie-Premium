@@ -39,19 +39,7 @@ import { glossarRouter } from "../glossarRouter";
 import { audioRouter } from "../audioRouter";
 import { registerTrialRoutes } from "../trialRoute";
 import { logger } from "./logger";
-import { requireAuth } from "../ragTutor";
-
-// Admin-Middleware für Express-Routen
-export async function requireAdmin(req: any, res: any, next: any) {
-  await requireAuth(req, res, async () => {
-    const { getUserByOpenId } = await import("../db");
-    const user = await getUserByOpenId(req.currentUser.openId);
-    if (user?.role !== "admin") {
-      return res.status(403).json({ error: "Nur Administratoren haben Zugriff." });
-    }
-    next();
-  });
-}
+import { requireAuth, requireAdmin } from "../authMiddleware";
 
 
 // Globaler Error Handler
@@ -379,7 +367,7 @@ app.use(express.json({ limit: "1mb" }));
 app.get("/api/stats/dashboard", requireAuth, async (req: any, res: any) => {
   try {
     const db = await (await import("../db")).getDb();
-    const userId = req.currentUser.openId;
+    const userId = req.currentUser.id;
     const { sql: sqlFn } = await import("drizzle-orm");
     const [[logs]] = await db.execute(
       sqlFn`SELECT COUNT(*) as total, SUM(completed) as completed, SUM(durationSeconds) as totalSeconds FROM learning_logs WHERE userId = ${userId}`
@@ -437,7 +425,7 @@ app.get("/api/quiz/questions-by-ids", requireAuth, async (req: any, res: any) =>
 app.get("/api/user/my-data", resetLimiter, requireAuth, async (req: any, res: any) => {
   try {
     const db = await (await import("../db")).getDb();
-    const userId = req.currentUser.openId;
+    const userId = req.currentUser.id;
 
     const [user] = await db.$client.promise().query(`SELECT id, name, email, role, enabledModules, createdAt, lastSignedIn
        FROM users WHERE id = ?`, [userId]) as any;
@@ -490,7 +478,7 @@ app.get("/api/user/my-data", resetLimiter, requireAuth, async (req: any, res: an
 app.get("/api/user/export", resetLimiter, requireAuth, async (req: any, res: any) => {
   try {
     const db = await (await import("../db")).getDb();
-    const userId = req.currentUser.openId;
+    const userId = req.currentUser.id;
 
     const [user] = await db.$client.promise().query(
       `SELECT name, email, role, enabledModules, createdAt FROM users WHERE id = ?`,

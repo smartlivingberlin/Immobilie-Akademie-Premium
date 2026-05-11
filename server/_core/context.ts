@@ -29,20 +29,16 @@ async function tryLocalAuth(req: CreateExpressContextOptions["req"]): Promise<Us
   }
 }
 
-import { drizzle } from "drizzle-orm/mysql2";
-
 export type TrpcContext = {
   req: CreateExpressContextOptions["req"];
   res: CreateExpressContextOptions["res"];
   user: User | null;
-  db: ReturnType<typeof drizzle>;
 };
 
 export async function createContext(
   opts: CreateExpressContextOptions
 ): Promise<TrpcContext> {
   let user: User | null = null;
-  const database = await db.getDb();
 
   try {
     // Manus hat Priorität wenn konfiguriert, sonst lokales Auth
@@ -55,5 +51,5 @@ export async function createContext(
     user = null;
   }
 
-  return { req: opts.req, res: opts.res, user, db: database };
+  return { req: opts.req, res: opts.res, user };
 }

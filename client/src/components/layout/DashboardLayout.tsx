@@ -31,7 +31,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [isAIAssistantOpen, setIsAIAssistantOpen] = useState(false);
 
   const { user } = useAuth();
-  const { isWhiteLabeled, companyName, logoUrl, enabledModules, footerText, config } = useWhiteLabel();
+  const { isWhiteLabeled, companyName, logoUrl, config } = useWhiteLabel();
 
   const allModules = [
     { id: 1, name: "Modul 1: Einführung", href: "/modul/1", icon: BookOpen },
@@ -50,7 +50,15 @@ const modulesWithAccess = allModules.map((m) => ({
 }));
 
 const modulId = modulesWithAccess.find(m => !m.locked)?.id ?? 1;
-const navigation = [
+
+interface NavigationItem {
+  name: string;
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+  locked?: boolean;
+}
+
+const navigation: NavigationItem[] = [
   { name: "Startseite", href: "/", icon: Home },
   ...modulesWithAccess.map((m) => ({ name: m.name, href: m.href, icon: m.icon, locked: m.locked })),
   { name: "📄 Dokument-Werkstatt", href: `/dokument-werkstatt/${modulId}`, icon: FileText },
@@ -61,9 +69,9 @@ const navigation = [
   const primaryColor = isWhiteLabeled && config?.primaryColor ? config.primaryColor : undefined;
 
   // Helper component for nav items to handle collapsed state
-  const NavItem = ({ item }: { item: typeof navigation[0] }) => {
+  const NavItem = ({ item }: { item: NavigationItem }) => {
     const isActive = location === item.href || location.startsWith(item.href + "/");
-    const isLocked = Boolean((item as any).locked);
+    const isLocked = Boolean(item.locked);
     const lockMsg = "Dieses Modul ist gesperrt. Bitte freischalten lassen.";
 
     // Wenn gesperrt: NICHT navigieren, nur Hinweis zeigen
@@ -609,7 +617,7 @@ const navigation = [
 }
 
 // Icon wrapper for Module 3 to avoid collision
-function BuildingIcon(props: any) {
+function BuildingIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

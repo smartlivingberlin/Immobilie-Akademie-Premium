@@ -24,8 +24,9 @@ export default function ModuleGuard({ moduleId, children }: ModuleGuardProps) {
   }
 
   // Trial-Ablauf prüfen
-  const trialExpired = (user as any).trialExpiresAt
-    ? new Date((user as any).trialExpiresAt) < new Date()
+  const trialExpiresAt = (user as { trialExpiresAt?: string | Date }).trialExpiresAt;
+  const trialExpired = trialExpiresAt
+    ? new Date(trialExpiresAt) < new Date()
     : false;
 
   const enabled = (user.enabledModules || "").split(",").map((m) => m.trim()).filter(Boolean);
