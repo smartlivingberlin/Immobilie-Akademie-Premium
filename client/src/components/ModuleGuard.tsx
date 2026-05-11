@@ -74,7 +74,7 @@ export default function ModuleGuard({ moduleId, children }: ModuleGuardProps) {
   };
 
   const prices: Record<number, string> = {
-    1: "149 EUR", 2: "499 €", 3: "im Komplettpaket", 4: "im Komplettpaket", 5: "im Komplettpaket",
+    1: "149 €", 2: "499 €", 3: "699 €", 4: "399 €", 5: "499 €",
   };
 
   const waUrl = "https://wa.me/491711526327?text=" + encodeURIComponent("Hallo, ich möchte Modul " + moduleId + " freischalten.");

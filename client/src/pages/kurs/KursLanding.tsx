@@ -250,6 +250,7 @@ export default function KursLanding({ slug }: { slug: string }) {
         body: JSON.stringify({ 
           productId: kurs.id,
           userEmail: user?.email || "",
+          widerrufsAkzeptiert: widerrufsAkzeptiert,
         }),
       });
       if (!res.ok) throw new Error("Checkout fehlgeschlagen");

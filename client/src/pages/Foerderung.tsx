@@ -2,7 +2,7 @@ import { CheckCircle2, ArrowRight, FileText, Award, ShieldCheck, Briefcase, Info
 import { Link } from "wouter";
 
 const programs = [
-  { icon: Briefcase, title: "Bildungsgutschein (SGB III §81)", who: "Arbeitsuchende, von Arbeitslosigkeit Bedrohte", coverage: "Bis zu 100 % der Kursgebühren", badge: "Bis 100%", color: "bg-green-100 text-green-800", desc: "Erfordert AZAV-zertifizierte Maßnahme. Wir befinden uns im Zertifizierungsverfahren. Ansprechpartner: Agentur für Arbeit." },
+  { icon: Briefcase, title: "Bildungsgutschein (SGB III §81)", who: "Arbeitsuchende, von Arbeitslosigkeit Bedrohte", coverage: "Bis zu 100 % der Kursgebühren", badge: "Bis 100%", color: "bg-green-100 text-green-800", desc: "Erfordert AZAV-zertifizierte Maßnahme. Wir bereiten die AZAV-Zertifizierung vor. Ansprechpartner: Agentur für Arbeit." },
   { icon: Award, title: "Qualifizierungschancengesetz (QCG)", who: "Beschäftigte aller Branchen", coverage: "25–100 % je nach Betriebsgröße", badge: "Bis 100%", color: "bg-blue-100 text-blue-800", desc: "Arbeitgeber stellt Antrag bei der Agentur für Arbeit. Kann Lehrgangs- und Lohnkosten übernehmen." },
   { icon: FileText, title: "Aufstiegs-BAföG", who: "Personen mit abgeschlossener Erstausbildung", coverage: "50 % Zuschuss + 50 % zinsgünstiges Darlehen", badge: "Zuschuss", color: "bg-purple-100 text-purple-800", desc: "Für höhere Fortbildungen wie Geprüfte/r Immobilienfachwirt/in. Zuschuss muss nicht zurückgezahlt werden." },
   { icon: ShieldCheck, title: "Steuerliche Absetzbarkeit", who: "Alle Berufstätigen & Selbstständige", coverage: "Bis zu 100 % als Werbungskosten", badge: "Sofort", color: "bg-amber-100 text-amber-800", desc: "Berufliche Weiterbildungskosten sind sofort und vollständig absetzbar — ohne Voraussetzungen." },
@@ -22,7 +22,7 @@ export default function Foerderung() {
 
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-8 flex gap-3">
           <Info className="h-5 w-5 text-amber-600 flex-shrink-0 mt-0.5"/>
-          <p className="text-sm text-amber-700"><strong className="text-amber-800">AZAV-Zertifizierung:</strong> Unser Antrag ist eingereicht. Die steuerliche Absetzbarkeit gilt bereits jetzt sofort.</p>
+          <p className="text-sm text-amber-700"><strong className="text-amber-800">AZAV-Zertifizierung:</strong> Wir bereiten die AZAV-Zertifizierung vor. Die steuerliche Absetzbarkeit gilt bereits jetzt sofort.</p>
         </div>
 
         <div className="space-y-4 mb-10">

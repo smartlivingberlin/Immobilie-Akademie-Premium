@@ -24,7 +24,7 @@ const PAKETE = [
 ];
 
 const TRUST = [
-  { icon:"🎓", label:"IHK-anerkannt", sub:"§34c + §34i vorbereitet" },
+  { icon:"🎓", label:"IHK-vorbereitet", sub:"§34c + §34i Prüfungsstoff" },
   { icon:"📱", label:"Lebenslanger Zugang", sub:"Einmal kaufen, immer lernen" },
   { icon:"🤖", label:"KI-Tutor inklusive", sub:"Claude + Gemini + Groq" },
   { icon:"📋", label:"855+ Lernaufgaben", sub:"IHK-Fragen, Rechenübungen & Praxisfälle" },
@@ -201,7 +201,14 @@ export default function KursPakete() {
                 <button
                   onClick={() => {
                     trackEvent("begin_checkout", "Bundle", p.id, p.price);
-                    window.location.href = `/api/stripe/bundle-${p.id}`;
+                    fetch(`/api/stripe/bundle-${p.id}`, {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ widerrufsAkzeptiert: true }),
+                    })
+                    .then(r => r.json())
+                    .then(d => { if (d.url) window.location.href = d.url; })
+                    .catch(() => alert("Fehler beim Checkout"));
                   }}
                   style={{
                     width:"100%",
