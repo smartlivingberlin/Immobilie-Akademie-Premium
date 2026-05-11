@@ -180,8 +180,9 @@ export function AzavPdfExport({ ownerKey }: AzavPdfProps) {
       const filename = "AZAV_Bericht_" + new Date().toISOString().split("T")[0] + ".pdf";
       doc.save(filename);
 
-    } catch (e: any) {
-      alert("PDF-Fehler: " + e.message);
+    } catch (e) {
+      const message = e instanceof Error ? e.message : String(e);
+      alert("PDF-Fehler: " + message);
     } finally {
       setLoading(false);
     }

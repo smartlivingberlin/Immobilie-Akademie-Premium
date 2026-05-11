@@ -7,7 +7,7 @@
  */
 
 import type { Express, Request, Response } from "express";
-import { requireAdmin } from "./_core/index";
+import { requireAdmin } from "./authMiddleware";
 
 export type Phase = "A" | "B" | "C" | "D";
 

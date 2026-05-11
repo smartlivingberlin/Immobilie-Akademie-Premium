@@ -57,7 +57,7 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const recognitionRef = useRef<any>(null);
+  const recognitionRef = useRef<MediaRecorder | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -84,7 +84,7 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
 
   const startVoice = async () => {
     if (listening) {
-      (recognitionRef.current as MediaRecorder)?.stop();
+      recognitionRef.current?.stop();
       setListening(false);
       return;
     }
@@ -121,8 +121,9 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
       recorder.start();
       setListening(true);
       setTimeout(() => { if (recorder.state === "recording") recorder.stop(); }, 10000);
-    } catch (err: any) {
-      alert("Mikrofon-Zugriff verweigert: " + err.message);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      alert("Mikrofon-Zugriff verweigert: " + message);
     }
   };
   const speak = async (text: string) => {

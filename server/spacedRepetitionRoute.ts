@@ -1,7 +1,7 @@
 import type { Express, Request, Response } from "express";
 import { getDb } from "./db";
 import { sql } from "drizzle-orm";
-import { requireAuth } from "./ragTutor";
+import { requireAuth } from "./authMiddleware";
 
 // SM-2 Algorithmus (SuperMemo 2)
 // quality: 0-5 (0=komplett falsch, 5=perfekt)
@@ -25,7 +25,7 @@ export function registerSpacedRepetitionRoutes(app: Express) {
   app.get("/api/sr/due", requireAuth, async (req: Request, res: Response) => {
     try {
       const db = await getDb();
-      const userId = (req as any).currentUser?.id || (req as any).currentUser?.openId;
+      const userId = (req as any).currentUser.id;
 
       const due = await db.execute(sql`
         SELECT sr.questionId, sr.easinessFactor, sr.interval, sr.repetitions
@@ -47,7 +47,7 @@ export function registerSpacedRepetitionRoutes(app: Express) {
     try {
       const { questionId, quality } = req.body;
       const db = await getDb();
-      const userId = (req as any).currentUser?.id || (req as any).currentUser?.openId;
+      const userId = (req as any).currentUser.id;
 
       // Aktuellen Stand holen
       const [existing] = await db.execute(sql`

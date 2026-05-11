@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { Link, useLocation } from "wouter";
 import AIAssistant from "@/components/AIAssistant";
@@ -31,17 +31,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [isAIAssistantOpen, setIsAIAssistantOpen] = useState(false);
 
   const { user } = useAuth();
-  const progressQuery = trpc.progress.getProgress.useQuery(undefined, {
-    enabled: !!user,
-    staleTime: 30000,
-  });
-  const progressPercent = (() => {
-    const logs = progressQuery.data ?? [];
-    const completed = logs.filter((l: any) => l.completed).length;
-    const total = 240;
-    return total > 0 ? Math.round((completed / total) * 100) : 0;
-  })();
-  const { isWhiteLabeled, companyName, logoUrl, enabledModules, footerText, config } = useWhiteLabel();
+  const { isWhiteLabeled, companyName, logoUrl, config } = useWhiteLabel();
 
   const allModules = [
     { id: 1, name: "Modul 1: Einführung", href: "/modul/1", icon: BookOpen },
@@ -60,7 +50,15 @@ const modulesWithAccess = allModules.map((m) => ({
 }));
 
 const modulId = modulesWithAccess.find(m => !m.locked)?.id ?? 1;
-const navigation = [
+
+interface NavigationItem {
+  name: string;
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+  locked?: boolean;
+}
+
+const navigation: NavigationItem[] = [
   { name: "Startseite", href: "/", icon: Home },
   ...modulesWithAccess.map((m) => ({ name: m.name, href: m.href, icon: m.icon, locked: m.locked })),
   { name: "📄 Dokument-Werkstatt", href: `/dokument-werkstatt/${modulId}`, icon: FileText },
@@ -71,9 +69,9 @@ const navigation = [
   const primaryColor = isWhiteLabeled && config?.primaryColor ? config.primaryColor : undefined;
 
   // Helper component for nav items to handle collapsed state
-  const NavItem = ({ item }: { item: typeof navigation[0] }) => {
+  const NavItem = ({ item }: { item: NavigationItem }) => {
     const isActive = location === item.href || location.startsWith(item.href + "/");
-    const isLocked = Boolean((item as any).locked);
+    const isLocked = Boolean(item.locked);
     const lockMsg = "Dieses Modul ist gesperrt. Bitte freischalten lassen.";
 
     // Wenn gesperrt: NICHT navigieren, nur Hinweis zeigen
@@ -520,13 +518,13 @@ const navigation = [
               <div className="mb-4">
                 <div className="flex justify-between text-xs text-slate-400 mb-1">
                   <span>Gesamtfortschritt</span>
-                  <span>{progressPercent}%</span>
+                  <span>wird berechnet...</span>
                 </div>
                 <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-green-500 rounded-full transition-all duration-500" style={{width: `${progressPercent}%`}} />
+                  <div className="h-full bg-green-500 rounded-full" style={{width: "100%"}} />
                 </div>
                 <div className="text-[10px] text-slate-300 mt-1 text-center">
-                  {progressPercent === 0 ? "Noch kein Fortschritt" : `${progressPercent}% abgeschlossen`}
+                  Lernfortschritt wird geladen
                 </div>
               </div>
 
@@ -619,7 +617,7 @@ const navigation = [
 }
 
 // Icon wrapper for Module 3 to avoid collision
-function BuildingIcon(props: any) {
+function BuildingIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

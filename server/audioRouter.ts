@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { readFileSync } from "fs";
 import { join } from "path";
-import { requireAuth } from "./ragTutor";
+import { requireAuth } from "./authMiddleware";
 
 const router = Router();
 

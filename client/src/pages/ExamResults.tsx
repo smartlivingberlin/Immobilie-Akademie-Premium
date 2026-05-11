@@ -91,7 +91,7 @@ export default function ExamResults() {
       if (!acc[topic]) acc[topic] = [];
       acc[topic].push(q);
       return acc;
-    }, {} as Record<string, typeof questions>);
+    }, {} as Record<string, typeof questions[number][]>);
 
   return (
     <div className="min-h-screen bg-slate-50 py-12">
@@ -192,23 +192,26 @@ export default function ExamResults() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {Object.entries(incorrectByTopic).map(([topic, topicQuestions]) => (
-                  <div key={topic} className="bg-white rounded-lg p-4 border border-orange-200">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="font-semibold text-orange-900">{topic}</h3>
-                      <Badge variant="outline" className="bg-orange-100 text-orange-800 border-orange-300">
-                        {topicQuestions.length} {topicQuestions.length === 1 ? "Fehler" : "Fehler"}
-                      </Badge>
+                {Object.entries(incorrectByTopic).map(([topic, topicQuestions]) => {
+                  const questions = topicQuestions as typeof sessionData.questions;
+                  return (
+                    <div key={topic} className="bg-white rounded-lg p-4 border border-orange-200">
+                      <div className="flex items-center justify-between mb-2">
+                        <h3 className="font-semibold text-orange-900">{topic}</h3>
+                        <Badge variant="outline" className="bg-orange-100 text-orange-800 border-orange-300">
+                          {questions.length} {questions.length === 1 ? "Fehler" : "Fehler"}
+                        </Badge>
+                      </div>
+                      <Progress
+                        value={(questions.length / incorrectCount) * 100}
+                        className="h-2 [&>div]:bg-orange-500"
+                      />
+                      <p className="text-sm text-orange-700 mt-2">
+                        {Math.round((questions.length / incorrectCount) * 100)}% Ihrer Fehler
+                      </p>
                     </div>
-                    <Progress 
-                      value={(topicQuestions.length / incorrectCount) * 100} 
-                      className="h-2 [&>div]:bg-orange-500"
-                    />
-                    <p className="text-sm text-orange-700 mt-2">
-                      {Math.round((topicQuestions.length / incorrectCount) * 100)}% Ihrer Fehler
-                    </p>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </CardContent>
           </Card>

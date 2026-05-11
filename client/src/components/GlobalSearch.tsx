@@ -34,15 +34,31 @@ interface GlobalSearchProps {
   collapsed?: boolean;
 }
 
+interface SearchResult {
+  module: number;
+  day: string;
+  title: string;
+  preview: string;
+  type: string;
+}
+
+interface ModuleContent {
+  title?: string;
+  theory?: string;
+  extendedTheory?: string;
+  law?: string[];
+  type?: string;
+}
+
 export function GlobalSearch({ collapsed = false }: GlobalSearchProps) {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<any[]>([]);
+  const [results, setResults] = useState<SearchResult[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
   // Combine all content for search
   // In production, this should be optimized (e.g., index on build or server-side search)
-  const allContent = [
-    { module: 2, data: [] },
+  const allContent: { module: number; data: Record<string, ModuleContent> }[] = [
+    { module: 2, data: {} },
     // { module: 3, data: [] },
   ];
 
@@ -52,11 +68,11 @@ export function GlobalSearch({ collapsed = false }: GlobalSearchProps) {
       return;
     }
 
-    const searchResults: any[] = [];
+    const searchResults: SearchResult[] = [];
     const lowerQuery = query.toLowerCase();
 
     allContent.forEach(({ module, data }) => {
-      Object.entries(data).forEach(([key, content]: [string, any]) => {
+      Object.entries(data).forEach(([key, content]) => {
         if (
           content.title?.toLowerCase().includes(lowerQuery) ||
           content.theory?.toLowerCase().includes(lowerQuery) ||
@@ -66,8 +82,8 @@ export function GlobalSearch({ collapsed = false }: GlobalSearchProps) {
           searchResults.push({
             module,
             day: key.split("_")[1],
-            title: content.title,
-            preview: content.theory.substring(0, 100) + "...",
+            title: content.title || "Unbekannt",
+            preview: (content.theory || "").substring(0, 100) + "...",
             type: content.type || "Theorie"
           });
         }

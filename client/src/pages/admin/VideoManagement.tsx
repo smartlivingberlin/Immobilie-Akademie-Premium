@@ -355,26 +355,28 @@ export default function VideoManagement() {
         </Card>
       ) : (
         <div className="space-y-6">
-          {Object.entries(videosByModule || {}).map(([moduleName, moduleVideos]) => (
-            <Card key={moduleName}>
-              <CardHeader>
-                <CardTitle>{moduleName}</CardTitle>
-                <CardDescription>{moduleVideos.length} Videos</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Titel</TableHead>
-                      <TableHead>Tag</TableHead>
-                      <TableHead>Platform</TableHead>
-                      <TableHead>Dauer</TableHead>
-                      <TableHead>Status</TableHead>
-                      <TableHead className="text-right">Aktionen</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {moduleVideos.map((video) => (
+          {Object.entries(videosByModule || {}).map(([moduleName, moduleVideos]) => {
+            const currentVideos = moduleVideos as typeof videos;
+            return (
+              <Card key={moduleName}>
+                <CardHeader>
+                  <CardTitle>{moduleName}</CardTitle>
+                  <CardDescription>{currentVideos.length} Videos</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Titel</TableHead>
+                        <TableHead>Tag</TableHead>
+                        <TableHead>Platform</TableHead>
+                        <TableHead>Dauer</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead className="text-right">Aktionen</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {currentVideos.map((video) => (
                       <TableRow key={video.id}>
                         <TableCell className="font-medium">{video.title}</TableCell>
                         <TableCell>Tag {video.dayNumber}</TableCell>
@@ -427,11 +429,12 @@ export default function VideoManagement() {
                         </TableCell>
                       </TableRow>
                     ))}
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
-          ))}
+                    </TableBody>
+                  </Table>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       )}
     </div>

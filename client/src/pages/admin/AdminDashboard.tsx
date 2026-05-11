@@ -125,7 +125,7 @@ export default function AdminDashboard() {
   return (
     <LoadingHandler
       isLoading={usersLoading || codesLoading || questionsLoading}
-      error={usersError}
+      error={usersError as Error | null}
       onRetry={refetchUsers}
       skeleton={dashboardSkeleton}
     >

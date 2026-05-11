@@ -1,8 +1,7 @@
 import { Express, Request, Response } from "express";
 import PortalAgent, { WISSENS_KARTE } from "./PortalAgent";
 import SuperAgent from "./SuperAgent";
-import { requireAuth } from "../ragTutor";
-import { requireAdmin } from "../_core/index";
+import { requireAuth, requireAdmin } from "../authMiddleware";
 
 export function registerAgentRoutes(app: Express) {
   // ── LEGACY Routes (bestehend) ──────────────────────────
