@@ -469,7 +469,7 @@ export default function AdminDashboard() {
           <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 20 }}>
             <h3 style={{ fontSize: 16, fontWeight: 700, margin: "0 0 16px 0" }}>📊 System-Status</h3>
             {[
-              { label: "Railway Server", ok: true, detail: "immobilie-akademie-production.up.railway.app" },
+              { label: "Railway Server", ok: true, detail: "immobilie-akademie-premium-production.up.railway.app" },
               { label: "MySQL Datenbank", ok: true, detail: "Railway · turntable.proxy.rlwy.net" },
               { label: "Claude Haiku API", ok: agentHealth?.aiStatus?.claude, detail: "claude-haiku-4-5-20251001" },
               { label: "Gemini 2.5 Flash API", ok: agentHealth?.aiStatus?.gemini, detail: "Google AI" },

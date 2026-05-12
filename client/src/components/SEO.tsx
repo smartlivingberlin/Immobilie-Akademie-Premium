@@ -91,7 +91,7 @@ export function SEO({ title, description, keywords, ogImage, canonical }: SEOPro
       "@type": "EducationalOrganization",
       "name": "Immobilien-Bildungsportal",
       "description": metaDescription,
-      "url": "https://immobilie-akademie-production.up.railway.app",
+      "url": "https://immobilie-akademie-premium-production.up.railway.app",
       "logo": metaImage,
       "address": {
         "@type": "PostalAddress",
