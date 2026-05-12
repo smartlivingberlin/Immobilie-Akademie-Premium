@@ -624,7 +624,7 @@ Antworte im folgenden JSON-Format:
           .where(eq(users.id, ctx.user.id))
           .limit(1);
 
-        const userRow: any = urows[0];
+        const userRow: Record<string, unknown> = urows[0] as Record<string, unknown>;
         const currentRaw = String(userRow?.enabledModules ?? "1");
 
         const current = currentRaw
@@ -722,7 +722,7 @@ Antworte im folgenden JSON-Format:
         .from(schema.chatConversations)
         .where(eq(schema.chatConversations.userId, userId));
       if (convs.length > 0) {
-        const convIds = convs.map((c: any) => c.id);
+        const convIds = convs.map((c: Record<string, unknown>) => c.id);
         await db.delete(schema.chatMessages)
           .where(inArray(schema.chatMessages.conversationId, convIds));
       }
@@ -734,7 +734,7 @@ Antworte im folgenden JSON-Format:
         .from(schema.examSessions)
         .where(eq(schema.examSessions.userId, userId));
       if (sessions.length > 0) {
-        const sessionIds = sessions.map((s: any) => s.id);
+        const sessionIds = sessions.map((s: Record<string, unknown>) => s.id as number);
         await db.delete(schema.examQuestions)
           .where(inArray(schema.examQuestions.sessionId, sessionIds));
       }
@@ -759,11 +759,11 @@ Antworte im folgenden JSON-Format:
       try {
         await db.delete(schema.feedback)
           .where(eq((schema.feedback as any).userId, userId));
-      } catch (e) { console.error(JSON.stringify({level:'warn',msg:'[Router] feedback delete fehlgeschlagen',error:(e as any)?.message,ts:new Date().toISOString()})); }
+      } catch (e) { console.error(JSON.stringify({level:'warn',msg:'[Router] feedback delete fehlgeschlagen',error:(e instanceof Error ? e.message : String(e)),ts:new Date().toISOString()})); }
       try {
         await db.delete(schema.complaints)
           .where(eq((schema.complaints as any).userId, userId));
-      } catch (e) { console.error(JSON.stringify({level:'warn',msg:'[Router] complaints delete fehlgeschlagen',error:(e as any)?.message,ts:new Date().toISOString()})); }
+      } catch (e) { console.error(JSON.stringify({level:'warn',msg:'[Router] complaints delete fehlgeschlagen',error:(e instanceof Error ? e.message : String(e)),ts:new Date().toISOString()})); }
 
       // 7. Consent-Log
       await db.delete(schema.consentLog)
@@ -947,7 +947,7 @@ Antworte im folgenden JSON-Format:
         const { like, and, eq, count, sql } = await import("drizzle-orm");
         const db = await getDb();
         if (!db) return { questions: [], total: 0 };
-        const conditions: any[] = [];
+        const conditions: ReturnType<typeof eq>[] = [];
         if (input.moduleId) conditions.push(eq(questionBank.moduleId, input.moduleId));
         if (input.difficulty) conditions.push(eq(questionBank.difficulty, input.difficulty as any));
         if (input.search) conditions.push(like(questionBank.questionText, `%${input.search}%`));
