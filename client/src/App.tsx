@@ -168,7 +168,7 @@ function Router() {
         <Route path="/code-einloesen"><PublicLayout><RedeemCode /></PublicLayout></Route>
         <Route path="/konto/datenschutz"><AppLayout><ProtectedRoute component={MeineDaten} /></AppLayout></Route>
         <Route path="/konto-loeschen"><PublicLayout><DeleteAccount /></PublicLayout></Route>
-        <Route path="/dokument-werkstatt/:modulId">{(params: any) => <AppLayout><DokumentWerkstatt modulId={Number(params?.modulId ?? 1)} /></AppLayout>}</Route>
+        <Route path="/dokument-werkstatt/:modulId">{(params: any) => <AppLayout><ProtectedRoute component={() => <DokumentWerkstatt modulId={Number(params?.modulId ?? 1)} />} /></AppLayout>}</Route>
         {/* DEAKTIVIERT: <Route path="/offene-fragen/:modulId">{(params: any) => <AppLayout><OpenQuizPage modulId={Number(params?.modulId ?? 1)} /></AppLayout>}</Route> */}
         <Route path="/pakete"><PublicLayout><KursPakete /></PublicLayout></Route>
         <Route path="/kurse"><PublicLayout><Kurse /></PublicLayout></Route>

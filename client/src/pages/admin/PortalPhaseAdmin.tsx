@@ -59,7 +59,7 @@ export default function PortalPhaseAdmin() {
           D: {
             id: "D", name: "Vollzertifiziert", description: "ZFU + AZAV + IHK-Kooperation. Maximale Reichweite.",
             badges: { azav: true, zfu: true, ihk: true, bgs: true },
-            labels: { productType: "IHK-anerkannter Fernlehrgang", certificationNote: "AZAV · ZFU · IHK · BGS-fähig", faqCertAnswer: "", footerBadge1: "AZAV · ZFU · IHK", footerBadge2: "BGS-fähig" },
+            labels: { productType: "IHK-vorbereiteter Fernlehrgang", certificationNote: "AZAV · ZFU · IHK · BGS-fähig", faqCertAnswer: "", footerBadge1: "AZAV · ZFU · IHK", footerBadge2: "BGS-fähig" },
             canSell: true, requirements: ["AZAV-Akkreditierung", "ZFU-Zulassung", "IHK-Kooperationsvertrag"], unlocked: false,
           },
         });
