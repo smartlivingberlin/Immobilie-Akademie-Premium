@@ -722,7 +722,7 @@ Antworte im folgenden JSON-Format:
         .from(schema.chatConversations)
         .where(eq(schema.chatConversations.userId, userId));
       if (convs.length > 0) {
-        const convIds = convs.map((c: Record<string, unknown>) => c.id);
+        const convIds = convs.map((c: Record<string, unknown>) => c.id as number);
         await db.delete(schema.chatMessages)
           .where(inArray(schema.chatMessages.conversationId, convIds));
       }
