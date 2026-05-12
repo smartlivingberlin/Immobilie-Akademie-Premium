@@ -348,7 +348,7 @@ export default function ExamResults() {
           <Button
             size="lg"
             variant="outline"
-            onClick={() => setLocation("/")}
+            onClick={() => setLocation("/modul/1")}
           >
             <Home className="mr-2 h-5 w-5" />
             Zurück zur Startseite

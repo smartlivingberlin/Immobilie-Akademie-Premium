@@ -36,7 +36,7 @@ export default function TesterZugang() {
       if (d.ok) {
         setExpiresAt(new Date(d.expiresAt).toLocaleString("de-DE"));
         setStep("success");
-        setTimeout(() => { window.location.href = "/admin"; }, 2000);
+        setTimeout(() => { window.location.href = "/modul/1"; }, 2000);
       } else setError(d.error || "Ungültiger Code");
     } catch { setError("Verbindungsfehler"); }
     finally { setLoading(false); }

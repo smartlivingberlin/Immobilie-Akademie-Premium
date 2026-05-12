@@ -131,7 +131,7 @@ export default function OwnerDashboard() {
       body: JSON.stringify({ email }),
     });
     const d = await res.json();
-    if (d.ok) { setActionMsg(`✅ Eingeloggt als ${email}`); setTimeout(() => window.location.href = "/", 1000); }
+    if (d.ok) { setActionMsg(`✅ Eingeloggt als ${email}`); setTimeout(() => window.location.href = "/admin", 1000); }
     else setActionMsg(`❌ Fehler: ${d.error}`);
   };
 

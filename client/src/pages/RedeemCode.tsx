@@ -29,7 +29,7 @@ export default function RedeemCode() {
       if (res.ok && data.ok) {
         setSuccess(true);
         setTimeout(() => {
-          window.location.href = "/statistiken";
+          window.location.href = "/modul/1";
         }, 2000);
       } else {
         setError(data.error || "Code ungültig oder abgelaufen.");
