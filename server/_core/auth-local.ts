@@ -149,6 +149,7 @@ export function registerLocalAuthRoutes(app: Express) {
       email: email.toLowerCase().trim(),
       loginMethod: "email",
       lastSignedIn: new Date(),
+      enabledModules: "1",
       // Passwort-Hash im name-Feld wird separat gespeichert
     });
 
@@ -277,7 +278,7 @@ export function registerLocalAuthRoutes(app: Express) {
    * Löscht Session-Cookie.
    */
   app.post("/api/auth/logout", (req: Request, res: Response) => {
-    res.clearCookie(COOKIE_NAME);
+    res.clearCookie(COOKIE_NAME, { path: "/", httpOnly: true });
     return res.json({ ok: true });
   });
 

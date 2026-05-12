@@ -465,7 +465,14 @@ button:hover{background:#1e40af}</style>
       if (!["user","admin","trainer"].includes(role)) return res.status(400).json({ error: "Ungueltige Rolle. Erlaubt: user, admin, trainer" });
       const { getDb } = await import("./db");
       const db = await getDb();
-      await db.$client.query(`UPDATE users SET role = ? WHERE email = ?`, [role, email]);
+      if (role === "admin") {
+        await db.$client.query(
+          `UPDATE users SET role = ?, enabledModules = '1,2,3,4,5' WHERE email = ?`,
+          [role, email]
+        );
+      } else {
+        await db.$client.query(`UPDATE users SET role = ? WHERE email = ?`, [role, email]);
+      }
       res.json({ ok: true, msg: `Rolle von ${email} auf ${role} gesetzt` });
     } catch (e: any) { res.status(500).json({ error: e.message }); }
   });

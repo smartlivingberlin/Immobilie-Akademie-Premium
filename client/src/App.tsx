@@ -203,8 +203,8 @@ function Router() {
         <Route path="/lernkarten"><AppLayout><ProtectedRoute component={Flashcards} /></AppLayout></Route>
         <Route path="/expose-trainer"><AppLayout><ProtectedRoute component={ExposeTrainer} /></AppLayout></Route>
         <Route path="/dokument-viewer"><AppLayout><ProtectedRoute component={DokumentViewer} /></AppLayout></Route>
-        <Route path="/modul/1/tag/:day"><AppLayout><ProtectedRoute component={Module1Detail} /></AppLayout></Route>
-        <Route path="/modul/1"><AppLayout><ProtectedRoute component={Module1WithIntro} /></AppLayout></Route>
+        <Route path="/modul/1/tag/:day"><AppLayout><ProtectedModuleRoute moduleId={1}><Module1Detail /></ProtectedModuleRoute></AppLayout></Route>
+        <Route path="/modul/1"><AppLayout><ProtectedModuleRoute moduleId={1}><Module1WithIntro /></ProtectedModuleRoute></AppLayout></Route>
         <Route path="/modul/2/tag/:day"><AppLayout><ProtectedModuleRoute moduleId={2}><Module2Detail /></ProtectedModuleRoute></AppLayout></Route>
         <Route path="/modul/2"><AppLayout><ProtectedModuleRoute moduleId={2}><Module2WithIntro /></ProtectedModuleRoute></AppLayout></Route>
         <Route path="/modul/3/tag/:day"><AppLayout><ProtectedModuleRoute moduleId={3}><Module3Detail /></ProtectedModuleRoute></AppLayout></Route>
