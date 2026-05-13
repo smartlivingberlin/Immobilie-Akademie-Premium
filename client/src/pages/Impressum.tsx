@@ -57,7 +57,7 @@ export default function Impressum() {
         <p className="text-slate-700 text-sm">
           Die Inhalte dieses Portals dienen der Weiterbildung und Prüfungsvorbereitung.
           Sie stellen keine Rechtsberatung dar. Das Portal ist kein staatlich anerkannter
-          Bildungsträger (ZFU-Zulassung beantragt). IHK-Abschlüsse müssen bei der
+          Bildungsträger (Zertifizierungsoptionen werden geprüft). IHK-Abschlüsse müssen bei der
           zuständigen IHK abgelegt werden.
         </p>
       </section>
