@@ -155,7 +155,7 @@ export default function Module1Detail() {
       durationSeconds: Math.max(duration, 1),
     });
   };
-  const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["day_1"];
+  const currentContent = moduleData ? (moduleData[(selectedDay as string)] ?? moduleData["day_1"] ?? null) : null;
   const currentDayNum = parseInt(selectedDay.replace('day_', ''));
   // AZAV-Anwesenheitsnachweis: Heartbeat alle 60 Sekunden — VOR frühem Return
   useActivityHeartbeat({ moduleId: 1, dayId: currentDayNum });
@@ -308,9 +308,9 @@ export default function Module1Detail() {
               <CardHeader className="border-b bg-slate-50/50">
                 <div className="flex justify-between items-start">
                   <div>
-                    <CardTitle className="text-2xl text-slate-900">{currentContent.title}</CardTitle>
+                    <CardTitle className="text-2xl text-slate-900">{currentContent?.title ?? ""}</CardTitle>
                     <CardDescription className="mt-1">
-                      Tag {currentDayNum} • {currentContent.type || "Lerneinheit"}
+                      Tag {currentDayNum} • {currentContent?.type || "Lerneinheit"}
                     </CardDescription>
                   </div>
                   {currentDayNum === 20 && (
