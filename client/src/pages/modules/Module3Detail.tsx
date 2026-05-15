@@ -203,23 +203,23 @@ export default function Module3Detail() {
 
   // Helper to normalize task(s) to array of Task objects
   const getTasks = (): Task[] => {
-    if (!currentContent.task) return [];
+    if (!currentContent?.task) return [];
     
     // Case 1: Array of Task objects
-    if (Array.isArray(currentContent.task)) {
-      return currentContent.task;
+    if (Array.isArray(currentContent?.task)) {
+      return currentContent?.task;
     }
     
     // Case 2: Single Task object
-    if (typeof currentContent.task === 'object') {
-      return [currentContent.task as Task];
+    if (typeof currentContent?.task === 'object') {
+      return [currentContent?.task as Task];
     }
     
     // Case 3: String task (legacy format)
-    if (typeof currentContent.task === 'string') {
+    if (typeof currentContent?.task === 'string') {
       return [{
-        question: currentContent.task,
-        solution: currentContent.solution || "Keine Lösung verfügbar."
+        question: currentContent?.task,
+        solution: currentContent?.solution || "Keine Lösung verfügbar."
       }];
     }
     
@@ -359,7 +359,7 @@ export default function Module3Detail() {
                 <div>
                   <div className="flex gap-2 mb-2">
                     <Badge variant="outline" className="bg-white text-slate-600 border-slate-200">
-                      {currentContent.type}
+                      {currentContent?.type}
                     </Badge>
                     {showDocGenerator && (
                       <Badge variant="secondary" className="bg-emerald-100 text-emerald-700">
@@ -367,7 +367,7 @@ export default function Module3Detail() {
                       </Badge>
                     )}
                   </div>
-                  <CardTitle className="text-2xl text-slate-900">{currentContent.title}</CardTitle>
+                  <CardTitle className="text-2xl text-slate-900">{currentContent?.title}</CardTitle>
                 </div>
                 {isLastDay && (
                    <div className="flex gap-2">
@@ -409,10 +409,10 @@ export default function Module3Detail() {
 
                 <TabsContent value="theory" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
                   <FullscreenContent
-                      title={`Theorie: ${currentContent.title}`}
+                      title={`Theorie: ${currentContent?.title}`}
                       content={
                         <div className="space-y-8">
-                          <SmartContent content={currentContent.theory} />
+                          <SmartContent content={currentContent?.theory} />
                           {(currentContent as any).extendedTheory && (
                             <div className="mt-8 pt-8 border-t-2 border-amber-200">
                               <h2 className="text-2xl font-bold text-amber-700 mb-4 flex items-center gap-2">
@@ -440,28 +440,28 @@ export default function Module3Detail() {
                   <div className="content-container prose prose-slate max-w-none prose-headings:text-slate-900 prose-a:text-blue-600 prose-strong:text-slate-900">
                     <>
               <AudioPlayer 
-                      text={[currentContent.theory, (currentContent as any).extendedTheory].filter(Boolean).join("\n\n")} 
+                      text={[currentContent?.theory, (currentContent as any).extendedTheory].filter(Boolean).join("\n\n")} 
                       label="Theorie + Vertiefung vorlesen" 
                     />
                     <NotebookLMExport
                       moduleId={3}
                       dayNumber={currentDayNum}
-                      title={currentContent.title}
-                      theory={currentContent.theory}
+                      title={currentContent?.title}
+                      theory={currentContent?.theory}
                       extendedTheory={(currentContent as any).extendedTheory}
-                      law={currentContent.law}
-                      practice={currentContent.practice}
-                      task={typeof currentContent.task === "string" ? currentContent.task : undefined}
+                      law={currentContent?.law}
+                      practice={currentContent?.practice}
+                      task={typeof currentContent?.task === "string" ? currentContent?.task : undefined}
                     />
-              <SmartContent content={currentContent.theory} />
+              <SmartContent content={currentContent?.theory} />
               </>
-                    {currentContent.extendedTheory && (
+                    {currentContent?.extendedTheory && (
                       <div className="mt-8 pt-8 border-t border-slate-200">
                         <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
                           <Lightbulb className="h-5 w-5 text-amber-500" />
                           Vertiefungswissen
                         </h3>
-                        <SmartContent content={currentContent.extendedTheory} />
+                        <SmartContent content={currentContent?.extendedTheory} />
                       </div>
                     )}
                   </div>
@@ -487,14 +487,14 @@ export default function Module3Detail() {
 
                 <TabsContent value="law" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
                   <FullscreenContent 
-                    title={`Rechtliche Grundlagen: ${currentContent.title}`}
+                    title={`Rechtliche Grundlagen: ${currentContent?.title}`}
                     content={
                       <div className="grid gap-4">
-                        {currentContent.law.map((law, index) => (
+                        {currentContent?.law.map((law, index) => (
                           <Card key={index} className="border-l-4 border-l-blue-500 shadow-sm hover:shadow-md transition-shadow">
                             <CardContent className="p-4 flex items-start gap-3">
                               <Gavel className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
-                    <AudioPlayer text={(currentContent.law || []).join(". ")} label="Normen vorlesen" />
+                    <AudioPlayer text={(currentContent?.law || []).join(". ")} label="Normen vorlesen" />
                               <div className="prose prose-slate max-w-none prose-headings:text-slate-900 prose-a:text-blue-600 prose-strong:text-slate-900">
                                 <SmartContent content={law} />
                               </div>
@@ -505,7 +505,7 @@ export default function Module3Detail() {
                     } 
                   />
                   <div className="content-container grid gap-4">
-                    {currentContent.law.map((law, index) => (
+                    {currentContent?.law.map((law, index) => (
                       <Card key={index} className="border-l-4 border-l-blue-500 shadow-sm hover:shadow-md transition-shadow">
                         <CardContent className="p-4 flex items-start gap-3">
                           <Gavel className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
@@ -520,10 +520,10 @@ export default function Module3Detail() {
 
                 <TabsContent value="practice" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
                   <FullscreenContent
-                    title={`Praxis: ${currentContent.title}`}
+                    title={`Praxis: ${currentContent?.title}`}
                     content={
                       <div>
-                        <SmartContent content={currentContent.practice} />
+                        <SmartContent content={currentContent?.practice} />
                       </div>
                     }
                   />
@@ -536,12 +536,12 @@ export default function Module3Detail() {
                     </CardHeader>
                     <CardContent>
                       <div className="content-container prose prose-emerald max-w-none">
-                        <SmartContent content={currentContent.practice} />
+                        <SmartContent content={currentContent?.practice} />
                       </div>
                     </CardContent>
                   </Card>
 
-                  {currentContent.caseStudy && (
+                  {currentContent?.caseStudy && (
                     <Card className="bg-blue-50/50 border-blue-200 shadow-sm">
                       <CardHeader>
                         <CardTitle className="text-blue-900 flex items-center gap-2">
@@ -551,7 +551,7 @@ export default function Module3Detail() {
                       </CardHeader>
                       <CardContent>
                         <div className="content-container prose prose-blue max-w-none">
-                          <SmartContent content={currentContent.caseStudy} />
+                          <SmartContent content={currentContent?.caseStudy} />
                         </div>
                       </CardContent>
                     </Card>
@@ -578,7 +578,7 @@ export default function Module3Detail() {
 
                 <TabsContent value="task" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
                    <FullscreenContent 
-                     title={`Aufgaben & Lösungen: ${currentContent.title}`}
+                     title={`Aufgaben & Lösungen: ${currentContent?.title}`}
                      content={
                        <div className="space-y-6">
                          {tasks.map((task, index) => (
@@ -593,7 +593,7 @@ export default function Module3Detail() {
                              </CardHeader>
                              <CardContent className="pt-4">
                                <SolutionToggler solution={task.solution} />
-                    <AudioPlayer text={typeof currentContent.task === "string" ? currentContent.task : ""} label="Aufgaben vorlesen" />
+                    <AudioPlayer text={typeof currentContent?.task === "string" ? currentContent?.task : ""} label="Aufgaben vorlesen" />
                              </CardContent>
                            </Card>
                          ))}
