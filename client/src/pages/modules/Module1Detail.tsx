@@ -3,7 +3,7 @@ import { trpc } from "@/lib/trpc";
 import AudioPlayer from "@/components/AudioPlayer";
 import { useState, useRef, useEffect } from "react";
 import { useActivityHeartbeat } from "@/hooks/useActivityHeartbeat";
-import { Link, useRoute } from "wouter";
+import { Link, useRoute, useParams } from "wouter";
 import { ArrowLeft, BookOpen, CheckCircle2, FileText, Gavel, Briefcase, ChevronRight, Target, Users, Lightbulb, LineChart, Ruler, ArrowRight, FlaskConical, Brain } from "lucide-react";
 import { AITutor } from "@/components/AITutor";
 import { Button } from "@/components/ui/button";
@@ -68,7 +68,8 @@ const weeks = [
 
 export default function Module1Detail() {
   const [match, params] = useRoute("/modul/1/tag/:day");
-  const urlDay = params?.day ? `day_${params.day}` : "day_1";
+  const routeParams = useParams<{ day?: string }>();
+  const urlDay = routeParams?.day ? `day_${routeParams.day}` : (params?.day ? `day_${params.day}` : "day_1");
   const [selectedDay, setSelectedDay] = useState(urlDay);
   const [moduleData, setModuleData] = useState<DayContent | null>(null);
 
