@@ -358,10 +358,10 @@ export default function Module1Detail() {
 
                   <TabsContent value="theory" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none">
                     <FullscreenContent
-                      title={`Theorie: ${currentContent.title}`}
+                      title={`Theorie: ${currentContent?.title}`}
                       content={
                         <div className="space-y-8">
-                          <SmartContent content={currentContent.theory} />
+                          <SmartContent content={currentContent?.theory} />
                           {(currentContent as any).extendedTheory && (
                             <div className="mt-8 pt-8 border-t-2 border-amber-200">
                               <h2 className="text-2xl font-bold text-amber-700 mb-4 flex items-center gap-2">
@@ -389,20 +389,20 @@ export default function Module1Detail() {
                     <div className="prose prose-slate max-w-none break-words prose-headings:text-slate-900 prose-p:text-slate-600 prose-li:text-slate-600 prose-strong:text-slate-900">
                       <>
                       <AudioPlayer 
-                      text={[currentContent.theory, (currentContent as any).extendedTheory].filter(Boolean).join("\n\n")} 
+                      text={[currentContent?.theory, (currentContent as any).extendedTheory].filter(Boolean).join("\n\n")} 
                       label="Theorie + Vertiefung vorlesen" 
                     />
                     <NotebookLMExport
                       moduleId={1}
                       dayNumber={currentDayNum}
-                      title={currentContent.title}
-                      theory={currentContent.theory}
+                      title={currentContent?.title}
+                      theory={currentContent?.theory}
                       extendedTheory={(currentContent as any).extendedTheory}
-                      law={currentContent.law}
-                      practice={currentContent.practice}
-                      task={currentContent.task}
+                      law={currentContent?.law}
+                      practice={currentContent?.practice}
+                      task={currentContent?.task}
                     />
-                      <SmartContent content={currentContent.theory} />
+                      <SmartContent content={currentContent?.theory} />
                       </>
                       {(currentContent as any).extendedTheory && (
                         <div className="mt-6 pt-6 border-t border-amber-200">
@@ -421,15 +421,15 @@ export default function Module1Detail() {
 
                   <TabsContent value="law" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none">
                     <FullscreenContent 
-                      title={`Rechtliche Grundlagen: ${currentContent.title}`}
+                      title={`Rechtliche Grundlagen: ${currentContent?.title}`}
                       content={
                         <div className="grid gap-4">
-                          {currentContent.law.map((law, index) => (
+                          {currentContent?.law.map((law, index) => (
                             <Card key={index} className="border-l-4 border-l-blue-500 bg-slate-50">
                               <CardContent className="pt-6">
                                 <div className="flex gap-4">
                                   <Gavel className="h-6 w-6 text-blue-500 flex-shrink-0 mt-1" />
-                    <AudioPlayer text={(currentContent.law || []).join(". ")} label="Normen vorlesen" />
+                    <AudioPlayer text={(currentContent?.law || []).join(". ")} label="Normen vorlesen" />
                                   <div className="prose prose-sm max-w-none break-words">
                                     <SmartContent content={law} />
                                   </div>
@@ -441,7 +441,7 @@ export default function Module1Detail() {
                       }
                     />
                     <div className="grid gap-4">
-                      {currentContent.law.map((law, index) => (
+                      {currentContent?.law.map((law, index) => (
                         <Card key={index} className="border-l-4 border-l-blue-500 bg-slate-50">
                           <CardContent className="pt-6">
                             <div className="flex gap-4">
@@ -458,15 +458,15 @@ export default function Module1Detail() {
 
                   <TabsContent value="practice" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
                     <FullscreenContent
-                      title={`Praxis-Analyse: ${currentContent.title}`}
+                      title={`Praxis-Analyse: ${currentContent?.title}`}
                       content={
                         <div>
-                          <SmartContent content={currentContent.practice} />
+                          <SmartContent content={currentContent?.practice} />
                         </div>
                       }
                     />
                     <AudioPlayer
-                      text={currentContent.practice || ""}
+                      text={currentContent?.practice || ""}
                       label="Praxis vorlesen"
                     />
                     <Card className="bg-emerald-50/50 border-emerald-100">
@@ -477,23 +477,23 @@ export default function Module1Detail() {
                         </CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <SmartContent content={currentContent.practice} />
+                        <SmartContent content={currentContent?.practice} />
                       </CardContent>
                     </Card>
                   </TabsContent>
 
                   <TabsContent value="task" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none">
                     <FullscreenContent 
-                      title={`Aufgaben: ${currentContent.title}`}
+                      title={`Aufgaben: ${currentContent?.title}`}
                       content={
                         <Card className="border-l-4 border-l-amber-500 bg-amber-50/30">
                           <CardContent className="pt-6">
                             <div className="flex gap-4">
                               <Target className="h-6 w-6 text-amber-600 flex-shrink-0 mt-1" />
-                    <AudioPlayer text={currentContent.task || ""} label="Aufgaben vorlesen" />
+                    <AudioPlayer text={currentContent?.task || ""} label="Aufgaben vorlesen" />
                               <div className="flex-1">
                                 <div className="prose prose-sm max-w-none break-words">
-                                  <SmartContent content={currentContent.task} />
+                                  <SmartContent content={currentContent?.task} />
                                 </div>
                               </div>
                             </div>
@@ -507,7 +507,7 @@ export default function Module1Detail() {
                           <Target className="h-6 w-6 text-amber-600 flex-shrink-0 mt-1" />
                           <div className="flex-1">
                             <div className="prose prose-sm max-w-none break-words">
-                              <SmartContent content={currentContent.task} />
+                              <SmartContent content={currentContent?.task} />
                             </div>
                           </div>
                         </div>
@@ -554,11 +554,11 @@ export default function Module1Detail() {
                     </div>
 
                     {/* Solution Accordion */}
-                    {currentContent.solution && (
+                    {currentContent?.solution && (
                       <div className="mt-8">
                         <SolutionToggler 
                           title="Musterlösung anzeigen"
-                          solution={currentContent.solution}
+                          solution={currentContent?.solution}
                         />
                       </div>
                     )}
