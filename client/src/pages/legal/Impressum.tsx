@@ -76,8 +76,8 @@ export default function Impressum() {
           <h2>Angaben zur Berufshaftpflichtversicherung</h2>
           <p>
             <strong>Name und Sitz des Versicherers:</strong><br />
-            [Name der Versicherung]<br />
-            [Adresse der Versicherung]
+            wird beantragt<br />
+            
           </p>
           <p>
             <strong>Geltungsraum der Versicherung:</strong><br />
