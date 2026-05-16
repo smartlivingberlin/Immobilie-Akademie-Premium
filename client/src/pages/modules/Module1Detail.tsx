@@ -362,20 +362,20 @@ export default function Module1Detail() {
                       content={
                         <div className="space-y-8">
                           <SmartContent content={currentContent?.theory} />
-                          {(currentContent as any).extendedTheory && (
+                          {(currentContent as any)?.extendedTheory && (
                             <div className="mt-8 pt-8 border-t-2 border-amber-200">
                               <h2 className="text-2xl font-bold text-amber-700 mb-4 flex items-center gap-2">
                                 <span>💡</span> Vertiefungswissen
                               </h2>
-                              <SmartContent content={(currentContent as any).extendedTheory} />
+                              <SmartContent content={(currentContent as any)?.extendedTheory} />
                             </div>
                           )}
-                          {(currentContent as any).law && (currentContent as any).law.length > 0 && (
+                          {(currentContent as any)?.law && (currentContent as any)?.law.length > 0 && (
                             <div className="mt-8 pt-8 border-t-2 border-blue-200">
                               <h2 className="text-2xl font-bold text-blue-700 mb-4 flex items-center gap-2">
                                 <span>⚖️</span> Relevante Gesetze & Normen
                               </h2>
-                              {(currentContent as any).law.map((item: string, i: number) => (
+                              {(currentContent as any)?.law.map((item: string, i: number) => (
                                 <div key={i} className="flex gap-3 p-3 bg-blue-50 rounded-lg mb-2">
                                   <span className="text-blue-600 font-bold">§</span>
                                   <span>{item}</span>
@@ -389,7 +389,7 @@ export default function Module1Detail() {
                     <div className="prose prose-slate max-w-none break-words prose-headings:text-slate-900 prose-p:text-slate-600 prose-li:text-slate-600 prose-strong:text-slate-900">
                       <>
                       <AudioPlayer 
-                      text={[currentContent?.theory, (currentContent as any).extendedTheory].filter(Boolean).join("\n\n")} 
+                      text={[currentContent?.theory, (currentContent as any)?.extendedTheory].filter(Boolean).join("\n\n")} 
                       label="Theorie + Vertiefung vorlesen" 
                     />
                     <NotebookLMExport
@@ -397,23 +397,23 @@ export default function Module1Detail() {
                       dayNumber={currentDayNum}
                       title={currentContent?.title}
                       theory={currentContent?.theory}
-                      extendedTheory={(currentContent as any).extendedTheory}
+                      extendedTheory={(currentContent as any)?.extendedTheory}
                       law={currentContent?.law}
                       practice={currentContent?.practice}
                       task={currentContent?.task}
                     />
                       <SmartContent content={currentContent?.theory} />
                       </>
-                      {(currentContent as any).extendedTheory && (
+                      {(currentContent as any)?.extendedTheory && (
                         <div className="mt-6 pt-6 border-t border-amber-200">
                           <h3 className="text-lg font-bold text-amber-700 mb-3 flex items-center gap-2">
                             <span>💡</span> Vertiefungswissen
                           </h3>
                           <AudioPlayer 
-                            text={(currentContent as any).extendedTheory} 
+                            text={(currentContent as any)?.extendedTheory} 
                             label="Vertiefung vorlesen" 
                           />
-                          <SmartContent content={(currentContent as any).extendedTheory} />
+                          <SmartContent content={(currentContent as any)?.extendedTheory} />
                         </div>
                       )}
                     </div>
@@ -514,13 +514,13 @@ export default function Module1Detail() {
                       </CardContent>
                     </Card>
                     {/* Strukturierte Aufgaben aus tasks[] */}
-                    {(currentContent as any).tasks && (currentContent as any).tasks.length > 0 && (
+                    {(currentContent as any)?.tasks && (currentContent as any)?.tasks.length > 0 && (
                       <div className="space-y-4 mt-4">
                         <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                           <Target className="h-5 w-5 text-amber-600" />
                           Tagesaufgaben
                         </h3>
-                        {(currentContent as any).tasks.map((aufgabe: any, idx: number) => (
+                        {(currentContent as any)?.tasks.map((aufgabe: any, idx: number) => (
                           <Card key={idx} className="border-l-4 border-l-amber-500 bg-amber-50/30">
                             <CardContent className="pt-4">
                               <div className="flex gap-3">
