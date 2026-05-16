@@ -313,7 +313,7 @@ app.use(express.json({ limit: "1mb" }));
     try {
       const db = await (await import("../db")).getDb();
       const [[users]] = await db.execute(
-        "SELECT COUNT(*) as total FROM users WHERE role='user'"
+        "SELECT COUNT(*) as total FROM users"
       ) as any;
       const [[active]] = await db.execute(
         "SELECT COUNT(*) as cnt FROM users WHERE lastSignedIn > DATE_SUB(NOW(), INTERVAL 1 HOUR)"

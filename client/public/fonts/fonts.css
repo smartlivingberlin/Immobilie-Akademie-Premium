@@ -1,0 +1,10 @@
+/* Lokale Fonts */
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter.woff2') format('woff2');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+/* Fraunces Fallback auf serif */
+:root { --font-fraunces: Georgia, 'Times New Roman', serif; }

@@ -66,6 +66,10 @@ export default function Datenschutz() {
 
           <h3>4.6 ElevenLabs (Text-to-Speech)</h3>
           <p>ElevenLabs, Inc., New York, USA. Für die Vorlesefunktion werden Lerntexte übermittelt. Keine personenbezogenen Daten. Art. 6 Abs. 1 lit. b DSGVO. elevenlabs.io/privacy</p>
+          <p><strong>4.x Sentry (Fehler-Monitoring)</strong><br />
+          Sentry Inc., USA. Technische Fehlerberichte zur Verbesserung des Portals.
+          Keine personenbezogenen Inhalte. Datenschutz: <a href="https://sentry.io/privacy/" target="_blank" rel="noopener">sentry.io/privacy</a>.
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).</p>
           <h3>4.7 api.qrserver.com (QR-Codes für Zertifikate)</h3>
           <p>goQR.me / kaywa GmbH. Beim Zertifikat-Download wird eine kodierte
           Zertifikat-ID (kein Name, keine E-Mail) übermittelt.
