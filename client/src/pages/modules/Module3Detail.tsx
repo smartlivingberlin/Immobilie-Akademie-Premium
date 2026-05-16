@@ -1,20 +1,4 @@
 // @ts-nocheck
-const [contentDataModule3, setContentDataModule3] = useState({});
-useEffect(() => {
-  Promise.all([
-    import("./Module3Content_Maximal"),
-    import("./Module3Content_Maximal_Part2"),
-    import("./Module3Content_Maximal_Part3"),
-    import("./Module3Content_Maximal_Part4"),
-  ]).then(([p1, p2, p3, p4]) => {
-    setContentDataModule3({
-      ...p1.contentDataModule3Maximal,
-      ...p2.contentDataModule3MaximalPart2,
-      ...p3.contentDataModule3MaximalPart3,
-      ...p4.contentDataModule3MaximalPart4,
-    });
-  });
-}, []);
 import { trpc } from "@/lib/trpc";
 import AudioPlayer from "@/components/AudioPlayer";
 import { useState, useRef, useEffect } from "react";
