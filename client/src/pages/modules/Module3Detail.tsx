@@ -93,6 +93,22 @@ export default function Module3Detail() {
   }
 
   const [selectedDay, setSelectedDay] = useState(urlDay);
+  const [contentDataModule3, setContentDataModule3] = useState<Record<string, any>>({});
+  useEffect(() => {
+    Promise.all([
+      import("./Module3Content_Maximal"),
+      import("./Module3Content_Maximal_Part2"),
+      import("./Module3Content_Maximal_Part3"),
+      import("./Module3Content_Maximal_Part4"),
+    ]).then(([p1, p2, p3, p4]) => {
+      setContentDataModule3({
+        ...p1.contentDataModule3Maximal,
+        ...p2.contentDataModule3MaximalPart2,
+        ...p3.contentDataModule3MaximalPart3,
+        ...p4.contentDataModule3MaximalPart4,
+      });
+    });
+  }, []);
   const [moduleData, setModuleData] = useState<DayContent | null>(null);
 
   useEffect(() => {
@@ -174,16 +190,7 @@ export default function Module3Detail() {
     }
   };
 
-  // Fallback if content is missing
-  if (!currentContent) {
-    return (
-      <div className="p-8 text-center">
-        <h2 className="text-xl font-bold text-red-600">Inhalt nicht gefunden</h2>
-        <p>Der Inhalt für Tag {currentDayNum} konnte nicht geladen werden.</p>
-        <Button className="mt-4" onClick={() => setSelectedDay("day_1")}>Zurück zu Tag 1</Button>
-      </div>
-    );
-  }
+  // Fallback handled by LoadingHandler below
 
   // Helper to normalize task(s) to array of Task objects
   const getTasks = (): Task[] => {
