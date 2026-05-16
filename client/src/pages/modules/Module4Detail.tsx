@@ -336,9 +336,9 @@ const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["da
               <CardHeader className="border-b bg-slate-50/50">
                 <div className="flex justify-between items-start">
                   <div>
-                    <CardTitle className="text-2xl text-slate-900">{currentContent.title}</CardTitle>
+                    <CardTitle className="text-2xl text-slate-900">{currentContent?.title}</CardTitle>
                     <CardDescription className="mt-1">
-                      Tag {currentDayNum} • {(currentContent as any).type || "Lerneinheit"}
+                      Tag {currentDayNum} • {(currentContent as any)?.type || "Lerneinheit"}
                     </CardDescription>
                   </div>
                   {currentDayNum === 20 && (
@@ -380,24 +380,24 @@ const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["da
 
                   <TabsContent value="theory" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
                     <FullscreenContent
-                      title={`Theorie: ${currentContent.title}`}
+                      title={`Theorie: ${currentContent?.title}`}
                       content={
                         <div className="space-y-8">
-                          <SmartContent content={currentContent.theory} />
-                          {(currentContent as any).extendedTheory && (
+                          <SmartContent content={currentContent?.theory} />
+                          {(currentContent as any)?.extendedTheory && (
                             <div className="mt-8 pt-8 border-t-2 border-amber-200">
                               <h2 className="text-2xl font-bold text-amber-700 mb-4 flex items-center gap-2">
                                 <span>💡</span> Vertiefungswissen
                               </h2>
-                              <SmartContent content={(currentContent as any).extendedTheory} />
+                              <SmartContent content={(currentContent as any)?.extendedTheory} />
                             </div>
                           )}
-                          {(currentContent as any).law && (currentContent as any).law.length > 0 && (
+                          {(currentContent as any)?.law && (currentContent as any)?.law.length > 0 && (
                             <div className="mt-8 pt-8 border-t-2 border-blue-200">
                               <h2 className="text-2xl font-bold text-blue-700 mb-4 flex items-center gap-2">
                                 <span>⚖️</span> Relevante Gesetze & Normen
                               </h2>
-                              {(currentContent as any).law.map((item: string, i: number) => (
+                              {(currentContent as any)?.law.map((item: string, i: number) => (
                                 <div key={i} className="flex gap-3 p-3 bg-blue-50 rounded-lg mb-2">
                                   <span className="text-blue-600 font-bold">§</span>
                                   <span>{item}</span>
@@ -411,41 +411,41 @@ const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["da
                     <div className="content-container prose prose-slate max-w-none break-words prose-headings:text-slate-900 prose-a:text-blue-600 prose-strong:text-slate-900">
                       <>
                       <AudioPlayer 
-                      text={[currentContent.theory, (currentContent as any).extendedTheory].filter(Boolean).join("\n\n")} 
+                      text={[currentContent?.theory, (currentContent as any)?.extendedTheory].filter(Boolean).join("\n\n")} 
                       label="Theorie + Vertiefung vorlesen" 
                     />
                     <NotebookLMExport
                       moduleId={4}
                       dayNumber={currentDayNum}
-                      title={currentContent.title}
-                      theory={currentContent.theory}
-                      extendedTheory={(currentContent as any).extendedTheory}
-                      law={currentContent.law}
-                      practice={currentContent.practice}
-                      task={currentContent.task}
+                      title={currentContent?.title}
+                      theory={currentContent?.theory}
+                      extendedTheory={(currentContent as any)?.extendedTheory}
+                      law={currentContent?.law}
+                      practice={currentContent?.practice}
+                      task={currentContent?.task}
                     />
-                      <SmartContent content={currentContent.theory} />
+                      <SmartContent content={currentContent?.theory} />
                       </>
-                      {(currentContent as any).extendedTheory && (
+                      {(currentContent as any)?.extendedTheory && (
                         <div className="mt-6 pt-6 border-t border-amber-200">
                           <h3 className="text-lg font-bold text-amber-700 mb-3 flex items-center gap-2">
                             <span>💡</span> Vertiefungswissen
                           </h3>
                           <AudioPlayer 
-                            text={(currentContent as any).extendedTheory} 
+                            text={(currentContent as any)?.extendedTheory} 
                             label="Vertiefung vorlesen" 
                           />
-                          <SmartContent content={(currentContent as any).extendedTheory} />
+                          <SmartContent content={(currentContent as any)?.extendedTheory} />
                         </div>
                       )}
                     </div>
 
                     {/* Solution Accordion */}
-                    {(currentContent as any).solution && (
+                    {(currentContent as any)?.solution && (
                       <div className="mt-8">
                         <SolutionToggler 
                           title="Musterlösung anzeigen"
-                          solution={(currentContent as any).solution}
+                          solution={(currentContent as any)?.solution}
                         />
                       </div>
                     )}
@@ -453,14 +453,14 @@ const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["da
 
                   <TabsContent value="law" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
                     <FullscreenContent 
-                      title={`Rechtliche Grundlagen: ${currentContent.title}`}
+                      title={`Rechtliche Grundlagen: ${currentContent?.title}`}
                       content={
                         <div className="grid gap-4">
-                          {currentContent.law.map((law, index) => (
+                          {currentContent?.law.map((law, index) => (
                             <Card key={index} className="border-l-4 border-l-blue-500 shadow-sm hover:shadow-md transition-shadow">
                               <CardContent className="p-4 flex items-start gap-3">
                                 <Gavel className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
-                    <AudioPlayer text={(currentContent.law || []).join(". ")} label="Normen vorlesen" />
+                    <AudioPlayer text={(currentContent?.law || []).join(". ")} label="Normen vorlesen" />
                                 <div className="prose prose-sm max-w-none break-words">
                                   <SmartContent content={law} />
                                 </div>
@@ -471,7 +471,7 @@ const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["da
                       } 
                     />
                     <div className="content-container grid gap-4">
-                      {currentContent.law.map((law, index) => (
+                      {currentContent?.law.map((law, index) => (
                         <Card key={index} className="border-l-4 border-l-blue-500 shadow-sm hover:shadow-md transition-shadow">
                           <CardContent className="p-4 flex items-start gap-3">
                             <Gavel className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
@@ -484,11 +484,11 @@ const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["da
                     </div>
 
                     {/* Solution Accordion */}
-                    {(currentContent as any).solution && (
+                    {(currentContent as any)?.solution && (
                       <div className="mt-8">
                         <SolutionToggler 
                           title="Musterlösung anzeigen"
-                          solution={(currentContent as any).solution}
+                          solution={(currentContent as any)?.solution}
                         />
                       </div>
                     )}
@@ -496,15 +496,15 @@ const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["da
 
                   <TabsContent value="practice" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
                     <FullscreenContent
-                    title={`Praxis: ${currentContent.title}`}
+                    title={`Praxis: ${currentContent?.title}`}
                     content={
                       <div>
-                        <SmartContent content={currentContent.practice} />
+                        <SmartContent content={currentContent?.practice} />
                       </div>
                     }
                   />
                     <div className="content-container prose prose-slate max-w-none break-words prose-headings:text-slate-900 prose-a:text-blue-600 prose-strong:text-slate-900 bg-emerald-50/50 p-6 rounded-lg border border-emerald-100">
-                      <SmartContent content={currentContent.practice} />
+                      <SmartContent content={currentContent?.practice} />
                     </div>
 
                     {/* OLG/BGH Court Cases Section */}
@@ -526,11 +526,11 @@ const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["da
                     </Card>
 
                     {/* Solution Accordion */}
-                    {(currentContent as any).solution && (
+                    {(currentContent as any)?.solution && (
                       <div className="mt-8">
                         <SolutionToggler 
                           title="Musterlösung anzeigen"
-                          solution={(currentContent as any).solution}
+                          solution={(currentContent as any)?.solution}
                         />
                       </div>
                     )}
@@ -538,15 +538,15 @@ const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["da
 
                   <TabsContent value="task" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
                     <FullscreenContent 
-                       title={`Aufgaben & Lösungen: ${currentContent.title}`}
+                       title={`Aufgaben & Lösungen: ${currentContent?.title}`}
                        content={
                          <div className="space-y-6">
-                           {currentContent.tasks && currentContent.tasks.map((task, index) => (
+                           {currentContent?.tasks && currentContent?.tasks.map((task, index) => (
                              <Card key={index} className="border-slate-200 shadow-sm">
                                <CardHeader className="bg-slate-50/50 pb-3">
                                  <CardTitle className="text-base flex items-center gap-2">
                                    <CheckCircle2 className="h-5 w-5 text-blue-600" />
-                    <AudioPlayer text={currentContent.task || ""} label="Aufgaben vorlesen" />
+                    <AudioPlayer text={currentContent?.task || ""} label="Aufgaben vorlesen" />
                                    Aufgabe {index + 1}
                                  </CardTitle>
                                </CardHeader>
@@ -562,7 +562,7 @@ const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["da
                        } 
                      />
                     <div className="content-container space-y-6">
-                      {currentContent.tasks && currentContent.tasks.map((task, index) => (
+                      {currentContent?.tasks && currentContent?.tasks.map((task, index) => (
                         <Card key={index} className="border-slate-200 shadow-sm">
                           <CardHeader className="bg-slate-50/50 pb-3">
                             <CardTitle className="text-base flex items-center gap-2">
@@ -581,11 +581,11 @@ const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["da
                     </div>
 
                     {/* Solution Accordion */}
-                    {(currentContent as any).solution && (
+                    {(currentContent as any)?.solution && (
                       <div className="mt-8">
                         <SolutionToggler 
                           title="Musterlösung anzeigen"
-                          solution={(currentContent as any).solution}
+                          solution={(currentContent as any)?.solution}
                         />
                       </div>
                     )}

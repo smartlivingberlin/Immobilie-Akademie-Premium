@@ -302,9 +302,9 @@ export default function Module5Detail() {
               <CardHeader className="border-b bg-slate-50/50">
                 <div className="flex justify-between items-start">
                   <div>
-                    <CardTitle className="text-2xl text-slate-900">{currentContent.title}</CardTitle>
+                    <CardTitle className="text-2xl text-slate-900">{currentContent?.title}</CardTitle>
                     <CardDescription className="mt-1">
-                      Tag {currentDayNum} • {currentContent.type || "Lerneinheit"}
+                      Tag {currentDayNum} • {currentContent?.type || "Lerneinheit"}
                     </CardDescription>
                   </div>
                   {currentDayNum === 40 && (
@@ -345,24 +345,24 @@ export default function Module5Detail() {
 
                   <TabsContent value="theory" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
                     <FullscreenContent
-                      title={`Theorie: ${currentContent.title}`}
+                      title={`Theorie: ${currentContent?.title}`}
                       content={
                         <div className="space-y-8">
-                          <SmartContent content={currentContent.theory} />
-                          {currentContent.extendedTheory && (
+                          <SmartContent content={currentContent?.theory} />
+                          {currentContent?.extendedTheory && (
                             <div className="mt-8 pt-8 border-t-2 border-amber-200">
                               <h2 className="text-2xl font-bold text-amber-700 mb-4 flex items-center gap-2">
                                 <span>💡</span> Vertiefungswissen
                               </h2>
-                              <SmartContent content={currentContent.extendedTheory} />
+                              <SmartContent content={currentContent?.extendedTheory} />
                             </div>
                           )}
-                          {currentContent.law && currentContent.law.length > 0 && (
+                          {currentContent?.law && currentContent?.law.length > 0 && (
                             <div className="mt-8 pt-8 border-t-2 border-blue-200">
                               <h2 className="text-2xl font-bold text-blue-700 mb-4 flex items-center gap-2">
                                 <span>⚖️</span> Relevante Gesetze & Normen
                               </h2>
-                              {currentContent.law.map((item: string, i: number) => (
+                              {currentContent?.law.map((item: string, i: number) => (
                                 <div key={i} className="flex gap-3 p-3 bg-blue-50 rounded-lg mb-2">
                                   <span className="text-blue-600 font-bold">§</span>
                                   <span>{item}</span>
@@ -374,47 +374,47 @@ export default function Module5Detail() {
                       }
                     />
                     <AudioPlayer
-                      text={[currentContent.theory, currentContent.extendedTheory].filter(Boolean).join("\n\n")}
+                      text={[currentContent?.theory, currentContent?.extendedTheory].filter(Boolean).join("\n\n")}
                       label="Theorie + Vertiefung vorlesen"
                     />
                     <NotebookLMExport
                       moduleId={5}
                       dayNumber={currentDayNum}
-                      title={currentContent.title}
-                      theory={currentContent.theory}
-                      extendedTheory={currentContent.extendedTheory}
-                      law={currentContent.law}
-                      practice={currentContent.practice}
-                      task={currentContent.task}
+                      title={currentContent?.title}
+                      theory={currentContent?.theory}
+                      extendedTheory={currentContent?.extendedTheory}
+                      law={currentContent?.law}
+                      practice={currentContent?.practice}
+                      task={currentContent?.task}
                     />
-                    <SmartContent content={currentContent.theory} />
-                    {currentContent.extendedTheory && (
+                    <SmartContent content={currentContent?.theory} />
+                    {currentContent?.extendedTheory && (
                       <div className="mt-6 pt-6 border-t border-amber-200">
                         <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
                           <Lightbulb className="h-5 w-5 text-amber-500" />
                           Vertiefungswissen
                         </h3>
                         <AudioPlayer
-                          text={currentContent.extendedTheory}
+                          text={currentContent?.extendedTheory}
                           label="Vertiefung vorlesen"
                         />
-                        <SmartContent content={currentContent.extendedTheory} />
+                        <SmartContent content={currentContent?.extendedTheory} />
                       </div>
                     )}
-                    {currentContent.solution && (
+                    {currentContent?.solution && (
                       <div className="mt-8">
-                        <SolutionToggler title="Musterlösung anzeigen" solution={currentContent.solution} />
+                        <SolutionToggler title="Musterlösung anzeigen" solution={currentContent?.solution} />
                       </div>
                     )}
                   </TabsContent>
 
                                     <TabsContent value="law" className="mt-0 space-y-4 animate-in fade-in-50 focus-visible:outline-none relative group">
                     <FullscreenContent
-                      title={`Normen & Gesetze: ${currentContent.title}`}
+                      title={`Normen & Gesetze: ${currentContent?.title}`}
                       content={
                         <div className="space-y-4">
-                          {currentContent.law && currentContent.law.length > 0 ? (
-                            currentContent.law.map((lawItem: string, index: number) => (
+                          {currentContent?.law && currentContent?.law.length > 0 ? (
+                            currentContent?.law.map((lawItem: string, index: number) => (
                               <div key={index} className="flex items-start gap-3 p-4 border-l-4 border-l-blue-500 bg-blue-50 rounded-r-lg">
                                 <span className="text-blue-600 font-bold mt-1">§</span>
                                 <p className="font-medium text-slate-900">{lawItem}</p>
@@ -426,9 +426,9 @@ export default function Module5Detail() {
                         </div>
                       }
                     />
-                    <AudioPlayer text={(currentContent.law || []).join(". ")} label="Normen vorlesen" />
-                    {currentContent.law && currentContent.law.length > 0 ? (
-                      currentContent.law.map((lawItem: string, index: number) => (
+                    <AudioPlayer text={(currentContent?.law || []).join(". ")} label="Normen vorlesen" />
+                    {currentContent?.law && currentContent?.law.length > 0 ? (
+                      currentContent?.law.map((lawItem: string, index: number) => (
                         <Card key={index} className="border-l-4 border-l-blue-500">
                           <CardContent className="p-4">
                             <div className="flex items-start gap-3">
@@ -447,36 +447,36 @@ export default function Module5Detail() {
 
                   <TabsContent value="practice" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
                     <FullscreenContent
-                      title={`Praxis: ${currentContent.title}`}
+                      title={`Praxis: ${currentContent?.title}`}
                       content={
                         <div>
-                          <SmartContent content={currentContent.practice} />
+                          <SmartContent content={currentContent?.practice} />
                         </div>
                       }
                     />
                     <AudioPlayer
-                      text={currentContent.practice || ""}
+                      text={currentContent?.practice || ""}
                       label="Praxis vorlesen"
                     />
-                    <SmartContent content={currentContent.practice} />
+                    <SmartContent content={currentContent?.practice} />
                   </TabsContent>
 
                   <TabsContent value="tasks" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
                     <FullscreenContent
-                      title={`Aufgaben: ${currentContent.title}`}
+                      title={`Aufgaben: ${currentContent?.title}`}
                       content={
                         <div>
-                          <SmartContent content={currentContent.task} />
-                    <AudioPlayer text={currentContent.task || ""} label="Aufgaben vorlesen" />
-                          {currentContent.solution && (
-                            <SolutionToggler solution={currentContent.solution} />
+                          <SmartContent content={currentContent?.task} />
+                    <AudioPlayer text={currentContent?.task || ""} label="Aufgaben vorlesen" />
+                          {currentContent?.solution && (
+                            <SolutionToggler solution={currentContent?.solution} />
                           )}
                         </div>
                       }
                     />
-                    <SmartContent content={currentContent.task} />
-                    {currentContent.solution && (
-                      <SolutionToggler solution={currentContent.solution} />
+                    <SmartContent content={currentContent?.task} />
+                    {currentContent?.solution && (
+                      <SolutionToggler solution={currentContent?.solution} />
                     )}
                   </TabsContent>
                                                   <TabsContent value="videos" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none">
