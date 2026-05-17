@@ -90,7 +90,7 @@ body{font-family:Arial,sans-serif;display:flex;justify-content:center;align-item
 h2{margin:0 0 8px;color:#1e293b;font-size:20px}
 p{margin:0 0 20px;color:#64748b;font-size:14px}
 input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;box-sizing:border-box;margin-bottom:16px;text-align:center;letter-spacing:4px;font-size:22px}
-button{width:100%;padding:12px;background:#1d4ed8;color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer}
+button{width:100%;padding:12px;background:#1d4ed8;color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer}.eye-btn{width:auto;padding:0;background:none;border:none;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:18px;color:#64748b;line-height:1}
 button:hover{background:#1e40af}
 .hint{font-size:12px;color:#94a3b8;text-align:center;margin-top:12px}
 </style></head>
@@ -203,7 +203,7 @@ h2{color:#1e293b}code{background:#f8fafc;padding:8px 16px;border-radius:6px;font
 .box{background:white;padding:40px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.1);width:320px}
 h2{margin:0 0 24px;color:#1e293b;font-size:20px}
 input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;font-size:14px;box-sizing:border-box;margin-bottom:16px}.input-wrap{position:relative;display:block}
-button{width:100%;padding:12px;background:#1d4ed8;color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer}
+button{width:100%;padding:12px;background:#1d4ed8;color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer}.eye-btn{width:auto;padding:0;background:none;border:none;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:18px;color:#64748b;line-height:1}
 button:hover{background:#1e40af}</style>
 </head>
 <body><div class="box">
@@ -211,7 +211,7 @@ button:hover{background:#1e40af}</style>
 <form method="POST" action="/api/owner/access" autocomplete="off">
 <input type="hidden" name="redirect" value="${redir}">
 <div class="input-wrap"><input type="password" name="key" id="ownerKey" placeholder="Owner-Code eingeben" autofocus required autocomplete="new-password" style="padding-right:44px">
-<button type="button" onclick="var i=document.getElementById('ownerKey');i.type=i.type==='password'?'text':'password';this.textContent=i.type==='password'?'👁':'🙈'" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:18px">👁</button>
+<button type="button" class="eye-btn" onclick="var i=document.getElementById('ownerKey');i.type=i.type==='password'?'text':'password';this.textContent=i.type==='password'?'👁':'🙈'">👁</button>
 <button type="submit">Einloggen →</button>
 </form>
 </div></body></html>`);
