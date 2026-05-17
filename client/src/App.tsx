@@ -99,6 +99,7 @@ const WhiteLabelAdmin = lazy(() => import("@/pages/admin/WhiteLabelAdmin"));
 const PortalPhaseAdmin = lazy(() => import("@/pages/admin/PortalPhaseAdmin"));
 const PortalAgentDashboard = lazy(() => import("@/pages/admin/PortalAgentDashboard"));
 const KiMonitor = lazy(() => import("@/pages/admin/KiMonitor"));
+const OwnerVideos = lazy(() => import("@/pages/OwnerVideos").then(m => ({ default: m.default })));
 const OwnerDashboard = lazy(() => import("@/pages/OwnerDashboard").then(m => ({ default: m.default })));
 
 function ProtectedRoute({ component: Component }: { component: React.ComponentType }) {
@@ -230,6 +231,7 @@ function Router() {
         <Route path="/admin-2fa"><Admin2FA /></Route>
         <Route path="/admin"><AppLayout><AdminRoute component={AdminDashboard} /></AppLayout></Route>
         <Route path="/owner-dashboard"><AppLayout><OwnerRoute component={OwnerDashboard} /></AppLayout></Route>
+        <Route path="/owner-videos"><AppLayout><OwnerRoute component={OwnerVideos} /></AppLayout></Route>
         <Route path="/rechenpraxis"><AppLayout><Rechenpraxis /></AppLayout></Route>
         <Route path="/tester-zugang"><TesterZugang /></Route>
         <Route path="/partner-panel"><AppLayout><AdminRoute component={PartnerDashboard} /></AppLayout></Route>

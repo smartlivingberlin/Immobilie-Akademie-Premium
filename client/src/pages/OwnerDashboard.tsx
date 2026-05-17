@@ -57,7 +57,7 @@ export default function OwnerDashboard() {
   const [statsData, setStatsData] = useState<any>(null);
   const [azavReport, setAzavReport] = useState<any>(null);
   const [azavLoading, setAzavLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState<"users"|"live"|"activity"|"stats"|"azav"|"settings">("users");
+  const [activeTab, setActiveTab] = useState<"users"|"live"|"activity"|"stats"|"azav"|"settings"|"videos">("users");
   const [settings, setSettings] = useState<Record<string,string>>({});
   const [settingsSaved, setSettingsSaved] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -245,6 +245,16 @@ export default function OwnerDashboard() {
 
       {/* Nutzer-Liste */}
       {/* ── TAB: SETTINGS ──────────────────────────────── */}
+      {activeTab === "videos" && (
+        <div style={{padding:24,textAlign:"center"}}>
+          <div style={{fontSize:40,marginBottom:12}}>🎬</div>
+          <h2 style={{color:"#0f172a",marginBottom:8}}>Video-Verwaltung</h2>
+          <p style={{color:"#64748b",marginBottom:20}}>Lernvideos für alle 5 Module verwalten</p>
+          <a href="/owner-videos" style={{background:"#3b82f6",color:"white",padding:"12px 24px",borderRadius:8,textDecoration:"none",fontWeight:600,display:"inline-block"}}>
+            → Video-Verwaltung öffnen
+          </a>
+        </div>
+      )}
       {activeTab === "settings" && (
         <div style={{display:"grid",gap:24}}>
           {/* Preise */}
