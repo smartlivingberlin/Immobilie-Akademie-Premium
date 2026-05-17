@@ -75,11 +75,11 @@ app.use(helmet({
         "https://js.stripe.com",
         "https://plausible.io"
       ],
-      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
       imgSrc: ["'self'", "data:", "https:", "blob:", "https://img.youtube.com"],
       connectSrc: ["'self'", "https://api.stripe.com", "https://api.anthropic.com", "https://generativelanguage.googleapis.com", "https://plausible.io"],
       frameSrc: ["'self'", "https://js.stripe.com", "https://plausible.io", "https://hooks.stripe.com", "https://www.youtube.com", "https://youtube.com"],
-      fontSrc: ["'self'", "data:", "https://fonts.gstatic.com"],
+      fontSrc: ["'self'", "data:"],
       objectSrc: ["'none'"],
       upgradeInsecureRequests: [],
     },
