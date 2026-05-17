@@ -1,5 +1,4 @@
 import { sql } from "drizzle-orm";
-import { z } from "zod";
 import type { Express, Request, Response } from "express";
 import { generateOTP, verifyOTP, sendOTPEmail } from "./twoFactor";
 import { getTotpSecret, generateTotpSecret, generateQRCode, verifyTotp, getOwner2FAMethod } from "./ownerTwoFactor";
@@ -332,10 +331,8 @@ button:hover{background:#1e40af}</style>
     const key = req.headers["x-owner-key"] || req.query.key;
     if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
     try {
-      const schema = z.object({ email: z.string().email() });
-      const parsed = schema.safeParse(req.body);
-      if (!parsed.success) return res.status(400).json({ error: "Ungültige E-Mail" });
-      const { email } = parsed.data;
+      const { email } = req.body;
+      if (!email) return res.status(400).json({ error: "email erforderlich" });
       const { getDb } = await import("./db");
       const db = await getDb();
       await db.$client.query(`UPDATE users SET enabledModules = '' WHERE email = ?`, [email]);
@@ -397,13 +394,8 @@ button:hover{background:#1e40af}</style>
     const key = req.headers["x-owner-key"] || req.query.key;
     if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
     try {
-      const schema = z.object({
-        email: z.string().email(),
-        modules: z.string().regex(/^[1-5,]+$/)
-      });
-      const parsed = schema.safeParse(req.body);
-      if (!parsed.success) return res.status(400).json({ error: "Ungültige Eingabe" });
-      const { email, modules } = parsed.data;
+      const { email, modules } = req.body;
+      if (!email || !modules) return res.status(400).json({ error: "email und modules erforderlich" });
       const { getDb } = await import("./db");
       const db = await getDb();
       await db.$client.query(
@@ -468,13 +460,9 @@ button:hover{background:#1e40af}</style>
     const key = req.headers["x-owner-key"] || req.query.key;
     if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
     try {
-      const schema = z.object({
-        email: z.string().email(),
-        role: z.enum(["user", "admin", "trainer"])
-      });
-      const parsed = schema.safeParse(req.body);
-      if (!parsed.success) return res.status(400).json({ error: "Ungültige Eingabe" });
-      const { email, role } = parsed.data;
+      const { email, role } = req.body;
+      if (!email || !role) return res.status(400).json({ error: "email und role erforderlich" });
+      if (!["user","admin","trainer"].includes(role)) return res.status(400).json({ error: "Ungueltige Rolle. Erlaubt: user, admin, trainer" });
       const { getDb } = await import("./db");
       const db = await getDb();
       if (role === "admin") {
