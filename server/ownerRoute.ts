@@ -202,15 +202,16 @@ h2{color:#1e293b}code{background:#f8fafc;padding:8px 16px;border-radius:6px;font
 <style>body{font-family:Arial,sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0;background:#f1f5f9}
 .box{background:white;padding:40px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.1);width:320px}
 h2{margin:0 0 24px;color:#1e293b;font-size:20px}
-input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;font-size:14px;box-sizing:border-box;margin-bottom:16px}
+input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;font-size:14px;box-sizing:border-box;margin-bottom:16px}.input-wrap{position:relative;display:block}
 button{width:100%;padding:12px;background:#1d4ed8;color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer}
 button:hover{background:#1e40af}</style>
 </head>
 <body><div class="box">
 <h2>🔐 Owner-Zugang</h2>
-<form method="POST" action="/api/owner/access">
+<form method="POST" action="/api/owner/access" autocomplete="off">
 <input type="hidden" name="redirect" value="${redir}">
-<input type="password" name="key" placeholder="Owner-Code eingeben" autofocus required>
+</div><div class="input-wrap"><input type="password" name="key" id="ownerKey" placeholder="Owner-Code eingeben" autofocus required autocomplete="new-password" style="padding-right:44px">
+<button type="button" onclick="var i=document.getElementById('ownerKey');i.type=i.type==='password'?'text':'password';this.textContent=i.type==='password'?'👁':'🙈'" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:18px">👁</button>
 <button type="submit">Einloggen →</button>
 </form>
 </div></body></html>`);
