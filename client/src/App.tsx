@@ -127,7 +127,7 @@ function OwnerRoute({ component: Component }: { component: React.ComponentType }
   const { data: user, isLoading } = trpc.auth.me.useQuery(undefined, { retry: false });
   const isInspect = document.cookie.includes("inspect_mode=") || sessionStorage.getItem("inspect_mode") === "1";
   if (isLoading) return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
-  if (isInspect) { window.location.href = "/admin"; return null; }
+  if (isInspect) { window.location.href = "/login"; return null; }
   if (!user || user.role !== "admin") { window.location.href = "/login"; return null; }
   return <Component />;
 }

@@ -63,7 +63,7 @@ export function registerOwnerRoutes(app: Express) {
       const token = await createSessionToken(openId, "Alisad (Owner)", "admin", "1,2,3,4,5");
       const cookieOptions = getSessionCookieOptions(req);
       res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
-      return res.redirect(redir || "/admin");
+      return res.redirect(redir || "/owner-dashboard");
     }
     // 2FA erforderlich — weiterleiten zu 2FA-Formular
     const params = new URLSearchParams({ method, redirect: redir || "/admin" });
@@ -73,7 +73,7 @@ export function registerOwnerRoutes(app: Express) {
   // GET /owner-2fa — zeigt 2FA-Formular
   app.get("/owner-2fa", (req: Request, res: Response) => {
     const method = (req.query.method as string) || "email";
-    const redir = (req.query.redirect as string) || "/admin";
+    const redir = (req.query.redirect as string) || "/owner-dashboard";
     const isTotp = method === "totp" || method === "both";
     const isEmail = method === "email" || method === "both";
     const ownerEmail = process.env.OWNER_EMAIL || "alisadgadyri38@gmail.com";
@@ -133,7 +133,7 @@ ${isTotp ? `<form method="POST" action="/api/owner/verify-2fa-form">
     const token = await createSessionToken(openId, "Alisad (Owner)", "admin", "1,2,3,4,5");
     const cookieOptions = getSessionCookieOptions(req);
     res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
-    return res.redirect(redir || "/admin");
+    return res.redirect(redir || "/owner-dashboard");
   });
 
     // POST /api/owner/verify-2fa — verifiziert OTP oder TOTP und setzt Session
@@ -195,7 +195,7 @@ h2{color:#1e293b}code{background:#f8fafc;padding:8px 16px;border-radius:6px;font
 
   // GET /owner → zeigt Login-Formular (Key wird per POST gesendet)
   app.get("/owner", async (req: Request, res: Response) => {
-    const redir = (req.query.redirect as string) || "/admin";
+    const redir = (req.query.redirect as string) || "/owner-dashboard";
     return res.send(`<!DOCTYPE html>
 <html lang="de">
 <head><meta charset="UTF-8"><title>Owner Login</title>
