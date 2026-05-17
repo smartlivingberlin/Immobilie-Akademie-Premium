@@ -165,3 +165,4 @@ audit_fixes.json
 audit_report.html
 audit_agent.py
 continue_audit.mjs
+.aider*
