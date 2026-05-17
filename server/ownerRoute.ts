@@ -208,12 +208,42 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
 </head>
 <body><div class="box">
 <h2>🔐 Owner-Zugang</h2>
-<form method="POST" action="/api/owner/access" autocomplete="off">
+<form method="POST" action="/api/owner/access" id="ownerForm">
 <input type="hidden" name="redirect" value="${redir}">
-<div class="input-wrap"><input type="password" name="key" id="ownerKey" placeholder="Owner-Code eingeben" autofocus required autocomplete="new-password" style="padding-right:44px">
-<span onclick="var i=document.getElementById('ownerKey');i.type=i.type==='password'?'text':'password';this.textContent=i.type==='password'?'👁':'🙈'" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:18px;user-select:none">👁</span>
+<input type="hidden" name="key" id="ownerKeyHidden">
+<div class="input-wrap">
+<input type="text" id="ownerKeyVisible" 
+  placeholder="Owner-Code eingeben"
+  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+  style="padding-right:44px;font-family:monospace;letter-spacing:2px;-webkit-text-security:disc">
+<span id="eyeBtn" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:18px;user-select:none;line-height:1">👁</span>
+</div>
 <button type="submit" class="submit-btn">Einloggen →</button>
 </form>
+<script>
+(function(){
+  var field = document.getElementById('ownerKeyVisible');
+  var hidden = document.getElementById('ownerKeyHidden');
+  var eye = document.getElementById('eyeBtn');
+  var form = document.getElementById('ownerForm');
+  var shown = false;
+
+  // Autofill nach kurzer Zeit leeren
+  setTimeout(function(){ field.value = ''; }, 200);
+  field.focus();
+
+  eye.addEventListener('click', function(){
+    shown = !shown;
+    field.style.webkitTextSecurity = shown ? 'none' : 'disc';
+    eye.textContent = shown ? '🙈' : '👁';
+    field.focus();
+  });
+
+  form.addEventListener('submit', function(){
+    hidden.value = field.value;
+  });
+})();
+</script>
 </div></body></html>`);
   });
 
