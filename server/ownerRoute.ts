@@ -210,7 +210,7 @@ button:hover{background:#1e40af}</style>
 <h2>🔐 Owner-Zugang</h2>
 <form method="POST" action="/api/owner/access" autocomplete="off">
 <input type="hidden" name="redirect" value="${redir}">
-</div><div class="input-wrap"><input type="password" name="key" id="ownerKey" placeholder="Owner-Code eingeben" autofocus required autocomplete="new-password" style="padding-right:44px">
+<div class="input-wrap"><input type="password" name="key" id="ownerKey" placeholder="Owner-Code eingeben" autofocus required autocomplete="new-password" style="padding-right:44px">
 <button type="button" onclick="var i=document.getElementById('ownerKey');i.type=i.type==='password'?'text':'password';this.textContent=i.type==='password'?'👁':'🙈'" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:18px">👁</button>
 <button type="submit">Einloggen →</button>
 </form>
