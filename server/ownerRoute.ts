@@ -221,7 +221,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
   app.post("/api/owner/inspect-token", async (req: Request, res: Response) => {
     const { key, hours } = req.body as { key?: string; hours?: number };
     const ownerCode = process.env.OWNER_MAGIC_CODE || ENV.ownerMagicCode;
-    if (!ownerCode) return res.status(403).json({ error: "Ungültiger Schlüssel" });
+    if (!key || !ownerCode || key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
     const validHours = [48, 72].includes(Number(hours)) ? Number(hours) : 72;
     const { SignJWT } = await import("jose");
     const secret = new TextEncoder().encode(process.env.INSPECT_JWT_SECRET || "immobilien-akademie-inspect-2026");
@@ -665,6 +665,9 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
 
   // ── Portal Settings: Lesen ───────────────────────────────────
   app.get("/api/owner/settings", async (req: any, res: any) => {
+    const ownerCode = process.env.OWNER_MAGIC_CODE || ENV.ownerMagicCode;
+    const ownerKey = req.headers["x-owner-key"] || req.query.key;
+    if (!ownerCode || ownerKey !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
     try {
       const { getDb } = await import("./db");
       const db = await getDb();
@@ -685,15 +688,18 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
 
   // ── Portal Settings: Schreiben ──────────────────────────────
   app.post("/api/owner/settings", async (req: any, res: any) => {
+    const ownerCode = process.env.OWNER_MAGIC_CODE || ENV.ownerMagicCode;
+    const ownerKey = req.headers["x-owner-key"] || req.query.key;
+    if (!ownerCode || ownerKey !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
     try {
-      const { key, value } = req.body;
-      if (!key || value === undefined) return res.status(400).json({ error: "key und value erforderlich" });
+      const { key: settingKey, value } = req.body;
+      if (!settingKey || value === undefined) return res.status(400).json({ error: "key und value erforderlich" });
       const { getDb } = await import("./db");
       const db = await getDb();
       await db.execute(
-        sql`INSERT INTO portal_settings (setting_key, setting_value) VALUES (${key}, ${value}) ON DUPLICATE KEY UPDATE setting_value = ${value}`
+        sql`INSERT INTO portal_settings (setting_key, setting_value) VALUES (${settingKey}, ${value}) ON DUPLICATE KEY UPDATE setting_value = ${value}`
       );
-      res.json({ ok: true, key, value });
+      res.json({ ok: true, key: settingKey, value });
     } catch (e: any) {
       res.status(500).json({ error: e.message });
     }
