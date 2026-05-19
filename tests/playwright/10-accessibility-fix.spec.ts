@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
-const BASE = 'https://immobilie-akademie-production.up.railway.app';
+const BASE = 'https://immobilie-akademie-premium-production.up.railway.app';
 
 test('Accessibility Details — was genau ist das Problem?', async ({ page }) => {
   await page.goto(`${BASE}/login`, { waitUntil: 'networkidle' });

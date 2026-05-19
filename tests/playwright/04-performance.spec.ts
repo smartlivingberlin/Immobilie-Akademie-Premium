@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-const BASE = 'https://immobilie-akademie-production.up.railway.app';
+const BASE = 'https://immobilie-akademie-premium-production.up.railway.app';
 
 test.describe('PERFORMANCE & TECHNISCH', () => {
   test('Ladezeiten aller Seiten', async ({ page }) => {

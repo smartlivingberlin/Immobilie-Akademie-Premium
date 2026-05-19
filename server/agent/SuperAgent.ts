@@ -469,7 +469,7 @@ Zitiere relevante Paragraphen (§§).
 Antworte auf Deutsch, präzise, max 200 Wörter.`;
 
     const { result, model } = await smartCall(prompt, "answer_question",
-      "Du bist IHK-zertifizierter Immobilien-Experte mit 20 Jahren Erfahrung.");
+      "Du bist ein erfahrener Immobilien-Experte mit 20 Jahren Erfahrung.");
     
     // Gesetzesreferenzen extrahieren
     const sources = (result.match(/§\s*\d+[a-z]?\s*(?:BGB|GewO|WEG|GwG|ImmoWertV)/g) || [])

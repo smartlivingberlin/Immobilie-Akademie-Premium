@@ -27,7 +27,7 @@ const FEATURES = [
   { icon:Bot, title:"KI-Tutor mit Sokrates-Modus", desc:"Erklärt Paragraphen in Klartext, stellt Rückfragen, verweist auf Quellen. Claude + Gemini + Groq." },
   { icon:BookOpenCheck, title:"Echte Gesetzesquellen", desc:"Jede fachliche Aussage verlinkt auf gesetze-im-internet.de und IHK-Quellen." },
   { icon:Clock, title:"240 strukturierte Lerntage", desc:"5 Tabs pro Tag: Theorie, Normen, Analyse, Aufgaben, Videos. Lernfortschritt serverseitig." },
-  { icon:Award, title:"Offizielle Zertifikate", desc:"PDF-Zertifikate nach bestandener Prüfung. Ab 70% Punktzahl. IHK-konformes Format." },
+  { icon:Award, title:"Kursabschluss-Zertifikate", desc:"PDF-Zertifikate nach bestandener Prüfung. Ab 70% Punktzahl. IHK-konformes Format." },
   { icon:GraduationCap, title:"Adaptiver Lernpfad", desc:"Schwächenanalyse via Spaced Repetition. Die Plattform passt sich Ihrem Tempo an." },
   { icon:ShieldCheck, title:"DSGVO & rechtssicher", desc:"Alle Inhalte juristisch geprüft. WCAG 2.2 AA. Barrierefreiheit inklusive." },
 ];
@@ -116,7 +116,7 @@ export default function Home() {
               IHK-konforme Online-Vorbereitung · Deutschland
             </div>
             <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-tight leading-tight mb-6">
-              Ihre IHK-Lizenz für die{" "}
+              Ihre IHK-Vorbereitung für die{" "}
               <span style={{color:"oklch(0.78 0.15 75)"}}>Immobilienwirtschaft</span>
             </h1>
             <p className="text-lg text-white/80 max-w-2xl leading-relaxed mb-8">
@@ -154,7 +154,7 @@ export default function Home() {
               </div>
             )}
             <div className="flex flex-wrap gap-5">
-              {["IHK-Prüfungsformat","KI-Tutor 24/7","Sofortiger Zugang","DSGVO-konform"].map(t=>(
+              {["IHK-Prüfungsformat","KI-Tutor 24/7","Direkter Zugang nach Kauf","DSGVO-konform"].map(t=>(
                 <span key={t} className="flex items-center gap-1.5 text-sm text-white/70">
                   <CheckCircle2 className="h-4 w-4" style={{color:"oklch(0.78 0.15 75)"}} />{t}
                 </span>
@@ -205,7 +205,7 @@ export default function Home() {
             <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground">
               Ihr Weg zur Immobilienkarriere
             </h2>
-            <p className="mt-4 text-muted-foreground">Jedes Modul einzeln buchbar oder als Komplett-Paket. Sofortiger Zugang nach Zahlung.</p>
+            <p className="mt-4 text-muted-foreground">Jedes Modul einzeln buchbar oder als Komplett-Paket. Direkter Zugang nach Kauf.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {MODULES.map(m=>(

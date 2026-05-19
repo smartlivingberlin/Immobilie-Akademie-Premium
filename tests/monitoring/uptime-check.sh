@@ -1,5 +1,5 @@
 #!/bin/bash
-BASE="https://immobilie-akademie-production.up.railway.app"
+BASE="https://immobilie-akademie-premium-production.up.railway.app"
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 check() {
   CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$1")

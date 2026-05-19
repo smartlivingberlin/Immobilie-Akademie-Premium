@@ -1,6 +1,6 @@
 import { test, expect, Page, BrowserContext } from '@playwright/test';
 
-const BASE = 'https://immobilie-akademie-production.up.railway.app';
+const BASE = 'https://immobilie-akademie-premium-production.up.railway.app';
 
 // Gemeinsame Login-Funktion mit Cookie-Persistenz
 async function loginAndGetContext(page: Page): Promise<boolean> {
@@ -28,7 +28,7 @@ test.describe('ADMIN — Eingeloggter Bereich', () => {
     
     if (!ok) {
       // Fallback: Owner Magic Link
-      await page.goto(`${BASE}/api/owner/access?key=OWNER-3875C3D02394C47C89E21848`, 
+      await page.goto(`${BASE}/api/owner/access?key=${process.env.OWNER_MAGIC_CODE || ""}` , 
         { waitUntil: 'networkidle', timeout: 20000 });
       await page.waitForTimeout(3000);
     }
@@ -130,7 +130,7 @@ test.describe('ADMIN — Eingeloggter Bereich', () => {
 
   test('05 — Admin Panel', async ({ page }) => {
     // Direkt via Owner Link
-    await page.goto(`${BASE}/api/owner/access?key=OWNER-3875C3D02394C47C89E21848`,
+    await page.goto(`${BASE}/api/owner/access?key=${process.env.OWNER_MAGIC_CODE || ""}` ,
       { waitUntil: 'networkidle', timeout: 20000 });
     await page.waitForTimeout(3000);
     
@@ -151,7 +151,7 @@ test.describe('ADMIN — Eingeloggter Bereich', () => {
   });
 
   test('06 — Owner Dashboard Nutzerübersicht', async ({ page }) => {
-    await page.goto(`${BASE}/api/owner/access?key=OWNER-3875C3D02394C47C89E21848`,
+    await page.goto(`${BASE}/api/owner/access?key=${process.env.OWNER_MAGIC_CODE || ""}` ,
       { waitUntil: 'networkidle', timeout: 20000 });
     await page.waitForTimeout(3000);
     

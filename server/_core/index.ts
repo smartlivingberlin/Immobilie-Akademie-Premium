@@ -183,7 +183,7 @@ app.use("/api/owner/access", loginLimiter);
     const origin = req.headers.origin || '';
     const isProd = process.env.NODE_ENV === "production";
     const allowedOrigins = [
-      "https://immobilie-akademie-production.up.railway.app",
+      "https://immobilie-akademie-premium-production.up.railway.app",
       "https://immobilien-akademie-smart.de",
       "https://www.immobilien-akademie-smart.de"
     ];
@@ -527,7 +527,7 @@ startNightCron();
 // Keep-Alive: alle 8 Minuten selbst pingen (verhindert Railway Cold Start)
 setInterval(async () => {
   try {
-    const url = process.env.PUBLIC_URL || "https://immobilie-akademie-production.up.railway.app";
+    const url = process.env.PUBLIC_URL || "https://immobilie-akademie-premium-production.up.railway.app";
     await fetch(`${url}/api/health`).catch(() => {});
   } catch(e) {}
 }, 8 * 60 * 1000);

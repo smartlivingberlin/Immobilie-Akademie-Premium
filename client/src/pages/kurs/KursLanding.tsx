@@ -56,7 +56,7 @@ const KURSE: Record<string, {
   "modul-2-makler-34c": {
     id: "modul_2",
     titel: "Modul 2: Immobilienmakler §34c GewO",
-    untertitel: "Ihre Lizenz zum Vermitteln — die komplette IHK-Vorbereitung",
+    untertitel: "Vollständige IHK-Vorbereitung §34c — strukturiert und praxisnah",
     preis: 499, tage: 60, ue: 480, farbe: "green", emoji: "🔑",
     hero: "Ohne §34c-Sachkundeprüfung kein Maklergeschäft. Punkt. Mit Modul 2 bereiten Sie sich in 60 Lerntagen systematisch und sicher auf die IHK-Prüfung vor — mit KI-Tutor, 300+ Übungsfragen und einem bewährten Lernpfad.",
     story: "Der Immobilienmarkt boomt. Qualifizierte Makler werden gesucht. Doch die §34c-Sachkundeprüfung ist eine echte Hürde — Maklerrecht, Steuerrecht, Vertragsrecht alles auf einmal. Modul 2 zerlegt diesen Berg in 60 überschaubare Lerntage. Jeden Tag ein Schritt weiter. Am Ende kennen Sie nicht nur die Antworten für die Prüfung — Sie verstehen das Maklergeschäft von Grund auf.",
@@ -199,7 +199,7 @@ const KURSE: Record<string, {
       "EU-WIKR und ESIS prüfungsrelevant erklärt",
       "200+ Prüfungsfragen §34i",
       "Integrierter Finanzierungsrechner",
-      "Zertifikat als Nachweis für die IHK",
+      "Kursabschluss-Zertifikat nach erfolgreichem Abschluss",
     ],
     faq: [
       { f: "Reicht das für die §34i IHK-Sachkundeprüfung?", a: "Ja! Modul 5 deckt den vollständigen Prüfungsstoff der §34i-Sachkundeprüfung komplett ab." },

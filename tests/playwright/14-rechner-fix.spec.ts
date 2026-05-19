@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-const BASE = 'https://immobilie-akademie-production.up.railway.app';
+const BASE = 'https://immobilie-akademie-premium-production.up.railway.app';
 
 test('Rechner Critical finden', async ({ page }) => {
   await page.goto(`${BASE}/rechner`, { waitUntil: 'networkidle' });

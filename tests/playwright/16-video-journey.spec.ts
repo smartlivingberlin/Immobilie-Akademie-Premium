@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-const BASE = 'https://immobilie-akademie-production.up.railway.app';
+const BASE = 'https://immobilie-akademie-premium-production.up.railway.app';
 
 test('VIDEO: Anonymer Besucher Journey', async ({ page }) => {
   // Startseite
@@ -23,7 +23,7 @@ test('VIDEO: Anonymer Besucher Journey', async ({ page }) => {
 
 test('VIDEO: Admin Journey', async ({ page }) => {
   await page.goto(
-    `${BASE}/api/owner/access?key=OWNER-3875C3D02394C47C89E21848`,
+    `${BASE}/api/owner/access?key=${process.env.OWNER_MAGIC_CODE || ""}`,
     { waitUntil: 'networkidle', timeout: 20000 }
   );
   await page.waitForTimeout(2000);

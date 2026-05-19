@@ -4,12 +4,12 @@
 ## PORTAL
 URL: https://immobilie-akademie-premium-production.up.railway.app
 GitHub: https://github.com/smartlivingberlin/Immobilie-Akademie-Premium
-Owner Dashboard: https://immobilie-akademie-premium-production.up.railway.app/owner-dashboard?key=OWNER-3875C3D02394C47C89E21848
+Owner Dashboard: https://immobilie-akademie-premium-production.up.railway.app/owner-dashboard?key=***ROTATED***
 
 ## ZUGANGSDATEN
 Admin Email:    alisadgadyri38@gmail.com
-Admin Passwort: Admin2026!
-Owner Key:      OWNER-3875C3D02394C47C89E21848
+Admin Passwort: ***IN RAILWAY VARIABLES***
+Owner Key:      ***IN RAILWAY VARIABLES***
 2. Admin:       gadyri@icloud.com
 Testadmin:      testadmin@immobilien-akademie.test
 Stripe Test:    4242 4242 4242 4242 / 12/34 / 123
