@@ -162,9 +162,9 @@ export const PHASES: Record<Phase, PhaseConfig> = {
     description: "ZFU + AZAV + IHK-Kooperation. Maximale Reichweite und Förderoptionen.",
     badges: { azav: true, zfu: true, ihk: true, bgs: true },
     labels: {
-      productType: "IHK-anerkannter Fernlehrgang",
-      certificationNote: "AZAV-zertifiziert · ZFU-zugelassen · IHK-anerkannt",
-      faqCertAnswer: "Unsere Ausbildung ist AZAV-zertifiziert, staatlich zugelassen (ZFU) und von der IHK anerkannt. Bildungsgutscheine werden akzeptiert. Die Zertifikate sind offiziell anerkannt für die Weiterbildungspflicht nach §34c GewO.",
+      productType: "IHK-vorbereitender Fernlehrgang",
+      certificationNote: "IHK-vorbereitet · ZFU-Prüfung ausstehend · AZAV-Akkreditierung geplant",
+      faqCertAnswer: "Unsere Ausbildung bereitet IHK-orientiert vor. Eine AZAV-Akkreditierung und ZFU-Zulassung ist für Phase C geplant. Bildungsgutscheine werden akzeptiert. Die Zertifikate sind offiziell anerkannt für die Weiterbildungspflicht nach §34c GewO.",
       footerBadge1: "AZAV · ZFU · IHK",
       footerBadge2: "BGS-fähig",
     },

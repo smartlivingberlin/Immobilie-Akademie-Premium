@@ -41,7 +41,7 @@ const KURSE: Record<string, {
       "KI-Tutor erklärt jeden Begriff auf Knopfdruck",
       "Audio-Funktion: Lernen beim Joggen oder Kochen",
       "200+ IHK-orientierte Prüfungsfragen",
-      "Offizielles Zertifikat nach Abschluss",
+      "Kursabschluss-Zertifikat nach erfolgreichem Kursabschluss",
       "Pflichtbasis für alle weiteren Module",
       "Einmalig kaufen — zeitlich befristeter Vollzugang",
     ],
