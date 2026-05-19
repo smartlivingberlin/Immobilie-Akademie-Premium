@@ -16,7 +16,7 @@ export function registerOwnerRoutes(app: Express) {
     const { email, hours } = req.body as { email?: string; hours?: number };
     if (!email) return res.status(400).json({ error: "E-Mail fehlt" });
     const validHours = [48, 72, 168].includes(Number(hours)) ? Number(hours) : 72;
-    const code = generateOTP(email);
+    const code = await generateOTP(email);
     const sent = await sendOTPEmail(email, code, "Tester");
     if (!sent) return res.status(500).json({ error: "E-Mail konnte nicht gesendet werden" });
     return res.json({ ok: true, hours: validHours });
@@ -26,7 +26,7 @@ export function registerOwnerRoutes(app: Express) {
     const { email, code, hours } = req.body as { email?: string; code?: string; hours?: number };
     if (!email || !code) return res.status(400).json({ error: "E-Mail und Code erforderlich" });
     const validHours = [48, 72, 168].includes(Number(hours)) ? Number(hours) : 72;
-    const result = verifyOTP(email, code);
+    const result = await verifyOTP(email, code);
     if (!result.ok) return res.status(401).json({ error: result.error || "Ungültiger Code" });
     try {
       const { getDb } = await import("./db");
@@ -78,8 +78,9 @@ export function registerOwnerRoutes(app: Express) {
     const isEmail = method === "email" || method === "both";
     const ownerEmail = process.env.OWNER_EMAIL || "alisadgadyri38@gmail.com";
     if (isEmail) {
-      const code = generateOTP(ownerEmail);
-      sendOTPEmail(ownerEmail, code, "Alisad").catch(() => {});
+      generateOTP(ownerEmail).then(code => {
+        sendOTPEmail(ownerEmail, code, "Alisad").catch(() => {});
+      }).catch(() => {});
     }
     return res.send(`<!DOCTYPE html>
 <html lang="de">
@@ -122,7 +123,7 @@ ${isTotp ? `<form method="POST" action="/api/owner/verify-2fa-form">
     if (!code) return res.redirect("/owner-2fa?error=code_fehlt");
     if (type === "email") {
       const ownerEmail = email || process.env.OWNER_EMAIL || "alisadgadyri38@gmail.com";
-      const result = verifyOTP(ownerEmail, code);
+      const result = await verifyOTP(ownerEmail, code);
       if (!result.ok) return res.redirect(`/owner-2fa?error=${encodeURIComponent(result.error || "Falscher Code")}`);
     } else if (type === "totp") {
       const secret = getTotpSecret();
@@ -142,7 +143,7 @@ ${isTotp ? `<form method="POST" action="/api/owner/verify-2fa-form">
     if (!code) return res.status(400).json({ error: "Code fehlt" });
     if (type === "email") {
       const ownerEmail = email || process.env.OWNER_EMAIL || "alisadgadyri38@gmail.com";
-      const result = verifyOTP(ownerEmail, code);
+      const result = await verifyOTP(ownerEmail, code);
       if (!result.ok) return res.status(401).json({ error: result.error });
     } else if (type === "totp") {
       const secret = getTotpSecret();
@@ -162,7 +163,7 @@ ${isTotp ? `<form method="POST" action="/api/owner/verify-2fa-form">
   app.post("/api/owner/resend-2fa", async (req: Request, res: Response) => {
     const { email } = req.body as { email?: string };
     const ownerEmail = email || process.env.OWNER_EMAIL || "alisadgadyri38@gmail.com";
-    const code = generateOTP(ownerEmail);
+    const code = await generateOTP(ownerEmail);
     await sendOTPEmail(ownerEmail, code, "Alisad");
     return res.json({ ok: true });
   });
@@ -300,7 +301,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
     if (!email) return res.status(400).json({ error: "E-Mail fehlt" });
     
     // Nur für verifizierte Admin-Accounts (muss in DB sein)
-    const code = generateOTP(email);
+    const code = await generateOTP(email);
     const sent = await sendOTPEmail(email, code, name || "Admin");
     
     return res.json({ 
@@ -315,7 +316,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
     const { email, code } = req.body as { email?: string; code?: string };
     if (!email || !code) return res.status(400).json({ error: "E-Mail und Code erforderlich" });
     
-    const result = verifyOTP(email, code);
+    const result = await verifyOTP(email, code);
     if (!result.ok) return res.status(401).json({ error: result.error });
     
     return res.json({ ok: true, message: "Code korrekt — Zugang gewährt" });

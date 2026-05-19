@@ -1,4 +1,4 @@
-import { index,  int, float, mysqlEnum, mysqlTable, text, timestamp, varchar, boolean } from "drizzle-orm/mysql-core";
+import { index,  int, float, mysqlEnum, mysqlTable, text, timestamp, varchar, boolean, tinyint } from "drizzle-orm/mysql-core";
 import { sql } from "drizzle-orm";
 
 /**
@@ -337,6 +337,16 @@ export const avvAgreements = mysqlTable("avv_agreements", {
 }, (table) => ({
   tenantIdIdx: index("idx_avv_tenantId").on(table.tenantId),
 }));
+
+export const otpTokens = mysqlTable("otp_tokens", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull(),
+  code: varchar("code", { length: 10 }).notNull(),
+  expiresAt: timestamp("expiresAt").notNull(),
+  used: tinyint("used").default(0).notNull(),
+  attempts: int("attempts").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
 
 export const authCredentials = mysqlTable("auth_credentials", {
   id: int("id").autoincrement().primaryKey(),
