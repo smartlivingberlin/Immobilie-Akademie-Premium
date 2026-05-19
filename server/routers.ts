@@ -699,11 +699,39 @@ Antworte im folgenden JSON-Format:
       .input((val) => val as { userId: number })
       .mutation(async ({ input }) => {
         const db = await (await import('./db')).getDb();
-        const { users, authCredentials, learningLogs } = await import('../drizzle/schema');
+        const s = await import('../drizzle/schema');
         const { eq } = await import('drizzle-orm');
-        await db.delete(learningLogs).where(eq(learningLogs.userId, input.userId));
-        await db.delete(authCredentials).where(eq(authCredentials.openId, (await db.select().from(users).where(eq(users.id, input.userId)).limit(1))[0]?.openId ?? ''));
-        await db.delete(users).where(eq(users.id, input.userId));
+        const uid = input.userId;
+        // DSGVO Art. 17 — vollständige Löschung aller personenbezogenen Daten
+        const openId = (await db.select().from(s.users).where(eq(s.users.id, uid)).limit(1))[0]?.openId ?? '';
+        await db.delete(s.openAnswers).where(eq(s.openAnswers.userId, uid)).catch(() => {});
+        await db.delete(s.spacedRepetition).where(eq(s.spacedRepetition.userId, uid)).catch(() => {});
+        await db.delete(s.videoProgress).where(eq(s.videoProgress.userId, uid)).catch(() => {});
+        await db.delete(s.examWeakTopics).where(eq(s.examWeakTopics.userId, uid)).catch(() => {});
+        await db.delete(s.examAuditLog).where(eq(s.examAuditLog.userId, uid)).catch(() => {});
+        await db.delete(s.certificates).where(eq(s.certificates.userId, uid)).catch(() => {});
+        await db.delete(s.activityHeartbeats).where(eq(s.activityHeartbeats.userId, uid)).catch(() => {});
+        await db.delete(s.feedback).where(eq(s.feedback.userId, uid)).catch(() => {});
+        await db.delete(s.complaints).where(eq(s.complaints.userId, uid)).catch(() => {});
+        await db.delete(s.consentLog).where(eq(s.consentLog.userId, uid)).catch(() => {});
+        const userEmail = (await db.select().from(s.users).where(eq(s.users.id, uid)).limit(1))[0]?.email ?? '';
+        await db.delete(s.passwordResetTokens).where(eq(s.passwordResetTokens.email, userEmail)).catch(() => {});
+        const convIds = (await db.select({id: s.chatConversations.id}).from(s.chatConversations).where(eq(s.chatConversations.userId, uid))).map((r: any) => r.id);
+        if (convIds.length > 0) {
+          const { inArray } = await import('drizzle-orm');
+          await db.delete(s.chatMessages).where(inArray(s.chatMessages.conversationId, convIds)).catch(() => {});
+        }
+        await db.delete(s.chatConversations).where(eq(s.chatConversations.userId, uid)).catch(() => {});
+        const sessIds = (await db.select({id: s.examSessions.id}).from(s.examSessions).where(eq(s.examSessions.userId, uid))).map((r: any) => r.id);
+        if (sessIds.length > 0) {
+          const { inArray } = await import('drizzle-orm');
+          await db.delete(s.examQuestions).where(inArray(s.examQuestions.sessionId, sessIds)).catch(() => {});
+        }
+        await db.delete(s.examSessions).where(eq(s.examSessions.userId, uid)).catch(() => {});
+        await db.delete(s.userSessions).where(eq(s.userSessions.userId, uid)).catch(() => {});
+        await db.delete(s.learningLogs).where(eq(s.learningLogs.userId, uid)).catch(() => {});
+        await db.delete(s.authCredentials).where(eq(s.authCredentials.openId, openId)).catch(() => {});
+        await db.delete(s.users).where(eq(s.users.id, uid));
         return { ok: true };
       }),
   }),
