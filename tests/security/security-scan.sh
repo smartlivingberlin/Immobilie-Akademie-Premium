@@ -1,5 +1,5 @@
 #!/bin/bash
-BASE="https://immobilie-akademie-production.up.railway.app"
+BASE="https://immobilie-akademie-premium-production.up.railway.app"
 echo "🔒 SICHERHEITS-SCAN"
 echo "==================="
 

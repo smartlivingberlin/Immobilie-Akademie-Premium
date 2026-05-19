@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-const BASE = "https://immobilie-akademie-production.up.railway.app";
+const BASE = "https://immobilie-akademie-premium-production.up.railway.app";
 
 test.describe("🌐 Öffentliche Seiten — Alle müssen erreichbar sein", () => {
   const pages = [

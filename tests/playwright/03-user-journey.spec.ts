@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-const BASE = 'https://immobilie-akademie-production.up.railway.app';
+const BASE = 'https://immobilie-akademie-premium-production.up.railway.app';
 
 test.describe('USER JOURNEY — Anonymer Besucher', () => {
   test('Startseite → Landing M1 → Trial Formular', async ({ page }) => {

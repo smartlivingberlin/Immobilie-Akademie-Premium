@@ -25,7 +25,7 @@ const PAKETE = [
 
 const TRUST = [
   { icon:"🎓", label:"IHK-vorbereitet", sub:"§34c + §34i Prüfungsstoff" },
-  { icon:"📱", label:"Lebenslanger Zugang", sub:"Einmal kaufen, immer lernen" },
+  { icon:"📱", label:"Dauerhafter Zugang", sub:"Einmaliger Kaufpreis, kein Abo" },
   { icon:"🤖", label:"KI-Tutor inklusive", sub:"Claude + Gemini + Groq" },
   { icon:"📋", label:"855+ Lernaufgaben", sub:"IHK-Fragen, Rechenübungen & Praxisfälle" },
   { icon:"🎯", label:"Prüfungssimulation", sub:"Realistische Testumgebung" },

@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 const BASE_URL = "https://immobilie-akademie-premium-production.up.railway.app";
 const ADMIN_EMAIL = process.env.TEST_ADMIN_EMAIL || "alisadgadyri38@gmail.com";
 const ADMIN_PASSWORD = process.env.TEST_ADMIN_PASSWORD || "Admin2026!";
-const OWNER_KEY = process.env.OWNER_MAGIC_CODE || "OWNER-3875C3D02394C47C89E21848";
+const OWNER_KEY = process.env.OWNER_MAGIC_CODE || "";
 
 test.describe("🔐 Authentication & Authorization Flows", () => {
 
