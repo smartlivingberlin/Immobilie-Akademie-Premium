@@ -88,7 +88,7 @@ export async function sendOTPEmail(email: string, code: string, name: string): P
       const { Resend } = await import("resend");
       const resend = new Resend(resendKey);
       await resend.emails.send({
-        from: "Immobilien Akademie Smart <premium@immobilien-akademie-smart.de>",
+        from: "Immobilien Akademie Smart <info@immobilien-akademie-smart.de>",
         to: email,
         subject: `Ihr Login-Code: ${code}`,
         html: `
