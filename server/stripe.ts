@@ -84,7 +84,7 @@ stripeRouter.post("/api/stripe/checkout", async (req, res) => {
       payment_method_types: ["card"],
       invoice_creation: { enabled: true },
       mode: "payment",
-      customer_email: userEmail,
+      customer_email: userEmail || undefined,
       line_items: [
         {
           price_data: {
