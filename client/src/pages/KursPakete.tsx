@@ -34,6 +34,8 @@ const TRUST = [
 
 export default function KursPakete() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [widerrufsAkzeptiert, setWiderrufsAkzeptiert] = useState<Record<string, boolean>>({});
+  const [widerrufsError, setWiderrufsError] = useState<Record<string, boolean>>({});
 
   return (
     <div style={{ minHeight:"100vh", background:"var(--color-bg, #f8fafc)" }}>
@@ -198,8 +200,28 @@ export default function KursPakete() {
                   </div>
                 </div>
 
+                {/* Widerruf-Checkbox */}
+                <div style={{ background: widerrufsError[p.id] ? "#fef2f2" : "#f8fafc", border:`1px solid ${widerrufsError[p.id] ? "#fca5a5" : "#e2e8f0"}`, borderRadius:8, padding:"10px 12px", marginBottom:10 }}>
+                  <label style={{ display:"flex", alignItems:"flex-start", gap:8, cursor:"pointer" }}>
+                    <input type="checkbox"
+                      checked={!!widerrufsAkzeptiert[p.id]}
+                      onChange={e => {
+                        setWiderrufsAkzeptiert(prev => ({...prev, [p.id]: e.target.checked}));
+                        setWiderrufsError(prev => ({...prev, [p.id]: false}));
+                      }}
+                      style={{ marginTop:2, width:14, height:14, flexShrink:0, cursor:"pointer", accentColor:p.iconColor }} />
+                    <span style={{ fontSize:10, color:"#64748b", lineHeight:1.5 }}>
+                      Ich stimme zu, dass mit der Ausführung sofort begonnen wird und bestätige den Verlust des Widerrufsrechts gemäß §356 Abs. 5 BGB.
+                    </span>
+                  </label>
+                  {widerrufsError[p.id] && <p style={{ color:"#dc2626", fontSize:10, marginTop:4, marginLeft:22 }}>Bitte zuerst bestätigen.</p>}
+                </div>
                 <button
                   onClick={() => {
+                    if (!widerrufsAkzeptiert[p.id]) {
+                      setWiderrufsError(prev => ({...prev, [p.id]: true}));
+                      return;
+                    }
                     trackEvent("begin_checkout", "Bundle", p.id, p.price);
                     fetch(`/api/stripe/bundle-${p.id}`, {
                       method: "POST",

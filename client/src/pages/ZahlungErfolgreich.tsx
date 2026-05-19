@@ -42,7 +42,7 @@ export default function ZahlungErfolgreich() {
           Deine Zahlung war erfolgreich. Deine Module werden jetzt freigeschaltet.
         </p>
         <p style={{ fontSize:14, color:"#64748b", marginBottom:32 }}>
-          Du erhältst eine Bestätigung per E-Mail.
+          Du kannst jetzt sofort mit deinem Modul beginnen.
         </p>
 
         {/* Was jetzt kommt */}
@@ -79,9 +79,9 @@ export default function ZahlungErfolgreich() {
 
         {/* CTAs */}
         <div style={{ display:"flex", gap:12, justifyContent:"center", flexWrap:"wrap" }}>
-          <Link href="/">
+          <Link href="/statistiken">
             <button style={{ background:"linear-gradient(135deg,#2563eb,#1d4ed8)", color:"white", border:"none", borderRadius:12, padding:"14px 32px", fontWeight:700, fontSize:15, cursor:"pointer", boxShadow:"0 4px 16px rgba(37,99,235,0.4)" }}>
-              Jetzt starten →
+              Jetzt zum Lernbereich →
             </button>
           </Link>
           <Link href="/statistiken">
