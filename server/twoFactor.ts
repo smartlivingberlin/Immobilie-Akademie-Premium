@@ -40,7 +40,7 @@ export function generateOTP(email: string): string {
   const key = `${email}_${now}`;
   store[key] = { code, email, expiresAt: now + 10 * 60 * 1000, used: false, attempts: 0 };
   saveStore(store);
-  logger.info(`[2FA] OTP für ${email}: ${code} (10 Min gültig)`);
+  if (process.env.NODE_ENV !== 'production') { logger.info(`[2FA] OTP generiert für ${email} (Dev-Modus)`); }
   return code;
 }
 

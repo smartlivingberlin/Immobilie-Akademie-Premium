@@ -81,7 +81,7 @@ const KURSE: Record<string, {
       "KI-Tutor für komplexe Rechtsfragen",
       "Erfüllt Weiterbildungspflicht §34c (20h/Jahr)",
       "Prüfungssimulation wie in der echten IHK",
-      "Zertifikat als Nachweis für IHK und Kunden",
+      "Kursabschluss-Zertifikat nach erfolgreichem Abschluss",
       "Am Handy lernen — überall, jederzeit",
     ],
     faq: [
