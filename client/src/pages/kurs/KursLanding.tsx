@@ -234,6 +234,7 @@ export default function KursLanding({ slug }: { slug: string }) {
   const [loading, setLoading] = useState(false);
   const [widerrufsAkzeptiert, setWiderrufsAkzeptiert] = useState(false);
   const [widerrufsError, setWiderrufsError] = useState(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
   const { user } = useAuth();
 
   const handleKaufen = async () => {
@@ -242,6 +243,7 @@ export default function KursLanding({ slug }: { slug: string }) {
       return;
     }
     setWiderrufsError(false);
+    setCheckoutError(null);
     setLoading(true);
     try {
       const res = await fetch("/api/stripe/checkout", {
@@ -256,7 +258,7 @@ export default function KursLanding({ slug }: { slug: string }) {
       if (!res.ok) throw new Error("Checkout fehlgeschlagen");
       const { url } = await res.json();
       if (url) window.location.href = url;
-      else navigate("/login");
+      else setCheckoutError("Ein technischer Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.");
     } catch (e: any) {
       console.error("Checkout Fehler:", e);
       // Im Vorschau-Modus: kein Login-Redirect
@@ -265,7 +267,7 @@ export default function KursLanding({ slug }: { slug: string }) {
         alert("Vorschau-Modus: Kaeufe sind deaktiviert. In der echten Version funktioniert der Kauf mit Stripe.");
         return;
       }
-      navigate("/login");
+      setCheckoutError("Checkout fehlgeschlagen. Bitte versuchen Sie es erneut oder kontaktieren Sie den Support.");
     } finally {
       setLoading(false);
     }
@@ -352,6 +354,8 @@ export default function KursLanding({ slug }: { slug: string }) {
                   </label>
                   {widerrufsError && <p style={{ color:"#dc2626", fontSize:10, marginTop:4, marginLeft:22 }}>Bitte zuerst bestätigen.</p>}
                 </div>
+
+                {checkoutError && <p style={{ color: "#dc2626", fontSize: 12, marginBottom: 12, textAlign: "center", fontWeight: 600 }}>{checkoutError}</p>}
 
                 <button onClick={handleKaufen} disabled={loading}
                   style={{ width:"100%", background:`linear-gradient(135deg, ${hauptfarbe}, ${hauptfarbe}cc)`, color:"white", border:"none", borderRadius:12, padding:"14px", fontSize:15, fontWeight:700, cursor:loading?"not-allowed":"pointer", boxShadow:`0 4px 16px ${hauptfarbe}50`, marginBottom:10, opacity:loading?0.7:1 }}>
@@ -526,6 +530,9 @@ export default function KursLanding({ slug }: { slug: string }) {
               </label>
               {widerrufsError && <p style={{ color:"#fca5a5", fontSize:10, marginTop:4, marginLeft:24 }}>Bitte zuerst bestätigen.</p>}
             </div>
+
+            {checkoutError && <p style={{ color: "#fca5a5", fontSize: 14, marginBottom: 16, fontWeight: 600 }}>{checkoutError}</p>}
+
             <button onClick={handleKaufen} disabled={loading}
               style={{ background:"white", color:"#0f172a", border:"none", borderRadius:14, padding:"16px 48px", fontSize:17, fontWeight:800, cursor:loading?"not-allowed":"pointer", boxShadow:"0 8px 32px rgba(0,0,0,0.3)", fontFamily:"Fraunces, Georgia, serif", opacity:loading?0.7:1 }}>
               {loading ? "Weiterleitung zu Stripe..." : `Jetzt kaufen — ${kurs.preis} €`}

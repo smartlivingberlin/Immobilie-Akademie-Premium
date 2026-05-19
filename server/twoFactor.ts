@@ -4,78 +4,64 @@
  */
 import { randomInt } from "crypto";
 import { logger } from "./_core/logger";
-import { readFileSync, writeFileSync, existsSync } from "fs";
-import { join } from "path";
-
-const OTP_STORE = join(process.cwd(), "server/agent/otp_store.json");
-
-interface OTPEntry {
-  code: string;
-  email: string;
-  expiresAt: number;
-  used: boolean;
-  attempts: number;
-}
-
-function loadStore(): Record<string, OTPEntry> {
-  try {
-    if (existsSync(OTP_STORE)) return JSON.parse(readFileSync(OTP_STORE, "utf-8"));
-  } catch (e) { /* OTP-Store nicht lesbar — leerer Store als Fallback */ }
-  return {};
-}
-
-function saveStore(store: Record<string, OTPEntry>) {
-  try { writeFileSync(OTP_STORE, JSON.stringify(store, null, 2)); } catch (e) { /* OTP-Store Schreibfehler — nicht kritisch */ }
-}
+import { sql } from "drizzle-orm";
 
 // Generiert 6-stelligen Code für email
-export function generateOTP(email: string): string {
-  const code = String(randomInt(100000, 999999));
-  const store = loadStore();
+export async function generateOTP(email: string): Promise<string> {
+  const { getDb } = await import("./db");
+  const db = await getDb();
+
   // Cleanup alter Codes
-  const now = Date.now();
-  for (const [k, v] of Object.entries(store)) {
-    if (v.expiresAt < now) delete store[k];
+  await db.execute(sql`DELETE FROM otp_tokens WHERE expiresAt < NOW()`);
+
+  const code = String(randomInt(100000, 999999));
+  const expiresAt = new Date(Date.now() + 10 * 60 * 1000);
+
+  await db.execute(sql`
+    INSERT INTO otp_tokens (email, code, expiresAt)
+    VALUES (${email}, ${code}, ${expiresAt})
+  `);
+
+  if (process.env.NODE_ENV !== 'production') {
+    logger.info(`[2FA] OTP generiert für ${email} (Dev-Modus)`);
   }
-  const key = `${email}_${now}`;
-  store[key] = { code, email, expiresAt: now + 10 * 60 * 1000, used: false, attempts: 0 };
-  saveStore(store);
-  if (process.env.NODE_ENV !== 'production') { logger.info(`[2FA] OTP generiert für ${email} (Dev-Modus)`); }
   return code;
 }
 
 // Verifiziert OTP
-export function verifyOTP(email: string, code: string): { ok: boolean; error?: string } {
-  const store = loadStore();
-  const now = Date.now();
+export async function verifyOTP(email: string, code: string): Promise<{ ok: boolean; error?: string }> {
+  const { getDb } = await import("./db");
+  const db = await getDb();
   
-  // Finde gültigen OTP für diese E-Mail
-  const entries = Object.entries(store)
-    .filter(([_, v]) => v.email === email && !v.used && v.expiresAt > now)
-    .sort(([_, a], [__, b]) => b.expiresAt - a.expiresAt);
+  // Finde gültigen OTP für diese E-Mail (nicht verwendet, nicht abgelaufen, neueste zuerst)
+  const rows = await db.execute(sql`
+    SELECT id, code, attempts FROM otp_tokens
+    WHERE email = ${email} AND used = 0 AND expiresAt > NOW()
+    ORDER BY createdAt DESC
+    LIMIT 1
+  `) as any;
   
-  if (entries.length === 0) {
+  const entries = rows.rows || rows;
+  if (!entries || entries.length === 0) {
     return { ok: false, error: "Kein gültiger Code. Bitte neu anfordern." };
   }
   
-  const [key, entry] = entries[0];
+  const entry = entries[0];
   
   // Max 3 Versuche
   if (entry.attempts >= 3) {
-    delete store[key];
-    saveStore(store);
+    await db.execute(sql`DELETE FROM otp_tokens WHERE id = ${entry.id}`);
     return { ok: false, error: "Zu viele Versuche. Code gesperrt." };
   }
   
   if (entry.code !== code.trim()) {
-    store[key].attempts++;
-    saveStore(store);
-    return { ok: false, error: `Falscher Code. Noch ${3 - entry.attempts} Versuche.` };
+    const newAttempts = entry.attempts + 1;
+    await db.execute(sql`UPDATE otp_tokens SET attempts = ${newAttempts} WHERE id = ${entry.id}`);
+    return { ok: false, error: `Falscher Code. Noch ${3 - newAttempts} Versuche.` };
   }
   
   // Code korrekt → als verwendet markieren
-  store[key].used = true;
-  saveStore(store);
+  await db.execute(sql`UPDATE otp_tokens SET used = 1 WHERE id = ${entry.id}`);
   return { ok: true };
 }
 
