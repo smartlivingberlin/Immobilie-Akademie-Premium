@@ -11,7 +11,7 @@ done
 
 echo ""
 echo "2. HTTPS Redirect (HTTP → HTTPS):"
-CODE=$(curl -s -o /dev/null -w "%{http_code}" http://immobilie-akademie-production.up.railway.app/ 2>/dev/null)
+CODE=$(curl -s -o /dev/null -w "%{http_code}" http://immobilie-akademie-premium-production.up.railway.app/ 2>/dev/null)
 [ "$CODE" = "301" ] || [ "$CODE" = "308" ] && echo "  ✅ HTTP→HTTPS Redirect aktiv ($CODE)" || echo "  ⚠️ Kein Redirect ($CODE)"
 
 echo ""
@@ -32,7 +32,7 @@ CODE=$(curl -s -o /dev/null -w "%{http_code}" "$BASE/api/auth/login" \
 
 echo ""
 echo "5. SSL-Zertifikat:"
-echo | openssl s_client -connect immobilie-akademie-production.up.railway.app:443 2>/dev/null | \
+echo | openssl s_client -connect immobilie-akademie-premium-production.up.railway.app:443 2>/dev/null | \
   openssl x509 -noout -dates 2>/dev/null | while read line; do
   echo "  ✅ $line"
 done
