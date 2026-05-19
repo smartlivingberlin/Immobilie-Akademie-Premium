@@ -47,8 +47,8 @@ export function StructuredData() {
     const organizationSchema = {
       "@context": "https://schema.org",
       "@type": "EducationalOrganization",
-      "name": "Immobilien-Bildungsportal",
-      "description": "Komplette Online-Ausbildung zum Immobilienmakler, WEG-Verwalter und Darlehensvermittler nach §34c und §34i GewO",
+      "name": "Immobilien Akademie Smart",
+      "description": "IHK-Vorbereitung §34c Makler, §34i Darlehensvermittler, WEG-Verwalter, Gutachter & Sachverständiger. KI-gestütztes Lernportal mit 855+ Aufgaben, 240 Lerntagen, 5 Berufsbildern.",
       "url": window.location.origin,
       "address": {
         "@type": "PostalAddress",
@@ -74,7 +74,7 @@ export function StructuredData() {
       "description": "Umfassende Online-Ausbildung für Immobilienprofis mit 240 Ausbildungstagen und 855+ Lernaufgaben. Bereitet auf IHK-Prüfungen nach §34c und §34i GewO vor.",
       "provider": {
         "@type": "EducationalOrganization",
-        "name": "Immobilien-Bildungsportal",
+        "name": "Immobilien Akademie Smart",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Durlacher Str. 36",
