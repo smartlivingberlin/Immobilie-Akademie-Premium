@@ -302,7 +302,7 @@ VERFÜGBARE DIREKT-LINKS (nur passende verwenden):
 
       // Token-Tracking für Kostenkontrolle
       const estimatedTokens = Math.round((question.length + answer.length) / 4);
-      console.log(`[KI-KOSTEN] Modell: ${usedModel}, ~${estimatedTokens} Token, User: ${(req as any).session?.userId || "anon"}`);
+      logger.info(`[KI-KOSTEN] Modell: ${usedModel}, ~${estimatedTokens} Token, User: ${(req as any).session?.userId || "anon"}`);
 
       res.json({ answer, moduleId: moduleId || null, model: usedModel });
     } catch (err) {
