@@ -349,6 +349,42 @@ app.use(express.json({ limit: "1mb" }));
     })
   );
   // development mode uses Vite, production mode uses static files
+
+  // Dynamische Sitemap — nutzt APP_URL statt statische Datei
+  app.get("/sitemap.xml", (_req, res) => {
+    const base = process.env.APP_URL || "https://immobilien-akademie-smart.de";
+    const urls = [
+      { loc: "/", priority: "1.0", changefreq: "weekly" },
+      { loc: "/kurse", priority: "0.9", changefreq: "weekly" },
+      { loc: "/pakete", priority: "0.9", changefreq: "weekly" },
+      { loc: "/kurs/modul-1-immobilien-grundkurs", priority: "0.9", changefreq: "monthly" },
+      { loc: "/kurs/modul-2-makler-34c", priority: "0.9", changefreq: "monthly" },
+      { loc: "/kurs/modul-3-weg-verwalter", priority: "0.9", changefreq: "monthly" },
+      { loc: "/kurs/modul-4-gutachter", priority: "0.9", changefreq: "monthly" },
+      { loc: "/kurs/modul-5-34i-darlehensvermittler", priority: "0.9", changefreq: "monthly" },
+      { loc: "/foerderung", priority: "0.8", changefreq: "monthly" },
+      { loc: "/glossary", priority: "0.7", changefreq: "monthly" },
+      { loc: "/bildungskonzept", priority: "0.7", changefreq: "monthly" },
+      { loc: "/impressum", priority: "0.3" },
+      { loc: "/datenschutz", priority: "0.3" },
+      { loc: "/agb", priority: "0.3" },
+    ];
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.map(u => `  <url><loc>${base}${u.loc}</loc><priority>${u.priority}</priority>${u.changefreq ? `<changefreq>${u.changefreq}</changefreq>` : ""}</url>`).join("\n")}
+</urlset>`;
+    res.setHeader("Content-Type", "application/xml");
+    res.setHeader("Cache-Control", "public, max-age=3600");
+    res.send(xml);
+  });
+
+  // Dynamische robots.txt
+  app.get("/robots.txt", (_req, res) => {
+    const base = process.env.APP_URL || "https://immobilien-akademie-smart.de";
+    res.setHeader("Content-Type", "text/plain");
+    res.send(`User-agent: *\nAllow: /\nDisallow: /admin\nDisallow: /api/\nDisallow: /statistiken\nDisallow: /owner-dashboard\n\nSitemap: ${base}/sitemap.xml\n`);
+  });
+
   if (process.env.NODE_ENV === "development") {
     await setupVite(app, server);
   } else {
