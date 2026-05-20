@@ -168,6 +168,8 @@ import {
   Moon,
   Sun,
   X,
+  Eye,
+  EyeOff,
 } from "lucide-react";
 import { useState } from "react";
 import { toast as sonnerToast } from "sonner";
@@ -180,6 +182,8 @@ export default function ComponentsShowcase() {
   const [selectedFruits, setSelectedFruits] = useState<string[]>([]);
   const [progress, setProgress] = useState(33);
   const [currentPage, setCurrentPage] = useState(2);
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
   const [openCombobox, setOpenCombobox] = useState(false);
   const [selectedFramework, setSelectedFramework] = useState("");
   const [selectedMonth, setSelectedMonth] = useState("");
@@ -925,11 +929,23 @@ export default function ComponentsShowcase() {
                   <CardContent className="space-y-2">
                     <div className="space-y-1">
                       <Label htmlFor="current">Current password</Label>
-                      <Input id="current" type="password" />
+                      <div className="relative">
+                        <Input id="current" type={showCurrentPassword ? "text" : "password"} />
+                        <button type="button" onClick={() => setShowCurrentPassword(!showCurrentPassword)}
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+                          {showCurrentPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                        </button>
+                      </div>
                     </div>
                     <div className="space-y-1">
                       <Label htmlFor="new">New password</Label>
-                      <Input id="new" type="password" />
+                      <div className="relative">
+                        <Input id="new" type={showNewPassword ? "text" : "password"} />
+                        <button type="button" onClick={() => setShowNewPassword(!showNewPassword)}
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+                          {showNewPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                        </button>
+                      </div>
                     </div>
                   </CardContent>
                   <CardFooter>
