@@ -33,12 +33,12 @@ const FEATURES = [
 ];
 
 const IMAGES = {
-  hero: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80",
-  modul1: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80",
-  modul2: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=600&q=80",
-  modul3: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80",
-  modul4: "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=600&q=80",
-  modul5: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80",
+  hero: "/images/hero.webp",
+  modul1: "/images/modul1.jpg",
+  modul2: "/images/modul2.jpg",
+  modul3: "/images/modul3.jpg",
+  modul4: "/images/modul4.jpg",
+  modul5: "/images/modul5.jpg",
 };
 
 // Animierter Zaehler-Hook
