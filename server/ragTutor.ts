@@ -1,3 +1,4 @@
+import { logger } from "./_core/logger";
 import { ENV } from "./_core/env";
 import { join as pathJoin } from 'path';
 import { existsSync, readFileSync } from 'fs';
