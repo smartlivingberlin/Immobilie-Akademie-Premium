@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /statistiken
+Disallow: /owner-dashboard
 
 Sitemap: https://immobilien-akademie-smart.de/sitemap.xml
