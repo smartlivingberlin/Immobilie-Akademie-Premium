@@ -32,6 +32,15 @@ const FEATURES = [
   { icon:ShieldCheck, title:"DSGVO & rechtssicher", desc:"Alle Inhalte juristisch geprüft. WCAG 2.2 AA. Barrierefreiheit inklusive." },
 ];
 
+const IMAGES = {
+  hero: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80",
+  modul1: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80",
+  modul2: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=600&q=80",
+  modul3: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80",
+  modul4: "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=600&q=80",
+  modul5: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80",
+};
+
 // Animierter Zaehler-Hook
 function useCountUp(target: number, duration: number = 1500) {
   const [count, setCount] = useState(0);
@@ -100,16 +109,16 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="Immobilien Akademie Smart — IHK §34c §34i WEG-Verwalter"
-        description="Online-Vorbereitung für IHK-Sachkundeprüfungen. §34c Makler, §34i, WEG-Verwalter, Gutachter. 855+ Lernaufgaben: IHK-Fragen, Rechenübungen & Praxisfälle. KI-Tutor, 240 Lerntage. Ab 149€."
-        keywords="§34c GewO, §34i GewO, WEG Verwalter, Immobilienmakler IHK, Sachkundeprüfung"
+        title="Immobilien Akademie Smart — IHK §34c §34i WEG-Verwalter Gutachter Online"
+        description="IHK-Vorbereitung §34c Makler, §34i Darlehensvermittler, WEG-Verwalter, Immobiliengutachter & Sachverständiger. KI-Tutor, 855+ Aufgaben, 240 Lerntage. Bildungsgutschein möglich. Ab 149€."
+        keywords="§34c GewO, §34i GewO, WEG Verwalter, Immobilienmakler IHK, Sachkundeprüfung, Immobiliengutachter, Sachverständiger, Bildungsgutschein, Weiterbildung Immobilien"
       />
 
       {/* HERO */}
       <section className="relative overflow-hidden gradient-hero text-white">
         <div className="absolute inset-0 opacity-20 pointer-events-none"
           style={{backgroundImage:"radial-gradient(circle at 25% 30%, oklch(0.62 0.13 195/0.4), transparent 50%), radial-gradient(circle at 75% 70%, oklch(0.78 0.15 75/0.25), transparent 50%)"}} />
-        <div className="container mx-auto px-4 py-20 md:py-28 relative">
+        <div className="container mx-auto px-4 py-20 md:py-28 relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs backdrop-blur mb-6">
               <Sparkles className="h-3.5 w-3.5" style={{color:"oklch(0.78 0.15 75)"}} />
@@ -120,7 +129,7 @@ export default function Home() {
               <span style={{color:"oklch(0.78 0.15 75)"}}>Immobilienwirtschaft</span>
             </h1>
             <p className="text-lg text-white/80 max-w-2xl leading-relaxed mb-8">
-              §34c Makler · §34i Darlehensvermittler · WEG-Verwalter · Gutachter —
+              §34c Makler · §34i Darlehensvermittler · WEG-Verwalter · Gutachter & Sachverständiger —
               alle 5 Berufsbilder in einem Portal. Mit KI-Tutor, 855+ Lernaufgaben
               und 240 strukturierten Lerntagen.
             </p>
@@ -161,6 +170,18 @@ export default function Home() {
               ))}
             </div>
           </div>
+
+          <div className="hidden lg:block">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl" style={{aspectRatio:"4/3"}}>
+              <img src={IMAGES.hero} alt="Professioneller Immobilienmakler im Berliner Büro"
+                   className="w-full h-full object-cover" loading="eager" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 text-white text-sm font-semibold
+                              bg-black/50 backdrop-blur-sm rounded-xl px-4 py-2 text-center">
+                Ihr Karrierestart in der Immobilienwirtschaft
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -182,6 +203,27 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-6 bg-emerald-50 border-y border-emerald-100">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+            <div className="flex items-center gap-3">
+              <div className="h-10 w-10 rounded-xl bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                <Award className="h-5 w-5 text-emerald-700" />
+              </div>
+              <div>
+                <p className="font-semibold text-emerald-900 text-sm">Staatliche Förderung möglich</p>
+                <p className="text-emerald-700 text-xs mt-0.5">Bildungsgutschein (SGB III §81) · Qualifizierungschancengesetz · steuerlich absetzbar · AZAV-Zertifizierung in Vorbereitung</p>
+              </div>
+            </div>
+            <Link href="/foerderung">
+              <a className="inline-flex items-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-xl text-sm font-semibold transition-colors flex-shrink-0">
+                Fördermöglichkeiten <ArrowRight className="h-4 w-4" />
+              </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -209,28 +251,34 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {MODULES.map(m=>(
-              <div key={m.id} className="rounded-2xl border border-border bg-card p-6 shadow-soft hover:shadow-elegant transition-all hover:-translate-y-1 flex flex-col group">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="h-10 w-10 rounded-xl flex items-center justify-center"
-                    style={{background:`${m.farbe}15`}}>
-                    <Building2 className="h-5 w-5" style={{color:m.farbe}} />
-                  </div>
-                  <span className="text-xs font-semibold px-2.5 py-1 rounded-full"
+              <div key={m.id} className="rounded-2xl border border-border bg-card overflow-hidden shadow-soft hover:shadow-elegant transition-all hover:-translate-y-1 flex flex-col group">
+                <div className="relative h-32 w-full">
+                  <img src={IMAGES[`modul${m.id}` as keyof typeof IMAGES]} alt={m.title} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" style={{background:`linear-gradient(to top, ${m.farbe}CC, transparent)`}} />
+                  <span className="absolute top-3 right-3 text-xs font-semibold px-2.5 py-1 rounded-full shadow-lg"
                     style={{background:m.farbe,color:m.textFarbe}}>{m.badge}</span>
                 </div>
-                <h3 className="font-display font-semibold text-lg text-foreground mb-2">{m.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-4">{m.desc}</p>
-                <div className="flex items-center justify-between text-xs text-muted-foreground mb-4 border-t border-border pt-4">
-                  <span>{m.tage} Lerntage</span>
-                  <span>{m.ue} UE</span>
-                  <span className="font-semibold text-foreground text-base">ab {m.preis} €</span>
+                <div className="p-6 flex-1 flex flex-col">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="h-10 w-10 rounded-xl flex items-center justify-center"
+                      style={{background:`${m.farbe}15`}}>
+                      <Building2 className="h-5 w-5" style={{color:m.farbe}} />
+                    </div>
+                  </div>
+                  <h3 className="font-display font-semibold text-lg text-foreground mb-2">{m.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-4">{m.desc}</p>
+                  <div className="flex items-center justify-between text-xs text-muted-foreground mb-4 border-t border-border pt-4">
+                    <span>{m.tage} Lerntage</span>
+                    <span>{m.ue} UE</span>
+                    <span className="font-semibold text-foreground text-base">ab {m.preis} €</span>
+                  </div>
+                  <Link href={`/kurs/${m.slug}`}>
+                    <a className="inline-flex items-center justify-center gap-2 w-full rounded-xl px-4 py-2.5 text-sm font-semibold transition-all"
+                      style={{background:m.farbe,color:m.textFarbe}}>
+                      Kurs ansehen <ArrowRight className="h-4 w-4" />
+                    </a>
+                  </Link>
                 </div>
-                <Link href={`/kurs/${m.slug}`}>
-                  <a className="inline-flex items-center justify-center gap-2 w-full rounded-xl px-4 py-2.5 text-sm font-semibold transition-all"
-                    style={{background:m.farbe,color:m.textFarbe}}>
-                    Kurs ansehen <ArrowRight className="h-4 w-4" />
-                  </a>
-                </Link>
               </div>
             ))}
             {/* Komplett-Paket */}

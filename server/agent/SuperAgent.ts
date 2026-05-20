@@ -371,7 +371,7 @@ NAECHSTE_TAGE: [3 Tagnummern, kommagetrennt]`;
     // KI-Dienste prüfen
     const aiStatus: Record<string, boolean> = {
       claude: !!process.env.ANTHROPIC_API_KEY,
-      gemini: !!process.env.GEMINI_API_KEY,
+      gemini: !!(process.env.GEMINI_API_KEY || process.env.GOOGLE_AI_API_KEY),
       groq: !!process.env.GROQ_API_KEY,
     };
     

@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function ResetPassword() {
   const [, navigate] = useLocation();
   const token = new URLSearchParams(window.location.search).get("token") ?? "";
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -59,12 +62,24 @@ export default function ResetPassword() {
         <p className="text-slate-600 mb-6 text-sm">Gib dein neues Passwort ein.</p>
         {error && <div className="bg-red-50 text-red-700 p-3 rounded mb-4 text-sm">{error}</div>}
         <form onSubmit={handleSubmit} className="space-y-4">
-          <input type="password" placeholder="Neues Passwort" value={password}
-            onChange={e => setPassword(e.target.value)} required minLength={8}
-            className="w-full border rounded-lg px-4 py-3 text-sm" />
-          <input type="password" placeholder="Passwort wiederholen" value={password2}
-            onChange={e => setPassword2(e.target.value)} required
-            className="w-full border rounded-lg px-4 py-3 text-sm" />
+          <div className="relative">
+            <input type={showPassword ? "text" : "password"} placeholder="Neues Passwort" value={password}
+              onChange={e => setPassword(e.target.value)} required minLength={8}
+              className="w-full border rounded-lg px-4 py-3 text-sm" />
+            <button type="button" onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+              {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+            </button>
+          </div>
+          <div className="relative">
+            <input type={showPassword2 ? "text" : "password"} placeholder="Passwort wiederholen" value={password2}
+              onChange={e => setPassword2(e.target.value)} required
+              className="w-full border rounded-lg px-4 py-3 text-sm" />
+            <button type="button" onClick={() => setShowPassword2(!showPassword2)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+              {showPassword2 ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+            </button>
+          </div>
           <button type="submit" disabled={loading}
             className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50">
             {loading ? "Wird gespeichert..." : "Passwort ändern"}
