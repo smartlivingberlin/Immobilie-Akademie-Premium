@@ -252,9 +252,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {MODULES.map(m=>(
               <div key={m.id} className="rounded-2xl border border-border bg-card overflow-hidden shadow-soft hover:shadow-elegant transition-all hover:-translate-y-1 flex flex-col group">
-                <div className="relative h-32 w-full">
+                <div className="relative h-44 w-full overflow-hidden">
                   <img src={IMAGES[`modul${m.id}` as keyof typeof IMAGES]} alt={m.title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0" style={{background:`linear-gradient(to top, ${m.farbe}99, transparent 60%)`}} />
                   <span className="absolute top-3 right-3 text-xs font-semibold px-2.5 py-1 rounded-full shadow-lg"
                     style={{background:m.farbe,color:m.textFarbe}}>{m.badge}</span>
                 </div>
