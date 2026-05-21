@@ -173,7 +173,7 @@ export default function Home() {
 
           <div className="hidden lg:block">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl" style={{aspectRatio:"4/3"}}>
-              <img loading="lazy" src={IMAGES.hero} alt="Professioneller Immobilienmakler im Berliner Büro"
+              <img src={IMAGES.hero} alt="Professioneller Immobilienmakler im Berliner Büro"
                    className="w-full h-full object-cover" loading="eager" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 text-white text-sm font-semibold
