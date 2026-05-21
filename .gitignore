@@ -168,3 +168,5 @@ continue_audit.mjs
 .aider*
 test-results/
 tests/reports/
+test-results/
+tests/reports/
