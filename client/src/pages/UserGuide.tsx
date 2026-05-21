@@ -7,20 +7,16 @@ import ReactMarkdown from 'react-markdown';
 import DashboardLayout from "@/components/layout/DashboardLayout";
 
 export default function UserGuide() {
-  const [content, setContent] = useState<string>("");
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Fetch the markdown content
-    fetch('/benutzerhandbuch.md')
-      .then(response => response.text())
-      .then(text => {
-        setContent(text);
-        setLoading(false);
-      })
-      .catch(error => {
-        console.error('Error loading user guide:', error);
-        setLoading(false);
+  const [loading] = useState(false);
+  const content = [
+    "# Benutzerhandbuch — Immobilien Akademie Smart",
+    "## Login: /login → E-Mail + Passwort → Dashboard",
+    "## Testzugang: Startseite → 24h testen → E-Mail eingeben → Code einlösen",
+    "## Module: M1 Grundkurs (20 Tage), M2 Makler §34c (60), M3 WEG (80), M4 Gutachter (40), M5 §34i (40)",
+    "## KI-Tutor: Claude + Gemini + Groq — Fragen direkt im Modul stellen",
+    "## Prüfung: 855+ IHK-Fragen, 70% zum Bestehen, Zertifikat als PDF",
+    "## Support: info@immobilien-akademie-smart.de oder /beschwerde",
+  ].join("\n\n");
       });
   }, []);
 
