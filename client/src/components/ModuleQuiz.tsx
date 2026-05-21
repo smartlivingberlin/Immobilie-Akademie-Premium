@@ -23,7 +23,7 @@ interface ModuleQuizProps {
   passingScore?: number; // Percentage required to pass (default: 60)
 }
 
-export function ModuleQuiz({ moduleTitle = "Modul Quiz", questions, onComplete, passingScore = 60 }: ModuleQuizProps) {
+export function ModuleQuiz({ moduleTitle = "Modul Quiz", questions, onComplete, passingScore = 55 }: ModuleQuizProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);

@@ -21,20 +21,34 @@ export default function AudioPlayer({ text, label = "Vorlesen" }: AudioPlayerPro
 
   const stop = useCallback(() => {
     window.speechSynthesis.cancel();
+    if (keepAliveRef.current) clearInterval(keepAliveRef.current);
     setIsPlaying(false);
     setIsPaused(false);
     setProgress(0);
   }, []);
 
+  const keepAliveRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
   const play = useCallback(() => {
     if (!supported) return;
     window.speechSynthesis.cancel();
+    if (keepAliveRef.current) clearInterval(keepAliveRef.current);
 
     const cleaned = cleanText(text);
     const utterance = new SpeechSynthesisUtterance(cleaned);
     utterance.lang = "de-DE";
     utterance.rate = speed;
     utterance.pitch = 1;
+    
+    // Chrome-Fix: speechSynthesis stoppt nach ~200 Wörtern ohne diesen Keep-Alive
+    keepAliveRef.current = setInterval(() => {
+      if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+        window.speechSynthesis.pause();
+        window.speechSynthesis.resume();
+      } else {
+        if (keepAliveRef.current) clearInterval(keepAliveRef.current);
+      }
+    }, 10000);
 
     // Deutsche Stimme bevorzugen — mit Fallback für verzögertes Laden
     const setVoice = () => {

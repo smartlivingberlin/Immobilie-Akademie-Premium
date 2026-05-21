@@ -26,7 +26,7 @@ export const quizData: ModuleQuiz[] = [
   {
     moduleId: 1,
     moduleName: "Modul 1: Einführung in die Immobilienbranche",
-    passingScore: 60,
+    passingScore: 55,
     questions: [
       {
         id: "m1-q1",
@@ -192,7 +192,7 @@ export const quizData: ModuleQuiz[] = [
   {
     moduleId: 2,
     moduleName: "Modul 2: Immobilienmakler nach §34c GewO",
-    passingScore: 60,
+    passingScore: 55,
     questions: [
       {
         id: "m2-q1",
@@ -354,7 +354,7 @@ export const quizData: ModuleQuiz[] = [
   {
     moduleId: 3,
     moduleName: "Modul 3: Immobilienverwaltung (WEG & Mietverwaltung)",
-    passingScore: 60,
+    passingScore: 55,
     questions: [
       {
         id: "m3-q1",
@@ -523,7 +523,7 @@ export const quizData: ModuleQuiz[] = [
   {
     moduleId: 4,
     moduleName: "Modul 4: Gutachten & Sachverständigenwesen",
-    passingScore: 60,
+    passingScore: 55,
     questions: [
       {
         id: "m4-q1",
@@ -690,7 +690,7 @@ export const quizData: ModuleQuiz[] = [
   {
     moduleId: 5,
     moduleName: "Modul 5: Prüfungsvorbereitung & Darlehensvermittlung §34i",
-    passingScore: 60,
+    passingScore: 55,
     questions: [
       {
         id: "m5-q1",
