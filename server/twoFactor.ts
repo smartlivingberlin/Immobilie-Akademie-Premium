@@ -47,6 +47,12 @@ export async function verifyOTP(email: string, code: string): Promise<{ ok: bool
   }
   
   const entry = entries[0];
+  // Sicherheitscheck: id muss eine gültige Zahl sein
+  const entryId = Number(entry.id);
+  if (!entryId || isNaN(entryId)) {
+    return { ok: false, error: "Interner Fehler. Bitte neu anfordern." };
+  }
+  entry.id = entryId;
   
   // Max 3 Versuche
   if (entry.attempts >= 3) {
