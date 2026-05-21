@@ -9,7 +9,7 @@ const SLUGS = [
   "modul-5-34i-darlehensvermittler",
 ] as const;
 
-const LIVE_URL = "https://immobilie-akademie-premium-production.up.railway.app";
+const LIVE_URL = "https://immobilien-akademie-smart.de";
 
 export default function LandingPageAdmin() {
   return (

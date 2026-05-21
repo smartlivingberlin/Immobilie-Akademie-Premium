@@ -40,7 +40,7 @@ export default function StrategiePlattform() {
             
             <p className="text-xl md:text-2xl text-blue-100 mb-10 leading-relaxed max-w-3xl mx-auto">
               Umfassende Strategie für Monetarisierung, Marketing, Skalierung und technische Erweiterung
-              des Immobilien-Bildungsportals - von 0 auf 10.000 Nutzer in 12 Monaten.
+              des Immobilien Akademie Smart - von 0 auf 10.000 Nutzer in 12 Monaten.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
