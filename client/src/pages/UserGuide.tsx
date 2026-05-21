@@ -17,7 +17,6 @@ export default function UserGuide() {
     "## Prüfung: 855+ IHK-Fragen, 70% zum Bestehen, Zertifikat als PDF",
     "## Support: info@immobilien-akademie-smart.de oder /beschwerde",
   ].join("\n\n");
-      });
   const handlePrint = () => {
     window.print();
   };
