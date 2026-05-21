@@ -1,7 +1,7 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 
-const BASE = 'https://immobilie-akademie-premium-production.up.railway.app';
+const BASE = 'https://immobilien-akademie-smart.de';
 
 export const options = {
   stages: [

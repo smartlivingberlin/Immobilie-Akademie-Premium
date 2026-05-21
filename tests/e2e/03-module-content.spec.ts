@@ -4,12 +4,11 @@ const BASE = "https://immobilien-akademie-smart.de";
 
 test.describe("📚 Modul-Inhalte und Navigation", () => {
   test.beforeEach(async ({ page }) => {
-    // Login vor jedem Test
-    await page.goto(`${BASE}/login`);
-    await page.fill('input[type="email"]', "admin@immobilie.de");
-    await page.fill('input[type="password"]', "Admin1234!");
-    await page.click('button[type="submit"]');
-    await page.waitForURL(/statistiken|dashboard/, { timeout: 10000 });
+    const secret = process.env.MAGIC_LINK_SECRET || "";
+    if (secret) {
+      await page.goto(`${BASE}/api/auth/magic?secret=${secret}`);
+      await page.waitForLoadState("networkidle");
+    }
   });
 
   for (const modul of [1, 2, 3, 4, 5]) {

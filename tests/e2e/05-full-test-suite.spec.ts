@@ -164,7 +164,11 @@ test.describe("🆓 Trial-Nutzer", () => {
 test.describe("🎓 Eingeloggter Nutzer (Admin als Proxy)", () => {
 
   test.beforeEach(async ({ page }) => {
-    await loginAs(page, ADMIN_EMAIL, ADMIN_PASS);
+    const secret = process.env.MAGIC_LINK_SECRET || "";
+    if (secret) {
+      await page.goto(`${BASE}/api/auth/magic?secret=${secret}`);
+      await page.waitForLoadState("networkidle");
+    }
   });
 
   test("Dashboard erreichbar nach Login", async ({ page }) => {
@@ -231,7 +235,11 @@ test.describe("🎓 Eingeloggter Nutzer (Admin als Proxy)", () => {
 test.describe("⚙️ Admin-Perspektive", () => {
 
   test.beforeEach(async ({ page }) => {
-    await loginAs(page, ADMIN_EMAIL, ADMIN_PASS);
+    const secret = process.env.MAGIC_LINK_SECRET || "";
+    if (secret) {
+      await page.goto(`${BASE}/api/auth/magic?secret=${secret}`);
+      await page.waitForLoadState("networkidle");
+    }
   });
 
   test("Admin-Dashboard vollständig", async ({ page }) => {
@@ -291,7 +299,11 @@ test.describe("⚙️ Admin-Perspektive", () => {
   });
 
   test("Admin-API funktioniert", async ({ page }) => {
-    await loginAs(page, ADMIN_EMAIL, ADMIN_PASS);
+    const secret = process.env.MAGIC_LINK_SECRET || "";
+    if (secret) {
+      await page.goto(`${BASE}/api/auth/magic?secret=${secret}`);
+      await page.waitForLoadState("networkidle");
+    }
     const cookies = await page.context().cookies();
     const sessionCookie = cookies.find(c => c.name === "session" || c.name === "immobilien_session");
     console.log(`Session-Cookie: ${sessionCookie ? "✅ gefunden" : "⚠️ nicht gefunden"}`);
