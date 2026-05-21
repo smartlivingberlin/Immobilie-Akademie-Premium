@@ -60,7 +60,7 @@ export function StructuredData() {
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+49-171-1526327",
-        "email": "alisadgadyri38@gmail.com",
+        "email": "info@immobilien-akademie-smart.de",
         "contactType": "customer service",
         "availableLanguage": ["de"],
       },

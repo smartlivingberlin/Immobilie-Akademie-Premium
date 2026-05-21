@@ -292,7 +292,7 @@ export default function KursLanding({ slug }: { slug: string }) {
 
   return (
     <>
-      <SEO title={kurs.seo_title} description={kurs.seo_desc} ogImage="https://immobilie-akademie-premium-production.up.railway.app/icon-512.png" />
+      <SEO title={kurs.seo_title} description={kurs.seo_desc} ogImage="/icon-512.png" />
       <div style={{ minHeight:"100vh", background:"#f8fafc" }}>
 
         {/* ── HERO ─────────────────────────────────────────── */}

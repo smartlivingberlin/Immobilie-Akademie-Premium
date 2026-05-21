@@ -8,9 +8,9 @@ interface SocialProofData {
 
 export function useSocialProof() {
   const [data, setData] = useState<SocialProofData>({
-    activeUsers: 47,      // Fallback-Werte
-    certsThisWeek: 12,
-    totalUsers: 312,
+    activeUsers: 0,      // Fallback-Werte
+    certsThisWeek: 0,
+    totalUsers: 0,
   });
 
   useEffect(() => {

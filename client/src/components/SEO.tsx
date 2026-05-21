@@ -10,10 +10,10 @@ interface SEOProps {
 }
 
 const DEFAULT_SEO = {
-  title: "Immobilien-Bildungsportal | Makler §34c, Verwalter WEG/Miet, §34i Ausbildung",
+  title: "Immobilien Akademie Smart | Makler §34c, Verwalter WEG/Miet, §34i Ausbildung",
   description: "Komplette Immobilien-Ausbildung: 240 Tage, 810+ Lernaufgaben. Makler §34c GewO, WEG-Verwalter, Mietverwalter, Darlehensvermittler §34i. KI-Tutor, Videos, Quizze, Prüfungsmodus.",
   keywords: "Immobilienmakler Ausbildung, §34c GewO, WEG-Verwalter, Mietverwalter, §34i Darlehensvermittler, IHK Prüfung, Immobilien Weiterbildung, Online Lernportal",
-  ogImage: "https://d3p5h1kcpb0w9u.cloudfront.net/hero-makler-1.jpg",
+  ogImage: "/og-image.svg",
 };
 
 /**
@@ -29,7 +29,7 @@ const DEFAULT_SEO = {
 export function SEO({ title, description, keywords, ogImage, canonical }: SEOProps) {
   const [location] = useLocation();
   
-  const fullTitle = title ? `${title} | Immobilien-Bildungsportal` : DEFAULT_SEO.title;
+  const fullTitle = title ? `${title} | Immobilien Akademie Smart` : DEFAULT_SEO.title;
   const metaDescription = description || DEFAULT_SEO.description;
   const metaKeywords = keywords || DEFAULT_SEO.keywords;
   const metaImage = ogImage || DEFAULT_SEO.ogImage;
@@ -56,7 +56,7 @@ export function SEO({ title, description, keywords, ogImage, canonical }: SEOPro
     // Standard meta tags
     updateMetaTag("description", metaDescription);
     updateMetaTag("keywords", metaKeywords);
-    updateMetaTag("author", "Immobilien-Bildungsportal");
+    updateMetaTag("author", "Immobilien Akademie Smart");
     updateMetaTag("robots", "index, follow");
     updateMetaTag("language", "German");
     updateMetaTag("revisit-after", "7 days");
@@ -67,7 +67,7 @@ export function SEO({ title, description, keywords, ogImage, canonical }: SEOPro
     updateMetaTag("og:image", metaImage, true);
     updateMetaTag("og:url", canonicalUrl, true);
     updateMetaTag("og:type", "website", true);
-    updateMetaTag("og:site_name", "Immobilien-Bildungsportal", true);
+    updateMetaTag("og:site_name", "Immobilien Akademie Smart", true);
     updateMetaTag("og:locale", "de_DE", true);
 
     // Twitter Card tags
@@ -89,9 +89,9 @@ export function SEO({ title, description, keywords, ogImage, canonical }: SEOPro
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "EducationalOrganization",
-      "name": "Immobilien-Bildungsportal",
+      "name": "Immobilien Akademie Smart",
       "description": metaDescription,
-      "url": "https://immobilie-akademie-premium-production.up.railway.app",
+      "url": "https://immobilien-akademie-smart.de",
       "logo": metaImage,
       "address": {
         "@type": "PostalAddress",

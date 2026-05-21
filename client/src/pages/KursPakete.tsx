@@ -19,7 +19,7 @@ const PAKETE = [
   { id:"verwalter", name:"Verwalter-Paket", icon:Building2, iconColor:"#059669", modules:[1,3], price:699, desc:"Grundkurs + WEG-Verwalter Kombination", highlight:false, badge:null },
   { id:"makler-plus", name:"Makler-Plus", icon:Award, iconColor:"#7c3aed", modules:[1,2,5], price:1049, desc:"Doppellizenz: Makler §34c + §34i", highlight:false, badge:"Doppellizenz" },
   { id:"profi", name:"Immobilienprofi", icon:Star, iconColor:"#ef4444", modules:[1,2,3], price:1199, desc:"Makler + WEG-Verwalter — beliebteste Kombination", highlight:true, badge:"Beliebtestes" },
-  { id:"gutachter", name:"Gutachter-Paket", icon:TrendingUp, iconColor:"#d97706", modules:[1,4], price:449, desc:"Grundkurs + Immobilienbewertung", highlight:false, badge:null },
+  { id:"gutachter", name:"Gutachter-Paket", icon:TrendingUp, iconColor:"#d97706", modules:[1,2,4], price:449, desc:"Makler + Immobilienbewertung (M1+M2+M4)", highlight:false, badge:null },
   { id:"komplett", name:"Komplett-Ausbildung", icon:Crown, iconColor:"#d4a853", modules:[1,2,3,4,5], price:1955, desc:"Alle 5 Berufsbilder — maximale Karrierechancen", highlight:false, badge:"Bestes Preis-Leistungs-Verhältnis" },
 ];
 

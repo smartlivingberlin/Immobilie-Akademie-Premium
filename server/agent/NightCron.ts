@@ -450,7 +450,7 @@ export async function runMonitoringSnapshot(): Promise<void> {
               <h3>System</h3>
               <ul>
                 <li>Status: <strong style="color:green">✅ Online</strong></li>
-                <li>Server: immobilie-akademie-premium-production.up.railway.app</li>
+                <li>Server: immobilien-akademie-smart.de</li>
               </ul>
               <hr/>
               <p style="color:#94a3b8;font-size:12px">

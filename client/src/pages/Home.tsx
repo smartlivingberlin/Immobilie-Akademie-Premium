@@ -94,7 +94,7 @@ export default function Home() {
       setAudioPlaying(false);
       return;
     }
-    const text = "Willkommen bei der Immobilien Akademie Smart. Hier bereiten Sie sich gezielt auf Ihre IHK-Sachkundeprüfung vor. Mit unserem KI-Tutor, 855+ Lernaufgaben und 240 strukturierten Lerntagen sind Sie optimal vorbereitet. Starten Sie jetzt kostenlos mit Modul 1.";
+    const text = "Willkommen bei der Immobilien Akademie Smart. Hier bereiten Sie sich gezielt auf Ihre IHK-Sachkundeprüfung vor. Mit unserem KI-Tutor, 855+ Lernaufgaben und 240 strukturierten Lerntagen sind Sie optimal vorbereitet. Starten Sie jetzt mit Ihrem 24-Stunden-Testzugang.";
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = "de-DE";
     utterance.rate = 0.9;

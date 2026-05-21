@@ -13,7 +13,7 @@ export default function PartnerDashboard() {
       .then(r => r.json()).then(setStats).catch(() => {});
   }, []);
 
-  const BASE = "https://immobilie-akademie-premium-production.up.railway.app";
+  const BASE = "https://immobilien-akademie-smart.de";
 
   return (
     <div style={{ minHeight: "100vh", background: "#0a0f1e", color: "white", padding: "24px 20px" }}>

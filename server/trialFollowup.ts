@@ -2,7 +2,7 @@ import { getDb } from "./db";
 import { sql } from "drizzle-orm";
 
 const BASE_URL = process.env.PUBLIC_URL || 
-  "https://immobilie-akademie-premium-production.up.railway.app";
+  "https://immobilien-akademie-smart.de";
 const RESEND_KEY = process.env.RESEND_API_KEY || "";
 
 async function sendFollowupEmail(

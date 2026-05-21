@@ -2,7 +2,7 @@
   "name": "Immobilien Akademie Smart",
   "short_name": "ImmAkademie",
   "description": "IHK-Vorbereitung für Immobilienfachleute — §34c, §34i, WEG-Verwalter",
-  "start_url": "/dashboard",
+  "start_url": "/statistiken",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",

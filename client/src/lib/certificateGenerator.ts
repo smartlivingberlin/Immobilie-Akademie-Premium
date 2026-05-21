@@ -55,7 +55,7 @@ export async function generateCertificatePDF(options: CertificateOptions): Promi
   doc.setFontSize(14);
   doc.setTextColor(secondaryColor);
   doc.setFont("helvetica", "normal");
-  const subtitle = "Immobilien-Bildungsportal";
+  const subtitle = "Immobilien Akademie Smart";
   const subtitleWidth = doc.getTextWidth(subtitle);
   doc.text(subtitle, (pageWidth - subtitleWidth) / 2, 50);
 
