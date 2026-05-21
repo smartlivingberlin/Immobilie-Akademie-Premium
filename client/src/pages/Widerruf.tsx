@@ -45,6 +45,16 @@ export default function Widerruf() {
           </p>
         </section>
 
+        
+        <section>
+          <h2 className="text-base font-semibold text-slate-900 mb-2">Rücksendung digitaler Inhalte</h2>
+          <p>
+            Da es sich um digitale Inhalte handelt, die nicht auf einem körperlichen Datenträger geliefert werden,
+            entfällt eine physische Rücksendung. Nach erfolgtem Widerruf werden Ihre Zugangsdaten deaktiviert.
+            Die Rückzahlung erfolgt innerhalb von 14 Tagen nach Eingang Ihrer Widerrufserklärung.
+          </p>
+        </section>
+
         <section className="border-t border-slate-200 pt-6">
           <h2 className="text-base font-semibold text-slate-900 mb-2">
             Erlöschen des Widerrufsrechts bei digitalen Inhalten

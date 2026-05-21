@@ -1,7 +1,8 @@
 User-agent: *
 Allow: /
-Disallow: /dashboard
 Disallow: /admin
 Disallow: /api/
+Disallow: /statistiken
+Disallow: /owner-dashboard
 
-Sitemap: https://immobilie-akademie-premium-production.up.railway.app/sitemap.xml
+Sitemap: https://immobilien-akademie-smart.de/sitemap.xml

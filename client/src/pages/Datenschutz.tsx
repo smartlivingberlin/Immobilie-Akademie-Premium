@@ -64,6 +64,10 @@ export default function Datenschutz() {
           übermittelt werden. Art. 6 Abs. 1 lit. b DSGVO. groq.com/privacy</p>
 
 
+          
+          <h3>4.5b Plausible Analytics</h3>
+          <p>Plausible Insights OÜ, Tallinn, Estland. Cookiefreie, DSGVO-konforme Webanalyse ohne personenbezogene Daten, ohne Cookies, kein Cross-Site-Tracking.
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse). plausible.io/privacy</p>
           <h3>4.6 ElevenLabs (Text-to-Speech)</h3>
           <p>ElevenLabs, Inc., New York, USA. Für die Vorlesefunktion werden Lerntexte übermittelt. Keine personenbezogenen Daten. Art. 6 Abs. 1 lit. b DSGVO. elevenlabs.io/privacy</p>
           <p><strong>4.x Sentry (Fehler-Monitoring)</strong><br />

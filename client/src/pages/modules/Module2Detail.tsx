@@ -666,7 +666,7 @@ export default function Module2Detail() {
                         </p>
                         <p style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.6 }}>
                           Die Live-Webinar-Aufzeichnungen werden nach Start der ersten
-                          Staffel (geplant: Juni 2026) hier eingestellt.
+                          Staffel (demnächst verfügbar) hier eingestellt.
                           Bis dahin steht der KI-Tutor 24/7 zur Verfügung.
                         </p>
                       </div>
