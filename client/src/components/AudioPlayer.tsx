@@ -36,10 +36,17 @@ export default function AudioPlayer({ text, label = "Vorlesen" }: AudioPlayerPro
     utterance.rate = speed;
     utterance.pitch = 1;
 
-    // Deutsche Stimme bevorzugen
-    const voices = window.speechSynthesis.getVoices();
-    const germanVoice = voices.find(v => v.lang.startsWith("de")) || null;
-    if (germanVoice) utterance.voice = germanVoice;
+    // Deutsche Stimme bevorzugen — mit Fallback für verzögertes Laden
+    const setVoice = () => {
+      const voices = window.speechSynthesis.getVoices();
+      const germanVoice = voices.find(v => v.lang === "de-DE") ||
+                          voices.find(v => v.lang.startsWith("de")) || null;
+      if (germanVoice) utterance.voice = germanVoice;
+    };
+    setVoice();
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+      window.speechSynthesis.onvoiceschanged = setVoice;
+    }
 
     utterance.onstart = () => { setIsPlaying(true); setIsPaused(false); };
     utterance.onend = () => { setIsPlaying(false); setIsPaused(false); setProgress(0); };

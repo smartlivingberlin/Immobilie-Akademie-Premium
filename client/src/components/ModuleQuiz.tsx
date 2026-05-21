@@ -20,10 +20,10 @@ interface ModuleQuizProps {
   moduleTitle?: string;
   questions: QuizQuestion[];
   onComplete: (score: number) => void;
-  passingScore?: number; // Percentage required to pass (default: 70)
+  passingScore?: number; // Percentage required to pass (default: 60)
 }
 
-export function ModuleQuiz({ moduleTitle = "Modul Quiz", questions, onComplete, passingScore = 70 }: ModuleQuizProps) {
+export function ModuleQuiz({ moduleTitle = "Modul Quiz", questions, onComplete, passingScore = 60 }: ModuleQuizProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
