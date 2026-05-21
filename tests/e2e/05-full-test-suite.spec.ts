@@ -15,7 +15,7 @@
 
 import { test, expect, Page } from "@playwright/test";
 
-const BASE = "https://immobilie-akademie-premium-production.up.railway.app";
+const BASE = "https://immobilien-akademie-smart.de";
 const ADMIN_EMAIL = "admin@immobilie.de";
 const ADMIN_PASS = "TestAdmin2026!";
 

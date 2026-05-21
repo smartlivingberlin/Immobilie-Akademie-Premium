@@ -7,7 +7,7 @@ import requests
 import json
 import sys
 
-BASE = "https://immobilie-akademie-premium-production.up.railway.app"
+BASE = "https://immobilien-akademie-smart.de"
 session = requests.Session()
 
 results = {"passed": 0, "failed": 0, "errors": []}

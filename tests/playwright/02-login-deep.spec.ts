@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-const BASE = 'https://immobilie-akademie-premium-production.up.railway.app';
+const BASE = 'https://immobilien-akademie-smart.de';
 
 test('Login Formular — alle Elemente', async ({ page }) => {
   await page.goto(`${BASE}/login`, { waitUntil: 'networkidle', timeout: 15000 });

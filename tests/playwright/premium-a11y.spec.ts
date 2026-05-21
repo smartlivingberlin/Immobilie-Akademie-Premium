@@ -1,7 +1,7 @@
 import { test, expect, chromium } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
-const BASE = 'https://immobilie-akademie-premium-production.up.railway.app';
+const BASE = 'https://immobilien-akademie-smart.de';
 const STATE_FILE = '/tmp/premium-auth.json';
 
 const publicPages = [

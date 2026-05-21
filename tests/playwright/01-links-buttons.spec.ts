@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const BASE = 'https://immobilie-akademie-premium-production.up.railway.app';
+const BASE = 'https://immobilien-akademie-smart.de';
 
 const PUBLIC_PAGES = [
   { url: '/', name: 'Startseite' },

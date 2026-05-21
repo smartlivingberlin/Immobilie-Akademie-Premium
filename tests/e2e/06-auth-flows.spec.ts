@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-const BASE_URL = "https://immobilie-akademie-premium-production.up.railway.app";
+const BASE_URL = "https://immobilien-akademie-smart.de";
 const ADMIN_EMAIL = process.env.TEST_ADMIN_EMAIL || "alisadgadyri38@gmail.com";
 const ADMIN_PASSWORD = process.env.TEST_ADMIN_PASSWORD || "Admin2026!";
 const OWNER_KEY = process.env.OWNER_MAGIC_CODE || "";
@@ -38,7 +38,7 @@ test.describe("🔐 Authentication & Authorization Flows", () => {
   test("5. Inspect cookie → banner sichtbar", async ({ page }) => {
     await page.context().addCookies([{
       name: "inspect_mode", value: "1",
-      domain: "immobilie-akademie-premium-production.up.railway.app", path: "/"
+      domain: "immobilien-akademie-smart.de", path: "/"
     }]);
     await page.goto(`${BASE_URL}/`);
     await expect(page.locator('div:has-text("Vorschau-Modus")')).toBeVisible();

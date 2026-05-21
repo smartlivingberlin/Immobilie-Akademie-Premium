@@ -1,13 +1,13 @@
 import { test, expect } from "@playwright/test";
 
-const BASE = "https://immobilie-akademie-premium-production.up.railway.app";
+const BASE = "https://immobilien-akademie-smart.de";
 
 test.describe("🔐 Authentifizierung", () => {
   test("Login-Seite lädt korrekt", async ({ page }) => {
     await page.goto(`${BASE}/login`);
     await page.waitForLoadState("networkidle");
     
-    const emailInput = page.locator('input[type="email"], input[name="email"]');
+    const emailInput = page.locator('input[placeholder="ihre@email.de"], input[name="email"]');
     const passwordInput = page.locator('input[type="password"]');
     
     await expect(emailInput).toBeVisible();
@@ -19,8 +19,8 @@ test.describe("🔐 Authentifizierung", () => {
     await page.goto(`${BASE}/login`);
     await page.waitForLoadState("networkidle");
     
-    await page.fill('input[type="email"]', "admin@immobilie.de");
-    await page.fill('input[type="password"]', "TestAdmin2026!");
+    await page.fill('input[placeholder="ihre@email.de"]', process.env.TEST_ADMIN_EMAIL || "alisadgadyri38@gmail.com");
+    await page.fill('input[type="password"]', process.env.TEST_ADMIN_PASSWORD || "Admin2026!");
     await page.click('button[type="submit"], button:has-text("Anmelden")');
     
     await page.waitForURL(/statistiken|dashboard/, { timeout: 10000 });
@@ -30,7 +30,7 @@ test.describe("🔐 Authentifizierung", () => {
 
   test("Login mit falschen Daten zeigt Fehlermeldung", async ({ page }) => {
     await page.goto(`${BASE}/login`);
-    await page.fill('input[type="email"]', "falsch@test.de");
+    await page.fill('input[placeholder="ihre@email.de"]', "falsch@test.de");
     await page.fill('input[type="password"]', "FalschesPasswort123!");
     await page.click('button[type="submit"], button:has-text("Anmelden")');
     
@@ -52,7 +52,7 @@ test.describe("🔐 Authentifizierung", () => {
     }
     
     await page.fill('input[name="name"], input[placeholder*="Name"]', "Playwright Test").catch(() => {});
-    await page.fill('input[type="email"]', "playwright-test@test.de");
+    await page.fill('input[placeholder="ihre@email.de"]', "playwright-test@test.de");
     await page.fill('input[type="password"]', "Test1234!");
     await page.click('button[type="submit"]');
     
@@ -66,7 +66,7 @@ test.describe("🔐 Authentifizierung", () => {
     const response = await fetch(`${BASE}/api/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: "admin@immobilie.de", password: "TestAdmin2026!" }),
+      body: JSON.stringify({ email: process.env.TEST_ADMIN_EMAIL || "alisadgadyri38@gmail.com", password: process.env.TEST_ADMIN_PASSWORD || "Admin2026!" }),
     });
   });
 });

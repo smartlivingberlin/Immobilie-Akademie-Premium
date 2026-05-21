@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-const BASE = 'https://immobilie-akademie-premium-production.up.railway.app';
+const BASE = 'https://immobilien-akademie-smart.de';
 const OWNER = `${BASE}/api/owner/access?key=${process.env.OWNER_MAGIC_CODE || ""}`;
 
 test.describe('ALLE MODULE — Tage 1-5', () => {

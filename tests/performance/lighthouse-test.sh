@@ -1,5 +1,5 @@
 #!/bin/bash
-BASE="https://immobilie-akademie-premium-production.up.railway.app"
+BASE="https://immobilien-akademie-smart.de"
 echo "🔦 LIGHTHOUSE PERFORMANCE AUDIT"
 echo "================================"
 

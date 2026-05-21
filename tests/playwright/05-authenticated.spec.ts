@@ -1,6 +1,6 @@
 import { test, expect, Page, BrowserContext } from '@playwright/test';
 
-const BASE = 'https://immobilie-akademie-premium-production.up.railway.app';
+const BASE = 'https://immobilien-akademie-smart.de';
 
 // Gemeinsame Login-Funktion mit Cookie-Persistenz
 async function loginAndGetContext(page: Page): Promise<boolean> {

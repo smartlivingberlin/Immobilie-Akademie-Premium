@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-const BASE = 'https://immobilie-akademie-premium-production.up.railway.app';
+const BASE = 'https://immobilien-akademie-smart.de';
 
 test('Startseite lädt in allen Browsern', async ({ page, browserName }) => {
   await page.goto(`${BASE}/`, { waitUntil: 'networkidle' });

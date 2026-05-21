@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-const BASE = "https://immobilie-akademie-premium-production.up.railway.app";
+const BASE = "https://immobilien-akademie-smart.de";
 
 test.describe("🌐 Öffentliche Seiten — Alle müssen erreichbar sein", () => {
   const pages = [
@@ -46,7 +46,7 @@ test.describe("🔍 SEO und Meta-Tags", () => {
     expect(ogTitle).toBeTruthy();
     
     const canonical = await page.getAttribute('link[rel="canonical"]', "href");
-    expect(canonical).toContain("railway.app");
+    expect(canonical).toContain("immobilien-akademie-smart.de");
     
     console.log("✅ Alle SEO Meta-Tags vorhanden");
   });

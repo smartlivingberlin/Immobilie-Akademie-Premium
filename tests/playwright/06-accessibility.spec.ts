@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-const BASE = 'https://immobilie-akademie-premium-production.up.railway.app';
+const BASE = 'https://immobilien-akademie-smart.de';
 
 test.describe('ACCESSIBILITY & MOBILE', () => {
   test('Mobile Ansicht — Startseite', async ({ page }) => {
