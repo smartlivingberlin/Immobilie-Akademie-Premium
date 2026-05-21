@@ -173,7 +173,7 @@ export default function Home() {
 
           <div className="hidden lg:block">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl" style={{aspectRatio:"4/3"}}>
-              <img src={IMAGES.hero} alt="Professioneller Immobilienmakler im Berliner Büro"
+              <img loading="lazy" src={IMAGES.hero} alt="Professioneller Immobilienmakler im Berliner Büro"
                    className="w-full h-full object-cover" loading="eager" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 text-white text-sm font-semibold
@@ -253,7 +253,7 @@ export default function Home() {
             {MODULES.map(m=>(
               <div key={m.id} className="rounded-2xl border border-border bg-card overflow-hidden shadow-soft hover:shadow-elegant transition-all hover:-translate-y-1 flex flex-col group">
                 <div className="relative h-44 w-full overflow-hidden">
-                  <img src={IMAGES[`modul${m.id}` as keyof typeof IMAGES]} alt={m.title} className="w-full h-full object-cover" />
+                  <img loading="lazy" src={IMAGES[`modul${m.id}` as keyof typeof IMAGES]} alt={m.title} className="w-full h-full object-cover" />
                   <span className="absolute top-3 right-3 text-xs font-semibold px-2.5 py-1 rounded-full shadow-lg"
                     style={{background:m.farbe,color:m.textFarbe}}>{m.badge}</span>
                 </div>
