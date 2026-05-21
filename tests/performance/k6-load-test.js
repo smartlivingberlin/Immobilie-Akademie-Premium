@@ -1,6 +1,7 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 
+// k6 ARM64 WSL TLS-Fix
 const BASE = 'https://immobilien-akademie-smart.de';
 
 export const options = {
