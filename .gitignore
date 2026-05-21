@@ -166,3 +166,5 @@ audit_report.html
 audit_agent.py
 continue_audit.mjs
 .aider*
+test-results/
+tests/reports/
