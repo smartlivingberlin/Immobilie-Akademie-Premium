@@ -18,8 +18,6 @@ export default function UserGuide() {
     "## Support: info@immobilien-akademie-smart.de oder /beschwerde",
   ].join("\n\n");
       });
-  }, []);
-
   const handlePrint = () => {
     window.print();
   };
