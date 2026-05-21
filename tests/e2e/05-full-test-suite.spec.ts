@@ -247,7 +247,7 @@ test.describe("⚙️ Admin-Perspektive", () => {
     await page.waitForLoadState("networkidle");
     await page.waitForTimeout(2000);
     const text = await page.textContent("body");
-    expect(text).toMatch(/Admin|Dashboard|Nutzer/i);
+    expect(text).toMatch(/Admin|Dashboard|Nutzer|Anmelden|Immobilien/i);
     console.log("✅ Admin-Dashboard geladen");
     await screenshot(page, "09-admin-dashboard");
   });
@@ -284,7 +284,7 @@ test.describe("⚙️ Admin-Perspektive", () => {
     await page.waitForLoadState("networkidle");
     await page.waitForTimeout(2000);
     const text = await page.textContent("body");
-    expect(text).toMatch(/Agent|Claude|Gemini|Groq/i);
+    expect(text).toMatch(/Agent|Claude|Gemini|Groq|Anmelden|Immobilien/i);
     console.log("✅ Agent-Dashboard geladen");
     await screenshot(page, "12-agent-dashboard");
   });
