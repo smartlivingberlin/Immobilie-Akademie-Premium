@@ -433,6 +433,7 @@ const navigation: NavigationItem[] = [
                     </div>
                   </Link>
                   <Link href="/rechenpraxis">
+                  <GlobalGlossary />
                     <div className={`inline-flex items-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 w-full justify-start mb-2 h-10 px-4 py-2 cursor-pointer text-slate-300 hover:text-white hover:bg-slate-800 ${location === '/rechenpraxis' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
                       <Calculator className="h-5 w-5 mr-3" />
                       Rechenpraxis
@@ -504,7 +505,6 @@ const navigation: NavigationItem[] = [
                       Fallstudien
                     </div>
                   </Link>
-                  <GlobalGlossary />
                 </div>
               )}
             </div>
