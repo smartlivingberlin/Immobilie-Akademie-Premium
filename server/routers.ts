@@ -625,7 +625,7 @@ Antworte im folgenden JSON-Format:
           .limit(1);
 
         const userRow: Record<string, unknown> = urows[0] as Record<string, unknown>;
-        const currentRaw = String(userRow?.enabledModules ?? "1");
+        const currentRaw = String(userRow?.enabledModules ?? "");
 
         const current = currentRaw
           .split(",")

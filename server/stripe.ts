@@ -1,6 +1,11 @@
 import Stripe from "stripe";
 import { Router, type Request, type Response } from "express";
 import { sql } from "drizzle-orm";
+import { Resend } from "resend";
+
+function createResend() {
+  return new Resend(process.env.RESEND_API_KEY || "");
+}
 import { logger } from "./_core/logger";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
@@ -185,6 +190,40 @@ export async function stripeWebhookHandler(req: any, res: any) {
         const merged = [...new Set([...current, ...newMods])].join(",");
         await db.execute(sql`UPDATE users SET enabledModules = ${merged} WHERE id = ${user.id}`);
         logger.info("[Stripe Webhook] Freigeschaltet", { email, modules: merged });
+        // E-Mail nach Kauf senden
+        try {
+          const resend = createResend();
+          const moduleNames: Record<string, string> = {
+            "1": "Modul 1: Einführung & Grundlagen",
+            "2": "Modul 2: Maklerrecht & §34c GewO",
+            "3": "Modul 3: WEG-Verwaltung",
+            "4": "Modul 4: Wertermittlung & Gutachten",
+            "5": "Modul 5: Finanzierung & §34i",
+          };
+          const modList = newMods.map((m: string) => moduleNames[m] || `Modul ${m}`).join(", ");
+          await resend.emails.send({
+            from: "Immobilien Akademie Smart <info@immobilien-akademie-smart.de>",
+            to: email,
+            subject: "✅ Ihr Zugang ist freigeschaltet — Immobilien Akademie Smart",
+            html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto">
+              <h2 style="color:#1e40af">Herzlichen Glückwunsch, ${user.name || ""}!</h2>
+              <p>Ihr Kauf war erfolgreich. Folgende Module sind jetzt freigeschaltet:</p>
+              <p style="background:#eff6ff;padding:12px;border-radius:8px;font-weight:bold">${modList}</p>
+              <p>Sie können jetzt direkt loslegen:</p>
+              <a href="https://immobilien-akademie-smart.de/statistiken"
+                 style="background:#1e40af;color:white;padding:12px 24px;border-radius:8px;text-decoration:none;display:inline-block">
+                Zum Portal →
+              </a>
+              <p style="color:#6b7280;font-size:13px;margin-top:24px">
+                Bei Fragen: info@immobilien-akademie-smart.de<br>
+                Immobilien Akademie Smart · Alisad Gadyri · Durlacher Str. 36 · 10715 Berlin
+              </p>
+            </div>`,
+          });
+          logger.info("[Stripe Webhook] Kaufbestätigung E-Mail gesendet", { email });
+        } catch (emailErr) {
+          logger.error("[Stripe Webhook] E-Mail-Fehler", emailErr);
+        }
       } else {
         logger.warn("[Stripe Webhook] Nutzer nicht gefunden", { email });
       }

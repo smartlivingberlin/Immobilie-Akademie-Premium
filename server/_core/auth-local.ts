@@ -149,7 +149,7 @@ export function registerLocalAuthRoutes(app: Express) {
       email: email.toLowerCase().trim(),
       loginMethod: "email",
       lastSignedIn: new Date(),
-      enabledModules: "1",
+      enabledModules: "", // Kein Gratis-Zugang — Kauf oder Trial erforderlich
       // Passwort-Hash im name-Feld wird separat gespeichert
     });
 
