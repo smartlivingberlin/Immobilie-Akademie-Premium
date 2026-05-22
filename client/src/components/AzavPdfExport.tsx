@@ -24,7 +24,7 @@ export function AzavPdfExport({ ownerKey }: AzavPdfProps) {
       const data = await res.json();
 
       if (data.error) {
-        alert("Fehler: " + data.error);
+        console.error("AZAV PDF Fehler:", data.error);
         return;
       }
 
@@ -182,7 +182,7 @@ export function AzavPdfExport({ ownerKey }: AzavPdfProps) {
 
     } catch (e) {
       const message = e instanceof Error ? e.message : String(e);
-      alert("PDF-Fehler: " + message);
+      console.error("PDF-Fehler:", message);
     } finally {
       setLoading(false);
     }

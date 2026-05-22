@@ -34,7 +34,7 @@ export default function VorfaelligkeitsentschaedigungCalculator() {
       wiederanlagezinsNum < 0 ||
       restlaufzeitMonateNum <= 0
     ) {
-      alert("Bitte geben Sie gültige Werte ein.");
+      console.warn("Ungültige Eingabe: Vorfälligkeit");
       return;
     }
 

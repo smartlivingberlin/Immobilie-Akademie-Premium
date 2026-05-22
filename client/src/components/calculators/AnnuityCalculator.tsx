@@ -26,7 +26,7 @@ export default function AnnuityCalculator() {
     const years = parseFloat(fixedInterestPeriod);
 
     if (isNaN(principal) || isNaN(rate) || isNaN(repayment) || isNaN(years)) {
-      alert("Bitte geben Sie gültige Zahlen ein.");
+      console.warn("Ungültige Eingabe: Annuity");
       return;
     }
 

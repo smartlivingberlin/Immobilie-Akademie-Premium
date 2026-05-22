@@ -82,7 +82,7 @@ const navigation: NavigationItem[] = [
             <Tooltip delayDuration={0}>
               <TooltipTrigger asChild>
                 <div
-                  onClick={() => alert(lockMsg)}
+                  onClick={() => console.warn("Modul gesperrt:", lockMsg)}
                   title={lockMsg}
                   className="inline-flex items-center justify-center rounded-md text-sm font-medium w-full justify-center h-10 px-0 mb-1 cursor-not-allowed opacity-60 text-slate-300 hover:text-white hover:bg-slate-800"
                 >
@@ -100,7 +100,7 @@ const navigation: NavigationItem[] = [
 
       return (
         <div
-          onClick={() => alert(lockMsg)}
+          onClick={() => console.warn("Modul gesperrt:", lockMsg)}
           title={lockMsg}
           className="inline-flex items-center rounded-md text-sm font-medium w-full justify-start mb-1 h-10 px-4 py-2 cursor-not-allowed opacity-60 text-slate-300 hover:text-white hover:bg-slate-800"
         >

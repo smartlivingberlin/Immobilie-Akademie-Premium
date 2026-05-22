@@ -22,7 +22,7 @@ export default function LoanToValueCalculator() {
     const loan = parseFloat(loanAmount);
 
     if (isNaN(value) || isNaN(loan) || value <= 0) {
-      alert("Bitte geben Sie gültige Zahlen ein.");
+      console.warn("Ungültige Eingabe: LTV");
       return;
     }
 

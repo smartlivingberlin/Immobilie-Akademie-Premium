@@ -110,11 +110,11 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
             setInput(data.transcript);
             setTimeout(() => send(data.transcript), 100);
           } else {
-            alert("Transkription fehlgeschlagen: " + (data.error || "Fehler"));
+            console.error("Transkription fehlgeschlagen:", data.error);
             setLoading(false);
           }
         } catch {
-          alert("Verbindungsfehler bei Transkription");
+          console.error("Verbindungsfehler bei Transkription");
           setLoading(false);
         }
       };
@@ -123,7 +123,7 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
       setTimeout(() => { if (recorder.state === "recording") recorder.stop(); }, 10000);
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
-      alert("Mikrofon-Zugriff verweigert: " + message);
+      console.error("Mikrofon-Zugriff verweigert:", message);
     }
   };
   const speak = async (text: string) => {

@@ -27,7 +27,7 @@ export default function AmortizationSchedule() {
     const repayment = parseFloat(initialRepayment) / 100;
 
     if (isNaN(principal) || isNaN(rate) || isNaN(repayment)) {
-      alert("Bitte geben Sie gültige Zahlen ein.");
+      console.warn("Ungültige Eingabe: Amortization");
       return;
     }
 
