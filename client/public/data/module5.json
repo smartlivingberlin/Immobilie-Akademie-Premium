@@ -16,7 +16,23 @@
     "task": "**Aufgabe 1: Erlaubnisantrag vorbereiten**\n\nErstellen Sie eine Checkliste mit allen erforderlichen Unterlagen für einen Erlaubnisantrag nach §34i GewO. Berücksichtigen Sie:\n- Persönliche Nachweise\n- Versicherungsnachweise\n- Qualifikationsnachweise\n- Gewerbeanmeldung\n\n---\n\n**Aufgabe 2: Vergleichstabelle erstellen**\n\nErstellen Sie eine Vergleichstabelle zwischen §34c (Makler) und §34i (Darlehensvermittler) mit folgenden Kriterien:\n- Tätigkeit\n- Prüfung\n- Haftpflichtversicherung\n- Provision\n- Vertragspartner\n- Weiterbildungspflicht\n\n---\n\n**Aufgabe 3: Fallbeispiel analysieren**\n\nEin Kunde fragt Sie, ob Sie ihm bei der Finanzierung einer Eigentumswohnung helfen können. Die Wohnung kostet 300.000 €, der Kunde hat 60.000 € Eigenkapital. Erklären Sie dem Kunden:\n- Ihre Rolle als Immobiliardarlehensvermittler\n- Den Unterschied zu einem Bankberater\n- Ihre Vergütung (Provision)\n- Ihre Pflichten (Beratung, Dokumentation)",
     "solution": "**Lösung Praxisfall 1:**\n1. Ja, Herr Müller benötigt eine Erlaubnis nach §34i GewO, da er gewerbsmäßig Immobiliendarlehen vermittelt und berät.\n2. Voraussetzungen: Persönliche Zuverlässigkeit, geordnete Vermögensverhältnisse, Berufshaftpflichtversicherung, Sachkunde.\n3. Berufshaftpflichtversicherung für Vermögensschäden.\n4. Mindestdeckung: 1.000.000 € Personenschäden, 250.000 € Sachschäden.\n5. IHK-Sachkundeprüfung \"Geprüfte/r Fachmann/-frau für Immobiliardarlehensvermittlung IHK\".\n\n**Lösung Praxisfall 2:**\n1. Nein, die §34c-Erlaubnis berechtigt nicht zur Darlehensvermittlung.\n2. Zusätzliche Erlaubnis nach §34i GewO erforderlich.\n3. Nein, die Sachkundeprüfung §34i muss separat abgelegt werden.\n4. Separate Haftpflichtversicherung für §34i oder kombinierte Police.\n5. Typische Provision: 0,5-2% vom Darlehensbetrag (z.B. 1.500-6.000 € bei 300.000 € Darlehen).\n\n**Lösung Praxisfall 3:**\n1. Bußgeld bis 50.000 €, strafrechtliche Verfolgung möglich.\n2. Ja, der Kunde kann Schadensersatz nach §280 BGB fordern.\n3. Ja, der Darlehensvertrag bleibt gültig (zwischen Bank und Kunde).\n4. Zuständige IHK und Ordnungsamt.\n5. Bußgeld bis 50.000 € nach §144 GewO.\n\n**Lösung Aufgabe 1 - Checkliste Erlaubnisantrag:**\n- Personalausweis/Reisepass (Kopie)\n- Führungszeugnis (nicht älter als 3 Monate)\n- Schufa-Auskunft (nicht älter als 3 Monate)\n- Nachweis Berufshaftpflichtversicherung\n- IHK-Prüfungszeugnis Sachkunde §34i\n- Gewerbeanmeldung (Formular GewA1)\n- Lebenslauf\n- Antragsformular §34i GewO (von IHK)\n\n**Lösung Aufgabe 2 - Vergleichstabelle:**\n| Kriterium | §34c Makler | §34i Darlehensvermittler |\n|-----------|-------------|--------------------------|\n| Tätigkeit | Vermittlung von Immobilien | Vermittlung von Immobiliendarlehen |\n| Prüfung | IHK-Sachkundeprüfung | IHK-Sachkundeprüfung |\n| Haftpflicht | 1 Mio. € / 250.000 € | 1 Mio. € / 250.000 € |\n| Provision | 3-7% vom Kaufpreis | 0,5-2% vom Darlehensbetrag |\n| Vertragspartner | Verkäufer & Käufer | Darlehensgeber & Darlehensnehmer |\n| Weiterbildung | 20 Stunden/Jahr (empfohlen) | 15 Stunden/Jahr (Pflicht) |\n\n**Lösung Aufgabe 3 - Fallbeispiel:**\n\"Als Immobiliardarlehensvermittler berate ich Sie unabhängig und vergleiche Angebote verschiedener Banken. Im Unterschied zu einem Bankberater, der nur die Produkte seiner Bank anbietet, habe ich Zugang zu über 400 Banken und Sparkassen. Meine Vergütung erfolgt durch eine Provision von ca. 1% des Darlehensbetrags (bei 240.000 € Darlehen = 2.400 €), die entweder Sie als Kunde oder die Bank zahlt. Ich bin verpflichtet, Sie umfassend zu beraten, Ihre finanzielle Situation zu prüfen und die Beratung zu dokumentieren. Sie erhalten von mir ein Beratungsprotokoll und können sich jederzeit auf meine Empfehlung berufen.\"",
     "type": "Theorie",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Einführung §34i GewO: Rechtliche Grundlagen der Immobiliardarlehensvermittlung' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Einführung §34i GewO: Rechtliche Grundlagen der Immobiliardarlehensvermittlung': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Einführung §34i GewO: Rechtliche Grundlagen der Immobiliardarlehensvermittlung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_2": {
     "title": "Rechtsfähigkeit, Geschäftsfähigkeit und Vertragsrecht",
@@ -37,7 +53,23 @@
     "task": "**Aufgabe 1: Geschäftsfähigkeitsprüfung**\n\nErstellen Sie eine Checkliste zur Prüfung der Geschäftsfähigkeit eines Kunden vor Abschluss eines Darlehensvertrags. Berücksichtigen Sie:\n- Alter\n- Gesetzliche Vertreter (bei Minderjährigen)\n- Betreuung (bei Erwachsenen)\n- Geschäftsfähigkeitsvermutung\n\n---\n\n**Aufgabe 2: Vertragsschluss analysieren**\n\nEin Kunde erhält am 1. März 2026 ein Darlehensangebot von einer Bank (3,5% Zinsen, 300.000 €, 30 Jahre Laufzeit). Das Angebot ist bis 15. März 2026 gültig. Der Kunde unterschreibt am 10. März 2026 und schickt den Vertrag per Post zurück. Die Bank erhält den Vertrag am 12. März 2026.\n\n**Fragen:**\n- Wann kommt der Vertrag zustande?\n- Ist das Angebot noch gültig?\n- Was passiert, wenn die Bank den Vertrag am 16. März 2026 erhält?\n\n---\n\n**Aufgabe 3: Widerrufsbelehrung formulieren**\n\nFormulieren Sie eine Widerrufsbelehrung für einen Immobiliar-Verbraucherdarlehensvertrag. Berücksichtigen Sie:\n- Widerrufsfrist (14 Tage)\n- Form des Widerrufs (schriftlich)\n- Rechtsfolgen des Widerrufs\n- Muster-Widerrufsformular",
     "solution": "**Lösung Praxisfall 1:**\n1. Nein, der Schüler ist beschränkt geschäftsfähig (§ 106 BGB).\n2. Nein, er benötigt die Zustimmung seiner Eltern (§ 107 BGB).\n3. Die Eltern müssen als gesetzliche Vertreter zustimmen oder den Vertrag mitunterschreiben.\n4. Nein, der Vertrag ist schwebend unwirksam (§ 108 BGB).\n5. Die Zustimmung der Eltern macht den Vertrag rückwirkend wirksam (§ 184 BGB).\n\n**Lösung Praxisfall 2:**\n1. Nein, der Vertrag ist unwirksam wegen Formmangels (§ 125 BGB).\n2. Schriftform mit eigenhändiger Unterschrift (§ 492 Abs. 1 BGB).\n3. Nein, elektronische Form ist nicht ausreichend.\n4. Der Vertrag ist nichtig (§ 125 BGB).\n5. Ja, der Kunde kann die erste Rate nach §§ 812 ff. BGB (ungerechtfertigte Bereicherung) zurückfordern.\n\n**Lösung Praxisfall 3:**\n1. Ja, der Kunde hat ein Widerrufsrecht nach § 495 BGB.\n2. 14 Tage ab Vertragsschluss (1. März - 15. März 2026).\n3. Nein, keine Begründung erforderlich.\n4. Schriftform (Brief, E-Mail, Fax).\n5. Bereits ausgezahlte Beträge müssen zurückgezahlt werden, der Kunde zahlt Nutzungsentschädigung (Zinsen) für die Zeit der Nutzung.\n\n**Lösung Aufgabe 1 - Checkliste Geschäftsfähigkeit:**\n- Personalausweis/Geburtsurkunde prüfen (Alter)\n- Bei Minderjährigen: Zustimmung der Eltern einholen\n- Bei Betreuung: Betreuungsausweis prüfen, Zustimmung des Betreuers einholen\n- Bei Zweifeln: Geschäftsfähigkeitsvermutung (§ 104 BGB) - im Zweifel geschäftsfähig\n- Dokumentation: Kopie Personalausweis, Zustimmungserklärung\n\n**Lösung Aufgabe 2:**\n- Vertrag kommt am 12. März 2026 zustande (Zugang der Annahme bei der Bank, § 130 BGB).\n- Ja, das Angebot ist noch gültig (Annahmefrist bis 15. März 2026).\n- Wenn die Bank den Vertrag am 16. März 2026 erhält, ist das Angebot erloschen (§ 146 BGB), der Vertrag kommt nicht zustande.\n\n**Lösung Aufgabe 3 - Widerrufsbelehrung:**\n\n**Widerrufsbelehrung**\n\nSie können Ihre Vertragserklärung innerhalb von 14 Tagen ohne Angabe von Gründen in Textform (z.B. Brief, Fax, E-Mail) widerrufen. Die Frist beginnt am Tag nach Vertragsschluss. Zur Wahrung der Widerrufsfrist genügt die rechtzeitige Absendung des Widerrufs.\n\n**Widerrufsadresse:**\n[Name der Bank]\n[Adresse]\n[E-Mail]\n\n**Widerrufsfolgen:**\nIm Falle eines wirksamen Widerrufs sind die beiderseits empfangenen Leistungen zurückzugewähren. Sie sind zur Zahlung von Nutzungsentschädigung (Zinsen) verpflichtet, wenn Sie das Darlehen bereits in Anspruch genommen haben.\n\n**Muster-Widerrufsformular:**\nHiermit widerrufe ich den am [Datum] geschlossenen Darlehensvertrag.\n[Name, Adresse, Datum, Unterschrift]",
     "type": "Theorie",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Rechtsfähigkeit, Geschäftsfähigkeit und Vertragsrecht' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Rechtsfähigkeit, Geschäftsfähigkeit und Vertragsrecht': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Rechtsfähigkeit, Geschäftsfähigkeit und Vertragsrecht' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_3": {
     "title": "Grundstücke, Erbbaurecht, Wohnungseigentum - Rechtliche Grundlagen",
@@ -58,7 +90,23 @@
     "task": "**Aufgabe 1: Erbbaurecht erklären**\n\nErstellen Sie eine Kundeninformation zum Thema Erbbaurecht. Erklären Sie:\n- Was ist ein Erbbaurecht?\n- Wie funktioniert es?\n- Vorteile und Nachteile\n- Finanzierungsmöglichkeiten\n- Beispielrechnung (Erbbauzins, Gesamtkosten)\n\n---\n\n**Aufgabe 2: Wohnungseigentum analysieren**\n\nEin Kunde zeigt Ihnen folgende Unterlagen einer Eigentumswohnung:\n- Kaufpreis: 280.000 €\n- Wohnfläche: 75 m²\n- Miteigentumsanteil: 38/1000\n- Hausgeld: 220 €/Monat\n- Instandhaltungsrücklage: 35.000 €\n- Beschluss Eigentümerversammlung: Fassadensanierung 80.000 €\n\nAnalysieren Sie:\n- Ist das Hausgeld angemessen?\n- Ist die Instandhaltungsrücklage ausreichend?\n- Welche Kosten kommen auf den Käufer zu?\n- Wie hoch ist der Anteil an der Fassadensanierung?\n\n---\n\n**Aufgabe 3: Vergleichstabelle erstellen**\n\nErstellen Sie eine Vergleichstabelle für Grundstück, Erbbaurecht und Wohnungseigentum mit folgenden Kriterien:\n- Eigentum\n- Laufzeit\n- Kosten (Anschaffung, laufend)\n- Grundbuch\n- Finanzierung\n- Risiken",
     "solution": "**Lösung Praxisfall 1:**\n1. Erbbaurecht ist das Recht, auf einem fremden Grundstück ein Gebäude zu errichten und zu nutzen (§ 1 ErbbauRG).\n2. Der Grundstückseigentümer (Erbbauverpflichteter) bleibt Eigentümer.\n3. Nach 75 Jahren fällt das Gebäude an den Grundstückseigentümer (Heimfall), der Kunde erhält eine Entschädigung.\n4. Jährliche Gesamtkosten: 6.000 € Erbbauzins + ca. 9.000 € Finanzierung (3,5% von 250.000 €) = 15.000 €/Jahr.\n5. Ja, Banken bevorzugen Volleigentum, Risikozuschlag 0,2-0,5% auf Zinssatz.\n\n**Lösung Praxisfall 2:**\n1. Wohnungseigentum ist Sondereigentum an einer Wohnung + Miteigentumsanteil am Gemeinschaftseigentum (§ 1 WEG).\n2. Sondereigentum: Räume, Wände, Decken, Böden innerhalb der Wohnung.\n3. Gemeinschaftseigentum: Grundstück, Fassade, Dach, Treppenhaus, Heizung.\n4. Monatliche Gesamtkosten: 250 € Hausgeld + ca. 1.050 € Finanzierung (3,5% von 300.000 €) = 1.300 €/Monat.\n5. Ja, die Dachsanierung wird über das Hausgeld oder eine Sonderumlage finanziert, der Kunde muss seinen Anteil zahlen.\n\n**Lösung Praxisfall 3:**\n1. Option B (Erbbaurecht) hat die niedrigsten Anschaffungskosten (300.000 €).\n2. Option A (Volleigentum) hat die niedrigsten laufenden Kosten (nur Finanzierung, kein Erbbauzins/Hausgeld).\n3. Option A (Volleigentum) ist am einfachsten zu finanzieren (höchste Sicherheit für Bank).\n4. Option B (Erbbaurecht) hat das höchste Risiko (Heimfall nach 80 Jahren).\n5. Empfehlung: Option A (Volleigentum) - höchste Sicherheit, niedrigste Gesamtkosten langfristig.\n\n**Lösung Aufgabe 1 - Kundeninformation Erbbaurecht:**\n\n**Was ist ein Erbbaurecht?**\nDas Erbbaurecht ist das Recht, auf einem fremden Grundstück ein Gebäude zu errichten und zu nutzen. Der Grundstückseigentümer bleibt Eigentümer, der Erbbauberechtigte zahlt einen jährlichen Erbbauzins.\n\n**Funktionsweise:**\n- Laufzeit: 66-99 Jahre\n- Erbbauzins: 3-6% des Grundstückswerts/Jahr\n- Heimfall: Nach Ablauf fällt das Gebäude an den Grundstückseigentümer\n\n**Vorteile:**\n- Niedrigere Anschaffungskosten (nur Gebäude)\n- Steuerliche Vorteile (Erbbauzins absetzbar)\n\n**Nachteile:**\n- Laufende Kosten (Erbbauzins)\n- Heimfallrisiko\n- Schwierigere Finanzierung\n\n**Beispielrechnung:**\n- Grundstückswert: 200.000 €\n- Erbbauzins: 4% = 8.000 €/Jahr\n- Gebäudewert: 300.000 €\n- Finanzierung: 3,5% = 10.500 €/Jahr\n- **Gesamtkosten: 18.500 €/Jahr**\n\n**Lösung Aufgabe 2 - Wohnungseigentum analysieren:**\n\n**Hausgeld:**\n220 €/Monat für 75 m² = 2,93 €/m²/Monat - **angemessen** (Durchschnitt: 2,50-3,50 €/m²)\n\n**Instandhaltungsrücklage:**\n35.000 € für 38/1000 Anteil = ca. 921 €/m² - **ausreichend** (Empfehlung: 500-1.000 €/m²)\n\n**Kosten für Käufer:**\n- Kaufpreis: 280.000 €\n- Hausgeld: 220 €/Monat = 2.640 €/Jahr\n- Anteil Fassadensanierung: 80.000 € × (38/1000) = 3.040 €\n\n**Anteil Fassadensanierung:**\n38/1000 = 3,8% von 80.000 € = **3.040 €**\n\n**Lösung Aufgabe 3 - Vergleichstabelle:**\n\n| Kriterium | Grundstück | Erbbaurecht | Wohnungseigentum |\n|-----------|------------|-------------|------------------|\n| Eigentum | Volleigentum | Nur Gebäude | Wohnung + Miteigentum |\n| Laufzeit | Unbegrenzt | 66-99 Jahre | Unbegrenzt |\n| Anschaffung | Hoch | Mittel | Mittel |\n| Laufende Kosten | Niedrig | Hoch (Erbbauzins) | Mittel (Hausgeld) |\n| Grundbuch | Grundbuch | Erbbaugrundbuch | Wohnungsgrundbuch |\n| Finanzierung | Einfach | Schwieriger | Einfach |\n| Risiken | Niedrig | Heimfall | Beschlüsse, Sanierungen |",
     "type": "Theorie",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Grundstücke, Erbbaurecht, Wohnungseigentum - Rechtliche Grundlagen' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Grundstücke, Erbbaurecht, Wohnungseigentum - Rechtliche Grundlagen': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Grundstücke, Erbbaurecht, Wohnungseigentum - Rechtliche Grundlagen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_4": {
     "title": "Grundbuch: Aufbau, Funktion und Eintragungen",
@@ -78,7 +126,23 @@
     "task": "**Aufgabe 1: Grundbuchauszug erstellen**\n\nErstellen Sie einen fiktiven Grundbuchauszug für ein Einfamilienhaus mit folgenden Angaben:\n- Lage: Gemarkung Berlin-Mitte, Flur 5, Flurstück 123\n- Größe: 600 m²\n- Eigentümer: Anna Schmidt, geb. 15.05.1985, Kauf vom 10.01.2025\n- Belastungen: Wegerecht zugunsten Flurstück 124, Grundschuld 350.000 € (Deutsche Bank)\n\n---\n\n**Aufgabe 2: Rangfolge berechnen**\n\nEin Grundstück wird zwangsversteigert und für 500.000 € verkauft. Im Grundbuch stehen folgende Grundschulden:\n- Rang 1: 300.000 € (Sparkasse)\n- Rang 2: 150.000 € (Volksbank)\n- Rang 3: 100.000 € (Privatperson)\n\nBerechnen Sie, wie viel jeder Gläubiger erhält.\n\n---\n\n**Aufgabe 3: Grundbucheinsicht beantragen**\n\nEin Kunde möchte ein Grundstück kaufen und benötigt einen Grundbuchauszug. Erklären Sie ihm:\n- Wo kann er den Grundbuchauszug beantragen?\n- Welche Unterlagen benötigt er?\n- Wie lange dauert es?\n- Was kostet es?\n- Welche Informationen enthält der Auszug?",
     "solution": "**Lösung Praxisfall 1:**\n1. Max Mustermann ist Eigentümer (Abteilung I).\n2. Belastungen: Wegerecht (Abteilung II), Grundschuld 250.000 € (Rang 1), Grundschuld 50.000 € (Rang 2) (Abteilung III).\n3. Reihenfolge: 1. Sparkasse (250.000 €), 2. Volksbank (50.000 €).\n4. Ja, aber die neue Grundschuld erhält Rang 3 (nach Sparkasse und Volksbank).\n5. Gesamtbelastung: 250.000 € + 50.000 € = 300.000 €.\n\n**Lösung Praxisfall 2:**\n1. Die neue Grundschuld erhält Rang 3.\n2. Bei 400.000 € Verkaufserlös: Sparkasse 200.000 €, Volksbank 100.000 €, neue Bank 100.000 € (Rest 50.000 € fehlt).\n3. Bei 250.000 € Verkaufserlös: Sparkasse 200.000 €, Volksbank 50.000 €, neue Bank 0 € (komplett ausgefallen).\n4. Ja, die Bank kann verlangen, dass die Volksbank ihren Rang abtritt (Rangänderung, § 880 BGB).\n5. Kunde kann die Volksbank ablösen (100.000 € zurückzahlen), dann erhält die neue Bank Rang 2.\n\n**Lösung Praxisfall 3:**\n1. Ja, der Kunde muss die Erschließungsbeiträge zahlen (§ 10 ZVG).\n2. Erschließungsbeiträge sind öffentliche Lasten und werden nicht im Grundbuch eingetragen.\n3. Ja, der Verkäufer hätte den Käufer informieren müssen (§ 433 BGB, Aufklärungspflicht).\n4. Ja, der Kunde kann Schadensersatz verlangen, wenn der Verkäufer die Lasten verschwiegen hat (§ 280 BGB).\n5. Anfrage bei der Gemeinde (Bauamt, Erschließungsamt) vor dem Kauf.\n\n**Lösung Aufgabe 1 - Grundbuchauszug:**\n\n**Grundbuch von Berlin-Mitte**\n**Blatt 5678**\n\n**Bestandsverzeichnis:**\nGemarkung Berlin-Mitte, Flur 5, Flurstück 123, 600 m², Wohngebäude\n\n**Abteilung I - Eigentümer:**\nAnna Schmidt, geb. 15.05.1985, Kauf vom 10.01.2025\n\n**Abteilung II - Lasten und Beschränkungen:**\nWegerecht zugunsten des Grundstücks Flurstück 124\n\n**Abteilung III - Grundpfandrechte:**\nGrundschuld 350.000 € zugunsten der Deutschen Bank AG\n\n**Lösung Aufgabe 2 - Rangfolge:**\n\nVerkaufserlös: 500.000 €\n\n- **Rang 1 (Sparkasse):** 300.000 € (vollständig befriedigt)\n- **Rang 2 (Volksbank):** 150.000 € (vollständig befriedigt)\n- **Rang 3 (Privatperson):** 50.000 € (teilweise befriedigt, 50.000 € fehlen)\n\n**Verteilung:**\n- Sparkasse: 300.000 €\n- Volksbank: 150.000 €\n- Privatperson: 50.000 € (Rest 50.000 € Ausfall)\n\n**Lösung Aufgabe 3 - Grundbucheinsicht:**\n\n**Wo beantragen?**\nBeim Grundbuchamt (Amtsgericht) am Ort des Grundstücks.\n\n**Welche Unterlagen?**\n- Vollmacht des Eigentümers (bei Kaufinteresse)\n- Personalausweis\n- Nachweis des berechtigten Interesses\n\n**Dauer:**\n- Persönliche Einsicht: Sofort\n- Schriftlicher Auszug: 1-2 Wochen\n\n**Kosten:**\n10-20 € (abhängig vom Bundesland)\n\n**Informationen im Auszug:**\n- Bestandsverzeichnis (Lage, Größe, Nutzungsart)\n- Abteilung I (Eigentümer)\n- Abteilung II (Lasten, Beschränkungen)\n- Abteilung III (Grundpfandrechte)",
     "type": "Theorie",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Grundbuch: Aufbau, Funktion und Eintragungen' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Grundbuch: Aufbau, Funktion und Eintragungen': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Grundbuch: Aufbau, Funktion und Eintragungen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_5": {
     "title": "Immobiliar-Verbraucherdarlehensvertrag und Verbraucherkreditrecht",
@@ -99,7 +163,23 @@
     "task": "**Aufgabe 1: ESIS-Merkblatt erstellen**\n\nErstellen Sie ein vereinfachtes ESIS-Merkblatt für folgendes Darlehen:\n- Darlehensgeber: Sparkasse München\n- Nettodarlehensbetrag: 300.000 €\n- Laufzeit: 25 Jahre\n- Sollzinssatz: 3,5% p.a. (fest für 15 Jahre)\n- Effektiver Jahreszins: 3,7% p.a.\n- Monatliche Rate: 1.500 €\n- Besicherung: Grundschuld 300.000 €\n\n---\n\n**Aufgabe 2: Vorfälligkeitsentschädigung berechnen**\n\nBerechnen Sie die Vorfälligkeitsentschädigung für folgende Szenarien:\n\n**Szenario A:**\n- Restschuld: 200.000 €\n- Restlaufzeit: 3 Jahre\n- Sollzins: 3,0%\n- Wiederanlagezins: 1,5%\n\n**Szenario B:**\n- Restschuld: 150.000 €\n- Restlaufzeit: 10 Monate\n- Sollzins: 4,0%\n- Wiederanlagezins: 2,0%\n\n---\n\n**Aufgabe 3: Widerrufsbelehrung formulieren**\n\nFormulieren Sie eine Widerrufsbelehrung für einen Immobiliar-Verbraucherdarlehensvertrag. Berücksichtigen Sie:\n- Widerrufsfrist (14 Tage)\n- Form des Widerrufs (schriftlich)\n- Rechtsfolgen\n- Muster-Widerrufsformular",
     "solution": "**Lösung Praxisfall 1:**\n1. Ja, der Kunde hat ein Widerrufsrecht (§ 495 BGB).\n2. Die Widerrufsfrist beträgt 14 Tage ab Vertragsschluss, verlängert sich aber auf 12 Monate + 14 Tage, da die Widerrufsbelehrung fehlt.\n3. Ja, der Widerruf am 20. April 2026 ist noch möglich (innerhalb von 12 Monaten + 14 Tagen).\n4. Rechtsfolgen: Vertrag wird rückwirkend unwirksam, Kunde muss 350.000 € + Nutzungsentschädigung zurückzahlen.\n5. Kosten: Nutzungsentschädigung (ca. 1.750 € für 19 Tage bei 3,5% Zinsen).\n\n**Lösung Praxisfall 2:**\n1. Ja, der Kunde muss eine Vorfälligkeitsentschädigung zahlen (§ 502 BGB).\n2. Berechnung: Restschuld × (Sollzins - Wiederanlagezins) × Restlaufzeit.\n3. Vorfälligkeitsentschädigung: 250.000 € × (4,0% - 2,5%) × 8 = 30.000 €.\n4. Ja, Höchstgrenze: 1% der Restschuld = 2.500 € (gilt nicht, da Restlaufzeit > 12 Monate).\n5. Ja, durch ordentliche Kündigung nach 10 Jahren Zinsbindung (§ 500 BGB) - keine Vorfälligkeitsentschädigung.\n\n**Lösung Praxisfall 3:**\n1. Ja, die Bank hatte eine Informationspflicht (§ 491a BGB).\n2. Das ESIS-Merkblatt ist ein standardisiertes Formular mit allen wichtigen Vertragsinformationen.\n3. Rechtsfolgen: Widerrufsfrist verlängert sich auf 12 Monate + 14 Tage.\n4. Ja, der Kunde kann nach 13 Monaten noch widerrufen (innerhalb von 12 Monaten + 14 Tagen).\n5. Schadensersatzansprüche: Kunde kann Zinsen und Gebühren zurückfordern, die er aufgrund der fehlenden Information gezahlt hat (§ 280 BGB).\n\n**Lösung Aufgabe 1 - ESIS-Merkblatt:**\n\n**Europäisches Standardisiertes Merkblatt (ESIS)**\n\n**Darlehensgeber:**\nSparkasse München\nMusterstraße 1, 80331 München\n\n**Nettodarlehensbetrag:** 300.000 €\n\n**Laufzeit:** 25 Jahre (300 Monate)\n\n**Sollzinssatz:** 3,5% p.a. (fest für 15 Jahre)\n\n**Effektiver Jahreszins:** 3,7% p.a.\n\n**Monatliche Rate:** 1.500 €\n\n**Gesamtbetrag:** 450.000 € (300 Raten × 1.500 €)\n\n**Besicherung:** Grundschuld 300.000 € auf Grundstück Gemarkung München-Schwabing, Flur 12, Flurstück 345\n\n**Widerrufsrecht:** Sie können diesen Vertrag innerhalb von 14 Tagen ohne Angabe von Gründen widerrufen.\n\n**Vorfälligkeitsentschädigung:** Bei vorzeitiger Rückzahlung kann eine Vorfälligkeitsentschädigung anfallen.\n\n**Risiken:**\n- Zinsänderungsrisiko nach 15 Jahren\n- Zahlungsunfähigkeit kann zur Zwangsversteigerung führen\n\n**Lösung Aufgabe 2 - Vorfälligkeitsentschädigung:**\n\n**Szenario A:**\n- Restschuld: 200.000 €\n- Restlaufzeit: 3 Jahre\n- Sollzins: 3,0%\n- Wiederanlagezins: 1,5%\n- Differenz: 1,5%\n- **Vorfälligkeitsentschädigung:** 200.000 € × 1,5% × 3 = 9.000 €\n\n**Szenario B:**\n- Restschuld: 150.000 €\n- Restlaufzeit: 10 Monate\n- Sollzins: 4,0%\n- Wiederanlagezins: 2,0%\n- Differenz: 2,0%\n- **Vorfälligkeitsentschädigung:** 150.000 € × 2,0% × (10/12) = 2.500 €\n- **Höchstgrenze:** 150.000 € × 0,5% = 750 € (gilt, da Restlaufzeit ≤ 12 Monate)\n- **Tatsächliche Vorfälligkeitsentschädigung:** 750 € (Höchstgrenze)\n\n**Lösung Aufgabe 3 - Widerrufsbelehrung:**\n\n**Widerrufsbelehrung**\n\n**Widerrufsrecht:**\nSie können Ihre Vertragserklärung innerhalb von 14 Tagen ohne Angabe von Gründen in Textform (z.B. Brief, Fax, E-Mail) widerrufen. Die Frist beginnt am Tag nach Vertragsschluss, jedoch erst, nachdem Sie alle Pflichtinformationen erhalten haben. Zur Wahrung der Widerrufsfrist genügt die rechtzeitige Absendung des Widerrufs.\n\n**Widerrufsadresse:**\nSparkasse München\nWiderrufsabteilung\nMusterstraße 1\n80331 München\nE-Mail: widerruf@sparkasse-muenchen.de\n\n**Widerrufsfolgen:**\nIm Falle eines wirksamen Widerrufs sind die beiderseits empfangenen Leistungen zurückzugewähren. Sie sind zur Zahlung von Nutzungsentschädigung (Zinsen) verpflichtet, wenn Sie das Darlehen bereits in Anspruch genommen haben. Die Nutzungsentschädigung wird auf Basis des vertraglichen Sollzinssatzes berechnet.\n\n**Muster-Widerrufsformular:**\nHiermit widerrufe ich den am [Datum] geschlossenen Darlehensvertrag.\n[Name, Adresse, Datum, Unterschrift]",
     "type": "Theorie",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Immobiliar-Verbraucherdarlehensvertrag und Verbraucherkreditrecht' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Immobiliar-Verbraucherdarlehensvertrag und Verbraucherkreditrecht': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Immobiliar-Verbraucherdarlehensvertrag und Verbraucherkreditrecht' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_6": {
     "title": "Verhaltens- und Informationspflichten als Immobiliardarlehensvermittler",
@@ -119,7 +199,23 @@
     "task": "**Aufgabe 1: Beratungsprotokoll erstellen**\n\nErstellen Sie ein Beratungsprotokoll für folgende Situation:\n- Kunde: Max Mustermann, 40 Jahre, verheiratet, 1 Kind\n- Einkommen: 5.000 € netto/Monat (Kunde) + 3.000 € netto/Monat (Ehefrau)\n- Ausgaben: 3.500 €/Monat\n- Eigenkapital: 80.000 €\n- Kaufpreis Immobilie: 400.000 €\n- Gewünschtes Darlehen: 320.000 €\n- Empfohlenes Produkt: Annuitätendarlehen, 3,5% Zinsen, 30 Jahre Laufzeit\n\n---\n\n**Aufgabe 2: Tragfähigkeit prüfen**\n\nPrüfen Sie die Tragfähigkeit folgender Finanzierung:\n- Nettoeinkommen: 6.000 €/Monat\n- Lebenshaltung: 2.000 €/Monat\n- Versicherungen: 400 €/Monat\n- Bestehende Kredite: 300 €/Monat\n- Gewünschte Darlehensrate: 2.000 €/Monat\n\nIst die Finanzierung tragfähig? (Sicherheitspuffer 120%)\n\n---\n\n**Aufgabe 3: Risikoaufklärung formulieren**\n\nFormulieren Sie eine Risikoaufklärung für einen Kunden, der ein Annuitätendarlehen mit 10 Jahren Zinsbindung aufnehmen möchte. Berücksichtigen Sie:\n- Zinsänderungsrisiko nach 10 Jahren\n- Zahlungsunfähigkeitsrisiko bei Jobverlust\n- Zwangsversteigerungsrisiko\n- Vorfälligkeitsentschädigung bei vorzeitiger Rückzahlung",
     "solution": "**Lösung Praxisfall 1:**\n1. Beratungsprotokoll muss enthalten: Kundendaten, finanzielle Situation, Bedarfsanalyse, Produktempfehlung, Risikoaufklärung, Unterschrift.\n2. Ja, die Finanzierung ist tragfähig. Verfügbares Einkommen: (4.500 € + 2.500 €) - 3.000 € = 4.000 €. Maximale Rate: 4.000 € / 1,2 = 3.333 €.\n3. Maximale Darlehensrate: 3.333 €/Monat.\n4. Empfehlung: Annuitätendarlehen 280.000 € (350.000 € - 70.000 €), 3,5% Zinsen, 25 Jahre Laufzeit, monatliche Rate ca. 1.400 €.\n5. Risiken: Zinsänderung nach Zinsbindung, Jobverlust, Zwangsversteigerung, Vorfälligkeitsentschädigung.\n\n**Lösung Praxisfall 2:**\n1. Ja, Sie müssen dem Kunden mitteilen, dass Sie eine Provision erhalten (§ 511 BGB).\n2. Ja, Sie müssen die Höhe der Provision offenlegen (z.B. \"1% des Darlehensbetrags\").\n3. Ja, Sie müssen offenlegen, von welcher Bank Sie die Provision erhalten.\n4. Nein, Sie dürfen dem Kunden nur geeignete Darlehen empfehlen, nicht das teuerste (§ 511 BGB).\n5. Schadensersatzansprüche des Kunden (§ 280 BGB), Bußgeld bis 50.000 € (§ 144 GewO), Erlaubnisentzug (§ 35 GewO).\n\n**Lösung Praxisfall 3:**\n1. Ja, Sie haben gegen die Weiterbildungspflicht verstoßen (§ 34i Abs. 4 GewO).\n2. Bußgeld bis 50.000 € (§ 144 GewO), Erlaubnisentzug bei wiederholten Verstößen (§ 35 GewO).\n3. Ja, Sie können die fehlenden 5 Stunden nachholen, aber der Verstoß bleibt bestehen.\n4. Nachweis durch Teilnahmebescheinigungen von Seminaren, Webinaren, Fachtagungen.\n5. Relevante Themen: Recht, Finanzierung, Beratung, Produktkunde, Verbraucherschutz.\n\n**Lösung Aufgabe 1 - Beratungsprotokoll:**\n\n**Beratungsprotokoll Immobiliardarlehensvermittlung**\n\n**Kundendaten:**\n- Name: Max Mustermann\n- Geburtsdatum: 01.01.1986\n- Familienstand: Verheiratet, 1 Kind\n- Beruf: Angestellter\n\n**Finanzielle Situation:**\n- Nettoeinkommen Kunde: 5.000 €/Monat\n- Nettoeinkommen Ehefrau: 3.000 €/Monat\n- Gesamteinkommen: 8.000 €/Monat\n- Monatliche Ausgaben: 3.500 €\n- Eigenkapital: 80.000 €\n- Bestehende Schulden: Keine\n\n**Bedarfsanalyse:**\n- Zweck: Kauf Eigentumswohnung\n- Kaufpreis: 400.000 €\n- Gewünschter Darlehensbetrag: 320.000 €\n- Gewünschte Laufzeit: 30 Jahre\n- Gewünschte Zinsbindung: 15 Jahre\n\n**Produktempfehlung:**\n- Annuitätendarlehen 320.000 €\n- Sollzinssatz: 3,5% p.a. (fest für 15 Jahre)\n- Laufzeit: 30 Jahre\n- Monatliche Rate: 1.600 €\n- Gesamtbetrag: 576.000 €\n\n**Begründung:**\n- Tragfähigkeit gegeben (verfügbares Einkommen 4.500 €, maximale Rate 3.750 €)\n- Zinssicherheit für 15 Jahre\n- Planbare monatliche Rate\n\n**Alternativen geprüft:**\n- Tilgungsdarlehen (höhere Anfangsrate)\n- Bauspardarlehen (längere Ansparphase)\n\n**Risikoaufklärung:**\n- Zinsänderungsrisiko nach 15 Jahren\n- Zahlungsunfähigkeitsrisiko bei Jobverlust\n- Zwangsversteigerungsrisiko\n- Vorfälligkeitsentschädigung bei vorzeitiger Rückzahlung\n\n**Unterschrift:**\n[Datum, Unterschrift Kunde, Unterschrift Berater]\n\n**Lösung Aufgabe 2 - Tragfähigkeit:**\n\n**Haushaltsrechnung:**\n- Nettoeinkommen: 6.000 €\n- Lebenshaltung: 2.000 €\n- Versicherungen: 400 €\n- Bestehende Kredite: 300 €\n- **Verfügbares Einkommen:** 6.000 € - 2.000 € - 400 € - 300 € = 3.300 €\n\n**Maximale Darlehensrate (mit 120% Sicherheitspuffer):**\n- 3.300 € / 1,2 = 2.750 €\n\n**Gewünschte Darlehensrate:** 2.000 €\n\n**Ergebnis:** Ja, die Finanzierung ist tragfähig (2.000 € < 2.750 €).\n\n**Lösung Aufgabe 3 - Risikoaufklärung:**\n\n**Risikoaufklärung Annuitätendarlehen**\n\n**Zinsänderungsrisiko:**\nNach Ablauf der 10-jährigen Zinsbindung kann sich der Zinssatz ändern. Bei steigenden Zinsen erhöht sich Ihre monatliche Rate. Beispiel: Bei einem Anstieg von 3,5% auf 5,0% erhöht sich die Rate um ca. 20%.\n\n**Zahlungsunfähigkeitsrisiko:**\nBei Jobverlust, Krankheit oder anderen unvorhergesehenen Ereignissen können Sie möglicherweise die Raten nicht mehr zahlen. Dies kann zur Kündigung des Darlehens und zur Zwangsversteigerung der Immobilie führen. Empfehlung: Risikolebensversicherung, Berufsunfähigkeitsversicherung.\n\n**Zwangsversteigerungsrisiko:**\nWenn Sie die Raten nicht mehr zahlen können, kann die Bank die Immobilie zwangsversteigern lassen. Der Erlös wird zur Tilgung des Darlehens verwendet. Wenn der Erlös nicht ausreicht, bleiben Sie auf der Restschuld sitzen.\n\n**Vorfälligkeitsentschädigung:**\nWenn Sie das Darlehen vor Ablauf der Zinsbindung zurückzahlen möchten (z.B. bei Verkauf der Immobilie), kann die Bank eine Vorfälligkeitsentschädigung verlangen. Diese kann mehrere Tausend Euro betragen.\n\n**Empfehlung:**\n- Bilden Sie Rücklagen für unvorhergesehene Ausgaben (mindestens 3 Monatsraten)\n- Schließen Sie Versicherungen ab (Risikolebensversicherung, Berufsunfähigkeitsversicherung)\n- Prüfen Sie regelmäßig Ihre finanzielle Situation",
     "type": "Theorie",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Verhaltens- und Informationspflichten als Immobiliardarlehensvermittler' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Verhaltens- und Informationspflichten als Immobiliardarlehensvermittler': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Verhaltens- und Informationspflichten als Immobiliardarlehensvermittler' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_7": {
     "title": "Kreditwesengesetz (KWG) und Geldwäschegesetz (GwG)",
@@ -141,7 +237,23 @@
     "task": "**Aufgabe 1: Identifizierungscheckliste erstellen**\n\nErstellen Sie eine Checkliste zur Identifizierung eines Kunden. Berücksichtigen Sie:\n- Natürliche Personen (Name, Geburtsdatum, Adresse, Ausweis)\n- Juristische Personen (Firma, Handelsregister, Vertretungsberechtigte)\n- Wirtschaftlich Berechtigte (bei juristischen Personen)\n- Zeitpunkt der Identifizierung\n- Methoden (persönlich, Videoident, Postident)\n\n---\n\n**Aufgabe 2: Verdachtsmeldung formulieren**\n\nEin Kunde möchte 80.000 € Eigenkapital in bar einzahlen. Auf Ihre Frage nach der Herkunft antwortet er ausweichend. Sie haben den Verdacht, dass es sich um Geldwäsche handelt.\n\nFormulieren Sie eine Verdachtsmeldung an die FIU. Berücksichtigen Sie:\n- Kundendaten\n- Transaktionsdetails\n- Anhaltspunkte für Geldwäsche\n- Ihre Einschätzung\n\n---\n\n**Aufgabe 3: Risikoanalyse durchführen**\n\nBewerten Sie das Geldwäscherisiko folgender Kunden:\n\n**Kunde A:**\n- Deutscher Staatsbürger\n- Angestellter bei Siemens\n- Eigenkapital aus Ansparung (Gehaltsabrechnungen vorhanden)\n\n**Kunde B:**\n- Russischer Staatsbürger\n- Selbstständiger Unternehmer\n- Eigenkapital aus Verkauf eines Unternehmens in Russland\n\n**Kunde C:**\n- Deutscher Staatsbürger\n- Bürgermeister einer Großstadt\n- Eigenkapital aus Erbschaft (Erbschein vorhanden)\n\nKlassifizieren Sie: Geringes Risiko, Erhöhtes Risiko, Hohes Risiko",
     "solution": "**Lösung Praxisfall 1:**\n1. Ja, die Identifizierung ist korrekt durchgeführt (§ 11 GwG).\n2. Angaben: Name, Vorname, Geburtsdatum, Geburtsort, Staatsangehörigkeit, Wohnanschrift.\n3. Aufbewahrung: 5 Jahre nach Beendigung der Geschäftsbeziehung (§ 8 GwG).\n4. Ja, Videoident ist zulässig (§ 12 GwG).\n5. Bei juristischen Personen: Firma, Rechtsform, Registernummer, Sitz, Vertretungsberechtigte, wirtschaftlich Berechtigter.\n\n**Lösung Praxisfall 2:**\n1. Ja, Sie müssen die Herkunft der Mittel klären (§ 11 Abs. 5 GwG).\n2. Wenn der Kunde die Auskunft verweigert, können Sie die Geschäftsbeziehung ablehnen (§ 10 Abs. 9 GwG).\n3. Ja, die Verweigerung der Auskunft ist ein Anhaltspunkt für Geldwäsche.\n4. Ja, Sie müssen eine Verdachtsmeldung an die FIU abgeben (§ 43 GwG).\n5. Nein, Sie dürfen den Kunden nicht über die Meldung informieren (§ 47 GwG - Verbot der Informationsweitergabe).\n\n**Lösung Praxisfall 3:**\n1. Eine politisch exponierte Person (PEP) ist eine Person, die ein hochrangiges öffentliches Amt ausübt (z.B. Politiker, hohe Beamte).\n2. Verstärkte Sorgfaltspflichten: Zustimmung der Geschäftsleitung, Herkunft der Mittel klären, kontinuierliche Überwachung (§ 15 GwG).\n3. Ja, Sie müssen die Zustimmung Ihrer Geschäftsleitung einholen (§ 15 Abs. 3 GwG).\n4. Ja, Sie dürfen den Kunden ablehnen, wenn Sie das Risiko als zu hoch einschätzen.\n5. Zusätzliche Unterlagen: Nachweis Herkunft der Mittel, Vermögenserklärung, Einkommensnachweise.\n\n**Lösung Aufgabe 1 - Identifizierungscheckliste:**\n\n**Identifizierungscheckliste**\n\n**Natürliche Personen:**\n- [ ] Name, Vorname\n- [ ] Geburtsdatum, Geburtsort\n- [ ] Staatsangehörigkeit\n- [ ] Wohnanschrift\n- [ ] Nachweis: Personalausweis oder Reisepass (Kopie anfertigen)\n\n**Juristische Personen:**\n- [ ] Firma, Rechtsform\n- [ ] Registernummer (Handelsregister)\n- [ ] Sitz, Geschäftsanschrift\n- [ ] Vertretungsberechtigte Personen (Name, Geburtsdatum, Ausweis)\n- [ ] Nachweis: Handelsregisterauszug, Gewerbeanmeldung\n\n**Wirtschaftlich Berechtigter (bei juristischen Personen):**\n- [ ] Person, die mehr als 25% der Anteile hält\n- [ ] Name, Geburtsdatum, Adresse\n- [ ] Nachweis: Gesellschafterliste, Anteilsübersicht\n\n**Zeitpunkt:**\n- [ ] Vor Begründung der Geschäftsbeziehung\n- [ ] Spätestens bei Vertragsschluss\n\n**Methoden:**\n- [ ] Persönliche Anwesenheit (Ausweis zeigen, Kopie anfertigen)\n- [ ] Videoident (per Videoanruf)\n- [ ] Postident (bei der Post)\n\n**Aufbewahrung:**\n- [ ] 5 Jahre nach Beendigung der Geschäftsbeziehung\n\n**Lösung Aufgabe 2 - Verdachtsmeldung:**\n\n**Verdachtsmeldung an die Financial Intelligence Unit (FIU)**\n\n**Kundendaten:**\n- Name: Max Mustermann\n- Geburtsdatum: 01.01.1980\n- Adresse: Musterstraße 1, 80331 München\n- Staatsangehörigkeit: Deutsch\n\n**Transaktionsdetails:**\n- Datum: 25.02.2026\n- Betrag: 80.000 € (Eigenkapital)\n- Zahlungsweise: Bar\n- Zweck: Immobilienkauf\n\n**Anhaltspunkte für Geldwäsche:**\n- Barzahlung über 10.000 € (§ 16 GwG)\n- Kunde verweigert Auskunft über Herkunft der Mittel\n- Ausweichende Antworten auf Fragen\n- Ungewöhnlich hoher Betrag ohne plausible Erklärung\n\n**Einschätzung:**\nAufgrund der Barzahlung und der Verweigerung der Auskunft besteht der Verdacht, dass die Mittel aus Straftaten stammen. Es wird empfohlen, die Transaktion zu überprüfen und gegebenenfalls weitere Ermittlungen einzuleiten.\n\n**Meldender:**\n[Name, Firma, Adresse, Telefon, E-Mail]\n\n**Datum:** 25.02.2026\n\n**Lösung Aufgabe 3 - Risikoanalyse:**\n\n**Kunde A: Geringes Risiko**\n- Deutscher Staatsbürger (kein Hochrisikoland)\n- Angestellter bei renommiertem Unternehmen\n- Transparente Einkommensverhältnisse (Gehaltsabrechnungen)\n- Plausible Herkunft der Mittel (Ansparung)\n- **Maßnahmen:** Standardidentifizierung\n\n**Kunde B: Hohes Risiko**\n- Russischer Staatsbürger (Hochrisikoland)\n- Selbstständiger Unternehmer (komplexe Strukturen)\n- Eigenkapital aus Ausland (Russland)\n- **Maßnahmen:** Verstärkte Sorgfaltspflichten (§ 15 GwG), Herkunft der Mittel genau klären, Zustimmung Geschäftsleitung\n\n**Kunde C: Erhöhtes Risiko**\n- Deutscher Staatsbürger\n- Politisch exponierte Person (PEP - Bürgermeister)\n- Plausible Herkunft der Mittel (Erbschaft mit Erbschein)\n- **Maßnahmen:** Verstärkte Sorgfaltspflichten (§ 15 GwG), Zustimmung Geschäftsleitung, kontinuierliche Überwachung",
     "type": "Theorie",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Kreditwesengesetz (KWG) und Geldwäschegesetz (GwG)' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Kreditwesengesetz (KWG) und Geldwäschegesetz (GwG)': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Kreditwesengesetz (KWG) und Geldwäschegesetz (GwG)' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_8": {
     "title": "Verbraucherschutz, Schlichtungsstellen und Unlauterer Wettbewerb",
@@ -164,7 +276,23 @@
     "task": "**Aufgabe 1: Hinweis auf Schlichtungsstelle formulieren**\n\nFormulieren Sie einen Hinweis auf die Verbraucherschlichtungsstelle der Deutschen Bundesbank für Ihre Website. Berücksichtigen Sie:\n- Name und Adresse der Schlichtungsstelle\n- E-Mail und Website\n- Verfahrensablauf (kurz)\n- Kosten\n\n---\n\n**Aufgabe 2: Werbung prüfen**\n\nPrüfen Sie folgende Werbeaussagen auf Zulässigkeit:\n\n**Aussage A:**\n\"Wir sind der günstigste Immobiliardarlehensvermittler Deutschlands!\"\n\n**Aussage B:**\n\"0% Provision - wir werden von den Banken bezahlt!\"\n\n**Aussage C:**\n\"Nur noch heute: 2,5% Zinsen für Immobiliendarlehen!\"\n\n**Aussage D:**\n\"Wir sind besser als die Sparkasse - unsere Kunden sind zufriedener!\"\n\nWelche Aussagen sind zulässig? Welche sind irreführend?\n\n---\n\n**Aufgabe 3: Datenschutzerklärung erstellen**\n\nErstellen Sie eine vereinfachte Datenschutzerklärung für Ihre Website. Berücksichtigen Sie:\n- Welche Daten werden erhoben? (Name, Adresse, E-Mail, Telefon)\n- Zu welchem Zweck? (Beratung, Vertragsabschluss)\n- Wie lange werden sie gespeichert? (10 Jahre)\n- An wen werden sie weitergegeben? (Banken, Versicherungen)\n- Rechte der Betroffenen (Auskunft, Löschung, Widerruf)",
     "solution": "**Lösung Praxisfall 1:**\n1. Ja, es liegt ein Verstoß gegen das UWG vor.\n2. § 5 UWG (Irreführende Werbung) - Verschweigen wesentlicher Informationen (Zinsen gelten nur für 3 Monate).\n3. Rechtsfolgen: Unterlassungsanspruch (§ 8 UWG), Schadensersatz (§ 9 UWG), Bußgeld bis 500.000 € (§ 20 UWG).\n4. Ja, der Kunde kann Schadensersatz fordern, wenn er durch die irreführende Werbung einen Schaden erlitten hat (z.B. zu teures Darlehen abgeschlossen).\n5. Korrekte Formulierung: \"0% Zinsen für die ersten 3 Monate, danach 4,5% - Angebot gültig bis 31.12.2026\".\n\n**Lösung Praxisfall 2:**\n1. Ja, die Verbraucherschlichtungsstelle der Deutschen Bundesbank ist zuständig für Immobiliardarlehensvermittler.\n2. Ablauf: Antrag → Prüfung → Stellungnahme → Schlichtungsvorschlag → Annahme/Ablehnung.\n3. Nein, der Schlichtungsvorschlag ist nicht bindend. Beide Parteien können ihn ablehnen.\n4. Kosten: Für den Kunden kostenlos, für Sie ca. 300-500 € Pauschale.\n5. Wenn Sie den Schlichtungsvorschlag ablehnen, bleibt dem Kunden der Klageweg offen (Gerichtsverfahren).\n\n**Lösung Praxisfall 3:**\n1. Ja, es liegt ein Verstoß gegen das UWG vor.\n2. § 4a UWG (Aggressive Geschäftspraktik) - Belästigung durch unerwünschte Werbeanrufe.\n3. Rechtsfolgen: Unterlassungsanspruch (§ 8 UWG), Bußgeld bis 500.000 € (§ 20 UWG).\n4. Ja, der Kunde kann Unterlassung verlangen (keine weiteren Anrufe).\n5. Korrekt: Einwilligung des Kunden einholen (z.B. durch Anmeldeformular auf Website), erst dann anrufen.\n\n**Lösung Aufgabe 1 - Hinweis Schlichtungsstelle:**\n\n**Verbraucherschlichtungsstelle**\n\nBei Streitigkeiten können Sie sich an die Verbraucherschlichtungsstelle der Deutschen Bundesbank wenden:\n\n**Deutsche Bundesbank**\nVerbraucherschlichtungsstelle\nPostfach 11 12 32\n60047 Frankfurt am Main\n\n**E-Mail:** schlichtung@bundesbank.de\n**Website:** www.bundesbank.de/schlichtung\n\n**Verfahren:**\nDie Schlichtungsstelle prüft Ihren Antrag und unterbreitet einen Schlichtungsvorschlag. Das Verfahren ist für Sie als Verbraucher kostenlos und dauert in der Regel 3-6 Monate. Der Schlichtungsvorschlag ist nicht bindend - Sie können ihn annehmen oder ablehnen.\n\n**Lösung Aufgabe 2 - Werbung prüfen:**\n\n**Aussage A: Unzulässig**\n\"Wir sind der günstigste Immobiliardarlehensvermittler Deutschlands!\"\n- **Problem:** Superlativ ohne Beleg, nicht nachprüfbar\n- **Verstoß:** Irreführende Werbung (§ 5 UWG)\n\n**Aussage B: Zulässig (mit Einschränkung)**\n\"0% Provision - wir werden von den Banken bezahlt!\"\n- **OK, wenn:** Tatsächlich keine Provision vom Kunden verlangt wird\n- **Problem:** Muss klar sein, dass Provision von Bank gezahlt wird (Interessenkonflikt offenlegen)\n\n**Aussage C: Unzulässig**\n\"Nur noch heute: 2,5% Zinsen für Immobiliendarlehen!\"\n- **Problem:** Künstliche Verknappung, wenn Angebot dauerhaft verfügbar ist\n- **Verstoß:** Irreführende Werbung (§ 5 UWG)\n\n**Aussage D: Unzulässig**\n\"Wir sind besser als die Sparkasse - unsere Kunden sind zufriedener!\"\n- **Problem:** Herabsetzung eines Mitbewerbers ohne sachliche Begründung\n- **Verstoß:** Unlautere vergleichende Werbung (§ 6 UWG)\n\n**Lösung Aufgabe 3 - Datenschutzerklärung:**\n\n**Datenschutzerklärung**\n\n**1. Erhebung personenbezogener Daten:**\nWir erheben folgende personenbezogene Daten:\n- Name, Vorname\n- Adresse\n- E-Mail-Adresse\n- Telefonnummer\n- Finanzielle Daten (Einkommen, Vermögen, Schulden)\n\n**2. Zweck der Datenverarbeitung:**\nDie Daten werden verwendet für:\n- Beratung zu Immobiliendarlehen\n- Vermittlung von Darlehensverträgen\n- Erstellung von Finanzierungsplänen\n- Erfüllung gesetzlicher Pflichten (z.B. Geldwäschegesetz)\n\n**3. Speicherdauer:**\nDie Daten werden gespeichert für:\n- 10 Jahre nach Beendigung der Geschäftsbeziehung (§ 257 HGB)\n- 5 Jahre für Geldwäscheprävention (§ 8 GwG)\n\n**4. Weitergabe an Dritte:**\nDie Daten werden weitergegeben an:\n- Banken und Sparkassen (zur Vermittlung von Darlehen)\n- Versicherungen (zur Absicherung des Darlehens)\n- Behörden (bei gesetzlicher Verpflichtung, z.B. FIU)\n\n**5. Ihre Rechte:**\nSie haben folgende Rechte:\n- **Auskunftsrecht (Art. 15 DSGVO):** Sie können Auskunft über Ihre gespeicherten Daten verlangen\n- **Löschungsrecht (Art. 17 DSGVO):** Sie können die Löschung Ihrer Daten verlangen (nach Ablauf der Aufbewahrungsfrist)\n- **Widerrufsrecht (Art. 7 DSGVO):** Sie können Ihre Einwilligung zur Datenverarbeitung jederzeit widerrufen\n\n**6. Kontakt:**\nBei Fragen zum Datenschutz wenden Sie sich bitte an:\n[Name, Adresse, E-Mail, Telefon]",
     "type": "Theorie",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Verbraucherschutz, Schlichtungsstellen und Unlauterer Wettbewerb' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Verbraucherschutz, Schlichtungsstellen und Unlauterer Wettbewerb': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Verbraucherschutz, Schlichtungsstellen und Unlauterer Wettbewerb' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_9": {
     "title": "Datenschutz (DSGVO), Verschwiegenheit und Zuständigkeiten der Aufsicht",
@@ -187,7 +315,23 @@
     "task": "**Aufgabe 1: Datenschutzerklärung erstellen**\n\nErstellen Sie eine Datenschutzerklärung für Ihre Website. Berücksichtigen Sie:\n- Verantwortlicher (Name, Adresse)\n- Zweck der Datenverarbeitung\n- Rechtsgrundlage\n- Empfänger (Banken, Versicherungen)\n- Speicherdauer (10 Jahre)\n- Rechte der Betroffenen (Auskunft, Löschung, Widerruf)\n\n---\n\n**Aufgabe 2: Technische Maßnahmen**\n\nErstellen Sie eine Checkliste mit technischen und organisatorischen Maßnahmen zum Schutz personenbezogener Daten. Berücksichtigen Sie:\n- Vertraulichkeit (Passwortschutz, Verschlüsselung)\n- Integrität (Backups, Virenschutz)\n- Verfügbarkeit (Redundante Systeme)\n- Belastbarkeit (Tests, Schulung)\n\n---\n\n**Aufgabe 3: Datenpanne melden**\n\nEin Hacker hat sich Zugang zu Ihrem E-Mail-Konto verschafft und Kundendaten gestohlen (100 Kunden). Formulieren Sie eine Meldung an die Datenschutzbehörde. Berücksichtigen Sie:\n- Beschreibung der Panne\n- Betroffene Daten\n- Anzahl betroffener Personen\n- Maßnahmen zur Behebung\n- Risiken für Betroffene",
     "solution": "**Lösung Praxisfall 1:**\n1. Ja, es liegt eine Datenpanne vor (Verlust personenbezogener Daten).\n2. Ja, Sie müssen die Datenpanne melden (Art. 33 DSGVO).\n3. An die Datenschutzbehörde (Landesdatenschutzbeauftragte).\n4. Innerhalb 72 Stunden nach Bekanntwerden.\n5. Ja, Sie müssen die betroffenen Kunden informieren, da hohes Risiko für deren Rechte und Freiheiten besteht (Art. 34 DSGVO).\n\n**Lösung Praxisfall 2:**\n1. Nein, der Kunde muss sein Auskunftsrecht nicht begründen (Art. 15 DSGVO).\n2. Innerhalb 1 Monat (Art. 12 Abs. 3 DSGVO).\n3. Alle gespeicherten Daten: Name, Adresse, Geburtsdatum, Einkommen, Vermögen, Schulden, Schufa-Auskunft, Beratungsprotokoll.\n4. In schriftlicher Form oder elektronisch (z.B. PDF, CSV).\n5. Nein, die erste Auskunft ist kostenlos (Art. 15 Abs. 3 DSGVO).\n\n**Lösung Praxisfall 3:**\n1. Nein, Sie dürfen dem Kunden keine Auskunft geben (Verschwiegenheitspflicht).\n2. Schadensersatz (§ 280 BGB), Bußgeld (DSGVO), Strafrechtliche Verfolgung (§ 203 StGB).\n3. Ja, bei Einwilligung des Nachbarn oder gesetzlicher Verpflichtung.\n4. Ja, wenn der Nachbar schriftlich zustimmt.\n5. Bußgeld bis 20 Mio. € (DSGVO), Freiheitsstrafe bis 1 Jahr (§ 203 StGB).\n\n**Lösung Aufgabe 1 - Datenschutzerklärung:**\n\n**Datenschutzerklärung**\n\n**1. Verantwortlicher:**\n[Ihr Name]\n[Ihre Firma]\n[Adresse]\n[E-Mail]\n[Telefon]\n\n**2. Zweck der Datenverarbeitung:**\nWir verarbeiten Ihre personenbezogenen Daten zu folgenden Zwecken:\n- Beratung zu Immobiliendarlehen\n- Vermittlung von Darlehensverträgen\n- Erstellung von Finanzierungsplänen\n- Erfüllung gesetzlicher Pflichten (z.B. Geldwäschegesetz)\n\n**3. Rechtsgrundlage:**\n- Einwilligung (Art. 6 Abs. 1 lit. a DSGVO)\n- Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO)\n- Gesetzliche Verpflichtung (Art. 6 Abs. 1 lit. c DSGVO)\n\n**4. Empfänger:**\nIhre Daten werden weitergegeben an:\n- Banken und Sparkassen (zur Vermittlung von Darlehen)\n- Versicherungen (zur Absicherung des Darlehens)\n- Behörden (bei gesetzlicher Verpflichtung, z.B. FIU)\n\n**5. Speicherdauer:**\nIhre Daten werden gespeichert für:\n- 10 Jahre nach Beendigung der Geschäftsbeziehung (§ 257 HGB)\n- 5 Jahre für Geldwäscheprävention (§ 8 GwG)\n\n**6. Ihre Rechte:**\n- **Auskunftsrecht (Art. 15 DSGVO):** Sie können Auskunft über Ihre gespeicherten Daten verlangen\n- **Berichtigungsrecht (Art. 16 DSGVO):** Sie können Berichtigung falscher Daten verlangen\n- **Löschungsrecht (Art. 17 DSGVO):** Sie können Löschung Ihrer Daten verlangen (nach Ablauf der Aufbewahrungsfrist)\n- **Widerspruchsrecht (Art. 21 DSGVO):** Sie können Widerspruch gegen Datenverarbeitung einlegen\n- **Widerrufsrecht (Art. 7 DSGVO):** Sie können Ihre Einwilligung jederzeit widerrufen\n\n**7. Beschwerderecht:**\nSie haben das Recht, sich bei der Datenschutzbehörde zu beschweren:\n[Name der Landesdatenschutzbehörde]\n[Adresse]\n\n**Lösung Aufgabe 2 - Technische Maßnahmen:**\n\n**Checkliste Datenschutz - Technische und organisatorische Maßnahmen**\n\n**Vertraulichkeit:**\n- [ ] Passwortschutz für alle Computer und Geräte\n- [ ] Verschlüsselung von E-Mails mit sensiblen Daten\n- [ ] Abschließbare Schränke für Papierunterlagen\n- [ ] Zugriffskontrolle (nur autorisierte Personen)\n- [ ] Clean-Desk-Policy (keine Unterlagen auf Schreibtisch)\n\n**Integrität:**\n- [ ] Regelmäßige Backups (täglich, wöchentlich)\n- [ ] Virenschutz und Firewall\n- [ ] Software-Updates (regelmäßig)\n- [ ] Sichere Passwörter (mindestens 12 Zeichen, Sonderzeichen)\n- [ ] Zwei-Faktor-Authentifizierung\n\n**Verfügbarkeit:**\n- [ ] Redundante Systeme (bei Ausfall)\n- [ ] Notfallplan (bei Datenpanne)\n- [ ] Unterbrechungsfreie Stromversorgung (USV)\n\n**Belastbarkeit:**\n- [ ] Regelmäßige Tests (Wiederherstellung aus Backup)\n- [ ] Schulung der Mitarbeiter (Datenschutz, Datensicherheit)\n- [ ] Dokumentation (Verfahrensverzeichnis)\n- [ ] Datenschutzbeauftragter (ab 20 Mitarbeitern)\n\n**Lösung Aufgabe 3 - Datenpanne melden:**\n\n**Meldung Datenpanne an Datenschutzbehörde**\n\n**Datum:** 25.02.2026\n\n**Verantwortlicher:**\n[Ihr Name, Firma, Adresse, E-Mail, Telefon]\n\n**Beschreibung der Datenpanne:**\nAm 24.02.2026 wurde festgestellt, dass ein Hacker sich Zugang zu unserem E-Mail-Konto verschafft hat. Der Hacker hat E-Mails mit Kundendaten heruntergeladen und möglicherweise kopiert.\n\n**Betroffene Daten:**\n- Namen, Adressen, Geburtsdaten\n- Einkommensnachweise, Vermögensübersichten\n- Kontoauszüge, Schufa-Auskünfte\n- Beratungsprotokolle\n\n**Anzahl betroffener Personen:**\n100 Kunden\n\n**Zeitpunkt der Datenpanne:**\n23.02.2026 (geschätzt)\n\n**Maßnahmen zur Behebung:**\n- E-Mail-Konto wurde sofort gesperrt\n- Passwort wurde geändert\n- Zwei-Faktor-Authentifizierung wurde aktiviert\n- IT-Sicherheitsfirma wurde beauftragt\n- Betroffene Kunden wurden informiert\n\n**Risiken für Betroffene:**\n- Identitätsdiebstahl\n- Finanzbetrug\n- Phishing-Angriffe\n\n**Kontakt:**\n[Name, E-Mail, Telefon]",
     "type": "Theorie",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Datenschutz (DSGVO), Verschwiegenheit und Zuständigkeiten der Aufsicht' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Datenschutz (DSGVO), Verschwiegenheit und Zuständigkeiten der Aufsicht': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Datenschutz (DSGVO), Verschwiegenheit und Zuständigkeiten der Aufsicht' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_10": {
     "title": "Steuerliche Aspekte des Immobilienerwerbs",
@@ -206,7 +350,23 @@
     "task": "**Aufgabe 1: Steuerbelastung berechnen**\n\nBerechnen Sie die Steuerbelastung beim Kauf einer Immobilie für 500.000 € in Nordrhein-Westfalen (Grunderwerbsteuer 6,5%):\n- Kaufpreis: 500.000 €\n- Grunderwerbsteuer: ?\n- Notar- und Grundbuchkosten: 2% (10.000 €)\n- Maklercourtage: 3,57% (17.850 €)\n- **Gesamtkosten:** ?\n\n---\n\n**Aufgabe 2: Werbungskosten ermitteln**\n\nEin Kunde vermietet eine Wohnung für 1.000 €/Monat. Ermitteln Sie die Werbungskosten:\n- Zinsen: 6.000 €/Jahr\n- Instandhaltung: 1.200 €/Jahr\n- AfA: 3.500 €/Jahr (2% von 175.000 € Gebäudewert)\n- Verwaltung: 500 €/Jahr\n- Versicherungen: 350 €/Jahr\n- Grundsteuer: 1.200 €/Jahr\n- **Gesamte Werbungskosten:** ?\n\n---\n\n**Aufgabe 3: Spekulationssteuer berechnen**\n\nBerechnen Sie die Spekulationssteuer:\n- Kaufpreis 2021: 350.000 €\n- Verkaufspreis 2027: 450.000 €\n- Kaufnebenkosten: 35.000 €\n- Modernisierung: 25.000 €\n- Persönlicher Steuersatz: 32%\n- **Gewinn:** ?\n- **Spekulationssteuer:** ?",
     "solution": "**Lösung Praxisfall 1:**\n1. Grunderwerbsteuer: 400.000 € × 3,5% = 14.000 €.\n2. Nach Zustellung des Steuerbescheids (ca. 4-8 Wochen nach Kaufvertrag), vor Eigentumsübergang.\n3. Der Käufer zahlt die Grunderwerbsteuer.\n4. Ja, die Grunderwerbsteuer kann in die Finanzierung einbezogen werden.\n5. Möglichkeiten: Inventar (Einbauküche) separat kaufen (nicht grunderwerbsteuerpflichtig), Share Deal bei Gewerbeimmobilien (ab 90% Anteilserwerb).\n\n**Lösung Praxisfall 2:**\n1. Nettoeinkünfte: 14.400 € - (7.000 € + 1.500 € + 4.000 € + 600 € + 400 € + 1.000 €) = 14.400 € - 14.500 € = -100 € (Verlust).\n2. Steuerlast: -100 € × 35% = -35 € (Steuererstattung).\n3. Abzugsfähig: Zinsen, Instandhaltung, AfA, Verwaltung, Versicherungen, Grundsteuer.\n4. Nein, die Tilgung ist nicht abzugsfähig.\n5. Ja, die Vermietung lohnt sich steuerlich, da ein Verlust entsteht, der mit anderen Einkünften verrechnet werden kann (Steuererstattung).\n\n**Lösung Praxisfall 3:**\n1. Ja, Spekulationssteuer fällt an, da Verkauf innerhalb 10 Jahren (§ 23 EStG).\n2. Gewinn: 400.000 € - 300.000 € - 30.000 € - 20.000 € = 50.000 €.\n3. Spekulationssteuer: 50.000 € × 30% = 15.000 €.\n4. Möglichkeiten: Eigennutzung im Jahr des Verkaufs und in den beiden vorangegangenen Jahren (dann steuerfrei).\n5. Wenn er die Wohnung 2031 verkauft (11 Jahre nach Kauf), fällt keine Spekulationssteuer an (10-Jahres-Frist abgelaufen).\n\n**Lösung Aufgabe 1 - Steuerbelastung:**\n\n**Kaufpreis:** 500.000 €\n**Grunderwerbsteuer:** 500.000 € × 6,5% = 32.500 €\n**Notar- und Grundbuchkosten:** 10.000 €\n**Maklercourtage:** 17.850 €\n**Gesamtkosten:** 500.000 € + 32.500 € + 10.000 € + 17.850 € = **560.350 €**\n\n**Lösung Aufgabe 2 - Werbungskosten:**\n\n**Zinsen:** 6.000 €\n**Instandhaltung:** 1.200 €\n**AfA:** 3.500 €\n**Verwaltung:** 500 €\n**Versicherungen:** 350 €\n**Grundsteuer:** 1.200 €\n**Gesamte Werbungskosten:** 6.000 € + 1.200 € + 3.500 € + 500 € + 350 € + 1.200 € = **12.750 €**\n\n**Lösung Aufgabe 3 - Spekulationssteuer:**\n\n**Gewinn:** 450.000 € - 350.000 € - 35.000 € - 25.000 € = **40.000 €**\n**Spekulationssteuer:** 40.000 € × 32% = **12.800 €**",
     "type": "Theorie",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Steuerliche Aspekte des Immobilienerwerbs' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Steuerliche Aspekte des Immobilienerwerbs': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Steuerliche Aspekte des Immobilienerwerbs' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_11": {
     "title": "Darlehensarten: Annuitätendarlehen, Tilgungsdarlehen, Endfälliges Darlehen",
@@ -224,7 +384,23 @@
     "task": "**Aufgabe 1: Annuitätendarlehen berechnen**\n\nBerechnen Sie die monatliche Rate für ein Annuitätendarlehen:\n- Darlehensbetrag: 350.000 €\n- Zinssatz: 3,2% p.a.\n- Anfangstilgung: 2,8% p.a.\n- **Jährliche Annuität:** ?\n- **Monatliche Rate:** ?\n- **Zinsen in erster Rate:** ?\n- **Tilgung in erster Rate:** ?\n\n---\n\n**Aufgabe 2: Tilgungsdarlehen berechnen**\n\nBerechnen Sie die Anfangsrate für ein Tilgungsdarlehen:\n- Darlehensbetrag: 400.000 €\n- Zinssatz: 3,8% p.a.\n- Laufzeit: 25 Jahre\n- **Tilgung pro Monat:** ?\n- **Zinsen in erster Rate:** ?\n- **Anfangsrate:** ?\n\n---\n\n**Aufgabe 3: Vergleich Darlehensarten**\n\nVergleichen Sie die Gesamtzinsbelastung:\n- Darlehensbetrag: 300.000 €\n- Zinssatz: 3,5% p.a.\n- Laufzeit: 25 Jahre\n\n**Annuitätendarlehen (2% Anfangstilgung):**\n- Gesamtzinsen: ?\n\n**Tilgungsdarlehen:**\n- Gesamtzinsen: ?\n\n**Endfälliges Darlehen:**\n- Gesamtzinsen: ?",
     "solution": "**Lösung Praxisfall 1:**\n1. Jährliche Annuität: 250.000 € × (3,0% + 2,5%) = 13.750 €/Jahr.\n2. Monatliche Rate: 13.750 € / 12 = 1.145,83 €/Monat.\n3. Zinsen erste Rate: 250.000 € × 3,0% / 12 = 625 €, Tilgung: 1.145,83 € - 625 € = 520,83 €.\n4. Restschuld nach 1. Rate: 250.000 € - 520,83 € = 249.479,17 €.\n5. Vollständige Tilgung: ca. 27 Jahre (bei 2,5% Anfangstilgung).\n\n**Lösung Praxisfall 2:**\n1. Anfangsrate Tilgungsdarlehen: Tilgung 1.250 €/Monat + Zinsen 875 €/Monat = 2.125 €/Monat.\n2. Endrate Tilgungsdarlehen: Tilgung 1.250 €/Monat + Zinsen ca. 3,65 €/Monat = 1.253,65 €/Monat.\n3. Gesamtzinsen Tilgungsdarlehen: ca. 105.000 €.\n4. Gesamtzinsen Annuitätendarlehen: ca. 120.000 €.\n5. Empfehlung: Tilgungsdarlehen (geringere Gesamtzinsen), wenn Kunde hohe Anfangsrate finanzieren kann.\n\n**Lösung Praxisfall 3:**\n1. Monatliche Zinsbelastung: 200.000 € × 3,5% / 12 = 583,33 €/Monat.\n2. Gesamtbelastung: 583,33 € + 150 € = 733,33 €/Monat.\n3. Gesamtzinsen: 583,33 € × 12 × 25 = 175.000 €.\n4. Wenn Lebensversicherung nur 180.000 € auszahlt: Restschuld 20.000 € muss aus Eigenkapital getilgt werden.\n5. Eignet sich für: Vermieter (steuerliche Vorteile), Kunden mit sicherer Kapitalanlage.\n\n**Lösung Aufgabe 1:**\n- Jährliche Annuität: 350.000 € × (3,2% + 2,8%) = 21.000 €/Jahr\n- Monatliche Rate: 21.000 € / 12 = 1.750 €/Monat\n- Zinsen erste Rate: 350.000 € × 3,2% / 12 = 933,33 €\n- Tilgung erste Rate: 1.750 € - 933,33 € = 816,67 €\n\n**Lösung Aufgabe 2:**\n- Tilgung pro Monat: 400.000 € / (25 × 12) = 1.333,33 €\n- Zinsen erste Rate: 400.000 € × 3,8% / 12 = 1.266,67 €\n- Anfangsrate: 1.333,33 € + 1.266,67 € = 2.600 €\n\n**Lösung Aufgabe 3:**\n- Annuitätendarlehen: ca. 150.000 € Gesamtzinsen\n- Tilgungsdarlehen: ca. 132.000 € Gesamtzinsen\n- Endfälliges Darlehen: ca. 262.500 € Gesamtzinsen",
     "type": "Theorie",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Darlehensarten: Annuitätendarlehen, Tilgungsdarlehen, Endfälliges Darlehen' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Darlehensarten: Annuitätendarlehen, Tilgungsdarlehen, Endfälliges Darlehen': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Darlehensarten: Annuitätendarlehen, Tilgungsdarlehen, Endfälliges Darlehen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_12": {
     "title": "Bauspardarlehen, KfW-Darlehen und Förderprogramme",
@@ -242,7 +418,23 @@
     "task": "**Aufgabe 1: Bauspardarlehen berechnen**\n\nBerechnen Sie die Ansparphase und Darlehensphase:\n- Bausparsumme: 80.000 €\n- Ansparung: 50% (40.000 €)\n- Monatliche Sparrate: 500 €\n- Guthabenzins: 0,1% p.a.\n- Darlehenszins: 2,3% p.a.\n- **Dauer Ansparphase:** ?\n- **Bauspardarlehen:** ?\n- **Monatliche Rate Darlehensphase:** ?\n\n---\n\n**Aufgabe 2: KfW-Tilgungszuschuss berechnen**\n\nBerechnen Sie den Tilgungszuschuss für KfW 153:\n- Darlehensbetrag: 120.000 €\n- Effizienzhaus: KfW 40 Plus\n- Tilgungszuschuss: 30%\n- **Tilgungszuschuss:** ?\n- **Effektiv zu finanzieren:** ?\n\n---\n\n**Aufgabe 3: Kombination Darlehensarten**\n\nVergleichen Sie die Finanzierung:\n\n**Variante 1: Nur Bankdarlehen**\n- 300.000 € Bankdarlehen (3,5% p.a., 2% Tilgung)\n- **Monatliche Rate:** ?\n- **Gesamtzinsen:** ?\n\n**Variante 2: Bank + KfW**\n- 150.000 € Bankdarlehen (3,5% p.a., 2% Tilgung)\n- 150.000 € KfW 153 (1,5% p.a., 30% Tilgungszuschuss, 2% Tilgung)\n- **Tilgungszuschuss:** ?\n- **Monatliche Rate:** ?\n- **Gesamtzinsen:** ?\n- **Ersparnis:** ?",
     "solution": "**Lösung Praxisfall 1:**\n1. Dauer Ansparphase: 40.000 € / 400 € = 100 Monate = ca. 8,3 Jahre.\n2. Bauspardarlehen: 100.000 € - 40.000 € = 60.000 €.\n3. Monatliche Rate Darlehensphase: 60.000 € × (2,5% + 0,5%) / 12 = 150 €.\n4. Staatliche Förderung: Wohnungsbauprämie (70 €/Jahr), Arbeitnehmersparzulage (42,30 €/Jahr).\n5. Lohnt sich, wenn: Niedrige Zinsen wichtiger als Rendite, Planungssicherheit gewünscht, staatliche Förderung genutzt wird.\n\n**Lösung Praxisfall 2:**\n1. Tilgungszuschuss: 150.000 € × 30% = 45.000 €.\n2. Effektiv zurückzahlen: 150.000 € - 45.000 € = 105.000 €.\n3. Monatliche Rate: 105.000 € × (1,5% + 2%) / 12 = 306,25 €.\n4. Gesamtzinsen: ca. 20.000 €.\n5. Ersparnis: ca. 30.000 € Zinsen + 45.000 € Tilgungszuschuss = 75.000 €.\n\n**Lösung Praxisfall 3:**\n1. KfW-Tilgungszuschuss: 100.000 € × 30% = 30.000 €.\n2. Effektiv finanzieren: 200.000 € + 70.000 € + 50.000 € = 320.000 €.\n3. Monatliche Rate: ca. 1.450 €.\n4. Gesamtzinsen: ca. 110.000 €.\n5. Ersparnis: ca. 60.000 € Zinsen + 30.000 € Tilgungszuschuss = 90.000 €.\n\n**Lösung Aufgabe 1:**\n- Dauer Ansparphase: 40.000 € / 500 € = 80 Monate = ca. 6,7 Jahre\n- Bauspardarlehen: 80.000 € - 40.000 € = 40.000 €\n- Monatliche Rate Darlehensphase: 40.000 € × (2,3% + 0,5%) / 12 = 93,33 €\n\n**Lösung Aufgabe 2:**\n- Tilgungszuschuss: 120.000 € × 30% = 36.000 €\n- Effektiv zu finanzieren: 120.000 € - 36.000 € = 84.000 €\n\n**Lösung Aufgabe 3:**\n\n**Variante 1: Nur Bankdarlehen**\n- Monatliche Rate: 300.000 € × (3,5% + 2%) / 12 = 1.375 €\n- Gesamtzinsen: ca. 150.000 €\n\n**Variante 2: Bank + KfW**\n- Tilgungszuschuss: 150.000 € × 30% = 45.000 €\n- Monatliche Rate: (150.000 € × 5,5% + 105.000 € × 3,5%) / 12 = ca. 990 €\n- Gesamtzinsen: ca. 90.000 €\n- Ersparnis: 60.000 € Zinsen + 45.000 € Tilgungszuschuss = 105.000 €",
     "type": "Theorie",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Bauspardarlehen, KfW-Darlehen und Förderprogramme' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Bauspardarlehen, KfW-Darlehen und Förderprogramme': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Bauspardarlehen, KfW-Darlehen und Förderprogramme' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_13": {
     "title": "Zinsbindung, Sollzins, Effektivzins und Konditionsvergleich",
@@ -261,7 +453,23 @@
     "task": "**Aufgabe 1: Effektivzins berechnen**\n\nBerechnen Sie den Effektivzins (vereinfacht):\n- Darlehensbetrag: 300.000 €\n- Sollzins: 3,5% p.a.\n- Disagio: 3% (9.000 €)\n- Auszahlung: 291.000 €\n- Laufzeit: 25 Jahre\n- **Effektivzins (ca.):** ?\n\n---\n\n**Aufgabe 2: Zinsunterschied berechnen**\n\nVergleichen Sie die Gesamtzinsbelastung:\n- Darlehensbetrag: 250.000 €\n- Tilgung: 2% p.a.\n- Laufzeit: 25 Jahre\n\n**Bank A (3,5% Effektivzins):**\n- Gesamtzinsen: ?\n\n**Bank B (4,0% Effektivzins):**\n- Gesamtzinsen: ?\n\n**Unterschied:** ?\n\n---\n\n**Aufgabe 3: Bereitstellungszinsen berechnen**\n\nBerechnen Sie die Bereitstellungszinsen:\n- Darlehensbetrag: 350.000 €\n- Abruf: 150.000 € sofort, 200.000 € nach 8 Monaten\n- Bereitstellungszinsen: 0,25% p.M. nach 3 Monaten\n- **Bereitstellungszinsen:** ?",
     "solution": "**Lösung Praxisfall 1:**\n1. Effektivzins (ca.): 3,5% p.a. (Sollzins 3,2% + Disagio 2,5% / 25 Jahre ≈ 0,1% p.a. + Zinseszinseffekt).\n2. Effektivzins ist höher, weil Disagio berücksichtigt wird (weniger Auszahlung, gleiche Zinsen).\n3. Berücksichtigt: Sollzins, Disagio, Bearbeitungsgebühr, Schätzkosten.\n4. NICHT berücksichtigt: Notarkosten, Grundbuchkosten, Grunderwerbsteuer.\n5. Disagio ist sinnvoll, wenn: Steuerliche Vorteile (bei Vermietung), niedrigerer Sollzins.\n\n**Lösung Praxisfall 2:**\n1. Bank A hat das günstigste Angebot (3,4% Effektivzins).\n2. Bank B bietet die beste Planungssicherheit (15 Jahre Zinsbindung).\n3. Bank B bietet die meiste Flexibilität (10% Sondertilgung).\n4. Empfehlung: Bank A (bestes Preis-Leistungs-Verhältnis), Bank B (wenn Planungssicherheit wichtiger).\n5. Ersparnis Bank A vs. Bank B: ca. 15.000 € über 25 Jahre (0,3% Zinsunterschied).\n\n**Lösung Praxisfall 3:**\n1. Bereitstellungszinsen Abruf 2: 150.000 € × 0,25% × 3 Monate = 1.125 €.\n2. Bereitstellungszinsen Abruf 3: 150.000 € × 0,25% × 9 Monate = 3.375 €.\n3. Gesamtkosten: 1.125 € + 3.375 € = 4.500 €.\n4. Reduzieren durch: Längere bereitstellungszinsfreie Zeit verhandeln, Abrufplan optimieren.\n5. Ja, sollte 6-12 Monate bereitstellungszinsfreie Zeit verhandeln.\n\n**Lösung Aufgabe 1:**\n- Effektivzins (ca.): 3,8% p.a. (Sollzins 3,5% + Disagio 3% / 25 Jahre ≈ 0,12% p.a. + Zinseszinseffekt ≈ 0,18% p.a.)\n\n**Lösung Aufgabe 2:**\n- Bank A (3,5%): Gesamtzinsen ca. 125.000 €\n- Bank B (4,0%): Gesamtzinsen ca. 145.000 €\n- Unterschied: 20.000 €\n\n**Lösung Aufgabe 3:**\n- Bereitstellungszinsen: 200.000 € × 0,25% × 5 Monate = 2.500 €",
     "type": "Theorie",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Zinsbindung, Sollzins, Effektivzins und Konditionsvergleich' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Zinsbindung, Sollzins, Effektivzins und Konditionsvergleich': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Zinsbindung, Sollzins, Effektivzins und Konditionsvergleich' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_14": {
     "title": "Bonitätsprüfung, Schufa-Auskunft und Kreditwürdigkeitsprüfung",
@@ -279,7 +487,23 @@
     "task": "**Aufgabe 1: Haushaltsrechnung erstellen**\n\nErstellen Sie eine Haushaltsrechnung:\n- Nettoeinkommen: 6.000 €/Monat\n- Lebenshaltung: 2.500 €/Monat\n- Versicherungen: 450 €/Monat\n- Bestehende Kredite: 350 €/Monat\n- **Verfügbares Einkommen:** ?\n- **Maximale Darlehensrate (20% Puffer):** ?\n\n---\n\n**Aufgabe 2: Beleihungsauslauf berechnen**\n\nBerechnen Sie den Beleihungsauslauf:\n- Verkehrswert: 450.000 €\n- Beleihungswert: 405.000 € (90%)\n- Darlehensbetrag: 350.000 €\n- **Beleihungsauslauf:** ?\n\n---\n\n**Aufgabe 3: Bonität prüfen**\n\nPrüfen Sie die Bonität:\n- Nettoeinkommen: 4.500 €/Monat\n- Ausgaben: 2.800 €/Monat\n- Eigenkapital: 60.000 €\n- Schufa-Score: 94,5%\n- Kaufpreis: 350.000 €\n- Gewünschtes Darlehen: 290.000 €\n- Darlehensrate: 1.450 €/Monat\n\n**Ist die Finanzierung tragfähig?**",
     "solution": "**Lösung Praxisfall 1:**\n1. Verfügbares Einkommen: 5.000 € - 2.000 € - 400 € - 500 € = 2.100 €.\n2. Maximale Darlehensrate: 2.100 € / 1,2 = 1.750 €.\n3. Nein, 1.800 € > 1.750 € (Finanzierung zu knapp).\n4. Bei Jobverlust: Zahlungsunfähigkeit, Zwangsversteigerung droht.\n5. Absicherungen: Berufsunfähigkeitsversicherung, Risikolebensversicherung, Rücklagen (3 Monatsraten).\n\n**Lösung Praxisfall 2:**\n1. Schufa-Score 89% = kritisch (unter 90%).\n2. Schwierig, Bank wird evtl. ablehnen oder höhere Zinsen verlangen.\n3. Maßnahmen: Schulden abbauen, falsche Einträge löschen lassen, höheres Eigenkapital, Bürgschaft.\n4. Ja, falsche Einträge können gelöscht werden (Antrag bei Schufa).\n5. Negative Einträge bleiben 3 Jahre gespeichert.\n\n**Lösung Praxisfall 3:**\n1. Beleihungsauslauf: 400.000 € / 450.000 € = 88,9%.\n2. Ja, liegt im akzeptablen Bereich (unter 90%).\n3. Zinsaufschlag: ca. 0,3% (80-90% Beleihungsauslauf).\n4. Reduzieren durch: Mehr Eigenkapital einbringen (z.B. 150.000 € statt 100.000 €).\n5. Vorteile: Niedrigere Zinsen, geringeres Risiko, schnellere Kreditentscheidung.\n\n**Lösung Aufgabe 1:**\n- Verfügbares Einkommen: 6.000 € - 2.500 € - 450 € - 350 € = 2.700 €\n- Maximale Darlehensrate: 2.700 € / 1,2 = 2.250 €\n\n**Lösung Aufgabe 2:**\n- Beleihungsauslauf: 350.000 € / 405.000 € = 86,4%\n\n**Lösung Aufgabe 3:**\n- Verfügbares Einkommen: 4.500 € - 2.800 € = 1.700 €\n- Maximale Darlehensrate: 1.700 € / 1,2 = 1.417 €\n- Gewünschte Rate: 1.450 €\n- **Ergebnis:** Nein, Finanzierung nicht tragfähig (1.450 € > 1.417 €)\n- **Empfehlung:** Mehr Eigenkapital (70.000 € statt 60.000 €) oder längere Laufzeit (niedrigere Rate)",
     "type": "Theorie",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Bonitätsprüfung, Schufa-Auskunft und Kreditwürdigkeitsprüfung' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Bonitätsprüfung, Schufa-Auskunft und Kreditwürdigkeitsprüfung': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Bonitätsprüfung, Schufa-Auskunft und Kreditwürdigkeitsprüfung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_15": {
     "title": "Sicherheiten: Grundschuld, Hypothek, Bürgschaft",
@@ -298,7 +522,23 @@
     "task": "**Aufgabe 1: Grundschuldkosten berechnen**\n\nBerechnen Sie die Kosten für die Grundschuldbestellung:\n- Darlehensbetrag: 280.000 €\n- Notar: 0,4% des Darlehensbetrags\n- Grundbuchamt: 0,3% des Darlehensbetrags\n- **Gesamtkosten:** ?\n\n---\n\n**Aufgabe 2: Zwangsversteigerung simulieren**\n\nSimulieren Sie eine Zwangsversteigerung:\n- Immobilienwert: 600.000 €\n- Grundschuld Bank A (erstrangig): 400.000 €\n- Grundschuld Bank B (zweitrangig): 150.000 €\n- Versteigerungserlös: 500.000 €\n\n**Verteilung:**\n- Bank A erhält: ?\n- Bank B erhält: ?\n- Kunde erhält: ?\n\n---\n\n**Aufgabe 3: Sicherheiten vergleichen**\n\nVergleichen Sie die Vor- und Nachteile:\n\n**Grundschuld:**\n- Vorteile: ?\n- Nachteile: ?\n\n**Hypothek:**\n- Vorteile: ?\n- Nachteile: ?\n\n**Bürgschaft:**\n- Vorteile: ?\n- Nachteile: ?",
     "solution": "**Lösung Praxisfall 1:**\n1. Grundschuld: 350.000 € (entspricht Darlehensbetrag).\n2. Kosten: ca. 3.500 € (1% von 350.000 €).\n3. Kunde trägt die Kosten (Kaufnebenkosten).\n4. Nach Tilgung: Grundschuld bleibt bestehen (nicht akzessorisch).\n5. Nein, Grundschuld nicht löschen, sondern für zukünftige Darlehen nutzen (spart Kosten).\n\n**Lösung Praxisfall 2:**\n1. Bank A erhält: 350.000 € (vollständig befriedigt).\n2. Bank B erhält: 50.000 € (statt 100.000 €).\n3. Kunde erhält: 0 €.\n4. Wenn Erlös 300.000 €: Bank A erhält 300.000 €, Bank B erhält 0 €, Kunde erhält 0 €.\n5. Rangfolge wichtig, weil: Erstrangige Gläubiger werden zuerst befriedigt.\n\n**Lösung Praxisfall 3:**\n1. Selbstschuldnerische Bürgschaft (üblich bei Immobilienfinanzierung).\n2. Risiken: Volle Haftung für 300.000 €, Schufa-Eintrag bei Inanspruchnahme, eigene Kreditwürdigkeit leidet.\n3. Ja, Höchstbetragsbürgschaft (z.B. bis 100.000 €).\n4. Wenn Kunde nicht zahlt: Bank kassiert bei Eltern.\n5. Nur wenn: Eltern finanziell abgesichert sind, Vertrauen zum Kunden besteht, Höchstbetragsbürgschaft vereinbart wird.\n\n**Lösung Aufgabe 1:**\n- Notar: 280.000 € × 0,4% = 1.120 €\n- Grundbuchamt: 280.000 € × 0,3% = 840 €\n- Gesamtkosten: 1.120 € + 840 € = 1.960 €\n\n**Lösung Aufgabe 2:**\n- Bank A erhält: 400.000 € (vollständig)\n- Bank B erhält: 100.000 € (statt 150.000 €)\n- Kunde erhält: 0 €\n\n**Lösung Aufgabe 3:**\n\n**Grundschuld:**\n- Vorteile: Wiederverwendbar, übertragbar, flexibel\n- Nachteile: Bleibt nach Tilgung bestehen (Löschungskosten), Kosten für Bestellung\n\n**Hypothek:**\n- Vorteile: Erlischt automatisch nach Tilgung (keine Löschungskosten)\n- Nachteile: Nicht wiederverwendbar, weniger flexibel, heute selten\n\n**Bürgschaft:**\n- Vorteile: Keine direkten Kosten, persönliche Sicherheit\n- Nachteile: Risiko für Bürgen, Schufa-Eintrag, Belastung der Beziehung",
     "type": "Theorie",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Sicherheiten: Grundschuld, Hypothek, Bürgschaft' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Sicherheiten: Grundschuld, Hypothek, Bürgschaft': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Sicherheiten: Grundschuld, Hypothek, Bürgschaft' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_16": {
     "title": "Anschlussfinanzierung, Prolongation und Forward-Darlehen",
@@ -314,7 +554,23 @@
     "task": "**Aufgabe 1: Umschuldung berechnen**\n\nBerechnen Sie die Ersparnis bei Umschuldung:\n- Restschuld: 250.000 €\n- Prolongation: 4,5% p.a.\n- Umschuldung: 4,0% p.a.\n- Laufzeit: 10 Jahre\n- Kosten Grundschuldabtretung: 500 €\n- **Ersparnis pro Jahr:** ?\n- **Gesamtersparnis:** ?\n\n---\n\n**Aufgabe 2: Forward-Prämie berechnen**\n\nBerechnen Sie den Forward-Zinssatz:\n- Aktueller Marktzins: 3,2% p.a.\n- Vorlaufzeit: 48 Monate\n- Forward-Prämie: 0,01% pro Monat\n- **Forward-Zinssatz:** ?\n\n---\n\n**Aufgabe 3: Optionen vergleichen**\n\nVergleichen Sie die drei Optionen:\n- Restschuld: 220.000 €\n- Prolongation: 4,3% p.a.\n- Umschuldung: 3,9% p.a. (Kosten 440 €)\n- Forward-Darlehen: 3,7% p.a. (abgeschlossen 2 Jahre vorher)\n\n**Welche Option ist am günstigsten?**",
     "solution": "**Lösung Praxisfall 1:**\n1. Ersparnis pro Jahr: 200.000 € × (4,2% - 3,8%) = 800 €/Jahr.\n2. Kosten Umschuldung: ca. 400 € (Grundschuldabtretung 0,2%).\n3. Ja, lohnt sich: 800 €/Jahr × 10 Jahre = 8.000 € - 400 € = 7.600 € Nettoersparnis.\n4. Berater muss: Rechtzeitig beraten (12-18 Monate vorher), Vergleichsangebote vorlegen, dokumentieren.\n5. Unterlagen: Gehaltsabrechnungen, Kontoauszüge, Grundbuchauszug, Darlehensvertrag.\n\n**Lösung Praxisfall 2:**\n1. Forward-Prämie: 0,01% × 36 = 0,36%.\n2. Lohnt sich, wenn: Zinsen in 3 Jahren über 3,36% liegen.\n3. Wenn Zinsen 2,5%: Kunde zahlt 0,86% zu viel = ca. 1.700 €/Jahr Mehrkosten.\n4. Wenn Zinsen 4,5%: Kunde spart 1,14% = ca. 2.300 €/Jahr.\n5. Empfehlung: Ja, wenn Zinsanstieg erwartet wird (Risiko: Zinsen sinken).\n\n**Lösung Praxisfall 3:**\n1. Ja, nach 10 Jahren Sonderkündigungsrecht (§ 489 BGB).\n2. Frist: 6 Monate.\n3. Nein, keine Vorfälligkeitsentschädigung bei Sonderkündigungsrecht.\n4. Nein, lohnt sich nicht: Aktueller Zins 2,5% < Marktzins 4,0%.\n5. Kunde sollte: Darlehen weiterlaufen lassen (günstiger Zinssatz).\n\n**Lösung Aufgabe 1:**\n- Ersparnis pro Jahr: 250.000 € × (4,5% - 4,0%) = 1.250 €\n- Gesamtersparnis: 1.250 € × 10 - 500 € = 12.000 €\n\n**Lösung Aufgabe 2:**\n- Forward-Zinssatz: 3,2% + (0,01% × 48) = 3,68% p.a.\n\n**Lösung Aufgabe 3:**\n- Prolongation: 220.000 € × 4,3% = 9.460 €/Jahr\n- Umschuldung: 220.000 € × 3,9% = 8.580 €/Jahr + 440 € = 8.624 €/Jahr (1. Jahr)\n- Forward-Darlehen: 220.000 € × 3,7% = 8.140 €/Jahr\n- **Günstigste Option:** Forward-Darlehen",
     "type": "Theorie",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Anschlussfinanzierung, Prolongation und Forward-Darlehen' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Anschlussfinanzierung, Prolongation und Forward-Darlehen': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Anschlussfinanzierung, Prolongation und Forward-Darlehen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_17": {
     "title": "Vorfälligkeitsentschädigung, Sondertilgung und Tilgungssatzwechsel",
@@ -331,7 +587,23 @@
     "task": "**Aufgabe 1: Vorfälligkeitsentschädigung berechnen**\n\nBerechnen Sie die Vorfälligkeitsentschädigung:\n- Restschuld: 220.000 €\n- Vertragszins: 3,2% p.a.\n- Wiederanlagezins: 1,8% p.a.\n- Restlaufzeit: 6 Jahre\n- **Vorfälligkeitsentschädigung:** ?\n\n---\n\n**Aufgabe 2: Zinsersparnis durch Sondertilgung**\n\nBerechnen Sie die Zinsersparnis:\n- Darlehensbetrag: 280.000 €\n- Zinssatz: 3,6% p.a.\n- Sondertilgung: 15.000 €\n- **Zinsersparnis pro Jahr:** ?\n- **Gesamtersparnis über 20 Jahre:** ?\n\n---\n\n**Aufgabe 3: Tilgungssatzwechsel berechnen**\n\nBerechnen Sie die neue Rate:\n- Darlehensbetrag: 320.000 €\n- Zinssatz: 3,4% p.a.\n- Alte Tilgung: 2% p.a.\n- Neue Tilgung: 3,5% p.a.\n- **Alte monatliche Rate:** ?\n- **Neue monatliche Rate:** ?\n- **Differenz:** ?",
     "solution": "**Lösung Praxisfall 1:**\n1. Vorfälligkeitsentschädigung: (3,0% - 1,5%) × 180.000 € × 7 = 18.900 €.\n2. Umgehen durch: Sonderkündigungsrecht nach 10 Jahren (§ 489 BGB), berechtigtes Interesse verhandeln.\n3. Wenn Wiederanlagezins > Vertragszins: Keine Vorfälligkeitsentschädigung (Bank hat keinen Verlust).\n4. Ja, verhandeln möglich: Bei berechtigtem Interesse (Verkauf, Jobwechsel) oft 50% Rabatt.\n5. Alternativen: Sondertilgung nutzen (wenn vereinbart), Darlehen weiterlaufen lassen.\n\n**Lösung Praxisfall 2:**\n1. Maximale Sondertilgung: 250.000 € × 5% = 12.500 €.\n2. Zinsersparnis pro Jahr: 12.500 € × 3,5% = 437,50 €.\n3. Gesamtersparnis über Laufzeit: ca. 10.000 € (abhängig von Restlaufzeit).\n4. Nein, nur 12.500 € sondertilgen (Maximum), Rest als Rücklage behalten.\n5. Alternativen: Rücklagen bilden, in ETF investieren (höhere Rendite), Renovierung.\n\n**Lösung Praxisfall 3:**\n1. Neue monatliche Rate: 300.000 € × (3,5% + 3%) / 12 = 1.625 €.\n2. Jahre gespart: ca. 10 Jahre (von 35 auf 25 Jahre).\n3. Zinsersparnis: ca. 40.000 €.\n4. Kosten: Meist kostenlos (1-2x während Zinsbindung).\n5. Ja, lohnt sich: 40.000 € Ersparnis, schnellere Entschuldung.\n\n**Lösung Aufgabe 1:**\n- Vorfälligkeitsentschädigung: (3,2% - 1,8%) × 220.000 € × 6 = 18.480 €\n\n**Lösung Aufgabe 2:**\n- Zinsersparnis pro Jahr: 15.000 € × 3,6% = 540 €\n- Gesamtersparnis über 20 Jahre: ca. 12.000 €\n\n**Lösung Aufgabe 3:**\n- Alte monatliche Rate: 320.000 € × (3,4% + 2%) / 12 = 1.440 €\n- Neue monatliche Rate: 320.000 € × (3,4% + 3,5%) / 12 = 1.840 €\n- Differenz: 400 €",
     "type": "Theorie",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Vorfälligkeitsentschädigung, Sondertilgung und Tilgungssatzwechsel' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Vorfälligkeitsentschädigung, Sondertilgung und Tilgungssatzwechsel': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Vorfälligkeitsentschädigung, Sondertilgung und Tilgungssatzwechsel' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_18": {
     "title": "Risiken der Immobilienfinanzierung und Absicherung",
@@ -347,7 +619,23 @@
     "task": "**Aufgabe 1: Zinsänderungsrisiko berechnen**\n\nBerechnen Sie die Mehrbelastung:\n- Restschuld nach 10 Jahren: 220.000 €\n- Alter Zinssatz: 2,8% p.a.\n- Neuer Zinssatz: 4,8% p.a.\n- Tilgung: 2% p.a.\n- **Alte monatliche Rate:** ?\n- **Neue monatliche Rate:** ?\n- **Mehrbelastung pro Monat:** ?\n\n---\n\n**Aufgabe 2: Rücklagen berechnen**\n\nBerechnen Sie die empfohlenen Rücklagen:\n- Monatliche Darlehensrate: 1.800 €\n- Immobilienwert: 450.000 €\n- **Rücklage für Darlehen (6 Monate):** ?\n- **Rücklage für Instandhaltung (1% p.a.):** ?\n- **Gesamtrücklage:** ?\n\n---\n\n**Aufgabe 3: Haushaltsrechnung mit Sicherheitspuffer**\n\nBerechnen Sie die maximale Darlehensrate:\n- Nettoeinkommen: 5.500 €/Monat\n- Ausgaben: 3.200 €/Monat\n- **Verfügbares Einkommen:** ?\n- **Maximale Darlehensrate (20% Puffer):** ?",
     "solution": "**Lösung Praxisfall 1:**\n1. Monatliche Rate erste 10 Jahre: 250.000 € × (2,5% + 2%) / 12 = 937,50 €.\n2. Neue monatliche Rate: 200.000 € × (5,0% + 2%) / 12 = 1.166,67 €.\n3. Mehrbelastung: 1.166,67 € - 937,50 € = 229,17 €/Monat = 2.750 €/Jahr.\n4. Risiko reduzieren durch: Lange Zinsbindung (15-20 Jahre), Forward-Darlehen, höhere Tilgung, Rücklagen.\n5. Absicherungen: Rücklagen (6 Monatsraten), lange Zinsbindung, Forward-Darlehen.\n\n**Lösung Praxisfall 2:**\n1. Nein, kann Rate nicht zahlen: 1.200 € - 1.000 € = 200 € verfügbar (< 1.500 € Rate).\n2. Nach 3 Monaten: Kündigung des Darlehens (§ 498 BGB), Zwangsversteigerung droht.\n3. Optionen: Stundung bei Bank beantragen, Tilgungssatzwechsel (Senkung), Rücklagen nutzen, freiwilliger Verkauf.\n4. Absichern durch: Berufsunfähigkeitsversicherung, Arbeitslosenversicherung, Rücklagen (6 Monatsraten).\n5. Jetzt: Sofort mit Bank sprechen, Stundung beantragen, neuen Job suchen, Rücklagen nutzen.\n\n**Lösung Praxisfall 3:**\n1. Versicherungssumme: 350.000 € (fallend mit Restschuld).\n2. BU-Rente: 1.600 €/Monat (= Darlehensrate).\n3. Kosten: Risikolebensversicherung ca. 40 €/Monat, BU ca. 90 €/Monat = 130 €/Monat.\n4. Rücklagen: 6 × 1.600 € = 9.600 € + 4% Instandhaltung (ca. 3.500 €/Jahr) = 13.100 €.\n5. Ja, lohnt sich: Schutz der Familie, geringe Kosten im Verhältnis zum Risiko.\n\n**Lösung Aufgabe 1:**\n- Alte monatliche Rate: 220.000 € × (2,8% + 2%) / 12 = 880 €\n- Neue monatliche Rate: 220.000 € × (4,8% + 2%) / 12 = 1.246,67 €\n- Mehrbelastung: 366,67 €/Monat\n\n**Lösung Aufgabe 2:**\n- Rücklage Darlehen: 6 × 1.800 € = 10.800 €\n- Rücklage Instandhaltung: 450.000 € × 1% = 4.500 €/Jahr\n- Gesamtrücklage: 10.800 € + 4.500 € = 15.300 €\n\n**Lösung Aufgabe 3:**\n- Verfügbares Einkommen: 5.500 € - 3.200 € = 2.300 €\n- Maximale Darlehensrate: 2.300 € / 1,2 = 1.916,67 €",
     "type": "Theorie",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Risiken der Immobilienfinanzierung und Absicherung' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Risiken der Immobilienfinanzierung und Absicherung': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Risiken der Immobilienfinanzierung und Absicherung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_19": {
     "title": "Besondere Finanzierungsformen: Mietkauf, Leibrente, Reverse Mortgage",
@@ -364,7 +652,23 @@
     "task": "**Aufgabe 1: Mietkauf berechnen**\n\nBerechnen Sie die Gesamtkosten:\n- Kaufpreis: 280.000 €\n- Monatliche Miete: 1.100 €\n- Anrechnung: 300 €/Monat\n- Laufzeit: 10 Jahre\n- **Angerechnete Mieten:** ?\n- **Restkaufpreis:** ?\n- **Gesamtkosten:** ?\n\n---\n\n**Aufgabe 2: Leibrente berechnen**\n\nBerechnen Sie die monatliche Leibrente:\n- Immobilienwert: 400.000 €\n- Lebenserwartung: 18 Jahre\n- **Monatliche Leibrente:** ?\n\n---\n\n**Aufgabe 3: Reverse Mortgage berechnen**\n\nBerechnen Sie die Gesamtschuld:\n- Beleihung: 200.000 €\n- Monatliche Auszahlung: 1.000 €\n- Zinssatz: 6% p.a.\n- Laufzeit: 12 Jahre\n- **Gesamtschuld (ca.):** ?",
     "solution": "**Lösung Praxisfall 1:**\n1. Angerechnete Mieten: 350 € × 12 × 10 = 42.000 €.\n2. Restkaufpreis: 300.000 € - 42.000 € = 258.000 €.\n3. Gesamtkosten: (1.200 € × 12 × 10) + 258.000 € = 402.000 €.\n4. Klassische Finanzierung: ca. 380.000 € (300.000 € + 80.000 € Zinsen), Mehrkosten: 22.000 €.\n5. Lohnt sich nur, wenn klassische Finanzierung nicht möglich (kein Eigenkapital, schlechte Bonität).\n\n**Lösung Praxisfall 2:**\n1. Monatliche Leibrente: 350.000 € / (12 × 12) = 2.431 €/Monat.\n2. Gesamtzahlung (12 Jahre): 2.431 € × 12 × 12 = 350.000 €.\n3. Wenn 15 Jahre: Gesamtzahlung 437.917 € (Käufer zahlt mehr).\n4. Wenn 8 Jahre: Gesamtzahlung 233.333 € (Verkäufer erhält weniger).\n5. Lohnt sich für: Verkäufer ohne Erben, Liquiditätsbedarf; Käufer als Investition.\n\n**Lösung Praxisfall 3:**\n1. Beleihung: 450.000 € × 50% = 225.000 €.\n2. Laufzeit: 225.000 € / 1.200 € = 187,5 Monate = ca. 15,6 Jahre.\n3. Gesamtschuld nach 15 Jahren: ca. 225.000 € + 135.000 € Zinsen = 360.000 €.\n4. Erben erhalten: 450.000 € - 360.000 € = 90.000 €.\n5. Lohnt sich nur, wenn: Liquiditätsbedarf, keine andere Option; besser: Immobilie verkaufen.\n\n**Lösung Aufgabe 1:**\n- Angerechnete Mieten: 300 € × 12 × 10 = 36.000 €\n- Restkaufpreis: 280.000 € - 36.000 € = 244.000 €\n- Gesamtkosten: (1.100 € × 12 × 10) + 244.000 € = 376.000 €\n\n**Lösung Aufgabe 2:**\n- Monatliche Leibrente: 400.000 € / (18 × 12) = 1.852 €/Monat\n\n**Lösung Aufgabe 3:**\n- Gesamtschuld (ca.): 200.000 € + (200.000 € × 6% × 12) = 344.000 €",
     "type": "Theorie",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Besondere Finanzierungsformen: Mietkauf, Leibrente, Reverse Mortgage' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Besondere Finanzierungsformen: Mietkauf, Leibrente, Reverse Mortgage': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Besondere Finanzierungsformen: Mietkauf, Leibrente, Reverse Mortgage' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_20": {
     "title": "Zusammenfassung Theorie und Vorbereitung auf Prüfungsvorbereitung",
@@ -383,7 +687,23 @@
     "task": "**Aufgabe 1: Wiederholung Formeln**\n\nBerechnen Sie:\n1. Annuität: Darlehensbetrag 280.000 €, Zinssatz 3,4% p.a., Tilgung 2,2% p.a.\n2. Maximale Darlehensrate: Verfügbares Einkommen 1.800 €, Sicherheitspuffer 20%\n3. Beleihungsauslauf: Darlehensbetrag 260.000 €, Beleihungswert 320.000 €\n4. Vorfälligkeitsentschädigung: Restschuld 190.000 €, Vertragszins 3,0%, Wiederanlagezins 1,5%, Restlaufzeit 6 Jahre\n\n---\n\n**Aufgabe 2: Gesetze wiederholen**\n\nNennen Sie:\n1. Erlaubnispflicht für Darlehensvermittler (Gesetz + Paragraph)\n2. Beratungs- und Dokumentationspflichten (Gesetz + Paragraph)\n3. Sonderkündigungsrecht nach 10 Jahren (Gesetz + Paragraph)\n4. Widerrufsrecht bei Darlehensverträgen (Gesetz + Paragraph)\n5. Identifizierung des Kunden (Gesetz + Paragraph)\n\n---\n\n**Aufgabe 3: Praxisbeispiele wiederholen**\n\nErklären Sie:\n1. Wie erstellt man eine Haushaltsrechnung?\n2. Wie führt man einen Konditionsvergleich durch?\n3. Wie prüft man die Bonität eines Kunden?\n4. Wie berechnet man die Vorfälligkeitsentschädigung?\n5. Wie sichert man Risiken ab?",
     "solution": "**Lösung Praxisfall 1:**\n1. Haushaltsrechnung: Gesamteinkommen 7.000 €, Ausgaben 3.000 €, Verfügbares Einkommen 4.000 €, Maximale Rate 3.333 €.\n2. Bonität: Gut (ausreichendes Einkommen, Eigenkapital 20%, Sicherheitspuffer vorhanden).\n3. Darlehensprodukt: Annuitätendarlehen 320.000 €, 3,5% Zinsen, 2% Tilgung, 10 Jahre Zinsbindung, monatliche Rate 1.467 €.\n4. Konditionsvergleich: Bank A 3,5%, Bank B 3,8%, Bank C 3,6% → Empfehlung Bank A.\n5. Risiken: Zinsänderung, Zahlungsunfähigkeit, Tod, Wertverlust.\n6. Absicherungen: Risikolebensversicherung 320.000 €, BU 1.500 €/Monat, Rücklagen 9.000 €.\n7. Beratungsprotokoll: Kundendaten, finanzielle Situation, Bedarfsanalyse, Produktempfehlung, Risikoaufklärung, Unterschrift.\n\n**Lösung Praxisfall 2:**\n1. Ersparnis: (4,5% - 4,0%) × 220.000 € = 1.100 €/Jahr = 11.000 € über 10 Jahre.\n2. Kosten: Grundschuldabtretung ca. 440 € (0,2%).\n3. Empfehlung: Umschuldung (Nettoersparnis 10.560 €).\n4. Forward-Darlehen: Zinssicherung bis 5 Jahre im Voraus, Zinsaufschlag 0,01-0,03% pro Monat.\n5. Sonderkündigungsrecht: Nach 10 Jahren mit 6 Monaten Frist (§ 489 BGB), keine Vorfälligkeitsentschädigung.\n\n**Lösung Praxisfall 3:**\n1. Risiken: Zinsänderung, Jobverlust, Krankheit, Tod, Wertverlust, Zwangsversteigerung.\n2. Absicherungen: Risikolebensversicherung 300.000 €, BU 1.500 €/Monat, Rücklagen 9.000 €, lange Zinsbindung.\n3. Kosten: Risikolebensversicherung 40 €/Monat, BU 90 €/Monat = 130 €/Monat.\n4. Notfallplan: Rücklagen nutzen, mit Bank sprechen (Stundung), Tilgungssatzwechsel, freiwilliger Verkauf.\n5. Zwangsversteigerung: Nach 3 Monaten Zahlungsverzug, Kündigung, Versteigerung, Erlösverteilung nach Rangfolge.\n\n**Lösung Aufgabe 1:**\n1. Annuität: 280.000 € × (3,4% + 2,2%) = 15.680 €/Jahr = 1.306,67 €/Monat\n2. Maximale Darlehensrate: 1.800 € / 1,2 = 1.500 €\n3. Beleihungsauslauf: 260.000 € / 320.000 € = 81,25%\n4. Vorfälligkeitsentschädigung: (3,0% - 1,5%) × 190.000 € × 6 = 17.100 €\n\n**Lösung Aufgabe 2:**\n1. §34i GewO (Erlaubnispflicht für Darlehensvermittler)\n2. § 511 BGB (Beratungs- und Dokumentationspflichten)\n3. § 489 BGB (Sonderkündigungsrecht nach 10 Jahren)\n4. § 495 BGB (Widerrufsrecht bei Darlehensverträgen)\n5. § 11 GwG (Identifizierung des Kunden)\n\n**Lösung Aufgabe 3:**\n1. Haushaltsrechnung: Einnahmen - Ausgaben = Verfügbares Einkommen, Maximale Rate = Verfügbares Einkommen / 1,2\n2. Konditionsvergleich: Mindestens 3 Angebote einholen, Effektivzins vergleichen, Zinsbindung, Sondertilgung, Bereitstellungszinsen\n3. Bonitätsprüfung: Einkommensprüfung, Ausgabenprüfung, Vermögensprüfung, Schufa-Auskunft, Haushaltsrechnung\n4. Vorfälligkeitsentschädigung: (Vertragszins - Wiederanlagezins) × Restschuld × Restlaufzeit\n5. Risiken absichern: Risikolebensversicherung, Berufsunfähigkeitsversicherung, Rücklagen, lange Zinsbindung, Sicherheitspuffer",
     "type": "Theorie",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Zusammenfassung Theorie und Vorbereitung auf Prüfungsvorbereitung' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Zusammenfassung Theorie und Vorbereitung auf Prüfungsvorbereitung': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Zusammenfassung Theorie und Vorbereitung auf Prüfungsvorbereitung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_21": {
     "title": "Übungsaufgaben: Haushaltsrechnung und Finanzierungsplanung",
@@ -398,7 +718,23 @@
     "task": "**Aufgabe 1: Haushaltsrechnung**\n\nErstellen Sie eine Haushaltsrechnung:\n- Nettoeinkommen: 4.200 €/Monat\n- Lebenshaltung: 1.300 €\n- Pkw: 400 €\n- Versicherungen: 220 €\n- Freizeit: 500 €\n- **Verfügbares Einkommen:** ?\n- **Maximale Darlehensrate:** ?\n\n---\n\n**Aufgabe 2: Eigenkapital**\n\nBerechnen Sie das Mindest-Eigenkapital:\n- Kaufpreis: 380.000 €\n- Nebenkosten: 10%\n- **Gesamtkosten:** ?\n- **Mindest-Eigenkapital (20%):** ?\n\n---\n\n**Aufgabe 3: Maximales Darlehen**\n\nBerechnen Sie das maximale Darlehen:\n- Maximale Darlehensrate: 1.800 €/Monat\n- Zinssatz: 3,6% p.a.\n- Tilgung: 2,2% p.a.\n- **Maximales Darlehen:** ?",
     "solution": "**Lösung Praxisfall 1:**\n1. Verfügbares Einkommen: 3.800 € - (1.100 € + 350 € + 180 € + 450 € + 300 €) = 1.420 €\n2. Maximale Darlehensrate: 1.420 € / 1,2 = 1.183 €\n3. Maximales Darlehen: 1.183 € × 12 / (3,5% + 2%) = 258.109 €\n4. Ja, tragbar (ausreichendes Einkommen, Sicherheitspuffer vorhanden)\n\n**Lösung Praxisfall 2:**\n1. Nebenkosten: 500.000 € × 10% = 50.000 €\n2. Darlehensbedarf: (500.000 € + 50.000 €) - 100.000 € = 450.000 €\n3. Beleihungsauslauf: 450.000 € / (500.000 € × 0,91) = 98,9% (zu hoch!)\n4. Maximale Darlehensrate: (7.500 € - 4.200 €) / 1,2 = 2.750 €\n5. Monatliche Rate: 450.000 € × (3,5% + 2%) / 12 = 2.062,50 €\n6. Ja, tragbar (Rate < maximale Rate), aber Eigenkapital zu niedrig (nur 18%)\n\n**Lösung Praxisfall 3:**\n1. Maximale Darlehensrate: (2.800 € - 1.900 €) / 1,2 = 750 €\n2. Darlehensbedarf: (280.000 € + 28.000 €) - 30.000 € = 278.000 €\n3. Monatliche Rate: 278.000 € × (3,8% + 2%) / 12 = 1.344 €\n4. Nein, nicht tragbar (1.344 € > 750 € maximale Rate)\n5. Empfehlung: Mehr Eigenkapital ansparen, günstigere Immobilie suchen, Einkommen erhöhen\n\n**Lösung Aufgabe 1:**\n- Verfügbares Einkommen: 4.200 € - (1.300 € + 400 € + 220 € + 500 €) = 1.780 €\n- Maximale Darlehensrate: 1.780 € / 1,2 = 1.483 €\n\n**Lösung Aufgabe 2:**\n- Gesamtkosten: 380.000 € + (380.000 € × 10%) = 418.000 €\n- Mindest-Eigenkapital: 418.000 € × 20% = 83.600 €\n\n**Lösung Aufgabe 3:**\n- Maximales Darlehen: 1.800 € × 12 / (3,6% + 2,2%) = 372.414 €",
     "type": "Prüfungsvorbereitung",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Übungsaufgaben: Haushaltsrechnung und Finanzierungsplanung' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Übungsaufgaben: Haushaltsrechnung und Finanzierungsplanung': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Übungsaufgaben: Haushaltsrechnung und Finanzierungsplanung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_22": {
     "title": "Übungsaufgaben: Konditionsvergleich und Effektivzins",
@@ -413,7 +749,23 @@
     "task": "**Aufgabe 1: Effektivzins berechnen**\n\nBerechnen Sie den Effektivzins:\n- Darlehensbetrag: 280.000 €\n- Sollzins: 3,40% p.a.\n- Bearbeitungsgebühr: 2.800 € (1%)\n- Laufzeit: 10 Jahre\n- **Effektivzins (vereinfacht):** ?\n\n---\n\n**Aufgabe 2: Bereitstellungszinsen**\n\nBerechnen Sie die Bereitstellungszinsen:\n- Darlehensbetrag: 380.000 €\n- Bereitstellungszinsen: 0,25% pro Monat ab 4. Monat\n- Bauzeit: 14 Monate\n- **Bereitstellungszinsen:** ?\n\n---\n\n**Aufgabe 3: Konditionsvergleich**\n\nVergleichen Sie die Angebote:\n- Bank A: Effektivzins 3,52%, 10 Jahre Zinsbindung, 5% Sondertilgung\n- Bank B: Effektivzins 3,68%, 15 Jahre Zinsbindung, 10% Sondertilgung\n- Bank C: Effektivzins 3,48%, 10 Jahre Zinsbindung, 5% Sondertilgung\n\n**Welche Bank empfehlen Sie?**",
     "solution": "**Lösung Praxisfall 1:**\n1. Bank A: 3,50% (günstigster Effektivzins)\n2. Bank B: 15 Jahre Zinsbindung\n3. Empfehlung: Bank A (günstigster Effektivzins, gute Konditionen); Bank B wenn Kunde lange Zinssicherheit wünscht\n4. Ersparnis: 350.000 € × (3,65% - 3,50%) = 525 €/Jahr\n\n**Lösung Praxisfall 2:**\n1. Bereitstellungszinsen Bank A: 450.000 € × 0,25% × 12 Monate = 13.500 €\n2. Bereitstellungszinsen Bank B: 450.000 € × 0,25% × 9 Monate = 10.125 €\n3. Ersparnis: 13.500 € - 10.125 € = 3.375 €\n4. Empfehlung: Bank B (3.375 € Ersparnis)\n\n**Lösung Praxisfall 3:**\n1. Monatliche Rate ohne KfW: 400.000 € × (3,50% + 2%) / 12 = 1.833,33 €\n2. Monatliche Rate mit KfW: (300.000 € × 5,5% / 12) + (100.000 € × 3,5% / 12) = 1.666,67 €\n3. Ersparnis pro Monat: 1.833,33 € - 1.666,67 € = 166,67 €\n4. Ersparnis über 10 Jahre: 166,67 € × 12 × 10 = 20.000 €\n\n**Lösung Aufgabe 1:**\n- Effektivzins: 3,40% + (2.800 € / 280.000 € / 10) = 3,50% p.a.\n\n**Lösung Aufgabe 2:**\n- Bereitstellungszinsen: 380.000 € × 0,25% × 10 Monate = 9.500 €\n\n**Lösung Aufgabe 3:**\n- Empfehlung: Bank C (günstigster Effektivzins 3,48%)",
     "type": "Prüfungsvorbereitung",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Übungsaufgaben: Konditionsvergleich und Effektivzins' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Übungsaufgaben: Konditionsvergleich und Effektivzins': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Übungsaufgaben: Konditionsvergleich und Effektivzins' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_23": {
     "title": "Übungsaufgaben: Bonitätsprüfung und Schufa",
@@ -429,7 +781,23 @@
     "task": "**Aufgabe 1: Schufa-Score bewerten**\n\nBewerten Sie die Bonität:\n- Schufa-Score: 87%\n- Negativmerkmale: 1 laufender Ratenkredit\n- **Bewertung:** ?\n\n---\n\n**Aufgabe 2: Verfügbares Einkommen berechnen**\n\nBerechnen Sie das verfügbare Einkommen:\n- Nettoeinkommen: 4.500 €/Monat\n- Ausgaben: 2.400 €/Monat\n- Laufende Ratenkredite: 250 €/Monat\n- **Verfügbares Einkommen:** ?\n\n---\n\n**Aufgabe 3: Eigenkapital prüfen**\n\nPrüfen Sie das Eigenkapital:\n- Kaufpreis: 360.000 €\n- Nebenkosten: 10%\n- Eigenkapital: 70.000 €\n- **Eigenkapitalquote:** ?\n- **Ausreichend (mindestens 20%):** ?",
     "solution": "**Lösung Praxisfall 1:**\n1. Einkommen: 4.200 € ausreichend für 320.000 € Darlehen\n2. Ausgaben: 2.300 € realistisch (+ 180 € Ratenkredit = 2.480 €)\n3. Eigenkapital: 80.000 € = 22% (ausreichend bei 360.000 € Gesamtkosten)\n4. Schufa-Score: 91% = Gute Bonität\n5. Gesamtbonität: Gut (ausreichendes Einkommen, Eigenkapital, guter Schufa-Score)\n6. Empfehlung: Kredit möglich, Ratenkredit ablösen (erhöht verfügbares Einkommen)\n\n**Lösung Praxisfall 2:**\n1. Bonität: Befriedigend bis schlecht (Schufa 78%, Zahlungsverzug, hohe Ratenkredite)\n2. Probleme: Schlechter Schufa-Score, Zahlungsverzug, hohe Ratenkredite (400 €/Monat), niedriges Eigenkapital (14%)\n3. Lösungen: Ratenkredite ablösen, mehr Eigenkapital ansparen, Zahlungsverzug erklären\n4. Kredit: Schwierig, nur mit höherem Zinssatz oder höherem Eigenkapital\n5. Bedingungen: Ablösung Ratenkredite, Eigenkapital erhöhen auf 30%, höherer Zinssatz, zusätzliche Sicherheiten\n\n**Lösung Praxisfall 3:**\n1. Unterlagen: 3 Jahre Steuerbescheide, BWA, Einnahmen-Überschuss-Rechnung, Kontoauszüge\n2. Bonität: Gut (ausreichendes Einkommen, hohes Eigenkapital, guter Schufa-Score)\n3. Besonderheiten: Höhere Anforderungen (3 Jahre Steuerbescheide), Einkommen schwankend, höheres Eigenkapital empfohlen (30%)\n4. Kredit: Möglich\n5. Bedingungen: 3 Jahre Steuerbescheide, Eigenkapital 30% (120.000 €), normale Zinsen\n\n**Lösung Aufgabe 1:**\n- Bewertung: Befriedigende Bonität (87% = befriedigend, 1 laufender Kredit reduziert Score)\n\n**Lösung Aufgabe 2:**\n- Verfügbares Einkommen: 4.500 € - 2.400 € - 250 € = 1.850 €\n\n**Lösung Aufgabe 3:**\n- Eigenkapitalquote: 70.000 € / (360.000 € + 36.000 €) = 17,7%\n- Ausreichend: Nein (< 20%), mehr Eigenkapital erforderlich",
     "type": "Prüfungsvorbereitung",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Übungsaufgaben: Bonitätsprüfung und Schufa' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Übungsaufgaben: Bonitätsprüfung und Schufa': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Übungsaufgaben: Bonitätsprüfung und Schufa' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_24": {
     "title": "Übungsaufgaben: Beratungsprotokoll und Dokumentation",
@@ -444,7 +812,23 @@
     "task": "**Aufgabe 1: Pflichtangaben Beratungsprotokoll**\n\nNennen Sie die Pflichtangaben eines Beratungsprotokolls (mindestens 6):\n\n---\n\n**Aufgabe 2: Aufbewahrungsfrist**\n\nWie lange muss ein Beratungsprotokoll aufbewahrt werden?\n\n---\n\n**Aufgabe 3: Risikoaufklärung**\n\nNennen Sie 4 Risiken, über die Sie aufklären müssen:",
     "solution": "**Lösung Praxisfall 1:**\n1. Beratungsprotokoll: Siehe Muster oben (Kundendaten, finanzielle Situation, Bedarfsanalyse, Produktempfehlung, Risikoaufklärung, Unterschrift)\n2. Maximale Darlehensrate: (7.000 € - 3.500 €) / 1,2 = 2.917 €\n3. Darlehensprodukt: Annuitätendarlehen 260.000 € (350.000 € + 35.000 € - 90.000 €), 3,50% Zinsen, 2% Tilgung, 15 Jahre Zinsbindung, monatliche Rate 1.192 €\n4. Risiken: Zinsänderung, Zahlungsunfähigkeit, Wertverlust, Zwangsversteigerung\n5. Absicherungen: Risikolebensversicherung 260.000 €, BU 1.200 €/Monat, Rücklagen 7.200 €\n\n**Lösung Praxisfall 2:**\n1. Risiken: Zinsänderung, Zahlungsunfähigkeit (Jobverlust, Krankheit, Tod), Wertverlust, Zwangsversteigerung\n2. Zinsänderungsrisiko: \"Nach 15 Jahren kann Zinssatz steigen. Beispiel: Bei Zinsanstieg auf 5% steigt Rate von 2.000 € auf 2.400 €. Absicherung: Lange Zinsbindung, Forward-Darlehen.\"\n3. Zahlungsunfähigkeitsrisiko: \"Bei Jobverlust oder Krankheit können Sie Rate nicht mehr zahlen. Folge: Kündigung, Zwangsversteigerung. Absicherung: Risikolebensversicherung, BU, Rücklagen.\"\n4. Absicherungen: Risikolebensversicherung 400.000 €, BU 2.000 €/Monat, Rücklagen 12.000 €\n5. Dokumentation: Im Beratungsprotokoll unter \"Risikoaufklärung\" alle Risiken und Absicherungen aufführen, Kunde unterschreibt\n\n**Lösung Praxisfall 3:**\n1. Begründung: \"Bank B bietet längste Zinssicherheit (15 Jahre) und höchstes Sondertilgungsrecht (10% p.a.). Trotz höherem Effektivzins (+0,15%) bietet Bank B mehr Flexibilität und Sicherheit.\"\n2. Vorteile Bank B: 15 Jahre Zinssicherheit, 10% Sondertilgung, schnellere Entschuldung möglich\n3. Nachteile Bank A/C: Nur 10 Jahre Zinssicherheit (Zinsänderungsrisiko nach 10 Jahren), nur 5% Sondertilgung\n4. Dokumentation: Im Beratungsprotokoll unter \"Produktempfehlung\" alle 3 Angebote aufführen, Empfehlung begründen, Kunde unterschreibt\n\n**Lösung Aufgabe 1:**\n1. Kundendaten\n2. Finanzielle Situation\n3. Bedarfsanalyse\n4. Produktempfehlung\n5. Risikoaufklärung\n6. Unterschrift\n\n**Lösung Aufgabe 2:**\n- 10 Jahre (§ 511 BGB)\n\n**Lösung Aufgabe 3:**\n1. Zinsänderungsrisiko\n2. Zahlungsunfähigkeitsrisiko\n3. Wertverlustrisiko\n4. Zwangsversteigerungsrisiko",
     "type": "Prüfungsvorbereitung",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Übungsaufgaben: Beratungsprotokoll und Dokumentation' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Übungsaufgaben: Beratungsprotokoll und Dokumentation': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Übungsaufgaben: Beratungsprotokoll und Dokumentation' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_25": {
     "title": "Übungsaufgaben: Rechtsfälle und Gesetze",
@@ -465,7 +849,23 @@
     "task": "**Aufgabe 1: Widerrufsfrist**\n\nWie lange beträgt die Widerrufsfrist bei einem Immobiliar-Verbraucherdarlehensvertrag?\n\n---\n\n**Aufgabe 2: Sonderkündigungsrecht**\n\nNach wie vielen Jahren kann ein Kunde sein Darlehen mit 6 Monaten Frist kündigen?\n\n---\n\n**Aufgabe 3: Vorfälligkeitsentschädigung**\n\nBerechnen Sie die Vorfälligkeitsentschädigung:\n- Restschuld: 180.000 €\n- Vertragszins: 3,0% p.a.\n- Wiederanlagezins: 1,5% p.a.\n- Restlaufzeit: 7 Jahre\n- **Vorfälligkeitsentschädigung:** ?",
     "solution": "**Lösung Praxisfall 1:**\n1. Ja, kann noch widerrufen (innerhalb 14 Tage: 10.03. + 14 Tage = 24.03.)\n2. Frist: 14 Tage nach Vertragsschluss (§ 495 BGB)\n3. Bei Widerruf: Vertrag wird rückabgewickelt, Kunde zahlt Nutzungsersatz (Zinsen)\n4. Nein, keine Vorfälligkeitsentschädigung bei Widerruf\n\n**Lösung Praxisfall 2:**\n1. Ja, kann kündigen (nach 10 Jahren Sonderkündigungsrecht, § 489 BGB)\n2. Frist: 6 Monate\n3. Nein, keine Vorfälligkeitsentschädigung bei Sonderkündigungsrecht\n4. Frühestens: 01.01.2024 (10 Jahre nach Vertragsschluss) + 6 Monate Frist = 01.07.2024\n\n**Lösung Praxisfall 3:**\n1. Ja, Beratungsfehler (Kundenwunsch nicht berücksichtigt)\n2. Verletzt: § 511 BGB (Bedarfsanalyse fehlerhaft)\n3. Schaden: Entgangene Zinsersparnis durch Sondertilgung (50.000 € × 3,5% × Restlaufzeit)\n4. Ja, Berater muss Schadensersatz zahlen (entgangene Zinsersparnis)\n\n**Lösung Aufgabe 1:**\n- Widerrufsfrist: 14 Tage nach Vertragsschluss (§ 495 BGB)\n\n**Lösung Aufgabe 2:**\n- Sonderkündigungsrecht: Nach 10 Jahren mit 6 Monaten Frist (§ 489 BGB)\n\n**Lösung Aufgabe 3:**\n- Vorfälligkeitsentschädigung: (3,0% - 1,5%) × 180.000 € × 7 = 18.900 €",
     "type": "Prüfungsvorbereitung",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Übungsaufgaben: Rechtsfälle und Gesetze' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Übungsaufgaben: Rechtsfälle und Gesetze': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Übungsaufgaben: Rechtsfälle und Gesetze' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_26": {
     "title": "Fallstudie: Erstberatung Eigenheimfinanzierung",
@@ -480,7 +880,23 @@
     "task": "**Aufgabe 1: Eigenkapitalquote berechnen**\n\nBerechnen Sie die Eigenkapitalquote:\n- Kaufpreis: 280.000 €\n- Nebenkosten: 28.000 €\n- Eigenkapital: 68.000 €\n- **Eigenkapitalquote:** ?\n- **Ausreichend (≥20%):** ?\n\n---\n\n**Aufgabe 2: Maximale Darlehensrate**\n\nBerechnen Sie die maximale Darlehensrate:\n- Einkommen: 6.400 €/Monat\n- Ausgaben: 3.870 €/Monat\n- **Verfügbares Einkommen:** ?\n- **Maximale Darlehensrate (20% Puffer):** ?\n\n---\n\n**Aufgabe 3: Monatliche Rate**\n\nBerechnen Sie die monatliche Rate:\n- Darlehensbetrag: 240.000 €\n- Zinssatz: 3,60% p.a.\n- Tilgung: 2,5% p.a.\n- **Monatliche Rate:** ?",
     "solution": "**Lösung Aufgabe 1:**\n- Eigenkapitalquote: 68.000 € / (280.000 € + 28.000 €) = 22,1%\n- Ausreichend: Ja (≥20%)\n\n**Lösung Aufgabe 2:**\n- Verfügbares Einkommen: 6.400 € - 3.870 € = 2.530 €\n- Maximale Darlehensrate: 2.530 € / 1,2 = 2.108 €\n\n**Lösung Aufgabe 3:**\n- Monatliche Rate: 240.000 € × (3,60% + 2,5%) / 12 = 1.220 €",
     "type": "Prüfungsvorbereitung",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Fallstudie: Erstberatung Eigenheimfinanzierung' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Fallstudie: Erstberatung Eigenheimfinanzierung': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Fallstudie: Erstberatung Eigenheimfinanzierung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_27": {
     "title": "Fallstudie: Anschlussfinanzierung und Umschuldung",
@@ -495,7 +911,23 @@
     "task": "**Aufgabe 1: Ersparnis berechnen**\n\nBerechnen Sie die Nettoersparnis:\n- Prolongation: 4,5% p.a., 1.300 €/Monat\n- Umschuldung: 3,8% p.a., 1.160 €/Monat\n- Kosten Umschuldung: 480 €\n- Laufzeit: 10 Jahre\n- **Ersparnis pro Monat:** ?\n- **Ersparnis über 10 Jahre:** ?\n- **Nettoersparnis:** ?\n\n---\n\n**Aufgabe 2: Forward-Prämie**\n\nBerechnen Sie den Forward-Zinssatz:\n- Aktueller Marktzins: 3,8% p.a.\n- Vorlaufzeit: 18 Monate\n- Forward-Prämie: 0,01% pro Monat\n- **Forward-Zinssatz:** ?\n\n---\n\n**Aufgabe 3: Sonderkündigungsrecht**\n\nPrüfen Sie das Sonderkündigungsrecht:\n- Darlehen abgeschlossen: 01.01.2015\n- Zinsbindung: 20 Jahre (bis 2035)\n- Heute: 2026\n- **Kann der Kunde kündigen?** ?\n- **Frist:** ?\n- **Frühester Kündigungstermin:** ?",
     "solution": "**Lösung Aufgabe 1:**\n- Ersparnis pro Monat: 1.300 € - 1.160 € = 140 €\n- Ersparnis über 10 Jahre: 140 € × 12 × 10 = 16.800 €\n- Nettoersparnis: 16.800 € - 480 € = 16.320 €\n\n**Lösung Aufgabe 2:**\n- Forward-Zinssatz: 3,8% + (0,01% × 18) = 3,98% p.a.\n\n**Lösung Aufgabe 3:**\n- Kann kündigen: Ja (nach 10 Jahren, § 489 BGB)\n- Frist: 6 Monate\n- Frühester Kündigungstermin: 01.07.2025 (10 Jahre + 6 Monate)",
     "type": "Prüfungsvorbereitung",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Fallstudie: Anschlussfinanzierung und Umschuldung' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Fallstudie: Anschlussfinanzierung und Umschuldung': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Fallstudie: Anschlussfinanzierung und Umschuldung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_28": {
     "title": "Fallstudie: Baufinanzierung mit KfW-Förderung",
@@ -510,7 +942,23 @@
     "task": "**Aufgabe 1: Tilgungszuschuss**\n\nBerechnen Sie den Tilgungszuschuss:\n- KfW-Darlehen: 150.000 €\n- Tilgungszuschuss: 25% (KfW 40)\n- **Tilgungszuschuss:** ?\n- **Effektiver Darlehensbetrag:** ?\n\n---\n\n**Aufgabe 2: Monatliche Rate**\n\nBerechnen Sie die monatliche Rate:\n- KfW-Darlehen: 150.000 € (0,01% p.a., nur Zinsen erste 5 Jahre)\n- Hausbank-Darlehen: 330.000 € (3,6% p.a., 2% Tilgung)\n- **Monatliche Rate KfW (erste 5 Jahre):** ?\n- **Monatliche Rate Hausbank:** ?\n- **Gesamtrate:** ?\n\n---\n\n**Aufgabe 3: Ersparnis**\n\nBerechnen Sie die Ersparnis:\n- Ohne KfW: 480.000 € zu 3,6% p.a., Rate 2.240 €/Monat\n- Mit KfW: Rate 1.541 €/Monat (erste 5 Jahre)\n- **Ersparnis pro Monat:** ?\n- **Ersparnis über 5 Jahre:** ?\n- **Tilgungszuschuss:** 37.500 €\n- **Gesamtersparnis:** ?",
     "solution": "**Lösung Aufgabe 1:**\n- Tilgungszuschuss: 150.000 € × 25% = 37.500 €\n- Effektiver Darlehensbetrag: 150.000 € - 37.500 € = 112.500 €\n\n**Lösung Aufgabe 2:**\n- Monatliche Rate KfW: 150.000 € × 0,01% / 12 = 1,25 €\n- Monatliche Rate Hausbank: 330.000 € × (3,6% + 2%) / 12 = 1.540 €\n- Gesamtrate: 1,25 € + 1.540 € = 1.541 €\n\n**Lösung Aufgabe 3:**\n- Ersparnis pro Monat: 2.240 € - 1.541 € = 699 €\n- Ersparnis über 5 Jahre: 699 € × 12 × 5 = 41.940 €\n- Tilgungszuschuss: 37.500 €\n- Gesamtersparnis: 41.940 € + 37.500 € = 79.440 €",
     "type": "Prüfungsvorbereitung",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Fallstudie: Baufinanzierung mit KfW-Förderung' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Fallstudie: Baufinanzierung mit KfW-Förderung': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Fallstudie: Baufinanzierung mit KfW-Förderung' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_29": {
     "title": "Fallstudie: Finanzierung für Selbstständige",
@@ -526,7 +974,23 @@
     "task": "**Aufgabe 1: Durchschnittseinkommen**\n\nBerechnen Sie das Durchschnittseinkommen:\n- 2023: 72.000 €/Jahr\n- 2024: 84.000 €/Jahr\n- 2025: 90.000 €/Jahr\n- **Durchschnitt pro Jahr:** ?\n- **Durchschnitt pro Monat:** ?\n\n---\n\n**Aufgabe 2: Maximale Darlehensrate**\n\nBerechnen Sie die maximale Darlehensrate:\n- Verfügbares Einkommen: 2.833 €/Monat\n- Sicherheitspuffer: 30% (Selbstständige)\n- **Maximale Darlehensrate:** ?\n\n---\n\n**Aufgabe 3: Steuerersparnis**\n\nBerechnen Sie die Steuerersparnis:\n- Zinsen Jahr 1: 15.115 €\n- AfA: 11.000 €\n- Steuersatz: 40%\n- **Steuerersparnis pro Jahr:** ?\n- **Steuerersparnis pro Monat:** ?",
     "solution": "**Lösung Aufgabe 1:**\n- Durchschnitt pro Jahr: (72.000 € + 84.000 € + 90.000 €) / 3 = 82.000 €\n- Durchschnitt pro Monat: 82.000 € / 12 = 6.833 €\n\n**Lösung Aufgabe 2:**\n- Maximale Darlehensrate: 2.833 € / 1,3 = 2.179 €\n\n**Lösung Aufgabe 3:**\n- Steuerersparnis pro Jahr: (15.115 € + 11.000 €) × 40% = 10.446 €\n- Steuerersparnis pro Monat: 10.446 € / 12 = 870 €",
     "type": "Prüfungsvorbereitung",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Fallstudie: Finanzierung für Selbstständige' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Fallstudie: Finanzierung für Selbstständige': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Fallstudie: Finanzierung für Selbstständige' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_30": {
     "title": "Fallstudie: Komplexe Finanzierung mit mehreren Herausforderungen",
@@ -541,7 +1005,23 @@
     "task": "**Aufgabe 1: Eigenkapitalquote**\n\nBerechnen Sie die Eigenkapitalquote:\n- Gesamtkosten: 506.000 €\n- Eigenkapital: 84.000 €\n- **Eigenkapitalquote:** ?\n- **Ausreichend (≥20%):** ?\n\n---\n\n**Aufgabe 2: Verfügbares Einkommen**\n\nBerechnen Sie das verfügbare Einkommen:\n- Gesamteinkommen: 7.100 €/Monat\n- Mieteinnahmen (netto): 1.400 €/Monat\n- Ausgaben: 4.730 €/Monat\n- **Verfügbares Einkommen:** ?\n- **Maximale Darlehensrate (20% Puffer):** ?\n\n---\n\n**Aufgabe 3: Monatliche Rate**\n\nBerechnen Sie die monatliche Rate:\n- Darlehensbetrag: 422.000 €\n- Zinssatz: 3,90% p.a.\n- Tilgung: 2% p.a.\n- **Monatliche Rate:** ?",
     "solution": "**Lösung Aufgabe 1:**\n- Eigenkapitalquote: 84.000 € / 506.000 € = 16,6%\n- Ausreichend: Nein (< 20%), aber mit Mieteinnahmen akzeptabel\n\n**Lösung Aufgabe 2:**\n- Verfügbares Einkommen: (7.100 € + 1.400 €) - 4.730 € = 3.770 €\n- Maximale Darlehensrate: 3.770 € / 1,2 = 3.142 €\n\n**Lösung Aufgabe 3:**\n- Monatliche Rate: 422.000 € × (3,90% + 2%) / 12 = 2.076 €",
     "type": "Prüfungsvorbereitung",
-    "tasks": []
+    "tasks": [
+      {
+        "type": "reflection",
+        "question": "Reflektieren Sie: Was sind die drei wichtigsten Erkenntnisse aus 'Fallstudie: Komplexe Finanzierung mit mehreren Herausforderungen' für Ihre berufliche Praxis als Darlehensvermittler §34i GewO?",
+        "hint": "Denken Sie an konkrete Situationen in Ihrer zukünftigen Tätigkeit und wie das Gelernte Ihren Berufsalltag beeinflusst."
+      },
+      {
+        "type": "case",
+        "question": "Praxisfall zum Thema 'Fallstudie: Komplexe Finanzierung mit mehreren Herausforderungen': Ein Kunde fragt Sie nach Ihrem Fachwissen zu diesem Thema. Wie erklären Sie die wichtigsten Punkte verständlich und fachlich korrekt?",
+        "hint": "Nutzen Sie die Fachbegriffe und Kernkonzepte aus der heutigen Lektion."
+      },
+      {
+        "type": "research",
+        "question": "Recherche-Aufgabe: Suchen Sie ein aktuelles Praxisbeispiel zum Thema 'Fallstudie: Komplexe Finanzierung mit mehreren Herausforderungen' und bereiten Sie eine kurze Zusammenfassung vor.",
+        "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen."
+      }
+    ]
   },
   "day_31": {
     "title": "Prüfungssimulation 1: Multiple-Choice-Fragen (50 Fragen)",
