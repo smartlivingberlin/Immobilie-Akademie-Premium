@@ -57,7 +57,7 @@ test.describe("🔐 Authentication & Authorization Flows", () => {
       await page.goto(`${BASE_URL}/api/auth/magic?secret=${secret}`);
       await page.waitForLoadState("networkidle");
     }
-    await page.evaluate(() => fetch("/api/auth/logout", { method: "POST" }));
+    await page.request.post(`${BASE_URL}/api/auth/logout`);
     await page.waitForTimeout(1000);
     await page.goto(`${BASE_URL}/admin`);
     await page.waitForLoadState("networkidle");
