@@ -462,22 +462,29 @@ export default function Module5Detail() {
                   </TabsContent>
 
                   <TabsContent value="tasks" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
-                    <FullscreenContent
-                      title={`Aufgaben: ${currentContent?.title}`}
-                      content={
-                        <div>
-                          <SmartContent content={currentContent?.task} />
-                    <AudioPlayer text={currentContent?.task || ""} label="Aufgaben vorlesen" />
-                          {currentContent?.solution && (
-                            <SolutionToggler solution={currentContent?.solution} />
-                          )}
-                        </div>
-                      }
-                    />
-                    <SmartContent content={currentContent?.task} />
-                    {currentContent?.solution && (
-                      <SolutionToggler solution={currentContent?.solution} />
-                    )}
+                    <div className="content-container space-y-6">
+                      {(Array.isArray(currentContent?.tasks) ? currentContent.tasks : []).map((task: any, index: number) => (
+                        <Card key={index} className="border-slate-200 shadow-sm">
+                          <CardHeader className="bg-slate-50 pb-3">
+                            <CardTitle className="text-base font-medium flex gap-2">
+                              <span className="bg-slate-900 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0">
+                                {index + 1}
+                              </span>
+                              {task.question}
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent className="pt-4">
+                            {task.hint && (
+                              <p className="text-sm text-slate-500 italic mb-3">{task.hint}</p>
+                            )}
+                            {task.solution && <SolutionToggler solution={task.solution} />}
+                          </CardContent>
+                        </Card>
+                      ))}
+                      {(!currentContent?.tasks || currentContent.tasks.length === 0) && currentContent?.task && (
+                        <SmartContent content={currentContent.task} />
+                      )}
+                    </div>
                   </TabsContent>
                                                   <TabsContent value="videos" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none">
                     <div className="space-y-6">

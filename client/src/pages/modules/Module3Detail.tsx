@@ -194,26 +194,24 @@ export default function Module3Detail() {
 
   // Helper to normalize task(s) to array of Task objects
   const getTasks = (): Task[] => {
+    // Primär: tasks-Array (Plural) aus JSON
+    if (Array.isArray(currentContent?.tasks)) {
+      return currentContent?.tasks;
+    }
+    // Fallback: task Singular/Legacy
     if (!currentContent?.task) return [];
-    
-    // Case 1: Array of Task objects
     if (Array.isArray(currentContent?.task)) {
       return currentContent?.task;
     }
-    
-    // Case 2: Single Task object
     if (typeof currentContent?.task === 'object') {
       return [currentContent?.task as Task];
     }
-    
-    // Case 3: String task (legacy format)
     if (typeof currentContent?.task === 'string') {
       return [{
         question: currentContent?.task,
         solution: currentContent?.solution || "Keine Lösung verfügbar."
       }];
     }
-    
     return [];
   };
 
@@ -388,13 +386,12 @@ export default function Module3Detail() {
                     Praxis
                   </TabsTrigger>
                   <TabsTrigger value="task" className="data-[state=active]:bg-white data-[state=active]:text-blue-700 data-[state=active]:shadow-sm rounded-lg">
-                                      <TabsTrigger value="videos" className="data-[state=active]:bg-white data-[state=active]:text-purple-700 data-[state=active]:shadow-sm rounded-lg">
-                      <Video className="h-4 w-4 mr-2" />
-                      Videos
-                    </TabsTrigger>
-
                     <FileText className="h-4 w-4 mr-2" />
                     Aufgaben
+                  </TabsTrigger>
+                  <TabsTrigger value="videos" className="data-[state=active]:bg-white data-[state=active]:text-purple-700 data-[state=active]:shadow-sm rounded-lg">
+                    <Video className="h-4 w-4 mr-2" />
+                    Videos
                   </TabsTrigger>
                 </TabsList>
 
