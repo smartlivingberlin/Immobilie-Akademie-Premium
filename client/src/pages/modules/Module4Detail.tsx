@@ -1,8 +1,5 @@
 // @ts-nocheck
-import { contentDataModule4Maximalist } from "./Module4Content_Valuation_Maximalist";
-import { contentDataModule4MaximalistPart2 } from "./Module4Content_Valuation_Maximalist_Part2";
-import { contentDataModule4Bonus } from "./Module4Content_Bonus_HypZert";
-import { contentDataModule4BonusPart2 } from "./Module4Content_Bonus_HypZert_Part2";
+// module4-content wird lazy geladen
 import { trpc } from "@/lib/trpc";
 import AudioPlayer from "@/components/AudioPlayer";
 import { useState, useRef, useEffect } from "react";
@@ -82,6 +79,19 @@ const weeks = [
 // Helper Component for Maximize Button
 
 export default function Module4Detail() {
+  const [contentDataModule4, setContentDataModule4] = useState<Record<string, any>>({});
+  const [contentLoaded, setContentLoaded] = useState(false);
+
+  useEffect(() => {
+    fetch("/data/module4-content.json")
+      .then(r => r.json())
+      .then(data => {
+        setContentDataModule4(data);
+        setContentLoaded(true);
+      })
+      .catch(err => console.error("Content konnte nicht geladen werden:", err));
+  }, []);
+
   const [match, params] = useRoute("/modul/4/tag/:day");
   const { toast } = useToast();
   const urlDay = params?.day ? `day_${params.day}` : Object.keys(allContent)[0];

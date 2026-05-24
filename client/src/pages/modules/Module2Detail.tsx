@@ -1,8 +1,6 @@
 // @ts-nocheck
-import { contentDataPart1Maximal } from "./Module2ContentPart1_Maximal";
-import { contentDataPart2Maximal } from "./Module2ContentPart2_Maximal";
-import { contentDataPart3Maximal } from "./Module2ContentPart3_Maximal";
-const contentDataModule2 = { ...contentDataPart1Maximal, ...contentDataPart2Maximal, ...contentDataPart3Maximal };
+// module2-content wird lazy geladen
+// contentDataModule2 kommt per fetch
 import { trpc } from "@/lib/trpc";
 import AudioPlayer from "@/components/AudioPlayer";
 import { useState, useRef, useEffect } from "react";
@@ -90,6 +88,19 @@ const weeks = [
 // Helper Component for Maximize Button
 
 export default function Module2Detail() {
+  const [contentDataModule2, setContentDataModule2] = useState<Record<string, any>>({});
+  const [contentLoaded, setContentLoaded] = useState(false);
+
+  useEffect(() => {
+    fetch("/data/module2-content.json")
+      .then(r => r.json())
+      .then(data => {
+        setContentDataModule2(data);
+        setContentLoaded(true);
+      })
+      .catch(err => console.error("Content konnte nicht geladen werden:", err));
+  }, []);
+
   const [match, params] = useRoute("/modul/2/tag/:day");
   const urlDay = params?.day ? `day_${params.day}` : "day_1";
   
