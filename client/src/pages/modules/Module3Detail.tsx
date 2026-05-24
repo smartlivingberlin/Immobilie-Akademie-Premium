@@ -295,7 +295,7 @@ export default function Module3Detail() {
                         {Array.from({ length: week.dayRange[1] - week.dayRange[0] + 1 }, (_, i) => {
                           const dayNum = week.dayRange[0] + i;
                           const dayKey = `day_${dayNum}`;
-                          const dayData = contentDataModule3[dayKey as keyof typeof contentDataModule3];
+                          const dayData = moduleData?.[dayKey] ?? contentDataModule3[dayKey as keyof typeof contentDataModule3];
                           const isActive = selectedDay === dayKey;
                           
                           if (!dayData) return null;
