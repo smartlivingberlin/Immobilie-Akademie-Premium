@@ -432,7 +432,7 @@ export default function Module2Detail() {
                               <h2 className="text-2xl font-bold text-blue-700 mb-4 flex items-center gap-2">
                                 <span>⚖️</span> Relevante Gesetze & Normen
                               </h2>
-                              {(currentContent as any).law.map((item: string, i: number) => (
+                              {(currentContent as any)?.law?.map((item: string, i: number) => (
                                 <div key={i} className="flex gap-3 p-3 bg-blue-50 rounded-lg mb-2">
                                   <span className="text-blue-600 font-bold">§</span>
                                   <span>{item}</span>
@@ -508,7 +508,7 @@ export default function Module2Detail() {
                     title={`Rechtliche Grundlagen: ${currentContent.title}`}
                     content={
                       <div className="grid gap-4">
-                        {currentContent.law.map((law, index) => (
+                        {currentContent?.law?.map((law, index) => (
                           <Card key={index} className="border-l-4 border-l-blue-500 shadow-sm hover:shadow-md transition-shadow">
                             <CardContent className="p-4 flex items-start gap-3">
                               <Gavel className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
@@ -523,7 +523,7 @@ export default function Module2Detail() {
                     } 
                   />
                   <div className="content-container grid gap-4">
-                    {currentContent.law.map((law, index) => (
+                    {currentContent?.law?.map((law, index) => (
                       <Card key={index} className="border-l-4 border-l-blue-500 shadow-sm hover:shadow-md transition-shadow">
                         <CardContent className="p-4 flex items-start gap-3">
                           <Gavel className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
