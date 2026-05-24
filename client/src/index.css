@@ -223,3 +223,43 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ── Content Container: Text-Overflow-Schutz ─────────────────── */
+.content-container {
+  width: 100%;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.content-container pre,
+.content-container code {
+  overflow-x: auto;
+  max-width: 100%;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.content-container table {
+  width: 100%;
+  table-layout: fixed;
+  overflow-x: auto;
+  display: block;
+}
+
+/* Prose-Inhalte: keine Überlänge bei langen URLs/Paragraphen */
+.prose {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.prose a {
+  word-break: break-all;
+}
+
+/* Sidebar-Titel truncation sicherstellen */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

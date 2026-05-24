@@ -333,7 +333,7 @@ export default function Module1Detail() {
               </CardHeader>
               <CardContent className="p-6">
                 <Tabs defaultValue="theory" className="w-full">
-                  <TabsList className="grid w-full grid-cols-6 mb-8 bg-slate-100 p-1 rounded-xl">
+                  <TabsList className="grid w-full grid-cols-5 mb-8 bg-slate-100 p-1 rounded-xl">
                     <TabsTrigger value="theory" className="data-[state=active]:bg-white data-[state=active]:text-blue-700 data-[state=active]:shadow-sm rounded-lg">
                       <BookOpen className="h-4 w-4 mr-2" />
                       Theorie
