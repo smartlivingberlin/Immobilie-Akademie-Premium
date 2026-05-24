@@ -8629,6 +8629,223 @@ const AUFGABEN: Aufgabe[] = [
       "§2 Abs. 2b EStG"
     ],
     praxistipp: "Die 15%-Grenze ist ein wichtiges Abgrenzungskriterium: Bleibt die Renovation darunter, gilt sie als Instandhaltung und ist sofort absetzbar. Wird sie überschritten, müssen anschaffungsnahe HK aktiviert und über die AfA verteilt werden."
+  },
+  {
+    id: 102,
+    bereich: "WEG-Hausgeld & Abrechnung",
+    titel: "Betriebskosten Verteilung",
+    berufssituation: "Betriebskosten 14.400 EUR/Jahr, 6 Einheiten mit 65,70,75,80,85,90 m2. Kosten je Einheit nach Flaeche.",
+    was_lerne_ich: "Flaechenbezogene Betriebskostenverteilung in der WEG.",
+    schritte: [
+      {
+        nr: 1,
+        kontext: "Gesamtflaeche berechnen.",
+        formel: "Gesamt = Summe Einzelflaechen",
+        variablen: [
+          {
+            kuerzel: "F",
+            bedeutung: "Flaechen",
+            wert: "65+70+75+80+85+90"
+          }
+        ],
+        aufgabe: "Gesamtflaeche der WEG:",
+        einheit: "m2",
+        korrekt: 465,
+        toleranz: 0,
+        tipp: "465 m2"
+      },
+      {
+        nr: 2,
+        kontext: "Kostensatz pro m2.",
+        formel: "Satz = Kosten / Flaeche",
+        variablen: [
+          {
+            kuerzel: "K",
+            bedeutung: "Kosten",
+            wert: "14400"
+          },
+          {
+            kuerzel: "F",
+            bedeutung: "Flaeche",
+            wert: "465"
+          }
+        ],
+        aufgabe: "14.400 / 465 =",
+        einheit: "EUR/m2",
+        korrekt: 30.97,
+        toleranz: 0.1,
+        tipp: "30,97 EUR/m2"
+      },
+      {
+        nr: 3,
+        kontext: "Kosten 80-m2-Einheit.",
+        formel: "Kosten = Flaeche x Satz",
+        variablen: [
+          {
+            kuerzel: "F",
+            bedeutung: "Flaeche",
+            wert: "80"
+          },
+          {
+            kuerzel: "s",
+            bedeutung: "Satz",
+            wert: "30.97"
+          }
+        ],
+        aufgabe: "80 x 30,97 =",
+        einheit: "EUR",
+        korrekt: 2477.6,
+        toleranz: 5,
+        tipp: "2.477,60 EUR"
+      }
+    ],
+    abschluss: "80-m2-Einheit: 2.477,60 EUR/Jahr.",
+    gesetze: [
+      "16 WEG",
+      "556 BGB"
+    ],
+    praxistipp: "Wohnflaechen muessen korrekt in der Teilungserklaerung stehen."
+  },
+  {
+    id: 106,
+    bereich: "WEG-Hausgeld & Abrechnung",
+    titel: "Heizkostenabrechnung",
+    berufssituation: "Heizkosten 8.400 EUR. 70% Verbrauch, 30% Flaeche. Einheit A: 280 von 560 m2, Verbrauch 3.200 von 16.000 kWh.",
+    was_lerne_ich: "Heizkostenabrechnung nach HeizkostenV 70/30.",
+    schritte: [
+      {
+        nr: 1,
+        kontext: "Verbrauchsanteil 70%.",
+        formel: "BK_V = 8400 x 0.70 x (3200/16000)",
+        variablen: [
+          {
+            kuerzel: "V",
+            bedeutung: "Verbrauch Einheit",
+            wert: "3200 kWh"
+          }
+        ],
+        aufgabe: "8.400 x 0,70 x 0,20 =",
+        einheit: "EUR",
+        korrekt: 1176,
+        toleranz: 1,
+        tipp: "1.176 EUR"
+      },
+      {
+        nr: 2,
+        kontext: "Flaechenanteil 30%.",
+        formel: "BK_F = 8400 x 0.30 x (280/560)",
+        variablen: [
+          {
+            kuerzel: "F",
+            bedeutung: "Flaeche Einheit",
+            wert: "280 m2"
+          }
+        ],
+        aufgabe: "8.400 x 0,30 x 0,50 =",
+        einheit: "EUR",
+        korrekt: 1260,
+        toleranz: 1,
+        tipp: "1.260 EUR"
+      },
+      {
+        nr: 3,
+        kontext: "Gesamtkosten.",
+        formel: "Gesamt = BK_V + BK_F",
+        variablen: [
+          {
+            kuerzel: "BK_V",
+            bedeutung: "Verbrauchsanteil",
+            wert: "1176"
+          },
+          {
+            kuerzel: "BK_F",
+            bedeutung: "Flaechenanteil",
+            wert: "1260"
+          }
+        ],
+        aufgabe: "1.176 + 1.260 =",
+        einheit: "EUR",
+        korrekt: 2436,
+        toleranz: 1,
+        tipp: "2.436 EUR"
+      }
+    ],
+    abschluss: "Einheit A: 2.436 EUR Heizkosten.",
+    gesetze: [
+      "6 HeizkostenV"
+    ],
+    praxistipp: "70/30 ist gesetzlicher Standard nach HeizkostenV."
+  },
+  {
+    id: 114,
+    bereich: "Wertermittlung",
+    titel: "DCF-Methode vereinfacht",
+    berufssituation: "Kaufpreis 600.000 EUR, Miete Jahr 1-5: 30.000 EUR/Jahr, Jahr 6-10: 33.000 EUR/Jahr, Zins 5%. Barwert berechnen.",
+    was_lerne_ich: "Discounted-Cashflow-Methode zur Immobilienbewertung.",
+    schritte: [
+      {
+        nr: 1,
+        kontext: "Barwert Jahr 1-5 mit Rentenbarwertfaktor 4,329.",
+        formel: "BW1 = 30000 x 4.329",
+        variablen: [
+          {
+            kuerzel: "RBF",
+            bedeutung: "Rentenbarwertfaktor 5J/5%",
+            wert: "4.329"
+          }
+        ],
+        aufgabe: "30.000 x 4,329 =",
+        einheit: "EUR",
+        korrekt: 129870,
+        toleranz: 500,
+        tipp: "129.870 EUR"
+      },
+      {
+        nr: 2,
+        kontext: "Barwert Jahr 6-10. Abzinsungsfaktor Jahr 5: 0,7835.",
+        formel: "BW2 = 33000 x 4.329 x 0.7835",
+        variablen: [
+          {
+            kuerzel: "ABF",
+            bedeutung: "Abzinsungsfaktor",
+            wert: "0.7835"
+          }
+        ],
+        aufgabe: "33.000 x 4,329 x 0,7835 =",
+        einheit: "EUR",
+        korrekt: 112101,
+        toleranz: 1000,
+        tipp: "112.101 EUR"
+      },
+      {
+        nr: 3,
+        kontext: "Gesamtbarwert und Vergleich Kaufpreis.",
+        formel: "BW = BW1 + BW2",
+        variablen: [
+          {
+            kuerzel: "BW1",
+            bedeutung: "Barwert Jahr 1-5",
+            wert: "129870"
+          },
+          {
+            kuerzel: "BW2",
+            bedeutung: "Barwert Jahr 6-10",
+            wert: "112101"
+          }
+        ],
+        aufgabe: "129.870 + 112.101 =",
+        einheit: "EUR",
+        korrekt: 241971,
+        toleranz: 1000,
+        tipp: "241.971 EUR vs Kaufpreis 600.000 EUR"
+      }
+    ],
+    abschluss: "Barwert 241.971 EUR liegt weit unter Kaufpreis 600.000 EUR.",
+    gesetze: [
+      "ImmoWertV",
+      "194 BauGB"
+    ],
+    praxistipp: "DCF zeigt: Bei niedrigen Zinsen steigen Preise weit ueber den Mietertragswert."
   }
 ];
 
