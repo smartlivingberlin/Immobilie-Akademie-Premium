@@ -19,13 +19,14 @@ const processText = (text: string) => {
   // 1. Identify Laws (e.g., "§ 34c GewO", "§ 556 BGB")
   // Regex looks for § followed by numbers/letters and then a law abbreviation
   const lawRegex = /(§+\s*\d+[a-z]*\s*(?:Abs\.\s*\d+\s*)?(?:Satz\s*\d+\s*)?(?:Nr\.\s*\d+\s*)?[A-Za-zäöüÄÖÜ]+)/g;
+  const lawRegexTest = /§+\s*\d+[a-z]*\s*(?:Abs\.\s*\d+\s*)?(?:Satz\s*\d+\s*)?(?:Nr\.\s*\d+\s*)?[A-Za-zäöüÄÖÜ]+/;
   
   // Split by laws first
   const parts = text.split(lawRegex);
   
   return parts.map((part, index) => {
     // Check if this part is a law match
-    if (lawRegex.test(part)) {
+    if (lawRegexTest.test(part)) {
       const cleanLaw = part.replace(/§+/g, '').trim();
       // Simple heuristic for law links (this could be refined with a real law API or mapping)
       // Defaulting to gesetze-im-internet search or direct link structure
