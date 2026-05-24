@@ -1,11 +1,23 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, XCircle, Trophy, BarChart3, Brain, Shuffle, Scale } from "lucide-react";
-import { ALL_QUESTIONS, shuffleQuestions, type UnifiedQuestion } from "@/data/all-questions";
+// all-questions wird lazy geladen — kein statischer Import mehr
+type UnifiedQuestion = {
+  id: number; moduleId: number; category: string; difficulty: string;
+  questionText: string; options: string[]; correctAnswer: string; explanation: string;
+};
+function shuffleQuestions(questions: UnifiedQuestion[]): UnifiedQuestion[] {
+  const arr = [...questions];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
 
 type QuizState = "setup" | "quiz" | "results";
 
@@ -18,6 +30,19 @@ const MODULES = [
 ];
 
 export default function Quiz() {
+  const [allQuestions, setAllQuestions] = useState<UnifiedQuestion[]>([]);
+  const [questionsLoaded, setQuestionsLoaded] = useState(false);
+
+  useEffect(() => {
+    fetch("/data/all-questions.json")
+      .then(r => r.json())
+      .then((data: UnifiedQuestion[]) => {
+        setAllQuestions(data);
+        setQuestionsLoaded(true);
+      })
+      .catch(err => console.error("Fragen konnten nicht geladen werden:", err));
+  }, []);
+
   const [moduleFilter, setModuleFilter] = useState<string>("all");
   const [difficultyFilter, setDifficultyFilter] = useState<string>("all");
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
@@ -30,7 +55,7 @@ export default function Quiz() {
   const [answers, setAnswers] = useState<{ questionId: number; answer: number; correct: boolean }[]>([]); 
 
   const availablePool = useMemo(() => {
-    let pool = ALL_QUESTIONS;
+    let pool = allQuestions;
     if (moduleFilter !== "all") pool = pool.filter(q => q.moduleId === parseInt(moduleFilter));
     if (difficultyFilter !== "all") pool = pool.filter(q => q.difficulty === difficultyFilter);
     if (categoryFilter !== "all") pool = pool.filter(q => q.category === categoryFilter);
@@ -38,7 +63,7 @@ export default function Quiz() {
   }, [moduleFilter, difficultyFilter, categoryFilter]);
 
   const availableCategories = useMemo(() => {
-    let pool = ALL_QUESTIONS;
+    let pool = allQuestions;
     if (moduleFilter !== "all") pool = pool.filter(q => q.moduleId === parseInt(moduleFilter));
     return Array.from(new Set(pool.map(q => q.category))).sort();
   }, [moduleFilter]);
@@ -88,12 +113,12 @@ export default function Quiz() {
             </div>
             <h1 className="text-3xl font-bold text-slate-900 mb-2">Prüfungssimulation</h1>
             <p className="text-slate-600">
-              <span className="font-semibold text-blue-700">{ALL_QUESTIONS.length} Fragen</span> aus Lernmaterial & BGH-Rechtsprechung — vollständig offline
+              <span className="font-semibold text-blue-700">{allQuestions.length} Fragen</span> aus Lernmaterial & BGH-Rechtsprechung — vollständig offline
             </p>
             <div className="flex justify-center gap-4 mt-3 flex-wrap">
               {MODULES.map(m => (
                 <span key={m.id} className="text-xs text-slate-500">
-                  M{m.id}: {ALL_QUESTIONS.filter(q => q.moduleId === m.id).length} Fragen
+                  M{m.id}: {allQuestions.filter(q => q.moduleId === m.id).length} Fragen
                 </span>
               ))}
             </div>
@@ -109,10 +134,10 @@ export default function Quiz() {
                 <Select value={moduleFilter} onValueChange={v => { setModuleFilter(v); setCategoryFilter("all"); }}>
                   <SelectTrigger><SelectValue /></SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">Alle Module ({ALL_QUESTIONS.length} Fragen)</SelectItem>
+                    <SelectItem value="all">Alle Module ({allQuestions.length} Fragen)</SelectItem>
                     {MODULES.map(m => (
                       <SelectItem key={m.id} value={String(m.id)}>
-                        {m.label} ({ALL_QUESTIONS.filter(q => q.moduleId === m.id).length} Fragen)
+                        {m.label} ({allQuestions.filter(q => q.moduleId === m.id).length} Fragen)
                       </SelectItem>
                     ))}
                   </SelectContent>
