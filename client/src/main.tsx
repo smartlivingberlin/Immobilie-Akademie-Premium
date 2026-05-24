@@ -1,7 +1,9 @@
 import './fonts.css';
-import * as Sentry from "@sentry/react";
+// Sentry lazy laden — nicht im Initial-Bundle
 if (import.meta.env.VITE_SENTRY_DSN) {
-  Sentry.init({ dsn: import.meta.env.VITE_SENTRY_DSN, tracesSampleRate: 0.1 });
+  import("@sentry/react").then(Sentry => {
+    Sentry.init({ dsn: import.meta.env.VITE_SENTRY_DSN, tracesSampleRate: 0.1 });
+  });
 }
 import { trpc } from "@/lib/trpc";
 import { UNAUTHED_ERR_MSG } from '@shared/const';
