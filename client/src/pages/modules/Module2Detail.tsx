@@ -594,7 +594,7 @@ export default function Module2Detail() {
                                </CardTitle>
                              </CardHeader>
                              <CardContent className="pt-4">
-                               <SolutionToggler solution={task.solution} />
+                               <SolutionToggler solution={task.solution ?? task.hint ?? "Kein Lösungshinweis verfügbar."} />
                     <AudioPlayer text={typeof currentContent.task === "string" ? currentContent.task : ""} label="Aufgaben vorlesen" />
                              </CardContent>
                            </Card>
@@ -627,7 +627,7 @@ export default function Module2Detail() {
                           </CardTitle>
                         </CardHeader>
                         <CardContent className="pt-4">
-                          <SolutionToggler solution={task.solution} />
+                          <SolutionToggler solution={task.solution ?? task.hint ?? "Kein Lösungshinweis verfügbar."} />
                         </CardContent>
                       </Card>
                     ))}

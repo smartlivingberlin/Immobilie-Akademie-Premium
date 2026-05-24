@@ -477,7 +477,7 @@ export default function Module5Detail() {
                             {task.hint && (
                               <p className="text-sm text-slate-500 italic mb-3">{task.hint}</p>
                             )}
-                            {task.solution && <SolutionToggler solution={task.solution} />}
+                            {task.solution && <SolutionToggler solution={task.solution ?? task.hint ?? "Kein Lösungshinweis verfügbar."} />}
                           </CardContent>
                         </Card>
                       ))}

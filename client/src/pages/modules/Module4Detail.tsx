@@ -554,7 +554,7 @@ const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["da
                                  <div className="prose prose-slate max-w-none break-words">
                                    <SmartContent content={task.question} />
                                  </div>
-                                 <SolutionToggler solution={(task as any).solution} />
+                                 <SolutionToggler solution={(task as any).solution ?? (task as any).hint ?? "Kein Lösungshinweis verfügbar."} />
                                </CardContent>
                              </Card>
                            ))}
@@ -574,7 +574,7 @@ const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["da
                             <div className="prose prose-slate max-w-none break-words">
                               <SmartContent content={task.question} />
                             </div>
-                            <SolutionToggler solution={(task as any).solution} />
+                            <SolutionToggler solution={(task as any).solution ?? (task as any).hint ?? "Kein Lösungshinweis verfügbar."} />
                           </CardContent>
                         </Card>
                       ))}
