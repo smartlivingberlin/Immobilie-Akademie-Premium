@@ -36,13 +36,7 @@ import { Video } from "lucide-react";
 type DayContent = Record<string, any>;
 let _cache_module4: DayContent | null = null;
 
-// Merge content parts
-const allContent = {
-  ...contentDataModule4Maximalist,
-  ...contentDataModule4MaximalistPart2,
-  ...contentDataModule4Bonus,
-  ...contentDataModule4BonusPart2
-};
+// allContent kommt per fetch als contentDataModule4
 
 // Define weeks structure for Module 4 (20 Days)
 const weeks = [
@@ -94,7 +88,7 @@ export default function Module4Detail() {
 
   const [match, params] = useRoute("/modul/4/tag/:day");
   const { toast } = useToast();
-  const urlDay = params?.day ? `day_${params.day}` : Object.keys(allContent)[0];
+  const urlDay = params?.day ? `day_${params.day}` : Object.keys(contentDataModule4)[0];
   
   // Define types for content structure
   interface Task {
@@ -175,7 +169,7 @@ export default function Module4Detail() {
   useActivityHeartbeat({ moduleId: 4, dayId: currentDayNum });
   
   // Get content for selected day
-  const firstDay = Object.keys(allContent)[0] as keyof typeof allContent;
+  const firstDay = Object.keys(contentDataModule4)[0] as keyof typeof contentDataModule4;
 const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["day_1"];
 
   const handleQuizComplete = (score: number) => {
