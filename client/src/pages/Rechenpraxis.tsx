@@ -34,7 +34,7 @@ interface Aufgabe {
 
 
 // ─── AUFGABEN-DATEN (lazy geladen) ───────────────────────────────────────────
-const BEREICHE = [...new Set(AUFGABEN.map(a => a.bereich))];
+// BEREICHE wird dynamisch aus AUFGABEN-State berechnet
 
 // ─── KI-ASSISTENT ────────────────────────────────────────────────────────────
 
@@ -290,6 +290,7 @@ function AufgabenAnsicht({ aufgabe, onZurueck }: { aufgabe: Aufgabe; onZurueck: 
 export default function Rechenpraxis() {
   const [AUFGABEN, setAUFGABEN] = useState<Aufgabe[]>([]);
   const [aufgabenGeladen, setAufgabenGeladen] = useState(false);
+  const BEREICHE = useMemo(() => [...new Set(AUFGABEN.map(a => a.bereich))], [AUFGABEN]);
 
   useEffect(() => {
     fetch("/data/rechenpraxis.json")
