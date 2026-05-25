@@ -352,6 +352,26 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
         modulesUnlocked: { "1": 0 },
         recentUsers: users || [],
         systemHealth: { server: true, db: true, stripe: !!process.env.STRIPE_SECRET_KEY },
+        lastHealthCheck: await (async () => {
+          try {
+            const [rows] = await db.$client.query(
+              `SELECT status, details, timestamp FROM monitoring_log 
+               WHERE type = 'hourly_health' 
+               ORDER BY timestamp DESC LIMIT 1`
+            ) as any;
+            const last = (rows as any[])[0];
+            if (!last) return { status: 'pending', message: 'Noch kein Check durchgeführt' };
+            const details = typeof last.details === 'string' ? JSON.parse(last.details) : last.details;
+            return {
+              status: last.status,
+              timestamp: last.timestamp,
+              failedChecks: details?.failedChecks || [],
+              recommendations: details?.recommendations || [],
+              checkCount: details?.checkCount || 0,
+              durationMs: details?.durationMs || 0,
+            };
+          } catch { return { status: 'error', message: 'monitoring_log nicht verfügbar' }; }
+        })(),
       });
     } catch (e: any) {
       res.status(500).json({ error: e.message });
