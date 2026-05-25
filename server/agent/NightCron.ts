@@ -74,7 +74,7 @@ function readModuleDay(module: number, day: number): {
     const block = content.slice(start, end);
 
     const titleM = block.match(/title:\s*["`]([^"`]+)["`]/);
-    const theoryM = block.match(/theory:\s*["`]([^"`]{20,})["`]/);
+    const theoryM = block.match(/theory:\s*`([^`]{20,})`/) || block.match(/theory:\s*"([^"]{20,})"/);
     const extTheoryM = block.match(/extendedTheory:\s*`([^`]{20,})`/);
     const taskM = block.match(/task:\s*["`]([^"`]{10,})["`]/);
     const normsM = block.match(/law:\s*\[([\s\S]*?)\]/);
