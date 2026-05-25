@@ -13,19 +13,27 @@
     "tasks": [
       {
         "question": "Definieren Sie den Begriff 'Verkehrswert' gemäß § 194 BauGB.",
-        "solution": "Der Verkehrswert (Marktwert) wird durch den Preis bestimmt, der in dem Zeitpunkt, auf den sich die Ermittlung bezieht, im gewöhnlichen Geschäftsverkehr nach den rechtlichen Gegebenheiten und tatsächlichen Eigenschaften, der sonstigen Beschaffenheit und der Lage des Grundstücks oder des sonstigen Gegenstands der Wertermittlung ohne Rücksicht auf ungewöhnliche oder persönliche Verhältnisse zu erzielen wäre."
+        "solution": "Der Verkehrswert (Marktwert) wird durch den Preis bestimmt, der in dem Zeitpunkt, auf den sich die Ermittlung bezieht, im gewöhnlichen Geschäftsverkehr nach den rechtlichen Gegebenheiten und tatsächlichen Eigenschaften, der sonstigen Beschaffenheit und der Lage des Grundstücks oder des sonstigen Gegenstands der Wertermittlung ohne Rücksicht auf ungewöhnliche oder persönliche Verhältnisse zu erzielen wäre.",
+        "hint": "Denken Sie an die Wertermittlung zu einem bestimmten Stichtag und berücksichtigen Sie dabei sowohl die rechtlichen als auch die tatsächlichen Eigenschaften einer Immobilie im normalen Marktgeschehen.",
+        "type": "definition"
       },
       {
         "question": "Nennen Sie drei typische Anlässe für eine Immobilienbewertung.",
-        "solution": "1. Kauf/Verkauf (Eigentumswechsel)\n2. Ehescheidung (Zugewinnausgleich)\n3. Beleihung (Finanzierung)\n4. Erbschaft (Steuer/Auseinandersetzung)\n5. Zwangsversteigerung"
+        "solution": "1. Kauf/Verkauf (Eigentumswechsel)\n2. Ehescheidung (Zugewinnausgleich)\n3. Beleihung (Finanzierung)\n4. Erbschaft (Steuer/Auseinandersetzung)\n5. Zwangsversteigerung",
+        "hint": "Denken Sie an die wichtigsten Lebenssituationen, in denen der Wert einer Immobilie objektiv festgestellt werden muss - sowohl bei freiwilligen als auch bei unfreiwilligen Anlässen.",
+        "type": "definition"
       },
       {
         "question": "Was ist der Unterschied zwischen 'Preis' und 'Wert'?",
-        "solution": "**Preis** ist der tatsächlich gezahlte Geldbetrag (Fakt), der durch subjektive Faktoren beeinflusst sein kann.\n**Wert** ist eine objektivierte Schätzung des Tauschwerts am Markt unter Ausblendung persönlicher Verhältnisse."
+        "solution": "**Preis** ist der tatsächlich gezahlte Geldbetrag (Fakt), der durch subjektive Faktoren beeinflusst sein kann.\n**Wert** ist eine objektivierte Schätzung des Tauschwerts am Markt unter Ausblendung persönlicher Verhältnisse.",
+        "hint": "Denken Sie daran, dass das eine eine konkrete Transaktion widerspiegelt, während das andere eine theoretische Markteinschätzung darstellt. Berücksichtigen Sie dabei den Unterschied zwischen subjektiven und objektiven Bewertungsfaktoren.",
+        "type": "definition"
       },
       {
         "question": "Welches Wertermittlungsverfahren eignet sich am besten für eine vermietete Eigentumswohnung?",
-        "solution": "Grundsätzlich das **Ertragswertverfahren** (da Renditeobjekt) oder das **Vergleichswertverfahren** (wenn genügend Vergleichspreise vorhanden sind). In der Praxis bei ETW oft Vergleichswertverfahren priorisiert."
+        "solution": "Grundsätzlich das **Ertragswertverfahren** (da Renditeobjekt) oder das **Vergleichswertverfahren** (wenn genügend Vergleichspreise vorhanden sind). In der Praxis bei ETW oft Vergleichswertverfahren priorisiert.",
+        "hint": "Denken Sie daran, dass eine vermietete Wohnung primär als Renditeobjekt betrachtet wird - welches Verfahren berücksichtigt die laufenden Mieteinnahmen am besten?",
+        "type": "reflection"
       }
     ]
   },
@@ -43,19 +51,27 @@
     "tasks": [
       {
         "question": "Wie wird ein Balkon bei der Wohnflächenberechnung nach WoFlV angesetzt?",
-        "solution": "In der Regel mit **25%** seiner Grundfläche. Nur bei besonderem Wohnwert (z.B. aufwendige Gestaltung, Südlage, Überdachung) können bis zu **50%** angesetzt werden."
+        "solution": "In der Regel mit **25%** seiner Grundfläche. Nur bei besonderem Wohnwert (z.B. aufwendige Gestaltung, Südlage, Überdachung) können bis zu **50%** angesetzt werden.",
+        "hint": "Bei der Wohnflächenberechnung nach WoFlV werden Balkone als Nebenräume behandelt und nur anteilig berücksichtigt. Denken Sie an die Grundregel für Nebenräume und die mögliche Ausnahme bei besonderem Wohnwert.",
+        "type": "reflection"
       },
       {
         "question": "Mindern Grundschulden in Abteilung III des Grundbuchs den Verkehrswert?",
-        "solution": "**Nein.** Der Verkehrswert wird lastenfrei bezüglich Abteilung III ermittelt. Die Schulden sind eine persönliche Verpflichtung des Eigentümers und werden beim Verkauf vom Kaufpreis getilgt."
+        "solution": "**Nein.** Der Verkehrswert wird lastenfrei bezüglich Abteilung III ermittelt. Die Schulden sind eine persönliche Verpflichtung des Eigentümers und werden beim Verkauf vom Kaufpreis getilgt.",
+        "hint": "Denken Sie daran, dass der Verkehrswert nach der ImmoWertV grundsätzlich lastenfrei ermittelt wird. Überlegen Sie, ob Grundschulden mit der Immobilie \"verkauft\" werden oder ob sie eine persönliche Verpflichtung des aktuellen Eigentümers darstellen.",
+        "type": "reflection"
       },
       {
         "question": "Ein Raum hat eine Grundfläche von 20 m², ist aber komplett nur 1,80 m hoch (Hobbyraum im Keller). Zählt er zur Wohnfläche nach WoFlV?",
-        "solution": "Nein. Räume, die nicht den Anforderungen des Baurechts an Aufenthaltsräume genügen (oft im Keller mangels Belichtung/Höhe), zählen **nicht** zur Wohnfläche, sondern zur Nutzfläche (Zubehörräume)."
+        "solution": "Nein. Räume, die nicht den Anforderungen des Baurechts an Aufenthaltsräume genügen (oft im Keller mangels Belichtung/Höhe), zählen **nicht** zur Wohnfläche, sondern zur Nutzfläche (Zubehörräume).",
+        "hint": "Prüfen Sie, ob der Raum die bauordnungsrechtlichen Mindestanforderungen an Aufenthaltsräume erfüllt und beachten Sie dabei die Wohnflächenverordnung bezüglich der Raumhöhe.",
+        "type": "reflection"
       },
       {
         "question": "Was ist der Unterschied zwischen ImmoWertV und WertR?",
-        "solution": "Die **ImmoWertV** ist eine Rechtsverordnung und damit rechtlich verbindlich. Die **WertR** (Wertermittlungsrichtlinie) ist eine Verwaltungsvorschrift, die die Anwendung der Verordnung konkretisiert, aber rechtlich unter der Verordnung steht."
+        "solution": "Die **ImmoWertV** ist eine Rechtsverordnung und damit rechtlich verbindlich. Die **WertR** (Wertermittlungsrichtlinie) ist eine Verwaltungsvorschrift, die die Anwendung der Verordnung konkretisiert, aber rechtlich unter der Verordnung steht.",
+        "hint": "Denken Sie an die Normenhierarchie im deutschen Recht und überlegen Sie, welche unterschiedlichen Rechtsquellen-Typen hier vorliegen. Betrachten Sie dabei den Verbindlichkeitsgrad und die Funktion beider Regelwerke in der praktischen Wertermittlung.",
+        "type": "definition"
       }
     ]
   },
@@ -72,19 +88,27 @@
     "tasks": [
       {
         "question": "Was ist der Unterschied zwischen Makro- und Mikrolage?",
-        "solution": "**Makrolage** beschreibt das großräumige Umfeld (Stadt, Region, Wirtschaftskraft). **Mikrolage** beschreibt das direkte Umfeld (Straße, Nachbarschaft, Lärm, Ausrichtung)."
+        "solution": "**Makrolage** beschreibt das großräumige Umfeld (Stadt, Region, Wirtschaftskraft). **Mikrolage** beschreibt das direkte Umfeld (Straße, Nachbarschaft, Lärm, Ausrichtung).",
+        "hint": "Denken Sie an die räumliche Perspektive: Einmal aus der Vogelperspektive auf das große Ganze, einmal aus der Fußgängerperspektive auf das unmittelbare Umfeld.",
+        "type": "definition"
       },
       {
         "question": "Woher bekommt man Bodenrichtwerte?",
-        "solution": "Vom lokalen Gutachterausschuss (GAA) oder über Online-Portale wie BORIS-D (Bodenrichtwertinformationssystem Deutschland)."
+        "solution": "Vom lokalen Gutachterausschuss (GAA) oder über Online-Portale wie BORIS-D (Bodenrichtwertinformationssystem Deutschland).",
+        "hint": "Denken Sie an die amtlichen Stellen, die für die Wertermittlung von Grundstücken zuständig sind, und prüfen Sie auch, ob Ihr Bundesland digitale Informationssysteme zur Verfügung stellt.",
+        "type": "reflection"
       },
       {
         "question": "Was bedeutet ein Liegenschaftszinssatz von 1,5%?",
-        "solution": "Das deutet auf eine sehr begehrte, teure Lage hin (hohe Kaufpreise im Verhältnis zur Miete). Investoren akzeptieren eine geringe Rendite für hohe Sicherheit/Wertsteigerungschance."
+        "solution": "Das deutet auf eine sehr begehrte, teure Lage hin (hohe Kaufpreise im Verhältnis zur Miete). Investoren akzeptieren eine geringe Rendite für hohe Sicherheit/Wertsteigerungschance.",
+        "hint": "Denken Sie an das umgekehrte Verhältnis zwischen Liegenschaftszinssatz und Lagequalität - je niedriger der Zinssatz, desto höher die Attraktivität der Immobilie für Investoren. Überlegen Sie, warum Anleger bei sehr begehrten Lagen auch niedrigere Renditen akzeptieren würden.",
+        "type": "reflection"
       },
       {
         "question": "Ist der Bodenrichtwert für jedes Grundstück bindend?",
-        "solution": "Nein. Er ist ein Orientierungswert für ein fiktives Richtwertgrundstück. Weicht das Bewertungsobjekt davon ab (z.B. Größe, Zuschnitt, Baurecht), müssen Zu- oder Abschläge vorgenommen werden."
+        "solution": "Nein. Er ist ein Orientierungswert für ein fiktives Richtwertgrundstück. Weicht das Bewertungsobjekt davon ab (z.B. Größe, Zuschnitt, Baurecht), müssen Zu- oder Abschläge vorgenommen werden.",
+        "hint": "Denken Sie daran, dass der Bodenrichtwert für ein \"Richtwertgrundstück\" mit durchschnittlichen Eigenschaften ermittelt wird. Überlegen Sie, was passiert, wenn ein konkretes Grundstück von diesen Standardeigenschaften abweicht.",
+        "type": "reflection"
       }
     ]
   },
@@ -102,35 +126,51 @@
     "tasks": [
       {
         "question": "Für welche Immobilienart ist das Vergleichswertverfahren am besten geeignet?",
-        "solution": "Für **Eigentumswohnungen** und **unbebaute Grundstücke**, da hier meist eine ausreichende Anzahl an vergleichbaren Kauffällen vorliegt."
+        "solution": "Für **Eigentumswohnungen** und **unbebaute Grundstücke**, da hier meist eine ausreichende Anzahl an vergleichbaren Kauffällen vorliegt.",
+        "hint": "Denken Sie daran, dass das Vergleichswertverfahren auf tatsächliche Kaufpreise ähnlicher Objekte angewiesen ist - bei welchen Immobilienarten gibt es typischerweise die meisten vergleichbaren Transaktionen am Markt?",
+        "type": "reflection"
       },
       {
         "question": "Was tun Sie, wenn Sie keine direkten Vergleichskaufpreise finden?",
-        "solution": "Man greift auf **Vergleichsfaktoren** der Gutachterausschüsse zurück (statistische Durchschnittswerte, z.B. €/m² Wohnfläche für bestimmte Baujahresklassen) oder wählt ein anderes Verfahren (Sachwert/Ertragswert), wenn zulässig."
+        "solution": "Man greift auf **Vergleichsfaktoren** der Gutachterausschüsse zurück (statistische Durchschnittswerte, z.B. €/m² Wohnfläche für bestimmte Baujahresklassen) oder wählt ein anderes Verfahren (Sachwert/Ertragswert), wenn zulässig.",
+        "hint": "Denken Sie an die statistischen Auswertungen der Gutachterausschüsse und prüfen Sie, welche anderen Bewertungsverfahren für Ihr Bewertungsobjekt zulässig sind.",
+        "type": "reflection"
       },
       {
         "question": "Warum sinkt der Quadratmeterpreis oft mit steigender Wohnungsgröße?",
-        "solution": "Wegen des degressiven Verlaufs der Preise. Fixkosten (Bad, Heizung, Erschließung) verteilen sich auf mehr Fläche. Zudem ist die Nachfrage nach riesigen Wohnungen oft kleiner als nach Standardgrößen."
+        "solution": "Wegen des degressiven Verlaufs der Preise. Fixkosten (Bad, Heizung, Erschließung) verteilen sich auf mehr Fläche. Zudem ist die Nachfrage nach riesigen Wohnungen oft kleiner als nach Standardgrößen.",
+        "hint": "Denken Sie an die Kostenverteilung in einer Wohnung: Welche Ausstattungselemente fallen unabhängig von der Wohnungsgröße in ähnlicher Höhe an? Berücksichtigen Sie außerdem das Verhältnis von Angebot und Nachfrage bei verschiedenen Wohnungsgrößen.",
+        "type": "reflection"
       },
       {
         "question": "Wie berücksichtigen Sie unterschiedliche Kaufzeitpunkte bei Vergleichsobjekten?",
-        "solution": "Durch **Indexierung** mithilfe von Preisindizes (z.B. Immobilienpreisindex des Gutachterausschusses). Ein Kaufpreis von vor 2 Jahren wird auf das heutige Preisniveau hoch- oder runtergerechnet."
+        "solution": "Durch **Indexierung** mithilfe von Preisindizes (z.B. Immobilienpreisindex des Gutachterausschusses). Ein Kaufpreis von vor 2 Jahren wird auf das heutige Preisniveau hoch- oder runtergerechnet.",
+        "hint": "Denken Sie an die allgemeine Preisentwicklung am Immobilienmarkt über die Zeit und welche statistischen Hilfsmittel Ihnen Gutachterausschüsse zur Verfügung stellen. Überlegen Sie, wie Sie einen \"alten\" Kaufpreis auf das heutige Niveau anpassen können.",
+        "type": "reflection"
       },
       {
         "question": "Vollständige Vergleichswertberechnung — Hamburg Eimsbüttel:\nETW 68m², BJ 1995, 2.OG, Balkon, kein Aufzug.\nVergleichsobjekte: A=4.200€/m² (kein Balkon, kein Aufzug, 2.OG) | B=4.600€/m² (Balkon, Aufzug, 3.OG) | C=4.000€/m² (kein Balkon, kein Aufzug, 1.OG)\nFaktoren: Balkon +2%, Aufzug +1,5%, OG ±0,5%/OG. Berechnen Sie den Verkehrswert.",
-        "solution": "Obj.A→ +2% Balkon = 4.284 €/m²\nObj.B→ -2% Balkon, -1,5% Aufzug, +0,5% OG = 4.462 €/m²\nObj.C→ +2% Balkon, -0,5% OG = 4.060 €/m²\nMittelwert: (4.284+4.462+4.060)/3 = 4.269 €/m²\nVerkehrswert: 4.269 × 68 = 290.292 € → gerundet **290.000 €**"
+        "solution": "Obj.A→ +2% Balkon = 4.284 €/m²\nObj.B→ -2% Balkon, -1,5% Aufzug, +0,5% OG = 4.462 €/m²\nObj.C→ +2% Balkon, -0,5% OG = 4.060 €/m²\nMittelwert: (4.284+4.462+4.060)/3 = 4.269 €/m²\nVerkehrswert: 4.269 × 68 = 290.292 € → gerundet **290.000 €**",
+        "hint": "Bereinigen Sie systematisch jeden Vergleichswert um die Ausstattungsunterschiede zur Bewertungsimmobilie und bilden Sie anschließend den arithmetischen Mittelwert für die Quadratmeterpreisermittlung.",
+        "type": "reflection"
       },
       {
         "question": "Indexanpassung — Leipzig Gohlis 2024:\nVergleichskauf 2022: 2.800€/m², 75m² ETW.\nIndex Leipzig ETW: 2022=118, 2024=112.\nLagezuschlag Gohlis vs. Vergleichsobjekt: +8%.\nBerechnen Sie den aktuellen Verkehrswert.",
-        "solution": "Indexfaktor: 112/118 = 0,9492\n2.800 × 0,9492 = 2.658 €/m²\n× Lagezuschlag 1,08 = 2.870 €/m²\n× 75m² = 215.250 € → gerundet **215.000 €**\n\nHinweis: Ostdeutsche Großstädte (Leipzig, Dresden, Erfurt) zeigen seit 2023 leichte Marktkorrekturen nach den Boomjahren 2019-2022."
+        "solution": "Indexfaktor: 112/118 = 0,9492\n2.800 × 0,9492 = 2.658 €/m²\n× Lagezuschlag 1,08 = 2.870 €/m²\n× 75m² = 215.250 € → gerundet **215.000 €**\n\nHinweis: Ostdeutsche Großstädte (Leipzig, Dresden, Erfurt) zeigen seit 2023 leichte Marktkorrekturen nach den Boomjahren 2019-2022.",
+        "hint": "Berechnen Sie zunächst den Indexfaktor aus dem Verhältnis der beiden Indexwerte und wenden Sie anschließend den Lagezuschlag auf den indexangepassten Quadratmeterpreis an.",
+        "type": "reflection"
       },
       {
         "question": "Vollständige Vergleichswertberechnung — Hamburg Eimsbüttel:\nETW 68m², BJ 1995, 2.OG, Balkon, kein Aufzug.\nVergleichsobjekte: A=4.200€/m² (kein Balkon, kein Aufzug, 2.OG) | B=4.600€/m² (Balkon, Aufzug, 3.OG) | C=4.000€/m² (kein Balkon, kein Aufzug, 1.OG)\nFaktoren: Balkon +2%, Aufzug +1,5%, OG ±0,5%/OG. Berechnen Sie den Verkehrswert.",
-        "solution": "Obj.A→ +2% Balkon = 4.284 €/m²\nObj.B→ -2% Balkon, -1,5% Aufzug, +0,5% OG = 4.462 €/m²\nObj.C→ +2% Balkon, -0,5% OG = 4.060 €/m²\nMittelwert: (4.284+4.462+4.060)/3 = 4.269 €/m²\nVerkehrswert: 4.269 × 68 = 290.292 € → gerundet **290.000 €**"
+        "solution": "Obj.A→ +2% Balkon = 4.284 €/m²\nObj.B→ -2% Balkon, -1,5% Aufzug, +0,5% OG = 4.462 €/m²\nObj.C→ +2% Balkon, -0,5% OG = 4.060 €/m²\nMittelwert: (4.284+4.462+4.060)/3 = 4.269 €/m²\nVerkehrswert: 4.269 × 68 = 290.292 € → gerundet **290.000 €**",
+        "hint": "Denken Sie daran, dass Sie die Vergleichsobjekte an das Bewertungsobjekt anpassen müssen - addieren Sie fehlende Ausstattung und subtrahieren Sie vorhandene Vorteile der Vergleichsobjekte.",
+        "type": "reflection"
       },
       {
         "question": "Indexanpassung — Leipzig Gohlis 2024:\nVergleichskauf 2022: 2.800€/m², 75m² ETW.\nIndex Leipzig ETW: 2022=118, 2024=112.\nLagezuschlag Gohlis vs. Vergleichsobjekt: +8%.\nBerechnen Sie den aktuellen Verkehrswert.",
-        "solution": "Indexfaktor: 112/118 = 0,9492\n2.800 × 0,9492 = 2.658 €/m²\n× Lagezuschlag 1,08 = 2.870 €/m²\n× 75m² = 215.250 € → gerundet **215.000 €**\n\nHinweis: Ostdeutsche Großstädte (Leipzig, Dresden, Erfurt) zeigen seit 2023 leichte Marktkorrekturen nach den Boomjahren 2019-2022."
+        "solution": "Indexfaktor: 112/118 = 0,9492\n2.800 × 0,9492 = 2.658 €/m²\n× Lagezuschlag 1,08 = 2.870 €/m²\n× 75m² = 215.250 € → gerundet **215.000 €**\n\nHinweis: Ostdeutsche Großstädte (Leipzig, Dresden, Erfurt) zeigen seit 2023 leichte Marktkorrekturen nach den Boomjahren 2019-2022.",
+        "hint": "Berechnen Sie zuerst den Indexfaktor aus dem Verhältnis der aktuellen zur Basis-Indexzahl, bevor Sie den Lagezuschlag anwenden. Denken Sie an die korrekte Reihenfolge: Basispreis × Indexfaktor × Lagefaktor × Fläche.",
+        "type": "reflection"
       }
     ]
   },
@@ -148,27 +188,39 @@
     "tasks": [
       {
         "question": "Warum darf man nicht einfach die aktuelle Miete für den Ertragswert nehmen?",
-        "solution": "Weil der Verkehrswert objektiv sein muss. Eine Gefälligkeitsmiete (zu niedrig) oder eine Wuchermiete (zu hoch) würde das Ergebnis verfälschen. Es gilt die **marktüblich erzielbare Miete**."
+        "solution": "Weil der Verkehrswert objektiv sein muss. Eine Gefälligkeitsmiete (zu niedrig) oder eine Wuchermiete (zu hoch) würde das Ergebnis verfälschen. Es gilt die **marktüblich erzielbare Miete**.",
+        "hint": "Denken Sie daran, dass der Verkehrswert objektiv und marktgerecht sein muss - die tatsächlich gezahlte Miete kann davon erheblich abweichen. Überlegen Sie, welche Art von Miete für die Bewertung relevant ist.",
+        "type": "reflection"
       },
       {
         "question": "Zählen die Heizkosten zum Rohertrag?",
-        "solution": "Nein. Der Rohertrag ist immer die **Nettokaltmiete**. Heiz- und Nebenkosten sind durchlaufende Posten."
+        "solution": "Nein. Der Rohertrag ist immer die **Nettokaltmiete**. Heiz- und Nebenkosten sind durchlaufende Posten.",
+        "hint": "Denken Sie daran, was genau zum Rohertrag gehört und welche Kostenarten als durchlaufende Posten behandelt werden. Konzentrieren Sie sich auf den Begriff \"Nettokaltmiete\" als Grundlage des Rohertrags.",
+        "type": "reflection"
       },
       {
         "question": "Was ist das Mietausfallwagnis?",
-        "solution": "Ein kalkulatorischer Abzug (meist 2-4% des Rohertrags), der das Risiko abdeckt, dass Mieten zeitweise ausfallen oder Wohnungen leerstehen. Es mindert den Ertragswert."
+        "solution": "Ein kalkulatorischer Abzug (meist 2-4% des Rohertrags), der das Risiko abdeckt, dass Mieten zeitweise ausfallen oder Wohnungen leerstehen. Es mindert den Ertragswert.",
+        "hint": "Denken Sie an kalkulatorische Risikopositionen bei der Ertragswertermittlung und überlegen Sie, welche Ausfallrisiken bei Mieteinnahmen auftreten können.",
+        "type": "definition"
       },
       {
         "question": "Sind Instandhaltungskosten umlagefähig auf den Mieter?",
-        "solution": "Nein, Instandhaltung ist Sache des Eigentümers (Vermieters) und mindert daher den Reinertrag."
+        "solution": "Nein, Instandhaltung ist Sache des Eigentümers (Vermieters) und mindert daher den Reinertrag.",
+        "hint": "Denken Sie an die grundsätzliche Verantwortungsteilung zwischen Vermieter und Mieter nach § 535 BGB und prüfen Sie, wer für die Erhaltung der Mietsache zuständig ist.",
+        "type": "reflection"
       },
       {
         "question": "Reinertrag berechnen — Köln Ehrenfeld (Deutschlandweit typisch, mittlere Lage):\nMFH 8 WE, Wohnfläche 560 m², Ist-Miete 9,20 €/m²/Monat, Marktmiete 10,50 €/m²/Monat.\nBewirtschaftungskosten: Verwaltung 3%, Instandhaltung 8%, Mietausfallwagnis 2%, Sonstiges 1,5%.\nBerechnen Sie Rohertrag und Reinertrag (mit Marktmiete).",
-        "solution": "**Rohertrag (marktüblich):**\n10,50 €/m² × 560 m² × 12 = 70.560 €/Jahr\n\n**Bewirtschaftungskosten:**\nVerwaltung 3%: 2.117 €\nInstandhaltung 8%: 5.645 €\nMietausfallwagnis 2%: 1.411 €\nSonstiges 1,5%: 1.058 €\nGesamt BWK 14,5%: 10.231 €\n\n**Reinertrag:**\n70.560 − 10.231 = **60.329 €/Jahr**\n\nHinweis Ist-Miete: 9,20 × 560 × 12 = 61.824 € (Rohertrag Ist)\nMarktmiete höher → Aufschlag bei Bewertung möglich wenn Erhöhung rechtlich zulässig."
+        "solution": "**Rohertrag (marktüblich):**\n10,50 €/m² × 560 m² × 12 = 70.560 €/Jahr\n\n**Bewirtschaftungskosten:**\nVerwaltung 3%: 2.117 €\nInstandhaltung 8%: 5.645 €\nMietausfallwagnis 2%: 1.411 €\nSonstiges 1,5%: 1.058 €\nGesamt BWK 14,5%: 10.231 €\n\n**Reinertrag:**\n70.560 − 10.231 = **60.329 €/Jahr**\n\nHinweis Ist-Miete: 9,20 × 560 × 12 = 61.824 € (Rohertrag Ist)\nMarktmiete höher → Aufschlag bei Bewertung möglich wenn Erhöhung rechtlich zulässig.",
+        "hint": "Berechnen Sie mit der Marktmiete als Grundlage für den Rohertrag und ziehen Sie anschließend die Bewirtschaftungskosten als Prozentsätze vom Rohertrag ab. Achten Sie darauf, dass sich die Bewirtschaftungskosten auf den Jahresrohertrag beziehen.",
+        "type": "reflection"
       },
       {
         "question": "Bewirtschaftungskosten-Vergleich — Frankfurt Sachsenhausen vs. Rostock Stadtmitte:\nFrankfurt: Rohertrag 95.000 €, BWK 22%. Rostock: Rohertrag 42.000 €, BWK 18%.\nWelcher Reinertrag? Warum unterschiedliche BWK-Sätze?",
-        "solution": "Frankfurt Reinertrag: 95.000 × (1 − 0,22) = **74.100 €**\nRostock Reinertrag: 42.000 × (1 − 0,18) = **34.440 €**\n\nGrund unterschiedliche BWK-Sätze:\n- Neubau/sanierter Bestand: niedrigere Instandhaltung\n- Altbau: höhere Instandhaltungskosten\n- Großstädte: höhere Verwaltungskosten (mehr Fluktuation)\n- Strukturschwache Regionen: höheres Mietausfallwagnis\nGA-Berichte der jeweiligen Gutachterausschüsse maßgeblich!"
+        "solution": "Frankfurt Reinertrag: 95.000 × (1 − 0,22) = **74.100 €**\nRostock Reinertrag: 42.000 × (1 − 0,18) = **34.440 €**\n\nGrund unterschiedliche BWK-Sätze:\n- Neubau/sanierter Bestand: niedrigere Instandhaltung\n- Altbau: höhere Instandhaltungskosten\n- Großstädte: höhere Verwaltungskosten (mehr Fluktuation)\n- Strukturschwache Regionen: höheres Mietausfallwagnis\nGA-Berichte der jeweiligen Gutachterausschüsse maßgeblich!",
+        "hint": "Berechnen Sie den Reinertrag mit der Formel Rohertrag × (1 - BWK-Satz) und denken Sie bei den unterschiedlichen BWK-Sätzen an die typischen Kostentreiber wie Gebäudealter, Instandhaltungsaufwand und regionale Verwaltungskosten.",
+        "type": "reflection"
       }
     ]
   },
@@ -185,27 +237,39 @@
     "tasks": [
       {
         "question": "Warum zieht man die Bodenwertverzinsung ab?",
-        "solution": "Um den Ertraganteil zu isolieren, der nur vom Gebäude kommt. Nur das Gebäude ist vergänglich (nutzungsdauerbeschränkt) und muss daher mit dem Vervielfältiger kapitalisiert werden. Der Bodenwert wird am Ende separat wieder addiert."
+        "solution": "Um den Ertraganteil zu isolieren, der nur vom Gebäude kommt. Nur das Gebäude ist vergänglich (nutzungsdauerbeschränkt) und muss daher mit dem Vervielfältiger kapitalisiert werden. Der Bodenwert wird am Ende separat wieder addiert.",
+        "hint": "Denken Sie daran, dass beim Ertragswertverfahren nur der vergängliche Teil der Immobilie mit dem Vervielfältiger kapitalisiert werden darf. Überlegen Sie, welcher Bestandteil einer Immobilie zeitlich unbegrenzt nutzbar ist und welcher nicht.",
+        "type": "reflection"
       },
       {
         "question": "Was passiert mit dem Ertragswert, wenn der Liegenschaftszins steigt?",
-        "solution": "Der Ertragswert **sinkt**. Ein hoher Zins bedeutet, dass Investoren mehr Rendite für ihr Risiko wollen -> der Kaufpreis muss niedriger sein. (Mathematisch: Der Vervielfältiger wird kleiner)."
+        "solution": "Der Ertragswert **sinkt**. Ein hoher Zins bedeutet, dass Investoren mehr Rendite für ihr Risiko wollen -> der Kaufpreis muss niedriger sein. (Mathematisch: Der Vervielfältiger wird kleiner).",
+        "hint": "Denken Sie an die Ertragswertformel und die Beziehung zwischen Liegenschaftszins und Vervielfältiger. Überlegen Sie, wie sich Zinsänderungen auf die Attraktivität einer Investition aus Sicht des Käufers auswirken.",
+        "type": "reflection"
       },
       {
         "question": "Was ist der Vervielfältiger?",
-        "solution": "Ein mathematischer Faktor (Barwertfaktor), der aus der Restnutzungsdauer und dem Liegenschaftszins gebildet wird. Er kapitalisiert die jährlichen Reinerträge zu einem Barwert (Kapitalwert)."
+        "solution": "Ein mathematischer Faktor (Barwertfaktor), der aus der Restnutzungsdauer und dem Liegenschaftszins gebildet wird. Er kapitalisiert die jährlichen Reinerträge zu einem Barwert (Kapitalwert).",
+        "hint": "Denken Sie an die Barwertberechnung von zukünftigen Erträgen – der Begriff steht in direktem Zusammenhang mit dem Liegenschaftszins und der Restnutzungsdauer einer Immobilie.",
+        "type": "definition"
       },
       {
         "question": "Wann ist das Ertragswertverfahren NICHT geeignet?",
-        "solution": "Bei selbstgenutzten Einfamilienhäusern ohne Renditeabsicht. Hier steht der Sachwert (Substanz) im Vordergrund."
+        "solution": "Bei selbstgenutzten Einfamilienhäusern ohne Renditeabsicht. Hier steht der Sachwert (Substanz) im Vordergrund.",
+        "hint": "Denken Sie daran, dass das Ertragswertverfahren auf der Kapitalisierung von Erträgen basiert - überlegen Sie daher, bei welchen Immobilienarten keine Renditeerzielung im Vordergrund steht.",
+        "type": "reflection"
       },
       {
         "question": "Vollständige Ertragswertberechnung — Berlin Neukölln (IHK-Niveau):\nMFH 6 WE, 420 m² Wohnfläche, Marktmiete 10,80 €/m²/Monat\nBWK: 16% | Bodenwert: 280 m² × 850 €/m² = 238.000 €\nLiegenschaftszinssatz: 3,2% | RND: 38 Jahre\nBarwertfaktor (38J/3,2%): 22,1 (Anlage 1 ImmoWertV)\nBerechnen Sie den vollständigen Ertragswert.",
-        "solution": "**1. Rohertrag:** 10,80 × 420 × 12 = 54.432 €\n**2. BWK (16%):** 54.432 × 0,16 = 8.709 €\n**3. Reinertrag:** 54.432 − 8.709 = 45.723 €\n**4. Bodenwertverzinsung:** 238.000 × 3,2% = 7.616 €\n**5. Gebäudereinertrag:** 45.723 − 7.616 = 38.107 €\n**6. Gebäudeertragswert:** 38.107 × 22,1 = 842.165 €\n**7. Ertragswert:** 842.165 + 238.000 = **1.080.165 €**\nGerundet: **1.080.000 €**"
+        "solution": "**1. Rohertrag:** 10,80 × 420 × 12 = 54.432 €\n**2. BWK (16%):** 54.432 × 0,16 = 8.709 €\n**3. Reinertrag:** 54.432 − 8.709 = 45.723 €\n**4. Bodenwertverzinsung:** 238.000 × 3,2% = 7.616 €\n**5. Gebäudereinertrag:** 45.723 − 7.616 = 38.107 €\n**6. Gebäudeertragswert:** 38.107 × 22,1 = 842.165 €\n**7. Ertragswert:** 842.165 + 238.000 = **1.080.165 €**\nGerundet: **1.080.000 €**",
+        "hint": "Denken Sie an die klassische Ertragswertformel: Bodenwert + Gebäudeertragswert, wobei Sie zunächst vom Rohertrag über den Reinertrag zum Gebäudereinertrag gelangen müssen. Vergessen Sie nicht die Bodenwertverzinsung vom Reinertrag abzuziehen, bevor Sie den Barwertfaktor anwenden.",
+        "type": "reflection"
       },
       {
         "question": "Ertragswert — Stuttgart Mitte vs. Magdeburg Stadtfeld im Vergleich:\nStuttgart: Reinertrag 68.000 €, LZ 2,8%, Bodenwert 420.000 €, RND 30J, BF=19,6\nMagdeburg: Reinertrag 28.000 €, LZ 4,5%, Bodenwert 85.000 €, RND 25J, BF=14,8\nBerechnen Sie beide Ertragswerte und erklären Sie den Unterschied.",
-        "solution": "**Stuttgart:**\nBodenwertverzinsung: 420.000 × 2,8% = 11.760 €\nGebäudereinertrag: 68.000 − 11.760 = 56.240 €\nGebäudeertragswert: 56.240 × 19,6 = 1.102.304 €\nErtragswert: 1.102.304 + 420.000 = **1.522.304 € → 1.520.000 €**\n\n**Magdeburg:**\nBodenwertverzinsung: 85.000 × 4,5% = 3.825 €\nGebäudereinertrag: 28.000 − 3.825 = 24.175 €\nGebäudeertragswert: 24.175 × 14,8 = 357.790 €\nErtragswert: 357.790 + 85.000 = **442.790 € → 443.000 €**\n\n**Erklärung:**\nNiedrigerer LZ (Stuttgart) = höherer Vervielfältiger = höherer Wert.\nOstdeutsche Städte: höheres Risiko → höherer LZ → niedrigerer Wert.\nFazit: Gleiches Gebäude, andere Stadt → völlig andere Bewertung!"
+        "solution": "**Stuttgart:**\nBodenwertverzinsung: 420.000 × 2,8% = 11.760 €\nGebäudereinertrag: 68.000 − 11.760 = 56.240 €\nGebäudeertragswert: 56.240 × 19,6 = 1.102.304 €\nErtragswert: 1.102.304 + 420.000 = **1.522.304 € → 1.520.000 €**\n\n**Magdeburg:**\nBodenwertverzinsung: 85.000 × 4,5% = 3.825 €\nGebäudereinertrag: 28.000 − 3.825 = 24.175 €\nGebäudeertragswert: 24.175 × 14,8 = 357.790 €\nErtragswert: 357.790 + 85.000 = **442.790 € → 443.000 €**\n\n**Erklärung:**\nNiedrigerer LZ (Stuttgart) = höherer Vervielfältiger = höherer Wert.\nOstdeutsche Städte: höheres Risiko → höherer LZ → niedrigerer Wert.\nFazit: Gleiches Gebäude, andere Stadt → völlig andere Bewertung!",
+        "hint": "Denken Sie an die Ertragswertformel mit Bodenwertverzinsung und Barwertfaktor - der Liegenschaftszinssatz spielt dabei eine doppelte Rolle bei der Verzinsung und Kapitalisierung.",
+        "type": "reflection"
       }
     ]
   },
@@ -222,23 +286,33 @@
     "tasks": [
       {
         "question": "Was bedeutet 'Under-rented'?",
-        "solution": "Die tatsächliche Miete liegt unter der marktüblichen Miete. Das Objekt hat Mietsteigerungspotenzial."
+        "solution": "Die tatsächliche Miete liegt unter der marktüblichen Miete. Das Objekt hat Mietsteigerungspotenzial.",
+        "hint": "Denken Sie an die Beziehung zwischen der aktuell gezahlten Miete und dem aktuellen Marktniveau - das englische \"under\" gibt bereits einen wichtigen Hinweis auf die Richtung der Abweichung.",
+        "type": "reflection"
       },
       {
         "question": "Wie behandeln Sie einen dauerhaften Leerstand in einer Schrumpfungsregion?",
-        "solution": "Ansatz einer niedrigeren Marktmiete, Erhöhung des Mietausfallwagnisses (z.B. auf 10%) oder im Extremfall Liquidationwert (Abrisskosten abziehen)."
+        "solution": "Ansatz einer niedrigeren Marktmiete, Erhöhung des Mietausfallwagnisses (z.B. auf 10%) oder im Extremfall Liquidationwert (Abrisskosten abziehen).",
+        "hint": "Denken Sie an die Anpassung der Bewertungsparameter an die veränderten Marktbedingungen und berücksichtigen Sie sowohl das erhöhte Risiko als auch mögliche Alternativszenarien zur Weitervermietung.",
+        "type": "reflection"
       },
       {
         "question": "Kann die Restnutzungsdauer verlängert werden?",
-        "solution": "Ja, durch Modernisierungen (Kernsanierung). Man spricht von einer 'modifizierten Restnutzungsdauer'."
+        "solution": "Ja, durch Modernisierungen (Kernsanierung). Man spricht von einer 'modifizierten Restnutzungsdauer'.",
+        "hint": "Denken Sie an bauliche Maßnahmen, die den Zustand und die Lebensdauer eines Gebäudes grundlegend verbessern können. Der Fachbegriff enthält das Wort \"modifiziert\".",
+        "type": "reflection"
       },
       {
         "question": "Warum ist der Liegenschaftszins bei Gewerbeimmobilien meist höher als bei Wohnimmobilien?",
-        "solution": "Weil das Risiko bei Gewerbe höher ist (höheres Leerstandsrisiko, speziellere Drittverwendungsfähigkeit). Höheres Risiko = Höhere Renditeerwartung = Höherer Zins = Niedrigerer Vervielfältiger."
+        "solution": "Weil das Risiko bei Gewerbe höher ist (höheres Leerstandsrisiko, speziellere Drittverwendungsfähigkeit). Höheres Risiko = Höhere Renditeerwartung = Höherer Zins = Niedrigerer Vervielfältiger.",
+        "hint": "Denken Sie an die unterschiedlichen Risikoprofile der beiden Immobilienarten und wie sich diese auf die Renditeerwartung der Investoren auswirken. Berücksichtigen Sie dabei besonders das Leerstandsrisiko und die Drittverwendungsfähigkeit.",
+        "type": "reflection"
       },
       {
         "question": "Sonderfall Unter-Miete — Nürnberg Gostenhof:\nMFH, Marktmiete 9,80 €/m²/Monat, Ist-Miete 6,50 €/m²/Monat (Altmieter seit 15 Jahren)\nWohnfläche 380 m², BWK 15%, LZ 3,8%, Bodenwert 165.000 €, RND 28J, BF=17,2\nBerechnen Sie Ertragswert mit Marktmiete UND Abzug Mietminderung.",
-        "solution": "**Mit Marktmiete:**\nRohertrag: 9,80 × 380 × 12 = 44.688 €\nBWK (15%): 6.703 €\nReinertrag: 37.985 €\nBodenwertverzinsung: 165.000 × 3,8% = 6.270 €\nGebäudereinertrag: 31.715 €\nGebäudeertragswert: 31.715 × 17,2 = 545.498 €\nErtragswert Marktmiete: 545.498 + 165.000 = 710.498 €\n\n**Mietminderungsabzug:**\nMietdifferenz/Jahr: (9,80 − 6,50) × 380 × 12 = 15.048 €\nBarwert Mietminderung: 15.048 × 17,2 = 258.826 €\n\n**Verkehrswert:**\n710.498 − 258.826 = 451.672 € → gerundet **452.000 €**\n\nMerksatz: Unter-Miete mindert Wert erheblich! Altmieter = Wertminderung für Käufer."
+        "solution": "**Mit Marktmiete:**\nRohertrag: 9,80 × 380 × 12 = 44.688 €\nBWK (15%): 6.703 €\nReinertrag: 37.985 €\nBodenwertverzinsung: 165.000 × 3,8% = 6.270 €\nGebäudereinertrag: 31.715 €\nGebäudeertragswert: 31.715 × 17,2 = 545.498 €\nErtragswert Marktmiete: 545.498 + 165.000 = 710.498 €\n\n**Mietminderungsabzug:**\nMietdifferenz/Jahr: (9,80 − 6,50) × 380 × 12 = 15.048 €\nBarwert Mietminderung: 15.048 × 17,2 = 258.826 €\n\n**Verkehrswert:**\n710.498 − 258.826 = 451.672 € → gerundet **452.000 €**\n\nMerksatz: Unter-Miete mindert Wert erheblich! Altmieter = Wertminderung für Käufer.",
+        "hint": "Denken Sie an das Residualverfahren und berechnen Sie zunächst den Ertragswert mit der Marktmiete, bevor Sie die Mietminderung durch die Differenz zur tatsächlichen Ist-Miete quantifizieren. Berücksichtigen Sie dabei, dass die Mietminderung über die Restnutzungsdauer kapitalisiert werden muss.",
+        "type": "reflection"
       }
     ]
   },
@@ -255,19 +329,27 @@
     "tasks": [
       {
         "question": "Nennen Sie die drei normierten Wertermittlungsverfahren.",
-        "solution": "Vergleichswertverfahren, Ertragswertverfahren, Sachwertverfahren."
+        "solution": "Vergleichswertverfahren, Ertragswertverfahren, Sachwertverfahren.",
+        "hint": "Schauen Sie in die ImmoWertV - dort sind die drei standardisierten Methoden zur Immobilienbewertung systematisch aufgeführt. Denken Sie daran, dass jedes Verfahren einen anderen Bewertungsansatz verfolgt.",
+        "type": "definition"
       },
       {
         "question": "Welches Verfahren dominiert bei Gewerbeimmobilien?",
-        "solution": "Das Ertragswertverfahren (bzw. Discounted Cashflow), da hier die Rendite das alleinige Entscheidungskriterium für Investoren ist."
+        "solution": "Das Ertragswertverfahren (bzw. Discounted Cashflow), da hier die Rendite das alleinige Entscheidungskriterium für Investoren ist.",
+        "hint": "Denken Sie daran, dass Gewerbeimmobilien in erster Linie Investitionsobjekte sind - welcher Bewertungsansatz steht daher im Fokus der Käufer?",
+        "type": "reflection"
       },
       {
         "question": "Was ist der 'Verkehrswert'?",
-        "solution": "Der Marktwert (§ 194 BauGB) - der Preis, der im gewöhnlichen Geschäftsverkehr voraussichtlich zu erzielen wäre."
+        "solution": "Der Marktwert (§ 194 BauGB) - der Preis, der im gewöhnlichen Geschäftsverkehr voraussichtlich zu erzielen wäre.",
+        "hint": "Denken Sie an die gesetzliche Definition im Baugesetzbuch und überlegen Sie, welcher Preis in einer normalen Marktsituation realistisch erzielbar wäre.",
+        "type": "definition"
       },
       {
         "question": "Darf man Verfahren mischen?",
-        "solution": "Man führt sie meist parallel durch (Stützung). Am Ende muss der Gutachter sich aber entscheiden oder gewichten, welches Verfahren für die Objektart marktüblich ('verfahrensprägend') ist."
+        "solution": "Man führt sie meist parallel durch (Stützung). Am Ende muss der Gutachter sich aber entscheiden oder gewichten, welches Verfahren für die Objektart marktüblich ('verfahrensprägend') ist.",
+        "hint": "Denken Sie an das Konzept der Stützung zwischen den Verfahren und überlegen Sie, welches Verfahren für die konkrete Objektart als marktüblich gilt.",
+        "type": "reflection"
       }
     ]
   },
@@ -285,19 +367,27 @@
     "tasks": [
       {
         "question": "Was bedeutet GFZ?",
-        "solution": "Geschossflächenzahl. Sie gibt an, wie viel Quadratmeter Geschossfläche je Quadratmeter Grundstücksfläche zulässig sind."
+        "solution": "Geschossflächenzahl. Sie gibt an, wie viel Quadratmeter Geschossfläche je Quadratmeter Grundstücksfläche zulässig sind.",
+        "hint": "Denken Sie an die Baunutzungsverordnung (BauNVO) und das Verhältnis zwischen bebaubarer Fläche und Grundstücksgröße. Das \"G\" steht für einen wichtigen Begriff aus dem Baurecht, der die Anzahl der übereinander liegenden Ebenen beschreibt.",
+        "type": "reflection"
       },
       {
         "question": "Ist Hinterland wertlos?",
-        "solution": "Nein, aber weniger wertvoll als Bauland. Oft wird es als 'Gartenland' mit z.B. 10-20% des Baulandwertes angesetzt."
+        "solution": "Nein, aber weniger wertvoll als Bauland. Oft wird es als 'Gartenland' mit z.B. 10-20% des Baulandwertes angesetzt.",
+        "hint": "Denken Sie an die unterschiedlichen Nutzungsmöglichkeiten von Grundstücken und wie sich diese auf die Wertermittlung auswirken – welche Wertverhältnisse bestehen typischerweise zwischen verschiedenen Bodenarten?",
+        "type": "reflection"
       },
       {
         "question": "Wie beeinflusst eine Ecklage den Wert?",
-        "solution": "Meist positiv (bessere Belichtung, Erschließung, Werbewirksamkeit bei Gewerbe). Zuschläge von 5-10% sind üblich."
+        "solution": "Meist positiv (bessere Belichtung, Erschließung, Werbewirksamkeit bei Gewerbe). Zuschläge von 5-10% sind üblich.",
+        "hint": "Denken Sie an die praktischen Vorteile, die sich aus der exponierten Position ergeben - sowohl für die Nutzung als auch für die Wahrnehmung der Immobilie. Berücksichtigen Sie dabei die unterschiedlichen Auswirkungen je nach Nutzungsart.",
+        "type": "reflection"
       },
       {
         "question": "Was tun, wenn kein Bodenrichtwert existiert?",
-        "solution": "Vergleichspreise heranziehen oder deduktive Verfahren (Lageklassenverfahren) nutzen."
+        "solution": "Vergleichspreise heranziehen oder deduktive Verfahren (Lageklassenverfahren) nutzen.",
+        "hint": "Denken Sie an alternative Bewertungsverfahren der ImmoWertV und prüfen Sie, welche Vergleichsdaten aus ähnlichen Lagen zur Verfügung stehen.",
+        "type": "reflection"
       }
     ]
   },
@@ -314,19 +404,27 @@
     "tasks": [
       {
         "question": "Berechnen Sie den Ertragswert (siehe Praxisbeispiel).",
-        "solution": "**316.236 €** (bzw. gerundet 316.000 €)."
+        "solution": "**316.236 €** (bzw. gerundet 316.000 €).",
+        "hint": "Denken Sie an die Ertragswertformel aus dem Bewertungsgesetz (BewG) und berücksichtigen Sie dabei sowohl den Rohertrag als auch alle Bewirtschaftungskosten zur Ermittlung des Reinertrags.",
+        "type": "reflection"
       },
       {
         "question": "Was wäre, wenn der Bodenwert 300.000 € betrüge?",
-        "solution": "Bodenverzinsung steigt auf 12.000 €. Gebäudereinertrag sinkt auf 2.400 €. Ertragswert Gebäude sinkt massiv. Gesamtwert würde sich ändern, aber nicht um 150.000 € steigen, da der Gebäudeanteil sinkt."
+        "solution": "Bodenverzinsung steigt auf 12.000 €. Gebäudereinertrag sinkt auf 2.400 €. Ertragswert Gebäude sinkt massiv. Gesamtwert würde sich ändern, aber nicht um 150.000 € steigen, da der Gebäudeanteil sinkt.",
+        "hint": "Denken Sie daran, dass beim Ertragswertverfahren der Gesamtertrag konstant bleibt und zwischen Boden- und Gebäudeverzinsung aufgeteilt wird. Beachten Sie dabei das Residualprinzip bei der Ermittlung des Gebäudeertrags.",
+        "type": "reflection"
       },
       {
         "question": "Welche Auswirkung hat eine Mieterhöhung um 10%?",
-        "solution": "Der Rohertrag steigt. Der Reinertrag steigt. Der Ertragswert steigt überproportional (Hebelwirkung des Vervielfältigers)."
+        "solution": "Der Rohertrag steigt. Der Reinertrag steigt. Der Ertragswert steigt überproportional (Hebelwirkung des Vervielfältigers).",
+        "hint": "Denken Sie an die Kettenreaktion: Wie wirkt sich eine Mieterhöhung auf Rohertrag, Reinertrag und schließlich auf den Ertragswert aus? Beachten Sie dabei die Hebelwirkung des Vervielfältigers im Ertragswertverfahren.",
+        "type": "reflection"
       },
       {
         "question": "Sind Gutachten ewig gültig?",
-        "solution": "Nein, sie gelten streng genommen nur für den Stichtag. Nach 6-12 Monaten werden sie von Banken/Gerichten meist nicht mehr akzeptiert."
+        "solution": "Nein, sie gelten streng genommen nur für den Stichtag. Nach 6-12 Monaten werden sie von Banken/Gerichten meist nicht mehr akzeptiert.",
+        "hint": "Denken Sie an den Stichtag der Bewertung und überlegen Sie, wie sich Marktbedingungen und Immobilienwerte über die Zeit entwickeln können.",
+        "type": "reflection"
       }
     ]
   },
@@ -343,27 +441,39 @@
     "tasks": [
       {
         "question": "Was ist der Unterschied zwischen Wohnfläche und BGF?",
-        "solution": "Wohnfläche (WoFlV) misst die lichten Innenmaße der bewohnbaren Räume. BGF (Brutto-Grundfläche) misst die Außenmaße aller Geschosse inkl. Wände, Treppenhäuser und Konstruktion."
+        "solution": "Wohnfläche (WoFlV) misst die lichten Innenmaße der bewohnbaren Räume. BGF (Brutto-Grundfläche) misst die Außenmaße aller Geschosse inkl. Wände, Treppenhäuser und Konstruktion.",
+        "hint": "Denken Sie an den Unterschied zwischen dem, was ein Bewohner tatsächlich nutzen kann, und dem, was ein Architekt für die gesamte Gebäudeplanung vermisst – hier helfen die Wohnflächenverordnung und die DIN 277 weiter.",
+        "type": "definition"
       },
       {
         "question": "Warum nimmt man nicht die tatsächlichen Baukosten aus den Rechnungen des Eigentümers?",
-        "solution": "Weil diese subjektiv sind (Schwarzarbeit? Eigenleistung? Goldene Wasserhähne?). Die Wertermittlung muss objektiviert sein, daher nutzt man pauschalierte Normalherstellungskosten (NHK)."
+        "solution": "Weil diese subjektiv sind (Schwarzarbeit? Eigenleistung? Goldene Wasserhähne?). Die Wertermittlung muss objektiviert sein, daher nutzt man pauschalierte Normalherstellungskosten (NHK).",
+        "hint": "Denken Sie daran, dass eine Immobilienbewertung objektive und nachvollziehbare Werte erfordert - individuelle Ausgaben können stark von marktüblichen Standards abweichen. Besinnen Sie sich auf das Prinzip der Normalherstellungskosten (NHK).",
+        "type": "reflection"
       },
       {
         "question": "Berechnen Sie die indexierten Kosten: NHK 800 €/m², Index 150.",
-        "solution": "800 * 1,5 = **1.200 €/m²**."
+        "solution": "800 * 1,5 = **1.200 €/m²**.",
+        "hint": "Bei der Indexierung werden die ursprünglichen Kosten mit dem Indexfaktor multipliziert, wobei der Index von 100 auf den aktuellen Wert umgerechnet werden muss.",
+        "type": "reflection"
       },
       {
         "question": "Zählt eine Garage zur BGF des Wohnhauses?",
-        "solution": "Nein, Garagen werden meist separat bewertet (Pauschalwert pro Stellplatz oder eigene BGF-Berechnung mit eigenen NHK-Werten)."
+        "solution": "Nein, Garagen werden meist separat bewertet (Pauschalwert pro Stellplatz oder eigene BGF-Berechnung mit eigenen NHK-Werten).",
+        "hint": "Denken Sie an die Bewertungsrichtlinien für Nebengebäude und prüfen Sie, ob eine Garage als selbstständige bauliche Anlage oder als Teil des Hauptgebäudes zu betrachten ist.",
+        "type": "reflection"
       },
       {
         "question": "Vollständige Sachwertberechnung — München Schwabing (IHK-Niveau):\nEFH, mittlerer Standard, BGF 195 m², Baujahr 2001\nGrundstück: 380 m², Bodenrichtwert München-Schwabing 2024: 3.200 €/m²\nAußenanlagen: 22.000 €\nNHK 2010 EFH mittel: 1.050 €/m²\nBaupreisindex München 2024: 168 (Basis 2010 = 100)\nSachwertfaktor München EFH: 1,42\nGesamtnutzungsdauer: 80 Jahre\nBerechnen Sie den Verkehrswert nach Sachwertverfahren.",
-        "solution": "**Schritt 1: Herstellungskosten (HK)**\n195 m² BGF × 1.050 €/m² (NHK 2010) = 204.750 €\n\n**Schritt 2: Baupreisanpassung 2024**\n204.750 € × (168/100) = 204.750 × 1,68 = 343.980 €\n\n**Schritt 3: Alterswertminderung**\nAlter 2024: 23 Jahre | GND: 80 Jahre\nAWM = 23/80 = 28,75%\nAbzug: 343.980 × 28,75% = 98.894 €\nZeitwert Gebäude: 343.980 − 98.894 = 245.086 €\n\n**Schritt 4: Bodenwert**\n380 m² × 3.200 €/m² = 1.216.000 €\n\n**Schritt 5: Vorläufiger Sachwert**\n245.086 € (Gebäude) + 22.000 € (Außenanlagen) + 1.216.000 € (Boden)\n= 1.483.086 €\n\n**Schritt 6: Marktanpassung**\n1.483.086 € × 1,42 = 2.105.982 €\nGerundet: **2.100.000 €**\n\n**Merksatz:** In München dominiert der Bodenwert! Der Gebäudewert ist\nim Verhältnis zum Bodenwert gering — typisch für Hochpreisregionen."
+        "solution": "**Schritt 1: Herstellungskosten (HK)**\n195 m² BGF × 1.050 €/m² (NHK 2010) = 204.750 €\n\n**Schritt 2: Baupreisanpassung 2024**\n204.750 € × (168/100) = 204.750 × 1,68 = 343.980 €\n\n**Schritt 3: Alterswertminderung**\nAlter 2024: 23 Jahre | GND: 80 Jahre\nAWM = 23/80 = 28,75%\nAbzug: 343.980 × 28,75% = 98.894 €\nZeitwert Gebäude: 343.980 − 98.894 = 245.086 €\n\n**Schritt 4: Bodenwert**\n380 m² × 3.200 €/m² = 1.216.000 €\n\n**Schritt 5: Vorläufiger Sachwert**\n245.086 € (Gebäude) + 22.000 € (Außenanlagen) + 1.216.000 € (Boden)\n= 1.483.086 €\n\n**Schritt 6: Marktanpassung**\n1.483.086 € × 1,42 = 2.105.982 €\nGerundet: **2.100.000 €**\n\n**Merksatz:** In München dominiert der Bodenwert! Der Gebäudewert ist\nim Verhältnis zum Bodenwert gering — typisch für Hochpreisregionen.",
+        "hint": "Denken Sie an die drei Hauptkomponenten des Sachwertverfahrens: Bodenwert, Gebäudesachwert und Außenanlagenwert - der Gebäudesachwert erfordert dabei eine Anpassung der NHK 2010 über den Baupreisindex sowie die Berücksichtigung der Alterswertminderung.",
+        "type": "reflection"
       },
       {
         "question": "Sachwertberechnung — Dresden Striesen (Ostdeutschland):\nEFH, einfacher Standard, BGF 160 m², Baujahr 1992\nGrundstück: 520 m², Bodenrichtwert Dresden-Striesen 2024: 420 €/m²\nAußenanlagen: 12.000 €\nNHK 2010 EFH einfach: 800 €/m²\nBaupreisindex Dresden 2024: 155\nSachwertfaktor Dresden EFH: 0,95\nGND: 80 Jahre\nBerechnen Sie den Verkehrswert. Was fällt im Vergleich zu München auf?",
-        "solution": "**Schritt 1: Herstellungskosten**\n160 m² × 800 €/m² = 128.000 €\n\n**Schritt 2: Baupreisanpassung**\n128.000 × 1,55 = 198.400 €\n\n**Schritt 3: Alterswertminderung**\nAlter: 32 Jahre | AWM = 32/80 = 40%\nAbzug: 198.400 × 40% = 79.360 €\nZeitwert: 198.400 − 79.360 = 119.040 €\n\n**Schritt 4: Bodenwert**\n520 m² × 420 €/m² = 218.400 €\n\n**Schritt 5: Vorläufiger Sachwert**\n119.040 + 12.000 + 218.400 = 349.440 €\n\n**Schritt 6: Marktanpassung**\n349.440 × 0,95 = 332.000 €\nGerundet: **332.000 €**\n\n**Vergleich München/Dresden:**\n| | München | Dresden |\n|---|---|---|\n| Bodenwert | 1.216.000 € (82%) | 218.400 € (62%) |\n| Gebäudewert | 245.086 € (17%) | 119.040 € (34%) |\n| Sachwertfaktor | 1,42 | 0,95 |\n| Verkehrswert | 2.100.000 € | 332.000 € |\n\nFazit: In Ostdeutschland ist das Verhältnis ausgeglichener.\nDer Sachwertfaktor unter 1,0 bedeutet: Markt zahlt weniger als\ndie Substanz kostet — typisch für strukturschwache Regionen."
+        "solution": "**Schritt 1: Herstellungskosten**\n160 m² × 800 €/m² = 128.000 €\n\n**Schritt 2: Baupreisanpassung**\n128.000 × 1,55 = 198.400 €\n\n**Schritt 3: Alterswertminderung**\nAlter: 32 Jahre | AWM = 32/80 = 40%\nAbzug: 198.400 × 40% = 79.360 €\nZeitwert: 198.400 − 79.360 = 119.040 €\n\n**Schritt 4: Bodenwert**\n520 m² × 420 €/m² = 218.400 €\n\n**Schritt 5: Vorläufiger Sachwert**\n119.040 + 12.000 + 218.400 = 349.440 €\n\n**Schritt 6: Marktanpassung**\n349.440 × 0,95 = 332.000 €\nGerundet: **332.000 €**\n\n**Vergleich München/Dresden:**\n| | München | Dresden |\n|---|---|---|\n| Bodenwert | 1.216.000 € (82%) | 218.400 € (62%) |\n| Gebäudewert | 245.086 € (17%) | 119.040 € (34%) |\n| Sachwertfaktor | 1,42 | 0,95 |\n| Verkehrswert | 2.100.000 € | 332.000 € |\n\nFazit: In Ostdeutschland ist das Verhältnis ausgeglichener.\nDer Sachwertfaktor unter 1,0 bedeutet: Markt zahlt weniger als\ndie Substanz kostet — typisch für strukturschwache Regionen.",
+        "hint": "Denken Sie an die klassische Sachwertformel mit den fünf Hauptkomponenten: Herstellungskosten, Baupreisanpassung, Alterswertminderung, Bodenwert und abschließender Marktanpassung über den Sachwertfaktor. Vergessen Sie nicht die Außenanlagen als separaten Kostenbaustein zu berücksichtigen.",
+        "type": "reflection"
       }
     ]
   },
@@ -380,19 +490,27 @@
     "tasks": [
       {
         "question": "Ein Haus ist 40 Jahre alt (GND 80), wurde aber vor 5 Jahren kernsaniert. Wie gehen Sie vor?",
-        "solution": "Man ermittelt eine **modifizierte Restnutzungsdauer**. Statt 40 Jahren RND hat es vielleicht wieder 60 Jahre RND. Das 'fiktive Baujahr' wird angepasst."
+        "solution": "Man ermittelt eine **modifizierte Restnutzungsdauer**. Statt 40 Jahren RND hat es vielleicht wieder 60 Jahre RND. Das 'fiktive Baujahr' wird angepasst.",
+        "hint": "Denken Sie daran, dass umfassende Modernisierungen die ursprüngliche Restnutzungsdauer erheblich verlängern können. Prüfen Sie, ob eine Anpassung des rechnerischen Baujahrs oder der Restnutzungsdauer angebracht ist.",
+        "type": "reflection"
       },
       {
         "question": "Was drückt ein Sachwertfaktor von 0,8 aus?",
-        "solution": "Dass die Herstellungskosten am Markt nicht realisiert werden können. Für jeden Euro, den man in den Bau steckt, bekommt man beim Verkauf nur 80 Cent zurück. Typisch für strukturschwache Regionen."
+        "solution": "Dass die Herstellungskosten am Markt nicht realisiert werden können. Für jeden Euro, den man in den Bau steckt, bekommt man beim Verkauf nur 80 Cent zurück. Typisch für strukturschwache Regionen.",
+        "hint": "Denken Sie daran, dass der Sachwertfaktor das Verhältnis zwischen tatsächlich erzielbarem Verkaufspreis und den theoretischen Herstellungskosten widerspiegelt. Überlegen Sie, was es bedeutet, wenn dieser Wert unter 1,0 liegt.",
+        "type": "reflection"
       },
       {
         "question": "Berechnen Sie den Restwert: Neubauwert 400.000 €, Alter 10 Jahre, GND 80 Jahre.",
-        "solution": "Abschreibung: 10/80 = 12,5%. Restwert: 87,5%. 400.000 * 0,875 = **350.000 €**."
+        "solution": "Abschreibung: 10/80 = 12,5%. Restwert: 87,5%. 400.000 * 0,875 = **350.000 €**.",
+        "hint": "Denken Sie an die lineare Abschreibung über die Gesamtnutzungsdauer und berechnen Sie zunächst den bereits abgeschriebenen Anteil in Prozent.",
+        "type": "reflection"
       },
       {
         "question": "Warum wird der Bodenwert nicht alterswertgemindert?",
-        "solution": "Weil Grund und Boden (theoretisch) nicht altern oder verschleißen. Er ist ein ewiges Gut."
+        "solution": "Weil Grund und Boden (theoretisch) nicht altern oder verschleißen. Er ist ein ewiges Gut.",
+        "hint": "Denken Sie an die grundlegenden Eigenschaften von Grund und Boden im Vergleich zu einem Gebäude - welche physischen Veränderungen durchläuft das eine im Zeitverlauf, welche das andere?",
+        "type": "reflection"
       }
     ]
   },
@@ -409,19 +527,27 @@
     "tasks": [
       {
         "question": "Was gehört zwingend auf das Deckblatt eines Gutachtens?",
-        "solution": "Adresse des Objekts, Wertermittlungsstichtag, Qualitätsstichtag (falls abweichend), Auftraggeber, Name des Gutachters."
+        "solution": "Adresse des Objekts, Wertermittlungsstichtag, Qualitätsstichtag (falls abweichend), Auftraggeber, Name des Gutachters.",
+        "hint": "Denken Sie an die grundlegenden \"W-Fragen\" eines Gutachtens: Wer, Was, Wann - diese bilden die Basis für die Identifikation aller Beteiligten und des Bewertungsobjekts. Beachten Sie dabei besonders die zeitlichen Bezugspunkte der Wertermittlung.",
+        "type": "reflection"
       },
       {
         "question": "Was sind 'boG'?",
-        "solution": "**Besondere objektspezifische Grundstücksmerkmale**. Das sind wertbeeinflussende Umstände, die im normalen Verfahren (Standard) nicht erfasst wurden, z.B. Baumängel, Altlasten, Wegerechte. Sie werden am Ende als separater Zu- oder Abschlag berücksichtigt."
+        "solution": "**Besondere objektspezifische Grundstücksmerkmale**. Das sind wertbeeinflussende Umstände, die im normalen Verfahren (Standard) nicht erfasst wurden, z.B. Baumängel, Altlasten, Wegerechte. Sie werden am Ende als separater Zu- oder Abschlag berücksichtigt.",
+        "hint": "Denken Sie an Faktoren, die den Wert einer Immobilie beeinflussen können, aber nicht in den Standardverfahren der Wertermittlung erfasst werden. Diese werden als separate Zu- oder Abschläge am Ende der Bewertung berücksichtigt.",
+        "type": "reflection"
       },
       {
         "question": "Warum müssen Anlagen (Fotos, Pläne) beigefügt werden?",
-        "solution": "Zur Plausibilisierung und Beweissicherung. Der Leser muss sich ein Bild machen können, ohne selbst vor Ort gewesen zu sein."
+        "solution": "Zur Plausibilisierung und Beweissicherung. Der Leser muss sich ein Bild machen können, ohne selbst vor Ort gewesen zu sein.",
+        "hint": "Denken Sie an die Nachvollziehbarkeit für Dritte, die das Objekt nie gesehen haben – welche Funktion haben visuelle Belege in der professionellen Dokumentation?",
+        "type": "reflection"
       },
       {
         "question": "Darf ein Gutachter den Wert runden?",
-        "solution": "Ja, es ist sogar üblich und sinnvoll, um keine Scheingenauigkeit vorzutäuschen. Ein rechnerischer Wert von 453.219,87 € wird meist auf 453.000 € oder 450.000 € gerundet (je nach Marktgängigkeit)."
+        "solution": "Ja, es ist sogar üblich und sinnvoll, um keine Scheingenauigkeit vorzutäuschen. Ein rechnerischer Wert von 453.219,87 € wird meist auf 453.000 € oder 450.000 € gerundet (je nach Marktgängigkeit).",
+        "hint": "Denken Sie daran, dass Immobilienbewertung keine exakte Wissenschaft ist und überlegen Sie, welchen Eindruck ein Verkehrswert mit Cent-Beträgen beim Auftraggeber erwecken würde.",
+        "type": "reflection"
       }
     ]
   },
@@ -438,19 +564,27 @@
     "tasks": [
       {
         "question": "Was ist der Unterschied zwischen 'Sanierungskosten' und 'Marktwertminderung'?",
-        "solution": "Sanierungskosten sind die technischen Kosten zur Behebung. Marktwertminderung ist der Betrag, den ein Käufer weniger zahlt. Oft identisch, aber bei 'Sowieso-Kosten' (alte Heizung geht kaputt) ist der Abzug geringer ('neu für alt'-Vorteil)."
+        "solution": "Sanierungskosten sind die technischen Kosten zur Behebung. Marktwertminderung ist der Betrag, den ein Käufer weniger zahlt. Oft identisch, aber bei 'Sowieso-Kosten' (alte Heizung geht kaputt) ist der Abzug geringer ('neu für alt'-Vorteil).",
+        "hint": "Denken Sie an die Perspektive: Was kostet die Reparatur handwerklich versus was zahlt ein Käufer tatsächlich weniger? Beachten Sie dabei das \"neu für alt\"-Prinzip bei ohnehin anstehenden Modernisierungen.",
+        "type": "definition"
       },
       {
         "question": "Wie erkennen Sie Asbestverdacht bei Bodenbelägen?",
-        "solution": "Typische quadratische Vinyl-Platten ('Floor-Flex') aus den 60er/70er Jahren, oft grau/beige marmoriert, verklebt mit schwarzem bitumenhaltigem Kleber (der auch Asbest enthält)."
+        "solution": "Typische quadratische Vinyl-Platten ('Floor-Flex') aus den 60er/70er Jahren, oft grau/beige marmoriert, verklebt mit schwarzem bitumenhaltigem Kleber (der auch Asbest enthält).",
+        "hint": "Achten Sie besonders auf die typische Optik und das Verlegemuster von Bodenbelägen aus der Zeit zwischen 1960-1980, sowie auf die Art der verwendeten Klebstoffe.",
+        "type": "reflection"
       },
       {
         "question": "Was bedeutet 'neu für alt'?",
-        "solution": "Wenn durch eine Reparatur (z.B. neues Dach wegen Sturmschaden) der Wert des Hauses steigt, muss sich der Eigentümer diesen Vorteil anrechnen lassen. Er bekommt nicht 100% der Kosten ersetzt, wenn das alte Dach eh schon 50 Jahre alt war."
+        "solution": "Wenn durch eine Reparatur (z.B. neues Dach wegen Sturmschaden) der Wert des Hauses steigt, muss sich der Eigentümer diesen Vorteil anrechnen lassen. Er bekommt nicht 100% der Kosten ersetzt, wenn das alte Dach eh schon 50 Jahre alt war.",
+        "hint": "Denken Sie an Versicherungsleistungen und die Frage, ob ein Geschädigter durch eine Reparatur einen Vorteil erlangen darf, den er ohne den Schaden nicht gehabt hätte. Überlegen Sie, wie sich der Zustand vor und nach der Schadensbehebung unterscheidet.",
+        "type": "reflection"
       },
       {
         "question": "Warum sind diagonale Risse in der Fassade alarmierend?",
-        "solution": "Weil sie oft auf Setzungen des Fundaments hindeuten (statische Probleme), während vertikale oder horizontale Risse oft 'nur' thermische Spannungen oder Materialwechsel anzeigen."
+        "solution": "Weil sie oft auf Setzungen des Fundaments hindeuten (statische Probleme), während vertikale oder horizontale Risse oft 'nur' thermische Spannungen oder Materialwechsel anzeigen.",
+        "hint": "Denken Sie an die verschiedenen Rissarten und ihre Ursachen - welche Kräfte wirken bei Fundamentproblemen auf das Mauerwerk ein und in welche Richtung verlaufen die daraus resultierenden Spannungen?",
+        "type": "reflection"
       }
     ]
   },
@@ -468,19 +602,27 @@
     "tasks": [
       {
         "question": "Was passiert, wenn die Wohnberechtigte ins Pflegeheim muss?",
-        "solution": "Das Wohnrecht bleibt bestehen, sofern nichts anderes vereinbart wurde. Oft kann sie die Räume dann vermieten (wenn gestattet) oder der Eigentümer kauft ihr das Recht ab (Kapitalabfindung). Eine automatische Löschung gibt es nicht."
+        "solution": "Das Wohnrecht bleibt bestehen, sofern nichts anderes vereinbart wurde. Oft kann sie die Räume dann vermieten (wenn gestattet) oder der Eigentümer kauft ihr das Recht ab (Kapitalabfindung). Eine automatische Löschung gibt es nicht.",
+        "hint": "Denken Sie daran, dass ein Wohnrecht als dingliches Recht im Grundbuch eingetragen ist und nicht automatisch erlischt. Prüfen Sie, welche Verwertungsmöglichkeiten der Wohnberechtigten zur Verfügung stehen könnten.",
+        "type": "reflection"
       },
       {
         "question": "Was ist eine 'Löschungsbewilligung'?",
-        "solution": "Die notarielle Erklärung des Berechtigten, dass das Recht im Grundbuch gelöscht werden darf. Ohne diese Urkunde bekommt man das Wohnrecht nicht aus dem Grundbuch, auch wenn die Oma ausgezogen ist."
+        "solution": "Die notarielle Erklärung des Berechtigten, dass das Recht im Grundbuch gelöscht werden darf. Ohne diese Urkunde bekommt man das Wohnrecht nicht aus dem Grundbuch, auch wenn die Oma ausgezogen ist.",
+        "hint": "Denken Sie an die notwendigen Schritte zur Bereinigung des Grundbuchs und überlegen Sie, wer berechtigt ist, über die Löschung von eingetragenen Rechten zu entscheiden. Der Begriff enthält bereits einen wichtigen Hinweis auf die Art der erforderlichen Erklärung.",
+        "type": "definition"
       },
       {
         "question": "Wie bewertet man ein Wegerecht für den belasteten Eigentümer?",
-        "solution": "Durch einen Abschlag auf den Bodenwert des betroffenen Grundstücksstreifens (z.B. 10-30% Wertminderung für die Fläche des Weges), da die Nutzung eingeschränkt ist (kein Bauen möglich, Lärmbelästigung)."
+        "solution": "Durch einen Abschlag auf den Bodenwert des betroffenen Grundstücksstreifens (z.B. 10-30% Wertminderung für die Fläche des Weges), da die Nutzung eingeschränkt ist (kein Bauen möglich, Lärmbelästigung).",
+        "hint": "Denken Sie daran, dass eine Dienstbarkeit die Nutzungsmöglichkeiten des belasteten Grundstücks einschränkt und sich dies wertmindernd auf den betroffenen Grundstücksteil auswirkt. Betrachten Sie konkret, welche Einschränkungen das Wegerecht für die bauliche und sonstige Nutzung mit sich bringt.",
+        "type": "reflection"
       },
       {
         "question": "Mindert eine Grundschuld (Abt. III) den Verkehrswert?",
-        "solution": "Nein! Der Verkehrswert wird immer 'lastenfrei in Abt. III' ermittelt. Die Schulden werden beim Kaufpreisfluss abgelöst (Treuhandauftrag des Notars)."
+        "solution": "Nein! Der Verkehrswert wird immer 'lastenfrei in Abt. III' ermittelt. Die Schulden werden beim Kaufpreisfluss abgelöst (Treuhandauftrag des Notars).",
+        "hint": "Denken Sie daran, wie der Verkehrswert grundsätzlich ermittelt wird und welche Rolle der Notar beim Kaufpreisfluss spielt.",
+        "type": "reflection"
       }
     ]
   },
@@ -497,19 +639,27 @@
     "tasks": [
       {
         "question": "Was ist ein 'Anchor Tenant'?",
-        "solution": "Ein Ankermieter (z.B. großer Supermarkt im Einkaufszentrum), der Frequenz bringt und Kunden anzieht. Sein Vorhandensein stabilisiert den Wert des gesamten Objekts."
+        "solution": "Ein Ankermieter (z.B. großer Supermarkt im Einkaufszentrum), der Frequenz bringt und Kunden anzieht. Sein Vorhandensein stabilisiert den Wert des gesamten Objekts.",
+        "hint": "Denken Sie an die Funktion eines Schiffsankers und übertragen Sie diese Metapher auf einen besonders wichtigen Mieter in einem Einkaufszentrum. Welche stabilisierende Wirkung könnte ein solcher Hauptmieter auf das gesamte Objekt haben?",
+        "type": "definition"
       },
       {
         "question": "Warum ist der Liegenschaftszins bei Gewerbe höher als bei Wohnen?",
-        "solution": "Wegen des höheren Risikos (Leerstand, Konjunkturabhängigkeit, schnellere Veralterung). Investoren verlangen eine höhere Risikoprämie."
+        "solution": "Wegen des höheren Risikos (Leerstand, Konjunkturabhängigkeit, schnellere Veralterung). Investoren verlangen eine höhere Risikoprämie.",
+        "hint": "Denken Sie an das Verhältnis zwischen Risiko und Rendite in der Kapitalanlage und überlegen Sie, welche Nutzungsart volatiler und unsicherer für Investoren ist.",
+        "type": "reflection"
       },
       {
         "question": "Was ist die 'Drittverwendungsfähigkeit'?",
-        "solution": "Die Flexibilität einer Immobilie, von verschiedenen Nutzern aus verschiedenen Branchen genutzt zu werden. Hohe Drittverwendungsfähigkeit (z.B. Standard-Büro) senkt das Risiko und erhöht den Wert."
+        "solution": "Die Flexibilität einer Immobilie, von verschiedenen Nutzern aus verschiedenen Branchen genutzt zu werden. Hohe Drittverwendungsfähigkeit (z.B. Standard-Büro) senkt das Risiko und erhöht den Wert.",
+        "hint": "Denken Sie an die Flexibilität einer Immobilie und überlegen Sie, wie viele unterschiedliche Mieter oder Käufer diese theoretisch nutzen könnten. Betrachten Sie dabei den Zusammenhang zwischen Standardisierung und Vermarktungsrisiko.",
+        "type": "definition"
       },
       {
         "question": "Was ist der 'Terminal Value' im DCF?",
-        "solution": "Der prognostizierte Verkaufserlös am Ende des Betrachtungszeitraums (z.B. nach 10 Jahren). Er macht oft den Großteil des Gesamtbarwerts aus."
+        "solution": "Der prognostizierte Verkaufserlös am Ende des Betrachtungszeitraums (z.B. nach 10 Jahren). Er macht oft den Großteil des Gesamtbarwerts aus.",
+        "hint": "Denken Sie an das Ende des Betrachtungszeitraums einer DCF-Analyse und fragen Sie sich, welcher Wert dort für die Immobilie angesetzt wird. Dieser Wert hat oft einen erheblichen Einfluss auf das Gesamtergebnis der Bewertung.",
+        "type": "definition"
       }
     ]
   },
@@ -526,19 +676,27 @@
     "tasks": [
       {
         "question": "Was bedeutet AVM?",
-        "solution": "Automated Valuation Model. Ein computergestütztes System zur statistischen Schätzung von Immobilienwerten."
+        "solution": "Automated Valuation Model. Ein computergestütztes System zur statistischen Schätzung von Immobilienwerten.",
+        "hint": "Denken Sie an englische Fachbegriffe aus der digitalen Immobilienbewertung - das \"A\" steht für einen automatisierten Prozess, während die beiden anderen Buchstaben auf Bewertung und Modellierung hinweisen.",
+        "type": "reflection"
       },
       {
         "question": "Kann ein AVM ein Gutachten ersetzen?",
-        "solution": "Nein, nicht bei komplexen Fällen oder wenn Rechtssicherheit gefordert ist (Gericht, Finanzamt). Es fehlt die menschliche Plausibilisierung und die Berücksichtigung individueller Merkmale (Bauschäden, Rechte)."
+        "solution": "Nein, nicht bei komplexen Fällen oder wenn Rechtssicherheit gefordert ist (Gericht, Finanzamt). Es fehlt die menschliche Plausibilisierung und die Berücksichtigung individueller Merkmale (Bauschäden, Rechte).",
+        "hint": "Denken Sie an die rechtlichen Anforderungen verschiedener Verwendungszwecke und überlegen Sie, welche Grenzen automatisierte Verfahren bei der Berücksichtigung individueller Objektmerkmale haben.",
+        "type": "reflection"
       },
       {
         "question": "Warum nutzen Banken AVMs?",
-        "solution": "Zur schnellen und kostengünstigen Einwertung von Standardkrediten (Kleindarlehen) oder zur laufenden Überwachung des Portfoliowerts (Re-Valuation)."
+        "solution": "Zur schnellen und kostengünstigen Einwertung von Standardkrediten (Kleindarlehen) oder zur laufenden Überwachung des Portfoliowerts (Re-Valuation).",
+        "hint": "Denken Sie an die zwei Hauptphasen im Kreditgeschäft einer Bank und überlegen Sie, wann schnelle, kostengünstige Bewertungen besonders vorteilhaft sind. Berücksichtigen Sie dabei sowohl die Kreditvergabe als auch das laufende Risikomanagement.",
+        "type": "reflection"
       },
       {
         "question": "Was ist ein 'Hybrid-Gutachten'?",
-        "solution": "Eine Mischung aus AVM (Datenbasis) und menschlicher Expertise (Besichtigung durch Gutachter). Der Gutachter prüft den Zustand und korrigiert den Computer-Wert."
+        "solution": "Eine Mischung aus AVM (Datenbasis) und menschlicher Expertise (Besichtigung durch Gutachter). Der Gutachter prüft den Zustand und korrigiert den Computer-Wert.",
+        "hint": "Denken Sie an die Kombination von automatisierten Bewertungsverfahren und traditioneller Gutachtertätigkeit. Der Begriff \"Hybrid\" deutet bereits auf eine Mischform zweier unterschiedlicher Bewertungsansätze hin.",
+        "type": "definition"
       }
     ]
   },
@@ -555,19 +713,27 @@
     "tasks": [
       {
         "question": "Wer darf sich 'Sachverständiger' nennen?",
-        "solution": "Jeder. Der Begriff ist in Deutschland nicht geschützt. Das öffnet Tür und Tor für Scharlatane. Geschützt sind nur Titel wie 'ö.b.u.v. Sachverständiger' oder 'Zertifizierter Sachverständiger (DIA/Sprengnetter)'."
+        "solution": "Jeder. Der Begriff ist in Deutschland nicht geschützt. Das öffnet Tür und Tor für Scharlatane. Geschützt sind nur Titel wie 'ö.b.u.v. Sachverständiger' oder 'Zertifizierter Sachverständiger (DIA/Sprengnetter)'.",
+        "hint": "Denken Sie an den Unterschied zwischen einem einfachen Berufstitel und speziellen Zusatzbezeichnungen mit Abkürzungen oder Zertifizierungsstellen. Prüfen Sie, welche rechtlichen Schutzbestimmungen für verschiedene Sachverständigen-Bezeichnungen gelten.",
+        "type": "reflection"
       },
       {
         "question": "Wann verjährt die Haftung für ein fehlerhaftes Gutachten?",
-        "solution": "In der Regel nach 3 Jahren (regelmäßige Verjährung, § 195 BGB), beginnend am Ende des Jahres, in dem der Anspruch entstanden ist und der Gläubiger Kenntnis erlangt hat."
+        "solution": "In der Regel nach 3 Jahren (regelmäßige Verjährung, § 195 BGB), beginnend am Ende des Jahres, in dem der Anspruch entstanden ist und der Gläubiger Kenntnis erlangt hat.",
+        "hint": "Denken Sie an die allgemeine Verjährungsfrist nach § 195 BGB und beachten Sie, dass der Verjährungsbeginn sowohl objektive als auch subjektive Voraussetzungen hat.",
+        "type": "reflection"
       },
       {
         "question": "Was ist ein 'Gefälligkeitsgutachten'?",
-        "solution": "Ein Gutachten, das bewusst ein falsches Ergebnis liefert, um dem Auftraggeber zu gefallen (z.B. Wert künstlich hochrechnen für Bankfinanzierung). Das ist Betrug und kann strafrechtliche Folgen haben (§ 263 StGB)."
+        "solution": "Ein Gutachten, das bewusst ein falsches Ergebnis liefert, um dem Auftraggeber zu gefallen (z.B. Wert künstlich hochrechnen für Bankfinanzierung). Das ist Betrug und kann strafrechtliche Folgen haben (§ 263 StGB).",
+        "hint": "Denken Sie an die Wortbestandteile und überlegen Sie, was passiert, wenn ein Gutachter nicht objektiv bewertet, sondern dem Auftraggeber \"einen Gefallen tun\" möchte. Beachten Sie auch die strafrechtlichen Konsequenzen solchen Verhaltens.",
+        "type": "definition"
       },
       {
         "question": "Warum ist die Unabhängigkeit des Gutachters so wichtig?",
-        "solution": "Weil der Wert objektiv sein muss. Wenn der Gutachter ein Erfolgshonorar bekommt (z.B. % vom ermittelten Wert), ist er befangen und das Gutachten wertlos."
+        "solution": "Weil der Wert objektiv sein muss. Wenn der Gutachter ein Erfolgshonorar bekommt (z.B. % vom ermittelten Wert), ist er befangen und das Gutachten wertlos.",
+        "hint": "Denken Sie an die Objektivität der Wertermittlung und überlegen Sie, welche Auswirkungen eine finanzielle Beteiligung des Gutachters am Ergebnis haben könnte.",
+        "type": "reflection"
       }
     ]
   },
@@ -584,15 +750,21 @@
     "tasks": [
       {
         "question": "Welches Verfahren war hier führend?",
-        "solution": "Das Sachwertverfahren, da es sich um ein selbstgenutztes Einfamilienhaus handelt."
+        "solution": "Das Sachwertverfahren, da es sich um ein selbstgenutztes Einfamilienhaus handelt.",
+        "hint": "Denken Sie daran, welche Art der Nutzung bei diesem Objekt vorliegt und welches Bewertungsverfahren bei dieser spezifischen Nutzungsart nach ImmoWertV vorrangig anzuwenden ist.",
+        "type": "reflection"
       },
       {
         "question": "Wie wurde das Wegerecht berücksichtigt?",
-        "solution": "Durch einen Wertabschlag beim Bodenwert (Minderung der Nutzbarkeit des betroffenen Streifens)."
+        "solution": "Durch einen Wertabschlag beim Bodenwert (Minderung der Nutzbarkeit des betroffenen Streifens).",
+        "hint": "Denken Sie daran, dass Belastungen des Grundstücks sich direkt auf dessen wirtschaftliche Verwertbarkeit auswirken. Überlegen Sie, welcher Bewertungsparameter durch die eingeschränkte Nutzung eines Grundstücksteils beeinflusst wird.",
+        "type": "reflection"
       },
       {
         "question": "Warum ist der Sachwertfaktor hier < 1,0?",
-        "solution": "Weil unsanierte Häuser in Randlagen oft Abschläge hinnehmen müssen. Die Baukosten werden am Markt nicht voll bezahlt."
+        "solution": "Weil unsanierte Häuser in Randlagen oft Abschläge hinnehmen müssen. Die Baukosten werden am Markt nicht voll bezahlt.",
+        "hint": "Denken Sie daran, dass der Sachwertfaktor das Verhältnis zwischen Marktpreis und Sachwert widerspiegelt - bei welchen Objektmerkmalen zahlen Käufer typischerweise weniger als die reinen Herstellungskosten?",
+        "type": "reflection"
       }
     ]
   },
@@ -611,11 +783,15 @@
     "tasks": [
       {
         "question": "Wie oft sollten Sie sich fortbilden?",
-        "solution": "Laufend. Der Immobilienmarkt und die Gesetze (GEG, ImmoWertV) ändern sich ständig. § 34c GewO schreibt zudem 20 Stunden Fortbildung in 3 Jahren vor (für Makler und Verwalter)."
+        "solution": "Laufend. Der Immobilienmarkt und die Gesetze (GEG, ImmoWertV) ändern sich ständig. § 34c GewO schreibt zudem 20 Stunden Fortbildung in 3 Jahren vor (für Makler und Verwalter).",
+        "hint": "Denken Sie an die gesetzlichen Vorgaben der Gewerbeordnung für Makler und Verwalter sowie an die sich ständig wandelnden Marktbedingungen und Rechtsgrundlagen im Immobilienwesen.",
+        "type": "reflection"
       },
       {
         "question": "Wo finden Sie aktuelle Marktdaten?",
-        "solution": "Grundstücksmarktberichte der Gutachterausschüsse, Marktberichte der großen Maklerhäuser (JLL, CBRE, Engel & Völkers), IVD-Preisspiegel."
+        "solution": "Grundstücksmarktberichte der Gutachterausschüsse, Marktberichte der großen Maklerhäuser (JLL, CBRE, Engel & Völkers), IVD-Preisspiegel.",
+        "hint": "Denken Sie an die offiziellen Stellen, die gesetzlich zur Marktbeobachtung verpflichtet sind, sowie an die großen Player der Immobilienbranche, die regelmäßig eigene Analysen veröffentlichen.",
+        "type": "reflection"
       }
     ]
   },
