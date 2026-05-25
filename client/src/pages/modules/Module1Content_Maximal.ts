@@ -3890,6 +3890,7 @@ Die Digitalisierung verändert die Immobilienbranche fundamental. Wer die neuen 
   day_20: {
     title: "Abschluss Modul 1 & Portfolio",
     theory: "Zusammenfassung der Grundlagen. Reflexion des Gelernten. Erstellung eines persönlichen Karriere-Portfolios.",
+    task: "Erstellen Sie eine persönliche Standortbestimmung: Welche drei Kernkompetenzen aus Modul 1 sind für Ihren geplanten Karriereweg am relevantesten, und wie wollen Sie diese in den nächsten 6 Monaten gezielt ausbauen?",
     extendedTheory: `
 ### Zukunftstrends: Wohin geht die Reise?
 
@@ -4143,6 +4144,9 @@ Ein Projektentwickler baut ein Studentenwohnheim (100 Zimmer) aus Modulen. Bauko
 
 **Fazit:** Die Zukunft gehört den Spezialisten. Wer sich frühzeitig positioniert, profitiert langfristig.
     `,
+        task: "**Abschlussaufgabe: Persönliche Standortbestimmung in der Immobilienbranche**
+
+Verfassen Sie eine strukturierte Reflexion (800-1.000 Wörter) über Ihren persönlichen Lernweg in Modul 1 und entwickeln Sie daraus Ihre individuelle Positionierung für den Einstieg in die Immobilienbranche. Analysieren Sie dabei, welche der behandelten Bereiche (Marktstrukturen, Akteure, Geschäftsmodelle, rechtliche Grundlagen) am besten zu Ihren Stärken und Karrierezielen passen, und begründen Sie Ihre Entscheidung mit konkreten Beispielen aus den Lerninhalten. Formulieren Sie abschließend drei spezifische",
     law: ["[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Maklererlaubnis Zusammenfassung)",
       "[§ 652 BGB](https://www.gesetze-im-internet.de/bgb/__652.html) (Maklervertrag)",
       "[§ 15b MaBV](https://www.gesetze-im-internet.de/mabv/__15b.html) (Weiterbildungspflicht)",
