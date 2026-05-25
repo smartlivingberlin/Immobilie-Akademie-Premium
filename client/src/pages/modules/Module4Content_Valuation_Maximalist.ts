@@ -25,46 +25,9 @@ export const contentDataModule4Maximalist: Record<string, ValuationDayContent> =
   day_1: {
     title: "Einführung in das Sachverständigenwesen",
     type: "Theorie",
-    theory: `
-# Einführung in das Sachverständigenwesen
+    theory: `# Einführung in das Sachverständigenwesen
 
-Das Modul "Gutachten & Sachverständiger" bildet die Königsklasse der Immobilienausbildung. Während der Makler Preise einschätzt, ermittelt der Sachverständige rechtssichere Verkehrswerte.
-
-## 1. Der Verkehrswert (Marktwert)
-Der zentrale Begriff der deutschen Immobilienbewertung ist der **Verkehrswert**, der im Baugesetzbuch (BauGB) definiert ist. Er ist identisch mit dem europarechtlichen Begriff des **Marktwerts**.
-
-> **§ 194 BauGB:**
-> "Der Verkehrswert (Marktwert) wird durch den Preis bestimmt, der in dem Zeitpunkt, auf den sich die Ermittlung bezieht, im gewöhnlichen Geschäftsverkehr nach den rechtlichen Gegebenheiten und tatsächlichen Eigenschaften, der sonstigen Beschaffenheit und der Lage des Grundstücks oder des sonstigen Gegenstands der Wertermittlung ohne Rücksicht auf ungewöhnliche oder persönliche Verhältnisse zu erzielen wäre."
-
-### Analyse der Definition:
-*   **Stichtagsbezug:** Der Wert gilt nur für einen bestimmten Tag (Wertermittlungsstichtag). Märkte ändern sich.
-*   **Gewöhnlicher Geschäftsverkehr:** Ein offener Markt, auf dem Angebot und Nachfrage frei agieren können (kein Verkauf unter Zwang, kein Freundschaftspreis).
-*   **Rechtliche Gegebenheiten:** Was darf gebaut werden? Welche Lasten stehen im Grundbuch?
-*   **Tatsächliche Eigenschaften:** Größe, Zustand, Baujahr.
-*   **Ohne Rücksicht auf ungewöhnliche/persönliche Verhältnisse:** Notverkäufe, Liebhaberpreise oder Verkäufe innerhalb der Familie werden ausgeblendet.
-
-## 2. Wert vs. Preis
-Es ist essenziell, zwischen **Wert** und **Preis** zu unterscheiden:
-*   **Preis:** Das, was tatsächlich gezahlt wird (subjektiv, vergangenheitsbezogen, kann durch Verhandlungsgeschick beeinflusst sein).
-*   **Wert:** Das, was das Objekt objektiv wert ist (objektiviert, stichtagsbezogen, Ergebnis einer Schätzung).
-
-*Merksatz:* "Price is what you pay. Value is what you get." (Warren Buffett)
-
-## 3. Bewertungsanlässe
-Warum werden Immobilien bewertet?
-1.  **Eigentumswechsel:** Kauf/Verkauf, Tausch.
-2.  **Finanzierung:** Ermittlung des Beleihungswerts für Banken (Pfandbriefgesetz).
-3.  **Familienrecht:** Ehescheidung (Zugewinnausgleich), Erbschaft (Erbauseinandersetzung).
-4.  **Steuerliche Zwecke:** Erbschaftssteuer, Grunderwerbsteuer, Entnahme aus dem Betriebsvermögen.
-5.  **Versicherung:** Ermittlung des Versicherungswerts (Wiederherstellungskosten).
-6.  **Zwangsversteigerung:** Festsetzung des Verkehrswerts durch das Amtsgericht.
-
-## 4. Die Säulen der Wertermittlung
-Die Wertermittlung in Deutschland ruht auf drei normierten Verfahren (ImmoWertV):
-1.  **Vergleichswertverfahren:** Was kosten ähnliche Objekte? (Ideal für Eigentumswohnungen, unbebaute Grundstücke).
-2.  **Ertragswertverfahren:** Welche Rendite bringt das Objekt? (Ideal für Mehrfamilienhäuser, Gewerbe).
-3.  **Sachwertverfahren:** Was kostet es, das Objekt heute neu zu bauen? (Ideal für selbstgenutzte Einfamilienhäuser).
-    `,
+Das Sachverständigenwesen bildet das Fundament professioneller Immobilienbewertung und unterscheidet sich grundlegend von der preisorientierten Maklertätigkeit. Während Makler Marktpreise einschätzen, um Transaktionen zu ermöglichen, erstellen Sachverständige rechtssichere, normkonforme Verkehrswertgutachten nach wissenschaftlichen Standards. Diese Gutachten dienen als Grundlage für juristische, steuerliche und finanzielle Entscheidungen und erfordern`,
     law: [
       "[§ 194 BauGB](https://www.gesetze-im-internet.de/baugb/__194.html) (Verkehrswert)",
       "[§ 193 BauGB](https://www.gesetze-im-internet.de/baugb/__193.html) (Gutachterausschüsse)",
@@ -193,32 +156,9 @@ Sie bewerten ein Dachstudio.
   day_3: {
     title: "Marktanalyse & Makro-Standort",
     type: "Analyse",
-    theory: `
-# Marktanalyse und Standortfaktoren
+    theory: `# Marktanalyse und Standortfaktoren
 
-Der Wert einer Immobilie ist untrennbar mit ihrem Standort verbunden ("Lage, Lage, Lage").
-
-## 1. Makrostandort vs. Mikrostandort
-*   **Makrostandort:** Die Region/Stadt als Ganzes. (Wirtschaftskraft, Bevölkerungswachstum, Infrastruktur, Kaufkraft). Ist die Stadt ein "Zuzugsgebiet" oder "Abwanderungsgebiet"?
-*   **Mikrostandort:** Die konkrete Nachbarschaft. (Lärmimmissionen, Nähe zu Schulen/ÖPNV, Sozialstruktur, Ausrichtung des Grundstücks).
-
-## 2. Bodenrichtwerte (BRW)
-Der wichtigste Indikator für den Bodenwert.
-*   Werden von den Gutachterausschüssen (GAA) alle 2 Jahre veröffentlicht.
-*   Basieren auf der Kaufpreissammlung (echte Notarverträge).
-*   Geben den durchschnittlichen Lagewert für ein "Richtwertgrundstück" an.
-
-*Wichtig:* Der BRW ist ein Durchschnittswert! Das konkrete Grundstück kann davon abweichen (Ecklage, Schnitt, Größe).
-
-## 3. Liegenschaftszinssatz (LZ)
-Der "Zins", mit dem der Markt Immobilienvermögen verzinst.
-*   Niedriger LZ (z.B. 1,5%) = Hoher Kaufpreis (Top-Lage, München).
-*   Hoher LZ (z.B. 6,0%) = Niedriger Kaufpreis (Risikolage, ländlicher Raum).
-*   Er wird empirisch aus Kaufpreisen abgeleitet.
-
-## 4. Marktanpassungsfaktoren
-Faktoren, die den Sachwert an die Marktlage anpassen. Wenn Bauen 500.000 € kostet, der Markt aber nur 400.000 € zahlt, ist der Faktor 0,8.
-    `,
+Der Wert einer Immobilie ist untrennbar mit ihrem Standort verbunden ("Lage, Lage, Lage"). Eine fundierte Marktanalyse bildet das Fundament jeder professionellen Immobilienbewertung, da sie die objektiven Gegebenheiten des Immobilienmarktes systematisch erfasst und bewertet. Dabei müssen Gutachter sowohl makroökonomische Entwicklungen als auch mikrolokal begrenzte Standortfaktoren analysieren, um zu marktgerechten`,
     law: [
       "[§ 194 BauGB](https://www.gesetze-im-internet.de/baugb/__194.html) (Marktwert)",
       "[§ 15 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__15.html) (Vergleichswertverfahren)"
@@ -264,33 +204,9 @@ Nutzen Sie BORIS-D (Bodenrichtwertinformationssystem Deutschland) für die Reche
   day_4: {
     title: "Vergleichswertverfahren",
     type: "Berechnung",
-    theory: `
-# Das Vergleichswertverfahren (§ 15 ImmoWertV)
+    theory: `# Das Vergleichswertverfahren (§ 15 ImmoWertV)
 
-Das direkteste und marktnahste Verfahren.
-Die Frage lautet: "Was haben andere für so etwas bezahlt?"
-
-## 1. Anwendungsbereich
-*   Unbebaute Grundstücke (Bodenwert).
-*   Eigentumswohnungen (hier gibt es viele vergleichbare Objekte).
-*   Reihenhäuser in Siedlungen.
-
-## 2. Direkter vs. Indirekter Vergleich
-*   **Direkter Vergleich:** Sie haben Kaufpreise von identischen Nachbarhäusern (Idealfall, aber selten).
-*   **Indirekter Vergleich:** Sie nutzen statistische Durchschnittswerte (Vergleichsfaktoren) des Gutachterausschusses (z.B. "ETW aus 1990 kosten im Schnitt 3.500 €/m²").
-
-## 3. Anpassung (Indexierung)
-Kaufpreise sind vergangenheitsbezogen.
-*   Kaufpreis A war vor 2 Jahren.
-*   Seitdem sind Preise um 10% gestiegen.
-*   Kaufpreis A muss um +10% angepasst werden, um vergleichbar zu sein.
-
-## 4. Umrechnungskoeffizienten
-Wenn Vergleichsobjekte nicht ganz passen:
-*   Vergleichsobjekt ist größer -> Preis pro m² sinkt meist (Mengenrabatt-Effekt).
-*   Vergleichsobjekt ist neuer -> Preis steigt.
-Hierfür gibt es Tabellen zur Umrechnung.
-    `,
+Das Vergleichswertverfahren bildet den Marktwert durch Analyse tatsächlich gezahlter Kaufpreise vergleichbarer Immobilien ab. Es basiert auf dem Prinzip der Marktdatenanalyse und gilt als das transparenteste und marktgerechteste Bewertungsverfahren, da es direkt auf realen Transaktionen beruht. Die zentrale Frage lautet: "Was haben andere für ähnliche Objekte bezahlt?" Dabei werden`,
     law: [
       "[§ 15 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__15.html) (Vergleichswertverfahren)",
       "[§ 16 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__16.html) (Vergleichspreise)",
@@ -365,29 +281,9 @@ Basiswert: 80 m² * 3.900 €/m² = 312.000 €.
   day_5: {
     title: "Ertragswertverfahren: Rohertrag & Bewirtschaftungskosten",
     type: "Berechnung",
-    theory: `
-# Das Ertragswertverfahren (§ 17 ImmoWertV) - Teil 1
+    theory: `# Das Ertragswertverfahren (§ 17 ImmoWertV) - Teil 1
 
-Das Investoren-Verfahren. Die Frage lautet: "Wie viel Gewinn bringt die Immobilie?"
-Basis ist nicht der Stein (Substanz), sondern der Mietvertrag (Ertrag).
-
-## 1. Der Rohertrag
-Die marktüblich erzielbare Jahresnettokaltmiete.
-*   *Achtung:* Nicht blind die aktuelle Miete nehmen!
-*   Ist die Miete zu niedrig (Oma wohnt seit 40 Jahren dort)? -> Anpassen an Marktmiete (Over-rented / Under-rented Problematik).
-*   Ist die Miete Wucher? -> Kappen auf Marktmiete.
-
-## 2. Bewirtschaftungskosten (BWK)
-Kosten, die nicht auf den Mieter umgelegt werden können.
-1.  **Verwaltungskosten:** Pauschale pro Einheit (z.B. 300 €/Jahr).
-2.  **Instandhaltungskosten:** Pauschale pro m² (z.B. 12 €/m² je nach Baujahr).
-3.  **Mietausfallwagnis:** Risiko des Leerstands (z.B. 2% vom Rohertrag).
-4.  **Betriebskosten:** Nur die nicht umlagefähigen (Leerstandskosten).
-
-## 3. Reinertrag
-Rohertrag - Bewirtschaftungskosten = **Reinertrag des Grundstücks**.
-Das ist das Geld, das am Ende des Jahres in der Tasche des Eigentümers bleibt (vor Steuer/Finanzierung).
-    `,
+Das Investoren-Verfahren par excellence. Die zentrale Frage lautet: "Wie viel nachhaltigen Gewinn erwirtschaftet die Immobilie jährlich?" Anders als beim Sachwert- oder Vergleichswertverfahren steht hier nicht der Stein (Substanz) oder Marktvergleich im Fokus, sondern ausschließlich die Ertragskraft der Immobilie. Basis der Bewertung ist daher nicht die bau`,
     law: [
       "[§ 27 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__27.html) (Ertragswertverfahren)",
       "[§ 28 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__28.html) (Rohertrag)",
