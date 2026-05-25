@@ -70,6 +70,12 @@ export function serveStatic(app: Express) {
   app.use(express.static(staticDir, { index: false }));
   app.get("*", (req, res, next) => {
     if (req.path.startsWith("/api")) return next();
+    // Security Headers für SPA-Routen (sendFile bypassed Helmet-Middleware)
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    res.setHeader("X-Frame-Options", "SAMEORIGIN");
+    res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+    res.setHeader("X-XSS-Protection", "0");
+    res.setHeader("Referrer-Policy", "no-referrer");
     res.sendFile(path.join(staticDir, "index.html"));
   });
 }
