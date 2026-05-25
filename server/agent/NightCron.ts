@@ -79,8 +79,14 @@ function readModuleDay(module: number, day: number): {
     const normsM = block.match(/law:\s*\[([\s\S]*?)\]/);
     const norms: string[] = [];
     if (normsM) {
-      const normMatches = normsM[1].matchAll(/url:\s*["`]([^"`]+)["`]/g);
-      for (const m of normMatches) norms.push(m[1]);
+      // Format 1: { url: "https://..." } — Modul 1
+      const urlMatches = normsM[1].matchAll(/url:\s*["`]([^"`]+)["`]/g);
+      for (const m of urlMatches) norms.push(m[1]);
+      // Format 2: ["§ 34c GewO", "MaBV..."] — Modul 2-5 direkte Strings
+      if (norms.length === 0) {
+        const directMatches = normsM[1].matchAll(/["\`]([^"\`]{3,})["\`]/g);
+        for (const m of directMatches) norms.push(m[1]);
+      }
     }
 
     return {
