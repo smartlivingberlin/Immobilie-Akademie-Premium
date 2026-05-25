@@ -394,14 +394,14 @@ export async function runMonitoringSnapshot(): Promise<void> {
     const db = await getDb();
 
     // Statistiken sammeln
-    const [[users]] = await db.$client.promise().query(
+    const [[users]] = await db.$client.query(
       `SELECT COUNT(*) as total,
         SUM(CASE WHEN DATE(createdAt) = CURDATE() THEN 1 ELSE 0 END) as newToday,
         SUM(CASE WHEN DATE(lastSignedIn) = CURDATE() THEN 1 ELSE 0 END) as activeToday
        FROM users`
     ) as any;
 
-    const [[sessions]] = await db.$client.promise().query(
+    const [[sessions]] = await db.$client.query(
       `SELECT COUNT(*) as total FROM learning_logs WHERE DATE(openedAt) = CURDATE()`
     ) as any;
 
@@ -411,7 +411,7 @@ export async function runMonitoringSnapshot(): Promise<void> {
     const totalSessions = Number(sessions?.total || 0);
 
     // Snapshot speichern
-    await db.$client.promise().query(
+    await db.$client.query(
       `INSERT INTO monitoring_log
         (totalUsers, activeToday, newToday, totalSessions, systemOk, notes)
        VALUES (?, ?, ?, ?, 1, ?)`,
@@ -459,7 +459,7 @@ export async function runMonitoringSnapshot(): Promise<void> {
             `
           })
         });
-        await db.$client.promise().query(
+        await db.$client.query(
           `UPDATE monitoring_log SET emailSent = 1 WHERE id = LAST_INSERT_ID()`
         );
         log(`📧 Monitoring E-Mail gesendet an ${ownerEmail}`);

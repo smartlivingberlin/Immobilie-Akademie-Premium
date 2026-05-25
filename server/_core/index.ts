@@ -445,7 +445,7 @@ app.get("/api/quiz/questions-by-ids", requireAuth, async (req: any, res: any) =>
       .map(Number).filter(Boolean);
     if (!ids.length) return res.json({ questions: [] });
     const db = await (await import("../db")).getDb();
-    const questions = await db.$client.promise().query(
+    const questions = await db.$client.query(
       `SELECT id, questionText, options, correctAnswer, explanation, moduleId
        FROM question_bank WHERE id IN (${ids.map(() => "?").join(",")})`,
       ids
@@ -463,33 +463,33 @@ app.get("/api/user/my-data", resetLimiter, requireAuth, async (req: any, res: an
     const db = await (await import("../db")).getDb();
     const userId = req.currentUser.id;
 
-    const [user] = await db.$client.promise().query(`SELECT id, name, email, role, enabledModules, createdAt, lastSignedIn
+    const [user] = await db.$client.query(`SELECT id, name, email, role, enabledModules, createdAt, lastSignedIn
        FROM users WHERE id = ?`, [userId]) as any;
 
-    const [progress] = await db.$client.promise().query(
+    const [progress] = await db.$client.query(
       `SELECT moduleId, dayNumber, completed, durationSeconds, openedAt
        FROM learning_logs WHERE userId = ? ORDER BY openedAt DESC LIMIT 100`,
       [userId]
     ) as any;
 
-    const [exams] = await db.$client.promise().query(
+    const [exams] = await db.$client.query(
       `SELECT id, moduleId, score, totalQuestions, startedAt, completedAt
        FROM exam_sessions WHERE userId = ? ORDER BY startedAt DESC LIMIT 20`,
       [userId]
     ) as any;
 
-    const [certs] = await db.$client.promise().query(
+    const [certs] = await db.$client.query(
       `SELECT moduleId, score, issuedAt FROM certificates WHERE userId = ?`,
       [userId]
     ) as any;
 
-    const [chats] = await db.$client.promise().query(
+    const [chats] = await db.$client.query(
       `SELECT id, moduleId, createdAt FROM chat_conversations
        WHERE userId = ? ORDER BY createdAt DESC LIMIT 50`,
       [userId]
     ) as any;
 
-    const [sr] = await db.$client.promise().query(
+    const [sr] = await db.$client.query(
       `SELECT questionId, easinessFactor, interval, repetitions, nextReviewAt
        FROM spaced_repetition WHERE userId = ?`,
       [userId]
@@ -516,13 +516,13 @@ app.get("/api/user/export", resetLimiter, requireAuth, async (req: any, res: any
     const db = await (await import("../db")).getDb();
     const userId = req.currentUser.id;
 
-    const [user] = await db.$client.promise().query(
+    const [user] = await db.$client.query(
       `SELECT name, email, role, enabledModules, createdAt FROM users WHERE id = ?`,
       [userId]
     ) as any;
-    const [progress] = await db.$client.promise().query(`SELECT * FROM learning_logs WHERE userId = ?`, [userId]) as any;
-    const [exams] = await db.$client.promise().query(`SELECT * FROM exam_sessions WHERE userId = ?`, [userId]) as any;
-    const [certs] = await db.$client.promise().query(`SELECT * FROM certificates WHERE userId = ?`, [userId]) as any;
+    const [progress] = await db.$client.query(`SELECT * FROM learning_logs WHERE userId = ?`, [userId]) as any;
+    const [exams] = await db.$client.query(`SELECT * FROM exam_sessions WHERE userId = ?`, [userId]) as any;
+    const [certs] = await db.$client.query(`SELECT * FROM certificates WHERE userId = ?`, [userId]) as any;
 
     const exportData = {
       exportDate: new Date().toISOString(),
