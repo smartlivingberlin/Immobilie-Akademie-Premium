@@ -81,7 +81,7 @@ async function runAllChecks(): Promise<{
 async function saveResult(type: string, status: string, details: object): Promise<void> {
   try {
     const db = await getDb();
-    const SQL = "INSERT INTO `monitoring_log` (`type`, `status`, `details`) VALUES (?, ?, ?)";
+    const SQL = "INSERT INTO monitoring_log (type, status, details) VALUES (?, ?, ?)";
     logger.info("[HealthWatcher] SQL Debug", { sql: SQL, type, status });
     await db.$client.query(SQL, [type, status, JSON.stringify(details)]);
   } catch (e: any) {
