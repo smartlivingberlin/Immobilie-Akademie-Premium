@@ -723,7 +723,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
     const key = req.headers["x-owner-key"] || req.query.key;
     if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
     try {
-      const { runHealthWatch } = await import("../agent/HealthWatcher");
+      const { runHealthWatch } = await import("./agent/HealthWatcher");
       await runHealthWatch();
       const { getDb } = await import("./db");
       const db = await getDb();
