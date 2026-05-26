@@ -723,6 +723,44 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
     const key = req.headers["x-owner-key"] || req.query.key;
     if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
     try {
+      // Erst DB-Schema sicherstellen
+      const { getDb } = await import("./db");
+      const dbfix = await getDb();
+      const [cols] = await dbfix.$client.query("DESCRIBE monitoring_log") as any;
+      const colNames = (cols as any[]).map((c: any) => c.Field);
+      if (!colNames.includes("type")) {
+        await dbfix.$client.query("DROP TABLE IF EXISTS monitoring_log");
+        await dbfix.$client.query(`CREATE TABLE monitoring_log (
+          id INT NOT NULL AUTO_INCREMENT,
+          timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+          \\`type\\` VARCHAR(50) NOT NULL,
+          status VARCHAR(20) NOT NULL,
+          details JSON DEFAULT NULL,
+          alertSent TINYINT(1) DEFAULT 0,
+          PRIMARY KEY (id)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4`);
+        logger.info("[Owner] monitoring_log Schema-Fix durchgeführt");
+      }
+      // Schema-Check: monitoring_log muss type/status/details haben
+      const { getDb: getDbFix } = await import("./db");
+      const dbFix = await getDbFix();
+      const [colsFix] = await dbFix.$client.query("DESCRIBE monitoring_log") as any;
+      const colNamesFix = (colsFix as any[]).map((c: any) => c.Field);
+      if (!colNamesFix.includes("type")) {
+        await dbFix.$client.query("RENAME TABLE monitoring_log TO monitoring_log_backup_auto");
+        await dbFix.$client.query("CREATE TABLE monitoring_log (id INT NOT NULL AUTO_INCREMENT, timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, type VARCHAR(50) NOT NULL, status VARCHAR(20) NOT NULL, details JSON DEFAULT NULL, alertSent TINYINT(1) DEFAULT 0, PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+        logger.info("[Owner] monitoring_log Schema repariert");
+      }
+      // Schema-Check: monitoring_log muss type/status/details haben
+      const { getDb: getDbFix } = await import("./db");
+      const dbFix = await getDbFix();
+      const [colsFix] = await dbFix.$client.query("DESCRIBE monitoring_log") as any;
+      const colNamesFix = (colsFix as any[]).map((c: any) => c.Field);
+      if (!colNamesFix.includes("type")) {
+        await dbFix.$client.query("RENAME TABLE monitoring_log TO monitoring_log_backup_auto");
+        await dbFix.$client.query("CREATE TABLE monitoring_log (id INT NOT NULL AUTO_INCREMENT, timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, type VARCHAR(50) NOT NULL, status VARCHAR(20) NOT NULL, details JSON DEFAULT NULL, alertSent TINYINT(1) DEFAULT 0, PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+        logger.info("[Owner] monitoring_log Schema repariert");
+      }
       const { runHealthWatch } = await import("./agent/HealthWatcher");
       await runHealthWatch();
       const { getDb } = await import("./db");
