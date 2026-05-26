@@ -10,21 +10,15 @@ import { sql } from "drizzle-orm";
 export async function generateOTP(email: string): Promise<string> {
   const { getDb } = await import("./db");
   const db = await getDb();
-
-  // Cleanup alter Codes
-  await db.execute(sql`DELETE FROM otp_tokens WHERE expiresAt < NOW()`);
-
+  // Cleanup alter Codes — db.$client für Railway-Kompatibilität
+  await db.$client.query("DELETE FROM otp_tokens WHERE expiresAt < NOW()");
   const code = String(randomInt(100000, 999999));
   const expiresAt = new Date(Date.now() + 10 * 60 * 1000);
-
-  await db.execute(sql`
-    INSERT INTO otp_tokens (email, code, expiresAt)
-    VALUES (${email}, ${code}, ${expiresAt})
-  `);
-
-  if (process.env.NODE_ENV !== 'production') {
-    logger.info(`[2FA] OTP generiert für ${email} (Dev-Modus)`);
-  }
+  await db.$client.query(
+    "INSERT INTO otp_tokens (email, code, expiresAt) VALUES (?, ?, ?)",
+    [email, code, expiresAt]
+  );
+  logger.info(`[2FA] OTP in DB gespeichert für ${email}`);
   return code;
 }
 
@@ -32,43 +26,34 @@ export async function generateOTP(email: string): Promise<string> {
 export async function verifyOTP(email: string, code: string): Promise<{ ok: boolean; error?: string }> {
   const { getDb } = await import("./db");
   const db = await getDb();
-  
-  // Finde gültigen OTP für diese E-Mail (nicht verwendet, nicht abgelaufen, neueste zuerst)
-  const rows = await db.execute(sql`
-    SELECT id, code, attempts FROM otp_tokens
-    WHERE email = ${email} AND used = 0 AND expiresAt > NOW()
-    ORDER BY createdAt DESC
-    LIMIT 1
-  `) as any;
-  
-  const entries = rows.rows || rows;
+  // Finde gültigen OTP — db.$client für Railway-Kompatibilität
+  const [rows] = await db.$client.query(
+    "SELECT id, code, attempts FROM otp_tokens WHERE email = ? AND used = 0 AND expiresAt > NOW() ORDER BY createdAt DESC LIMIT 1",
+    [email]
+  ) as any;
+  const entries = Array.isArray(rows) ? rows : [];
   if (!entries || entries.length === 0) {
     return { ok: false, error: "Kein gültiger Code. Bitte neu anfordern." };
   }
-  
   const entry = entries[0];
-  // Sicherheitscheck: id muss eine gültige Zahl sein
   const entryId = Number(entry.id);
   if (!entryId || isNaN(entryId)) {
     return { ok: false, error: "Interner Fehler. Bitte neu anfordern." };
   }
-  entry.id = entryId;
-  
   // Max 3 Versuche
   if (entry.attempts >= 3) {
-    await db.execute(sql`DELETE FROM otp_tokens WHERE id = ${entry.id}`);
+    await db.$client.query("DELETE FROM otp_tokens WHERE id = ?", [entryId]);
     return { ok: false, error: "Zu viele Versuche. Code gesperrt." };
   }
-  
   if (entry.code !== code.trim()) {
     const newAttempts = entry.attempts + 1;
-    await db.execute(sql`UPDATE otp_tokens SET attempts = ${newAttempts} WHERE id = ${entry.id}`);
+    await db.$client.query("UPDATE otp_tokens SET attempts = ? WHERE id = ?", [newAttempts, entryId]);
     return { ok: false, error: `Falscher Code. Noch ${3 - newAttempts} Versuche.` };
   }
-  
-  // Code korrekt → als verwendet markieren
-  await db.execute(sql`UPDATE otp_tokens SET used = 1 WHERE id = ${entry.id}`);
+  // Code korrekt
+  await db.$client.query("UPDATE otp_tokens SET used = 1 WHERE id = ?", [entryId]);
   return { ok: true };
+}
 }
 
 // E-Mail senden (über bestehende Nodemailer-Config oder Console-Log als Fallback)
