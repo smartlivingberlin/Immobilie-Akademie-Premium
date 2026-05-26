@@ -82,7 +82,7 @@ async function saveResult(type: string, status: string, details: object): Promis
   try {
     const db = await getDb();
     await db.$client.query(
-      "INSERT INTO monitoring_log (type, status, details) VALUES (?, ?, ?)",
+      "INSERT INTO `monitoring_log` (`type`, `status`, `details`) VALUES (?, ?, ?)",
       [type, status, JSON.stringify(details)]
     );
   } catch (e: any) {
