@@ -1,4 +1,5 @@
-import { desc, eq, sql, and } from "drizzle-orm";
+import { desc, eq, sql, and, or } from "drizzle-orm";
+import { isYesterday, isToday, startOfDay } from "date-fns";
 import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
 import { logger } from "./_core/logger";
@@ -1247,7 +1248,27 @@ export async function setUserRole(openId: string, role: "user" | "admin" | "trai
 export async function updateLastSignedIn(openId: string): Promise<void> {
   const db = await getDb();
   try {
-    await db.update(users).set({ lastSignedIn: new Date() }).where(eq(users.openId, openId));
+    const [user] = await db.select().from(users).where(eq(users.openId, openId)).limit(1);
+    if (!user) return;
+
+    const now = new Date();
+    const lastUpdate = user.lastStreakUpdate;
+    let newStreak = user.streakDays;
+
+    if (!lastUpdate) {
+      newStreak = 1;
+    } else if (isYesterday(lastUpdate)) {
+      newStreak += 1;
+    } else if (!isToday(lastUpdate)) {
+      newStreak = 1;
+    }
+    // If isToday(lastUpdate), streak remains the same
+
+    await db.update(users).set({
+      lastSignedIn: now,
+      streakDays: newStreak,
+      lastStreakUpdate: now
+    }).where(eq(users.id, user.id));
   } catch (error) {
     logger.error("[DB] updateLastSignedIn error", error);
   }

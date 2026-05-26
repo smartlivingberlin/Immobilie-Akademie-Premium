@@ -24,6 +24,8 @@ export const users = mysqlTable("users", {
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
   lastSignedIn: timestamp("lastSignedIn").defaultNow().notNull(),
+  streakDays: int("streakDays").default(0).notNull(),
+  lastStreakUpdate: timestamp("lastStreakUpdate"),
 }, (table) => ({
   emailIdx: index("idx_users_email").on(table.email),
   tenantIdIdx: index("idx_users_tenantId").on(table.tenantId),

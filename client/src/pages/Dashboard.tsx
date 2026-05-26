@@ -269,9 +269,30 @@ export default function Dashboard() {
         <h1 style={{ fontSize: 28, fontWeight: 800, color: "var(--color-text)", margin: "0 0 4px" }}>
           Mein Lernbereich
         </h1>
-        <p style={{ color: "var(--color-text-muted)", margin: 0 }}>
-          Willkommen, {meData?.name || "Lernender"}
-        </p>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+          <div>
+            <h1 style={{ fontSize: 28, fontWeight: 800, color: "var(--color-text)", margin: "0 0 4px" }}>
+              Mein Lernbereich
+            </h1>
+            <p style={{ color: "var(--color-text-muted)", margin: 0 }}>
+              Willkommen, {meData?.name || "Lernender"}
+            </p>
+          </div>
+          {(meData?.streakDays ?? 0) > 0 && (
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              background: "#fff7ed",
+              padding: "8px 16px",
+              borderRadius: "12px",
+              border: "1px solid #ffedd5"
+            }}>
+              <Flame size={20} className="text-orange-500 fill-orange-500" />
+              <span style={{ fontWeight: 800, color: "#9a3412" }}>{meData!.streakDays} Tage in Folge</span>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Stats */}

@@ -91,18 +91,18 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit} autoComplete="new-password">
             {mode === "register" && (
               <div style={{ marginBottom: "16px" }}>
-                <label style={labelStyle}>Name</label>
-                <input ref={nameRef} type="text" placeholder="Ihr Name" autoComplete="new-password" style={inputStyle} />
+                <label htmlFor="login-name" style={labelStyle}>Name</label>
+                <input id="login-name" name="name" ref={nameRef} type="text" placeholder="Ihr Name" autoComplete="new-password" style={inputStyle} />
               </div>
             )}
             <div style={{ marginBottom: "16px" }}>
-              <label style={labelStyle}>E-Mail</label>
-              <input ref={emailRef} type="text" placeholder="ihre@email.de" autoComplete="new-password" autoCorrect="off" autoCapitalize="off" spellCheck={false} style={inputStyle} />
+              <label htmlFor="login-email" style={labelStyle}>E-Mail</label>
+              <input id="login-email" name="email" ref={emailRef} type="text" placeholder="ihre@email.de" autoComplete="new-password" autoCorrect="off" autoCapitalize="off" spellCheck={false} style={inputStyle} />
             </div>
             <div style={{ marginBottom: "20px" }}>
-              <label style={labelStyle}>Passwort</label>
+              <label htmlFor="login-password" style={labelStyle}>Passwort</label>
               <div style={{ position: "relative" }}>
-                <input ref={passwordRef} type={showPassword ? "text" : "password"} placeholder="Ihr Passwort" autoComplete="new-password" style={{ ...inputStyle, paddingRight: "42px" }} />
+                <input id="login-password" name="password" ref={passwordRef} type={showPassword ? "text" : "password"} placeholder="Ihr Passwort" autoComplete="new-password" style={{ ...inputStyle, paddingRight: "42px" }} />
                 <button aria-label="Passwort anzeigen/verbergen" type="button" onClick={() => setShowPassword(v => !v)} style={{ position: "absolute", right: "12px", top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: "pointer", color: "#4b5563", padding: 0, display: "flex", alignItems: "center" }}>
                   {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
