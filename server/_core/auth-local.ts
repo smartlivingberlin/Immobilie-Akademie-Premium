@@ -221,16 +221,17 @@ export function registerLocalAuthRoutes(app: Express) {
       const dbConn = await getDb();
       const enabledStr = result.enabledModules ?? "";
       if (dbConn) {
-        // INSERT OR UPDATE - enabledModules explizit setzen
-        await dbConn.execute(sql`
+        // First ensure user exists for updateLastSignedIn to work
+        const expiresAt = (result as any).expiresAt ?? null;
+        await dbConn.$client.query(`
           INSERT INTO users (openId, name, role, enabledModules, lastSignedIn)
-          VALUES (${openId}, 'Gast', 'user', ${enabledStr}, NOW())
+          VALUES (?, 'Gast', 'user', ?, NOW())
           ON DUPLICATE KEY UPDATE
-            enabledModules = ${enabledStr},
-            trialExpiresAt = CASE WHEN ${(result as any).expiresAt ?? null} IS NOT NULL
-              THEN ${(result as any).expiresAt ?? null} ELSE trialExpiresAt END,
-            lastSignedIn = NOW()
-        `);
+            enabledModules = VALUES(enabledModules),
+            trialExpiresAt = IF(? IS NOT NULL, ?, trialExpiresAt)
+        `, [openId, enabledStr, expiresAt, expiresAt]);
+        // Use the common streak logic
+        await db.updateLastSignedIn(openId);
       }
       const token = await createSessionToken(openId, "Gast");
       const cookieOptions = getSessionCookieOptions(req);

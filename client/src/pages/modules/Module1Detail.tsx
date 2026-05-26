@@ -3,7 +3,7 @@ import { trpc } from "@/lib/trpc";
 import AudioPlayer from "@/components/AudioPlayer";
 import { useState, useRef, useEffect } from "react";
 import { useActivityHeartbeat } from "@/hooks/useActivityHeartbeat";
-import { Link, useRoute } from "wouter";
+import { Link, useParams } from "wouter";
 import { ArrowLeft, BookOpen, CheckCircle2, FileText, Gavel, Briefcase, ChevronRight, Target, Users, Lightbulb, LineChart, Ruler, ArrowRight, FlaskConical, Brain } from "lucide-react";
 import { AITutor } from "@/components/AITutor";
 import { Button } from "@/components/ui/button";
@@ -67,7 +67,7 @@ const weeks = [
 ];
 
 export default function Module1Detail() {
-  const [match, params] = useRoute("/modul/1/tag/:day");
+  const params = useParams();
   const urlDay = params?.day ? `day_${params.day}` : "day_1";
   const [selectedDay, setSelectedDay] = useState(urlDay);
   const [moduleData, setModuleData] = useState<DayContent | null>(null);
@@ -326,6 +326,14 @@ export default function Module1Detail() {
                          completionDate={new Date().toLocaleDateString()}
                          isCompleted={isQuizCompleted}
                        />
+                       <Button
+                         variant="outline"
+                         className="gap-2"
+                         onClick={() => window.open("/api/certificate/1", "_blank")}
+                       >
+                         <FileText className="h-4 w-4" />
+                         Teilnahmebestätigung (PDF)
+                       </Button>
                      </div>
                   )}
                 </div>

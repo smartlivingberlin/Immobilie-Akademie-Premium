@@ -265,6 +265,18 @@ function Router() {
 }
 
 export default function App() {
+  React.useEffect(() => {
+    // Preload critical routes to improve perceived performance
+    const preload = () => {
+      import("@/pages/Home");
+      import("@/pages/LoginPage");
+      import("@/pages/Dashboard");
+    };
+    // Delay preloading slightly to not interfere with initial mount
+    const timer = setTimeout(preload, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <a href="#main-content" className="skip-link">

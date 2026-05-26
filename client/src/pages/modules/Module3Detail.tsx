@@ -5,7 +5,6 @@ import { useState, useRef, useEffect } from "react";
 import { useActivityHeartbeat } from "@/hooks/useActivityHeartbeat";
 import { Link, useRoute } from "wouter";
 import { ArrowLeft, BookOpen, CheckCircle2, FileText, Gavel, Briefcase, ChevronRight, Lightbulb, AlertTriangle, ArrowRight, Maximize2, Minimize2, FlaskConical, Brain } from "lucide-react";
-import { AITutor } from "@/components/AITutor";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -13,22 +12,26 @@ import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ReactMarkdown from 'react-markdown';
-import { CertificateGenerator } from "@/components/CertificateGenerator";
-import { DocumentGenerator } from "@/components/DocumentGenerator";
-import { ModuleQuiz } from "@/components/ModuleQuiz";
-import { Quiz } from "@/components/Quiz";
 import { quizQuestionsModule3 } from "@/data/quiz-questions-modul3";
 import { SolutionToggler } from "@/components/SolutionToggler";
-import { SmartContent } from "@/components/SmartContent";
-import { FullscreenContent } from "@/components/FullscreenContent";
 import { NotebookLMExport } from "@/components/NotebookLMExport";
 import { LoadingHandler } from "@/components/LoadingHandler";
 import { SkeletonCard } from "@/components/ui/SkeletonCard";
 import { SkeletonText } from "@/components/ui/SkeletonText";
-import { CourtCaseDisplay } from "@/components/CourtCaseDisplay";
 import { courtCasesModule3 } from "@/data/rechtsprechung-modul3";
-import { VideoList } from "@/components/VideoPlayer";
 import { Video } from "lucide-react";
+import { lazy, Suspense } from "react";
+
+// Lazy-loaded heavy components
+const AITutor = lazy(() => import("@/components/AITutor").then(m => ({ default: m.AITutor })));
+const CertificateGenerator = lazy(() => import("@/components/CertificateGenerator").then(m => ({ default: m.CertificateGenerator })));
+const DocumentGenerator = lazy(() => import("@/components/DocumentGenerator").then(m => ({ default: m.DocumentGenerator })));
+const ModuleQuiz = lazy(() => import("@/components/ModuleQuiz").then(m => ({ default: m.ModuleQuiz })));
+const Quiz = lazy(() => import("@/components/Quiz").then(m => ({ default: m.Quiz })));
+const SmartContent = lazy(() => import("@/components/SmartContent").then(m => ({ default: m.SmartContent })));
+const FullscreenContent = lazy(() => import("@/components/FullscreenContent").then(m => ({ default: m.FullscreenContent })));
+const CourtCaseDisplay = lazy(() => import("@/components/CourtCaseDisplay").then(m => ({ default: m.CourtCaseDisplay })));
+const VideoList = lazy(() => import("@/components/VideoPlayer").then(m => ({ default: m.VideoList })));
 
 type DayContent = Record<string, any>;
 let _cache_module3: DayContent | null = null;
@@ -360,12 +363,22 @@ export default function Module3Detail() {
                 </div>
                 {isLastDay && (
                    <div className="flex gap-2">
-                     <CertificateGenerator 
-                       moduleName="Modul 3: Immobilienverwaltung"
-                       userName="Teilnehmer"
-                       completionDate={new Date().toLocaleDateString()}
-                       isCompleted={true} // Mocked for now
-                     />
+                     <Suspense fallback={<SkeletonCard />}>
+                       <CertificateGenerator
+                         moduleName="Modul 3: Immobilienverwaltung"
+                         userName="Teilnehmer"
+                         completionDate={new Date().toLocaleDateString()}
+                         isCompleted={true} // Mocked for now
+                       />
+                     </Suspense>
+                     <Button
+                       variant="outline"
+                       className="gap-2"
+                       onClick={() => window.open("/api/certificate/3", "_blank")}
+                     >
+                       <FileText className="h-4 w-4" />
+                       Teilnahmebestätigung (PDF)
+                     </Button>
                    </div>
                 )}
               </div>
@@ -396,6 +409,7 @@ export default function Module3Detail() {
                 </TabsList>
 
                 <TabsContent value="theory" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
+                  <Suspense fallback={<SkeletonCard />}>
                   <FullscreenContent
                       title={`Theorie: ${currentContent?.title}`}
                       content={
@@ -425,6 +439,7 @@ export default function Module3Detail() {
                         </div>
                       }
                     />
+                  </Suspense>
                   <div className="content-container prose prose-slate max-w-none prose-headings:text-slate-900 prose-a:text-blue-600 prose-strong:text-slate-900">
                     <>
               <AudioPlayer 
@@ -441,7 +456,9 @@ export default function Module3Detail() {
                       practice={currentContent?.practice}
                       task={typeof currentContent?.task === "string" ? currentContent?.task : undefined}
                     />
-              <SmartContent content={currentContent?.theory} />
+              <Suspense fallback={<SkeletonCard />}>
+                <SmartContent content={currentContent?.theory} />
+              </Suspense>
               </>
                     {currentContent?.extendedTheory && (
                       <div className="mt-8 pt-8 border-t border-slate-200">
@@ -449,7 +466,9 @@ export default function Module3Detail() {
                           <Lightbulb className="h-5 w-5 text-amber-500" />
                           Vertiefungswissen
                         </h3>
-                        <SmartContent content={currentContent?.extendedTheory} />
+                        <Suspense fallback={<SkeletonCard />}>
+                          <SmartContent content={currentContent?.extendedTheory} />
+                        </Suspense>
                       </div>
                     )}
                   </div>
@@ -462,18 +481,21 @@ export default function Module3Detail() {
                         <h3 className="font-semibold text-blue-900">Dokumenten-Generator</h3>
                       </div>
                       <div className="p-6 bg-white">
-                         <DocumentGenerator 
-                           title={docTitle}
-                           content={`Musterinhalt für ${docTitle}...`}
-                           description="Erstellen Sie hier Ihr rechtssicheres Dokument."
-                           templateType={docType as any}
-                         />
+                         <Suspense fallback={<SkeletonCard />}>
+                           <DocumentGenerator
+                             title={docTitle}
+                             content={`Musterinhalt für ${docTitle}...`}
+                             description="Erstellen Sie hier Ihr rechtssicheres Dokument."
+                             templateType={docType as any}
+                           />
+                         </Suspense>
                       </div>
                     </div>
                   )}
                 </TabsContent>
 
                 <TabsContent value="law" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
+                  <Suspense fallback={<SkeletonCard />}>
                   <FullscreenContent 
                     title={`Rechtliche Grundlagen: ${currentContent?.title}`}
                     content={
@@ -484,7 +506,9 @@ export default function Module3Detail() {
                               <Gavel className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
                     <AudioPlayer text={(currentContent?.law || []).join(". ")} label="Normen vorlesen" />
                               <div className="prose prose-slate max-w-none prose-headings:text-slate-900 prose-a:text-blue-600 prose-strong:text-slate-900">
-                                <SmartContent content={law} />
+                                <Suspense fallback={<SkeletonCard />}>
+                                  <SmartContent content={law} />
+                                </Suspense>
                               </div>
                             </CardContent>
                           </Card>
@@ -492,13 +516,16 @@ export default function Module3Detail() {
                       </div>
                     } 
                   />
+                  </Suspense>
                   <div className="content-container grid gap-4">
                     {currentContent?.law.map((law, index) => (
                       <Card key={index} className="border-l-4 border-l-blue-500 shadow-sm hover:shadow-md transition-shadow">
                         <CardContent className="p-4 flex items-start gap-3">
                           <Gavel className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
                           <div className="prose prose-slate max-w-none prose-headings:text-slate-900 prose-a:text-blue-600 prose-strong:text-slate-900">
-                            <SmartContent content={law} />
+                            <Suspense fallback={<SkeletonCard />}>
+                              <SmartContent content={law} />
+                            </Suspense>
                           </div>
                         </CardContent>
                       </Card>
@@ -507,6 +534,7 @@ export default function Module3Detail() {
                 </TabsContent>
 
                 <TabsContent value="practice" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
+                  <Suspense fallback={<SkeletonCard />}>
                   <FullscreenContent
                     title={`Praxis: ${currentContent?.title}`}
                     content={
@@ -515,6 +543,7 @@ export default function Module3Detail() {
                       </div>
                     }
                   />
+                  </Suspense>
                   <Card className="bg-emerald-50/50 border-emerald-100 shadow-sm">
                     <CardHeader>
                       <CardTitle className="text-emerald-800 flex items-center gap-2">
@@ -524,7 +553,9 @@ export default function Module3Detail() {
                     </CardHeader>
                     <CardContent>
                       <div className="content-container prose prose-emerald max-w-none">
-                        <SmartContent content={currentContent?.practice} />
+                        <Suspense fallback={<SkeletonCard />}>
+                          <SmartContent content={currentContent?.practice} />
+                        </Suspense>
                       </div>
                     </CardContent>
                   </Card>
@@ -539,7 +570,9 @@ export default function Module3Detail() {
                       </CardHeader>
                       <CardContent>
                         <div className="content-container prose prose-blue max-w-none">
-                          <SmartContent content={currentContent?.caseStudy} />
+                          <Suspense fallback={<SkeletonCard />}>
+                            <SmartContent content={currentContent?.caseStudy} />
+                          </Suspense>
                         </div>
                       </CardContent>
                     </Card>
@@ -558,13 +591,16 @@ export default function Module3Detail() {
                     </CardHeader>
                     <CardContent className="space-y-4">
                       {courtCasesModule3.map((courtCase) => (
-                        <CourtCaseDisplay key={courtCase.id} courtCase={courtCase} />
+                        <Suspense fallback={<SkeletonCard />} key={courtCase.id}>
+                          <CourtCaseDisplay courtCase={courtCase} />
+                        </Suspense>
                       ))}
                     </CardContent>
                   </Card>
                 </TabsContent>
 
                 <TabsContent value="task" className="mt-0 space-y-6 animate-in fade-in-50 focus-visible:outline-none relative group">
+                   <Suspense fallback={<SkeletonCard />}>
                    <FullscreenContent 
                      title={`Aufgaben & Lösungen: ${currentContent?.title}`}
                      content={
@@ -589,18 +625,21 @@ export default function Module3Detail() {
                          {currentDayNum === 80 && (
                            <div className="mt-8 pt-8 border-t">
                              <h3 className="text-lg font-bold mb-4">Abschlussprüfung Modul 3</h3>
-                             <ModuleQuiz 
-                               questions={quizQuestionsModule3} 
-                               onComplete={(score) => {
-                                 if (score >= 80) setIsQuizCompleted(true);
-                               }}
-                               moduleTitle="Modul 3: Immobilienverwaltung"
-                             />
+                             <Suspense fallback={<SkeletonCard />}>
+                               <ModuleQuiz
+                                 questions={quizQuestionsModule3}
+                                 onComplete={(score) => {
+                                   if (score >= 80) setIsQuizCompleted(true);
+                                 }}
+                                 moduleTitle="Modul 3: Immobilienverwaltung"
+                               />
+                             </Suspense>
                            </div>
                          )}
                        </div>
                      } 
                    />
+                   </Suspense>
                   <div className="content-container space-y-6">
                     {tasks.map((task, index) => (
                       <Card key={index} className="border-slate-200 shadow-sm">
@@ -621,13 +660,15 @@ export default function Module3Detail() {
                     {currentDayNum === 80 && (
                       <div className="mt-8 pt-8 border-t">
                         <h3 className="text-lg font-bold mb-4">Abschlussprüfung Modul 3</h3>
-                        <ModuleQuiz 
-                          questions={quizQuestionsModule3} 
-                          onComplete={(score) => {
-                            if (score >= 80) setIsQuizCompleted(true);
-                          }}
-                          moduleTitle="Modul 3: Immobilienverwaltung"
-                        />
+                        <Suspense fallback={<SkeletonCard />}>
+                          <ModuleQuiz
+                            questions={quizQuestionsModule3}
+                            onComplete={(score) => {
+                              if (score >= 80) setIsQuizCompleted(true);
+                            }}
+                            moduleTitle="Modul 3: Immobilienverwaltung"
+                          />
+                        </Suspense>
                       </div>
                     )}
                   </div>
@@ -656,6 +697,9 @@ export default function Module3Detail() {
                           Bis dahin steht der KI-Tutor 24/7 zur Verfügung.
                         </p>
                       </div>
+                      <Suspense fallback={<SkeletonCard />}>
+                        <VideoList moduleId={3} />
+                      </Suspense>
                     </div>
                   </TabsContent>
 
@@ -674,12 +718,14 @@ export default function Module3Detail() {
           </Card>
         </div>
       </div>
-      <AITutor
-      isOpen={showAITutor}
-      onClose={() => setShowAITutor(false)}
-      moduleId={3}
-      moduleContext={"Modul 3"}
-    />
+      <Suspense fallback={null}>
+        <AITutor
+          isOpen={showAITutor}
+          onClose={() => setShowAITutor(false)}
+          moduleId={3}
+          moduleContext={"Modul 3"}
+        />
+      </Suspense>
 </div>
     </LoadingHandler>
   );
