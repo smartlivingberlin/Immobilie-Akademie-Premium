@@ -267,14 +267,13 @@ app.post("/api/stripe/webhook", express.raw({ type: "*/*" }), async (req: any, r
           const { getDb } = await import("../db");
           const db = await getDb();
           const { sql } = await import("drizzle-orm");
-          const rows = await db.execute(sql`SELECT id, enabledModules FROM users WHERE email = ${email}`) as any;
-          const userRows = Array.isArray(rows[0]) ? rows[0] : (Array.isArray(rows) ? rows : (rows.rows ?? []));
+          const [userRows] = await db.$client.query("SELECT id, enabledModules FROM users WHERE email = ?", [email]) as any;
           if (userRows.length > 0) {
             const user = userRows[0];
             const current = (user.enabledModules || "").split(",").map((s: string) => s.trim()).filter(Boolean);
             const newMods = modules.split(",").map((s: string) => s.trim()).filter(Boolean);
             const merged = [...new Set([...current, ...newMods])].join(",");
-            await db.execute(sql`UPDATE users SET enabledModules = ${merged} WHERE id = ${user.id}`);
+            await db.$client.query("UPDATE users SET enabledModules = ? WHERE id = ?", [merged, user.id]);
             logger.info("[Stripe Webhook] Freigeschaltet", { email, modules: merged });
           }
         } catch (dbErr: any) {

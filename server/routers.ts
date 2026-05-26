@@ -941,7 +941,7 @@ Antworte im folgenden JSON-Format:
         const { sql } = await import('drizzle-orm');
         const { getDb } = await import('./db');
         const db = await getDb();
-        if (db) await db.execute(sql`UPDATE presentation_codes SET isActive = 1 WHERE id = ${input.id}`);
+        if (db) await db.$client.query("UPDATE presentation_codes SET isActive = 1 WHERE id = ?", [input.id]);
         return { ok: true };
       }),
     delete: adminProcedure
@@ -950,7 +950,7 @@ Antworte im folgenden JSON-Format:
         const { sql } = await import('drizzle-orm');
         const { getDb } = await import('./db');
         const db = await getDb();
-        if (db) await db.execute(sql`DELETE FROM presentation_codes WHERE id = ${input.id}`);
+        if (db) await db.$client.query("DELETE FROM presentation_codes WHERE id = ?", [input.id]);
         return { ok: true };
       }),
     deactivate: adminProcedure

@@ -1265,14 +1265,12 @@ export async function updateUserEnabledModules(userId: number, moduleIds: number
 export async function redeemPresentationCode(code: string): Promise<{success: boolean; enabledModules?: string; message: string;}> {
   const db = await getDb();
   const { sql } = await import("drizzle-orm");
-  const rawResult = await db.execute(sql`SELECT * FROM presentation_codes WHERE code = ${code} AND isActive = 1 LIMIT 1`) as any;
-  // Drizzle mysql2: gibt [RowDataPacket[], FieldPacket[]] zurueck
-  const rowsArr = Array.isArray(rawResult[0]) ? rawResult[0] : (Array.isArray(rawResult) ? rawResult : []);
-  const record = rowsArr[0] ?? null;
+  const [rows_pc] = await db.$client.query("SELECT * FROM presentation_codes WHERE code = ? AND isActive = 1 LIMIT 1", [code]) as any;
+  const record = (rows_pc as any[])[0] ?? null;
   if (!record) return { success: false, message: "Code nicht gefunden oder deaktiviert" };
   if (record.expiresAt && new Date(record.expiresAt) < new Date()) return { success: false, message: "Dieser Code ist abgelaufen" };
   if (record.maxUsage && record.usageCount >= record.maxUsage) return { success: false, message: "Maximale Nutzungsanzahl erreicht" };
-  await db.execute(sql`UPDATE presentation_codes SET usageCount = usageCount + 1 WHERE code = ${code}`);
+  await db.$client.query("UPDATE presentation_codes SET usageCount = usageCount + 1 WHERE code = ?", [code]);
   return { success: true, enabledModules: record.enabledModules, message: "Code gültig" };
 }
 
@@ -1284,10 +1282,10 @@ export async function listPresentationCodes(): Promise<any[]> {
 
 export async function createPresentationCode(code: string, label: string, modules: string, expiresAt: Date | null, maxUsage: number | null): Promise<void> {
   const db = await getDb();
-  await db.execute(sql`INSERT INTO presentation_codes (code, label, enabledModules, expiresAt, maxUsage) VALUES (${code}, ${label}, ${modules}, ${expiresAt}, ${maxUsage})`);
+  await db.$client.query("INSERT INTO presentation_codes (code, label, enabledModules, expiresAt, maxUsage) VALUES (?, ?, ?, ?, ?)", [code, label, modules, expiresAt, maxUsage]);
 }
 
 export async function deactivatePresentationCode(id: number): Promise<void> {
   const db = await getDb();
-  await db.execute(sql`UPDATE presentation_codes SET isActive = false WHERE id = ${id}`);
+  await db.$client.query("UPDATE presentation_codes SET isActive = false WHERE id = ?", [id]);
 }

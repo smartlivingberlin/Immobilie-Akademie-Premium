@@ -64,7 +64,7 @@ async function runAllChecks(): Promise<{
   try {
     const db = await getDb();
     const start = Date.now();
-    await db.execute(sql`SELECT 1`);
+    await db.$client.query("SELECT 1");
     checks["database"] = { ok: true, ms: Date.now() - start };
   } catch (e: any) {
     checks["database"] = { ok: false, error: e.message?.slice(0, 100) };
@@ -196,11 +196,7 @@ export async function runHealthWatch(): Promise<void> {
     // Alte Logs aufräumen (nur letzte 7 Tage behalten)
     try {
       const db = await getDb();
-      await db.execute(sql`
-        DELETE FROM monitoring_log 
-        WHERE timestamp < DATE_SUB(NOW(), INTERVAL 7 DAY)
-      `);
-    } catch { /* ignorieren */ }
+      await db.$client.query("DELETE FROM monitoring_log WHERE timestamp < DATE_SUB(NOW(), INTERVAL 7 DAY)");
 
   } catch (e: any) {
     logger.error("[HealthWatcher] Kritischer Fehler", { error: e.message });

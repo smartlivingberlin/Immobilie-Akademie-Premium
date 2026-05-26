@@ -72,18 +72,16 @@ export async function runTrialFollowupCron(): Promise<void> {
   const db = await getDb();
   
   // Leads die vor 20-22h angelegt wurden und noch KEINE Follow-up bekommen haben
-  const result = await db.execute(sql`
-    SELECT name, email, code, expiresAt 
-    FROM trial_leads 
-    WHERE 
+  const [leads] = await db.$client.query(`
+    SELECT name, email, code, expiresAt
+    FROM trial_leads
+    WHERE
       usedAt IS NULL AND
       extended = 0 AND
       createdAt BETWEEN NOW() - INTERVAL 22 HOUR AND NOW() - INTERVAL 20 HOUR AND
       expiresAt > NOW()
     LIMIT 50
   `) as any;
-  
-  const leads = result[0] as any[];
   console.log(`[TrialFollowup] ${leads?.length || 0} Leads für Follow-up`);
   
   for (const lead of leads || []) {
@@ -93,9 +91,9 @@ export async function runTrialFollowupCron(): Promise<void> {
     try {
       await sendFollowupEmail(lead.name, lead.email, lead.code, hoursLeft);
       // Als "Follow-up gesendet" markieren
-      await db.execute(sql`
-        UPDATE trial_leads SET extended = -1 WHERE email = ${lead.email}
-      `);
+      await db.$client.query("UPDATE trial_leads SET extended = -1 WHERE email = ?", [lead.email]);
+
+
       console.log(`[TrialFollowup] ✅ ${lead.email}`);
     } catch(e) {
       console.error(`[TrialFollowup] ❌ ${lead.email}:`, e);

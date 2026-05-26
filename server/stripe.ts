@@ -188,7 +188,7 @@ export async function stripeWebhookHandler(req: any, res: any) {
         const current = (user.enabledModules || "").split(",").map((s: string) => s.trim()).filter(Boolean);
         const newMods = modules.split(",").map((s: string) => s.trim()).filter(Boolean);
         const merged = [...new Set([...current, ...newMods])].join(",");
-        await db.execute(sql`UPDATE users SET enabledModules = ${merged} WHERE id = ${user.id}`);
+        await db.$client.query("UPDATE users SET enabledModules = ? WHERE id = ?", [merged, user.id]);
         logger.info("[Stripe Webhook] Freigeschaltet", { email, modules: merged });
         // E-Mail nach Kauf senden
         try {

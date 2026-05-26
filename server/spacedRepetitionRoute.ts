@@ -27,15 +27,15 @@ export function registerSpacedRepetitionRoutes(app: Express) {
       const db = await getDb();
       const userId = (req as any).currentUser.id;
 
-      const due = await db.execute(sql`
+      const [due] = await db.$client.query(`
         SELECT sr.questionId, sr.easinessFactor, sr.interval, sr.repetitions
         FROM spaced_repetition sr
-        WHERE sr.userId = ${userId}
+        WHERE sr.userId = ?
           AND sr.nextReviewAt <= NOW()
         ORDER BY sr.nextReviewAt ASC
         LIMIT 20
-      `);
-
+      `, [userId]) as any;
+      res.json({ questions: due, count: (due as any).length });
       res.json({ questions: (due as any)[0], count: (due as any)[0].length });
     } catch (e) {
       res.status(500).json({ error: "Fehler" });
@@ -50,35 +50,18 @@ export function registerSpacedRepetitionRoutes(app: Express) {
       const userId = (req as any).currentUser.id;
 
       // Aktuellen Stand holen
-      const [existing] = await db.execute(sql`
+      const [[existing_row]] = await db.$client.query(`
         SELECT * FROM spaced_repetition
-        WHERE userId = ${userId} AND questionId = ${questionId}
+        WHERE userId = ? AND questionId = ?
         LIMIT 1
-      `) as any;
-
-      const current = (existing as any)[0];
-      const ease = current?.easinessFactor || 2.5;
-      const ivl  = current?.interval || 1;
-      const reps = current?.repetitions || 0;
-
-      const { interval, reps: newReps, easiness } = sm2(ease, ivl, reps, quality);
-      const nextReview = new Date(Date.now() + interval * 24 * 60 * 60 * 1000);
-
-      if (current) {
-        await db.execute(sql`
-          UPDATE spaced_repetition
-          SET easinessFactor=${easiness}, interval=${interval},
-              repetitions=${newReps}, nextReviewAt=${nextReview},
-              lastResult=${quality >= 3 ? "correct" : "wrong"}
-          WHERE userId=${userId} AND questionId=${questionId}
-        `);
+      `, [userId, questionId]) as any;
+      const current = existing_row;
       } else {
-        await db.execute(sql`
+        await db.$client.query(`
           INSERT INTO spaced_repetition
             (userId, questionId, easinessFactor, interval, repetitions, nextReviewAt, lastResult)
-          VALUES (${userId}, ${questionId}, ${easiness}, ${interval}, ${newReps},
-                  ${nextReview}, ${quality >= 3 ? "correct" : "wrong"})
-        `);
+          VALUES (?, ?, ?, ?, ?, ?, ?)
+        `, [userId, questionId, easiness, interval, newReps, nextReview, quality >= 3 ? "correct" : "wrong"]);
       }
 
       res.json({ ok: true, nextReview, interval });
