@@ -133,10 +133,20 @@ function OwnerRoute({ component: Component }: { component: React.ComponentType }
   const has2FA = document.cookie.includes("owner_2fa_ok=1");
   if (!has2FA) {
     const key = sessionStorage.getItem("ownerKey") || new URLSearchParams(window.location.search).get("key") || "";
-    const redirect = encodeURIComponent(window.location.pathname + window.location.search);
-    window.location.href = key
-      ? `/api/owner/access?key_redirect=1&key=${encodeURIComponent(key)}&redirect=${redirect}`
-      : "/login";
+    if (key) {
+      // POST-Form auto-submit zum Owner-Access-Endpoint
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = "/api/owner/access";
+      const keyInput = document.createElement("input");
+      keyInput.type = "hidden"; keyInput.name = "key"; keyInput.value = key;
+      const redirInput = document.createElement("input");
+      redirInput.type = "hidden"; redirInput.name = "redirect"; redirInput.value = window.location.pathname + window.location.search;
+      form.appendChild(keyInput); form.appendChild(redirInput);
+      document.body.appendChild(form); form.submit();
+    } else {
+      window.location.href = "/login";
+    }
     return null;
   }
   return <Component />;
