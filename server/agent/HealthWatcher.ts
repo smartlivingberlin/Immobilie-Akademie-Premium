@@ -198,6 +198,7 @@ export async function runHealthWatch(): Promise<void> {
       const db = await getDb();
       await db.$client.query("DELETE FROM monitoring_log WHERE timestamp < DATE_SUB(NOW(), INTERVAL 7 DAY)");
 
+    } catch { /* ignorieren */ }
   } catch (e: any) {
     logger.error("[HealthWatcher] Kritischer Fehler", { error: e.message });
     await saveResult("hourly_health", "critical", { error: e.message });

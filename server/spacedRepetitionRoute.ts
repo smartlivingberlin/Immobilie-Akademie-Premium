@@ -56,6 +56,17 @@ export function registerSpacedRepetitionRoutes(app: Express) {
         LIMIT 1
       `, [userId, questionId]) as any;
       const current = existing_row;
+      const ease = current?.easinessFactor || 2.5;
+      const ivl  = current?.interval || 1;
+      const reps = current?.repetitions || 0;
+      const { interval, reps: newReps, easiness } = sm2(ease, ivl, reps, quality);
+      const nextReview = new Date(Date.now() + interval * 24 * 60 * 60 * 1000);
+      if (current) {
+        await db.$client.query(`
+          UPDATE spaced_repetition
+          SET easinessFactor=?, interval=?, repetitions=?, nextReviewAt=?, lastResult=?
+          WHERE userId=? AND questionId=?
+        `, [easiness, interval, newReps, nextReview, quality >= 3 ? "correct" : "wrong", userId, questionId]);
       } else {
         await db.$client.query(`
           INSERT INTO spaced_repetition
