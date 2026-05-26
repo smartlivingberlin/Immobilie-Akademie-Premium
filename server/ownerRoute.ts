@@ -733,7 +733,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
         await dbfix.$client.query(`CREATE TABLE monitoring_log (
           id INT NOT NULL AUTO_INCREMENT,
           timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-          \\`type\\` VARCHAR(50) NOT NULL,
+          type VARCHAR(50) NOT NULL,
           status VARCHAR(20) NOT NULL,
           details JSON DEFAULT NULL,
           alertSent TINYINT(1) DEFAULT 0,
