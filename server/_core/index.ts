@@ -249,7 +249,12 @@ app.post("/api/stripe/webhook", express.raw({ type: "*/*" }), async (req: any, r
     try {
       event = stripe.webhooks.constructEvent(req.body, sig, secret);
     } catch (err: any) {
-      logger.error("[Stripe Webhook] Signatur ungültig", err);
+      // Kein Stripe-Header = Health-Check (erwartet), echte Fehler als warn
+      if (err.message?.includes("No stripe-signature")) {
+        logger.warn("[Stripe Webhook] Health-Check ohne Signatur — ignoriert");
+      } else {
+        logger.error("[Stripe Webhook] Signatur ungültig", err);
+      }
       return res.status(400).send("Webhook Error: " + err.message);
     }
     if (event.type === "checkout.session.completed") {
