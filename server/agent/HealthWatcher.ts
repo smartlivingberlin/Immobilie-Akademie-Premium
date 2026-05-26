@@ -86,7 +86,7 @@ async function saveResult(type: string, status: string, details: object): Promis
       [type, status, JSON.stringify(details)]
     );
   } catch (e: any) {
-    logger.error("[HealthWatcher] DB-Speichern fehlgeschlagen", { error: e.message });
+    logger.error("[HealthWatcher] DB-Speichern fehlgeschlagen", { error: e.message, code: e.code, stack: e.stack?.slice(0,200) });
   }
 }
 
