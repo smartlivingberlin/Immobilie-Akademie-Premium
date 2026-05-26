@@ -81,9 +81,10 @@ async function runAllChecks(): Promise<{
 async function saveResult(type: string, status: string, details: object): Promise<void> {
   try {
     const db = await getDb();
-    const SQL = "INSERT INTO monitoring_log (type, status, details) VALUES (?, ?, ?)";
-    logger.info("[HealthWatcher] SQL Debug", { sql: SQL, type, status });
-    await db.$client.query(SQL, [type, status, JSON.stringify(details)]);
+    await db.$client.query(
+      "INSERT INTO monitoring_log (type, status, details) VALUES (?, ?, ?)",
+      [type, status, JSON.stringify(details)]
+    );
   } catch (e: any) {
     logger.error("[HealthWatcher] DB-Speichern fehlgeschlagen", { error: e.message, code: e.code, stack: e.stack?.slice(0,200) });
   }
