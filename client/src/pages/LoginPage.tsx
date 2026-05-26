@@ -97,7 +97,7 @@ export default function LoginPage() {
             )}
             <div style={{ marginBottom: "16px" }}>
               <label htmlFor="login-email" style={labelStyle}>E-Mail</label>
-              <input id="login-email" name="email" ref={emailRef} type="text" placeholder="ihre@email.de" autoComplete="new-password" autoCorrect="off" autoCapitalize="off" spellCheck={false} style={inputStyle} />
+              <input id="login-email" name="email" ref={emailRef} type="email" placeholder="ihre@email.de" autoComplete="new-password" autoCorrect="off" autoCapitalize="off" spellCheck={false} style={inputStyle} />
             </div>
             <div style={{ marginBottom: "20px" }}>
               <label htmlFor="login-password" style={labelStyle}>Passwort</label>
