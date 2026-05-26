@@ -63,6 +63,7 @@ export function registerOwnerRoutes(app: Express) {
       const token = await createSessionToken(openId, "Alisad (Owner)", "admin", "1,2,3,4,5");
       const cookieOptions = getSessionCookieOptions(req);
       res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
+      res.cookie("owner_2fa_ok", "1", { httpOnly: false, sameSite: "lax", path: "/", maxAge: 8 * 60 * 60 * 1000 });
       return res.redirect(redir || "/owner-dashboard");
     }
     // 2FA erforderlich — weiterleiten zu 2FA-Formular
@@ -134,6 +135,7 @@ ${isTotp ? `<form method="POST" action="/api/owner/verify-2fa-form">
     const token = await createSessionToken(openId, "Alisad (Owner)", "admin", "1,2,3,4,5");
     const cookieOptions = getSessionCookieOptions(req);
     res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
+    res.cookie("owner_2fa_ok", "1", { httpOnly: false, sameSite: "lax", path: "/", maxAge: 8 * 60 * 60 * 1000 });
     return res.redirect(redir || "/owner-dashboard");
   });
 
@@ -156,6 +158,7 @@ ${isTotp ? `<form method="POST" action="/api/owner/verify-2fa-form">
     const token = await createSessionToken(openId, "Alisad (Owner)", "admin", "1,2,3,4,5");
     const cookieOptions = getSessionCookieOptions(req);
     res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
+    res.cookie("owner_2fa_ok", "1", { httpOnly: false, sameSite: "lax", path: "/", maxAge: 8 * 60 * 60 * 1000 });
     return res.json({ ok: true, redirect: redir || "/admin" });
   });
 

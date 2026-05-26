@@ -129,6 +129,16 @@ function OwnerRoute({ component: Component }: { component: React.ComponentType }
   if (isLoading) return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
   if (isInspect) { window.location.href = "/login"; return null; }
   if (!user || user.role !== "admin") { window.location.href = "/login"; return null; }
+  // Owner-2FA Pflicht: nur nach erfolgreichem 2FA-Flow (Cookie owner_2fa_ok gesetzt)
+  const has2FA = document.cookie.includes("owner_2fa_ok=1");
+  if (!has2FA) {
+    const key = sessionStorage.getItem("ownerKey") || new URLSearchParams(window.location.search).get("key") || "";
+    const redirect = encodeURIComponent(window.location.pathname + window.location.search);
+    window.location.href = key
+      ? `/api/owner/access?key_redirect=1&key=${encodeURIComponent(key)}&redirect=${redirect}`
+      : "/login";
+    return null;
+  }
   return <Component />;
 }
 
