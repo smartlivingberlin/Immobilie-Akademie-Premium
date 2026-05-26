@@ -730,7 +730,15 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
       const [[last]] = await db.$client.query(
         "SELECT type, status, timestamp, details FROM monitoring_log ORDER BY timestamp DESC LIMIT 1"
       ) as any;
-      res.json({ ok: true, lastCheck: last });
+      // Debug: zeige den exakten SQL-String aus dem Build
+      const { readFileSync } = await import("fs");
+      let buildSql = "nicht gefunden";
+      try {
+        const build = readFileSync("/app/dist/index.js", "utf8");
+        const idx = build.indexOf("monitoring_log");
+        if (idx > 0) buildSql = build.slice(Math.max(0,idx-30), idx+100).replace(/\n/g, " ");
+      } catch {}
+      res.json({ ok: true, lastCheck: last, debugBuildSql: buildSql });
     } catch (e: any) { res.status(500).json({ error: e.message }); }
   });
   // ── Portal Settings: Lesen ───────────────────────────────────
