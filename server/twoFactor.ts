@@ -54,7 +54,6 @@ export async function verifyOTP(email: string, code: string): Promise<{ ok: bool
   await db.$client.query("UPDATE otp_tokens SET used = 1 WHERE id = ?", [entryId]);
   return { ok: true };
 }
-}
 
 // E-Mail senden (über bestehende Nodemailer-Config oder Console-Log als Fallback)
 export async function sendOTPEmail(email: string, code: string, name: string): Promise<boolean> {
