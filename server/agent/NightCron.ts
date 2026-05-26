@@ -419,7 +419,7 @@ export async function runMonitoringSnapshot(): Promise<void> {
 
     // Snapshot speichern
     await db.$client.query(
-      `INSERT INTO monitoring_log
+      `INSERT INTO nightcron_log
         (totalUsers, activeToday, newToday, totalSessions, systemOk, notes)
        VALUES (?, ?, ?, ?, 1, ?)`,
       [totalUsers, activeToday, newToday, totalSessions,
@@ -467,7 +467,7 @@ export async function runMonitoringSnapshot(): Promise<void> {
           })
         });
         await db.$client.query(
-          `UPDATE monitoring_log SET emailSent = 1 WHERE id = LAST_INSERT_ID()`
+          `UPDATE nightcron_log SET emailSent = 1 WHERE id = LAST_INSERT_ID()`
         );
         log(`📧 Monitoring E-Mail gesendet an ${ownerEmail}`);
       } catch (mailErr: any) {
