@@ -711,12 +711,28 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
       const { getDb } = await import("./db");
       const db = await getDb();
       const [logs] = await db.$client.query(
-        `SELECT * FROM monitoring_log ORDER BY createdAt DESC LIMIT 30`
+        `SELECT * FROM monitoring_log ORDER BY timestamp DESC LIMIT 30`
       ) as any;
       res.json({ logs: logs as any[] });
     } catch (e: any) { res.status(500).json({ error: e.message }); }
   });
 
+  // ── HEALTH WATCHER MANUELL AUSLÖSEN ────────────────────────
+  app.post("/api/owner/trigger-health", async (req: Request, res: Response) => {
+    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
+    const key = req.headers["x-owner-key"] || req.query.key;
+    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    try {
+      const { runHealthWatch } = await import("../agent/HealthWatcher");
+      await runHealthWatch();
+      const { getDb } = await import("./db");
+      const db = await getDb();
+      const [[last]] = await db.$client.query(
+        "SELECT type, status, timestamp, details FROM monitoring_log ORDER BY timestamp DESC LIMIT 1"
+      ) as any;
+      res.json({ ok: true, lastCheck: last });
+    } catch (e: any) { res.status(500).json({ error: e.message }); }
+  });
   // ── Portal Settings: Lesen ───────────────────────────────────
   app.get("/api/owner/settings", async (req: any, res: any) => {
     const ownerCode = process.env.OWNER_MAGIC_CODE || ENV.ownerMagicCode;
