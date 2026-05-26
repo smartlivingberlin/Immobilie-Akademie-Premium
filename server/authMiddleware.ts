@@ -16,7 +16,7 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
     }
     const { jwtVerify } = await import("jose");
     const secret = new TextEncoder().encode(
-      ENV.cookieSecret || process.env.COOKIE_SECRET || "CHANGE_THIS_SECRET_IN_ENV"
+      ENV.cookieSecret || (() => { throw new Error("JWT_SECRET nicht gesetzt"); })()
     );
     const { payload } = await jwtVerify(token, secret, { algorithms: ["HS256"] });
     if (!payload) {
