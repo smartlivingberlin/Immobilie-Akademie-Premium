@@ -14,19 +14,19 @@ router.get("/api/glossar", async (req, res) => {
     if (cat && q) {
       const like = "%"+q+"%";
       const r = await db.$client.query("SELECT * FROM glossar_terms WHERE category = ? AND (term LIKE ? OR definition LIKE ?) ORDER BY term ASC", [cat, like, like]);
-      rows = r as any[];
+      rows = (r as any)[0];
     } else if (cat) {
       const r = await db.$client.query("SELECT * FROM glossar_terms WHERE category = ? ORDER BY term ASC", [cat]);
-      rows = r as any[];
+      rows = (r as any)[0];
     } else if (q) {
       const like = "%"+q+"%";
       const r = await db.$client.query("SELECT * FROM glossar_terms WHERE term LIKE ? OR definition LIKE ? ORDER BY term ASC", [like, like]);
-      rows = r as any[];
+      rows = (r as any)[0];
     } else {
       const r = await db.$client.query("SELECT * FROM glossar_terms ORDER BY term ASC");
-      rows = r as any[];
+      rows = (r as any)[0];
     }
-    const terms = Array.isArray(rows[0]) ? rows[0] : rows;
+    const terms = rows;
     res.json({ terms, total: terms.length });
   } catch (e: any) {
     console.error("[Glossar] Fehler:", e.message);
@@ -38,7 +38,7 @@ router.get("/api/glossar/categories", async (_req, res) => {
   try {
     const db = await getDb();
     const r = await db.$client.query("SELECT category, COUNT(*) as count FROM glossar_terms GROUP BY category ORDER BY category");
-    const rows = Array.isArray(r[0]) ? r[0] : r;
+    const rows = (r as any)[0];
     res.json({ categories: rows });
   } catch (e: any) {
     res.status(500).json({ error: "Kategorien konnten nicht geladen werden" });
