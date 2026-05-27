@@ -1,0 +1,175 @@
+client/src/pages/OwnerVideos.tsx:28:  const [editingVideo, setEditingVideo] = useState<any>(null);
+client/src/pages/OwnerVideos.tsx:61:  const handleEdit = (video: any) => {
+client/src/pages/OwnerVideos.tsx:68:  const grouped = filtered?.reduce((acc: any, v) => {
+client/src/pages/OwnerVideos.tsx:181:            const vids = moduleVideos as any[];
+client/src/pages/PartnerDashboard.tsx:8:  const [stats, setStats] = useState<any>(null);
+client/src/pages/PartnerDashboard.tsx:55:            <button key={t.id} onClick={() => setActiveTab(t.id as any)}
+client/src/pages/MeineDaten.tsx:6:  user: any;
+client/src/pages/MeineDaten.tsx:7:  learningProgress: any[];
+client/src/pages/MeineDaten.tsx:8:  examHistory: any[];
+client/src/pages/MeineDaten.tsx:9:  certificates: any[];
+client/src/pages/MeineDaten.tsx:10:  aiConversations: { count: number; sessions: any[] };
+client/src/pages/MeineDaten.tsx:11:  spacedRepetition: any[];
+client/src/pages/MeineDaten.tsx:153:            {data?.learningProgress?.filter((l: any) => l.completed).length || 0}
+client/src/pages/MeineDaten.tsx:160:              (s: number, l: any) => s + (l.durationSeconds || 0), 0) || 0) / 3600)}h
+client/src/pages/MeineDaten.tsx:166:            {[...new Set(data?.learningProgress?.map((l: any) => l.moduleId))].join(", ") || "—"}
+client/src/pages/MeineDaten.tsx:184:        {data?.examHistory?.slice(0, 5).map((e: any, i: number) => (
+client/src/pages/MeineDaten.tsx:209:        ) : data?.certificates?.map((c: any, i: number) => (
+client/src/pages/kurs/KursLanding.tsx:262:    } catch (e: any) {
+client/src/pages/OpenQuizPage.tsx:123:            const bereitsBeantwortet = (progress as any)?.antworten?.some((a: any) => a.questionId === f.id);
+client/src/pages/OpenQuizPage.tsx:124:            const letztePunkte = (progress as any)?.antworten?.findLast?.((a: any) => a.questionId === f.id);
+client/src/pages/ExamQuestion.tsx:28:  const [questionData, setQuestionData] = useState<any>(null);
+client/src/pages/modules/Module2ContentPart1_Maximal.ts:9:  practice: any;
+client/src/pages/modules/Module2ContentPart1_Maximal.ts:10:  task?: any;
+client/src/pages/modules/Module3Detail.tsx:36:type DayContent = Record<string, any>;
+client/src/pages/modules/Module3Detail.tsx:99:  const [contentDataModule3, setContentDataModule3] = useState<Record<string, any>>({});
+client/src/pages/modules/Module3Detail.tsx:418:                          {(currentContent as any)?.extendedTheory && (
+client/src/pages/modules/Module3Detail.tsx:423:                              <SmartContent content={(currentContent as any)?.extendedTheory} />
+client/src/pages/modules/Module3Detail.tsx:426:                          {(currentContent as any)?.law && (currentContent as any)?.law.length > 0 && (
+client/src/pages/modules/Module3Detail.tsx:431:                              {(currentContent as any)?.law.map((item: string, i: number) => (
+client/src/pages/modules/Module3Detail.tsx:446:                      text={[currentContent?.theory, (currentContent as any)?.extendedTheory].filter(Boolean).join("\n\n")}
+client/src/pages/modules/Module3Detail.tsx:454:                      extendedTheory={(currentContent as any)?.extendedTheory}
+client/src/pages/modules/Module3Detail.tsx:489:                             templateType={docType as any}
+client/src/pages/modules/Module2Detail.tsx:36:type DayContent = Record<string, any>;
+client/src/pages/modules/Module2Detail.tsx:91:  const [contentDataModule2, setContentDataModule2] = useState<Record<string, any>>({});
+client/src/pages/modules/Module2Detail.tsx:433:                          {(currentContent as any).extendedTheory && (
+client/src/pages/modules/Module2Detail.tsx:438:                              <SmartContent content={(currentContent as any).extendedTheory} />
+client/src/pages/modules/Module2Detail.tsx:441:                          {(currentContent as any).law && (currentContent as any).law.length > 0 && (
+client/src/pages/modules/Module2Detail.tsx:446:                              {(currentContent as any)?.law?.map((item: string, i: number) => (
+client/src/pages/modules/Module2Detail.tsx:460:                      text={[currentContent.theory, (currentContent as any).extendedTheory].filter(Boolean).join("\n\n")}
+client/src/pages/modules/Module2Detail.tsx:468:                      extendedTheory={(currentContent as any).extendedTheory}
+client/src/pages/modules/Module2Detail.tsx:510:                           templateType={docType as any}
+client/src/pages/modules/Module2ContentPart2_Maximal.ts:9:  practice: any;
+client/src/pages/modules/Module2ContentPart2_Maximal.ts:10:  task?: any;
+client/src/pages/modules/Module1Content_Maximal.ts:3761:- ManyChat (WhatsApp, Instagram)
+client/src/pages/modules/Module1Detail.tsx:34:type DayContent = Record<string, any>;
+client/src/pages/modules/Module1Detail.tsx:93:      utils.progress.getProgress.setData(undefined, (old: any) => {
+client/src/pages/modules/Module1Detail.tsx:95:          (p: any) => p.moduleId === newProgress.moduleId && p.dayId === newProgress.dayId
+client/src/pages/modules/Module1Detail.tsx:372:                          {(currentContent as any)?.extendedTheory && (
+client/src/pages/modules/Module1Detail.tsx:377:                              <SmartContent content={(currentContent as any)?.extendedTheory} />
+client/src/pages/modules/Module1Detail.tsx:380:                          {(currentContent as any)?.law && (currentContent as any)?.law.length > 0 && (
+client/src/pages/modules/Module1Detail.tsx:385:                              {(currentContent as any)?.law.map((item: string, i: number) => (
+client/src/pages/modules/Module1Detail.tsx:399:                      text={[currentContent?.theory, (currentContent as any)?.extendedTheory].filter(Boolean).join("\n\n")}
+client/src/pages/modules/Module1Detail.tsx:407:                      extendedTheory={(currentContent as any)?.extendedTheory}
+client/src/pages/modules/Module1Detail.tsx:414:                      {(currentContent as any)?.extendedTheory && (
+client/src/pages/modules/Module1Detail.tsx:420:                            text={(currentContent as any)?.extendedTheory}
+client/src/pages/modules/Module1Detail.tsx:423:                          <SmartContent content={(currentContent as any)?.extendedTheory} />
+client/src/pages/modules/Module1Detail.tsx:524:                    {(currentContent as any)?.tasks && (currentContent as any)?.tasks.length > 0 && (
+client/src/pages/modules/Module1Detail.tsx:530:                        {(currentContent as any)?.tasks.map((aufgabe: any, idx: number) => (
+client/src/pages/modules/Module4Detail.tsx:36:type DayContent = Record<string, any>;
+client/src/pages/modules/Module4Detail.tsx:76:  const [contentDataModule4, setContentDataModule4] = useState<Record<string, any>>({});
+client/src/pages/modules/Module4Detail.tsx:345:                      Tag {currentDayNum} • {(currentContent as any)?.type || "Lerneinheit"}
+client/src/pages/modules/Module4Detail.tsx:391:                          {(currentContent as any)?.extendedTheory && (
+client/src/pages/modules/Module4Detail.tsx:396:                              <SmartContent content={(currentContent as any)?.extendedTheory} />
+client/src/pages/modules/Module4Detail.tsx:399:                          {(currentContent as any)?.law && (currentContent as any)?.law.length > 0 && (
+client/src/pages/modules/Module4Detail.tsx:404:                              {(currentContent as any)?.law.map((item: string, i: number) => (
+client/src/pages/modules/Module4Detail.tsx:418:                      text={[currentContent?.theory, (currentContent as any)?.extendedTheory].filter(Boolean).join("\n\n")}
+client/src/pages/modules/Module4Detail.tsx:426:                      extendedTheory={(currentContent as any)?.extendedTheory}
+client/src/pages/modules/Module4Detail.tsx:433:                      {(currentContent as any)?.extendedTheory && (
+client/src/pages/modules/Module4Detail.tsx:439:                            text={(currentContent as any)?.extendedTheory}
+client/src/pages/modules/Module4Detail.tsx:442:                          <SmartContent content={(currentContent as any)?.extendedTheory} />
+client/src/pages/modules/Module4Detail.tsx:448:                    {(currentContent as any)?.solution && (
+client/src/pages/modules/Module4Detail.tsx:452:                          solution={(currentContent as any)?.solution}
+client/src/pages/modules/Module4Detail.tsx:491:                    {(currentContent as any)?.solution && (
+client/src/pages/modules/Module4Detail.tsx:495:                          solution={(currentContent as any)?.solution}
+client/src/pages/modules/Module4Detail.tsx:533:                    {(currentContent as any)?.solution && (
+client/src/pages/modules/Module4Detail.tsx:537:                          solution={(currentContent as any)?.solution}
+client/src/pages/modules/Module4Detail.tsx:561:                                 <SolutionToggler solution={(task as any).solution ?? (task as any).hint ?? "Kein Lösungshinweis verfügbar."} />
+client/src/pages/modules/Module4Detail.tsx:581:                            <SolutionToggler solution={(task as any).solution ?? (task as any).hint ?? "Kein Lösungshinweis verfügbar."} />
+client/src/pages/modules/Module4Detail.tsx:588:                    {(currentContent as any)?.solution && (
+client/src/pages/modules/Module4Detail.tsx:592:                          solution={(currentContent as any)?.solution}
+client/src/pages/modules/Module5Detail.tsx:139:  const currentContent = (moduleData?.[selectedDay] ?? moduleData?.["day_1"]) as any;
+client/src/pages/modules/Module5Detail.tsx:493:                      {(Array.isArray(currentContent?.tasks) ? currentContent.tasks : []).map((task: any, index: number) => (
+client/src/pages/AdminCodesPage.tsx:130:              ) : codes.map((c: any) => {
+client/src/pages/DokumentViewer.tsx:27:  const [pdfDoc, setPdfDoc] = useState<any>(null);
+client/src/pages/DokumentViewer.tsx:40:  const [renderTask, setRenderTask] = useState<any>(null);
+client/src/pages/DokumentViewer.tsx:42:  const ladeSeite = useCallback(async (doc: any, seitenNr: number, zoomFaktor: number) => {
+client/src/pages/DokumentViewer.tsx:67:    } catch (e: any) {
+client/src/pages/ExposeTrainer.tsx:72:  const [bewertung, setBewertung] = useState<any>(null);
+client/src/pages/Dashboard.tsx:63:function StatCard({ icon, label, value, sub, color, bg }: any) {
+client/src/pages/Dashboard.tsx:135:function ModulKarte({ module, stats, enabled }: any) {
+client/src/pages/Dashboard.tsx:247:    const logs = (Array.isArray(progressData) ? progressData : []).filter((l: any) => l.moduleId === m.id);
+client/src/pages/Dashboard.tsx:248:    const completed = logs.filter((l: any) => l.completed).length;
+client/src/pages/admin/PortalAgentDashboard.tsx:5:  const [health, setHealth] = useState<any>(null);
+client/src/pages/admin/PortalAgentDashboard.tsx:6:  const [status, setStatus] = useState<any>(null);
+client/src/pages/admin/PortalAgentDashboard.tsx:7:  const [askResult, setAskResult] = useState<any>(null);
+client/src/pages/admin/PortalAgentDashboard.tsx:12:  const [qualityResult, setQualityResult] = useState<any>(null);
+client/src/pages/admin/PortalAgentDashboard.tsx:13:  const [legalUpdates, setLegalUpdates] = useState<any>(null);
+client/src/pages/admin/PortalAgentDashboard.tsx:14:  const [genQuestion, setGenQuestion] = useState<any>(null);
+client/src/pages/admin/PortalAgentDashboard.tsx:19:  const [auditResult, setAuditResult] = useState<any>(null);
+client/src/pages/admin/PortalAgentDashboard.tsx:20:  const [coachingData, setCoachingData] = useState<any>(null);
+client/src/pages/admin/PortalAgentDashboard.tsx:146:            <button key={t.id} onClick={() => setActiveTab(t.id as any)}
+client/src/pages/admin/PortalAgentDashboard.tsx:201:                  {health.checks.map((c: any) => (
+client/src/pages/admin/PortalAgentDashboard.tsx:356:                    {legalUpdates.changes.map((c: any, i: number) => (
+client/src/pages/admin/PortalAgentDashboard.tsx:406:                    {status.memory.known_issues.slice(0,10).map((issue: any) => (
+client/src/pages/admin/PortalAgentDashboard.tsx:421:                  {status.memory.legal_changes_detected.map((c: any, i: number) => (
+client/src/pages/admin/PortalAgentDashboard.tsx:496:                    {auditResult.problemDays.map((d: any, i: number) => (
+client/src/pages/admin/PortalAgentDashboard.tsx:557:                      { label: "Hohes Risiko", value: coachingData.profiles?.filter((p: any) => p.riskLevel === "high").length || 0, color: "red" },
+client/src/pages/admin/PortalAgentDashboard.tsx:558:                      { label: "Auf Kurs", value: coachingData.profiles?.filter((p: any) => p.riskLevel === "low").length || 0, color: "green" },
+client/src/pages/admin/PortalAgentDashboard.tsx:568:                    {coachingData.profiles?.map((p: any) => (
+client/src/pages/admin/UserManagement.tsx:55:                    onChange={e => setRole.mutate({ userId: user.id, role: e.target.value as any })}
+client/src/pages/admin/FragenManager.tsx:72:          {questions.map((q: any, i: number) => (
+client/src/pages/admin/GlossarAdmin.tsx:78:                style={{ width: "100%", padding: "8px 12px", border: "1px solid #e2e8f0", borderRadius: 8, marginTop: 4, boxSizing: "border-box" as any }} />
+client/src/pages/admin/GlossarAdmin.tsx:83:                style={{ width: "100%", padding: "8px 12px", border: "1px solid #e2e8f0", borderRadius: 8, marginTop: 4, boxSizing: "border-box" as any }}>
+client/src/pages/admin/GlossarAdmin.tsx:91:              style={{ width: "100%", padding: "8px 12px", border: "1px solid #e2e8f0", borderRadius: 8, marginTop: 4, boxSizing: "border-box" as any, resize: "vertical" }} />
+client/src/pages/admin/GlossarAdmin.tsx:98:                style={{ width: "100%", padding: "8px 12px", border: "1px solid #e2e8f0", borderRadius: 8, marginTop: 4, boxSizing: "border-box" as any }} />
+client/src/pages/admin/GlossarAdmin.tsx:104:                style={{ width: "100%", padding: "8px 12px", border: "1px solid #e2e8f0", borderRadius: 8, marginTop: 4, boxSizing: "border-box" as any }} />
+client/src/pages/admin/GlossarAdmin.tsx:121:        style={{ width: "100%", padding: "10px 14px", border: "1px solid #e2e8f0", borderRadius: 10, marginBottom: 16, boxSizing: "border-box" as any, fontSize: 14 }} />
+client/src/pages/admin/DozentenLoesungen.tsx:197:          <button key={t.id} onClick={() => setAktiveTab(t.id as any)}
+client/src/pages/admin/DozentenLoesungen.tsx:313:            (questionsData?.questions || []).map((q: any) => {
+client/src/pages/admin/DozentenCockpit.tsx:23:  const [result, setResult] = useState<any>(null);
+client/src/pages/admin/DozentenCockpit.tsx:139:                {result.gruppenAnalyse.schwacheTage.map((d: any) => (
+client/src/pages/admin/VideoManagement.tsx:40:  const [editingVideo, setEditingVideo] = useState<any>(null);
+client/src/pages/admin/VideoManagement.tsx:145:  const handleEdit = (video: any) => {
+client/src/pages/admin/AdminCodes.tsx:110:            {(!codes || (codes as any[]).length === 0) ? (
+client/src/pages/admin/AdminCodes.tsx:112:            ) : (codes as any[]).map((c) => {
+client/src/pages/admin/MediaSkriptGenerator.tsx:34:  const [result, setResult] = useState<any>(null);
+client/src/pages/admin/AdminDashboard.tsx:39:  const [agentHealth, setAgentHealth] = useState<any>(null);
+client/src/pages/admin/AdminDashboard.tsx:42:  const [coaching, setCoaching] = useState<any>(null);
+client/src/pages/admin/AdminDashboard.tsx:55:  const activeUsers = users?.filter((u: any) => {
+client/src/pages/admin/AdminDashboard.tsx:59:  const adminUsers = users?.filter((u: any) => u.role === "admin").length ?? 0;
+client/src/pages/admin/AdminDashboard.tsx:61:  const riskUsers = coaching?.profiles?.filter((p: any) => p.riskLevel === "high").length ?? 0;
+client/src/pages/admin/AdminDashboard.tsx:202:          <button key={t.id} onClick={() => setActiveTab(t.id as any)}
+client/src/pages/admin/AdminDashboard.tsx:304:                (link as any).ownerOnly && isInspectMode() ? (
+client/src/pages/admin/AdminDashboard.tsx:352:            {users?.slice(0, 8).map((u: any) => (
+client/src/pages/admin/AdminDashboard.tsx:381:                    { label: "🔴 Risiko", value: coaching.profiles.filter((p: any) => p.riskLevel === "high").length, color: "#dc2626" },
+client/src/pages/admin/AdminDashboard.tsx:382:                    { label: "🟢 Aktiv", value: coaching.profiles.filter((p: any) => p.riskLevel === "low").length, color: "#059669" },
+client/src/pages/admin/AdminDashboard.tsx:390:                {coaching.profiles.slice(0, 5).map((p: any) => (
+client/src/pages/admin/WhiteLabelAdmin.tsx:53:  companyName: string;
+client/src/pages/admin/WhiteLabelAdmin.tsx:71:  companyName: "",
+client/src/pages/admin/WhiteLabelAdmin.tsx:172:      companyName: formData.companyName,
+client/src/pages/admin/WhiteLabelAdmin.tsx:192:      companyName: formData.companyName,
+client/src/pages/admin/WhiteLabelAdmin.tsx:237:  const startEditing = (config: any) => {
+client/src/pages/admin/WhiteLabelAdmin.tsx:241:      companyName: config.companyName,
+client/src/pages/admin/WhiteLabelAdmin.tsx:306:                disabled={createMutation.isPending || !formData.slug || !formData.companyName}
+client/src/pages/admin/WhiteLabelAdmin.tsx:401:                            alt={`Logo von ${config.companyName}`}
+client/src/pages/admin/WhiteLabelAdmin.tsx:409:                            {config.companyName.charAt(0)}
+client/src/pages/admin/WhiteLabelAdmin.tsx:413:                          <CardTitle className="text-lg">{config.companyName}</CardTitle>
+client/src/pages/admin/WhiteLabelAdmin.tsx:576:                              Sind Sie sicher, dass Sie den Mandanten "{config.companyName}" löschen möchten?
+client/src/pages/admin/WhiteLabelAdmin.tsx:605:                                <img src={config.logoUrl} alt={`Logo von ${config.companyName}`} className="h-6 w-6 rounded object-contain" />
+client/src/pages/admin/WhiteLabelAdmin.tsx:611:                                  {config.companyName.charAt(0)}
+client/src/pages/admin/WhiteLabelAdmin.tsx:615:                                {config.companyName}
+client/src/pages/admin/WhiteLabelAdmin.tsx:762:          <Label htmlFor="companyName">Firmenname</Label>
+client/src/pages/admin/WhiteLabelAdmin.tsx:764:            id="companyName"
+client/src/pages/admin/WhiteLabelAdmin.tsx:766:            value={formData.companyName}
+client/src/pages/admin/WhiteLabelAdmin.tsx:767:            onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
+client/src/pages/admin/PortalPhaseAdmin.tsx:84:        (window as any).__portalPhaseCache = null;
+client/src/pages/OwnerDashboard.tsx:55:  const [live, setLive] = useState<any>(null);
+client/src/pages/OwnerDashboard.tsx:56:  const [activity, setActivity] = useState<any>(null);
+client/src/pages/OwnerDashboard.tsx:57:  const [statsData, setStatsData] = useState<any>(null);
+client/src/pages/OwnerDashboard.tsx:58:  const [azavReport, setAzavReport] = useState<any>(null);
+client/src/pages/OwnerDashboard.tsx:204:          <button key={t.id} onClick={() => setActiveTab(t.id as any)}
+client/src/pages/OwnerDashboard.tsx:363:              {(azavReport.berichte||[]).map((b:any,i:number)=>(
+client/src/pages/OwnerDashboard.tsx:389:                  {(b.tagesNachweis||[]).map((t:any,j:number)=>(
+client/src/pages/OwnerDashboard.tsx:436:              {live.activeUsers.map((u: any, i: number) => (
+client/src/pages/OwnerDashboard.tsx:449:              {live.newUsersToday.map((u: any, i: number) => (
+client/src/pages/OwnerDashboard.tsx:459:              {live.recentActivity.slice(0,5).map((a: any, i: number) => (
+client/src/pages/Flashcards.tsx:26:      antwort: q.correctAnswer + ": " + (options as any)[q.correctAnswer] + (q.explanation ? "\n\n" + q.explanation : ""),
+client/src/components/ui/progress.tsx:18:      aria-label={(props as any)["aria-label"] ?? "Fortschritt"}
+client/src/components/ui/textarea.tsx:24:      const isComposing = (e.nativeEvent as any).isComposing || dialogComposition.justEndedComposing();
+client/src/components/ui/dialog.tsx:107:      const isCurrentlyComposing = (e as any).isComposing || isComposing();
+client/src/components/ui/input.tsx:25:      const isComposing = (e.nativeEvent as any).isComposing || dialogComposition.justEndedComposing();
+client/src/components/layout/DashboardLayout.tsx:34:  const { isWhiteLabeled, companyName, logoUrl, config } = useWhiteLabel();
+client/src/components/layout/DashboardLayout.tsx:178:                <img src={logoUrl} alt={companyName} width={32} height={32} className="h-8 w-8 rounded-lg object-contain" />
+client/src/components/layout/DashboardLayout.tsx:185:                <div className="font-bold text-lg leading-none">{isWhiteLabeled ? companyName : 'Immobilien'}</div>
+client/src/components/layout/DashboardLayout.tsx:192:              <img src={logoUrl} alt={companyName} width={32} height={32} className="h-8 w-8 rounded-lg object-contain" />

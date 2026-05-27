@@ -1,0 +1,829 @@
+client/src/pages/OwnerVideos.tsx:38:    onSuccess: () => { toast({ title: "✅ Video hinzugefügt" }); refetch(); setIsAddOpen(false); resetForm(); },
+client/src/pages/OwnerVideos.tsx-40-  });
+client/src/pages/OwnerVideos.tsx-41-  const updateMutation = trpc.videos.update.useMutation({
+client/src/pages/OwnerVideos.tsx:42:    onSuccess: () => { toast({ title: "✅ Video aktualisiert" }); refetch(); setEditingVideo(null); },
+client/src/pages/OwnerVideos.tsx-44-  });
+client/src/pages/OwnerVideos.tsx-45-  const deleteMutation = trpc.videos.delete.useMutation({
+client/src/pages/OwnerVideos.tsx:46:    onSuccess: () => { toast({ title: "✅ Video gelöscht" }); refetch(); },
+client/src/pages/OwnerVideos.tsx-48-  });
+client/src/pages/OwnerVideos.tsx-49-
+client/src/pages/OwnerVideos.tsx-50-  const resetForm = () => setForm({ title: "", description: "", videoUrl: "", moduleId: "1", dayNumber: "1", displayOrder: "0", isRequired: false });
+client/src/pages/OwnerVideos.tsx-51-
+client/src/pages/OwnerVideos.tsx:55:      updateMutation.mutate({ id: editingVideo.id, ...data });
+client/src/pages/OwnerVideos.tsx-56-    } else {
+client/src/pages/OwnerVideos.tsx:57:      addMutation.mutate(data);
+client/src/pages/OwnerVideos.tsx-58-    }
+client/src/pages/OwnerVideos.tsx-59-  };
+client/src/pages/OwnerVideos.tsx-60-
+client/src/pages/OwnerVideos.tsx-61-  const handleEdit = (video: any) => {
+client/src/pages/OwnerVideos.tsx-62-    setEditingVideo(video);
+client/src/pages/OwnerVideos.tsx:217:                              <Button variant="ghost" size="sm" onClick={() => { if (confirm("Video löschen?")) deleteMutation.mutate({ id: v.id }); }}>
+client/src/pages/OwnerVideos.tsx-218-                                <Trash2 style={{width:15,height:15,color:"#dc2626"}} />
+client/src/pages/OwnerVideos.tsx-219-                              </Button>
+client/src/pages/OwnerVideos.tsx-220-                            </div>
+client/src/pages/OwnerVideos.tsx-221-                          </TableCell>
+client/src/pages/OwnerVideos.tsx-222-                        </TableRow>
+client/src/pages/RedeemCode.tsx:23:      const res = await fetch("/api/auth/redeem-code", {
+client/src/pages/RedeemCode.tsx-24-        method: "POST",
+client/src/pages/RedeemCode.tsx-25-        headers: { "Content-Type": "application/json" },
+client/src/pages/RedeemCode.tsx-26-        body: JSON.stringify({ code: code.trim().toUpperCase() }),
+client/src/pages/RedeemCode.tsx-27-      });
+client/src/pages/RedeemCode.tsx-28-      const data = await res.json();
+client/src/pages/PartnerDashboard.tsx:12:    fetch("/api/owner/stats", { credentials: "include" })
+client/src/pages/PartnerDashboard.tsx-14-  }, []);
+client/src/pages/PartnerDashboard.tsx-15-
+client/src/pages/PartnerDashboard.tsx-16-  const BASE = "https://immobilien-akademie-smart.de";
+client/src/pages/PartnerDashboard.tsx-17-
+client/src/pages/ExamResults.tsx:259:                  const result = await generateCertificate.mutateAsync({ examSessionId: sessionId });
+client/src/pages/ExamResults.tsx-260-
+client/src/pages/ExamResults.tsx-261-                  if (result.success && "pdfUrl" in result && result.pdfUrl) {
+client/src/pages/ExamResults.tsx-262-                    // Open certificate in new tab
+client/src/pages/ExamResults.tsx-263-                    window.open(result.pdfUrl, '_blank');
+client/src/pages/ExamResults.tsx-264-                  } else {
+client/src/pages/ExamResults.tsx:300:                const result = await generatePDF.mutateAsync({ sessionId });
+client/src/pages/ExamResults.tsx-301-
+client/src/pages/ExamResults.tsx-302-                // Convert base64 to blob and download
+client/src/pages/ExamResults.tsx-303-                const byteCharacters = atob(result.pdf);
+client/src/pages/ExamResults.tsx-304-                const byteNumbers = new Array(byteCharacters.length);
+client/src/pages/ExamResults.tsx-305-                for (let i = 0; i < byteCharacters.length; i++) {
+client/src/pages/MeineDaten.tsx:21:    fetch("/api/user/my-data", { credentials: "include" })
+client/src/pages/MeineDaten.tsx-22-      .then(r => r.json())
+client/src/pages/MeineDaten.tsx-23-      .then(d => { setData(d); setLoading(false); })
+client/src/pages/MeineDaten.tsx-25-  }, []);
+client/src/pages/MeineDaten.tsx-26-
+client/src/pages/MeineDaten.tsx:30:      const res = await fetch("/api/user/export", { credentials: "include" });
+client/src/pages/MeineDaten.tsx-31-      const blob = await res.blob();
+client/src/pages/MeineDaten.tsx-32-      const url = URL.createObjectURL(blob);
+client/src/pages/MeineDaten.tsx-33-      const a = document.createElement("a");
+client/src/pages/MeineDaten.tsx-34-      a.href = url;
+client/src/pages/MeineDaten.tsx-35-      a.download = `meine_daten_${new Date().toISOString().slice(0,10)}.json`;
+client/src/pages/kurs/KursLanding.tsx:249:      const res = await fetch("/api/stripe/checkout", {
+client/src/pages/kurs/KursLanding.tsx-250-        method: "POST",
+client/src/pages/kurs/KursLanding.tsx-251-        headers: { "Content-Type": "application/json" },
+client/src/pages/kurs/KursLanding.tsx-252-        body: JSON.stringify({
+client/src/pages/kurs/KursLanding.tsx-253-          productId: kurs.id,
+client/src/pages/kurs/KursLanding.tsx-254-          userEmail: user?.email || "",
+client/src/pages/OpenQuizPage.tsx:56:      const res = await submitMut.mutateAsync({
+client/src/pages/OpenQuizPage.tsx-57-        questionId: aktiveFrage,
+client/src/pages/OpenQuizPage.tsx-58-        antwort,
+client/src/pages/OpenQuizPage.tsx-59-        dauer: sekunden,
+client/src/pages/OpenQuizPage.tsx-60-      });
+client/src/pages/OpenQuizPage.tsx-61-      setErgebnis(res);
+client/src/pages/ExamQuestion.tsx:88:          completeExamMutation.mutate({
+client/src/pages/ExamQuestion.tsx-89-            sessionId,
+client/src/pages/ExamQuestion.tsx-90-            timeSpent: timeLimit,
+client/src/pages/ExamQuestion.tsx-91-          });
+client/src/pages/ExamQuestion.tsx-92-          return timeLimit;
+client/src/pages/ExamQuestion.tsx-93-        }
+client/src/pages/ExamQuestion.tsx:105:      generateQuestionMutation.mutate({
+client/src/pages/ExamQuestion.tsx-106-        sessionId,
+client/src/pages/ExamQuestion.tsx-107-        questionNumber: currentQuestion,
+client/src/pages/ExamQuestion.tsx-108-        moduleId: session.session.moduleId,
+client/src/pages/ExamQuestion.tsx-109-        difficulty: session.session.difficulty || "medium",
+client/src/pages/ExamQuestion.tsx-110-      });
+client/src/pages/ExamQuestion.tsx:126:        await submitAnswerMutation.mutateAsync({
+client/src/pages/ExamQuestion.tsx-127-          questionId: questionData.id,
+client/src/pages/ExamQuestion.tsx-128-          userAnswer: selectedAnswer,
+client/src/pages/ExamQuestion.tsx-129-        });
+client/src/pages/ExamQuestion.tsx-131-        console.error("[Exam] submitAnswer failed:", e);
+client/src/pages/ExamQuestion.tsx:138:    submitAnswerMutation.mutate({
+client/src/pages/ExamQuestion.tsx-139-      questionId: questionData.id,
+client/src/pages/ExamQuestion.tsx-140-      userAnswer: selectedAnswer,
+client/src/pages/ExamQuestion.tsx-141-    });
+client/src/pages/ExamQuestion.tsx-142-  };
+client/src/pages/ExamQuestion.tsx-143-
+client/src/pages/ExamQuestion.tsx:151:      completeExamMutation.mutate({
+client/src/pages/ExamQuestion.tsx-152-        sessionId,
+client/src/pages/ExamQuestion.tsx-153-        timeSpent: timeElapsed,
+client/src/pages/ExamQuestion.tsx-154-      });
+client/src/pages/ExamQuestion.tsx-155-    }
+client/src/pages/ExamQuestion.tsx-156-  };
+client/src/pages/ExamQuestion.tsx:161:    generateQuestionMutation.mutate({
+client/src/pages/ExamQuestion.tsx-162-      sessionId,
+client/src/pages/ExamQuestion.tsx-163-      questionNumber: currentQuestion,
+client/src/pages/ExamQuestion.tsx-164-      moduleId: session.session.moduleId,
+client/src/pages/ExamQuestion.tsx-165-      difficulty: session.session.difficulty || "medium",
+client/src/pages/ExamQuestion.tsx-166-    });
+client/src/pages/LoginPage.tsx:29:      const res = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), credentials: "include" });
+client/src/pages/LoginPage.tsx-30-      const data = await res.json();
+client/src/pages/LoginPage.tsx-31-      if (!res.ok) { setError(data.error || "Fehler beim Anmelden."); return; }
+client/src/pages/LoginPage.tsx-32-      if (data.role === "admin") {
+client/src/pages/LoginPage.tsx-33-        window.location.href = "/admin-2fa";
+client/src/pages/LoginPage.tsx-34-      } else {
+client/src/pages/LoginPage.tsx:45:      const res = await fetch("/api/auth/redeem-code", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code: demoCode.trim() }), credentials: "include" });
+client/src/pages/LoginPage.tsx-46-      const data = await res.json();
+client/src/pages/LoginPage.tsx-47-      if (!res.ok || data?.error) { setDemoCodeMsg("Ungültiger oder abgelaufener Code."); }
+client/src/pages/LoginPage.tsx-48-      else { setDemoCodeMsg("Zugang freigeschaltet!"); setTimeout(() => { window.location.href = "/modul/1"; }, 1500); }
+client/src/pages/LoginPage.tsx-50-    finally { setDemoCodeLoading(false); }
+client/src/pages/ForgotPassword.tsx:15:      const res = await fetch("/api/auth/forgot-password", {
+client/src/pages/ForgotPassword.tsx-16-        method: "POST",
+client/src/pages/ForgotPassword.tsx-17-        headers: { "Content-Type": "application/json" },
+client/src/pages/ForgotPassword.tsx-18-        body: JSON.stringify({ email }),
+client/src/pages/ForgotPassword.tsx-19-      });
+client/src/pages/ForgotPassword.tsx-20-      const data = await res.json();
+client/src/pages/Quiz.tsx:37:    fetch("/data/all-questions.json")
+client/src/pages/Quiz.tsx-38-      .then(r => r.json())
+client/src/pages/Quiz.tsx-39-      .then((data: UnifiedQuestion[]) => {
+client/src/pages/Quiz.tsx-40-        setAllQuestions(data);
+client/src/pages/Quiz.tsx-41-        setQuestionsLoaded(true);
+client/src/pages/Quiz.tsx-42-      })
+client/src/pages/KursPakete.tsx:226:                    fetch(`/api/stripe/bundle-${p.id}`, {
+client/src/pages/KursPakete.tsx-227-                      method: "POST",
+client/src/pages/KursPakete.tsx-228-                      headers: { "Content-Type": "application/json" },
+client/src/pages/KursPakete.tsx-229-                      body: JSON.stringify({ widerrufsAkzeptiert: true }),
+client/src/pages/KursPakete.tsx-230-                    })
+client/src/pages/KursPakete.tsx-231-                    .then(r => r.json())
+client/src/pages/SpacedRepetition.tsx:172:      const res = await fetch("/api/sr/due", { credentials: "include" });
+client/src/pages/SpacedRepetition.tsx-173-      if (!res.ok) throw new Error("Nicht eingeloggt");
+client/src/pages/SpacedRepetition.tsx-174-      const data = await res.json();
+client/src/pages/SpacedRepetition.tsx-175-      setCards(data.questions || []);
+client/src/pages/SpacedRepetition.tsx-176-
+client/src/pages/SpacedRepetition.tsx-177-      // Fragen laden
+client/src/pages/SpacedRepetition.tsx-178-      if (data.questions?.length > 0) {
+client/src/pages/SpacedRepetition.tsx-179-        const ids = data.questions.map((c: SRCard) => c.questionId).join(",");
+client/src/pages/SpacedRepetition.tsx:180:        const qRes = await fetch(`/api/quiz/questions-by-ids?ids=${ids}`,
+client/src/pages/SpacedRepetition.tsx-181-          { credentials: "include" });
+client/src/pages/SpacedRepetition.tsx-182-        if (qRes.ok) {
+client/src/pages/SpacedRepetition.tsx-183-          const qData = await qRes.json();
+client/src/pages/SpacedRepetition.tsx-184-          setQuestions(qData.questions || []);
+client/src/pages/SpacedRepetition.tsx-185-        }
+client/src/pages/SpacedRepetition.tsx:197:      await fetch("/api/sr/answer", {
+client/src/pages/SpacedRepetition.tsx-198-        method: "POST",
+client/src/pages/SpacedRepetition.tsx-199-        credentials: "include",
+client/src/pages/SpacedRepetition.tsx-200-        headers: { "Content-Type": "application/json" },
+client/src/pages/SpacedRepetition.tsx-201-        body: JSON.stringify({ questionId: card.questionId, quality: grade }),
+client/src/pages/SpacedRepetition.tsx-202-      });
+client/src/pages/modules/Module3Detail.tsx:119:    fetch("/data/module3.json").then(r => r.json()).then(d => { _cache_module3 = d; setModuleData(d); });
+client/src/pages/modules/Module3Detail.tsx-120-  }, []);
+client/src/pages/modules/Module3Detail.tsx-121-  const [isQuizCompleted, setIsQuizCompleted] = useState(false);
+client/src/pages/modules/Module3Detail.tsx-122-  const [showAITutor, setShowAITutor] = useState(false);
+client/src/pages/modules/Module3Detail.tsx-123-
+client/src/pages/modules/Module3Detail.tsx-124-  // Lernfortschritt Tracking
+client/src/pages/modules/Module3Detail.tsx:137:    startDayMutation.mutate(
+client/src/pages/modules/Module3Detail.tsx-138-      { moduleId: 3, dayId: dayNum },
+client/src/pages/modules/Module3Detail.tsx-139-      { onSuccess: (data) => { logIdRef.current = data.logId; } }
+client/src/pages/modules/Module3Detail.tsx-140-    );
+client/src/pages/modules/Module3Detail.tsx-141-    // Heartbeat alle 30 Sekunden
+client/src/pages/modules/Module3Detail.tsx-142-    const interval = setInterval(() => { heartbeatRef.current += 1; }, 30000);
+client/src/pages/modules/Module3Detail.tsx:146:        completeDayByIdsMutation.mutate({
+client/src/pages/modules/Module3Detail.tsx-147-          moduleId: 3, dayId: dayNum,
+client/src/pages/modules/Module3Detail.tsx-148-          durationSeconds: Math.max(duration, 1),
+client/src/pages/modules/Module3Detail.tsx-149-        });
+client/src/pages/modules/Module3Detail.tsx-150-      }
+client/src/pages/modules/Module3Detail.tsx-151-    };
+client/src/pages/modules/Module3Detail.tsx:164:    completeDayByIdsMutation.mutate({
+client/src/pages/modules/Module3Detail.tsx-165-      moduleId: 3,
+client/src/pages/modules/Module3Detail.tsx-166-      dayId: dayNum,
+client/src/pages/modules/Module3Detail.tsx-167-      durationSeconds: Math.max(duration, 1),
+client/src/pages/modules/Module3Detail.tsx-168-    });
+client/src/pages/modules/Module3Detail.tsx-169-  };
+client/src/pages/modules/Module2Detail.tsx:95:    fetch("/data/module2-content.json")
+client/src/pages/modules/Module2Detail.tsx-96-      .then(r => r.json())
+client/src/pages/modules/Module2Detail.tsx-97-      .then(data => {
+client/src/pages/modules/Module2Detail.tsx-98-        setContentDataModule2(data);
+client/src/pages/modules/Module2Detail.tsx-99-        setContentLoaded(true);
+client/src/pages/modules/Module2Detail.tsx-100-      })
+client/src/pages/modules/Module2Detail.tsx:130:    fetch("/data/module2.json").then(r => r.json()).then(d => { _cache_module2 = d; setModuleData(d); });
+client/src/pages/modules/Module2Detail.tsx-131-  }, []);
+client/src/pages/modules/Module2Detail.tsx-132-  const [isQuizCompleted, setIsQuizCompleted] = useState(false);
+client/src/pages/modules/Module2Detail.tsx-133-  const [showAITutor, setShowAITutor] = useState(false);
+client/src/pages/modules/Module2Detail.tsx-134-
+client/src/pages/modules/Module2Detail.tsx-135-  // Lernfortschritt Tracking
+client/src/pages/modules/Module2Detail.tsx:148:    startDayMutation.mutate(
+client/src/pages/modules/Module2Detail.tsx-149-      { moduleId: 2, dayId: dayNum },
+client/src/pages/modules/Module2Detail.tsx-150-      { onSuccess: (data) => { logIdRef.current = data.logId; } }
+client/src/pages/modules/Module2Detail.tsx-151-    );
+client/src/pages/modules/Module2Detail.tsx-152-    // Heartbeat alle 30 Sekunden
+client/src/pages/modules/Module2Detail.tsx-153-    const interval = setInterval(() => { heartbeatRef.current += 1; }, 30000);
+client/src/pages/modules/Module2Detail.tsx:157:        completeDayByIdsMutation.mutate({
+client/src/pages/modules/Module2Detail.tsx-158-          moduleId: 2, dayId: dayNum,
+client/src/pages/modules/Module2Detail.tsx-159-          durationSeconds: Math.max(duration, 1),
+client/src/pages/modules/Module2Detail.tsx-160-        });
+client/src/pages/modules/Module2Detail.tsx-161-      }
+client/src/pages/modules/Module2Detail.tsx-162-    };
+client/src/pages/modules/Module2Detail.tsx:175:    completeDayByIdsMutation.mutate({
+client/src/pages/modules/Module2Detail.tsx-176-      moduleId: 2,
+client/src/pages/modules/Module2Detail.tsx-177-      dayId: dayNum,
+client/src/pages/modules/Module2Detail.tsx-178-      durationSeconds: Math.max(duration, 1),
+client/src/pages/modules/Module2Detail.tsx-179-    });
+client/src/pages/modules/Module2Detail.tsx-180-  };
+client/src/pages/modules/Module1Detail.tsx:77:    fetch("/data/module1.json").then(r => r.json()).then(d => { _cache_module1 = d; setModuleData(d); });
+client/src/pages/modules/Module1Detail.tsx-78-  }, []);
+client/src/pages/modules/Module1Detail.tsx-79-  const [isQuizCompleted, setIsQuizCompleted] = useState(false);
+client/src/pages/modules/Module1Detail.tsx-80-  const [showAITutor, setShowAITutor] = useState(false);
+client/src/pages/modules/Module1Detail.tsx-81-
+client/src/pages/modules/Module1Detail.tsx-82-  // Lernfortschritt Tracking
+client/src/pages/modules/Module1Detail.tsx:123:    startDayMutation.mutate(
+client/src/pages/modules/Module1Detail.tsx-124-      { moduleId: 1, dayId: dayNum },
+client/src/pages/modules/Module1Detail.tsx-125-      { onSuccess: (data) => { logIdRef.current = data.logId; } }
+client/src/pages/modules/Module1Detail.tsx-126-    );
+client/src/pages/modules/Module1Detail.tsx-127-    // Heartbeat alle 30 Sekunden
+client/src/pages/modules/Module1Detail.tsx-128-    const interval = setInterval(() => { heartbeatRef.current += 1; }, 30000);
+client/src/pages/modules/Module1Detail.tsx:133:        completeDayByIdsMutation.mutate({
+client/src/pages/modules/Module1Detail.tsx-134-          moduleId: 1, dayId: dayNum,
+client/src/pages/modules/Module1Detail.tsx-135-          durationSeconds: Math.max(duration, 1),
+client/src/pages/modules/Module1Detail.tsx-136-        });
+client/src/pages/modules/Module1Detail.tsx-137-      }
+client/src/pages/modules/Module1Detail.tsx-138-    };
+client/src/pages/modules/Module1Detail.tsx:151:    completeDayByIdsMutation.mutate({
+client/src/pages/modules/Module1Detail.tsx-152-      moduleId: 1,
+client/src/pages/modules/Module1Detail.tsx-153-      dayId: dayNum,
+client/src/pages/modules/Module1Detail.tsx-154-      durationSeconds: Math.max(duration, 1),
+client/src/pages/modules/Module1Detail.tsx-155-    });
+client/src/pages/modules/Module1Detail.tsx-156-  };
+client/src/pages/modules/Module4Detail.tsx:80:    fetch("/data/module4-content.json")
+client/src/pages/modules/Module4Detail.tsx-81-      .then(r => r.json())
+client/src/pages/modules/Module4Detail.tsx-82-      .then(data => {
+client/src/pages/modules/Module4Detail.tsx-83-        setContentDataModule4(data);
+client/src/pages/modules/Module4Detail.tsx-84-        setContentLoaded(true);
+client/src/pages/modules/Module4Detail.tsx-85-      })
+client/src/pages/modules/Module4Detail.tsx:113:    fetch("/data/module4.json").then(r => r.json()).then(d => { _cache_module4 = d; setModuleData(d); });
+client/src/pages/modules/Module4Detail.tsx-114-  }, []);
+client/src/pages/modules/Module4Detail.tsx-115-  const [showAITutor, setShowAITutor] = useState(false);
+client/src/pages/modules/Module4Detail.tsx-116-
+client/src/pages/modules/Module4Detail.tsx-117-  // Lernfortschritt Tracking
+client/src/pages/modules/Module4Detail.tsx-118-  const logIdRef = useRef<number | null>(null);
+client/src/pages/modules/Module4Detail.tsx:130:    startDayMutation.mutate(
+client/src/pages/modules/Module4Detail.tsx-131-      { moduleId: 4, dayId: dayNum },
+client/src/pages/modules/Module4Detail.tsx-132-      { onSuccess: (data) => { logIdRef.current = data.logId; } }
+client/src/pages/modules/Module4Detail.tsx-133-    );
+client/src/pages/modules/Module4Detail.tsx-134-    // Heartbeat alle 30 Sekunden
+client/src/pages/modules/Module4Detail.tsx-135-    const interval = setInterval(() => { heartbeatRef.current += 1; }, 30000);
+client/src/pages/modules/Module4Detail.tsx:139:        completeDayByIdsMutation.mutate({
+client/src/pages/modules/Module4Detail.tsx-140-          moduleId: 4, dayId: dayNum,
+client/src/pages/modules/Module4Detail.tsx-141-          durationSeconds: Math.max(duration, 1),
+client/src/pages/modules/Module4Detail.tsx-142-        });
+client/src/pages/modules/Module4Detail.tsx-143-      }
+client/src/pages/modules/Module4Detail.tsx-144-    };
+client/src/pages/modules/Module4Detail.tsx:157:    completeDayByIdsMutation.mutate({
+client/src/pages/modules/Module4Detail.tsx-158-      moduleId: 4,
+client/src/pages/modules/Module4Detail.tsx-159-      dayId: dayNum,
+client/src/pages/modules/Module4Detail.tsx-160-      durationSeconds: Math.max(duration, 1),
+client/src/pages/modules/Module4Detail.tsx-161-    });
+client/src/pages/modules/Module4Detail.tsx-162-  };
+client/src/pages/modules/Module5Detail.tsx:78:    fetch("/data/module5.json")
+client/src/pages/modules/Module5Detail.tsx-79-      .then(r => r.json())
+client/src/pages/modules/Module5Detail.tsx-80-      .then(d => { _module5Cache = d; setModuleData(d); });
+client/src/pages/modules/Module5Detail.tsx-81-  }, []);
+client/src/pages/modules/Module5Detail.tsx-82-  const [showAITutor, setShowAITutor] = useState(false);
+client/src/pages/modules/Module5Detail.tsx-83-
+client/src/pages/modules/Module5Detail.tsx:97:    startDayMutation.mutate(
+client/src/pages/modules/Module5Detail.tsx-98-      { moduleId: 5, dayId: dayNum },
+client/src/pages/modules/Module5Detail.tsx-99-      { onSuccess: (data) => { logIdRef.current = data.logId; } }
+client/src/pages/modules/Module5Detail.tsx-100-    );
+client/src/pages/modules/Module5Detail.tsx-101-    // Heartbeat alle 30 Sekunden
+client/src/pages/modules/Module5Detail.tsx-102-    const interval = setInterval(() => { heartbeatRef.current += 1; }, 30000);
+client/src/pages/modules/Module5Detail.tsx:106:        completeDayByIdsMutation.mutate({
+client/src/pages/modules/Module5Detail.tsx-107-          moduleId: 5, dayId: dayNum,
+client/src/pages/modules/Module5Detail.tsx-108-          durationSeconds: Math.max(duration, 1),
+client/src/pages/modules/Module5Detail.tsx-109-        });
+client/src/pages/modules/Module5Detail.tsx-110-      }
+client/src/pages/modules/Module5Detail.tsx-111-    };
+client/src/pages/modules/Module5Detail.tsx:124:    completeDayByIdsMutation.mutate({
+client/src/pages/modules/Module5Detail.tsx-125-      moduleId: 5,
+client/src/pages/modules/Module5Detail.tsx-126-      dayId: dayNum,
+client/src/pages/modules/Module5Detail.tsx-127-      durationSeconds: Math.max(duration, 1),
+client/src/pages/modules/Module5Detail.tsx-128-    });
+client/src/pages/modules/Module5Detail.tsx-129-  };
+client/src/pages/Rechenpraxis.tsx:61:      const res = await fetch("https://api.anthropic.com/v1/messages", {
+client/src/pages/Rechenpraxis.tsx-62-        method: "POST",
+client/src/pages/Rechenpraxis.tsx-63-        headers: { "Content-Type": "application/json" },
+client/src/pages/Rechenpraxis.tsx-64-        body: JSON.stringify({
+client/src/pages/Rechenpraxis.tsx-65-          model: "claude-sonnet-4-20250514",
+client/src/pages/Rechenpraxis.tsx-66-          max_tokens: 1000,
+client/src/pages/Rechenpraxis.tsx:296:    fetch("/data/rechenpraxis.json")
+client/src/pages/Rechenpraxis.tsx-297-      .then(r => r.json())
+client/src/pages/Rechenpraxis.tsx-298-      .then((data: Aufgabe[]) => {
+client/src/pages/Rechenpraxis.tsx-299-        setAUFGABEN(data);
+client/src/pages/Rechenpraxis.tsx-300-        setAufgabenGeladen(true);
+client/src/pages/Rechenpraxis.tsx-301-      })
+client/src/pages/Fallstudien.tsx:112:      const res = await fetch("/api/ai/bewerte-fallstudie", {
+client/src/pages/Fallstudien.tsx-113-        method: "POST",
+client/src/pages/Fallstudien.tsx-114-        headers: { "Content-Type": "application/json" },
+client/src/pages/Fallstudien.tsx-115-        credentials: "include",
+client/src/pages/Fallstudien.tsx-116-        body: JSON.stringify({
+client/src/pages/Fallstudien.tsx-117-          titel: selected.titel,
+client/src/pages/DokumentWerkstatt.tsx:114:      const res = await fetch("/api/ai/rag-tutor", {
+client/src/pages/DokumentWerkstatt.tsx-115-        method: "POST",
+client/src/pages/DokumentWerkstatt.tsx-116-        headers: { "Content-Type": "application/json" },
+client/src/pages/DokumentWerkstatt.tsx-117-        credentials: "include",
+client/src/pages/DokumentWerkstatt.tsx-118-        body: JSON.stringify({
+client/src/pages/DokumentWerkstatt.tsx-119-          message: `Bewerte diese Antworten zur Übung "${uebung.titel}" (${uebung.dokumentTyp}):\n\n${fragen}\n\nGib für jede Aufgabe:\n1. Note (1-5)\n2. Was war gut\n3. Was fehlt noch\n\nAm Ende: Gesamtnote und wichtigsten Verbesserungshinweis.`,
+client/src/pages/TesterZugang.tsx:16:      const res = await fetch("/api/tester/request", {
+client/src/pages/TesterZugang.tsx-17-        method: "POST", headers: { "Content-Type": "application/json" },
+client/src/pages/TesterZugang.tsx-18-        body: JSON.stringify({ email, hours }),
+client/src/pages/TesterZugang.tsx-19-      });
+client/src/pages/TesterZugang.tsx-20-      const d = await res.json();
+client/src/pages/TesterZugang.tsx-21-      if (d.ok) setStep("code");
+client/src/pages/TesterZugang.tsx:31:      const res = await fetch("/api/tester/verify", {
+client/src/pages/TesterZugang.tsx-32-        method: "POST", headers: { "Content-Type": "application/json" },
+client/src/pages/TesterZugang.tsx-33-        body: JSON.stringify({ email, code, hours }),
+client/src/pages/TesterZugang.tsx-34-      });
+client/src/pages/TesterZugang.tsx-35-      const d = await res.json();
+client/src/pages/TesterZugang.tsx-36-      if (d.ok) {
+client/src/pages/ResetPassword.tsx:23:      const res = await fetch("/api/auth/reset-password", {
+client/src/pages/ResetPassword.tsx-24-        method: "POST",
+client/src/pages/ResetPassword.tsx-25-        headers: { "Content-Type": "application/json" },
+client/src/pages/ResetPassword.tsx-26-        body: JSON.stringify({ token, newPassword: password }),
+client/src/pages/ResetPassword.tsx-27-      });
+client/src/pages/ResetPassword.tsx-28-      const data = await res.json();
+client/src/pages/DeleteAccount.tsx:55:            onClick={() => deleteMutation.mutate()}
+client/src/pages/DeleteAccount.tsx-56-            disabled={!confirmed || deleteMutation.isPending}
+client/src/pages/DeleteAccount.tsx-57-            className="flex-1 bg-red-600 text-white py-3 rounded-lg text-sm font-medium hover:bg-red-700 disabled:opacity-50"
+client/src/pages/DeleteAccount.tsx-58-          >
+client/src/pages/DeleteAccount.tsx-59-            {deleteMutation.isPending ? "Wird gelöscht..." : "Konto löschen"}
+client/src/pages/DeleteAccount.tsx-60-          </button>
+client/src/pages/AdminCodesPage.tsx:21:  const createMut = trpc.presentationCode.create.useMutation({ onSuccess: () => { refetch(); setShowForm(false); resetForm(); }});
+client/src/pages/AdminCodesPage.tsx:22:  const deactivateMut = trpc.presentationCode.deactivate.useMutation({ onSuccess: () => refetch() });
+client/src/pages/AdminCodesPage.tsx:23:  const activateMut = trpc.presentationCode.activate.useMutation({ onSuccess: () => refetch() });
+client/src/pages/AdminCodesPage.tsx:24:  const deleteMut = trpc.presentationCode.delete.useMutation({ onSuccess: () => refetch() });
+client/src/pages/AdminCodesPage.tsx-25-
+client/src/pages/AdminCodesPage.tsx-26-  const [showForm, setShowForm] = useState(false);
+client/src/pages/AdminCodesPage.tsx-27-  const [form, setForm] = useState({ code: generateCode(), label: "", modules: [1,2,3,4,5], expiresInDays: 7, maxUsage: 0 });
+client/src/pages/AdminCodesPage.tsx-28-
+client/src/pages/AdminCodesPage.tsx-29-  function resetForm() { setForm({ code: generateCode(), label: "", modules: [1,2,3,4,5], expiresInDays: 7, maxUsage: 0 }); }
+client/src/pages/AdminCodesPage.tsx:37:    createMut.mutate({
+client/src/pages/AdminCodesPage.tsx-38-      code: form.code.trim().toUpperCase(),
+client/src/pages/AdminCodesPage.tsx-39-      label: form.label.trim(),
+client/src/pages/AdminCodesPage.tsx-40-      modules: form.modules.join(","),
+client/src/pages/AdminCodesPage.tsx-41-      expiresInDays: form.expiresInDays || undefined,
+client/src/pages/AdminCodesPage.tsx-42-      maxUsage: form.maxUsage || undefined,
+client/src/pages/AdminCodesPage.tsx:167:                          <button onClick={() => deactivateMut.mutate({ id: c.id })} className="text-xs px-3 py-1 rounded-lg bg-amber-50 text-amber-700 hover:bg-amber-100 border border-amber-200">Sperren</button>
+client/src/pages/AdminCodesPage.tsx-168-                        ) : (
+client/src/pages/AdminCodesPage.tsx:169:                          <button onClick={() => activateMut.mutate({ id: c.id })} className="text-xs px-3 py-1 rounded-lg bg-green-50 text-green-700 hover:bg-green-100 border border-green-200">Aktivieren</button>
+client/src/pages/AdminCodesPage.tsx-170-                        )}
+client/src/pages/AdminCodesPage.tsx:171:                        <button onClick={() => { if(confirm(`Code "${c.code}" löschen?`)) deleteMut.mutate({ id: c.id }); }} className="text-xs px-3 py-1 rounded-lg bg-red-50 text-red-600 hover:bg-red-100 border border-red-200">Löschen</button>
+client/src/pages/AdminCodesPage.tsx-172-                      </div>
+client/src/pages/AdminCodesPage.tsx-173-                    </td>
+client/src/pages/AdminCodesPage.tsx-174-                  </tr>
+client/src/pages/AdminCodesPage.tsx-175-                );
+client/src/pages/AdminCodesPage.tsx-176-              })}
+client/src/pages/Glossary.tsx:41:    fetch("/api/glossar")
+client/src/pages/Glossary.tsx-42-      .then(r => r.json())
+client/src/pages/Glossary.tsx-43-      .then(d => { setAllTerms(d.terms || []); setLoading(false); })
+client/src/pages/Glossary.tsx-45-  }, []);
+client/src/pages/Glossary.tsx-46-
+client/src/pages/ExposeTrainer.tsx:80:      const res = await fetch("/api/ai/bewerte-expose", {
+client/src/pages/ExposeTrainer.tsx-81-        method: "POST",
+client/src/pages/ExposeTrainer.tsx-82-        headers: { "Content-Type": "application/json" },
+client/src/pages/ExposeTrainer.tsx-83-        body: JSON.stringify({ expose, immobilienDaten: selected.immobilienDaten }),
+client/src/pages/ExposeTrainer.tsx-84-      });
+client/src/pages/ExposeTrainer.tsx-85-      const data = await res.json();
+client/src/pages/admin/PortalAgentDashboard.tsx-25-  }, []);
+client/src/pages/admin/PortalAgentDashboard.tsx-26-
+client/src/pages/admin/PortalAgentDashboard.tsx-27-  const runAudit = async () => {
+client/src/pages/admin/PortalAgentDashboard.tsx-28-    setLoading(true);
+client/src/pages/admin/PortalAgentDashboard.tsx:30:      const r = await fetch("/api/agent/run-audit", { method: "POST" });
+client/src/pages/admin/PortalAgentDashboard.tsx-31-      setAuditResult(await r.json());
+client/src/pages/admin/PortalAgentDashboard.tsx-32-      // Log auch laden
+client/src/pages/admin/PortalAgentDashboard.tsx:33:      const lr = await fetch("/api/agent/cron-log");
+client/src/pages/admin/PortalAgentDashboard.tsx-34-      const ld = await lr.json();
+client/src/pages/admin/PortalAgentDashboard.tsx-35-      setCronLog(ld.log || "");
+client/src/pages/admin/PortalAgentDashboard.tsx-36-    } finally { setLoading(false); }
+client/src/pages/admin/PortalAgentDashboard.tsx-37-  };
+client/src/pages/admin/PortalAgentDashboard.tsx-38-
+client/src/pages/admin/PortalAgentDashboard.tsx-39-  const loadCronLog = async () => {
+client/src/pages/admin/PortalAgentDashboard.tsx:40:    const r = await fetch("/api/agent/cron-log");
+client/src/pages/admin/PortalAgentDashboard.tsx-41-    const d = await r.json();
+client/src/pages/admin/PortalAgentDashboard.tsx-42-    setCronLog(d.log || "");
+client/src/pages/admin/PortalAgentDashboard.tsx-43-  };
+client/src/pages/admin/PortalAgentDashboard.tsx-44-
+client/src/pages/admin/PortalAgentDashboard.tsx-45-  const loadCoaching = async () => {
+client/src/pages/admin/PortalAgentDashboard.tsx-46-    setLoading(true);
+client/src/pages/admin/PortalAgentDashboard.tsx:48:      const r = await fetch("/api/agent/coaching");
+client/src/pages/admin/PortalAgentDashboard.tsx-49-      setCoachingData(await r.json());
+client/src/pages/admin/PortalAgentDashboard.tsx-50-    } finally { setLoading(false); }
+client/src/pages/admin/PortalAgentDashboard.tsx-51-  };
+client/src/pages/admin/PortalAgentDashboard.tsx-52-
+client/src/pages/admin/PortalAgentDashboard.tsx-53-  const askAgent = async () => {
+client/src/pages/admin/PortalAgentDashboard.tsx:57:      const r = await fetch("/api/agent/ask", {
+client/src/pages/admin/PortalAgentDashboard.tsx-58-        method: "POST", headers: { "Content-Type": "application/json" },
+client/src/pages/admin/PortalAgentDashboard.tsx-59-        body: JSON.stringify({ question, moduleId }),
+client/src/pages/admin/PortalAgentDashboard.tsx-60-      });
+client/src/pages/admin/PortalAgentDashboard.tsx-61-      setAskResult(await r.json());
+client/src/pages/admin/PortalAgentDashboard.tsx-62-    } finally { setLoading(false); }
+client/src/pages/admin/PortalAgentDashboard.tsx:68:      const r = await fetch("/api/agent/legal-updates");
+client/src/pages/admin/PortalAgentDashboard.tsx-69-      setLegalUpdates(await r.json());
+client/src/pages/admin/PortalAgentDashboard.tsx-70-    } finally { setLoading(false); }
+client/src/pages/admin/PortalAgentDashboard.tsx-71-  };
+client/src/pages/admin/PortalAgentDashboard.tsx-72-
+client/src/pages/admin/PortalAgentDashboard.tsx-73-  const generateQ = async () => {
+client/src/pages/admin/PortalAgentDashboard.tsx-74-    setLoading(true);
+client/src/pages/admin/PortalAgentDashboard.tsx:76:      const r = await fetch("/api/agent/generate-question", {
+client/src/pages/admin/PortalAgentDashboard.tsx-77-        method: "POST", headers: { "Content-Type": "application/json" },
+client/src/pages/admin/PortalAgentDashboard.tsx-78-        body: JSON.stringify({ module: genModule, topic: genTopic, difficulty: genDiff }),
+client/src/pages/admin/PortalAgentDashboard.tsx-79-      });
+client/src/pages/admin/PortalAgentDashboard.tsx-80-      setGenQuestion(await r.json());
+client/src/pages/admin/PortalAgentDashboard.tsx-81-    } finally { setLoading(false); }
+client/src/pages/admin/UserManagement.tsx:8:  const setModules = trpc.adminUsers.setModules.useMutation({ onSuccess: () => refetch() });
+client/src/pages/admin/UserManagement.tsx:9:  const setRole = trpc.adminUsers.setRole.useMutation({ onSuccess: () => refetch() });
+client/src/pages/admin/UserManagement.tsx:10:  const deleteUser = trpc.adminUsers.deleteUser.useMutation({ onSuccess: () => refetch() });
+client/src/pages/admin/UserManagement.tsx-11-  const [search, setSearch] = useState("");
+client/src/pages/admin/UserManagement.tsx-12-
+client/src/pages/admin/UserManagement.tsx-13-  const filtered = (users ?? []).filter(u =>
+client/src/pages/admin/UserManagement.tsx-14-    u.email?.toLowerCase().includes(search.toLowerCase()) ||
+client/src/pages/admin/UserManagement.tsx-15-    u.name?.toLowerCase().includes(search.toLowerCase())
+client/src/pages/admin/UserManagement.tsx:23:    setModules.mutate({ userId, modules: updated.join(",") });
+client/src/pages/admin/UserManagement.tsx-24-  };
+client/src/pages/admin/UserManagement.tsx-25-
+client/src/pages/admin/UserManagement.tsx-26-  if (isLoading) return <div className="p-8 text-center">Lädt...</div>;
+client/src/pages/admin/UserManagement.tsx-27-
+client/src/pages/admin/UserManagement.tsx-28-  return (
+client/src/pages/admin/UserManagement.tsx:55:                    onChange={e => setRole.mutate({ userId: user.id, role: e.target.value as any })}
+client/src/pages/admin/UserManagement.tsx-56-                    className="border rounded px-2 py-1 text-xs">
+client/src/pages/admin/UserManagement.tsx-57-                    <option value="user">Nutzer</option>
+client/src/pages/admin/UserManagement.tsx-58-                    <option value="trainer">Trainer</option>
+client/src/pages/admin/UserManagement.tsx-59-                    <option value="admin">Admin</option>
+client/src/pages/admin/UserManagement.tsx-60-                  </select>
+client/src/pages/admin/UserManagement.tsx:80:                  <button onClick={() => { if (confirm("Wirklich löschen?")) deleteUser.mutate({ userId: user.id }); }}
+client/src/pages/admin/UserManagement.tsx-81-                    className="text-red-500 text-xs border border-red-200 rounded px-2 py-1">
+client/src/pages/admin/UserManagement.tsx-82-                    Löschen
+client/src/pages/admin/UserManagement.tsx-83-                  </button>
+client/src/pages/admin/UserManagement.tsx-84-                </td>
+client/src/pages/admin/UserManagement.tsx-85-              </tr>
+client/src/pages/admin/FragenManager.tsx:30:  const deleteMutation = trpc.adminQuestions.delete.useMutation({ onSuccess: () => refetch() });
+client/src/pages/admin/FragenManager.tsx-31-  const updateMutation = trpc.adminQuestions.update.useMutation({
+client/src/pages/admin/FragenManager.tsx:32:    onSuccess: () => { setEditId(null); refetch(); }
+client/src/pages/admin/FragenManager.tsx-33-  });
+client/src/pages/admin/FragenManager.tsx-34-
+client/src/pages/admin/FragenManager.tsx-35-  const questions = data?.questions || [];
+client/src/pages/admin/FragenManager.tsx-36-  const total = data?.total || 0;
+client/src/pages/admin/FragenManager.tsx-37-
+client/src/pages/admin/FragenManager.tsx:79:                    <button onClick={() => updateMutation.mutate({ id: q.id, questionText: editText })}
+client/src/pages/admin/FragenManager.tsx-80-                      style={{ padding: "5px 12px", background: "#2563eb", color: "#fff", border: "none", borderRadius: 6, fontSize: 12, cursor: "pointer" }}>Speichern</button>
+client/src/pages/admin/FragenManager.tsx-81-                    <button onClick={() => setEditId(null)}
+client/src/pages/admin/FragenManager.tsx-82-                      style={{ padding: "5px 12px", background: "#f1f5f9", color: "#374151", border: "none", borderRadius: 6, fontSize: 12, cursor: "pointer" }}>Abbrechen</button>
+client/src/pages/admin/FragenManager.tsx-83-                  </div>
+client/src/pages/admin/FragenManager.tsx-84-                </div>
+client/src/pages/admin/FragenManager.tsx:104:                    <button onClick={() => { if (confirm("Frage löschen?")) deleteMutation.mutate({ id: q.id }); }}
+client/src/pages/admin/FragenManager.tsx-105-                      style={{ padding: 6, background: "none", border: "0.5px solid #fee2e2", borderRadius: 6, cursor: "pointer", color: "#dc2626" }}>
+client/src/pages/admin/FragenManager.tsx-106-                      <Trash2 size={13} />
+client/src/pages/admin/FragenManager.tsx-107-                    </button>
+client/src/pages/admin/FragenManager.tsx-108-                  </div>
+client/src/pages/admin/FragenManager.tsx-109-                </div>
+client/src/pages/admin/KursbuchGenerator.tsx:40:      const res = await fetch("/api/ai/generate-kursbuch-v2", {
+client/src/pages/admin/KursbuchGenerator.tsx-41-        method: "POST",
+client/src/pages/admin/KursbuchGenerator.tsx-42-        headers: { "Content-Type": "application/json" },
+client/src/pages/admin/KursbuchGenerator.tsx-43-        body: JSON.stringify({ moduleId: selectedModule, format: selectedFormat }),
+client/src/pages/admin/KursbuchGenerator.tsx-44-      });
+client/src/pages/admin/KursbuchGenerator.tsx-45-      const data = await res.json();
+client/src/pages/admin/GlossarAdmin.tsx:26:    fetch("/api/glossar")
+client/src/pages/admin/GlossarAdmin.tsx-27-      .then(r => r.json())
+client/src/pages/admin/GlossarAdmin.tsx-28-      .then(d => { setTerms(d.terms || []); setLoading(false); });
+client/src/pages/admin/GlossarAdmin.tsx-29-  };
+client/src/pages/admin/GlossarAdmin.tsx-30-
+client/src/pages/admin/GlossarAdmin.tsx-31-  useEffect(() => { load(); }, []);
+client/src/pages/admin/GlossarAdmin.tsx:37:    await fetch(url, { method, headers: { "Content-Type": "application/json" }, credentials: "include", body: JSON.stringify(form) });
+client/src/pages/admin/GlossarAdmin.tsx-38-    setSaving(false);
+client/src/pages/admin/GlossarAdmin.tsx-39-    setEditId(null);
+client/src/pages/admin/GlossarAdmin.tsx-40-    setShowNew(false);
+client/src/pages/admin/GlossarAdmin.tsx-41-    setForm({ term: "", definition: "", category: "Recht", lawReference: "", lawLink: "" });
+client/src/pages/admin/GlossarAdmin.tsx-42-    load();
+client/src/pages/admin/GlossarAdmin.tsx:47:    await fetch("/api/admin/glossar/" + id, { method: "DELETE", credentials: "include" });
+client/src/pages/admin/GlossarAdmin.tsx-48-    load();
+client/src/pages/admin/GlossarAdmin.tsx-49-  };
+client/src/pages/admin/GlossarAdmin.tsx-50-
+client/src/pages/admin/GlossarAdmin.tsx-51-  const startEdit = (t: GlossarTerm) => {
+client/src/pages/admin/GlossarAdmin.tsx-52-    setEditId(t.id);
+client/src/pages/admin/DozentenCockpit.tsx:32:      const res = await fetch("/api/ai/dozenten-cockpit", {
+client/src/pages/admin/DozentenCockpit.tsx-33-        method: "POST",
+client/src/pages/admin/DozentenCockpit.tsx-34-        headers: { "Content-Type": "application/json" },
+client/src/pages/admin/DozentenCockpit.tsx-35-        body: JSON.stringify({ moduleId, format }),
+client/src/pages/admin/DozentenCockpit.tsx-36-      });
+client/src/pages/admin/DozentenCockpit.tsx-37-      const data = await res.json();
+client/src/pages/admin/VideoManagement.tsx:64:      refetch();
+client/src/pages/admin/VideoManagement.tsx-65-      setIsAddDialogOpen(false);
+client/src/pages/admin/VideoManagement.tsx-66-      resetForm();
+client/src/pages/admin/VideoManagement.tsx-67-    },
+client/src/pages/admin/VideoManagement.tsx-69-      toast({
+client/src/pages/admin/VideoManagement.tsx:83:      refetch();
+client/src/pages/admin/VideoManagement.tsx-84-      setEditingVideo(null);
+client/src/pages/admin/VideoManagement.tsx-85-      resetForm();
+client/src/pages/admin/VideoManagement.tsx-86-    },
+client/src/pages/admin/VideoManagement.tsx-88-      toast({
+client/src/pages/admin/VideoManagement.tsx:102:      refetch();
+client/src/pages/admin/VideoManagement.tsx-103-    },
+client/src/pages/admin/VideoManagement.tsx-105-      toast({
+client/src/pages/admin/VideoManagement.tsx-106-        title: "Fehler",
+client/src/pages/admin/VideoManagement.tsx-107-        description: error.message,
+client/src/pages/admin/VideoManagement.tsx:139:      updateMutation.mutate({ id: editingVideo.id, ...data });
+client/src/pages/admin/VideoManagement.tsx-140-    } else {
+client/src/pages/admin/VideoManagement.tsx:141:      createMutation.mutate(data);
+client/src/pages/admin/VideoManagement.tsx-142-    }
+client/src/pages/admin/VideoManagement.tsx-143-  };
+client/src/pages/admin/VideoManagement.tsx-144-
+client/src/pages/admin/VideoManagement.tsx-145-  const handleEdit = (video: any) => {
+client/src/pages/admin/VideoManagement.tsx-146-    setEditingVideo(video);
+client/src/pages/admin/VideoManagement.tsx:161:      deleteMutation.mutate({ id });
+client/src/pages/admin/VideoManagement.tsx-162-    }
+client/src/pages/admin/VideoManagement.tsx-163-  };
+client/src/pages/admin/VideoManagement.tsx-164-
+client/src/pages/admin/VideoManagement.tsx-165-  // Group videos by module
+client/src/pages/admin/VideoManagement.tsx-166-  const videosByModule = videos?.reduce((acc, video) => {
+client/src/pages/admin/AdminCodes.tsx:23:  const create = trpc.presentationCode.create.useMutation({ onSuccess: () => { refetch(); setShowForm(false); setCode(generateCode()); setLabel(""); setModules([1,2,3,4,5]); }});
+client/src/pages/admin/AdminCodes.tsx:24:  const deactivate = trpc.presentationCode.deactivate.useMutation({ onSuccess: () => refetch() });
+client/src/pages/admin/AdminCodes.tsx:25:  const activate = trpc.presentationCode.activate.useMutation({ onSuccess: () => refetch() });
+client/src/pages/admin/AdminCodes.tsx:26:  const del = trpc.presentationCode.delete.useMutation({ onSuccess: () => refetch() });
+client/src/pages/admin/AdminCodes.tsx-27-
+client/src/pages/admin/AdminCodes.tsx-28-  function toggleModule(id: number) {
+client/src/pages/admin/AdminCodes.tsx-29-    setModules(m => m.includes(id) ? m.filter(x => x !== id) : [...m, id].sort((a,b)=>a-b));
+client/src/pages/admin/AdminCodes.tsx-30-  }
+client/src/pages/admin/AdminCodes.tsx-31-
+client/src/pages/admin/AdminCodes.tsx:88:            <button onClick={() => create.mutate({ code: code.trim(), label: label.trim(), modules: modules.join(","), expiresInDays: expiresInDays || undefined, maxUsage: maxUsage || undefined })} disabled={!code.trim() || !label.trim() || create.isPending} className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white px-6 py-2 rounded-lg font-semibold text-sm">
+client/src/pages/admin/AdminCodes.tsx-89-              {create.isPending ? "Erstelle…" : "✅ Code erstellen"}
+client/src/pages/admin/AdminCodes.tsx-90-            </button>
+client/src/pages/admin/AdminCodes.tsx-91-            <button onClick={() => setShowForm(false)} className="px-6 py-2 rounded-lg border border-slate-300 text-slate-600 hover:bg-slate-50 text-sm">Abbrechen</button>
+client/src/pages/admin/AdminCodes.tsx-92-          </div>
+client/src/pages/admin/AdminCodes.tsx-93-        </div>
+client/src/pages/admin/AdminCodes.tsx:151:                        <button onClick={() => deactivate.mutate({ id: c.id })} className="text-xs px-3 py-1 rounded-lg bg-amber-50 text-amber-700 hover:bg-amber-100 border border-amber-200 font-medium">Sperren</button>
+client/src/pages/admin/AdminCodes.tsx-152-                      ) : (
+client/src/pages/admin/AdminCodes.tsx:153:                        <button onClick={() => activate.mutate({ id: c.id })} className="text-xs px-3 py-1 rounded-lg bg-green-50 text-green-700 hover:bg-green-100 border border-green-200 font-medium">Aktivieren</button>
+client/src/pages/admin/AdminCodes.tsx-154-                      )}
+client/src/pages/admin/AdminCodes.tsx:155:                      <button onClick={() => { if(confirm(`"${c.code}" löschen?`)) del.mutate({ id: c.id }); }} className="text-xs px-3 py-1 rounded-lg bg-red-50 text-red-600 hover:bg-red-100 border border-red-200 font-medium">Löschen</button>
+client/src/pages/admin/AdminCodes.tsx-156-                    </div>
+client/src/pages/admin/AdminCodes.tsx-157-                  </td>
+client/src/pages/admin/AdminCodes.tsx-158-                </tr>
+client/src/pages/admin/AdminCodes.tsx-159-              );
+client/src/pages/admin/AdminCodes.tsx-160-            })}
+client/src/pages/admin/ContentUpload.tsx:46:      const res = await fetch("/api/ai/analyze-document", {
+client/src/pages/admin/ContentUpload.tsx-47-        method: "POST",
+client/src/pages/admin/ContentUpload.tsx-48-        headers: { "Content-Type": file.type || "application/octet-stream", "x-filename": file.name },
+client/src/pages/admin/ContentUpload.tsx-49-        body: file,
+client/src/pages/admin/ContentUpload.tsx-50-      });
+client/src/pages/admin/ContentUpload.tsx-51-      const data = await res.json();
+client/src/pages/admin/ContentUpload.tsx:69:      const res = await fetch("/api/ai/generate-questions", {
+client/src/pages/admin/ContentUpload.tsx-70-        method: "POST",
+client/src/pages/admin/ContentUpload.tsx-71-        headers: { "Content-Type": "application/json" },
+client/src/pages/admin/ContentUpload.tsx-72-        body: JSON.stringify({
+client/src/pages/admin/ContentUpload.tsx-73-          text: analysisText,
+client/src/pages/admin/ContentUpload.tsx-74-          moduleId: selectedModule,
+client/src/pages/admin/MediaSkriptGenerator.tsx:46:      const res = await fetch("/api/ai/generate-mediaskript", {
+client/src/pages/admin/MediaSkriptGenerator.tsx-47-        method: "POST",
+client/src/pages/admin/MediaSkriptGenerator.tsx-48-        headers: { "Content-Type": "application/json" },
+client/src/pages/admin/MediaSkriptGenerator.tsx-49-        body: JSON.stringify({ moduleId, thema: aktivesThema, format }),
+client/src/pages/admin/MediaSkriptGenerator.tsx-50-      });
+client/src/pages/admin/MediaSkriptGenerator.tsx-51-      const data = await res.json();
+client/src/pages/admin/AdminDashboard.tsx:47:    fetch("/api/agent/status", { credentials: "include" }).then(r => r.json()).then(d => {
+client/src/pages/admin/AdminDashboard.tsx-48-      if (d?.memory?.last_night_audit) setAuditScore(d.memory.last_night_audit.avgScore);
+client/src/pages/admin/AdminDashboard.tsx-52-  }, []);
+client/src/pages/admin/AdminDashboard.tsx-53-
+client/src/pages/admin/AdminDashboard.tsx-54-  const totalUsers = users?.length ?? 0;
+client/src/pages/admin/AdminDashboard.tsx-55-  const activeUsers = users?.filter((u: any) => {
+client/src/pages/admin/AdminDashboard.tsx-56-    const last = new Date(u.lastSignedIn);
+client/src/pages/admin/WhiteLabelAdmin.tsx:170:    createMutation.mutate({
+client/src/pages/admin/WhiteLabelAdmin.tsx-171-      slug: formData.slug,
+client/src/pages/admin/WhiteLabelAdmin.tsx-172-      companyName: formData.companyName,
+client/src/pages/admin/WhiteLabelAdmin.tsx-173-      primaryColor: formData.primaryColor,
+client/src/pages/admin/WhiteLabelAdmin.tsx-174-      secondaryColor: formData.secondaryColor,
+client/src/pages/admin/WhiteLabelAdmin.tsx-175-      accentColor: formData.accentColor,
+client/src/pages/admin/WhiteLabelAdmin.tsx:190:    updateMutation.mutate({
+client/src/pages/admin/WhiteLabelAdmin.tsx-191-      id,
+client/src/pages/admin/WhiteLabelAdmin.tsx-192-      companyName: formData.companyName,
+client/src/pages/admin/WhiteLabelAdmin.tsx-193-      primaryColor: formData.primaryColor,
+client/src/pages/admin/WhiteLabelAdmin.tsx-194-      secondaryColor: formData.secondaryColor,
+client/src/pages/admin/WhiteLabelAdmin.tsx-195-      accentColor: formData.accentColor,
+client/src/pages/admin/WhiteLabelAdmin.tsx:213:      uploadLogoMutation.mutate({
+client/src/pages/admin/WhiteLabelAdmin.tsx-214-        id,
+client/src/pages/admin/WhiteLabelAdmin.tsx-215-        logoBase64: base64,
+client/src/pages/admin/WhiteLabelAdmin.tsx-216-        mimeType: file.type,
+client/src/pages/admin/WhiteLabelAdmin.tsx-217-        fileName: file.name,
+client/src/pages/admin/WhiteLabelAdmin.tsx-218-      });
+client/src/pages/admin/WhiteLabelAdmin.tsx:227:      uploadFaviconMutation.mutate({
+client/src/pages/admin/WhiteLabelAdmin.tsx-228-        id,
+client/src/pages/admin/WhiteLabelAdmin.tsx-229-        faviconBase64: base64,
+client/src/pages/admin/WhiteLabelAdmin.tsx-230-        mimeType: file.type,
+client/src/pages/admin/WhiteLabelAdmin.tsx-231-        fileName: file.name,
+client/src/pages/admin/WhiteLabelAdmin.tsx-232-      });
+client/src/pages/admin/WhiteLabelAdmin.tsx:584:                              onClick={() => deleteMutation.mutate({ id: config.id })}
+client/src/pages/admin/WhiteLabelAdmin.tsx-585-                            >
+client/src/pages/admin/WhiteLabelAdmin.tsx-586-                              Endgültig löschen
+client/src/pages/admin/WhiteLabelAdmin.tsx-587-                            </AlertDialogAction>
+client/src/pages/admin/WhiteLabelAdmin.tsx-588-                          </AlertDialogFooter>
+client/src/pages/admin/WhiteLabelAdmin.tsx-589-                        </AlertDialogContent>
+client/src/pages/admin/KiMonitor.tsx:26:    fetch("/api/admin/ki-stats", { credentials: "include" })
+client/src/pages/admin/KiMonitor.tsx-27-      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+client/src/pages/admin/KiMonitor.tsx-28-      .then(data => {
+client/src/pages/admin/KiMonitor.tsx-29-        // Fallback wenn Felder fehlen
+client/src/pages/admin/KiMonitor.tsx-30-        setStats({
+client/src/pages/admin/KiMonitor.tsx-31-          totalCalls: data.totalCalls || 0,
+client/src/pages/admin/PortalPhaseAdmin.tsx:28:    fetch("/api/portal-phase")
+client/src/pages/admin/PortalPhaseAdmin.tsx-29-      .then((r) => r.json())
+client/src/pages/admin/PortalPhaseAdmin.tsx-30-      .then((d) => {
+client/src/pages/admin/PortalPhaseAdmin.tsx-31-        setCurrentPhase(d.phase);
+client/src/pages/admin/PortalPhaseAdmin.tsx-32-        setLoading(false);
+client/src/pages/admin/PortalPhaseAdmin.tsx-33-      });
+client/src/pages/admin/PortalPhaseAdmin.tsx-34-
+client/src/pages/admin/PortalPhaseAdmin.tsx-35-    // Alle Phasen laden
+client/src/pages/admin/PortalPhaseAdmin.tsx:36:    fetch("/api/portal-phase")
+client/src/pages/admin/PortalPhaseAdmin.tsx-37-      .then((r) => r.json())
+client/src/pages/admin/PortalPhaseAdmin.tsx-38-      .then(() => {
+client/src/pages/admin/PortalPhaseAdmin.tsx-39-        // Statische Konfiguration direkt einbetten
+client/src/pages/admin/PortalPhaseAdmin.tsx-40-        setAllPhases({
+client/src/pages/admin/PortalPhaseAdmin.tsx-41-          A: {
+client/src/pages/admin/PortalPhaseAdmin.tsx:73:      const r = await fetch("/api/admin/portal-phase", {
+client/src/pages/admin/PortalPhaseAdmin.tsx-74-        method: "POST",
+client/src/pages/admin/PortalPhaseAdmin.tsx-75-        headers: { "Content-Type": "application/json" },
+client/src/pages/admin/PortalPhaseAdmin.tsx-76-        body: JSON.stringify({ phase }),
+client/src/pages/admin/PortalPhaseAdmin.tsx-77-        credentials: "include",
+client/src/pages/admin/PortalPhaseAdmin.tsx-78-      });
+client/src/pages/OwnerDashboard.tsx:28:      const res = await fetch("/api/owner/inspect-token", {
+client/src/pages/OwnerDashboard.tsx-29-        method: "POST",
+client/src/pages/OwnerDashboard.tsx-30-        headers: { "Content-Type": "application/json" },
+client/src/pages/OwnerDashboard.tsx-31-        body: JSON.stringify({ key: "", hours: inspectHours }),
+client/src/pages/OwnerDashboard.tsx-32-      });
+client/src/pages/OwnerDashboard.tsx-33-      const data = await res.json();
+client/src/pages/OwnerDashboard.tsx:72:    const fetchLive = () => fetch(`/api/owner/live?key=${ownerKey}`, {
+client/src/pages/OwnerDashboard.tsx-73-      credentials: "include", headers: { "x-owner-key": ownerKey }
+client/src/pages/OwnerDashboard.tsx-75-    fetchLive();
+client/src/pages/OwnerDashboard.tsx-76-    const liveInterval = setInterval(fetchLive, 30000);
+client/src/pages/OwnerDashboard.tsx-77-    setTimeout(() => clearInterval(liveInterval), 1800000); // 30min max
+client/src/pages/OwnerDashboard.tsx-78-    // Aktivitaets-Log laden
+client/src/pages/OwnerDashboard.tsx:79:    fetch(`/api/owner/settings?key=${ownerKey}`, { credentials:"include", headers:{"x-owner-key":sessionStorage.getItem("ownerKey")||""} })
+client/src/pages/OwnerDashboard.tsx-81-
+client/src/pages/OwnerDashboard.tsx:82:    fetch(`/api/owner/activity?key=${ownerKey}`, { credentials:"include", headers:{"x-owner-key":sessionStorage.getItem("ownerKey")||""} })
+client/src/pages/OwnerDashboard.tsx-84-    // Stats laden
+client/src/pages/OwnerDashboard.tsx:85:    fetch(`/api/owner/stats?key=${ownerKey}`, { credentials:"include", headers:{"x-owner-key":sessionStorage.getItem("ownerKey")||""} })
+client/src/pages/OwnerDashboard.tsx:87:    fetch(`/api/owner/dashboard?key=${ownerKey}`, { credentials: "include", headers: { "x-owner-key": ownerKey } })
+client/src/pages/OwnerDashboard.tsx-88-      .then(r => r.json())
+client/src/pages/OwnerDashboard.tsx-89-      .then(d => { setStats(d); setLoading(false); })
+client/src/pages/OwnerDashboard.tsx-91-  }, []);
+client/src/pages/OwnerDashboard.tsx-92-
+client/src/pages/OwnerDashboard.tsx-93-  const lockUser = async (email: string) => {
+client/src/pages/OwnerDashboard.tsx:94:    await fetch("/api/owner/lock-user", {
+client/src/pages/OwnerDashboard.tsx-95-      method: "POST", credentials: "include",
+client/src/pages/OwnerDashboard.tsx-96-      headers: {"Content-Type": "application/json"},
+client/src/pages/OwnerDashboard.tsx-97-      body: JSON.stringify({ email })
+client/src/pages/OwnerDashboard.tsx-98-    });
+client/src/pages/OwnerDashboard.tsx-99-    setActionMsg(`✅ ${email} gesperrt`);
+client/src/pages/OwnerDashboard.tsx:104:    await fetch("/api/owner/unlock-user", {
+client/src/pages/OwnerDashboard.tsx-105-      method: "POST", credentials: "include",
+client/src/pages/OwnerDashboard.tsx-106-      headers: {"Content-Type": "application/json"},
+client/src/pages/OwnerDashboard.tsx-107-      body: JSON.stringify({ email })
+client/src/pages/OwnerDashboard.tsx-108-    });
+client/src/pages/OwnerDashboard.tsx-109-    setActionMsg(`✅ ${email} freigeschaltet`);
+client/src/pages/OwnerDashboard.tsx:116:    const res = await fetch("/api/owner/set-role", {
+client/src/pages/OwnerDashboard.tsx-117-      method:"POST", credentials:"include",
+client/src/pages/OwnerDashboard.tsx-118-      headers:{"Content-Type":"application/json","x-owner-key":sessionStorage.getItem("ownerKey")||""},
+client/src/pages/OwnerDashboard.tsx-119-      body: JSON.stringify({ email, role }),
+client/src/pages/OwnerDashboard.tsx-120-    });
+client/src/pages/OwnerDashboard.tsx-121-    const d = await res.json();
+client/src/pages/OwnerDashboard.tsx:128:    const res = await fetch("/api/owner/impersonate", {
+client/src/pages/OwnerDashboard.tsx-129-      method: "POST", credentials: "include",
+client/src/pages/OwnerDashboard.tsx-130-      headers: { "Content-Type": "application/json", "x-owner-key": sessionStorage.getItem("ownerKey") || "" },
+client/src/pages/OwnerDashboard.tsx-131-      body: JSON.stringify({ email }),
+client/src/pages/OwnerDashboard.tsx-132-    });
+client/src/pages/OwnerDashboard.tsx-133-    const d = await res.json();
+client/src/pages/OwnerDashboard.tsx:139:    const res = await fetch("/api/owner/set-modules", {
+client/src/pages/OwnerDashboard.tsx-140-      method: "POST", credentials: "include",
+client/src/pages/OwnerDashboard.tsx-141-      headers: { "Content-Type": "application/json", "x-owner-key": sessionStorage.getItem("ownerKey") || "" },
+client/src/pages/OwnerDashboard.tsx-142-      body: JSON.stringify({ email, modules }),
+client/src/pages/OwnerDashboard.tsx-143-    });
+client/src/pages/OwnerDashboard.tsx-144-    const d = await res.json();
+client/src/pages/OwnerDashboard.tsx:150:    const res = await fetch("/api/owner/generate-link", {
+client/src/pages/OwnerDashboard.tsx-151-      method: "POST", credentials: "include"
+client/src/pages/OwnerDashboard.tsx-152-    });
+client/src/pages/OwnerDashboard.tsx-153-    const d = await res.json();
+client/src/pages/OwnerDashboard.tsx-154-    navigator.clipboard.writeText(d.link);
+client/src/pages/OwnerDashboard.tsx-155-    setActionMsg("✅ Magic Link kopiert!");
+client/src/pages/OwnerDashboard.tsx:318:                await fetch("/api/owner/settings", {
+client/src/pages/OwnerDashboard.tsx-319-                  method:"POST", credentials:"include",
+client/src/pages/OwnerDashboard.tsx-320-                  headers:{"Content-Type":"application/json","x-owner-key":sessionStorage.getItem("ownerKey")||""},
+client/src/pages/OwnerDashboard.tsx-321-                  body: JSON.stringify({key, value})
+client/src/pages/OwnerDashboard.tsx-322-                });
+client/src/pages/OwnerDashboard.tsx-323-              }
+client/src/pages/OwnerDashboard.tsx:349:                fetch(`/api/owner/azav-report?key=${ownerKey}`,{credentials:"include",headers:{"x-owner-key":sessionStorage.getItem("ownerKey")||""}})
+client/src/pages/OwnerDashboard.tsx-351-              }}
+client/src/pages/OwnerDashboard.tsx-352-              style={{background:"#2563eb",color:"white",border:"none",borderRadius:8,padding:"10px 20px",fontSize:13,fontWeight:700,cursor:"pointer"}}>
+client/src/pages/OwnerDashboard.tsx-353-              {azavLoading?"⏳ Lädt...":"📋 Bericht erstellen"}
+client/src/pages/OwnerDashboard.tsx-354-            </button>
+client/src/pages/Admin2FA.tsx:19:      const r = await fetch("/api/auth/admin-2fa/request", {
+client/src/pages/Admin2FA.tsx-20-        method: "POST",
+client/src/pages/Admin2FA.tsx-21-        headers: { "Content-Type": "application/json" },
+client/src/pages/Admin2FA.tsx-22-        body: JSON.stringify({ email, name }),
+client/src/pages/Admin2FA.tsx-23-      });
+client/src/pages/Admin2FA.tsx-24-      const d = await r.json();
+client/src/pages/Admin2FA.tsx:40:      const r = await fetch("/api/auth/admin-2fa/verify", {
+client/src/pages/Admin2FA.tsx-41-        method: "POST",
+client/src/pages/Admin2FA.tsx-42-        headers: { "Content-Type": "application/json" },
+client/src/pages/Admin2FA.tsx-43-        body: JSON.stringify({ email, code }),
+client/src/pages/Admin2FA.tsx-44-      });
+client/src/pages/Admin2FA.tsx-45-      const d = await r.json();
+client/src/pages/ExamMode.tsx:83:      startExamMutation.mutate({
+client/src/pages/ExamMode.tsx-84-        moduleId: selectedModule,
+client/src/pages/ExamMode.tsx-85-        difficulty,
+client/src/pages/ExamMode.tsx-86-        isIHKMode
+client/src/pages/ExamMode.tsx-87-      });
+client/src/pages/ExamMode.tsx-88-    }
+client/src/pages/Kurse.tsx:33:    fetch("/api/stripe/products")
+client/src/pages/Kurse.tsx-34-      .then((r) => r.json())
+client/src/pages/Kurse.tsx-35-      .then(setProducts)
+client/src/pages/Kurse.tsx-37-  }, []);
+client/src/pages/Kurse.tsx-38-
+client/src/pages/Kurse.tsx:48:      const res = await fetch("/api/stripe/checkout", {
+client/src/pages/Kurse.tsx-49-        method: "POST",
+client/src/pages/Kurse.tsx-50-        headers: { "Content-Type": "application/json" },
+client/src/pages/Kurse.tsx-51-        body: JSON.stringify({ productId, userEmail: user?.email, widerrufsAkzeptiert: true }),
+client/src/pages/Kurse.tsx-52-      });
+client/src/pages/Kurse.tsx-53-      const data = await res.json();
+client/src/pages/AudioModus.tsx:33:    fetch("/api/learning/audio-lessons" + (selectedModule ? `?moduleId=${selectedModule}` : ""), {
+client/src/pages/AudioModus.tsx-34-      credentials: "include",
+client/src/pages/AudioModus.tsx-35-    })
+client/src/pages/AudioModus.tsx-36-      .then(r => r.json())
+client/src/pages/AudioModus.tsx-37-      .then(data => {
+client/src/pages/AudioModus.tsx-38-        if (Array.isArray(data) && data.length > 0) {
+client/src/components/FeedbackWidget.tsx:92:            submitFeedback.mutate({ moduleId, dayId, rating, comment: comment || undefined })
+client/src/components/FeedbackWidget.tsx-93-          }
+client/src/components/FeedbackWidget.tsx-94-          className="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg disabled:opacity-50 hover:bg-blue-700 transition-colors"
+client/src/components/FeedbackWidget.tsx-95-        >
+client/src/components/FeedbackWidget.tsx-96-          {submitFeedback.isPending ? "Wird gesendet…" : "Feedback absenden"}
+client/src/components/FeedbackWidget.tsx-97-        </button>
+client/src/components/OnboardingWizard.tsx:98:      completeOnboarding.mutate(data);
+client/src/components/OnboardingWizard.tsx-99-    }
+client/src/components/OnboardingWizard.tsx-100-  };
+client/src/components/OnboardingWizard.tsx-101-
+client/src/components/OnboardingWizard.tsx-102-  const goalLabels: Record<string, string> = {
+client/src/components/OnboardingWizard.tsx-103-    makler: "Immobilienmakler", verwalter: "WEG-Verwalter",
+client/src/components/OnboardingWizard.tsx:124:            <Button className="w-full" size="lg" onClick={() => completeOnboarding.mutate(data)}>
+client/src/components/OnboardingWizard.tsx-125-              Jetzt mit Tag 1 beginnen →
+client/src/components/OnboardingWizard.tsx-126-            </Button>
+client/src/components/OnboardingWizard.tsx-127-          </CardContent>
+client/src/components/OnboardingWizard.tsx-128-        </Card>
+client/src/components/OnboardingWizard.tsx-129-      </div>
+client/src/components/TrialForm.tsx:32:      const res = await fetch("/api/trial/request", {
+client/src/components/TrialForm.tsx-33-        method: "POST",
+client/src/components/TrialForm.tsx-34-        headers: { "Content-Type": "application/json" },
+client/src/components/TrialForm.tsx-35-        body: JSON.stringify({ name: name.trim(), email: email.trim().toLowerCase(), moduleInterest }),
+client/src/components/TrialForm.tsx-36-      });
+client/src/components/TrialForm.tsx-37-      const data = await res.json();
+client/src/components/CookieBanner.tsx:18:      await fetch("/api/consent", {
+client/src/components/CookieBanner.tsx-19-        method: "POST",
+client/src/components/CookieBanner.tsx-20-        headers: { "Content-Type": "application/json" },
+client/src/components/CookieBanner.tsx-21-        body: JSON.stringify({
+client/src/components/CookieBanner.tsx-22-          type,
+client/src/components/CookieBanner.tsx-23-          version: "2026-04",
+client/src/components/AudioPreview.tsx:22:    fetch(`/api/learning/audio-lessons?moduleId=${moduleId}`)
+client/src/components/AudioPreview.tsx-23-      .then(r => r.json())
+client/src/components/AudioPreview.tsx-24-      .then((lessons: AudioLesson[]) => {
+client/src/components/AudioPreview.tsx-25-        if (lessons && lessons.length > 0) {
+client/src/components/AudioPreview.tsx-26-          const first = lessons[0];
+client/src/components/AudioPreview.tsx-27-          setPreviewTitle(first.title || "Erste Lektion");
+client/src/components/AzavPdfExport.tsx:20:      const res = await fetch(`/api/owner/azav-report?${params}`, {
+client/src/components/AzavPdfExport.tsx-21-        credentials: "include",
+client/src/components/AzavPdfExport.tsx-22-        headers: { "x-owner-key": ownerKey }
+client/src/components/AzavPdfExport.tsx-23-      });
+client/src/components/AzavPdfExport.tsx-24-      const data = await res.json();
+client/src/components/AzavPdfExport.tsx-25-
+client/src/components/InspectBanner.tsx:22:    fetch("/api/auth/me", { credentials: "include" })
+client/src/components/InspectBanner.tsx-23-      .then(r => r.json())
+client/src/components/InspectBanner.tsx-24-      .then(user => {
+client/src/components/InspectBanner.tsx-25-        if (user?.role === "admin") window.location.href = "/admin";
+client/src/components/InspectBanner.tsx-26-        else window.location.href = "/modul/1";
+client/src/components/InspectBanner.tsx-27-      })
+client/src/components/ComplaintForm.tsx:93:            onClick={() => submitComplaint.mutate({ subject, description })}
+client/src/components/ComplaintForm.tsx-94-            className="w-full py-2 bg-red-600 text-white font-medium rounded-lg disabled:opacity-50 hover:bg-red-700 transition-colors text-sm"
+client/src/components/ComplaintForm.tsx-95-          >
+client/src/components/ComplaintForm.tsx-96-            {submitComplaint.isPending ? "Wird eingereicht…" : "Beschwerde einreichen"}
+client/src/components/ComplaintForm.tsx-97-          </button>
+client/src/components/ComplaintForm.tsx-98-        </div>
+client/src/components/AITutor.tsx:78:      const res = await fetch("/api/ai/rag-tutor", {
+client/src/components/AITutor.tsx-79-        method: "POST",
+client/src/components/AITutor.tsx-80-        headers: { "Content-Type": "application/json" },
+client/src/components/AITutor.tsx-81-        body: JSON.stringify({
+client/src/components/AITutor.tsx-82-          question: userMessage,
+client/src/components/AITutor.tsx-83-          moduleId: moduleId || null,
+client/src/components/AIQuizCase.tsx:50:    evaluateMutation.mutate({
+client/src/components/AIQuizCase.tsx-51-      caseId: quizCase.id,
+client/src/components/AIQuizCase.tsx-52-      userAnswer: userAnswer.trim(),
+client/src/components/AIQuizCase.tsx-53-      correctAnswer: quizCase.correctAnswer,
+client/src/components/AIQuizCase.tsx-54-      legalContext: quizCase.legalContext,
+client/src/components/AIQuizCase.tsx-55-      question: quizCase.question,
+client/src/components/AIAssistant.tsx:103:          const res = await fetch("/api/ai/transcribe", {
+client/src/components/AIAssistant.tsx-104-            method: "POST",
+client/src/components/AIAssistant.tsx-105-            headers: { "Content-Type": "audio/webm" },
+client/src/components/AIAssistant.tsx-106-            body: blob,
+client/src/components/AIAssistant.tsx-107-          });
+client/src/components/AIAssistant.tsx-108-          const data = await res.json();
+client/src/components/AIAssistant.tsx:142:      const res = await fetch(`/api/tts`, {
+client/src/components/AIAssistant.tsx-143-        method: "POST",
+client/src/components/AIAssistant.tsx-144-        credentials: "include",
+client/src/components/AIAssistant.tsx-145-        headers: {
+client/src/components/AIAssistant.tsx-146-          "Content-Type": "application/json",
+client/src/components/AIAssistant.tsx-147-          "Accept": "audio/mpeg",
+client/src/components/AIAssistant.tsx:188:      const res = await fetch("/api/ai/analyze-document", {
+client/src/components/AIAssistant.tsx-189-        method: "POST",
+client/src/components/AIAssistant.tsx-190-        headers: {
+client/src/components/AIAssistant.tsx-191-          "Content-Type": file.type || "application/octet-stream",
+client/src/components/AIAssistant.tsx-192-          "x-filename": file.name,
+client/src/components/AIAssistant.tsx-193-        },
+client/src/components/AIAssistant.tsx:232:      const res = await fetch("/api/ai/rag-tutor", {
+client/src/components/AIAssistant.tsx-233-        method: "POST",
+client/src/components/AIAssistant.tsx-234-        headers: { "Content-Type": "application/json" },
+client/src/components/AIAssistant.tsx-235-        body: JSON.stringify({ question: q, moduleId, context }),
+client/src/components/AIAssistant.tsx-236-      });
+client/src/components/AIAssistant.tsx-237-      const data = await res.json();
+client/src/components/layout/DashboardLayout.tsx:556:            onClick={() => logoutMutation.mutate()}
+client/src/components/layout/DashboardLayout.tsx-557-            className={`w-full border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white ${isCollapsed ? "px-0" : ""}`}
+client/src/components/layout/DashboardLayout.tsx-558-          >
+client/src/components/layout/DashboardLayout.tsx-559-            <LogOut className={`h-4 w-4 ${isCollapsed ? "" : "mr-2"}`} />
+client/src/components/layout/DashboardLayout.tsx-560-            {!isCollapsed && "Abmelden"}
+client/src/components/layout/DashboardLayout.tsx-561-          </Button>
