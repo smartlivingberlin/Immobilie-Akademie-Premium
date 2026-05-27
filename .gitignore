@@ -170,3 +170,4 @@ test-results/
 tests/reports/
 test-results/
 tests/reports/
+tests/e2e/.auth-state.json
