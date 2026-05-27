@@ -75,7 +75,7 @@ function AnimatedStat({ n, suffix, label, sub }: { n:number; suffix:string; labe
   const { count, ref } = useCountUp(n);
   return (
     <div ref={ref} className="text-center rounded-2xl bg-background border border-border p-6 shadow-soft">
-      <div className="font-display text-4xl font-semibold text-primary mb-1">
+      <div className="font-display text-4xl font-semibold text-primary mb-1 will-change-transform">
         {count}{suffix}
       </div>
       <div className="font-medium text-foreground text-sm">{label}</div>
@@ -174,6 +174,7 @@ export default function Home() {
           <div className="hidden lg:block">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl" style={{aspectRatio:"4/3"}}>
               <img src={IMAGES.hero} alt="Professioneller Immobilienmakler im Berliner Büro"
+                   width={1024} height={1024}
                    className="w-full h-full object-cover" loading="eager" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 text-white text-sm font-semibold
@@ -253,7 +254,7 @@ export default function Home() {
             {MODULES.map(m=>(
               <div key={m.id} className="rounded-2xl border border-border bg-card overflow-hidden shadow-soft hover:shadow-elegant transition-all hover:-translate-y-1 flex flex-col group">
                 <div className="relative h-44 w-full overflow-hidden">
-                  <img loading="lazy" src={IMAGES[`modul${m.id}` as keyof typeof IMAGES]} alt={m.title} className="w-full h-full object-cover" />
+                  <img loading="lazy" src={IMAGES[`modul${m.id}` as keyof typeof IMAGES]} alt={m.title} width={800} height={600} className="w-full h-full object-cover" />
                   <span className="absolute top-3 right-3 text-xs font-semibold px-2.5 py-1 rounded-full shadow-lg"
                     style={{background:m.farbe,color:m.textFarbe}}>{m.badge}</span>
                 </div>

@@ -58,6 +58,17 @@ export default function Foerderung() {
             Zu den Kursen <ArrowRight className="h-4 w-4"/>
           </Link>
         </div>
+
+        <div className="mt-12 text-center space-y-6">
+          <Link to="/">
+            <button className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg transition-all transform hover:scale-105">
+              Jetzt kostenlos testen
+            </button>
+          </Link>
+          <p className="text-slate-600 text-sm">
+            Wir helfen Ihnen bei der Antragstellung: <a href="mailto:info@immobilien-akademie-smart.de" className="text-blue-600 hover:underline font-medium">info@immobilien-akademie-smart.de</a>
+          </p>
+        </div>
       </div>
     </div>
   );

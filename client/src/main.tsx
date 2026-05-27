@@ -18,7 +18,14 @@ import { registerServiceWorker } from "./lib/registerSW";
 import { WhiteLabelProvider } from "@/contexts/WhiteLabelContext";
 
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+      throwOnError: false,
+    },
+  },
+});
 
 const redirectToLoginIfUnauthorized = (error: unknown) => {
   if (!(error instanceof TRPCClientError)) return;

@@ -175,7 +175,7 @@ const navigation: NavigationItem[] = [
           {!isCollapsed && (
             <div className="flex items-center gap-3">
               {logoUrl ? (
-                <img src={logoUrl} alt={companyName} className="h-8 w-8 rounded-lg object-contain" />
+                <img src={logoUrl} alt={companyName} width={32} height={32} className="h-8 w-8 rounded-lg object-contain" />
               ) : (
                 <div className="p-1.5 rounded-lg" style={{ backgroundColor: primaryColor || '#2563eb' }}>
                   <GraduationCap className="h-6 w-6 text-white" />
@@ -189,7 +189,7 @@ const navigation: NavigationItem[] = [
           )}
           {isCollapsed && (
             logoUrl ? (
-              <img src={logoUrl} alt={companyName} className="h-8 w-8 rounded-lg object-contain" />
+              <img src={logoUrl} alt={companyName} width={32} height={32} className="h-8 w-8 rounded-lg object-contain" />
             ) : (
               <div className="p-1.5 rounded-lg" style={{ backgroundColor: primaryColor || '#2563eb' }}>
                 <GraduationCap className="h-6 w-6 text-white" />
