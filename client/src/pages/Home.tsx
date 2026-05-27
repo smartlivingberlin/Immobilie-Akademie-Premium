@@ -9,11 +9,11 @@ import {
 } from "lucide-react";
 
 const MODULES = [
-  { id:1, title:"Modul 1: Immobilien-Grundkurs", kurz:"Das Fundament", preis:"149", tage:20, ue:160, slug:"modul-1-immobilien-grundkurs", desc:"Grundstücksrecht, Grundbuch, Baurecht, Wertermittlung — die Pflichtbasis für alle weiteren Module.", badge:"Einstieg", farbe:"#1d4ed8", textFarbe:"white" },
-  { id:2, title:"Modul 2: Makler §34c GewO", kurz:"Die Lizenz", preis:"499", tage:60, ue:480, slug:"modul-2-makler-34c", desc:"Maklerrecht, Provision, Exposé, Kaufvertrag, GwG, MaBV — alles für die IHK-Sachkundeprüfung.", badge:"Beliebt", farbe:"#6d28d9", textFarbe:"white" },
-  { id:3, title:"Modul 3: WEG-Verwalter", kurz:"Die Verwaltung", preis:"699", tage:80, ue:640, slug:"modul-3-weg-verwalter", desc:"WEG-Reform 2020, Eigentümerversammlung, Nebenkostenabrechnung, Mietrecht §535ff BGB.", badge:"Vollständig", farbe:"#047857", textFarbe:"white" },
-  { id:4, title:"Modul 4: Gutachter", kurz:"Die Bewertung", preis:"399", tage:40, ue:320, slug:"modul-4-gutachter", desc:"ImmoWertV 2021: Vergleichs-, Ertrags- und Sachwertverfahren. HypZert-Vorbereitung.", badge:"Präzise", farbe:"#b45309", textFarbe:"white" },
-  { id:5, title:"Modul 5: §34i GewO", kurz:"Die Finanzierung", preis:"499", tage:40, ue:320, slug:"modul-5-34i-darlehensvermittler", desc:"Annuitätendarlehen, KfW-Förderung, EU-WIKR, ESIS-Merkblatt — Ihre Finanzierungslizenz.", badge:"Komplett", farbe:"#9d174d", textFarbe:"white" },
+  { id:1, title:"Modul 1: Immobilien-Grundkurs", kurz:"Das Fundament", preis:"149", tage:20, ue:160, slug:"modul-1-immobilien-grundkurs", desc:"Grundstücksrecht, Grundbuch, Baurecht, Wertermittlung — die Pflichtbasis für alle weiteren Module.", badge:"Einstieg", farbe:"#1d4ed8", textFarbe:"white", w:800, h:601 },
+  { id:2, title:"Modul 2: Makler §34c GewO", kurz:"Die Lizenz", preis:"499", tage:60, ue:480, slug:"modul-2-makler-34c", desc:"Maklerrecht, Provision, Exposé, Kaufvertrag, GwG, MaBV — alles für die IHK-Sachkundeprüfung.", badge:"Beliebt", farbe:"#6d28d9", textFarbe:"white", w:800, h:534 },
+  { id:3, title:"Modul 3: WEG-Verwalter", kurz:"Die Verwaltung", preis:"699", tage:80, ue:640, slug:"modul-3-weg-verwalter", desc:"WEG-Reform 2020, Eigentümerversammlung, Nebenkostenabrechnung, Mietrecht §535ff BGB.", badge:"Vollständig", farbe:"#047857", textFarbe:"white", w:800, h:450 },
+  { id:4, title:"Modul 4: Gutachter", kurz:"Die Bewertung", preis:"399", tage:40, ue:320, slug:"modul-4-gutachter", desc:"ImmoWertV 2021: Vergleichs-, Ertrags- und Sachwertverfahren. HypZert-Vorbereitung.", badge:"Präzise", farbe:"#b45309", textFarbe:"white", w:800, h:533 },
+  { id:5, title:"Modul 5: §34i GewO", kurz:"Die Finanzierung", preis:"499", tage:40, ue:320, slug:"modul-5-34i-darlehensvermittler", desc:"Annuitätendarlehen, KfW-Förderung, EU-WIKR, ESIS-Merkblatt — Ihre Finanzierungslizenz.", badge:"Komplett", farbe:"#9d174d", textFarbe:"white", w:800, h:533 },
 ];
 
 const STATS = [
@@ -75,7 +75,7 @@ function AnimatedStat({ n, suffix, label, sub }: { n:number; suffix:string; labe
   const { count, ref } = useCountUp(n);
   return (
     <div ref={ref} className="text-center rounded-2xl bg-background border border-border p-6 shadow-soft">
-      <div className="font-display text-4xl font-semibold text-primary mb-1">
+      <div className="font-display text-4xl font-semibold text-primary mb-1" style={{ willChange: "transform" }}>
         {count}{suffix}
       </div>
       <div className="font-medium text-foreground text-sm">{label}</div>
@@ -174,6 +174,7 @@ export default function Home() {
           <div className="hidden lg:block">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl" style={{aspectRatio:"4/3"}}>
               <img src={IMAGES.hero} alt="Professioneller Immobilienmakler im Berliner Büro"
+                   width={1024} height={1024}
                    className="w-full h-full object-cover" loading="eager" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 text-white text-sm font-semibold
@@ -253,7 +254,7 @@ export default function Home() {
             {MODULES.map(m=>(
               <div key={m.id} className="rounded-2xl border border-border bg-card overflow-hidden shadow-soft hover:shadow-elegant transition-all hover:-translate-y-1 flex flex-col group">
                 <div className="relative h-44 w-full overflow-hidden">
-                  <img loading="lazy" src={IMAGES[`modul${m.id}` as keyof typeof IMAGES]} alt={m.title} className="w-full h-full object-cover" />
+                  <img loading="lazy" src={IMAGES[`modul${m.id}` as keyof typeof IMAGES]} alt={m.title} width={m.w} height={m.h} className="w-full h-full object-cover" />
                   <span className="absolute top-3 right-3 text-xs font-semibold px-2.5 py-1 rounded-full shadow-lg"
                     style={{background:m.farbe,color:m.textFarbe}}>{m.badge}</span>
                 </div>

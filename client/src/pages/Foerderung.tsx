@@ -49,7 +49,7 @@ export default function Foerderung() {
           })}
         </div>
 
-        <div className="bg-blue-600 rounded-xl p-6 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="bg-blue-600 rounded-xl p-6 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
           <div>
             <h3 className="font-semibold text-lg mb-1">Sofort starten — steuerlich absetzbar</h3>
             <p className="text-blue-100 text-sm">Alle Kursgebühren sind vollständig von der Steuer absetzbar.</p>
@@ -57,6 +57,20 @@ export default function Foerderung() {
           <Link to="/kurse" className="inline-flex items-center gap-2 bg-white text-blue-700 font-semibold px-4 py-2.5 rounded-lg hover:bg-blue-50 transition-colors flex-shrink-0">
             Zu den Kursen <ArrowRight className="h-4 w-4"/>
           </Link>
+        </div>
+
+        <div className="text-center bg-slate-100 rounded-xl p-8 border border-slate-200">
+          <h3 className="text-xl font-bold text-slate-900 mb-3">Bereit für den nächsten Schritt?</h3>
+          <p className="text-slate-600 mb-6">Testen Sie unser Lernportal völlig unverbindlich.</p>
+          <Link to="/" className="inline-flex items-center gap-2 bg-blue-600 text-white font-bold px-8 py-4 rounded-xl hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-200 mb-6">
+            Jetzt kostenlos testen <ArrowRight className="h-5 w-5"/>
+          </Link>
+          <div className="pt-6 border-t border-slate-200">
+            <p className="text-sm text-slate-500 font-medium">Wir helfen Ihnen bei der Antragstellung:</p>
+            <a href="mailto:info@immobilien-akademie-smart.de" className="text-blue-600 font-bold hover:underline">
+              info@immobilien-akademie-smart.de
+            </a>
+          </div>
         </div>
       </div>
     </div>

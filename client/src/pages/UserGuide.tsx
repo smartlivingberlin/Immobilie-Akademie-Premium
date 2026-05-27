@@ -112,22 +112,24 @@ export default function UserGuide() {
         <Card className="border-slate-200 shadow-sm bg-gradient-to-r from-emerald-50 to-blue-50">
           <CardContent className="p-6">
             <h3 className="text-lg font-bold text-slate-900 mb-4">Schnellzugriff</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Link href="/">
-<div className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer border border-input bg-transparent hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">
-                  Zur Startseite
-                </div>
-</Link>
-              <Link href="/modul/3">
-<div className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer border border-input bg-transparent hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">
-                  Zu Modul 3
-                </div>
-</Link>
-              <Link href="/glossary">
-<div className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer border border-input bg-transparent hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">
-                  Zum Glossar
-                </div>
-</Link>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              {[
+                { label: "Modul 1: Grundkurs", href: "/modul/1" },
+                { label: "Modul 2: Makler §34c", href: "/modul/2" },
+                { label: "Modul 3: WEG-Verwalter", href: "/modul/3" },
+                { label: "Modul 4: Gutachter", href: "/modul/4" },
+                { label: "Modul 5: Finanzierung", href: "/modul/5" },
+                { label: "Lernstatistiken", href: "/statistiken" },
+                { label: "Übungs-Quiz", href: "/quiz" },
+                { label: "IHK-Prüfung", href: "/pruefung" },
+                { label: "Zertifikate", href: "/zertifikate" },
+              ].map((link) => (
+                <Link key={link.href} href={link.href}>
+                  <div className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer border border-input bg-white/50 hover:bg-white hover:text-accent-foreground h-10 px-4 py-2 w-full justify-start">
+                    {link.label}
+                  </div>
+                </Link>
+              ))}
             </div>
           </CardContent>
         </Card>
