@@ -77,7 +77,7 @@ export default function Calculators() {
               Diese Rechner sind speziell für die Ausbildung zum Darlehensvermittler (§34i GewO) entwickelt worden
               und helfen Ihnen, die wichtigsten Finanzierungsberechnungen zu verstehen und durchzuführen.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mt-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-6">
               <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-md">
                 <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Annuität</h3>
                 <p className="text-sm text-blue-800 dark:text-blue-200">
@@ -97,7 +97,7 @@ export default function Calculators() {
                 </p>
               </div>
               <div className="p-4 bg-red-50 dark:bg-red-950 rounded-md">
-                <h3 className="font-semibold text-red-900 dark:text-red-100 mb-2">Vorfälligkeitsentschädigung</h3>
+                <h3 className="font-semibold text-red-900 dark:text-red-100 mb-2">Vorfälligkeit (VFE)</h3>
                 <p className="text-sm text-red-800 dark:text-red-200">
                   Berechnet die VFE bei vorzeitiger Darlehensrückzahlung nach der Aktuar-Methode.
                 </p>
