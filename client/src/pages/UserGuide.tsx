@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, BookOpen, Download, Printer, LogIn, PlayCircle, Brain, Award, HelpCircle, Mail } from "lucide-react";
-import DashboardLayout from "@/components/layout/DashboardLayout";
+
 
 const QUICK_LINKS = [
   { href: "/statistiken", label: "Mein Dashboard" },
@@ -73,8 +73,7 @@ export default function UserGuide() {
   };
 
   return (
-    <DashboardLayout>
-      <div className="max-w-5xl mx-auto space-y-6">
+    <div className="max-w-5xl mx-auto px-4 py-8 space-y-6">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="flex items-center gap-4">
@@ -261,7 +260,6 @@ export default function UserGuide() {
             </div>
           </CardContent>
         </Card>
-      </div>
-    </DashboardLayout>
+    </div>
   );
 }
