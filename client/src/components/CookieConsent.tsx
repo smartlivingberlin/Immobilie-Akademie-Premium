@@ -37,8 +37,17 @@ export default function CookieConsent() {
     // Check if user has already made a choice
     const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
     if (!consent) {
-      // Show banner after a short delay for better UX
-      setTimeout(() => setShowBanner(true), 5000);
+      // Banner nach Scroll (300px) ODER nach 10 Sekunden
+      let shown = false;
+      const show = () => {
+        if (shown) return;
+        shown = true;
+        setShowBanner(true);
+        window.removeEventListener('scroll', onScroll);
+      };
+      const onScroll = () => { if (window.scrollY > 300) show(); };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      setTimeout(show, 10000);
     } else {
       // Load saved preferences
       const savedPreferences = localStorage.getItem(COOKIE_PREFERENCES_KEY);
