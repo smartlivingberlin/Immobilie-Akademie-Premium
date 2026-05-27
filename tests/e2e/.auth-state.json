@@ -1,0 +1,15 @@
+{
+  "cookies": [
+    {
+      "name": "app_session_id",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcGVuSWQiOiJsb2NhbDpwbGF5d3JpZ2h0QHRlc3QuZGUiLCJhcHBJZCI6ImxvY2FsIiwibmFtZSI6IlBsYXl3cmlnaHQgVGVzdCIsImV4cCI6MTc4MjI0MDM5M30.Xl34h4YqeezzcTrVLujVnc3O_u0nMrRyMjefNknx2tM",
+      "domain": "immobilie-akademie-premium-production.up.railway.app",
+      "path": "/",
+      "expires": 1782240393,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}

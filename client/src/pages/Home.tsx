@@ -33,12 +33,12 @@ const FEATURES = [
 ];
 
 const IMAGES = {
-  hero: "/images/hero.webp",
-  modul1: "/images/modul1.jpg",
-  modul2: "/images/modul2.jpg",
-  modul3: "/images/modul3.jpg",
-  modul4: "/images/modul4.jpg",
-  modul5: "/images/modul5.jpg",
+  hero: "/images/hero_opt.webp",
+  modul1: "/images/modul1.webp",
+  modul2: "/images/modul2.webp",
+  modul3: "/images/modul3.webp",
+  modul4: "/images/modul4.webp",
+  modul5: "/images/modul5.webp",
 };
 
 // Animierter Zaehler-Hook
