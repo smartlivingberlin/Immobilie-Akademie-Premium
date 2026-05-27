@@ -38,7 +38,7 @@ export default function CookieConsent() {
     const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
     if (!consent) {
       // Show banner after a short delay for better UX
-      setTimeout(() => setShowBanner(true), 2000);
+      setTimeout(() => setShowBanner(true), 5000);
     } else {
       // Load saved preferences
       const savedPreferences = localStorage.getItem(COOKIE_PREFERENCES_KEY);
@@ -88,7 +88,7 @@ export default function CookieConsent() {
   return (
     <>
       {/* Cookie Banner */}
-      <div className="fixed bottom-4 right-4 z-30 p-0 animate-in slide-in-from-bottom duration-500 max-w-xs w-full">
+      <div className="fixed bottom-4 right-4 z-50 p-0 animate-in slide-in-from-bottom duration-500 max-w-sm w-full">
         <Card className="shadow-xl border">
           <CardHeader className="pb-3">
             <div className="flex items-start justify-between gap-4">
