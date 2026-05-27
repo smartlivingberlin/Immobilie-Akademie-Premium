@@ -79,7 +79,7 @@ app.use(helmet({
       ],
       styleSrc: ["'self'", "'unsafe-inline'"],
       imgSrc: ["'self'", "data:", "https:", "blob:", "https://img.youtube.com"],
-      connectSrc: ["'self'", "https://api.stripe.com", "https://api.anthropic.com", "https://generativelanguage.googleapis.com", "https://plausible.io"],
+      connectSrc: ["'self'", "https://api.stripe.com", "https://api.anthropic.com", "https://generativelanguage.googleapis.com", "https://plausible.io", "https://*.sentry.io"],
       frameSrc: ["'self'", "https://js.stripe.com", "https://plausible.io", "https://hooks.stripe.com", "https://www.youtube.com", "https://youtube.com"],
       fontSrc: ["'self'", "data:"],
       objectSrc: ["'none'"],
