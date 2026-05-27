@@ -13,7 +13,7 @@ export default function Calculators() {
       <div className="max-w-6xl mx-auto space-y-8">
         {/* Header */}
         <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold text-slate-900 dark:text-slate-100">
+          <h1 className="text-2xl md:text-4xl font-bold text-slate-900 dark:text-slate-100">
             Finanzierungsrechner
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
@@ -23,10 +23,10 @@ export default function Calculators() {
 
         {/* Calculators Tabs */}
         <Tabs defaultValue="annuity" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 mb-8">
+          <TabsList className="grid w-full grid-cols-3 md:grid-cols-5 mb-8">
             <TabsTrigger value="annuity" className="flex items-center gap-2">
               <Calculator className="w-4 h-4" />
-              Annuitätenrechner
+              Annuität
             </TabsTrigger>
             <TabsTrigger value="schedule" className="flex items-center gap-2">
               <FileText className="w-4 h-4" />
@@ -34,7 +34,7 @@ export default function Calculators() {
             </TabsTrigger>
             <TabsTrigger value="ltv" className="flex items-center gap-2">
               <Home className="w-4 h-4" />
-              Beleihungsauslauf
+              Beleihung
             </TabsTrigger>
             <TabsTrigger value="vfe" className="flex items-center gap-2">
               <AlertCircle className="w-4 h-4" />
@@ -42,7 +42,7 @@ export default function Calculators() {
             </TabsTrigger>
             <TabsTrigger value="haushalt" className="flex items-center gap-2">
               <Wallet className="w-4 h-4" />
-              Haushaltsrechner
+              Haushalt
             </TabsTrigger>
           </TabsList>
 
@@ -79,7 +79,7 @@ export default function Calculators() {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mt-6">
               <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-md">
-                <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Annuitätenrechner</h3>
+                <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Annuität</h3>
                 <p className="text-sm text-blue-800 dark:text-blue-200">
                   Berechnet die monatliche Rate, Gesamtzinsen und Effektivzins für ein Annuitätendarlehen.
                 </p>
@@ -91,7 +91,7 @@ export default function Calculators() {
                 </p>
               </div>
               <div className="p-4 bg-purple-50 dark:bg-purple-950 rounded-md">
-                <h3 className="font-semibold text-purple-900 dark:text-purple-100 mb-2">Beleihungsauslauf</h3>
+                <h3 className="font-semibold text-purple-900 dark:text-purple-100 mb-2">Beleihung</h3>
                 <p className="text-sm text-purple-800 dark:text-purple-200">
                   Berechnet den Beleihungsauslauf (LTV) und die Eigenkapitalquote für eine Immobilienfinanzierung.
                 </p>
@@ -103,7 +103,7 @@ export default function Calculators() {
                 </p>
               </div>
               <div className="p-4 bg-green-50 dark:bg-green-950 rounded-md">
-                <h3 className="font-semibold text-green-900 dark:text-green-100 mb-2">Haushaltsrechner</h3>
+                <h3 className="font-semibold text-green-900 dark:text-green-100 mb-2">Haushalt</h3>
                 <p className="text-sm text-green-800 dark:text-green-200">
                   Ermittelt das verfügbare Einkommen und die maximale Darlehensrate für Finanzierungen.
                 </p>

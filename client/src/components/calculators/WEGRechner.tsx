@@ -42,8 +42,8 @@ export function WEGRechner() {
         <Tabs defaultValue="hausgeld">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="hausgeld">Hausgeld</TabsTrigger>
-            <TabsTrigger value="ruecklage">Instandhaltungsrücklage</TabsTrigger>
-            <TabsTrigger value="umlage">Umlageschlüssel</TabsTrigger>
+            <TabsTrigger value="ruecklage">Rücklage</TabsTrigger>
+            <TabsTrigger value="umlage">Umlage</TabsTrigger>
           </TabsList>
           <TabsContent value="hausgeld" className="space-y-6 mt-6">
             <Alert><Info className="h-4 w-4" /><AlertDescription>Berechnung des Hausgeldes nach Miteigentumsanteil gemäß § 16 Abs. 2 WEG.</AlertDescription></Alert>

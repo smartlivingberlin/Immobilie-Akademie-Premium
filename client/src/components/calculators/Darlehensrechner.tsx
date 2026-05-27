@@ -51,7 +51,7 @@ export function Darlehensrechner() {
       <CardContent>
         <Tabs defaultValue="annuitaet">
           <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="annuitaet">Annuitätendarlehen</TabsTrigger>
+            <TabsTrigger value="annuitaet">Annuität</TabsTrigger>
             <TabsTrigger value="tilgungsplan">Tilgungsplan</TabsTrigger>
             <TabsTrigger value="sondertilgung">Sondertilgung</TabsTrigger>
           </TabsList>
