@@ -43,7 +43,7 @@ export function registerOwnerRoutes(app: Express) {
       const cookieOptions = getSessionCookieOptions(req);
       const maxAge = validHours * 60 * 60 * 1000;
       res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge });
-      res.cookie("tester_expires", expiresAt.toISOString(), { httpOnly: false, sameSite: "lax", path: "/", maxAge });
+      res.cookie("tester_expires", expiresAt.toISOString(), { httpOnly: true, sameSite: "lax", path: "/", maxAge });
       return res.json({ ok: true, redirect: "/admin", expiresAt: expiresAt.toISOString() });
     } catch (e: any) {
       return res.status(500).json({ error: e.message });
@@ -63,7 +63,7 @@ export function registerOwnerRoutes(app: Express) {
       const token = await createSessionToken(openId, "Alisad (Owner)", "admin", "1,2,3,4,5");
       const cookieOptions = getSessionCookieOptions(req);
       res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
-      res.cookie("owner_2fa_ok", "1", { httpOnly: false, sameSite: "lax", path: "/", maxAge: 8 * 60 * 60 * 1000 });
+      res.cookie("owner_2fa_ok", "1", { httpOnly: true, sameSite: "lax", path: "/", maxAge: 8 * 60 * 60 * 1000 });
       return res.redirect(redir || "/owner-dashboard");
     }
     // 2FA erforderlich — weiterleiten zu 2FA-Formular
@@ -135,7 +135,7 @@ ${isTotp ? `<form method="POST" action="/api/owner/verify-2fa-form">
     const token = await createSessionToken(openId, "Alisad (Owner)", "admin", "1,2,3,4,5");
     const cookieOptions = getSessionCookieOptions(req);
     res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
-    res.cookie("owner_2fa_ok", "1", { httpOnly: false, sameSite: "lax", path: "/", maxAge: 8 * 60 * 60 * 1000 });
+    res.cookie("owner_2fa_ok", "1", { httpOnly: true, sameSite: "lax", path: "/", maxAge: 8 * 60 * 60 * 1000 });
     return res.redirect(redir || "/owner-dashboard");
   });
 
@@ -158,7 +158,7 @@ ${isTotp ? `<form method="POST" action="/api/owner/verify-2fa-form">
     const token = await createSessionToken(openId, "Alisad (Owner)", "admin", "1,2,3,4,5");
     const cookieOptions = getSessionCookieOptions(req);
     res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
-    res.cookie("owner_2fa_ok", "1", { httpOnly: false, sameSite: "lax", path: "/", maxAge: 8 * 60 * 60 * 1000 });
+    res.cookie("owner_2fa_ok", "1", { httpOnly: true, sameSite: "lax", path: "/", maxAge: 8 * 60 * 60 * 1000 });
     return res.json({ ok: true, redirect: redir || "/admin" });
   });
 
@@ -286,7 +286,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
       const ownerCode = process.env.OWNER_MAGIC_CODE || ENV.ownerMagicCode;
       // Setze inspect_mode Cookie zuerst
       res.cookie("inspect_mode", "1", {
-        httpOnly: false,
+        httpOnly: true,
         sameSite: "lax",
         path: "/",
         maxAge: 72 * 60 * 60 * 1000

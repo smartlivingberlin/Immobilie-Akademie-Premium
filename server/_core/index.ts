@@ -1,6 +1,26 @@
 import * as Sentry from "@sentry/node";
 if (process.env.SENTRY_DSN) {
-  Sentry.init({ dsn: process.env.SENTRY_DSN, tracesSampleRate: 0.1 });
+  Sentry.init({
+    dsn: process.env.SENTRY_DSN,
+    tracesSampleRate: 0.1,
+    beforeSend(event) {
+      if (event.request) {
+        delete event.request.data;
+        delete event.request.cookies;
+        delete event.request.query_string;
+        if (event.request.headers) {
+          delete event.request.headers["authorization"];
+          delete event.request.headers["cookie"];
+        }
+      }
+      if (event.user) {
+        delete event.user.email;
+        delete event.user.username;
+        delete event.user.ip_address;
+      }
+      return event;
+    },
+  });
 }
 
 import "./polyfills";
@@ -530,6 +550,14 @@ app.get("/api/user/export", resetLimiter, requireAuth, async (req: any, res: any
     const [progress] = await db.$client.query(`SELECT * FROM learning_logs WHERE userId = ?`, [userId]) as any;
     const [exams] = await db.$client.query(`SELECT * FROM exam_sessions WHERE userId = ?`, [userId]) as any;
     const [certs] = await db.$client.query(`SELECT * FROM certificates WHERE userId = ?`, [userId]) as any;
+    const [chatsExport] = await db.$client.query(
+      `SELECT id, moduleId, createdAt FROM chat_conversations WHERE userId = ? ORDER BY createdAt DESC`,
+      [userId]
+    ) as any;
+    const [srExport] = await db.$client.query(
+      `SELECT questionId, easinessFactor, interval, repetitions, nextReviewAt FROM spaced_repetition WHERE userId = ?`,
+      [userId]
+    ) as any;
 
     const exportData = {
       exportDate: new Date().toISOString(),
@@ -540,6 +568,8 @@ app.get("/api/user/export", resetLimiter, requireAuth, async (req: any, res: any
         learningProgress: progress || [],
         exams: exams || [],
         certificates: certs || [],
+        aiConversations: chatsExport || [],
+        spacedRepetition: srExport || [],
       }
     };
 

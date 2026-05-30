@@ -7,7 +7,7 @@
  * Sicherheit: PBKDF2-SHA256 (built-in Node.js crypto), JWT via jose
  */
 
-import { randomBytes, pbkdf2Sync } from "crypto";
+import { randomBytes, pbkdf2Sync, timingSafeEqual } from "crypto";
 import { logger } from "./logger";
 import { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
 import type { Express, Request, Response } from "express";
@@ -47,7 +47,7 @@ export function hashPassword(password: string, salt?: string): { hash: string; s
  */
 export function verifyPassword(password: string, storedHash: string, storedSalt: string): boolean {
   const { hash } = hashPassword(password, storedSalt);
-  return hash === storedHash;
+  return timingSafeEqual(Buffer.from(hash, "hex"), Buffer.from(storedHash, "hex"));
 }
 
 // ── JWT Session ───────────────────────────────────────────────────────────────
