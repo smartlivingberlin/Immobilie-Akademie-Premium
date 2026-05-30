@@ -83,7 +83,7 @@ async function startServer() {
     next();
   });
   app.use((_req, res, next) => {
-  res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+  res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload");
   res.setHeader("X-Frame-Options", "SAMEORIGIN");
   next();
 });
