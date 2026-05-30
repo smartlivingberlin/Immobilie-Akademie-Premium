@@ -4,6 +4,7 @@ import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { trpc } from "@/lib/trpc";
 import { Toaster } from "@/components/ui/toaster";
 import DashboardLayout from "@/components/layout/DashboardLayout";
+import Footer from "@/components/layout/Footer";
 import ModuleGuard from "@/components/ModuleGuard";
 import { usePageTracking } from "@/hooks/useAnalytics";
 
@@ -158,7 +159,10 @@ function PublicLayout({ children }: { children: React.ReactNode }) {
       <Toaster />
       <Suspense fallback={null}><CookieConsent /></Suspense>
       <Suspense fallback={null}><StructuredData /></Suspense>
-      {children}
+      <div style={{display:'flex',flexDirection:'column',minHeight:'100vh'}}>
+        <div style={{flex:'1 0 auto'}}>{children}</div>
+        <Footer />
+      </div>
     </>
   );
 }
