@@ -235,6 +235,14 @@ export default defineConfig({
           ) return "vendor-ui-extras";
 
           // ── 12. General utilities (everything else from node_modules) ────────
+          // PDF/canvas/highlight/sentry: lazy — kein fester Chunk
+          if (
+            id.includes("node_modules/jspdf") ||
+            id.includes("node_modules/html2canvas") ||
+            id.includes("node_modules/pdfjs-dist") ||
+            id.includes("node_modules/highlight.js") ||
+            id.includes("node_modules/@sentry")
+          ) return undefined;
           if (id.includes("node_modules")) return "vendor-react-utils";
 
           // ── 10. Exam / quiz question data ────────────────────────────────────
