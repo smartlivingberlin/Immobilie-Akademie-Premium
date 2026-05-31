@@ -95,8 +95,8 @@ ALLGEMEINE IMMOBILIENWIRTSCHAFT:
 - Maklercourtage: je 3,57% inkl. MwSt (§656c BGB seit 23.12.2020)
 - Grunderwerbsteuer: Berlin 6%, Bayern 3,5%, NRW 6,5%
 - Notarkosten: ca. 1,5% des Kaufpreises
-- IHK-Sachkundeprüfung §34c: schriftlich 120 Min
-- IHK-Sachkundeprüfung §34i: schriftlich 120 Min
+- Fach- und Praxisvorbereitung §34c GewO (Maklererlaubnis, Weiterbildung nach MaBV, keine IHK-Sachkundeprüfung)
+- IHK-Sachkundeprüfung §34i GewO: schriftlich 120 Min (echte IHK-Sachkunde)
 - Widerrufsrecht: 14 Tage ab Vertragsschluss §355 BGB
 - Energieausweis Pflicht: bei Verkauf und Neuvermietung (GEG §80)
 `;
@@ -211,12 +211,12 @@ export function registerRagTutorRoutes(app: Express) {
       const moduleContext = getSmartContext(moduleId, 25000); // Fokussiert, nicht überladen
 
       const systemPrompt = `Du bist ein professioneller KI-Tutor der Immobilien Akademie Smart.
-Deine EINZIGE Aufgabe: Unterstützung bei IHK-Prüfungsvorbereitung für Immobilienberufe
-(§34c Makler, §34i Darlehensvermittler, WEG-Verwalter, Immobilienbewertung).
+Deine EINZIGE Aufgabe: Unterstützung bei der Praxis- und Fachvorbereitung für Immobilienberufe
+(§34c Makler-Praxis und Weiterbildung, §34i IHK-Sachkundeprüfung, WEG-Verwaltung, Immobilienbewertung).
 
 REGELN:
 - Antworte NUR zu Immobilienwirtschaft, Immobilienrecht und Prüfungsvorbereitung.
-- Bei themenfremden Fragen: "Ich bin auf Immobilien-IHK-Vorbereitung spezialisiert. Wie kann ich dir dabei helfen?"
+- Bei themenfremden Fragen: "Ich bin auf Immobilien-Praxiswissen, Weiterbildung §34c und §34i-Sachkunde spezialisiert. Wie kann ich dir dabei helfen?"
 - Keine Rechtsberatung — verweise auf Fachanwälte.
 - Keine Finanzberatung — verweise auf Finanzberater.
 - Paragraphen korrekt zitieren (§ 34c GewO, § 652 BGB etc.).
@@ -662,7 +662,7 @@ Bewerte nach IHK-Maßstäben und antworte NUR mit diesem JSON:
         ? titleTheoryPairs.slice(0, 40).join("\n\n") + "\n\n---\nZUSÄTZLICHE WISSENSBASIS:\n" + smartCtx
         : smartCtx || rawContent.slice(0, 12000);
       const formatInstructions: Record<string, string> = {
-        kursbuch: "Erstelle ein vollständiges professionelles KURSBUCH mit MINDESTENS 5000 Wörtern. Struktur: 1) Vorwort und Lernziele (300 Wörter) 2) Mindestens 8 nummerierte Kapitel je 400-600 Wörter mit Theorie, Praxisbeispielen aus Berlin/Deutschland, Merkkästen mit wichtigen Definitionen 3) Übungsaufgaben am Ende jedes Kapitels mit Musterlösungen 4) Zusammenfassung und IHK-Prüfungsvorbereitung. WICHTIG: Schreibe vollständig und ausführlich — kürze NICHTS ab.",
+        kursbuch: "Erstelle ein vollständiges professionelles KURSBUCH mit MINDESTENS 5000 Wörtern. Struktur: 1) Vorwort und Lernziele (300 Wörter) 2) Mindestens 8 nummerierte Kapitel je 400-600 Wörter mit Theorie, Praxisbeispielen aus Berlin/Deutschland, Merkkästen mit wichtigen Definitionen 3) Übungsaufgaben am Ende jedes Kapitels mit Musterlösungen 4) Zusammenfassung und Prüfungsvorbereitung §34i sowie Praxishinweise §34c. WICHTIG: Schreibe vollständig und ausführlich — kürze NICHTS ab.",
         zusammenfassung: "Erstelle eine vollständige LERNZUSAMMENFASSUNG mit MINDESTENS 2000 Wörtern: 1) Die 30 wichtigsten Begriffe mit ausführlichen Definitionen 2) Alle relevanten Paragraphen mit Erklärung was sie bedeuten 3) Mindestens 15 Merksätze für die Prüfung 4) 20 häufige IHK-Prüfungsfragen mit vollständigen Musterlösungen. Kürze nichts ab.",
         skript: "Erstelle ein vollständiges PRÜFUNGSSKRIPT mit MINDESTENS 3000 Wörtern: 1) 30 IHK-typische Prüfungsfragen im Frage-Antwort-Format mit ausführlichen Musterlösungen 2) Alle prüfungsrelevanten Paragraphen mit Erklärung 3) Rechenwege für Berechnungsaufgaben Schritt für Schritt 4) Tipps für die Prüfungssituation. Vollständig ausschreiben — nichts kürzen.",
       };

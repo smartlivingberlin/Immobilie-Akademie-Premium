@@ -197,7 +197,7 @@ export default function AGB() {
               Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsabschlusses.
             </p>
             <p>
-              Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Immobilien Akademie Smart (Alisad Gadyri), Durlacher Str. 36, 10715 Berlin, info@immobilien-akademie-smart.de, wird ergänzt) 
+              Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Immobilien Akademie Smart, Alisad Gadyri, Durlacher Str. 36, 10715 Berlin, E-Mail: info@immobilien-akademie-smart.de, Telefon: +49 171 1526327) 
               mittels einer eindeutigen Erklärung (z.B. ein mit der Post versandter Brief oder E-Mail) über Ihren 
               Entschluss, diesen Vertrag zu widerrufen, informieren.
             </p>
@@ -296,7 +296,7 @@ export default function AGB() {
                 <p className="text-slate-600 leading-relaxed">
                   Die aktuellen Preise für die einzelnen Module sind:
                   Modul 1: 149,00 EUR, Modul 2: 499,00 EUR, Modul 3: 699,00 EUR,
-                  Modul 4: 399,00 EUR, Modul 5: 499,00 EUR (jeweils inkl. MwSt.).
+                  Modul 4: 399,00 EUR, Modul 5: 499,00 EUR (Endpreise; aufgrund der Kleinunternehmerregelung gemäß § 19 UStG wird keine Umsatzsteuer ausgewiesen). [Steuerberater-Freigabe erforderlich]
                   Alle Preise sind Endpreise. Die Zahlung erfolgt über den Zahlungsdienstleister Stripe.
                   Der Kaufpreis ist sofort bei Vertragsschluss fällig.
                 </p>

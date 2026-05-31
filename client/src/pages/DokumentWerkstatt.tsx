@@ -116,7 +116,7 @@ export default function DokumentWerkstatt({ modulId }: { modulId: number }) {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
         body: JSON.stringify({
-          message: `Bewerte diese Antworten zur Übung "${uebung.titel}" (${uebung.dokumentTyp}):\n\n${fragen}\n\nGib für jede Aufgabe:\n1. Note (1-5)\n2. Was war gut\n3. Was fehlt noch\n\nAm Ende: Gesamtnote und wichtigsten Verbesserungshinweis.`,
+          question: `Bewerte diese Antworten zur Übung "${uebung.titel}" (${uebung.dokumentTyp}):\n\n${fragen}\n\nGib für jede Aufgabe:\n1. Note (1-5)\n2. Was war gut\n3. Was fehlt noch\n\nAm Ende: Gesamtnote und wichtigsten Verbesserungshinweis.`,
           moduleId: String(uebung.modulId),
         }),
       });

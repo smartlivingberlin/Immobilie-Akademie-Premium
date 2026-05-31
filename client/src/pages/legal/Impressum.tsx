@@ -7,7 +7,7 @@ export default function Impressum() {
       <Card>
         <CardHeader>
           <CardTitle className="text-3xl font-bold">Impressum</CardTitle>
-          <p className="text-sm text-muted-foreground mt-2">Angaben gemaess § 5 DDG</p>
+          <p className="text-sm text-muted-foreground mt-2">Angaben gemäß § 5 DDG</p>
         </CardHeader>
         <CardContent className="prose prose-slate max-w-none">
           <h2>Anbieter</h2>
@@ -48,12 +48,12 @@ export default function Impressum() {
 
           <h2>Umsatzsteuer</h2>
           <p className="text-sm text-muted-foreground italic">
-            Kleinunternehmerregelung gemaess § 19 UStG. Es wird keine Umsatzsteuer ausgewiesen.
+            Kleinunternehmerregelung gemäß § 19 UStG. Es wird keine Umsatzsteuer ausgewiesen.
           </p>
 
           <h2>Berufsbezeichnung und berufsrechtliche Regelungen</h2>
           <p>
-            <strong>Taetigkeit:</strong> Betreiber eines Online-Lernportals fuer Immobilienwissen und Weiterbildung<br />
+            <strong>Tätigkeit:</strong> Betreiber eines Online-Lernportals für Immobilienwissen und Weiterbildung<br />
             <strong>Verliehen in:</strong> Deutschland
           </p>
 
@@ -67,17 +67,17 @@ export default function Impressum() {
 
           <h2>Zentrale Kontaktstelle nach dem Digital Services Act (DSA)</h2>
           <p>
-            Unsere zentrale Kontaktstelle fuer Nutzer und Behoerden nach Art. 11 und Art. 12 DSA erreichen Sie unter:
+            Unsere zentrale Kontaktstelle für Nutzer und Behoerden nach Art. 11 und Art. 12 DSA erreichen Sie unter:
           </p>
           <p>
             E-Mail: <a href="mailto:info@immobilien-akademie-smart.de" className="text-blue-600 hover:underline">info@immobilien-akademie-smart.de</a><br />
             Telefon: +49 171 1526327
           </p>
-          <p>Die fuer den Kontakt zur Verfuegung stehenden Sprachen sind Deutsch und Englisch.</p>
+          <p>Die für den Kontakt zur Verfuegung stehenden Sprachen sind Deutsch und Englisch.</p>
 
           <h2>EU-Streitschlichtung</h2>
           <p>
-            Die Europaeische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+            Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
             {' '}
             <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
               https://ec.europa.eu/consumers/odr/
@@ -90,29 +90,29 @@ export default function Impressum() {
             Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
           </p>
 
-          <h2>Haftung fuer Inhalte</h2>
+          <h2>Haftung für Inhalte</h2>
           <p>
-            Als Diensteanbieter sind wir fuer eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
-            Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberuehrt.
-            Eine diesbezuegliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung moeglich.
+            Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
+            Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.
+            Eine diesbezuegliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich.
             Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
           </p>
 
-          <h2>Haftung fuer Links</h2>
+          <h2>Haftung für Links</h2>
           <p>
-            Unser Angebot enthaelt Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben.
-            Deshalb koennen wir fuer diese fremden Inhalte auch keine Gewaehr uebernehmen. Fuer die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+            Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben.
+            Deshalb können wir für diese fremden Inhalte auch keine Gewähr uebernehmen. Fuer die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
           </p>
 
           <h2>Urheberrecht</h2>
           <p>
             Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht.
-            Vervielfaeltigung, Bearbeitung, Verbreitung und jede Art der Verwertung ausserhalb der Grenzen des Urheberrechtes beduerfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+            Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
           </p>
 
           <h2>Bildnachweise</h2>
           <p>
-            Die auf dieser Website verwendeten Bilder, Grafiken und Medien werden entweder selbst erstellt, lizenziert oder aus rechtmaessig nutzbaren Quellen eingebunden. Hinweise auf fehlerhafte oder unvollstaendige Bildnachweise koennen an die oben genannte Kontaktadresse gesendet werden.
+            Die auf dieser Website verwendeten Bilder, Grafiken und Medien werden entweder selbst erstellt, lizenziert oder aus rechtmäßig nutzbaren Quellen eingebunden. Hinweise auf fehlerhafte oder unvollstaendige Bildnachweise können an die oben genannte Kontaktadresse gesendet werden.
           </p>
         </CardContent>
       </Card>
