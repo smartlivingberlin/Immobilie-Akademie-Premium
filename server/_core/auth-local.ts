@@ -162,7 +162,8 @@ export function registerLocalAuthRoutes(app: Express) {
     }
 
     // Session erstellen
-    const token = await createSessionToken(openId, name.trim());
+    const newUserRole = role === "admin" ? "admin" : "user";
+    const token = await createSessionToken(openId, name.trim(), newUserRole, "");
     const cookieOptions = getSessionCookieOptions(req);
     res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
 
@@ -200,7 +201,7 @@ export function registerLocalAuthRoutes(app: Express) {
       return res.status(404).json({ error: "Demo-User nicht gefunden" });
     }
     await db.updateUserRole(openId, "admin");
-    const token = await createSessionToken(openId, user.name || "Admin");
+    const token = await createSessionToken(openId, user.name || "Admin", "admin", user.enabledModules || "");
     const cookieOptions = getSessionCookieOptions(req);
     res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
     return res.redirect("/");
@@ -233,7 +234,7 @@ export function registerLocalAuthRoutes(app: Express) {
         // Use the common streak logic
         await db.updateLastSignedIn(openId);
       }
-      const token = await createSessionToken(openId, "Gast");
+      const token = await createSessionToken(openId, "Gast", "user", enabledStr);
       const cookieOptions = getSessionCookieOptions(req);
       res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
       return res.json({ ok: true });
@@ -267,7 +268,7 @@ export function registerLocalAuthRoutes(app: Express) {
     await db.updateLastSignedIn(openId);
 
     // Session erstellen
-    const token = await createSessionToken(openId, user.name || email);
+    const token = await createSessionToken(openId, user.name || email, user.role || "user", user.enabledModules || "");
     const cookieOptions = getSessionCookieOptions(req);
     res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
 
