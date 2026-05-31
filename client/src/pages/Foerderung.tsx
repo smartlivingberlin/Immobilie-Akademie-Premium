@@ -1,10 +1,9 @@
-import { CheckCircle2, ArrowRight, FileText, Award, ShieldCheck, Briefcase, Info } from "lucide-react";
+import { CheckCircle2, ArrowRight, Award, ShieldCheck, Briefcase, Info } from "lucide-react";
 import { Link } from "wouter";
 
 const programs = [
-  { icon: Briefcase, title: "Bildungsgutschein (SGB III §81)", who: "Arbeitsuchende, von Arbeitslosigkeit Bedrohte", coverage: "Möglich nach AZAV-Zertifizierung und Bewilligung", badge: "In Vorbereitung", color: "bg-green-100 text-green-800", desc: "Eine Förderung per Bildungsgutschein setzt eine zugelassene AZAV-Maßnahme und eine individuelle Bewilligung voraus. Die AZAV-Zertifizierung ist in Vorbereitung; aktuell besteht daraus kein Förderanspruch." },
+  { icon: Briefcase, title: "Bildungsgutschein (SGB III §81)", who: "Arbeitsuchende, von Arbeitslosigkeit Bedrohte", coverage: "Möglich nach AZAV-Zertifizierung und Bewilligung", badge: "In Vorbereitung", color: "bg-green-100 text-green-800", desc: "Eine Förderung per Bildungsgutschein setzt eine zugelassene AZAV-Maßnahme und eine individuelle Bewilligung voraus. Eine AZAV-Zertifizierung wird angestrebt; aktuell besteht kein Förderanspruch aus diesem Programm." },
   { icon: Award, title: "Qualifizierungschancengesetz (QCG)", who: "Beschäftigte aller Branchen", coverage: "Zuschüsse je nach Einzelfall und Betriebsgröße", badge: "Prüfung nötig", color: "bg-blue-100 text-blue-800", desc: "Der Arbeitgeber stellt den Antrag bei der Agentur für Arbeit. Ob und in welcher Höhe Lehrgangs- oder Lohnkosten übernommen werden, entscheidet die zuständige Stelle im Einzelfall." },
-  { icon: FileText, title: "Aufstiegs-BAföG", who: "Personen mit abgeschlossener Erstausbildung", coverage: "Nur für förderfähige Fortbildungen", badge: "Einzelfall", color: "bg-purple-100 text-purple-800", desc: "Aufstiegs-BAföG gilt für bestimmte höherqualifizierende Fortbildungen. Ob ein konkreter Kurs oder Bildungsweg förderfähig ist, sollte vorab bei der zuständigen Stelle geprüft werden." },
   { icon: ShieldCheck, title: "Steuerliche Absetzbarkeit", who: "Alle Berufstätigen & Selbstständige", coverage: "Steuerliche Berücksichtigung je nach Einzelfall", badge: "Prüfen", color: "bg-amber-100 text-amber-800", desc: "Beruflich veranlasste Weiterbildungskosten können steuerlich berücksichtigungsfähig sein. Bitte Einzelfall mit Steuerberatung oder Finanzamt prüfen; dies ist keine Steuerberatung." },
 ];
 
