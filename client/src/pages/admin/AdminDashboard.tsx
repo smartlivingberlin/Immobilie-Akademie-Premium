@@ -62,9 +62,9 @@ export default function AdminDashboard() {
 
   const CHECKLIST = [
     { label: "Gewerbe angemeldet", ok: false, action: "berlin.de → ~26 EUR", urgent: true },
-    { label: "Domain immobilien-akademie-smart.de", ok: false, action: "~12 EUR/Jahr", urgent: true },
-    { label: "Stripe Live-Modus", ok: false, action: "Nach Gewerbe", urgent: false },
-    { label: "SPF/DKIM/DMARC", ok: false, action: "Nach Domain", urgent: false },
+    { label: "Domain immobilien-akademie-smart.de", ok: true, action: "Aktiv ✅", urgent: false },
+    { label: "Stripe Live-Modus", ok: false, action: "Nach Gewerbeschein", urgent: false },
+    { label: "SPF/DKIM/DMARC", ok: false, action: "Nach Stripe Live", urgent: false },
     { label: "AGB vorhanden", ok: true },
     { label: "Datenschutz komplett", ok: true },
     { label: "Cookie-Banner aktiv", ok: true },
