@@ -39,27 +39,27 @@ export default function PortalPhaseAdmin() {
         // Statische Konfiguration direkt einbetten
         setAllPhases({
           A: {
-            id: "A", name: "Selbstlernportal", description: "Digitales Lernmaterial zur IHK-Prüfungsvorbereitung. Keine externe Zertifizierung nötig.",
+            id: "A", name: "Selbstlernportal", description: "Digitales Selbstlernmaterial zu Immobilienpraxis und Rechtsgrundlagen. Keine externe Zertifizierung.",
             badges: { azav: false, zfu: false, ihk: false, bgs: false },
-            labels: { productType: "Digitales Lernmaterial", certificationNote: "Qualifizierte Prüfungsvorbereitung", faqCertAnswer: "", footerBadge1: "IHK-Vorbereitung", footerBadge2: "Qualitätsgesichert" },
+            labels: { productType: "Digitales Lernmaterial", certificationNote: "Praxisorientiertes Selbstlernportal", faqCertAnswer: "", footerBadge1: "Praxiswissen", footerBadge2: "Qualitätsgesichert" },
             canSell: true, requirements: [], unlocked: true,
           },
           B: {
-            id: "B", name: "Fernlehrgang (ZFU-zugelassen)", description: "Staatlich zugelassener Fernlehrgang nach FernUSG.",
+            id: "B", name: "ZFU-Ausbaustufe (nicht aktiv)", description: "Geplanter Fernlehrgang. Öffentlich erst nach vorliegender ZFU-Zulassung nutzbar.",
             badges: { azav: false, zfu: true, ihk: false, bgs: false },
-            labels: { productType: "Staatl. zugelassener Fernlehrgang", certificationNote: "ZFU-zugelassen", faqCertAnswer: "", footerBadge1: "ZFU-zugelassen", footerBadge2: "IHK-Vorbereitung" },
+            labels: { productType: "Geplanter Fernlehrgang nur nach Zulassung", certificationNote: "ZFU nur nach Zulassung", faqCertAnswer: "", footerBadge1: "ZFU nur nach Zulassung", footerBadge2: "Praxiswissen" },
             canSell: true, requirements: ["ZFU-Zulassung vorliegend", "FernUSG-Vertrag aktiv"], unlocked: false,
           },
           C: {
-            id: "C", name: "AZAV-zertifiziert (BGS-fähig)", description: "AZAV-akkreditiert. Bildungsgutschein wird akzeptiert.",
+            id: "C", name: "AZAV-Ausbaustufe (nicht aktiv)", description: "AZAV-Akkreditierung ist eine mögliche spätere Ausbaustufe. Aktuell besteht daraus kein Förderanspruch.",
             badges: { azav: true, zfu: true, ihk: false, bgs: true },
-            labels: { productType: "AZAV-zertifizierter Fernlehrgang", certificationNote: "AZAV · ZFU · BGS-fähig", faqCertAnswer: "", footerBadge1: "AZAV-zertifiziert", footerBadge2: "BGS-fähig" },
+            labels: { productType: "Geplante AZAV-Ausbaustufe", certificationNote: "AZAV und ZFU nur nach Freigabe", faqCertAnswer: "", footerBadge1: "AZAV nur nach Akkreditierung", footerBadge2: "Förderung nur nach Zulassung" },
             canSell: true, requirements: ["AZAV-Akkreditierung", "ZFU-Zulassung", "Anwesenheitsnachweise aktiv"], unlocked: false,
           },
           D: {
-            id: "D", name: "Vollzertifiziert", description: "ZFU + AZAV + IHK-Kooperation. Maximale Reichweite.",
+            id: "D", name: "Vollausbau (nicht aktiv)", description: "ZFU, AZAV und Kooperationen sind optionale spätere Ausbaustufen. Aktivierung erst nach nachweisbarer Freigabe.",
             badges: { azav: true, zfu: true, ihk: true, bgs: true },
-            labels: { productType: "IHK-vorbereiteter Fernlehrgang", certificationNote: "AZAV · ZFU · IHK · BGS-fähig", faqCertAnswer: "", footerBadge1: "AZAV · ZFU · IHK", footerBadge2: "BGS-fähig" },
+            labels: { productType: "Praxisorientierter Fernlehrgang", certificationNote: "ZFU und AZAV nur nach Freigabe", faqCertAnswer: "", footerBadge1: "Roadmap: Zulassungen", footerBadge2: "Förderung nur nach Zulassung" },
             canSell: true, requirements: ["AZAV-Akkreditierung", "ZFU-Zulassung", "IHK-Kooperationsvertrag"], unlocked: false,
           },
         });
@@ -98,7 +98,7 @@ export default function PortalPhaseAdmin() {
         <div>
           <h1 className="text-2xl font-bold text-slate-900">Portal-Phasen-Steuerung</h1>
           <p className="text-sm text-slate-500 mt-1">
-            Schalte Zertifizierungsbadges, Aussagen und Features je nach erreichter Genehmigung
+            Plane Phasen und schalte Aussagen erst nach nachweisbarer Freigabe
           </p>
         </div>
         {saved && (

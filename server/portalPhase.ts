@@ -1,9 +1,9 @@
 /**
  * Portal-Phasen-System
  * Phase A: Selbstlernportal (sofort, ohne Genehmigung)
- * Phase B: Fernlehrgang (nach ZFU-Zulassung)
- * Phase C: AZAV-zertifiziert (nach Akkreditierung, Förderung nur nach Zulassung)
- * Phase D: Vollzertifiziert (ZFU + AZAV + IHK-Kooperation)
+ * Phase B: ZFU-Ausbaustufe (nur nach Zulassung/Freigabe)
+ * Phase C: AZAV-Ausbaustufe (nur nach Akkreditierung/Freigabe)
+ * Phase D: Vollausbau (nur nach nachweisbaren Zulassungen/Kooperationen)
  */
 
 import type { Express, Request, Response } from "express";
@@ -16,7 +16,7 @@ export interface FeatureFlags {
   // Compliance
   consentCheckboxRequired: boolean;    // DSGVO-Checkbox beim Wizard
   agbCheckboxRequired: boolean;        // AGB-Zustimmung beim Wizard
-  azavAttendanceNotice: boolean;       // AZAV Anwesenheitshinweis
+  azavAttendanceNotice: boolean;       // Lernzeit-/Anwesenheitshinweis fuer spaetere AZAV-Pruefung
   widerrufsbelehrungPopup: boolean;    // Widerrufsbelehrung beim Kauf
 
   // Features
@@ -54,7 +54,7 @@ export const DEFAULT_FLAGS: FeatureFlags = {
   automaticInvoicing: false,
 };
 
-// Flags für Phase B (ZFU)
+// Flags fuer Phase B (ZFU nur nach Freigabe)
 export const FLAGS_PHASE_B: Partial<FeatureFlags> = {
   consentCheckboxRequired: true,
   agbCheckboxRequired: true,
@@ -63,13 +63,13 @@ export const FLAGS_PHASE_B: Partial<FeatureFlags> = {
   automaticInvoicing: true,
 };
 
-// Flags für Phase C (AZAV)
+// Flags fuer Phase C (AZAV nur nach Freigabe)
 export const FLAGS_PHASE_C: Partial<FeatureFlags> = {
   ...FLAGS_PHASE_B,
   azavAttendanceNotice: true,
 };
 
-// Flags für Phase D (Vollzertifiziert)
+// Flags fuer Phase D (Vollausbau nur nach Freigabe)
 export const FLAGS_PHASE_D: Partial<FeatureFlags> = {
   ...FLAGS_PHASE_C,
   liveWebinare: true,
@@ -126,14 +126,14 @@ export const PHASES: Record<Phase, PhaseConfig> = {
   },
   B: {
     id: "B",
-    name: "Fernlehrgang (ZFU-zugelassen)",
-    description: "Geplanter Fernlehrgang nur nach Zulassung nach FernUSG. Offizieller ZFU-Status.",
+    name: "ZFU-Ausbaustufe (nicht aktiv)",
+    description: "Geplanter Fernlehrgang. Öffentlich erst nach vorliegender ZFU-Zulassung nutzbar.",
     badges: { azav: false, zfu: true, ihk: false, bgs: false },
     labels: {
       productType: "Geplanter Fernlehrgang nur nach Zulassung",
-      certificationNote: "ZFU-zugelassen",
+      certificationNote: "ZFU nur nach Zulassung",
       faqCertAnswer: "Diese Phase darf erst nach vorliegender ZFU-Zulassung öffentlich genutzt werden. Bis dahin keine Aussage über staatliche Zulassung oder Anerkennung.",
-      footerBadge1: "ZFU-zugelassen",
+      footerBadge1: "ZFU nur nach Zulassung",
       footerBadge2: "Praxiswissen",
     },
     canSell: true,
@@ -149,7 +149,7 @@ export const PHASES: Record<Phase, PhaseConfig> = {
       productType: "Geplante AZAV-Ausbaustufe",
       certificationNote: "AZAV und ZFU nur nach Freigabe",
       faqCertAnswer: "Diese Phase ist eine interne Roadmap. Bildungsgutscheine, AZAV- oder ZFU-Aussagen sind erst nach nachweisbarer Zulassung zulässig.",
-      footerBadge1: "AZAV-zertifiziert",
+      footerBadge1: "AZAV nur nach Akkreditierung",
       footerBadge2: "Förderung nur nach Zulassung",
     },
     canSell: true,
@@ -158,14 +158,14 @@ export const PHASES: Record<Phase, PhaseConfig> = {
   },
   D: {
     id: "D",
-    name: "Vollzertifiziert",
-    description: "ZFU + AZAV + IHK-Kooperation. Maximale Reichweite und Förderoptionen.",
+    name: "Vollausbau (nicht aktiv)",
+    description: "ZFU, AZAV und Kooperationen sind optionale spätere Ausbaustufen. Aktivierung erst nach nachweisbarer Freigabe.",
     badges: { azav: true, zfu: true, ihk: true, bgs: true },
     labels: {
       productType: "Praxisorientierter Fernlehrgang",
       certificationNote: "ZFU und AZAV nur nach Freigabe",
       faqCertAnswer: "Diese Phase ist eine interne Roadmap und darf erst nach schriftlicher Freigabe und nachweisbaren Zulassungen öffentlich genutzt werden.",
-      footerBadge1: "Roadmap: AZAV · ZFU",
+      footerBadge1: "Roadmap: Zulassungen",
       footerBadge2: "Förderung nur nach Zulassung",
     },
     canSell: true,
