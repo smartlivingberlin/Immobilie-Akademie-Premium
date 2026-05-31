@@ -141,11 +141,10 @@ export default function AGB() {
           <h2>§ 7 Vergütung und Zahlungsbedingungen</h2>
           <p>
             (1) Die Vergütung richtet sich nach der jeweils gewählten Nutzungsvariante (z.B. Einzelmodul, 
-            Gesamtpaket, Abonnement).
+            Gesamtpaket).
           </p>
           <p>
-            (2) Die aktuellen Preise sind auf der Plattform einsehbar. Alle Preise verstehen sich inklusive der 
-            gesetzlichen Mehrwertsteuer.
+            (2) Die aktuellen Preise sind auf der Plattform einsehbar. Alle Preise sind Endpreise. Aufgrund der Kleinunternehmerregelung gemäß § 19 UStG wird keine Umsatzsteuer ausgewiesen.
           </p>
           <p>
             (3) Die Zahlung erfolgt per Kreditkarte, Lastschrift, Apple Pay, Google Pay (via Stripe). Der 
@@ -162,12 +161,10 @@ export default function AGB() {
           </p>
           <ul>
             <li><strong>Einmalzahlung:</strong> Unbefristeter Zugang zu den erworbenen Inhalten</li>
-            <li><strong>Abonnement:</strong> Laufzeit gemäß gewähltem Abrechnungszeitraum (monatlich, jährlich) 
-            mit automatischer Verlängerung, sofern nicht gekündigt wird</li>
+            
           </ul>
           <p>
-            (2) Abonnements können mit einer Frist von 14 Tagen zum Ende des jeweiligen 
-            Abrechnungszeitraums gekündigt werden. Die Kündigung muss in Textform (z.B. per E-Mail) erfolgen.
+            
           </p>
           <p>
             (3) Das Recht zur außerordentlichen Kündigung aus wichtigem Grund bleibt unberührt. Ein wichtiger 

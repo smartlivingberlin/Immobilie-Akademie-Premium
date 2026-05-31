@@ -196,7 +196,7 @@ export default function KursPakete() {
                     </div>
                   )}
                   <div style={{ fontSize:11, color:"#94a3b8", marginTop:6 }}>
-                    inkl. MwSt. · Einmalzahlung · kein Abo
+                    Endpreis · Einmalzahlung · kein Abo
                   </div>
                 </div>
 
