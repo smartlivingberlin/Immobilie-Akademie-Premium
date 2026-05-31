@@ -10,7 +10,7 @@ import {
 
 const MODULES = [
   { id:1, title:"Modul 1: Immobilien-Grundkurs", kurz:"Das Fundament", preis:"149", tage:20, ue:160, slug:"modul-1-immobilien-grundkurs", desc:"Grundstücksrecht, Grundbuch, Baurecht, Wertermittlung — die Pflichtbasis für alle weiteren Module.", badge:"Einstieg", farbe:"#1d4ed8", textFarbe:"white" },
-  { id:2, title:"Modul 2: Makler §34c GewO", kurz:"Die Lizenz", preis:"499", tage:60, ue:480, slug:"modul-2-makler-34c", desc:"Maklerrecht, Provision, Exposé, Kaufvertrag, GwG, MaBV — alles für die IHK-Sachkundeprüfung.", badge:"Beliebt", farbe:"#6d28d9", textFarbe:"white" },
+  { id:2, title:"Modul 2: Makler §34c GewO", kurz:"Die Lizenz", preis:"499", tage:60, ue:480, slug:"modul-2-makler-34c", desc:"Maklerrecht, Provision, Exposé, Kaufvertrag, GwG, MaBV — alles für die professionelle Maklerpraxis nach §34c GewO.", badge:"Beliebt", farbe:"#6d28d9", textFarbe:"white" },
   { id:3, title:"Modul 3: WEG-Verwalter", kurz:"Die Verwaltung", preis:"699", tage:80, ue:640, slug:"modul-3-weg-verwalter", desc:"WEG-Reform 2020, Eigentümerversammlung, Nebenkostenabrechnung, Mietrecht §535ff BGB.", badge:"Vollständig", farbe:"#047857", textFarbe:"white" },
   { id:4, title:"Modul 4: Gutachter", kurz:"Die Bewertung", preis:"399", tage:40, ue:320, slug:"modul-4-gutachter", desc:"ImmoWertV 2021: Vergleichs-, Ertrags- und Sachwertverfahren. HypZert-Vorbereitung.", badge:"Präzise", farbe:"#b45309", textFarbe:"white" },
   { id:5, title:"Modul 5: §34i GewO", kurz:"Die Finanzierung", preis:"499", tage:40, ue:320, slug:"modul-5-34i-darlehensvermittler", desc:"Annuitätendarlehen, KfW-Förderung, EU-WIKR, ESIS-Merkblatt — Ihre Finanzierungslizenz.", badge:"Komplett", farbe:"#9d174d", textFarbe:"white" },
@@ -94,7 +94,7 @@ export default function Home() {
       setAudioPlaying(false);
       return;
     }
-    const text = "Willkommen bei der Immobilien Akademie Smart. Hier bereiten Sie sich gezielt auf Ihre IHK-Sachkundeprüfung vor. Mit unserem KI-Tutor, 855+ Lernaufgaben und 240 strukturierten Lerntagen sind Sie optimal vorbereitet. Starten Sie jetzt mit Ihrem 24-Stunden-Testzugang.";
+    const text = "Willkommen bei der Immobilien Akademie Smart. Hier bereiten Sie sich gezielt auf Immobilienberufe vor. Mit unserem KI-Tutor, 855+ Lernaufgaben und 240 strukturierten Lerntagen sind Sie optimal vorbereitet. Starten Sie jetzt mit Ihrem 24-Stunden-Testzugang.";
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = "de-DE";
     utterance.rate = 0.9;
@@ -109,9 +109,9 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="Immobilien Akademie Smart — IHK §34c §34i WEG-Verwalter Gutachter Online"
-        description="IHK-Vorbereitung §34c Makler, §34i Darlehensvermittler, WEG-Verwalter, Immobiliengutachter & Sachverständiger. KI-Tutor, 855+ Aufgaben, 240 Lerntage. Bildungsgutschein möglich. Ab 149€."
-        keywords="§34c GewO, §34i GewO, WEG Verwalter, Immobilienmakler IHK, Sachkundeprüfung, Immobiliengutachter, Sachverständiger, Bildungsgutschein, Weiterbildung Immobilien"
+        title="Immobilien Akademie Smart — §34c Makler, §34i, WEG-Verwaltung, Immobilienbewertung Online"
+        description="Praxiswissen §34c Makler, §34i-Sachkunde, WEG-Verwaltung, Immobilienbewertung. KI-Tutor, 240 Lerntage, Praxisaufgaben. Ab 149€."
+        keywords="§34c GewO Makler, §34i GewO IHK-Sachkunde, WEG-Verwaltung, Immobilienbewertung, Online-Weiterbildung Immobilien"
       />
 
       {/* HERO */}
@@ -122,10 +122,10 @@ export default function Home() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs backdrop-blur mb-6">
               <Sparkles className="h-3.5 w-3.5" style={{color:"oklch(0.78 0.15 75)"}} />
-              IHK-konforme Online-Vorbereitung · Deutschland
+              Strukturierte Online-Vorbereitung · Deutschland
             </div>
             <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-tight leading-tight mb-6">
-              Ihre IHK-Vorbereitung für die{" "}
+              Ihre Fach- und Praxisvorbereitung für die{" "}
               <span style={{color:"oklch(0.78 0.15 75)"}}>Immobilienwirtschaft</span>
             </h1>
             <p className="text-lg text-white/80 max-w-2xl leading-relaxed mb-8">
@@ -163,7 +163,7 @@ export default function Home() {
               </div>
             )}
             <div className="flex flex-wrap gap-5">
-              {["IHK-Prüfungsformat","KI-Tutor 24/7","Direkter Zugang nach Kauf","DSGVO-konform"].map(t=>(
+              {["Prüfungsformat","KI-Tutor 24/7","Direkter Zugang nach Kauf","DSGVO-konform"].map(t=>(
                 <span key={t} className="flex items-center gap-1.5 text-sm text-white/70">
                   <CheckCircle2 className="h-4 w-4" style={{color:"oklch(0.78 0.15 75)"}} />{t}
                 </span>

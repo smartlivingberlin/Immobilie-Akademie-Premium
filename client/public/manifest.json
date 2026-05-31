@@ -1,8 +1,8 @@
 {
   "name": "Immobilien Akademie Smart",
   "short_name": "ImmAkademie",
-  "description": "IHK-Vorbereitung für Immobilienfachleute — §34c, §34i, WEG-Verwalter",
-  "start_url": "/statistiken",
+  "description": "Online-Lernportal für Immobilienmakler nach §34c GewO, WEG-Verwaltung, Immobilienbewertung und §34i-Sachkunde",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
@@ -59,7 +59,7 @@
     {
       "name": "Prüfung üben",
       "short_name": "Quiz",
-      "description": "IHK-Prüfungssimulation starten",
+      "description": "Prüfungssimulation starten",
       "url": "/pruefung",
       "icons": [
         {
