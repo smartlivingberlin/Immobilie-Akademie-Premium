@@ -137,7 +137,7 @@ export default function Home() {
               <Link href="/kurs/modul-1-immobilien-grundkurs">
                 <a className="inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold text-sm shadow-glow transition-all hover:scale-105"
                   style={{background:"oklch(0.78 0.15 75)",color:"oklch(0.22 0.05 60)"}}>
-                  24h kostenlos testen <ArrowRight className="h-4 w-4" />
+                  24h alle 5 Module testen <ArrowRight className="h-4 w-4" />
                 </a>
               </Link>
               <Link href="/kurse">
@@ -341,7 +341,7 @@ export default function Home() {
                 Starten Sie noch heute kostenlos
               </h2>
               <p className="text-white/80 max-w-2xl mx-auto text-lg mb-8">
-                24 Stunden kostenloser Testzugang für Modul 1. Keine Kreditkarte, keine Verpflichtung.
+                24 Stunden kostenloser Zugang zu allen 5 Modulen. Keine Kreditkarte, keine Verpflichtung.
               </p>
               <div className="flex flex-wrap gap-3 justify-center">
                 <Link href="/kurs/modul-1-immobilien-grundkurs">
