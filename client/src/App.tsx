@@ -36,7 +36,6 @@ const AGB = lazy(() => import("@/pages/legal/AGB"));
 // ── Shared UI components (lazy — not needed on every route) ──────────────────
 const ComplaintForm = lazy(() => import("@/components/ComplaintForm"));
 const CookieConsent = lazy(() => import("@/components/CookieConsent"));
-const CookieBanner = lazy(() => import("@/components/CookieBanner").then(m => ({ default: m.CookieBanner })));
 const InspectBanner = lazy(() => import("@/components/InspectBanner").then(m => ({ default: m.InspectBanner })));
 const StructuredData = lazy(() => import("@/components/StructuredData").then(m => ({ default: m.StructuredData })));
 const AccessibilityPanel = lazy(() => import("@/components/AccessibilityPanel").then(m => ({ default: m.AccessibilityPanel })));
@@ -183,7 +182,6 @@ function Router() {
   return (
     <main id="main-content"><Suspense fallback={<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:"18px",color:"#64748b"}}>Laden...</div>}>
       <InspectBanner />
-      <CookieBanner />
       <ErrorBoundary>
       <Switch>
         <Route path="/"><PublicLayout><Home /></PublicLayout></Route>
