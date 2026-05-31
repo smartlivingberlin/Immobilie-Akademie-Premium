@@ -25,8 +25,8 @@ const PRODUCTS = [
   },
   {
     id: "modul_2",
-    name: "Modul 2: Immobilienmakler §34c GewO — Vollständige IHK-Vorbereitung",
-    description: "Strukturierte IHK-Vorbereitung §34c GewO: Maklerrecht, Provision, Exposé, Kaufvertrag, Steuern. 60 Lerntage, 480 UE. Mit KI-Tutor, 300+ Prüfungsfragen und Kursabschluss-Zertifikat.",
+    name: "Modul 2: Immobilienmakler §34c GewO — Fach- und Praxisvorbereitung",
+    description: "Strukturierte Fach- und Praxisvorbereitung für Immobilienmakler nach §34c GewO: Maklerrecht, Provision, Exposé, Kaufvertrag, Steuern. 60 Lerntage, 480 UE. Mit KI-Tutor, 300+ Praxisaufgaben und Lernfragen sowie Kursabschluss-Zertifikat.",
     price: 49900,
     modules: "2",
   },
@@ -54,7 +54,7 @@ const PRODUCTS = [
   {
     id: "modul_komplett",
     name: "Komplett-Ausbildung: Alle 5 Module — Der komplette Immobilienprofi",
-    description: "Die komplette Immobilienausbildung in einem Paket: Makler, Verwalter, Gutachter, Finanzierer. 240 Lerntage, 1920 UE, 5 Kursabschluss-Zertifikate, 855+ IHK-orientierte Prüfungsfragen, KI-Tutor. Einmaliger Kaufpreis.",
+    description: "Die komplette Immobilienausbildung in einem Paket: Makler, Verwalter, Gutachter, Finanzierer. 240 Lerntage, 1920 UE, 5 Kursabschluss-Zertifikate, 855+ Praxisaufgaben, Lernfragen und Prüfungsübungen, KI-Tutor. Einmaliger Kaufpreis.",
     price: 195500,
     modules: "1,2,3,4,5",
   },
