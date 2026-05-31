@@ -34,11 +34,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const { isWhiteLabeled, companyName, logoUrl, config } = useWhiteLabel();
 
   const allModules = [
-    { id: 1, name: "Modul 1: Grundkurs", href: "/kurs/modul-1-immobilien-grundkurs", icon: BookOpen },
-    { id: 2, name: "Modul 2: Makler §34c", href: "/kurs/modul-2-makler-34c", icon: Search },
-    { id: 3, name: "Modul 3: WEG-Verwalter", href: "/kurs/modul-3-weg-verwalter", icon: BuildingIcon },
-    { id: 4, name: "Modul 4: Gutachter", href: "/kurs/modul-4-gutachter", icon: Calculator },
-    { id: 5, name: "Modul 5: §34i Darlehensvermittler", href: "/kurs/modul-5-34i-darlehensvermittler", icon: GraduationCap },
+    { id: 1, name: "Modul 1: Grundkurs", href: "/modul/1", icon: BookOpen },
+    { id: 2, name: "Modul 2: Makler §34c", href: "/modul/2", icon: Search },
+    { id: 3, name: "Modul 3: WEG-Verwalter", href: "/modul/3", icon: BuildingIcon },
+    { id: 4, name: "Modul 4: Gutachter", href: "/modul/4", icon: Calculator },
+    { id: 5, name: "Modul 5: §34i Darlehensvermittler", href: "/modul/5", icon: GraduationCap },
   ];
 
   const { canAccessModule } = useModuleAccess();
