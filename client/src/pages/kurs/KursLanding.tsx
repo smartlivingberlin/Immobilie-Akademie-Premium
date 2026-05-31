@@ -40,29 +40,29 @@ const KURSE: Record<string, {
     vorteile: [
       "KI-Tutor erklärt jeden Begriff auf Knopfdruck",
       "Audio-Funktion: Lernen beim Joggen oder Kochen",
-      "200+ IHK-orientierte Prüfungsfragen",
+      "200+ Lernfragen und Praxisübungen",
       "Kursabschluss-Zertifikat nach erfolgreichem Kursabschluss",
       "Pflichtbasis für alle weiteren Module",
       "Einmalig kaufen — zeitlich befristeter Vollzugang",
     ],
     faq: [
       { f: "Muss ich Modul 1 vor den anderen Modulen machen?", a: "Modul 1 wird als Basis empfohlen — viele Grundbegriffe die in Modul 2–5 vorausgesetzt werden, werden hier erklärt. Es ist nicht zwingend vorgeschrieben, aber sehr sinnvoll." },
-      { f: "Ist Modul 1 für die §34c Prüfung ausreichend?", a: "Nein. Modul 1 legt das Fundament. Für die vollständige §34c-Vorbereitung brauchen Sie zusätzlich Modul 2." },
+      { f: "Ist Modul 1 als Grundlage für §34c-Themen ausreichend?", a: "Nein. Modul 1 legt das Fundament. Für vertiefte §34c-Praxis- und Weiterbildungsthemen empfehlen wir zusätzlich Modul 2." },
       { f: "Wie lange dauert das Lernen täglich?", a: "Empfohlen sind 30–60 Minuten täglich. Bei 45 Minuten pro Tag sind Sie in ca. 5–6 Wochen durch." },
     ],
-    seo_title: "Immobilien Grundkurs online | IHK-Vorbereitung mit KI-Tutor",
-    seo_desc: "Der smarte Einstieg in die Immobilienwirtschaft: 20 Lerntage, 160 UE, KI-Tutor, Zertifikat. Jetzt für 149 EUR inkl. MwSt. starten.",
+    seo_title: "Immobilien Grundkurs online | Grundlagen mit KI-Tutor",
+    seo_desc: "Der smarte Einstieg in die Immobilienwirtschaft: 20 Lerntage, 160 UE, KI-Tutor, Zertifikat. Jetzt für 149 EUR Endpreis starten.",
   },
   "modul-2-makler-34c": {
     id: "modul_2",
     titel: "Modul 2: Immobilienmakler §34c GewO",
-    untertitel: "Vollständige IHK-Vorbereitung §34c — strukturiert und praxisnah",
+    untertitel: "Fach- und Praxisvorbereitung §34c - strukturiert und praxisnah",
     preis: 499, tage: 60, ue: 480, farbe: "green", emoji: "🔑",
-    hero: "Ohne §34c-Sachkundeprüfung kein Maklergeschäft. Punkt. Mit Modul 2 bereiten Sie sich in 60 Lerntagen systematisch und sicher auf die IHK-Prüfung vor — mit KI-Tutor, 300+ Übungsfragen und einem bewährten Lernpfad.",
-    story: "Der Immobilienmarkt boomt. Qualifizierte Makler werden gesucht. Doch die §34c-Sachkundeprüfung ist eine echte Hürde — Maklerrecht, Steuerrecht, Vertragsrecht alles auf einmal. Modul 2 zerlegt diesen Berg in 60 überschaubare Lerntage. Jeden Tag ein Schritt weiter. Am Ende kennen Sie nicht nur die Antworten für die Prüfung — Sie verstehen das Maklergeschäft von Grund auf.",
+    hero: "Mit Modul 2 vertiefen Sie in 60 Lerntagen Maklerrecht, Provision, Exposé, Kaufvertrag, GwG und MaBV - mit KI-Tutor, Praxisaufgaben und einem strukturierten Lernpfad.",
+    story: "Der Immobilienmarkt bleibt anspruchsvoll. Qualifizierte Makler brauchen belastbares Praxiswissen: Maklerrecht, Provision, Exposé, Kaufvertrag, GwG und MaBV. Modul 2 zerlegt diese Themen in 60 überschaubare Lerntage. Jeden Tag ein Schritt weiter. Am Ende kennen Sie nicht nur typische Fallfragen - Sie verstehen das Maklergeschäft von Grund auf.",
     zielgruppe: [
-      "Angehende Immobilienmakler vor der IHK-Prüfung",
-      "Makler mit §34c Weiterbildungspflicht (20h/Jahr)",
+      "Angehende Immobilienmakler mit Fokus auf §34c-Praxiswissen",
+      "Makler mit Fokus auf §34c-Weiterbildungsthemen",
       "Immobilienkaufleute die in die Vermittlung wollen",
       "Quereinsteiger mit Ambitionen im Maklerbereich",
     ],
@@ -77,20 +77,20 @@ const KURSE: Record<string, {
       "Energieausweis — Pflichten und Praxis",
     ],
     vorteile: [
-      "300+ IHK-Prüfungsfragen mit Erklärungen",
+      "300+ Praxisaufgaben und Lernfragen mit Erklärungen",
       "KI-Tutor für komplexe Rechtsfragen",
-      "Erfüllt Weiterbildungspflicht §34c (20h/Jahr)",
-      "Prüfungssimulation wie in der echten IHK",
+      "Orientiert an typischen §34c-Weiterbildungsthemen",
+      "Strukturierte Wissenschecks und Fallübungen",
       "Kursabschluss-Zertifikat nach erfolgreichem Abschluss",
       "Am Handy lernen — überall, jederzeit",
     ],
     faq: [
-      { f: "Reicht Modul 2 für die §34c IHK-Prüfung?", a: "Ja! Modul 2 deckt den vollständigen Prüfungsstoff ab. Wir empfehlen vorher Modul 1 als Grundlage." },
-      { f: "Gilt das als Weiterbildung nach §34c?", a: "Die Inhalte decken die gesetzliche Weiterbildungspflicht von 20 Stunden pro Jahr vollständig ab." },
-      { f: "Wie viele Fragen hat die echte IHK-Prüfung?", a: "Die IHK-Prüfung hat typischerweise 72 Multiple-Choice-Fragen. Unser Prüfungsmodus simuliert genau dieses Format." },
+      { f: "Bereitet Modul 2 auf §34c-Praxis und Weiterbildung vor?", a: "Ja, Modul 2 behandelt zentrale Themen rund um Maklerrecht, Provision, Exposé, Kaufvertrag, GwG und MaBV. Es ersetzt keine behördliche, rechtliche oder prüfungsrechtliche Zulassungsauskunft." },
+      { f: "Gilt das als Weiterbildung nach §34c?", a: "Die Inhalte sind an typischen §34c-Weiterbildungsthemen orientiert. Ob ein Nachweis im Einzelfall anerkannt wird, sollte mit der zuständigen Stelle oder dem Auftraggeber geprüft werden." },
+      { f: "Wie sind die Wissenschecks aufgebaut?", a: "Die Wissenschecks kombinieren Multiple-Choice-Fragen, Praxisfälle und Wiederholungsfragen. Sie dienen der Lernkontrolle und sind keine Aussage über ein amtliches Prüfungsformat." },
     ],
-    seo_title: "§34c GewO Prüfungsvorbereitung online | IHK Makler Sachkundeprüfung",
-    seo_desc: "Bestehen Sie die IHK-Sachkundeprüfung nach §34c GewO: 60 Lerntage, 480 UE, 300+ Prüfungsfragen, KI-Tutor. Jetzt für 499 EUR inkl. MwSt..",
+    seo_title: "§34c GewO Fachwissen online | Maklerrecht und Praxis",
+    seo_desc: "Fach- und Praxiswissen für Immobilienmakler nach §34c GewO: 60 Lerntage, 480 UE, Praxisaufgaben, KI-Tutor. Jetzt für 499 EUR Endpreis.",
   },
   "modul-3-weg-verwalter": {
     id: "modul_3",
@@ -116,33 +116,33 @@ const KURSE: Record<string, {
       "Aktuelle Rechtsprechung und Streitfälle",
     ],
     vorteile: [
-      "Erfüllt Weiterbildungspflicht §26a WEG",
+      "Orientiert an Weiterbildungsthemen für WEG-Verwalter",
       "Aktuellster Stand WEG-Reform 2020",
-      "400+ Prüfungsfragen Mietrecht und WEG",
+      "400+ Lernfragen Mietrecht und WEG",
       "Praxisfälle aus der echten Hausverwaltung",
       "KI-Tutor für komplexe Eigentumsfragen",
       "Zertifikat als Nachweis für Eigentümer und Auftraggeber",
     ],
     faq: [
-      { f: "Erfüllt das die Weiterbildungspflicht nach §26a WEG?", a: "Die Inhalte decken die gesetzlich vorgeschriebene Weiterbildung für WEG-Verwalter vollständig ab." },
+      { f: "Erfüllt das die Weiterbildungspflicht nach §26a WEG?", a: "Die Inhalte orientieren sich an typischen Weiterbildungsthemen für WEG-Verwalter. Anerkennung oder Nachweiswirkung sollten im Einzelfall geprüft werden." },
       { f: "Wie aktuell sind die Inhalte?", a: "Alle Inhalte sind auf dem Stand der WEG-Reform 2020 und werden regelmäßig aktualisiert." },
       { f: "Brauche ich Vorwissen?", a: "Modul 1 als Grundlage wird empfohlen. Grundkenntnisse im deutschen Recht sind hilfreich aber nicht zwingend." },
     ],
     seo_title: "WEG-Verwalter Weiterbildung online | §26a WEG Pflichtfortbildung",
-    seo_desc: "Professionelle Hausverwaltung: WEG-Reform 2020, Mietrecht, Nebenkostenabrechnung. 80 Lerntage, 640 UE. Jetzt für 699 EUR inkl. MwSt..",
+    seo_desc: "Professionelle Hausverwaltung: WEG-Reform 2020, Mietrecht, Nebenkostenabrechnung. 80 Lerntage, 640 UE. Jetzt für 699 EUR Endpreis.",
   },
   "modul-4-gutachter": {
     id: "modul_4",
     titel: "Modul 4: Immobilienbewertung & Sachverständigenwesen",
     untertitel: "Werte erkennen die andere übersehen",
     preis: 399, tage: 40, ue: 320, farbe: "purple", emoji: "📊",
-    hero: "Eine Immobilie richtig bewerten — das ist Kunst und Wissenschaft zugleich. Vergleichswert, Ertragswert, Sachwert: In Modul 4 meistern Sie alle drei Verfahren nach ImmoWertV 2021 und bereiten sich auf Sachverständigen-Tätigkeiten und HypZert vor.",
+    hero: "Eine Immobilie richtig bewerten — das ist Kunst und Wissenschaft zugleich. Vergleichswert, Ertragswert, Sachwert: In Modul 4 lernen Sie die zentralen Verfahren nach ImmoWertV 2021 kennen und ordnen Sachverständigen- und Zertifizierungsthemen realistisch ein.",
     story: "Der Unterschied zwischen einem guten und einem sehr guten Immobilienprofi? Die einen schätzen Immobilien — die anderen bewerten sie. Mit Methode, mit Verfahren, mit Begründung. Wer ImmoWertV 2021 beherrscht und Ertragswerte sicher berechnet, hat einen Informationsvorsprung den kein Portalbewertungstool ersetzen kann.",
     zielgruppe: [
       "Makler die Bewertungsgutachten erstellen wollen",
       "Bankmitarbeiter in der Immobilienfinanzierung",
       "Angehende Sachverständige und Gutachter",
-      "HypZert-Kandidaten und Beleihungswertprüfer",
+      "Immobilienprofis mit Interesse an Bewertungs- und Zertifizierungsthemen",
     ],
     inhalte: [
       "ImmoWertV 2021 — alle Grundsätze und Änderungen",
@@ -152,30 +152,30 @@ const KURSE: Record<string, {
       "Beleihungswertermittlung nach BelWertV",
       "Gutachterausschüsse und Bodenrichtwerte",
       "Bewertung bei Erbschaft, Scheidung, Zwangsversteigerung",
-      "HypZert S — Vorbereitung auf die Zertifizierungsprüfung",
+      "Bewertungs- und Zertifizierungskontext",
     ],
     vorteile: [
-      "HypZert S Vorbereitung inklusive",
+      "HypZert-Kontext und Bewertungsgrundlagen",
       "ImmoWertV 2021 — neuester Rechtsstand",
       "Integrierter Immobilienrechner für alle Verfahren",
-      "200+ Prüfungsfragen Bewertungsverfahren",
+      "200+ Lernfragen Bewertungsverfahren",
       "KI-Tutor erklärt Berechnungen Schritt für Schritt",
       "Zertifikat für Kunden und Auftraggeber",
     ],
     faq: [
-      { f: "Werde ich damit zum zertifizierten Sachverständigen?", a: "Das Modul bereitet auf die HypZert-Prüfung vor und vermittelt alle nötigen Kenntnisse. Die offizielle Zertifizierung erfolgt durch HypZert GmbH." },
-      { f: "Ist ImmoWertV 2021 komplett enthalten?", a: "Ja, alle Änderungen der ImmoWertV 2021 sind vollständig und aktuell integriert." },
+      { f: "Werde ich damit zum zertifizierten Sachverständigen?", a: "Das Modul vermittelt Grundlagen und Praxiswissen zu Bewertungsmethoden. Eine offizielle Zertifizierung erfolgt ausschließlich durch die zuständige Zertifizierungsstelle." },
+      { f: "Ist ImmoWertV 2021 komplett enthalten?", a: "Die zentralen Änderungen und Grundsätze der ImmoWertV 2021 werden praxisnah behandelt." },
       { f: "Brauche ich Mathematik-Kenntnisse?", a: "Grundrechenarten reichen. Unser KI-Tutor erklärt jeden Rechenschritt verständlich, der integrierte Rechner hilft beim Üben." },
     ],
-    seo_title: "Immobilienbewertung lernen online | ImmoWertV 2021 & HypZert Vorbereitung",
-    seo_desc: "Vergleichswert, Ertragswert, Sachwert nach ImmoWertV 2021: 40 Lerntage, 320 UE, HypZert-Vorbereitung. Jetzt für 399 EUR inkl. MwSt..",
+    seo_title: "Immobilienbewertung lernen online | ImmoWertV 2021 und Bewertungspraxis",
+    seo_desc: "Vergleichswert, Ertragswert, Sachwert nach ImmoWertV 2021: 40 Lerntage, 320 UE, Bewertungs- und Zertifizierungskontext. Jetzt für 399 EUR Endpreis.",
   },
   "modul-5-34i-darlehensvermittler": {
     id: "modul_5",
     titel: "Modul 5: Darlehensvermittler §34i GewO",
     untertitel: "Immobilienfinanzierung als Ihr Geschäftsfeld",
     preis: 499, tage: 40, ue: 320, farbe: "teal", emoji: "💶",
-    hero: "Die Nachfrage nach kompetenter Immobilienfinanzierungsberatung boomt. Mit der §34i-Erlaubnis erschließen Sie sich ein lukratives Geschäftsfeld. Modul 5 bringt Sie in 40 Lerntagen durch alle Prüfungsthemen — von KfW bis ESIS.",
+    hero: "Die Nachfrage nach kompetenter Immobilienfinanzierungsberatung bleibt hoch. Mit §34i-Fachwissen erschließen Sie sich ein anspruchsvolles Geschäftsfeld. Modul 5 führt Sie in 40 Lerntagen durch zentrale Fachthemen - von KfW bis ESIS.",
     story: "Wer heute eine Immobilie kauft fragt nicht mehr nur nach dem Preis — er fragt nach der besten Finanzierung. Welche KfW-Förderung passt? Wie hoch sollte die Tilgung sein? Was bedeutet das ESIS-Merkblatt? Als §34i-zugelassener Darlehensvermittler sind Sie der Experte dem Käufer und Verkäufer gleichermaßen vertrauen.",
     zielgruppe: [
       "Makler die Finanzierungsberatung anbieten wollen",
@@ -194,20 +194,20 @@ const KURSE: Record<string, {
       "Haftung und Dokumentationspflichten §34i",
     ],
     vorteile: [
-      "Erfüllt Weiterbildungspflicht §34i (15h/Jahr)",
-      "Aktuelle KfW-Programme 2025 vollständig",
+      "Orientiert an Weiterbildungsthemen §34i",
+      "Aktuelle KfW-Programme 2025 im Überblick",
       "EU-WIKR und ESIS prüfungsrelevant erklärt",
-      "200+ Prüfungsfragen §34i",
+      "200+ Lernfragen §34i",
       "Integrierter Finanzierungsrechner",
       "Kursabschluss-Zertifikat nach erfolgreichem Abschluss",
     ],
     faq: [
-      { f: "Reicht das für die §34i IHK-Sachkundeprüfung?", a: "Ja! Modul 5 deckt den vollständigen Prüfungsstoff der §34i-Sachkundeprüfung komplett ab." },
+      { f: "Reicht das für die §34i IHK-Sachkundeprüfung?", a: "Modul 5 behandelt zentrale prüfungsrelevante Themen rund um Darlehensrecht, Verbraucherschutz, KfW-Förderung, Bonitätsprüfung und Beratungspflichten." },
       { f: "Sind die KfW-Programme aktuell?", a: "Ja, wir aktualisieren die KfW-Inhalte regelmäßig. Aktuell auf dem Stand 2025." },
-      { f: "Gilt das als Weiterbildung nach §34i?", a: "Die Inhalte decken die gesetzliche Weiterbildungspflicht von 15 Stunden pro Jahr vollständig ab." },
+      { f: "Gilt das als Weiterbildung nach §34i?", a: "Die Inhalte orientieren sich an typischen Weiterbildungsthemen für Immobiliardarlehensvermittler. Anerkennung oder Nachweiswirkung sollten im Einzelfall geprüft werden." },
     ],
-    seo_title: "§34i GewO Prüfungsvorbereitung online | Darlehensvermittler IHK Kurs",
-    seo_desc: "Bestehen Sie die §34i IHK-Sachkundeprüfung: 40 Lerntage, 320 UE, KfW 2025, KI-Tutor. Jetzt für 499 EUR inkl. MwSt. starten.",
+    seo_title: "§34i GewO Vorbereitung online | Darlehensvermittler Kurs",
+    seo_desc: "Bereiten Sie zentrale §34i-Themen strukturiert vor: 40 Lerntage, 320 UE, KfW 2025, KI-Tutor. Jetzt für 499 EUR Endpreis starten.",
   },
 };
 
@@ -320,7 +320,7 @@ export default function KursLanding({ slug }: { slug: string }) {
                   {[
                     { label:"Lerntage", value: String(kurs.tage) },
                     { label:"Unterrichtseinheiten", value: String(kurs.ue) },
-                    { label:"IHK-Fragen", value:"200+" },
+                    { label:"Lernfragen", value:"200+" },
                     { label:"Zugang", value:`${zugang.monate} Mon.` },
                   ].map(s => (
                     <div key={s.label} style={{ background:"rgba(255,255,255,0.08)", border:"1px solid rgba(255,255,255,0.15)", borderRadius:12, padding:"12px 20px", textAlign:"center", minWidth:80 }}>
@@ -339,7 +339,7 @@ export default function KursLanding({ slug }: { slug: string }) {
                 <div style={{ fontSize:38, fontWeight:900, color:"#0f172a", fontFamily:"Fraunces, Georgia, serif", letterSpacing:"-0.02em", margin:"4px 0 4px" }}>
                   {kurs.preis} €
                 </div>
-                <div style={{ fontSize:11, color:"#94a3b8", marginBottom:16 }}>inkl. MwSt. · Einmalzahlung · kein Abo</div>
+                <div style={{ fontSize:11, color:"#94a3b8", marginBottom:16 }}>Endpreis · Einmalzahlung · kein Abo</div>
 
                 {/* Widerrufs-Checkbox */}
                 <div style={{ background: widerrufsError ? "#fef2f2" : "#f8fafc", border:`1px solid ${widerrufsError ? "#fca5a5" : "#e2e8f0"}`, borderRadius:8, padding:"10px 12px", marginBottom:12 }}>
@@ -381,7 +381,7 @@ export default function KursLanding({ slug }: { slug: string }) {
         {/* ── TRUST BAR ─────────────────────────────────────── */}
         <div style={{ background:"white", borderBottom:"1px solid #e2e8f0", padding:"14px 20px" }}>
           <div style={{ maxWidth:960, margin:"0 auto", display:"flex", gap:24, justifyContent:"center", flexWrap:"wrap" }}>
-            {["🎓 IHK-Vorbereitung","🤖 KI-Tutor inklusive","🔒 Stripe-Zahlung","📋 Zertifikat","⚡ Sofortzugang"].map(t => (
+            {["🎓 Praxiswissen","🤖 KI-Tutor inklusive","🔒 Stripe-Zahlung","📋 Zertifikat","⚡ Sofortzugang"].map(t => (
               <span key={t} style={{ fontSize:12, color:"#64748b", fontWeight:600 }}>{t}</span>
             ))}
           </div>
@@ -514,7 +514,7 @@ export default function KursLanding({ slug }: { slug: string }) {
             <p style={{ color:"#94a3b8", fontSize:16, margin:"0 0 8px" }}>Einmalige Investition — {zugang.monate} Monate Vollzugang</p>
             <div style={{ fontSize:60, fontWeight:900, color:"white", fontFamily:"Fraunces, Georgia, serif", margin:"16px 0" }}>{kurs.preis} €</div>
             <div style={{ display:"flex", gap:10, justifyContent:"center", flexWrap:"wrap", marginBottom:24 }}>
-              {[`${zugang.monate} Monate Zugang`,`${zugang.verlaengerung} Mon. verlängerbar`,`${zugang.versuche}× Prüfungsversuch`,"Zertifikat inklusive","Sofortzugang"].map(t => (
+              {[`${zugang.monate} Monate Zugang`,`${zugang.verlaengerung} Mon. verlängerbar`,`${zugang.versuche}× Abschlussversuch`,"Zertifikat inklusive","Sofortzugang"].map(t => (
                 <span key={t} style={{ background:"rgba(255,255,255,0.08)", color:"rgba(255,255,255,0.7)", padding:"6px 14px", borderRadius:20, fontSize:12 }}>✓ {t}</span>
               ))}
             </div>
