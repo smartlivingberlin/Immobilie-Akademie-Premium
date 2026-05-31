@@ -19,42 +19,42 @@ const PRODUCTS = [
   {
     id: "modul_1",
     name: "Modul 1: Ihr Fundament in der Immobilienwirtschaft",
-    description: "Der Grundstein Ihrer Immobilienkarriere: Recht, Markt, Bewertung und Praxis kompakt in 20 Lerntagen und 160 UE. Inklusive KI-Tutor und Zertifikat. Ideal als Einstieg — und Pflichtbasis für alle weiteren Module.",
+    description: "Der Grundstein Ihrer Immobilienkarriere: Recht, Markt, Bewertung und Praxis kompakt in 20 Lerntagen und 160 UE. Inklusive KI-Tutor und Kursabschluss-Zertifikat. Empfohlen als Einstieg in die weiteren Module.",
     price: 14900, // in Cent = 149,00 €
     modules: "1",
   },
   {
     id: "modul_2",
     name: "Modul 2: Immobilienmakler §34c GewO — Fach- und Praxisvorbereitung",
-    description: "Strukturierte Fach- und Praxisvorbereitung für Immobilienmakler nach §34c GewO: Maklerrecht, Provision, Exposé, Kaufvertrag, Steuern. 60 Lerntage, 480 UE. Mit KI-Tutor, 300+ Praxisaufgaben und Lernfragen sowie Kursabschluss-Zertifikat.",
+    description: "Strukturierte Fach- und Praxisvorbereitung für Immobilienmakler nach §34c GewO: Maklerrecht, Provision, Exposé, Kaufvertrag, Steuern. 60 Lerntage, 480 UE. Mit KI-Tutor, Praxisaufgaben, Lernfragen und Kursabschluss-Zertifikat.",
     price: 49900,
     modules: "2",
   },
   {
     id: "modul_3",
     name: "Modul 3: WEG-Verwalter & Mietrecht — Ihr Weg zur Hausverwaltung",
-    description: "Professionelle Immobilienverwaltung von A bis Z: WEG-Reform 2020, Eigentümerversammlung, Nebenkostenabrechnung, Mietrecht §535ff BGB, Verwaltervertrag. 80 Lerntage, 640 UE. Für die Pflichtweiterbildung nach §26a WEG.",
+    description: "Grundlagen und Praxis der Immobilienverwaltung: WEG-Reform 2020, Eigentümerversammlung, Nebenkostenabrechnung, Mietrecht §535ff BGB und Verwaltervertrag. 80 Lerntage, 640 UE. Orientiert an typischen Weiterbildungsthemen für WEG-Verwalter.",
     price: 69900,
     modules: "1,3",
   },
   {
     id: "modul_4",
     name: "Modul 4: Immobilienbewertung & Sachverständigenwesen",
-    description: "Meistern Sie alle 3 Wertermittlungsverfahren nach ImmoWertV 2021: Vergleichswert, Ertragswert, Sachwert. Plus: Gutachtenerstellung, HypZert-Vorbereitung, Beleihungswert. 40 Lerntage, 320 UE.",
+    description: "Lernen Sie zentrale Wertermittlungsverfahren nach ImmoWertV 2021 kennen: Vergleichswert, Ertragswert und Sachwert. Plus: Gutachtenerstellung, Beleihungswert und Bewertungsgrundlagen. 40 Lerntage, 320 UE.",
     price: 39900,
     modules: "1,4",
   },
   {
     id: "modul_5",
-    name: "Modul 5: Darlehensvermittler §34i GewO — IHK-Vorbereitung Immobilienfinanzierung",
-    description: "IHK-Vorbereitung §34i GewO: Annuitätendarlehen, KfW-Förderprogramme, ESIS-Merkblatt, EU-Wohnimmobilienkreditrichtlinie (EU-WIKR). 40 Lerntage, 320 UE.",
+    name: "Modul 5: Darlehensvermittler §34i GewO — Immobilienfinanzierung",
+    description: "Fach- und Praxisvorbereitung zu zentralen §34i-Themen: Annuitätendarlehen, KfW-Förderprogramme, ESIS-Merkblatt und EU-Wohnimmobilienkreditrichtlinie (EU-WIKR). 40 Lerntage, 320 UE.",
     price: 49900,
     modules: "1,5",
   },
   {
     id: "modul_komplett",
-    name: "Komplett-Ausbildung: Alle 5 Module — Der komplette Immobilienprofi",
-    description: "Die komplette Immobilienausbildung in einem Paket: Makler, Verwalter, Gutachter, Finanzierer. 240 Lerntage, 1920 UE, 5 Kursabschluss-Zertifikate, 855+ Praxisaufgaben, Lernfragen und Prüfungsübungen, KI-Tutor. Einmaliger Kaufpreis.",
+    name: "Komplett-Ausbildung: Alle 5 Module — breites Immobilienwissen",
+    description: "Alle 5 Module in einem Paket: Maklerrecht, Verwaltung, Bewertung und Immobilienfinanzierung. 240 Lerntage, 1920 UE, 5 Kursabschluss-Zertifikate, Praxisaufgaben, Lernfragen, Prüfungsübungen und KI-Tutor. Einmaliger Kaufpreis.",
     price: 195500,
     modules: "1,2,3,4,5",
   },
@@ -122,10 +122,10 @@ stripeRouter.post("/api/stripe/checkout", async (req, res) => {
   const BUNDLES: Record<string, { modules: number[], price: number, name: string, desc: string }> = {
     "starter":      { modules:[1,2],       price:54900,  name:"Starter-Paket (M1+M2)",              desc:"Grundkurs + Makler §34c — Einstieg in die Immobilienvermittlung" },
     "verwalter":    { modules:[1,3],       price:69900,  name:"Verwalter-Paket (M1+M3)",             desc:"Grundkurs + WEG-Verwalter — Hausverwaltung professionell" },
-    "makler-plus":  { modules:[1,2,5],     price:104900, name:"Makler-Plus (M1+M2+M5)",              desc:"Makler + Darlehensvermittler — Doppellizenz §34c + §34i" },
-    "profi":        { modules:[1,2,3],     price:119900, name:"Immobilienprofi (M1+M2+M3)",          desc:"Makler + Verwalter — die beliebteste Kombination" },
+    "makler-plus":  { modules:[1,2,5],     price:104900, name:"Makler-Plus (M1+M2+M5)",              desc:"Maklerwissen + Immobilienfinanzierung — §34c- und §34i-Themen kombiniert" },
+    "profi":        { modules:[1,2,3],     price:119900, name:"Immobilienprofi (M1+M2+M3)",          desc:"Makler + Verwalter — praxisnahe Kombination" },
     "gutachter":    { modules:[1,2,4],     price:99900,  name:"Gutachter-Paket (M1+M2+M4)",         desc:"Makler + Immobilienbewertung — Bewertung und Vermittlung" },
-    "komplett":     { modules:[1,2,3,4,5], price:195500, name:"Komplett-Ausbildung (alle 5 Module)", desc:"Alle 5 Berufsbilder — maximale Karrierechancen in der Immobilienwirtschaft" },
+    "komplett":     { modules:[1,2,3,4,5], price:195500, name:"Komplett-Ausbildung (alle 5 Module)", desc:"Alle 5 Module — breites Praxiswissen in der Immobilienwirtschaft" },
   };
 
   stripeRouter.post("/api/stripe/bundle-:bundleId", async (req: Request, res: Response) => {
