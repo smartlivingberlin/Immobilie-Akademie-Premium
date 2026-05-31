@@ -86,7 +86,7 @@ stripeRouter.post("/api/stripe/checkout", async (req, res) => {
     if (!product) return res.status(404).json({ error: "Produkt nicht gefunden" });
 
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ["card"],
+      automatic_payment_methods: { enabled: true },
       invoice_creation: { enabled: true },
       mode: "payment",
       customer_email: userEmail || undefined,
@@ -138,6 +138,7 @@ stripeRouter.post("/api/stripe/checkout", async (req, res) => {
     }
     try {
       const session = await stripe.checkout.sessions.create({
+        automatic_payment_methods: { enabled: true },
         mode: "payment",
         line_items: [{ price_data: {
           currency: "eur",
