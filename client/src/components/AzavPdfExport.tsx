@@ -64,12 +64,12 @@ export function AzavPdfExport({ ownerKey }: AzavPdfProps) {
       doc.setFontSize(18);
       doc.setFont("helvetica", "bold");
       doc.setTextColor(255, 255, 255);
-      doc.text("AZAV-Anwesenheitsbericht", margin, 15);
+      doc.text("Lernzeit- und Anwesenheitsbericht", margin, 15);
       doc.setFontSize(10);
       doc.setFont("helvetica", "normal");
-      doc.text("Immobilien Akademie Smart | IHK-Vorbereitung §34c/§34i", margin, 22);
+      doc.text("Immobilien Akademie Smart | Praxisorientierte Lernunterlagen", margin, 22);
       doc.setFontSize(8);
-      doc.text("Gemäß §§ 176-180 SGB III | Erstellt: " + new Date().toLocaleString("de-DE"), margin, 29);
+      doc.text("Interner Lernnachweis | Erstellt: " + new Date().toLocaleString("de-DE"), margin, 29);
       y = 45;
 
       // ── META INFO ─────────────────────────────────────
@@ -108,7 +108,7 @@ export function AzavPdfExport({ ownerKey }: AzavPdfProps) {
         doc.rect(margin - 2, y - 2, pageW - 2 * margin + 4, 8, "F");
         addLine(
           azavOk
-            ? "✓ AZAV-konformer Nachweis vorhanden | Zeitraum: " + k.zeitraumVon + " bis " + k.zeitraumBis
+            ? "✓ Lernnachweis vorhanden | Zeitraum: " + k.zeitraumVon + " bis " + k.zeitraumBis
             : "⚠ Kein Lernnachweis vorhanden",
           9, true,
           azavOk ? [21,128,61] : [220,38,38]
@@ -163,7 +163,7 @@ export function AzavPdfExport({ ownerKey }: AzavPdfProps) {
       doc.setFillColor(248, 250, 252);
       doc.rect(margin - 2, y - 2, pageW - 2 * margin + 4, 20, "F");
       addLine("Rechtlicher Hinweis", 9, true, [100,116,139]);
-      addLine(data.hinweis || "Dieser Bericht dient als Grundlage für AZAV-Anwesenheitsnachweise gemäß §§ 176-180 SGB III", 8, false, [100,116,139]);
+      addLine(data.hinweis || "Dieser Bericht ist ein interner Lernzeit- und Anwesenheitsnachweis. Er enthält keine Aussage über AZAV-Anerkennung, Förderfähigkeit oder behördliche Anerkennung.", 8, false, [100,116,139]);
       addSpacer(2);
       addLine("Immobilien Akademie Smart | Alisad Gadyri | Berlin", 8, false, [150,150,150]);
 
@@ -177,7 +177,7 @@ export function AzavPdfExport({ ownerKey }: AzavPdfProps) {
       }
 
       // PDF herunterladen
-      const filename = "AZAV_Bericht_" + new Date().toISOString().split("T")[0] + ".pdf";
+      const filename = "Lernzeitbericht_" + new Date().toISOString().split("T")[0] + ".pdf";
       doc.save(filename);
 
     } catch (e) {
@@ -193,8 +193,8 @@ export function AzavPdfExport({ ownerKey }: AzavPdfProps) {
       <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:16}}>
         <span style={{fontSize:28}}>📄</span>
         <div>
-          <div style={{fontSize:15,fontWeight:800,color:"#15803d"}}>AZAV-Bericht als PDF exportieren</div>
-          <div style={{fontSize:12,color:"#16a34a"}}>Offizieller Anwesenheitsnachweis gemäß §§ 176-180 SGB III</div>
+          <div style={{fontSize:15,fontWeight:800,color:"#15803d"}}>Lernzeitbericht als PDF exportieren</div>
+          <div style={{fontSize:12,color:"#16a34a"}}>Interner Lernzeitnachweis ohne behördliche Anerkennung</div>
         </div>
       </div>
       <div style={{display:"flex",gap:12,marginBottom:16,flexWrap:"wrap"}}>

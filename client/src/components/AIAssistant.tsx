@@ -18,7 +18,7 @@ const QUICK = [
   "Was ist §34c GewO?",
   "Erkläre das Ertragswertverfahren",
   "Was sind Betriebskosten?",
-  "Was muss ich für die IHK-Prüfung wissen?",
+  "Welche Themen sollte ich wiederholen?",
   "Wie funktioniert die WEG-Verwaltung?",
   "Was ist ein Annuitätendarlehen?",
 ];
@@ -281,7 +281,7 @@ ${data.analysis}`,
           <div style={{ flex: 1 }}>
             <div style={{ color: "#fff", fontWeight: 700, fontSize: "1rem" }}>KI-Tutor · Immobilien-Akademie</div>
             <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "0.75rem" }}>
-              Claude Haiku · {moduleContext || "Alle Module"} · 521 Prüfungsfragen
+              Claude Haiku · {moduleContext || "Alle Module"} · Lernfragen und Praxisfälle
             </div>
           </div>
           <button onClick={onClose} style={{

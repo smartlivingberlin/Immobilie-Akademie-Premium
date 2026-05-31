@@ -11,7 +11,7 @@ const QUICK_LINKS = [
   { href: "/modul/3", label: "Modul 3 starten" },
   { href: "/modul/4", label: "Modul 4 starten" },
   { href: "/modul/5", label: "Modul 5 starten" },
-  { href: "/pruefung", label: "Prüfungssimulation" },
+  { href: "/pruefung", label: "Wissenscheck" },
   { href: "/zertifikate", label: "Meine Zertifikate" },
   { href: "/quiz", label: "Quiz starten" },
   { href: "/glossary", label: "Glossar" },
@@ -50,13 +50,13 @@ export default function UserGuide() {
       "3. KI-TUTOR",
       "Claude + Gemini + Groq — 24/7 verfuegbar, Sokrates-Modus",
       "",
-      "4. PRUEFUNGSVORBEREITUNG",
-      "Pruefungssimulation: /pruefung — 855+ IHK-Fragen, 70% zum Bestehen",
+      "4. WISSENSCHECKS",
+      "Wissenscheck: /pruefung — Lernfragen und Praxisfälle zur Selbstkontrolle",
       "Quiz: /quiz — ohne Zeitdruck nach Modulen",
       "Spaced Repetition: /wiederholung",
       "",
       "5. ZERTIFIKATE",
-      "PDF-Zertifikat nach bestandener Pruefung (>= 70%) — /zertifikate",
+      "PDF-Kurszertifikat nach portalinternem Wissenscheck — /zertifikate",
       "",
       "6. SUPPORT",
       "E-Mail: info@immobilien-akademie-smart.de",
@@ -185,12 +185,12 @@ export default function UserGuide() {
           <CardContent className="p-8">
             <div className="flex items-center gap-3 mb-6">
               <HelpCircle className="h-6 w-6 text-emerald-600" />
-              <h2 className="text-2xl font-bold text-slate-900">4. Prüfungsvorbereitung</h2>
+              <h2 className="text-2xl font-bold text-slate-900">4. Wissenschecks</h2>
             </div>
             <div className="space-y-4">
               <div>
-                <h3 className="text-lg font-semibold text-slate-800 mb-1">Prüfungssimulation (/pruefung)</h3>
-                <p className="text-slate-600 leading-relaxed">855+ validierte IHK-Prüfungsfragen. Zum Bestehen sind <strong>70 % korrekte Antworten</strong> erforderlich.</p>
+                <h3 className="text-lg font-semibold text-slate-800 mb-1">Wissenscheck (/pruefung)</h3>
+                <p className="text-slate-600 leading-relaxed">Lernfragen und Praxisfälle zur Selbstkontrolle. Die Ergebnisse dokumentieren nur den portalinternen Lernstand.</p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-slate-800 mb-1">Quiz (/quiz)</h3>
@@ -215,7 +215,7 @@ export default function UserGuide() {
               <Award className="h-6 w-6 text-emerald-600" />
               <h2 className="text-2xl font-bold text-slate-900">5. Zertifikate</h2>
             </div>
-            <p className="text-slate-600 leading-relaxed mb-4">Nach Abschluss eines Moduls und bestandener Prüfung (≥ 70 %) erhalten Sie ein <strong>PDF-Zertifikat</strong> im IHK-vorbereitenden Format mit Ihrem Namen, der Modulbezeichnung, dem Abschlussdatum und Ihrer Punktzahl.</p>
+            <p className="text-slate-600 leading-relaxed mb-4">Nach Abschluss eines Moduls und erfolgreichem portalinternem Wissenscheck erhalten Sie ein <strong>PDF-Kurszertifikat</strong> mit Ihrem Namen, der Modulbezeichnung, dem Abschlussdatum und Ihrer Punktzahl.</p>
             <Link href="/zertifikate">
               <div className="inline-flex items-center gap-2 bg-emerald-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-emerald-700 cursor-pointer">
                 <Award className="h-4 w-4" /> Zu meinen Zertifikaten

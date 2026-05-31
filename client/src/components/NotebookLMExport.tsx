@@ -30,7 +30,7 @@ export function NotebookLMExport({
   const buildExportText = () => {
     const parts: string[] = [
       "# Modul " + moduleId + " - Tag " + dayNumber + ": " + title,
-      "## Immobilien Akademie Smart | IHK-Vorbereitung §34c/§34i GewO",
+      "## Immobilien Akademie Smart | Praxisorientierte Lernunterlage zu §34c- und §34i-Themen",
       "",
       "---",
       "## THEORIE",

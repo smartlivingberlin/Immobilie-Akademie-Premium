@@ -34,7 +34,7 @@ export const modules: ModuleData[] = [
     id: 2,
     title: "Modul 2: Makler Basis nach §34c GewO",
     shortTitle: "Makler §34c",
-    description: "Umfassende Ausbildung zum Immobilienmakler (ohne IHK-Prüfung).",
+    description: "Praxisorientierte Grundlagen für Immobilienmakler nach §34c GewO.",
     days: 60,
     ue: 480,
     status: 'completed', // Bereits in früheren Sessions erstellt
@@ -91,7 +91,7 @@ export const modules: ModuleData[] = [
     id: 5,
     title: "Modul 5: Immobiliendarlehensvermittlung (§ 34i GewO)",
     shortTitle: "Finanzierung",
-    description: "Vorbereitung auf die Sachkundeprüfung für Immobiliardarlehensvermittler.",
+    description: "Fach- und Praxiswissen zu Immobiliardarlehensvermittlung nach §34i GewO.",
     days: 40,
     ue: 320,
     status: 'locked',
@@ -101,7 +101,7 @@ export const modules: ModuleData[] = [
       "Finanzierungsanlässe und Kreditprodukte",
       "Kreditkonditionen und -vergleich",
       "Kreditwürdigkeitsprüfung",
-      "Prüfungsvorbereitung"
+      "Wissenschecks und Praxisfälle"
     ]
   }
 ];

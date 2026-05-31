@@ -92,7 +92,7 @@ certificateExportRouter.get("/api/certificate/:moduleId", requireAuth, async (re
     doc.setFont("helvetica", "normal");
     doc.text(`Ausgestellt am: ${dateStr}`, pageWidth / 2, 175, { align: "center" });
 
-    const disclaimerText = "Diese Bescheinigung bestätigt die Bearbeitung der Lerneinheiten auf immobilien-akademie-smart.de zur Vorbereitung auf die Sachkundeprüfung. Sie ersetzt nicht die offizielle IHK-Sachkundeprüfung.";
+    const disclaimerText = "Diese Bescheinigung dokumentiert die Bearbeitung portalinterner Lerneinheiten auf immobilien-akademie-smart.de. Sie ist kein behördlicher, IHK- oder prüfungsrechtlicher Nachweis.";
     doc.setFontSize(8);
     const splitDisclaimer = doc.splitTextToSize(disclaimerText, pageWidth - 40);
     doc.text(splitDisclaimer, pageWidth / 2, pageHeight - 20, { align: "center" });

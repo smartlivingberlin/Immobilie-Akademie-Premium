@@ -83,9 +83,9 @@ export function buildKnowledgeBase(): KnowledgeEntry[] {
     },
     {
       module: 5,
-      title: "Modul 5: Prüfungsvorbereitung & Darlehensvermittlung §34i",
-      content: "IHK-Prüfungsvorbereitung, Darlehensvermittlung nach §34i GewO, Finanzierungsberatung, Kreditrecht, Annuitätendarlehen, Tilgungsrechnung. 40 Ausbildungstage.",
-      keywords: ["prüfung", "§34i", "darlehen", "finanzierung", "kredit", "ihk"],
+      title: "Modul 5: Darlehensvermittlung §34i und Finanzierungspraxis",
+      content: "Darlehensvermittlung nach §34i GewO, Finanzierungsberatung, Kreditrecht, Annuitätendarlehen und Tilgungsrechnung. 40 Lerntage mit Praxisbezug.",
+      keywords: ["§34i", "darlehen", "finanzierung", "kredit", "praxis", "wissen"],
     },
   ];
 

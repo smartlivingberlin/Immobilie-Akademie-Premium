@@ -2,7 +2,7 @@
  * Portal-Phasen-System
  * Phase A: Selbstlernportal (sofort, ohne Genehmigung)
  * Phase B: Fernlehrgang (nach ZFU-Zulassung)
- * Phase C: AZAV-zertifiziert (nach Akkreditierung, BGS-fähig)
+ * Phase C: AZAV-zertifiziert (nach Akkreditierung, Förderung nur nach Zulassung)
  * Phase D: Vollzertifiziert (ZFU + AZAV + IHK-Kooperation)
  */
 
@@ -111,13 +111,13 @@ export const PHASES: Record<Phase, PhaseConfig> = {
   A: {
     id: "A",
     name: "Selbstlernportal",
-    description: "Digitales Lernmaterial zur IHK-Prüfungsvorbereitung. Keine externe Zertifizierung nötig.",
+    description: "Digitales Selbstlernmaterial zu Immobilienpraxis und Rechtsgrundlagen. Keine externe Zertifizierung.",
     badges: { azav: false, zfu: false, ihk: false, bgs: false },
     labels: {
       productType: "Digitales Lernmaterial",
-      certificationNote: "Qualifizierte Prüfungsvorbereitung",
-      faqCertAnswer: "Unsere Lerninhalte bereiten Sie auf die IHK-Sachkundeprüfung vor. Die Zertifikate nach Modul-Abschluss dokumentieren Ihre Weiterbildung und können Arbeitgebern vorgelegt werden.",
-      footerBadge1: "IHK-Vorbereitung",
+      certificationNote: "Praxisorientiertes Selbstlernportal",
+      faqCertAnswer: "Unsere Lerninhalte vermitteln praxisorientiertes Immobilienwissen. Die Zertifikate dokumentieren ausschließlich portalinterne Lernleistungen.",
+      footerBadge1: "Praxiswissen",
       footerBadge2: "Qualitätsgesichert",
     },
     canSell: true,
@@ -127,14 +127,14 @@ export const PHASES: Record<Phase, PhaseConfig> = {
   B: {
     id: "B",
     name: "Fernlehrgang (ZFU-zugelassen)",
-    description: "Staatlich zugelassener Fernlehrgang nach FernUSG. Offizieller ZFU-Status.",
+    description: "Geplanter Fernlehrgang nur nach Zulassung nach FernUSG. Offizieller ZFU-Status.",
     badges: { azav: false, zfu: true, ihk: false, bgs: false },
     labels: {
-      productType: "Staatlich zugelassener Fernlehrgang",
+      productType: "Geplanter Fernlehrgang nur nach Zulassung",
       certificationNote: "ZFU-zugelassen",
-      faqCertAnswer: "Unsere Ausbildung ist staatlich zugelassen (ZFU) und bereitet Sie optimal auf die IHK-Sachkundeprüfung vor. Die Zertifikate nach Modul-Abschluss dokumentieren Ihre Weiterbildung gemäß §34c GewO.",
+      faqCertAnswer: "Diese Phase darf erst nach vorliegender ZFU-Zulassung öffentlich genutzt werden. Bis dahin keine Aussage über staatliche Zulassung oder Anerkennung.",
       footerBadge1: "ZFU-zugelassen",
-      footerBadge2: "IHK-Vorbereitung",
+      footerBadge2: "Praxiswissen",
     },
     canSell: true,
     requirements: ["ZFU-Zulassung vorliegend", "FernUSG-konformer Vertrag aktiv"],
@@ -142,15 +142,15 @@ export const PHASES: Record<Phase, PhaseConfig> = {
   },
   C: {
     id: "C",
-    name: "AZAV-zertifiziert (BGS-fähig)",
-    description: "AZAV-akkreditiert. Bildungsgutschein der Agentur für Arbeit wird akzeptiert.",
+    name: "AZAV angestrebt (nicht aktiv)",
+    description: "AZAV-Akkreditierung ist nur als mögliche spätere Ausbaustufe vorgesehen. Aktuell besteht daraus kein Förderanspruch.",
     badges: { azav: true, zfu: true, ihk: false, bgs: true },
     labels: {
-      productType: "AZAV-zertifizierter Fernlehrgang",
-      certificationNote: "AZAV-zertifiziert · ZFU-zugelassen · BGS-fähig",
-      faqCertAnswer: "Unsere Ausbildung ist AZAV-zertifiziert und staatlich zugelassen (ZFU). Bildungsgutscheine der Agentur für Arbeit und Jobcenter werden akzeptiert. Die Zertifikate sind anerkannt für die Weiterbildungspflicht nach §34c GewO.",
+      productType: "Geplante AZAV-Ausbaustufe",
+      certificationNote: "AZAV und ZFU nur nach Freigabe",
+      faqCertAnswer: "Diese Phase ist eine interne Roadmap. Bildungsgutscheine, AZAV- oder ZFU-Aussagen sind erst nach nachweisbarer Zulassung zulässig.",
       footerBadge1: "AZAV-zertifiziert",
-      footerBadge2: "BGS-fähig",
+      footerBadge2: "Förderung nur nach Zulassung",
     },
     canSell: true,
     requirements: ["AZAV-Akkreditierung vorliegend", "ZFU-Zulassung vorliegend", "Anwesenheitsnachweise aktiv"],
@@ -162,11 +162,11 @@ export const PHASES: Record<Phase, PhaseConfig> = {
     description: "ZFU + AZAV + IHK-Kooperation. Maximale Reichweite und Förderoptionen.",
     badges: { azav: true, zfu: true, ihk: true, bgs: true },
     labels: {
-      productType: "IHK-vorbereitender Fernlehrgang",
-      certificationNote: "IHK-vorbereitet · ZFU-Prüfung ausstehend · AZAV-Akkreditierung geplant",
-      faqCertAnswer: "Unsere Ausbildung bereitet IHK-orientiert vor. Eine AZAV-Akkreditierung und ZFU-Zulassung ist für Phase C geplant. Bildungsgutscheine werden akzeptiert. Die Zertifikate sind offiziell anerkannt für die Weiterbildungspflicht nach §34c GewO.",
-      footerBadge1: "AZAV · ZFU · IHK",
-      footerBadge2: "BGS-fähig",
+      productType: "Praxisorientierter Fernlehrgang",
+      certificationNote: "ZFU und AZAV nur nach Freigabe",
+      faqCertAnswer: "Diese Phase ist eine interne Roadmap und darf erst nach schriftlicher Freigabe und nachweisbaren Zulassungen öffentlich genutzt werden.",
+      footerBadge1: "Roadmap: AZAV · ZFU",
+      footerBadge2: "Förderung nur nach Zulassung",
     },
     canSell: true,
     requirements: ["AZAV-Akkreditierung", "ZFU-Zulassung", "IHK-Kooperationsvertrag"],

@@ -92,7 +92,7 @@ export async function generateCertificatePDF(
   doc.setFontSize(16);
   doc.setTextColor(51, 65, 85);
   doc.setFont("helvetica", "normal");
-  doc.text("die Prüfung erfolgreich bestanden hat:", pageWidth / 2, 105, { align: "center" });
+  doc.text("den portalinternen Wissenscheck erfolgreich abgeschlossen hat:", pageWidth / 2, 105, { align: "center" });
 
   // Module name (highlighted)
   doc.setFontSize(20);
@@ -129,8 +129,8 @@ export async function generateCertificatePDF(
   // Disclaimer (Pflicht auf JEDEM Zertifikat laut Protokoll Abschnitt 4.5)
   const disclaimerText =
     certType === "participation"
-      ? `Typ A – Teilnahmebescheinigung: Diese Bescheinigung bestätigt die erfolgreiche Bearbeitung der Lerneinheiten auf immobilien-akademie-smart.de zur Vorbereitung auf die Sachkundeprüfung nach §34c/§34i/§26a. Sie ersetzt nicht die offizielle IHK-Prüfung. Ausgestellt von: Alisad Gadyri, IHK-Immobilienkaufmann (Berlin, 2023).`
-      : `Typ B – Abschlusszertifikat: Diese Bescheinigung bestätigt den erfolgreichen Abschluss der Prüfungssimulation auf immobilien-akademie-smart.de (≥55%). Sie ersetzt nicht die offizielle IHK-Prüfung. Ausgestellt von: Alisad Gadyri, IHK-Immobilienkaufmann (Berlin, 2023).`;
+      ? `Typ A – Teilnahmebescheinigung: Diese Bescheinigung bestätigt die Bearbeitung portalinterner Lerneinheiten auf immobilien-akademie-smart.de. Sie ist kein behördlicher, IHK- oder prüfungsrechtlicher Nachweis. Ausgestellt von: Alisad Gadyri, IHK-Immobilienkaufmann (Berlin, 2023).`
+      : `Typ B – Kursabschluss-Zertifikat: Diese Bescheinigung bestätigt den erfolgreichen Abschluss eines portalinternen Wissenschecks auf immobilien-akademie-smart.de. Sie ist kein behördlicher, IHK- oder prüfungsrechtlicher Nachweis. Ausgestellt von: Alisad Gadyri, IHK-Immobilienkaufmann (Berlin, 2023).`;
 
   doc.setFontSize(8);
   doc.setTextColor(148, 163, 184);
