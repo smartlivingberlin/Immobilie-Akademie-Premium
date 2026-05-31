@@ -109,7 +109,7 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="Immobilien Akademie Smart — IHK §34c §34i WEG-Verwalter Gutachter Online"
+        title="Immobilien Akademie Smart — §34c Makler, §34i, WEG-Verwaltung, Immobilienbewertung Online"
         description="Praxiswissen §34c Makler, §34i-Sachkunde, WEG-Verwaltung, Immobilienbewertung. KI-Tutor, 240 Lerntage, Praxisaufgaben. Ab 149€."
         keywords="§34c GewO Makler, §34i GewO IHK-Sachkunde, WEG-Verwaltung, Immobilienbewertung, Online-Weiterbildung Immobilien"
       />
@@ -122,7 +122,7 @@ export default function Home() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs backdrop-blur mb-6">
               <Sparkles className="h-3.5 w-3.5" style={{color:"oklch(0.78 0.15 75)"}} />
-              IHK-konforme Online-Vorbereitung · Deutschland
+              Strukturierte Online-Vorbereitung · Deutschland
             </div>
             <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-tight leading-tight mb-6">
               Ihre Fach- und Praxisvorbereitung für die{" "}
@@ -163,7 +163,7 @@ export default function Home() {
               </div>
             )}
             <div className="flex flex-wrap gap-5">
-              {["IHK-Prüfungsformat","KI-Tutor 24/7","Direkter Zugang nach Kauf","DSGVO-konform"].map(t=>(
+              {["Prüfungsformat","KI-Tutor 24/7","Direkter Zugang nach Kauf","DSGVO-konform"].map(t=>(
                 <span key={t} className="flex items-center gap-1.5 text-sm text-white/70">
                   <CheckCircle2 className="h-4 w-4" style={{color:"oklch(0.78 0.15 75)"}} />{t}
                 </span>

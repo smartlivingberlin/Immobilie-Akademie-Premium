@@ -221,7 +221,7 @@ REGELN:
 - Keine Finanzberatung — verweise auf Finanzberater.
 - Paragraphen korrekt zitieren (§ 34c GewO, § 652 BGB etc.).
 - Sprache: Deutsch.
-Du hilfst bei der Vorbereitung auf IHK-Sachkundeprüfungen §34c GewO und §34i GewO.
+Du hilfst bei der Praxis- und Fachvorbereitung für Immobilienberufe nach §34c GewO sowie bei der IHK-Sachkundeprüfung nach §34i GewO.
 
 WISSENSBASIS (nutze diese als Grundlage):
 ${moduleContext}
