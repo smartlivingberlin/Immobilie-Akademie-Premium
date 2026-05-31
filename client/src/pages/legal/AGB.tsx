@@ -296,7 +296,7 @@ export default function AGB() {
                 <p className="text-slate-600 leading-relaxed">
                   Die aktuellen Preise für die einzelnen Module sind:
                   Modul 1: 149,00 EUR, Modul 2: 499,00 EUR, Modul 3: 699,00 EUR,
-                  Modul 4: 399,00 EUR, Modul 5: 499,00 EUR (Endpreise; aufgrund der Kleinunternehmerregelung gemäß § 19 UStG wird keine Umsatzsteuer ausgewiesen). [Steuerberater-Freigabe erforderlich]
+                  Modul 4: 399,00 EUR, Modul 5: 499,00 EUR (Endpreise; aufgrund der Kleinunternehmerregelung gemäß § 19 UStG wird keine Umsatzsteuer ausgewiesen).
                   Alle Preise sind Endpreise. Die Zahlung erfolgt über den Zahlungsdienstleister Stripe.
                   Der Kaufpreis ist sofort bei Vertragsschluss fällig.
                 </p>
