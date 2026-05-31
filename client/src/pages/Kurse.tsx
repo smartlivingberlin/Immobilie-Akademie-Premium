@@ -67,7 +67,7 @@ export default function Kurse() {
       <div style={{ background:"linear-gradient(135deg, #0c1628 0%, #0f2744 100%)", padding:"64px 20px 48px" }}>
         <div style={{ maxWidth:860, margin:"0 auto", textAlign:"center" }}>
           <div style={{ display:"inline-block", background:"rgba(37,99,235,0.15)", border:"1px solid rgba(96,165,250,0.3)", color:"#bfdbfe", borderRadius:24, padding:"6px 18px", fontSize:12, fontWeight:700, marginBottom:20 }}>
-            🎓 IHK-VORBEREITUNG · §34c · §34i · WEG-VERWALTER
+            🎓 PRAXISWISSEN · §34c · §34i · WEG-VERWALTUNG
           </div>
           <h1 style={{ fontFamily:"Fraunces, Georgia, serif", fontSize:"clamp(28px, 4vw, 44px)", fontWeight:900, color:"#f1f5f9", marginBottom:12, lineHeight:1.2 }}>
             Einzelne Kurse kaufen

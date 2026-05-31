@@ -24,10 +24,10 @@ const PAKETE = [
 ];
 
 const TRUST = [
-  { icon:"🎓", label:"IHK-vorbereitet", sub:"§34c + §34i Prüfungsstoff" },
+  { icon:"🎓", label:"Praxisorientiert", sub:"§34c Weiterbildung + §34i Sachkunde" },
   { icon:"📱", label:"Dauerhafter Zugang", sub:"Einmaliger Kaufpreis, kein Abo" },
   { icon:"🤖", label:"KI-Tutor inklusive", sub:"Claude + Gemini + Groq" },
-  { icon:"📋", label:"855+ Lernaufgaben", sub:"IHK-Fragen, Rechenübungen & Praxisfälle" },
+  { icon:"📋", label:"855+ Lernaufgaben", sub:"Lernfragen, Rechenübungen & Praxisfälle" },
   { icon:"🎯", label:"Prüfungssimulation", sub:"Realistische Testumgebung" },
   { icon:"🏆", label:"Zertifikat", sub:"Nach Modulabschluss" },
 ];
@@ -41,7 +41,7 @@ export default function KursPakete() {
     <div style={{ minHeight:"100vh", background:"var(--color-bg, #f8fafc)" }}>
       <SEO
         title="Kurs-Pakete — Alle Module im Vorteilspaket | Immobilien Akademie"
-        description="Spare bis zu 290 EUR mit unseren Kurs-Paketen. 6 Kombinationen für jeden Karriereweg — IHK §34c, §34i, WEG-Verwalter, Gutachter."
+        description="Spare bis zu 290 EUR mit unseren Kurs-Paketen. 6 Kombinationen für jeden Karriereweg — §34c Weiterbildung, §34i-Sachkunde, WEG-Verwalter, Gutachter."
       />
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
@@ -75,7 +75,7 @@ export default function KursPakete() {
 
           <p style={{ fontSize:17, color:"#94a3b8", maxWidth:540, margin:"0 auto 32px", lineHeight:1.6 }}>
             6 maßgeschneiderte Pakete — für Makler, Verwalter, Gutachter und Allrounder.
-            Einmalzahlung, dauerhafter Zugang, IHK-vorbereitet.
+            Einmalzahlung, dauerhafter Zugang, fachlich vorbereitet.
           </p>
 
           <div style={{ display:"flex", gap:32, justifyContent:"center", flexWrap:"wrap", marginBottom:8 }}>

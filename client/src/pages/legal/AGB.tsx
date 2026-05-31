@@ -161,13 +161,9 @@ export default function AGB() {
           </p>
           <ul>
             <li><strong>Einmalzahlung:</strong> Unbefristeter Zugang zu den erworbenen Inhalten</li>
-            
           </ul>
           <p>
-            
-          </p>
-          <p>
-            (3) Das Recht zur außerordentlichen Kündigung aus wichtigem Grund bleibt unberührt. Ein wichtiger 
+            (2) Das Recht zur außerordentlichen Kündigung aus wichtigem Grund bleibt unberührt. Ein wichtiger 
             Grund liegt insbesondere vor bei:
           </p>
           <ul>
@@ -176,7 +172,7 @@ export default function AGB() {
             <li>Missbrauch der Plattform oder der Inhalte</li>
           </ul>
           <p>
-            (4) Mit Beendigung des Vertrags erlischt das Nutzungsrecht. Der Zugang zur Plattform wird gesperrt. 
+            (3) Mit Beendigung des Vertrags erlischt das Nutzungsrecht. Der Zugang zur Plattform wird gesperrt. 
             Bereits gezahlte Vergütungen werden im Rahmen des gesetzlichen Widerrufsrechts nach §355 BGB erstattet. Die vollständige Widerrufsbelehrung ist unter /widerruf abrufbar.
           </p>
 
