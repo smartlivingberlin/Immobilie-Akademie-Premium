@@ -61,7 +61,7 @@ export default function LoginPage() {
             <span style={{ color: "white", fontSize: "22px", fontWeight: "900", fontFamily: "Fraunces, Georgia, serif" }}>IA</span>
           </div>
           <h1 style={{ color: "white", fontSize: "26px", fontWeight: "900", margin: "0 0 4px", fontFamily: "Fraunces, Georgia, serif", letterSpacing: "-0.02em" }}>Immobilien-Akademie</h1>
-          <p style={{ color: "#93c5fd", fontSize: "13px", margin: 0 }}>Vorbereitung auf die IHK-Sachkundeprüfung §34c/§34i</p>
+          <p style={{ color: "#93c5fd", fontSize: "13px", margin: 0 }}>Praxis- und Fachvorbereitung §34c · IHK-Sachkunde §34i</p>
         </div>
         <div style={{ background: "white", borderRadius: "20px", padding: "36px", boxShadow: "0 25px 50px rgba(0,0,0,0.4)" }}>
           <h2 style={{ fontSize: "20px", fontWeight: "600", color: "#1e293b", margin: "0 0 24px" }}>{mode === "login" ? "Anmelden" : "Konto erstellen"}</h2>

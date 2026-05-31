@@ -48,7 +48,7 @@ export function StructuredData() {
       "@context": "https://schema.org",
       "@type": "EducationalOrganization",
       "name": "Immobilien Akademie Smart",
-      "description": "IHK-Vorbereitung §34c Makler, §34i Darlehensvermittler, WEG-Verwalter, Gutachter & Sachverständiger. KI-gestütztes Lernportal mit 855+ Aufgaben, 240 Lerntagen, 5 Berufsbildern.",
+      "description": "Praxiswissen §34c Makler, §34i-Sachkunde, WEG-Verwaltung, Immobilienbewertung. KI-gestütztes Lernportal, 240 Lerntage, 5 Berufsbilder.",
       "url": window.location.origin,
       "address": {
         "@type": "PostalAddress",
@@ -136,7 +136,7 @@ export function StructuredData() {
           "name": "Bereitet das Portal auf die IHK-Prüfung vor?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Das Portal bereitet optimal auf die IHK-Sachkundeprüfungen nach §34c und §34i GewO sowie §26a WEG vor. Die Inhalte orientieren sich am IHK-Rahmenplan §34c/§34i GewO. Das Portal selbst ist ein privates Bildungsangebot und ersetzt nicht die offizielle IHK-Prüfung.",
+            "text": "Das Portal vermittelt praxisorientiertes Fach- und Rechtswissen zu §34c und §34i GewO sowie §26a WEG vor. Die Inhalte orientieren sich am IHK-Rahmenplan §34c/§34i GewO. Das Portal selbst ist ein privates Bildungsangebot und ersetzt nicht die offizielle IHK-Prüfung.",
           },
         },
       ],
