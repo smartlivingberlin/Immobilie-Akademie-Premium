@@ -79,7 +79,7 @@ async function startServer() {
 
   // Permissions-Policy Header
   app.use((_req, res, next) => {
-    res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=(), payment=(self \"https://js.stripe.com https://plausible.io\")");
+    res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=(), payment=(self \"https://js.stripe.com\")");
     next();
   });
   app.use((_req, res, next) => {
@@ -95,12 +95,11 @@ app.use(helmet({
         "'self'",
         "'unsafe-inline'",
         "https://js.stripe.com",
-        "https://plausible.io"
       ],
       styleSrc: ["'self'", "'unsafe-inline'"],
       imgSrc: ["'self'", "data:", "https:", "blob:", "https://img.youtube.com"],
       connectSrc: ["'self'", "https://api.stripe.com", "https://api.anthropic.com", "https://generativelanguage.googleapis.com", "https://plausible.io", "https://*.sentry.io"],
-      frameSrc: ["'self'", "https://js.stripe.com", "https://plausible.io", "https://hooks.stripe.com", "https://www.youtube.com", "https://youtube.com"],
+      frameSrc: ["'self'", "https://js.stripe.com", "https://hooks.stripe.com", "https://www.youtube.com", "https://youtube.com"],
       fontSrc: ["'self'", "data:"],
       objectSrc: ["'none'"],
       upgradeInsecureRequests: [],
