@@ -79,9 +79,20 @@ export function registerOwnerRoutes(app: Express) {
     const isEmail = method === "email" || method === "both";
     const ownerEmail = process.env.OWNER_EMAIL || "alisadgadyri38@gmail.com";
     if (isEmail) {
-      generateOTP(ownerEmail).then(code => {
-        sendOTPEmail(ownerEmail, code, "Alisad").catch(() => {});
-      }).catch(() => {});
+      (async () => {
+        const { getDb } = await import("./db");
+        const db = await getDb();
+        await db.$client.query("DELETE FROM otp_tokens WHERE expiresAt < NOW()");
+        const [rows] = await db.$client.query(
+          "SELECT id FROM otp_tokens WHERE email = ? AND used = 0 AND attempts < 3 AND expiresAt > NOW() ORDER BY createdAt DESC LIMIT 1",
+          [ownerEmail]
+        ) as any;
+        const hasValidCode = Array.isArray(rows) && rows.length > 0;
+        if (!hasValidCode) {
+          const code = await generateOTP(ownerEmail);
+          await sendOTPEmail(ownerEmail, code, "Alisad");
+        }
+      })().catch(() => {});
     }
     return res.send(`<!DOCTYPE html>
 <html lang="de">
