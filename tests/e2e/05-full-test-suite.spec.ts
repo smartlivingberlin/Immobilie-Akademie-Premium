@@ -58,9 +58,9 @@ test.describe("👤 Externer Nutzer (kein Account)", () => {
     const hasHero = await page.locator("h1, h2").first().isVisible();
     expect(hasHero).toBe(true);
     
-    // IHK-Fragen Zahl sichtbar?
+    // Hero- und Portalinhalt sichtbar?
     const content = await page.textContent("body");
-    expect(content).toMatch(/855|IHK|Immobilien/i);
+    expect(content).toMatch(/Immobilien|Praxiswissen|Modul/i);
     
     console.log("✅ Startseite: Hero + Inhalt sichtbar");
     await screenshot(page, "01-startseite-extern");
@@ -163,12 +163,12 @@ test.describe("🆓 Trial-Nutzer", () => {
 // ══════════════════════════════════════════════════════════
 test.describe("🎓 Eingeloggter Nutzer (Admin als Proxy)", () => {
 
+  test.skip(!process.env.MAGIC_LINK_SECRET, "MAGIC_LINK_SECRET fehlt; geschuetzte Nutzer-Tests werden uebersprungen.");
+
   test.beforeEach(async ({ page }) => {
     const secret = process.env.MAGIC_LINK_SECRET || "";
-    if (secret) {
-      await page.goto(`${BASE}/api/auth/magic?secret=${secret}`);
-      await page.waitForLoadState("networkidle");
-    }
+    await page.goto(`${BASE}/api/auth/magic?secret=${secret}`);
+    await page.waitForLoadState("networkidle");
   });
 
   test("Dashboard erreichbar nach Login", async ({ page }) => {
@@ -196,7 +196,7 @@ test.describe("🎓 Eingeloggter Nutzer (Admin als Proxy)", () => {
     await page.waitForLoadState("networkidle");
     await page.waitForTimeout(1500);
     const text = await page.textContent("body");
-    expect(text).toMatch(/Frage|Quiz|Prüfung|855/i);
+    expect(text).toMatch(/Frage|Quiz|Pr.fung|Lernfragen|Wissenscheck/i);
     console.log("✅ Quiz-Seite geladen");
     await screenshot(page, "05-quiz");
   });
