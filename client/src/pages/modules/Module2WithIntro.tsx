@@ -10,10 +10,10 @@ export default function Module2WithIntro() {
       <ModuleIntro
         moduleId={2}
         title="Immobilienmakler §34c GewO"
-        subtitle="Vollständige Vorbereitung auf die IHK-Sachkundeprüfung §34c GewO. Von Maklerrecht über Vertragsgestaltung bis zur Bewertung — alles was du als Makler wissen musst."
+        subtitle="Fach- und Praxisvorbereitung §34c GewO. Von Maklerrecht über Vertragsgestaltung bis zur Bewertung — alles was du als Makler wissen musst."
         targetAudience="Für alle, die als Immobilienmakler tätig werden möchten. Ob Quereinsteiger aus dem Vertrieb, der Verwaltung oder völlig anderen Bereichen — dieses Modul führt dich sicher zur §34c-Erlaubnis."
         duration="60 Lerntage"
-        units="440"
+        units="480"
         goal="Du kennst alle rechtlichen Voraussetzungen für die Maklertätigkeit, kannst Maklerverträge korrekt gestalten, Provisionen berechnen und Immobilien marktgerecht bewerten."
         whatYouLearn={[
           "§34c GewO: Voraussetzungen und Beantragung",
@@ -24,13 +24,13 @@ export default function Module2WithIntro() {
           "Geldwäschegesetz (GwG) Pflichten für Makler",
         ]}
         whatYouCanAfter={[
-          "Die IHK-Sachkundeprüfung §34c ablegen",
+          "Maklerrecht und §34c-Praxiswissen vertiefen",
           "Maklerverträge rechtssicher gestalten",
           "Provision korrekt berechnen und durchsetzen",
           "Immobilien mit allen 3 Verfahren bewerten",
           "Als selbständiger Immobilienmakler arbeiten",
         ]}
-        examRelevance="Orientiert am IHK-Rahmenplan §34c GewO. Enthält prüfungsrelevante Übungsaufgaben mit Lösungen und Prüfungssimulation."
+        examRelevance="Orientiert an typischen §34c-Weiterbildungsthemen. Enthält Praxisaufgaben mit Lösungen und Wissenschecks."
         legalBasis="§34c GewO"
         difficulty="Mittelstufe"
         onStart={() => setShowIntro(false)}
