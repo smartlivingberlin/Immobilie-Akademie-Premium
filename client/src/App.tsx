@@ -129,9 +129,18 @@ function OwnerRoute({ component: Component }: { component: React.ComponentType }
   if (isLoading) return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
   if (isInspect) { window.location.href = "/login"; return null; }
   if (!user || user.role !== "admin") { window.location.href = "/login"; return null; }
-  // Owner-2FA Pflicht: nur nach erfolgreichem 2FA-Flow (Cookie owner_2fa_ok gesetzt)
-  const has2FA = document.cookie.includes("owner_2fa_ok=1");
-  if (!has2FA) {
+  // Owner-2FA Pflicht: httpOnly-Cookie serverseitig pruefen
+  const [owner2FAOk, setOwner2FAOk] = React.useState<boolean | null>(null);
+  React.useEffect(() => {
+    let active = true;
+    fetch("/api/owner/2fa-status", { credentials: "include" })
+      .then((response) => response.ok ? response.json() : { ok: false })
+      .then((data) => { if (active) setOwner2FAOk(Boolean(data?.ok)); })
+      .catch(() => { if (active) setOwner2FAOk(false); });
+    return () => { active = false; };
+  }, []);
+  if (owner2FAOk === null) return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
+  if (!owner2FAOk) {
     const key = sessionStorage.getItem("ownerKey") || new URLSearchParams(window.location.search).get("key") || "";
     if (key) {
       // POST-Form auto-submit zum Owner-Access-Endpoint

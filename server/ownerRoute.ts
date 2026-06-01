@@ -71,6 +71,13 @@ export function registerOwnerRoutes(app: Express) {
     return res.redirect(`/owner-2fa?${params}`);
   });
 
+  // GET /api/owner/2fa-status — serverseitige Prüfung des httpOnly 2FA-Cookies
+  app.get("/api/owner/2fa-status", (req: Request, res: Response) => {
+    const cookieHeader = String(req.headers.cookie || "");
+    const ok = cookieHeader.split(";").some((part) => part.trim() === "owner_2fa_ok=1");
+    return res.json({ ok });
+  });
+
   // GET /owner-2fa — zeigt 2FA-Formular
   app.get("/owner-2fa", (req: Request, res: Response) => {
     const method = (req.query.method as string) || "email";
