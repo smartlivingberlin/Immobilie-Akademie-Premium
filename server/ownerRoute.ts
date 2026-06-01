@@ -3,12 +3,45 @@ import { z } from "zod";
 import type { Express, NextFunction, Request, Response } from "express";
 import { generateOTP, verifyOTP, sendOTPEmail } from "./twoFactor";
 import { getTotpSecret, generateTotpSecret, generateQRCode, verifyTotp, getOwner2FAMethod } from "./ownerTwoFactor";
-import { createSessionToken } from "./_core/auth-local";
+import { createSessionToken, verifySessionToken } from "./_core/auth-local";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { ENV } from "./_core/env";
 import { COOKIE_NAME, ONE_YEAR_MS } from "../shared/const";
 
 export function registerOwnerRoutes(app: Express) {
+  const getCookieValue = (req: Request, name: string): string | undefined => {
+    const prefix = `${name}=`;
+    const found = String(req.headers.cookie || "")
+      .split(";")
+      .map((part) => part.trim())
+      .find((part) => part.startsWith(prefix));
+    return found ? decodeURIComponent(found.slice(prefix.length)) : undefined;
+  };
+
+  const isOwnerAuthorized = async (req: Request): Promise<boolean> => {
+    const ownerCode = process.env.OWNER_MAGIC_CODE || ENV.ownerMagicCode;
+    const providedKey = req.headers["x-owner-key"] || req.query.key;
+    if (ownerCode && providedKey === ownerCode) return true;
+
+    const owner2FAOk = getCookieValue(req, "owner_2fa_ok") === "1";
+    if (!owner2FAOk) return false;
+
+    const session = await verifySessionToken(getCookieValue(req, COOKIE_NAME));
+    if (!session) return false;
+    try {
+      const { getUserByOpenId } = await import("./db");
+      const user = await getUserByOpenId(session.openId);
+      return user?.role === "admin";
+    } catch {
+      return false;
+    }
+  };
+
+  const requireOwner = async (req: Request, res: Response): Promise<boolean> => {
+    if (await isOwnerAuthorized(req)) return true;
+    res.status(403).json({ error: "Nicht autorisiert" });
+    return false;
+  };
 
 
   // ── TESTER-ZUGANG ─────────────────────────────────────────────
@@ -367,9 +400,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
 
   // ── OWNER DASHBOARD ──────────────────────────────────────────
   app.get("/api/owner/dashboard", async (req: Request, res: Response) => {
-    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
-    const key = req.headers["x-owner-key"] || req.query.key;
-    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    if (!(await requireOwner(req, res))) return;
     try {
       const { getDb } = await import("./db");
       const db = await getDb();
@@ -423,9 +454,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
 
   // ── LOCK USER ────────────────────────────────────────────────
   app.post("/api/owner/lock-user", async (req: Request, res: Response) => {
-    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
-    const key = req.headers["x-owner-key"] || req.query.key;
-    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    if (!(await requireOwner(req, res))) return;
     try {
       const schema = z.object({ email: z.string().email() });
       const parsed = schema.safeParse(req.body);
@@ -440,9 +469,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
 
   // ── UNLOCK USER ──────────────────────────────────────────────
   app.post("/api/owner/unlock-user", async (req: Request, res: Response) => {
-    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
-    const key = req.headers["x-owner-key"] || req.query.key;
-    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    if (!(await requireOwner(req, res))) return;
     try {
       const { email } = req.body;
       if (!email) return res.status(400).json({ error: "email erforderlich" });
@@ -455,9 +482,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
 
   // ── GENERATE MAGIC LOGIN LINK ────────────────────────────────
   app.post("/api/owner/generate-link", async (req: Request, res: Response) => {
-    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
-    const key = req.headers["x-owner-key"] || req.query.key;
-    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    if (!(await requireOwner(req, res))) return;
     try {
       const token = await createSessionToken("owner@system", "Owner");
       const link = `${process.env.APP_URL || ""}/owner`;
@@ -467,9 +492,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
 
   // ── IMPERSONATE USER ─────────────────────────────────────────
   app.post("/api/owner/impersonate", async (req: Request, res: Response) => {
-    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
-    const key = req.headers["x-owner-key"] || req.query.key;
-    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    if (!(await requireOwner(req, res))) return;
     try {
       const { email } = req.body;
       if (!email) return res.status(400).json({ error: "email erforderlich" });
@@ -488,9 +511,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
 
   // ── SET MODULES ──────────────────────────────────────────────
   app.post("/api/owner/set-modules", async (req: Request, res: Response) => {
-    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
-    const key = req.headers["x-owner-key"] || req.query.key;
-    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    if (!(await requireOwner(req, res))) return;
     try {
       const schema = z.object({
         email: z.string().email(),
@@ -510,9 +531,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
 
   // ── LIVE MONITORING ──────────────────────────────────────────
   app.get("/api/owner/live", async (req: Request, res: Response) => {
-    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
-    const key = req.headers["x-owner-key"] || req.query.key;
-    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    if (!(await requireOwner(req, res))) return;
     try {
       const { getDb } = await import("./db");
       const db = await getDb();
@@ -559,9 +578,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
 
   // ── ROLLE SETZEN ─────────────────────────────────────────────
   app.post("/api/owner/set-role", async (req: Request, res: Response) => {
-    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
-    const key = req.headers["x-owner-key"] || req.query.key;
-    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    if (!(await requireOwner(req, res))) return;
     try {
       const schema = z.object({
         email: z.string().email(),
@@ -586,9 +603,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
 
   // ── AKTIVITAETS-LOG ──────────────────────────────────────────
   app.get("/api/owner/activity", async (req: Request, res: Response) => {
-    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
-    const key = req.headers["x-owner-key"] || req.query.key;
-    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    if (!(await requireOwner(req, res))) return;
     try {
       const { getDb } = await import("./db");
       const db = await getDb();
@@ -623,9 +638,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
 
   // ── SYSTEM STATS ─────────────────────────────────────────────
   app.get("/api/owner/stats", async (req: Request, res: Response) => {
-    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
-    const key = req.headers["x-owner-key"] || req.query.key;
-    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    if (!(await requireOwner(req, res))) return;
     try {
       const { getDb } = await import("./db");
       const db = await getDb();
@@ -657,9 +670,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
 
   // ── AZAV ANWESENHEITSBERICHT ─────────────────────────────────
   app.get("/api/owner/azav-report", async (req: Request, res: Response) => {
-    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
-    const key = req.headers["x-owner-key"] || req.query.key;
-    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    if (!(await requireOwner(req, res))) return;
     try {
       const { getDb } = await import("./db");
       const db = await getDb();
@@ -744,9 +755,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
 
   // ── MONITORING HISTORY ───────────────────────────────────────
   app.get("/api/owner/monitoring", async (req: Request, res: Response) => {
-    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
-    const key = req.headers["x-owner-key"] || req.query.key;
-    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    if (!(await requireOwner(req, res))) return;
     try {
       const { getDb } = await import("./db");
       const db = await getDb();
@@ -759,9 +768,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
 
   // ── HEALTH WATCHER MANUELL AUSLÖSEN ────────────────────────
   app.post("/api/owner/trigger-health", async (req: Request, res: Response) => {
-    const ownerCode = process.env.OWNER_MAGIC_CODE || "";
-    const key = req.headers["x-owner-key"] || req.query.key;
-    if (ownerCode && key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    if (!(await requireOwner(req, res))) return;
     try {
       const { runHealthWatch } = await import("./agent/HealthWatcher");
       await runHealthWatch();
@@ -774,9 +781,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
   });
   // ── Portal Settings: Lesen ───────────────────────────────────
   app.get("/api/owner/settings", async (req: any, res: any) => {
-    const ownerCode = process.env.OWNER_MAGIC_CODE || ENV.ownerMagicCode;
-    const ownerKey = req.headers["x-owner-key"] || req.query.key;
-    if (!ownerCode || ownerKey !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    if (!(await requireOwner(req, res))) return;
     try {
       const { getDb } = await import("./db");
       const db = await getDb();
@@ -797,9 +802,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
 
   // ── Portal Settings: Schreiben ──────────────────────────────
   app.post("/api/owner/settings", async (req: any, res: any) => {
-    const ownerCode = process.env.OWNER_MAGIC_CODE || ENV.ownerMagicCode;
-    const ownerKey = req.headers["x-owner-key"] || req.query.key;
-    if (!ownerCode || ownerKey !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    if (!(await requireOwner(req, res))) return;
     try {
       const { key: settingKey, value } = req.body;
       if (!settingKey || value === undefined) return res.status(400).json({ error: "key und value erforderlich" });
