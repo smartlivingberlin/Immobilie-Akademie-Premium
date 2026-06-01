@@ -281,34 +281,6 @@ export default function AGB() {
             übrigen Bestimmungen hiervon unberührt. An die Stelle der unwirksamen Bestimmung tritt eine Regelung, 
             die dem wirtschaftlichen Zweck der unwirksamen Bestimmung am nächsten kommt.
           </p>
-
-          
-        
-              <div>
-                <h3 className="text-lg font-semibold text-slate-900 mb-2">§ 4 Preise und Zahlungsbedingungen</h3>
-                <p className="text-slate-600 leading-relaxed">
-                  Die aktuellen Preise für die einzelnen Module sind:
-                  Modul 1: 149,00 EUR, Modul 2: 499,00 EUR, Modul 3: 699,00 EUR,
-                  Modul 4: 399,00 EUR, Modul 5: 499,00 EUR (Endpreise; aufgrund der Kleinunternehmerregelung gemäß § 19 UStG wird keine Umsatzsteuer ausgewiesen).
-                  Alle Preise sind Endpreise. Die Zahlung erfolgt über den Zahlungsdienstleister Stripe.
-                  Der Kaufpreis ist sofort bei Vertragsschluss fällig.
-                </p>
-              </div>
-    
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-slate-900">§ 12 Anwendbares Recht und Gerichtsstand</h3>
-            <p className="text-slate-600 leading-relaxed">
-              Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts.
-              Gerichtsstand für alle Streitigkeiten aus und im Zusammenhang mit diesem Vertrag ist
-              Berlin, sofern der Nutzer Kaufmann, juristische Person des öffentlichen Rechts oder
-              öffentlich-rechtliches Sondervermögen ist.
-            </p>
-            <p className="text-slate-600 leading-relaxed">
-              Für digitale Inhalte gilt ergänzend § 327 BGB. Der Nutzer hat das Recht auf
-              Bereitstellung, Aktualisierung und Mängelbeseitigung digitaler Inhalte gemäß
-              §§ 327 ff. BGB.
-            </p>
-          </div>
         </CardContent>
       </Card>
     </div>
