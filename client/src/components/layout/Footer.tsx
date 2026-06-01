@@ -19,6 +19,12 @@ export default function Footer() {
           <Link href="/code-einloesen">
             <span className="hover:text-slate-300 cursor-pointer transition-colors">Code einlösen</span>
           </Link>
+          <Link href="/login">
+            <span className="hover:text-slate-300 cursor-pointer transition-colors">Einloggen</span>
+          </Link>
+          <Link href="/statistiken">
+            <span className="hover:text-slate-300 cursor-pointer transition-colors">Mein Lernbereich</span>
+          </Link>
         </div>
       </div>
     </footer>

@@ -233,13 +233,15 @@ export default function KursLanding({ slug }: { slug: string }) {
   const [, navigate] = useLocation();
   const [loading, setLoading] = useState(false);
   const [widerrufsAkzeptiert, setWiderrufsAkzeptiert] = useState(false);
+  const [agbAkzeptiert, setAgbAkzeptiert] = useState(false);
   const [widerrufsError, setWiderrufsError] = useState(false);
   const [checkoutError, setCheckoutError] = useState<string | null>(null);
   const { user } = useAuth();
 
   const handleKaufen = async () => {
-    if (!widerrufsAkzeptiert) {
+    if (!widerrufsAkzeptiert || !agbAkzeptiert) {
       setWiderrufsError(true);
+      setCheckoutError("Bitte bestätigen Sie Widerrufsbelehrung, AGB und Datenschutzerklärung.");
       return;
     }
     setWiderrufsError(false);
@@ -350,6 +352,14 @@ export default function KursLanding({ slug }: { slug: string }) {
                     <span style={{ fontSize:10, color:"#64748b", lineHeight:1.5 }}>
                       Ich stimme zu, dass mit der Ausführung sofort begonnen wird und bestätige den Verlust des Widerrufsrechts gemäß{" "}
                       <a href="/widerruf" target="_blank" style={{ color:hauptfarbe }}>§356 Abs. 5 BGB</a>.
+                    </span>
+                  </label>
+                  <label style={{ display:"flex", alignItems:"flex-start", gap:8, cursor:"pointer", marginTop:8 }}>
+                    <input type="checkbox" checked={agbAkzeptiert}
+                      onChange={e => { setAgbAkzeptiert(e.target.checked); setWiderrufsError(false); setCheckoutError(null); }}
+                      style={{ marginTop:2, width:14, height:14, flexShrink:0, cursor:"pointer", accentColor:hauptfarbe }} />
+                    <span style={{ fontSize:10, color:"#64748b", lineHeight:1.5 }}>
+                      Ich akzeptiere die <a href="/agb" target="_blank" style={{ color:hauptfarbe, fontWeight:600 }}>AGB</a> und die <a href="/datenschutz" target="_blank" style={{ color:hauptfarbe, fontWeight:600 }}>Datenschutzerklärung</a>.
                     </span>
                   </label>
                   {widerrufsError && <p style={{ color:"#dc2626", fontSize:10, marginTop:4, marginLeft:22 }}>Bitte zuerst bestätigen.</p>}
@@ -526,6 +536,14 @@ export default function KursLanding({ slug }: { slug: string }) {
                 <span style={{ fontSize:11, color:"rgba(255,255,255,0.6)", lineHeight:1.5 }}>
                   Ich stimme der sofortigen Ausführung zu und bestätige den Verlust des Widerrufsrechts gemäß{" "}
                   <a href="/widerruf" target="_blank" style={{ color:"#93c5fd" }}>§356 Abs. 5 BGB</a>.
+                </span>
+              </label>
+              <label style={{ display:"flex", alignItems:"flex-start", gap:10, cursor:"pointer", marginTop:8 }}>
+                <input type="checkbox" checked={agbAkzeptiert}
+                  onChange={e => { setAgbAkzeptiert(e.target.checked); setWiderrufsError(false); setCheckoutError(null); }}
+                  style={{ marginTop:2, width:14, height:14, flexShrink:0, accentColor:hauptfarbe }} />
+                <span style={{ fontSize:11, color:"rgba(255,255,255,0.6)", lineHeight:1.5 }}>
+                  Ich akzeptiere die <a href="/agb" target="_blank" style={{ color:"#93c5fd" }}>AGB</a> und die <a href="/datenschutz" target="_blank" style={{ color:"#93c5fd" }}>Datenschutzerklärung</a>.
                 </span>
               </label>
               {widerrufsError && <p style={{ color:"#fca5a5", fontSize:10, marginTop:4, marginLeft:24 }}>Bitte zuerst bestätigen.</p>}

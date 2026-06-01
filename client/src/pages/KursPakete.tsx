@@ -1,6 +1,7 @@
 import { SEO } from "@/components/SEO";
 import { Link } from "wouter";
 import { useState } from "react";
+import { useAuth } from "@/_core/hooks/useAuth";
 import { CheckCircle2, ArrowRight, Star, Zap, Building2, TrendingUp, Award, Crown, Shield, Clock, Users, BookOpen } from "lucide-react";
 import { trackEvent } from "@/hooks/useAnalytics";
 
@@ -33,8 +34,10 @@ const TRUST = [
 ];
 
 export default function KursPakete() {
+  const { user } = useAuth();
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [widerrufsAkzeptiert, setWiderrufsAkzeptiert] = useState<Record<string, boolean>>({});
+  const [agbAkzeptiert, setAgbAkzeptiert] = useState<Record<string, boolean>>({});
   const [widerrufsError, setWiderrufsError] = useState<Record<string, boolean>>({});
 
   return (
@@ -214,11 +217,23 @@ export default function KursPakete() {
                       Ich stimme zu, dass mit der Ausführung sofort begonnen wird und bestätige den Verlust des Widerrufsrechts gemäß §356 Abs. 5 BGB.
                     </span>
                   </label>
+                  <label style={{ display:"flex", alignItems:"flex-start", gap:8, cursor:"pointer", marginTop:8 }}>
+                    <input type="checkbox"
+                      checked={!!agbAkzeptiert[p.id]}
+                      onChange={e => {
+                        setAgbAkzeptiert(prev => ({...prev, [p.id]: e.target.checked}));
+                        setWiderrufsError(prev => ({...prev, [p.id]: false}));
+                      }}
+                      style={{ marginTop:2, width:14, height:14, flexShrink:0, cursor:"pointer", accentColor:p.iconColor }} />
+                    <span style={{ fontSize:10, color:"#64748b", lineHeight:1.5 }}>
+                      Ich akzeptiere die <Link href="/agb"><span style={{ color:p.iconColor, fontWeight:600 }}>AGB</span></Link> und die <Link href="/datenschutz"><span style={{ color:p.iconColor, fontWeight:600 }}>Datenschutzerklärung</span></Link>.
+                    </span>
+                  </label>
                   {widerrufsError[p.id] && <p style={{ color:"#dc2626", fontSize:10, marginTop:4, marginLeft:22 }}>Bitte zuerst bestätigen.</p>}
                 </div>
                 <button
                   onClick={() => {
-                    if (!widerrufsAkzeptiert[p.id]) {
+                    if (!widerrufsAkzeptiert[p.id] || !agbAkzeptiert[p.id]) {
                       setWiderrufsError(prev => ({...prev, [p.id]: true}));
                       return;
                     }
@@ -226,7 +241,7 @@ export default function KursPakete() {
                     fetch(`/api/stripe/bundle-${p.id}`, {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({ widerrufsAkzeptiert: true }),
+                      body: JSON.stringify({ widerrufsAkzeptiert: true, userEmail: user?.email || "" }),
                     })
                     .then(r => r.json())
                     .then(d => { if (d.url) window.location.href = d.url; })

@@ -41,8 +41,11 @@ export default function ZahlungErfolgreich() {
         <p style={{ fontSize:17, color:"#94a3b8", marginBottom:8, lineHeight:1.7 }}>
           Deine Zahlung war erfolgreich. Deine Module werden jetzt freigeschaltet.
         </p>
-        <p style={{ fontSize:14, color:"#64748b", marginBottom:32 }}>
+        <p style={{ fontSize:14, color:"#64748b", marginBottom:12 }}>
           Du kannst jetzt sofort mit deinem Modul beginnen.
+        </p>
+        <p style={{ fontSize:13, color:"#94a3b8", marginBottom:32, lineHeight:1.6 }}>
+          Bitte melde dich mit derselben E-Mail-Adresse an, die du im Stripe-Checkout verwendet hast. Falls du noch kein Konto hast, erstelle es mit dieser Kauf-E-Mail.
         </p>
 
         {/* Was jetzt kommt */}
