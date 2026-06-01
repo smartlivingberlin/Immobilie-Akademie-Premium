@@ -123,7 +123,8 @@ ${isEmail ? `<form method="POST" action="/api/owner/verify-2fa-form">
   <input type="hidden" name="email" value="${ownerEmail}">
   <input type="text" name="code" maxlength="6" placeholder="000000" autocomplete="one-time-code" inputmode="numeric" autofocus required>
   <button type="submit">Bestätigen →</button>
-  <p class="hint">10 Minuten gültig</p>
+  <button type="button" style="margin-top:10px;background:#e2e8f0;color:#334155" onclick="fetch('/api/owner/resend-2fa',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify({email:'${ownerEmail}'})}).then(function(){var el=document.getElementById('resendMsg'); if(el) el.textContent='Neuer Code wurde gesendet.';}).catch(function(){var el=document.getElementById('resendMsg'); if(el) el.textContent='Senden fehlgeschlagen. Bitte erneut versuchen.';})">Code erneut senden</button>
+  <p id="resendMsg" class="hint">10 Minuten gültig</p>
 </form>` : ""}
 ${isTotp ? `<form method="POST" action="/api/owner/verify-2fa-form">
   <p>Code aus deiner Authenticator-App eingeben.</p>
