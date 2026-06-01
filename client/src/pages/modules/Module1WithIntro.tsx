@@ -27,10 +27,10 @@ export default function Module1WithIntro() {
           "Den deutschen Immobilienmarkt einordnen und beschreiben",
           "Fachbegriffe sicher verwenden",
           "Einfache Rechtsfragen zu Kauf und Miete beantworten",
-          "Die IHK-Sachkundeprüfung §34c vorbereiten",
+          "Grundlagen für §34c-Praxiswissen aufbauen",
           "Berufsbild Immobilienmakler vollständig erklären",
         ]}
-        examRelevance="Modul 1 bildet die Grundlage für alle weiteren Module und die IHK-Sachkundeprüfung §34c GewO. Ca. 20% der IHK-Prüfungsfragen entstammen den Themen dieses Moduls."
+        examRelevance="Modul 1 bildet die Grundlage für alle weiteren Module. Die Themen sind relevant für §34c-Weiterbildung und Praxisvorbereitung."
         legalBasis="§34c GewO"
         difficulty="Einsteiger"
         onStart={() => setShowIntro(false)}
