@@ -225,12 +225,12 @@ export function registerLocalAuthRoutes(app: Express) {
         // First ensure user exists for updateLastSignedIn to work
         const expiresAt = (result as any).expiresAt ?? null;
         await dbConn.$client.query(`
-          INSERT INTO users (openId, name, role, enabledModules, lastSignedIn)
-          VALUES (?, 'Gast', 'user', ?, NOW())
+          INSERT INTO users (openId, name, role, enabledModules, trialExpiresAt, lastSignedIn)
+          VALUES (?, 'Gast', 'user', ?, ?, NOW())
           ON DUPLICATE KEY UPDATE
             enabledModules = VALUES(enabledModules),
             trialExpiresAt = IF(? IS NOT NULL, ?, trialExpiresAt)
-        `, [openId, enabledStr, expiresAt, expiresAt]);
+        `, [openId, enabledStr, expiresAt, expiresAt, expiresAt]);
         // Use the common streak logic
         await db.updateLastSignedIn(openId);
       }

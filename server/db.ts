@@ -1283,7 +1283,7 @@ export async function updateUserEnabledModules(userId: number, moduleIds: number
   await db.update(users).set({ enabledModules: merged.join(",") }).where(eq(users.id, userId));
 }
 
-export async function redeemPresentationCode(code: string): Promise<{success: boolean; enabledModules?: string; message: string;}> {
+export async function redeemPresentationCode(code: string): Promise<{success: boolean; enabledModules?: string; expiresAt?: Date | string | null; message: string;}> {
   const db = await getDb();
   const { sql } = await import("drizzle-orm");
   const [rows_pc] = await db.$client.query("SELECT * FROM presentation_codes WHERE code = ? AND isActive = 1 LIMIT 1", [code]) as any;
@@ -1292,7 +1292,7 @@ export async function redeemPresentationCode(code: string): Promise<{success: bo
   if (record.expiresAt && new Date(record.expiresAt) < new Date()) return { success: false, message: "Dieser Code ist abgelaufen" };
   if (record.maxUsage && record.usageCount >= record.maxUsage) return { success: false, message: "Maximale Nutzungsanzahl erreicht" };
   await db.$client.query("UPDATE presentation_codes SET usageCount = usageCount + 1 WHERE code = ?", [code]);
-  return { success: true, enabledModules: record.enabledModules, message: "Code gültig" };
+  return { success: true, enabledModules: record.enabledModules, expiresAt: record.expiresAt ?? null, message: "Code gültig" };
 }
 
 export async function listPresentationCodes(): Promise<any[]> {
