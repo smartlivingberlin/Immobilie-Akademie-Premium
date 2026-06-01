@@ -25,11 +25,11 @@ const modules: CourseModule[] = [
   {
     name: "Modul 4: Gutachten & Sachverständigenwesen",
     description: "Immobilienbewertung, Wertermittlungsverfahren, Gutachtenerstellung, Sachverständigenrecht",
-    numberOfDays: 20,
+    numberOfDays: 40,
   },
   {
-    name: "Modul 5: Prüfungsvorbereitung & Darlehensvermittlung §34i",
-    description: "IHK-Prüfungsvorbereitung, Darlehensvermittlung, Finanzierungsberatung, Kreditrecht",
+    name: "Modul 5: Darlehensvermittlung §34i GewO",
+    description: "Darlehensvermittlung nach §34i GewO, Finanzierungsberatung, Kreditrecht",
     numberOfDays: 40,
   },
 ];
@@ -71,7 +71,7 @@ export function StructuredData() {
       "@context": "https://schema.org",
       "@type": "Course",
       "name": "Immobilien-Komplettausbildung: Makler, Verwalter, Darlehensvermittler",
-      "description": "Umfassende Online-Ausbildung für Immobilienprofis mit 240 Ausbildungstagen und 855+ Lernaufgaben. Bereitet auf IHK-Prüfungen nach §34c und §34i GewO vor.",
+      "description": "Online-Lernportal für Immobilienprofis mit 240 Lerntagen. Praxiswissen zu §34c GewO, §34i GewO, WEG-Verwaltung und Immobilienbewertung.",
       "provider": {
         "@type": "EducationalOrganization",
         "name": "Immobilien Akademie Smart",
@@ -85,8 +85,7 @@ export function StructuredData() {
       },
       "educationalLevel": "Professional",
       "coursePrerequisites": "Keine formalen Voraussetzungen erforderlich",
-      "timeRequired": "P220D",
-      "numberOfCredits": 855,
+      "timeRequired": "P240D",
       "courseMode": "online",
       "inLanguage": "de",
       "availableLanguage": "de",
@@ -133,10 +132,10 @@ export function StructuredData() {
         },
         {
           "@type": "Question",
-          "name": "Bereitet das Portal auf die IHK-Prüfung vor?",
+          "name": "Welche Fach- und Praxisthemen deckt das Portal ab?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Das Portal vermittelt praxisorientiertes Fach- und Rechtswissen zu §34c und §34i GewO sowie §26a WEG vor. Die Inhalte orientieren sich am IHK-Rahmenplan §34c/§34i GewO. Das Portal selbst ist ein privates Bildungsangebot und ersetzt nicht die offizielle IHK-Prüfung.",
+            "text": "Das Portal vermittelt praxisorientiertes Fach- und Rechtswissen zu §34c GewO, §34i GewO, WEG-Verwaltung und Immobilienbewertung. §34i-Inhalte können bei der Vorbereitung auf die IHK-Sachkunde unterstützen. Das Portal ist ein privates Bildungsangebot und ersetzt keine behördliche Erlaubnis oder amtliche Prüfung.",
           },
         },
       ],
