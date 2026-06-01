@@ -39,11 +39,10 @@ function normalizeEnabledModules(input: unknown): number[] | null {
 export function useModuleAccess() {
   const { data, isLoading } = trpc.modules.myAccess.useQuery(undefined, { staleTime: 0, refetchOnMount: true, refetchOnWindowFocus: true });
 
-  const normalized = normalizeEnabledModules(data) ?? [1];
+  const normalized = normalizeEnabledModules(data) ?? [];
 
   const canAccessModule = (moduleId: number): boolean => {
-    // während Laden: wenigstens Modul 1 anzeigen (verhindert „alles leer“)
-    if (isLoading) return moduleId === 1;
+    if (isLoading) return false;
     return normalized.includes(moduleId);
   };
 

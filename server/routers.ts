@@ -558,8 +558,7 @@ Antworte im folgenden JSON-Format:
 
       const raw = result[0]?.enabledModules;
 
-      // Fallback: mindestens Modul 1
-      if (!raw || typeof raw !== "string") return [1];
+      if (!raw || typeof raw !== "string") return [];
 
       return raw
         .split(",")
