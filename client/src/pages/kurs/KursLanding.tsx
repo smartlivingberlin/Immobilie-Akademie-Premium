@@ -560,7 +560,7 @@ export default function KursLanding({ slug }: { slug: string }) {
               <a href="#kostenlos-testen" style={{ color:"#93c5fd", textDecoration:"underline" }}>24h kostenlos testen</a>
             </p>
             <div style={{ marginTop:24, display:"flex", gap:20, justifyContent:"center", flexWrap:"wrap" }}>
-              {["14 Tage Widerrufsrecht","Sichere Zahlung via Stripe","Sofortzugang","Auf allen Geräten"].map(t => (
+              {["Widerrufsbelehrung beachtet","Sichere Zahlung via Stripe","Sofortzugang","Auf allen Geräten"].map(t => (
                 <span key={t} style={{ fontSize:11, color:"rgba(255,255,255,0.4)" }}>✓ {t}</span>
               ))}
             </div>
