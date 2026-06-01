@@ -131,21 +131,22 @@ stripeRouter.post("/api/stripe/checkout", async (req, res) => {
     const { bundleId } = req.params;
     const bundle = BUNDLES[bundleId as string];
     if (!bundle) return void res.status(404).json({ error: "Bundle nicht gefunden" });
-    const { widerrufsAkzeptiert } = req.body;
+    const { widerrufsAkzeptiert, userEmail } = req.body;
     if (!widerrufsAkzeptiert) {
       return void res.status(400).json({ error: "Widerrufsrecht-Einwilligung erforderlich (§356 Abs. 5 BGB)" });
     }
     try {
       const session = await stripe.checkout.sessions.create({
         mode: "payment",
+        customer_email: userEmail || undefined,
         line_items: [{ price_data: {
           currency: "eur",
           unit_amount: bundle.price,
-          product_data: { name: bundle.name },
+          product_data: { name: bundle.name, description: bundle.desc },
         }, quantity: 1 }],
-        success_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/zahlung-erfolgreich?bundle=${bundleId}`,
+        success_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/zahlung-erfolgreich?session_id={CHECKOUT_SESSION_ID}&bundle=${bundleId}`,
         cancel_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/pakete`,
-        metadata: { bundle: bundleId, modules: bundle.modules.map(String).join(",") },
+        metadata: { bundle: bundleId, productId: bundleId, modules: bundle.modules.map(String).join(",") },
       });
       res.json({ url: session.url }); return;
     } catch(e: any) {
