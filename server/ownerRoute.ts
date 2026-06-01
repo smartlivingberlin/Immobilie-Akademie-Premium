@@ -1,6 +1,6 @@
 import { sql } from "drizzle-orm";
 import { z } from "zod";
-import type { Express, Request, Response } from "express";
+import type { Express, NextFunction, Request, Response } from "express";
 import { generateOTP, verifyOTP, sendOTPEmail } from "./twoFactor";
 import { getTotpSecret, generateTotpSecret, generateQRCode, verifyTotp, getOwner2FAMethod } from "./ownerTwoFactor";
 import { createSessionToken } from "./_core/auth-local";
@@ -48,6 +48,27 @@ export function registerOwnerRoutes(app: Express) {
     } catch (e: any) {
       return res.status(500).json({ error: e.message });
     }
+  });
+
+  // GET /owner-dashboard?key=... — direkter Owner-Link vor SPA-Fallback verarbeiten
+  app.get("/owner-dashboard", async (req: Request, res: Response, next: NextFunction) => {
+    const key = req.query.key as string | undefined;
+    if (!key) return next();
+    const ownerCode = process.env.OWNER_MAGIC_CODE || ENV.ownerMagicCode;
+    if (!ownerCode || key !== ownerCode) {
+      return res.status(403).send(`<html><body style="font-family:Arial;padding:40px;text-align:center"><h2 style="color:#dc2626">Zugang verweigert</h2></body></html>`);
+    }
+    const method = getOwner2FAMethod();
+    if (method === "none") {
+      const openId = "local:alisadgadyri38@gmail.com";
+      const token = await createSessionToken(openId, "Alisad (Owner)", "admin", "1,2,3,4,5");
+      const cookieOptions = getSessionCookieOptions(req);
+      res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
+      res.cookie("owner_2fa_ok", "1", { httpOnly: true, sameSite: "lax", path: "/", maxAge: 8 * 60 * 60 * 1000 });
+      return res.redirect("/owner-dashboard");
+    }
+    const params = new URLSearchParams({ method, redirect: "/owner-dashboard" });
+    return res.redirect(`/owner-2fa?${params}`);
   });
 
   // POST /api/owner/access — Key im Request-Body, danach optionale 2FA
