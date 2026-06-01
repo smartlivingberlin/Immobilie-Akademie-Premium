@@ -4,7 +4,6 @@
   <head>
     <meta charset="UTF-8" />
   <link rel="preconnect" href="https://o4511193862373376.ingest.de.sentry.io" crossorigin />
-  <link rel="preconnect" href="https://plausible.io" crossorigin />
   <link rel="preload" as="image" href="/images/hero_opt.webp" fetchpriority="high" />
     <meta
       name="viewport"
@@ -71,23 +70,7 @@
   }
   </script>
   <meta name="google-site-verification" content="ziSSY5VLXCuKV_3B5_LHKmN_g0ngbry3S5alSkdXsuo" />
-  <script defer data-domain="immobilien-akademie-smart.de" src="https://plausible.io/js/script.js"></script>
-  <!-- Google Analytics 4 — wird aktiv sobald VITE_GA_ID gesetzt -->
-  <script>
-    (function() {
-      var gaId = '__GA_MEASUREMENT_ID__';
-      if (!gaId || gaId === '__GA_MEASUREMENT_ID__') return;
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
-      document.head.appendChild(s);
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', gaId, { anonymize_ip: true, cookie_flags: 'SameSite=None;Secure' });
-    })();
-  </script>
+  <!-- Analytics werden nach Cookie-Zustimmung im React-Client geladen -->
   <style>
     :root {
       --color-bg:        #f8fafc;
