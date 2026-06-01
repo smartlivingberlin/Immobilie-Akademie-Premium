@@ -295,6 +295,39 @@ app.post("/api/stripe/webhook", express.raw({ type: "*/*" }), async (req: any, r
             const merged = [...new Set([...current, ...newMods])].join(",");
             await db.$client.query("UPDATE users SET enabledModules = ? WHERE id = ?", [merged, user.id]);
             logger.info("[Stripe Webhook] Freigeschaltet", { email, modules: merged });
+          } else {
+            const normalizedEmail = String(email).toLowerCase().trim();
+            const productId = session.metadata?.productId ?? null;
+            await db.$client.query(
+              "INSERT INTO pending_purchases (email, sessionId, modules, productId) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE email = VALUES(email), modules = VALUES(modules), productId = VALUES(productId)",
+              [normalizedEmail, session.id, modules, productId]
+            );
+            logger.info("[Stripe Webhook] Pending Purchase gespeichert", { email: normalizedEmail, sessionId: session.id, modules });
+
+            try {
+              if (!process.env.RESEND_API_KEY) {
+                logger.warn("[Stripe Webhook] RESEND_API_KEY fehlt fuer Pending-Purchase-E-Mail", { email: normalizedEmail });
+              } else {
+                const { Resend } = await import("resend");
+                const resend = new Resend(process.env.RESEND_API_KEY || "");
+                const baseUrl = process.env.APP_URL || "https://immobilien-akademie-smart.de";
+                await resend.emails.send({
+                  from: "Immobilien Akademie Smart <info@immobilien-akademie-smart.de>",
+                  to: normalizedEmail,
+                  subject: "Ihr Kauf war erfolgreich - Konto einrichten",
+                  html: `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:24px">
+                    <h2 style="color:#0f172a">Ihr Kauf war erfolgreich</h2>
+                    <p>Wir haben Ihre Zahlung erhalten. Bitte erstellen Sie jetzt ein Konto mit dieser E-Mail-Adresse, damit Ihr Kurszugang automatisch freigeschaltet wird.</p>
+                    <p><strong>E-Mail:</strong> ${normalizedEmail}</p>
+                    <p><a href="${baseUrl}/login" style="display:inline-block;background:#2563eb;color:white;padding:12px 20px;border-radius:8px;text-decoration:none;font-weight:bold">Konto einrichten / einloggen</a></p>
+                    <p style="color:#64748b;font-size:13px">Falls Sie bereits ein Konto mit dieser E-Mail haben, melden Sie sich einfach an.</p>
+                  </div>`,
+                });
+                logger.info("[Stripe Webhook] Pending-Purchase-E-Mail gesendet", { email: normalizedEmail });
+              }
+            } catch (emailErr: any) {
+              logger.error("[Stripe Webhook] Pending-Purchase-E-Mail Fehler", emailErr);
+            }
           }
         } catch (dbErr: any) {
           logger.error("[Stripe Webhook] DB-Fehler", dbErr);

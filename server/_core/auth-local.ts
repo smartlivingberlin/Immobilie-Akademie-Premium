@@ -161,9 +161,55 @@ export function registerLocalAuthRoutes(app: Express) {
       await db.setUserRole(openId, "admin");
     }
 
+    // Pending Purchases claimen, falls der Kauf vor der Registrierung erfolgte
+    let sessionEnabledModules = "";
+    try {
+      const dbConn = await db.getDb();
+      const normalizedEmail = email.toLowerCase().trim();
+      const [userRows] = await dbConn.$client.query(
+        "SELECT id, enabledModules FROM users WHERE openId = ? LIMIT 1",
+        [openId]
+      ) as any;
+      const newUser = (userRows as any[])[0];
+
+      if (newUser?.id) {
+        const [pendingRows] = await dbConn.$client.query(
+          "SELECT modules FROM pending_purchases WHERE email = ? AND claimedAt IS NULL",
+          [normalizedEmail]
+        ) as any;
+
+        if ((pendingRows as any[]).length > 0) {
+          const current = String(newUser.enabledModules || "")
+            .split(",")
+            .map((s: string) => s.trim())
+            .filter(Boolean);
+          const purchased = (pendingRows as any[]).flatMap((row: any) =>
+            String(row.modules || "")
+              .split(",")
+              .map((s: string) => s.trim())
+              .filter(Boolean)
+          );
+          const merged = [...new Set([...current, ...purchased])].join(",");
+          sessionEnabledModules = merged;
+
+          await dbConn.$client.query(
+            "UPDATE users SET enabledModules = ? WHERE id = ?",
+            [merged, newUser.id]
+          );
+          await dbConn.$client.query(
+            "UPDATE pending_purchases SET claimedAt = NOW(), claimedByUserId = ? WHERE email = ? AND claimedAt IS NULL",
+            [newUser.id, normalizedEmail]
+          );
+          logger.info("[Auth Register] Pending Purchases geclaimt", { email: normalizedEmail, modules: merged });
+        }
+      }
+    } catch (pendingErr: any) {
+      logger.error("[Auth Register] Pending Purchase Claim fehlgeschlagen", pendingErr);
+    }
+
     // Session erstellen
     const newUserRole = role === "admin" ? "admin" : "user";
-    const token = await createSessionToken(openId, name.trim(), newUserRole, "");
+    const token = await createSessionToken(openId, name.trim(), newUserRole, sessionEnabledModules);
     const cookieOptions = getSessionCookieOptions(req);
     res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
 
