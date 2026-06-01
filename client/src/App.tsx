@@ -125,12 +125,8 @@ function AdminRoute({ component: Component }: { component: React.ComponentType }
 
 function OwnerRoute({ component: Component }: { component: React.ComponentType }) {
   const { data: user, isLoading } = trpc.auth.me.useQuery(undefined, { retry: false });
-  const isInspect = document.cookie.includes("inspect_mode=") || sessionStorage.getItem("inspect_mode") === "1";
-  if (isLoading) return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
-  if (isInspect) { window.location.href = "/login"; return null; }
-  if (!user || user.role !== "admin") { window.location.href = "/login"; return null; }
-  // Owner-2FA Pflicht: httpOnly-Cookie serverseitig pruefen
   const [owner2FAOk, setOwner2FAOk] = React.useState<boolean | null>(null);
+
   React.useEffect(() => {
     let active = true;
     fetch("/api/owner/2fa-status", { credentials: "include" })
@@ -139,23 +135,33 @@ function OwnerRoute({ component: Component }: { component: React.ComponentType }
       .catch(() => { if (active) setOwner2FAOk(false); });
     return () => { active = false; };
   }, []);
-  if (owner2FAOk === null) return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
+
+  React.useEffect(() => {
+    if (user?.role === "admin" && owner2FAOk) sessionStorage.removeItem("ownerKey");
+  }, [user?.role, owner2FAOk]);
+
+  const isInspect = document.cookie.includes("inspect_mode=") || sessionStorage.getItem("inspect_mode") === "1";
+  const ownerKey = sessionStorage.getItem("ownerKey") || new URLSearchParams(window.location.search).get("key") || "";
+  const submitOwnerAccess = (key: string) => {
+    sessionStorage.setItem("ownerKey", key);
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = "/api/owner/access";
+    const keyInput = document.createElement("input");
+    keyInput.type = "hidden"; keyInput.name = "key"; keyInput.value = key;
+    const redirInput = document.createElement("input");
+    redirInput.type = "hidden"; redirInput.name = "redirect"; redirInput.value = window.location.pathname + window.location.search;
+    form.appendChild(keyInput); form.appendChild(redirInput);
+    document.body.appendChild(form); form.submit();
+  };
+
+  if (isLoading || owner2FAOk === null) return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
+  if (isInspect) { window.location.href = "/login"; return null; }
+  if ((!user || user.role !== "admin") && ownerKey) { submitOwnerAccess(ownerKey); return null; }
+  if (!user || user.role !== "admin") { window.location.href = "/login"; return null; }
   if (!owner2FAOk) {
-    const key = sessionStorage.getItem("ownerKey") || new URLSearchParams(window.location.search).get("key") || "";
-    if (key) {
-      // POST-Form auto-submit zum Owner-Access-Endpoint
-      const form = document.createElement("form");
-      form.method = "POST";
-      form.action = "/api/owner/access";
-      const keyInput = document.createElement("input");
-      keyInput.type = "hidden"; keyInput.name = "key"; keyInput.value = key;
-      const redirInput = document.createElement("input");
-      redirInput.type = "hidden"; redirInput.name = "redirect"; redirInput.value = window.location.pathname + window.location.search;
-      form.appendChild(keyInput); form.appendChild(redirInput);
-      document.body.appendChild(form); form.submit();
-    } else {
-      window.location.href = "/login";
-    }
+    if (ownerKey) submitOwnerAccess(ownerKey);
+    else window.location.href = "/login";
     return null;
   }
   return <Component />;
