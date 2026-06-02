@@ -1,7 +1,7 @@
 import { chromium } from "@playwright/test";
 import { existsSync } from "fs";
 
-const BASE = "https://immobilie-akademie-premium-production.up.railway.app";
+const BASE = "https://immobilien-akademie-smart.de";
 const TEST_EMAIL = "playwright@test.de";
 const TEST_PASSWORD = "Test2026!";
 const STATE_PATH = "tests/e2e/.auth-state.json";
