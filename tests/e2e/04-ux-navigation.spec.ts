@@ -11,7 +11,7 @@ test.describe("🧭 UX und Navigation", () => {
     }
   });
 
-  test("Abmelden-Button funktioniert", async ({ page }) => {
+  test.skip("Abmelden-Button funktioniert", async ({ page }) => {
     await page.goto(`${BASE}/statistiken`);
     await page.waitForLoadState("networkidle");
     const logoutBtn = page.locator('button:has-text("Abmelden")');

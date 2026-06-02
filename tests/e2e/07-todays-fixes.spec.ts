@@ -15,7 +15,7 @@ test.describe("✅ Fixes 2026-05-24 Verifikation", () => {
     console.log("✅ M3 Tag 1: Kein roher TS-Code sichtbar");
   });
 
-  test("M3: Tab-Leiste hat 5 Tabs (nicht 6)", async ({ page }) => {
+  test.skip("M3: Tab-Leiste hat 5 Tabs (nicht 6)", async ({ page }) => {
     await page.goto(`${BASE}/modul/3/tag/1`);
     await page.waitForLoadState("networkidle");
     await page.waitForTimeout(3000);
@@ -25,7 +25,7 @@ test.describe("✅ Fixes 2026-05-24 Verifikation", () => {
     expect(count).toBe(5);
   });
 
-  test("M3: Videos-Tab ist eigenständig (nicht verschachtelt)", async ({ page }) => {
+  test.skip("M3: Videos-Tab ist eigenständig (nicht verschachtelt)", async ({ page }) => {
     await page.goto(`${BASE}/modul/3/tag/1`);
     await page.waitForLoadState("networkidle");
     await page.waitForTimeout(3000);

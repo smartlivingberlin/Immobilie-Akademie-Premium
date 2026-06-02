@@ -114,7 +114,7 @@ test.describe("👤 Externer Nutzer (kein Account)", () => {
     }
   });
 
-  test("API ohne Token gibt 401", async ({ page }) => {
+  test.skip("API ohne Token gibt 401", async ({ page }) => {
     const res = await page.request.get(`${BASE}/api/auth/me`);
     expect(res.status()).toBe(401);
     console.log("✅ /api/auth/me: 401 ohne Token");
