@@ -310,7 +310,7 @@ export default function Dashboard() {
         </h2>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 16 }}>
           {moduleStats.map(m => (
-            <ModulKarte key={m.id} module={m} stats={m} enabled={enabledModules.includes(m.id) || enabledModules.length === 0} />
+            <ModulKarte key={m.id} module={m} stats={m} enabled={enabledModules.includes(m.id)} />
           ))}
         </div>
       </div>

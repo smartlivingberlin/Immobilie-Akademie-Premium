@@ -44,7 +44,7 @@ export default function Datenschutz() {
           <h3>4.1 Railway (Hosting & Datenbank)</h3>
           <p>Railway Corp., USA. Server-Standort: Europe (europe-west4). Alle Nutzerdaten
           und Lernfortschritte werden dort gespeichert. Art. 6 Abs. 1 lit. b + f DSGVO.
-          Nach EU-US Data Privacy Framework zertifiziert. railway.app/legal/privacy</p>
+          Serverstandort: EU (Railway, Frankfurt). Datenschutzinformationen: <a href="https://railway.com/legal/privacy" target="_blank" rel="noreferrer">railway.com/legal/privacy</a></p>
 
           <h3>4.2 Stripe (Zahlungsabwicklung)</h3>
           <p>Stripe, Inc., San Francisco, USA. Verarbeitet Zahlungsdaten.
