@@ -134,7 +134,7 @@ export default function LoginPage() {
             )}
           </div>
         </div>
-        <p style={{ textAlign: "center", fontSize: "11px", color: "#60a5fa", marginTop: "20px" }}>Ausgestellt von Alisad Gadyri · IHK-Immobilienkaufmann (Berlin, 2023)</p>
+        <p style={{ textAlign: "center", fontSize: "11px", color: "#60a5fa", marginTop: "20px" }}>Immobilien Akademie Smart · Berlin</p>
       </div>
     </div>
   );
