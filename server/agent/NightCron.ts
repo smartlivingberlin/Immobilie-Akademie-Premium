@@ -3,7 +3,7 @@
  * NACHT-CRON — Immobilien Akademie Smart
  * ═══════════════════════════════════════════════════════════
  * Läuft täglich um 02:00 Uhr
- * 1. Prüft alle 240 Lerntage auf IHK-Qualität
+ * 1. Prüft alle 240 Lerntage auf fachliche Qualität
  * 2. Analysiert jeden User individuell (Coaching)
  * 3. Speichert Ergebnisse in memory.json
  * ═══════════════════════════════════════════════════════════

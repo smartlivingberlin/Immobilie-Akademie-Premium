@@ -9,7 +9,7 @@
  * 3. Persistent Memory (DB-gestützt)
  * 4. Self-Healing: Erkennt + meldet + fixt Fehler
  * 5. Rechts-Monitor: Prüft Gesetzesänderungen
- * 6. IHK-Qualitätsprüfung aller 240 Lerntage
+ * 6. Fachliche Qualitätsprüfung aller 240 Lerntage
  * 7. Nutzer-Analyse + personalisierte Empfehlungen
  * ═══════════════════════════════════════════════════════════
  */
@@ -45,7 +45,7 @@ const AI_MODELS = {
 
 // ─── TASK TYPES ────────────────────────────────────────────
 export type AgentTask =
-  | "content_quality_check"   // IHK-Qualität prüfen
+  | "content_quality_check"   // Fachliche Qualität prüfen
   | "legal_update_check"      // Gesetzesänderungen prüfen
   | "quiz_generate"           // Neue Prüfungsfragen generieren
   | "user_recommendation"     // Lernempfehlungen für Nutzer
@@ -259,7 +259,7 @@ VERBESSERUNG:(1 Satz)`;
   }
 
   /**
-   * TASK 2: Neue IHK-Prüfungsfrage generieren
+   * TASK 2: Neue Lernfrage generieren
    * Erstellt echte Multiple-Choice Fragen
    */
   static async generateIHKQuestion(module: number, topic: string, difficulty: "easy"|"medium"|"hard"): Promise<{
@@ -271,7 +271,7 @@ VERBESSERUNG:(1 Satz)`;
   }> {
     const diffMap = { easy: "einfach (Grundwissen)", medium: "mittel (Verständnis)", hard: "schwer (Anwendung)" };
     
-    const prompt = `Erstelle 1 IHK-Prüfungsfrage für Modul ${module}: "${topic}"
+    const prompt = `Erstelle 1 fachliche Lernfrage für Modul ${module}: "${topic}"
 Schwierigkeit: ${diffMap[difficulty]}
 
 Format EXAKT:
