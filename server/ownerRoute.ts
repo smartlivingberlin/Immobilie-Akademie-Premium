@@ -425,7 +425,12 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
         trialLeads: Number(leads?.c || 0),
         modulesUnlocked: { "1": 0 },
         recentUsers: users || [],
-        systemHealth: { server: true, db: true, stripe: !!process.env.STRIPE_SECRET_KEY },
+        systemHealth: {
+          server: true,
+          db: true,
+          stripe: !!process.env.STRIPE_SECRET_KEY,
+          stripeMode: process.env.STRIPE_SECRET_KEY?.startsWith('sk_live_') ? 'LIVE ✅' : 'TEST-MODUS ⚠️',
+        },
         lastHealthCheck: await (async () => {
           try {
             const [rows] = await db.$client.query(
