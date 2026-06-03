@@ -21,7 +21,7 @@ describe("Stripe Produkte", () => {
     const products = await res.json();
     const komplett = products.find((p: any) => p.id === "modul_komplett");
     expect(komplett).toBeDefined();
-    expect(komplett.description).toContain("855+");
+    expect(komplett.description).toContain("240 Lerntage");
   });
 
   it("Alle 5 Produkte vorhanden", async () => {
