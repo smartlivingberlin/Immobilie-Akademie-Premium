@@ -10,8 +10,8 @@ interface SEOProps {
 }
 
 const DEFAULT_SEO = {
-  title: "Immobilien Akademie Smart | Makler §34c, Verwalter WEG/Miet, §34i Ausbildung",
-  description: "Komplette Immobilien-Ausbildung: 240 Tage, 810+ Lernaufgaben. Makler §34c GewO, WEG-Verwalter, Mietverwalter, Darlehensvermittler §34i. KI-Tutor, Videos, Quizze, Prüfungsmodus.",
+  title: "Immobilien Akademie Smart | §34i Prüfung, WEG-Verwalter & §34c Maklerwissen",
+  description: "Online-Lernportal für Immobilienberufe: IHK-orientierte Vorbereitung auf §34i und WEG-Verwalter nach §26a WEG sowie Praxiswissen zu §34c GewO, Maklerrecht und Immobilienbewertung. 854 Lernfragen, KI-Tutor, 240 Lerntage.",
   keywords: "Immobilienmakler Ausbildung, §34c GewO, WEG-Verwalter, Mietverwalter, §34i Darlehensvermittler, IHK Prüfung, Immobilien Weiterbildung, Online Lernportal",
   ogImage: "/og-image.svg",
 };
@@ -154,7 +154,7 @@ export const PAGE_SEO = {
   pruefung: {
     title: "Prüfungsmodus",
     description: "KI-generierte Prüfungsfragen für alle 5 Module. 50 Fragen, 90 Minuten, sofortiges Feedback. Wissenslücken-Analyse und Empfehlungen.",
-    keywords: "IHK Prüfung, Prüfungsvorbereitung, Online Test, Makler Prüfung, §34c Prüfung",
+    keywords: "IHK Prüfung §34i, WEG-Verwalter Prüfung, Prüfungsvorbereitung Immobilien, Online Test",
   },
   glossary: {
     title: "Fachbegriffe & Gesetze",

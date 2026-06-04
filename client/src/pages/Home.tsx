@@ -133,10 +133,24 @@ export default function Home() {
               alle 5 Berufsbilder in einem Portal. Mit KI-Tutor, 855+ Lernaufgaben
               und 240 strukturierten Lerntagen.
             </p>
+            {/* Stat-Chips */}
+            <div className="flex flex-wrap gap-2 mb-8">
+              {[
+                {n:"854",l:"Lernfragen"},
+                {n:"5",l:"Module"},
+                {n:"240",l:"Lerntage"},
+                {n:"3",l:"KI-Modelle"},
+              ].map(c=>(
+                <span key={c.l} className="inline-flex items-baseline gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1 backdrop-blur-sm">
+                  <span className="font-display font-semibold text-base" style={{color:"oklch(0.82 0.16 88)"}}>{c.n}</span>
+                  <span className="text-xs text-white/70">{c.l}</span>
+                </span>
+              ))}
+            </div>
             <div className="flex flex-wrap gap-3 mb-6">
               <Link href="/kurs/modul-1-immobilien-grundkurs">
-                <a className="inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold text-sm shadow-glow transition-all hover:scale-105"
-                  style={{background:"oklch(0.78 0.15 75)",color:"oklch(0.22 0.05 60)"}}>
+                <a className="inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold text-sm shadow-glow ring-1 ring-amber-300/40 transition-all hover:scale-105 hover:ring-amber-200/70"
+                  style={{background:"oklch(0.78 0.15 75)",color:"oklch(0.22 0.05 60)",boxShadow:"0 0 0 1px rgba(245,200,66,0.3), 0 8px 30px -8px rgba(245,200,66,0.5)"}}>
                   24h alle 5 Module testen <ArrowRight className="h-4 w-4" />
                 </a>
               </Link>
@@ -172,7 +186,7 @@ export default function Home() {
           </div>
 
           <div className="hidden lg:block">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl" style={{aspectRatio:"4/3"}}>
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-amber-300/30" style={{aspectRatio:"4/3",boxShadow:"0 25px 50px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(245,200,66,0.2)"}}>
               <img src={IMAGES.hero} alt="Professioneller Immobilienmakler im Berliner Büro"
                    width={1024} height={1024}
                    className="w-full h-full object-cover" loading="eager" />
@@ -193,7 +207,7 @@ export default function Home() {
             {[
               {icon:ShieldCheck, label:"DSGVO", sub:"konform"},
               {icon:Award, label:"IHK-orientiert", sub:"geprüfte Inhalte"},
-              {icon:GraduationCap, label:"AZAV", sub:"Zertifizierung geplant"},
+              {icon:Sparkles, label:"KI-Tutor", sub:"Claude · Gemini · Groq"},
               {icon:Users, label:"5 Berufsbilder", sub:"ein Portal"},
             ].map((t,i)=>(
               <div key={i} className="flex items-center justify-center gap-3">
@@ -216,8 +230,8 @@ export default function Home() {
                 <Award className="h-5 w-5 text-emerald-700" />
               </div>
               <div>
-                <p className="font-semibold text-emerald-900 text-sm">Staatliche Förderung möglich</p>
-                <p className="text-emerald-700 text-xs mt-0.5">Bildungsgutschein (SGB III §81) · Qualifizierungschancengesetz · steuerlich absetzbar · AZAV-Zertifizierung in Vorbereitung</p>
+                <p className="font-semibold text-emerald-900 text-sm">Förderung angestrebt</p>
+                <p className="text-emerald-700 text-xs mt-0.5">Bildungsgutschein (SGB III §81) · Qualifizierungschancengesetz · steuerlich absetzbar · AZAV-Zertifizierung wird angestrebt (aktuell kein Förderanspruch)</p>
               </div>
             </div>
             <Link href="/foerderung">
