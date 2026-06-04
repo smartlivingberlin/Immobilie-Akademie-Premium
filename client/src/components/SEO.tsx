@@ -10,16 +10,26 @@ interface SEOProps {
 }
 
 const DEFAULT_SEO = {
-  title: "Immobilien-Bildungsportal | Makler §34c, Verwalter WEG/Miet, §34i Ausbildung",
-  description: "Komplette Immobilien-Ausbildung: 240 Tage, 1920 UE. Makler §34c GewO, WEG-Verwalter, Mietverwalter, Darlehensvermittler §34i. KI-Tutor, Videos, Quizze, Prüfungsmodus.",
+  title: "Immobilien Akademie Smart | §34i Prüfung, WEG-Verwalter & §34c Maklerwissen",
+  description: "Online-Lernportal für Immobilienberufe: IHK-orientierte Vorbereitung auf §34i und WEG-Verwalter nach §26a WEG sowie Praxiswissen zu §34c GewO, Maklerrecht und Immobilienbewertung. 854 Lernfragen, KI-Tutor, 240 Lerntage.",
   keywords: "Immobilienmakler Ausbildung, §34c GewO, WEG-Verwalter, Mietverwalter, §34i Darlehensvermittler, IHK Prüfung, Immobilien Weiterbildung, Online Lernportal",
-  ogImage: "https://d3p5h1kcpb0w9u.cloudfront.net/hero-makler-1.jpg",
+  ogImage: "/og-image.svg",
 };
 
+/**
+ * SEO Komponente zur Verwaltung von Meta-Tags und strukturierten Daten.
+ * SEO component for managing meta tags and structured data.
+ *
+ * @param {string} [title] - Der Seitentitel.
+ * @param {string} [description] - Die Seitenbeschreibung.
+ * @param {string} [keywords] - Schlüsselwörter für die Seite.
+ * @param {string} [ogImage] - Bild für Open Graph (Social Sharing).
+ * @param {string} [canonical] - Kanonische URL der Seite.
+ */
 export function SEO({ title, description, keywords, ogImage, canonical }: SEOProps) {
   const [location] = useLocation();
   
-  const fullTitle = title ? `${title} | Immobilien-Bildungsportal` : DEFAULT_SEO.title;
+  const fullTitle = title ? `${title} | Immobilien Akademie Smart` : DEFAULT_SEO.title;
   const metaDescription = description || DEFAULT_SEO.description;
   const metaKeywords = keywords || DEFAULT_SEO.keywords;
   const metaImage = ogImage || DEFAULT_SEO.ogImage;
@@ -46,7 +56,7 @@ export function SEO({ title, description, keywords, ogImage, canonical }: SEOPro
     // Standard meta tags
     updateMetaTag("description", metaDescription);
     updateMetaTag("keywords", metaKeywords);
-    updateMetaTag("author", "Immobilien-Bildungsportal");
+    updateMetaTag("author", "Immobilien Akademie Smart");
     updateMetaTag("robots", "index, follow");
     updateMetaTag("language", "German");
     updateMetaTag("revisit-after", "7 days");
@@ -57,7 +67,7 @@ export function SEO({ title, description, keywords, ogImage, canonical }: SEOPro
     updateMetaTag("og:image", metaImage, true);
     updateMetaTag("og:url", canonicalUrl, true);
     updateMetaTag("og:type", "website", true);
-    updateMetaTag("og:site_name", "Immobilien-Bildungsportal", true);
+    updateMetaTag("og:site_name", "Immobilien Akademie Smart", true);
     updateMetaTag("og:locale", "de_DE", true);
 
     // Twitter Card tags
@@ -79,9 +89,9 @@ export function SEO({ title, description, keywords, ogImage, canonical }: SEOPro
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "EducationalOrganization",
-      "name": "Immobilien-Bildungsportal",
+      "name": "Immobilien Akademie Smart",
       "description": metaDescription,
-      "url": "https://immobilie-akademie-production.up.railway.app",
+      "url": "https://immobilien-akademie-smart.de",
       "logo": metaImage,
       "address": {
         "@type": "PostalAddress",
@@ -144,7 +154,7 @@ export const PAGE_SEO = {
   pruefung: {
     title: "Prüfungsmodus",
     description: "KI-generierte Prüfungsfragen für alle 5 Module. 50 Fragen, 90 Minuten, sofortiges Feedback. Wissenslücken-Analyse und Empfehlungen.",
-    keywords: "IHK Prüfung, Prüfungsvorbereitung, Online Test, Makler Prüfung, §34c Prüfung",
+    keywords: "IHK Prüfung §34i, WEG-Verwalter Prüfung, Prüfungsvorbereitung Immobilien, Online Test",
   },
   glossary: {
     title: "Fachbegriffe & Gesetze",

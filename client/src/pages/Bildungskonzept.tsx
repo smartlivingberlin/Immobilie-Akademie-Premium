@@ -19,7 +19,7 @@ export default function Bildungskonzept() {
         <div className="text-center border-b border-slate-200 pb-8">
           <div className="text-blue-600 font-bold text-lg mb-2">Immobilien-Akademie Smart</div>
           <h1 className="text-2xl font-bold text-slate-900 mb-1">Bildungskonzept</h1>
-          <p className="text-slate-500 text-xs">Vorbereitung auf IHK-Sachkundeprüfungen §34c / §34i GewO</p>
+          <p className="text-slate-500 text-xs">Praxisvorbereitung §34c GewO · IHK-Sachkundeprüfung §34i GewO · WEG-Verwalter §26a WEG</p>
           <div className="mt-4 text-xs text-slate-400">
             Durlacher Str. 36 · 10715 Berlin · info@immobilien-akademie-smart.de<br />
             Stand: März 2026 · Version 1.0
@@ -70,7 +70,7 @@ export default function Bildungskonzept() {
           <div className="grid grid-cols-1 gap-2 text-xs">
             {[
               "Die rechtlichen Grundlagen der Immobilienwirtschaft (BGB, GewO, WEG) sicher anzuwenden",
-              "Die IHK-Sachkundeprüfung nach §34c GewO (Immobilienmakler) abzulegen",
+              "Die Tätigkeit als Immobilienmakler nach §34c GewO aufzunehmen (Erlaubnisvoraussetzungen: Zuverlässigkeit, geordnete Vermögensverhältnisse)",
               "Die IHK-Sachkundeprüfung nach §34i GewO (Darlehensvermittler) abzulegen",
               "WEG-Versammlungen rechtssicher vorzubereiten und durchzuführen",
               "Immobilien nach ImmoWertV 2021 mit allen drei Verfahren zu bewerten",
