@@ -341,7 +341,7 @@ export const appRouter = router({
         const history = await getConversationMessages(input.conversationId);
 
         // Build enhanced system prompt for the AI tutor
-        const systemPrompt = `Du bist ein präziser Immobilien-Ausbildungsassistent für die Immobilien-Akademie. Du hilfst Studierenden bei der Vorbereitung auf die Sachkundeprüfung nach §34c GewO.
+        const systemPrompt = `Du bist ein präziser Immobilien-Ausbildungsassistent für die Immobilien-Akademie. Du hilfst Studierenden bei der Praxis- und Fachvorbereitung fuer Immobilienberufe nach §34c GewO, bei der §34i-Sachkunde fuer Immobiliardarlehensvermittlung sowie bei WEG- und Bewertungswissen. Wichtig: Die §34c-Maklererlaubnis verlangt keinen IHK-Sachkundenachweis.
 
 **Aktueller Kurskontext:** ${input.moduleContext || "Allgemeine Immobilienausbildung"}
 
