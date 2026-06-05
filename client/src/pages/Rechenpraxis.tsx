@@ -58,21 +58,24 @@ function KiAssistent({ aufgabe }: { aufgabe: Aufgabe }) {
     setNachrichten(prev => [...prev, { rolle: "user", text: frage }]);
     setLaden(true);
     try {
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
+      const res = await fetch("/api/ai/rechenpraxis-assistent", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 1000,
-          system: `Du bist ein geduldiger Lern-Assistent für Immobilienwirtschaft. Du erklärst Konzepte für Quereinsteiger — einfach, klar, ohne Fachjargon. Aktuelle Aufgabe: "${aufgabe.titel}" im Bereich "${aufgabe.bereich}". Kontext: ${aufgabe.berufssituation}. Antworte auf Deutsch, max. 4 Sätze, verständlich für absolute Anfänger.`,
-          messages: [
-            ...nachrichten.map(n => ({ role: n.rolle === "user" ? "user" : "assistant", content: n.text })),
-            { role: "user", content: frage }
-          ]
+          frage,
+          aufgabe: {
+            titel: aufgabe.titel,
+            bereich: aufgabe.bereich,
+            berufssituation: aufgabe.berufssituation,
+          },
+          nachrichten,
         })
       });
       const data = await res.json();
-      const antwort = data.content?.[0]?.text || "Entschuldigung, ich konnte keine Antwort generieren.";
+      const antwort = res.ok && data.answer
+        ? data.answer
+        : data.error || "Entschuldigung, ich konnte keine Antwort generieren.";
       setNachrichten(prev => [...prev, { rolle: "assistant", text: antwort }]);
     } catch {
       setNachrichten(prev => [...prev, { rolle: "assistant", text: "Verbindungsfehler. Bitte versuche es erneut." }]);
