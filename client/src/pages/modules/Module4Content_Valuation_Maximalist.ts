@@ -146,7 +146,7 @@ Lasten in Abteilung II beeinflussen den Wert massiv:
     law: [
       "[§ 2 ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/__2.html) (Begriffsbestimmungen)",
       "[WoFlV](https://www.gesetze-im-internet.de/woflv/) (Wohnflächenverordnung)",
-      "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Sachkundenachweis)"
+      "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Erlaubnispflicht)"
     ],
     practice: `
 # Praxis: Flächenberechnung Dachgeschoss

@@ -44,7 +44,7 @@
     "law": [
       "[§ 2 ImmoWertV](https://dejure.org/gesetze/ImmoWertV) (Begriffsbestimmungen)",
       "[WoFlV](https://www.gesetze-im-internet.de/woflv/) (Wohnflächenverordnung)",
-      "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Sachkundenachweis)"
+      "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Erlaubnispflicht)"
     ],
     "practice": "\n# Praxis: Flächenberechnung Dachgeschoss\n\n**Situation:**\nSie bewerten ein Dachstudio.\n*   Grundfläche des Raumes: 40 m².\n*   Davon Bereich mit Höhe > 2m: 20 m².\n*   Davon Bereich mit Höhe 1m - 2m: 10 m².\n*   Davon Bereich mit Höhe < 1m: 10 m².\n*   Dachterrasse: 10 m² (Standardwert).\n\n**Berechnung nach WoFlV:**\n1.  Bereich > 2m: 20 m² × 100% = **20 m²**\n2.  Bereich 1-2m: 10 m² × 50% = **5 m²**\n3.  Bereich < 1m: 10 m² × 0% = **0 m²**\n4.  Terrasse: 10 m² × 25% = **2,5 m²**\n\n**Gesamtwohnfläche:** 20 + 5 + 0 + 2,5 = **27,5 m²**\n\n*Fehlerquelle:* Würde man die Grundfläche (40 m² + 10 m² = 50 m²) im Exposé angeben, wäre das eine Täuschung über ca. 45%!\n    ",
     "task": "Wie wird ein Balkon bei der Wohnflächenberechnung nach WoFlV angesetzt?",
