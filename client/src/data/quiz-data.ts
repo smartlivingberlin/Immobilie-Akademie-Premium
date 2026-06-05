@@ -832,17 +832,17 @@ export const quizData: ModuleQuiz[] = [
       },
       {
         id: "m5-q10",
-        question: "Welche IHK-Prüfung ist für Immobilienmakler relevant?",
+        question: "Welche IHK-Prüfung ist für Immobiliardarlehensvermittler verpflichtend?",
         options: [
-          "Sachkundeprüfung nach § 34c GewO",
+          "IHK-Sachkundeprüfung nach §34i GewO",
           "Meisterprüfung",
           "Gesellenprüfung",
           "Abitur",
         ],
         correctAnswer: 0,
         explanation:
-          "Die Sachkundeprüfung nach § 34c GewO ist für Immobilienmakler, Darlehensvermittler, Bauträger und Baubetreuer relevant. Sie wird von der IHK abgenommen und ist Voraussetzung für die Erlaubniserteilung. Die Prüfung umfasst rechtliche, wirtschaftliche und fachliche Kenntnisse.",
-        lawReference: "§ 34c Abs. 2a GewO",
+          "Die IHK-Sachkundeprüfung nach §34i GewO ist für Immobiliardarlehensvermittler verpflichtend (§1 ImmVermV regelt Inhalt und Aufbau). Für §34c-Makler ist KEIN Sachkundenachweis erforderlich — nur Zuverlässigkeit und geordnete Vermögensverhältnisse.",
+        lawReference: "§34i GewO, §1 ImmVermV",
         category: "Prüfung",
         difficulty: "easy",
       },
