@@ -328,10 +328,16 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
   app.post("/api/owner/inspect-token", async (req: Request, res: Response) => {
     const { key, hours } = req.body as { key?: string; hours?: number };
     const ownerCode = process.env.OWNER_MAGIC_CODE || ENV.ownerMagicCode;
-    if (!key || !ownerCode || key !== ownerCode) return res.status(403).json({ error: "Nicht autorisiert" });
+    const keyAuthorized = Boolean(key && ownerCode && key === ownerCode);
+    if (!keyAuthorized && !(await requireOwner(req, res))) return;
+
+    const inspectSecret = process.env.INSPECT_JWT_SECRET
+      || (process.env.NODE_ENV === "production" ? "" : "dev-inspect-secret-change-me");
+    if (!inspectSecret) return res.status(500).json({ error: "INSPECT_JWT_SECRET fehlt" });
+
     const validHours = [48, 72].includes(Number(hours)) ? Number(hours) : 72;
     const { SignJWT } = await import("jose");
-    const secret = new TextEncoder().encode(process.env.INSPECT_JWT_SECRET || "immobilien-akademie-inspect-2026");
+    const secret = new TextEncoder().encode(inspectSecret);
     const expiresAt = Date.now() + validHours * 60 * 60 * 1000;
     const inspectToken = await new SignJWT({ role: "inspect", expiresAt })
       .setProtectedHeader({ alg: "HS256" })
@@ -352,7 +358,10 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
     const { token } = req.params;
     try {
       const { jwtVerify } = await import("jose");
-      const secret = new TextEncoder().encode(process.env.INSPECT_JWT_SECRET || "immobilien-akademie-inspect-2026");
+      const inspectSecret = process.env.INSPECT_JWT_SECRET
+        || (process.env.NODE_ENV === "production" ? "" : "dev-inspect-secret-change-me");
+      if (!inspectSecret) throw new Error("INSPECT_JWT_SECRET fehlt");
+      const secret = new TextEncoder().encode(inspectSecret);
       const { payload } = await jwtVerify(token, secret);
       if ((payload as any).role !== "inspect") throw new Error("Falsche Rolle");
       // Benutze EXAKT denselben Mechanismus wie /owner — bewährt!
