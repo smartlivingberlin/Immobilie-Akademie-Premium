@@ -24,20 +24,28 @@ export default function OwnerDashboard() {
 
   const createInspectLink = async () => {
     setInspectLoading(true);
+    setActionMsg("");
     try {
       const res = await fetch("/api/owner/inspect-token", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ key: "", hours: inspectHours }),
+        body: JSON.stringify({ hours: inspectHours }),
       });
       const data = await res.json();
+      if (!res.ok) {
+        setActionMsg(`❌ Inspect-Link Fehler: ${data.error || "Nicht autorisiert"}`);
+        return;
+      }
       if (data.token) {
         setInspectToken(data.token);
         const exp = new Date(data.expiresAt).toLocaleString("de-DE");
         setInspectExpiry(exp);
+        setActionMsg("✅ Inspect-Link erstellt");
       }
     } catch(e) {
       console.error("Inspect-Token Fehler:", e);
+      setActionMsg("❌ Inspect-Link konnte nicht erstellt werden");
     } finally {
       setInspectLoading(false);
     }
@@ -147,10 +155,16 @@ export default function OwnerDashboard() {
   };
 
   const generateMagicLink = async () => {
+    setActionMsg("");
     const res = await fetch("/api/owner/generate-link", {
-      method: "POST", credentials: "include"
+      method: "POST",
+      credentials: "include"
     });
     const d = await res.json();
+    if (!res.ok || !d.link) {
+      setActionMsg(`❌ Magic-Link Fehler: ${d.error || "Nicht autorisiert"}`);
+      return;
+    }
     navigator.clipboard.writeText(d.link);
     setActionMsg("✅ Magic Link kopiert!");
   };
