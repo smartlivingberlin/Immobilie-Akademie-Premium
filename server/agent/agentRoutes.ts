@@ -171,6 +171,65 @@ export function registerAgentRoutes(app: Express) {
       return res.status(500).json({ error: e.message });
     }
   });
+  // POST /api/ai/rechenpraxis-assistent — KI-Hilfe fuer Rechenpraxis (Auth erforderlich)
+  app.post("/api/ai/rechenpraxis-assistent", requireAuth, async (req: any, res: any) => {
+    try {
+      const { frage, aufgabe, nachrichten } = req.body as {
+        frage?: string;
+        aufgabe?: { titel?: string; bereich?: string; berufssituation?: string };
+        nachrichten?: Array<{ rolle?: string; text?: string }>;
+      };
+
+      const cleanQuestion = String(frage || "").trim();
+      if (!cleanQuestion) return res.status(400).json({ error: "frage erforderlich" });
+      if (cleanQuestion.length > 1200) return res.status(400).json({ error: "frage zu lang" });
+
+      const apiKey = process.env.ANTHROPIC_API_KEY;
+      if (!apiKey) return res.status(503).json({ error: "KI nicht konfiguriert" });
+
+      const safeHistory = Array.isArray(nachrichten)
+        ? nachrichten
+            .filter((n) => n && typeof n.text === "string" && (n.rolle === "user" || n.rolle === "assistant"))
+            .slice(-8)
+            .map((n) => ({
+              role: n.rolle === "assistant" ? "assistant" as const : "user" as const,
+              content: String(n.text).slice(0, 1200),
+            }))
+        : [];
+
+      const { default: Anthropic } = await import("@anthropic-ai/sdk");
+      const client = new Anthropic({ apiKey });
+
+      const system = `Du bist ein geduldiger Lern-Assistent fuer Immobilienwirtschaft und Rechenpraxis.
+Erklaere fuer Quereinsteiger einfach, klar und ohne unnoetigen Fachjargon.
+Aktuelle Aufgabe: "${aufgabe?.titel || "Rechenpraxis"}"
+Bereich: "${aufgabe?.bereich || "Immobilienwirtschaft"}"
+Kontext: ${aufgabe?.berufssituation || "Keine weitere Kontextangabe."}
+
+Antworte auf Deutsch, maximal 4 Saetze.
+Gib keine Rechtsberatung und keine offiziellen Pruefungsversprechen.
+Wenn die Frage nicht zur Rechenpraxis oder Immobilienwirtschaft passt, sage kurz, dass du nur dabei helfen kannst.`;
+
+      const message = await client.messages.create({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 700,
+        system,
+        messages: [
+          ...safeHistory,
+          { role: "user", content: cleanQuestion },
+        ],
+      });
+
+      const answer = message.content[0]?.type === "text"
+        ? message.content[0].text
+        : "Entschuldigung, ich konnte keine Antwort generieren.";
+
+      return res.json({ answer });
+    } catch (e: any) {
+      return res.status(500).json({ error: "KI-Antwort konnte nicht erstellt werden" });
+    }
+  });
+
   // POST /api/ai/bewerte-fallstudie — KI bewertet Nutzerantwort (Auth erforderlich)
   app.post("/api/ai/bewerte-fallstudie", requireAuth, async (req: any, res: any) => {
     try {
