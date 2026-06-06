@@ -35,8 +35,10 @@ Nicht als Primaerziel empfohlen:
 ## Empfohlenes Namensschema
 
 ```text
-mysql/production/YYYY/MM/DD/immobilien-akademie-smart_mysql_YYYYMMDD_HHMMSS.sql.gz
-mysql/production/latest/immobilien-akademie-smart_mysql_latest.sql.gz
+mysql/production/daily/YYYY/MM/DD/immobilien-akademie-smart_mysql_YYYYMMDD_HHMMSS.sql.gz.gpg
+mysql/production/weekly/YYYY/WW/immobilien-akademie-smart_mysql_YYYYMMDD_HHMMSS.sql.gz.gpg
+mysql/production/monthly/YYYY/MM/immobilien-akademie-smart_mysql_YYYYMMDD_HHMMSS.sql.gz.gpg
+mysql/production/latest/immobilien-akademie-smart_mysql_latest.sql.gz.gpg
 ```
 
 Optional fuer Restore-Beweise:
@@ -49,15 +51,35 @@ mysql/production/restore-tests/YYYY/MM/DD/restore_test_YYYYMMDD_HHMMSS.txt
 
 Empfohlen fuer den Start:
 
-- 14 Tage taegliche Backups.
-- 8 Wochen woechentliche Backups.
-- 12 Monate monatliche Backups.
+- 14 taegliche Backups.
+- 8 woechentliche Backups.
+- 12 monatliche Backups.
 
 Pragmatischer erster Schritt:
 
 - Taeglich sichern.
-- Retention zunaechst manuell pruefen.
-- Lifecycle-Regeln spaeter im Bucket oder per Script ergaenzen.
+- Retention im R2-Bucket oder per spaeterem Cleanup-Job erzwingen.
+- Bis Retention automatisiert ist: monatlich manuell pruefen, ob alte Dumps geloescht werden koennen.
+
+## Verschluesselung
+
+DB-Dumps enthalten personenbezogene Daten. Deshalb sollen sie vor dem Upload nach R2 clientseitig verschluesselt werden.
+
+Empfehlung fuer Phase 1:
+
+```bash
+gpg --batch --yes --symmetric --cipher-algo AES256 \
+  --passphrase "$BACKUP_ENCRYPTION_PASSPHRASE" \
+  --output backup.sql.gz.gpg \
+  backup.sql.gz
+```
+
+Regeln:
+
+- `BACKUP_ENCRYPTION_PASSPHRASE` nur als GitHub Secret speichern.
+- Passphrase nicht in Logs ausgeben.
+- Entschluesselung mindestens einmal lokal testen.
+- Wenn die Passphrase kompromittiert wurde, neue Passphrase setzen und neue Backups erzeugen.
 
 ## Noetige GitHub Secrets
 
@@ -70,6 +92,7 @@ R2_ACCOUNT_ID
 R2_ACCESS_KEY_ID
 R2_SECRET_ACCESS_KEY
 R2_BUCKET
+BACKUP_ENCRYPTION_PASSPHRASE
 ```
 
 Optional:
@@ -112,8 +135,10 @@ Aktivierung:
 3. Sicherstellen, dass `RAILWAY_PROJECT_ID` auf das richtige Railway-Projekt zeigt.
 4. Einmal manuell mit `workflow_dispatch` starten.
 5. Ergebnis in R2 pruefen.
-6. Dump herunterladen und lokal restoren.
-7. Erst danach Cron aktiv lassen.
+6. Verschluesselten Dump herunterladen.
+7. Lokal entschluesseln.
+8. Lokal restoren.
+9. Erst danach Cron aktiv lassen.
 
 ## Restore-Test-Regel
 
@@ -134,6 +159,18 @@ open_questions
 glossar_terms
 pending_purchases
 ```
+
+Phase 2:
+
+- Eigenen Restore-Test-Workflow erstellen.
+- Monatlich per `workflow_dispatch` und spaeter Cron ausfuehren.
+- Letzten verschluesselten Dump aus R2 herunterladen.
+- Mit `BACKUP_ENCRYPTION_PASSPHRASE` entschluesseln.
+- In temporaere MySQL-8-Instanz restoren.
+- Kernzaehlungen ausgeben.
+- Ergebnis als kurzfristiges GitHub Artifact speichern, nicht den Dump.
+
+Der Restore-Test-Workflow soll erst aktiviert werden, nachdem der Backup-Workflow mindestens einmal manuell erfolgreich war und ein lokaler Restore aus R2 bestanden wurde.
 
 ## Sicherheitsregeln
 

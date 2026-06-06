@@ -27,7 +27,7 @@ jobs:
         run: |
           set -euo pipefail
           sudo apt-get update
-          sudo apt-get install -y mysql-client gzip curl unzip
+          sudo apt-get install -y mysql-client gzip curl unzip gnupg
 
       - name: Install Railway CLI
         run: |
@@ -50,6 +50,7 @@ jobs:
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           R2_BUCKET: ${{ secrets.R2_BUCKET }}
+          BACKUP_ENCRYPTION_PASSPHRASE: ${{ secrets.BACKUP_ENCRYPTION_PASSPHRASE }}
         run: |
           set -euo pipefail
           test -n "$RAILWAY_TOKEN"
@@ -58,6 +59,7 @@ jobs:
           test -n "$R2_ACCESS_KEY_ID"
           test -n "$R2_SECRET_ACCESS_KEY"
           test -n "$R2_BUCKET"
+          test -n "$BACKUP_ENCRYPTION_PASSPHRASE"
 
       - name: Link Railway project
         env:
@@ -90,6 +92,21 @@ jobs:
               "$MYSQLDATABASE"
           ' | gzip > "backup/immobilien-akademie-smart_mysql_${STAMP}.sql.gz"
           gzip -t "backup/immobilien-akademie-smart_mysql_${STAMP}.sql.gz"
+          ls -lh backup
+
+      - name: Encrypt dump
+        env:
+          BACKUP_ENCRYPTION_PASSPHRASE: ${{ secrets.BACKUP_ENCRYPTION_PASSPHRASE }}
+        run: |
+          set -euo pipefail
+          PLAIN_FILE="backup/immobilien-akademie-smart_mysql_${STAMP}.sql.gz"
+          ENCRYPTED_FILE="${PLAIN_FILE}.gpg"
+          gpg --batch --yes --symmetric --cipher-algo AES256 \
+            --passphrase "$BACKUP_ENCRYPTION_PASSPHRASE" \
+            --output "$ENCRYPTED_FILE" \
+            "$PLAIN_FILE"
+          test -s "$ENCRYPTED_FILE"
+          rm -f "$PLAIN_FILE"
           ls -lh backup
 
       - name: Capture non-sensitive row counts
@@ -125,13 +142,13 @@ jobs:
         run: |
           set -euo pipefail
           ENDPOINT="https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com"
-          BACKUP_FILE="backup/immobilien-akademie-smart_mysql_${STAMP}.sql.gz"
+          BACKUP_FILE="backup/immobilien-akademie-smart_mysql_${STAMP}.sql.gz.gpg"
           COUNTS_FILE="backup/key_counts_${STAMP}.txt"
           DATE_PATH="$(date -u +%Y/%m/%d)"
 
-          aws s3 cp "$BACKUP_FILE" "s3://${R2_BUCKET}/${R2_PREFIX}/${DATE_PATH}/" --endpoint-url "$ENDPOINT"
-          aws s3 cp "$COUNTS_FILE" "s3://${R2_BUCKET}/${R2_PREFIX}/${DATE_PATH}/" --endpoint-url "$ENDPOINT"
-          aws s3 cp "$BACKUP_FILE" "s3://${R2_BUCKET}/${R2_PREFIX}/latest/immobilien-akademie-smart_mysql_latest.sql.gz" --endpoint-url "$ENDPOINT"
+          aws s3 cp "$BACKUP_FILE" "s3://${R2_BUCKET}/${R2_PREFIX}/daily/${DATE_PATH}/" --endpoint-url "$ENDPOINT"
+          aws s3 cp "$COUNTS_FILE" "s3://${R2_BUCKET}/${R2_PREFIX}/daily/${DATE_PATH}/" --endpoint-url "$ENDPOINT"
+          aws s3 cp "$BACKUP_FILE" "s3://${R2_BUCKET}/${R2_PREFIX}/latest/immobilien-akademie-smart_mysql_latest.sql.gz.gpg" --endpoint-url "$ENDPOINT"
           aws s3 cp "$COUNTS_FILE" "s3://${R2_BUCKET}/${R2_PREFIX}/latest/key_counts_latest.txt" --endpoint-url "$ENDPOINT"
 
       - name: Upload short-lived GitHub artifact
