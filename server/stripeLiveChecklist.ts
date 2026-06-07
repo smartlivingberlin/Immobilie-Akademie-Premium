@@ -4,6 +4,7 @@ import {
   type StripeChecklistItemStatus,
 } from "../shared/stripeLiveChecklist";
 import { getStripeWebhookHealth } from "./stripeWebhookHealth";
+import { getStripePriceConfig } from "../shared/stripePriceIds";
 
 function isLiveKey(key: string | undefined, prefix: string): boolean {
   return !!key && key.startsWith(prefix);
@@ -60,6 +61,15 @@ export function buildStripeLiveChecklist(): StripeLiveChecklistResult {
         detail: health.lastVerifiedAt
           ? `Letztes Event: ${health.lastEventType} · ${new Date(health.lastVerifiedAt).toLocaleString("de-DE")}`
           : "Noch kein verifiziertes Webhook-Event seit Serverstart",
+      };
+    },
+    stripe_price_ids: () => {
+      const cfg = getStripePriceConfig();
+      const count = Object.values(cfg).filter((p) => p.configured).length;
+      const live = sk?.startsWith("sk_live_");
+      return {
+        ok: live ? count === 4 : count > 0 || stripeMode === "test",
+        detail: `${count}/4 Price-IDs · ${live ? "Live" : "Test — dynamisches price_data als Fallback"}`,
       };
     },
   };

@@ -28,6 +28,7 @@ export default function StripeLiveChecklist() {
   const [copied, setCopied] = useState(false);
   const [verifyResult, setVerifyResult] = useState<{
     ok: boolean; mode: string; currency?: string; error?: string; recommendation?: string;
+    priceConfig?: Record<string, { configured: boolean; env: string }>;
   } | null>(null);
   const [verifying, setVerifying] = useState(false);
 
@@ -138,6 +139,11 @@ export default function StripeLiveChecklist() {
                   ? <>✅ {verifyResult.mode.toUpperCase()}-Modus · Balance: {verifyResult.currency}</>
                   : <>❌ {verifyResult.error}</>}
                 {verifyResult.recommendation && <div style={{ fontSize: 12, marginTop: 4 }}>{verifyResult.recommendation}</div>}
+                {verifyResult.priceConfig && (
+                  <div style={{ fontSize: 11, marginTop: 8, color: "#64748b" }}>
+                    Price-IDs: {Object.values(verifyResult.priceConfig).filter((p: { configured: boolean }) => p.configured).length}/4
+                  </div>
+                )}
               </div>
             )}
           </div>
