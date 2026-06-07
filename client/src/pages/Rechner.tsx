@@ -1,4 +1,5 @@
 import React from 'react';
+import PortalToolGuard from '@/components/PortalToolGuard';
 import { Mietrechner } from '@/components/calculators/Mietrechner';
 import { WEGRechner } from '@/components/calculators/WEGRechner';
 import { Maklerrechner } from '@/components/calculators/Maklerrechner';
@@ -8,6 +9,7 @@ import { Calculator } from 'lucide-react';
 
 export default function Rechner() {
   return (
+    <PortalToolGuard>
     <section aria-label="Praxisrechner">
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <div className="container mx-auto px-4 py-8">
@@ -42,5 +44,6 @@ export default function Rechner() {
       </div>
     </div>
   </section>
+    </PortalToolGuard>
   );
 }

@@ -13,7 +13,6 @@ test.describe("🌐 Öffentliche Seiten — Alle müssen erreichbar sein", () =>
     { path: "/agb", name: "AGB" },
     { path: "/widerruf", name: "Widerruf" },
     { path: "/bildungskonzept", name: "Bildungskonzept" },
-    { path: "/rechner", name: "Rechner" },
     { path: "/hilfe", name: "Hilfe" },
   ];
 

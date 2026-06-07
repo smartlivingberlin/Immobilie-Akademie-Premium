@@ -9,7 +9,6 @@ const NAV = [
   { href: "/glossary",        label: "Glossar",      icon: BookOpen },
   { href: "/foerderung",      label: "Förderung",    icon: Award },
   { href: "/audio-modus",     label: "Audio-Modus",  icon: Headphones },
-  { href: "/rechner",         label: "Rechner" },
 ];
 
 export default function PublicHeader() {
