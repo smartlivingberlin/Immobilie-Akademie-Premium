@@ -93,6 +93,27 @@ export default function ReferralAdmin() {
     }
   };
 
+  const connectTransferBatch = async () => {
+    if (!window.confirm("Alle Connect-fähigen pending-Einträge auszahlen?")) return;
+    setLedgerLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/admin/payout-ledger/connect-transfer-batch", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({}),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Batch-Transfer fehlgeschlagen");
+      loadLedger();
+    } catch (e: any) {
+      setError(e.message);
+    } finally {
+      setLedgerLoading(false);
+    }
+  };
+
   const connectTransfer = async (id: number) => {
     if (!window.confirm("Connect-Transfer wirklich ausführen?")) return;
     setLedgerLoading(true);
@@ -231,13 +252,22 @@ export default function ReferralAdmin() {
 
       <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 20, marginBottom: 20 }}>
         <h2 style={{ fontSize: 16, fontWeight: 700, marginBottom: 12 }}>Auszahlungs-Ledger</h2>
-        <button
-          onClick={generateLedger}
-          disabled={ledgerLoading}
-          style={{ padding: "8px 16px", borderRadius: 8, border: "none", background: "#2563eb", color: "white", cursor: "pointer", fontSize: 13, fontWeight: 600, marginBottom: 16 }}
-        >
-          {ledgerLoading ? "…" : "Quartal-Einträge generieren"}
-        </button>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
+          <button
+            onClick={generateLedger}
+            disabled={ledgerLoading}
+            style={{ padding: "8px 16px", borderRadius: 8, border: "none", background: "#2563eb", color: "white", cursor: "pointer", fontSize: 13, fontWeight: 600 }}
+          >
+            {ledgerLoading ? "…" : "Quartal-Einträge generieren"}
+          </button>
+          <button
+            onClick={connectTransferBatch}
+            disabled={ledgerLoading}
+            style={{ padding: "8px 16px", borderRadius: 8, border: "1px solid #7c3aed", background: "white", color: "#7c3aed", cursor: "pointer", fontSize: 13, fontWeight: 600 }}
+          >
+            Alle Connect-fähigen auszahlen
+          </button>
+        </div>
         {ledger.length === 0 ? (
           <p style={{ fontSize: 13, color: "#94a3b8" }}>Noch keine Ledger-Einträge (Migration 0039).</p>
         ) : (
