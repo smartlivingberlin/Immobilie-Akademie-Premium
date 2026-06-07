@@ -209,35 +209,58 @@ const normalizeToolChoice = (
   return toolChoice;
 };
 
-const resolveApiUrl = () => {
+type LLMProvider = {
+  name: "forge" | "gemini" | "openai";
+  apiKey: string;
+  apiUrl: string;
+  model: string;
+};
+
+export const DEFAULT_GEMINI_MODEL = "gemini-2.5-flash";
+export const DEFAULT_OPENAI_MODEL = "gpt-4o-mini";
+
+export const resolveLLMProvider = (): LLMProvider | null => {
   // Manus Forge (wenn konfiguriert)
-  if (ENV.forgeApiUrl && ENV.forgeApiUrl.trim().length > 0) {
-    return `${ENV.forgeApiUrl.replace(/\/$/, "")}/v1/chat/completions`;
+  if (
+    ENV.forgeApiUrl &&
+    ENV.forgeApiUrl.trim().length > 0 &&
+    ENV.forgeApiKey &&
+    ENV.forgeApiKey.trim().length > 0
+  ) {
+    return {
+      name: "forge",
+      apiKey: ENV.forgeApiKey,
+      apiUrl: `${ENV.forgeApiUrl.replace(/\/$/, "")}/v1/chat/completions`,
+      model: process.env.FORGE_LLM_MODEL || DEFAULT_GEMINI_MODEL,
+    };
   }
   // Gemini (wenn GEMINI_API_KEY gesetzt) – via OpenAI-kompatibler Endpoint
   if (process.env.GEMINI_API_KEY) {
-    return "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions";
+    return {
+      name: "gemini",
+      apiKey: process.env.GEMINI_API_KEY,
+      apiUrl: "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+      model: process.env.GEMINI_MODEL || DEFAULT_GEMINI_MODEL,
+    };
   }
   // OpenAI direkt (wenn OPENAI_API_KEY gesetzt)
   if (process.env.OPENAI_API_KEY) {
-    return "https://api.openai.com/v1/chat/completions";
-  }
-  // Anthropic (wenn ANTHROPIC_API_KEY gesetzt)
-  if (process.env.ANTHROPIC_API_KEY) {
-    return "https://api.anthropic.com/v1/messages";
+    return {
+      name: "openai",
+      apiKey: process.env.OPENAI_API_KEY,
+      apiUrl: "https://api.openai.com/v1/chat/completions",
+      model: process.env.OPENAI_MODEL || DEFAULT_OPENAI_MODEL,
+    };
   }
   // Kein LLM konfiguriert
   return null;
 };
 
 const assertApiKey = () => {
-  if (!ENV.forgeApiKey && !process.env.OPENAI_API_KEY && !process.env.ANTHROPIC_API_KEY && !process.env.GEMINI_API_KEY) {
-    throw new Error("Kein KI-API-Schlüssel konfiguriert. Setze OPENAI_API_KEY, ANTHROPIC_API_KEY, GEMINI_API_KEY oder BUILT_IN_FORGE_API_KEY in .env");
+  if (!resolveLLMProvider()) {
+    throw new Error("Kein OpenAI-kompatibler KI-API-Schlüssel konfiguriert. Setze GEMINI_API_KEY, OPENAI_API_KEY oder BUILT_IN_FORGE_API_KEY in .env. Anthropic wird in separaten SDK-Routen genutzt.");
   }
 };
-
-const getApiKey = () =>
-  ENV.forgeApiKey || process.env.GEMINI_API_KEY || process.env.OPENAI_API_KEY || process.env.ANTHROPIC_API_KEY || "";
 
 const normalizeResponseFormat = ({
   responseFormat,
@@ -286,6 +309,10 @@ const normalizeResponseFormat = ({
 
 export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
   assertApiKey();
+  const provider = resolveLLMProvider();
+  if (!provider) {
+    throw new Error("Kein OpenAI-kompatibler KI-Provider konfiguriert");
+  }
 
   const {
     messages,
@@ -299,7 +326,7 @@ export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
   } = params;
 
   const payload: Record<string, unknown> = {
-    model: "gemini-2.5-flash",
+    model: provider.model,
     messages: messages.map(normalizeMessage),
   };
 
@@ -329,13 +356,11 @@ export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
     payload.response_format = normalizedResponseFormat;
   }
 
-  const apiUrl = resolveApiUrl();
-  if (!apiUrl) throw new Error("Kein KI-API-Schlüssel konfiguriert. Setze OPENAI_API_KEY in .env");
-  const response = await fetch(apiUrl, {
+  const response = await fetch(provider.apiUrl, {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      authorization: `Bearer ${getApiKey()}`,
+      authorization: `Bearer ${provider.apiKey}`,
     },
     body: JSON.stringify(payload),
   });
