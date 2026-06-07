@@ -53,6 +53,7 @@ const MeineDaten = lazy(() => import("@/pages/MeineDaten"));
 const Certificates = lazy(() => import("@/pages/Certificates"));
 const Weiterbildungsnachweis = lazy(() => import("@/pages/Weiterbildungsnachweis"));
 const ComplianceLanding = lazy(() => import("@/pages/ComplianceLanding"));
+const VerwalterRechnerLanding = lazy(() => import("@/pages/VerwalterRechnerLanding"));
 const Fallstudien = lazy(() => import("@/pages/Fallstudien"));
 const Flashcards = lazy(() => import("@/pages/Flashcards"));
 const SpacedRepetition = lazy(() => import("@/pages/SpacedRepetition"));
@@ -304,6 +305,7 @@ function Router() {
         <Route path="/fuer-maklerbueros"><PublicLayout><MaklerbuerosLanding /></PublicLayout></Route>
         <Route path="/empfehlungsprogramm"><PublicLayout><Empfehlungsprogramm /></PublicLayout></Route>
         <Route path="/compliance-20h"><PublicLayout><ComplianceLanding /></PublicLayout></Route>
+        <Route path="/verwalter-rechner"><PublicLayout><VerwalterRechnerLanding /></PublicLayout></Route>
         <Route path="/audio-modus"><AudioModus /></Route>
         <Route component={NotFound} />
       </Switch>

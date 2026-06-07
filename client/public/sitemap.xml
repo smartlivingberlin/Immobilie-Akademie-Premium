@@ -86,6 +86,11 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://immobilien-akademie-smart.de/verwalter-rechner</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://immobilien-akademie-smart.de/compliance-20h</loc>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
