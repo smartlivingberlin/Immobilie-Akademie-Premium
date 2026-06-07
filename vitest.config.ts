@@ -3,7 +3,7 @@ import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   test: {
-    include: ["client/src/**/*.test.ts", "server/**/*.test.ts"],
+    include: ["client/src/**/*.test.ts", "server/**/*.test.ts", "shared/**/*.test.ts"],
     exclude: [
       "server/pdf.test.ts",
       "server/certificates.test.ts",

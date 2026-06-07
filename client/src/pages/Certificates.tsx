@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "wouter";
 import { 
   Award, 
   Download, 
@@ -11,7 +12,9 @@ import {
   Clock, 
   BookOpen, 
   TrendingUp,
-  AlertCircle 
+  AlertCircle,
+  FileCheck,
+  ArrowRight,
 } from "lucide-react";
 import { 
   getProgress, 
@@ -110,6 +113,25 @@ export default function Certificates() {
           Laden Sie Ihre Teilnahmezertifikate für erfolgreich abgeschlossene Module herunter.
         </p>
       </div>
+
+      <Card className="border-blue-200 bg-blue-50/50">
+        <CardContent className="pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-start gap-3">
+            <FileCheck className="h-8 w-8 text-blue-600 flex-shrink-0" />
+            <div>
+              <h2 className="font-semibold text-slate-900">§34c Weiterbildungsnachweis</h2>
+              <p className="text-sm text-slate-600 mt-1">
+                Serverseitig protokollierte Lernzeit als PDF — Grundlage für Ihre 20-Stunden-Pflicht nach §15b MaBV.
+              </p>
+            </div>
+          </div>
+          <Link href="/weiterbildungsnachweis">
+            <Button className="flex-shrink-0">
+              Nachweis öffnen <ArrowRight className="h-4 w-4 ml-2" />
+            </Button>
+          </Link>
+        </CardContent>
+      </Card>
 
       {/* User Name Input */}
       <Card>

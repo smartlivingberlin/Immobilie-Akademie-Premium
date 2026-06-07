@@ -61,6 +61,7 @@ import { glossarRouter } from "../glossarRouter";
 import { audioRouter } from "../audioRouter";
 import { registerTrialRoutes } from "../trialRoute";
 import { certificateExportRouter } from "../certificateExport";
+import { weiterbildungExportRouter } from "../weiterbildungExport";
 import { logger } from "./logger";
 import { requireAuth, requireAdmin } from "../authMiddleware";
 
@@ -336,6 +337,7 @@ app.use(express.json({ limit: "1mb" }));
   app.use(glossarRouter);
   app.use(audioRouter);
   app.use(certificateExportRouter);
+  app.use(weiterbildungExportRouter);
   registerAgentRoutes(app);
   // Healthcheck für Railway / Monitoring
   // Trial Follow-up Cron: alle 30 Minuten
