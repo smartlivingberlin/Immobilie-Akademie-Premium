@@ -27,6 +27,7 @@ b2bOnboardingRouter.get("/api/b2b/onboarding/status", requireAuth, async (req: a
         companyName: config.companyName,
         primaryColor: config.primaryColor,
         welcomeText: config.welcomeText,
+        logoUrl: config.logoUrl,
         maxUsers: config.maxUsers,
         enabledModules: config.enabledModules,
       },
@@ -55,6 +56,34 @@ b2bOnboardingRouter.post("/api/b2b/onboarding/branding", requireAuth, async (req
 
     logger.info("[B2B] Onboarding branding saved", { userId: req.currentUser.id, tenantId: config.id });
     res.json({ ok: true });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+b2bOnboardingRouter.post("/api/b2b/onboarding/logo", requireAuth, async (req: any, res) => {
+  try {
+    const config = await getTenantForAdmin(req.currentUser.id);
+    if (!config) return res.status(403).json({ error: "Kein B2B-Tenant oder keine Admin-Berechtigung" });
+
+    const logoBase64 = String(req.body?.logoBase64 || "");
+    const mimeType = String(req.body?.mimeType || "image/png");
+    const fileName = String(req.body?.fileName || "logo.png").slice(0, 80);
+    if (!logoBase64) return res.status(400).json({ error: "logoBase64 erforderlich" });
+    if (!mimeType.startsWith("image/")) return res.status(400).json({ error: "Nur Bilddateien erlaubt" });
+
+    const buffer = Buffer.from(logoBase64, "base64");
+    if (buffer.length > 2 * 1024 * 1024) return res.status(400).json({ error: "Max. 2 MB" });
+
+    const { storagePut } = await import("./storage");
+    const { updateWhitelabelConfig } = await import("./db");
+    const randomSuffix = Math.random().toString(36).substring(2, 10);
+    const fileKey = `whitelabel/${config.slug}/logo-${randomSuffix}-${fileName}`;
+    const logoUrl = await storagePut(fileKey, buffer, mimeType);
+    await updateWhitelabelConfig(config.id, { logoUrl });
+
+    logger.info("[B2B] Onboarding logo uploaded", { userId: req.currentUser.id, tenantId: config.id });
+    res.json({ ok: true, logoUrl });
   } catch (e: any) {
     res.status(500).json({ error: e.message });
   }

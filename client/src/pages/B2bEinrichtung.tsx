@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { SEO } from "@/components/SEO";
-import { Building2, Palette, KeyRound, CheckCircle2, ArrowRight, ArrowLeft } from "lucide-react";
+import { Building2, Palette, KeyRound, CheckCircle2, ArrowRight, ArrowLeft, Upload } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 
 type TenantInfo = {
@@ -10,6 +10,7 @@ type TenantInfo = {
   companyName: string;
   primaryColor: string;
   welcomeText: string;
+  logoUrl?: string | null;
   maxUsers: number;
   enabledModules: string;
 };
@@ -26,6 +27,8 @@ export default function B2bEinrichtung() {
   const [companyName, setCompanyName] = useState("");
   const [primaryColor, setPrimaryColor] = useState("#2563eb");
   const [welcomeText, setWelcomeText] = useState("");
+  const [logoUrl, setLogoUrl] = useState<string | null>(null);
+  const [logoUploading, setLogoUploading] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -42,12 +45,39 @@ export default function B2bEinrichtung() {
           setCompanyName(d.tenant.companyName || "");
           setPrimaryColor(d.tenant.primaryColor || "#2563eb");
           setWelcomeText(d.tenant.welcomeText || "");
+          setLogoUrl(d.tenant.logoUrl || null);
           if (d.completed) setStep(2);
         }
       })
       .catch(() => setError("Status konnte nicht geladen werden"))
       .finally(() => setLoading(false));
   }, [user]);
+
+  const uploadLogo = async (file: File) => {
+    setLogoUploading(true);
+    setError("");
+    try {
+      const base64 = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(String(reader.result).split(",")[1] || "");
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+      const res = await fetch("/api/b2b/onboarding/logo", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ logoBase64: base64, mimeType: file.type, fileName: file.name }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Upload fehlgeschlagen");
+      setLogoUrl(data.logoUrl);
+    } catch (e: any) {
+      setError(e.message);
+    } finally {
+      setLogoUploading(false);
+    }
+  };
 
   const saveBranding = async () => {
     setSaving(true);
@@ -134,6 +164,19 @@ export default function B2bEinrichtung() {
                     <Palette className="h-5 w-5 text-blue-400" />
                     <h1 className="text-xl font-bold">Branding</h1>
                   </div>
+                  <label className="block text-sm text-slate-400 mb-1">Logo (optional)</label>
+                  <div className="flex items-center gap-4 mb-4">
+                    {logoUrl ? (
+                      <img src={logoUrl} alt="Logo" className="h-14 w-14 rounded-lg object-contain bg-slate-900 border border-slate-600" />
+                    ) : (
+                      <div className="h-14 w-14 rounded-lg bg-slate-900 border border-dashed border-slate-600 flex items-center justify-center text-slate-500 text-xs">Logo</div>
+                    )}
+                    <label className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-600 text-slate-300 cursor-pointer hover:border-blue-500 text-sm">
+                      <Upload className="h-4 w-4" />
+                      {logoUploading ? "Hochladen…" : "Logo wählen"}
+                      <input type="file" accept="image/*" className="hidden" onChange={(e) => e.target.files?.[0] && uploadLogo(e.target.files[0])} />
+                    </label>
+                  </div>
                   <label className="block text-sm text-slate-400 mb-1">Firmenname</label>
                   <input value={companyName} onChange={(e) => setCompanyName(e.target.value)} className="w-full mb-4 px-4 py-2 rounded-lg bg-slate-900 border border-slate-600 text-white" />
                   <label className="block text-sm text-slate-400 mb-1">Primärfarbe</label>
@@ -161,7 +204,7 @@ export default function B2bEinrichtung() {
                     <h1 className="text-xl font-bold">Team einladen</h1>
                   </div>
                   <p className="text-slate-300 mb-6">
-                    Erstellen Sie Zugangscodes für Ihre Mitarbeiter oder nutzen Sie den White-Label-Admin für Logo-Upload.
+                    Erstellen Sie Zugangscodes für Ihre Mitarbeiter. Logo und Farben sind bereits gespeichert.
                   </p>
                   <div className="space-y-3">
                     <Link href="/admin/codes">

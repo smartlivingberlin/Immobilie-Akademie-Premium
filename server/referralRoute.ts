@@ -55,6 +55,52 @@ referralRouter.post("/api/referral/redeem-voucher", requireAuth, async (req: any
   }
 });
 
+referralRouter.get("/api/referral/connect-status", requireAuth, async (req: any, res) => {
+  try {
+    const { getDb } = await import("./db");
+    const db = await getDb();
+    const { getPartnerConnectStatus } = await import("./partnerConnect");
+    const status = await getPartnerConnectStatus(db, req.currentUser.id);
+    res.json({ status, enabled: process.env.STRIPE_CONNECT_ENABLED === "1" || process.env.STRIPE_CONNECT_ENABLED === "true" });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+referralRouter.post("/api/referral/connect-sync", requireAuth, async (req: any, res) => {
+  try {
+    const { getDb } = await import("./db");
+    const db = await getDb();
+    const { syncPartnerConnectAccount, getPartnerConnectStatus } = await import("./partnerConnect");
+    await syncPartnerConnectAccount(db, req.currentUser.id);
+    const status = await getPartnerConnectStatus(db, req.currentUser.id);
+    res.json({ status });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+referralRouter.post("/api/referral/connect-onboard", requireAuth, async (req: any, res) => {
+  try {
+    const { getDb } = await import("./db");
+    const db = await getDb();
+    const { countSuccessfulReferrals } = await import("./voucherRedeem");
+    const referrals = await countSuccessfulReferrals(db, req.currentUser.id);
+    if (referrals === 0) {
+      return res.status(403).json({ error: "Connect erst nach erfolgreicher Empfehlung (Erstkauf) verfügbar" });
+    }
+    const { createPartnerConnectOnboardingLink } = await import("./partnerConnect");
+    const { url } = await createPartnerConnectOnboardingLink(
+      db,
+      req.currentUser.id,
+      req.currentUser.email || "",
+    );
+    res.json({ url });
+  } catch (e: any) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
 referralRouter.get("/api/referral/payout-details", requireAuth, async (req: any, res) => {
   try {
     const { getDb } = await import("./db");

@@ -12,6 +12,7 @@ import {
 import { getStripeWebhookHealth } from "./stripeWebhookHealth";
 import { listAllPartnerPayoutDetails } from "./partnerPayoutDetails";
 import { buildStripeLiveEnvTemplate } from "../shared/stripeLiveEnv";
+import { verifyStripeApiKey } from "./stripeLiveVerify";
 import { logger } from "./_core/logger";
 
 export const adminOpsRouter = Router();
@@ -43,6 +44,15 @@ adminOpsRouter.get("/api/admin/referral-stats", requireAdmin, async (_req, res) 
 adminOpsRouter.get("/api/admin/stripe-live-checklist", requireAdmin, async (_req, res) => {
   try {
     res.json({ ...buildStripeLiveChecklist(), webhookHealth: getStripeWebhookHealth() });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+adminOpsRouter.get("/api/admin/stripe-live-verify", requireAdmin, async (_req, res) => {
+  try {
+    const result = await verifyStripeApiKey();
+    res.json(result);
   } catch (e: any) {
     res.status(500).json({ error: e.message });
   }
