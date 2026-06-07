@@ -48,7 +48,7 @@ export function InspectBanner() {
         boxShadow: "0 2px 8px rgba(0,0,0,0.15)"
       }}>
         <span style={{fontSize:16}}>👁️</span>
-        <span>Vorschau-Modus — Alles testbar, Käufe sind deaktiviert</span>
+        <span>Admin-Vorschau (read-only) — alle Bereiche sichtbar, Änderungen deaktiviert</span>
         <span style={{
           background: "#78350f",
           color: "#fef3c7",

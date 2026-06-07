@@ -126,8 +126,15 @@ function ProtectedModuleRoute({ moduleId, children }: { moduleId: number, childr
 }
 
 function AdminRoute({ component: Component }: { component: React.ComponentType }) {
-  const { data: user, isLoading } = trpc.auth.me.useQuery(undefined, { retry: false });
-  if (isLoading) return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
+  const { ready: inspectReady, active: isInspect } = useInspectMode();
+  const { data: user, isLoading } = trpc.auth.me.useQuery(undefined, {
+    retry: false,
+    enabled: inspectReady && !isInspect,
+  });
+  if (!inspectReady || (isLoading && !isInspect)) {
+    return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
+  }
+  if (isInspect) return <Component />;
   if (!user || user.role !== "admin") { window.location.href = "/login"; return null; }
   return <Component />;
 }

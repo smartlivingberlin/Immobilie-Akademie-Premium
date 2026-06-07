@@ -33,10 +33,14 @@ import { pdfRouter } from "./pdfRouter";
 import { certificateRouter } from "./certificateRouter";
 import { quizRouter } from "./quizRouter";
 import { azavRouter } from "./azavRouter";
+import { isInspectModeActive } from "./inspectMode";
 
-// Admin-only middleware
+// Admin-only middleware (inspect mode: read-only queries without login)
 const adminProcedure = protectedProcedure.use(({ ctx, next }) => {
-  if (ctx.user.role !== 'admin') {
+  if (isInspectModeActive(ctx.req)) {
+    return next({ ctx });
+  }
+  if (!ctx.user || ctx.user.role !== 'admin') {
     throw new TRPCError({ code: 'FORBIDDEN', message: 'Nur Administratoren haben Zugriff auf diese Funktion.' });
   }
   return next({ ctx });
@@ -594,6 +598,10 @@ Antworte im folgenden JSON-Format:
   modules: router({
     // Gibt freigeschaltete Module des eingeloggten Nutzers zurück
     myAccess: protectedProcedure.query(async ({ ctx }) => {
+      if (isInspectModeActive(ctx.req)) {
+        return [1, 2, 3, 4, 5];
+      }
+
       // Admins sehen immer alle Module
       if (ctx.user?.role === "admin") {
         return [1, 2, 3, 4, 5];

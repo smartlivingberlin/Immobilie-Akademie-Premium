@@ -7,6 +7,8 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import Footer from "@/components/layout/Footer";
 import { useWhiteLabel } from "@/contexts/WhiteLabelContext";
 import { useModuleAccess } from "@/hooks/useModuleAccess";
+import { useInspectReadOnly } from "@/hooks/useInspectReadOnly";
+import { isInspectModeSync } from "@/lib/inspectMode";
 import { Button } from "@/components/ui/button";
 import { GlobalSearch } from "@/components/GlobalSearch";
 import { GlobalGlossary } from "@/components/GlobalGlossary";
@@ -31,6 +33,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [isAIAssistantOpen, setIsAIAssistantOpen] = useState(false);
 
   const { user } = useAuth();
+  const { isReadOnly: isInspectReadOnly } = useInspectReadOnly();
+  const showAdminNav = user?.role === "admin" || isInspectModeSync();
   const { isWhiteLabeled, companyName, logoUrl, config } = useWhiteLabel();
 
   const allModules = [
@@ -266,8 +270,8 @@ const navigation: NavigationItem[] = [
               )}
             </div>
 
-            {/* Admin Section (only for admins) */}
-            {user?.role === 'admin' && (
+            {/* Admin Section (admins + inspect preview guests) */}
+            {showAdminNav && (
               <div className="border-t border-slate-800 pt-4">
                 {isCollapsed ? (
                   <TooltipProvider>
@@ -533,8 +537,12 @@ const navigation: NavigationItem[] = [
                   <span className="font-semibold text-sm">JD</span>
                 </div>
                 <div className="overflow-hidden">
-                  <div className="font-medium text-sm truncate">{user?.name || user?.email?.split("@")[0] || "Nutzer"}</div>
-                  <div className="text-xs text-slate-500 truncate">{user?.role === "admin" ? "Administrator" : "Teilnehmer"}</div>
+                  <div className="font-medium text-sm truncate">
+                    {isInspectReadOnly ? "Vorschau-Gast" : (user?.name || user?.email?.split("@")[0] || "Nutzer")}
+                  </div>
+                  <div className="text-xs text-slate-500 truncate">
+                    {isInspectReadOnly ? "Admin-Vorschau (read-only)" : (user?.role === "admin" ? "Administrator" : "Teilnehmer")}
+                  </div>
                 </div>
               </div>
             </>
@@ -551,14 +559,16 @@ const navigation: NavigationItem[] = [
             </TooltipProvider>
           )}
 
-          <Button 
-            variant="outline" 
-            onClick={() => logoutMutation.mutate()}
-            className={`w-full border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white ${isCollapsed ? "px-0" : ""}`}
-          >
-            <LogOut className={`h-4 w-4 ${isCollapsed ? "" : "mr-2"}`} />
-            {!isCollapsed && "Abmelden"}
-          </Button>
+          {!isInspectReadOnly && (
+            <Button 
+              variant="outline" 
+              onClick={() => logoutMutation.mutate()}
+              className={`w-full border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white ${isCollapsed ? "px-0" : ""}`}
+            >
+              <LogOut className={`h-4 w-4 ${isCollapsed ? "" : "mr-2"}`} />
+              {!isCollapsed && "Abmelden"}
+            </Button>
+          )}
           {!isCollapsed && (
             <div style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 4, justifyContent: "center" }}>
               <button onClick={() => setFontScale(s => Math.max(0.8, s - 0.1))}
@@ -587,7 +597,10 @@ const navigation: NavigationItem[] = [
         </div>
 
         {/* Content Scroll Area */}
-        <div className="flex-1 overflow-y-auto p-4 md:p-8 scroll-smooth">
+        <div
+          className="flex-1 overflow-y-auto p-4 md:p-8 scroll-smooth"
+          data-inspect-readonly={isInspectReadOnly ? "" : undefined}
+        >
           <div className={`max-w-7xl mx-auto transition-all duration-300 ${isCollapsed ? "max-w-[1600px]" : ""}`} style={{ fontSize: fontScale + "rem" }}>
             <Breadcrumbs />
             {children}
