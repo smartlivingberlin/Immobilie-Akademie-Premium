@@ -77,18 +77,21 @@ export default function Module4Detail() {
   const [contentLoaded, setContentLoaded] = useState(false);
 
   useEffect(() => {
-    fetch("/data/module4-content.json")
-      .then(r => r.json())
-      .then(data => {
+    fetch("/data/module4-content.json", { credentials: "include" })
+      .then((r) => {
+        if (!r.ok) throw new Error(`module4-content.json HTTP ${r.status}`);
+        return r.json();
+      })
+      .then((data) => {
         setContentDataModule4(data);
         setContentLoaded(true);
       })
-      .catch(err => console.error("Content konnte nicht geladen werden:", err));
+      .catch((err) => console.error("Content konnte nicht geladen werden:", err));
   }, []);
 
   const [match, params] = useRoute("/modul/4/tag/:day");
   const { toast } = useToast();
-  const urlDay = params?.day ? `day_${params.day}` : Object.keys(contentDataModule4)[0];
+  const urlDay = params?.day ? `day_${params.day}` : (Object.keys(contentDataModule4)[0] || "day_1");
   
   // Define types for content structure
   interface Task {
@@ -110,7 +113,13 @@ export default function Module4Detail() {
 
   useEffect(() => {
     if (_cache_module4) { setModuleData(_cache_module4); return; }
-    fetch("/data/module4.json").then(r => r.json()).then(d => { _cache_module4 = d; setModuleData(d); });
+    fetch("/data/module4.json", { credentials: "include" })
+      .then((r) => {
+        if (!r.ok) throw new Error(`module4.json HTTP ${r.status}`);
+        return r.json();
+      })
+      .then((d) => { _cache_module4 = d; setModuleData(d); })
+      .catch((err) => console.error("Moduldaten konnten nicht geladen werden:", err));
   }, []);
   const [showAITutor, setShowAITutor] = useState(false);
 
@@ -372,13 +381,12 @@ const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["da
                       Praxis
                     </TabsTrigger>
                     <TabsTrigger value="task" className="data-[state=active]:bg-white data-[state=active]:text-blue-700 data-[state=active]:shadow-sm rounded-lg">
-                                      <TabsTrigger value="videos" className="data-[state=active]:bg-white data-[state=active]:text-purple-700 data-[state=active]:shadow-sm rounded-lg">
-                      <Video className="h-4 w-4 mr-2" />
-                      Videos
-                    </TabsTrigger>
-
                       <FileText className="h-4 w-4 mr-2" />
                       Aufgaben
+                    </TabsTrigger>
+                    <TabsTrigger value="videos" className="data-[state=active]:bg-white data-[state=active]:text-purple-700 data-[state=active]:shadow-sm rounded-lg">
+                      <Video className="h-4 w-4 mr-2" />
+                      Videos
                     </TabsTrigger>
                 </TabsList>
 
