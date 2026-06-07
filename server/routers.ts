@@ -33,6 +33,7 @@ import { pdfRouter } from "./pdfRouter";
 import { certificateRouter } from "./certificateRouter";
 import { quizRouter } from "./quizRouter";
 import { azavRouter } from "./azavRouter";
+import { clearAllAuthCookies } from "./authCookies";
 import { isInspectModeActive } from "./inspectMode";
 
 // Admin-only middleware (inspect mode: read-only queries without login)
@@ -159,8 +160,7 @@ export const appRouter = router({
       }),
 
     logout: publicProcedure.mutation(({ ctx }) => {
-      const cookieOptions = getSessionCookieOptions(ctx.req);
-      ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
+      clearAllAuthCookies(ctx.req, ctx.res);
       return {
         success: true,
       } as const;

@@ -8,7 +8,7 @@ import Footer from "@/components/layout/Footer";
 import { useWhiteLabel } from "@/contexts/WhiteLabelContext";
 import { useModuleAccess } from "@/hooks/useModuleAccess";
 import { useInspectReadOnly } from "@/hooks/useInspectReadOnly";
-import { isInspectModeSync } from "@/lib/inspectMode";
+import { clearInspectModeClientState, isInspectModeSync } from "@/lib/inspectMode";
 import { Button } from "@/components/ui/button";
 import { GlobalSearch } from "@/components/GlobalSearch";
 import { GlobalGlossary } from "@/components/GlobalGlossary";
@@ -23,6 +23,8 @@ import {
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const logoutMutation = trpc.auth.logout.useMutation({
     onSuccess: () => {
+      clearInspectModeClientState();
+      sessionStorage.removeItem("ownerKey");
       window.location.href = "/login";
     },
   });

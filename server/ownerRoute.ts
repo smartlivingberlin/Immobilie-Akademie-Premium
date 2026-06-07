@@ -8,6 +8,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { ENV } from "./_core/env";
 import rateLimit from "express-rate-limit";
 import { COOKIE_NAME, ONE_YEAR_MS } from "../shared/const";
+import { clearAuxAuthCookies, clearInspectCookies, clearSessionCookie } from "./authCookies";
 
 const ownerResend2faLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -81,12 +82,13 @@ export function registerOwnerRoutes(app: Express) {
          ON DUPLICATE KEY UPDATE role='tester', enabledModules='1,2,3,4,5', onboardingCompleted=1, updatedAt=NOW()`,
         [openId, email, email.split('@')[0]]
       );
+      clearInspectCookies(req, res);
       const token = await createSessionToken(openId, email.split('@')[0], "tester", "1,2,3,4,5");
       const cookieOptions = getSessionCookieOptions(req);
       const maxAge = validHours * 60 * 60 * 1000;
       res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge });
       res.cookie("tester_expires", expiresAt.toISOString(), { httpOnly: true, sameSite: "lax", path: "/", maxAge });
-      return res.json({ ok: true, redirect: "/admin", expiresAt: expiresAt.toISOString() });
+      return res.json({ ok: true, redirect: "/modul/1", expiresAt: expiresAt.toISOString() });
     } catch (e: any) {
       return res.status(500).json({ error: e.message });
     }
@@ -102,6 +104,7 @@ export function registerOwnerRoutes(app: Express) {
     }
     const method = getOwner2FAMethod();
     if (method === "none") {
+      clearInspectCookies(req, res);
       const openId = "local:alisadgadyri38@gmail.com";
       const token = await createSessionToken(openId, "Alisad (Owner)", "admin", "1,2,3,4,5");
       const cookieOptions = getSessionCookieOptions(req);
@@ -122,6 +125,7 @@ export function registerOwnerRoutes(app: Express) {
     }
     const method = getOwner2FAMethod();
     if (method === "none") {
+      clearInspectCookies(req, res);
       const openId = "local:alisadgadyri38@gmail.com";
       const token = await createSessionToken(openId, "Alisad (Owner)", "admin", "1,2,3,4,5");
       const cookieOptions = getSessionCookieOptions(req);
@@ -213,6 +217,7 @@ ${isTotp ? `<form method="POST" action="/api/owner/verify-2fa-form">
       if (!secret) return res.redirect("/owner-2fa?error=TOTP+nicht+konfiguriert");
       if (!verifyTotp(code, secret)) return res.redirect("/owner-2fa?error=Falscher+Code");
     }
+    clearInspectCookies(req, res);
     const openId = "local:alisadgadyri38@gmail.com";
     const token = await createSessionToken(openId, "Alisad (Owner)", "admin", "1,2,3,4,5");
     const cookieOptions = getSessionCookieOptions(req);
@@ -236,6 +241,7 @@ ${isTotp ? `<form method="POST" action="/api/owner/verify-2fa-form">
     } else {
       return res.status(400).json({ error: "Unbekannter 2FA-Typ" });
     }
+    clearInspectCookies(req, res);
     const openId = "local:alisadgadyri38@gmail.com";
     const token = await createSessionToken(openId, "Alisad (Owner)", "admin", "1,2,3,4,5");
     const cookieOptions = getSessionCookieOptions(req);
@@ -373,10 +379,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
 
   // GET /inspect/exit → Demo-Modus beenden (MUSS vor :token stehen!)
   app.get("/inspect/exit", (req: Request, res: Response) => {
-    const cookieOptions = getSessionCookieOptions(req);
-    const clearOpts = { path: "/", sameSite: cookieOptions.sameSite, secure: cookieOptions.secure };
-    res.clearCookie("inspect_mode", clearOpts);
-    res.clearCookie("inspect_mode_expires_at", clearOpts);
+    clearInspectCookies(req, res);
     return res.redirect("/");
   });
 
@@ -398,6 +401,8 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
       const maxAge = Math.max(0, expiresAtMs - Date.now());
       if (maxAge <= 0) throw new Error("Token abgelaufen");
 
+      clearSessionCookie(req, res);
+      clearAuxAuthCookies(req, res);
       const cookieOptions = getSessionCookieOptions(req);
       res.cookie("inspect_mode", "1", { ...cookieOptions, maxAge });
       res.cookie("inspect_mode_expires_at", String(expiresAtMs), { ...cookieOptions, maxAge });
@@ -543,6 +548,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
         `SELECT openId, name, email FROM users WHERE email = ? LIMIT 1`, [email]
       ) as any;
       if (!user) return res.status(404).json({ error: "Nutzer nicht gefunden" });
+      clearInspectCookies(req, res);
       const token = await createSessionToken(user.openId, user.name || user.email);
       const cookieOptions = getSessionCookieOptions(req);
       res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
