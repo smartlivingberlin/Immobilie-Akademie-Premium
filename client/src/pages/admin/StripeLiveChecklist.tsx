@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
-import { ArrowLeft, CheckCircle, AlertTriangle, ExternalLink } from "lucide-react";
+import { ArrowLeft, CheckCircle, AlertTriangle, ExternalLink, Copy } from "lucide-react";
+import { buildStripeLiveEnvTemplate } from "@shared/stripeLiveEnv";
 import type { StripeLiveChecklistResult } from "@shared/stripeLiveChecklist";
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -24,6 +25,13 @@ export default function StripeLiveChecklist() {
   const [data, setData] = useState<ChecklistResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [copied, setCopied] = useState(false);
+
+  const copyEnvTemplate = () => {
+    navigator.clipboard.writeText(buildStripeLiveEnvTemplate());
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   useEffect(() => {
     fetch("/api/admin/stripe-live-checklist", { credentials: "include" })
@@ -90,6 +98,13 @@ export default function StripeLiveChecklist() {
             >
               Stripe Dashboard <ExternalLink size={14} />
             </a>
+            <button
+              type="button"
+              onClick={copyEnvTemplate}
+              style={{ display: "inline-flex", alignItems: "center", gap: 6, alignSelf: "center", background: "#0f172a", color: "white", padding: "10px 16px", borderRadius: 8, fontSize: 13, fontWeight: 600, border: "none", cursor: "pointer" }}
+            >
+              <Copy size={14} /> {copied ? "Kopiert!" : "ENV-Vorlage"}
+            </button>
           </div>
 
           {data.webhookHealth && (

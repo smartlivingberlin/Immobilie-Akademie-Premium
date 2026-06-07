@@ -237,7 +237,7 @@ stripeRouter.post("/api/stripe/b2b-checkout", requireAuth, async (req: any, res)
           quantity: 1,
         },
       ],
-      success_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/fuer-maklerbueros?b2b=1`,
+      success_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/b2b-einrichtung?b2b=1`,
       cancel_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/fuer-maklerbueros`,
       metadata: {
         type: "b2b",

@@ -33,6 +33,7 @@ export async function sendB2bWelcomeEmail(opts: {
       </ul>
       <p><strong>Nächste Schritte:</strong></p>
       <ol style="color:#475569;line-height:1.7">
+        <li>Einrichtungs-Assistent: <a href="${baseUrl}/b2b-einrichtung">B2B-Einrichtung starten</a></li>
         <li>Branding anpassen: <a href="${baseUrl}/admin/whitelabel">White-Label Admin</a></li>
         <li>Zugangscodes erstellen: <a href="${baseUrl}/admin/codes">Code-Verwaltung</a></li>
         <li>Team einladen: <a href="${baseUrl}/statistiken">Lernbereich</a></li>

@@ -14,6 +14,10 @@ export default function Empfehlungsprogramm() {
     id: string; label: string; eligible: boolean; redeemed: boolean;
   }>>([]);
   const [redeeming, setRedeeming] = useState<string | null>(null);
+  const [payoutHolder, setPayoutHolder] = useState("");
+  const [payoutIban, setPayoutIban] = useState("");
+  const [payoutSaving, setPayoutSaving] = useState(false);
+  const [payoutSaved, setPayoutSaved] = useState(false);
 
   const loadVouchers = () => {
     fetch("/api/referral/vouchers", { credentials: "include" })
@@ -48,6 +52,26 @@ export default function Empfehlungsprogramm() {
       toast({ title: "Fehler", description: e.message, variant: "destructive" });
     } finally {
       setRedeeming(null);
+    }
+  };
+
+  const savePayoutDetails = async () => {
+    setPayoutSaving(true);
+    try {
+      const res = await fetch("/api/referral/payout-details", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ accountHolder: payoutHolder, iban: payoutIban }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Speichern fehlgeschlagen");
+      setPayoutSaved(true);
+      toast({ title: "Auszahlungsdaten gespeichert", description: "Nur die letzten 4 IBAN-Ziffern werden gespeichert." });
+    } catch (e: any) {
+      toast({ title: "Fehler", description: e.message, variant: "destructive" });
+    } finally {
+      setPayoutSaving(false);
     }
   };
 
@@ -111,6 +135,36 @@ export default function Empfehlungsprogramm() {
             ))}
           </ul>
         </div>
+
+        {user && (
+          <div className="bg-white rounded-xl border p-6 mb-8">
+            <h2 className="font-semibold mb-2">Partner-Auszahlung (SEPA)</h2>
+            <p className="text-sm text-slate-600 mb-4">
+              Für Provisionsauszahlungen ab 50 € — wir speichern nur Kontoinhaber und die letzten 4 IBAN-Ziffern.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
+              <input
+                placeholder="Kontoinhaber"
+                value={payoutHolder}
+                onChange={(e) => setPayoutHolder(e.target.value)}
+                className="border rounded-lg px-3 py-2 text-sm"
+              />
+              <input
+                placeholder="IBAN"
+                value={payoutIban}
+                onChange={(e) => setPayoutIban(e.target.value)}
+                className="border rounded-lg px-3 py-2 text-sm"
+              />
+            </div>
+            <button
+              onClick={savePayoutDetails}
+              disabled={payoutSaving || !payoutHolder || !payoutIban}
+              className="text-sm font-semibold text-emerald-700 hover:text-emerald-900 disabled:opacity-50"
+            >
+              {payoutSaving ? "Speichern…" : payoutSaved ? "✓ Gespeichert — erneut senden" : "Auszahlungsdaten hinterlegen"}
+            </button>
+          </div>
+        )}
 
         {user ? (
           info ? (

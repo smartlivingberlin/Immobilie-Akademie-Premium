@@ -74,13 +74,10 @@ export default function MaklerbuerosLanding() {
   const { data: user } = trpc.auth.me.useQuery();
   const [checkoutLoading, setCheckoutLoading] = useState<string | null>(null);
   const [checkoutError, setCheckoutError] = useState("");
-  const [b2bSuccess, setB2bSuccess] = useState(false);
-
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     if (params.get("b2b") === "1") {
-      setB2bSuccess(true);
-      window.history.replaceState({}, "", "/fuer-maklerbueros");
+      window.location.replace("/b2b-einrichtung?b2b=1");
     }
   }, []);
 
@@ -119,11 +116,6 @@ export default function MaklerbuerosLanding() {
         canonical="https://immobilien-akademie-smart.de/fuer-maklerbueros"
       />
 
-      {b2bSuccess && (
-        <div className="bg-green-50 border-b border-green-200 text-green-800 text-sm text-center py-3 px-4">
-          B2B-Abo aktiv — Ihr White-Label-Tenant wird eingerichtet. Sie erhalten eine Bestätigung per E-Mail.
-        </div>
-      )}
       {checkoutError && (
         <div className="bg-red-50 border-b border-red-200 text-red-700 text-sm text-center py-3 px-4">{checkoutError}</div>
       )}
