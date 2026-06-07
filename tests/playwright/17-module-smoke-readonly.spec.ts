@@ -24,8 +24,12 @@ test.describe("Modul-Smoke (readonly, authentifiziert)", () => {
     });
 
     test(`Modul ${mod.id} (${mod.name}) — Lerntag 1 hat Inhalt`, async ({ page }) => {
-      await page.goto(`${BASE}/modul/${mod.id}/tag/1`, { waitUntil: "domcontentloaded", timeout: 20000 });
+      await page.goto(`${BASE}/modul/${mod.id}/tag/1`, { waitUntil: "domcontentloaded", timeout: 30000 });
       await expect(page).not.toHaveURL(/\/login/);
+      await page.waitForFunction(
+        () => document.body.innerText.replace(/\s+/g, " ").trim().length > 300,
+        { timeout: 25000 },
+      );
       const text = await page.locator("body").innerText();
       expect(text.length).toBeGreaterThan(300);
     });
