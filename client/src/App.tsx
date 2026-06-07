@@ -47,6 +47,7 @@ const NotFound = lazy(() => import("@/pages/not-found"));
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
 const MeineDaten = lazy(() => import("@/pages/MeineDaten"));
 const Certificates = lazy(() => import("@/pages/Certificates"));
+const Weiterbildungsnachweis = lazy(() => import("@/pages/Weiterbildungsnachweis"));
 const Fallstudien = lazy(() => import("@/pages/Fallstudien"));
 const Flashcards = lazy(() => import("@/pages/Flashcards"));
 const SpacedRepetition = lazy(() => import("@/pages/SpacedRepetition"));
@@ -252,6 +253,7 @@ function Router() {
         <Route path="/pruefung"><AppLayout><ProtectedRoute component={ExamMode} /></AppLayout></Route>
         <Route path="/strategie"><AppLayout><ProtectedRoute component={StrategiePlattform} /></AppLayout></Route>
         <Route path="/zertifikate"><AppLayout><ProtectedRoute component={Certificates} /></AppLayout></Route>
+        <Route path="/weiterbildungsnachweis"><AppLayout><ProtectedRoute component={Weiterbildungsnachweis} /></AppLayout></Route>
         <Route path="/fallstudien"><AppLayout><ProtectedRoute component={Fallstudien} /></AppLayout></Route>
         <Route path="/wiederholung"><AppLayout><ProtectedRoute component={SpacedRepetition} /></AppLayout></Route>
         <Route path="/lernkarten"><AppLayout><ProtectedRoute component={Flashcards} /></AppLayout></Route>
