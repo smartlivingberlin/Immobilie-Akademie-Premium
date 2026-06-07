@@ -1,31 +1,29 @@
 import { useEffect, useState } from "react";
+import {
+  activateInspectModeFromServer,
+  clearInspectModeClientState,
+  isInspectModeSync,
+  markInspectModeActive,
+} from "@/lib/inspectMode";
 
 export function InspectBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const hasCookie = document.cookie.includes("inspect_mode=");
-    const hasParam  = window.location.search.includes("inspect=1");
-    const hasSession = sessionStorage.getItem("inspect_mode") === "1";
-
-    if (hasParam && !hasCookie) {
-      document.cookie = "inspect_mode=1; path=/; max-age=" + (72*60*60) + "; samesite=lax";
-      sessionStorage.setItem("inspect_mode", "1");
+    if (isInspectModeSync()) {
+      markInspectModeActive();
+      setVisible(true);
+      return;
     }
-    setVisible(hasCookie || hasParam || hasSession);
+
+    void activateInspectModeFromServer().then((active) => {
+      setVisible(active);
+    });
   }, []);
 
   function exitDemo() {
-    document.cookie = "inspect_mode=; path=/; max-age=0; samesite=lax";
-    sessionStorage.removeItem("inspect_mode");
-    // Nach Rolle weiterleiten
-    fetch("/api/auth/me", { credentials: "include" })
-      .then(r => r.json())
-      .then(user => {
-        if (user?.role === "admin") window.location.href = "/admin";
-        else window.location.href = "/modul/1";
-      })
-      .catch(() => { window.location.href = "/login"; });
+    clearInspectModeClientState();
+    window.location.href = "/inspect/exit";
   }
 
   if (!visible) return null;

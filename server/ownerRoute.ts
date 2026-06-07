@@ -347,9 +347,15 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
     return res.json({ token: inspectToken, expiresAt, hours: validHours });
   });
 
+  // GET /api/auth/inspect-status → httpOnly-Cookie für Frontend erkennbar machen
+  app.get("/api/auth/inspect-status", (req: Request, res: Response) => {
+    return res.json({ inspect: req.cookies?.inspect_mode === "1" });
+  });
+
   // GET /inspect/exit → Demo-Modus beenden (MUSS vor :token stehen!)
-  app.get("/inspect/exit", (_req: Request, res: Response) => {
-    res.clearCookie("inspect_mode", { path: "/" });
+  app.get("/inspect/exit", (req: Request, res: Response) => {
+    const cookieOptions = getSessionCookieOptions(req);
+    res.clearCookie("inspect_mode", { path: "/", sameSite: cookieOptions.sameSite, secure: cookieOptions.secure });
     return res.redirect("/");
   });
 
@@ -366,15 +372,13 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
       if ((payload as any).role !== "inspect") throw new Error("Falsche Rolle");
       // Benutze EXAKT denselben Mechanismus wie /owner — bewährt!
       const ownerCode = process.env.OWNER_MAGIC_CODE || ENV.ownerMagicCode;
-      // Setze inspect_mode Cookie zuerst
+      const cookieOptions = getSessionCookieOptions(req);
       res.cookie("inspect_mode", "1", {
-        httpOnly: true,
-        sameSite: "lax",
-        path: "/",
-        maxAge: 72 * 60 * 60 * 1000
+        ...cookieOptions,
+        maxAge: 72 * 60 * 60 * 1000,
       });
-      // Direkt zur Startseite — inspect_mode Cookie ist gesetzt
-      return res.redirect(`/`);
+      // Query-Parameter aktiviert Frontend-Banner und Session-Marker
+      return res.redirect("/?inspect=1");
     } catch (e: any) {
       return res.status(403).send(`<html><body style="font-family:Arial;padding:40px;text-align:center"><h2 style="color:#dc2626">Link abgelaufen</h2><p>Bitte einen neuen Link anfordern.</p></body></html>`);
     }

@@ -5,6 +5,7 @@ import { Link, useLocation } from "wouter";
 import { SEO } from "@/components/SEO";
 import { useState } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
+import { isInspectModeSync } from "@/lib/inspectMode";
 
 const KURSE: Record<string, {
   id: string; titel: string; untertitel: string; preis: number;
@@ -264,8 +265,7 @@ export default function KursLanding({ slug }: { slug: string }) {
     } catch (e: any) {
       console.error("Checkout Fehler:", e);
       // Im Vorschau-Modus: kein Login-Redirect
-      if (document.cookie.includes("inspect_mode") || 
-          sessionStorage.getItem("inspect_mode") === "1") {
+      if (isInspectModeSync()) {
         alert("Vorschau-Modus: Kaeufe sind deaktiviert. In der echten Version funktioniert der Kauf mit Stripe.");
         return;
       }

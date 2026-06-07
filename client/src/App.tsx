@@ -7,6 +7,8 @@ import DashboardLayout from "@/components/layout/DashboardLayout";
 import Footer from "@/components/layout/Footer";
 import ModuleGuard from "@/components/ModuleGuard";
 import { usePageTracking } from "@/hooks/useAnalytics";
+import { useInspectMode } from "@/hooks/useInspectMode";
+import { isInspectModeSync } from "@/lib/inspectMode";
 
 // ── Public pages ─────────────────────────────────────────────────────────────
 const Home = lazy(() => import("@/pages/Home"));
@@ -103,16 +105,23 @@ const OwnerVideos = lazy(() => import("@/pages/OwnerVideos").then(m => ({ defaul
 const OwnerDashboard = lazy(() => import("@/pages/OwnerDashboard").then(m => ({ default: m.default })));
 
 function ProtectedRoute({ component: Component }: { component: React.ComponentType }) {
-  const { data: user, isLoading } = trpc.auth.me.useQuery(undefined, { retry: false });
-  if (isLoading) return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
-  if (!user) { window.location.href = "/login"; return null; }
+  const { ready: inspectReady, active: isInspect } = useInspectMode();
+  const { data: user, isLoading } = trpc.auth.me.useQuery(undefined, { retry: false, enabled: inspectReady && !isInspect });
+  if (!inspectReady || (isLoading && !isInspect)) {
+    return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
+  }
+  if (!user && !isInspect) { window.location.href = "/login"; return null; }
   return <Component />;
 }
 
 function ProtectedModuleRoute({ moduleId, children }: { moduleId: number, children: React.ReactNode }) {
-  const { data: user, isLoading } = trpc.auth.me.useQuery(undefined, { retry: false });
-  if (isLoading) return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
-  if (!user) { window.location.href = "/login"; return null; }
+  const { ready: inspectReady, active: isInspect } = useInspectMode();
+  const { data: user, isLoading } = trpc.auth.me.useQuery(undefined, { retry: false, enabled: inspectReady && !isInspect });
+  if (!inspectReady || (isLoading && !isInspect)) {
+    return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>Laden...</div>;
+  }
+  if (!user && !isInspect) { window.location.href = "/login"; return null; }
+  if (isInspect) return <>{children}</>;
   return <ModuleGuard moduleId={moduleId}>{children}</ModuleGuard>;
 }
 
@@ -140,7 +149,7 @@ function OwnerRoute({ component: Component }: { component: React.ComponentType }
     if (user?.role === "admin" && owner2FAOk) sessionStorage.removeItem("ownerKey");
   }, [user?.role, owner2FAOk]);
 
-  const isInspect = document.cookie.includes("inspect_mode=") || sessionStorage.getItem("inspect_mode") === "1";
+  const isInspect = isInspectModeSync();
   const ownerKey = sessionStorage.getItem("ownerKey") || new URLSearchParams(window.location.search).get("key") || "";
   const submitOwnerAccess = (key: string) => {
     sessionStorage.setItem("ownerKey", key);
