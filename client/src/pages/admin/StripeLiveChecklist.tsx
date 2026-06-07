@@ -30,7 +30,18 @@ export default function StripeLiveChecklist() {
   const [verifyResult, setVerifyResult] = useState<{
     ok: boolean; mode: string; currency?: string; error?: string; recommendation?: string;
     priceConfig?: Record<string, { configured: boolean; env: string }>;
+    priceReadiness?: {
+      subscriptions: { configured: number; total: number };
+      modules: { configured: number; total: number };
+      liveReady: boolean;
+    };
   } | null>(null);
+  const [priceConfig, setPriceConfig] = useState<{
+    subscriptions: Record<string, { configured: boolean; env: string }>;
+    modules: Array<{ productId: string; configured: boolean; env: string }>;
+    readiness?: { subscriptions: { configured: number; total: number }; modules: { configured: number; total: number } };
+  } | null>(null);
+  const [pendingPurchases, setPendingPurchases] = useState<Array<{ email: string; modules: string; productId: string | null; createdAt: string }>>([]);
   const [verifying, setVerifying] = useState(false);
 
   const runStripeVerify = () => {
@@ -49,11 +60,16 @@ export default function StripeLiveChecklist() {
   };
 
   useEffect(() => {
-    fetch("/api/admin/stripe-live-checklist", { credentials: "include" })
-      .then((r) => r.json())
-      .then((d) => {
-        if (d.error) throw new Error(d.error);
-        setData(d);
+    Promise.all([
+      fetch("/api/admin/stripe-live-checklist", { credentials: "include" }).then((r) => r.json()),
+      fetch("/api/admin/stripe-price-config", { credentials: "include" }).then((r) => r.json()),
+      fetch("/api/admin/pending-purchases", { credentials: "include" }).then((r) => r.json()),
+    ])
+      .then(([checklist, prices, pending]) => {
+        if (checklist.error) throw new Error(checklist.error);
+        setData(checklist);
+        if (!prices.error) setPriceConfig(prices);
+        if (!pending.error && pending.rows) setPendingPurchases(pending.rows);
       })
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
@@ -140,9 +156,11 @@ export default function StripeLiveChecklist() {
                   ? <>✅ {verifyResult.mode.toUpperCase()}-Modus · Balance: {verifyResult.currency}</>
                   : <>❌ {verifyResult.error}</>}
                 {verifyResult.recommendation && <div style={{ fontSize: 12, marginTop: 4 }}>{verifyResult.recommendation}</div>}
-                {verifyResult.priceConfig && (
+                {verifyResult.priceReadiness && (
                   <div style={{ fontSize: 11, marginTop: 8, color: "#64748b" }}>
-                    Price-IDs: {Object.values(verifyResult.priceConfig).filter((p: { configured: boolean }) => p.configured).length}/4
+                    Abos {verifyResult.priceReadiness.subscriptions.configured}/{verifyResult.priceReadiness.subscriptions.total} ·
+                    Module {verifyResult.priceReadiness.modules.configured}/{verifyResult.priceReadiness.modules.total}
+                    {verifyResult.priceReadiness.liveReady && " · ✅ Live-ready"}
                   </div>
                 )}
               </div>
@@ -171,6 +189,46 @@ export default function StripeLiveChecklist() {
               }}
             />
           </div>
+
+          {priceConfig && (
+            <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: 12 }}>
+              <strong style={{ fontSize: 14 }}>Price-ID Abdeckung</strong>
+              <p style={{ color: "#64748b", margin: "8px 0" }}>
+                Abos {priceConfig.readiness?.subscriptions.configured ?? 0}/{priceConfig.readiness?.subscriptions.total ?? 6} ·
+                Module {priceConfig.readiness?.modules.configured ?? 0}/{priceConfig.readiness?.modules.total ?? 12}
+              </p>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                <div>
+                  <div style={{ fontWeight: 600, marginBottom: 6, color: "#475569" }}>Abos</div>
+                  {Object.entries(priceConfig.subscriptions).map(([key, p]) => (
+                    <div key={key} style={{ color: p.configured ? "#059669" : "#94a3b8", marginBottom: 2 }}>
+                      {p.configured ? "✅" : "○"} {key}
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <div style={{ fontWeight: 600, marginBottom: 6, color: "#475569" }}>Module & Bundles</div>
+                  {priceConfig.modules.map((p) => (
+                    <div key={p.productId} style={{ color: p.configured ? "#059669" : "#94a3b8", marginBottom: 2 }}>
+                      {p.configured ? "✅" : "○"} {p.productId}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {pendingPurchases.length > 0 && (
+            <div style={{ background: "#fffbeb", border: "1px solid #fcd34d", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: 12 }}>
+              <strong style={{ fontSize: 14 }}>Offene Käufe ohne Konto ({pendingPurchases.length})</strong>
+              <p style={{ color: "#92400e", margin: "8px 0" }}>Nutzer hat bezahlt, aber noch kein Login mit dieser E-Mail.</p>
+              {pendingPurchases.slice(0, 5).map((p) => (
+                <div key={p.email + p.createdAt} style={{ padding: "6px 0", borderBottom: "1px solid #fde68a" }}>
+                  {p.email} · Module {p.modules} · {new Date(p.createdAt).toLocaleDateString("de-DE")}
+                </div>
+              ))}
+            </div>
+          )}
 
           <div style={{ background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 12, padding: 16, marginBottom: 24 }}>
             <strong style={{ fontSize: 14 }}>Testzahlung (Testmodus)</strong>

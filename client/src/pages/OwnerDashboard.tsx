@@ -280,7 +280,7 @@ export default function OwnerDashboard() {
                   { label: "Balance EUR", value: revenue.balanceEur != null ? `${revenue.balanceEur.toFixed(2)} €` : "—", color: "#06b6d4" },
                   { label: "Pending Käufe", value: revenue.pendingPurchases, color: "#ef4444" },
                   { label: "Zahlende Nutzer", value: revenue.payingUsersEstimate, color: "#a78bfa" },
-                  { label: "Price-IDs", value: `${revenue.priceIdsConfigured?.subscriptions}/4 + ${revenue.priceIdsConfigured?.modules}/12`, color: "#64748b" },
+                  { label: "Price-IDs", value: `${revenue.priceIdsConfigured?.subscriptions}/${revenue.priceIdsConfigured?.subscriptionsTotal ?? 6} + ${revenue.priceIdsConfigured?.modules}/${revenue.priceIdsConfigured?.modulesTotal ?? 12}`, color: "#64748b" },
                 ].map((s) => (
                   <div key={s.label} style={{ background: "#0f172a", borderRadius: 8, padding: 14 }}>
                     <div style={{ fontSize: 11, color: "#94a3b8" }}>{s.label}</div>

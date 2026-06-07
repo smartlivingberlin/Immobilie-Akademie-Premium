@@ -4,7 +4,7 @@ import {
   type StripeChecklistItemStatus,
 } from "../shared/stripeLiveChecklist";
 import { getStripeWebhookHealth } from "./stripeWebhookHealth";
-import { getStripePriceConfig } from "../shared/stripePriceIds";
+import { getStripePriceReadiness } from "../shared/stripePriceReadiness";
 
 function isLiveKey(key: string | undefined, prefix: string): boolean {
   return !!key && key.startsWith(prefix);
@@ -64,14 +64,31 @@ export function buildStripeLiveChecklist(): StripeLiveChecklistResult {
       };
     },
     stripe_price_ids: () => {
-      const cfg = getStripePriceConfig();
-      const count = Object.values(cfg).filter((p) => p.configured).length;
+      const readiness = getStripePriceReadiness();
+      const { subscriptions } = readiness;
       const live = sk?.startsWith("sk_live_");
       return {
-        ok: live ? count === 4 : count > 0 || stripeMode === "test",
-        detail: `${count}/4 Price-IDs · ${live ? "Live" : "Test — dynamisches price_data als Fallback"}`,
+        ok: live ? readiness.allSubscriptionsReady : subscriptions.configured > 0 || stripeMode === "test",
+        detail: `${subscriptions.configured}/${subscriptions.total} Abo-Price-IDs · ${live ? "Live" : "Test — price_data Fallback"}`,
       };
     },
+    stripe_module_price_ids: () => {
+      const readiness = getStripePriceReadiness();
+      const { modules } = readiness;
+      const live = sk?.startsWith("sk_live_");
+      return {
+        ok: live ? readiness.allModulesReady : modules.configured > 0 || stripeMode === "test",
+        detail: `${modules.configured}/${modules.total} Modul/Bundle-Price-IDs`,
+      };
+    },
+    stripe_connect: () => ({
+      ok: process.env.STRIPE_CONNECT_ENABLED === "1" || process.env.STRIPE_CONNECT_ENABLED === "true",
+      detail: process.env.STRIPE_CONNECT_ENABLED === "true" ? "Connect aktiv" : "STRIPE_CONNECT_ENABLED=false",
+    }),
+    payout_cron: () => ({
+      ok: process.env.PARTNER_PAYOUT_CRON_ENABLED === "1" || process.env.PARTNER_PAYOUT_CRON_ENABLED === "true",
+      detail: "Optional — automatische Quartals-Ledger-Generierung",
+    }),
   };
 
   const items: StripeChecklistItemStatus[] = STRIPE_LIVE_CHECKLIST_DEFS.map((def) => {
