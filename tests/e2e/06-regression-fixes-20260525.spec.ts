@@ -62,10 +62,8 @@ test.describe("Regression: fixes 2026-05-25", () => {
     expect(body).toMatchObject({ ok: true });
   });
 
-  test("8. Module4 content: GET /data/module4.json must return 200 and response body must contain the string hint", async ({ page }) => {
+  test("8. Module content: GET /data/module4.json without auth must be blocked", async ({ page }) => {
     const response = await page.request.get(`${BASE_URL}/data/module4.json`);
-    expect(response.status()).toBe(200);
-    const body = await response.text();
-    expect(body).toContain("hint");
+    expect(response.status()).toBe(403);
   });
 });
