@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { SEO } from "@/components/SEO";
-import { Gift, Copy, Users, CheckCircle2 } from "lucide-react";
+import { Gift, Copy, Users, CheckCircle2, Link2 } from "lucide-react";
+import { PARTNER_CONNECT_POLICY } from "@shared/partnerConnect";
 import { REFERRAL_PROGRAM_SUMMARY, REFERRAL_TOOL_VOUCHERS } from "@shared/referral";
 import { useToast } from "@/hooks/use-toast";
 import { trpc } from "@/lib/trpc";
@@ -18,6 +19,9 @@ export default function Empfehlungsprogramm() {
   const [payoutIban, setPayoutIban] = useState("");
   const [payoutSaving, setPayoutSaving] = useState(false);
   const [payoutSaved, setPayoutSaved] = useState(false);
+  const [connectEnabled, setConnectEnabled] = useState(false);
+  const [connectStatus, setConnectStatus] = useState<string>("none");
+  const [connectLoading, setConnectLoading] = useState(false);
 
   const loadVouchers = () => {
     fetch("/api/referral/vouchers", { credentials: "include" })
@@ -33,7 +37,38 @@ export default function Empfehlungsprogramm() {
       .then((d) => d && setInfo({ code: d.code, link: d.link }))
       .catch(() => {});
     loadVouchers();
+    fetch("/api/referral/connect-status", { credentials: "include" })
+      .then((r) => r.ok ? r.json() : null)
+      .then((d) => {
+        if (d) {
+          setConnectEnabled(d.enabled);
+          setConnectStatus(d.status?.status || "none");
+        }
+      })
+      .catch(() => {});
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("connect") === "done") {
+      fetch("/api/referral/connect-sync", { method: "POST", credentials: "include" })
+        .then((r) => r.json())
+        .then((d) => d.status && setConnectStatus(d.status.status))
+        .catch(() => {});
+      window.history.replaceState({}, "", "/empfehlungsprogramm");
+    }
   }, [user]);
+
+  const startConnectOnboarding = async () => {
+    setConnectLoading(true);
+    try {
+      const res = await fetch("/api/referral/connect-onboard", { method: "POST", credentials: "include" });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Connect fehlgeschlagen");
+      if (data.url) window.location.href = data.url;
+    } catch (e: any) {
+      toast({ title: "Stripe Connect", description: e.message, variant: "destructive" });
+    } finally {
+      setConnectLoading(false);
+    }
+  };
 
   const redeemVoucher = async (voucherId: string) => {
     setRedeeming(voucherId);
@@ -135,6 +170,26 @@ export default function Empfehlungsprogramm() {
             ))}
           </ul>
         </div>
+
+        {user && connectEnabled && (
+          <div className="bg-white rounded-xl border p-6 mb-8">
+            <h2 className="font-semibold mb-2 flex items-center gap-2">
+              <Link2 className="h-5 w-5 text-violet-600" /> Stripe Connect
+            </h2>
+            <p className="text-sm text-slate-600 mb-4">{PARTNER_CONNECT_POLICY.note}</p>
+            {connectStatus === "active" ? (
+              <p className="text-sm text-emerald-700 font-medium">✓ Connect-Konto verbunden — Auszahlungen aktiv</p>
+            ) : (
+              <button
+                onClick={startConnectOnboarding}
+                disabled={connectLoading}
+                className="text-sm font-semibold text-violet-700 hover:text-violet-900 disabled:opacity-50"
+              >
+                {connectLoading ? "Weiterleitung…" : "Stripe Express-Konto verbinden →"}
+              </button>
+            )}
+          </div>
+        )}
 
         {user && (
           <div className="bg-white rounded-xl border p-6 mb-8">

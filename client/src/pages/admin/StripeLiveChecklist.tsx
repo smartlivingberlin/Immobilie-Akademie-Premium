@@ -26,6 +26,19 @@ export default function StripeLiveChecklist() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
+  const [verifyResult, setVerifyResult] = useState<{
+    ok: boolean; mode: string; currency?: string; error?: string; recommendation?: string;
+  } | null>(null);
+  const [verifying, setVerifying] = useState(false);
+
+  const runStripeVerify = () => {
+    setVerifying(true);
+    fetch("/api/admin/stripe-live-verify", { credentials: "include" })
+      .then((r) => r.json())
+      .then(setVerifyResult)
+      .catch((e) => setVerifyResult({ ok: false, mode: "?", error: e.message }))
+      .finally(() => setVerifying(false));
+  };
 
   const copyEnvTemplate = () => {
     navigator.clipboard.writeText(buildStripeLiveEnvTemplate());
@@ -105,6 +118,28 @@ export default function StripeLiveChecklist() {
             >
               <Copy size={14} /> {copied ? "Kopiert!" : "ENV-Vorlage"}
             </button>
+          </div>
+
+          <div style={{ background: verifyResult?.ok ? "#f0fdf4" : "#fffbeb", border: `1px solid ${verifyResult?.ok ? "#bbf7d0" : "#fcd34d"}`, borderRadius: 12, padding: 16, marginBottom: 20 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
+              <strong style={{ fontSize: 14 }}>API-Verifizierung</strong>
+              <button
+                type="button"
+                onClick={runStripeVerify}
+                disabled={verifying}
+                style={{ padding: "8px 14px", borderRadius: 8, border: "none", background: "#2563eb", color: "white", fontSize: 13, fontWeight: 600, cursor: "pointer" }}
+              >
+                {verifying ? "Prüfe…" : "Stripe API testen"}
+              </button>
+            </div>
+            {verifyResult && (
+              <div style={{ marginTop: 10, fontSize: 13, color: verifyResult.ok ? "#166534" : "#92400e" }}>
+                {verifyResult.ok
+                  ? <>✅ {verifyResult.mode.toUpperCase()}-Modus · Balance: {verifyResult.currency}</>
+                  : <>❌ {verifyResult.error}</>}
+                {verifyResult.recommendation && <div style={{ fontSize: 12, marginTop: 4 }}>{verifyResult.recommendation}</div>}
+              </div>
+            )}
           </div>
 
           {data.webhookHealth && (
