@@ -91,16 +91,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://immobilien-akademie-smart.de/rechner</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://immobilien-akademie-smart.de/finanzierungsrechner</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://immobilien-akademie-smart.de/hilfe</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PortalToolGuard from "@/components/PortalToolGuard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AnnuityCalculator from "@/components/calculators/AnnuityCalculator";
 import AmortizationSchedule from "@/components/calculators/AmortizationSchedule";
@@ -9,6 +10,7 @@ import { Calculator, FileText, Home, AlertCircle, Wallet } from "lucide-react";
 
 export default function Calculators() {
   return (
+    <PortalToolGuard>
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12 px-4">
       <div className="max-w-6xl mx-auto space-y-8">
         {/* Header */}
@@ -113,5 +115,6 @@ export default function Calculators() {
         </div>
       </div>
     </div>
+    </PortalToolGuard>
   );
 }

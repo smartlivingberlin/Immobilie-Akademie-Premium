@@ -242,8 +242,8 @@ function Router() {
         <Route path="/agb"><PublicLayout><AGB /></PublicLayout></Route>
         <Route path="/widerruf"><PublicLayout><Widerruf /></PublicLayout></Route>
         <Route path="/bildungskonzept"><PublicLayout><Bildungskonzept /></PublicLayout></Route>
-        <Route path="/rechner"><PublicLayout><Rechner /></PublicLayout></Route>
-        <Route path="/finanzierungsrechner"><PublicLayout><Calculators /></PublicLayout></Route>
+        <Route path="/rechner"><AppLayout><ProtectedRoute component={Rechner} /></AppLayout></Route>
+        <Route path="/finanzierungsrechner"><AppLayout><ProtectedRoute component={Calculators} /></AppLayout></Route>
         <Route path="/lehrplan"><PublicLayout><Syllabus /></PublicLayout></Route>
         <Route path="/glossary"><PublicLayout><Glossary /></PublicLayout></Route>
         <Route path="/hilfe"><PublicLayout><UserGuide /></PublicLayout></Route>
