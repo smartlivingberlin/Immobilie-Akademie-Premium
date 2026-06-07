@@ -130,9 +130,28 @@ function KiAssistent({ aufgabe }: { aufgabe: Aufgabe }) {
   );
 }
 
+// ─── FORTSCHRITT (localStorage) ──────────────────────────────────────────────
+
+const PROGRESS_KEY = "rechenpraxis_completed";
+
+function getCompletedIds(): Set<number> {
+  try {
+    const raw = localStorage.getItem(PROGRESS_KEY);
+    return new Set((JSON.parse(raw || "[]") as number[]).filter((n) => typeof n === "number"));
+  } catch {
+    return new Set();
+  }
+}
+
+function markAufgabeCompleted(id: number): void {
+  const ids = getCompletedIds();
+  ids.add(id);
+  localStorage.setItem(PROGRESS_KEY, JSON.stringify([...ids]));
+}
+
 // ─── AUFGABEN-ANSICHT ─────────────────────────────────────────────────────────
 
-function AufgabenAnsicht({ aufgabe, onZurueck }: { aufgabe: Aufgabe; onZurueck: () => void }) {
+function AufgabenAnsicht({ aufgabe, onZurueck, onComplete }: { aufgabe: Aufgabe; onZurueck: () => void; onComplete: () => void }) {
   const [antworten, setAntworten] = useState<Record<number, string>>({});
   const [status, setStatus] = useState<Record<number, "offen" | "richtig" | "falsch">>({});
   const [zeigeMusser, setZeigeMusser] = useState<Record<number, boolean>>({});
@@ -141,8 +160,12 @@ function AufgabenAnsicht({ aufgabe, onZurueck }: { aufgabe: Aufgabe; onZurueck: 
   const alleRichtig = aufgabe.schritte.every(s => status[s.nr] === "richtig");
 
   useEffect(() => {
-    if (alleRichtig && !abgeschlossen) setAbgeschlossen(true);
-  }, [alleRichtig]);
+    if (alleRichtig && !abgeschlossen) {
+      setAbgeschlossen(true);
+      markAufgabeCompleted(aufgabe.id);
+      onComplete();
+    }
+  }, [alleRichtig, abgeschlossen, aufgabe.id, onComplete]);
 
   const pruefe = (schritt: Schritt) => {
     const eingabe = parseFloat(antworten[schritt.nr]?.replace(",", ".").replace(/\./g, match => match) || "0");
@@ -295,7 +318,12 @@ import PortalToolGuard from "@/components/PortalToolGuard";
 function RechenpraxisPage() {
   const [AUFGABEN, setAUFGABEN] = useState<Aufgabe[]>([]);
   const [aufgabenGeladen, setAufgabenGeladen] = useState(false);
+  const [completedIds, setCompletedIds] = useState<Set<number>>(() => getCompletedIds());
   const BEREICHE = useMemo(() => [...new Set(AUFGABEN.map(a => a.bereich))], [AUFGABEN]);
+  const completedCount = useMemo(
+    () => AUFGABEN.filter((a) => completedIds.has(a.id)).length,
+    [AUFGABEN, completedIds],
+  );
 
   useEffect(() => {
     fetch("/data/rechenpraxis.json")
@@ -347,6 +375,22 @@ function RechenpraxisPage() {
               <p style={{ fontSize: 15, color: "var(--color-text-secondary)", lineHeight: 1.7, maxWidth: 600 }}>
                 Schritt-für-Schritt-Rechenübungen für den Berufsalltag. Jede Aufgabe erklärt warum gerechnet wird — nicht nur wie. Mit KI-Assistent für Ihre Fragen.
               </p>
+              {aufgabenGeladen && AUFGABEN.length > 0 && (
+                <div style={{ marginTop: "1rem", maxWidth: 400 }}>
+                  <div style={{ fontSize: 12, color: "var(--color-text-secondary)", marginBottom: 6 }}>
+                    Fortschritt: {completedCount} / {AUFGABEN.length} abgeschlossen
+                  </div>
+                  <div style={{ height: 6, background: "var(--color-background-tertiary)", borderRadius: 100, overflow: "hidden" }}>
+                    <div style={{
+                      height: "100%",
+                      width: `${Math.round((completedCount / AUFGABEN.length) * 100)}%`,
+                      background: "var(--color-text-success)",
+                      borderRadius: 100,
+                      transition: "width 0.4s ease",
+                    }} />
+                  </div>
+                </div>
+              )}
             </div>
 
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: "1.5rem" }}>
@@ -365,7 +409,9 @@ function RechenpraxisPage() {
                 <button key={aufgabe.id} onClick={() => setAktiveAufgabe(aufgabe)} style={{ display: "flex", alignItems: "flex-start", gap: 16, padding: "1rem 1.25rem", background: "var(--color-background-primary)", border: "0.5px solid var(--color-border-tertiary)", borderRadius: "var(--border-radius-lg)", cursor: "pointer", textAlign: "left", transition: "border-color 0.15s" }}
                   onMouseEnter={e => (e.currentTarget.style.borderColor = "var(--color-border-secondary)")}
                   onMouseLeave={e => (e.currentTarget.style.borderColor = "var(--color-border-tertiary)")}>
-                  <Calculator size={18} style={{ color: "var(--color-text-info)", flexShrink: 0, marginTop: 2 }} aria-hidden="true" />
+                  {completedIds.has(aufgabe.id)
+                    ? <CheckCircle2 size={18} style={{ color: "var(--color-text-success)", flexShrink: 0, marginTop: 2 }} aria-hidden="true" />
+                    : <Calculator size={18} style={{ color: "var(--color-text-info)", flexShrink: 0, marginTop: 2 }} aria-hidden="true" />}
                   <div style={{ flex: 1 }}>
                     <div style={{ fontSize: 15, fontWeight: 500, color: "var(--color-text-primary)", marginBottom: 4 }}>{aufgabe.titel}</div>
                     <div style={{ fontSize: 13, color: "var(--color-text-secondary)", marginBottom: 6, lineHeight: 1.5 }}>{aufgabe.berufssituation.slice(0, 120)}...</div>
@@ -380,7 +426,11 @@ function RechenpraxisPage() {
             </div>
           </>
         ) : (
-          <AufgabenAnsicht aufgabe={aktiveAufgabe} onZurueck={() => setAktiveAufgabe(null)} />
+          <AufgabenAnsicht
+            aufgabe={aktiveAufgabe}
+            onZurueck={() => setAktiveAufgabe(null)}
+            onComplete={() => setCompletedIds(getCompletedIds())}
+          />
         )}
     </div>
     </LoadingHandler>

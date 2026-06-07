@@ -371,6 +371,8 @@ app.use(express.json({ limit: "1mb" }));
   app.use(certificateExportRouter);
   app.use(weiterbildungExportRouter);
   app.use(referralRouter);
+  const { adminOpsRouter } = await import("../adminOpsRoute");
+  app.use(adminOpsRouter);
   registerAgentRoutes(app);
   // Healthcheck für Railway / Monitoring
   // Trial Follow-up Cron: alle 30 Minuten
