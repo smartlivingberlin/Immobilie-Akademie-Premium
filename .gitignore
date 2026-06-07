@@ -115,6 +115,7 @@ temp/
 # Lokale Analyse- und Dokumentationsdateien
 *.md
 !README.md
+!docs/CASE_MANAGEMENT_*.md
 *.bak.*
 .tmp/
 _check/
@@ -124,7 +125,6 @@ content_audit.py
 generate-sitemap.js
 ideas.md
 todo.md
-vitest.config.ts
 client/src/main.tsx.before-clean-fix.*
 audit_screenshots/
 correct_audit/
