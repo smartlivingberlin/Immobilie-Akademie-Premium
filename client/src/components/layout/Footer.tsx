@@ -13,6 +13,9 @@ export default function Footer() {
             <span className="hover:text-slate-300 cursor-pointer transition-colors">Datenschutz</span>
           </Link>
           <Link href="/pakete">Kurs-Pakete</Link>
+          <Link href="/fuer-maklerbueros">
+            <span className="hover:text-slate-300 cursor-pointer transition-colors">Für Maklerbüros</span>
+          </Link>
           <Link href="/kurse">
             <span className="hover:text-slate-300 cursor-pointer transition-colors">Kurse & Preise</span>
           </Link>

@@ -30,6 +30,7 @@ const UserGuide = lazy(() => import("@/pages/UserGuide"));
 const Foerderung = lazy(() => import("@/pages/Foerderung"));
 const UspLanding = lazy(() => import("@/pages/UspLanding"));
 const Barrierefreiheit = lazy(() => import("@/pages/Barrierefreiheit"));
+const MaklerbuerosLanding = lazy(() => import("@/pages/MaklerbuerosLanding"));
 const KursLanding = lazy(() => import("@/pages/kurs/KursLanding"));
 
 // ── Legal pages ───────────────────────────────────────────────────────────────
@@ -296,6 +297,7 @@ function Router() {
         <Route path="/warum-wir"><PublicLayout><UspLanding /></PublicLayout></Route>
         <Route path="/usp"><PublicLayout><UspLanding /></PublicLayout></Route>
         <Route path="/barrierefreiheit"><PublicLayout><Barrierefreiheit /></PublicLayout></Route>
+        <Route path="/fuer-maklerbueros"><PublicLayout><MaklerbuerosLanding /></PublicLayout></Route>
         <Route path="/audio-modus"><AudioModus /></Route>
         <Route component={NotFound} />
       </Switch>
