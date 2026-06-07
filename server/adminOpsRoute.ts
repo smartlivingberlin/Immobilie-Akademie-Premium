@@ -20,6 +20,7 @@ import {
 import { getStripePriceConfig, getModulePriceConfig } from "../shared/stripePriceIds";
 import { getStripePriceReadiness } from "../shared/stripePriceReadiness";
 import { listPendingPurchases } from "./pendingPurchasesAdmin";
+import { getMysqlHealth } from "./mysqlHealth";
 import { logger } from "./_core/logger";
 
 export const adminOpsRouter = Router();
@@ -119,6 +120,14 @@ adminOpsRouter.get("/api/admin/partner-payout-details", requireAdmin, async (_re
     res.json({ rows });
   } catch (e: any) {
     res.status(500).json({ error: e.message });
+  }
+});
+
+adminOpsRouter.get("/api/admin/mysql-health", requireAdmin, async (_req, res) => {
+  try {
+    res.json(await getMysqlHealth());
+  } catch (e: any) {
+    res.status(500).json({ ok: false, error: e.message });
   }
 });
 

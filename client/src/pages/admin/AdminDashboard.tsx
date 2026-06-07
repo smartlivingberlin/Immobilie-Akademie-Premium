@@ -41,9 +41,11 @@ export default function AdminDashboard() {
   const [cronLog, setCronLog] = useState<string>("");
   const [auditScore, setAuditScore] = useState<number | null>(null);
   const [coaching, setCoaching] = useState<any>(null);
+  const [mysqlHealth, setMysqlHealth] = useState<{ ok: boolean; latencyMs?: number; users?: number; error?: string } | null>(null);
   const [activeTab, setActiveTab] = useState<"overview"|"users"|"content"|"system"|"agent">("overview");
 
   useEffect(() => {
+    fetch("/api/admin/mysql-health", { credentials: "include" }).then(r => r.json()).then(setMysqlHealth).catch(() => {});
     fetch("/api/agent/health", { credentials: "include" }).then(r => r.json()).then(setAgentHealth).catch(() => {});
     fetch("/api/agent/status", { credentials: "include" }).then(r => r.json()).then(d => {
       if (d?.memory?.last_night_audit) setAuditScore(d.memory.last_night_audit.avgScore);
@@ -473,7 +475,13 @@ export default function AdminDashboard() {
             <h3 style={{ fontSize: 16, fontWeight: 700, margin: "0 0 16px 0" }}>📊 System-Status</h3>
             {[
               { label: "Railway Server", ok: true, detail: "immobilien-akademie-smart.de" },
-              { label: "MySQL Datenbank", ok: true, detail: "Railway · turntable.proxy.rlwy.net" },
+              {
+                label: "MySQL Datenbank",
+                ok: mysqlHealth?.ok ?? null,
+                detail: mysqlHealth?.ok
+                  ? `Railway · ${mysqlHealth.latencyMs}ms · ${mysqlHealth.users ?? "?"} Nutzer`
+                  : mysqlHealth?.error || "Prüfe Railway MySQL (siehe docs/RAILWAY_MYSQL_OPS.md)",
+              },
               { label: "Claude Haiku API", ok: agentHealth?.aiStatus?.claude, detail: "claude-haiku-4-5" },
               { label: "Gemini 2.5 Flash API", ok: agentHealth?.aiStatus?.gemini, detail: "Google AI" },
               { label: "Groq Llama API", ok: agentHealth?.aiStatus?.groq, detail: "Llama 3.3-70b" },

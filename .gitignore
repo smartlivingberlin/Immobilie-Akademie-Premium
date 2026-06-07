@@ -117,6 +117,7 @@ temp/
 !README.md
 !docs/CASE_MANAGEMENT_*.md
 !docs/R2_ACTIVATION_CHECKLIST.md
+!docs/RAILWAY_MYSQL_OPS.md
 *.bak.*
 .tmp/
 _check/
