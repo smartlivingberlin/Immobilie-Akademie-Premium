@@ -230,45 +230,4 @@ Wenn die Frage nicht zur Rechenpraxis oder Immobilienwirtschaft passt, sage kurz
     }
   });
 
-  // POST /api/ai/bewerte-fallstudie — KI bewertet Nutzerantwort (Auth erforderlich)
-  app.post("/api/ai/bewerte-fallstudie", requireAuth, async (req: any, res: any) => {
-    try {
-      const { aufgabe, musterantwort, nutzerAntwort, titel } = req.body;
-      if (!aufgabe || !nutzerAntwort) return res.status(400).json({ error: "aufgabe und nutzerAntwort erforderlich" });
-      const apiKey = process.env.ANTHROPIC_API_KEY;
-      if (!apiKey) return res.status(503).json({ error: "KI nicht konfiguriert" });
-      const { default: Anthropic } = await import("@anthropic-ai/sdk");
-      const client = new Anthropic({ apiKey });
-      const prompt = `Du bist ein erfahrener Immobilien-Dozent. Bewerte die folgende Antwort eines Lernenden.
-
-Fallstudie: ${titel}
-Aufgabe: ${aufgabe}
-Musterloesung: ${musterantwort}
-Antwort des Lernenden: ${nutzerAntwort}
-
-Gib eine konstruktive Bewertung auf Deutsch:
-1. Gesamtbewertung (0-100 Punkte)
-2. Was war gut?
-3. Was fehlt oder ist falsch?
-4. Konkrete Verbesserungsvorschlaege
-5. Fazit in einem Satz
-
-Antworte im JSON-Format:
-{"punkte": 75, "gut": "...", "verbesserung": "...", "tipps": "...", "fazit": "..."}`;
-
-      const message = await client.messages.create({
-        model: "claude-haiku-4-5-20251001",
-        max_tokens: 1024,
-        messages: [{ role: "user", content: prompt }],
-      });
-      const text = message.content[0].type === "text" ? message.content[0].text : "";
-      const jsonMatch = text.match(/\{[\s\S]*\}/);
-      if (!jsonMatch) return res.json({ success: true, bewertung: { punkte: 0, gut: "", verbesserung: text, tipps: "", fazit: "" } });
-      const bewertung = JSON.parse(jsonMatch[0]);
-      return res.json({ success: true, bewertung });
-    } catch (e: any) {
-      return res.status(500).json({ error: e.message });
-    }
-  });
-
 }
