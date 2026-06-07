@@ -471,7 +471,7 @@ export default function AdminDashboard() {
             {[
               { label: "Railway Server", ok: true, detail: "immobilien-akademie-smart.de" },
               { label: "MySQL Datenbank", ok: true, detail: "Railway · turntable.proxy.rlwy.net" },
-              { label: "Claude Haiku API", ok: agentHealth?.aiStatus?.claude, detail: "claude-haiku-4-5-20251001" },
+              { label: "Claude Haiku API", ok: agentHealth?.aiStatus?.claude, detail: "claude-haiku-4-5" },
               { label: "Gemini 2.5 Flash API", ok: agentHealth?.aiStatus?.gemini, detail: "Google AI" },
               { label: "Groq Llama API", ok: agentHealth?.aiStatus?.groq, detail: "Llama 3.3-70b" },
               { label: "Stripe", ok: true, detail: "Test-Modus aktiv" },
