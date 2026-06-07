@@ -10,8 +10,18 @@ const CATEGORY_LABELS: Record<string, string> = {
   ops: "Betrieb",
 };
 
+type ChecklistResponse = StripeLiveChecklistResult & {
+  webhookHealth?: {
+    lastVerifiedAt: string | null;
+    lastEventType: string | null;
+    totalVerified: number;
+    recentlyActive: boolean;
+    endpoint: string;
+  };
+};
+
 export default function StripeLiveChecklist() {
-  const [data, setData] = useState<StripeLiveChecklistResult | null>(null);
+  const [data, setData] = useState<ChecklistResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -81,6 +91,18 @@ export default function StripeLiveChecklist() {
               Stripe Dashboard <ExternalLink size={14} />
             </a>
           </div>
+
+          {data.webhookHealth && (
+            <div style={{ background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: 13 }}>
+              <strong>Webhook-Health:</strong>{" "}
+              {data.webhookHealth.recentlyActive ? "✅ Aktiv" : "⚠️ Kein Event (7d)"} ·{" "}
+              {data.webhookHealth.totalVerified} Events gesamt
+              {data.webhookHealth.lastVerifiedAt && (
+                <> · Letztes: {data.webhookHealth.lastEventType} ({new Date(data.webhookHealth.lastVerifiedAt).toLocaleString("de-DE")})</>
+              )}
+              <div style={{ fontSize: 11, color: "#94a3b8", marginTop: 4 }}>{data.webhookHealth.endpoint}</div>
+            </div>
+          )}
 
           <div style={{ width: "100%", height: 8, background: "#e2e8f0", borderRadius: 4, marginBottom: 24 }}>
             <div

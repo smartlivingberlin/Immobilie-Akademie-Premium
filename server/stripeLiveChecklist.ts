@@ -3,6 +3,7 @@ import {
   type StripeLiveChecklistResult,
   type StripeChecklistItemStatus,
 } from "../shared/stripeLiveChecklist";
+import { getStripeWebhookHealth } from "./stripeWebhookHealth";
 
 function isLiveKey(key: string | undefined, prefix: string): boolean {
   return !!key && key.startsWith(prefix);
@@ -52,6 +53,15 @@ export function buildStripeLiveChecklist(): StripeLiveChecklistResult {
       ok: stripeMode === "test" && !!sk,
       detail: stripeMode === "live" ? "Live aktiv — Test-Schritt übersprungen" : "Testmodus — E2E ausführen",
     }),
+    webhook_recent: () => {
+      const health = getStripeWebhookHealth();
+      return {
+        ok: health.recentlyActive,
+        detail: health.lastVerifiedAt
+          ? `Letztes Event: ${health.lastEventType} · ${new Date(health.lastVerifiedAt).toLocaleString("de-DE")}`
+          : "Noch kein verifiziertes Webhook-Event seit Serverstart",
+      };
+    },
   };
 
   const items: StripeChecklistItemStatus[] = STRIPE_LIVE_CHECKLIST_DEFS.map((def) => {

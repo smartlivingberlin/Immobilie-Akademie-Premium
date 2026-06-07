@@ -11,6 +11,11 @@ import { requireAuth } from "./authMiddleware";
 import { RENEWAL_MONTHLY_EUR, RENEWAL_YEARLY_EUR } from "../shared/accessPolicy";
 import { COMPLIANCE_PRODUCT_ID, COMPLIANCE_YEARLY_EUR } from "../shared/compliance";
 import { B2B_PLANS, type B2bPlanId } from "../shared/b2bPlans";
+import {
+  RECHENPRAXIS_MODULE_SENTINEL,
+  RECHENPRAXIS_PRODUCT_ID,
+  RECHENPRAXIS_STANDALONE_MONTHLY_EUR,
+} from "../shared/rechenpraxisProduct";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
   apiVersion: "2026-02-25.clover",
@@ -158,6 +163,50 @@ stripeRouter.post("/api/stripe/compliance-checkout", requireAuth, async (req: an
     res.json({ url: session.url });
   } catch (err: any) {
     logger.error("[Stripe] Compliance checkout error", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Rechenpraxis Solo — 19 €/Monat (nur Rechenpraxis + KI Fair-Use)
+stripeRouter.post("/api/stripe/rechenpraxis-checkout", requireAuth, async (req: any, res) => {
+  try {
+    const session = await stripe.checkout.sessions.create({
+      mode: "subscription",
+      customer_email: req.currentUser.email || undefined,
+      line_items: [
+        {
+          price_data: {
+            currency: "eur",
+            product_data: {
+              name: "Rechenpraxis Solo — 128 Aufgaben mit KI-Hilfe",
+              description: "Monatliches Abo — nur Rechenpraxis, kein Vollkurs",
+            },
+            unit_amount: RECHENPRAXIS_STANDALONE_MONTHLY_EUR * 100,
+            recurring: { interval: "month" },
+          },
+          quantity: 1,
+        },
+      ],
+      success_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/rechenpraxis?subscribed=1`,
+      cancel_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/rechenpraxis-preise`,
+      metadata: {
+        type: "rechenpraxis",
+        productId: RECHENPRAXIS_PRODUCT_ID,
+        userId: String(req.currentUser.id),
+        modules: RECHENPRAXIS_MODULE_SENTINEL,
+      },
+      subscription_data: {
+        metadata: {
+          type: "rechenpraxis",
+          productId: RECHENPRAXIS_PRODUCT_ID,
+          userId: String(req.currentUser.id),
+          modules: RECHENPRAXIS_MODULE_SENTINEL,
+        },
+      },
+    });
+    res.json({ url: session.url });
+  } catch (err: any) {
+    logger.error("[Stripe] Rechenpraxis checkout error", err);
     res.status(500).json({ error: err.message });
   }
 });

@@ -50,9 +50,14 @@ export default function PortalToolGuard({ children }: { children: React.ReactNod
         <p className="text-slate-600 text-sm mb-6">
           Rechenpraxis, Rechner und Praxis-Tools sind nach Modulkauf oder Testzugang verfügbar.
         </p>
-        <a href="/kurse" className="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-xl text-sm">
-          Kurse ansehen →
-        </a>
+        <div className="flex flex-wrap justify-center gap-3">
+          <a href="/rechenpraxis-preise" className="inline-block bg-emerald-600 text-white font-semibold px-6 py-3 rounded-xl text-sm">
+            Rechenpraxis Solo ab 19 €/Mo →
+          </a>
+          <a href="/kurse" className="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-xl text-sm">
+            Kurse ansehen →
+          </a>
+        </div>
       </div>
     );
   }

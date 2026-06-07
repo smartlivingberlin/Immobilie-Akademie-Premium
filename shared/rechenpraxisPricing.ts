@@ -1,3 +1,5 @@
+import { RECHENPRAXIS_STANDALONE_MONTHLY_EUR } from "./rechenpraxisProduct";
+
 /** Rechenpraxis Standalone — Preispositionierung (Spin-off / SaaS) */
 
 export const RECHENPRAXIS_PLANS = [
@@ -14,13 +16,29 @@ export const RECHENPRAXIS_PLANS = [
       "2× Lernzeit Zugang inklusive",
     ],
     cta: { label: "Kurse ansehen", href: "/kurse" },
+    checkout: false,
+  },
+  {
+    id: "standalone",
+    name: "Rechenpraxis Solo",
+    priceEur: RECHENPRAXIS_STANDALONE_MONTHLY_EUR,
+    period: "Monat",
+    highlight: true,
+    features: [
+      "128 Aufgaben — nur Rechenpraxis",
+      "KI-Erklärung (50 Nachrichten/Tag)",
+      "Monatlich kündbar",
+      "Ideal ohne Vollkurs",
+    ],
+    cta: { label: "Jetzt abonnieren", href: "/rechenpraxis-preise" },
+    checkout: true,
   },
   {
     id: "renewal",
     name: "Portal-Verlängerung",
     priceEur: 29,
     period: "Jahr",
-    highlight: true,
+    highlight: false,
     features: [
       "Alle gekauften Module weiter nutzen",
       "Rechenpraxis + Rechner + KI-Tutor",
@@ -28,6 +46,7 @@ export const RECHENPRAXIS_PLANS = [
       "Alternative: 5 €/Monat",
     ],
     cta: { label: "Nach Kursablauf", href: "/statistiken" },
+    checkout: false,
   },
   {
     id: "team",
@@ -42,8 +61,9 @@ export const RECHENPRAXIS_PLANS = [
       "Professional: 399 €/Mo · 25 Nutzer",
     ],
     cta: { label: "B2B-Angebot", href: "/fuer-maklerbueros" },
+    checkout: false,
   },
 ] as const;
 
 export const RECHENPRAXIS_STANDALONE_NOTE =
-  "Eigenständiger Rechenpraxis-Zugang ohne Vollkurs ist in Planung. Aktuell: Modulkauf, Verlängerung oder B2B-Tenant.";
+  "Rechenpraxis Solo ab 19 €/Monat — oder inklusive bei Modulkauf, Verlängerung oder B2B-Tenant.";

@@ -23,6 +23,7 @@ export const STRIPE_LIVE_CHECKLIST_DEFS: StripeChecklistItemDef[] = [
   { id: "spf_dkim", label: "SPF/DKIM/DMARC für Absender-Domain", category: "email", action: "Nach Stripe Live — Resend-Domain verifizieren" },
   { id: "backfill", label: "Backfill accessExpiresAt ausgeführt", category: "ops", action: "/admin/referral → Anwenden" },
   { id: "test_renewal", label: "Renewal-Checkout im Testmodus verifiziert", category: "stripe", action: "E2E 09-renewal-auth + Stripe Test-Zahlung" },
+  { id: "webhook_recent", label: "Webhook-Event in den letzten 7 Tagen", category: "stripe", action: "Testzahlung oder Stripe CLI trigger auslösen" },
 ];
 
 export type StripeChecklistItemStatus = StripeChecklistItemDef & {

@@ -7,6 +7,6 @@ test.describe("Rechenpraxis Preise", () => {
     const response = await page.goto(`${BASE}/rechenpraxis-preise`, { waitUntil: "domcontentloaded" });
     expect(response?.status()).toBeLessThan(400);
     await expect(page.locator("h1")).toContainText(/Preise/i);
-    await expect(page.getByText(/29\s*€|199\s*€|Inklusive/i).first()).toBeVisible();
+    await expect(page.getByText(/19\s*€|29\s*€|199\s*€|Inklusive/i).first()).toBeVisible();
   });
 });

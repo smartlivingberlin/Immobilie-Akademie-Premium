@@ -18,11 +18,24 @@ type BackfillPreview = {
   rows: Array<{ id: number; email: string; modules: string; newExpiry: string }>;
 };
 
+type LedgerRow = {
+  id: number;
+  partnerName: string;
+  partnerEmail: string;
+  periodStart: string;
+  periodEnd: string;
+  referralCount: number;
+  commissionEur: number;
+  status: string;
+};
+
 export default function ReferralAdmin() {
   const [stats, setStats] = useState<ReferralStats | null>(null);
   const [backfill, setBackfill] = useState<BackfillPreview | null>(null);
+  const [ledger, setLedger] = useState<LedgerRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [backfillLoading, setBackfillLoading] = useState(false);
+  const [ledgerLoading, setLedgerLoading] = useState(false);
   const [error, setError] = useState("");
 
   const loadStats = () => {
@@ -34,7 +47,60 @@ export default function ReferralAdmin() {
       .finally(() => setLoading(false));
   };
 
-  useEffect(() => { loadStats(); }, []);
+  const loadLedger = () => {
+    fetch("/api/admin/payout-ledger", { credentials: "include" })
+      .then((r) => r.json())
+      .then((d) => d.rows && setLedger(d.rows))
+      .catch(() => {});
+  };
+
+  useEffect(() => {
+    loadStats();
+    loadLedger();
+  }, []);
+
+  const generateLedger = async () => {
+    const now = new Date();
+    const qStart = new Date(now.getFullYear(), Math.floor(now.getMonth() / 3) * 3, 1);
+    const periodStart = qStart.toISOString().slice(0, 10);
+    const periodEnd = now.toISOString().slice(0, 10);
+    setLedgerLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/admin/payout-ledger/generate", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ periodStart, periodEnd }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Generierung fehlgeschlagen");
+      loadLedger();
+    } catch (e: any) {
+      setError(e.message);
+    } finally {
+      setLedgerLoading(false);
+    }
+  };
+
+  const markPaid = async (id: number) => {
+    setLedgerLoading(true);
+    try {
+      const res = await fetch("/api/admin/payout-ledger/mark-paid", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Markierung fehlgeschlagen");
+      loadLedger();
+    } catch (e: any) {
+      setError(e.message);
+    } finally {
+      setLedgerLoading(false);
+    }
+  };
 
   const runBackfill = async (apply: boolean) => {
     setBackfillLoading(true);
@@ -132,6 +198,51 @@ export default function ReferralAdmin() {
           )}
         </>
       )}
+
+      <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 20, marginBottom: 20 }}>
+        <h2 style={{ fontSize: 16, fontWeight: 700, marginBottom: 12 }}>Auszahlungs-Ledger</h2>
+        <button
+          onClick={generateLedger}
+          disabled={ledgerLoading}
+          style={{ padding: "8px 16px", borderRadius: 8, border: "none", background: "#2563eb", color: "white", cursor: "pointer", fontSize: 13, fontWeight: 600, marginBottom: 16 }}
+        >
+          {ledgerLoading ? "…" : "Quartal-Einträge generieren"}
+        </button>
+        {ledger.length === 0 ? (
+          <p style={{ fontSize: 13, color: "#94a3b8" }}>Noch keine Ledger-Einträge (Migration 0039).</p>
+        ) : (
+          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
+            <thead>
+              <tr style={{ borderBottom: "2px solid #e2e8f0", textAlign: "left" }}>
+                <th style={{ padding: "8px" }}>Partner</th>
+                <th style={{ padding: "8px" }}>Zeitraum</th>
+                <th style={{ padding: "8px" }}>Refs</th>
+                <th style={{ padding: "8px" }}>Provision</th>
+                <th style={{ padding: "8px" }}>Status</th>
+                <th style={{ padding: "8px" }} />
+              </tr>
+            </thead>
+            <tbody>
+              {ledger.map((r) => (
+                <tr key={r.id} style={{ borderBottom: "1px solid #f1f5f9" }}>
+                  <td style={{ padding: "8px" }}>{r.partnerName}<br /><span style={{ color: "#94a3b8", fontSize: 11 }}>{r.partnerEmail}</span></td>
+                  <td style={{ padding: "8px" }}>{r.periodStart} – {r.periodEnd}</td>
+                  <td style={{ padding: "8px" }}>{r.referralCount}</td>
+                  <td style={{ padding: "8px" }}>{r.commissionEur.toFixed(2)} €</td>
+                  <td style={{ padding: "8px" }}>{r.status}</td>
+                  <td style={{ padding: "8px" }}>
+                    {r.status === "pending" && (
+                      <button onClick={() => markPaid(r.id)} style={{ fontSize: 11, padding: "4px 8px", borderRadius: 6, border: "1px solid #059669", background: "white", cursor: "pointer", color: "#059669" }}>
+                        Bezahlt
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
 
       <div style={{ background: "#f0fdf4", border: "1px solid #bbf7d0", borderRadius: 12, padding: 20, marginBottom: 20 }}>
         <h2 style={{ fontSize: 16, fontWeight: 700, color: "#166534", marginBottom: 8, display: "flex", alignItems: "center", gap: 8 }}>

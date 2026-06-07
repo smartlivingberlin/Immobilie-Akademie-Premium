@@ -4,6 +4,10 @@ import { extendComplianceAccess } from "./complianceAccess";
 import { setUserKiTier } from "./kiFairUse";
 import { applyReferralPurchaseRewards } from "./referralRewards";
 import { COMPLIANCE_PRODUCT_ID } from "../shared/compliance";
+import {
+  RECHENPRAXIS_MODULE_SENTINEL,
+  RECHENPRAXIS_PRODUCT_ID,
+} from "../shared/rechenpraxisProduct";
 import { KI_TIER_FULL, KI_TIER_RENEWAL } from "../shared/kiFairUse";
 
 export async function processModulePurchase(
@@ -74,4 +78,33 @@ export async function processComplianceSubscription(
   await extendComplianceAccess(db, userId, 12);
   await setUserKiTier(db, userId, KI_TIER_FULL);
   logger.info("[Stripe] Compliance subscription processed", { userId });
+}
+
+/** Rechenpraxis Solo-Abo — nur Rechenpraxis (Sentinel rp), 1 Monat pro Zahlung */
+export async function processRechenpraxisSubscription(
+  db: { $client: { query: Function } },
+  userId: number,
+): Promise<void> {
+  const [userRows] = await db.$client.query(
+    "SELECT enabledModules FROM users WHERE id = ? LIMIT 1",
+    [userId],
+  ) as any;
+  const user = (userRows as any[])[0];
+  if (!user) return;
+
+  const current = String(user.enabledModules || "")
+    .split(",")
+    .map((s: string) => s.trim())
+    .filter(Boolean);
+  const merged = current.includes(RECHENPRAXIS_MODULE_SENTINEL)
+    ? current.join(",")
+    : [...current, RECHENPRAXIS_MODULE_SENTINEL].join(",");
+
+  await db.$client.query(
+    "UPDATE users SET enabledModules = ?, trialExpiresAt = NULL WHERE id = ?",
+    [merged, userId],
+  );
+  await extendUserAccessFromPurchase(db, userId, RECHENPRAXIS_PRODUCT_ID, RECHENPRAXIS_MODULE_SENTINEL);
+  await setUserKiTier(db, userId, KI_TIER_RENEWAL);
+  logger.info("[Stripe] Rechenpraxis subscription processed", { userId });
 }

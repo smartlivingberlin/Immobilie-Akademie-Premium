@@ -1,5 +1,6 @@
 import { logger } from "./_core/logger";
 import { getB2bPlan } from "../shared/b2bPlans";
+import { sendB2bWelcomeEmail } from "./b2bWelcomeEmail";
 import { setUserKiTier } from "./kiFairUse";
 import { KI_TIER_FULL } from "../shared/kiFairUse";
 
@@ -57,6 +58,18 @@ export async function processB2bSubscription(
     [plan.enabledModules, userId],
   );
   await setUserKiTier(db, userId, KI_TIER_FULL);
+
+  try {
+    await sendB2bWelcomeEmail({
+      email: user.email,
+      name: user.name,
+      companyName: companyName || user.name || "Maklerbüro",
+      planId,
+      tenantSlug: slug,
+    });
+  } catch (emailErr: any) {
+    logger.warn("[Stripe] B2B welcome email failed", { userId, error: emailErr.message });
+  }
 
   logger.info("[Stripe] B2B subscription processed", { userId, planId, tenantId });
 }
