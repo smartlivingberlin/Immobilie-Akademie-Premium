@@ -282,13 +282,25 @@ app.post("/api/stripe/webhook", express.raw({ type: "*/*" }), async (req: any, r
           logger.error("[Stripe Webhook] Compliance DB-Fehler", dbErr);
         }
       }
+      if (userId > 0 && (subMeta.type === "b2b" || invoice.metadata?.type === "b2b")) {
+        try {
+          const { getDb } = await import("../db");
+          const db = await getDb();
+          const { processB2bSubscription } = await import("../b2bPurchaseHandler");
+          const planId = subMeta.planId || invoice.metadata?.planId || "starter";
+          const companyName = subMeta.companyName || invoice.metadata?.companyName || "";
+          await processB2bSubscription(db, userId, planId, companyName);
+        } catch (dbErr: any) {
+          logger.error("[Stripe Webhook] B2B DB-Fehler", dbErr);
+        }
+      }
     }
 
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
 
       // Subscription: nur invoice.paid verarbeiten (Renewal + Compliance)
-      if (session.metadata?.type === "renewal" || session.metadata?.type === "compliance") {
+      if (session.metadata?.type === "renewal" || session.metadata?.type === "compliance" || session.metadata?.type === "b2b") {
         return res.json({ received: true });
       }
 

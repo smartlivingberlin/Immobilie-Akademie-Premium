@@ -1,12 +1,15 @@
+import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { SEO } from "@/components/SEO";
+import { trpc } from "@/lib/trpc";
 import {
   ArrowRight, Building2, Bot, CheckCircle2, FileCheck, Globe,
-  Mail, Palette, ShieldCheck, Users, BarChart3, KeyRound,
+  Mail, Palette, ShieldCheck, Users, BarChart3, KeyRound, CreditCard,
 } from "lucide-react";
 
 const PLANS = [
   {
+    id: "starter" as const,
     name: "Starter",
     price: "199",
     users: "5 Mitarbeiter",
@@ -21,6 +24,7 @@ const PLANS = [
     ],
   },
   {
+    id: "professional" as const,
     name: "Professional",
     price: "399",
     users: "15 Mitarbeiter",
@@ -35,6 +39,7 @@ const PLANS = [
     ],
   },
   {
+    id: "enterprise" as const,
     name: "Enterprise",
     price: "Individuell",
     users: "50+ Mitarbeiter",
@@ -66,6 +71,45 @@ const MAIL_BODY = encodeURIComponent(
 );
 
 export default function MaklerbuerosLanding() {
+  const { data: user } = trpc.auth.me.useQuery();
+  const [checkoutLoading, setCheckoutLoading] = useState<string | null>(null);
+  const [checkoutError, setCheckoutError] = useState("");
+  const [b2bSuccess, setB2bSuccess] = useState(false);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("b2b") === "1") {
+      setB2bSuccess(true);
+      window.history.replaceState({}, "", "/fuer-maklerbueros");
+    }
+  }, []);
+
+  const startB2bCheckout = async (planId: "starter" | "professional") => {
+    if (!user) {
+      window.location.href = "/login?redirect=/fuer-maklerbueros";
+      return;
+    }
+    const companyName = window.prompt("Firmenname für Ihren White-Label-Tenant:")?.trim();
+    if (!companyName) return;
+    setCheckoutLoading(planId);
+    setCheckoutError("");
+    try {
+      const res = await fetch("/api/stripe/b2b-checkout", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ planId, companyName }),
+      });
+      const data = await res.json();
+      if (data.url) window.location.href = data.url;
+      else setCheckoutError(data.error || "Checkout fehlgeschlagen");
+    } catch {
+      setCheckoutError("Verbindungsfehler");
+    } finally {
+      setCheckoutLoading(null);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-slate-50">
       <SEO
@@ -74,6 +118,15 @@ export default function MaklerbuerosLanding() {
         keywords="Maklerbüro Schulung, White-Label E-Learning, Immobilien Weiterbildung B2B, §34c Team Schulung, Makler Onboarding"
         canonical="https://immobilien-akademie-smart.de/fuer-maklerbueros"
       />
+
+      {b2bSuccess && (
+        <div className="bg-green-50 border-b border-green-200 text-green-800 text-sm text-center py-3 px-4">
+          B2B-Abo aktiv — Ihr White-Label-Tenant wird eingerichtet. Sie erhalten eine Bestätigung per E-Mail.
+        </div>
+      )}
+      {checkoutError && (
+        <div className="bg-red-50 border-b border-red-200 text-red-700 text-sm text-center py-3 px-4">{checkoutError}</div>
+      )}
 
       {/* Hero */}
       <section className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white">
@@ -169,16 +222,32 @@ export default function MaklerbuerosLanding() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href={`mailto:info@immobilien-akademie-smart.de?subject=${encodeURIComponent(`B2B-Anfrage: ${plan.name}`)}&body=${MAIL_BODY}`}
-                  className={`inline-flex items-center justify-center gap-2 font-semibold px-4 py-2.5 rounded-lg transition-colors text-sm ${
-                    plan.highlight
-                      ? "bg-blue-600 hover:bg-blue-500 text-white"
-                      : "bg-slate-100 hover:bg-slate-200 text-slate-800"
-                  }`}
-                >
-                  Anfragen <ArrowRight className="h-4 w-4" />
-                </a>
+                {plan.id === "enterprise" ? (
+                  <a
+                    href={`mailto:info@immobilien-akademie-smart.de?subject=${encodeURIComponent(`B2B-Anfrage: ${plan.name}`)}&body=${MAIL_BODY}`}
+                    className={`inline-flex items-center justify-center gap-2 font-semibold px-4 py-2.5 rounded-lg transition-colors text-sm ${
+                      plan.highlight
+                        ? "bg-blue-600 hover:bg-blue-500 text-white"
+                        : "bg-slate-100 hover:bg-slate-200 text-slate-800"
+                    }`}
+                  >
+                    Anfragen <ArrowRight className="h-4 w-4" />
+                  </a>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => startB2bCheckout(plan.id)}
+                    disabled={checkoutLoading === plan.id}
+                    className={`inline-flex items-center justify-center gap-2 font-semibold px-4 py-2.5 rounded-lg transition-colors text-sm w-full ${
+                      plan.highlight
+                        ? "bg-blue-600 hover:bg-blue-500 text-white disabled:opacity-60"
+                        : "bg-slate-100 hover:bg-slate-200 text-slate-800 disabled:opacity-60"
+                    }`}
+                  >
+                    <CreditCard className="h-4 w-4" />
+                    {checkoutLoading === plan.id ? "Weiterleitung…" : "Jetzt buchen"}
+                  </button>
+                )}
               </div>
             ))}
           </div>

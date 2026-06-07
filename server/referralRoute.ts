@@ -27,6 +27,34 @@ referralRouter.get("/api/referral/info", requireAuth, async (req: any, res) => {
   }
 });
 
+referralRouter.get("/api/referral/vouchers", requireAuth, async (req: any, res) => {
+  try {
+    const { getDb } = await import("./db");
+    const db = await getDb();
+    const { getVoucherStatuses } = await import("./voucherRedeem");
+    const vouchers = await getVoucherStatuses(db, req.currentUser.id);
+    res.json({ vouchers });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+referralRouter.post("/api/referral/redeem-voucher", requireAuth, async (req: any, res) => {
+  try {
+    const { voucherId } = req.body ?? {};
+    if (!voucherId || typeof voucherId !== "string") {
+      return res.status(400).json({ error: "voucherId erforderlich" });
+    }
+    const { getDb } = await import("./db");
+    const db = await getDb();
+    const { redeemVoucher } = await import("./voucherRedeem");
+    await redeemVoucher(db, req.currentUser.id, voucherId);
+    res.json({ ok: true });
+  } catch (e: any) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
 referralRouter.post("/api/referral/apply", requireAuth, async (req: any, res) => {
   try {
     const { code } = req.body ?? {};
