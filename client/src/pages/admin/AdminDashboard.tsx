@@ -83,6 +83,7 @@ export default function AdminDashboard() {
     { group: "👥 Nutzer & Zugang", items: [
       { name: "Nutzerverwaltung", desc: `${totalUsers} Nutzer · ${activeUsers} diese Woche aktiv`, href: "/admin/nutzer", icon: Users, color: "#2563eb", badge: riskUsers > 0 ? `${riskUsers} Risiko` : null },
       { name: "Zugangscodes", desc: `${codes?.length ?? 0} aktive Codes`, href: "/admin/codes", icon: Code, color: "#7c3aed" },
+      { name: "Empfehlungsprogramm", desc: "Referrals, Rewards, Backfill", href: "/admin/referral", icon: Award, color: "#ea580c" },
       { name: "Zertifikate", desc: "Zertifikate verwalten", href: "/zertifikate", icon: Award, color: "#059669" },
     ]},
     { group: "📚 Inhalte & Lernmaterial", items: [

@@ -107,6 +107,7 @@ const WhiteLabelAdmin = lazy(() => import("@/pages/admin/WhiteLabelAdmin"));
 const PortalPhaseAdmin = lazy(() => import("@/pages/admin/PortalPhaseAdmin"));
 const PortalAgentDashboard = lazy(() => import("@/pages/admin/PortalAgentDashboard"));
 const KiMonitor = lazy(() => import("@/pages/admin/KiMonitor"));
+const ReferralAdmin = lazy(() => import("@/pages/admin/ReferralAdmin"));
 const OwnerVideos = lazy(() => import("@/pages/OwnerVideos").then(m => ({ default: m.default })));
 const OwnerDashboard = lazy(() => import("@/pages/OwnerDashboard").then(m => ({ default: m.default })));
 
@@ -288,6 +289,7 @@ function Router() {
         <Route path="/admin/codes"><AppLayout><AdminRoute component={AdminCodes} /></AppLayout></Route>
         <Route path="/admin/landing-pages"><AppLayout><AdminRoute component={LandingPageAdmin} /></AppLayout></Route>
         <Route path="/admin/nutzer"><AppLayout><AdminRoute component={UserManagement} /></AppLayout></Route>
+        <Route path="/admin/referral"><AppLayout><AdminRoute component={ReferralAdmin} /></AppLayout></Route>
         <Route path="/admin-2fa"><Admin2FA /></Route>
         <Route path="/admin"><AppLayout><AdminRoute component={AdminDashboard} /></AppLayout></Route>
         <Route path="/owner-dashboard"><AppLayout><OwnerRoute component={OwnerDashboard} /></AppLayout></Route>
