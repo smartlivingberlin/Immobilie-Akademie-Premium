@@ -14,7 +14,7 @@ import { listAllPartnerPayoutDetails } from "./partnerPayoutDetails";
 import { buildStripeLiveEnvTemplate } from "../shared/stripeLiveEnv";
 import { verifyStripeApiKey } from "./stripeLiveVerify";
 import { executeConnectTransferForLedger } from "./partnerConnectTransfer";
-import { getStripePriceConfig } from "../shared/stripePriceIds";
+import { getStripePriceConfig, getModulePriceConfig } from "../shared/stripePriceIds";
 import { logger } from "./_core/logger";
 
 export const adminOpsRouter = Router();
@@ -53,7 +53,10 @@ adminOpsRouter.get("/api/admin/stripe-live-checklist", requireAdmin, async (_req
 
 adminOpsRouter.get("/api/admin/stripe-price-config", requireAdmin, async (_req, res) => {
   try {
-    res.json({ prices: getStripePriceConfig() });
+    res.json({
+      subscriptions: getStripePriceConfig(),
+      modules: getModulePriceConfig(),
+    });
   } catch (e: any) {
     res.status(500).json({ error: e.message });
   }

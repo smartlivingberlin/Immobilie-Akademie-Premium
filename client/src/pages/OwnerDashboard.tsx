@@ -65,7 +65,8 @@ export default function OwnerDashboard() {
   const [statsData, setStatsData] = useState<any>(null);
   const [azavReport, setAzavReport] = useState<any>(null);
   const [azavLoading, setAzavLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState<"users"|"live"|"activity"|"stats"|"azav"|"settings"|"videos">("users");
+  const [activeTab, setActiveTab] = useState<"users"|"revenue"|"live"|"activity"|"stats"|"azav"|"settings"|"videos">("users");
+  const [revenue, setRevenue] = useState<any>(null);
   const [settings, setSettings] = useState<Record<string,string>>({});
   const [settingsSaved, setSettingsSaved] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -96,6 +97,10 @@ export default function OwnerDashboard() {
       .then(r => r.json())
       .then(d => { setStats(d); setLoading(false); })
       .catch(() => setLoading(false));
+    fetch(`/api/owner/revenue?key=${ownerKey}`, { credentials: "include", headers: { "x-owner-key": ownerKey } })
+      .then(r => r.json())
+      .then(setRevenue)
+      .catch(() => {});
   }, []);
 
   const lockUser = async (email: string) => {
@@ -210,6 +215,7 @@ export default function OwnerDashboard() {
       <div style={{display:"flex",gap:8,marginBottom:24,flexWrap:"wrap"}}>
         {[
           {id:"users", label:"👥 Nutzer"},
+          {id:"revenue", label:"💰 Revenue"},
           {id:"settings", label:"⚙️ Portal-Einstellungen"},
           {id:"azav", label:"🎓 AZAV"},
           {id:"live", label:"🟢 Live"},
@@ -256,6 +262,44 @@ export default function OwnerDashboard() {
           ))}
         </div>
       </div>
+
+      {/* ── TAB: REVENUE ──────────────────────────────── */}
+      {activeTab === "revenue" && (
+        <div style={{ background: "#1e293b", borderRadius: 12, padding: 24, marginBottom: 24, border: "1px solid #334155" }}>
+          <h3 style={{ margin: "0 0 20px", fontSize: 18, color: "#f59e0b" }}>💰 Stripe Revenue</h3>
+          {!revenue ? (
+            <p style={{ color: "#94a3b8" }}>Laden…</p>
+          ) : (
+            <>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", gap: 16, marginBottom: 20 }}>
+                {[
+                  { label: "Modus", value: revenue.stripeMode?.toUpperCase(), color: revenue.stripeMode === "live" ? "#10b981" : "#f59e0b" },
+                  { label: "Umsatz 30d", value: `${revenue.revenue30dEur?.toFixed(2) ?? 0} €`, color: "#3b82f6" },
+                  { label: "Charges 30d", value: revenue.chargeCount30d, color: "#8b5cf6" },
+                  { label: "Abo aktiv", value: revenue.activeSubscriptions, color: "#10b981" },
+                  { label: "Balance EUR", value: revenue.balanceEur != null ? `${revenue.balanceEur.toFixed(2)} €` : "—", color: "#06b6d4" },
+                  { label: "Pending Käufe", value: revenue.pendingPurchases, color: "#ef4444" },
+                  { label: "Zahlende Nutzer", value: revenue.payingUsersEstimate, color: "#a78bfa" },
+                  { label: "Price-IDs", value: `${revenue.priceIdsConfigured?.subscriptions}/4 + ${revenue.priceIdsConfigured?.modules}/12`, color: "#64748b" },
+                ].map((s) => (
+                  <div key={s.label} style={{ background: "#0f172a", borderRadius: 8, padding: 14 }}>
+                    <div style={{ fontSize: 11, color: "#94a3b8" }}>{s.label}</div>
+                    <div style={{ fontSize: 22, fontWeight: 800, color: s.color, marginTop: 4 }}>{s.value}</div>
+                  </div>
+                ))}
+              </div>
+              {revenue.webhookHealth && (
+                <p style={{ fontSize: 13, color: "#94a3b8" }}>
+                  Webhook: {revenue.webhookHealth.recentlyActive ? "✅ aktiv" : "⚠️ kein Event (7d)"} · {revenue.webhookHealth.totalVerified} Events
+                </p>
+              )}
+              <Link href="/admin/stripe-live">
+                <span style={{ color: "#3b82f6", fontSize: 13, cursor: "pointer" }}>→ Stripe Live-Checkliste</span>
+              </Link>
+            </>
+          )}
+        </div>
+      )}
 
       {/* Nutzer-Liste */}
       {/* ── TAB: SETTINGS ──────────────────────────────── */}

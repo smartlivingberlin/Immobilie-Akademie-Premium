@@ -1,7 +1,9 @@
 import { describe, expect, it, afterEach } from "vitest";
 import {
+  buildPaymentLineItem,
   buildSubscriptionLineItem,
   getConfiguredStripePriceId,
+  getProductStripePriceId,
   STRIPE_PRICE_ENV_KEYS,
 } from "./stripePriceIds";
 
@@ -38,5 +40,17 @@ describe("stripePriceIds", () => {
 
   it("defines four price env keys", () => {
     expect(Object.keys(STRIPE_PRICE_ENV_KEYS).length).toBe(4);
+  });
+
+  it("uses payment price id for modules when set", () => {
+    process.env.STRIPE_PRICE_MODUL_1 = "price_mod1";
+    expect(getProductStripePriceId("modul_1")).toBe("price_mod1");
+    const item = buildPaymentLineItem("modul_1", {
+      currency: "eur",
+      unit_amount: 14900,
+      product_data: { name: "Modul 1" },
+    });
+    expect(item).toEqual({ price: "price_mod1", quantity: 1 });
+    delete process.env.STRIPE_PRICE_MODUL_1;
   });
 });

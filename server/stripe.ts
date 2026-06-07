@@ -17,6 +17,7 @@ import {
   RECHENPRAXIS_STANDALONE_MONTHLY_EUR,
 } from "../shared/rechenpraxisProduct";
 import { buildSubscriptionLineItem } from "./stripeCheckoutHelpers";
+import { buildPaymentLineItem } from "../shared/stripePriceIds";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
   apiVersion: "2026-02-25.clover",
@@ -287,17 +288,14 @@ stripeRouter.post("/api/stripe/checkout", async (req, res) => {
       mode: "payment",
       customer_email: userEmail || undefined,
       line_items: [
-        {
-          price_data: {
-            currency: "eur",
-            product_data: {
-              name: product.name,
-              description: product.description,
-            },
-            unit_amount: product.price,
+        buildPaymentLineItem(product.id, {
+          currency: "eur",
+          product_data: {
+            name: product.name,
+            description: product.description,
           },
-          quantity: 1,
-        },
+          unit_amount: product.price,
+        }),
       ],
       success_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/zahlung-erfolgreich?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/kurse`,
@@ -336,11 +334,13 @@ stripeRouter.post("/api/stripe/checkout", async (req, res) => {
       const session = await stripe.checkout.sessions.create({
         mode: "payment",
         customer_email: userEmail || undefined,
-        line_items: [{ price_data: {
-          currency: "eur",
-          unit_amount: bundle.price,
-          product_data: { name: bundle.name, description: bundle.desc },
-        }, quantity: 1 }],
+        line_items: [
+          buildPaymentLineItem(bundleId, {
+            currency: "eur",
+            unit_amount: bundle.price,
+            product_data: { name: bundle.name, description: bundle.desc },
+          }),
+        ],
         success_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/zahlung-erfolgreich?session_id={CHECKOUT_SESSION_ID}&bundle=${bundleId}`,
         cancel_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/pakete`,
         metadata: { bundle: bundleId, productId: bundleId, modules: bundle.modules.map(String).join(",") },

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { ArrowLeft, CheckCircle, AlertTriangle, ExternalLink, Copy } from "lucide-react";
 import { buildStripeLiveEnvTemplate } from "@shared/stripeLiveEnv";
+import { STRIPE_TEST_CARD, STRIPE_TEST_CHECKOUT_STEPS } from "@shared/stripeTestGuide";
 import type { StripeLiveChecklistResult } from "@shared/stripeLiveChecklist";
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -169,6 +170,18 @@ export default function StripeLiveChecklist() {
                 borderRadius: 4,
               }}
             />
+          </div>
+
+          <div style={{ background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 12, padding: 16, marginBottom: 24 }}>
+            <strong style={{ fontSize: 14 }}>Testzahlung (Testmodus)</strong>
+            <p style={{ fontSize: 12, color: "#64748b", margin: "8px 0" }}>
+              Karte: {STRIPE_TEST_CARD.number} · {STRIPE_TEST_CARD.exp} · CVC {STRIPE_TEST_CARD.cvc}
+            </p>
+            <ol style={{ fontSize: 12, color: "#475569", margin: 0, paddingLeft: 18 }}>
+              {STRIPE_TEST_CHECKOUT_STEPS.map((step) => (
+                <li key={step} style={{ marginBottom: 4 }}>{step}</li>
+              ))}
+            </ol>
           </div>
 
           {(["legal", "stripe", "email", "ops"] as const).map((cat) => {
