@@ -16,6 +16,9 @@ export default function Footer() {
           <Link href="/fuer-maklerbueros">
             <span className="hover:text-slate-300 cursor-pointer transition-colors">Für Maklerbüros</span>
           </Link>
+          <Link href="/empfehlungsprogramm">
+            <span className="hover:text-slate-300 cursor-pointer transition-colors">Empfehlen</span>
+          </Link>
           <Link href="/kurse">
             <span className="hover:text-slate-300 cursor-pointer transition-colors">Kurse & Preise</span>
           </Link>

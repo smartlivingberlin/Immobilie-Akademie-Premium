@@ -160,7 +160,8 @@ export default function AGB() {
             (1) Die Vertragslaufzeit richtet sich nach der gewählten Nutzungsvariante:
           </p>
           <ul>
-            <li><strong>Einmalzahlung:</strong> Unbefristeter Zugang zu den erworbenen Inhalten</li>
+            <li><strong>Einmalzahlung (Modulkauf):</strong> Zeitlich befristeter Zugang zu den erworbenen Inhalten. Die inkludierte Nutzungsdauer entspricht der doppelten im Kauf angegebenen Lernzeit (siehe Produktbeschreibung, z.&nbsp;B. 4–20 Monate je nach Modul).</li>
+            <li><strong>Verlängerung (optional):</strong> Nach Ablauf kann der Zugang zu den bereits erworbenen Modulen gegen Entgelt verlängert werden (derzeit 5&nbsp;€/Monat oder 29&nbsp;€/Jahr, nur für zuvor gekaufte Module).</li>
           </ul>
           <p>
             (2) Das Recht zur außerordentlichen Kündigung aus wichtigem Grund bleibt unberührt. Ein wichtiger 
