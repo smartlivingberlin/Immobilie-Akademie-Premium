@@ -5,6 +5,7 @@ import { createServer as createViteServer } from "vite";
 import type { Server } from "http";
 import { jwtVerify } from "jose";
 import { COOKIE_NAME } from "@shared/const";
+import { isInspectModeActive } from "../inspectMode";
 
 const PROTECTED_CHUNKS: Record<string, number[]> = {
   "Module1Detail": [1],
@@ -52,13 +53,6 @@ async function protectModuleData(req: Request, res: Response, next: NextFunction
   if (!requiredModules) return next();
 
   return authorizeModuleAccess(req, res, next, requiredModules);
-}
-
-function isInspectModeActive(req: Request): boolean {
-  if (req.cookies?.inspect_mode !== "1") return false;
-  const expiresAt = Number(req.cookies?.inspect_mode_expires_at);
-  if (!Number.isNaN(expiresAt) && expiresAt > 0 && Date.now() > expiresAt) return false;
-  return true;
 }
 
 async function authorizeModuleAccess(req: Request, res: Response, next: NextFunction, requiredModules: number[]) {

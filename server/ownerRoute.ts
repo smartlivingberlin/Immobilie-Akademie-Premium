@@ -401,7 +401,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
       const cookieOptions = getSessionCookieOptions(req);
       res.cookie("inspect_mode", "1", { ...cookieOptions, maxAge });
       res.cookie("inspect_mode_expires_at", String(expiresAtMs), { ...cookieOptions, maxAge });
-      return res.redirect("/?inspect=1");
+      return res.redirect("/admin?inspect=1");
     } catch (e: any) {
       return res.status(403).send(`<html><body style="font-family:Arial;padding:40px;text-align:center"><h2 style="color:#dc2626">Link abgelaufen</h2><p>Bitte einen neuen Link anfordern.</p></body></html>`);
     }

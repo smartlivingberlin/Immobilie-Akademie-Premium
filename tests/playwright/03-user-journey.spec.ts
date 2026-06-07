@@ -122,7 +122,7 @@ test.describe('COMPLIANCE TEST', () => {
       ['Adresse', 'Durlacher'],
       ['PLZ', '10715'],
       ['Stadt', 'Berlin'],
-      ['E-Mail', 'gmail'],
+      ['E-Mail', 'info@immobilien-akademie-smart.de'],
       ['Telefon', '+49 171'],
     ];
     
@@ -141,15 +141,21 @@ test.describe('COMPLIANCE TEST', () => {
     const text = await page.locator('body').textContent() || '';
     
     const required = [
-      'Art. 13 DSGVO', 'Art. 6', 'Verantwortlicher',
-      'Gmail', 'Stripe', 'Railway', 'Anthropic', 'Gemini',
-      'Widerruf', 'Löschung', 'Auskunft'
+      'Art. 6',
+      'info@immobilien-akademie-smart.de',
+      'Stripe',
+      'Railway',
+      'Anthropic',
+      'Gemini',
+      'Löschung',
+      'Auskunft',
     ];
     
     console.log('\n=== DATENSCHUTZ COMPLIANCE ===');
     for (const term of required) {
       const found = text.includes(term);
       console.log(`${found ? '✅' : '❌'} ${term}`);
+      expect(text).toContain(term);
     }
     
     await page.screenshot({ path: 'tests/screenshots/datenschutz.png', fullPage: true });
@@ -159,12 +165,19 @@ test.describe('COMPLIANCE TEST', () => {
     await page.goto(`${BASE}/agb`, { waitUntil: 'networkidle' });
     const text = await page.locator('body').textContent() || '';
     
-    const required = ['§ 327', '14 Tage', 'Widerruf', 'Berlin', 'Gerichtsstand', '149'];
+    const required = [
+      'Widerruf',
+      'Berlin',
+      'Gerichtsstand',
+      'vierzehn Tage',
+      'info@immobilien-akademie-smart.de',
+    ];
     
     console.log('\n=== AGB COMPLIANCE ===');
     for (const term of required) {
       const found = text.includes(term);
       console.log(`${found ? '✅' : '❌'} ${term}`);
+      expect(text).toContain(term);
     }
   });
 });

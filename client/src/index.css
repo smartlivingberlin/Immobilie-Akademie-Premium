@@ -264,3 +264,22 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+/* Inspect v2: disable write controls in content area, keep navigation links active */
+[data-inspect-readonly] form :is(button, input, textarea, select) {
+  pointer-events: none;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+[data-inspect-readonly] button:not([data-inspect-allow]) {
+  pointer-events: none;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+[data-inspect-readonly] a,
+[data-inspect-readonly] [data-inspect-allow] {
+  pointer-events: auto;
+  opacity: 1;
+}
