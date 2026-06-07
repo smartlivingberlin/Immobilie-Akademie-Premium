@@ -54,6 +54,7 @@ const Certificates = lazy(() => import("@/pages/Certificates"));
 const Weiterbildungsnachweis = lazy(() => import("@/pages/Weiterbildungsnachweis"));
 const ComplianceLanding = lazy(() => import("@/pages/ComplianceLanding"));
 const VerwalterRechnerLanding = lazy(() => import("@/pages/VerwalterRechnerLanding"));
+const RechenpraxisPricing = lazy(() => import("@/pages/RechenpraxisPricing"));
 const Fallstudien = lazy(() => import("@/pages/Fallstudien"));
 const Flashcards = lazy(() => import("@/pages/Flashcards"));
 const SpacedRepetition = lazy(() => import("@/pages/SpacedRepetition"));
@@ -109,6 +110,7 @@ const PortalPhaseAdmin = lazy(() => import("@/pages/admin/PortalPhaseAdmin"));
 const PortalAgentDashboard = lazy(() => import("@/pages/admin/PortalAgentDashboard"));
 const KiMonitor = lazy(() => import("@/pages/admin/KiMonitor"));
 const ReferralAdmin = lazy(() => import("@/pages/admin/ReferralAdmin"));
+const StripeLiveChecklist = lazy(() => import("@/pages/admin/StripeLiveChecklist"));
 const OwnerVideos = lazy(() => import("@/pages/OwnerVideos").then(m => ({ default: m.default })));
 const OwnerDashboard = lazy(() => import("@/pages/OwnerDashboard").then(m => ({ default: m.default })));
 
@@ -291,6 +293,7 @@ function Router() {
         <Route path="/admin/landing-pages"><AppLayout><AdminRoute component={LandingPageAdmin} /></AppLayout></Route>
         <Route path="/admin/nutzer"><AppLayout><AdminRoute component={UserManagement} /></AppLayout></Route>
         <Route path="/admin/referral"><AppLayout><AdminRoute component={ReferralAdmin} /></AppLayout></Route>
+        <Route path="/admin/stripe-live"><AppLayout><AdminRoute component={StripeLiveChecklist} /></AppLayout></Route>
         <Route path="/admin-2fa"><Admin2FA /></Route>
         <Route path="/admin"><AppLayout><AdminRoute component={AdminDashboard} /></AppLayout></Route>
         <Route path="/owner-dashboard"><AppLayout><OwnerRoute component={OwnerDashboard} /></AppLayout></Route>
@@ -306,6 +309,7 @@ function Router() {
         <Route path="/empfehlungsprogramm"><PublicLayout><Empfehlungsprogramm /></PublicLayout></Route>
         <Route path="/compliance-20h"><PublicLayout><ComplianceLanding /></PublicLayout></Route>
         <Route path="/verwalter-rechner"><PublicLayout><VerwalterRechnerLanding /></PublicLayout></Route>
+        <Route path="/rechenpraxis-preise"><PublicLayout><RechenpraxisPricing /></PublicLayout></Route>
         <Route path="/audio-modus"><AudioModus /></Route>
         <Route component={NotFound} />
       </Switch>

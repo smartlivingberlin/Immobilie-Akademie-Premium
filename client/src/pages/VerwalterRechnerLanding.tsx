@@ -104,6 +104,11 @@ export default function VerwalterRechnerLanding() {
         <section className="container mx-auto px-4 py-12 max-w-2xl text-center text-sm text-slate-500">
           <CheckCircle2 className="h-5 w-5 text-emerald-500 mx-auto mb-2" />
           Rechenpraxis ist Teil des Lernportals — Zugang mit Modulkauf, Testzugang oder B2B-Tenant.
+          <Link href="/rechenpraxis-preise">
+            <span className="block mt-3 text-emerald-600 hover:text-emerald-800 font-medium cursor-pointer">
+              Preise & Zugangswege ansehen →
+            </span>
+          </Link>
         </section>
       </div>
     </>

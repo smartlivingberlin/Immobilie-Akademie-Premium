@@ -84,6 +84,7 @@ export default function AdminDashboard() {
       { name: "Nutzerverwaltung", desc: `${totalUsers} Nutzer · ${activeUsers} diese Woche aktiv`, href: "/admin/nutzer", icon: Users, color: "#2563eb", badge: riskUsers > 0 ? `${riskUsers} Risiko` : null },
       { name: "Zugangscodes", desc: `${codes?.length ?? 0} aktive Codes`, href: "/admin/codes", icon: Code, color: "#7c3aed" },
       { name: "Empfehlungsprogramm", desc: "Referrals, Rewards, Backfill", href: "/admin/referral", icon: Award, color: "#ea580c" },
+      { name: "Stripe Live", desc: "Go-Live-Checkliste vor Umschaltung", href: "/admin/stripe-live", icon: DollarSign, color: "#635bff" },
       { name: "Zertifikate", desc: "Zertifikate verwalten", href: "/zertifikate", icon: Award, color: "#059669" },
     ]},
     { group: "📚 Inhalte & Lernmaterial", items: [
