@@ -13,6 +13,8 @@ import { getStripeWebhookHealth } from "./stripeWebhookHealth";
 import { listAllPartnerPayoutDetails } from "./partnerPayoutDetails";
 import { buildStripeLiveEnvTemplate } from "../shared/stripeLiveEnv";
 import { verifyStripeApiKey } from "./stripeLiveVerify";
+import { executeConnectTransferForLedger } from "./partnerConnectTransfer";
+import { getStripePriceConfig } from "../shared/stripePriceIds";
 import { logger } from "./_core/logger";
 
 export const adminOpsRouter = Router();
@@ -44,6 +46,14 @@ adminOpsRouter.get("/api/admin/referral-stats", requireAdmin, async (_req, res) 
 adminOpsRouter.get("/api/admin/stripe-live-checklist", requireAdmin, async (_req, res) => {
   try {
     res.json({ ...buildStripeLiveChecklist(), webhookHealth: getStripeWebhookHealth() });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+adminOpsRouter.get("/api/admin/stripe-price-config", requireAdmin, async (_req, res) => {
+  try {
+    res.json({ prices: getStripePriceConfig() });
   } catch (e: any) {
     res.status(500).json({ error: e.message });
   }
@@ -109,6 +119,19 @@ adminOpsRouter.post("/api/admin/payout-ledger/generate", requireAdmin, async (re
     res.json(result);
   } catch (e: any) {
     res.status(500).json({ error: e.message });
+  }
+});
+
+adminOpsRouter.post("/api/admin/payout-ledger/connect-transfer", requireAdmin, async (req, res) => {
+  try {
+    const id = parseInt(String(req.body?.id || "0"), 10);
+    if (!id) return res.status(400).json({ error: "id erforderlich" });
+    const { getDb } = await import("./db");
+    const db = await getDb();
+    const result = await executeConnectTransferForLedger(db, id);
+    res.json({ ok: true, ...result });
+  } catch (e: any) {
+    res.status(400).json({ error: e.message });
   }
 });
 

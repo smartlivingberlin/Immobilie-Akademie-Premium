@@ -29,6 +29,7 @@ export type PayoutLedgerRow = {
   commissionEur: number;
   status: string;
   paidAt: string | null;
+  stripeTransferId: string | null;
   note: string | null;
   createdAt: string;
 };
@@ -57,6 +58,7 @@ export async function listPayoutLedger(
     commissionEur: Number(r.commissionEur),
     status: r.status,
     paidAt: r.paidAt ? new Date(r.paidAt).toISOString() : null,
+    stripeTransferId: r.stripeTransferId || null,
     note: r.note,
     createdAt: new Date(r.createdAt).toISOString(),
   }));

@@ -16,6 +16,7 @@ import {
   RECHENPRAXIS_PRODUCT_ID,
   RECHENPRAXIS_STANDALONE_MONTHLY_EUR,
 } from "../shared/rechenpraxisProduct";
+import { buildSubscriptionLineItem } from "./stripeCheckoutHelpers";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
   apiVersion: "2026-02-25.clover",
@@ -90,15 +91,15 @@ stripeRouter.post("/api/stripe/renewal-checkout", requireAuth, async (req: any, 
       mode: "subscription",
       customer_email: req.currentUser.email || undefined,
       line_items: [
-        {
-          price_data: {
+        buildSubscriptionLineItem(
+          interval === "year" ? "renewal_yearly" : "renewal_monthly",
+          {
             currency: "eur",
             product_data: { name: label },
             unit_amount: amount,
             recurring: { interval },
           },
-          quantity: 1,
-        },
+        ),
       ],
       success_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/statistiken?renewed=1`,
       cancel_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/statistiken`,
@@ -130,18 +131,15 @@ stripeRouter.post("/api/stripe/compliance-checkout", requireAuth, async (req: an
       mode: "subscription",
       customer_email: req.currentUser.email || undefined,
       line_items: [
-        {
-          price_data: {
-            currency: "eur",
-            product_data: {
-              name: "§34c Compliance — MaBV 20h Weiterbildungsnachweis",
-              description: "Stundenlog, PDF-Export, Modul 2 Zugang — 12 Monate",
-            },
-            unit_amount: COMPLIANCE_YEARLY_EUR * 100,
-            recurring: { interval: "year" },
+        buildSubscriptionLineItem("compliance_yearly", {
+          currency: "eur",
+          product_data: {
+            name: "§34c Compliance — MaBV 20h Weiterbildungsnachweis",
+            description: "Stundenlog, PDF-Export, Modul 2 Zugang — 12 Monate",
           },
-          quantity: 1,
-        },
+          unit_amount: COMPLIANCE_YEARLY_EUR * 100,
+          recurring: { interval: "year" },
+        }),
       ],
       success_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/weiterbildungsnachweis?compliance=1`,
       cancel_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/compliance-20h`,
@@ -174,18 +172,15 @@ stripeRouter.post("/api/stripe/rechenpraxis-checkout", requireAuth, async (req: 
       mode: "subscription",
       customer_email: req.currentUser.email || undefined,
       line_items: [
-        {
-          price_data: {
-            currency: "eur",
-            product_data: {
-              name: "Rechenpraxis Solo — 128 Aufgaben mit KI-Hilfe",
-              description: "Monatliches Abo — nur Rechenpraxis, kein Vollkurs",
-            },
-            unit_amount: RECHENPRAXIS_STANDALONE_MONTHLY_EUR * 100,
-            recurring: { interval: "month" },
+        buildSubscriptionLineItem("rechenpraxis_monthly", {
+          currency: "eur",
+          product_data: {
+            name: "Rechenpraxis Solo — 128 Aufgaben mit KI-Hilfe",
+            description: "Monatliches Abo — nur Rechenpraxis, kein Vollkurs",
           },
-          quantity: 1,
-        },
+          unit_amount: RECHENPRAXIS_STANDALONE_MONTHLY_EUR * 100,
+          recurring: { interval: "month" },
+        }),
       ],
       success_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/rechenpraxis?subscribed=1`,
       cancel_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/rechenpraxis-preise`,

@@ -27,6 +27,7 @@ type LedgerRow = {
   referralCount: number;
   commissionEur: number;
   status: string;
+  stripeTransferId?: string | null;
 };
 
 export default function ReferralAdmin() {
@@ -84,6 +85,26 @@ export default function ReferralAdmin() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Generierung fehlgeschlagen");
+      loadLedger();
+    } catch (e: any) {
+      setError(e.message);
+    } finally {
+      setLedgerLoading(false);
+    }
+  };
+
+  const connectTransfer = async (id: number) => {
+    if (!window.confirm("Connect-Transfer wirklich ausführen?")) return;
+    setLedgerLoading(true);
+    try {
+      const res = await fetch("/api/admin/payout-ledger/connect-transfer", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Transfer fehlgeschlagen");
       loadLedger();
     } catch (e: any) {
       setError(e.message);
@@ -241,9 +262,17 @@ export default function ReferralAdmin() {
                   <td style={{ padding: "8px" }}>{r.status}</td>
                   <td style={{ padding: "8px" }}>
                     {r.status === "pending" && (
-                      <button onClick={() => markPaid(r.id)} style={{ fontSize: 11, padding: "4px 8px", borderRadius: 6, border: "1px solid #059669", background: "white", cursor: "pointer", color: "#059669" }}>
-                        Bezahlt
-                      </button>
+                      <span style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
+                        <button onClick={() => connectTransfer(r.id)} style={{ fontSize: 11, padding: "4px 8px", borderRadius: 6, border: "1px solid #7c3aed", background: "white", cursor: "pointer", color: "#7c3aed" }}>
+                          Connect
+                        </button>
+                        <button onClick={() => markPaid(r.id)} style={{ fontSize: 11, padding: "4px 8px", borderRadius: 6, border: "1px solid #059669", background: "white", cursor: "pointer", color: "#059669" }}>
+                          Manuell
+                        </button>
+                      </span>
+                    )}
+                    {r.stripeTransferId && (
+                      <span style={{ fontSize: 10, color: "#94a3b8", fontFamily: "monospace" }}>{r.stripeTransferId.slice(0, 12)}…</span>
                     )}
                   </td>
                 </tr>

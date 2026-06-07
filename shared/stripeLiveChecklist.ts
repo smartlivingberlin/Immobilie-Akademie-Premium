@@ -24,6 +24,7 @@ export const STRIPE_LIVE_CHECKLIST_DEFS: StripeChecklistItemDef[] = [
   { id: "backfill", label: "Backfill accessExpiresAt ausgeführt", category: "ops", action: "/admin/referral → Anwenden" },
   { id: "test_renewal", label: "Renewal-Checkout im Testmodus verifiziert", category: "stripe", action: "E2E 09-renewal-auth + Stripe Test-Zahlung" },
   { id: "webhook_recent", label: "Webhook-Event in den letzten 7 Tagen", category: "stripe", action: "Testzahlung oder Stripe CLI trigger auslösen" },
+  { id: "stripe_price_ids", label: "Stripe Price-IDs für Abos gesetzt (Live)", category: "stripe", action: "STRIPE_PRICE_* in Railway — optional im Testmodus" },
 ];
 
 export type StripeChecklistItemStatus = StripeChecklistItemDef & {
