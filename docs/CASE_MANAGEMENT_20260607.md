@@ -1,6 +1,6 @@
 # Case Management — Immobilien Akademie Smart
 
-**Stand:** 07.06.2026 Abend  
+**Stand:** 07.06.2026 · Nach #124  
 **Owner:** Alisad Gadyri  
 **Agentur-Modus:** Produkt · Security · Compliance · Ops · QA · Legal
 
@@ -85,23 +85,18 @@
 
 ---
 
-## Merge-Welle (empfohlen)
+## Abgeschlossene Merge-Wellen (#116–#124)
 
-```
-Welle 1 — Security (heute):
-  #91 ki-stats → deploy → curl /api/admin/ki-stats → 401/403
-  #93 quiz-schutz + resend-2fa → deploy → curl all-questions 403
+| PR | Inhalt |
+|----|--------|
+| #116–#119 | Stripe Price-IDs, Webhook, Owner Revenue |
+| #120 | Security guards, Playwright CI smoke |
+| #121 | Modul 4/5 Meta, Inspect, ExitIntent, Backup |
+| #122 | Modul 5 Polish, Stripe Live-E2E |
+| #123 | R2 Workflow, Stripe Guards CI |
+| #124 | MySQL Health-Ping, Ops-Runbook |
 
-Welle 2 — UX/Compliance:
-  #92 Inspect-Polish
-  #94 Claims + Cookie
-  #87 + #88 UI-Labels (optional batch)
-
-Welle 3 — Qualität/Ops:
-  #90 Modul-Smoke (manuell ausführen)
-  #95 CI vitest
-  #89 R2-Doku (kein Code-Risiko)
-```
+**Externe Ops:** [EXTERNAL_OPS_CHECKLIST.md](./EXTERNAL_OPS_CHECKLIST.md)
 
 ---
 
@@ -121,11 +116,11 @@ Welle 3 — Qualität/Ops:
 
 ## Definition of Done (Sprint 07.06.)
 
-- [ ] Alle P0/P1 Cases haben PR oder externes Ticket
-- [ ] `pnpm test` ≥ 18 Tests grün (inkl. Server-Unit)
-- [ ] `tsc` 0 Errors
-- [ ] Keine verbotenen Dateien geändert
-- [ ] Produktion: Health 8/8, module*.json 403 anonym
+- [x] Alle P0/P1 Code-Cases haben PR (#116–#124)
+- [x] `pnpm test` — 103 Tests grün
+- [x] `tsc` 0 Errors
+- [x] Keine verbotenen Dateien geändert
+- [ ] Produktion: R2 + Stripe Live + MySQL FAILED (extern, Alisad)
 
 ---
 

@@ -48,7 +48,14 @@ async function runAllChecks(): Promise<{
 }> {
   const base = BASE_URL;
   const results = await Promise.all([
-    httpCheck(`${base}/api/health`, { expectedBody: '"ok":true' }).then(r => ["health", r] as const),
+    httpCheck(`${base}/api/health`, {
+      expectedStatus: 200,
+      expectedBody: '"ok":true',
+    }).then(r => ["health", r] as const),
+    httpCheck(`${base}/api/health`, {
+      expectedStatus: 200,
+      expectedBody: '"db":"connected"',
+    }).then(r => ["health_db", r] as const),
     httpCheck(`${base}/api/auth/me`, { expectedStatus: 401 }).then(r => ["auth", r] as const),
     httpCheck(`${base}/data/all-questions.json`, { expectedStatus: 403 }).then(r => ["quiz_data_guard", r] as const),
     httpCheck(`${base}/data/module4.json`, { expectedStatus: 403 }).then(r => ["module_data_guard", r] as const),
@@ -145,12 +152,13 @@ async function sendAlert(failedChecks: string[], checks: Record<string, any>): P
 function generateRecommendations(checks: Record<string, any>): string[] {
   const recs: string[] = [];
   if (!checks.health?.ok) recs.push("KRITISCH: /api/health antwortet nicht — Server prüfen");
+  if (!checks.health_db?.ok) recs.push("KRITISCH: /api/health meldet DB-Ausfall — docs/RAILWAY_MYSQL_OPS.md");
   if (!checks.database?.ok) recs.push("KRITISCH: Datenbankverbindung unterbrochen — Railway DB prüfen");
   if (!checks.stripe_webhook?.ok) recs.push("KRITISCH: Stripe-Webhook nicht erreichbar — Zahlungen gefährdet");
   if (!checks.auth?.ok) recs.push("HOCH: Auth-Endpoint fehlerhaft — Nutzer können sich nicht einloggen");
   if (!checks.homepage?.ok) recs.push("HOCH: Startseite nicht erreichbar — Portal down");
-  if (!checks.quiz_data?.ok) recs.push("MITTEL: Quiz-Daten nicht ladbar — Prüfungssimulation defekt");
-  if (!checks.module4_hints?.ok) recs.push("MITTEL: Modul-4-Daten fehlerhaft");
+  if (!checks.quiz_data_guard?.ok) recs.push("MITTEL: Quiz-Daten öffentlich erreichbar — Modul-Guard prüfen");
+  if (!checks.module_data_guard?.ok) recs.push("MITTEL: Modul-Daten öffentlich erreichbar — Modul-Guard prüfen");
   if (!checks.sitemap?.ok) recs.push("NIEDRIG: Sitemap nicht erreichbar — SEO beeinträchtigt");
   
   // Performance-Empfehlungen

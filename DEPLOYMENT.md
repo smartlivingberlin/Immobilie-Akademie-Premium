@@ -423,6 +423,8 @@ Inspect startet auf `/modul/1` — KI-Tutor ist im Demo-Modus deaktiviert.
 **MySQL FAILED in Railway:** Siehe [docs/RAILWAY_MYSQL_OPS.md](docs/RAILWAY_MYSQL_OPS.md) — zuerst Backup, dann Redeploy.  
 Health-Check: `GET /api/health` liefert `db: connected` oder 503 bei Ausfall.
 
+**Externe Ops (Alisad):** [docs/EXTERNAL_OPS_CHECKLIST.md](docs/EXTERNAL_OPS_CHECKLIST.md)
+
 ---
 
 ## Checkliste vor Go-Live

@@ -459,6 +459,8 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
       const totals = (totalsRows as any[])[0];
       const [leadsRows] = await db.$client.query(`SELECT COUNT(*) as c FROM trial_leads`) as any;
       const leads = (leadsRows as any[])[0];
+      const { getMysqlHealth } = await import("./mysqlHealth");
+      const mysqlHealth = await getMysqlHealth();
       res.json({
         totalUsers: Number(totals?.totalUsers || 0),
         activeToday: Number(totals?.activeToday || 0),
@@ -468,7 +470,8 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
         recentUsers: users || [],
         systemHealth: {
           server: true,
-          db: true,
+          db: mysqlHealth.ok,
+          dbLatencyMs: mysqlHealth.latencyMs,
           stripe: !!process.env.STRIPE_SECRET_KEY,
           stripeMode: process.env.STRIPE_SECRET_KEY?.startsWith('sk_live_') ? 'LIVE ✅' : 'TEST-MODUS ⚠️',
         },
