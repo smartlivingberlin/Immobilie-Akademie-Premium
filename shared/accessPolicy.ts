@@ -18,6 +18,7 @@ export const PRODUCT_INCLUDED_MONTHS: Record<string, number> = {
   gutachter: 8,
   komplett: 20,
   compliance_20h: 12,
+  rechenpraxis_standalone: 1,
 };
 
 export const MODULE_INCLUDED_MONTHS: Record<number, number> = {

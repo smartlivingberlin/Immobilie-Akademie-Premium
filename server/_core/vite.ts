@@ -6,6 +6,7 @@ import type { Server } from "http";
 import { jwtVerify } from "jose";
 import { COOKIE_NAME } from "@shared/const";
 import { isInspectModeActive } from "../inspectMode";
+import { RECHENPRAXIS_MODULE_SENTINEL } from "../../shared/rechenpraxisProduct";
 
 const PROTECTED_CHUNKS: Record<string, number[]> = {
   "Module1Detail": [1],
@@ -50,10 +51,54 @@ export function getProtectedModuleDataRequirement(requestPath: string): number[]
 }
 
 async function protectModuleData(req: Request, res: Response, next: NextFunction) {
+  const filename = path.basename(req.path);
+  if (filename === "rechenpraxis.json") {
+    return authorizeRechenpraxisData(req, res, next);
+  }
+
   const requiredModules = getProtectedModuleDataRequirement(req.path);
   if (!requiredModules) return next();
 
   return authorizeModuleAccess(req, res, next, requiredModules);
+}
+
+async function authorizeRechenpraxisData(req: Request, res: Response, next: NextFunction) {
+  if (isInspectModeActive(req)) return next();
+
+  const token = req.cookies?.[COOKIE_NAME];
+  if (!token) { res.status(403).json({ error: "Nicht autorisiert" }); return; }
+
+  try {
+    const { payload } = await jwtVerify(token, getSecret(), { algorithms: ["HS256"] });
+    const openId = (payload as any).openId as string;
+    if ((payload as any).role === "admin") return next();
+
+    if (openId) {
+      const { getUserByOpenId } = await import("../db");
+      const user = await getUserByOpenId(openId);
+      if (user?.role === "admin") return next();
+
+      const accessExpiresAt = (user as any)?.accessExpiresAt;
+      if (accessExpiresAt && new Date(accessExpiresAt) < new Date()) {
+        return res.status(403).json({ error: "Zugang abgelaufen — bitte verlängern" });
+      }
+      const trialExpiresAt = (user as any)?.trialExpiresAt;
+      if (trialExpiresAt && new Date(trialExpiresAt) < new Date()) {
+        res.status(403).json({ error: "Testzugang abgelaufen" });
+        return;
+      }
+
+      const rawModules = user?.enabledModules || (payload as any).enabledModules || "";
+      const tokens = String(rawModules).split(",").map((m: string) => m.trim()).filter(Boolean);
+      if (tokens.includes(RECHENPRAXIS_MODULE_SENTINEL)) return next();
+      const enabledModules = tokens.map((m: string) => parseInt(m, 10)).filter((n: number) => !isNaN(n));
+      if ([1, 2, 3, 4, 5].some((m) => enabledModules.includes(m))) return next();
+    }
+
+    res.status(403).json({ error: "Rechenpraxis nicht freigeschaltet" });
+  } catch {
+    res.status(403).json({ error: "Ungueltige Session" });
+  }
 }
 
 async function authorizeModuleAccess(req: Request, res: Response, next: NextFunction, requiredModules: number[]) {

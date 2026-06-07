@@ -1,14 +1,39 @@
+import { useState } from "react";
 import { Link } from "wouter";
 import { SEO } from "@/components/SEO";
 import { Calculator, CheckCircle2, ArrowRight } from "lucide-react";
 import { RECHENPRAXIS_PLANS, RECHENPRAXIS_STANDALONE_NOTE } from "@shared/rechenpraxisPricing";
+import { trpc } from "@/lib/trpc";
 
 export default function RechenpraxisPricing() {
+  const { data: user } = trpc.auth.me.useQuery();
+  const [loading, setLoading] = useState(false);
+
+  const startStandaloneCheckout = async () => {
+    if (!user) {
+      window.location.href = "/login?redirect=/rechenpraxis-preise";
+      return;
+    }
+    setLoading(true);
+    try {
+      const res = await fetch("/api/stripe/rechenpraxis-checkout", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({}),
+      });
+      const data = await res.json();
+      if (data.url) window.location.href = data.url;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <SEO
         title="Rechenpraxis Preise — 128 Aufgaben mit KI-Hilfe"
-        description="Preise für die interaktive Rechenpraxis: im Modulkurs inklusive, Portal-Verlängerung ab 29 €/Jahr, Team-Lizenzen ab 199 €/Monat."
+        description="Preise für die interaktive Rechenpraxis: Solo ab 19 €/Monat, im Modulkurs inklusive, Portal-Verlängerung ab 29 €/Jahr, Team ab 199 €/Monat."
         keywords="Rechenpraxis Preise, Immobilien Rechner Abo, Hausverwaltung Rechentraining"
         canonical="https://immobilien-akademie-smart.de/rechenpraxis-preise"
       />
@@ -26,8 +51,8 @@ export default function RechenpraxisPricing() {
           <p className="text-sm text-slate-500 max-w-xl mx-auto">{RECHENPRAXIS_STANDALONE_NOTE}</p>
         </section>
 
-        <section className="container mx-auto px-4 pb-16 max-w-5xl">
-          <div className="grid md:grid-cols-3 gap-6">
+        <section className="container mx-auto px-4 pb-16 max-w-6xl">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {RECHENPRAXIS_PLANS.map((plan) => (
               <div
                 key={plan.id}
@@ -56,15 +81,26 @@ export default function RechenpraxisPricing() {
                     </li>
                   ))}
                 </ul>
-                <Link href={plan.cta.href}>
-                  <span className={`inline-flex items-center justify-center gap-2 w-full font-semibold py-3 px-4 rounded-xl cursor-pointer ${
-                    plan.highlight
-                      ? "bg-blue-600 hover:bg-blue-700 text-white"
-                      : "border border-slate-200 hover:bg-slate-50 text-slate-800"
-                  }`}>
-                    {plan.cta.label} <ArrowRight className="h-4 w-4" />
-                  </span>
-                </Link>
+                {plan.checkout ? (
+                  <button
+                    type="button"
+                    onClick={startStandaloneCheckout}
+                    disabled={loading}
+                    className="inline-flex items-center justify-center gap-2 w-full font-semibold py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white disabled:opacity-60"
+                  >
+                    {loading ? "Weiterleitung…" : plan.cta.label} <ArrowRight className="h-4 w-4" />
+                  </button>
+                ) : (
+                  <Link href={plan.cta.href}>
+                    <span className={`inline-flex items-center justify-center gap-2 w-full font-semibold py-3 px-4 rounded-xl cursor-pointer ${
+                      plan.highlight
+                        ? "bg-blue-600 hover:bg-blue-700 text-white"
+                        : "border border-slate-200 hover:bg-slate-50 text-slate-800"
+                    }`}>
+                      {plan.cta.label} <ArrowRight className="h-4 w-4" />
+                    </span>
+                  </Link>
+                )}
               </div>
             ))}
           </div>

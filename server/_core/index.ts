@@ -248,6 +248,8 @@ app.post("/api/stripe/webhook", express.raw({ type: "*/*" }), async (req: any, r
     let event: any;
     try {
       event = stripe.webhooks.constructEvent(req.body, sig, secret);
+      const { recordStripeWebhookEvent } = await import("../stripeWebhookHealth");
+      recordStripeWebhookEvent(event.type);
     } catch (err: any) {
       // Kein Stripe-Header = Health-Check (erwartet), echte Fehler als warn
       if (err.message?.includes("No stripe-signature")) {
@@ -294,13 +296,28 @@ app.post("/api/stripe/webhook", express.raw({ type: "*/*" }), async (req: any, r
           logger.error("[Stripe Webhook] B2B DB-Fehler", dbErr);
         }
       }
+      if (userId > 0 && (subMeta.type === "rechenpraxis" || invoice.metadata?.type === "rechenpraxis")) {
+        try {
+          const { getDb } = await import("../db");
+          const db = await getDb();
+          const { processRechenpraxisSubscription } = await import("../stripePurchaseHandler");
+          await processRechenpraxisSubscription(db, userId);
+        } catch (dbErr: any) {
+          logger.error("[Stripe Webhook] Rechenpraxis DB-Fehler", dbErr);
+        }
+      }
     }
 
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
 
       // Subscription: nur invoice.paid verarbeiten (Renewal + Compliance)
-      if (session.metadata?.type === "renewal" || session.metadata?.type === "compliance" || session.metadata?.type === "b2b") {
+      if (
+        session.metadata?.type === "renewal"
+        || session.metadata?.type === "compliance"
+        || session.metadata?.type === "b2b"
+        || session.metadata?.type === "rechenpraxis"
+      ) {
         return res.json({ received: true });
       }
 

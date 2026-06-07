@@ -4,6 +4,12 @@ import { backfillAccessExpiresAt } from "./backfillAccess";
 import { getReferralAdminStats } from "./referralStats";
 import { buildStripeLiveChecklist } from "./stripeLiveChecklist";
 import { getPartnerPayoutRows, partnerPayoutRowsToCsv } from "./partnerPayoutExport";
+import {
+  generateQuarterlyPayoutEntries,
+  listPayoutLedger,
+  markPayoutPaid,
+} from "./partnerPayoutLedger";
+import { getStripeWebhookHealth } from "./stripeWebhookHealth";
 import { logger } from "./_core/logger";
 
 export const adminOpsRouter = Router();
@@ -34,7 +40,56 @@ adminOpsRouter.get("/api/admin/referral-stats", requireAdmin, async (_req, res) 
 
 adminOpsRouter.get("/api/admin/stripe-live-checklist", requireAdmin, async (_req, res) => {
   try {
-    res.json(buildStripeLiveChecklist());
+    res.json({ ...buildStripeLiveChecklist(), webhookHealth: getStripeWebhookHealth() });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+adminOpsRouter.get("/api/admin/stripe-webhook-health", requireAdmin, async (_req, res) => {
+  try {
+    res.json(getStripeWebhookHealth());
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+adminOpsRouter.get("/api/admin/payout-ledger", requireAdmin, async (_req, res) => {
+  try {
+    const { getDb } = await import("./db");
+    const db = await getDb();
+    const rows = await listPayoutLedger(db);
+    res.json({ rows });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+adminOpsRouter.post("/api/admin/payout-ledger/generate", requireAdmin, async (req, res) => {
+  try {
+    const periodStart = String(req.body?.periodStart || "").slice(0, 10);
+    const periodEnd = String(req.body?.periodEnd || "").slice(0, 10);
+    if (!periodStart || !periodEnd) {
+      return res.status(400).json({ error: "periodStart und periodEnd erforderlich (YYYY-MM-DD)" });
+    }
+    const { getDb } = await import("./db");
+    const db = await getDb();
+    const result = await generateQuarterlyPayoutEntries(db, periodStart, periodEnd);
+    res.json(result);
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+adminOpsRouter.post("/api/admin/payout-ledger/mark-paid", requireAdmin, async (req, res) => {
+  try {
+    const id = parseInt(String(req.body?.id || "0"), 10);
+    if (!id) return res.status(400).json({ error: "id erforderlich" });
+    const { getDb } = await import("./db");
+    const db = await getDb();
+    const ok = await markPayoutPaid(db, id, req.body?.note);
+    if (!ok) return res.status(404).json({ error: "Eintrag nicht gefunden oder bereits bezahlt" });
+    res.json({ ok: true });
   } catch (e: any) {
     res.status(500).json({ error: e.message });
   }
