@@ -38,8 +38,9 @@ describe("stripePriceIds", () => {
     expect(item).toEqual({ price: "price_test123", quantity: 1 });
   });
 
-  it("defines four price env keys", () => {
-    expect(Object.keys(STRIPE_PRICE_ENV_KEYS).length).toBe(4);
+  it("defines six subscription price env keys", () => {
+    expect(Object.keys(STRIPE_PRICE_ENV_KEYS).length).toBe(6);
+    expect(STRIPE_PRICE_ENV_KEYS.b2b_starter).toBe("STRIPE_PRICE_B2B_STARTER");
   });
 
   it("uses payment price id for modules when set", () => {
