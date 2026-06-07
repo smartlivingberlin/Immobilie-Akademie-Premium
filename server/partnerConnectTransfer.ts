@@ -77,3 +77,63 @@ export async function executeConnectTransferForLedger(
   logger.info("[Connect] Transfer executed", { ledgerId, transferId: transfer.id, amountEur });
   return { transferId: transfer.id, amountEur };
 }
+
+export type BatchConnectTransferResult = {
+  transferred: number;
+  skipped: number;
+  errors: Array<{ ledgerId: number; error: string }>;
+  transfers: Array<{ ledgerId: number; transferId: string; amountEur: number }>;
+};
+
+export async function executeConnectTransfersForPendingLedger(
+  db: { $client: { query: Function } },
+  options?: { periodStart?: string; periodEnd?: string },
+): Promise<BatchConnectTransferResult> {
+  if (!(await tableExists(db, "partner_payout_ledger"))) {
+    throw new Error("partner_payout_ledger fehlt");
+  }
+
+  const periodStart = options?.periodStart?.slice(0, 10);
+  const periodEnd = options?.periodEnd?.slice(0, 10);
+  let sql = `SELECT id FROM partner_payout_ledger
+             WHERE status = 'pending' AND commissionEur >= ?`;
+  const params: Array<string | number> = [PARTNER_PAYOUT_POLICY.minPayoutEur];
+  if (periodStart) {
+    sql += " AND periodStart = ?";
+    params.push(periodStart);
+  }
+  if (periodEnd) {
+    sql += " AND periodEnd = ?";
+    params.push(periodEnd);
+  }
+  sql += " ORDER BY id ASC";
+
+  const [rows] = await db.$client.query(sql, params) as any;
+  const result: BatchConnectTransferResult = {
+    transferred: 0,
+    skipped: 0,
+    errors: [],
+    transfers: [],
+  };
+
+  for (const row of rows as Array<{ id: number }>) {
+    try {
+      const transfer = await executeConnectTransferForLedger(db, row.id);
+      result.transferred += 1;
+      result.transfers.push({ ledgerId: row.id, ...transfer });
+    } catch (e: any) {
+      const msg = String(e?.message || e);
+      if (msg.includes("Connect-Konto") || msg.includes("Mindestbetrag")) {
+        result.skipped += 1;
+      }
+      result.errors.push({ ledgerId: row.id, error: msg });
+    }
+  }
+
+  logger.info("[Connect] Batch transfer finished", {
+    transferred: result.transferred,
+    skipped: result.skipped,
+    errors: result.errors.length,
+  });
+  return result;
+}

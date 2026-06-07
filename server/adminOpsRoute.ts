@@ -13,7 +13,10 @@ import { getStripeWebhookHealth } from "./stripeWebhookHealth";
 import { listAllPartnerPayoutDetails } from "./partnerPayoutDetails";
 import { buildStripeLiveEnvTemplate } from "../shared/stripeLiveEnv";
 import { verifyStripeApiKey } from "./stripeLiveVerify";
-import { executeConnectTransferForLedger } from "./partnerConnectTransfer";
+import {
+  executeConnectTransferForLedger,
+  executeConnectTransfersForPendingLedger,
+} from "./partnerConnectTransfer";
 import { getStripePriceConfig, getModulePriceConfig } from "../shared/stripePriceIds";
 import { logger } from "./_core/logger";
 
@@ -119,6 +122,13 @@ adminOpsRouter.post("/api/admin/payout-ledger/generate", requireAdmin, async (re
     const { getDb } = await import("./db");
     const db = await getDb();
     const result = await generateQuarterlyPayoutEntries(db, periodStart, periodEnd);
+    const autoConnect = req.body?.autoConnect === true;
+    const connectEnabled = process.env.STRIPE_CONNECT_ENABLED === "1"
+      || process.env.STRIPE_CONNECT_ENABLED === "true";
+    if (autoConnect && connectEnabled && result.created > 0) {
+      const batch = await executeConnectTransfersForPendingLedger(db, { periodStart, periodEnd });
+      return res.json({ ...result, connectBatch: batch });
+    }
     res.json(result);
   } catch (e: any) {
     res.status(500).json({ error: e.message });
@@ -132,6 +142,19 @@ adminOpsRouter.post("/api/admin/payout-ledger/connect-transfer", requireAdmin, a
     const { getDb } = await import("./db");
     const db = await getDb();
     const result = await executeConnectTransferForLedger(db, id);
+    res.json({ ok: true, ...result });
+  } catch (e: any) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
+adminOpsRouter.post("/api/admin/payout-ledger/connect-transfer-batch", requireAdmin, async (req, res) => {
+  try {
+    const periodStart = req.body?.periodStart ? String(req.body.periodStart).slice(0, 10) : undefined;
+    const periodEnd = req.body?.periodEnd ? String(req.body.periodEnd).slice(0, 10) : undefined;
+    const { getDb } = await import("./db");
+    const db = await getDb();
+    const result = await executeConnectTransfersForPendingLedger(db, { periodStart, periodEnd });
     res.json({ ok: true, ...result });
   } catch (e: any) {
     res.status(400).json({ error: e.message });

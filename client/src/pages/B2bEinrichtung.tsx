@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { SEO } from "@/components/SEO";
-import { Building2, Palette, KeyRound, CheckCircle2, ArrowRight, ArrowLeft, Upload } from "lucide-react";
+import { Building2, Palette, KeyRound, CheckCircle2, ArrowRight, ArrowLeft, Upload, Copy } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 
 type TenantInfo = {
@@ -13,6 +13,15 @@ type TenantInfo = {
   logoUrl?: string | null;
   maxUsers: number;
   enabledModules: string;
+};
+
+type TeamCode = {
+  id: number;
+  code: string;
+  modules: string;
+  maxUses: number;
+  usedCount: number;
+  isActive: boolean;
 };
 
 const STEPS = ["Willkommen", "Branding", "Team"];
@@ -29,6 +38,9 @@ export default function B2bEinrichtung() {
   const [welcomeText, setWelcomeText] = useState("");
   const [logoUrl, setLogoUrl] = useState<string | null>(null);
   const [logoUploading, setLogoUploading] = useState(false);
+  const [teamCodes, setTeamCodes] = useState<TeamCode[]>([]);
+  const [teamCodeLoading, setTeamCodeLoading] = useState(false);
+  const [copiedCode, setCopiedCode] = useState<string | null>(null);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -77,6 +89,47 @@ export default function B2bEinrichtung() {
     } finally {
       setLogoUploading(false);
     }
+  };
+
+  const loadTeamCodes = () => {
+    fetch("/api/b2b/onboarding/team-codes", { credentials: "include" })
+      .then((r) => r.json())
+      .then((d) => d.codes && setTeamCodes(d.codes))
+      .catch(() => {});
+  };
+
+  useEffect(() => {
+    if (hasTenant && step === 2) loadTeamCodes();
+  }, [hasTenant, step]);
+
+  const createTeamCode = async () => {
+    setTeamCodeLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/b2b/onboarding/team-codes", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          modules: tenant?.enabledModules || "",
+          maxUses: 10,
+          note: `Team ${companyName || tenant?.companyName || ""}`.trim(),
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Code-Erstellung fehlgeschlagen");
+      loadTeamCodes();
+    } catch (e: any) {
+      setError(e.message);
+    } finally {
+      setTeamCodeLoading(false);
+    }
+  };
+
+  const copyTeamCode = (code: string) => {
+    navigator.clipboard.writeText(code);
+    setCopiedCode(code);
+    setTimeout(() => setCopiedCode(null), 2000);
   };
 
   const saveBranding = async () => {
@@ -185,7 +238,29 @@ export default function B2bEinrichtung() {
                     <input value={primaryColor} onChange={(e) => setPrimaryColor(e.target.value)} className="flex-1 px-4 py-2 rounded-lg bg-slate-900 border border-slate-600 text-white font-mono text-sm" />
                   </div>
                   <label className="block text-sm text-slate-400 mb-1">Willkommenstext fürs Team</label>
-                  <textarea value={welcomeText} onChange={(e) => setWelcomeText(e.target.value)} rows={4} placeholder="Willkommen im Lernportal von …" className="w-full mb-6 px-4 py-2 rounded-lg bg-slate-900 border border-slate-600 text-white" />
+                  <textarea value={welcomeText} onChange={(e) => setWelcomeText(e.target.value)} rows={4} placeholder="Willkommen im Lernportal von …" className="w-full mb-4 px-4 py-2 rounded-lg bg-slate-900 border border-slate-600 text-white" />
+                  <div className="mb-6 rounded-xl border border-slate-600 overflow-hidden">
+                    <div className="text-xs text-slate-500 px-3 py-2 border-b border-slate-700">Vorschau Portal-Header</div>
+                    <div className="p-4 bg-white text-slate-900">
+                      <div className="flex items-center gap-3 mb-3">
+                        {logoUrl ? (
+                          <img src={logoUrl} alt="Logo" className="h-10 w-10 rounded object-contain" />
+                        ) : (
+                          <div className="h-10 w-10 rounded flex items-center justify-center text-white text-xs font-bold" style={{ backgroundColor: primaryColor }}>
+                            {(companyName || "B").slice(0, 1)}
+                          </div>
+                        )}
+                        <div>
+                          <div className="font-bold text-sm">{companyName || "Ihr Maklerbüro"}</div>
+                          <div className="text-xs text-slate-500">Lernportal</div>
+                        </div>
+                      </div>
+                      <div className="h-1 rounded-full mb-3" style={{ backgroundColor: primaryColor }} />
+                      <p className="text-sm text-slate-600">
+                        {welcomeText || "Willkommen im Lernportal Ihres Teams."}
+                      </p>
+                    </div>
+                  </div>
                   <div className="flex gap-3">
                     <button type="button" onClick={() => setStep(0)} className="inline-flex items-center gap-1 px-4 py-2 rounded-lg border border-slate-600 text-slate-300">
                       <ArrowLeft className="h-4 w-4" /> Zurück
@@ -203,16 +278,34 @@ export default function B2bEinrichtung() {
                     <KeyRound className="h-5 w-5 text-emerald-400" />
                     <h1 className="text-xl font-bold">Team einladen</h1>
                   </div>
-                  <p className="text-slate-300 mb-6">
-                    Erstellen Sie Zugangscodes für Ihre Mitarbeiter. Logo und Farben sind bereits gespeichert.
+                  <p className="text-slate-300 mb-4">
+                    Erstellen Sie Zugangscodes für Ihre Mitarbeiter — direkt hier oder in den erweiterten Einstellungen.
                   </p>
+                  <button
+                    type="button"
+                    onClick={createTeamCode}
+                    disabled={teamCodeLoading}
+                    className="w-full mb-4 inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 px-5 py-3 rounded-xl font-semibold disabled:opacity-60"
+                  >
+                    {teamCodeLoading ? "Erstelle…" : "+ Neuen Team-Code erstellen"}
+                  </button>
+                  {teamCodes.length > 0 && (
+                    <div className="mb-4 space-y-2">
+                      {teamCodes.slice(0, 5).map((c) => (
+                        <div key={c.id} className="flex items-center justify-between px-4 py-3 rounded-xl bg-slate-900 border border-slate-600">
+                          <div>
+                            <span className="font-mono text-blue-300">{c.code}</span>
+                            <span className="text-xs text-slate-500 ml-2">{c.usedCount}/{c.maxUses} genutzt</span>
+                          </div>
+                          <button type="button" onClick={() => copyTeamCode(c.code)} className="text-slate-400 hover:text-white">
+                            <Copy className="h-4 w-4" />
+                          </button>
+                        </div>
+                      ))}
+                      {copiedCode && <p className="text-xs text-emerald-400">Code {copiedCode} kopiert</p>}
+                    </div>
+                  )}
                   <div className="space-y-3">
-                    <Link href="/admin/codes">
-                      <span className="flex items-center justify-between w-full px-5 py-4 rounded-xl bg-slate-900 border border-slate-600 hover:border-blue-500 cursor-pointer">
-                        <span>Zugangscodes erstellen</span>
-                        <ArrowRight className="h-4 w-4" />
-                      </span>
-                    </Link>
                     <Link href="/admin/whitelabel">
                       <span className="flex items-center justify-between w-full px-5 py-4 rounded-xl bg-slate-900 border border-slate-600 hover:border-blue-500 cursor-pointer">
                         <span>Logo & erweiterte Einstellungen</span>

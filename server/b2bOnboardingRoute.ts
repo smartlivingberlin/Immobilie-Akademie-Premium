@@ -88,3 +88,73 @@ b2bOnboardingRouter.post("/api/b2b/onboarding/logo", requireAuth, async (req: an
     res.status(500).json({ error: e.message });
   }
 });
+
+function generateTeamCode(slug: string): string {
+  const prefix = slug.replace(/[^a-z0-9]/gi, "").slice(0, 10).toUpperCase() || "TEAM";
+  const rand = Math.random().toString(36).substring(2, 6).toUpperCase();
+  return `TEAM-${prefix}-${rand}`;
+}
+
+b2bOnboardingRouter.get("/api/b2b/onboarding/team-codes", requireAuth, async (req: any, res) => {
+  try {
+    const config = await getTenantForAdmin(req.currentUser.id);
+    if (!config) return res.status(403).json({ error: "Kein B2B-Tenant oder keine Admin-Berechtigung" });
+
+    const { getDb } = await import("./db");
+    const db = await getDb();
+    const [rows] = await db.$client.query(
+      `SELECT id, code, modules, maxUses, usedCount, isActive, note, createdAt
+       FROM access_codes WHERE created_by_user_id = ?
+       ORDER BY created_at DESC LIMIT 20`,
+      [req.currentUser.id],
+    ) as any;
+
+    res.json({
+      codes: (rows as any[]).map((r) => ({
+        id: r.id,
+        code: r.code,
+        modules: r.modules,
+        maxUses: Number(r.maxUses ?? r.max_uses ?? 1),
+        usedCount: Number(r.usedCount ?? r.used_count ?? 0),
+        isActive: Boolean(r.isActive ?? r.is_active),
+        note: r.note,
+        createdAt: r.createdAt ? new Date(r.createdAt).toISOString() : null,
+      })),
+    });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+b2bOnboardingRouter.post("/api/b2b/onboarding/team-codes", requireAuth, async (req: any, res) => {
+  try {
+    const config = await getTenantForAdmin(req.currentUser.id);
+    if (!config) return res.status(403).json({ error: "Kein B2B-Tenant oder keine Admin-Berechtigung" });
+
+    const modules = String(req.body?.modules || config.enabledModules || "").trim();
+    if (!modules) return res.status(400).json({ error: "Module erforderlich" });
+
+    const maxUses = Math.max(1, Math.min(500, parseInt(String(req.body?.maxUses || "10"), 10) || 10));
+    const note = String(req.body?.note || `Team-Code ${config.companyName || config.slug}`).slice(0, 255);
+    const code = String(req.body?.code || generateTeamCode(config.slug)).toUpperCase().trim().slice(0, 64);
+    if (!/^[A-Z0-9-]{4,64}$/.test(code)) {
+      return res.status(400).json({ error: "Ungültiger Code (A-Z, 0-9, Bindestrich)" });
+    }
+
+    const { getDb } = await import("./db");
+    const db = await getDb();
+    await db.$client.query(
+      `INSERT INTO access_codes (code, modules, max_uses, note, created_by_user_id, is_active)
+       VALUES (?, ?, ?, ?, ?, 1)`,
+      [code, modules, maxUses, note, req.currentUser.id],
+    );
+
+    logger.info("[B2B] Team code created", { userId: req.currentUser.id, tenantId: config.id, code });
+    res.json({ ok: true, code, modules, maxUses });
+  } catch (e: any) {
+    if (String(e.message).includes("Duplicate")) {
+      return res.status(409).json({ error: "Code existiert bereits" });
+    }
+    res.status(500).json({ error: e.message });
+  }
+});
