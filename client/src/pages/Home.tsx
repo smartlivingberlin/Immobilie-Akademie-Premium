@@ -177,6 +177,11 @@ export default function Home() {
                   Alle Module ansehen
                 </a>
               </Link>
+              <Link href="/warum-wir">
+                <a className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-5 py-3 text-sm text-white/80 hover:bg-white/10 transition-all">
+                  Warum wir? <Star className="h-3.5 w-3.5" />
+                </a>
+              </Link>
               <button
                 onClick={handleAudioPreview}
                 className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-sm text-white/70 hover:bg-white/10 transition-all"

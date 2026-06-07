@@ -28,6 +28,8 @@ const Syllabus = lazy(() => import("@/pages/Syllabus"));
 const Glossary = lazy(() => import("@/pages/Glossary"));
 const UserGuide = lazy(() => import("@/pages/UserGuide"));
 const Foerderung = lazy(() => import("@/pages/Foerderung"));
+const UspLanding = lazy(() => import("@/pages/UspLanding"));
+const Barrierefreiheit = lazy(() => import("@/pages/Barrierefreiheit"));
 const KursLanding = lazy(() => import("@/pages/kurs/KursLanding"));
 
 // ── Legal pages ───────────────────────────────────────────────────────────────
@@ -289,6 +291,9 @@ function Router() {
         <Route path="/tester-zugang"><TesterZugang /></Route>
         <Route path="/partner-panel"><AppLayout><AdminRoute component={PartnerDashboard} /></AppLayout></Route>
         <Route path="/foerderung"><PublicLayout><Foerderung /></PublicLayout></Route>
+        <Route path="/warum-wir"><PublicLayout><UspLanding /></PublicLayout></Route>
+        <Route path="/usp"><PublicLayout><UspLanding /></PublicLayout></Route>
+        <Route path="/barrierefreiheit"><PublicLayout><Barrierefreiheit /></PublicLayout></Route>
         <Route path="/audio-modus"><AudioModus /></Route>
         <Route component={NotFound} />
       </Switch>

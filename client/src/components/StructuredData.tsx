@@ -99,6 +99,13 @@ export function StructuredData() {
         "Vertragsrecht",
         "Betriebskostenabrechnung",
       ],
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "EUR",
+        "lowPrice": "149",
+        "highPrice": "1955",
+        "offerCount": "6",
+      },
       "hasCourseInstance": modules.map((module, index) => ({
         "@type": "CourseInstance",
         "name": module.name,
