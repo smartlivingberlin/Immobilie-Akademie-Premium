@@ -26,6 +26,19 @@ test.describe("Renewal-Flow (authentifiziert)", () => {
     expect(body.url).toMatch(/^https:\/\/checkout\.stripe\.com/);
   });
 
+  test("rechenpraxis-checkout mit Login → Session-URL", async ({ page, request }) => {
+    const loggedIn = await loginViaMagic(page);
+    expect(loggedIn).toBe(true);
+
+    const res = await request.post(`${BASE}/api/stripe/rechenpraxis-checkout`, {
+      data: {},
+      headers: { "Content-Type": "application/json" },
+    });
+    expect(res.status()).toBe(200);
+    const body = await res.json();
+    expect(body.url).toMatch(/^https:\/\/checkout\.stripe\.com/);
+  });
+
   test("Dashboard zeigt Verlängerungs-Optionen für eingeloggte Nutzer", async ({ page }) => {
     await loginViaMagic(page);
     await page.goto(`${BASE}/statistiken`, { waitUntil: "domcontentloaded" });

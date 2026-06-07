@@ -10,6 +10,8 @@ import {
   markPayoutPaid,
 } from "./partnerPayoutLedger";
 import { getStripeWebhookHealth } from "./stripeWebhookHealth";
+import { listAllPartnerPayoutDetails } from "./partnerPayoutDetails";
+import { buildStripeLiveEnvTemplate } from "../shared/stripeLiveEnv";
 import { logger } from "./_core/logger";
 
 export const adminOpsRouter = Router();
@@ -41,6 +43,25 @@ adminOpsRouter.get("/api/admin/referral-stats", requireAdmin, async (_req, res) 
 adminOpsRouter.get("/api/admin/stripe-live-checklist", requireAdmin, async (_req, res) => {
   try {
     res.json({ ...buildStripeLiveChecklist(), webhookHealth: getStripeWebhookHealth() });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+adminOpsRouter.get("/api/admin/stripe-live-env-template", requireAdmin, async (_req, res) => {
+  try {
+    res.json({ template: buildStripeLiveEnvTemplate() });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+adminOpsRouter.get("/api/admin/partner-payout-details", requireAdmin, async (_req, res) => {
+  try {
+    const { getDb } = await import("./db");
+    const db = await getDb();
+    const rows = await listAllPartnerPayoutDetails(db);
+    res.json({ rows });
   } catch (e: any) {
     res.status(500).json({ error: e.message });
   }

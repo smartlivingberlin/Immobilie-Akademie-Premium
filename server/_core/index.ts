@@ -400,6 +400,8 @@ app.use(express.json({ limit: "1mb" }));
   app.use(certificateExportRouter);
   app.use(weiterbildungExportRouter);
   app.use(referralRouter);
+  const { b2bOnboardingRouter } = await import("../b2bOnboardingRoute");
+  app.use(b2bOnboardingRouter);
   const { adminOpsRouter } = await import("../adminOpsRoute");
   app.use(adminOpsRouter);
   registerAgentRoutes(app);

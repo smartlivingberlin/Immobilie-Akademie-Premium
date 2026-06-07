@@ -55,6 +55,36 @@ referralRouter.post("/api/referral/redeem-voucher", requireAuth, async (req: any
   }
 });
 
+referralRouter.get("/api/referral/payout-details", requireAuth, async (req: any, res) => {
+  try {
+    const { getDb } = await import("./db");
+    const db = await getDb();
+    const { getPartnerPayoutDetails } = await import("./partnerPayoutDetails");
+    const details = await getPartnerPayoutDetails(db, req.currentUser.id);
+    res.json({ details });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+referralRouter.post("/api/referral/payout-details", requireAuth, async (req: any, res) => {
+  try {
+    const accountHolder = String(req.body?.accountHolder || "").trim();
+    const iban = String(req.body?.iban || "").trim();
+    const paypalEmail = req.body?.paypalEmail ? String(req.body.paypalEmail).trim() : undefined;
+    if (!accountHolder || !iban) {
+      return res.status(400).json({ error: "Kontoinhaber und IBAN erforderlich" });
+    }
+    const { getDb } = await import("./db");
+    const db = await getDb();
+    const { upsertPartnerPayoutDetails } = await import("./partnerPayoutDetails");
+    await upsertPartnerPayoutDetails(db, req.currentUser.id, { accountHolder, iban, paypalEmail });
+    res.json({ ok: true });
+  } catch (e: any) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
 referralRouter.post("/api/referral/apply", requireAuth, async (req: any, res) => {
   try {
     const { code } = req.body ?? {};

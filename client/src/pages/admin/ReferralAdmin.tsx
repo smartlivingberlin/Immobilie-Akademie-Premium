@@ -36,6 +36,7 @@ export default function ReferralAdmin() {
   const [loading, setLoading] = useState(true);
   const [backfillLoading, setBackfillLoading] = useState(false);
   const [ledgerLoading, setLedgerLoading] = useState(false);
+  const [payoutDetails, setPayoutDetails] = useState<Array<{ name: string; email: string; accountHolder: string; ibanLast4: string; status: string }>>([]);
   const [error, setError] = useState("");
 
   const loadStats = () => {
@@ -54,9 +55,17 @@ export default function ReferralAdmin() {
       .catch(() => {});
   };
 
+  const loadPayoutDetails = () => {
+    fetch("/api/admin/partner-payout-details", { credentials: "include" })
+      .then((r) => r.json())
+      .then((d) => d.rows && setPayoutDetails(d.rows))
+      .catch(() => {});
+  };
+
   useEffect(() => {
     loadStats();
     loadLedger();
+    loadPayoutDetails();
   }, []);
 
   const generateLedger = async () => {
@@ -243,6 +252,32 @@ export default function ReferralAdmin() {
           </table>
         )}
       </div>
+
+      {payoutDetails.length > 0 && (
+        <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 20, marginBottom: 20 }}>
+          <h2 style={{ fontSize: 16, fontWeight: 700, marginBottom: 12 }}>Hinterlegte Auszahlungsdaten</h2>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
+            <thead>
+              <tr style={{ borderBottom: "2px solid #e2e8f0", textAlign: "left" }}>
+                <th style={{ padding: "8px" }}>Partner</th>
+                <th style={{ padding: "8px" }}>Kontoinhaber</th>
+                <th style={{ padding: "8px" }}>IBAN ···</th>
+                <th style={{ padding: "8px" }}>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {payoutDetails.map((r) => (
+                <tr key={r.email} style={{ borderBottom: "1px solid #f1f5f9" }}>
+                  <td style={{ padding: "8px" }}>{r.name}<br /><span style={{ color: "#94a3b8", fontSize: 11 }}>{r.email}</span></td>
+                  <td style={{ padding: "8px" }}>{r.accountHolder}</td>
+                  <td style={{ padding: "8px", fontFamily: "monospace" }}>···{r.ibanLast4}</td>
+                  <td style={{ padding: "8px" }}>{r.status}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
 
       <div style={{ background: "#f0fdf4", border: "1px solid #bbf7d0", borderRadius: 12, padding: 20, marginBottom: 20 }}>
         <h2 style={{ fontSize: 16, fontWeight: 700, color: "#166534", marginBottom: 8, display: "flex", alignItems: "center", gap: 8 }}>
