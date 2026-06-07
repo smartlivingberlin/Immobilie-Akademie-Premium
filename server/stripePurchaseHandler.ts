@@ -1,8 +1,10 @@
 import { logger } from "./_core/logger";
 import { extendUserAccessFromPurchase, extendUserAccessBySubscription } from "./accessExpiry";
 import { extendComplianceAccess } from "./complianceAccess";
+import { setUserKiTier } from "./kiFairUse";
 import { applyReferralPurchaseRewards } from "./referralRewards";
 import { COMPLIANCE_PRODUCT_ID } from "../shared/compliance";
+import { KI_TIER_FULL, KI_TIER_RENEWAL } from "../shared/kiFairUse";
 
 export async function processModulePurchase(
   db: { $client: { query: Function } },
@@ -29,6 +31,7 @@ export async function processModulePurchase(
     [merged, user.id],
   );
   await extendUserAccessFromPurchase(db, user.id, productId, modulesCsv);
+  await setUserKiTier(db, user.id, KI_TIER_FULL);
   await applyReferralPurchaseRewards(db, user.id);
 
   logger.info("[Stripe] Module purchase processed", { email, modules: merged, productId });
@@ -41,6 +44,7 @@ export async function processRenewalPayment(
   interval: "month" | "year",
 ): Promise<void> {
   await extendUserAccessBySubscription(db, userId, interval);
+  await setUserKiTier(db, userId, KI_TIER_RENEWAL);
   logger.info("[Stripe] Access renewed", { userId, interval });
 }
 
@@ -68,5 +72,6 @@ export async function processComplianceSubscription(
   );
   await extendUserAccessFromPurchase(db, userId, COMPLIANCE_PRODUCT_ID, "2");
   await extendComplianceAccess(db, userId, 12);
+  await setUserKiTier(db, userId, KI_TIER_FULL);
   logger.info("[Stripe] Compliance subscription processed", { userId });
 }

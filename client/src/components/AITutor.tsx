@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { X, Send, Bot, User, Sparkles } from "lucide-react";
+import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -45,6 +46,8 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { data: me } = trpc.auth.me.useQuery();
+  const kiQuota = (me as { kiQuota?: { limit: number | null; used: number; remaining: number | null } } | null)?.kiQuota;
 
   const suggested = moduleId ? (SUGGESTED[moduleId] || DEFAULT_SUGGESTED) : DEFAULT_SUGGESTED;
 
@@ -86,6 +89,18 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
       });
 
       const data = await res.json();
+      if (res.status === 429) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString() + "_quota",
+            role: "assistant",
+            content: data.error || "KI-Tageslimit erreicht. Morgen wieder verfügbar oder Modulkauf für Vollzugang.",
+            timestamp: new Date(),
+          },
+        ]);
+        return;
+      }
       const answer = data.answer || data.error || "Keine Antwort erhalten.";
 
       setMessages((prev) => [
@@ -131,6 +146,13 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
           <X className="w-4 h-4" />
         </button>
       </div>
+
+      {kiQuota?.limit != null && (
+        <div className="px-4 py-2 bg-amber-50 border-b border-amber-100 text-xs text-amber-800">
+          KI heute: {kiQuota.used}/{kiQuota.limit}
+          {kiQuota.remaining === 0 ? " — Limit erreicht" : ` — noch ${kiQuota.remaining}`}
+        </div>
+      )}
 
       {/* Messages */}
       <ScrollArea aria-live="polite" aria-atomic="false" aria-label="KI-Tutor Antworten" className="flex-1 p-4" ref={scrollRef}>

@@ -86,6 +86,7 @@ export type UserPortalFields = {
   accessExpiresAt: string | null;
   referralCode: string | null;
   complianceExpiresAt: string | null;
+  kiTier: string | null;
 };
 
 /** Felder aus Migration 0034 — ohne schema.ts-Änderung (raw SQL). */
@@ -93,16 +94,18 @@ export async function getUserPortalFields(
   db: { $client: { query: Function } },
   userId: number,
 ): Promise<UserPortalFields> {
-  const fields: UserPortalFields = { accessExpiresAt: null, referralCode: null, complianceExpiresAt: null };
+  const fields: UserPortalFields = { accessExpiresAt: null, referralCode: null, complianceExpiresAt: null, kiTier: null };
   const hasAccess = await columnExists(db, "accessExpiresAt");
   const hasReferral = await columnExists(db, "referralCode");
   const hasCompliance = await columnExists(db, "complianceExpiresAt");
-  if (!hasAccess && !hasReferral && !hasCompliance) return fields;
+  const hasKiTier = await columnExists(db, "kiTier");
+  if (!hasAccess && !hasReferral && !hasCompliance && !hasKiTier) return fields;
 
   const cols: string[] = [];
   if (hasAccess) cols.push("accessExpiresAt");
   if (hasReferral) cols.push("referralCode");
   if (hasCompliance) cols.push("complianceExpiresAt");
+  if (hasKiTier) cols.push("kiTier");
 
   const [rows] = await db.$client.query(
     `SELECT ${cols.join(", ")} FROM users WHERE id = ? LIMIT 1`,
@@ -119,6 +122,9 @@ export async function getUserPortalFields(
   }
   if (hasCompliance && row.complianceExpiresAt) {
     fields.complianceExpiresAt = new Date(row.complianceExpiresAt).toISOString();
+  }
+  if (hasKiTier && row.kiTier) {
+    fields.kiTier = String(row.kiTier);
   }
   return fields;
 }
