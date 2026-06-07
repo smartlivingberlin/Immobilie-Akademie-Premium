@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   computeAccessExpiry,
+  daysUntilAccessExpiry,
   includedMonthsForPurchase,
   isAccessExpired,
 } from "./accessPolicy";
@@ -21,5 +22,12 @@ describe("accessPolicy", () => {
   it("detects expired access", () => {
     expect(isAccessExpired("2020-01-01", new Date("2026-06-01"))).toBe(true);
     expect(isAccessExpired(null)).toBe(false);
+  });
+
+  it("counts days until expiry", () => {
+    const ref = new Date("2026-06-01");
+    expect(daysUntilAccessExpiry(null, ref)).toBe(null);
+    expect(daysUntilAccessExpiry("2020-01-01", ref)).toBe(null);
+    expect(daysUntilAccessExpiry("2026-06-11", ref)).toBe(10);
   });
 });

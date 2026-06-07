@@ -2,6 +2,8 @@ import { useDarkMode } from "@/hooks/useDarkMode";
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
 import { useEffect, useState, useRef } from "react";
+import { daysUntilAccessExpiry } from "@shared/accessPolicy";
+import RenewalPaywall from "@/components/RenewalPaywall";
 import OnboardingWizard from "@/components/OnboardingWizard";
 import {
   TrendingUp, Clock, BookOpen, Award, Calendar,
@@ -232,7 +234,18 @@ function ModulKarte({ module, stats, enabled }: any) {
 export default function Dashboard() {
   const { data: progressData } = trpc.progress.getProgress.useQuery();
   const { data: meData } = trpc.auth.me.useQuery();
+  const [renewedMsg, setRenewedMsg] = useState(false);
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("renewed") === "1") {
+      setRenewedMsg(true);
+      window.history.replaceState({}, "", "/statistiken");
+    }
+  }, []);
+
+  const accessExpiresAt = (meData as { accessExpiresAt?: string } | null)?.accessExpiresAt;
+  const daysLeft = daysUntilAccessExpiry(accessExpiresAt);
   const enabledModules = (meData?.enabledModules || "").split(",").map(Number).filter(Boolean);
 
   const allModules = [
@@ -264,6 +277,22 @@ export default function Dashboard() {
   return (
     <div style={{ maxWidth: 1100, margin: "0 auto", padding: "24px 20px" }}>
       {!localStorage.getItem("onboarding_done") && <OnboardingWizard onComplete={() => { localStorage.setItem("onboarding_done", "1"); window.location.reload(); }} />}
+      {renewedMsg && (
+        <div style={{ background: "#ecfdf5", border: "1px solid #6ee7b7", borderRadius: 12, padding: "12px 16px", marginBottom: 16, fontSize: 14, color: "#065f46" }}>
+          Verlängerung erfolgreich — Ihr Portalzugang ist wieder aktiv.
+        </div>
+      )}
+      {daysLeft !== null && daysLeft <= 30 && enabledModules.length > 0 && (
+        <div style={{ background: "#fffbeb", border: "1px solid #fcd34d", borderRadius: 12, padding: "16px", marginBottom: 16 }}>
+          <p style={{ margin: "0 0 8px", fontSize: 14, fontWeight: 600, color: "#92400e" }}>
+            Zugang läuft in {daysLeft} Tag{daysLeft === 1 ? "" : "en"} ab
+          </p>
+          <p style={{ margin: "0 0 12px", fontSize: 13, color: "#78350f" }}>
+            Verlängern Sie jetzt ab 29 €/Jahr und behalten Sie Rechner, KI-Tutor und alle gekauften Module.
+          </p>
+          <RenewalPaywall accessExpiresAt={accessExpiresAt} variant="inline" />
+        </div>
+      )}
       {/* Header */}
       <div style={{ marginBottom: 24 }}>
         <h1 style={{ fontSize: 28, fontWeight: 800, color: "var(--color-text)", margin: "0 0 4px" }}>

@@ -277,17 +277,8 @@ app.post("/api/stripe/webhook", express.raw({ type: "*/*" }), async (req: any, r
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
 
-      if (session.metadata?.type === "renewal" && session.metadata?.userId) {
-        try {
-          const { getDb } = await import("../db");
-          const db = await getDb();
-          const { processRenewalPayment } = await import("../stripePurchaseHandler");
-          const userId = parseInt(session.metadata.userId, 10);
-          const interval = session.metadata.interval === "year" ? "year" : "month";
-          if (userId > 0) await processRenewalPayment(db, userId, interval);
-        } catch (dbErr: any) {
-          logger.error("[Stripe Webhook] Renewal checkout DB-Fehler", dbErr);
-        }
+      // Renewal: nur invoice.paid verarbeiten (vermeidet Doppel-Verlängerung bei checkout.session.completed)
+      if (session.metadata?.type === "renewal") {
         return res.json({ received: true });
       }
 

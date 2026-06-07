@@ -135,7 +135,15 @@ export const appRouter = router({
   quiz: quizRouter,
   azav: azavRouter,
   auth: router({
-    me: publicProcedure.query(opts => opts.ctx.user),
+    me: publicProcedure.query(async (opts) => {
+      const user = opts.ctx.user;
+      if (!user?.id) return null;
+      const db = await getDb();
+      if (!db) return user;
+      const { getUserPortalFields } = await import("./accessExpiry");
+      const portal = await getUserPortalFields(db, user.id);
+      return { ...user, ...portal };
+    }),
     completeOnboarding: protectedProcedure
       .input(z.object({
         learningGoal: z.string(),
@@ -339,6 +347,15 @@ export const appRouter = router({
           const tenant = await getWhitelabelConfigById(input.tenantId);
           if (!tenant) {
             throw new TRPCError({ code: 'NOT_FOUND', message: 'Tenant nicht gefunden.' });
+          }
+          const tenantUsers = await getUsersByTenantId(input.tenantId);
+          const alreadyInTenant = tenantUsers.some((u) => u.id === input.userId);
+          const maxUsers = tenant.maxUsers ?? 100;
+          if (!alreadyInTenant && tenantUsers.length >= maxUsers) {
+            throw new TRPCError({
+              code: 'FORBIDDEN',
+              message: `Nutzerlimit erreicht (${maxUsers} Plätze für ${tenant.companyName ?? 'Tenant'}).`,
+            });
           }
         }
         await assignUserToTenant(input.userId, input.tenantId);
