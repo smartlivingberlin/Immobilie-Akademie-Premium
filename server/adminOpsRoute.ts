@@ -97,6 +97,20 @@ adminOpsRouter.get("/api/admin/stripe-live-env-template", requireAdmin, async (_
   }
 });
 
+adminOpsRouter.get("/api/admin/stripe-live-env-missing", requireAdmin, async (_req, res) => {
+  try {
+    const { buildMissingStripePriceEnv, listMissingStripePriceEnvNames } = await import("@shared/stripeLiveEnv");
+    const readiness = getStripePriceReadiness();
+    res.json({
+      template: buildMissingStripePriceEnv(readiness),
+      missing: listMissingStripePriceEnvNames(readiness),
+      readiness,
+    });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
 adminOpsRouter.get("/api/admin/partner-payout-details", requireAdmin, async (_req, res) => {
   try {
     const { getDb } = await import("./db");

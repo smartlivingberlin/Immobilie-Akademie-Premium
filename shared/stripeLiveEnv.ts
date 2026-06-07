@@ -1,3 +1,7 @@
+import type { StripePriceReadiness } from "./stripePriceReadiness";
+import { STRIPE_PRICE_ENV_KEYS, STRIPE_PRODUCT_PRICE_ENV } from "./stripePriceIds";
+import type { StripePriceKey } from "./stripePriceIds";
+
 /** Railway ENV-Vorlage für Stripe Live-Umschaltung */
 
 export const STRIPE_LIVE_ENV_VARS = [
@@ -30,4 +34,31 @@ export const STRIPE_LIVE_ENV_VARS = [
 
 export function buildStripeLiveEnvTemplate(): string {
   return STRIPE_LIVE_ENV_VARS.map((v) => `${v.key}=${v.example}`).join("\n");
+}
+
+/** Nur fehlende Price-ID ENV-Variablen — für Railway Copy-Paste */
+export function buildMissingStripePriceEnv(readiness: StripePriceReadiness): string {
+  const lines: string[] = [];
+  for (const key of readiness.subscriptions.missing) {
+    const env = STRIPE_PRICE_ENV_KEYS[key as StripePriceKey];
+    if (env) lines.push(`${env}=price_…`);
+  }
+  for (const productId of readiness.modules.missing) {
+    const env = STRIPE_PRODUCT_PRICE_ENV[productId];
+    if (env) lines.push(`${env}=price_…`);
+  }
+  return lines.join("\n");
+}
+
+export function listMissingStripePriceEnvNames(readiness: StripePriceReadiness): string[] {
+  const names: string[] = [];
+  for (const key of readiness.subscriptions.missing) {
+    const env = STRIPE_PRICE_ENV_KEYS[key as StripePriceKey];
+    if (env) names.push(env);
+  }
+  for (const productId of readiness.modules.missing) {
+    const env = STRIPE_PRODUCT_PRICE_ENV[productId];
+    if (env) names.push(env);
+  }
+  return names;
 }
