@@ -59,6 +59,59 @@ function safeJsonParse<T>(raw: unknown, fallback: T): T {
   return fallback;
 }
 
+async function runPersonalDataCleanup(
+  db: any,
+  user: { userId: number; email?: string | null; openId?: string | null }
+) {
+  const email = String(user.email ?? "").trim().toLowerCase();
+  const openId = String(user.openId ?? "").trim();
+  const likeEmail = email ? `%${email}%` : "";
+  const likeOpenId = openId ? `%${openId}%` : "";
+
+  const queries: Array<{ sql: string; params: unknown[] }> = [
+    {
+      sql: "DELETE FROM pending_purchases WHERE claimedByUserId = ? OR (? <> '' AND email = ?)",
+      params: [user.userId, email, email],
+    },
+    {
+      sql: "DELETE FROM otp_tokens WHERE ? <> '' AND email = ?",
+      params: [email, email],
+    },
+    {
+      sql: "DELETE FROM password_reset_tokens WHERE ? <> '' AND email = ?",
+      params: [email, email],
+    },
+    {
+      sql: "DELETE FROM presentation_codes WHERE ? <> '' AND (label = ? OR code IN (SELECT code FROM trial_leads WHERE email = ?))",
+      params: [email, `Trial ${email}`, email],
+    },
+    {
+      sql: "DELETE FROM trial_leads WHERE ? <> '' AND email = ?",
+      params: [email, email],
+    },
+    {
+      sql: "DELETE FROM avv_agreements WHERE signedByUserId = ?",
+      params: [user.userId],
+    },
+    {
+      sql: "UPDATE access_codes SET created_by_user_id = NULL WHERE created_by_user_id = ?",
+      params: [user.userId],
+    },
+    {
+      sql: "DELETE FROM monitoring_log WHERE (? <> '' AND CAST(details AS CHAR) LIKE ?) OR (? <> '' AND CAST(details AS CHAR) LIKE ?)",
+      params: [email, likeEmail, openId, likeOpenId],
+    },
+    {
+      sql: "DELETE FROM monitoring_log_old_0022 WHERE (? <> '' AND notes LIKE ?) OR (? <> '' AND notes LIKE ?)",
+      params: [email, likeEmail, openId, likeOpenId],
+    },
+  ];
+
+  for (const query of queries) {
+    await db.$client.query(query.sql, query.params).catch(() => {});
+  }
+}
+
 /**
  * Haupt-tRPC-Router der Anwendung.
  * Main tRPC router for the application.
@@ -702,7 +755,9 @@ Antworte im folgenden JSON-Format:
         const { eq } = await import('drizzle-orm');
         const uid = input.userId;
         // DSGVO Art. 17 — vollständige Löschung aller personenbezogenen Daten
-        const openId = (await db.select().from(s.users).where(eq(s.users.id, uid)).limit(1))[0]?.openId ?? '';
+        const userRecord = (await db.select().from(s.users).where(eq(s.users.id, uid)).limit(1))[0];
+        const openId = userRecord?.openId ?? '';
+        const userEmail = userRecord?.email ?? '';
         await db.delete(s.openAnswers).where(eq(s.openAnswers.userId, uid)).catch(() => {});
         await db.delete(s.spacedRepetition).where(eq(s.spacedRepetition.userId, uid)).catch(() => {});
         await db.delete(s.videoProgress).where(eq(s.videoProgress.userId, uid)).catch(() => {});
@@ -713,8 +768,8 @@ Antworte im folgenden JSON-Format:
         await db.delete(s.feedback).where(eq(s.feedback.userId, uid)).catch(() => {});
         await db.delete(s.complaints).where(eq(s.complaints.userId, uid)).catch(() => {});
         await db.delete(s.consentLog).where(eq(s.consentLog.userId, uid)).catch(() => {});
-        const userEmail = (await db.select().from(s.users).where(eq(s.users.id, uid)).limit(1))[0]?.email ?? '';
         await db.delete(s.passwordResetTokens).where(eq(s.passwordResetTokens.email, userEmail)).catch(() => {});
+        await runPersonalDataCleanup(db, { userId: uid, email: userEmail, openId });
         const convIds = (await db.select({id: s.chatConversations.id}).from(s.chatConversations).where(eq(s.chatConversations.userId, uid))).map((r: any) => r.id);
         if (convIds.length > 0) {
           const { inArray } = await import('drizzle-orm');
@@ -743,6 +798,7 @@ Antworte im folgenden JSON-Format:
       const { eq, inArray } = await import('drizzle-orm');
       const userId = ctx.user.id;
       const openId = ctx.user.openId;
+      const userEmail = ctx.user.email ?? "";
 
       // 1. Chat-Messages (Kind von chat_conversations)
       const convs = await db.select({ id: schema.chatConversations.id })
@@ -769,10 +825,16 @@ Antworte im folgenden JSON-Format:
         .where(eq(schema.examSessions.userId, userId));
       await db.delete(schema.examWeakTopics)
         .where(eq(schema.examWeakTopics.userId, userId));
+      await db.delete(schema.examAuditLog)
+        .where(eq(schema.examAuditLog.userId, userId));
 
       // 3. Activity Heartbeats
       await db.delete(schema.activityHeartbeats)
         .where(eq(schema.activityHeartbeats.userId, userId));
+      await db.delete(schema.spacedRepetition)
+        .where(eq(schema.spacedRepetition.userId, userId));
+      await db.delete(schema.videoProgress)
+        .where(eq(schema.videoProgress.userId, userId));
 
       // 4. Open Answers
       await db.delete(schema.openAnswers)
@@ -803,6 +865,7 @@ Antworte im folgenden JSON-Format:
         .where(eq(schema.userSessions.userId, userId));
       await db.delete(schema.authCredentials)
         .where(eq(schema.authCredentials.openId, openId));
+      await runPersonalDataCleanup(db, { userId, email: userEmail, openId });
       await db.delete(schema.users)
         .where(eq(schema.users.id, userId));
 
