@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { ArrowLeft, CheckCircle, AlertTriangle, ExternalLink, Copy } from "lucide-react";
 import { buildStripeLiveEnvTemplate } from "@shared/stripeLiveEnv";
-import { STRIPE_TEST_CARD, STRIPE_TEST_CHECKOUT_STEPS } from "@shared/stripeTestGuide";
+import { STRIPE_TEST_CARD, STRIPE_TEST_CHECKOUT_STEPS, STRIPE_LIVE_COMPLETION_STEPS } from "@shared/stripeTestGuide";
+import { buildMissingStripePriceEnv, listMissingStripePriceEnvNames } from "@shared/stripeLiveEnv";
+import type { StripePriceReadiness } from "@shared/stripePriceReadiness";
 import type { StripeLiveChecklistResult } from "@shared/stripeLiveChecklist";
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -27,6 +29,7 @@ export default function StripeLiveChecklist() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
+  const [copiedMissing, setCopiedMissing] = useState(false);
   const [verifyResult, setVerifyResult] = useState<{
     ok: boolean; mode: string; currency?: string; error?: string; recommendation?: string;
     priceConfig?: Record<string, { configured: boolean; env: string }>;
@@ -39,7 +42,7 @@ export default function StripeLiveChecklist() {
   const [priceConfig, setPriceConfig] = useState<{
     subscriptions: Record<string, { configured: boolean; env: string }>;
     modules: Array<{ productId: string; configured: boolean; env: string }>;
-    readiness?: { subscriptions: { configured: number; total: number }; modules: { configured: number; total: number } };
+    readiness?: StripePriceReadiness;
   } | null>(null);
   const [pendingPurchases, setPendingPurchases] = useState<Array<{ email: string; modules: string; productId: string | null; createdAt: string }>>([]);
   const [verifying, setVerifying] = useState(false);
@@ -51,6 +54,23 @@ export default function StripeLiveChecklist() {
       .then(setVerifyResult)
       .catch((e) => setVerifyResult({ ok: false, mode: "?", error: e.message }))
       .finally(() => setVerifying(false));
+  };
+
+  const copyMissingEnv = () => {
+    const readiness = priceConfig?.readiness;
+    if (!readiness) return;
+    fetch("/api/admin/stripe-live-env-missing", { credentials: "include" })
+      .then((r) => r.json())
+      .then((d) => {
+        navigator.clipboard.writeText(d.template || buildMissingStripePriceEnv(readiness));
+        setCopiedMissing(true);
+        setTimeout(() => setCopiedMissing(false), 2000);
+      })
+      .catch(() => {
+        navigator.clipboard.writeText(buildMissingStripePriceEnv(readiness));
+        setCopiedMissing(true);
+        setTimeout(() => setCopiedMissing(false), 2000);
+      });
   };
 
   const copyEnvTemplate = () => {
@@ -93,6 +113,12 @@ export default function StripeLiveChecklist() {
 
   const modeColor =
     data?.stripeMode === "live" ? "#059669" : data?.stripeMode === "test" ? "#d97706" : "#dc2626";
+
+  const liveReady = priceConfig?.readiness?.liveReady ?? false;
+  const missingEnvNames = priceConfig?.readiness
+    ? listMissingStripePriceEnvNames(priceConfig.readiness)
+    : [];
+  const goLiveReady = liveReady && data?.stripeMode === "live";
 
   return (
     <div style={{ maxWidth: 900, margin: "0 auto", padding: "24px 20px" }}>
@@ -145,7 +171,29 @@ export default function StripeLiveChecklist() {
             >
               <Copy size={14} /> {copied ? "Kopiert!" : "ENV-Vorlage"}
             </button>
+            {missingEnvNames.length > 0 && (
+              <button
+                type="button"
+                onClick={copyMissingEnv}
+                style={{ display: "inline-flex", alignItems: "center", gap: 6, alignSelf: "center", background: "#d97706", color: "white", padding: "10px 16px", borderRadius: 8, fontSize: 13, fontWeight: 600, border: "none", cursor: "pointer" }}
+              >
+                <Copy size={14} /> {copiedMissing ? "Kopiert!" : `Fehlende (${missingEnvNames.length})`}
+              </button>
+            )}
           </div>
+
+          {goLiveReady && (
+            <div style={{ background: "#ecfdf5", border: "1px solid #6ee7b7", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: 14, color: "#065f46" }}>
+              <strong>Go-Live bereit</strong> — Alle 18 Price-IDs konfiguriert und Stripe im LIVE-Modus.
+              Checkliste abschließen und Testkauf durchführen.
+            </div>
+          )}
+
+          {liveReady && data?.stripeMode !== "live" && (
+            <div style={{ background: "#fffbeb", border: "1px solid #fcd34d", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: 13, color: "#92400e" }}>
+              Price-IDs vollständig, aber Stripe-Key noch im Testmodus. Railway: <code>STRIPE_SECRET_KEY=sk_live_…</code>
+            </div>
+          )}
 
           <div style={{ background: verifyResult?.ok ? "#f0fdf4" : "#fffbeb", border: `1px solid ${verifyResult?.ok ? "#bbf7d0" : "#fcd34d"}`, borderRadius: 12, padding: 16, marginBottom: 20 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
@@ -199,12 +247,27 @@ export default function StripeLiveChecklist() {
             />
           </div>
 
+          {priceConfig && missingEnvNames.length > 0 && (
+            <div style={{ background: "#fef2f2", border: "1px solid #fecaca", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: 12 }}>
+              <strong style={{ fontSize: 14, color: "#991b1b" }}>Fehlende Railway ENV ({missingEnvNames.length})</strong>
+              <p style={{ color: "#b91c1c", margin: "8px 0" }}>
+                Diese Variablen in Railway setzen (Stripe Dashboard → Products → Price-ID kopieren):
+              </p>
+              <div style={{ fontFamily: "monospace", fontSize: 11, color: "#7f1d1d", lineHeight: 1.8 }}>
+                {missingEnvNames.map((env) => (
+                  <div key={env}>{env}=price_…</div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {priceConfig && (
             <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: 12 }}>
               <strong style={{ fontSize: 14 }}>Price-ID Abdeckung</strong>
               <p style={{ color: "#64748b", margin: "8px 0" }}>
                 Abos {priceConfig.readiness?.subscriptions.configured ?? 0}/{priceConfig.readiness?.subscriptions.total ?? 6} ·
                 Module {priceConfig.readiness?.modules.configured ?? 0}/{priceConfig.readiness?.modules.total ?? 12}
+                {liveReady && " · ✅ Live-ready"}
               </p>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
                 <div>
@@ -266,6 +329,15 @@ export default function StripeLiveChecklist() {
             </p>
             <ol style={{ fontSize: 12, color: "#475569", margin: 0, paddingLeft: 18 }}>
               {STRIPE_TEST_CHECKOUT_STEPS.map((step) => (
+                <li key={step} style={{ marginBottom: 4 }}>{step}</li>
+              ))}
+            </ol>
+          </div>
+
+          <div style={{ background: "#eff6ff", border: "1px solid #bfdbfe", borderRadius: 12, padding: 16, marginBottom: 24 }}>
+            <strong style={{ fontSize: 14 }}>Live-Abschluss-Checkliste</strong>
+            <ol style={{ fontSize: 12, color: "#1e40af", margin: "10px 0 0", paddingLeft: 18 }}>
+              {STRIPE_LIVE_COMPLETION_STEPS.map((step) => (
                 <li key={step} style={{ marginBottom: 4 }}>{step}</li>
               ))}
             </ol>

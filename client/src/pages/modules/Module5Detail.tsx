@@ -2,7 +2,8 @@ import { trpc } from "@/lib/trpc";
 import AudioPlayer from "@/components/AudioPlayer";
 import { useState, useRef, useEffect } from "react";
 import { useActivityHeartbeat } from "@/hooks/useActivityHeartbeat";
-import { Link, useRoute } from "wouter";
+import { Link, useLocation, useRoute } from "wouter";
+import { getModuleDayCount, getModuleUeCount } from "@shared/moduleMeta";
 import { ArrowLeft, BookOpen, CheckCircle2, FileText, Gavel, Briefcase, ChevronRight, Calculator, Search, Scale, Lightbulb, AlertTriangle, Award, ArrowRight, Maximize2, Minimize2, FlaskConical, Brain } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -32,6 +33,8 @@ const VideoList = lazy(() => import("@/components/VideoPlayer").then(m => ({ def
 
 type DayContent = Record<string, unknown>;
 let _module5Cache: DayContent | null = null;
+
+const MODULE5_DAYS = getModuleDayCount(5);
 
 // Define weeks structure for Module 5 (40 Days)
 const weeks = [
@@ -67,18 +70,30 @@ const weeks = [
 
 export default function Module5Detail() {
   const [match, params] = useRoute("/modul/5/tag/:day");
+  const [, navigate] = useLocation();
   const { toast } = useToast();
-  const urlDay = params?.day ? `day_${params.day}` : "day_1";
-  
-  const [selectedDay, setSelectedDay] = useState(urlDay);
+
+  const [selectedDay, setSelectedDay] = useState("day_1");
   const [moduleData, setModuleData] = useState<DayContent | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (_module5Cache) { setModuleData(_module5Cache); return; }
-    fetch("/data/module5.json")
-      .then(r => r.json())
-      .then(d => { _module5Cache = d; setModuleData(d); });
-  }, []);
+    if (params?.day) setSelectedDay(`day_${params.day}`);
+  }, [params?.day]);
+
+  const loadModuleData = () => {
+    if (_module5Cache) { setModuleData(_module5Cache); setLoadError(null); return; }
+    setLoadError(null);
+    fetch("/data/module5.json", { credentials: "include" })
+      .then((r) => {
+        if (!r.ok) throw new Error(`module5.json HTTP ${r.status}`);
+        return r.json();
+      })
+      .then((d) => { _module5Cache = d; setModuleData(d); })
+      .catch((err) => setLoadError(err?.message || "Moduldaten konnten nicht geladen werden"));
+  };
+
+  useEffect(() => { loadModuleData(); }, []);
   const [showAITutor, setShowAITutor] = useState(false);
 
   // Lernfortschritt Tracking
@@ -151,12 +166,14 @@ export default function Module5Detail() {
 
   // Function to handle navigation to next day
   const handleNextDay = () => {
-    if (currentDayNum < 40) {
-      const nextDay = `day_${currentDayNum + 1}`;
+    if (currentDayNum < MODULE5_DAYS) {
+      const nextNum = currentDayNum + 1;
+      const nextDay = `day_${nextNum}`;
       setSelectedDay(nextDay);
+      navigate(`/modul/5/tag/${nextNum}`);
       setShowQuiz(false);
       setShowCertificate(false);
-      window.scrollTo(0,0);
+      window.scrollTo(0, 0);
     } else {
       // Last day: Show quiz
       setShowQuiz(true);
@@ -183,6 +200,8 @@ export default function Module5Detail() {
   return (
     <LoadingHandler
       isLoading={!moduleData || !currentContent}
+      error={loadError}
+      onRetry={loadModuleData}
       skeleton={
         <div className="p-8">
           {moduleSkeleton}
@@ -205,9 +224,9 @@ export default function Module5Detail() {
                 Finanzierung
               </Badge>
               <span className="text-sm">•</span>
-              <span className="text-sm">320 Unterrichtseinheiten</span>
+              <span className="text-sm">{getModuleUeCount(5)} Unterrichtseinheiten</span>
               <span className="text-sm">•</span>
-              <span className="text-sm">40 Tage</span>
+              <span className="text-sm">{MODULE5_DAYS} Tage</span>
             </div>
           </div>
         </div>
@@ -215,9 +234,9 @@ export default function Module5Detail() {
         <div className="flex items-center gap-4 bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
           <div className="text-right hidden md:block">
             <div className="text-sm font-medium text-slate-900">Fortschritt</div>
-            <div className="text-xs text-slate-500">Tag {currentDayNum} von 40</div>
+            <div className="text-xs text-slate-500">Tag {currentDayNum} von {MODULE5_DAYS}</div>
           </div>
-          <Progress value={(currentDayNum / 40) * 100} className="w-32 h-2" />
+          <Progress value={(currentDayNum / MODULE5_DAYS) * 100} className="w-32 h-2" />
         </div>
       </div>
 
@@ -254,9 +273,10 @@ export default function Module5Detail() {
                               }`}
                               onClick={() => {
                                 setSelectedDay(dayKey);
+                                navigate(`/modul/5/tag/${dayNum}`);
                                 setShowQuiz(false);
                                 setShowCertificate(false);
-                                window.scrollTo(0,0);
+                                window.scrollTo(0, 0);
                               }}
                             >
                               <div className="flex items-center gap-3 w-full">
@@ -322,7 +342,7 @@ export default function Module5Detail() {
                       Tag {currentDayNum} • {currentContent?.type || "Lerneinheit"}
                     </CardDescription>
                   </div>
-                  {currentDayNum === 40 && (
+                  {currentDayNum === MODULE5_DAYS && (
                     <Button 
                       onClick={() => setShowQuiz(true)} 
                       className="bg-blue-600 hover:bg-blue-700 text-white gap-2"
@@ -552,8 +572,12 @@ export default function Module5Detail() {
                     variant="outline"
                     onClick={() => {
                       if (currentDayNum > 1) {
-                        setSelectedDay(`day_${currentDayNum - 1}`);
-                        window.scrollTo(0,0);
+                        const prevNum = currentDayNum - 1;
+                        setSelectedDay(`day_${prevNum}`);
+                        navigate(`/modul/5/tag/${prevNum}`);
+                        setShowQuiz(false);
+                        setShowCertificate(false);
+                        window.scrollTo(0, 0);
                       }
                     }}
                     disabled={currentDayNum === 1}
@@ -565,7 +589,7 @@ export default function Module5Detail() {
                     onClick={handleNextDay}
                     className="bg-blue-600 hover:bg-blue-700 text-white"
                   >
-                    {currentDayNum === 40 ? "Zur Prüfung" : "Nächster Tag"}
+                    {currentDayNum === MODULE5_DAYS ? "Zur Prüfung" : "Nächster Tag"}
                     <ArrowRight className="h-4 w-4 ml-2" />
                   </Button>
                 </div>
