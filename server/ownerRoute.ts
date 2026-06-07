@@ -847,6 +847,20 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
     }
   });
 
+  // ── REVENUE SNAPSHOT ─────────────────────────────────────────
+  app.get("/api/owner/revenue", async (req: Request, res: Response) => {
+    if (!(await requireOwner(req, res))) return;
+    try {
+      const { getDb } = await import("./db");
+      const db = await getDb();
+      const { getOwnerRevenueSnapshot } = await import("./ownerRevenue");
+      const snapshot = await getOwnerRevenueSnapshot(db);
+      res.json(snapshot);
+    } catch (e: any) {
+      res.status(500).json({ error: e.message });
+    }
+  });
+
   // ── Portal Settings: Schreiben ──────────────────────────────
   app.post("/api/owner/settings", async (req: any, res: any) => {
     if (!(await requireOwner(req, res))) return;
