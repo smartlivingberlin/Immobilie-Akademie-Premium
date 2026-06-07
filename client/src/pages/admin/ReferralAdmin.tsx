@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
-import { ArrowLeft, Gift, Users, TrendingUp, Clock } from "lucide-react";
+import { ArrowLeft, Gift, Users, TrendingUp, Clock, Download, Banknote } from "lucide-react";
+import { PARTNER_PAYOUT_POLICY } from "@shared/partnerPayouts";
 
 type ReferralStats = {
   totalReferralCodes: number;
@@ -131,6 +132,22 @@ export default function ReferralAdmin() {
           )}
         </>
       )}
+
+      <div style={{ background: "#f0fdf4", border: "1px solid #bbf7d0", borderRadius: 12, padding: 20, marginBottom: 20 }}>
+        <h2 style={{ fontSize: 16, fontWeight: 700, color: "#166534", marginBottom: 8, display: "flex", alignItems: "center", gap: 8 }}>
+          <Banknote size={18} /> Partner-Auszahlungen
+        </h2>
+        <p style={{ fontSize: 13, color: "#166534", marginBottom: 12 }}>
+          {PARTNER_PAYOUT_POLICY.commissionPercent}% Provision auf Erstkäufe · Mindestauszahlung {PARTNER_PAYOUT_POLICY.minPayoutEur} € ·
+          Quartalsweise ({PARTNER_PAYOUT_POLICY.payoutCycle}). {PARTNER_PAYOUT_POLICY.trackingNote}
+        </p>
+        <a
+          href="/api/admin/partner-payout-export"
+          style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "8px 16px", borderRadius: 8, background: "#059669", color: "white", fontSize: 13, fontWeight: 600, textDecoration: "none" }}
+        >
+          <Download size={14} /> CSV-Export (Schätzung)
+        </a>
+      </div>
 
       <div style={{ background: "#fffbeb", border: "1px solid #fcd34d", borderRadius: 12, padding: 20 }}>
         <h2 style={{ fontSize: 16, fontWeight: 700, color: "#92400e", marginBottom: 8 }}>Backfill accessExpiresAt</h2>
