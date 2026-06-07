@@ -8,6 +8,13 @@ import {
   Clock, Award, GraduationCap, Users, CheckCircle2, Star,
   TrendingUp, Zap, Building2, Play, Mic
 } from "lucide-react";
+import {
+  KI_MODEL_COUNT,
+  MARKETING_LEARNING_TASKS_COUNT,
+  MARKETING_LEARNING_TASKS_LABEL,
+  PUBLIC_QUIZ_QUESTION_COUNT,
+  STRUCTURED_LEARNING_DAYS,
+} from "@shared/claims";
 
 const MODULES = [
   { id:1, title:"Modul 1: Immobilien-Grundkurs", kurz:"Das Fundament", preis:"149", tage:20, ue:160, slug:"modul-1-immobilien-grundkurs", desc:"Grundstücksrecht, Grundbuch, Baurecht, Wertermittlung — die Pflichtbasis für alle weiteren Module.", badge:"Einstieg", farbe:"#1d4ed8", textFarbe:"white" },
@@ -18,10 +25,10 @@ const MODULES = [
 ];
 
 const STATS = [
-  { n:855, suffix:"+", label:"Lernaufgaben", sub:"IHK-Fragen, Rechenübungen & Praxisfälle" },
-  { n:240, suffix:"", label:"Strukturierte Lerntage", sub:"5 vollständige Module" },
-  { n:3, suffix:"", label:"KI-Modelle", sub:"Claude · Gemini · Groq" },
-  { n:24, suffix:"/7", label:"Tutor verfügbar", sub:"keine Wartezeiten" },
+  { n: MARKETING_LEARNING_TASKS_COUNT, suffix: "+", label: "Lernaufgaben", sub: "IHK-Fragen, Rechenübungen & Praxisfälle" },
+  { n: STRUCTURED_LEARNING_DAYS, suffix: "", label: "Strukturierte Lerntage", sub: "5 vollständige Module" },
+  { n: KI_MODEL_COUNT, suffix: "", label: "KI-Modelle", sub: "Claude · Gemini · Groq" },
+  { n: 24, suffix: "/7", label: "Tutor verfügbar", sub: "keine Wartezeiten" },
 ];
 
 const FEATURES = [
@@ -112,7 +119,7 @@ export default function Home() {
       setAudioPlaying(false);
       return;
     }
-    const text = "Willkommen bei der Immobilien Akademie Smart. Hier bereiten Sie sich gezielt auf Immobilienberufe vor. Mit unserem KI-Tutor, 855+ Lernaufgaben und 240 strukturierten Lerntagen sind Sie optimal vorbereitet. Starten Sie jetzt mit Ihrem 24-Stunden-Testzugang.";
+    const text = `Willkommen bei der Immobilien Akademie Smart. Hier bereiten Sie sich gezielt auf Immobilienberufe vor. Mit unserem KI-Tutor, ${MARKETING_LEARNING_TASKS_LABEL} Lernaufgaben und ${STRUCTURED_LEARNING_DAYS} strukturierten Lerntagen sind Sie optimal vorbereitet. Starten Sie jetzt mit Ihrem 24-Stunden-Testzugang.`;
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = "de-DE";
     utterance.rate = 0.9;
@@ -148,16 +155,16 @@ export default function Home() {
             </h1>
             <p className="text-lg text-white/80 max-w-2xl leading-relaxed mb-8">
               §34c Makler · §34i Darlehensvermittler · WEG-Verwalter · Gutachter & Sachverständiger —
-              alle 5 Berufsbilder in einem Portal. Mit KI-Tutor, 855+ Lernaufgaben
-              und 240 strukturierten Lerntagen.
+              alle 5 Berufsbilder in einem Portal. Mit KI-Tutor, {MARKETING_LEARNING_TASKS_LABEL} Lernaufgaben
+              und {STRUCTURED_LEARNING_DAYS} strukturierten Lerntagen.
             </p>
             {/* Stat-Chips */}
             <div className="flex flex-wrap gap-2 mb-8">
               {[
-                {n:"854",l:"Lernfragen"},
+                {n:String(PUBLIC_QUIZ_QUESTION_COUNT),l:"Lernfragen"},
                 {n:"5",l:"Module"},
-                {n:"240",l:"Lerntage"},
-                {n:"3",l:"KI-Modelle"},
+                {n:String(STRUCTURED_LEARNING_DAYS),l:"Lerntage"},
+                {n:String(KI_MODEL_COUNT),l:"KI-Modelle"},
               ].map(c=>(
                 <span key={c.l} className="inline-flex items-baseline gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1 backdrop-blur-sm">
                   <span className="font-display font-semibold text-base" style={{color:"oklch(0.82 0.16 88)"}}>{c.n}</span>
@@ -328,7 +335,7 @@ export default function Home() {
               </div>
               <h3 className="font-display font-semibold text-lg text-foreground mb-2">Komplett-Ausbildung</h3>
               <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-4">
-                Alle 5 Module — Makler, Verwalter, Gutachter, Finanzierer. 240 Lerntage, 855+ Aufgaben, 5 Zertifikate.
+                Alle 5 Module — Makler, Verwalter, Gutachter, Finanzierer. {STRUCTURED_LEARNING_DAYS} Lerntage, {MARKETING_LEARNING_TASKS_LABEL} Aufgaben, 5 Zertifikate.
               </p>
               <div className="border-t border-border pt-4 mb-4">
                 <div className="text-2xl font-display font-semibold text-primary">1.955 €</div>

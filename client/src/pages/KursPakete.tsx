@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { CheckCircle2, ArrowRight, Star, Zap, Building2, TrendingUp, Award, Crown, Shield, Clock, Users, BookOpen } from "lucide-react";
 import { trackEvent } from "@/hooks/useAnalytics";
+import { MARKETING_LEARNING_TASKS_LABEL, STRUCTURED_LEARNING_DAYS } from "@shared/claims";
 
 const MODULE_INFO: Record<number, { name: string; short: string; emoji: string; color: string }> = {
   1: { name: "Immobilien-Grundkurs", short: "Grundkurs", emoji: "🏠", color: "#2563eb" },
@@ -28,7 +29,7 @@ const TRUST = [
   { icon:"🎓", label:"Praxisorientiert", sub:"§34c Weiterbildung + §34i Sachkunde" },
   { icon:"📱", label:"Dauerhafter Zugang", sub:"Einmaliger Kaufpreis, kein Abo" },
   { icon:"🤖", label:"KI-Tutor inklusive", sub:"Claude + Gemini + Groq" },
-  { icon:"📋", label:"855+ Lernaufgaben", sub:"Lernfragen, Rechenübungen & Praxisfälle" },
+  { icon:"📋", label:`${MARKETING_LEARNING_TASKS_LABEL} Lernaufgaben`, sub:"Lernfragen, Rechenübungen & Praxisfälle" },
   { icon:"🎯", label:"Prüfungssimulation", sub:"Realistische Testumgebung" },
   { icon:"🏆", label:"Zertifikat", sub:"Nach Modulabschluss" },
 ];
@@ -85,8 +86,8 @@ export default function KursPakete() {
             {[
               { value:"2.245 €", label:"Einzelwert" },
               { value:"bis 290 €", label:"Ersparnis" },
-              { value:"855+", label:"Lernaufgaben" },
-              { value:"240", label:"Lerntage" },
+              { value: MARKETING_LEARNING_TASKS_LABEL, label:"Lernaufgaben" },
+              { value: String(STRUCTURED_LEARNING_DAYS), label:"Lerntage" },
             ].map(s => (
               <div key={s.label} style={{ textAlign:"center" }}>
                 <div style={{ fontSize:22, fontWeight:900, color:"#60a5fa", fontFamily:"Fraunces, Georgia, serif" }}>{s.value}</div>

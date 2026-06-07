@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
+import { MARKETING_LEARNING_TASKS_LABEL, STRUCTURED_LEARNING_DAYS } from "@shared/claims";
 import { 
   BookOpen, 
   GraduationCap, 
@@ -322,7 +323,7 @@ export default function Syllabus() {
             <h1 className="text-3xl md:text-4xl font-bold text-slate-900">Gesamter Lehrplan</h1>
             <p className="text-slate-600 mt-2 max-w-2xl">
               Der vollständige Ausbildungsplan über alle 5 Module und 240 Tage. 
-              Insgesamt 240 Lerntage mit 855+ Lernaufgaben für Ihre Karriere.
+              Insgesamt {STRUCTURED_LEARNING_DAYS} Lerntage mit {MARKETING_LEARNING_TASKS_LABEL} Lernaufgaben für Ihre Karriere.
             </p>
           </div>
           

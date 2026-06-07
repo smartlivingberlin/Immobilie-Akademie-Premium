@@ -10,6 +10,8 @@
     "check": "tsc --noEmit",
     "format": "prettier --write .",
     "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:e2e:smoke": "playwright test tests/playwright/17-module-smoke-readonly.spec.ts --project=playwright-tests",
     "db:push": "echo \"db:push disabled on Railway\"",
     "db:backfill-access": "tsx server/scripts/backfill-access-expiry.ts --dry-run",
     "db:backfill-access:apply": "tsx server/scripts/backfill-access-expiry.ts --apply"
