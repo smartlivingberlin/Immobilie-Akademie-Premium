@@ -54,9 +54,18 @@ export default function StripeLiveChecklist() {
   };
 
   const copyEnvTemplate = () => {
-    navigator.clipboard.writeText(buildStripeLiveEnvTemplate());
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    fetch("/api/admin/stripe-live-env-template", { credentials: "include" })
+      .then((r) => r.json())
+      .then((d) => {
+        navigator.clipboard.writeText(d.template || buildStripeLiveEnvTemplate());
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      })
+      .catch(() => {
+        navigator.clipboard.writeText(buildStripeLiveEnvTemplate());
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      });
   };
 
   useEffect(() => {
@@ -229,6 +238,26 @@ export default function StripeLiveChecklist() {
               ))}
             </div>
           )}
+
+          <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: 12 }}>
+            <strong style={{ fontSize: 14 }}>Ops Quick-Links</strong>
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 10 }}>
+              {[
+                { href: "/admin/referral", label: "Referral + Backfill" },
+                { href: "/admin/stripe-live", label: "Stripe Live" },
+                { href: "/owner-dashboard", label: "Owner Revenue" },
+                { href: "/b2b-einrichtung", label: "B2B-Einrichtung" },
+              ].map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  style={{ padding: "6px 12px", borderRadius: 8, border: "1px solid #e2e8f0", color: "#2563eb", textDecoration: "none", fontSize: 12, fontWeight: 600 }}
+                >
+                  {link.label} →
+                </a>
+              ))}
+            </div>
+          </div>
 
           <div style={{ background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 12, padding: 16, marginBottom: 24 }}>
             <strong style={{ fontSize: 14 }}>Testzahlung (Testmodus)</strong>

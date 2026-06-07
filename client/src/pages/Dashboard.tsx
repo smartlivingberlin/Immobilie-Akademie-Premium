@@ -3,6 +3,7 @@ import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
 import { useEffect, useState, useRef } from "react";
 import { daysUntilAccessExpiry } from "@shared/accessPolicy";
+import { MARKETING_LEARNING_TASKS_LABEL } from "@shared/claims";
 import RenewalPaywall from "@/components/RenewalPaywall";
 import OnboardingWizard from "@/components/OnboardingWizard";
 import {
@@ -351,7 +352,7 @@ export default function Dashboard() {
         </h2>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 8 }}>
           <QuickActionItem icon="🧠" label="KI-Tutor" sub="Fragen stellen" href="/modul/1" color="#2563eb" />
-          <QuickActionItem icon="📝" label="IHK-Quiz" sub="855+ Fragen" href="/quiz" color="#7c3aed" />
+          <QuickActionItem icon="📝" label="IHK-Quiz" sub={`${MARKETING_LEARNING_TASKS_LABEL} Fragen`} href="/quiz" color="#7c3aed" />
           <QuickActionItem icon="🎯" label="Prüfung" sub="Simulation" href="/pruefung" color="#059669" />
           <QuickActionItem icon="📚" label="Lernkarten" sub="Spaced Rep." href="/lernkarten" color="#d97706" />
           <QuickActionItem icon="📊" label="Rechner" sub="Tools" href="/rechner" color="#0891b2" />

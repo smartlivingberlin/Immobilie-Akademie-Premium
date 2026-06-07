@@ -1,5 +1,6 @@
 import { useExitIntent } from "@/hooks/useExitIntent";
 import { useLocation } from "wouter";
+import { MARKETING_LEARNING_TASKS_LABEL } from "@shared/claims";
 
 export default function ExitIntentPopup() {
   const { isTriggered, dismiss } = useExitIntent({
@@ -24,7 +25,7 @@ export default function ExitIntentPopup() {
         </h2>
         <p className="text-slate-500 mb-6">
           Teste das Portal <strong>24 Stunden lang kostenlos</strong> —
-          KI-Tutor, 855+ Prüfungsfragen. Testzugang kostenlos anfordern.
+          KI-Tutor, {MARKETING_LEARNING_TASKS_LABEL} Prüfungsfragen. Testzugang kostenlos anfordern.
         </p>
 
         <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6">
@@ -32,7 +33,7 @@ export default function ExitIntentPopup() {
             ✓ Testzugang für alle 5 Module (auf Anfrage)
           </p>
           <p className="text-blue-600 text-sm">✓ KI-Tutor 24/7 nutzbar</p>
-          <p className="text-blue-600 text-sm">✓ 855+ IHK-Prüfungsfragen</p>
+          <p className="text-blue-600 text-sm">✓ {MARKETING_LEARNING_TASKS_LABEL} IHK-Prüfungsfragen</p>
         </div>
 
         <div className="space-y-3">

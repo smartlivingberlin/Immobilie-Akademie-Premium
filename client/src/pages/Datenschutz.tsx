@@ -65,9 +65,10 @@ export default function Datenschutz() {
 
 
           
-          <h3>4.6 Plausible Analytics</h3>
-          <p>Plausible Insights OÜ, Tallinn, Estland. Cookiefreie, DSGVO-konforme Webanalyse ohne personenbezogene Daten, ohne Cookies, kein Cross-Site-Tracking.
-          Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse). plausible.io/privacy</p>
+          <h3>4.6 Webanalyse (geplant, aktuell nicht aktiv)</h3>
+          <p>Derzeit ist <strong>kein externes Analytics-Script</strong> (z.&nbsp;B. Plausible) im Portal eingebunden.
+          Ihre Cookie-Einstellung für „Analyse“ wird lokal gespeichert und erst bei einer künftigen,
+          consent-gesteuerten Aktivierung genutzt. Bis dahin erfolgt keine Webanalyse durch Drittanbieter.</p>
           <h3>4.7 ElevenLabs (Text-to-Speech)</h3>
           <p>ElevenLabs, Inc., New York, USA. Für die Vorlesefunktion werden Lerntexte übermittelt. Keine personenbezogenen Daten. Art. 6 Abs. 1 lit. b DSGVO. elevenlabs.io/privacy</p>
           <p><strong>4.8 Sentry (Fehler-Monitoring)</strong><br />
