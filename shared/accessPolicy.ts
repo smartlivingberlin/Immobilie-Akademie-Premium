@@ -75,3 +75,14 @@ export function isAccessExpired(
 
 export const ACCESS_MARKETING_COPY =
   "Doppelte Lernzeit inklusive — danach Portal weiternutzen ab 29 €/Jahr oder 5 €/Monat (nur für gekaufte Module).";
+
+/** Tage bis Ablauf (null wenn unbefristet oder bereits abgelaufen). */
+export function daysUntilAccessExpiry(
+  accessExpiresAt: Date | string | null | undefined,
+  reference = new Date(),
+): number | null {
+  if (!accessExpiresAt) return null;
+  const expiry = new Date(accessExpiresAt);
+  if (expiry <= reference) return null;
+  return Math.ceil((expiry.getTime() - reference.getTime()) / (1000 * 60 * 60 * 24));
+}

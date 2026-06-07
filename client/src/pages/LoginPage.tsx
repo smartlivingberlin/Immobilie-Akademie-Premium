@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { isOAuthEnabled, handleGoogleLogin } from "@/lib/oauth";
 
@@ -11,6 +11,19 @@ export default function LoginPage() {
   const [demoCode, setDemoCode] = useState("");
   const [demoCodeLoading, setDemoCodeLoading] = useState(false);
   const [demoCodeMsg, setDemoCodeMsg] = useState("");
+  const [referralCode, setReferralCode] = useState("");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get("ref")?.trim();
+    const stored = sessionStorage.getItem("referralCode")?.trim();
+    const code = ref || stored || "";
+    if (code) {
+      setReferralCode(code);
+      sessionStorage.setItem("referralCode", code);
+      if (ref) setMode("register");
+    }
+  }, []);
 
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -24,7 +37,9 @@ export default function LoginPage() {
     if (!email || !password) { setError("Bitte E-Mail und Passwort eingeben."); return; }
     setError(""); setLoading(true);
     const endpoint = mode === "login" ? "/api/auth/login" : "/api/auth/register";
-    const body = mode === "login" ? { email, password } : { email, password, name };
+    const body = mode === "login"
+      ? { email, password }
+      : { email, password, name, ...(referralCode ? { referralCode } : {}) };
     try {
       const res = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), credentials: "include" });
       const data = await res.json();
@@ -65,6 +80,11 @@ export default function LoginPage() {
         </div>
         <div style={{ background: "white", borderRadius: "20px", padding: "36px", boxShadow: "0 25px 50px rgba(0,0,0,0.4)" }}>
           <h2 style={{ fontSize: "20px", fontWeight: "600", color: "#1e293b", margin: "0 0 24px" }}>{mode === "login" ? "Anmelden" : "Konto erstellen"}</h2>
+          {referralCode && mode === "register" && (
+            <div style={{ background: "#eff6ff", border: "1px solid #bfdbfe", borderRadius: "10px", padding: "10px 12px", fontSize: "13px", color: "#1e40af", marginBottom: "16px" }}>
+              Empfehlung erkannt — nach Ihrem ersten Kauf erhalten Sie und Ihr Empfehlender Bonus-Tage.
+            </div>
+          )}
           {/* Google Login — erscheint automatisch wenn VITE_GOOGLE_CLIENT_ID gesetzt */}
           {isOAuthEnabled() && (
             <div style={{ marginBottom: "20px" }}>

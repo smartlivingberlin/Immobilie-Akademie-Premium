@@ -194,7 +194,7 @@ export function registerLocalAuthRoutes(app: Express) {
           sessionEnabledModules = merged;
 
           await dbConn.$client.query(
-            "UPDATE users SET enabledModules = ? WHERE id = ?",
+            "UPDATE users SET enabledModules = ?, trialExpiresAt = NULL WHERE id = ?",
             [merged, newUser.id]
           );
           const { extendUserAccessFromPurchase } = await import("../accessExpiry");

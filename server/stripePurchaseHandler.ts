@@ -22,7 +22,10 @@ export async function processModulePurchase(
   const newMods = modulesCsv.split(",").map((s: string) => s.trim()).filter(Boolean);
   const merged = [...new Set([...current, ...newMods])].join(",");
 
-  await db.$client.query("UPDATE users SET enabledModules = ? WHERE id = ?", [merged, user.id]);
+  await db.$client.query(
+    "UPDATE users SET enabledModules = ?, trialExpiresAt = NULL WHERE id = ?",
+    [merged, user.id],
+  );
   await extendUserAccessFromPurchase(db, user.id, productId, modulesCsv);
   await applyReferralPurchaseRewards(db, user.id);
 
