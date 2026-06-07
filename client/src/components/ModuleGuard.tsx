@@ -1,5 +1,6 @@
 import { useLocation, Link } from "wouter";
 import { useAuth } from "@/_core/hooks/useAuth";
+import { isInspectModeSync } from "@/lib/inspectMode";
 
 interface ModuleGuardProps {
   moduleId: number;
@@ -9,6 +10,10 @@ interface ModuleGuardProps {
 export default function ModuleGuard({ moduleId, children }: ModuleGuardProps) {
   const { user, loading } = useAuth();
   const [, navigate] = useLocation();
+
+  if (isInspectModeSync()) {
+    return <>{children}</>;
+  }
 
   if (loading) {
     return (

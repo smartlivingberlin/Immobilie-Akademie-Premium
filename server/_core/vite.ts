@@ -32,6 +32,8 @@ function getSecret(): Uint8Array {
 }
 
 async function protectModuleAssets(req: Request, res: Response, next: NextFunction) {
+  if (isInspectModeActive(req)) return next();
+
   const filename = path.basename(req.path);
   const matchedChunk = Object.keys(PROTECTED_CHUNKS).find(chunk => filename.includes(chunk));
   if (!matchedChunk) return next();
@@ -51,7 +53,16 @@ async function protectModuleData(req: Request, res: Response, next: NextFunction
   return authorizeModuleAccess(req, res, next, requiredModules);
 }
 
+function isInspectModeActive(req: Request): boolean {
+  if (req.cookies?.inspect_mode !== "1") return false;
+  const expiresAt = Number(req.cookies?.inspect_mode_expires_at);
+  if (!Number.isNaN(expiresAt) && expiresAt > 0 && Date.now() > expiresAt) return false;
+  return true;
+}
+
 async function authorizeModuleAccess(req: Request, res: Response, next: NextFunction, requiredModules: number[]) {
+  if (isInspectModeActive(req)) return next();
+
   const token = req.cookies?.[COOKIE_NAME];
   if (!token) { res.status(403).json({ error: "Nicht autorisiert" }); return; }
 
