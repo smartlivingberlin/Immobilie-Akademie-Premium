@@ -23,4 +23,11 @@ describe("inspect mode flow", () => {
     expect(appSource).toContain("if (!user && !isInspect)");
     expect(appSource).toContain("if (isInspect) return <>{children}</>");
   });
+
+  it("routes inspect module buttons to learning area and shows static stats", () => {
+    const homeSource = readFileSync(resolve(process.cwd(), "client/src/pages/Home.tsx"), "utf-8");
+    expect(homeSource).toContain("isInspect ? `/modul/${m.id}` : `/kurs/${m.slug}`");
+    expect(homeSource).toContain("showStatsInstantly");
+    expect(homeSource).toContain("instant={showStatsInstantly}");
+  });
 });
