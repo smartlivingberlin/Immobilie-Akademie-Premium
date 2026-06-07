@@ -123,6 +123,17 @@ adminOpsRouter.get("/api/admin/partner-payout-details", requireAdmin, async (_re
   }
 });
 
+adminOpsRouter.get("/api/admin/migration-status", requireAdmin, async (_req, res) => {
+  try {
+    const { getMigrationStatus } = await import("./migrate");
+    const status = await getMigrationStatus();
+    if (!status) return res.status(503).json({ error: "DATABASE_URL fehlt" });
+    res.json(status);
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
 adminOpsRouter.get("/api/admin/mysql-health", requireAdmin, async (_req, res) => {
   try {
     res.json(await getMysqlHealth());

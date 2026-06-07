@@ -74,8 +74,8 @@
 - **Owner:** Alisad + Ops — Backup zuerst, dann Redeploy
 
 ### CASE-010 — Migration ohne Ledger
-- **Status:** Backlog P2
-- **Scope:** `server/migrate.ts` + SQL-Ledger
+- **Status:** ✅ Ledger + Strict Mode + Backfill-Script + `/api/admin/migration-status`
+- **Extern:** Einmalig `pnpm run db:backfill-migrations --apply` auf Prod (siehe MIGRATION_LEDGER.md)
 
 ### CASE-011 — Server-Tests nicht in CI
 - **Status:** Fix in **#95** (vitest.config.ts)

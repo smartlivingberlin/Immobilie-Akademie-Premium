@@ -119,6 +119,7 @@ temp/
 !docs/R2_ACTIVATION_CHECKLIST.md
 !docs/RAILWAY_MYSQL_OPS.md
 !docs/EXTERNAL_OPS_CHECKLIST.md
+!docs/MIGRATION_LEDGER.md
 *.bak.*
 .tmp/
 _check/
