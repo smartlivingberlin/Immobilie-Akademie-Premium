@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { SEO } from "@/components/SEO";
 import { useSocialProof } from "@/hooks/useSocialProof";
+import { useInspectMode } from "@/hooks/useInspectMode";
 import { useState, useEffect, useRef } from "react";
 import {
   ArrowRight, BookOpenCheck, Bot, Sparkles, ShieldCheck,
@@ -42,22 +43,27 @@ const IMAGES = {
 };
 
 // Animierter Zaehler-Hook
-function useCountUp(target: number, duration: number = 1500) {
-  const [count, setCount] = useState(0);
-  const [started, setStarted] = useState(false);
+function useCountUp(target: number, duration: number = 1500, instant = false) {
+  const [count, setCount] = useState(instant ? target : 0);
+  const [started, setStarted] = useState(instant);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (instant) {
+      setCount(target);
+      setStarted(true);
+      return;
+    }
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting && !started) setStarted(true); },
       { threshold: 0.3 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, [started]);
+  }, [started, instant, target]);
 
   useEffect(() => {
-    if (!started) return;
+    if (!started || instant) return;
     let start = 0;
     const step = target / (duration / 16);
     const timer = setInterval(() => {
@@ -71,8 +77,8 @@ function useCountUp(target: number, duration: number = 1500) {
   return { count, ref };
 }
 
-function AnimatedStat({ n, suffix, label, sub }: { n:number; suffix:string; label:string; sub:string }) {
-  const { count, ref } = useCountUp(n);
+function AnimatedStat({ n, suffix, label, sub, instant = false }: { n:number; suffix:string; label:string; sub:string; instant?: boolean }) {
+  const { count, ref } = useCountUp(n, 1500, instant);
   return (
     <div ref={ref} className="text-center rounded-2xl bg-background border border-border p-6 shadow-soft">
       <div className="font-display text-4xl font-semibold text-primary mb-1 will-change-transform">
@@ -86,7 +92,19 @@ function AnimatedStat({ n, suffix, label, sub }: { n:number; suffix:string; labe
 
 export default function Home() {
   const socialProof = useSocialProof();
+  const { active: isInspect } = useInspectMode();
   const [audioPlaying, setAudioPlaying] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReducedMotion(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  const showStatsInstantly = isInspect || reducedMotion;
 
   const handleAudioPreview = () => {
     if (audioPlaying) {
@@ -248,7 +266,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {STATS.map((s,i)=>(
-              <AnimatedStat key={i} n={s.n} suffix={s.suffix} label={s.label} sub={s.sub} />
+              <AnimatedStat key={i} n={s.n} suffix={s.suffix} label={s.label} sub={s.sub} instant={showStatsInstantly} />
             ))}
           </div>
         </div>
@@ -286,10 +304,10 @@ export default function Home() {
                     <span>{m.ue} UE</span>
                     <span className="font-semibold text-foreground text-base">ab {m.preis} €</span>
                   </div>
-                  <Link href={`/kurs/${m.slug}`}>
+                  <Link href={isInspect ? `/modul/${m.id}` : `/kurs/${m.slug}`}>
                     <a className="inline-flex items-center justify-center gap-2 w-full rounded-xl px-4 py-2.5 text-sm font-semibold transition-all"
                       style={{background:m.farbe,color:m.textFarbe}}>
-                      {m.title} ansehen <ArrowRight className="h-4 w-4" />
+                      {isInspect ? `${m.title} öffnen` : `${m.title} ansehen`} <ArrowRight className="h-4 w-4" />
                     </a>
                   </Link>
                 </div>
