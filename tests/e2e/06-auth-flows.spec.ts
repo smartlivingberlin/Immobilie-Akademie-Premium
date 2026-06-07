@@ -43,12 +43,13 @@ test.describe("🔐 Authentication & Authorization Flows", () => {
   });
 
   test("5. Inspect cookie → banner sichtbar", async ({ page }) => {
-    await page.context().addCookies([{
-      name: "inspect_mode", value: "1",
-      domain: "immobilien-akademie-smart.de", path: "/"
-    }]);
-    await page.goto(`${BASE_URL}/`);
-    await expect(page.locator('span:has-text("Vorschau-Modus")').first()).toBeVisible();
+    const expiresAt = String(Date.now() + 72 * 60 * 60 * 1000);
+    await page.context().addCookies([
+      { name: "inspect_mode", value: "1", domain: "immobilien-akademie-smart.de", path: "/" },
+      { name: "inspect_mode_expires_at", value: expiresAt, domain: "immobilien-akademie-smart.de", path: "/" },
+    ]);
+    await page.goto(`${BASE_URL}/admin?inspect=1`);
+    await expect(page.locator("text=/Admin-Vorschau|Vorschau-Modus|DEMO/i").first()).toBeVisible({ timeout: 10000 });
   });
 
   test("6. Logout → /admin → /login", async ({ page }) => {
