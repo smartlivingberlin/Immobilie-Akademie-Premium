@@ -20,6 +20,7 @@ const scanRoots = [
 const allowedRelativePaths = new Set([
   "CLAIMS_POLICY.md",
   "client/src/__tests__/claims-policy.test.ts",
+  "shared/claims.ts",
 ]);
 
 const ignoredDirectories = new Set([

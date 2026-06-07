@@ -64,9 +64,10 @@ export default function CookieConsent() {
     setShowBanner(false);
     setShowSettings(false);
 
-    // Apply preferences (e.g., initialize analytics if enabled)
+    // Analytics: aktuell kein externes Tracking-Script aktiv.
+    // Bei Aktivierung von Plausible/GA hier consent-gated laden (siehe Datenschutz).
     if (prefs.analytics) {
-      // Initialize analytics here (e.g., Umami)
+      // noop — Präferenz gespeichert für künftige Integration
     }
   };
 
@@ -196,9 +197,9 @@ export default function CookieConsent() {
                 <div className="space-y-1 flex-1">
                   <Label className="text-base font-semibold">Analyse-Cookies</Label>
                   <p className="text-sm text-muted-foreground">
-                    Diese Cookies helfen uns zu verstehen, wie Besucher mit der Website interagieren. 
-                    Wir verwenden Umami Analytics, eine datenschutzfreundliche Lösung, die keine 
-                    personenbezogenen Daten erfasst und keine Cookies setzt.
+                    Diese Cookies helfen uns zu verstehen, wie Besucher mit der Website interagieren.
+                    Geplant ist eine datenschutzfreundliche Analyse (z.&nbsp;B. Plausible) — aktuell
+                    wird nach Ihrer Zustimmung noch kein externes Tracking geladen.
                   </p>
                   <p className="text-xs text-muted-foreground mt-2">
                     <strong>Beispiele:</strong> Seitenaufrufe, Verweildauer, Herkunftsland (anonymisiert)

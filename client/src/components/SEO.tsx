@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "wouter";
+import { PUBLIC_QUIZ_QUESTION_COUNT, STRUCTURED_LEARNING_DAYS } from "@shared/claims";
 
 interface SEOProps {
   title?: string;
@@ -10,9 +11,9 @@ interface SEOProps {
 }
 
 const DEFAULT_SEO = {
-  title: "Immobilien Akademie Smart | §34i Prüfung, WEG-Verwalter & §34c Maklerwissen",
-  description: "Online-Lernportal für Immobilienberufe: IHK-orientierte Vorbereitung auf §34i und WEG-Verwalter nach §26a WEG sowie Praxiswissen zu §34c GewO, Maklerrecht und Immobilienbewertung. 854 Lernfragen, KI-Tutor, 240 Lerntage.",
-  keywords: "Immobilienmakler Ausbildung, §34c GewO, WEG-Verwalter, Mietverwalter, §34i Darlehensvermittler, IHK Prüfung, Immobilien Weiterbildung, Online Lernportal",
+  title: "Immobilien Akademie Smart | IHK-orientierte Immobilien-Weiterbildung",
+  description: `Online-Lernportal für Immobilienberufe: IHK-orientierte Vorbereitung auf §34i und WEG-Verwalter nach §26a WEG sowie Praxiswissen zu §34c GewO, Maklerrecht und Immobilienbewertung. ${PUBLIC_QUIZ_QUESTION_COUNT} Lernfragen, KI-Tutor, ${STRUCTURED_LEARNING_DAYS} Lerntage.`,
+  keywords: "Immobilienmakler Ausbildung, §34c GewO, WEG-Verwalter, Mietverwalter, §34i Darlehensvermittler, IHK-orientiert, Immobilien Weiterbildung, Online Lernportal",
   ogImage: "/og-image.svg",
 };
 
