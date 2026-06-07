@@ -116,7 +116,7 @@ export function registerLocalAuthRoutes(app: Express) {
    * Erster Nutzer wird automatisch Admin.
    */
   app.post("/api/auth/register", async (req: Request, res: Response) => {
-    const { email, password, name } = req.body ?? {};
+    const { email, password, name, referralCode } = req.body ?? {};
 
     if (!email || !password || !name) {
       return res.status(400).json({ error: "Name, E-Mail und Passwort sind erforderlich." });
@@ -197,11 +197,27 @@ export function registerLocalAuthRoutes(app: Express) {
             "UPDATE users SET enabledModules = ? WHERE id = ?",
             [merged, newUser.id]
           );
+          const { extendUserAccessFromPurchase } = await import("../accessExpiry");
+          for (const row of pendingRows as any[]) {
+            await extendUserAccessFromPurchase(
+              dbConn,
+              newUser.id,
+              row.productId,
+              String(row.modules || ""),
+            );
+          }
+          const { applyReferralPurchaseRewards } = await import("../referralRewards");
+          await applyReferralPurchaseRewards(dbConn, newUser.id);
           await dbConn.$client.query(
             "UPDATE pending_purchases SET claimedAt = NOW(), claimedByUserId = ? WHERE email = ? AND claimedAt IS NULL",
             [newUser.id, normalizedEmail]
           );
           logger.info("[Auth Register] Pending Purchases geclaimt", { email: normalizedEmail, modules: merged });
+        }
+
+        if (referralCode && typeof referralCode === "string") {
+          const { attributeReferral } = await import("../referralRewards");
+          await attributeReferral(dbConn, newUser.id, referralCode);
         }
       }
     } catch (pendingErr: any) {

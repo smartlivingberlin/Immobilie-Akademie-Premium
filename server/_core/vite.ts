@@ -75,6 +75,10 @@ async function authorizeModuleAccess(req: Request, res: Response, next: NextFunc
       if (user?.role === "admin") return next();
 
       const trialExpiresAt = (user as any)?.trialExpiresAt;
+      const accessExpiresAt = (user as any)?.accessExpiresAt;
+      if (accessExpiresAt && new Date(accessExpiresAt) < new Date()) {
+        return res.status(403).json({ error: "Zugang abgelaufen — bitte verlängern" });
+      }
       if (trialExpiresAt && new Date(trialExpiresAt) < new Date()) {
         res.status(403).json({ error: "Testzugang abgelaufen" });
         return;
