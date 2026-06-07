@@ -28,8 +28,8 @@ const USP_PILLARS = [
   },
   {
     icon: Clock,
-    title: "Einmal kaufen — dauerhaft lernen",
-    desc: "Kein Jahresabo wie WBThek. Einmalzahlung, lebenslanger Zugang. 24 Stunden kostenlos alle Module testen.",
+    title: "Doppelte Lernzeit — faire Verlängerung",
+    desc: "Jeder Kauf inkl. 2× Lernzeit (z. B. 8–20 Monate). Danach weiternutzen ab 29 €/Jahr oder 5 €/Monat — nur für gekaufte Module.",
     highlight: "Ab 149 €",
   },
 ];

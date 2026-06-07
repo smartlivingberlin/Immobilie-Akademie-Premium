@@ -7,6 +7,8 @@ function createResend() {
   return new Resend(process.env.RESEND_API_KEY || "");
 }
 import { logger } from "./_core/logger";
+import { requireAuth } from "./authMiddleware";
+import { RENEWAL_MONTHLY_EUR, RENEWAL_YEARLY_EUR } from "../shared/accessPolicy";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
   apiVersion: "2026-02-25.clover",
@@ -54,11 +56,58 @@ const PRODUCTS = [
   {
     id: "modul_komplett",
     name: "Komplett-Ausbildung: Alle 5 Module — breites Immobilienwissen",
-    description: "Alle 5 Module in einem Paket: Maklerrecht, Verwaltung, Bewertung und Immobilienfinanzierung. 240 Lerntage, 1920 UE, 5 Kursabschluss-Zertifikate, Praxisaufgaben, Lernfragen, Prüfungsübungen und KI-Tutor. Einmaliger Kaufpreis.",
+    description: "Alle 5 Module in einem Paket: Maklerrecht, Verwaltung, Bewertung und Immobilienfinanzierung. 240 Lerntage, 1920 UE, 5 Kursabschluss-Zertifikate. Inkl. 20 Monate Zugang (doppelte Lernzeit). Verlängerung ab 29 €/Jahr.",
     price: 195500,
     modules: "1,2,3,4,5",
   },
 ];
+// Verlängerung — 5 €/Monat oder 29 €/Jahr (nur gekaufte Module)
+stripeRouter.post("/api/stripe/renewal-checkout", requireAuth, async (req: any, res) => {
+  try {
+    const interval = req.body?.interval === "year" ? "year" : "month";
+    const amount = interval === "year" ? RENEWAL_YEARLY_EUR * 100 : RENEWAL_MONTHLY_EUR * 100;
+    const label =
+      interval === "year"
+        ? "Portal-Verlängerung — 12 Monate (alle gekauften Module)"
+        : "Portal-Verlängerung — 1 Monat (alle gekauften Module)";
+
+    const session = await stripe.checkout.sessions.create({
+      mode: "subscription",
+      customer_email: req.currentUser.email || undefined,
+      line_items: [
+        {
+          price_data: {
+            currency: "eur",
+            product_data: { name: label },
+            unit_amount: amount,
+            recurring: { interval },
+          },
+          quantity: 1,
+        },
+      ],
+      success_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/statistiken?renewed=1`,
+      cancel_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/statistiken`,
+      metadata: {
+        type: "renewal",
+        interval,
+        userId: String(req.currentUser.id),
+      },
+      subscription_data: {
+        metadata: {
+          type: "renewal",
+          interval,
+          userId: String(req.currentUser.id),
+        },
+      },
+    });
+
+    res.json({ url: session.url });
+  } catch (err: any) {
+    logger.error("[Stripe] Renewal checkout error", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // GET /api/stripe/products — Produktliste für Kurse-Seite
 stripeRouter.get("/api/stripe/products", (_req, res) => {
   const formatted = PRODUCTS.map(p => ({
@@ -192,7 +241,11 @@ export async function stripeWebhookHandler(req: any, res: any) {
         const current = (user.enabledModules || "").split(",").map((s: string) => s.trim()).filter(Boolean);
         const newMods = modules.split(",").map((s: string) => s.trim()).filter(Boolean);
         const merged = [...new Set([...current, ...newMods])].join(",");
+        const { extendUserAccessFromPurchase } = await import("./accessExpiry");
+        const { applyReferralPurchaseRewards } = await import("./referralRewards");
         await db.$client.query("UPDATE users SET enabledModules = ? WHERE id = ?", [merged, user.id]);
+        await extendUserAccessFromPurchase(db, user.id, session.metadata?.productId, modules);
+        await applyReferralPurchaseRewards(db, user.id);
         logger.info("[Stripe Webhook] Freigeschaltet", { email, modules: merged });
         // E-Mail nach Kauf senden
         try {

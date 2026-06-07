@@ -62,6 +62,7 @@ import { audioRouter } from "../audioRouter";
 import { registerTrialRoutes } from "../trialRoute";
 import { certificateExportRouter } from "../certificateExport";
 import { weiterbildungExportRouter } from "../weiterbildungExport";
+import { referralRouter } from "../referralRoute";
 import { logger } from "./logger";
 import { requireAuth, requireAdmin } from "../authMiddleware";
 
@@ -256,24 +257,52 @@ app.post("/api/stripe/webhook", express.raw({ type: "*/*" }), async (req: any, r
       }
       return res.status(400).send("Webhook Error: " + err.message);
     }
+    if (event.type === "invoice.paid") {
+      const invoice = event.data.object;
+      const subMeta = invoice.subscription_details?.metadata ?? invoice.lines?.data?.[0]?.metadata ?? {};
+      const userId = parseInt(subMeta.userId || invoice.metadata?.userId || "0", 10);
+      const interval = (subMeta.interval || invoice.metadata?.interval) === "year" ? "year" : "month";
+      if (userId > 0 && (subMeta.type === "renewal" || invoice.metadata?.type === "renewal")) {
+        try {
+          const { getDb } = await import("../db");
+          const db = await getDb();
+          const { processRenewalPayment } = await import("../stripePurchaseHandler");
+          await processRenewalPayment(db, userId, interval);
+        } catch (dbErr: any) {
+          logger.error("[Stripe Webhook] Renewal DB-Fehler", dbErr);
+        }
+      }
+    }
+
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
+
+      if (session.metadata?.type === "renewal" && session.metadata?.userId) {
+        try {
+          const { getDb } = await import("../db");
+          const db = await getDb();
+          const { processRenewalPayment } = await import("../stripePurchaseHandler");
+          const userId = parseInt(session.metadata.userId, 10);
+          const interval = session.metadata.interval === "year" ? "year" : "month";
+          if (userId > 0) await processRenewalPayment(db, userId, interval);
+        } catch (dbErr: any) {
+          logger.error("[Stripe Webhook] Renewal checkout DB-Fehler", dbErr);
+        }
+        return res.json({ received: true });
+      }
+
       const modules = session.metadata?.modules ?? session.metadata?.bundle;
       const email = session.customer_email ?? session.customer_details?.email ?? session.metadata?.email;
-      logger.info("[Stripe Webhook] Kauf", { email, modules });
+      const productId = session.metadata?.productId ?? null;
+      logger.info("[Stripe Webhook] Kauf", { email, modules, productId });
       if (email && modules) {
         try {
           const { getDb } = await import("../db");
           const db = await getDb();
-          const { sql } = await import("drizzle-orm");
-          const [userRows] = await db.$client.query("SELECT id, enabledModules FROM users WHERE email = ?", [email]) as any;
-          if (userRows.length > 0) {
-            const user = userRows[0];
-            const current = (user.enabledModules || "").split(",").map((s: string) => s.trim()).filter(Boolean);
-            const newMods = modules.split(",").map((s: string) => s.trim()).filter(Boolean);
-            const merged = [...new Set([...current, ...newMods])].join(",");
-            await db.$client.query("UPDATE users SET enabledModules = ? WHERE id = ?", [merged, user.id]);
-            logger.info("[Stripe Webhook] Freigeschaltet", { email, modules: merged });
+          const { processModulePurchase } = await import("../stripePurchaseHandler");
+          const result = await processModulePurchase(db, email, modules, productId);
+          if (result) {
+            logger.info("[Stripe Webhook] Freigeschaltet", { email, modules: result.merged });
           } else {
             const normalizedEmail = String(email).toLowerCase().trim();
             const productId = session.metadata?.productId ?? null;
@@ -338,6 +367,7 @@ app.use(express.json({ limit: "1mb" }));
   app.use(audioRouter);
   app.use(certificateExportRouter);
   app.use(weiterbildungExportRouter);
+  app.use(referralRouter);
   registerAgentRoutes(app);
   // Healthcheck für Railway / Monitoring
   // Trial Follow-up Cron: alle 30 Minuten

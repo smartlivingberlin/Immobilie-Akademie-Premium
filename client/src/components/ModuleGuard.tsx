@@ -1,6 +1,8 @@
 import { useLocation, Link } from "wouter";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { isInspectModeSync } from "@/lib/inspectMode";
+import { isAccessExpired } from "@shared/accessPolicy";
+import RenewalPaywall from "@/components/RenewalPaywall";
 
 interface ModuleGuardProps {
   moduleId: number;
@@ -34,12 +36,23 @@ export default function ModuleGuard({ moduleId, children }: ModuleGuardProps) {
     ? new Date(trialExpiresAt) < new Date()
     : false;
 
+  const accessExpiresAt = (user as { accessExpiresAt?: string | Date }).accessExpiresAt;
+  const accessExpired =
+    user.role !== "admin" &&
+    isAccessExpired(accessExpiresAt) &&
+    Boolean(accessExpiresAt);
+
   const enabled = (user.enabledModules || "").split(",").map((m) => m.trim()).filter(Boolean);
-  const hasAccess = user.role === "admin" || 
-    (enabled.includes(String(moduleId)) && !trialExpired);
+  const hasAccess =
+    user.role === "admin" ||
+    (enabled.includes(String(moduleId)) && !trialExpired && !accessExpired);
 
   if (hasAccess) {
     return <>{children}</>;
+  }
+
+  if (accessExpired && enabled.includes(String(moduleId))) {
+    return <RenewalPaywall accessExpiresAt={accessExpiresAt} />;
   }
 
   // Trial abgelaufen
