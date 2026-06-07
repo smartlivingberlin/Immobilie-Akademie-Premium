@@ -40,7 +40,7 @@ const COMPARISON = [
   { feature: `${MARKETING_LEARNING_TASKS_LABEL} Lernaufgaben`, us: true, wbthek: false, ihk: true, billig: false },
   { feature: "Prüfungssimulation (50 Fragen)", us: true, wbthek: false, ihk: true, billig: false },
   { feature: "Audio-Lernmodus", us: true, wbthek: false, ihk: false, billig: false },
-  { feature: "MaBV 20h minutengenauer Nachweis", us: false, wbthek: true, ihk: true, billig: true },
+  { feature: "MaBV 20h minutengenauer Nachweis", us: true, wbthek: true, ihk: true, billig: true },
   { feature: "Live-Dozenten / Webinare", us: false, wbthek: false, ihk: true, billig: false },
   { feature: "IHK-/Verbands-Siegel", us: false, wbthek: false, ihk: true, billig: false },
   { feature: "Günstigster Einstieg (<300 €)", us: false, wbthek: true, ihk: false, billig: true },

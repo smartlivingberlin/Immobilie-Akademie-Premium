@@ -85,6 +85,7 @@ export async function extendUserAccessBySubscription(
 export type UserPortalFields = {
   accessExpiresAt: string | null;
   referralCode: string | null;
+  complianceExpiresAt: string | null;
 };
 
 /** Felder aus Migration 0034 — ohne schema.ts-Änderung (raw SQL). */
@@ -92,14 +93,16 @@ export async function getUserPortalFields(
   db: { $client: { query: Function } },
   userId: number,
 ): Promise<UserPortalFields> {
-  const fields: UserPortalFields = { accessExpiresAt: null, referralCode: null };
+  const fields: UserPortalFields = { accessExpiresAt: null, referralCode: null, complianceExpiresAt: null };
   const hasAccess = await columnExists(db, "accessExpiresAt");
   const hasReferral = await columnExists(db, "referralCode");
-  if (!hasAccess && !hasReferral) return fields;
+  const hasCompliance = await columnExists(db, "complianceExpiresAt");
+  if (!hasAccess && !hasReferral && !hasCompliance) return fields;
 
   const cols: string[] = [];
   if (hasAccess) cols.push("accessExpiresAt");
   if (hasReferral) cols.push("referralCode");
+  if (hasCompliance) cols.push("complianceExpiresAt");
 
   const [rows] = await db.$client.query(
     `SELECT ${cols.join(", ")} FROM users WHERE id = ? LIMIT 1`,
@@ -113,6 +116,9 @@ export async function getUserPortalFields(
   }
   if (hasReferral && row.referralCode) {
     fields.referralCode = String(row.referralCode);
+  }
+  if (hasCompliance && row.complianceExpiresAt) {
+    fields.complianceExpiresAt = new Date(row.complianceExpiresAt).toISOString();
   }
   return fields;
 }

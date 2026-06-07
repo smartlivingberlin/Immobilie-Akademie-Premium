@@ -10,7 +10,9 @@
     "check": "tsc --noEmit",
     "format": "prettier --write .",
     "test": "vitest run",
-    "db:push": "echo \"db:push disabled on Railway\""
+    "db:push": "echo \"db:push disabled on Railway\"",
+    "db:backfill-access": "tsx server/scripts/backfill-access-expiry.ts --dry-run",
+    "db:backfill-access:apply": "tsx server/scripts/backfill-access-expiry.ts --apply"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.93.0",

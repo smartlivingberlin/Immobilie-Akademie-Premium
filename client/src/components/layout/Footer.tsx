@@ -19,6 +19,9 @@ export default function Footer() {
           <Link href="/empfehlungsprogramm">
             <span className="hover:text-slate-300 cursor-pointer transition-colors">Empfehlen</span>
           </Link>
+          <Link href="/compliance-20h">
+            <span className="hover:text-slate-300 cursor-pointer transition-colors">Compliance 20h</span>
+          </Link>
           <Link href="/kurse">
             <span className="hover:text-slate-300 cursor-pointer transition-colors">Kurse & Preise</span>
           </Link>

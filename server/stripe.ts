@@ -9,6 +9,7 @@ function createResend() {
 import { logger } from "./_core/logger";
 import { requireAuth } from "./authMiddleware";
 import { RENEWAL_MONTHLY_EUR, RENEWAL_YEARLY_EUR } from "../shared/accessPolicy";
+import { COMPLIANCE_PRODUCT_ID, COMPLIANCE_YEARLY_EUR } from "../shared/compliance";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
   apiVersion: "2026-02-25.clover",
@@ -60,6 +61,14 @@ const PRODUCTS = [
     price: 195500,
     modules: "1,2,3,4,5",
   },
+  {
+    id: COMPLIANCE_PRODUCT_ID,
+    name: "§34c Compliance — MaBV 20h Weiterbildungsnachweis",
+    description:
+      "Jahreszugang: serverseitiger Stundenlog, PDF-Export nach §15b MaBV, Modul 2 Weiterbildungsthemen. Alternative zum Vollkurs — für erfahrene Makler mit Nachweispflicht.",
+    price: COMPLIANCE_YEARLY_EUR * 100,
+    modules: "2",
+  },
 ];
 // Verlängerung — 5 €/Monat oder 29 €/Jahr (nur gekaufte Module)
 stripeRouter.post("/api/stripe/renewal-checkout", requireAuth, async (req: any, res) => {
@@ -104,6 +113,50 @@ stripeRouter.post("/api/stripe/renewal-checkout", requireAuth, async (req: any, 
     res.json({ url: session.url });
   } catch (err: any) {
     logger.error("[Stripe] Renewal checkout error", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Compliance-Abo — 249 €/Jahr (§15b MaBV Nachweis + Modul 2)
+stripeRouter.post("/api/stripe/compliance-checkout", requireAuth, async (req: any, res) => {
+  try {
+    const session = await stripe.checkout.sessions.create({
+      mode: "subscription",
+      customer_email: req.currentUser.email || undefined,
+      line_items: [
+        {
+          price_data: {
+            currency: "eur",
+            product_data: {
+              name: "§34c Compliance — MaBV 20h Weiterbildungsnachweis",
+              description: "Stundenlog, PDF-Export, Modul 2 Zugang — 12 Monate",
+            },
+            unit_amount: COMPLIANCE_YEARLY_EUR * 100,
+            recurring: { interval: "year" },
+          },
+          quantity: 1,
+        },
+      ],
+      success_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/weiterbildungsnachweis?compliance=1`,
+      cancel_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/compliance-20h`,
+      metadata: {
+        type: "compliance",
+        productId: COMPLIANCE_PRODUCT_ID,
+        userId: String(req.currentUser.id),
+        modules: "2",
+      },
+      subscription_data: {
+        metadata: {
+          type: "compliance",
+          productId: COMPLIANCE_PRODUCT_ID,
+          userId: String(req.currentUser.id),
+          modules: "2",
+        },
+      },
+    });
+    res.json({ url: session.url });
+  } catch (err: any) {
+    logger.error("[Stripe] Compliance checkout error", err);
     res.status(500).json({ error: err.message });
   }
 });
