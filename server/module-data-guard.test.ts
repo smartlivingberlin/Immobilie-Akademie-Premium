@@ -12,8 +12,11 @@ describe("module data guard", () => {
     expect(getProtectedModuleDataRequirement("/module5.json")).toEqual([5]);
   });
 
-  it("does not block public data files that are not module course content", () => {
-    expect(getProtectedModuleDataRequirement("/all-questions.json")).toBeNull();
+  it("protects quiz question bank for all modules", () => {
+    expect(getProtectedModuleDataRequirement("/all-questions.json")).toEqual([1, 2, 3, 4, 5]);
+  });
+
+  it("does not block unrelated public data files", () => {
     expect(getProtectedModuleDataRequirement("/glossary.json")).toBeNull();
     expect(getProtectedModuleDataRequirement("/unknown.json")).toBeNull();
   });

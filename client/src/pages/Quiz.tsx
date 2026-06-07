@@ -34,9 +34,12 @@ export default function Quiz() {
   const [questionsLoaded, setQuestionsLoaded] = useState(false);
 
   useEffect(() => {
-    fetch("/data/all-questions.json")
-      .then(r => r.json())
-      .then((data: UnifiedQuestion[]) => {
+    fetch("/data/all-questions.json", { credentials: "include" })
+      .then(async (r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json() as Promise<UnifiedQuestion[]>;
+      })
+      .then((data) => {
         setAllQuestions(data);
         setQuestionsLoaded(true);
       })

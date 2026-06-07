@@ -6,7 +6,16 @@ import { getTotpSecret, generateTotpSecret, generateQRCode, verifyTotp, getOwner
 import { createSessionToken, verifySessionToken } from "./_core/auth-local";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { ENV } from "./_core/env";
+import rateLimit from "express-rate-limit";
 import { COOKIE_NAME, ONE_YEAR_MS } from "../shared/const";
+
+const ownerResend2faLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 3,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Zu viele Code-Anfragen. Bitte 15 Minuten warten." },
+});
 
 export function registerOwnerRoutes(app: Express) {
   const getCookieValue = (req: Request, name: string): string | undefined => {
@@ -235,10 +244,13 @@ ${isTotp ? `<form method="POST" action="/api/owner/verify-2fa-form">
     return res.json({ ok: true, redirect: redir || "/owner-dashboard" });
   });
 
-  // POST /api/owner/resend-2fa — sendet neuen OTP
-  app.post("/api/owner/resend-2fa", async (req: Request, res: Response) => {
+  // POST /api/owner/resend-2fa — sendet neuen OTP (rate-limited, nur Owner-E-Mail)
+  app.post("/api/owner/resend-2fa", ownerResend2faLimiter, async (req: Request, res: Response) => {
     const { email } = req.body as { email?: string };
-    const ownerEmail = email || process.env.OWNER_EMAIL || "alisadgadyri38@gmail.com";
+    const ownerEmail = process.env.OWNER_EMAIL || "alisadgadyri38@gmail.com";
+    if (email && email !== ownerEmail) {
+      return res.status(403).json({ error: "Nicht autorisiert" });
+    }
     const code = await generateOTP(ownerEmail);
     await sendOTPEmail(ownerEmail, code, "Alisad");
     return res.json({ ok: true });

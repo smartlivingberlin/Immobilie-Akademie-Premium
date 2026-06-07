@@ -50,7 +50,7 @@ async function runAllChecks(): Promise<{
   const results = await Promise.all([
     httpCheck(`${base}/api/health`, { expectedBody: '"ok":true' }).then(r => ["health", r] as const),
     httpCheck(`${base}/api/auth/me`, { expectedStatus: 401 }).then(r => ["auth", r] as const),
-    httpCheck(`${base}/data/all-questions.json`).then(r => ["quiz_data", r] as const),
+    httpCheck(`${base}/data/all-questions.json`, { expectedStatus: 403 }).then(r => ["quiz_data_guard", r] as const),
     httpCheck(`${base}/data/module4.json`, { expectedStatus: 403 }).then(r => ["module_data_guard", r] as const),
     httpCheck(`${base}/api/stripe/webhook`, { method: "POST", expectedStatus: 400 }).then(r => ["stripe_webhook", r] as const),
     httpCheck(`${base}/`, { expectedBody: "Immobilien Akademie Smart" }).then(r => ["homepage", r] as const),
