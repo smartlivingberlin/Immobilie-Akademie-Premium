@@ -305,8 +305,17 @@ app.use(express.json({ limit: "1mb" }));
   setInterval(() => { runTrialFollowupCron().catch((e) => logger.error("[Cron] Trial Follow-up Fehler", e)); }, 30 * 60 * 1000);
   setTimeout(() => runTrialFollowupCron().catch((e) => logger.error("[Cron] Trial Follow-up Fehler (Start)", e)), 5000); // Beim Start
   
-  app.get("/api/health", (_req, res) => {
-    return res.status(200).json({ ok: true, ts: new Date().toISOString() });
+  app.get("/api/health", async (_req, res) => {
+    const { getMysqlHealth } = await import("../mysqlHealth");
+    const health = await getMysqlHealth();
+    const body = {
+      ok: health.ok,
+      db: health.ok ? "connected" : "unavailable",
+      latencyMs: health.latencyMs,
+      ts: new Date().toISOString(),
+      ...(health.error ? { error: health.error } : {}),
+    };
+    return res.status(health.ok ? 200 : 503).json(body);
   });
 
   // Public Stats (Social Proof) - Keine Auth nötig, aber Rate Limiting

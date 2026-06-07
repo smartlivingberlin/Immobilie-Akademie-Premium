@@ -420,6 +420,9 @@ GitHub Action: **Actions → MySQL Backup to Cloudflare R2 → Run workflow**
 **Inspect-Links (Owner-Demos):** `INSPECT_JWT_SECRET` in Railway setzen (min. 32 Zeichen).  
 Inspect startet auf `/modul/1` — KI-Tutor ist im Demo-Modus deaktiviert.
 
+**MySQL FAILED in Railway:** Siehe [docs/RAILWAY_MYSQL_OPS.md](docs/RAILWAY_MYSQL_OPS.md) — zuerst Backup, dann Redeploy.  
+Health-Check: `GET /api/health` liefert `db: connected` oder 503 bei Ausfall.
+
 ---
 
 ## Checkliste vor Go-Live

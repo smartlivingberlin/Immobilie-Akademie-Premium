@@ -10,11 +10,11 @@
 
 | Bereich | Ampel | Offene Cases | Nächster Schritt |
 |---------|-------|--------------|------------------|
-| Produktion | 🟢 | 0 P0 | Draft-PRs #87–#92 reviewen |
-| Security | 🟡 | 2 P1 | #91 mergen, Agency-Sprint #93 |
-| Compliance | 🟡 | 3 P1 | Claims + Cookie-Text (#94) |
-| Daten/Backup | 🟡 | 2 P1 | R2 aktivieren (#89), Restore-Test |
-| QA/CI | 🟡 | 2 P2 | Modul-Smoke (#90), vitest (#95) |
+| Produktion | 🟢 | 0 P0 | Modul 5 + Stripe Live (#122) ✅ |
+| Security | 🟢 | 0 P1 | ki-stats, quiz-guard, resend-2fa (#120) ✅ |
+| Compliance | 🟡 | 1 P1 | Claims zentralisiert; Gewerbeschein extern |
+| Daten/Backup | 🟡 | 1 P1 | R2 Workflow ready (#123); Secrets + Restore extern |
+| QA/CI | 🟢 | 0 P2 | Modul-Smoke + Stripe-Guards CI (#123) ✅ |
 | Legal/DSGVO | 🟡 | 4 extern | AVVs, Gewerbeschein, DMARC |
 
 ---
@@ -66,12 +66,12 @@
 - **Status:** Fix bereit → **PR #90**
 
 ### CASE-008 — R2 Backup inaktiv
-- **Status:** Doku **#89**, Aktivierung **extern**
-- **Blocker:** GitHub Secrets, R2-Bucket
+- **Status:** Workflow + Checkliste → **#123** ✅
+- **Blocker:** GitHub Secrets, R2-Bucket, Restore-Test (Alisad)
 
 ### CASE-009 — Railway MySQL FAILED
-- **Status:** Offen, **nicht anfassen ohne Backup**
-- **Owner:** Alisad + Ops
+- **Status:** Runbook `docs/RAILWAY_MYSQL_OPS.md` + `/api/health` DB-Ping
+- **Owner:** Alisad + Ops — Backup zuerst, dann Redeploy
 
 ### CASE-010 — Migration ohne Ledger
 - **Status:** Backlog P2
@@ -81,7 +81,7 @@
 - **Status:** Fix in **#95** (vitest.config.ts)
 
 ### CASE-012 — PR #72 Read-Only Audit
-- **Status:** Überholt → **schließen** nach Sprint-Review
+- **Status:** Überholt → geschlossen (ersetzt durch #116–#123)
 
 ---
 
