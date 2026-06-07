@@ -150,6 +150,62 @@ Wenn Secrets in Terminal-Logs, Chat-Ausgaben oder Screenshots sichtbar wurden, n
 
 Rotation immer mit anschliessendem Healthcheck, Login-Test und mindestens einem Smoke-Test fuer Code-Einloesung und Owner-Dashboard.
 
+## Nach R2-Aktivierung: Restore-Test-Checkliste
+
+Diese Checkliste ist **Pflicht** nach dem ersten erfolgreichen GitHub-Workflow-Lauf (`.github/workflows/mysql-backup-r2.yml`). Ein Backup in R2 gilt erst als belastbar, wenn der Restore-Test dokumentiert ist.
+
+### 1. Dump aus R2 holen
+
+```bash
+aws s3 cp "s3://$R2_BUCKET/$R2_PREFIX/latest/railway_mysql_backup.sql.gz.gpg" ./restore_inbox/ \
+  --endpoint-url "https://$R2_ACCOUNT_ID.r2.cloudflarestorage.com"
+```
+
+### 2. Entschlüsseln
+
+```bash
+gpg --batch --yes --passphrase "$BACKUP_ENCRYPTION_PASSPHRASE" \
+  -d ./restore_inbox/railway_mysql_backup.sql.gz.gpg \
+  > ./restore_inbox/railway_mysql_backup.sql.gz
+gzip -t ./restore_inbox/railway_mysql_backup.sql.gz
+```
+
+### 3. Lokal restoren
+
+Den Abschnitt **Restore-Test lokal durchfuehren** oben ausfuehren. `BACKUP_DIR` auf `./restore_inbox` setzen.
+
+### 4. Kernzaehlungen vergleichen
+
+| Tabelle | Erwartung (Stand 06.06.2026) | Restore-Ist | OK |
+|---------|------------------------------|-------------|-----|
+| users | 4 | ___ | ☐ |
+| trial_leads | 93 | ___ | ☐ |
+| presentation_codes | 96 | ___ | ☐ |
+| learning_logs | 365 | ___ | ☐ |
+| open_questions | 4275 | ___ | ☐ |
+| glossar_terms | 93 | ___ | ☐ |
+| pending_purchases | 1 | ___ | ☐ |
+
+Abweichungen >5 % bei `open_questions` oder `learning_logs` → Backup als fehlerhaft markieren, Workflow stoppen, manuellen Dump wiederholen.
+
+### 5. App-Smoke nach Restore (optional, Staging)
+
+Nur auf isolierter Restore-Instanz, nicht gegen Live:
+
+- Login mit Test-Account
+- `/api/health` → 200
+- Modul 1 Tag 1 öffnen
+
+### 6. Dokumentation
+
+Ergebnis in `audit_runs/r2_restore_test_YYYYMMDD/` ablegen:
+
+- `key_counts.txt` (aus Restore)
+- `restore_ok.txt` mit Datum, R2-Pfad, Prüfer
+- Bei Erfolg: Cron im Workflow aktivieren (siehe `BACKUP_AUTOMATION_PLAN.md`)
+
+**Regel:** Kein Cron, kein „Production-ready“-Status für R2-Backups ohne mindestens einen dokumentierten Restore-Test.
+
 ## Naechste Automatisierung
 
 Zielbild:
@@ -157,7 +213,7 @@ Zielbild:
 - Taeglicher `mysqldump`.
 - Komprimierung.
 - Externer Speicher, zum Beispiel S3-kompatibler Bucket.
-- Regelmaessiger Restore-Test.
+- Regelmaessiger Restore-Test (monatlich laut `BACKUP_AUTOMATION_PLAN.md`).
 - Alarm bei fehlgeschlagenem Dump oder Restore.
 
 Bis diese Automatisierung steht, mindestens vor jedem Railway-DB-Eingriff manuell `scripts/backup/railway-mysql-dump.sh` ausfuehren.
