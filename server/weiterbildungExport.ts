@@ -11,8 +11,24 @@ import {
   type LearningLogRow,
   type WeiterbildungSummary,
 } from "../shared/weiterbildung";
+import { hasWeiterbildungsnachweisAccess } from "../shared/compliance";
+import { getUserPortalFields } from "./accessExpiry";
 
 export const weiterbildungExportRouter = Router();
+
+async function assertWeiterbildungsnachweisAccess(userId: number): Promise<void> {
+  const db = await getDb();
+  const userRows = await db.select({
+    role: users.role,
+    enabledModules: users.enabledModules,
+  }).from(users).where(eq(users.id, userId)).limit(1);
+  const row = userRows[0];
+  if (!row) throw new Error("Nutzer nicht gefunden");
+  const portal = await getUserPortalFields(db, userId);
+  if (!hasWeiterbildungsnachweisAccess({ ...row, ...portal })) {
+    throw new Error("Weiterbildungsnachweis erfordert Modulzugang oder Compliance-Abo");
+  }
+}
 
 async function loadUserReport(
   userId: number,
@@ -149,6 +165,7 @@ function buildWeiterbildungPdf(
 
 weiterbildungExportRouter.get("/api/user/weiterbildungsnachweis", requireAuth, async (req: any, res) => {
   try {
+    await assertWeiterbildungsnachweisAccess(req.currentUser.id);
     const { startDate, endDate } = req.query as { startDate?: string; endDate?: string };
     const report = await loadUserReport(req.currentUser.id, startDate, endDate);
     res.json({
@@ -165,6 +182,7 @@ weiterbildungExportRouter.get("/api/user/weiterbildungsnachweis", requireAuth, a
 
 weiterbildungExportRouter.get("/api/user/weiterbildungsnachweis/pdf", requireAuth, async (req: any, res) => {
   try {
+    await assertWeiterbildungsnachweisAccess(req.currentUser.id);
     const { startDate, endDate } = req.query as { startDate?: string; endDate?: string };
     const report = await loadUserReport(req.currentUser.id, startDate, endDate);
     const pdf = buildWeiterbildungPdf(report.user, report.summary);

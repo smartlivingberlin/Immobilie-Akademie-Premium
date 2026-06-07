@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import ComplianceGuard from "@/components/ComplianceGuard";
 import { Link } from "wouter";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -48,7 +49,16 @@ export default function Weiterbildungsnachweis() {
   const [report, setReport] = useState<ReportData | null>(null);
   const [loading, setLoading] = useState(true);
   const [downloading, setDownloading] = useState(false);
+  const [complianceSuccess, setComplianceSuccess] = useState(false);
   const { toast } = useToast();
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("compliance") === "1") {
+      setComplianceSuccess(true);
+      window.history.replaceState({}, "", "/weiterbildungsnachweis");
+    }
+  }, []);
 
   const fetchReport = useCallback(async () => {
     setLoading(true);
@@ -89,7 +99,13 @@ export default function Weiterbildungsnachweis() {
   };
 
   return (
+    <ComplianceGuard>
     <div className="container mx-auto px-4 py-8 max-w-4xl">
+      {complianceSuccess && (
+        <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl text-sm text-green-800">
+          Compliance-Abo aktiv — Ihr Weiterbildungsnachweis ist freigeschaltet.
+        </div>
+      )}
       <div className="mb-6">
         <Link href="/zertifikate">
           <span className="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-slate-700 cursor-pointer">
@@ -258,5 +274,6 @@ export default function Weiterbildungsnachweis() {
         </>
       ) : null}
     </div>
+    </ComplianceGuard>
   );
 }

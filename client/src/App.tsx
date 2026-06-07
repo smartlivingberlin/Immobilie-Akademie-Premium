@@ -52,6 +52,7 @@ const Dashboard = lazy(() => import("@/pages/Dashboard"));
 const MeineDaten = lazy(() => import("@/pages/MeineDaten"));
 const Certificates = lazy(() => import("@/pages/Certificates"));
 const Weiterbildungsnachweis = lazy(() => import("@/pages/Weiterbildungsnachweis"));
+const ComplianceLanding = lazy(() => import("@/pages/ComplianceLanding"));
 const Fallstudien = lazy(() => import("@/pages/Fallstudien"));
 const Flashcards = lazy(() => import("@/pages/Flashcards"));
 const SpacedRepetition = lazy(() => import("@/pages/SpacedRepetition"));
@@ -300,6 +301,7 @@ function Router() {
         <Route path="/barrierefreiheit"><PublicLayout><Barrierefreiheit /></PublicLayout></Route>
         <Route path="/fuer-maklerbueros"><PublicLayout><MaklerbuerosLanding /></PublicLayout></Route>
         <Route path="/empfehlungsprogramm"><PublicLayout><Empfehlungsprogramm /></PublicLayout></Route>
+        <Route path="/compliance-20h"><PublicLayout><ComplianceLanding /></PublicLayout></Route>
         <Route path="/audio-modus"><AudioModus /></Route>
         <Route component={NotFound} />
       </Switch>

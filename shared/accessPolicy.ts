@@ -17,6 +17,7 @@ export const PRODUCT_INCLUDED_MONTHS: Record<string, number> = {
   profi: 10,
   gutachter: 8,
   komplett: 20,
+  compliance_20h: 12,
 };
 
 export const MODULE_INCLUDED_MONTHS: Record<number, number> = {

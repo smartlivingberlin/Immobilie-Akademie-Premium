@@ -272,13 +272,23 @@ app.post("/api/stripe/webhook", express.raw({ type: "*/*" }), async (req: any, r
           logger.error("[Stripe Webhook] Renewal DB-Fehler", dbErr);
         }
       }
+      if (userId > 0 && (subMeta.type === "compliance" || invoice.metadata?.type === "compliance")) {
+        try {
+          const { getDb } = await import("../db");
+          const db = await getDb();
+          const { processComplianceSubscription } = await import("../stripePurchaseHandler");
+          await processComplianceSubscription(db, userId);
+        } catch (dbErr: any) {
+          logger.error("[Stripe Webhook] Compliance DB-Fehler", dbErr);
+        }
+      }
     }
 
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
 
-      // Renewal: nur invoice.paid verarbeiten (vermeidet Doppel-Verlängerung bei checkout.session.completed)
-      if (session.metadata?.type === "renewal") {
+      // Subscription: nur invoice.paid verarbeiten (Renewal + Compliance)
+      if (session.metadata?.type === "renewal" || session.metadata?.type === "compliance") {
         return res.json({ received: true });
       }
 
