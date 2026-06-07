@@ -1,4 +1,4 @@
-import { getStripePriceConfig, getModulePriceConfig } from "../shared/stripePriceIds";
+import { getStripePriceReadiness } from "../shared/stripePriceReadiness";
 import { getStripeWebhookHealth } from "./stripeWebhookHealth";
 
 async function tableExists(db: { $client: { query: Function } }, table: string): Promise<boolean> {
@@ -22,7 +22,7 @@ export type OwnerRevenueSnapshot = {
   activeSubscriptions: number;
   pendingPurchases: number;
   payingUsersEstimate: number;
-  priceIdsConfigured: { subscriptions: number; modules: number };
+  priceIdsConfigured: { subscriptions: number; modules: number; subscriptionsTotal: number; modulesTotal: number };
   webhookHealth: ReturnType<typeof getStripeWebhookHealth>;
 };
 
@@ -71,8 +71,7 @@ export async function getOwnerRevenueSnapshot(
   ) as any;
   const payingUsersEstimate = Number((payingRows as any[])[0]?.c || 0);
 
-  const subPrices = Object.values(getStripePriceConfig()).filter((p) => p.configured).length;
-  const modPrices = getModulePriceConfig().filter((p) => p.configured).length;
+  const priceReadiness = getStripePriceReadiness();
 
   return {
     stripeMode,
@@ -82,7 +81,12 @@ export async function getOwnerRevenueSnapshot(
     activeSubscriptions,
     pendingPurchases,
     payingUsersEstimate,
-    priceIdsConfigured: { subscriptions: subPrices, modules: modPrices },
+    priceIdsConfigured: {
+      subscriptions: priceReadiness.subscriptions.configured,
+      modules: priceReadiness.modules.configured,
+      subscriptionsTotal: priceReadiness.subscriptions.total,
+      modulesTotal: priceReadiness.modules.total,
+    },
     webhookHealth: getStripeWebhookHealth(),
   };
 }

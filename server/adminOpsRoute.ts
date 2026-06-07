@@ -18,6 +18,8 @@ import {
   executeConnectTransfersForPendingLedger,
 } from "./partnerConnectTransfer";
 import { getStripePriceConfig, getModulePriceConfig } from "../shared/stripePriceIds";
+import { getStripePriceReadiness } from "../shared/stripePriceReadiness";
+import { listPendingPurchases } from "./pendingPurchasesAdmin";
 import { logger } from "./_core/logger";
 
 export const adminOpsRouter = Router();
@@ -59,7 +61,20 @@ adminOpsRouter.get("/api/admin/stripe-price-config", requireAdmin, async (_req, 
     res.json({
       subscriptions: getStripePriceConfig(),
       modules: getModulePriceConfig(),
+      readiness: getStripePriceReadiness(),
     });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+adminOpsRouter.get("/api/admin/pending-purchases", requireAdmin, async (req, res) => {
+  try {
+    const unclaimedOnly = req.query.all !== "1";
+    const { getDb } = await import("./db");
+    const db = await getDb();
+    const rows = await listPendingPurchases(db, { unclaimedOnly });
+    res.json({ rows, count: rows.length });
   } catch (e: any) {
     res.status(500).json({ error: e.message });
   }
