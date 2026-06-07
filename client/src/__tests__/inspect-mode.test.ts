@@ -7,11 +7,14 @@ describe("inspect mode flow", () => {
     const ownerRoute = readFileSync(resolve(process.cwd(), "server/ownerRoute.ts"), "utf-8");
     expect(ownerRoute).toContain('res.redirect("/?inspect=1")');
     expect(ownerRoute).toContain('"/api/auth/inspect-status"');
+    expect(ownerRoute).toContain("inspect_mode_expires_at");
+    expect(ownerRoute).toContain("payload.exp");
   });
 
   it("allows inspect mode to bypass protected module assets and data", () => {
     const viteCore = readFileSync(resolve(process.cwd(), "server/_core/vite.ts"), "utf-8");
-    expect(viteCore).toContain('req.cookies?.inspect_mode === "1"');
+    expect(viteCore).toContain("isInspectModeActive");
+    expect(viteCore).toContain("inspect_mode_expires_at");
   });
 
   it("lets protected routes render during inspect mode without login", () => {
