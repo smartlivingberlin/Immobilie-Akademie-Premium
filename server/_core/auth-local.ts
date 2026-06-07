@@ -15,6 +15,7 @@ import { SignJWT, jwtVerify } from "jose";
 import * as db from "../db";
 import { ENV } from "./env";
 import { getSessionCookieOptions } from "./cookies";
+import { clearAllAuthCookies, clearInspectCookies } from "../authCookies";
 
 // ── Passwort-Hashing (PBKDF2, kein bcrypt nötig) ────────────────────────────
 
@@ -209,6 +210,7 @@ export function registerLocalAuthRoutes(app: Express) {
 
     // Session erstellen
     const newUserRole = role === "admin" ? "admin" : "user";
+    clearInspectCookies(req, res);
     const token = await createSessionToken(openId, name.trim(), newUserRole, sessionEnabledModules);
     const cookieOptions = getSessionCookieOptions(req);
     res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
@@ -247,6 +249,7 @@ export function registerLocalAuthRoutes(app: Express) {
       return res.status(404).json({ error: "Demo-User nicht gefunden" });
     }
     await db.updateUserRole(openId, "admin");
+    clearInspectCookies(req, res);
     const token = await createSessionToken(openId, user.name || "Admin", "admin", user.enabledModules || "");
     const cookieOptions = getSessionCookieOptions(req);
     res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
@@ -313,7 +316,7 @@ export function registerLocalAuthRoutes(app: Express) {
     // Letzten Login aktualisieren
     await db.updateLastSignedIn(openId);
 
-    // Session erstellen
+    clearInspectCookies(req, res);
     const token = await createSessionToken(openId, user.name || email, user.role || "user", user.enabledModules || "");
     const cookieOptions = getSessionCookieOptions(req);
     res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
@@ -326,7 +329,7 @@ export function registerLocalAuthRoutes(app: Express) {
    * Löscht Session-Cookie.
    */
   app.post("/api/auth/logout", (req: Request, res: Response) => {
-    res.clearCookie(COOKIE_NAME, { path: "/", httpOnly: true });
+    clearAllAuthCookies(req, res);
     return res.json({ ok: true });
   });
 
