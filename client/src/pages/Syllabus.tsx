@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { MARKETING_LEARNING_TASKS_LABEL, STRUCTURED_LEARNING_DAYS } from "@shared/claims";
+import { formatModuleDuration, formatModuleUe } from "@shared/moduleMeta";
 import { 
   BookOpen, 
   GraduationCap, 
@@ -229,8 +230,8 @@ export default function Syllabus() {
       color: "text-emerald-600",
       bgColor: "bg-emerald-50",
       borderColor: "border-emerald-200",
-      duration: "20 Tage",
-      units: "160 UE",
+      duration: formatModuleDuration(4),
+      units: formatModuleUe(4),
       description: "Grundlagen der Immobilienbewertung, Verfahren und Gutachtenerstellung.",
       topics: [
         "Einführung in das Sachverständigenwesen",
@@ -262,8 +263,8 @@ export default function Syllabus() {
       color: "text-purple-600",
       bgColor: "bg-purple-50",
       borderColor: "border-purple-200",
-      duration: "20 Tage",
-      units: "160 UE",
+      duration: formatModuleDuration(5),
+      units: formatModuleUe(5),
       description: "Immobiliardarlehensvermittlung, Finanzierung und Prüfungsvorbereitung.",
       topics: [
         "Rechtliche Grundlagen §34i GewO",

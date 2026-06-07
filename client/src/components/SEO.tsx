@@ -144,7 +144,7 @@ export const PAGE_SEO = {
   },
   modul4: {
     title: "Modul 4: Wertermittlung & Gutachten",
-    description: "Immobilienbewertung: Sachwert-, Ertragswert-, Vergleichswertverfahren. 20 Tage mit Rechenbeispielen und Gutachten-Erstellung.",
+    description: "Immobilienbewertung: Sachwert-, Ertragswert-, Vergleichswertverfahren. 40 Tage mit Rechenbeispielen und Gutachten-Erstellung.",
     keywords: "Immobilienbewertung, Sachwertverfahren, Ertragswertverfahren, Verkehrswert, Gutachter",
   },
   modul5: {

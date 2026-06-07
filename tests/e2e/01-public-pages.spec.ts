@@ -6,6 +6,7 @@ test.describe("🌐 Öffentliche Seiten — Alle müssen erreichbar sein", () =>
   const pages = [
     { path: "/", name: "Startseite" },
     { path: "/kurse", name: "Kurse" },
+    { path: "/warum-wir", name: "Warum wir" },
     { path: "/lehrplan", name: "Lehrplan" },
     { path: "/glossary", name: "Glossar" },
     { path: "/impressum", name: "Impressum" },

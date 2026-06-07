@@ -580,8 +580,20 @@ export default function OwnerDashboard() {
               </button>
             </div>
             <p style={{color:"#6366f1",fontSize:11,marginTop:8}}>
-              ⚠️ Link gilt {inspectHours} Stunden · Besucher sehen alle Bereiche · Keine Änderungen möglich
+              ⚠️ Link gilt {inspectHours} Stunden · Startet auf Modul 1 · KI-Tutor deaktiviert · Keine Änderungen
             </p>
+            <div style={{display:"flex",gap:8,flexWrap:"wrap",marginTop:10}}>
+              {[
+                { href: "/modul/1", label: "Modul 1" },
+                { href: "/statistiken", label: "Statistiken" },
+                { href: "/warum-wir", label: "USP" },
+                { href: "/pakete", label: "Pakete" },
+              ].map((l) => (
+                <a key={l.href} href={l.href} style={{ fontSize: 11, color: "#a5b4fc", textDecoration: "underline" }}>
+                  {l.label} →
+                </a>
+              ))}
+            </div>
           </div>
         )}
       </div>

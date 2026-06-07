@@ -5,7 +5,7 @@ import { resolve } from "node:path";
 describe("inspect mode flow", () => {
   it("redirects inspect tokens with inspect=1 and exposes inspect-status API", () => {
     const ownerRoute = readFileSync(resolve(process.cwd(), "server/ownerRoute.ts"), "utf-8");
-    expect(ownerRoute).toContain('res.redirect("/admin?inspect=1")');
+    expect(ownerRoute).toContain('res.redirect("/modul/1?inspect=1")');
     expect(ownerRoute).toContain('"/api/auth/inspect-status"');
     expect(ownerRoute).toContain("inspect_mode_expires_at");
     expect(ownerRoute).toContain("payload.exp");

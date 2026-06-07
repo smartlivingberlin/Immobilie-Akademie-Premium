@@ -402,12 +402,36 @@ Fehler werden automatisch erfasst und kategorisiert.
 
 ---
 
+## Backup & Restore
+
+Vor jeder MySQL-Migration oder Railway-Redeploy **manuell dumpen**:
+
+```bash
+pnpm run db:backup
+```
+
+Ausführliche Anleitung: [docs/RUNBOOK_BACKUP_RESTORE.md](docs/RUNBOOK_BACKUP_RESTORE.md)  
+Automatisierung (R2): [docs/BACKUP_AUTOMATION_PLAN.md](docs/BACKUP_AUTOMATION_PLAN.md)
+
+GitHub Action (manuell auslösbar, Secrets erforderlich):
+
+```bash
+# .github/workflows/mysql-backup-r2.yml — workflow_dispatch in GitHub Actions
+```
+
+**Inspect-Links (Owner-Demos):** `INSPECT_JWT_SECRET` in Railway setzen (min. 32 Zeichen).  
+Inspect startet auf `/modul/1` — KI-Tutor ist im Demo-Modus deaktiviert.
+
+---
+
 ## Checkliste vor Go-Live
 
 ### Technisch
 
 - [ ] `DATABASE_URL` auf Railway MySQL gesetzt
 - [ ] `JWT_SECRET` gesetzt (min. 32 Zeichen, zufällig)
+- [ ] `INSPECT_JWT_SECRET` gesetzt (Owner-Inspect-Links)
+- [ ] MySQL-Backup getestet (`pnpm run db:backup`)
 - [ ] `STRIPE_SECRET_KEY` auf Live-Key umgestellt (`sk_live_...`)
 - [ ] `VITE_STRIPE_PUBLIC_KEY` auf Live-Key umgestellt (`pk_live_...`)
 - [ ] `STRIPE_WEBHOOK_SECRET` gesetzt und Webhook in Stripe konfiguriert

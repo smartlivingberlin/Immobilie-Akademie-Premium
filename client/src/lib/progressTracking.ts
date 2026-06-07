@@ -1,3 +1,5 @@
+import { getModuleDayCount } from "@shared/moduleMeta";
+
 // Progress Tracking System for Learning Portal
 // Tracks completion of days, flashcards, and quiz results per module
 
@@ -246,14 +248,7 @@ function recalculateModuleCompletion(moduleId: number): void {
 
 // Get total days for a module
 function getModuleTotalDays(moduleId: number): number {
-  const moduleDays: Record<number, number> = {
-    1: 20,
-    2: 60,
-    3: 80,
-    4: 20,
-    5: 40,
-  };
-  return moduleDays[moduleId] || 20;
+  return getModuleDayCount(moduleId);
 }
 
 // Update activity log for streak calculation
