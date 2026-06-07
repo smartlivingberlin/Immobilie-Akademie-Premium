@@ -10,6 +10,17 @@ export default function Empfehlungsprogramm() {
   const { data: user } = trpc.auth.me.useQuery();
   const { toast } = useToast();
   const [info, setInfo] = useState<{ code: string; link: string } | null>(null);
+  const [vouchers, setVouchers] = useState<Array<{
+    id: string; label: string; eligible: boolean; redeemed: boolean;
+  }>>([]);
+  const [redeeming, setRedeeming] = useState<string | null>(null);
+
+  const loadVouchers = () => {
+    fetch("/api/referral/vouchers", { credentials: "include" })
+      .then((r) => r.ok ? r.json() : null)
+      .then((d) => d?.vouchers && setVouchers(d.vouchers))
+      .catch(() => {});
+  };
 
   useEffect(() => {
     if (!user) return;
@@ -17,7 +28,28 @@ export default function Empfehlungsprogramm() {
       .then((r) => r.ok ? r.json() : null)
       .then((d) => d && setInfo({ code: d.code, link: d.link }))
       .catch(() => {});
+    loadVouchers();
   }, [user]);
+
+  const redeemVoucher = async (voucherId: string) => {
+    setRedeeming(voucherId);
+    try {
+      const res = await fetch("/api/referral/redeem-voucher", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ voucherId }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Einlösung fehlgeschlagen");
+      toast({ title: "Gutschein eingelöst", description: "Ihr Bonus ist aktiv." });
+      loadVouchers();
+    } catch (e: any) {
+      toast({ title: "Fehler", description: e.message, variant: "destructive" });
+    } finally {
+      setRedeeming(null);
+    }
+  };
 
   const copyLink = () => {
     if (!info?.link) return;
@@ -52,18 +84,32 @@ export default function Empfehlungsprogramm() {
         </div>
 
         <div className="bg-white rounded-xl border p-6 mb-8">
-          <h2 className="font-semibold mb-3">Geplante Tool-Gutscheine (Partner & Social)</h2>
-          <ul className="space-y-2">
-            {REFERRAL_TOOL_VOUCHERS.map((v) => (
-              <li key={v.id} className="flex items-start gap-2 text-sm text-slate-700">
-                <CheckCircle2 className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                {v.label}
+          <h2 className="font-semibold mb-3">Tool-Gutscheine</h2>
+          <p className="text-sm text-slate-600 mb-4">
+            Nach erfolgreicher Empfehlung (Erstkauf des Geworbenen) können Sie einmalig einlösen:
+          </p>
+          <ul className="space-y-3">
+            {(vouchers.length > 0 ? vouchers : REFERRAL_TOOL_VOUCHERS.map((v) => ({
+              id: v.id, label: v.label, eligible: false, redeemed: false,
+            }))).map((v) => (
+              <li key={v.id} className="flex items-center justify-between gap-3 text-sm border-b border-slate-100 pb-3">
+                <span className="flex items-start gap-2 text-slate-700">
+                  <CheckCircle2 className={`h-4 w-4 mt-0.5 flex-shrink-0 ${v.redeemed ? "text-green-600" : "text-slate-300"}`} />
+                  {v.label}
+                </span>
+                {user && !v.redeemed && v.eligible && (
+                  <button
+                    onClick={() => redeemVoucher(v.id)}
+                    disabled={redeeming === v.id}
+                    className="text-xs font-semibold text-blue-600 hover:text-blue-800 whitespace-nowrap"
+                  >
+                    {redeeming === v.id ? "…" : "Einlösen"}
+                  </button>
+                )}
+                {v.redeemed && <span className="text-xs text-green-600 font-medium">Eingelöst</span>}
               </li>
             ))}
           </ul>
-          <p className="text-xs text-slate-500 mt-4">
-            Verifizierung über persönlichen Link, Erstkauf oder Partner-Codes — Auszahlungen für Partner auf Anfrage.
-          </p>
         </div>
 
         {user ? (

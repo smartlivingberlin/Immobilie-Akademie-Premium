@@ -10,6 +10,7 @@ import { logger } from "./_core/logger";
 import { requireAuth } from "./authMiddleware";
 import { RENEWAL_MONTHLY_EUR, RENEWAL_YEARLY_EUR } from "../shared/accessPolicy";
 import { COMPLIANCE_PRODUCT_ID, COMPLIANCE_YEARLY_EUR } from "../shared/compliance";
+import { B2B_PLANS, type B2bPlanId } from "../shared/b2bPlans";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
   apiVersion: "2026-02-25.clover",
@@ -157,6 +158,56 @@ stripeRouter.post("/api/stripe/compliance-checkout", requireAuth, async (req: an
     res.json({ url: session.url });
   } catch (err: any) {
     logger.error("[Stripe] Compliance checkout error", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// B2B White-Label — 199 €/399 € pro Monat
+stripeRouter.post("/api/stripe/b2b-checkout", requireAuth, async (req: any, res) => {
+  try {
+    const planId = String(req.body?.planId || "") as B2bPlanId;
+    const plan = B2B_PLANS[planId];
+    const companyName = String(req.body?.companyName || "").trim().slice(0, 120);
+    if (!plan) return res.status(400).json({ error: "Ungültiger B2B-Plan" });
+    if (!companyName) return res.status(400).json({ error: "Firmenname erforderlich" });
+
+    const session = await stripe.checkout.sessions.create({
+      mode: "subscription",
+      customer_email: req.currentUser.email || undefined,
+      line_items: [
+        {
+          price_data: {
+            currency: "eur",
+            product_data: {
+              name: `White-Label ${plan.name} — Immobilien Akademie Smart`,
+              description: `${plan.maxUsers} Nutzer · Module ${plan.enabledModules}`,
+            },
+            unit_amount: plan.priceEur * 100,
+            recurring: { interval: plan.interval },
+          },
+          quantity: 1,
+        },
+      ],
+      success_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/fuer-maklerbueros?b2b=1`,
+      cancel_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/fuer-maklerbueros`,
+      metadata: {
+        type: "b2b",
+        planId,
+        companyName,
+        userId: String(req.currentUser.id),
+      },
+      subscription_data: {
+        metadata: {
+          type: "b2b",
+          planId,
+          companyName,
+          userId: String(req.currentUser.id),
+        },
+      },
+    });
+    res.json({ url: session.url });
+  } catch (err: any) {
+    logger.error("[Stripe] B2B checkout error", err);
     res.status(500).json({ error: err.message });
   }
 });

@@ -73,8 +73,9 @@ export async function getKiQuota(
   }
   const tier = await getUserKiTier(db, userId);
   const used = await getDailyKiUsage(db, userId);
-  if (!isRenewalKiTier(tier)) {
-    return { tier, limit: null, used, remaining: null };
+  const { hasActiveKiVoucher } = await import("./voucherRedeem");
+  if (!isRenewalKiTier(tier) || (await hasActiveKiVoucher(db, userId))) {
+    return { tier: KI_TIER_FULL, limit: null, used, remaining: null };
   }
   const remaining = Math.max(0, KI_RENEWAL_DAILY_LIMIT - used);
   return { tier, limit: KI_RENEWAL_DAILY_LIMIT, used, remaining };
