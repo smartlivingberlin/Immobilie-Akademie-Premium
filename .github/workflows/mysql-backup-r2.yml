@@ -1,13 +1,23 @@
-name: MySQL Backup to Cloudflare R2 Example
+name: MySQL Backup to Cloudflare R2
 
 on:
   workflow_dispatch:
-  # Enable only after a successful manual dry run and restore test.
+    inputs:
+      dry_run:
+        description: "Nur Dump lokal im Runner (kein R2-Upload)"
+        required: false
+        default: false
+        type: boolean
+  # Nach erfolgreichem Restore-Test aktivieren (siehe docs/R2_ACTIVATION_CHECKLIST.md):
   # schedule:
   #   - cron: "17 2 * * *"
 
 permissions:
   contents: read
+
+concurrency:
+  group: mysql-backup-r2
+  cancel-in-progress: false
 
 jobs:
   backup:
@@ -18,6 +28,7 @@ jobs:
     env:
       R2_PREFIX: ${{ secrets.R2_PREFIX || 'mysql/production' }}
       RAILWAY_ENVIRONMENT: ${{ secrets.RAILWAY_ENVIRONMENT || 'production' }}
+      DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
 
     steps:
       - name: Checkout
@@ -36,6 +47,7 @@ jobs:
           echo "$HOME/.railway/bin" >> "$GITHUB_PATH"
 
       - name: Configure AWS CLI for R2
+        if: env.DRY_RUN != '1'
         run: |
           set -euo pipefail
           curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o /tmp/awscliv2.zip
@@ -53,13 +65,21 @@ jobs:
           BACKUP_ENCRYPTION_PASSPHRASE: ${{ secrets.BACKUP_ENCRYPTION_PASSPHRASE }}
         run: |
           set -euo pipefail
-          test -n "$RAILWAY_TOKEN"
-          test -n "$RAILWAY_PROJECT_ID"
-          test -n "$R2_ACCOUNT_ID"
-          test -n "$R2_ACCESS_KEY_ID"
-          test -n "$R2_SECRET_ACCESS_KEY"
-          test -n "$R2_BUCKET"
-          test -n "$BACKUP_ENCRYPTION_PASSPHRASE"
+          MISSING=()
+          test -n "$RAILWAY_TOKEN" || MISSING+=("RAILWAY_TOKEN")
+          test -n "$RAILWAY_PROJECT_ID" || MISSING+=("RAILWAY_PROJECT_ID")
+          test -n "$BACKUP_ENCRYPTION_PASSPHRASE" || MISSING+=("BACKUP_ENCRYPTION_PASSPHRASE")
+          if [ "$DRY_RUN" != "1" ]; then
+            test -n "$R2_ACCOUNT_ID" || MISSING+=("R2_ACCOUNT_ID")
+            test -n "$R2_ACCESS_KEY_ID" || MISSING+=("R2_ACCESS_KEY_ID")
+            test -n "$R2_SECRET_ACCESS_KEY" || MISSING+=("R2_SECRET_ACCESS_KEY")
+            test -n "$R2_BUCKET" || MISSING+=("R2_BUCKET")
+          fi
+          if [ "${#MISSING[@]}" -gt 0 ]; then
+            echo "::error::Fehlende GitHub Secrets: ${MISSING[*]}"
+            echo "Siehe docs/R2_ACTIVATION_CHECKLIST.md"
+            exit 1
+          fi
 
       - name: Link Railway project
         env:
@@ -134,6 +154,7 @@ jobs:
           cat "backup/key_counts_${STAMP}.txt"
 
       - name: Upload backup to R2
+        if: env.DRY_RUN != '1'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
@@ -157,3 +178,21 @@ jobs:
           name: mysql-backup-metadata-${{ env.STAMP }}
           path: backup/key_counts_${{ env.STAMP }}.txt
           retention-days: 14
+
+      - name: Job summary
+        run: |
+          {
+            echo "## MySQL Backup"
+            echo "- Stamp: \`${STAMP}\`"
+            echo "- Dry run: \`${DRY_RUN}\`"
+            if [ "$DRY_RUN" = "1" ]; then
+              echo "- R2 upload: **übersprungen** (Dry run)"
+            else
+              echo "- R2 latest: \`${R2_PREFIX}/latest/immobilien-akademie-smart_mysql_latest.sql.gz.gpg\`"
+            fi
+            echo ""
+            echo "### Key counts"
+            echo '```'
+            cat "backup/key_counts_${STAMP}.txt"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

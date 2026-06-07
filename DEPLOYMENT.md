@@ -411,13 +411,11 @@ pnpm run db:backup
 ```
 
 Ausführliche Anleitung: [docs/RUNBOOK_BACKUP_RESTORE.md](docs/RUNBOOK_BACKUP_RESTORE.md)  
-Automatisierung (R2): [docs/BACKUP_AUTOMATION_PLAN.md](docs/BACKUP_AUTOMATION_PLAN.md)
+Automatisierung (R2): [docs/BACKUP_AUTOMATION_PLAN.md](docs/BACKUP_AUTOMATION_PLAN.md)  
+**Aktivierung:** [docs/R2_ACTIVATION_CHECKLIST.md](docs/R2_ACTIVATION_CHECKLIST.md)
 
-GitHub Action (manuell auslösbar, Secrets erforderlich):
-
-```bash
-# .github/workflows/mysql-backup-r2.yml — workflow_dispatch in GitHub Actions
-```
+GitHub Action: **Actions → MySQL Backup to Cloudflare R2 → Run workflow**  
+7 Secrets erforderlich (siehe R2-Aktivierungs-Checkliste). Optional: `dry_run` für Dump-Test ohne R2-Upload.
 
 **Inspect-Links (Owner-Demos):** `INSPECT_JWT_SECRET` in Railway setzen (min. 32 Zeichen).  
 Inspect startet auf `/modul/1` — KI-Tutor ist im Demo-Modus deaktiviert.

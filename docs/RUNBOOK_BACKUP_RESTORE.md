@@ -157,7 +157,7 @@ Diese Checkliste ist **Pflicht** nach dem ersten erfolgreichen GitHub-Workflow-L
 ### 1. Dump aus R2 holen
 
 ```bash
-aws s3 cp "s3://$R2_BUCKET/$R2_PREFIX/latest/railway_mysql_backup.sql.gz.gpg" ./restore_inbox/ \
+aws s3 cp "s3://$R2_BUCKET/${R2_PREFIX:-mysql/production}/latest/immobilien-akademie-smart_mysql_latest.sql.gz.gpg" ./restore_inbox/ \
   --endpoint-url "https://$R2_ACCOUNT_ID.r2.cloudflarestorage.com"
 ```
 
@@ -165,9 +165,9 @@ aws s3 cp "s3://$R2_BUCKET/$R2_PREFIX/latest/railway_mysql_backup.sql.gz.gpg" ./
 
 ```bash
 gpg --batch --yes --passphrase "$BACKUP_ENCRYPTION_PASSPHRASE" \
-  -d ./restore_inbox/railway_mysql_backup.sql.gz.gpg \
-  > ./restore_inbox/railway_mysql_backup.sql.gz
-gzip -t ./restore_inbox/railway_mysql_backup.sql.gz
+  -d ./restore_inbox/immobilien-akademie-smart_mysql_latest.sql.gz.gpg \
+  > ./restore_inbox/restore.sql.gz
+gzip -t ./restore_inbox/restore.sql.gz
 ```
 
 ### 3. Lokal restoren
