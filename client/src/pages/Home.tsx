@@ -15,6 +15,7 @@ import {
   PUBLIC_QUIZ_QUESTION_COUNT,
   STRUCTURED_LEARNING_DAYS,
 } from "@shared/claims";
+import ExitIntentPopup from "@/components/ExitIntentPopup";
 
 const MODULES = [
   { id:1, title:"Modul 1: Immobilien-Grundkurs", kurz:"Das Fundament", preis:"149", tage:20, ue:160, slug:"modul-1-immobilien-grundkurs", desc:"Grundstücksrecht, Grundbuch, Baurecht, Wertermittlung — die Pflichtbasis für alle weiteren Module.", badge:"Einstieg", farbe:"#1d4ed8", textFarbe:"white" },
@@ -375,7 +376,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="py-20">
+      <section id="kostenlos-testen" className="py-20 scroll-mt-20">
         <div className="container mx-auto px-4">
           <div className="rounded-3xl gradient-hero text-white p-10 md:p-16 text-center relative overflow-hidden shadow-elegant">
             <div className="absolute inset-0 opacity-20 pointer-events-none"
@@ -404,6 +405,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <ExitIntentPopup />
     </>
   );
 }

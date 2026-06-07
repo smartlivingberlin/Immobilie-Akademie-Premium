@@ -1,3 +1,5 @@
+import { getModuleDayCount, getModuleUeCount } from "@shared/moduleMeta";
+
 // Offizielle Lehrplan-Daten für das Immobilien-Bildungsportal
 // Basierend auf LehrplanText1-2202(1)(1).doc
 
@@ -76,8 +78,8 @@ export const modules: ModuleData[] = [
     title: "Modul 4: Immobilienbewertung und Gutachtenerstellung",
     shortTitle: "Bewertung",
     description: "Grundlagen der Immobilienbewertung und Gutachtenerstellung.",
-    days: 20,
-    ue: 160,
+    days: getModuleDayCount(4),
+    ue: getModuleUeCount(4),
     status: 'locked',
     topics: [
       "Grundlagen der Immobilienbewertung",
@@ -92,8 +94,8 @@ export const modules: ModuleData[] = [
     title: "Modul 5: Immobiliendarlehensvermittlung (§ 34i GewO)",
     shortTitle: "Finanzierung",
     description: "Fach- und Praxiswissen zu Immobiliardarlehensvermittlung nach §34i GewO.",
-    days: 40,
-    ue: 320,
+    days: getModuleDayCount(5),
+    ue: getModuleUeCount(5),
     status: 'locked',
     topics: [
       "Rechtliche Grundlagen",

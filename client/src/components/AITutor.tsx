@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useInspectReadOnly } from "@/hooks/useInspectReadOnly";
 import { X, Send, Bot, User, Sparkles } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
@@ -35,6 +36,7 @@ const DEFAULT_SUGGESTED = [
 ];
 
 export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorProps) {
+  const { isReadOnly: isInspectReadOnly } = useInspectReadOnly();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
@@ -60,6 +62,18 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
   const handleSend = async (question?: string) => {
     const userMessage = question || input.trim();
     if (!userMessage || isLoading) return;
+    if (isInspectReadOnly) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now().toString() + "_inspect",
+          role: "assistant",
+          content: "Im Inspect-Modus ist der KI-Tutor deaktiviert — Inhalte und Navigation können Sie frei ansehen.",
+          timestamp: new Date(),
+        },
+      ]);
+      return;
+    }
     setInput("");
 
     const userMsg: Message = {

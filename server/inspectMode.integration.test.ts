@@ -75,7 +75,7 @@ describe("inspectMode server integration", () => {
 
   it("ownerRoute redirects inspect tokens to admin dashboard", () => {
     const source = readFileSync(resolve(process.cwd(), "server/ownerRoute.ts"), "utf-8");
-    expect(source).toContain('res.redirect("/admin?inspect=1")');
+    expect(source).toContain('res.redirect("/modul/1?inspect=1")');
   });
 
   it("mints and verifies inspect JWT shape", async () => {

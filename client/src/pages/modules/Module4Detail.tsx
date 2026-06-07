@@ -4,7 +4,8 @@ import { trpc } from "@/lib/trpc";
 import AudioPlayer from "@/components/AudioPlayer";
 import { useState, useRef, useEffect } from "react";
 import { useActivityHeartbeat } from "@/hooks/useActivityHeartbeat";
-import { Link, useRoute } from "wouter";
+import { Link, useLocation, useRoute } from "wouter";
+import { getModuleDayCount, getModuleUeCount } from "@shared/moduleMeta";
 import { ArrowLeft, BookOpen, CheckCircle2, FileText, Gavel, Briefcase, ChevronRight, Calculator, Search, Scale, Lightbulb, AlertTriangle, Award, ArrowRight, Maximize2, Minimize2, FlaskConical, Brain } from "lucide-react";
 import { AITutor } from "@/components/AITutor";
 import { Button } from "@/components/ui/button";
@@ -36,62 +37,25 @@ import { Video } from "lucide-react";
 type DayContent = Record<string, any>;
 let _cache_module4: DayContent | null = null;
 
-// allContent kommt per fetch als contentDataModule4
+const MODULE4_DAYS = getModuleDayCount(4);
 
-// Define weeks structure for Module 4 (20 Days)
 const weeks = [
-  {
-    id: 1,
-    title: "Woche 1: Grundlagen & Sachwert",
-    days: "Tag 1-5",
-    topics: ["Wertermittlungsverordnung", "Sachwertverfahren", "Bodenrichtwert", "Normalherstellungskosten"],
-    dayRange: [1, 5]
-  },
-  {
-    id: 2,
-    title: "Woche 2: Ertragswert & Vergleichswert",
-    days: "Tag 6-10",
-    topics: ["Ertragswertverfahren", "Liegenschaftszins", "Vergleichswertverfahren", "Marktanpassung"],
-    dayRange: [6, 10]
-  },
-  {
-    id: 3,
-    title: "Woche 3: Gutachten & Sonderfälle",
-    days: "Tag 11-15",
-    topics: ["Gutachtenerstellung", "Rechte & Belastungen", "Wohnungsrecht", "Erbbaurecht"],
-    dayRange: [11, 15]
-  },
-  {
-    id: 4,
-    title: "Woche 4: Sachverständigenwesen",
-    days: "Tag 16-20",
-    topics: ["Haftung", "Honorar", "Gerichtsgutachten", "Abschlussprüfung"],
-    dayRange: [16, 20]
-  }
+  { id: 1, title: "Woche 1: Grundlagen & Sachwert", dayRange: [1, 5] },
+  { id: 2, title: "Woche 2: Ertragswert & Vergleichswert", dayRange: [6, 10] },
+  { id: 3, title: "Woche 3: Gutachten & Sonderfälle", dayRange: [11, 15] },
+  { id: 4, title: "Woche 4: Sachverständigenwesen", dayRange: [16, 20] },
+  { id: 5, title: "Woche 5: Vertiefung Bewertung I", dayRange: [21, 25] },
+  { id: 6, title: "Woche 6: Vertiefung Bewertung II", dayRange: [26, 30] },
+  { id: 7, title: "Woche 7: Praxis & Plausibilisierung", dayRange: [31, 35] },
+  { id: 8, title: "Woche 8: Abschluss & Prüfung", dayRange: [36, 40] },
 ];
 
 // Helper Component for Maximize Button
 
 export default function Module4Detail() {
-  const [contentDataModule4, setContentDataModule4] = useState<Record<string, any>>({});
-  const [contentLoaded, setContentLoaded] = useState(false);
-
-  useEffect(() => {
-    fetch("/data/module4-content.json", { credentials: "include" })
-      .then((r) => {
-        if (!r.ok) throw new Error(`module4-content.json HTTP ${r.status}`);
-        return r.json();
-      })
-      .then((data) => {
-        setContentDataModule4(data);
-        setContentLoaded(true);
-      })
-      .catch((err) => console.error("Content konnte nicht geladen werden:", err));
-  }, []);
-
   const [match, params] = useRoute("/modul/4/tag/:day");
+  const [, navigate] = useLocation();
   const { toast } = useToast();
-  const urlDay = params?.day ? `day_${params.day}` : (Object.keys(contentDataModule4)[0] || "day_1");
   
   // Define types for content structure
   interface Task {
@@ -108,19 +72,27 @@ export default function Module4Detail() {
     tasks: Task[];
   }
 
-  const [selectedDay, setSelectedDay] = useState(urlDay);
+  const [selectedDay, setSelectedDay] = useState("day_1");
   const [moduleData, setModuleData] = useState<DayContent | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (_cache_module4) { setModuleData(_cache_module4); return; }
+    if (params?.day) setSelectedDay(`day_${params.day}`);
+  }, [params?.day]);
+
+  const loadModuleData = () => {
+    if (_cache_module4) { setModuleData(_cache_module4); setLoadError(null); return; }
+    setLoadError(null);
     fetch("/data/module4.json", { credentials: "include" })
       .then((r) => {
         if (!r.ok) throw new Error(`module4.json HTTP ${r.status}`);
         return r.json();
       })
       .then((d) => { _cache_module4 = d; setModuleData(d); })
-      .catch((err) => console.error("Moduldaten konnten nicht geladen werden:", err));
-  }, []);
+      .catch((err) => setLoadError(err?.message || "Moduldaten konnten nicht geladen werden"));
+  };
+
+  useEffect(() => { loadModuleData(); }, []);
   const [showAITutor, setShowAITutor] = useState(false);
 
   // Lernfortschritt Tracking
@@ -177,9 +149,7 @@ export default function Module4Detail() {
   // AZAV-Anwesenheitsnachweis: Heartbeat alle 60 Sekunden
   useActivityHeartbeat({ moduleId: 4, dayId: currentDayNum });
   
-  // Get content for selected day
-  const firstDay = Object.keys(contentDataModule4)[0] as keyof typeof contentDataModule4;
-const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["day_1"];
+  const currentContent = moduleData?.[selectedDay] ?? moduleData?.["day_1"];
 
   const handleQuizComplete = (score: number) => {
     if (score >= 50) {
@@ -194,14 +164,15 @@ const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["da
 
   // Function to handle navigation to next day
   const handleNextDay = () => {
-    if (currentDayNum < 20) {
-      const nextDay = `day_${currentDayNum + 1}`;
+    if (currentDayNum < MODULE4_DAYS) {
+      const nextNum = currentDayNum + 1;
+      const nextDay = `day_${nextNum}`;
       setSelectedDay(nextDay);
+      navigate(`/modul/4/tag/${nextNum}`);
       setShowQuiz(false);
       setShowCertificate(false);
-      window.scrollTo(0,0);
+      window.scrollTo(0, 0);
     } else {
-      // Last day: Show quiz
       setShowQuiz(true);
     }
   };
@@ -226,6 +197,8 @@ const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["da
   return (
     <LoadingHandler
       isLoading={!moduleData || !currentContent}
+      error={loadError}
+      onRetry={loadModuleData}
       skeleton={
         <div className="p-8">
           {moduleSkeleton}
@@ -248,9 +221,9 @@ const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["da
                 Wertermittlung
               </Badge>
               <span className="text-sm">•</span>
-              <span className="text-sm">160 Unterrichtseinheiten</span>
+              <span className="text-sm">{getModuleUeCount(4)} Unterrichtseinheiten</span>
               <span className="text-sm">•</span>
-              <span className="text-sm">20 Tage</span>
+              <span className="text-sm">{MODULE4_DAYS} Tage</span>
             </div>
           </div>
         </div>
@@ -258,9 +231,9 @@ const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["da
         <div className="flex items-center gap-4 bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
           <div className="text-right hidden md:block">
             <div className="text-sm font-medium text-slate-900">Fortschritt</div>
-            <div className="text-xs text-slate-500">Tag {currentDayNum} von 20</div>
+            <div className="text-xs text-slate-500">Tag {currentDayNum} von {MODULE4_DAYS}</div>
           </div>
-          <Progress value={(currentDayNum / 20) * 100} className="w-32 h-2" />
+          <Progress value={(currentDayNum / MODULE4_DAYS) * 100} className="w-32 h-2" />
         </div>
       </div>
 
@@ -297,9 +270,10 @@ const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["da
                               }`}
                               onClick={() => {
                                 setSelectedDay(dayKey);
+                                navigate(`/modul/4/tag/${dayNum}`);
                                 setShowQuiz(false);
                                 setShowCertificate(false);
-                                window.scrollTo(0,0);
+                                window.scrollTo(0, 0);
                               }}
                             >
                               <div className="flex items-center gap-3 w-full">
@@ -354,7 +328,7 @@ const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["da
                       Tag {currentDayNum} • {(currentContent as any)?.type || "Lerneinheit"}
                     </CardDescription>
                   </div>
-                  {currentDayNum === 20 && (
+                  {currentDayNum === MODULE4_DAYS && (
                     <Button 
                       onClick={() => setShowQuiz(true)} 
                       className="bg-blue-600 hover:bg-blue-700 text-white gap-2"
@@ -650,7 +624,7 @@ const currentContent = moduleData?.[(selectedDay as string)] ?? moduleData?.["da
                     <ArrowLeft className="h-4 w-4" /> Vorheriger Tag
                   </Button>
                   
-                  {currentDayNum < 20 ? (
+                  {currentDayNum < MODULE4_DAYS ? (
                     <Button 
                       onClick={handleNextDay}
                       className="gap-2 bg-blue-600 hover:bg-blue-700 text-white"

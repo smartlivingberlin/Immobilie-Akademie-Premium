@@ -5,6 +5,7 @@ import { DarkModeToggle } from "@/components/DarkModeToggle";
 
 const NAV = [
   { href: "/kurse",           label: "Kurse" },
+  { href: "/warum-wir",       label: "Warum wir" },
   { href: "/pakete",          label: "Pakete" },
   { href: "/glossary",        label: "Glossar",      icon: BookOpen },
   { href: "/foerderung",      label: "Förderung",    icon: Award },

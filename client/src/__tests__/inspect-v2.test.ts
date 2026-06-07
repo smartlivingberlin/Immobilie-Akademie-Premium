@@ -5,7 +5,7 @@ import { resolve } from "node:path";
 describe("inspect v2 admin read-only", () => {
   it("redirects inspect tokens to admin dashboard", () => {
     const ownerRoute = readFileSync(resolve(process.cwd(), "server/ownerRoute.ts"), "utf-8");
-    expect(ownerRoute).toContain('res.redirect("/admin?inspect=1")');
+    expect(ownerRoute).toContain('res.redirect("/modul/1?inspect=1")');
   });
 
   it("blocks inspect mutations in tRPC and allows inspect on protected queries", () => {

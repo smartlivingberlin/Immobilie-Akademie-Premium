@@ -11,6 +11,7 @@ const marketingFiles = [
   "client/src/pages/Syllabus.tsx",
   "client/src/pages/KursPakete.tsx",
   "client/src/pages/admin/AdminDashboard.tsx",
+  "client/src/pages/UspLanding.tsx",
 ];
 
 describe("claims centralization", () => {

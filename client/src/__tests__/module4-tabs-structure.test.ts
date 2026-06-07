@@ -21,6 +21,8 @@ describe("Module4Detail tab structure", () => {
     );
 
     expect(source).toContain('fetch("/data/module4.json", { credentials: "include" })');
-    expect(source).toContain('fetch("/data/module4-content.json", { credentials: "include" })');
+    expect(source).not.toContain("module4-content.json");
+    expect(source).toContain("MODULE4_DAYS");
+    expect(source).toMatch(/dayRange: \[36, 40\]/);
   });
 });
