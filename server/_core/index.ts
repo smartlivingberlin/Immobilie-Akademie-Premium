@@ -313,6 +313,7 @@ app.use(express.json({ limit: "1mb" }));
       db: health.ok ? "connected" : "unavailable",
       latencyMs: health.latencyMs,
       ts: new Date().toISOString(),
+      ...(health.migrations ? { migrations: health.migrations } : {}),
       ...(health.error ? { error: health.error } : {}),
     };
     return res.status(health.ok ? 200 : 503).json(body);

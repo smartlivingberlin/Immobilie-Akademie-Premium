@@ -3,41 +3,38 @@ import { Link } from "wouter";
 import { SEO } from "@/components/SEO";
 import { trpc } from "@/lib/trpc";
 import {
+  B2B_PLANS,
+  B2B_PLAN_FEATURES,
+  formatB2bModuleLabel,
+  formatB2bUserLabel,
+  type B2bPlanId,
+} from "@shared/b2bPlans";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import {
   ArrowRight, Building2, Bot, CheckCircle2, FileCheck, Globe,
   Mail, Palette, ShieldCheck, Users, BarChart3, KeyRound, CreditCard,
 } from "lucide-react";
 
+const CHECKOUT_PLAN_IDS: B2bPlanId[] = ["starter", "professional"];
+
 const PLANS = [
-  {
-    id: "starter" as const,
-    name: "Starter",
-    price: "199",
-    users: "5 Mitarbeiter",
-    modules: "2 Module frei wählbar",
-    highlight: false,
-    features: [
-      "Eigenes Logo & Farben",
-      "Willkommenstext & Footer",
-      "KI-Tutor für alle Nutzer",
-      "Lernfortschritt pro Mitarbeiter",
-      "E-Mail-Support",
-    ],
-  },
-  {
-    id: "professional" as const,
-    name: "Professional",
-    price: "399",
-    users: "15 Mitarbeiter",
-    modules: "Alle 5 Module",
-    highlight: true,
-    features: [
-      "Alles aus Starter",
-      "Weiterbildungsnachweis-Export (§15b MaBV)",
-      "Admin-Dashboard für Ihr Büro",
-      "Inspect-Links für Partner-Demos",
-      "Prioritäts-Support",
-    ],
-  },
+  ...CHECKOUT_PLAN_IDS.map((id) => ({
+    id,
+    name: B2B_PLANS[id].name,
+    price: String(B2B_PLANS[id].priceEur),
+    users: formatB2bUserLabel(B2B_PLANS[id].maxUsers),
+    modules: formatB2bModuleLabel(B2B_PLANS[id].enabledModules),
+    highlight: id === "professional",
+    features: B2B_PLAN_FEATURES[id],
+  })),
   {
     id: "enterprise" as const,
     name: "Enterprise",
@@ -74,6 +71,8 @@ export default function MaklerbuerosLanding() {
   const { data: user } = trpc.auth.me.useQuery();
   const [checkoutLoading, setCheckoutLoading] = useState<string | null>(null);
   const [checkoutError, setCheckoutError] = useState("");
+  const [checkoutPlan, setCheckoutPlan] = useState<B2bPlanId | null>(null);
+  const [companyName, setCompanyName] = useState("");
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     if (params.get("b2b") === "1") {
@@ -81,21 +80,31 @@ export default function MaklerbuerosLanding() {
     }
   }, []);
 
-  const startB2bCheckout = async (planId: "starter" | "professional") => {
+  const openCheckoutDialog = (planId: B2bPlanId) => {
     if (!user) {
       window.location.href = "/login?redirect=/fuer-maklerbueros";
       return;
     }
-    const companyName = window.prompt("Firmenname für Ihren White-Label-Tenant:")?.trim();
-    if (!companyName) return;
-    setCheckoutLoading(planId);
+    setCheckoutPlan(planId);
+    setCompanyName("");
+    setCheckoutError("");
+  };
+
+  const startB2bCheckout = async () => {
+    if (!checkoutPlan) return;
+    const name = companyName.trim();
+    if (name.length < 2) {
+      setCheckoutError("Bitte Firmenname eingeben (mind. 2 Zeichen).");
+      return;
+    }
+    setCheckoutLoading(checkoutPlan);
     setCheckoutError("");
     try {
       const res = await fetch("/api/stripe/b2b-checkout", {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ planId, companyName }),
+        body: JSON.stringify({ planId: checkoutPlan, companyName: name }),
       });
       const data = await res.json();
       if (data.url) window.location.href = data.url;
@@ -228,7 +237,7 @@ export default function MaklerbuerosLanding() {
                 ) : (
                   <button
                     type="button"
-                    onClick={() => startB2bCheckout(plan.id)}
+                    onClick={() => openCheckoutDialog(plan.id)}
                     disabled={checkoutLoading === plan.id}
                     className={`inline-flex items-center justify-center gap-2 font-semibold px-4 py-2.5 rounded-lg transition-colors text-sm w-full ${
                       plan.highlight
@@ -285,6 +294,33 @@ export default function MaklerbuerosLanding() {
           </a>
         </div>
       </section>
+
+      <Dialog open={!!checkoutPlan} onOpenChange={(open) => !open && setCheckoutPlan(null)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>
+              {checkoutPlan ? `${B2B_PLANS[checkoutPlan].name} buchen` : "B2B buchen"}
+            </DialogTitle>
+            <DialogDescription>
+              Firmenname für Ihren White-Label-Tenant (erscheint im Portal und auf Rechnungen).
+            </DialogDescription>
+          </DialogHeader>
+          <input
+            value={companyName}
+            onChange={(e) => setCompanyName(e.target.value)}
+            placeholder="Muster Makler GmbH"
+            className="w-full px-4 py-2 rounded-lg border border-slate-300"
+            maxLength={120}
+          />
+          {checkoutError && <p className="text-sm text-red-600">{checkoutError}</p>}
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setCheckoutPlan(null)}>Abbrechen</Button>
+            <Button onClick={startB2bCheckout} disabled={!!checkoutLoading}>
+              {checkoutLoading ? "Weiterleitung…" : "Zur Stripe-Kasse"}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

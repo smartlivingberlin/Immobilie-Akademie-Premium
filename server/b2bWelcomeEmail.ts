@@ -34,9 +34,8 @@ export async function sendB2bWelcomeEmail(opts: {
       <p><strong>Nächste Schritte:</strong></p>
       <ol style="color:#475569;line-height:1.7">
         <li>Einrichtungs-Assistent: <a href="${baseUrl}/b2b-einrichtung">B2B-Einrichtung starten</a></li>
-        <li>Branding anpassen: <a href="${baseUrl}/admin/whitelabel">White-Label Admin</a></li>
-        <li>Zugangscodes erstellen: <a href="${baseUrl}/admin/codes">Code-Verwaltung</a></li>
-        <li>Team einladen: <a href="${baseUrl}/statistiken">Lernbereich</a></li>
+        <li>Branding & Team-Codes: <a href="${baseUrl}/b2b-einrichtung">Schritt 2–3 im Assistenten</a></li>
+        <li>Lernbereich für Ihr Team: <a href="${baseUrl}/statistiken">Zum Portal</a></li>
       </ol>
       ${opts.tenantSlug ? `<p style="font-size:12px;color:#94a3b8">Tenant: ${opts.tenantSlug}</p>` : ""}
       <p style="margin-top:24px;color:#64748b;font-size:13px">Bei Fragen: info@immobilien-akademie-smart.de</p>

@@ -3,6 +3,8 @@ import { Link } from "wouter";
 import { SEO } from "@/components/SEO";
 import { Building2, Palette, KeyRound, CheckCircle2, ArrowRight, ArrowLeft, Upload, Copy } from "lucide-react";
 import { trpc } from "@/lib/trpc";
+import { LoadingHandler } from "@/components/LoadingHandler";
+import { SkeletonCard } from "@/components/ui/SkeletonCard";
 
 type TenantInfo = {
   id: number;
@@ -41,14 +43,13 @@ export default function B2bEinrichtung() {
   const [teamCodes, setTeamCodes] = useState<TeamCode[]>([]);
   const [teamCodeLoading, setTeamCodeLoading] = useState(false);
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
+  const [maxUses, setMaxUses] = useState(10);
+  const [provisioning, setProvisioning] = useState(false);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    if (!user) {
-      setLoading(false);
-      return;
-    }
-    fetch("/api/b2b/onboarding/status", { credentials: "include" })
+  const loadStatus = () => {
+    setError("");
+    return fetch("/api/b2b/onboarding/status", { credentials: "include" })
       .then((r) => r.json())
       .then((d) => {
         setHasTenant(d.hasTenant);
@@ -60,10 +61,44 @@ export default function B2bEinrichtung() {
           setLogoUrl(d.tenant.logoUrl || null);
           if (d.completed) setStep(2);
         }
-      })
+        return d;
+      });
+  };
+
+  useEffect(() => {
+    if (!user) {
+      setLoading(false);
+      return;
+    }
+    loadStatus()
       .catch(() => setError("Status konnte nicht geladen werden"))
       .finally(() => setLoading(false));
   }, [user]);
+
+  useEffect(() => {
+    if (!user || hasTenant || loading) return;
+    const postCheckout = new URLSearchParams(window.location.search).get("b2b") === "1";
+    if (!postCheckout) return;
+
+    setProvisioning(true);
+    let attempts = 0;
+    const interval = setInterval(() => {
+      attempts += 1;
+      loadStatus()
+        .then((d) => {
+          if (d.hasTenant) {
+            setProvisioning(false);
+            clearInterval(interval);
+          } else if (attempts >= 40) {
+            setProvisioning(false);
+            clearInterval(interval);
+          }
+        })
+        .catch(() => {});
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [user, hasTenant, loading]);
 
   const uploadLogo = async (file: File) => {
     setLogoUploading(true);
@@ -112,7 +147,7 @@ export default function B2bEinrichtung() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           modules: tenant?.enabledModules || "",
-          maxUses: 10,
+          maxUses: Math.min(100, Math.max(1, maxUses)),
           note: `Team ${companyName || tenant?.companyName || ""}`.trim(),
         }),
       });
@@ -178,14 +213,32 @@ export default function B2bEinrichtung() {
             ))}
           </div>
 
-          {loading ? (
-            <p className="text-slate-400">Laden…</p>
-          ) : !hasTenant ? (
+          <LoadingHandler
+            isLoading={loading}
+            error={error && !hasTenant ? null : error}
+            onRetry={() => {
+              setLoading(true);
+              loadStatus()
+                .catch(() => setError("Status konnte nicht geladen werden"))
+                .finally(() => setLoading(false));
+            }}
+            skeleton={<SkeletonCard />}
+          >
+          {!hasTenant ? (
             <div className="bg-slate-800/50 border border-slate-700 rounded-2xl p-8 text-center">
               <h1 className="text-2xl font-bold mb-3">Tenant wird eingerichtet</h1>
               <p className="text-slate-400 mb-6">
-                Ihr White-Label-Tenant wird nach der ersten Zahlung aktiviert. Dies kann einige Minuten dauern.
+                {provisioning
+                  ? "Zahlung erkannt — wir richten Ihren Tenant ein (ca. 1–2 Min.)…"
+                  : "Ihr White-Label-Tenant wird nach der ersten Zahlung aktiviert."}
               </p>
+              <button
+                type="button"
+                onClick={() => { setLoading(true); loadStatus().finally(() => setLoading(false)); }}
+                className="text-sm text-blue-400 hover:text-white mb-4 block mx-auto"
+              >
+                Status aktualisieren
+              </button>
               <Link href="/fuer-maklerbueros">
                 <span className="text-blue-400 hover:text-white cursor-pointer">Zurück zur B2B-Seite →</span>
               </Link>
@@ -279,8 +332,17 @@ export default function B2bEinrichtung() {
                     <h1 className="text-xl font-bold">Team einladen</h1>
                   </div>
                   <p className="text-slate-300 mb-4">
-                    Erstellen Sie Zugangscodes für Ihre Mitarbeiter — direkt hier oder in den erweiterten Einstellungen.
+                    Erstellen Sie Zugangscodes für Ihre Mitarbeiter. Einlösen unter <code className="text-blue-300">/code-einloesen</code>.
                   </p>
+                  <label className="block text-sm text-slate-400 mb-1">Max. Nutzungen pro Code</label>
+                  <input
+                    type="number"
+                    min={1}
+                    max={100}
+                    value={maxUses}
+                    onChange={(e) => setMaxUses(Number(e.target.value) || 10)}
+                    className="w-24 mb-4 px-3 py-2 rounded-lg bg-slate-900 border border-slate-600 text-white"
+                  />
                   <button
                     type="button"
                     onClick={createTeamCode}
@@ -306,12 +368,14 @@ export default function B2bEinrichtung() {
                     </div>
                   )}
                   <div className="space-y-3">
-                    <Link href="/admin/whitelabel">
-                      <span className="flex items-center justify-between w-full px-5 py-4 rounded-xl bg-slate-900 border border-slate-600 hover:border-blue-500 cursor-pointer">
-                        <span>Logo & erweiterte Einstellungen</span>
-                        <ArrowRight className="h-4 w-4" />
-                      </span>
-                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => setStep(1)}
+                      className="flex items-center justify-between w-full px-5 py-4 rounded-xl bg-slate-900 border border-slate-600 hover:border-blue-500 text-left"
+                    >
+                      <span>Logo & Branding anpassen</span>
+                      <ArrowRight className="h-4 w-4" />
+                    </button>
                     <Link href="/statistiken">
                       <span className="flex items-center justify-center gap-2 w-full px-5 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-semibold cursor-pointer mt-4">
                         <CheckCircle2 className="h-5 w-5" /> Zum Lernbereich
@@ -322,6 +386,7 @@ export default function B2bEinrichtung() {
               )}
             </div>
           )}
+          </LoadingHandler>
         </div>
       </div>
     </>

@@ -230,7 +230,7 @@ git push origin main
 
 ```bash
 # Direkt auf der Railway-Datenbank
-mysql "mysql://..." < drizzle/0016_my_migration.sql
+mysql "mysql://..." < drizzle/migrations/0016_user_missing_columns.sql
 ```
 
 ---
@@ -423,7 +423,8 @@ Inspect startet auf `/modul/1` — KI-Tutor ist im Demo-Modus deaktiviert.
 **MySQL FAILED in Railway:** Siehe [docs/RAILWAY_MYSQL_OPS.md](docs/RAILWAY_MYSQL_OPS.md) — zuerst Backup, dann Redeploy.  
 Health-Check: `GET /api/health` liefert `db: connected` oder 503 bei Ausfall.
 
-**Externe Ops (Alisad):** [docs/EXTERNAL_OPS_CHECKLIST.md](docs/EXTERNAL_OPS_CHECKLIST.md)
+**Externe Ops (Alisad):** [docs/EXTERNAL_OPS_CHECKLIST.md](docs/EXTERNAL_OPS_CHECKLIST.md)  
+**Migration Ledger:** [docs/MIGRATION_LEDGER.md](docs/MIGRATION_LEDGER.md) · Backfill: `pnpm run db:backfill-migrations`
 
 ---
 
