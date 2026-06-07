@@ -484,13 +484,26 @@ export async function runMonitoringSnapshot(): Promise<void> {
 export async function runAllCronJobs(): Promise<{
   audit: Awaited<ReturnType<typeof runNightAudit>>;
   coaching: Awaited<ReturnType<typeof runUserCoaching>>;
+  payout: Awaited<ReturnType<typeof import("../partnerPayoutCron").runQuarterlyPartnerPayoutIfDue>>;
 }> {
   log("🌙 === NACHT-CRON START ===");
   await runMonitoringSnapshot();
   const auditResult = await runNightAudit();
   const coachingResult = await runUserCoaching();
+  let payoutResult: Awaited<ReturnType<typeof import("../partnerPayoutCron").runQuarterlyPartnerPayoutIfDue>> = { ran: false };
+  try {
+    const { getDb } = await import("../db");
+    const db = await getDb();
+    const { runQuarterlyPartnerPayoutIfDue } = await import("../partnerPayoutCron");
+    payoutResult = await runQuarterlyPartnerPayoutIfDue(db);
+    if (payoutResult.ran) {
+      log(`   Payout: ${payoutResult.created ?? 0} Ledger-Einträge (${payoutResult.periodStart}–${payoutResult.periodEnd})`);
+    }
+  } catch (payoutErr: any) {
+    log(`⚠️ Payout-Cron Fehler: ${payoutErr.message}`);
+  }
   log(`🌙 === NACHT-CRON FERTIG ===`);
   log(`   Audit: Ø ${auditResult.avgScore}/100 | ${auditResult.problemDays.length} Probleme`);
   log(`   Coaching: ${coachingResult.usersAnalyzed} User analysiert`);
-  return { audit: auditResult, coaching: coachingResult };
+  return { audit: auditResult, coaching: coachingResult, payout: payoutResult };
 }

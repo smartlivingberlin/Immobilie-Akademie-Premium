@@ -17,7 +17,7 @@ import {
   RECHENPRAXIS_STANDALONE_MONTHLY_EUR,
 } from "../shared/rechenpraxisProduct";
 import { buildSubscriptionLineItem } from "./stripeCheckoutHelpers";
-import { buildPaymentLineItem } from "../shared/stripePriceIds";
+import { B2B_PLAN_PRICE_KEYS, buildPaymentLineItem } from "../shared/stripePriceIds";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
   apiVersion: "2026-02-25.clover",
@@ -216,22 +216,20 @@ stripeRouter.post("/api/stripe/b2b-checkout", requireAuth, async (req: any, res)
     if (!plan) return res.status(400).json({ error: "Ungültiger B2B-Plan" });
     if (!companyName) return res.status(400).json({ error: "Firmenname erforderlich" });
 
+    const priceKey = B2B_PLAN_PRICE_KEYS[planId];
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",
       customer_email: req.currentUser.email || undefined,
       line_items: [
-        {
-          price_data: {
-            currency: "eur",
-            product_data: {
-              name: `White-Label ${plan.name} — Immobilien Akademie Smart`,
-              description: `${plan.maxUsers} Nutzer · Module ${plan.enabledModules}`,
-            },
-            unit_amount: plan.priceEur * 100,
-            recurring: { interval: plan.interval },
+        buildSubscriptionLineItem(priceKey, {
+          currency: "eur",
+          product_data: {
+            name: `White-Label ${plan.name} — Immobilien Akademie Smart`,
+            description: `${plan.maxUsers} Nutzer · Module ${plan.enabledModules}`,
           },
-          quantity: 1,
-        },
+          unit_amount: plan.priceEur * 100,
+          recurring: { interval: plan.interval },
+        }),
       ],
       success_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/b2b-einrichtung?b2b=1`,
       cancel_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/fuer-maklerbueros`,

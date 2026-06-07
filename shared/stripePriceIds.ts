@@ -5,7 +5,15 @@ export const STRIPE_PRICE_ENV_KEYS = {
   renewal_monthly: "STRIPE_PRICE_RENEWAL_MONTHLY",
   renewal_yearly: "STRIPE_PRICE_RENEWAL_YEARLY",
   compliance_yearly: "STRIPE_PRICE_COMPLIANCE_YEARLY",
+  b2b_starter: "STRIPE_PRICE_B2B_STARTER",
+  b2b_professional: "STRIPE_PRICE_B2B_PROFESSIONAL",
 } as const;
+
+/** B2B-Plan-ID → Stripe Price-Key */
+export const B2B_PLAN_PRICE_KEYS: Record<string, StripePriceKey> = {
+  starter: "b2b_starter",
+  professional: "b2b_professional",
+};
 
 export type StripePriceKey = keyof typeof STRIPE_PRICE_ENV_KEYS;
 
