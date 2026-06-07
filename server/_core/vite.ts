@@ -15,6 +15,16 @@ const PROTECTED_CHUNKS: Record<string, number[]> = {
   "data-questions": [1, 2, 3, 4, 5],
 };
 
+const PROTECTED_MODULE_DATA: Record<string, number[]> = {
+  "module1.json": [1],
+  "module2.json": [2],
+  "module2-content.json": [2],
+  "module3.json": [3],
+  "module4.json": [4],
+  "module4-content.json": [4],
+  "module5.json": [5],
+};
+
 function getSecret(): Uint8Array {
   const secret = process.env.JWT_SECRET;
   if (!secret) throw new Error("JWT_SECRET not set");
@@ -26,6 +36,22 @@ async function protectModuleAssets(req: Request, res: Response, next: NextFuncti
   const matchedChunk = Object.keys(PROTECTED_CHUNKS).find(chunk => filename.includes(chunk));
   if (!matchedChunk) return next();
 
+  return authorizeModuleAccess(req, res, next, PROTECTED_CHUNKS[matchedChunk]);
+}
+
+export function getProtectedModuleDataRequirement(requestPath: string): number[] | null {
+  const filename = path.basename(requestPath);
+  return PROTECTED_MODULE_DATA[filename] ?? null;
+}
+
+async function protectModuleData(req: Request, res: Response, next: NextFunction) {
+  const requiredModules = getProtectedModuleDataRequirement(req.path);
+  if (!requiredModules) return next();
+
+  return authorizeModuleAccess(req, res, next, requiredModules);
+}
+
+async function authorizeModuleAccess(req: Request, res: Response, next: NextFunction, requiredModules: number[]) {
   const token = req.cookies?.[COOKIE_NAME];
   if (!token) { res.status(403).json({ error: "Nicht autorisiert" }); return; }
 
@@ -42,11 +68,16 @@ async function protectModuleAssets(req: Request, res: Response, next: NextFuncti
       const user = await getUserByOpenId(openId);
       if (user?.role === "admin") return next();
 
+      const trialExpiresAt = (user as any)?.trialExpiresAt;
+      if (trialExpiresAt && new Date(trialExpiresAt) < new Date()) {
+        res.status(403).json({ error: "Testzugang abgelaufen" });
+        return;
+      }
+
       // 3. enabledModules aus DB prüfen
       const rawModules = user?.enabledModules || (payload as any).enabledModules || "";
       const enabledModules: number[] = String(rawModules)
         .split(",").map((m: string) => parseInt(m.trim(), 10)).filter((n: number) => !isNaN(n));
-      const requiredModules = PROTECTED_CHUNKS[matchedChunk];
       if (requiredModules.some(m => enabledModules.includes(m))) return next();
     }
 
@@ -61,12 +92,14 @@ export async function setupVite(app: Express, server: Server) {
     appType: "custom",
     server: { middlewareMode: true, hmr: { server } },
   });
+  app.use("/data", protectModuleData);
   app.use(vite.middlewares);
 }
 
 export function serveStatic(app: Express) {
   const staticDir = path.join(process.cwd(), "dist", "public");
   app.use("/assets", protectModuleAssets, express.static(path.join(staticDir, "assets")));
+  app.use("/data", protectModuleData, express.static(path.join(staticDir, "data")));
   app.use(express.static(staticDir, { index: false }));
   app.get("*", (req, res, next) => {
     if (req.path.startsWith("/api")) return next();
