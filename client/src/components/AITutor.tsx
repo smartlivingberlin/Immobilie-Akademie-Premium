@@ -124,7 +124,7 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
         <div className="flex-1">
           <div className="text-sm font-semibold text-white">KI-Tutor</div>
           <div className="text-xs text-blue-200">
-            {moduleId ? `Modul ${moduleId} · ` : ""}Gemini 2.0 Flash · RAG
+            {moduleId ? `Modul ${moduleId} · ` : ""}Gemini 2.5 Flash · RAG
           </div>
         </div>
         <button onClick={onClose} className="text-white/70 hover:text-white transition-colors">
