@@ -291,7 +291,7 @@ function Router() {
         <Route path="/admin"><AppLayout><AdminRoute component={AdminDashboard} /></AppLayout></Route>
         <Route path="/owner-dashboard"><AppLayout><OwnerRoute component={OwnerDashboard} /></AppLayout></Route>
         <Route path="/owner-videos"><AppLayout><OwnerRoute component={OwnerVideos} /></AppLayout></Route>
-        <Route path="/rechenpraxis"><AppLayout><Rechenpraxis /></AppLayout></Route>
+        <Route path="/rechenpraxis"><AppLayout><ProtectedRoute component={Rechenpraxis} /></AppLayout></Route>
         <Route path="/tester-zugang"><TesterZugang /></Route>
         <Route path="/partner-panel"><AppLayout><AdminRoute component={PartnerDashboard} /></AppLayout></Route>
         <Route path="/foerderung"><PublicLayout><Foerderung /></PublicLayout></Route>

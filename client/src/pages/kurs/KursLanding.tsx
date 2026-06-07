@@ -44,7 +44,7 @@ const KURSE: Record<string, {
       "200+ Lernfragen und Praxisübungen",
       "Kursabschluss-Zertifikat nach erfolgreichem Kursabschluss",
       "Pflichtbasis für alle weiteren Module",
-      "Einmalig kaufen — zeitlich befristeter Vollzugang",
+      "Einmalig kaufen — doppelte Lernzeit inklusive, danach faire Verlängerung",
     ],
     faq: [
       { f: "Muss ich Modul 1 vor den anderen Modulen machen?", a: "Modul 1 wird als Basis empfohlen — viele Grundbegriffe die in Modul 2–5 vorausgesetzt werden, werden hier erklärt. Es ist nicht zwingend vorgeschrieben, aber sehr sinnvoll." },
@@ -341,7 +341,7 @@ export default function KursLanding({ slug }: { slug: string }) {
                 <div style={{ fontSize:38, fontWeight:900, color:"#0f172a", fontFamily:"Fraunces, Georgia, serif", letterSpacing:"-0.02em", margin:"4px 0 4px" }}>
                   {kurs.preis} €
                 </div>
-                <div style={{ fontSize:11, color:"#94a3b8", marginBottom:16 }}>Endpreis · Einmalzahlung · kein Abo</div>
+                <div style={{ fontSize:11, color:"#94a3b8", marginBottom:16 }}>Endpreis · inkl. 2× Lernzeit · Verlängerung ab 29 €/Jahr</div>
 
                 {/* Widerrufs-Checkbox */}
                 <div style={{ background: widerrufsError ? "#fef2f2" : "#f8fafc", border:`1px solid ${widerrufsError ? "#fca5a5" : "#e2e8f0"}`, borderRadius:8, padding:"10px 12px", marginBottom:12 }}>

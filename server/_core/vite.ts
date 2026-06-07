@@ -25,6 +25,7 @@ const PROTECTED_MODULE_DATA: Record<string, number[]> = {
   "module4-content.json": [4],
   "module5.json": [5],
   "all-questions.json": [1, 2, 3, 4, 5],
+  "rechenpraxis.json": [1, 2, 3, 4, 5],
 };
 
 function getSecret(): Uint8Array {

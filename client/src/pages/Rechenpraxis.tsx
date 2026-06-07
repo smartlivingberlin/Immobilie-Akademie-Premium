@@ -290,7 +290,9 @@ function AufgabenAnsicht({ aufgabe, onZurueck }: { aufgabe: Aufgabe; onZurueck: 
 
 // ─── HAUPTSEITE ───────────────────────────────────────────────────────────────
 
-export default function Rechenpraxis() {
+import PortalToolGuard from "@/components/PortalToolGuard";
+
+function RechenpraxisPage() {
   const [AUFGABEN, setAUFGABEN] = useState<Aufgabe[]>([]);
   const [aufgabenGeladen, setAufgabenGeladen] = useState(false);
   const BEREICHE = useMemo(() => [...new Set(AUFGABEN.map(a => a.bereich))], [AUFGABEN]);
@@ -329,6 +331,7 @@ export default function Rechenpraxis() {
   );
 
   return (
+    <PortalToolGuard>
     <LoadingHandler
       isLoading={isLoading}
       skeleton={practiceSkeleton}
@@ -381,5 +384,8 @@ export default function Rechenpraxis() {
         )}
     </div>
     </LoadingHandler>
+    </PortalToolGuard>
   );
 }
+
+export default RechenpraxisPage;
