@@ -361,6 +361,8 @@ app.use(express.json({ limit: "1mb" }));
   registerPasswordResetRoutes(app);
   registerPortalPhaseRoutes(app);
   registerKiStatsRoute(app);
+  const { mountKiFairUseGate } = await import("../kiFairUseGate");
+  mountKiFairUseGate(app);
   registerRagTutorRoutes(app);
   registerTrialRoutes(app);
   registerSpacedRepetitionRoutes(app);
@@ -640,6 +642,8 @@ setInterval(async () => {
 // Nacht-Cron: täglich 02:00 Uhr alle 240 Lerntage + User-Coaching
 startNightCron();
 startHealthWatcher();
+const { startAccessExpiryReminders } = await import("../accessExpiryReminders");
+startAccessExpiryReminders();
 // force deploy Mon Apr  6 20:58:44 CEST 2026
 
 // Keep-Alive: alle 8 Minuten selbst pingen (verhindert Railway Cold Start)

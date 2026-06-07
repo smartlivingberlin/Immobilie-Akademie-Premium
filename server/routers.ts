@@ -141,8 +141,10 @@ export const appRouter = router({
       const db = await getDb();
       if (!db) return user;
       const { getUserPortalFields } = await import("./accessExpiry");
+      const { getKiQuota } = await import("./kiFairUse");
       const portal = await getUserPortalFields(db, user.id);
-      return { ...user, ...portal };
+      const kiQuota = await getKiQuota(db, user.id, user.role);
+      return { ...user, ...portal, kiQuota };
     }),
     completeOnboarding: protectedProcedure
       .input(z.object({
@@ -407,7 +409,20 @@ export const appRouter = router({
         message: z.string(),
         moduleContext: z.string().optional(),
       }))
-      .mutation(async ({ input }) => {
+      .mutation(async ({ ctx, input }) => {
+        const db = await getDb();
+        if (db && ctx.user?.id) {
+          const { assertKiFairUse } = await import("./kiFairUse");
+          try {
+            await assertKiFairUse(db, ctx.user.id, ctx.user.role);
+          } catch (e: any) {
+            if (e?.code === "KI_QUOTA_EXCEEDED") {
+              throw new TRPCError({ code: "TOO_MANY_REQUESTS", message: e.message });
+            }
+            throw e;
+          }
+        }
+
         // Save user message
         await addChatMessage(input.conversationId, "user", input.message);
 
