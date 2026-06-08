@@ -8,8 +8,12 @@ import requests
 import json
 import sys
 
-ADMIN_EMAIL = os.environ.get("TEST_ADMIN_EMAIL", "alisadgadyri38@gmail.com")
-ADMIN_PASSWORD = os.environ.get("TEST_ADMIN_PASSWORD", "Admin2026!")
+ADMIN_EMAIL = os.environ.get("TEST_ADMIN_EMAIL") or os.environ.get("B2B_ADMIN_EMAIL") or "alisadgadyri38@gmail.com"
+ADMIN_PASSWORD = os.environ.get("TEST_ADMIN_PASSWORD") or os.environ.get("B2B_ADMIN_PASSWORD") or "Admin2026!"
+PLACEHOLDER_PASSWORDS = {
+    "DEIN_PASSWORT", "DEIN_ECHTES_PASSWORT", "DeinEchtesPasswort",
+    "dein echtes Passwort", "<test-password>",
+}
 
 BASE = "https://immobilien-akademie-smart.de"
 session = requests.Session()
@@ -63,16 +67,24 @@ r = session.get(f"{BASE}/api/auth/me", timeout=10)
 test("Auth/me ohne Login gibt 401", r.status_code == 401)
 
 # Login (vor Rate-Limit-Test — sonst 429 durch vorherige Audit-Läufe)
-r = session.post(f"{BASE}/api/auth/login",
-    json={"email": ADMIN_EMAIL, "password": ADMIN_PASSWORD},
-    timeout=10)
-if r.status_code == 429:
-    print("  ⚠️  Rate-Limit aktiv (429) — 15 Min. warten oder SKIP_RATE_LIMIT_TEST=1 beim nächsten Lauf")
-login_ok = r.status_code == 200
-login_body = r.json() if login_ok else {}
-test("Admin-Login erfolgreich", login_ok, f"Status {r.status_code}" if not login_ok else "")
-test("Login gibt 'ok: true'", login_body.get("ok") == True)
-test("Login gibt Role zurück", login_body.get("role") == "admin")
+login_ok = False
+login_body = {}
+if ADMIN_PASSWORD in PLACEHOLDER_PASSWORDS:
+    print("  ⚠️  Passwort ist Platzhalter — nutze B2B_ADMIN_PASSWORD vom erfolgreichen B2B-Smoke")
+    test("Admin-Login erfolgreich", False, "Platzhalter-Passwort")
+    test("Login gibt 'ok: true'", False)
+    test("Login gibt Role zurück", False)
+else:
+    r = session.post(f"{BASE}/api/auth/login",
+        json={"email": ADMIN_EMAIL, "password": ADMIN_PASSWORD},
+        timeout=10)
+    if r.status_code == 429:
+        print("  ⚠️  Rate-Limit aktiv (429) — 15 Min. warten oder SKIP_RATE_LIMIT_TEST=1 beim nächsten Lauf")
+    login_ok = r.status_code == 200
+    login_body = r.json() if login_ok else {}
+    test("Admin-Login erfolgreich", login_ok, f"Status {r.status_code}" if not login_ok else "")
+    test("Login gibt 'ok: true'", login_body.get("ok") == True)
+    test("Login gibt Role zurück", login_body.get("role") == "admin")
 
 # Auth/me nach Login
 if login_ok:

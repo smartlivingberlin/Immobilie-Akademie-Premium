@@ -2,8 +2,18 @@ import { chromium } from "@playwright/test";
 import { existsSync } from "fs";
 
 const BASE = process.env.PLAYWRIGHT_BASE_URL || "https://immobilien-akademie-smart.de";
-const TEST_EMAIL = process.env.TEST_ADMIN_EMAIL || "alisadgadyri38@gmail.com";
-const TEST_PASSWORD = process.env.TEST_ADMIN_PASSWORD || "Admin2026!";
+const TEST_EMAIL =
+  process.env.TEST_ADMIN_EMAIL || process.env.B2B_ADMIN_EMAIL || "alisadgadyri38@gmail.com";
+const TEST_PASSWORD =
+  process.env.TEST_ADMIN_PASSWORD || process.env.B2B_ADMIN_PASSWORD || "Admin2026!";
+
+const PLACEHOLDER_PASSWORDS = new Set([
+  "DEIN_PASSWORT",
+  "DEIN_ECHTES_PASSWORT",
+  "DeinEchtesPasswort",
+  "dein echtes Passwort",
+  "<test-password>",
+]);
 const STATE_PATH = "tests/e2e/.auth-state.json";
 
 async function globalSetup() {
@@ -37,9 +47,9 @@ async function globalSetup() {
     }
   }
 
-  if (!TEST_PASSWORD || TEST_PASSWORD === "DEIN_PASSWORT") {
+  if (!TEST_PASSWORD || PLACEHOLDER_PASSWORDS.has(TEST_PASSWORD)) {
     throw new Error(
-      "TEST_ADMIN_PASSWORD fehlt oder ist Platzhalter. Setze: export TEST_ADMIN_PASSWORD='dein echtes Passwort'",
+      "Passwort fehlt oder ist Platzhalter. Nutze dasselbe wie beim B2B-Smoke: export B2B_ADMIN_PASSWORD='...' (oder TEST_ADMIN_PASSWORD)",
     );
   }
 
