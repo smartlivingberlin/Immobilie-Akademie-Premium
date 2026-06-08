@@ -101,10 +101,9 @@ server/db.ts
 server/ragTutor.ts
 server/_core/context.ts
 server/_core/sdk.ts
-client/src/pages/modules/Module6.tsx
-client/src/pages/modules/Module7.tsx
-client/src/pages/modules/Module8.tsx
 ```
+
+**Hinweis:** Module 6–8 (`Module6.tsx` etc.) existieren nicht und wurden aus dem Produkt entfernt bzw. nie ausgeliefert. Nur Module 1–5 sind aktiv.
 
 ---
 
