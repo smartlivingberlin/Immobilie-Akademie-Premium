@@ -1,7 +1,8 @@
 # Externe Ops-Checkliste — nur Alisad
 
-**Stand:** 08.06.2026 · Nach Stripe-Test-Phase (10/17)  
-Alles hier erfordert Zugang zu Railway, Cloudflare, Stripe oder GitHub.
+**Stand:** 08.06.2026 · Nach R2-Cron-Aktivierung + B2B-Team-Code-Fix  
+Alles hier erfordert Zugang zu Railway, Cloudflare, Stripe oder GitHub.  
+**Übergabe Baumeister:** [UEBERGABE_BAYERISCHER_BAUMEISTER_20260608.md](./UEBERGABE_BAYERISCHER_BAUMEISTER_20260608.md)
 
 ---
 
@@ -9,11 +10,11 @@ Alles hier erfordert Zugang zu Railway, Cloudflare, Stripe oder GitHub.
 
 | # | Aufgabe | Anleitung | Erledigt |
 |---|---------|-----------|----------|
-| 1 | **MySQL Backup** | `pnpm run db:backup` | ✅ |
+| 1 | **MySQL Backup** | `pnpm run db:backup` + täglicher R2-Cron (#132) | ✅ |
 | 2 | **Migration Ledger backfill** | Nur wenn `pending > 0` — live ist `0` | ⏭️ SKIP |
 | 3 | **Stripe Test** — 18 Price-IDs + Webhook | `pnpm run stripe:seed-prices` · [STRIPE_LIVE_GO_LIVE.md](./STRIPE_LIVE_GO_LIVE.md) | ✅ Test |
-| 4 | **R2 Restore-Test** | [R2_ACTIVATION_CHECKLIST.md](./R2_ACTIVATION_CHECKLIST.md) · `pnpm run ops:r2-checklist` | ☐ |
-| 5 | **Railway MySQL FAILED** | [RAILWAY_MYSQL_OPS.md](./RAILWAY_MYSQL_OPS.md) | ☐ |
+| 4 | **R2 Restore-Test** | [R2_ACTIVATION_CHECKLIST.md](./R2_ACTIVATION_CHECKLIST.md) | ✅ |
+| 5 | **Railway MySQL FAILED** | [RAILWAY_MYSQL_OPS.md](./RAILWAY_MYSQL_OPS.md) — Health ok, Status prüfen | ☐ |
 | 6 | **PR #72 schließen** | GitHub → Close | ✅ |
 
 ## Priorität 2 — B2B Go-Live
@@ -21,9 +22,10 @@ Alles hier erfordert Zugang zu Railway, Cloudflare, Stripe oder GitHub.
 | # | Aufgabe | Hinweis | Erledigt |
 |---|---------|---------|----------|
 | 7 | B2B Price-IDs in Railway | In 18er-Set enthalten | ✅ |
-| 8 | Testkauf Starter/Professional | [B2B_SMOKE_TEST.md](./B2B_SMOKE_TEST.md) | ☐ |
+| 8 | Testkauf Starter/Professional | [B2B_SMOKE_TEST.md](./B2B_SMOKE_TEST.md) | ☐ (bobo gmbh existiert) |
 | 9 | Post-Checkout Wizard | `/b2b-einrichtung?b2b=1` | ☐ |
-| 10 | Team-Code einlösen | `/code-einloesen` | ☐ |
+| 10 | Team-Code einlösen | `/code-einloesen` — Fix #133, E2E offen | ☐ |
+| 10b | Admin-Passwort setzen | `/forgot-password` für Owner-E-Mail | ☐ |
 
 ## Priorität 3 — Stripe Live (nach B2B-Test)
 
@@ -48,7 +50,7 @@ Alles hier erfordert Zugang zu Railway, Cloudflare, Stripe oder GitHub.
 | # | Aufgabe | Hinweis | Erledigt |
 |---|---------|---------|----------|
 | 19 | `STRIPE_E2E_ENABLED=true` (CI) | + `MAGIC_LINK_SECRET` | ☐ |
-| 20 | R2 Cron aktivieren | Nach Restore-Test | ☐ |
+| 20 | R2 Cron aktivieren | Täglich 02:17 UTC (#132) | ✅ |
 | 21 | `PARTNER_PAYOUT_CRON_ENABLED=true` | Quartals-Ledger | ☐ |
 
 ---
