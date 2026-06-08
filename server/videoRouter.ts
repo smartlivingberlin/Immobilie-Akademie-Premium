@@ -1,4 +1,5 @@
-import { router, publicProcedure, protectedProcedure } from "./_core/trpc";
+import { adminProcedure, router, publicProcedure, protectedProcedure } from "./_core/trpc";
+import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import {
   getAllVideoTutorials,
@@ -12,21 +13,6 @@ import {
   updateVideoProgress,
   getAllUserVideoProgress,
 } from "./db";
-import { TRPCError } from "@trpc/server";
-
-/**
- * Video Tutorial Router
- * Provides video management and progress tracking
- */
-
-// Admin-only middleware (reuse from routers.ts)
-const adminProcedure = protectedProcedure.use(({ ctx, next }) => {
-  if (ctx.user.role !== 'admin') {
-    throw new TRPCError({ code: 'FORBIDDEN', message: 'Nur Administratoren haben Zugriff auf diese Funktion.' });
-  }
-  return next({ ctx });
-});
-
 /**
  * Extract video ID and platform from URL
  */

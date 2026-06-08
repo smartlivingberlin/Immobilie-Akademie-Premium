@@ -42,6 +42,27 @@ const INSPECT_WRITE_ALLOWLIST = new Set([
   "/api/auth/inspect-status",
 ]);
 
+/**
+ * tRPC read paths explicitly permitted during inspect mode.
+ * Admin/owner procedures are blocked centrally; these use public or protected procedures.
+ */
+export const INSPECT_TRPC_READ_ALLOWLIST = [
+  "modules.myAccess",
+  "auth.me",
+  "progress.getProgress",
+  "videos.list",
+  "videos.getByModule",
+  "videos.getByDay",
+  "videos.getById",
+  "system.health",
+] as const;
+
+export type InspectTrpcReadPath = (typeof INSPECT_TRPC_READ_ALLOWLIST)[number];
+
+export function isInspectTrpcReadAllowed(path: string): path is InspectTrpcReadPath {
+  return (INSPECT_TRPC_READ_ALLOWLIST as readonly string[]).includes(path);
+}
+
 /** Blocks all non-GET write requests during inspect mode (REST layer). */
 export function blockInspectWrites(
   req: Request,
