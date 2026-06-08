@@ -1,5 +1,9 @@
 import { ENV } from "./_core/env";
-import { isInspectModeActive } from "./inspectMode";
+import {
+  INSPECT_FORBIDDEN_MSG,
+  isInspectModeActive,
+  isInspectRestAdminReadAllowed,
+} from "./inspectMode";
 import type { Request, Response, NextFunction } from "express";
 
 /**
@@ -42,11 +46,14 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
  * requireAdmin middleware
  */
 export async function requireAdmin(req: any, res: any, next: NextFunction) {
-  if (
-    isInspectModeActive(req)
-    && (req.method === "GET" || req.method === "HEAD")
-  ) {
-    return next();
+  if (isInspectModeActive(req) && (req.method === "GET" || req.method === "HEAD")) {
+    if (isInspectRestAdminReadAllowed(req.path)) {
+      return next();
+    }
+    return res.status(403).json({
+      error: INSPECT_FORBIDDEN_MSG,
+      inspect: true,
+    });
   }
 
   await requireAuth(req, res, async () => {

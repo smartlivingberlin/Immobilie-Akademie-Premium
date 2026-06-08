@@ -34,9 +34,10 @@ describe("inspect v2 admin read-only", () => {
     expect(layout).toContain("data-inspect-readonly");
   });
 
-  it("allows inspect read access on admin REST GET routes", () => {
+  it("uses REST allowlist for admin GET routes during inspect", () => {
     const authMiddleware = readFileSync(resolve(process.cwd(), "server/authMiddleware.ts"), "utf-8");
-    expect(authMiddleware).toContain("isInspectModeActive(req)");
-    expect(authMiddleware).toContain('req.method === "GET"');
+    const inspectMode = readFileSync(resolve(process.cwd(), "server/inspectMode.ts"), "utf-8");
+    expect(authMiddleware).toContain("isInspectRestAdminReadAllowed");
+    expect(inspectMode).toContain("INSPECT_REST_ADMIN_GET_ALLOWLIST");
   });
 });
