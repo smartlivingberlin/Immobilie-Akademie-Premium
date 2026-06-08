@@ -1,9 +1,9 @@
 import { chromium } from "@playwright/test";
 import { existsSync } from "fs";
 
-const BASE = "https://immobilien-akademie-smart.de";
-const TEST_EMAIL = "playwright@test.de";
-const TEST_PASSWORD = "Test2026!";
+const BASE = process.env.PLAYWRIGHT_BASE_URL || "https://immobilien-akademie-smart.de";
+const TEST_EMAIL = process.env.TEST_ADMIN_EMAIL || "alisadgadyri38@gmail.com";
+const TEST_PASSWORD = process.env.TEST_ADMIN_PASSWORD || "Admin2026!";
 const STATE_PATH = "tests/e2e/.auth-state.json";
 
 async function globalSetup() {

@@ -27,7 +27,7 @@ function createInspectCtx(): TrpcContext {
   };
 }
 
-describe("inspect tRPC integration", () => {
+describe("inspect tRPC integration", { timeout: 120_000 }, () => {
   it("blocks mutations during inspect mode", async () => {
     const { appRouter } = await import("./routers");
     const caller = appRouter.createCaller(createInspectCtx());

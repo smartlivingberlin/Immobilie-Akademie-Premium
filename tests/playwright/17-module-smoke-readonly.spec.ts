@@ -4,7 +4,7 @@ const BASE = process.env.PLAYWRIGHT_BASE_URL || "https://immobilien-akademie-sma
 
 /**
  * Read-only smoke: jedes Modul 1–5 — Intro + Lerntag 1.
- * Nutzt den global-setup Auth-State (playwright@test.de), keine Schreiboperationen.
+ * Nutzt den global-setup Auth-State (TEST_ADMIN_EMAIL), keine Schreiboperationen.
  */
 test.describe("Modul-Smoke (readonly, authentifiziert)", () => {
   const modules = [

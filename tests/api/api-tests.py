@@ -3,9 +3,13 @@
 API Test Suite — Immobilien Akademie Smart
 Testet alle API-Endpoints systematisch
 """
+import os
 import requests
 import json
 import sys
+
+ADMIN_EMAIL = os.environ.get("TEST_ADMIN_EMAIL", "alisadgadyri38@gmail.com")
+ADMIN_PASSWORD = os.environ.get("TEST_ADMIN_PASSWORD", "Admin2026!")
 
 BASE = "https://immobilien-akademie-smart.de"
 session = requests.Session()
@@ -48,8 +52,9 @@ print("\n💳 3. STRIPE PRODUKTE")
 r = session.get(f"{BASE}/api/stripe/products", timeout=10)
 test("Produkte API erreichbar", r.status_code == 200)
 products = r.json()
-test("6 Produkte vorhanden", len(products) == 6, f"Gefunden: {len(products)}")
+test("7 Produkte vorhanden", len(products) == 7, f"Gefunden: {len(products)}")
 test("Komplett-Paket vorhanden", any(p.get("id") == "modul_komplett" for p in products))
+test("Compliance-SKU vorhanden", any(p.get("id") == "compliance_20h" for p in products))
 test("Alle Preise > 0", all(p.get("price", 0) > 0 for p in products))
 
 # 4. Authentifizierung
@@ -58,8 +63,8 @@ r = session.get(f"{BASE}/api/auth/me", timeout=10)
 test("Auth/me ohne Login gibt 401", r.status_code == 401)
 
 # Login
-r = session.post(f"{BASE}/api/auth/login", 
-    json={"email": "admin@immobilie.de", "password": "Admin1234!"},
+r = session.post(f"{BASE}/api/auth/login",
+    json={"email": ADMIN_EMAIL, "password": ADMIN_PASSWORD},
     timeout=10)
 test("Admin-Login erfolgreich", r.status_code == 200)
 test("Login gibt 'ok: true'", r.json().get("ok") == True)
