@@ -49,6 +49,8 @@
 | **#138** | Bash-Syntax-Fix | Extra `)` in B2B-Smoke-Script |
 | **#139** | ComfortBar + Rechenpraxis USP | Siehe Abschnitt 3 |
 | **#140** | Audit-Suite Fixes | Siehe Abschnitt 4 — **in `main` gemerged** |
+| **#141** | Inspect-Query-Sperre (P0) | Admin-tRPC-Queries im Inspect-Modus geblockt — **merge-ready** |
+| **#142** | M6–8 Cleanup | Veraltete Referenzen, Totcode, CI-Guard — **merge-ready** |
 
 ---
 
@@ -202,7 +204,8 @@ Modul-Tage: `python3 tests/content/content-quality-check.py` → **5/5 Module vo
 - [ ] Rate-Limit Login — 15 Min Sperre: IP-basiert, Umgehung?
 - [ ] `OWNER_MAGIC_CODE`, `MAGIC_LINK_SECRET`, `INSPECT_JWT_SECRET` Rotation
 - [ ] DMARC, AVVs, Impressum Gewerbeschein (extern, siehe Checkliste)
-- [ ] Penetration: `/api/trpc/*` Mutationen, Inspect-Mode-Bypass
+- [x] Penetration: Inspect-Mode Admin-Query-Leak — **behoben in PR #141** (`adminUsers.list` etc. → 403)
+- [ ] Penetration: `/api/trpc/*` Mutationen, weitere IDOR-Pfade
 - [ ] R2 Backup: Restore **nicht** vollständig verifiziert (☐ in Ops-Liste)
 
 ### 7.2 Stripe & B2B
@@ -236,6 +239,7 @@ Modul-Tage: `python3 tests/content/content-quality-check.py` → **5/5 Module vo
 
 | Priorität | Thema | Status |
 |-----------|-------|--------|
+| **P0** | Inspect Admin-Query-Leak (DSGVO) | ✅ PR #141 |
 | P1 | R2 Restore-Test | ☐ |
 | P1 | Railway MySQL FAILED Incident | ☐ Doku vorhanden |
 | P2 | B2B Browser-Checkout + Post-Checkout Wizard | ☐ (CLI ✅) |
@@ -306,4 +310,156 @@ Modul-Tage: `python3 tests/content/content-quality-check.py` → **5/5 Module vo
 
 ---
 
-*Dieses Dokument ist eine Momentaufnahme vom 08.06.2026, 22:00 CEST. Jede Aussage ist durch den Architekten zu verifizieren.*
+## 13. Forensische Nachfragen NF-9 bis NF-13 (Antworten, 08.06.2026)
+
+> Ergänzung nach Architekt-Review. Keine finale Wahrheit — reproduzierbar prüfen.
+
+### NF-9 — R2 Cron-Verifikation
+
+| Frage | Befund |
+|-------|--------|
+| **Nächster Cron** | `17 2 * * *` UTC in `.github/workflows/mysql-backup-r2.yml` → täglich **02:17 UTC** (03:17 MESZ / 04:17 MEZ) |
+| **Scheduled Runs seit Aktivierung?** | **Nein.** `gh run list --workflow=mysql-backup-r2.yml` zeigte bis 08.06.2026 nur `workflow_dispatch` (letzter Erfolg: 08.06.2026 11:49 UTC). Kein `event: schedule` |
+| **Lautloses Versagen erkennen?** | Aktuell **kein dediziertes Alerting**. Indirekt: (1) GitHub Actions Failure-Mail, (2) `gh run list`, (3) R2 `latest/`-Objekt `LastModified` > 25h alt, (4) fehlendes Artifact `mysql-backup-metadata-*`, (5) `EXTERNAL_OPS_CHECKLIST.md` Punkt 4+20 noch ☐ |
+
+**Empfehlung:** Siehe Anhang A.1 (Slack/E-Mail bei Workflow-Failure).
+
+### NF-10 — Erster R2-Restore-Test (Anleitung Alisad)
+
+**GitHub Actions (Backup auslösen):**
+
+1. GitHub → Actions → **MySQL Backup to Cloudflare R2** → **Run workflow** (Branch `main`)
+2. Grüner Job + Artifact `mysql-backup-metadata-*` prüfen
+3. R2 prüfen: `mysql/production/latest/immobilien-akademie-smart_mysql_latest.sql.gz.gpg`
+
+**Lokale Verifikation (WSL):**
+
+```bash
+# Secrets aus Passwort-Manager / Railway — nicht ins Repo
+export R2_ACCOUNT_ID="…" R2_BUCKET="…" R2_PREFIX="mysql/production"
+export AWS_ACCESS_KEY_ID="…" AWS_SECRET_ACCESS_KEY="…"
+
+mkdir -p restore_inbox
+aws s3 cp \
+  "s3://${R2_BUCKET}/${R2_PREFIX}/latest/immobilien-akademie-smart_mysql_latest.sql.gz.gpg" \
+  ./restore_inbox/ \
+  --endpoint-url "https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com"
+
+gpg --batch --yes --passphrase "$BACKUP_ENCRYPTION_PASSPHRASE" \
+  -d ./restore_inbox/immobilien-akademie-smart_mysql_latest.sql.gz.gpg \
+  > ./restore_inbox/restore.sql.gz
+gzip -t ./restore_inbox/restore.sql.gz
+```
+
+Vollständiger Docker-Restore: `docs/RUNBOOK_BACKUP_RESTORE.md` (Abschnitt „Restore-Test lokal durchführen“). Kernzählungen mit `key_counts_latest.txt` vergleichen. Ergebnis in `audit_runs/r2_restore_test_YYYYMMDD/` dokumentieren.
+
+| Thema | Befund |
+|-------|--------|
+| **Backup-Größe** | Ohne R2-Zugriff nicht messbar. Workflow loggt `ls -lh` im Job-Summary. Manueller Referenz-Dump 06.06.2026: `audit_runs/mysql_manual_backup_20260606_065425/` (komprimiert, vor GPG) |
+| **GPG-Passphrase** | GitHub Actions Secret **`BACKUP_ENCRYPTION_PASSPHRASE`** (Repo → Settings → Secrets → Actions). Wert separat im Passwort-Manager — **nicht** im Repo (`docs/R2_ACTIVATION_CHECKLIST.md`) |
+
+### NF-11 — Stripe Live-Readiness Pre-Flight
+
+**Pflicht-ENVs (18 Price-IDs + Keys)** — Quelle: `shared/stripeLiveEnv.ts`
+
+| Kategorie | Variablen |
+|-----------|-----------|
+| Keys | `STRIPE_SECRET_KEY` (sk_live_), `STRIPE_PUBLISHABLE_KEY`, `STRIPE_WEBHOOK_SECRET`, `VITE_STRIPE_PUBLIC_KEY`, `APP_URL` |
+| Abos (6) | `STRIPE_PRICE_RECHENPRAXIS_MONTHLY`, `RENEWAL_MONTHLY`, `RENEWAL_YEARLY`, `COMPLIANCE_YEARLY`, `B2B_STARTER`, `B2B_PROFESSIONAL` |
+| Module/Bundles (12) | `STRIPE_PRICE_MODUL_1` … `_5`, `MODUL_KOMPLETT`, `BUNDLE_STARTER`, `VERWALTER`, `MAKLER_PLUS`, `PROFI`, `GUTACHTER`, `KOMPLETT` |
+
+**Fehlende Price-ID:** **Kein Crash.** `buildPaymentLineItem` / `buildSubscriptionLineItem` (`shared/stripePriceIds.ts`) fallen auf dynamisches `price_data` zurück → Checkout funktioniert, aber **ad-hoc-Produkte** statt kanonischer Dashboard-Prices (Reporting-/Compliance-Risiko).
+
+**Test-Mode-Hardcoding:** Kein erzwungener Test-Mode. Modus ergibt sich aus `STRIPE_SECRET_KEY`-Präfix (`sk_test_` vs `sk_live_`). `server/stripe.ts` PRODUCTS-Array liefert Cent-Fallback für `price_data` — testfreundlich, greift auch ohne ENV.
+
+**Empfehlung:** Siehe Anhang A.2 (Pre-Flight-Skript gegen Stripe API).
+
+### NF-12 — CSP Hardening-Roadmap
+
+**Aktuell** (`server/_core/index.ts:97-102`): `script-src 'unsafe-inline'`, `style-src 'unsafe-inline'`.
+
+| Schritt | Aufwand | Wirkung |
+|---------|---------|---------|
+| **Minimal-invasiv:** Theme-Snippet `client/index.html:181-187` → externe `/theme-init.js` | Klein | Eine Inline-script-Quelle weniger |
+| JSON-LD `index.html:51` | — | CSP-exempt (`application/ld+json`) |
+| Skip-Link `onfocus`/`onblur` | Mittel | Event-Handler = inline |
+| **Nonce-Pipeline** (Express Nonce → Helmet → HTML) | 0,5–1 Tag Prod; +0,5 Tag Handler | `unsafe-inline` in Prod entfernbar |
+| **Dev HMR** | — | Vite HMR braucht `'unsafe-inline'` in Dev — üblich: Nonce nur Prod, Dev weiter inline |
+
+Weitere Inline: `client/public/offline.html`, React `dangerouslySetInnerHTML` (Chart, AI-Markdown — betrifft eher `style-src`). Stripe.js extern (`https://js.stripe.com`) — bereits allowlisted.
+
+### NF-13 — User-Journey End-to-End (Code-Analyse)
+
+Vollständiges curl-Skript gegen Prod wurde **nicht** ausgeführt (würde echte User/Stripe-Events erzeugen).
+
+| Schritt | Mechanismus | Status | Anmerkung |
+|---------|-------------|--------|-----------|
+| 1 Registrierung | `POST /api/auth/register` | ✅ | Sofort Session-Cookie |
+| 2 E-Mail-Bestätigung | — | **Nicht implementiert** | Nur Willkommens-Mail (Resend) |
+| 3 Login | `POST /api/auth/login` | ✅ | Rate-Limit 10/15min |
+| 4 Modul-Vorschau | `/kurse`, `/modul/1` | 🟡 | Landing öffentlich; Lerninhalt braucht `enabledModules` |
+| 5 Checkout | `POST /api/stripe/checkout` | ✅ | `widerrufsAkzeptiert: true` Pflicht |
+| 6 Webhook | `POST /api/stripe/webhook` | ✅ | Signatur + `STRIPE_WEBHOOK_SECRET` |
+| 7 `enabled_modules` | `stripeWebhookHandler` | ✅ | Merge per Kauf-E-Mail |
+| 8 Lerntag | `trpc.progress.startDay` | ✅ | Modul-Zugang nötig |
+| 9 Quiz | `trpc.quiz.*` | ✅ | Modul-Zugang nötig |
+| 10 Account löschen | `trpc.account.deleteMyAccount` | ✅ | DSGVO-Pfad `routers.ts` |
+| 11 Post-Delete-Verify | — | **Nicht automatisiert** | Kein Audit-Log-Endpoint |
+
+**Prod-Probe 08.06.2026:** `GET /api/health` → 200 · `GET /api/stripe/products` → 7 Produkte JSON.
+
+**Offene Produktfragen für Alisad:** Siehe Anhang A.3.
+
+---
+
+## 14. Anhang — Empfehlungen & offene Produktfragen
+
+### A.1 NF-9 — R2 Workflow-Failure-Notification (Folge-PR empfohlen)
+
+**Ziel:** Lautloses Cron-Versagen vermeiden.
+
+**Vorschlag (kleiner PR):** In `.github/workflows/mysql-backup-r2.yml` am Job-Ende:
+
+```yaml
+- name: Notify on failure
+  if: failure()
+  uses: slackapi/slack-github-action@v2
+  with:
+    webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+    webhook-type: incoming-webhook
+    payload: |
+      {"text": "❌ MySQL R2 Backup failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"}
+```
+
+Alternative ohne Slack: `dawidd6/action-send-mail` mit `secrets.OPS_ALERT_EMAIL`. Secret `SLACK_WEBHOOK_URL` oder `OPS_ALERT_EMAIL` in GitHub anlegen.
+
+### A.2 NF-11 — Stripe Live Pre-Flight-Check-Skript (Folge-PR empfohlen)
+
+**Ziel:** Alle 18 `STRIPE_PRICE_*` ENV-Variablen gegen Stripe Dashboard validieren **bevor** Live-Umschaltung.
+
+**Vorschlag:** `scripts/ops/stripe-price-preflight.ts` (oder `.sh` + Stripe CLI):
+
+1. Liest `STRIPE_SECRET_KEY` + alle Keys aus `shared/stripeLiveEnv.ts` / `stripePriceIds.ts`
+2. Pro gesetzter `price_…`-ID: `stripe.prices.retrieve(priceId)` (API-Call)
+3. Prüft: `active === true`, Währung EUR, Modus (live vs test) passt zum Key-Präfix
+4. Meldet: fehlende ENV, ungültige IDs, Test-Prices unter Live-Key, Lookup-Key-Mismatch zu `STRIPE_SEED_CATALOG`
+5. Exit-Code 1 bei Discrepancies → CI-Gate oder manuell `pnpm run ops:stripe-preflight` vor Go-Live
+
+Referenz: `server/scripts/seed-stripe-prices.ts`, `shared/stripePriceReadiness.ts`.
+
+### A.3 NF-13 — Offene Fragen an Alisad (Produktentscheidung)
+
+1. **E-Mail-Verifikation bei Registrierung:** Aktuell **bewusst nicht implementiert** — `POST /api/auth/register` erstellt sofort Session (`server/_core/auth-local.ts`). Nur Willkommens-Mail via Resend, kein Bestätigungslink, kein Gate vor Login. **Frage an Alisad:** Soll das so bleiben (niedrigere Hürde, höheres Fake-Account-Risiko) oder Double-Opt-In vor erstem Login?
+
+2. **Post-Delete DSGVO-Verify:** `account.deleteMyAccount` löscht Multi-Table (`routers.ts`), aber es gibt **keinen** Audit-Log-Eintrag oder Verify-Endpoint der nachweist „User X vollständig entfernt“. **Frage an Alisad:** Soll ein `deletion_audit_log` (userId-Hash, Timestamp, Tabellen-Checkliste, kein PII) für Compliance-Nachweise eingeführt werden?
+
+---
+
+## 15. Merge-Reihenfolge PR #141 / #142 (vom Betreiber)
+
+1. **#141** (Inspect P0) mergen → **3 Min warten** → Prod: Inspect-Token, `adminUsers.list` muss 403 liefern; `modules.myAccess` weiter `[1,2,3,4,5]`
+2. **#142** (M6–8 Cleanup) mergen → **3 Min warten** → CI-Guard aktiv (kein `modul/[678]` / `Module[678]` in `client/src`)
+
+---
+
+*Dieses Dokument ist eine Momentaufnahme vom 08.06.2026, erweitert nach Forensik NF-9–NF-13. Jede Aussage ist durch den Architekten zu verifizieren.*
