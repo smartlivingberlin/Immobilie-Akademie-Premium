@@ -18,7 +18,8 @@
     "db:backfill-access": "tsx server/scripts/backfill-access-expiry.ts --dry-run",
     "db:backfill-access:apply": "tsx server/scripts/backfill-access-expiry.ts --apply",
     "db:backup": "bash scripts/backup/railway-mysql-dump.sh",
-    "db:backfill-migrations": "tsx server/scripts/backfill-migration-ledger.ts"
+    "db:backfill-migrations": "tsx server/scripts/backfill-migration-ledger.ts",
+    "stripe:seed-prices": "tsx server/scripts/seed-stripe-prices.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.93.0",
