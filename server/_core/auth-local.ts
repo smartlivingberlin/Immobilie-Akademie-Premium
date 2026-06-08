@@ -276,30 +276,74 @@ export function registerLocalAuthRoutes(app: Express) {
     try {
       const { code } = req.body ?? {};
       if (!code) return res.status(400).json({ error: "Code fehlt" });
-      const { redeemPresentationCode, upsertUser, getUserByOpenId, updateUserEnabledModules } = await import("../db");
-      const result = await redeemPresentationCode(code.trim().toUpperCase());
-      if (!result.success) return res.status(400).json({ error: result.message });
-      const openId = `presentation:${code.trim().toUpperCase()}`;
-      // User anlegen OHNE enabledModules zu überschreiben, dann direkt setzen
-      // trialExpiresAt aus presentation_code übernehmen falls vorhanden
-      const { getDb } = await import("../db");
-      const { sql } = await import("drizzle-orm");
-      const dbConn = await getDb();
-      const enabledStr = result.enabledModules ?? "";
-      if (dbConn) {
-        // First ensure user exists for updateLastSignedIn to work
-        const expiresAt = (result as any).expiresAt ?? null;
-        await dbConn.$client.query(`
-          INSERT INTO users (openId, name, role, enabledModules, trialExpiresAt, lastSignedIn)
-          VALUES (?, 'Gast', 'user', ?, ?, NOW())
-          ON DUPLICATE KEY UPDATE
-            enabledModules = VALUES(enabledModules),
-            trialExpiresAt = IF(? IS NOT NULL, ?, trialExpiresAt)
-        `, [openId, enabledStr, expiresAt, expiresAt, expiresAt]);
-        // Use the common streak logic
-        await db.updateLastSignedIn(openId);
+      const normalized = code.trim().toUpperCase();
+      const {
+        getOptionalUserIdFromRequest,
+        redeemAccessCodeForUser,
+        redeemAccessCodePublic,
+      } = await import("../accessCodeRedeem");
+      const { redeemPresentationCode } = await import("../db");
+
+      const loggedInUserId = await getOptionalUserIdFromRequest(req);
+      if (loggedInUserId) {
+        const accessResult = await redeemAccessCodeForUser(loggedInUserId, normalized);
+        if (accessResult.success) {
+          const { getDb } = await import("../db");
+          const dbConn = await getDb();
+          const [userRows] = (await dbConn.$client.query(
+            "SELECT openId, name, role FROM users WHERE id = ? LIMIT 1",
+            [loggedInUserId],
+          )) as any;
+          const row = userRows[0];
+          if (!row) return res.status(400).json({ error: "Nutzer nicht gefunden" });
+          await db.updateLastSignedIn(row.openId);
+          const token = await createSessionToken(
+            row.openId,
+            row.name || "Nutzer",
+            row.role || "user",
+            accessResult.enabledModules,
+          );
+          const cookieOptions = getSessionCookieOptions(req);
+          res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
+          return res.json({ ok: true });
+        }
       }
-      const token = await createSessionToken(openId, "Gast", "user", enabledStr);
+
+      const result = await redeemPresentationCode(normalized);
+      if (result.success) {
+        const openId = `presentation:${normalized}`;
+        const { getDb } = await import("../db");
+        const dbConn = await getDb();
+        const enabledStr = result.enabledModules ?? "";
+        if (dbConn) {
+          const expiresAt = (result as any).expiresAt ?? null;
+          await dbConn.$client.query(`
+            INSERT INTO users (openId, name, role, enabledModules, trialExpiresAt, lastSignedIn)
+            VALUES (?, 'Gast', 'user', ?, ?, NOW())
+            ON DUPLICATE KEY UPDATE
+              enabledModules = VALUES(enabledModules),
+              trialExpiresAt = IF(? IS NOT NULL, ?, trialExpiresAt)
+          `, [openId, enabledStr, expiresAt, expiresAt, expiresAt]);
+          await db.updateLastSignedIn(openId);
+        }
+        const token = await createSessionToken(openId, "Gast", "user", enabledStr);
+        const cookieOptions = getSessionCookieOptions(req);
+        res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
+        return res.json({ ok: true });
+      }
+
+      const accessPublic = await redeemAccessCodePublic(normalized);
+      if (!accessPublic.success) {
+        return res.status(400).json({ error: accessPublic.message });
+      }
+      const openId = accessPublic.openId || `access:${normalized}`;
+      await db.updateLastSignedIn(openId);
+      const token = await createSessionToken(
+        openId,
+        "Team-Mitglied",
+        "user",
+        accessPublic.enabledModules,
+      );
       const cookieOptions = getSessionCookieOptions(req);
       res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
       return res.json({ ok: true });

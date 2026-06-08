@@ -103,7 +103,7 @@ b2bOnboardingRouter.get("/api/b2b/onboarding/team-codes", requireAuth, async (re
     const { getDb } = await import("./db");
     const db = await getDb();
     const [rows] = await db.$client.query(
-      `SELECT id, code, modules, maxUses, usedCount, isActive, note, createdAt
+      `SELECT id, code, modules, max_uses, used_count, is_active, note, created_at
        FROM access_codes WHERE created_by_user_id = ?
        ORDER BY created_at DESC LIMIT 20`,
       [req.currentUser.id],
@@ -150,7 +150,17 @@ b2bOnboardingRouter.post("/api/b2b/onboarding/team-codes", requireAuth, async (r
     );
 
     logger.info("[B2B] Team code created", { userId: req.currentUser.id, tenantId: config.id, code });
-    res.json({ ok: true, code, modules, maxUses });
+    res.json({
+      ok: true,
+      code: {
+        id: 0,
+        code,
+        modules,
+        maxUses,
+        usedCount: 0,
+        isActive: true,
+      },
+    });
   } catch (e: any) {
     if (String(e.message).includes("Duplicate")) {
       return res.status(409).json({ error: "Code existiert bereits" });

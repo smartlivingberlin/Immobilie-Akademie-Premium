@@ -153,7 +153,15 @@ export default function B2bEinrichtung() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Code-Erstellung fehlgeschlagen");
-      loadTeamCodes();
+      if (data.code?.code) {
+        setTeamCodes((prev) => {
+          const next = [data.code as TeamCode, ...prev.filter((c) => c.code !== data.code.code)];
+          return next.slice(0, 5);
+        });
+        copyTeamCode(data.code.code);
+      } else {
+        loadTeamCodes();
+      }
     } catch (e: any) {
       setError(e.message);
     } finally {
