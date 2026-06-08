@@ -8,12 +8,30 @@ import requests
 import json
 import sys
 
-ADMIN_EMAIL = os.environ.get("TEST_ADMIN_EMAIL") or os.environ.get("B2B_ADMIN_EMAIL") or "alisadgadyri38@gmail.com"
-ADMIN_PASSWORD = os.environ.get("TEST_ADMIN_PASSWORD") or os.environ.get("B2B_ADMIN_PASSWORD") or "Admin2026!"
 PLACEHOLDER_PASSWORDS = {
     "DEIN_PASSWORT", "DEIN_ECHTES_PASSWORT", "DeinEchtesPasswort",
     "dein echtes Passwort", "<test-password>",
 }
+
+def resolve_admin_email():
+    return (
+        os.environ.get("B2B_ADMIN_EMAIL")
+        or os.environ.get("TEST_ADMIN_EMAIL")
+        or "alisadgadyri38@gmail.com"
+    )
+
+def resolve_admin_password():
+    for candidate in (
+        os.environ.get("B2B_ADMIN_PASSWORD"),
+        os.environ.get("TEST_ADMIN_PASSWORD"),
+        "Admin2026!",
+    ):
+        if candidate and candidate not in PLACEHOLDER_PASSWORDS:
+            return candidate
+    return ""
+
+ADMIN_EMAIL = resolve_admin_email()
+ADMIN_PASSWORD = resolve_admin_password()
 
 BASE = "https://immobilien-akademie-smart.de"
 session = requests.Session()
@@ -69,9 +87,9 @@ test("Auth/me ohne Login gibt 401", r.status_code == 401)
 # Login (vor Rate-Limit-Test — sonst 429 durch vorherige Audit-Läufe)
 login_ok = False
 login_body = {}
-if ADMIN_PASSWORD in PLACEHOLDER_PASSWORDS:
-    print("  ⚠️  Passwort ist Platzhalter — nutze B2B_ADMIN_PASSWORD vom erfolgreichen B2B-Smoke")
-    test("Admin-Login erfolgreich", False, "Platzhalter-Passwort")
+if not ADMIN_PASSWORD:
+    print("  ⚠️  Kein Passwort — unset TEST_ADMIN_PASSWORD; dann export B2B_ADMIN_PASSWORD='...'")
+    test("Admin-Login erfolgreich", False, "Passwort fehlt")
     test("Login gibt 'ok: true'", False)
     test("Login gibt Role zurück", False)
 else:

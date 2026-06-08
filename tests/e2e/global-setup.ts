@@ -2,11 +2,6 @@ import { chromium } from "@playwright/test";
 import { existsSync } from "fs";
 
 const BASE = process.env.PLAYWRIGHT_BASE_URL || "https://immobilien-akademie-smart.de";
-const TEST_EMAIL =
-  process.env.TEST_ADMIN_EMAIL || process.env.B2B_ADMIN_EMAIL || "alisadgadyri38@gmail.com";
-const TEST_PASSWORD =
-  process.env.TEST_ADMIN_PASSWORD || process.env.B2B_ADMIN_PASSWORD || "Admin2026!";
-
 const PLACEHOLDER_PASSWORDS = new Set([
   "DEIN_PASSWORT",
   "DEIN_ECHTES_PASSWORT",
@@ -14,9 +9,31 @@ const PLACEHOLDER_PASSWORDS = new Set([
   "dein echtes Passwort",
   "<test-password>",
 ]);
+
+function resolveAdminEmail(): string {
+  return (
+    process.env.TEST_ADMIN_EMAIL ||
+    process.env.B2B_ADMIN_EMAIL ||
+    "alisadgadyri38@gmail.com"
+  );
+}
+
+function resolveAdminPassword(): string {
+  for (const candidate of [
+    process.env.B2B_ADMIN_PASSWORD,
+    process.env.TEST_ADMIN_PASSWORD,
+    "Admin2026!",
+  ]) {
+    if (candidate && !PLACEHOLDER_PASSWORDS.has(candidate)) return candidate;
+  }
+  return "";
+}
+
 const STATE_PATH = "tests/e2e/.auth-state.json";
 
 async function globalSetup() {
+  const TEST_EMAIL = resolveAdminEmail();
+  const TEST_PASSWORD = resolveAdminPassword();
   const browser = await chromium.launch();
   const context = await browser.newContext(
     existsSync(STATE_PATH) ? { storageState: STATE_PATH } : {}
@@ -47,9 +64,9 @@ async function globalSetup() {
     }
   }
 
-  if (!TEST_PASSWORD || PLACEHOLDER_PASSWORDS.has(TEST_PASSWORD)) {
+  if (!TEST_PASSWORD) {
     throw new Error(
-      "Passwort fehlt oder ist Platzhalter. Nutze dasselbe wie beim B2B-Smoke: export B2B_ADMIN_PASSWORD='...' (oder TEST_ADMIN_PASSWORD)",
+      "Passwort fehlt. Zuerst: unset TEST_ADMIN_PASSWORD && export B2B_ADMIN_PASSWORD='...' — oder bash scripts/ops/test-admin-login.sh",
     );
   }
 
