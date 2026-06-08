@@ -74,10 +74,18 @@ jobs:
           test -n "$RAILWAY_PROJECT_ID" || MISSING+=("RAILWAY_PROJECT_ID")
           test -n "$BACKUP_ENCRYPTION_PASSPHRASE" || MISSING+=("BACKUP_ENCRYPTION_PASSPHRASE")
           if [ "$DRY_RUN" != "1" ]; then
+            R2_ACCOUNT_ID="$(printf '%s' "$R2_ACCOUNT_ID" | tr -d '\r\n' | xargs)"
+            R2_BUCKET="$(printf '%s' "$R2_BUCKET" | tr -d '\r\n' | xargs)"
+            R2_ACCESS_KEY_ID="$(printf '%s' "$R2_ACCESS_KEY_ID" | tr -d '\r\n' | xargs)"
+            R2_SECRET_ACCESS_KEY="$(printf '%s' "$R2_SECRET_ACCESS_KEY" | tr -d '\r\n' | xargs)"
             test -n "$R2_ACCOUNT_ID" || MISSING+=("R2_ACCOUNT_ID")
             test -n "$R2_ACCESS_KEY_ID" || MISSING+=("R2_ACCESS_KEY_ID")
             test -n "$R2_SECRET_ACCESS_KEY" || MISSING+=("R2_SECRET_ACCESS_KEY")
             test -n "$R2_BUCKET" || MISSING+=("R2_BUCKET")
+            if [ -n "$R2_ACCESS_KEY_ID" ] && [ "${#R2_ACCESS_KEY_ID}" -ne 32 ]; then
+              echo "::error::R2_ACCESS_KEY_ID hat Länge ${#R2_ACCESS_KEY_ID}, erwartet 32 — Cloudflare R2 Token neu kopieren"
+              exit 1
+            fi
           fi
           if [ "${#MISSING[@]}" -gt 0 ]; then
             echo "::error::Fehlende GitHub Secrets: ${MISSING[*]}"
@@ -166,6 +174,11 @@ jobs:
           R2_BUCKET: ${{ secrets.R2_BUCKET }}
         run: |
           set -euo pipefail
+          R2_ACCOUNT_ID="$(printf '%s' "$R2_ACCOUNT_ID" | tr -d '\r\n' | xargs)"
+          R2_BUCKET="$(printf '%s' "$R2_BUCKET" | tr -d '\r\n' | xargs)"
+          AWS_ACCESS_KEY_ID="$(printf '%s' "$AWS_ACCESS_KEY_ID" | tr -d '\r\n' | xargs)"
+          AWS_SECRET_ACCESS_KEY="$(printf '%s' "$AWS_SECRET_ACCESS_KEY" | tr -d '\r\n' | xargs)"
+          export AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY
           ENDPOINT="https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com"
           BACKUP_FILE="backup/immobilien-akademie-smart_mysql_${STAMP}.sql.gz.gpg"
           COUNTS_FILE="backup/key_counts_${STAMP}.txt"
