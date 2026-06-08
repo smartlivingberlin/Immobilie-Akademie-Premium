@@ -70,6 +70,33 @@ describe("processStripeWebhookEvent", () => {
     );
   });
 
+  it("processes invoice.paid for B2B via parent.subscription_details metadata", async () => {
+    const { processB2bSubscription } = await import("./b2bPurchaseHandler");
+    vi.mocked(processB2bSubscription).mockClear();
+    const db = createDb({ id: 1, enabledModules: "" });
+    await processStripeWebhookEvent(db as any, {
+      type: "invoice.paid",
+      data: {
+        object: {
+          id: "in_test",
+          metadata: {},
+          parent: {
+            subscription_details: {
+              metadata: {
+                type: "b2b",
+                planId: "starter",
+                companyName: "bobo gmbh",
+                userId: "1",
+              },
+            },
+          },
+          lines: { data: [{ metadata: {} }] },
+        },
+      },
+    });
+    expect(processB2bSubscription).toHaveBeenCalledWith(db, 1, "starter", "bobo gmbh");
+  });
+
   it("ignores subscription checkout.session.completed events", async () => {
     processModulePurchase.mockClear();
     const db = createDb({ id: 1, enabledModules: "1" });

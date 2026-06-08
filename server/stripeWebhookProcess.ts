@@ -1,5 +1,14 @@
 import { logger } from "./_core/logger";
 
+/** Stripe Invoice API 2026 — Metadaten an parent.subscription_details oder line items */
+export function getInvoiceSubscriptionMetadata(invoice: Record<string, any>): Record<string, string> {
+  const fromParent = invoice.parent?.subscription_details?.metadata;
+  const fromSubscription = invoice.subscription_details?.metadata;
+  const fromLine = invoice.lines?.data?.[0]?.metadata;
+  const fromInvoice = invoice.metadata;
+  return (fromParent ?? fromSubscription ?? fromLine ?? fromInvoice ?? {}) as Record<string, string>;
+}
+
 export type StripeWebhookEvent = {
   type: string;
   data: { object: Record<string, unknown> };
@@ -12,25 +21,26 @@ export async function processStripeWebhookEvent(
 ): Promise<void> {
   if (event.type === "invoice.paid") {
     const invoice = event.data.object as Record<string, any>;
-    const subMeta = invoice.subscription_details?.metadata ?? invoice.lines?.data?.[0]?.metadata ?? {};
-    const userId = parseInt(subMeta.userId || invoice.metadata?.userId || "0", 10);
-    const interval = (subMeta.interval || invoice.metadata?.interval) === "year" ? "year" : "month";
+    const subMeta = getInvoiceSubscriptionMetadata(invoice);
+    const userId = parseInt(subMeta.userId || "0", 10);
+    const interval = subMeta.interval === "year" ? "year" : "month";
+    const subType = subMeta.type;
 
-    if (userId > 0 && (subMeta.type === "renewal" || invoice.metadata?.type === "renewal")) {
+    if (userId > 0 && subType === "renewal") {
       const { processRenewalPayment } = await import("./stripePurchaseHandler");
       await processRenewalPayment(db, userId, interval);
     }
-    if (userId > 0 && (subMeta.type === "compliance" || invoice.metadata?.type === "compliance")) {
+    if (userId > 0 && subType === "compliance") {
       const { processComplianceSubscription } = await import("./stripePurchaseHandler");
       await processComplianceSubscription(db, userId);
     }
-    if (userId > 0 && (subMeta.type === "b2b" || invoice.metadata?.type === "b2b")) {
+    if (userId > 0 && subType === "b2b") {
       const { processB2bSubscription } = await import("./b2bPurchaseHandler");
-      const planId = subMeta.planId || invoice.metadata?.planId || "starter";
-      const companyName = subMeta.companyName || invoice.metadata?.companyName || "";
+      const planId = subMeta.planId || "starter";
+      const companyName = subMeta.companyName || "";
       await processB2bSubscription(db, userId, planId, companyName);
     }
-    if (userId > 0 && (subMeta.type === "rechenpraxis" || invoice.metadata?.type === "rechenpraxis")) {
+    if (userId > 0 && subType === "rechenpraxis") {
       const { processRechenpraxisSubscription } = await import("./stripePurchaseHandler");
       await processRechenpraxisSubscription(db, userId);
     }
