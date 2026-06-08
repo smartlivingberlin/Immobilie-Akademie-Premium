@@ -8,9 +8,6 @@ server/db.ts
 server/ragTutor.ts
 server/_core/context.ts
 server/_core/sdk.ts
-client/src/pages/modules/Module6.tsx
-client/src/pages/modules/Module7.tsx
-client/src/pages/modules/Module8.tsx
 
 Wenn dein Plan eine dieser Dateien beruehrt: Aendere den Plan.
 Wenn es technisch unmoeglich ist ohne diese Dateien: Brich den Task ab und berichte warum.

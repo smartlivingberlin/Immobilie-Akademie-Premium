@@ -120,8 +120,8 @@ export default function AdminDashboard() {
           <SkeletonCard />
         </div>
       </div>
-      <div className="grid grid-cols-6 gap-4 mb-8">
-        {[1,2,3,4,5,6].map(i => <SkeletonCard key={i} />)}
+      <div className="grid grid-cols-5 gap-4 mb-8">
+        {[1,2,3,4,5].map(i => <SkeletonCard key={i} />)}
       </div>
       <SkeletonTable rows={10} columns={5} />
     </div>

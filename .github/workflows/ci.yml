@@ -17,6 +17,18 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - name: Guard against Module 6–8 references
+        run: |
+          if rg -q 'modul/[678]' client/src server shared 2>/dev/null; then
+            echo "Forbidden modul/6-8 route reference found"
+            rg 'modul/[678]' client/src server shared
+            exit 1
+          fi
+          if rg -q 'Module[678]' client/src --glob '*.tsx' 2>/dev/null; then
+            echo "Forbidden Module6-8 component reference found"
+            rg 'Module[678]' client/src --glob '*.tsx'
+            exit 1
+          fi
       - run: pnpm exec tsc --noEmit --skipLibCheck
       - run: pnpm test
       - run: pnpm build
