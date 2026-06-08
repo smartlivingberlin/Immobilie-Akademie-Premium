@@ -56,9 +56,19 @@ export default function PublicHeader() {
           {/* Right side */}
           <div className="flex items-center gap-2">
             <DarkModeToggle />
+            <Link href="/code-einloesen">
+              <a className="hidden lg:inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors">
+                Code einlösen
+              </a>
+            </Link>
+            <Link href="/b2b-einrichtung">
+              <a className="hidden lg:inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors">
+                B2B-Portal
+              </a>
+            </Link>
             <Link href="/login">
               <a className="hidden sm:inline-flex items-center px-4 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors">
-                Login
+                Anmelden
               </a>
             </Link>
             <Link href="/kurs/modul-1-immobilien-grundkurs">
@@ -93,9 +103,19 @@ export default function PublicHeader() {
               </Link>
             ))}
             <div className="pt-2 border-t border-border flex flex-col gap-2 px-3">
+              <Link href="/code-einloesen">
+                <a onClick={() => setOpen(false)} className="flex items-center justify-center px-4 py-2 rounded-lg text-sm font-medium border border-border hover:bg-muted transition-colors">
+                  Code einlösen
+                </a>
+              </Link>
+              <Link href="/b2b-einrichtung">
+                <a onClick={() => setOpen(false)} className="flex items-center justify-center px-4 py-2 rounded-lg text-sm font-medium border border-border hover:bg-muted transition-colors">
+                  B2B-Portal
+                </a>
+              </Link>
               <Link href="/login">
-                <a className="flex items-center justify-center px-4 py-2 rounded-lg text-sm font-medium border border-border hover:bg-muted transition-colors">
-                  Login
+                <a onClick={() => setOpen(false)} className="flex items-center justify-center px-4 py-2 rounded-lg text-sm font-medium border border-border hover:bg-muted transition-colors">
+                  Anmelden
                 </a>
               </Link>
               <Link href="/kurs/modul-1-immobilien-grundkurs">

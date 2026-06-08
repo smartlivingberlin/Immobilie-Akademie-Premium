@@ -173,6 +173,20 @@ export default function Home() {
                 </span>
               ))}
             </div>
+            <p className="text-sm text-white/70 mb-4">
+              Bereits Kunde, Maklerbüro oder Team?{" "}
+              <Link href="/login">
+                <a className="text-amber-200 font-semibold underline underline-offset-2 hover:text-white">Anmelden</a>
+              </Link>
+              {" · "}
+              <Link href="/code-einloesen">
+                <a className="text-amber-200/90 underline underline-offset-2 hover:text-white">Code einlösen</a>
+              </Link>
+              {" · "}
+              <Link href="/b2b-einrichtung">
+                <a className="text-amber-200/90 underline underline-offset-2 hover:text-white">B2B-Portal</a>
+              </Link>
+            </p>
             <div className="flex flex-wrap gap-3 mb-6">
               <Link href="/kurs/modul-1-immobilien-grundkurs">
                 <a className="inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold text-sm shadow-glow ring-1 ring-amber-300/40 transition-all hover:scale-105 hover:ring-amber-200/70"
