@@ -20,6 +20,10 @@ need_cmd() {
   command -v "$1" >/dev/null 2>&1 || die "$1 fehlt (z.B. apt install $1)"
 }
 
+json_body() {
+  jq -n --arg e "${1:-}" --arg p "${2:-}" '{email:$e,password:$p}'
+}
+
 need_cmd curl
 need_cmd jq
 
@@ -34,7 +38,7 @@ echo ""
 echo "=== 2) Admin Login ==="
 LOGIN=$(curl -fsS -c "$ADMIN_COOKIE" -X POST "$BASE_URL/api/auth/login" \
   -H "Content-Type: application/json" \
-  -d "$(jq -n --arg e "$ADMIN_EMAIL" --arg p "$ADMIN_PASSWORD" '{email:$e,password:$p}')")"
+  -d "$(json_body "$ADMIN_EMAIL" "$ADMIN_PASSWORD")")
 echo "$LOGIN" | jq .
 echo "$LOGIN" | jq -e '.ok == true' >/dev/null || die "Admin-Login fehlgeschlagen"
 
@@ -91,7 +95,7 @@ if [[ -n "$MEMBER_EMAIL" && -n "$MEMBER_PASSWORD" ]]; then
   echo "$REG" | jq . 2>/dev/null || echo "(Register übersprungen — Konto existiert evtl. schon)"
   MEMBER_LOGIN=$(curl -fsS -c "$MEMBER_COOKIE" -X POST "$BASE_URL/api/auth/login" \
     -H "Content-Type: application/json" \
-    -d "$(jq -n --arg e "$MEMBER_EMAIL" --arg p "$MEMBER_PASSWORD" '{email:$e,password:$p}')")
+    -d "$(json_body "$MEMBER_EMAIL" "$MEMBER_PASSWORD")")
   echo "$MEMBER_LOGIN" | jq .
   REDEEM=$(curl -fsS -b "$MEMBER_COOKIE" -c "$MEMBER_COOKIE" -X POST "$BASE_URL/api/auth/redeem-code" \
     -H "Content-Type: application/json" \
