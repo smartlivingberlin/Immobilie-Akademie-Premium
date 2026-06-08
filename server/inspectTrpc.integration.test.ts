@@ -46,4 +46,76 @@ describe("inspect tRPC integration", { timeout: 120_000 }, () => {
     const modules = await caller.modules.myAccess();
     expect(modules).toEqual([1, 2, 3, 4, 5]);
   });
+
+  describe("admin query block matrix", () => {
+    const blockedAdminQueries: Array<{
+      name: string;
+      run: (caller: Awaited<ReturnType<typeof import("./routers").appRouter.createCaller>>) => Promise<unknown>;
+    }> = [
+      {
+        name: "adminUsers.list",
+        run: (caller) => caller.adminUsers.list(),
+      },
+      {
+        name: "whitelabel.list",
+        run: (caller) => caller.whitelabel.list(),
+      },
+      {
+        name: "whitelabel.getById",
+        run: (caller) => caller.whitelabel.getById({ id: 1 }),
+      },
+      {
+        name: "whitelabel.getTenantUsers",
+        run: (caller) => caller.whitelabel.getTenantUsers({ tenantId: 1 }),
+      },
+      {
+        name: "adminCodes.list",
+        run: (caller) => caller.adminCodes.list(),
+      },
+      {
+        name: "presentationCode.list",
+        run: (caller) => caller.presentationCode.list(),
+      },
+      {
+        name: "adminQuestions.list",
+        run: (caller) => caller.adminQuestions.list({}),
+      },
+    ];
+
+    it.each(blockedAdminQueries)(
+      "blocks $name during inspect mode",
+      async ({ run }) => {
+        const { appRouter } = await import("./routers");
+        const caller = appRouter.createCaller(createInspectCtx());
+
+        await expect(run(caller)).rejects.toMatchObject({
+          message: INSPECT_FORBIDDEN_MSG,
+        });
+      },
+    );
+  });
+
+  describe("allowed inspect read queries", () => {
+    it("allows auth.me without forbidden error", async () => {
+      const { appRouter } = await import("./routers");
+      const caller = appRouter.createCaller(createInspectCtx());
+
+      await expect(caller.auth.me()).resolves.toBeNull();
+    });
+
+    it("allows progress.getProgress for inspect preview user", async () => {
+      const { appRouter } = await import("./routers");
+      const caller = appRouter.createCaller(createInspectCtx());
+
+      const progress = await caller.progress.getProgress();
+      expect(Array.isArray(progress)).toBe(true);
+    });
+
+    it("allows videos.list as public read", async () => {
+      const { appRouter } = await import("./routers");
+      const caller = appRouter.createCaller(createInspectCtx());
+
+      await expect(caller.videos.list()).resolves.toEqual(expect.any(Array));
+    });
+  });
 });

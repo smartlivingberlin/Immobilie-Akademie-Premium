@@ -8,9 +8,10 @@ describe("inspect v2 admin read-only", () => {
     expect(ownerRoute).toContain('res.redirect("/modul/1?inspect=1")');
   });
 
-  it("blocks inspect mutations in tRPC and allows inspect on protected queries", () => {
+  it("blocks inspect mutations and admin queries in tRPC", () => {
     const trpc = readFileSync(resolve(process.cwd(), "server/_core/trpc.ts"), "utf-8");
     expect(trpc).toContain("blockInspectMutations");
+    expect(trpc).toContain("blockInspectPrivilegedProcedures");
     expect(trpc).toContain("isInspectModeActive(ctx.req)");
   });
 

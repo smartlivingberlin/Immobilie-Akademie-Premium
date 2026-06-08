@@ -2,7 +2,7 @@ import { COOKIE_NAME } from "@shared/const";
 import { logger } from "./_core/logger";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
-import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
+import { adminProcedure, protectedProcedure, publicProcedure, router } from "./_core/trpc";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { questionBank, users } from "../drizzle/schema";
@@ -35,17 +35,6 @@ import { quizRouter } from "./quizRouter";
 import { azavRouter } from "./azavRouter";
 import { clearAllAuthCookies } from "./authCookies";
 import { isInspectModeActive } from "./inspectMode";
-
-// Admin-only middleware (inspect mode: read-only queries without login)
-const adminProcedure = protectedProcedure.use(({ ctx, next }) => {
-  if (isInspectModeActive(ctx.req)) {
-    return next({ ctx });
-  }
-  if (!ctx.user || ctx.user.role !== 'admin') {
-    throw new TRPCError({ code: 'FORBIDDEN', message: 'Nur Administratoren haben Zugriff auf diese Funktion.' });
-  }
-  return next({ ctx });
-});
 
 function safeJsonParse<T>(raw: unknown, fallback: T): T {
   if (typeof raw !== "string") return fallback;
@@ -962,6 +951,9 @@ Antworte im folgenden JSON-Format:
         return { ok: true };
       }),
     getProgress: protectedProcedure.query(async ({ ctx }) => {
+      if (isInspectModeActive(ctx.req)) {
+        return [];
+      }
       const db = await (await import('./db')).getDb();
       const { learningLogs } = await import('../drizzle/schema');
       const { eq } = await import('drizzle-orm');
