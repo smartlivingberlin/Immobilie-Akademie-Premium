@@ -212,3 +212,25 @@ jobs:
             cat "backup/key_counts_${STAMP}.txt"
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
+
+  notify-failure:
+    name: Alert on backup failure
+    runs-on: ubuntu-latest
+    needs: backup
+    if: failure()
+    steps:
+      - name: Send Slack or generic webhook alert
+        env:
+          OPS_ALERT_WEBHOOK_URL: ${{ secrets.OPS_ALERT_WEBHOOK_URL }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          MSG="❌ MySQL R2 Backup failed — ${RUN_URL}"
+          if [ -z "${OPS_ALERT_WEBHOOK_URL:-}" ]; then
+            echo "::warning::OPS_ALERT_WEBHOOK_URL not set — configure Slack Incoming Webhook in GitHub Secrets"
+            exit 0
+          fi
+          export MSG
+          curl -fsS -X POST "$OPS_ALERT_WEBHOOK_URL" \
+            -H "Content-Type: application/json" \
+            -d "$(python3 -c 'import json,os; print(json.dumps({"text": os.environ["MSG"]}))')"
