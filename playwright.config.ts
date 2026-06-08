@@ -25,7 +25,9 @@ export default defineConfig({
     {
       name: 'playwright-tests',
       use: { browserName: 'chromium' },
-      testMatch: '**/playwright/**/*.spec.ts'
+      testMatch: '**/playwright/**/*.spec.ts',
+      // Prod-Smoke gegen immobilien-akademie-smart.de — Retries hängen auf WSL (/mnt/c) oft in Chromium
+      retries: 0,
     }
   ],
 });

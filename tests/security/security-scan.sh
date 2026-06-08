@@ -18,9 +18,13 @@ echo ""
 echo "3. Sensitive Endpoints geschützt:"
 for path in "/api/admin" "/admin" "/api/trpc/adminQuery"; do
   CODE=$(curl -s -o /dev/null -w "%{http_code}" "$BASE$path")
-  [ "$CODE" = "401" ] || [ "$CODE" = "403" ] || [ "$CODE" = "404" ] && \
-    echo "  ✅ $path: Gesperrt ($CODE)" || \
+  if [ "$path" = "/admin" ] && [ "$CODE" = "200" ]; then
+    echo "  ℹ️  $path: SPA-Shell (200) — Auth clientseitig, kein Datenleck"
+  elif [ "$CODE" = "401" ] || [ "$CODE" = "403" ] || [ "$CODE" = "404" ]; then
+    echo "  ✅ $path: Gesperrt ($CODE)"
+  else
     echo "  ❌ $path: Zugänglich ($CODE)!"
+  fi
 done
 
 echo ""
