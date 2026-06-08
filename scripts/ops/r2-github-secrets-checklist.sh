@@ -7,8 +7,8 @@ cat <<'EOF'
 
 Pflicht (Repository → Settings → Secrets → Actions):
 
-  RAILWAY_TOKEN              Railway → Projekt → Settings → Tokens (Project Token)
-                             oder Account → Tokens (Account Token; Workflow setzt auch RAILWAY_API_TOKEN)
+  RAILWAY_TOKEN              Railway → Projekt immobilien-akademie-premium → Settings → Tokens
+                             → „Generate Project Token“ (NICHT Account → Tokens)
   RAILWAY_PROJECT_ID         Railway Projekt → Settings
   BACKUP_ENCRYPTION_PASSPHRASE   openssl rand -base64 32  (sicher speichern!)
   R2_ACCOUNT_ID              Cloudflare Dashboard
