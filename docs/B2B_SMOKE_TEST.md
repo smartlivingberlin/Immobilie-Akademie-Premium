@@ -13,6 +13,26 @@ curl -s https://immobilien-akademie-smart.de/api/health | jq '{ok, db}'
 
 Erwartung: `"ok": true`
 
+### Phase A2 — Komplett per CLI (ohne Browser)
+
+**Voraussetzung:** Admin-Passwort gesetzt (`/forgot-password` falls nach Stripe-Kauf noch keins existiert).
+
+```bash
+export B2B_ADMIN_EMAIL="alisadgadyri38@gmail.com"
+read -s B2B_ADMIN_PASSWORD && export B2B_ADMIN_PASSWORD
+pnpm run ops:b2b-team-smoke
+```
+
+Optional zweites Konto für Einlösung mit Login:
+
+```bash
+export B2B_MEMBER_EMAIL="team-test@example.com"
+export B2B_MEMBER_PASSWORD="Test2026!"
+pnpm run ops:b2b-team-smoke
+```
+
+Ohne `B2B_MEMBER_*` wird der Code als Gast-Session eingelöst (Schritt 7).
+
 ---
 
 ## Phase B — Checkout (Browser)
