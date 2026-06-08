@@ -63,7 +63,7 @@ Kernzählungen mit `key_counts_latest.txt` vergleichen. Ergebnis in `audit_runs/
 
 ## 5. Täglichen Cron aktivieren
 
-Erst nach erfolgreichem Restore-Test in `.github/workflows/mysql-backup-r2.yml` die `schedule`-Zeilen auskommentieren:
+Nach erfolgreichem Restore-Test ist in `.github/workflows/mysql-backup-r2.yml` aktiv:
 
 ```yaml
 schedule:
