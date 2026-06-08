@@ -1,6 +1,6 @@
 # Externe Ops-Checkliste — nur Alisad
 
-**Stand:** 07.06.2026 · Nach PR #125 (B2B + Migration Ledger)  
+**Stand:** 08.06.2026 · Nach Stripe-Test-Phase (10/17)  
 Alles hier erfordert Zugang zu Railway, Cloudflare, Stripe oder GitHub.
 
 ---
@@ -9,64 +9,68 @@ Alles hier erfordert Zugang zu Railway, Cloudflare, Stripe oder GitHub.
 
 | # | Aufgabe | Anleitung | Erledigt |
 |---|---------|-----------|----------|
-| 1 | **MySQL Backup** | `pnpm run db:backup` oder [R2_ACTIVATION_CHECKLIST.md](./R2_ACTIVATION_CHECKLIST.md) | ☐ |
-| 2 | **Migration Ledger backfill** | [MIGRATION_LEDGER.md](./MIGRATION_LEDGER.md) → `db:backfill-migrations --apply` | ☐ |
-| 3 | **Stripe Live** — 18 Price-IDs | `/admin/stripe-live` → Fehlende ENV kopieren | ☐ |
-| 4 | **R2 Restore-Test** | [RUNBOOK_BACKUP_RESTORE.md](./RUNBOOK_BACKUP_RESTORE.md) | ☐ |
+| 1 | **MySQL Backup** | `pnpm run db:backup` | ✅ |
+| 2 | **Migration Ledger backfill** | Nur wenn `pending > 0` — live ist `0` | ⏭️ SKIP |
+| 3 | **Stripe Test** — 18 Price-IDs + Webhook | `pnpm run stripe:seed-prices` · [STRIPE_LIVE_GO_LIVE.md](./STRIPE_LIVE_GO_LIVE.md) | ✅ Test |
+| 4 | **R2 Restore-Test** | [R2_ACTIVATION_CHECKLIST.md](./R2_ACTIVATION_CHECKLIST.md) · `pnpm run ops:r2-checklist` | ☐ |
 | 5 | **Railway MySQL FAILED** | [RAILWAY_MYSQL_OPS.md](./RAILWAY_MYSQL_OPS.md) | ☐ |
-| 6 | **PR #72 schließen** | GitHub → Close (Audit überholt) | ☐ |
+| 6 | **PR #72 schließen** | GitHub → Close | ✅ |
 
 ## Priorität 2 — B2B Go-Live
 
 | # | Aufgabe | Hinweis | Erledigt |
 |---|---------|---------|----------|
-| 7 | B2B Price-IDs in Railway | `STRIPE_PRICE_B2B_STARTER`, `STRIPE_PRICE_B2B_PROFESSIONAL` | ☐ |
-| 8 | Testkauf Starter/Professional | `/fuer-maklerbueros` → Dialog → Stripe 4242… | ☐ |
-| 9 | Post-Checkout Wizard | `/b2b-einrichtung?b2b=1` — Tenant-Polling, Branding, Team-Code | ☐ |
-| 10 | Team-Code einlösen | `/code-einloesen` mit generiertem Code testen | ☐ |
+| 7 | B2B Price-IDs in Railway | In 18er-Set enthalten | ✅ |
+| 8 | Testkauf Starter/Professional | [B2B_SMOKE_TEST.md](./B2B_SMOKE_TEST.md) | ☐ |
+| 9 | Post-Checkout Wizard | `/b2b-einrichtung?b2b=1` | ☐ |
+| 10 | Team-Code einlösen | `/code-einloesen` | ☐ |
 
-## Priorität 3 — Security & Compliance
-
-| # | Aufgabe | Hinweis | Erledigt |
-|---|---------|---------|----------|
-| 11 | `OWNER_MAGIC_CODE` rotieren | Nach Sichtbarkeit in Chat/Logs | ☐ |
-| 12 | `INSPECT_JWT_SECRET` | min. 32 Zeichen in Railway | ☐ |
-| 13 | DMARC `p=reject` | DNS | ☐ |
-| 14 | Gewerbeschein Impressum | Berlin ~26 EUR | ☐ |
-| 15 | DSGVO-AVVs | Processor-Verträge | ☐ |
-
-## Priorität 4 — Nach Go-Live
+## Priorität 3 — Stripe Live (nach B2B-Test)
 
 | # | Aufgabe | Hinweis | Erledigt |
 |---|---------|---------|----------|
-| 16 | `STRIPE_E2E_ENABLED=true` (CI) | + `MAGIC_LINK_SECRET` | ☐ |
-| 17 | R2 Cron aktivieren | Nach Restore-Test | ☐ |
-| 18 | `PARTNER_PAYOUT_CRON_ENABLED=true` | Quartals-Ledger | ☐ |
+| 11 | Live Price-IDs | `stripe:seed-prices` mit `sk_live_` | ☐ |
+| 12 | Live Keys + Webhook | [STRIPE_LIVE_GO_LIVE.md](./STRIPE_LIVE_GO_LIVE.md) | ☐ |
+| 13 | Live-Testkauf | Kleiner Betrag, echte Karte | ☐ |
+
+## Priorität 4 — Security & Compliance
+
+| # | Aufgabe | Hinweis | Erledigt |
+|---|---------|---------|----------|
+| 14 | `OWNER_MAGIC_CODE` rotieren | Nach Sichtbarkeit in Chat/Logs | ☐ |
+| 15 | `INSPECT_JWT_SECRET` | min. 32 Zeichen in Railway | ☐ |
+| 16 | DMARC `p=reject` | DNS | ☐ |
+| 17 | Gewerbeschein Impressum | Berlin ~26 EUR | ☐ |
+| 18 | DSGVO-AVVs | Processor-Verträge | ☐ |
+
+## Priorität 5 — Nach Go-Live
+
+| # | Aufgabe | Hinweis | Erledigt |
+|---|---------|---------|----------|
+| 19 | `STRIPE_E2E_ENABLED=true` (CI) | + `MAGIC_LINK_SECRET` | ☐ |
+| 20 | R2 Cron aktivieren | Nach Restore-Test | ☐ |
+| 21 | `PARTNER_PAYOUT_CRON_ENABLED=true` | Quartals-Ledger | ☐ |
 
 ---
 
-## Schnell-Verifikation (Copy-Paste)
+## Schnell-Verifikation (WSL Copy-Paste)
 
 ```bash
-# Health + DB + Migrationen
-curl -s https://immobilien-akademie-smart.de/api/health | jq .
+pnpm run ops:health
 
-# Quiz-Guard (403)
-curl -s -o /dev/null -w "%{http_code}\n" https://immobilien-akademie-smart.de/data/all-questions.json
+# Stripe Webhook Secret setzen (whsec aus Dashboard):
+pnpm run stripe:setup-webhook -- --webhook-id=we_1T97TbJV2Q8pgfvupUp7Nsyt --whsec=whsec_… --railway-apply
 
-# E2E Guards (lokal/CI)
-pnpm run test:e2e:stripe-guards
+# B2B E2E (CI / mit MAGIC_LINK_SECRET):
+pnpm run test:e2e:b2b
 
-# Migration Backfill Dry-run (Railway CLI linked)
-pnpm run db:backfill-migrations -- --dry-run
+# R2 Secrets-Liste:
+pnpm run ops:r2-checklist
 ```
 
-**Health erwartet:** `{ "ok": true, "db": "connected", "migrations": { "pending": 0, ... } }`
+**Health erwartet:** `{ "ok": true, "db": "connected", "migrations": { "pending": 0 } }`
 
-**B2B Smoke (mit Login):**
-1. `/fuer-maklerbueros` → Professional → Firmenname im Dialog
-2. Stripe Test → Redirect `/b2b-einrichtung?b2b=1`
-3. Warten bis Tenant grün → Branding → Team-Code → `/code-einloesen`
+**B2B Smoke:** [B2B_SMOKE_TEST.md](./B2B_SMOKE_TEST.md)
 
 ---
 

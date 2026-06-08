@@ -120,6 +120,8 @@ temp/
 !docs/RAILWAY_MYSQL_OPS.md
 !docs/EXTERNAL_OPS_CHECKLIST.md
 !docs/MIGRATION_LEDGER.md
+!docs/B2B_SMOKE_TEST.md
+!docs/STRIPE_LIVE_GO_LIVE.md
 *.bak.*
 .tmp/
 _check/
