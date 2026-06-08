@@ -1,15 +1,30 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "wouter";
 import { Accessibility, Type, Mic, MicOff, RotateCcw, Wind, X, Sparkles } from "lucide-react";
 import { useA11yPrefs, type ContrastMode } from "../hooks/use-a11y-prefs";
 import { useVoiceCommands } from "../hooks/use-voice-commands";
 import { useSpeech } from "../hooks/use-speech";
 
-export function AccessibilityPanel() {
+type AccessibilityPanelProps = {
+  hideFab?: boolean;
+  forceOpen?: boolean;
+  onClose?: () => void;
+};
+
+export function AccessibilityPanel({ hideFab = false, forceOpen = false, onClose }: AccessibilityPanelProps = {}) {
   const { prefs, update, reset } = useA11yPrefs();
   const [, navigate] = useLocation();
   const { speak, stop: stopSpeak } = useSpeech();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(forceOpen);
+
+  const close = () => {
+    setOpen(false);
+    onClose?.();
+  };
+
+  useEffect(() => {
+    if (forceOpen) setOpen(true);
+  }, [forceOpen]);
 
   const toast = (msg: string) => {
     const el = document.createElement("div");
@@ -55,21 +70,23 @@ export function AccessibilityPanel() {
 
   return (
     <>
-      <button onClick={()=>setOpen(true)} aria-label="Barrierefreiheit öffnen"
-        className="fixed bottom-5 left-5 z-40 h-12 w-12 inline-flex items-center justify-center rounded-full bg-blue-600 text-white shadow-lg ring-2 ring-white hover:scale-105 transition-transform focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-300">
-        <Accessibility className="h-5 w-5"/>
-      </button>
+      {!hideFab && (
+        <button onClick={()=>setOpen(true)} aria-label="Barrierefreiheit öffnen"
+          className="fixed bottom-5 right-5 z-40 h-12 w-12 inline-flex items-center justify-center rounded-full bg-blue-600 text-white shadow-lg ring-2 ring-white hover:scale-105 transition-transform focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-300">
+          <Accessibility className="h-5 w-5"/>
+        </button>
+      )}
 
       {open && (
         <div className="fixed inset-0 z-50 flex" role="dialog" aria-modal="true" aria-label="Barrierefreiheits-Einstellungen">
-          <div className="fixed inset-0 bg-black/40" onClick={()=>setOpen(false)} aria-hidden="true"/>
+          <div className="fixed inset-0 bg-black/40" onClick={close} aria-hidden="true"/>
           <div className="relative z-10 w-full max-w-sm bg-white shadow-xl overflow-y-auto h-full">
             <div className="sticky top-0 bg-white border-b border-slate-100 px-5 py-4 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Accessibility className="h-5 w-5 text-blue-600"/>
                 <h2 className="font-semibold text-slate-900">Barrierefreiheit</h2>
               </div>
-              <button onClick={()=>setOpen(false)} aria-label="Schließen" className="rounded-full p-1.5 hover:bg-slate-100">
+              <button onClick={close} aria-label="Schließen" className="rounded-full p-1.5 hover:bg-slate-100">
                 <X className="h-5 w-5 text-slate-500"/>
               </button>
             </div>
@@ -83,9 +100,20 @@ export function AccessibilityPanel() {
                   </label>
                   <span className="text-xs font-semibold bg-blue-50 text-blue-700 px-2 py-0.5 rounded">{Math.round(prefs.fontScale*100)}%</span>
                 </div>
-                <input type="range" min={0.85} max={1.5} step={0.05} value={prefs.fontScale}
+                <input type="range" min={0.85} max={2} step={0.05} value={prefs.fontScale}
                   onChange={e=>update({fontScale:parseFloat(e.target.value)})}
                   className="w-full accent-blue-600" aria-label="Schriftgröße"/>
+              </div>
+
+              {/* Zeilenabstand */}
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <label className="text-sm font-medium text-slate-700">Zeilenabstand</label>
+                  <span className="text-xs font-semibold bg-blue-50 text-blue-700 px-2 py-0.5 rounded">{prefs.lineSpacing.toFixed(1)}</span>
+                </div>
+                <input type="range" min={1.4} max={2} step={0.1} value={prefs.lineSpacing}
+                  onChange={e=>update({lineSpacing:parseFloat(e.target.value)})}
+                  className="w-full accent-blue-600" aria-label="Zeilenabstand"/>
               </div>
 
               {/* Kontrast */}
@@ -93,7 +121,7 @@ export function AccessibilityPanel() {
                 <label className="text-sm font-medium text-slate-700">Kontrast</label>
                 <div className="grid grid-cols-3 gap-2">
                   {(["default","high","dark"] as ContrastMode[]).map(c=>(
-                    <button key={c} onClick={()=>update({contrast:c})} aria-pressed={prefs.contrast===c}
+                    <button key={c} onClick={()=>update({ contrast: c, ...(c === "dark" ? { darkMode: true } : {}) })} aria-pressed={prefs.contrast===c}
                       className={`rounded-lg border py-2 text-xs font-medium transition-colors ${prefs.contrast===c?"border-blue-500 bg-blue-50 text-blue-700":"border-slate-200 text-slate-600 hover:bg-slate-50"}`}>
                       {c==="default"?"Standard":c==="high"?"Hoher Kontrast":"Dunkel"}
                     </button>

@@ -1,10 +1,11 @@
 import { Link, useLocation } from "wouter";
 import { useState } from "react";
-import { Menu, X, Headphones, BookOpen, Award } from "lucide-react";
-import { DarkModeToggle } from "@/components/DarkModeToggle";
+import { Menu, X, Headphones, BookOpen, Award, Building2 } from "lucide-react";
+import { ComfortBar } from "@/components/ComfortBar";
 
 const NAV = [
   { href: "/kurse",           label: "Kurse" },
+  { href: "/verwalter-rechner", label: "Verwalter-Rechner", icon: Building2 },
   { href: "/warum-wir",       label: "Warum wir" },
   { href: "/pakete",          label: "Pakete" },
   { href: "/glossary",        label: "Glossar",      icon: BookOpen },
@@ -55,7 +56,7 @@ export default function PublicHeader() {
 
           {/* Right side */}
           <div className="flex items-center gap-2">
-            <DarkModeToggle />
+            <ComfortBar compact />
             <Link href="/code-einloesen">
               <a className="hidden lg:inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors">
                 Code einlösen

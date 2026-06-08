@@ -122,6 +122,7 @@ temp/
 !docs/MIGRATION_LEDGER.md
 !docs/B2B_SMOKE_TEST.md
 !docs/STRIPE_LIVE_GO_LIVE.md
+!docs/MODUL_678_VERTEILUNGSPLAN.md
 *.bak.*
 .tmp/
 _check/

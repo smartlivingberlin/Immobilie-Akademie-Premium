@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from "react";
 import {
   ArrowRight, BookOpenCheck, Bot, Sparkles, ShieldCheck,
   Clock, Award, GraduationCap, Users, CheckCircle2, Star,
-  TrendingUp, Zap, Building2, Play, Mic
+  TrendingUp, Zap, Building2, Play, Mic, Calculator
 } from "lucide-react";
 import {
   KI_MODEL_COUNT,
@@ -16,6 +16,7 @@ import {
   STRUCTURED_LEARNING_DAYS,
 } from "@shared/claims";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
+import { RECHENPRAXIS_TASK_COUNT } from "@shared/rechenpraxisProduct";
 
 const MODULES = [
   { id:1, title:"Modul 1: Immobilien-Grundkurs", kurz:"Das Fundament", preis:"149", tage:20, ue:160, slug:"modul-1-immobilien-grundkurs", desc:"Grundstücksrecht, Grundbuch, Baurecht, Wertermittlung — die Pflichtbasis für alle weiteren Module.", badge:"Einstieg", farbe:"#1d4ed8", textFarbe:"white" },
@@ -199,6 +200,11 @@ export default function Home() {
                   Alle Module ansehen
                 </a>
               </Link>
+              <Link href="/verwalter-rechner">
+                <a className="inline-flex items-center gap-2 rounded-xl border border-emerald-300/40 bg-emerald-500/20 px-5 py-3 text-sm text-white font-medium hover:bg-emerald-500/30 transition-all">
+                  Verwalter-Rechner <Calculator className="h-3.5 w-3.5" />
+                </a>
+              </Link>
               <Link href="/warum-wir">
                 <a className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-5 py-3 text-sm text-white/80 hover:bg-white/10 transition-all">
                   Warum wir? <Star className="h-3.5 w-3.5" />
@@ -241,6 +247,34 @@ export default function Home() {
                 Ihr Karrierestart in der Immobilienwirtschaft
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* USP: Verwalter-Rechner / Rechenpraxis */}
+      <section className="bg-emerald-50 dark:bg-emerald-950/40 border-y border-emerald-100 dark:border-emerald-900">
+        <div className="container mx-auto px-4 py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2">Eigenständiges Produkt</p>
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+              Verwalter-Rechner — WEG & Hausverwaltung interaktiv
+            </h2>
+            <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+              {RECHENPRAXIS_TASK_COUNT} Rechenaufgaben mit KI-Hilfe: Hausgeld, Nebenkosten, Sonderumlage, CO₂-Umlage und mehr.
+              Ideal für WEG-Verwalter und Hausverwaltung — auch ohne Vollkurs.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3 shrink-0">
+            <Link href="/verwalter-rechner">
+              <a className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-xl">
+                Mehr erfahren <ArrowRight className="h-4 w-4" />
+              </a>
+            </Link>
+            <Link href="/rechenpraxis-preise">
+              <a className="inline-flex items-center gap-2 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 font-semibold px-6 py-3 rounded-xl hover:bg-emerald-100/50 dark:hover:bg-emerald-900/30">
+                Preise ab 19 €/Mo
+              </a>
+            </Link>
           </div>
         </div>
       </section>

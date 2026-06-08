@@ -97,6 +97,7 @@
   --shadow-soft: 0 2px 12px -3px oklch(0.20 0.03 220 / 0.08);
   --shadow-glow: 0 0 60px -10px oklch(0.62 0.13 195 / 0.4);
   --a11y-font-scale: 1;
+  --a11y-line-height: 1.6;
 }
 
 .dark {
@@ -153,6 +154,11 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv11";
+    line-height: var(--a11y-line-height, 1.6);
+  }
+
+  #main-content {
+    line-height: var(--a11y-line-height, 1.6);
   }
 
   h1, h2, h3, h4 {

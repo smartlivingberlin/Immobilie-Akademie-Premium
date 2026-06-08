@@ -1,4 +1,4 @@
-import { RECHENPRAXIS_STANDALONE_MONTHLY_EUR } from "./rechenpraxisProduct";
+import { RECHENPRAXIS_STANDALONE_MONTHLY_EUR, RECHENPRAXIS_TASK_COUNT } from "./rechenpraxisProduct";
 
 /** Rechenpraxis Standalone — Preispositionierung (Spin-off / SaaS) */
 
@@ -10,7 +10,7 @@ export const RECHENPRAXIS_PLANS = [
     period: "inklusive",
     highlight: false,
     features: [
-      "128 interaktive Aufgaben",
+      `${RECHENPRAXIS_TASK_COUNT} interaktive Aufgaben`,
       "KI-Erklärung pro Schritt",
       "Fortschritt lokal gespeichert",
       "2× Lernzeit Zugang inklusive",
@@ -25,7 +25,7 @@ export const RECHENPRAXIS_PLANS = [
     period: "Monat",
     highlight: true,
     features: [
-      "128 Aufgaben — nur Rechenpraxis",
+      `${RECHENPRAXIS_TASK_COUNT} Aufgaben — nur Rechenpraxis`,
       "KI-Erklärung (50 Nachrichten/Tag)",
       "Monatlich kündbar",
       "Ideal ohne Vollkurs",
