@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { SEO } from "@/components/SEO";
 import { Calculator, CheckCircle2, ArrowRight } from "lucide-react";
 import { RECHENPRAXIS_PLANS, RECHENPRAXIS_STANDALONE_NOTE } from "@shared/rechenpraxisPricing";
+import { RECHENPRAXIS_TASK_COUNT } from "@shared/rechenpraxisProduct";
 import { trpc } from "@/lib/trpc";
 
 export default function RechenpraxisPricing() {
@@ -32,7 +33,7 @@ export default function RechenpraxisPricing() {
   return (
     <>
       <SEO
-        title="Rechenpraxis Preise — 128 Aufgaben mit KI-Hilfe"
+        title={`Rechenpraxis Preise — ${RECHENPRAXIS_TASK_COUNT} Aufgaben mit KI-Hilfe`}
         description="Preise für die interaktive Rechenpraxis: Solo ab 19 €/Monat, im Modulkurs inklusive, Portal-Verlängerung ab 29 €/Jahr, Team ab 199 €/Monat."
         keywords="Rechenpraxis Preise, Immobilien Rechner Abo, Hausverwaltung Rechentraining"
         canonical="https://immobilien-akademie-smart.de/rechenpraxis-preise"
@@ -46,7 +47,7 @@ export default function RechenpraxisPricing() {
             Preise & Zugangswege
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-4">
-            128 Aufgaben in 7 Bereichen — vom Maklercourtage-Rechner bis zur WEG-Abrechnung.
+            {RECHENPRAXIS_TASK_COUNT} Aufgaben in 7 Bereichen — vom Maklercourtage-Rechner bis zur WEG-Abrechnung.
           </p>
           <p className="text-sm text-slate-500 max-w-xl mx-auto">{RECHENPRAXIS_STANDALONE_NOTE}</p>
         </section>

@@ -10,6 +10,7 @@ import { useModuleAccess } from "@/hooks/useModuleAccess";
 import { useInspectReadOnly } from "@/hooks/useInspectReadOnly";
 import { clearInspectModeClientState, isInspectModeSync } from "@/lib/inspectMode";
 import { Button } from "@/components/ui/button";
+import { ComfortBar } from "@/components/ComfortBar";
 import { GlobalSearch } from "@/components/GlobalSearch";
 import { GlobalGlossary } from "@/components/GlobalGlossary";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -30,7 +31,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   });
   const [location] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [fontScale, setFontScale] = useState(parseFloat(localStorage.getItem("fontScale") || "1.0"));
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isAIAssistantOpen, setIsAIAssistantOpen] = useState(false);
 
@@ -158,7 +158,7 @@ const navigation: NavigationItem[] = [
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex w-full overflow-x-hidden">
+    <div className="min-h-screen bg-background flex w-full overflow-x-hidden">
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div 
@@ -562,7 +562,7 @@ const navigation: NavigationItem[] = [
                     <span className="font-semibold text-sm">JD</span>
                   </div>
                 </TooltipTrigger>
-                <TooltipContent side="right">{user?.name || "Nutzer"} ({Math.round(fontScale * 100)}%)</TooltipContent>
+                <TooltipContent side="right">{user?.name || "Nutzer"}</TooltipContent>
               </Tooltip>
             </TooltipProvider>
           )}
@@ -578,30 +578,29 @@ const navigation: NavigationItem[] = [
             </Button>
           )}
           {!isCollapsed && (
-            <div style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 4, justifyContent: "center" }}>
-              <button onClick={() => setFontScale(s => Math.max(0.8, s - 0.1))}
-                style={{ padding: "2px 8px", border: "0.5px solid #334155", borderRadius: 4, background: "none", color: "#94a3b8", cursor: "pointer", fontSize: 14 }}>A-</button>
-              <span style={{ fontSize: 10, color: "#64748b", padding: "0 4px" }}>{Math.round(fontScale * 100)}%</span>
-              <button onClick={() => setFontScale(s => Math.min(1.4, s + 0.1))}
-                style={{ padding: "2px 8px", border: "0.5px solid #334155", borderRadius: 4, background: "none", color: "#94a3b8", cursor: "pointer", fontSize: 14 }}>A+</button>
+            <div className="mt-3 flex justify-center">
+              <ComfortBar compact />
             </div>
           )}
         </div>
       </aside>
 
       {/* Main Content Area */}
-      <main id="main-content" className="flex-1 flex flex-col min-w-0 overflow-auto bg-slate-50" tabIndex={-1}>
+      <main id="main-content" className="flex-1 flex flex-col min-w-0 overflow-auto bg-background" tabIndex={-1}>
         {/* Mobile Header */}
-        <div className="lg:hidden h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 sticky top-0 z-30">
-          <div className="flex items-center gap-2">
-            <div className="bg-blue-600 p-1.5 rounded-lg">
-              <GraduationCap className="h-5 w-5 text-white" />
+        <div className="lg:hidden h-16 bg-background border-b border-border flex items-center justify-between px-4 sticky top-0 z-30">
+          <div className="flex items-center gap-2 min-w-0">
+            <div className="bg-primary p-1.5 rounded-lg shrink-0">
+              <GraduationCap className="h-5 w-5 text-primary-foreground" />
             </div>
-            <span className="font-bold text-slate-900">Immobilien Akademie</span>
+            <span className="font-bold text-foreground truncate">Immobilien Akademie</span>
           </div>
-          <Button variant="ghost" size="icon" aria-label="Menü öffnen" onClick={() => setIsMobileMenuOpen(true)}>
-            <Menu className="h-6 w-6 text-slate-600" />
-          </Button>
+          <div className="flex items-center gap-1 shrink-0">
+            <ComfortBar compact />
+            <Button variant="ghost" size="icon" aria-label="Menü öffnen" onClick={() => setIsMobileMenuOpen(true)}>
+              <Menu className="h-6 w-6 text-muted-foreground" />
+            </Button>
+          </div>
         </div>
 
         {/* Content Scroll Area */}
@@ -609,7 +608,7 @@ const navigation: NavigationItem[] = [
           className="flex-1 overflow-y-auto p-4 md:p-8 scroll-smooth"
           data-inspect-readonly={isInspectReadOnly ? "" : undefined}
         >
-          <div className={`max-w-7xl mx-auto transition-all duration-300 ${isCollapsed ? "max-w-[1600px]" : ""}`} style={{ fontSize: fontScale + "rem" }}>
+          <div className={`max-w-7xl mx-auto transition-all duration-300 ${isCollapsed ? "max-w-[1600px]" : ""}`}>
             <Breadcrumbs />
             {children}
           </div>

@@ -344,7 +344,7 @@ export default function App() {
         Zum Hauptinhalt springen
       </a>
       <Router />
-      <Suspense fallback={null}><AccessibilityPanel /></Suspense>
+      <Suspense fallback={null}><AccessibilityPanel hideFab /></Suspense>
     </>
   );
 }

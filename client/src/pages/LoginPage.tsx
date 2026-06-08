@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { isOAuthEnabled, handleGoogleLogin } from "@/lib/oauth";
+import { ComfortBar } from "@/components/ComfortBar";
 
 export default function LoginPage() {
   const [mode, setMode] = useState<"login" | "register">("login");
@@ -69,7 +70,10 @@ export default function LoginPage() {
   const labelStyle = { display: "block", fontSize: "13px", fontWeight: "500" as const, color: "#374151", marginBottom: "6px" };
 
   return (
-    <div style={{ minHeight: "100vh", background: "linear-gradient(135deg, #0c1628 0%, #0f2744 40%, #1a1040 100%)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px", fontFamily: "system-ui, sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: "linear-gradient(135deg, #0c1628 0%, #0f2744 40%, #1a1040 100%)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px", fontFamily: "system-ui, sans-serif", position: "relative" }}>
+      <div style={{ position: "fixed", top: 12, right: 12, zIndex: 50 }}>
+        <ComfortBar compact />
+      </div>
       <div style={{ width: "100%", maxWidth: "420px" }}>
         <div style={{ textAlign: "center", marginBottom: "32px" }}>
           <div style={{ width: "72px", height: "72px", background: "linear-gradient(135deg, #2563eb, #7c3aed)", borderRadius: "18px", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px", boxShadow: "0 8px 32px rgba(37,99,235,0.5)" }}>
