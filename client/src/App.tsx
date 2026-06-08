@@ -1,10 +1,11 @@
 import React, { lazy, Suspense } from "react";
-import { Route, Switch } from "wouter";
+import { Route, Switch, useLocation } from "wouter";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { trpc } from "@/lib/trpc";
 import { Toaster } from "@/components/ui/toaster";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import Footer from "@/components/layout/Footer";
+import PublicHeader from "@/components/layout/PublicHeader";
 import ModuleGuard from "@/components/ModuleGuard";
 import { usePageTracking } from "@/hooks/useAnalytics";
 import { useInspectMode } from "@/hooks/useInspectMode";
@@ -195,12 +196,16 @@ function OwnerRoute({ component: Component }: { component: React.ComponentType }
 }
 
 function PublicLayout({ children }: { children: React.ReactNode }) {
+  const [location] = useLocation();
+  const hideHeader = ["/login", "/forgot-password", "/reset-password"].includes(location);
+
   return (
     <>
       <Toaster />
       <Suspense fallback={null}><CookieConsent /></Suspense>
       <Suspense fallback={null}><StructuredData /></Suspense>
       <div style={{display:'flex',flexDirection:'column',minHeight:'100vh'}}>
+        {!hideHeader && <PublicHeader />}
         <div style={{flex:'1 0 auto'}}>{children}</div>
         <Footer />
       </div>
