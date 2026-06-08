@@ -203,7 +203,8 @@ Modul-Tage: `python3 tests/content/content-quality-check.py` → **5/5 Module vo
 - [ ] Rate-Limit Login — 15 Min Sperre: IP-basiert, Umgehung?
 - [ ] `OWNER_MAGIC_CODE`, `MAGIC_LINK_SECRET`, `INSPECT_JWT_SECRET` Rotation
 - [ ] DMARC, AVVs, Impressum Gewerbeschein (extern, siehe Checkliste)
-- [x] Penetration: Inspect-Mode Admin-Query-Leak — **behoben in PR #141** (`adminUsers.list` etc. → 403)
+- [x] Penetration: Inspect tRPC Admin-Query-Leak — **behoben in PR #141** (`adminUsers.list` etc. → 403)
+- [ ] Penetration: Inspect REST Admin-GET-Leak — **PR `cursor/inspect-rest-allowlist-7dbc`** (Default-Deny-Allowlist)
 - [ ] Penetration: `/api/trpc/*` Mutationen, weitere IDOR-Pfade
 - [ ] R2 Backup: Restore **nicht** vollständig verifiziert (☐ in Ops-Liste)
 
@@ -238,7 +239,7 @@ Modul-Tage: `python3 tests/content/content-quality-check.py` → **5/5 Module vo
 
 | Priorität | Thema | Status |
 |-----------|-------|--------|
-| **P0** | Inspect Admin-Query-Leak (DSGVO) | ✅ PR #141 |
+| **P0** | Inspect Admin-Leak (DSGVO) | 🟡 tRPC ✅ PR #141 · REST ☐ Allowlist-PR |
 | P1 | R2 Restore-Test | ☐ |
 | P1 | Railway MySQL FAILED Incident | ☐ Doku vorhanden |
 | P2 | B2B Browser-Checkout + Post-Checkout Wizard | ☐ (CLI ✅) |
@@ -454,7 +455,37 @@ Referenz: `server/scripts/seed-stripe-prices.ts`, `shared/stripePriceReadiness.t
 
 ---
 
-## 15. Merge-Reihenfolge PR #141 / #142 (vom Betreiber)
+## 15. Inspect REST-Allowlist (P0 Restteil)
+
+**Problem:** PR #141 blockierte nur **tRPC**-Admin-Queries. `requireAdmin` in `authMiddleware.ts` ließ **alle** Admin-GET-Requests im Inspect durch (ohne Session) — inkl. `ki-stats` (Chat-Snippets), `pending-purchases` (E-Mails), `referral-stats`, etc.
+
+**Lösung:** Default-Deny + explizite Allowlist (`INSPECT_REST_ADMIN_GET_ALLOWLIST` in `inspectMode.ts`).
+
+| GET-Endpoint | Inspect | Begründung |
+|--------------|---------|------------|
+| `/api/admin/mysql-health` | ✅ | DB/Migration-Status, keine PII |
+| `/api/admin/migration-status` | ✅ | Migrations-Ledger, keine PII |
+| `/api/admin/stripe-webhook-health` | ✅ | Webhook-Konfig-Flag |
+| `/api/agent/health` | ✅ | System-Health (AdminDashboard-Widget) |
+| `/api/agent/status` | ✅ | Agent-Runtime-Status |
+| `/api/agent/cron-log` | ✅ | Cron-Zeilen, keine E-Mails |
+| `/api/agent/knowledge-map` | ✅ | Statische Gesetzes-URLs |
+| `/api/admin/ki-stats` | ❌ | Chat-Snippet-Ausschnitte aus DB |
+| `/api/admin/pending-purchases` | ❌ | Käufer-E-Mails |
+| `/api/admin/referral-stats` | ❌ | Referral-/Nutzerbezug |
+| `/api/admin/trial-leads` | ❌ | Lead-E-Mails |
+| `/api/admin/payout-ledger` | ❌ | Finanz-/Partnerdaten |
+| `/api/admin/partner-payout-*` | ❌ | Partner-/Auszahlungsdaten |
+| `/api/admin/stripe-live-*` (außer webhook-health) | ❌ | Nicht nötig für Modul-Vorschau |
+| `/api/agent/coaching` | ❌ | Nutzer-Lernprofile |
+| `/api/agent/coaching/:userId` | ❌ | PII pro User |
+| `/api/agent/legal-updates` | ❌ | Nicht nötig für Vorschau |
+
+**Owner-Routes** (`/api/owner/*`) nutzen `requireOwner`, nicht Inspect-Bypass — **außerhalb** dieses PRs.
+
+---
+
+## 16. Merge-Reihenfolge PR #141 / #142 (vom Betreiber)
 
 1. **#141** (Inspect P0) mergen → **3 Min warten** → Prod: Inspect-Token, `adminUsers.list` muss 403 liefern; `modules.myAccess` weiter `[1,2,3,4,5]`
 2. **#142** (M6–8 Cleanup) mergen → **3 Min warten** → CI-Guard aktiv (kein `modul/[678]` / `Module[678]` in `client/src`)

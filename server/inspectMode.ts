@@ -63,6 +63,55 @@ export function isInspectTrpcReadAllowed(path: string): path is InspectTrpcReadP
   return (INSPECT_TRPC_READ_ALLOWLIST as readonly string[]).includes(path);
 }
 
+/**
+ * Admin REST GET paths permitted during inspect (no auth cookie required).
+ * Default-deny: everything else behind requireAdmin returns 403 in inspect.
+ */
+export const INSPECT_REST_ADMIN_GET_ALLOWLIST = [
+  "/api/admin/mysql-health", // DB connectivity + migration counts — no PII
+  "/api/admin/migration-status", // schema_migrations ledger — no PII
+  "/api/admin/stripe-webhook-health", // webhook config flag — no PII
+  "/api/agent/health", // SuperAgent system check — AdminDashboard widget
+  "/api/agent/status", // agent runtime status — AdminDashboard widget
+  "/api/agent/cron-log", // last 50 cron lines — no user emails
+  "/api/agent/knowledge-map", // static legal source map — no user data
+] as const;
+
+export type InspectRestAdminGetPath = (typeof INSPECT_REST_ADMIN_GET_ALLOWLIST)[number];
+
+/** Canonical list of admin GET routes using requireAdmin (audit baseline). */
+export const INSPECT_REST_ADMIN_GET_ROUTES = [
+  "/api/admin/ki-stats",
+  "/api/admin/referral-stats",
+  "/api/admin/stripe-live-checklist",
+  "/api/admin/stripe-price-config",
+  "/api/admin/pending-purchases",
+  "/api/admin/stripe-live-verify",
+  "/api/admin/stripe-live-env-template",
+  "/api/admin/stripe-live-env-missing",
+  "/api/admin/partner-payout-details",
+  "/api/admin/migration-status",
+  "/api/admin/mysql-health",
+  "/api/admin/stripe-webhook-health",
+  "/api/admin/payout-ledger",
+  "/api/admin/partner-payout-export",
+  "/api/admin/trial-leads",
+  "/api/agent/knowledge-map",
+  "/api/agent/status",
+  "/api/agent/health",
+  "/api/agent/legal-updates",
+  "/api/agent/coaching",
+  "/api/agent/cron-log",
+] as const;
+
+export function isInspectRestAdminReadAllowed(path: string): boolean {
+  const normalized = path.split("?")[0];
+  if (normalized.startsWith("/api/agent/coaching/")) {
+    return false;
+  }
+  return (INSPECT_REST_ADMIN_GET_ALLOWLIST as readonly string[]).includes(normalized);
+}
+
 /** Blocks all non-GET write requests during inspect mode (REST layer). */
 export function blockInspectWrites(
   req: Request,
