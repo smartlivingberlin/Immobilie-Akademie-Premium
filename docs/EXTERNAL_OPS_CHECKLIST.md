@@ -1,6 +1,6 @@
 # Externe Ops-Checkliste — nur Alisad
 
-**Stand:** 08.06.2026 · Nach Stripe-Test-Phase (10/17)  
+**Stand:** 08.06.2026 · Master-Audit grün (Vitest 122, API 36, E2E 10)  
 Alles hier erfordert Zugang zu Railway, Cloudflare, Stripe oder GitHub.
 
 ---
@@ -21,9 +21,9 @@ Alles hier erfordert Zugang zu Railway, Cloudflare, Stripe oder GitHub.
 | # | Aufgabe | Hinweis | Erledigt |
 |---|---------|---------|----------|
 | 7 | B2B Price-IDs in Railway | In 18er-Set enthalten | ✅ |
-| 8 | Testkauf Starter/Professional | [B2B_SMOKE_TEST.md](./B2B_SMOKE_TEST.md) | ☐ |
+| 8 | Testkauf Starter/Professional | [B2B_SMOKE_TEST.md](./B2B_SMOKE_TEST.md) · CLI: `pnpm run ops:b2b-team-smoke` | ✅ CLI |
 | 9 | Post-Checkout Wizard | `/b2b-einrichtung?b2b=1` | ☐ |
-| 10 | Team-Code einlösen | `/code-einloesen` | ☐ |
+| 10 | Team-Code einlösen | `/code-einloesen` · TEAM-BOBOGMBH1 getestet | ✅ |
 
 ## Priorität 3 — Stripe Live (nach B2B-Test)
 
