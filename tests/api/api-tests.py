@@ -62,20 +62,29 @@ print("\n🔐 4. AUTHENTIFIZIERUNG")
 r = session.get(f"{BASE}/api/auth/me", timeout=10)
 test("Auth/me ohne Login gibt 401", r.status_code == 401)
 
-# Login
+# Login (vor Rate-Limit-Test — sonst 429 durch vorherige Audit-Läufe)
 r = session.post(f"{BASE}/api/auth/login",
     json={"email": ADMIN_EMAIL, "password": ADMIN_PASSWORD},
     timeout=10)
-test("Admin-Login erfolgreich", r.status_code == 200)
-test("Login gibt 'ok: true'", r.json().get("ok") == True)
-test("Login gibt Role zurück", r.json().get("role") == "admin")
+if r.status_code == 429:
+    print("  ⚠️  Rate-Limit aktiv (429) — 15 Min. warten oder SKIP_RATE_LIMIT_TEST=1 beim nächsten Lauf")
+login_ok = r.status_code == 200
+login_body = r.json() if login_ok else {}
+test("Admin-Login erfolgreich", login_ok, f"Status {r.status_code}" if not login_ok else "")
+test("Login gibt 'ok: true'", login_body.get("ok") == True)
+test("Login gibt Role zurück", login_body.get("role") == "admin")
 
 # Auth/me nach Login
-r = session.get(f"{BASE}/api/auth/me", timeout=10)
-test("Auth/me nach Login gibt User", r.status_code == 200)
-user = r.json()
-test("onboardingCompleted Feld vorhanden", "onboardingCompleted" in user)
-test("learningGoal Feld vorhanden", "learningGoal" in user)
+if login_ok:
+    r = session.get(f"{BASE}/api/auth/me", timeout=10)
+    test("Auth/me nach Login gibt User", r.status_code == 200)
+    user = r.json()
+    test("onboardingCompleted Feld vorhanden", "onboardingCompleted" in user)
+    test("learningGoal Feld vorhanden", "learningGoal" in user)
+else:
+    test("Auth/me nach Login gibt User", False, "Login fehlgeschlagen")
+    test("onboardingCompleted Feld vorhanden", False, "Login fehlgeschlagen")
+    test("learningGoal Feld vorhanden", False, "Login fehlgeschlagen")
 
 # 5. Öffentliche Seiten
 print("\n🌐 5. ALLE ÖFFENTLICHEN SEITEN")
@@ -95,19 +104,23 @@ test("X-Frame-Options vorhanden", "x-frame-options" in headers)
 test("X-Content-Type vorhanden", "x-content-type-options" in headers)
 test("CSP vorhanden", "content-security-policy" in headers)
 
-# 7. Rate Limiting
+# 7. Rate Limiting (eigene Session — blockiert nicht den Admin-Login oben)
 print("\n⚡ 7. RATE LIMITING")
-failed_attempts = 0
-for i in range(12):
-    r = session.post(f"{BASE}/api/auth/login",
-        json={"email": "test@test.de", "password": "WrongPass!"},
-        timeout=5)
-    if r.status_code == 429:
-        failed_attempts = i + 1
-        break
-test("Rate Limiting aktiv (429 nach vielen Versuchen)", 
-     failed_attempts > 0, 
-     f"Gesperrt nach {failed_attempts} Versuchen" if failed_attempts > 0 else "Nie gesperrt!")
+if os.environ.get("SKIP_RATE_LIMIT_TEST") == "1":
+    print("  ⏭️  Übersprungen (SKIP_RATE_LIMIT_TEST=1)")
+else:
+    rate_session = requests.Session()
+    failed_attempts = 0
+    for i in range(12):
+        r = rate_session.post(f"{BASE}/api/auth/login",
+            json={"email": "rate-limit-probe@test.de", "password": "WrongPass!"},
+            timeout=5)
+        if r.status_code == 429:
+            failed_attempts = i + 1
+            break
+    test("Rate Limiting aktiv (429 nach vielen Versuchen)",
+         failed_attempts > 0,
+         f"Gesperrt nach {failed_attempts} Versuchen" if failed_attempts > 0 else "Nie gesperrt!")
 
 # Ergebnis
 print("\n" + "="*60)
