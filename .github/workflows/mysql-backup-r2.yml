@@ -81,23 +81,19 @@ jobs:
             exit 1
           fi
 
-      - name: Link Railway project
+      - name: Create compressed dump
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
           RAILWAY_PROJECT_ID: ${{ secrets.RAILWAY_PROJECT_ID }}
         run: |
           set -euo pipefail
-          railway link "$RAILWAY_PROJECT_ID"
-
-      - name: Create compressed dump
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-        run: |
-          set -euo pipefail
           mkdir -p backup
           STAMP="$(date -u +%Y%m%d_%H%M%S)"
           echo "STAMP=$STAMP" >> "$GITHUB_ENV"
-          railway run --service MySQL --environment "$RAILWAY_ENVIRONMENT" -- bash -lc '
+          railway run \
+            --project "$RAILWAY_PROJECT_ID" \
+            --environment "$RAILWAY_ENVIRONMENT" \
+            --service MySQL -- bash -lc '
             set -euo pipefail
             mysqldump \
               -h "$RAILWAY_TCP_PROXY_DOMAIN" \
@@ -132,9 +128,13 @@ jobs:
       - name: Capture non-sensitive row counts
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          RAILWAY_PROJECT_ID: ${{ secrets.RAILWAY_PROJECT_ID }}
         run: |
           set -euo pipefail
-          railway run --service MySQL --environment "$RAILWAY_ENVIRONMENT" -- bash -lc '
+          railway run \
+            --project "$RAILWAY_PROJECT_ID" \
+            --environment "$RAILWAY_ENVIRONMENT" \
+            --service MySQL -- bash -lc '
             mysql \
               -h "$RAILWAY_TCP_PROXY_DOMAIN" \
               -P "$RAILWAY_TCP_PROXY_PORT" \

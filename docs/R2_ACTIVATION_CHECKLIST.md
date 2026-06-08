@@ -22,7 +22,7 @@ Repository → Settings → Secrets and variables → Actions → **New reposito
 
 | Secret | Beispiel / Quelle |
 |--------|-------------------|
-| `RAILWAY_TOKEN` | Railway → Account → Tokens |
+| `RAILWAY_TOKEN` | Railway → **Projekt** → Settings → Tokens → **Project Token** |
 | `RAILWAY_PROJECT_ID` | Railway Projekt → Settings → Project ID |
 | `R2_ACCOUNT_ID` | Cloudflare Account ID |
 | `R2_ACCESS_KEY_ID` | R2 API Token |
