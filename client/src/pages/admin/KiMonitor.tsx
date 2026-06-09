@@ -66,7 +66,7 @@ export default function KiMonitor() {
 
         {/* Header */}
         <div className="flex items-center gap-4 mb-8">
-          <Link href="/dashboard">
+          <Link href="/statistiken">
             <button className="text-slate-500 hover:text-slate-700 text-sm">← Dashboard</button>
           </Link>
           <div>

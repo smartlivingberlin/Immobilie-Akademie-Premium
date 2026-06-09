@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { Headphones, Play, Pause, SkipForward, SkipBack, Square, ArrowLeft, Gauge, BookOpen } from "lucide-react";
 import { useSpeech, preparePronunciation } from "../hooks/use-speech";
 import { ReadAloudButton } from "../components/ReadAloudButton";
+import { ComfortBar } from "@/components/ComfortBar";
 
 type Lesson = {
   id: string;
@@ -96,7 +97,7 @@ export default function AudioModus() {
           <Headphones className="h-12 w-12 text-muted-foreground mx-auto mb-4 opacity-50" />
           <h2 className="font-display text-xl font-semibold text-foreground mb-2">Audio-Modus nicht verfügbar</h2>
           <p className="text-muted-foreground text-sm">Ihr Browser unterstützt keine Sprachausgabe. Bitte nutzen Sie Chrome oder Edge.</p>
-          <Link href="/dashboard"><a className="mt-6 inline-block text-primary text-sm hover:underline">← Zurück zum Dashboard</a></Link>
+          <Link href="/statistiken"><a className="mt-6 inline-block text-primary text-sm hover:underline">← Zurück zum Lernbereich</a></Link>
         </div>
       </div>
     );
@@ -108,8 +109,8 @@ export default function AudioModus() {
       <div className="border-b border-border bg-background sticky top-0 z-10">
         <div className="container mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Link href="/dashboard">
-              <a className="rounded-lg p-1.5 hover:bg-muted transition-colors">
+            <Link href="/statistiken">
+              <a className="rounded-lg p-1.5 hover:bg-muted transition-colors" aria-label="Zurück zum Lernbereich">
                 <ArrowLeft className="h-5 w-5 text-muted-foreground" />
               </a>
             </Link>
@@ -118,9 +119,12 @@ export default function AudioModus() {
               <span className="font-display font-semibold text-foreground">Audio-Modus</span>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-xs text-muted-foreground">
-            <span>{lessons.length} Lektionen</span>
-            {current && <span>· Modul {current.moduleId}</span>}
+          <div className="flex items-center gap-3">
+            <ComfortBar compact />
+            <div className="hidden sm:flex items-center gap-2 text-xs text-muted-foreground">
+              <span>{lessons.length} Lektionen</span>
+              {current && <span>· Modul {current.moduleId}</span>}
+            </div>
           </div>
         </div>
       </div>

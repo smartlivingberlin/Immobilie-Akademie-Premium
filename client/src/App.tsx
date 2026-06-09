@@ -7,6 +7,7 @@ import DashboardLayout from "@/components/layout/DashboardLayout";
 import Footer from "@/components/layout/Footer";
 import ModuleGuard from "@/components/ModuleGuard";
 import { usePageTracking } from "@/hooks/useAnalytics";
+import { A11yPanelProvider, useA11yPanel } from "@/contexts/A11yPanelContext";
 
 // ── Public pages ─────────────────────────────────────────────────────────────
 const Home = lazy(() => import("@/pages/Home"));
@@ -101,6 +102,7 @@ const PortalAgentDashboard = lazy(() => import("@/pages/admin/PortalAgentDashboa
 const KiMonitor = lazy(() => import("@/pages/admin/KiMonitor"));
 const OwnerVideos = lazy(() => import("@/pages/OwnerVideos").then(m => ({ default: m.default })));
 const OwnerDashboard = lazy(() => import("@/pages/OwnerDashboard").then(m => ({ default: m.default })));
+const Barrierefreiheit = lazy(() => import("@/pages/Barrierefreiheit"));
 
 function ProtectedRoute({ component: Component }: { component: React.ComponentType }) {
   const { data: user, isLoading } = trpc.auth.me.useQuery(undefined, { retry: false });
@@ -167,12 +169,15 @@ function OwnerRoute({ component: Component }: { component: React.ComponentType }
   return <Component />;
 }
 
+const PublicHeader = lazy(() => import("@/components/layout/PublicHeader"));
+
 function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Toaster />
       <Suspense fallback={null}><CookieConsent /></Suspense>
       <Suspense fallback={null}><StructuredData /></Suspense>
+      <Suspense fallback={null}><PublicHeader /></Suspense>
       <div style={{display:'flex',flexDirection:'column',minHeight:'100vh'}}>
         <div style={{flex:'1 0 auto'}}>{children}</div>
         <Footer />
@@ -195,7 +200,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
 function Router() {
   usePageTracking();
   return (
-    <main id="main-content"><Suspense fallback={<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:"18px",color:"#64748b"}}>Laden...</div>}>
+    <div><Suspense fallback={<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:"18px",color:"#64748b"}}>Laden...</div>}>
       <InspectBanner />
       <ErrorBoundary>
       <Switch>
@@ -226,6 +231,7 @@ function Router() {
         <Route path="/lehrplan"><PublicLayout><Syllabus /></PublicLayout></Route>
         <Route path="/glossary"><PublicLayout><Glossary /></PublicLayout></Route>
         <Route path="/hilfe"><PublicLayout><UserGuide /></PublicLayout></Route>
+        <Route path="/barrierefreiheit"><PublicLayout><Barrierefreiheit /></PublicLayout></Route>
         <Route path="/beschwerde"><PublicLayout><ComplaintForm /></PublicLayout></Route>
         <Route path="/statistiken"><AppLayout><ProtectedRoute component={Dashboard} /></AppLayout></Route>
         <Route path="/quiz/:moduleId"><AppLayout><ProtectedRoute component={QuizPage} /></AppLayout></Route>
@@ -277,7 +283,20 @@ function Router() {
         <Route component={NotFound} />
       </Switch>
       </ErrorBoundary>
-    </Suspense></main>
+    </Suspense></div>
+  );
+}
+
+function GlobalAccessibilityPanel() {
+  const { isOpen, openPanel, closePanel } = useA11yPanel();
+  return (
+    <Suspense fallback={null}>
+      <AccessibilityPanel
+        hideFab
+        open={isOpen}
+        onOpenChange={(v) => (v ? openPanel() : closePanel())}
+      />
+    </Suspense>
   );
 }
 
@@ -295,12 +314,12 @@ export default function App() {
   }, []);
 
   return (
-    <>
+    <A11yPanelProvider>
       <a href="#main-content" className="skip-link">
         Zum Hauptinhalt springen
       </a>
       <Router />
-      <Suspense fallback={null}><AccessibilityPanel /></Suspense>
-    </>
+      <GlobalAccessibilityPanel />
+    </A11yPanelProvider>
   );
 }

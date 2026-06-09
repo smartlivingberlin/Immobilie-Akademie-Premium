@@ -115,6 +115,9 @@ temp/
 # Lokale Analyse- und Dokumentationsdateien
 *.md
 !README.md
+!docs/SYSTEM_AUDIT.md
+!docs/VERWALTER_SUITE_ROADMAP.md
+!docs/RECHENPRAXIS_BENCHMARK.md
 *.bak.*
 .tmp/
 _check/

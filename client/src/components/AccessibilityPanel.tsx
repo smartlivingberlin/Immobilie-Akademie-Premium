@@ -5,11 +5,21 @@ import { useA11yPrefs, type ContrastMode } from "../hooks/use-a11y-prefs";
 import { useVoiceCommands } from "../hooks/use-voice-commands";
 import { useSpeech } from "../hooks/use-speech";
 
-export function AccessibilityPanel() {
+export function AccessibilityPanel({
+  hideFab = false,
+  open: controlledOpen,
+  onOpenChange,
+}: {
+  hideFab?: boolean;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+}) {
   const { prefs, update, reset } = useA11yPrefs();
   const [, navigate] = useLocation();
   const { speak, stop: stopSpeak } = useSpeech();
-  const [open, setOpen] = useState(false);
+  const [internalOpen, setInternalOpen] = useState(false);
+  const open = controlledOpen ?? internalOpen;
+  const setOpen = onOpenChange ?? setInternalOpen;
 
   const toast = (msg: string) => {
     const el = document.createElement("div");
@@ -20,8 +30,8 @@ export function AccessibilityPanel() {
 
   const commands = useMemo(()=>[
     { patterns:[/^(gehe? zu|öffne) kurs/,/^kurs(e)?$/], action:()=>{navigate("/kurse");toast("Kurse");}, description:"‚Öffne Kurse'" },
-    { patterns:[/^(gehe? zu|öffne) glossar/,/^glossar$/], action:()=>{navigate("/glossar");toast("Glossar");}, description:"‚Öffne Glossar'" },
-    { patterns:[/^(gehe? zu|öffne) dashboard/,/^dashboard$/], action:()=>{navigate("/dashboard");toast("Dashboard");}, description:"‚Gehe zum Dashboard'" },
+    { patterns:[/^(gehe? zu|öffne) glossar/,/^glossar$/], action:()=>{navigate("/glossary");toast("Glossar");}, description:"‚Öffne Glossar'" },
+    { patterns:[/^(gehe? zu|öffne) dashboard/,/^dashboard$/,/^statistiken$/], action:()=>{navigate("/statistiken");toast("Lernbereich");}, description:"‚Gehe zum Lernbereich'" },
     { patterns:[/^(gehe? zu|öffne) förderung/,/^förderung$/], action:()=>{navigate("/foerderung");toast("Förderung");}, description:"‚Öffne Förderung'" },
     { patterns:[/^(startseite|home)$/], action:()=>{navigate("/");toast("Startseite");}, description:"‚Startseite'" },
     { patterns:[/^(vorlesen|lies vor)$/], action:()=>{const t=(document.querySelector("main") as HTMLElement)?.innerText??document.body.innerText;speak(t.slice(0,6000));toast("Vorlesen gestartet");}, description:"‚Vorlesen'" },
@@ -55,10 +65,12 @@ export function AccessibilityPanel() {
 
   return (
     <>
-      <button onClick={()=>setOpen(true)} aria-label="Barrierefreiheit öffnen"
-        className="fixed bottom-5 left-5 z-40 h-12 w-12 inline-flex items-center justify-center rounded-full bg-blue-600 text-white shadow-lg ring-2 ring-white hover:scale-105 transition-transform focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-300">
-        <Accessibility className="h-5 w-5"/>
-      </button>
+      {!hideFab && (
+        <button onClick={() => setOpen(true)} aria-label="Barrierefreiheit öffnen"
+          className="fixed bottom-5 left-5 z-40 h-12 w-12 inline-flex items-center justify-center rounded-full bg-blue-600 text-white shadow-lg ring-2 ring-white hover:scale-105 transition-transform focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-300">
+          <Accessibility className="h-5 w-5"/>
+        </button>
+      )}
 
       {open && (
         <div className="fixed inset-0 z-50 flex" role="dialog" aria-modal="true" aria-label="Barrierefreiheits-Einstellungen">
