@@ -1,5 +1,5 @@
 import { existsSync, readFileSync } from "fs";
-import { resolve } from "path";
+import { resolveModuleContentPath } from "./contentPaths";
 import {
   formatLessonText,
   paragraphsToDisplay,
@@ -75,7 +75,7 @@ function splitDayBlocks(raw: string): Array<{ dayNumber: number; block: string }
 }
 
 export function extractDaysFromModuleFile(filePath: string): DayFields[] {
-  const abs = resolve(filePath);
+  const abs = resolveModuleContentPath(filePath);
   if (!existsSync(abs)) return [];
   const raw = readFileSync(abs, "utf8");
   return splitDayBlocks(raw)

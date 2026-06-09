@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { requireAuth } from "./authMiddleware";
+import { parseKnowledgeFile } from "./audioLessonParser";
 import { parseModuleDayLessons } from "./moduleDayExtractor";
 import { readKursbuchChunkedCache, writeKursbuchChunkedCache } from "./generatorFileCache";
 
@@ -76,9 +77,14 @@ router.post("/api/ai/generate-kursbuch-chunked", requireAuth, async (req, res) =
       if (cached) return res.json(cached);
     }
 
-    const lessons = parseModuleDayLessons(moduleId);
+    let lessons = parseModuleDayLessons(moduleId);
     if (lessons.length === 0) {
-      return res.status(404).json({ error: "Keine Lerntage für dieses Modul gefunden" });
+      lessons = parseKnowledgeFile(moduleId);
+    }
+    if (lessons.length === 0) {
+      return res.status(404).json({
+        error: "Keine Lerntage gefunden — Moduldateien und Wissensdatenbank nicht verfügbar",
+      });
     }
 
     const moduleName = MODULE_NAMES[moduleId];

@@ -1,5 +1,6 @@
 import { readFileSync } from "fs";
 import { join } from "path";
+import { resolveKnowledgeDir } from "./contentPaths";
 
 export type AudioLesson = {
   id: string;
@@ -129,7 +130,7 @@ export function cleanTextForSpeech(raw: string): string {
  */
 export function parseKnowledgeFile(moduleId: number, baseDir?: string): AudioLesson[] {
   try {
-    const filePath = join(baseDir ?? join(process.cwd(), "server/knowledge"), `modul_${moduleId}.txt`);
+    const filePath = join(baseDir ?? resolveKnowledgeDir(), `modul_${moduleId}.txt`);
     const text = readFileSync(filePath, "utf8");
     const lines = text.split("\n");
     const lessons: AudioLesson[] = [];
