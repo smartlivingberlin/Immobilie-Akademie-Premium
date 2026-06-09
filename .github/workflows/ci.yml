@@ -34,6 +34,14 @@ jobs:
       - run: pnpm build
       - run: pnpm audit --audit-level=moderate
 
+  docker-build:
+    runs-on: ubuntu-latest
+    needs: check
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Docker image (Railway parity)
+        run: docker build -t makler-lernportal:ci .
+
   e2e-smoke:
     runs-on: ubuntu-latest
     needs: check

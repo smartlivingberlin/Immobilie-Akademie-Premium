@@ -11,7 +11,7 @@ cmds = [
 [phases.build]
 cmds = [
   "rm -rf node_modules/.cache",
-  "NODE_OPTIONS=--max-old-space-size=4096 pnpm build"
+  "pnpm build"
 ]
 
 [variables]
