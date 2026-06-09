@@ -17,14 +17,13 @@ RUN pnpm install --frozen-lockfile
 FROM base AS build
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-ENV NODE_OPTIONS=--max-old-space-size=4096
 RUN pnpm build
 
 FROM base AS runner
 ENV NODE_ENV=production
 COPY package.json pnpm-lock.yaml ./
 COPY patches ./patches
-COPY --from=deps /app/node_modules ./node_modules
+RUN pnpm install --frozen-lockfile --prod
 COPY --from=build /app/dist ./dist
 COPY drizzle/migrations ./drizzle/migrations
 COPY server/knowledge ./knowledge
