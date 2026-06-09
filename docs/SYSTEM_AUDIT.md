@@ -9,9 +9,9 @@ Vollständiges Audit-Dokument — siehe auch `VERWALTER_SUITE_ROADMAP.md` und `R
 | Bereich | Note | Kommentar |
 |---------|------|-----------|
 | Technische Architektur | **Gut** | React 19, Express, tRPC, MySQL — klar getrennt |
-| Informationsarchitektur | **Mittel** | Viele Tools, nicht alle in Navigation |
+| Informationsarchitektur | **Gut** | Kern-Tools in Sidebar; einzelne Lücken (s. unten) |
 | Lern-Didaktik | **Gut** | 5 Module, Audio, Rechenpraxis, KI-Tutor |
-| UX / Komfort | **Verbessert** | ComfortBar jetzt oben (nicht Sidebar unten) |
+| UX / Komfort | **Gut** | ComfortBar oben; Lerninhalt-Schriftzoom explizit |
 | Marketing | **Mittel** | PublicHeader aktiv, CTAs ausbaufähig |
 | Konsistenz | **Mittel** | Einige Legacy-Dateien, wenige tote Links |
 
@@ -35,6 +35,8 @@ Eigenes Layout unter `/app/rechenpraxis` mit ComfortBar.
 ### Admin / Owner / B2B
 Gleiche App-Shell, erweiterte Sidebar + Hub-Seiten (`/admin`, `/owner-dashboard`).
 
+**Owner:** Zusätzlich `ComfortBar` im dunklen Dashboard-Header (sichtbar auf `#0f172a`).
+
 ### Standalone
 `/audio-modus` — eigener Header mit ComfortBar.
 
@@ -44,7 +46,8 @@ Gleiche App-Shell, erweiterte Sidebar + Hub-Seiten (`/admin`, `/owner-dashboard`
 
 ```
 Browser
-  └── App (A11y: useA11yPrefs → html font-scale)
+  └── App (A11y: useA11yPrefs → --a11y-font-scale)
+        ├── initA11yPrefsFromStorage() beim Start
         ├── AccessibilityPanel (hideFab — öffnet über ComfortBar ♿)
         └── Router
               ├── PublicLayout → PublicHeader + ComfortBar
@@ -74,35 +77,46 @@ Browser
 
 ## 4. Bekannte Schwächen & Maßnahmen
 
-### Behoben (P0)
+### Behoben (P0 / P1)
 - ComfortBar unten in Sidebar → **oben im Inhaltsbereich**
 - ♿-FAB unten links → nur noch über ComfortBar
 - PublicHeader war ungenutzt → eingebunden
 - `/dashboard` → `/statistiken`, `/glossar` → `/glossary`
 - Route `/barrierefreiheit`
+- **Lerninhalt-Schriftzoom** — SmartContent, `.content-container`, Rechenpraxis (`scaledFontSize`)
+- Sidebar: `/wiederholung`, `/audio-modus`, `/strategie`
+- GlobalGlossary nicht mehr in Rechenpraxis-Link verschachtelt
+- Owner-Dashboard: ComfortBar im Header
+- Video-Tab-Platzhalter: `ModuleVideoComingSoon` mit Skalierung
 
 ### Offen (P1)
-- `/wiederholung`, `/strategie`, `/audio-modus` fehlen in Sidebar
-- Orphan-Dateien (`components/DashboardLayout.tsx` alt)
-- Owner-Dashboard ohne ComfortBar
+- Eingeklappte Sidebar: Fachbegriffe-Button ohne Dialog
 - Zwei Dark-Mode-Mechanismen (`useDarkMode` vs `useA11yPrefs`)
+- `/rechenpraxis` vs `/app/rechenpraxis` — zwei Layouts
+- Owner/Admin-Inline-Schriftgrößen (px) noch nicht überall skaliert
 
 ### Offen (P2)
+- Orphan-Dateien (`components/DashboardLayout.tsx` alt)
 - Legacy Module1.tsx … Module5.tsx entfernen
 - OpenQuizPage Route aktivieren oder Import löschen
-- E2E: ComfortBar auf 5 Kernseiten
+- E2E: ComfortBar + Schriftzoom auf Kernseiten
+- `@tailwindcss/typography` optional einbinden
 
 ---
 
 ## 5. Manuelle Test-Checkliste
 
-1. `/` — Komfort oben rechts, Schrift +/-
-2. `/statistiken` — Komfort oben (Desktop: über Inhalt, nicht Sidebar unten)
-3. `/modul/3/tag/1` — Vergrößerung wirkt im Lerntext
-4. `/audio-modus` — WEG/§ korrekt im Text, Comfort oben
-5. `/app/rechenpraxis` — Freemium + Fehler-Katalog
-6. `/admin` — Komfort sichtbar
-7. `/barrierefreiheit` — Seite lädt
+1. https://immobilien-akademie-smart.de/ — Komfort oben rechts, Schrift +/-
+2. https://immobilien-akademie-smart.de/statistiken — Komfort oben; Sidebar: Wiederholung, Strategie, Audio
+3. https://immobilien-akademie-smart.de/modul/3/tag/4 — A+ wirkt im Lerntext (Theorie)
+4. https://immobilien-akademie-smart.de/modul/3/tag/4 — Tab **Videos** → Platzhalter skaliert mit
+5. https://immobilien-akademie-smart.de/audio-modus — WEG/§ im Text, Comfort oben
+6. https://immobilien-akademie-smart.de/app/rechenpraxis — Freemium + Fehler-Katalog + Schriftzoom
+7. https://immobilien-akademie-smart.de/strategie — Seite + Sidebar-Link
+8. https://immobilien-akademie-smart.de/wiederholung — Spaced Repetition
+9. https://immobilien-akademie-smart.de/owner-dashboard — ComfortBar im Header (Owner-Login)
+10. https://immobilien-akademie-smart.de/admin — Komfort sichtbar
+11. https://immobilien-akademie-smart.de/barrierefreiheit — Seite lädt
 
 ---
 

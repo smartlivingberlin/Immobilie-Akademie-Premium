@@ -14,6 +14,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ReactMarkdown from 'react-markdown';
 import { quizQuestionsModule3 } from "@/data/quiz-questions-modul3";
 import { SolutionToggler } from "@/components/SolutionToggler";
+import { ModuleVideoComingSoon } from "@/components/modules/ModuleVideoComingSoon";
 import { NotebookLMExport } from "@/components/NotebookLMExport";
 import { LoadingHandler } from "@/components/LoadingHandler";
 import { SkeletonCard } from "@/components/ui/SkeletonCard";
@@ -683,20 +684,7 @@ export default function Module3Detail() {
                         Vertiefen Sie Ihr Wissen mit professionellen Video-Tutorials. 
                         Ihr Fortschritt wird automatisch gespeichert.
                       </p>
-                      <div style={{
-                        background: "#faf5ff", border: "1px solid #e9d5ff",
-                        borderRadius: 12, padding: "24px", textAlign: "center"
-                      }}>
-                        <div style={{ fontSize: 40, marginBottom: 12 }}>🎬</div>
-                        <p style={{ fontWeight: 700, color: "#7c3aed", marginBottom: 6 }}>
-                          Video-Tutorials — demnächst verfügbar
-                        </p>
-                        <p style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.6 }}>
-                          Die Live-Webinar-Aufzeichnungen werden nach Start der ersten
-                          Staffel (demnächst verfügbar) hier eingestellt.
-                          Bis dahin steht der KI-Tutor 24/7 zur Verfügung.
-                        </p>
-                      </div>
+                      <ModuleVideoComingSoon />
                       <Suspense fallback={<SkeletonCard />}>
                         <VideoList moduleId={3} />
                       </Suspense>

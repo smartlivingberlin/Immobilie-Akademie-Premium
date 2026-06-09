@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
 import { AzavPdfExport } from "@/components/AzavPdfExport";
+import { ComfortBar } from "@/components/ComfortBar";
 
 interface DashboardStats {
   totalUsers: number;
@@ -198,7 +199,10 @@ export default function OwnerDashboard() {
             Immobilien Akademie Smart — vollständige Kontrolle
           </p>
         </div>
-        <div style={{display:"flex",gap:12}}>
+        <div style={{display:"flex",gap:12,alignItems:"center",flexWrap:"wrap"}}>
+          <div className="rounded-lg border border-slate-600 bg-slate-800/80 px-2 py-1">
+            <ComfortBar compact />
+          </div>
           <button onClick={generateMagicLink}
             style={{background:"#1e40af",color:"white",border:"none",padding:"10px 18px",borderRadius:8,cursor:"pointer",fontSize:13,fontWeight:600}}>
             🔗 Magic Link generieren
