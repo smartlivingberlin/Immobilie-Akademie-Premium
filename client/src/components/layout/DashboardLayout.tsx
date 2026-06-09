@@ -583,16 +583,16 @@ const navigation: NavigationItem[] = [
               {!isCollapsed && "Abmelden"}
             </Button>
           )}
-          {!isCollapsed && (
-            <div className="mt-3 flex justify-center">
-              <ComfortBar compact />
-            </div>
-          )}
         </div>
       </aside>
 
       {/* Main Content Area */}
       <main id="main-content" className="flex-1 flex flex-col min-w-0 overflow-auto bg-background" tabIndex={-1}>
+        {/* Desktop: Komfort-Leiste oben (sichtbar, nicht in der Sidebar unten) */}
+        <div className="hidden lg:flex sticky top-0 z-20 h-12 items-center justify-end gap-3 px-6 bg-background/95 border-b border-border backdrop-blur">
+          <ComfortBar />
+        </div>
+
         {/* Mobile Header */}
         <div className="lg:hidden h-16 bg-background border-b border-border flex items-center justify-between px-4 sticky top-0 z-30">
           <div className="flex items-center gap-2 min-w-0">

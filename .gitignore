@@ -126,6 +126,7 @@ temp/
 !docs/UEBERGABE_ANTROPIQ_ARCHITEKT_*.md
 !docs/RECHENPRAXIS_BENCHMARK.md
 !docs/VERWALTER_SUITE_ROADMAP.md
+!docs/SYSTEM_AUDIT.md
 *.bak.*
 .tmp/
 _check/
