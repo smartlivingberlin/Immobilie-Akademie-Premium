@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { requireAuth } from "./authMiddleware";
 import { parseKnowledgeFile } from "./audioLessonParser";
-import { parseModuleDayLessons } from "./moduleDayExtractor";
+import { getModuleLessons } from "./moduleDayExtractor";
 import { readKursbuchChunkedCache, writeKursbuchChunkedCache } from "./generatorFileCache";
 
 const router = Router();
@@ -77,7 +77,7 @@ router.post("/api/ai/generate-kursbuch-chunked", requireAuth, async (req, res) =
       if (cached) return res.json(cached);
     }
 
-    let lessons = parseModuleDayLessons(moduleId);
+    let lessons = getModuleLessons(moduleId);
     if (lessons.length === 0) {
       lessons = parseKnowledgeFile(moduleId);
     }

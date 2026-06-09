@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { requireAuth } from "./authMiddleware";
 import { parseKnowledgeFile } from "./audioLessonParser";
-import { parseModuleDayLessons } from "./moduleDayExtractor";
+import { getModuleLessons } from "./moduleDayExtractor";
 
 const router = Router();
 
@@ -14,7 +14,7 @@ const MODULE_NAMES: Record<number, string> = {
 };
 
 function extractModulePairs(moduleId: number): string[] {
-  return parseModuleDayLessons(moduleId).map(
+  return getModuleLessons(moduleId).map(
     (lesson) => `### ${lesson.title}\n\n${lesson.content}`,
   );
 }
@@ -57,15 +57,21 @@ router.post("/api/learning/kursbuch-draft", requireAuth, (req, res) => {
     if (!moduleId || moduleId < 1 || moduleId > 5) {
       return res.status(400).json({ error: "moduleId 1–5 erforderlich" });
     }
-    const content = buildDraft(moduleId, format);
     const pairs = extractModulePairs(moduleId);
+    const knowledgeCount = parseKnowledgeFile(moduleId).length;
+    if (pairs.length === 0 && knowledgeCount === 0) {
+      return res.status(503).json({
+        error: "Modulinhalte nicht verfügbar. Bitte nach dem nächsten Deploy erneut versuchen.",
+      });
+    }
+    const content = buildDraft(moduleId, format);
     res.json({
       success: true,
       content,
       moduleId,
       moduleName: MODULE_NAMES[moduleId],
       format,
-      daysExtracted: pairs.length || parseKnowledgeFile(moduleId).length,
+      daysExtracted: pairs.length || knowledgeCount,
       generatedAt: new Date().toISOString(),
       fromDraft: true,
       fromCache: false,
