@@ -19,10 +19,12 @@ describe("moduleDayExtractor", () => {
     expect(lessons[0].source).toBe("module_day");
   });
 
-  it("readAloudText entspricht Titel + Inhalt", () => {
+  it("readAloudText enthält Titel und Kerninhalt", () => {
     const lessons = parseModuleDayLessons(1);
     const first = lessons[0];
-    expect(first.readAloudText).toBe(`${first.title}. ${first.content}`);
+    expect(first.readAloudText).toContain(first.title);
+    expect(first.paragraphs.length).toBeGreaterThan(0);
+    expect(first.content).toContain("\n\n");
   });
 
   it("extrahiert Modul-3 mit durchgehenden Lerntagen 4–22", () => {

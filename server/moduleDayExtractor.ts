@@ -1,6 +1,10 @@
 import { existsSync, readFileSync } from "fs";
 import { resolve } from "path";
-import { cleanTextForSpeech, type AudioLesson } from "./audioLessonParser";
+import {
+  formatLessonText,
+  paragraphsToDisplay,
+  type AudioLesson,
+} from "./audioLessonParser";
 
 export const MODULE_CONTENT_FILES: Record<number, string[]> = {
   1: ["client/src/pages/modules/Module1Content.ts"],
@@ -38,6 +42,7 @@ type DayFields = {
   theory: string;
   extendedTheory: string;
   practice: string;
+  task: string;
 };
 
 function extractField(block: string, field: string): string {
@@ -80,13 +85,37 @@ export function extractDaysFromModuleFile(filePath: string): DayFields[] {
       theory: extractField(block, "theory"),
       extendedTheory: extractField(block, "extendedTheory"),
       practice: extractField(block, "practice"),
+      task: extractField(block, "task"),
     }))
     .filter((d) => d.title && (d.theory || d.extendedTheory));
 }
 
-function buildLessonBody(day: DayFields): string {
-  const parts = [day.theory, day.extendedTheory, day.practice].filter(Boolean);
-  return cleanTextForSpeech(parts.join("\n\n"));
+function buildLessonBody(day: DayFields): { display: string; speech: string; paragraphs: string[] } {
+  const allParagraphs: string[] = [];
+  const speechParts: string[] = [];
+
+  const addSection = (label: string | null, raw: string) => {
+    if (!raw?.trim()) return;
+    const { paragraphs, speech } = formatLessonText(raw);
+    if (paragraphs.length === 0) return;
+    if (label) {
+      allParagraphs.push(label);
+      speechParts.push(`${label}.`);
+    }
+    allParagraphs.push(...paragraphs);
+    if (speech) speechParts.push(speech);
+  };
+
+  addSection(null, day.theory);
+  addSection("Vertiefung", day.extendedTheory);
+  addSection("Praxis", day.practice);
+  addSection("Übung", day.task);
+
+  return {
+    paragraphs: allParagraphs,
+    display: paragraphsToDisplay(allParagraphs),
+    speech: speechParts.join(" "),
+  };
 }
 
 export function parseModuleDayLessons(moduleId: number): AudioLesson[] {
@@ -106,13 +135,14 @@ export function parseModuleDayLessons(moduleId: number): AudioLesson[] {
     .sort(([a], [b]) => a - b)
     .map(([dayNumber, day]) => {
       const body = buildLessonBody(day);
-      const readAloudText = `${day.title}. ${body}`;
+      const readAloudText = `${day.title}. ${body.speech}`;
       return {
         id: `${moduleId}-day-${dayNumber}`,
         title: day.title,
         moduleId,
         dayNumber,
-        content: body,
+        content: body.display,
+        paragraphs: body.paragraphs,
         readAloudText,
         source: "module_day" as const,
       };

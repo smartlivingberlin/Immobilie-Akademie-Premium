@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "wouter";
 import { Headphones, Play, Pause, SkipForward, SkipBack, Square, ArrowLeft, Gauge, BookOpen, Eye } from "lucide-react";
 import { useSpeech } from "../hooks/use-speech";
+import { useA11yPrefs } from "@/hooks/use-a11y-prefs";
 import { ComfortBar } from "@/components/ComfortBar";
 
 type Lesson = {
@@ -10,6 +11,7 @@ type Lesson = {
   moduleId: number;
   dayNumber: number;
   content: string;
+  paragraphs?: string[];
   readAloudText?: string;
   source?: string;
 };
@@ -37,7 +39,13 @@ function lessonSpeechText(lesson: Lesson): string {
   return lesson.readAloudText || `${lesson.title}. ${lesson.content}`;
 }
 
+function lessonParagraphs(lesson: Lesson): string[] {
+  if (lesson.paragraphs?.length) return lesson.paragraphs;
+  return lesson.content.split(/\n\n+/).map((p) => p.trim()).filter(Boolean);
+}
+
 export default function AudioModus() {
+  const { prefs } = useA11yPrefs();
   const [lessons, setLessons] = useState<Lesson[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeIdx, setActiveIdx] = useState(0);
@@ -102,15 +110,18 @@ export default function AudioModus() {
     el?.scrollIntoView({ behavior: "smooth", block: "center" });
   }, [activeChunkIndex]);
 
-  const fullTranscript = current ? lessonSpeechText(current) : "";
+  const displayParagraphs = useMemo(
+    () => (current ? lessonParagraphs(current) : []),
+    [current],
+  );
 
   const showChunks = useMemo(() => {
     if (!current) return [];
     if (speechChunks.length > 0 && (state === "playing" || state === "paused")) {
       return speechChunks;
     }
-    return [fullTranscript];
-  }, [current, speechChunks, state, fullTranscript]);
+    return displayParagraphs;
+  }, [current, speechChunks, state, displayParagraphs]);
 
   if (!supported) {
     return (
@@ -219,21 +230,31 @@ export default function AudioModus() {
                   Vorlesetext — wortgleich zur Sprachausgabe
                 </h3>
               </div>
-              <div ref={transcriptRef} className="px-5 py-5 max-h-[min(55vh,520px)] overflow-y-auto">
-                <p className="text-xs text-muted-foreground mb-4">
+              <div
+                ref={transcriptRef}
+                className="px-5 py-5 max-h-[min(55vh,520px)] overflow-y-auto"
+                style={{
+                  fontSize: `calc(1rem * ${prefs.fontScale})`,
+                  lineHeight: prefs.lineSpacing,
+                }}
+              >
+                <p
+                  className="text-muted-foreground mb-4"
+                  style={{ fontSize: "0.8125rem" }}
+                >
                   {state === "idle"
-                    ? "Volltext der Lektion — beim Abspielen wird der gerade gesprochene Satz markiert."
-                    : "Markierter Satz = wird gerade vorgelesen. § wird als „Paragraph“ ausgesprochen."}
+                    ? "Strukturierter Lerntext — Absätze zum Mitlesen und Lernen. Beim Abspielen wird der aktuelle Satz markiert."
+                    : "Markierter Absatz = wird gerade vorgelesen. § wird als „Paragraph“ ausgesprochen."}
                 </p>
-                <div className="space-y-3 text-base leading-relaxed text-foreground">
+                <div className="space-y-4 text-foreground">
                   {showChunks.map((chunk, i) => (
                     <p
                       key={`${current.id}-chunk-${i}`}
                       data-chunk={i}
-                      className={`rounded-lg px-3 py-2 transition-colors ${
+                      className={`rounded-lg px-3 py-2.5 transition-colors leading-relaxed ${
                         activeChunkIndex === i && state !== "idle"
                           ? "bg-primary/15 border-l-4 border-primary font-medium"
-                          : "bg-transparent"
+                          : "bg-muted/20"
                       }`}
                     >
                       {chunk.trim()}

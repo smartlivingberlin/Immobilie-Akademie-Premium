@@ -6,8 +6,8 @@ BASE="${OPS_BASE_URL:-https://immobilien-akademie-smart.de}"
 EMAIL="${B2B_ADMIN_EMAIL:-${TEST_ADMIN_EMAIL:-alisadgadyri38@gmail.com}}"
 
 if [[ -z "${B2B_ADMIN_PASSWORD:-}" && -z "${TEST_ADMIN_PASSWORD:-}" ]]; then
-  read -r -s -p "Admin-Passwort: " B2B_ADMIN_PASSWORD
-  echo
+  read -r -s -p "Admin-Passwort (Eingabe unsichtbar): " B2B_ADMIN_PASSWORD
+  echo ""
   export B2B_ADMIN_PASSWORD
 fi
 
