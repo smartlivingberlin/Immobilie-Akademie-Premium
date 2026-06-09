@@ -28,10 +28,34 @@ export default function KursbuchGenerator() {
   const [selectedModule, setSelectedModule] = useState(1);
   const [selectedFormat, setSelectedFormat] = useState("kursbuch");
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<{ content: string; moduleTitle: string; format: string } | null>(null);
+  const [result, setResult] = useState<{ content: string; moduleTitle: string; format: string; fromCache?: boolean } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const generate = async () => {
+  const loadDraft = async () => {
+    setLoading(true);
+    setError(null);
+    setResult(null);
+    const mod = MODULES.find(m => m.id === selectedModule)!;
+    try {
+      const res = await fetch("/api/learning/kursbuch-draft", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ moduleId: selectedModule, format: selectedFormat }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setResult({
+          content: data.content,
+          moduleTitle: data.moduleName || mod.title,
+          format: selectedFormat,
+          fromCache: true,
+        });
+      } else setError(data.error || "Fehler");
+    } catch { setError("Verbindungsfehler"); }
+    finally { setLoading(false); }
+  };
+
+  const generateWithAi = async (forceRegenerate = false) => {
     setLoading(true);
     setError(null);
     setResult(null);
@@ -40,11 +64,17 @@ export default function KursbuchGenerator() {
       const res = await fetch("/api/ai/generate-kursbuch-v2", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ moduleId: selectedModule, format: selectedFormat }),
+        body: JSON.stringify({ moduleId: selectedModule, format: selectedFormat, forceRegenerate }),
       });
       const data = await res.json();
-      if (data.success) setResult({ content: data.content, moduleTitle: data.moduleName || mod.title, format: selectedFormat });
-      else setError(data.error || "Fehler");
+      if (data.success) {
+        setResult({
+          content: data.content,
+          moduleTitle: data.moduleName || mod.title,
+          format: selectedFormat,
+          fromCache: Boolean(data.fromCache),
+        });
+      } else setError(data.error || "Fehler");
     } catch { setError("Verbindungsfehler"); }
     finally { setLoading(false); }
   };
@@ -104,11 +134,21 @@ export default function KursbuchGenerator() {
 
       {error && <div style={{ padding: "12px 14px", background: "#fef2f2", border: "1px solid #fecaca", borderRadius: 10, marginBottom: 12, color: "#991b1b", fontSize: 13 }}>{error}</div>}
 
-      <button onClick={generate} disabled={loading}
-        style={{ width: "100%", padding: 14, background: loading ? "#94a3b8" : "#7c3aed", color: "#fff", border: "none", borderRadius: 12, fontSize: 14, fontWeight: 600, cursor: loading ? "not-allowed" : "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 20 }}>
-        {loading ? <Loader2 size={18} style={{ animation: "spin 1s linear infinite" }} /> : <Sparkles size={18} />}
-        {loading ? "KI erstellt... bitte warten (~30 Sek)" : `${FORMATS.find(f => f.id === selectedFormat)?.label} generieren`}
-      </button>
+      <div style={{ display: "flex", gap: 10, marginBottom: 20, flexWrap: "wrap" }}>
+        <button onClick={loadDraft} disabled={loading}
+          style={{ flex: 1, minWidth: 200, padding: 14, background: loading ? "#94a3b8" : "#059669", color: "#fff", border: "none", borderRadius: 12, fontSize: 14, fontWeight: 600, cursor: loading ? "not-allowed" : "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
+          {loading ? <Loader2 size={18} style={{ animation: "spin 1s linear infinite" }} /> : <Download size={18} />}
+          {loading ? "Lädt..." : "Aus Portal-Inhalt (0 €)"}
+        </button>
+        <button onClick={() => generateWithAi(true)} disabled={loading}
+          style={{ flex: 1, minWidth: 200, padding: 14, background: loading ? "#94a3b8" : "#7c3aed", color: "#fff", border: "none", borderRadius: 12, fontSize: 14, fontWeight: 600, cursor: loading ? "not-allowed" : "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
+          {loading ? <Loader2 size={18} style={{ animation: "spin 1s linear infinite" }} /> : <Sparkles size={18} />}
+          {loading ? "KI erstellt..." : "Neu mit KI generieren"}
+        </button>
+      </div>
+      <p style={{ fontSize: 12, color: "#64748b", margin: "-8px 0 16px" }}>
+        Grün: Moduldateien + Wissensdatenbank (ohne KI). Lila: KI-Generierung (Cache wird danach gespeichert).
+      </p>
 
       {result && (
         <div style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 12 }}>
@@ -116,7 +156,9 @@ export default function KursbuchGenerator() {
             <CheckCircle size={16} color="#059669" />
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: 13, fontWeight: 600, color: "#374151" }}>{result.moduleTitle}</div>
-              <div style={{ fontSize: 11, color: "#94a3b8" }}>{result.content.length.toLocaleString()} Zeichen generiert</div>
+              <div style={{ fontSize: 11, color: "#94a3b8" }}>
+                {result.content.length.toLocaleString()} Zeichen {result.fromCache ? "(Portal-Inhalt / Cache)" : "(KI generiert)"}
+              </div>
             </div>
             <button onClick={download} style={{ display: "flex", alignItems: "center", gap: 6, padding: "7px 14px", background: "#059669", color: "#fff", border: "none", borderRadius: 8, fontSize: 12, fontWeight: 500, cursor: "pointer" }}>
               <Download size={13} /> Download (.md)

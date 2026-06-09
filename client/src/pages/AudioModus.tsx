@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { Headphones, Play, Pause, SkipForward, SkipBack, Square, ArrowLeft, Gauge, BookOpen } from "lucide-react";
 import { useSpeech, preparePronunciation } from "../hooks/use-speech";
-import { ReadAloudButton } from "../components/ReadAloudButton";
+import { ComfortBar } from "@/components/ComfortBar";
 
 type Lesson = {
   id: string;
@@ -20,6 +20,10 @@ const MODULE_NAMES: Record<number, string> = {
   5: "§34i Darlehensvermittler",
 };
 
+const DEMO_LESSONS: Lesson[] = [
+  { id: "demo-1", title: "Demo: Einführung Immobilienrecht", moduleId: 1, dayNumber: 1, content: "Immobilienrecht bildet die Grundlage jeder Tätigkeit in der Immobilienwirtschaft. Gemäß §94 BGB gehören zum Grundstück alle mit dem Grund und Boden fest verbundenen Sachen, insbesondere Gebäude." },
+];
+
 export default function AudioModus() {
   const [lessons, setLessons] = useState<Lesson[]>([]);
   const [loading, setLoading] = useState(true);
@@ -35,24 +39,11 @@ export default function AudioModus() {
     })
       .then(r => r.json())
       .then(data => {
-        if (Array.isArray(data) && data.length > 0) {
-          setLessons(data);
-        } else {
-          // Fallback: Demo-Lektionen
-          setLessons([
-            { id:"1", title:"Tag 1: Einführung Immobilienrecht", moduleId:1, dayNumber:1, content:"Immobilienrecht bildet die Grundlage jeder Tätigkeit in der Immobilienwirtschaft. Gemäß §94 BGB gehören zum Grundstück alle mit dem Grund und Boden fest verbundenen Sachen..." },
-            { id:"2", title:"Tag 2: Das Grundbuch", moduleId:1, dayNumber:2, content:"Das Grundbuch ist das amtliche Register für Grundstücke. Es wird beim Amtsgericht geführt. Jedes Grundstück hat ein eigenes Grundbuchblatt mit drei Abteilungen..." },
-            { id:"3", title:"Tag 3: §34c GewO Grundlagen", moduleId:2, dayNumber:1, content:"Für die gewerbsmäßige Vermittlung von Grundstücken und Gebäuden ist gemäß §34c GewO eine behördliche Erlaubnis erforderlich. Voraussetzungen sind Zuverlässigkeit und geordnete Vermögensverhältnisse..." },
-          ]);
-        }
+        setLessons(Array.isArray(data) && data.length > 0 ? data : DEMO_LESSONS);
         setLoading(false);
       })
       .catch(() => {
-        setLessons([
-          { id:"1", title:"Tag 1: Einführung Immobilienrecht", moduleId:1, dayNumber:1, content:"Immobilienrecht bildet die Grundlage jeder Tätigkeit in der Immobilienwirtschaft. Gemäß §94 BGB gehören zum Grundstück alle mit dem Grund und Boden fest verbundenen Sachen, insbesondere Gebäude, sowie die Erzeugnisse des Grundstücks, solange sie mit dem Boden zusammenhängen." },
-          { id:"2", title:"Tag 2: Das Grundbuch verstehen", moduleId:1, dayNumber:2, content:"Das Grundbuch ist das amtliche Register für Grundstücke und wird beim Amtsgericht geführt. Es enthält in drei Abteilungen: Erstens den Eigentümer, zweitens Lasten und Beschränkungen wie Grunddienstbarkeiten, drittens Grundpfandrechte wie Hypotheken und Grundschulden." },
-          { id:"3", title:"Tag 3: §34c GewO — Die Maklererlaubnis", moduleId:2, dayNumber:1, content:"Paragraph 34c der Gewerbeordnung regelt die Erlaubnispflicht für Immobilienmakler. Wer gewerbsmäßig Grundstücke, Wohnräume oder gewerbliche Räume vermitteln möchte, benötigt eine Erlaubnis der zuständigen Behörde. Voraussetzungen sind persönliche Zuverlässigkeit und geordnete Vermögensverhältnisse." },
-        ]);
+        setLessons(DEMO_LESSONS);
         setLoading(false);
       });
   }, [selectedModule]);
@@ -118,9 +109,12 @@ export default function AudioModus() {
               <span className="font-display font-semibold text-foreground">Audio-Modus</span>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-xs text-muted-foreground">
-            <span>{lessons.length} Lektionen</span>
-            {current && <span>· Modul {current.moduleId}</span>}
+          <div className="flex items-center gap-3">
+            <ComfortBar compact />
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <span>{lessons.length} Lektionen</span>
+              {current && <span>· Modul {current.moduleId}</span>}
+            </div>
           </div>
         </div>
       </div>

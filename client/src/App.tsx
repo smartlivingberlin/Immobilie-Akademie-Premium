@@ -4,6 +4,7 @@ import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { trpc } from "@/lib/trpc";
 import { Toaster } from "@/components/ui/toaster";
 import DashboardLayout from "@/components/layout/DashboardLayout";
+import { RechenpraxisLayout } from "@/components/layout/RechenpraxisLayout";
 import Footer from "@/components/layout/Footer";
 import PublicHeader from "@/components/layout/PublicHeader";
 import ModuleGuard from "@/components/ModuleGuard";
@@ -226,6 +227,16 @@ function AppLayout({ children }: { children: React.ReactNode }) {
   );
 }
 
+function RechenpraxisAppLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <RechenpraxisLayout>
+      <Toaster />
+      <Suspense fallback={null}><CookieConsent /></Suspense>
+      {children}
+    </RechenpraxisLayout>
+  );
+}
+
 function Router() {
   usePageTracking();
   return (
@@ -306,6 +317,7 @@ function Router() {
         <Route path="/admin"><AppLayout><AdminRoute component={AdminDashboard} /></AppLayout></Route>
         <Route path="/owner-dashboard"><AppLayout><OwnerRoute component={OwnerDashboard} /></AppLayout></Route>
         <Route path="/owner-videos"><AppLayout><OwnerRoute component={OwnerVideos} /></AppLayout></Route>
+        <Route path="/app/rechenpraxis"><RechenpraxisAppLayout><ProtectedRoute component={Rechenpraxis} /></RechenpraxisAppLayout></Route>
         <Route path="/rechenpraxis"><AppLayout><ProtectedRoute component={Rechenpraxis} /></AppLayout></Route>
         <Route path="/tester-zugang"><TesterZugang /></Route>
         <Route path="/partner-panel"><AppLayout><AdminRoute component={PartnerDashboard} /></AppLayout></Route>
@@ -319,7 +331,7 @@ function Router() {
         <Route path="/compliance-20h"><PublicLayout><ComplianceLanding /></PublicLayout></Route>
         <Route path="/verwalter-rechner"><PublicLayout><VerwalterRechnerLanding /></PublicLayout></Route>
         <Route path="/rechenpraxis-preise"><PublicLayout><RechenpraxisPricing /></PublicLayout></Route>
-        <Route path="/audio-modus"><AudioModus /></Route>
+        <Route path="/audio-modus"><AppLayout><ProtectedRoute component={AudioModus} /></AppLayout></Route>
         <Route component={NotFound} />
       </Switch>
       </ErrorBoundary>
