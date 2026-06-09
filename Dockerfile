@@ -21,7 +21,9 @@ FROM base AS runner
 ENV NODE_ENV=production
 COPY package.json pnpm-lock.yaml ./
 COPY patches ./patches
-RUN pnpm install --frozen-lockfile --prod
+# Full node_modules: esbuild --packages=external needs runtime deps
+# that live in devDependencies (e.g. drizzle-orm).
+COPY --from=deps /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
 COPY drizzle/migrations ./drizzle/migrations
 COPY server/knowledge ./knowledge
