@@ -234,11 +234,8 @@ export default function AudioModus() {
               </div>
               <div
                 ref={transcriptRef}
-                className="px-5 py-5 max-h-[min(55vh,520px)] overflow-y-auto"
-                style={{
-                  fontSize: `calc(1rem * ${prefs.fontScale})`,
-                  lineHeight: prefs.lineSpacing,
-                }}
+                className="learning-text-scale px-5 py-5 max-h-[min(55vh,520px)] overflow-y-auto"
+                style={{ lineHeight: prefs.lineSpacing }}
               >
                 <p
                   className="text-muted-foreground mb-4"

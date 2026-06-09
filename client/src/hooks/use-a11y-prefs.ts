@@ -42,10 +42,16 @@ function load(): A11yPrefs {
   }
 }
 
+/** Synchron beim App-Start aufrufen, damit Schriftgröße vor dem ersten Paint gilt. */
+export function initA11yPrefsFromStorage() {
+  applyA11yPrefs(load());
+}
+
 export function applyA11yPrefs(p: A11yPrefs) {
   const h = document.documentElement;
   h.style.setProperty("--a11y-font-scale", String(p.fontScale));
   h.style.setProperty("--a11y-line-height", String(p.lineSpacing));
+  h.style.fontSize = `calc(16px * ${p.fontScale})`;
   h.dataset.contrast = p.contrast;
   h.dataset.dyslexia = p.dyslexiaFont ? "on" : "off";
   h.dataset.reduceMotion = p.reduceMotion ? "on" : "off";

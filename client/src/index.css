@@ -161,6 +161,29 @@
     line-height: var(--a11y-line-height, 1.6);
   }
 
+  /*
+   * Lerninhalte: px-basierte Skalierung über --a11y-font-scale.
+   * Tailwind text-sm/text-2xl nutzt rem (skaliert über html); Fließtext in
+   * .prose/.content-container erbt oft ohne sichtbare Änderung — daher explizit.
+   */
+  .learning-text-scale,
+  #main-content .content-container,
+  #main-content .prose.max-w-none {
+    font-size: calc(16px * var(--a11y-font-scale, 1));
+  }
+
+  .learning-text-scale :where(p, li, td, th, blockquote, dd, dt),
+  #main-content .content-container :where(p, li, td, th, blockquote, dd, dt),
+  #main-content .prose.max-w-none :where(p, li, td, th, blockquote, dd, dt) {
+    font-size: 1.125em;
+    line-height: var(--a11y-line-height, 1.75);
+  }
+
+  .learning-text-scale :where(h1, h2, h3, h4),
+  #main-content .content-container :where(h1, h2, h3, h4) {
+    line-height: var(--a11y-line-height, 1.4);
+  }
+
   h1, h2, h3, h4 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;

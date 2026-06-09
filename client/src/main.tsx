@@ -14,8 +14,11 @@ import superjson from "superjson";
 import App from "./App";
 import { getLoginUrl } from "./const";
 import "./index.css";
+import { initA11yPrefsFromStorage } from "@/hooks/use-a11y-prefs";
 import { registerServiceWorker } from "./lib/registerSW";
 import { WhiteLabelProvider } from "@/contexts/WhiteLabelContext";
+
+initA11yPrefsFromStorage();
 
 
 const queryClient = new QueryClient({

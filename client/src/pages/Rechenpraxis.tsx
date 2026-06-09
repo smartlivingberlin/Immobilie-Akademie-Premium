@@ -233,7 +233,7 @@ function AufgabenAnsicht({
   };
 
   return (
-    <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 0.25rem" }}>
+    <div className="learning-text-scale" style={{ maxWidth: 800, margin: "0 auto", padding: "0 0.25rem" }}>
       <button onClick={onZurueck} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, color: "var(--color-text-secondary)", background: "none", border: "none", cursor: "pointer", marginBottom: "1.5rem", padding: 0 }}>
         <ArrowLeft size={14} aria-hidden="true" /> Zurück zur Übersicht
       </button>
@@ -445,7 +445,7 @@ function RechenpraxisPage() {
       isLoading={isLoading}
       skeleton={practiceSkeleton}
     >
-    <div style={{ maxWidth: 900, margin: "0 auto", padding: "clamp(1rem, 4vw, 2rem) clamp(0.75rem, 3vw, 1rem)" }}>
+    <div className="learning-text-scale" style={{ maxWidth: 900, margin: "0 auto", padding: "clamp(1rem, 4vw, 2rem) clamp(0.75rem, 3vw, 1rem)" }}>
         {!aktiveAufgabe ? (
           <>
             {!fullAccess && (

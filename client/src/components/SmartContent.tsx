@@ -82,6 +82,7 @@ export const SmartContent: React.FC<SmartContentProps> = ({ content, topic, cont
   if (!content) return null;
 
   return (
+    <div className="learning-text-scale">
     <ReactMarkdown
       components={{
         p: ({children}) => (
@@ -149,5 +150,6 @@ export const SmartContent: React.FC<SmartContentProps> = ({ content, topic, cont
     >
       {content}
     </ReactMarkdown>
+    </div>
   );
 };
