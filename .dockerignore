@@ -1,15 +1,15 @@
-# Build-Output — wird neu gebaut
+# Build output - rebuilt in image
 dist/
 .dist/
 
-# Dependencies — werden neu installiert  
+# Dependencies - reinstalled in image
 node_modules/
 
 # Git
 .git/
 .gitignore
 
-# Entwicklungs-Dateien
+# Dev files
 *.png
 *.jpg
 *.jpeg
@@ -19,7 +19,7 @@ node_modules/
 *.log
 *.tmp
 
-# Test-Dateien
+# Tests
 *.test.ts
 *.spec.ts
 coverage/
@@ -36,6 +36,6 @@ projekt_paket1_server.md
 .idea/
 *.swp
 
-# Lokale Konfiguration
+# Local config
 .env
 .env.local
