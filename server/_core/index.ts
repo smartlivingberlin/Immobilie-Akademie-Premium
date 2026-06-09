@@ -298,6 +298,8 @@ app.use(express.json({ limit: "1mb" }));
   app.use(audioRouter);
   const { kursbuchDraftRouter } = await import("../kursbuchDraftRouter");
   app.use(kursbuchDraftRouter);
+  const { kursbuchChunkedRouter } = await import("../kursbuchChunkedRouter");
+  app.use(kursbuchChunkedRouter);
   app.use(certificateExportRouter);
   app.use(weiterbildungExportRouter);
   app.use(referralRouter);

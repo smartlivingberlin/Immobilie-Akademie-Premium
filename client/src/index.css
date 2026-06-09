@@ -147,7 +147,10 @@
 @layer base {
   * { border-color: var(--color-border); }
 
-  html { font-size: calc(16px * var(--a11y-font-scale)); }
+  html { font-size: 16px; }
+
+  /* Sidebar/Shell: feste rem-Basis — skaliert nicht mit A+/A− */
+  [data-app-sidebar] { font-size: 16px; }
 
   body {
     background-color: var(--color-background);
@@ -166,6 +169,7 @@
    * Tailwind text-sm/text-2xl nutzt rem (skaliert über html); Fließtext in
    * .prose/.content-container erbt oft ohne sichtbare Änderung — daher explizit.
    */
+  #learning-scroll,
   .learning-text-scale,
   #main-content .content-container,
   #main-content .prose.max-w-none {

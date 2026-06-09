@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { requireAuth } from "./authMiddleware";
 import { parseKnowledgeFile } from "./audioLessonParser";
-import { MODULE_CONTENT_FILES, extractDaysFromModuleFile } from "./moduleDayExtractor";
+import { parseModuleDayLessons } from "./moduleDayExtractor";
 
 const router = Router();
 
@@ -14,15 +14,9 @@ const MODULE_NAMES: Record<number, string> = {
 };
 
 function extractModulePairs(moduleId: number): string[] {
-  const pairs: string[] = [];
-  for (const file of MODULE_CONTENT_FILES[moduleId] || []) {
-    for (const day of extractDaysFromModuleFile(file)) {
-      pairs.push(
-        `### ${day.title}\n\n**Theorie:** ${day.theory}\n\n${day.extendedTheory ? `**Vertiefung:** ${day.extendedTheory}\n\n` : ""}**Praxis:** ${day.practice}`,
-      );
-    }
-  }
-  return pairs;
+  return parseModuleDayLessons(moduleId).map(
+    (lesson) => `### ${lesson.title}\n\n${lesson.content}`,
+  );
 }
 
 function buildDraft(moduleId: number, format: string): string {
@@ -30,13 +24,12 @@ function buildDraft(moduleId: number, format: string): string {
   const pairs = extractModulePairs(moduleId);
   const knowledgeLessons = parseKnowledgeFile(moduleId);
   const knowledgeBlock = knowledgeLessons
-    .slice(0, 30)
     .map((l) => `### ${l.title}\n\n${l.content}`)
     .join("\n\n");
 
   const body =
     pairs.length > 0
-      ? pairs.slice(0, 40).join("\n\n---\n\n")
+      ? pairs.join("\n\n---\n\n")
       : knowledgeBlock || "Kein Modulinhalt gefunden.";
 
   const formatTitle =
@@ -45,7 +38,7 @@ function buildDraft(moduleId: number, format: string): string {
   return `# ${formatTitle}: ${moduleName}
 
 > Automatisch aus Portal-Inhalten (Moduldateien + Wissensdatenbank) — **ohne KI-Kosten**.
-> Zur Veröffentlichung bitte prüfen und ggf. mit „Neu mit KI generieren“ verfeinern.
+> Zur Veröffentlichung bitte prüfen und ggf. mit „KI-Kursbuch (Chunked)“ verfeinern.
 
 ## Modulüberblick
 
