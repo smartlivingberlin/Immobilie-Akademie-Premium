@@ -6,6 +6,7 @@ import { LoadingHandler } from "@/components/LoadingHandler";
 import { SkeletonCard } from "@/components/ui/SkeletonCard";
 import { SkeletonTable } from "@/components/ui/SkeletonTable";
 import { PUBLIC_QUIZ_QUESTION_COUNT } from "@shared/claims";
+import { isPlatformOwnerOpenId } from "@shared/ownerIdentity";
 import {
   Users, BookOpen, FileQuestion, Award, MessageSquare, Upload,
   Settings, Code, Video, BarChart3, AlertTriangle, CheckCircle,
@@ -33,7 +34,7 @@ function LockedButton({ label }: { label: string }) {
 
 export default function AdminDashboard() {
   const { user } = useAuth();
-  const isOwner = user?.openId === "local:alisadgadyri38@gmail.com" && !isInspectMode();
+  const isOwner = isPlatformOwnerOpenId(user?.openId) && !isInspectMode();
   const { data: users, isLoading: usersLoading, error: usersError, refetch: refetchUsers } = trpc.adminUsers.list.useQuery();
   const { data: codes, isLoading: codesLoading } = trpc.presentationCode.list.useQuery();
   const { data: questions, isLoading: questionsLoading } = trpc.adminQuestions.list.useQuery({ limit: 1, offset: 0 });

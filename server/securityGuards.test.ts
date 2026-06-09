@@ -28,4 +28,15 @@ describe("security guards (static verification)", () => {
     expect(owner).toContain('app.post("/api/owner/resend-2fa", ownerResend2faLimiter');
     expect(owner).toMatch(/max:\s*3/);
   });
+
+  it("restricts owner session auth to platform owner openId", () => {
+    const owner = readRepo("server/ownerRoute.ts");
+    expect(owner).toContain("isPlatformOwnerOpenId");
+  });
+
+  it("skips white-label branding for platform admins", () => {
+    const wl = readRepo("client/src/contexts/WhiteLabelContext.tsx");
+    expect(wl).toContain('skipTenantBranding');
+    expect(wl).toContain('user?.role === "admin"');
+  });
 });

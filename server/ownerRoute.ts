@@ -9,6 +9,7 @@ import { ENV } from "./_core/env";
 import rateLimit from "express-rate-limit";
 import { COOKIE_NAME, ONE_YEAR_MS } from "../shared/const";
 import { clearAuxAuthCookies, clearInspectCookies, clearSessionCookie } from "./authCookies";
+import { isPlatformOwnerOpenId } from "@shared/ownerIdentity";
 
 const ownerResend2faLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -41,7 +42,11 @@ export function registerOwnerRoutes(app: Express) {
     try {
       const { getUserByOpenId } = await import("./db");
       const user = await getUserByOpenId(session.openId);
-      return user?.role === "admin";
+      if (user?.role !== "admin") return false;
+      return isPlatformOwnerOpenId(user.openId, {
+        ownerOpenId: process.env.OWNER_OPEN_ID || ENV.ownerOpenId || null,
+        ownerEmail: process.env.OWNER_EMAIL || null,
+      });
     } catch {
       return false;
     }

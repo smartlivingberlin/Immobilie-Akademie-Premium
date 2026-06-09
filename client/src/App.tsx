@@ -10,6 +10,7 @@ import ModuleGuard from "@/components/ModuleGuard";
 import { usePageTracking } from "@/hooks/useAnalytics";
 import { useInspectMode } from "@/hooks/useInspectMode";
 import { isInspectModeSync } from "@/lib/inspectMode";
+import { isPlatformOwnerOpenId } from "@shared/ownerIdentity";
 
 // ── Public pages ─────────────────────────────────────────────────────────────
 const Home = lazy(() => import("@/pages/Home"));
@@ -187,6 +188,7 @@ function OwnerRoute({ component: Component }: { component: React.ComponentType }
   if (isInspect) { window.location.href = "/login"; return null; }
   if ((!user || user.role !== "admin") && ownerKey) { submitOwnerAccess(ownerKey); return null; }
   if (!user || user.role !== "admin") { window.location.href = "/login"; return null; }
+  if (!isPlatformOwnerOpenId(user.openId)) { window.location.href = "/login"; return null; }
   if (!owner2FAOk) {
     if (ownerKey) submitOwnerAccess(ownerKey);
     else window.location.href = "/login";

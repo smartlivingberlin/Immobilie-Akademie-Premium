@@ -47,14 +47,16 @@ const WhiteLabelContext = createContext<WhiteLabelContextType>({
 });
 
 export function WhiteLabelProvider({ children }: { children: ReactNode }) {
-  const { isAuthenticated } = useAuth();
-  
+  const { isAuthenticated, user } = useAuth();
+  // Platform admins see default branding (super-admin pattern); B2B WL only for learners/tenant users.
+  const skipTenantBranding = user?.role === "admin";
+
   const { data: tenantConfig, isLoading } = trpc.whitelabel.myTenant.useQuery(undefined, {
-    enabled: isAuthenticated,
+    enabled: isAuthenticated && !skipTenantBranding,
     staleTime: 5 * 60 * 1000, // Cache for 5 minutes
   });
 
-  const config = tenantConfig ?? null;
+  const config = skipTenantBranding ? null : (tenantConfig ?? null);
   const isWhiteLabeled = !!config && config.isActive;
 
   const enabledModules = (() => {
