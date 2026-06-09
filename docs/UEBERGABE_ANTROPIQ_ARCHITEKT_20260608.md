@@ -489,7 +489,138 @@ Referenz: `server/scripts/seed-stripe-prices.ts`, `shared/stripePriceReadiness.t
 
 1. **#141** (Inspect P0) mergen → **3 Min warten** → Prod: Inspect-Token, `adminUsers.list` muss 403 liefern; `modules.myAccess` weiter `[1,2,3,4,5]`
 2. **#142** (M6–8 Cleanup) mergen → **3 Min warten** → CI-Guard aktiv (kein `modul/[678]` / `Module[678]` in `client/src`)
+3. **#148** (Inspect REST-Allowlist) — **in `main` gemerged** @ `a733b99` (08./09.06.2026)
 
 ---
 
-*Dieses Dokument ist eine Momentaufnahme vom 08.06.2026, erweitert nach Forensik NF-9–NF-13. Jede Aussage ist durch den Architekten zu verifizieren.*
+## 17. Bericht-Korrektur-Nachtrag (NF-A1–A7 + externe Verifikation 09.06.2026)
+
+Dieser Abschnitt korrigiert die Reifegrad-Bewertung aus dem Architektur-Audit nach methodischer Gegenprüfung (NF-A1–A7) und integriert **externe Belege**, die Alisad am 09.06.2026 unabhängig eingeholt hat.
+
+### 17.1 NF-A1 — PR #148 (Inspect REST-Allowlist)
+
+| Aussage (korrigiert) | Status |
+|----------------------|--------|
+| PR #148 ist **gemerged** in `main` (`a733b99`) | ✅ |
+| Live-Verifikation 09.06.: `inspect_mode=1` Cookie → `GET /api/admin/ki-stats` = **403**, `GET /api/admin/mysql-health` = **200** | ✅ reproduziert |
+| Owner-Routes `/api/owner/*` weiterhin **außerhalb** der REST-Allowlist (separates `requireOwner`) | offen dokumentiert |
+
+### 17.2 NF-A2 — Gesamtreifegrad
+
+| Version | Note | Label |
+|---------|------|-------|
+| Erstbewertung (verworfen) | **3,2 / 5** | „Production" — zu optimistisch |
+| Nach NF-A1–A7 (intern) | **2,8 / 5** | Late Beta / Soft Launch |
+| Nach externer Kalibrierung (09.06.) | **~3,3–3,5 / 5** | Late Beta (Ops/Legal), Web-Standards teils Best-in-Class |
+
+**Begründung:** Ops/DR (~2,0), Legal (~2,0) und unbewiesener R2-Restore ziehen den Schnitt. TLS A+, SEO 100, Accessibility 92 und Best Practices 96 heben die Web-Dimensionen an.
+
+### 17.3 NF-A3 — Performance mit echten PageSpeed-Daten
+
+**Quelle:** Google PageSpeed Insights Mobile, 09.06.2026 09:30 MESZ
+
+| Metrik | Wert | Bewertung |
+|--------|------|-----------|
+| Performance | **78 / 100** → **3,9 / 5** | Gut, LCP kritisch |
+| Accessibility | **92 / 100** → **4,6 / 5** | Sehr gut |
+| Best Practices | **96 / 100** → **4,8 / 5** | Sehr gut |
+| SEO | **100 / 100** → **5,0 / 5** | Exzellent |
+| FCP | 3,1 s | |
+| **LCP** | **4,5 s** | Ziel &lt;2,5 s — Hauptproblem |
+| TBT | 0 ms | Exzellent |
+| CLS | 0 | Exzellent |
+| Speed Index | 3,1 s | |
+
+**PageSpeed-Einsparpotenziale:** Render-blocking −370 ms · Bilder −34 KiB · Nicht verwendetes JS −126 KiB
+
+**Lighthouse lokal:** `tests/performance/lighthouse-test.sh` schlägt auf WSL fehl („Lighthouse Analyse fehlgeschlagen"). PageSpeed Insights ist bis Skript-Fix der belastbare Ersatz.
+
+### 17.4 NF-A4 — Konkurrenzvergleich
+
+`docs/COMPETITIVE_ANALYSIS.md` und USP-Formulierungen im Marketing sind **unbelegt** (keine unabhängige Quellenstudie). Nicht für Reifegrad oder externe Claims verwenden ohne Nachweis.
+
+### 17.5 NF-A5 — Tests als Indikator, nicht Beweis
+
+| Test | Stand 09.06. | Aussagekraft |
+|------|--------------|--------------|
+| Vitest | 135 / 135 | Indikator Code-Regression |
+| API-Tests Prod | 36 / 36 | Indikator Endpoints |
+| Playwright M1–M5 | 10 / 10 | Indikator User-Journey |
+| `ops:health` | DB ok, 0 pending migrations | Indikator Ops |
+
+Grün ≠ Produktionssicherheit. Externe Scans (Qualys, PageSpeed, securityheaders.com) ergänzen, ersetzen nicht Pen-Test.
+
+### 17.6 NF-A6 — Risikoregister
+
+Zentrale Risikoübersicht: **`docs/RISIKOREGISTER.md`** (PR `cursor/risk-register-v1-7dbc`). Enthält Severity, Mitigation-Status, Maßnahmen und Verantwortlichkeit (Code / Alisad / extern).
+
+### 17.7 NF-A7 — Module 3 Bundle-Größe
+
+| Chunk | Minified | Gzip |
+|-------|----------|------|
+| `Module3Content_Maximal-*.js` | **~184 KB** | **~53 KB** |
+
+Lazy-loaded (nicht im Home-Initial-Bundle). Weitere Splits (Part 2–4) optional.
+
+### 17.8 Externe TLS/SSL-Verifikation (Qualys SSL Labs, 09.06.2026 07:33 UTC)
+
+| Kriterium | Ergebnis |
+|-----------|----------|
+| Overall Rating | **A+** → **5,0 / 5** |
+| Certificate / Protocol / Key Exchange / Cipher | je 100 / 100 |
+| TLS 1.3 + Post-Quantum (X25519MLKEM768) | ✅ |
+| HSTS max-age=31536000 + includeSubDomains | ✅ |
+| Forward Secrecy | ROBUST |
+| Bekannte Schwachstellen (BEAST, POODLE, Heartbleed, ROBOT, …) | abgewehrt |
+
+### 17.9 HTTPS Security-Header (eigene curl-Verifikation 09.06.2026)
+
+```bash
+curl -sI https://immobilien-akademie-smart.de/ | grep -iE "content-security|x-frame|x-content-type|referrer-policy|permissions-policy|strict-transport|cross-origin"
+```
+
+| Header | Gesetzt | Anmerkung |
+|--------|---------|-----------|
+| Content-Security-Policy | ✅ | `unsafe-inline` in script-src + style-src (XSS-Risiko, NF-12 Roadmap) |
+| Strict-Transport-Security | ✅ | `max-age=31536000; includeSubDomains` — **`preload` fehlt in Live-Response** (Code in `server/_core/index.ts` setzt preload, Helmet überschreibt) |
+| X-Frame-Options | ✅ | SAMEORIGIN |
+| X-Content-Type-Options | ✅ | nosniff |
+| Referrer-Policy | ✅ | no-referrer |
+| Permissions-Policy | ✅ | camera/mic/geo aus, payment für Stripe |
+| Cross-Origin-Opener-Policy | ✅ | same-origin |
+| Cross-Origin-Resource-Policy | ✅ | same-origin |
+| Cross-Origin-Embedder-Policy | ❌ | nicht gesetzt |
+| Snyk „Missing Headers" | **ungültig** | Snyk testete HTTP, nicht HTTPS |
+
+### 17.10 Reifegrad-Tabelle (kalibriert, 09.06.2026)
+
+| Dimension | Note vorher | Externe Realität | Neue Note | Beleg-Quelle |
+|-----------|-------------|------------------|-----------|--------------|
+| TLS / SSL | nicht bewertet | A+, 100/100 überall | **5,0** | Qualys SSL Labs 09.06. |
+| Security Headers (HTTPS) | ~3,5 (intern) | CSP+COOP+CORP gesetzt; COEP fehlt; CSP unsafe-inline | **4,0** | curl 09.06. |
+| Performance Mobile | 2,5 (unverifiziert) | 78/100, LCP 4,5 s | **3,9** | PageSpeed Insights 09.06. |
+| Accessibility | 3,0 | 92/100 | **4,6** | PageSpeed Insights 09.06. |
+| SEO | 3,5 | 100/100 | **5,0** | PageSpeed Insights 09.06. |
+| Best Practices | nicht bewertet | 96/100 | **4,8** | PageSpeed Insights 09.06. |
+| App-Security (Inspect, Auth) | ~3,5 | #141+#148 merged, Live 403/200 | **3,8** | Repo + Live-Test 09.06. |
+| Ops / DR | 2,0 | R2-Restore unbewiesen, kein Staging | **2,0** | Runbooks, Alisad-Status |
+| Legal / Compliance | 2,0 | Keine automatische Rechtsvalidierung | **2,0** | Code-Review |
+| Testing / QA | ~3,0 | 135+36+10 grün = Indikator | **3,0** | CI + NF-A5 |
+| Stripe / B2B | ~2,5 | Testmodus, Pre-Flight offen | **2,5** | Prod-API |
+| **Gewichteter Schnitt** | 2,8 (intern) | — | **~3,3–3,5** | Gewichtung: Web 30 %, Security 20 %, Ops 25 %, Legal 15 %, QA 10 % |
+
+### 17.11 LCP-Diagnose (Kurzfassung)
+
+**Mobile LCP-Element:** vermutlich Hero-`<h1>` (Fraunces), nicht das Hero-Bild (`hidden lg:block` auf Mobile).
+
+| Problem | Konkrete Dateien / Ursache | Einsparpotenzial |
+|---------|---------------------------|------------------|
+| Render-blocking | `client/index.html` inline `<style>` (~106 Zeilen) + Theme-`<script>`; `index-*.css` ~31 KB gzip inkl. `@fontsource` (`client/src/fonts.css`) | ~370 ms (PageSpeed) |
+| Bilder | `hero_opt.webp` 60 KB preloaded auf Mobile obwohl Bild hidden; Modul-Thumbnails teils JPG+WebP parallel | ~34 KiB |
+| Ungenutztes JS | `vendor-react-utils` ~87 KB gzip, `vendor-markdown` ~34 KB gzip im Initial-Graph ohne Nutzung auf `/` | ~126 KiB |
+
+**Schätzung nach Optimierungen:** LCP **~2,8–3,2 s** (realistisch); **&lt;2,5 s** mit Font-Subsetting + kritischem CSS trimmen + Route-Level-Splitting — **mittlerer Aufwand** (1–2 fokussierte PRs), nicht trivial.
+
+---
+
+*Dieses Dokument ist eine Momentaufnahme vom 08.06.2026, erweitert nach Forensik NF-9–NF-13 und §17 (09.06.2026). Jede Aussage ist durch den Architekten zu verifizieren.*
