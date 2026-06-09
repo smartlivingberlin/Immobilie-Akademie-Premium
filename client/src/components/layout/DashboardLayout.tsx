@@ -2,7 +2,7 @@ import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { Link, useLocation } from "wouter";
 import AIAssistant from "@/components/AIAssistant";
-import { BookOpen, GraduationCap, Home, LayoutDashboard, Settings, LogOut, Menu, X, Search, ChevronLeft, ChevronRight, Gavel, Calculator, FileText, Sparkles, HelpCircle, Building2, Award, BarChart3, Trophy, Video, ClipboardCheck, Brain, KeyRound, Film, BookText, Upload, FlaskConical, FileCheck, Headphones } from "lucide-react";
+import { BookOpen, GraduationCap, Home, LayoutDashboard, Settings, LogOut, Menu, X, Search, ChevronLeft, ChevronRight, Gavel, Calculator, FileText, Sparkles, HelpCircle, Building2, Award, BarChart3, Trophy, Video, ClipboardCheck, Brain, KeyRound, Film, BookText, Upload, FlaskConical, FileCheck, Headphones, RotateCcw } from "lucide-react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import Footer from "@/components/layout/Footer";
 import { useWhiteLabel } from "@/contexts/WhiteLabelContext";
@@ -439,12 +439,14 @@ const navigation: NavigationItem[] = [
                     </div>
                   </Link>
                   <Link href="/rechenpraxis">
-                  <GlobalGlossary />
                     <div className={`inline-flex items-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 w-full justify-start mb-2 h-10 px-4 py-2 cursor-pointer text-slate-300 hover:text-white hover:bg-slate-800 ${location === '/rechenpraxis' || location === '/app/rechenpraxis' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
                       <Calculator className="h-5 w-5 mr-3" />
                       Rechenpraxis
                     </div>
                   </Link>
+                  <div className="mb-2">
+                    <GlobalGlossary />
+                  </div>
                   <Link href="/audio-modus">
                     <div className={`inline-flex items-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 w-full justify-start mb-2 h-10 px-4 py-2 cursor-pointer text-slate-300 hover:text-white hover:bg-slate-800 ${location === '/audio-modus' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
                       <Headphones className="h-5 w-5 mr-3" />
@@ -503,6 +505,12 @@ const navigation: NavigationItem[] = [
                     <div className={`inline-flex items-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 w-full justify-start mb-2 h-10 px-4 py-2 cursor-pointer text-slate-300 hover:text-white hover:bg-slate-800 ${location === '/lernkarten' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
                       <BookOpen className="h-5 w-5 mr-3" />
                       Lernkarten
+                    </div>
+                  </Link>
+                  <Link href="/wiederholung">
+                    <div className={`inline-flex items-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 w-full justify-start mb-2 h-10 px-4 py-2 cursor-pointer text-slate-300 hover:text-white hover:bg-slate-800 ${location === '/wiederholung' ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}`}>
+                      <RotateCcw className="h-5 w-5 mr-3" />
+                      Wiederholung
                     </div>
                   </Link>
                   <Link href="/dokument-viewer">

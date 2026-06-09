@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { Headphones, Play, Pause, SkipForward, SkipBack, Square, ArrowLeft, Gauge, BookOpen, Eye } from "lucide-react";
 import { useSpeech } from "../hooks/use-speech";
 import { useA11yPrefs } from "@/hooks/use-a11y-prefs";
+import { scaledFontSize as fz } from "@/lib/a11yFont";
 import { ComfortBar } from "@/components/ComfortBar";
 
 type Lesson = {
@@ -239,7 +240,7 @@ export default function AudioModus() {
               >
                 <p
                   className="text-muted-foreground mb-4"
-                  style={{ fontSize: "0.8125rem" }}
+                  style={{ fontSize: fz(13) }}
                 >
                   {state === "idle"
                     ? "Strukturierter Lerntext — Absätze zum Mitlesen und Lernen. Beim Abspielen wird der aktuelle Satz markiert."

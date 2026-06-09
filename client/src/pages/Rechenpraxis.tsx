@@ -10,6 +10,7 @@ import {
   RECHENPRAXIS_FREEMIUM_TASK_IDS,
 } from "@shared/rechenpraxisAccess";
 import { RECHENPRAXIS_STANDALONE_MONTHLY_EUR } from "@shared/rechenpraxisProduct";
+import { scaledFontSize as fz } from "@/lib/a11yFont";
 
 // ─── TYPEN ───────────────────────────────────────────────────────────────────
 
@@ -96,12 +97,12 @@ function KiAssistent({ aufgabe, enabled }: { aufgabe: Aufgabe; enabled: boolean 
       <div style={{ border: "0.5px solid var(--color-border-tertiary)", borderRadius: "var(--border-radius-lg)", padding: "1rem 1.25rem", background: "var(--color-background-secondary)" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
           <Lock size={15} style={{ color: "var(--color-text-secondary)" }} aria-hidden="true" />
-          <span style={{ fontSize: 14, fontWeight: 500, color: "var(--color-text-primary)" }}>KI-Assistent — Premium</span>
+          <span style={{ fontSize: fz(14), fontWeight: 500, color: "var(--color-text-primary)" }}>KI-Assistent — Premium</span>
         </div>
-        <p style={{ fontSize: 13, color: "var(--color-text-secondary)", margin: 0, lineHeight: 1.6 }}>
+        <p style={{ fontSize: fz(13), color: "var(--color-text-secondary)", margin: 0, lineHeight: 1.6 }}>
           Der KI-Assistent ist ab Rechenpraxis Solo ({RECHENPRAXIS_STANDALONE_MONTHLY_EUR} €/Mo) oder Modulkauf verfügbar.
         </p>
-        <a href="/rechenpraxis-preise" style={{ display: "inline-block", marginTop: 10, fontSize: 13, color: "var(--color-text-info)" }}>
+        <a href="/rechenpraxis-preise" style={{ display: "inline-block", marginTop: 10, fontSize: fz(13), color: "var(--color-text-info)" }}>
           Jetzt freischalten →
         </a>
       </div>
@@ -113,8 +114,8 @@ function KiAssistent({ aufgabe, enabled }: { aufgabe: Aufgabe; enabled: boolean 
       <button onClick={() => setOffen(!offen)} style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0.875rem 1.25rem", background: "var(--color-background-secondary)", border: "none", cursor: "pointer", color: "var(--color-text-primary)", minHeight: 44 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <MessageCircle size={16} style={{ color: "var(--color-text-info)" }} aria-hidden="true" />
-          <span style={{ fontSize: 14, fontWeight: 500 }}>Frage stellen — KI-Assistent</span>
-          {nachrichten.length > 0 && <span style={{ fontSize: 11, background: "var(--color-background-info)", color: "var(--color-text-info)", borderRadius: "var(--border-radius-md)", padding: "2px 8px" }}>{nachrichten.filter(n => n.rolle === "user").length} Fragen</span>}
+          <span style={{ fontSize: fz(14), fontWeight: 500 }}>Frage stellen — KI-Assistent</span>
+          {nachrichten.length > 0 && <span style={{ fontSize: fz(11), background: "var(--color-background-info)", color: "var(--color-text-info)", borderRadius: "var(--border-radius-md)", padding: "2px 8px" }}>{nachrichten.filter(n => n.rolle === "user").length} Fragen</span>}
         </div>
         <ChevronDown size={16} style={{ transform: offen ? "rotate(180deg)" : "none", transition: "transform 0.2s", color: "var(--color-text-secondary)" }} aria-hidden="true" />
       </button>
@@ -122,21 +123,21 @@ function KiAssistent({ aufgabe, enabled }: { aufgabe: Aufgabe; enabled: boolean 
       {offen && (
         <div style={{ padding: "1rem 1.25rem" }}>
           {nachrichten.length === 0 && (
-            <p style={{ fontSize: 13, color: "var(--color-text-secondary)", marginBottom: "1rem", lineHeight: 1.6 }}>
+            <p style={{ fontSize: fz(13), color: "var(--color-text-secondary)", marginBottom: "1rem", lineHeight: 1.6 }}>
               Haben Sie eine Frage zur Formel, zum Rechenweg oder zum Hintergrund? Fragen Sie einfach — ich erkläre es verständlich.
             </p>
           )}
           <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: nachrichten.length > 0 ? "1rem" : 0, maxHeight: 300, overflowY: "auto" }}>
             {nachrichten.map((n, i) => (
               <div key={i} style={{ display: "flex", justifyContent: n.rolle === "user" ? "flex-end" : "flex-start" }}>
-                <div style={{ maxWidth: "85%", padding: "10px 14px", borderRadius: "var(--border-radius-md)", background: n.rolle === "user" ? "var(--color-background-info)" : "var(--color-background-secondary)", fontSize: 14, lineHeight: 1.6, color: "var(--color-text-primary)" }}>
+                <div style={{ maxWidth: "85%", padding: "10px 14px", borderRadius: "var(--border-radius-md)", background: n.rolle === "user" ? "var(--color-background-info)" : "var(--color-background-secondary)", fontSize: fz(14), lineHeight: 1.6, color: "var(--color-text-primary)" }}>
                   {n.text}
                 </div>
               </div>
             ))}
             {laden && (
               <div style={{ display: "flex", justifyContent: "flex-start" }}>
-                <div style={{ padding: "10px 14px", borderRadius: "var(--border-radius-md)", background: "var(--color-background-secondary)", fontSize: 14, color: "var(--color-text-tertiary)" }}>
+                <div style={{ padding: "10px 14px", borderRadius: "var(--border-radius-md)", background: "var(--color-background-secondary)", fontSize: fz(14), color: "var(--color-text-tertiary)" }}>
                   Denke nach...
                 </div>
               </div>
@@ -144,8 +145,8 @@ function KiAssistent({ aufgabe, enabled }: { aufgabe: Aufgabe; enabled: boolean 
             <div ref={endRef} />
           </div>
           <div style={{ display: "flex", gap: 8 }}>
-            <input value={eingabe} onChange={e => setEingabe(e.target.value)} onKeyDown={e => e.key === "Enter" && sende()} placeholder="Ihre Frage..." style={{ flex: 1, fontSize: 14 }} />
-            <button onClick={sende} disabled={!eingabe.trim() || laden} style={{ padding: "8px 14px", borderRadius: "var(--border-radius-md)", cursor: "pointer", display: "flex", alignItems: "center", gap: 6, fontSize: 14 }}>
+            <input value={eingabe} onChange={e => setEingabe(e.target.value)} onKeyDown={e => e.key === "Enter" && sende()} placeholder="Ihre Frage..." style={{ flex: 1, fontSize: fz(14) }} />
+            <button onClick={sende} disabled={!eingabe.trim() || laden} style={{ padding: "8px 14px", borderRadius: "var(--border-radius-md)", cursor: "pointer", display: "flex", alignItems: "center", gap: 6, fontSize: fz(14) }}>
               <Send size={14} aria-hidden="true" /> Senden
             </button>
           </div>
@@ -234,23 +235,23 @@ function AufgabenAnsicht({
 
   return (
     <div className="learning-text-scale" style={{ maxWidth: 800, margin: "0 auto", padding: "0 0.25rem" }}>
-      <button onClick={onZurueck} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, color: "var(--color-text-secondary)", background: "none", border: "none", cursor: "pointer", marginBottom: "1.5rem", padding: 0 }}>
+      <button onClick={onZurueck} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: fz(13), color: "var(--color-text-secondary)", background: "none", border: "none", cursor: "pointer", marginBottom: "1.5rem", padding: 0 }}>
         <ArrowLeft size={14} aria-hidden="true" /> Zurück zur Übersicht
       </button>
 
       <div style={{ background: "var(--color-background-primary)", border: "0.5px solid var(--color-border-tertiary)", borderRadius: "var(--border-radius-lg)", overflow: "hidden", marginBottom: "1rem" }}>
         <div style={{ padding: "1.25rem", background: "var(--color-background-secondary)", borderBottom: "0.5px solid var(--color-border-tertiary)" }}>
-          <div style={{ fontSize: 12, color: "var(--color-text-secondary)", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.5px" }}>{aufgabe.bereich}</div>
-          <h2 style={{ fontSize: 20, fontWeight: 500, marginBottom: "0.75rem", color: "var(--color-text-primary)" }}>{aufgabe.titel}</h2>
-          <div style={{ borderLeft: "2px solid var(--color-border-secondary)", paddingLeft: "1rem", fontSize: 15, color: "var(--color-text-secondary)", lineHeight: 1.7, borderRadius: 0 }}>{aufgabe.berufssituation}</div>
+          <div style={{ fontSize: fz(12), color: "var(--color-text-secondary)", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.5px" }}>{aufgabe.bereich}</div>
+          <h2 style={{ fontSize: fz(20), fontWeight: 500, marginBottom: "0.75rem", color: "var(--color-text-primary)" }}>{aufgabe.titel}</h2>
+          <div style={{ borderLeft: "2px solid var(--color-border-secondary)", paddingLeft: "1rem", fontSize: fz(15), color: "var(--color-text-secondary)", lineHeight: 1.7, borderRadius: 0 }}>{aufgabe.berufssituation}</div>
         </div>
 
         <div style={{ padding: "1.25rem", borderBottom: "0.5px solid var(--color-border-tertiary)" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: "0.5rem" }}>
             <BookOpen size={15} style={{ color: "var(--color-text-info)" }} aria-hidden="true" />
-            <span style={{ fontSize: 13, fontWeight: 500, color: "var(--color-text-secondary)", textTransform: "uppercase", letterSpacing: "0.5px" }}>Was lerne ich hier?</span>
+            <span style={{ fontSize: fz(13), fontWeight: 500, color: "var(--color-text-secondary)", textTransform: "uppercase", letterSpacing: "0.5px" }}>Was lerne ich hier?</span>
           </div>
-          <p style={{ fontSize: 14, color: "var(--color-text-secondary)", lineHeight: 1.7, margin: 0 }}>{aufgabe.was_lerne_ich}</p>
+          <p style={{ fontSize: fz(14), color: "var(--color-text-secondary)", lineHeight: 1.7, margin: 0 }}>{aufgabe.was_lerne_ich}</p>
         </div>
 
         <div style={{ padding: "1.25rem" }}>
@@ -263,11 +264,11 @@ function AufgabenAnsicht({
                   <div style={{ padding: "1rem 1.25rem", background: "var(--color-background-secondary)", borderBottom: `0.5px solid ${borderColor}` }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: "0.5rem" }}>
                       <div style={{ width: 28, height: 28, borderRadius: "50%", background: st === "richtig" ? "var(--color-background-success)" : "var(--color-background-tertiary)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                        {st === "richtig" ? <CheckCircle2 size={16} style={{ color: "var(--color-text-success)" }} /> : <span style={{ fontSize: 13, fontWeight: 500, color: "var(--color-text-secondary)" }}>{schritt.nr}</span>}
+                        {st === "richtig" ? <CheckCircle2 size={16} style={{ color: "var(--color-text-success)" }} /> : <span style={{ fontSize: fz(13), fontWeight: 500, color: "var(--color-text-secondary)" }}>{schritt.nr}</span>}
                       </div>
-                      <div style={{ fontFamily: "var(--font-mono)", fontSize: 13, color: "var(--color-text-info)", background: "var(--color-background-info)", padding: "3px 10px", borderRadius: "var(--border-radius-md)" }}>{schritt.formel}</div>
+                      <div style={{ fontFamily: "var(--font-mono)", fontSize: fz(13), color: "var(--color-text-info)", background: "var(--color-background-info)", padding: "3px 10px", borderRadius: "var(--border-radius-md)" }}>{schritt.formel}</div>
                     </div>
-                    <p style={{ fontSize: 14, color: "var(--color-text-secondary)", lineHeight: 1.7, margin: 0 }}>{schritt.kontext}</p>
+                    <p style={{ fontSize: fz(14), color: "var(--color-text-secondary)", lineHeight: 1.7, margin: 0 }}>{schritt.kontext}</p>
                   </div>
 
                   {schritt.variablen.length > 0 && (
@@ -275,9 +276,9 @@ function AufgabenAnsicht({
                       <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                         {schritt.variablen.map((v, vi) => (
                           <div key={vi} style={{ display: "flex", alignItems: "center", gap: 6, background: "var(--color-background-secondary)", borderRadius: "var(--border-radius-md)", padding: "4px 10px" }}>
-                            <span style={{ fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 500, color: "var(--color-text-primary)" }}>{v.kuerzel}</span>
-                            <span style={{ fontSize: 12, color: "var(--color-text-tertiary)" }}>=</span>
-                            <span style={{ fontSize: 13, color: "var(--color-text-secondary)" }}>{v.wert ? `${v.bedeutung} (${v.wert})` : v.bedeutung}</span>
+                            <span style={{ fontFamily: "var(--font-mono)", fontSize: fz(13), fontWeight: 500, color: "var(--color-text-primary)" }}>{v.kuerzel}</span>
+                            <span style={{ fontSize: fz(12), color: "var(--color-text-tertiary)" }}>=</span>
+                            <span style={{ fontSize: fz(13), color: "var(--color-text-secondary)" }}>{v.wert ? `${v.bedeutung} (${v.wert})` : v.bedeutung}</span>
                           </div>
                         ))}
                       </div>
@@ -285,7 +286,7 @@ function AufgabenAnsicht({
                   )}
 
                   <div style={{ padding: "1rem 1.25rem" }}>
-                    <p style={{ fontSize: 15, fontWeight: 500, color: "var(--color-text-primary)", marginBottom: "0.75rem" }}>{schritt.aufgabe}</p>
+                    <p style={{ fontSize: fz(15), fontWeight: 500, color: "var(--color-text-primary)", marginBottom: "0.75rem" }}>{schritt.aufgabe}</p>
                     <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
                       <input
                         type="text"
@@ -295,13 +296,13 @@ function AufgabenAnsicht({
                         onKeyDown={e => e.key === "Enter" && pruefe(schritt)}
                         placeholder="Ihre Berechnung..."
                         disabled={st === "richtig"}
-                        style={{ width: "min(160px, 100%)", minHeight: 44, fontFamily: "var(--font-mono)", fontSize: 15, borderColor: st === "falsch" ? "var(--color-border-danger)" : st === "richtig" ? "var(--color-border-success)" : undefined }}
+                        style={{ width: "min(160px, 100%)", minHeight: 44, fontFamily: "var(--font-mono)", fontSize: fz(15), borderColor: st === "falsch" ? "var(--color-border-danger)" : st === "richtig" ? "var(--color-border-success)" : undefined }}
                       />
-                      {schritt.einheit && <span style={{ fontSize: 14, color: "var(--color-text-secondary)" }}>{schritt.einheit}</span>}
-                      <button onClick={() => pruefe(schritt)} disabled={st === "richtig" || !antworten[schritt.nr]} style={{ fontSize: 14, padding: "10px 16px", borderRadius: "var(--border-radius-md)", cursor: "pointer", minHeight: 44 }}>
+                      {schritt.einheit && <span style={{ fontSize: fz(14), color: "var(--color-text-secondary)" }}>{schritt.einheit}</span>}
+                      <button onClick={() => pruefe(schritt)} disabled={st === "richtig" || !antworten[schritt.nr]} style={{ fontSize: fz(14), padding: "10px 16px", borderRadius: "var(--border-radius-md)", cursor: "pointer", minHeight: 44 }}>
                         Prüfen
                       </button>
-                      <button onClick={() => setZeigeMusser(prev => ({ ...prev, [schritt.nr]: !prev[schritt.nr] }))} style={{ fontSize: 13, padding: "10px 12px", borderRadius: "var(--border-radius-md)", cursor: "pointer", color: "var(--color-text-secondary)", minHeight: 44 }}>
+                      <button onClick={() => setZeigeMusser(prev => ({ ...prev, [schritt.nr]: !prev[schritt.nr] }))} style={{ fontSize: fz(13), padding: "10px 12px", borderRadius: "var(--border-radius-md)", cursor: "pointer", color: "var(--color-text-secondary)", minHeight: 44 }}>
                         {zeigeMusser[schritt.nr] ? "Tipp ausblenden" : "Tipp anzeigen"}
                       </button>
                     </div>
@@ -309,7 +310,7 @@ function AufgabenAnsicht({
                     {st === "falsch" && fehlerFeedback[schritt.nr] && (
                       <div style={{ marginTop: "0.75rem", display: "flex", alignItems: "flex-start", gap: 8, padding: "10px 14px", background: "var(--color-background-danger)", borderRadius: "var(--border-radius-md)" }}>
                         <Lightbulb size={15} style={{ color: "var(--color-text-danger)", flexShrink: 0, marginTop: 2 }} aria-hidden="true" />
-                        <div style={{ fontSize: 13, color: "var(--color-text-danger)", lineHeight: 1.6 }}>
+                        <div style={{ fontSize: fz(13), color: "var(--color-text-danger)", lineHeight: 1.6 }}>
                           <div>{fehlerFeedback[schritt.nr].message}</div>
                           {fehlerFeedback[schritt.nr].hint && (
                             <div style={{ marginTop: 6, color: "var(--color-text-secondary)" }}>{fehlerFeedback[schritt.nr].hint}</div>
@@ -326,12 +327,12 @@ function AufgabenAnsicht({
                     {st === "richtig" && (
                       <div style={{ marginTop: "0.75rem", display: "flex", alignItems: "center", gap: 8, padding: "10px 14px", background: "var(--color-background-success)", borderRadius: "var(--border-radius-md)" }}>
                         <CheckCircle2 size={15} style={{ color: "var(--color-text-success)" }} aria-hidden="true" />
-                        <span style={{ fontSize: 13, color: "var(--color-text-success)", fontWeight: 500 }}>Richtig!</span>
+                        <span style={{ fontSize: fz(13), color: "var(--color-text-success)", fontWeight: 500 }}>Richtig!</span>
                       </div>
                     )}
 
                     {zeigeMusser[schritt.nr] && (
-                      <div style={{ marginTop: "0.75rem", padding: "10px 14px", background: "var(--color-background-warning)", borderRadius: "var(--border-radius-md)", fontFamily: "var(--font-mono)", fontSize: 13, color: "var(--color-text-warning)" }}>
+                      <div style={{ marginTop: "0.75rem", padding: "10px 14px", background: "var(--color-background-warning)", borderRadius: "var(--border-radius-md)", fontFamily: "var(--font-mono)", fontSize: fz(13), color: "var(--color-text-warning)" }}>
                         {schritt.tipp}
                       </div>
                     )}
@@ -347,15 +348,15 @@ function AufgabenAnsicht({
         <div style={{ background: "var(--color-background-success)", border: "0.5px solid var(--color-border-success)", borderRadius: "var(--border-radius-lg)", padding: "1.25rem", marginBottom: "1rem" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: "0.75rem" }}>
             <CheckCircle2 size={18} style={{ color: "var(--color-text-success)" }} aria-hidden="true" />
-            <span style={{ fontSize: 15, fontWeight: 500, color: "var(--color-text-success)" }}>Aufgabe abgeschlossen</span>
+            <span style={{ fontSize: fz(15), fontWeight: 500, color: "var(--color-text-success)" }}>Aufgabe abgeschlossen</span>
           </div>
-          <p style={{ fontSize: 14, color: "var(--color-text-secondary)", lineHeight: 1.7, marginBottom: "0.75rem" }}>{aufgabe.abschluss}</p>
-          <div style={{ padding: "10px 14px", background: "var(--color-background-primary)", borderRadius: "var(--border-radius-md)", fontSize: 13, color: "var(--color-text-secondary)", lineHeight: 1.6, marginBottom: "0.75rem" }}>
+          <p style={{ fontSize: fz(14), color: "var(--color-text-secondary)", lineHeight: 1.7, marginBottom: "0.75rem" }}>{aufgabe.abschluss}</p>
+          <div style={{ padding: "10px 14px", background: "var(--color-background-primary)", borderRadius: "var(--border-radius-md)", fontSize: fz(13), color: "var(--color-text-secondary)", lineHeight: 1.6, marginBottom: "0.75rem" }}>
             <strong style={{ color: "var(--color-text-primary)" }}>Praxistipp:</strong> {aufgabe.praxistipp}
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
             {aufgabe.gesetze.map(g => (
-              <span key={g} style={{ fontFamily: "var(--font-mono)", fontSize: 11, padding: "3px 10px", background: "var(--color-background-warning)", color: "var(--color-text-warning)", borderRadius: "var(--border-radius-md)" }}>{g}</span>
+              <span key={g} style={{ fontFamily: "var(--font-mono)", fontSize: fz(11), padding: "3px 10px", background: "var(--color-background-warning)", color: "var(--color-text-warning)", borderRadius: "var(--border-radius-md)" }}>{g}</span>
             ))}
           </div>
         </div>
@@ -364,7 +365,7 @@ function AufgabenAnsicht({
       <KiAssistent aufgabe={aufgabe} enabled={kiEnabled} />
 
       <div style={{ display: "flex", gap: 8, marginTop: "1rem" }}>
-        <button onClick={reset} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, padding: "8px 14px", borderRadius: "var(--border-radius-md)", cursor: "pointer", color: "var(--color-text-secondary)" }}>
+        <button onClick={reset} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: fz(13), padding: "8px 14px", borderRadius: "var(--border-radius-md)", cursor: "pointer", color: "var(--color-text-secondary)" }}>
           <RotateCcw size={14} aria-hidden="true" /> Zurücksetzen
         </button>
       </div>
@@ -450,10 +451,10 @@ function RechenpraxisPage() {
           <>
             {!fullAccess && (
               <div style={{ marginBottom: "1.25rem", padding: "1rem 1.25rem", borderRadius: "var(--border-radius-lg)", background: "var(--color-background-info)", border: "0.5px solid var(--color-border-tertiary)" }}>
-                <div style={{ fontSize: 14, fontWeight: 500, color: "var(--color-text-primary)", marginBottom: 4 }}>
+                <div style={{ fontSize: fz(14), fontWeight: 500, color: "var(--color-text-primary)", marginBottom: 4 }}>
                   Gratis-Vorschau: {RECHENPRAXIS_FREEMIUM_TASK_IDS.length} WEG-Aufgaben
                 </div>
-                <p style={{ fontSize: 13, color: "var(--color-text-secondary)", margin: 0, lineHeight: 1.6 }}>
+                <p style={{ fontSize: fz(13), color: "var(--color-text-secondary)", margin: 0, lineHeight: 1.6 }}>
                   Alle {AUFGABEN.length} Aufgaben inkl. KI-Assistent ab {RECHENPRAXIS_STANDALONE_MONTHLY_EUR} €/Mo oder Modulkauf.
                   <a href="/rechenpraxis-preise" style={{ marginLeft: 6, color: "var(--color-text-info)" }}>Preise ansehen →</a>
                 </p>
@@ -461,23 +462,23 @@ function RechenpraxisPage() {
             )}
 
             {paywallHinweis && (
-              <div style={{ marginBottom: "1rem", padding: "0.875rem 1rem", borderRadius: "var(--border-radius-md)", background: "var(--color-background-warning)", fontSize: 13, color: "var(--color-text-warning)" }}>
+              <div style={{ marginBottom: "1rem", padding: "0.875rem 1rem", borderRadius: "var(--border-radius-md)", background: "var(--color-background-warning)", fontSize: fz(13), color: "var(--color-text-warning)" }}>
                 {paywallHinweis}
-                <button onClick={() => setPaywallHinweis(null)} style={{ marginLeft: 12, background: "none", border: "none", cursor: "pointer", fontSize: 12, color: "inherit" }}>Schließen</button>
+                <button onClick={() => setPaywallHinweis(null)} style={{ marginLeft: 12, background: "none", border: "none", cursor: "pointer", fontSize: fz(12), color: "inherit" }}>Schließen</button>
               </div>
             )}
 
             <div style={{ marginBottom: "2rem" }}>
-              <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "var(--color-background-info)", color: "var(--color-text-info)", fontSize: 12, fontWeight: 500, padding: "4px 12px", borderRadius: "var(--border-radius-md)", marginBottom: "1rem" }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "var(--color-background-info)", color: "var(--color-text-info)", fontSize: fz(12), fontWeight: 500, padding: "4px 12px", borderRadius: "var(--border-radius-md)", marginBottom: "1rem" }}>
                 <Calculator size={14} aria-hidden="true" /> Rechenpraxis · KI-gestützt
               </div>
-              <h1 style={{ fontSize: 22, fontWeight: 500, marginBottom: "0.5rem", color: "var(--color-text-primary)" }}>Rechenpraxis Immobilienwirtschaft</h1>
-              <p style={{ fontSize: 15, color: "var(--color-text-secondary)", lineHeight: 1.7, maxWidth: 600 }}>
+              <h1 style={{ fontSize: fz(22), fontWeight: 500, marginBottom: "0.5rem", color: "var(--color-text-primary)" }}>Rechenpraxis Immobilienwirtschaft</h1>
+              <p style={{ fontSize: fz(15), color: "var(--color-text-secondary)", lineHeight: 1.7, maxWidth: 600 }}>
                 Schritt-für-Schritt-Rechenübungen für den Berufsalltag. Jede Aufgabe erklärt warum gerechnet wird — nicht nur wie. Mit KI-Assistent für Ihre Fragen.
               </p>
               {aufgabenGeladen && AUFGABEN.length > 0 && (
                 <div style={{ marginTop: "1rem", maxWidth: 400 }}>
-                  <div style={{ fontSize: 12, color: "var(--color-text-secondary)", marginBottom: 6 }}>
+                  <div style={{ fontSize: fz(12), color: "var(--color-text-secondary)", marginBottom: 6 }}>
                     Fortschritt: {completedCount} / {AUFGABEN.length} abgeschlossen
                   </div>
                   <div style={{ height: 6, background: "var(--color-background-tertiary)", borderRadius: 100, overflow: "hidden" }}>
@@ -494,7 +495,7 @@ function RechenpraxisPage() {
             </div>
 
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: "1.5rem" }}>
-              <button onClick={() => setAktiverBereich("alle")} style={{ fontSize: 13, padding: "6px 14px", borderRadius: "var(--border-radius-md)", cursor: "pointer", background: aktiverBereich === "alle" ? "var(--color-text-primary)" : undefined, color: aktiverBereich === "alle" ? "var(--color-background-primary)" : "var(--color-text-secondary)", border: aktiverBereich === "alle" ? "none" : undefined }}>
+              <button onClick={() => setAktiverBereich("alle")} style={{ fontSize: fz(13), padding: "6px 14px", borderRadius: "var(--border-radius-md)", cursor: "pointer", background: aktiverBereich === "alle" ? "var(--color-text-primary)" : undefined, color: aktiverBereich === "alle" ? "var(--color-background-primary)" : "var(--color-text-secondary)", border: aktiverBereich === "alle" ? "none" : undefined }}>
                 Alle ({AUFGABEN.length})
               </button>
               {BEREICHE.map(b => {
@@ -502,7 +503,7 @@ function RechenpraxisPage() {
                 const done = stat?.done ?? 0;
                 const total = stat?.total ?? 0;
                 return (
-                  <button key={b} onClick={() => setAktiverBereich(b)} style={{ fontSize: 13, padding: "8px 14px", borderRadius: "var(--border-radius-md)", cursor: "pointer", background: aktiverBereich === b ? "var(--color-text-primary)" : undefined, color: aktiverBereich === b ? "var(--color-background-primary)" : "var(--color-text-secondary)", border: aktiverBereich === b ? "none" : undefined, minHeight: 36 }}>
+                  <button key={b} onClick={() => setAktiverBereich(b)} style={{ fontSize: fz(13), padding: "8px 14px", borderRadius: "var(--border-radius-md)", cursor: "pointer", background: aktiverBereich === b ? "var(--color-text-primary)" : undefined, color: aktiverBereich === b ? "var(--color-background-primary)" : "var(--color-text-secondary)", border: aktiverBereich === b ? "none" : undefined, minHeight: 36 }}>
                     {b} ({done}/{total})
                   </button>
                 );
@@ -528,12 +529,12 @@ function RechenpraxisPage() {
                     ? <CheckCircle2 size={18} style={{ color: "var(--color-text-success)", flexShrink: 0, marginTop: 2 }} aria-hidden="true" />
                     : <Calculator size={18} style={{ color: "var(--color-text-info)", flexShrink: 0, marginTop: 2 }} aria-hidden="true" />}
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 15, fontWeight: 500, color: "var(--color-text-primary)", marginBottom: 4 }}>{aufgabe.titel}</div>
-                    <div style={{ fontSize: 13, color: "var(--color-text-secondary)", marginBottom: 6, lineHeight: 1.5 }}>{aufgabe.berufssituation.slice(0, 120)}...</div>
+                    <div style={{ fontSize: fz(15), fontWeight: 500, color: "var(--color-text-primary)", marginBottom: 4 }}>{aufgabe.titel}</div>
+                    <div style={{ fontSize: fz(13), color: "var(--color-text-secondary)", marginBottom: 6, lineHeight: 1.5 }}>{aufgabe.berufssituation.slice(0, 120)}...</div>
                     <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                      <span style={{ fontSize: 11, background: "var(--color-background-info)", color: "var(--color-text-info)", padding: "2px 8px", borderRadius: "var(--border-radius-md)" }}>{aufgabe.bereich}</span>
-                      <span style={{ fontSize: 11, color: "var(--color-text-tertiary)" }}>{aufgabe.schritte.length} Schritte</span>
-                      {locked && <span style={{ fontSize: 11, color: "var(--color-text-tertiary)" }}>Premium</span>}
+                      <span style={{ fontSize: fz(11), background: "var(--color-background-info)", color: "var(--color-text-info)", padding: "2px 8px", borderRadius: "var(--border-radius-md)" }}>{aufgabe.bereich}</span>
+                      <span style={{ fontSize: fz(11), color: "var(--color-text-tertiary)" }}>{aufgabe.schritte.length} Schritte</span>
+                      {locked && <span style={{ fontSize: fz(11), color: "var(--color-text-tertiary)" }}>Premium</span>}
                     </div>
                   </div>
                   <ChevronRight size={16} style={{ color: "var(--color-text-tertiary)", flexShrink: 0, marginTop: 4 }} aria-hidden="true" />
