@@ -29,8 +29,8 @@ Dashboard `/statistiken`, Module 1–5, Quiz, Prüfung, Zertifikate, Tools.
 
 **Komfort:** Desktop — Leiste oben im Inhaltsbereich. Mobile — neben Menü-Button.
 
-### Rechenpraxis (`RechenpraxisLayout`)
-Eigenes Layout unter `/app/rechenpraxis` mit ComfortBar.
+### Rechenpraxis
+Kanonisch unter `/rechenpraxis` im Vollportal (`AppLayout` + Sidebar). Legacy `/app/rechenpraxis` leitet um.
 
 ### Admin / Owner / B2B
 Gleiche App-Shell, erweiterte Sidebar + Hub-Seiten (`/admin`, `/owner-dashboard`).
