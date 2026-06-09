@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { requireAuth } from "./authMiddleware";
 import { parseKnowledgeFile } from "./audioLessonParser";
-import { MODULE_CONTENT_FILES, extractDaysFromModuleFile } from "./moduleDayExtractor";
+import { getModuleLessons } from "./moduleDayExtractor";
 
 const router = Router();
 
@@ -14,15 +14,9 @@ const MODULE_NAMES: Record<number, string> = {
 };
 
 function extractModulePairs(moduleId: number): string[] {
-  const pairs: string[] = [];
-  for (const file of MODULE_CONTENT_FILES[moduleId] || []) {
-    for (const day of extractDaysFromModuleFile(file)) {
-      pairs.push(
-        `### ${day.title}\n\n**Theorie:** ${day.theory}\n\n${day.extendedTheory ? `**Vertiefung:** ${day.extendedTheory}\n\n` : ""}**Praxis:** ${day.practice}`,
-      );
-    }
-  }
-  return pairs;
+  return getModuleLessons(moduleId).map(
+    (lesson) => `### ${lesson.title}\n\n${lesson.content}`,
+  );
 }
 
 function buildDraft(moduleId: number, format: string): string {
@@ -30,13 +24,12 @@ function buildDraft(moduleId: number, format: string): string {
   const pairs = extractModulePairs(moduleId);
   const knowledgeLessons = parseKnowledgeFile(moduleId);
   const knowledgeBlock = knowledgeLessons
-    .slice(0, 30)
     .map((l) => `### ${l.title}\n\n${l.content}`)
     .join("\n\n");
 
   const body =
     pairs.length > 0
-      ? pairs.slice(0, 40).join("\n\n---\n\n")
+      ? pairs.join("\n\n---\n\n")
       : knowledgeBlock || "Kein Modulinhalt gefunden.";
 
   const formatTitle =
@@ -45,7 +38,7 @@ function buildDraft(moduleId: number, format: string): string {
   return `# ${formatTitle}: ${moduleName}
 
 > Automatisch aus Portal-Inhalten (Moduldateien + Wissensdatenbank) — **ohne KI-Kosten**.
-> Zur Veröffentlichung bitte prüfen und ggf. mit „Neu mit KI generieren“ verfeinern.
+> Zur Veröffentlichung bitte prüfen und ggf. mit „KI-Kursbuch (Chunked)“ verfeinern.
 
 ## Modulüberblick
 
@@ -64,15 +57,21 @@ router.post("/api/learning/kursbuch-draft", requireAuth, (req, res) => {
     if (!moduleId || moduleId < 1 || moduleId > 5) {
       return res.status(400).json({ error: "moduleId 1–5 erforderlich" });
     }
-    const content = buildDraft(moduleId, format);
     const pairs = extractModulePairs(moduleId);
+    const knowledgeCount = parseKnowledgeFile(moduleId).length;
+    if (pairs.length === 0 && knowledgeCount === 0) {
+      return res.status(503).json({
+        error: "Modulinhalte nicht verfügbar. Bitte nach dem nächsten Deploy erneut versuchen.",
+      });
+    }
+    const content = buildDraft(moduleId, format);
     res.json({
       success: true,
       content,
       moduleId,
       moduleName: MODULE_NAMES[moduleId],
       format,
-      daysExtracted: pairs.length || parseKnowledgeFile(moduleId).length,
+      daysExtracted: pairs.length || knowledgeCount,
       generatedAt: new Date().toISOString(),
       fromDraft: true,
       fromCache: false,

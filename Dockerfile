@@ -26,7 +26,9 @@ COPY patches ./patches
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
 COPY drizzle/migrations ./drizzle/migrations
+COPY server/knowledge ./server/knowledge
 COPY server/knowledge ./knowledge
+COPY client/src/pages/modules ./client/src/pages/modules
 COPY server/agent ./server/agent
 EXPOSE 8080
 CMD ["node", "dist/index.js"]

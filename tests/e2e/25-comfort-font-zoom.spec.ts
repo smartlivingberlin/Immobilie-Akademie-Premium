@@ -8,7 +8,6 @@ async function bumpFontAndMeasure(
 ) {
   await page.evaluate(() => {
     document.documentElement.style.setProperty("--a11y-font-scale", "1");
-    document.documentElement.style.fontSize = "calc(16px * 1)";
   });
   const before = await page.locator(paragraphSelector).first().evaluate((el) =>
     parseFloat(getComputedStyle(el).fontSize),
@@ -16,7 +15,6 @@ async function bumpFontAndMeasure(
 
   await page.evaluate(() => {
     document.documentElement.style.setProperty("--a11y-font-scale", "1.3");
-    document.documentElement.style.fontSize = "calc(16px * 1.3)";
   });
   const after = await page.locator(paragraphSelector).first().evaluate((el) =>
     parseFloat(getComputedStyle(el).fontSize),
@@ -36,14 +34,28 @@ test.describe("Comfort: Schriftzoom auf Kernseiten", () => {
     await bumpFontAndMeasure(page, ".learning-text-scale p");
   });
 
-  test("/statistiken — Sidebar-Text skaliert (html rem)", async ({ page }) => {
+  test("/statistiken — Sidebar bleibt fix, Lesebereich skaliert", async ({ page }) => {
     await page.goto(`${BASE}/statistiken`, { waitUntil: "domcontentloaded" });
-    const before = await page.evaluate(() => parseFloat(getComputedStyle(document.documentElement).fontSize));
+
+    const sidebarBefore = await page.locator("[data-app-sidebar] nav a").first().evaluate((el) =>
+      parseFloat(getComputedStyle(el).fontSize),
+    );
+    const contentBefore = await page.locator("#learning-scroll").evaluate((el) =>
+      parseFloat(getComputedStyle(el).fontSize),
+    );
+
     await page.evaluate(() => {
       document.documentElement.style.setProperty("--a11y-font-scale", "1.25");
-      document.documentElement.style.fontSize = "calc(16px * 1.25)";
     });
-    const after = await page.evaluate(() => parseFloat(getComputedStyle(document.documentElement).fontSize));
-    expect(after).toBeGreaterThan(before * 1.15);
+
+    const sidebarAfter = await page.locator("[data-app-sidebar] nav a").first().evaluate((el) =>
+      parseFloat(getComputedStyle(el).fontSize),
+    );
+    const contentAfter = await page.locator("#learning-scroll").evaluate((el) =>
+      parseFloat(getComputedStyle(el).fontSize),
+    );
+
+    expect(contentAfter).toBeGreaterThan(contentBefore * 1.15);
+    expect(Math.abs(sidebarAfter - sidebarBefore)).toBeLessThan(1);
   });
 });

@@ -168,7 +168,8 @@ const navigation: NavigationItem[] = [
       )}
 
       {/* Sidebar */}
-      <aside 
+      <aside
+        data-app-sidebar
         className={`
           fixed lg:static inset-y-0 left-0 z-50 text-white transition-all duration-300 ease-in-out flex flex-col
           ${isMobileMenuOpen ? "translate-x-0 w-64" : "-translate-x-full lg:translate-x-0"}
@@ -620,6 +621,7 @@ const navigation: NavigationItem[] = [
 
         {/* Content Scroll Area */}
         <div
+          id="learning-scroll"
           className="flex-1 overflow-y-auto p-4 md:p-8 scroll-smooth"
           data-inspect-readonly={isInspectReadOnly ? "" : undefined}
         >

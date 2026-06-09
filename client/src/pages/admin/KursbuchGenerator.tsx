@@ -29,11 +29,13 @@ export default function KursbuchGenerator() {
   const [selectedModule, setSelectedModule] = useState(1);
   const [selectedFormat, setSelectedFormat] = useState("kursbuch");
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<{ content: string; moduleTitle: string; format: string; fromCache?: boolean } | null>(null);
+  const [progress, setProgress] = useState<string | null>(null);
+  const [result, setResult] = useState<{ content: string; moduleTitle: string; format: string; fromCache?: boolean; chunked?: boolean } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const loadDraft = async () => {
     setLoading(true);
+    setProgress("Portal-Inhalte werden extrahiert…");
     setError(null);
     setResult(null);
     const mod = MODULES.find(m => m.id === selectedModule)!;
@@ -53,11 +55,38 @@ export default function KursbuchGenerator() {
         });
       } else setError(data.error || "Fehler");
     } catch { setError("Verbindungsfehler"); }
-    finally { setLoading(false); }
+    finally { setLoading(false); setProgress(null); }
+  };
+
+  const generateChunked = async (forceRegenerate = false) => {
+    setLoading(true);
+    setProgress("KI verarbeitet alle Lerntage in Blöcken (kann mehrere Minuten dauern)…");
+    setError(null);
+    setResult(null);
+    const mod = MODULES.find(m => m.id === selectedModule)!;
+    try {
+      const res = await fetch("/api/ai/generate-kursbuch-chunked", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ moduleId: selectedModule, format: selectedFormat, forceRegenerate }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setResult({
+          content: data.content,
+          moduleTitle: data.moduleName || mod.title,
+          format: selectedFormat,
+          fromCache: Boolean(data.fromCache),
+          chunked: true,
+        });
+      } else setError(data.error || "Fehler");
+    } catch { setError("Verbindungsfehler"); }
+    finally { setLoading(false); setProgress(null); }
   };
 
   const generateWithAi = async (forceRegenerate = false) => {
     setLoading(true);
+    setProgress("KI generiert (Einzelblock, max. 40 Tage)…");
     setError(null);
     setResult(null);
     const mod = MODULES.find(m => m.id === selectedModule)!;
@@ -77,7 +106,7 @@ export default function KursbuchGenerator() {
         });
       } else setError(data.error || "Fehler");
     } catch { setError("Verbindungsfehler"); }
-    finally { setLoading(false); }
+    finally { setLoading(false); setProgress(null); }
   };
 
   const download = () => {
@@ -95,7 +124,7 @@ export default function KursbuchGenerator() {
     <div style={{ maxWidth: 860, margin: "0 auto", padding: "24px 20px" }}>
       <div style={{ marginBottom: 24 }}>
         <h1 style={{ fontSize: fz(24), fontWeight: 700, color: "#0f172a", margin: 0 }}>Kursbuch-Generator</h1>
-        <p style={{ color: "#64748b", marginTop: 4, fontSize: fz(14) }}>Modul wählen → KI erstellt professionelles Lernmaterial → Download</p>
+        <p style={{ color: "#64748b", marginTop: 4, fontSize: fz(14) }}>Modul wählen → Entwurf (0 €) oder KI (Chunked, alle Tage) → Download</p>
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 14 }}>
@@ -135,20 +164,32 @@ export default function KursbuchGenerator() {
 
       {error && <div style={{ padding: "12px 14px", background: "#fef2f2", border: "1px solid #fecaca", borderRadius: 10, marginBottom: 12, color: "#991b1b", fontSize: fz(13) }}>{error}</div>}
 
+      {progress && (
+        <div style={{ padding: "10px 14px", background: "#eff6ff", border: "1px solid #bfdbfe", borderRadius: 10, marginBottom: 12, color: "#1d4ed8", fontSize: fz(13), display: "flex", alignItems: "center", gap: 8 }}>
+          <Loader2 size={16} style={{ animation: "spin 1s linear infinite", flexShrink: 0 }} />
+          {progress}
+        </div>
+      )}
+
       <div style={{ display: "flex", gap: 10, marginBottom: 20, flexWrap: "wrap" }}>
         <button onClick={loadDraft} disabled={loading}
-          style={{ flex: 1, minWidth: 200, padding: 14, background: loading ? "#94a3b8" : "#059669", color: "#fff", border: "none", borderRadius: 12, fontSize: fz(14), fontWeight: 600, cursor: loading ? "not-allowed" : "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
+          style={{ flex: 1, minWidth: 180, padding: 14, background: loading ? "#94a3b8" : "#059669", color: "#fff", border: "none", borderRadius: 12, fontSize: fz(14), fontWeight: 600, cursor: loading ? "not-allowed" : "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
           {loading ? <Loader2 size={18} style={{ animation: "spin 1s linear infinite" }} /> : <Download size={18} />}
-          {loading ? "Lädt..." : "Aus Portal-Inhalt (0 €)"}
+          {loading ? "Lädt..." : "Entwurf (0 €, alle Tage)"}
+        </button>
+        <button onClick={() => generateChunked(true)} disabled={loading}
+          style={{ flex: 1, minWidth: 180, padding: 14, background: loading ? "#94a3b8" : "#2563eb", color: "#fff", border: "none", borderRadius: 12, fontSize: fz(14), fontWeight: 600, cursor: loading ? "not-allowed" : "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
+          {loading ? <Loader2 size={18} style={{ animation: "spin 1s linear infinite" }} /> : <Sparkles size={18} />}
+          {loading ? "KI erstellt..." : "KI-Kursbuch (Chunked)"}
         </button>
         <button onClick={() => generateWithAi(true)} disabled={loading}
-          style={{ flex: 1, minWidth: 200, padding: 14, background: loading ? "#94a3b8" : "#7c3aed", color: "#fff", border: "none", borderRadius: 12, fontSize: fz(14), fontWeight: 600, cursor: loading ? "not-allowed" : "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
+          style={{ flex: 1, minWidth: 180, padding: 14, background: loading ? "#94a3b8" : "#7c3aed", color: "#fff", border: "none", borderRadius: 12, fontSize: fz(14), fontWeight: 600, cursor: loading ? "not-allowed" : "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
           {loading ? <Loader2 size={18} style={{ animation: "spin 1s linear infinite" }} /> : <Sparkles size={18} />}
-          {loading ? "KI erstellt..." : "Neu mit KI generieren"}
+          {loading ? "KI erstellt..." : "KI (Legacy, 40 Tage)"}
         </button>
       </div>
       <p style={{ fontSize: fz(12), color: "#64748b", margin: "-8px 0 16px" }}>
-        Grün: Moduldateien + Wissensdatenbank (ohne KI). Lila: KI-Generierung (Cache wird danach gespeichert).
+        Grün: alle Lerntage aus Moduldateien. Blau: KI in 8-Tage-Blöcken (empfohlen). Lila: älterer Einzelblock mit 40-Tage-Limit.
       </p>
 
       {result && (
@@ -158,7 +199,7 @@ export default function KursbuchGenerator() {
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: fz(13), fontWeight: 600, color: "#374151" }}>{result.moduleTitle}</div>
               <div style={{ fontSize: fz(11), color: "#94a3b8" }}>
-                {result.content.length.toLocaleString()} Zeichen {result.fromCache ? "(Portal-Inhalt / Cache)" : "(KI generiert)"}
+                {result.content.length.toLocaleString()} Zeichen {result.chunked ? "(KI Chunked)" : result.fromCache ? "(Portal-Inhalt / Cache)" : "(KI generiert)"}
               </div>
             </div>
             <button onClick={download} style={{ display: "flex", alignItems: "center", gap: 6, padding: "7px 14px", background: "#059669", color: "#fff", border: "none", borderRadius: 8, fontSize: fz(12), fontWeight: 500, cursor: "pointer" }}>

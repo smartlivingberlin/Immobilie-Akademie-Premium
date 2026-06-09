@@ -1,5 +1,7 @@
 import { existsSync, readFileSync } from "fs";
-import { resolve } from "path";
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
+import { resolveModuleContentPath } from "./contentPaths";
 import {
   formatLessonText,
   paragraphsToDisplay,
@@ -75,7 +77,7 @@ function splitDayBlocks(raw: string): Array<{ dayNumber: number; block: string }
 }
 
 export function extractDaysFromModuleFile(filePath: string): DayFields[] {
-  const abs = resolve(filePath);
+  const abs = resolveModuleContentPath(filePath);
   if (!existsSync(abs)) return [];
   const raw = readFileSync(abs, "utf8");
   return splitDayBlocks(raw)
@@ -116,6 +118,30 @@ function buildLessonBody(day: DayFields): { display: string; speech: string; par
     display: paragraphsToDisplay(allParagraphs),
     speech: speechParts.join(" "),
   };
+}
+
+function loadBundledModuleLessons(moduleId: number): AudioLesson[] {
+  const candidates = [
+    join(process.cwd(), "dist", "data", `module-lessons-${moduleId}.json`),
+    join(dirname(fileURLToPath(import.meta.url)), "data", `module-lessons-${moduleId}.json`),
+  ];
+  for (const path of candidates) {
+    if (!existsSync(path)) continue;
+    try {
+      const parsed = JSON.parse(readFileSync(path, "utf8")) as AudioLesson[];
+      if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+    } catch {
+      /* try next */
+    }
+  }
+  return [];
+}
+
+/** Lerntage aus Moduldateien (Dev) oder Build-Export dist/data/ (Production). */
+export function getModuleLessons(moduleId: number): AudioLesson[] {
+  const live = parseModuleDayLessons(moduleId);
+  if (live.length > 0) return live;
+  return loadBundledModuleLessons(moduleId);
 }
 
 export function parseModuleDayLessons(moduleId: number): AudioLesson[] {
