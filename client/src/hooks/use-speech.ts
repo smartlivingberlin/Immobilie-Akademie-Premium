@@ -7,9 +7,27 @@ function loadPrefs(): Prefs {
   catch { return { rate:1, voiceURI:null, pitch:1 }; }
 }
 function savePrefs(p: Prefs) { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); } catch {} }
+const ABBREV_DOT = "\uE000";
+
+/** Schützt gängige Abkürzungen vor falscher Satztrennung (z. B. „z.B.“ → nicht bei „z.“ splitten). */
+function protectAbbreviations(text: string): string {
+  return text
+    .replace(/z\.\s*B\./gi, `z${ABBREV_DOT}B${ABBREV_DOT}`)
+    .replace(/\b([uU]\.\s*[aA])\./g, `$1${ABBREV_DOT}`)
+    .replace(/\b([dD]\.\s*[hH])\./g, `$1${ABBREV_DOT}`)
+    .replace(/\b([vV]\.\s*[aA])\./g, `$1${ABBREV_DOT}`)
+    .replace(/\b([iI]\.\s*[dD]\.\s*[rR])\./g, `$1${ABBREV_DOT}`)
+    .replace(/\b(bzw|usw|etc|ca|Abs|Nr|ggf|evtl|inkl|zzgl|bspw)\./gi, (m) => m.replace(".", ABBREV_DOT));
+}
+
+function restoreAbbreviations(text: string): string {
+  return text.replaceAll(ABBREV_DOT, ".");
+}
+
 export function splitSpeechChunks(text: string): string[] {
-  const cleaned = preparePronunciation(text);
-  return cleaned.match(/[^.!?]+[.!?]+|\S[\s\S]*$/g) ?? [cleaned];
+  const cleaned = protectAbbreviations(preparePronunciation(text));
+  const raw = cleaned.match(/[^.!?]+[.!?]+|\S[\s\S]*$/g) ?? [cleaned];
+  return raw.map(restoreAbbreviations).map((s) => s.trim()).filter(Boolean);
 }
 
 export function preparePronunciation(text: string): string {

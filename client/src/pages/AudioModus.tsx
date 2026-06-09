@@ -102,13 +102,15 @@ export default function AudioModus() {
     el?.scrollIntoView({ behavior: "smooth", block: "center" });
   }, [activeChunkIndex]);
 
+  const fullTranscript = current ? lessonSpeechText(current) : "";
+
   const showChunks = useMemo(() => {
     if (!current) return [];
     if (speechChunks.length > 0 && (state === "playing" || state === "paused")) {
       return speechChunks;
     }
-    return [lessonSpeechText(current)];
-  }, [current, speechChunks, state]);
+    return [fullTranscript];
+  }, [current, speechChunks, state, fullTranscript]);
 
   if (!supported) {
     return (
@@ -219,7 +221,9 @@ export default function AudioModus() {
               </div>
               <div ref={transcriptRef} className="px-5 py-5 max-h-[min(55vh,520px)] overflow-y-auto">
                 <p className="text-xs text-muted-foreground mb-4">
-                  Der markierte Absatz wird gerade vorgelesen. § wird als „Paragraph“ ausgesprochen — der Text entspricht dem, was Sie hören.
+                  {state === "idle"
+                    ? "Volltext der Lektion — beim Abspielen wird der gerade gesprochene Satz markiert."
+                    : "Markierter Satz = wird gerade vorgelesen. § wird als „Paragraph“ ausgesprochen."}
                 </p>
                 <div className="space-y-3 text-base leading-relaxed text-foreground">
                   {showChunks.map((chunk, i) => (
