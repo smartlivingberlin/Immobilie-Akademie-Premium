@@ -23,6 +23,13 @@ node_modules/
 *.test.ts
 *.spec.ts
 coverage/
+tests/
+playwright-report/
+test-results/
+.manus-logs/
+audit_runs/
+docs/
+projekt_paket1_server.md
 
 # IDE
 .vscode/
