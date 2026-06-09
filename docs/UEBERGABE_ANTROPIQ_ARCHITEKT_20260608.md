@@ -592,22 +592,26 @@ curl -sI https://immobilien-akademie-smart.de/ | grep -iE "content-security|x-fr
 | Cross-Origin-Embedder-Policy | ❌ | nicht gesetzt |
 | Snyk „Missing Headers" | **ungültig** | Snyk testete HTTP, nicht HTTPS |
 
-### 17.10 Reifegrad-Tabelle (kalibriert, 09.06.2026)
+### 17.10 Reifegrad-Tabelle (kalibriert, 09.06.2026 — Stand nach 6 externen Tools)
 
 | Dimension | Note vorher | Externe Realität | Neue Note | Beleg-Quelle |
 |-----------|-------------|------------------|-----------|--------------|
 | TLS / SSL | nicht bewertet | A+, 100/100 überall | **5,0** | Qualys SSL Labs 09.06. |
-| Security Headers (HTTPS) | ~3,5 (intern) | CSP+COOP+CORP gesetzt; COEP fehlt; CSP unsafe-inline | **4,0** | curl 09.06. |
-| Performance Mobile | 2,5 (unverifiziert) | 78/100, LCP 4,5 s | **3,9** | PageSpeed Insights 09.06. |
+| Security Headers (HTTPS) | ~3,5 (intern) | Mozilla Observatory **B+ (80/100)**; CSP unsafe-inline (−20); Snyk HTTPS Grade A | **4,2** | Observatory + Snyk HTTPS 09.06. |
+| Performance Desktop | — | 99/100, LCP 1,0 s, FCP 0,6 s | **4,9** | PageSpeed Desktop 09.06. 10:08 |
+| Performance Mobile | 2,5 (unverifiziert) | 77/100, LCP 4,8 s, FCP 3,1 s | **3,8** | PageSpeed Mobile 09.06. 10:08 |
+| Performance International | — | GTmetrix Seattle 76 %, LCP 2,6 s | **3,7** | GTmetrix 09.06. |
 | Accessibility | 3,0 | 92/100 | **4,6** | PageSpeed Insights 09.06. |
 | SEO | 3,5 | 100/100 | **5,0** | PageSpeed Insights 09.06. |
 | Best Practices | nicht bewertet | 96/100 | **4,8** | PageSpeed Insights 09.06. |
+| **E-Mail-Stack** | nicht bewertet | Internet.nl Mail **63 %**; SPF permerror; DMARC pct=10 | **2,5** | Internet.nl + dig 09.06. |
+| **IPv6 (Web + Mail)** | nicht bewertet | Kein AAAA (Web Railway); MX UDAG ohne AAAA | **1,0** | Internet.nl + dig 09.06. |
 | App-Security (Inspect, Auth) | ~3,5 | #141+#148 merged, Live 403/200 | **3,8** | Repo + Live-Test 09.06. |
 | Ops / DR | 2,0 | R2-Restore unbewiesen, kein Staging | **2,0** | Runbooks, Alisad-Status |
 | Legal / Compliance | 2,0 | Keine automatische Rechtsvalidierung | **2,0** | Code-Review |
 | Testing / QA | ~3,0 | 135+36+10 grün = Indikator | **3,0** | CI + NF-A5 |
 | Stripe / B2B | ~2,5 | Testmodus, Pre-Flight offen | **2,5** | Prod-API |
-| **Gewichteter Schnitt** | 2,8 (intern) | — | **~3,3–3,5** | Gewichtung: Web 30 %, Security 20 %, Ops 25 %, Legal 15 %, QA 10 % |
+| **Gewichteter Schnitt** | 2,8 (intern) | — | **~3,3–3,5** | Web 25 %, Security 15 %, E-Mail 10 %, Ops 20 %, Legal 15 %, QA 10 %, IPv6 5 % |
 
 ### 17.11 LCP-Diagnose (Kurzfassung)
 
@@ -621,6 +625,169 @@ curl -sI https://immobilien-akademie-smart.de/ | grep -iE "content-security|x-fr
 
 **Schätzung nach Optimierungen:** LCP **~2,8–3,2 s** (realistisch); **&lt;2,5 s** mit Font-Subsetting + kritischem CSS trimmen + Route-Level-Splitting — **mittlerer Aufwand** (1–2 fokussierte PRs), nicht trivial.
 
+### 17.12 NF-X1 — E-Mail-Stack 63 % (Internet.nl Mail-Test, P0)
+
+**Internet.nl Mail-Test:** 63 % — vier Failure-Kategorien bestätigt (dig 09.06.2026).
+
+#### Aktuelle DNS-Konfiguration (verifiziert)
+
+| Record | Inhalt |
+|--------|--------|
+| **SPF (Root)** | `v=spf1 include:_smtp.udag.de include:_spf.resend.com ~all` |
+| **DMARC** | `v=DMARC1; p=quarantine; pct=10; rua=mailto:info@immobilien-akademie-smart.de` |
+| **DKIM** | `resend._domainkey` → RSA-Public-Key vorhanden ✅ |
+| **MX** | `10 mx00.udag.de` · `20 mx01.udag.de` (kein AAAA) |
+| **send-Subdomain** | MX → `feedback-smtp.eu-west-1.amazonses.com` · **kein SPF-TXT auf `send`** |
+
+#### Kritische SPF-Diagnose
+
+`include:_spf.resend.com` liefert **NXDOMAIN** (Host existiert nicht). Das erzeugt einen **SPF permerror** — wahrscheinlich Hauptursache für Internet.nl „SPF Failed", nicht nur `~all`.
+
+Zusätzlich: `~all` (Softfail) statt `-all` — strenge Tester werten das als Failed.
+
+#### Empfohlene DNS-Änderungen (Copy-Paste — nur nach Backup, nur Alisad)
+
+**Schritt 1 — SPF Root reparieren** (ersetzt bestehenden TXT-Record):
+
+```
+v=spf1 include:_smtp.udag.de include:amazonses.com -all
+```
+
+| Wenn falsch | Konsequenz |
+|-------------|------------|
+| `include:_spf.resend.com` behalten | SPF permerror bleibt — Mails weiterhin „Failed" |
+| `-all` ohne alle Sender | Legitime Mails von nicht gelisteten Servern werden abgelehnt |
+| UDAG-Include entfernen | Webmail/Weiterleitung über UDAG kann bouncen |
+
+**Schritt 2 — SPF auf `send`-Subdomain** (Resend Return-Path, fehlt aktuell):
+
+```
+Name: send
+Type: TXT
+Value: v=spf1 include:amazonses.com -all
+```
+
+**Schritt 3 — DMARC stufenweise härten** (nicht Big-Bang):
+
+```
+# Phase A (1–2 Wochen Monitoring):
+v=DMARC1; p=none; pct=100; rua=mailto:info@immobilien-akademie-smart.de
+
+# Phase B (wenn SPF/DKIM grün):
+v=DMARC1; p=quarantine; pct=100; rua=mailto:info@immobilien-akademie-smart.de; adkim=s; aspf=r
+
+# Phase C (Ziel):
+v=DMARC1; p=reject; pct=100; rua=mailto:info@immobilien-akademie-smart.de; adkim=s; aspf=r
+```
+
+| Wenn falsch | Konsequenz |
+|-------------|------------|
+| `p=reject` zu früh | Eigene Transaktions-Mails landen im Spam/ werden verworfen |
+| `pct=10` lassen | 90 % nicht authentifizierte Mails ungeprüft |
+
+**DKIM:** `resend._domainkey` ist korrekt — keine Änderung nötig, sofern Resend-Dashboard „verified" zeigt.
+
+#### Was Alisad bei Resend **nicht** beeinflussen kann
+
+| Failure | Ursache | Beeinflussbar? |
+|---------|---------|----------------|
+| IPv6 Mailserver | UDAG MX (`mx00/mx01.udag.de`) ohne AAAA | ❌ Provider (UDAG) |
+| DNSSEC Mail | Domain ohne DNSSEC-Signatur | ⚠️ Domain-Registrar (UDAG) |
+| STARTTLS+DANE inbound | UDAG MX ohne TLSA/DANE-Records | ❌ Provider (UDAG) |
+
+Resend outbound (API) nutzt Amazon SES — IPv6/DANE der **eingehenden** MX-Server betrifft `info@`-Postfach, nicht Resend-Versand.
+
+#### PR #147 — explizit blockiert
+
+**PR #147 (Hybrid E-Mail-Verifikation) darf nicht deployed werden**, bis Internet.nl Mail-Test **&gt; 90 %** und SPF ohne permerror. Sonst: Verifikations-Mails im Spam → 7-Tage-Sperre → Domain-Reputation-Schaden.
+
+### 17.13 NF-X2 — HSTS Preload (P0 Code-Fix)
+
+- **Bug:** Custom-Middleware setzte `preload`, Helmet überschrieb ohne `preload` (hstspreload.org: „No preload directive").
+- **Fix:** PR [#151](https://github.com/smartlivingberlin/Immobilie-Akademie-Premium/pull/151) (`cursor/hsts-preload-fix-7dbc`) — `helmet({ hsts: { preload: true, … } })`.
+- **Post-Deploy:** `curl -sI https://immobilien-akademie-smart.de/ | grep -i strict-transport` → muss `preload` enthalten.
+- **hstspreload.org-Einreichung:** erst nach **1 Monat** stabiler Konfiguration — nicht automatisch.
+
+### 17.14 NF-X3 — IPv6 fehlt (P1)
+
+| Prüfung | Ergebnis |
+|---------|----------|
+| Web AAAA | ❌ nur `A → 66.33.22.75` (Railway) |
+| Mail MX AAAA | ❌ `mx00/mx01.udag.de` nur IPv4 |
+
+**Railway:** Öffentliches IPv6 für Custom Domains ist **nicht dokumentiert verfügbar** (Private Networking IPv6 betrifft nur `railway.internal`). **Bekannte Provider-Beschränkung** — kein App-Code-Fix.
+
+### 17.15 NF-X4 — DNS CAA fehlt (P1, ~10 Min)
+
+**Empfohlene Records beim Domain-Provider:**
+
+```
+immobilien-akademie-smart.de.  CAA  0 issue "letsencrypt.org"
+immobilien-akademie-smart.de.  CAA  0 iodef "mailto:alisadgadyri38@gmail.com"
+```
+
+| Wenn falsch | Konsequenz |
+|-------------|------------|
+| Falscher `issue`-CA | TLS-Zertifikat-Erneuerung schlägt fehl → Ausfall |
+| CAA zu restriktiv ohne Railway-CA | Let's Encrypt Renewal blockiert |
+
+### 17.16 NF-X5 — Hash Function Diskrepanz (P1)
+
+| Tool | Ergebnis |
+|------|----------|
+| SSL Labs | A+ |
+| Internet.nl Web | „Hash function for key exchange: Failed" |
+
+**Erklärung:** Internet.nl (NL Government Standard) ist strenger als SSL Labs (Browser-Praxis). OpenSSL-Check 09.06.: TLS 1.3 `TLS_AES_128_GCM_SHA256`, TLS 1.2 `ECDHE-ECDSA-AES128-GCM-SHA256` — **kein SHA-1-Cipher** in der ausgehandelten Verbindung.
+
+**Unsicherheit:** Ob schwächere Cipher-Suites in der **Angebotsliste** noch existieren, ohne vollständigen Scan nicht verifizierbar. **Trade-off:** Entfernen von TLS 1.2 SHA-1-Ciphers könnte alte Clients treffen; TLS 1.3-only wäre restriktiver. Aktuell: **kein Handlungsbedarf** solange SSL Labs A+ und keine SHA-1-Negotiation bestätigt.
+
+### 17.17 NF-X6 — Performance bipolar (Desktop vs Mobile)
+
+**PageSpeed 09.06. 10:08:**
+
+| Metrik | Desktop | Mobile |
+|--------|---------|--------|
+| Performance | 99/100 | 77/100 |
+| FCP | 0,6 s | 3,1 s |
+| LCP | 1,0 s | 4,8 s |
+| TBT | 0 ms | 20 ms |
+| CLS | 0,005 | 0 |
+
+**GTmetrix Seattle:** 76 %, LCP 2,6 s, TBT 34 ms.
+
+| Optimierung | Mobile | Desktop | International |
+|-------------|--------|---------|---------------|
+| Inline-`<style>` in `index.html` reduzieren | ✅ hoch | gering | gering |
+| Font-Subsetting (`fonts.css`) | ✅ hoch | mittel | mittel |
+| Hero-Preload nur `lg+` | ✅ hoch | neutral | neutral |
+| Unused-JS-Splitting (`vendor-react-utils`) | ✅ hoch | gering | gering |
+| CDN/Edge-Caching (Railway/Fastly) | mittel | gering | ✅ hoch |
+| Brotli + lange Cache-Header statischer Assets | mittel | gering | ✅ hoch |
+
+### 17.18 Mozilla Observatory + Snyk HTTPS (bestätigt)
+
+| Tool | Ergebnis |
+|------|----------|
+| Mozilla Observatory | **B+ (80/100)**, 9/10 Tests — einziger Abzug: CSP `unsafe-inline` (−20). Mit Nonce-CSP theoretisch A+ (100). |
+| Snyk HTTPS | **Grade A** — bestätigt curl-Befunde. Vorheriger HTTP-Test war fehlerhaft. |
+
+### 17.19 Wiederholbare E-Mail-Tests (für Alisad)
+
+```bash
+# SPF/DMARC/DKIM/MX prüfen:
+dig TXT immobilien-akademie-smart.de +short
+dig TXT _dmarc.immobilien-akademie-smart.de +short
+dig TXT resend._domainkey.immobilien-akademie-smart.de +short
+dig MX immobilien-akademie-smart.de +short
+host -t TXT _spf.resend.com   # sollte NXDOMAIN zeigen (Bug bestätigen)
+
+# Online:
+# https://internet.nl/mail/immobilien-akademie-smart.de/
+# https://mxtoolbox.com/SuperTool.aspx?action=spf%3aimmobilien-akademie-smart.de
+# https://mxtoolbox.com/SuperTool.aspx?action=dmarc%3aimmobilien-akademie-smart.de
+```
+
 ---
 
-*Dieses Dokument ist eine Momentaufnahme vom 08.06.2026, erweitert nach Forensik NF-9–NF-13 und §17 (09.06.2026). Jede Aussage ist durch den Architekten zu verifizieren.*
+*Dieses Dokument ist eine Momentaufnahme vom 08.06.2026, erweitert nach Forensik NF-9–NF-13, §17 NF-A1–A7 und NF-X1–X6 (09.06.2026). Jede Aussage ist durch den Architekten zu verifizieren.*

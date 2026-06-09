@@ -1,9 +1,23 @@
 # Externe Ops-Checkliste — nur Alisad
 
-**Stand:** 08.06.2026 · Master-Audit grün (Vitest 122, API 36, E2E 10)  
-Alles hier erfordert Zugang zu Railway, Cloudflare, Stripe oder GitHub.
+**Stand:** 09.06.2026 · Master-Audit grün (Vitest 135, API 36, E2E 10)  
+Alles hier erfordert Zugang zu Railway, Domain-Provider (UDAG), Resend, Stripe oder GitHub.
 
 ---
+
+## Priorität 0 — E-Mail-Stack (P0, blockiert PR #147)
+
+**Internet.nl Mail-Test: 63 %** — PR #147 (E-Mail-Verifikation) **nicht deployen** bis &gt; 90 %.
+
+| # | Aufgabe | Copy-Paste / Hinweis | Erledigt |
+|---|---------|----------------------|----------|
+| 0a | **SPF Root reparieren** | Ersetze TXT: `v=spf1 include:_smtp.udag.de include:amazonses.com -all` — **entferne** `include:_spf.resend.com` (NXDOMAIN = permerror) | ☐ |
+| 0b | **SPF `send`-Subdomain** | TXT auf `send`: `v=spf1 include:amazonses.com -all` | ☐ |
+| 0c | **DMARC stufenweise** | Phase A: `v=DMARC1; p=none; pct=100; rua=mailto:info@immobilien-akademie-smart.de` → später `p=quarantine; pct=100` → Ziel `p=reject` | ☐ |
+| 0d | **DKIM prüfen** | `dig TXT resend._domainkey.immobilien-akademie-smart.de` — Resend-Dashboard „verified" | ☐ |
+| 0e | **Re-Test** | [internet.nl/mail](https://internet.nl/mail/immobilien-akademie-smart.de/) · [MXToolbox SPF](https://mxtoolbox.com/SuperTool.aspx?action=spf%3aimmobilien-akademie-smart.de) | ☐ |
+
+**Nicht beeinflussbar (Provider):** IPv6/DNSSEC/DANE auf UDAG-MX (`mx00/mx01.udag.de`) — dokumentiert in [RISIKOREGISTER.md](./RISIKOREGISTER.md) R-21.
 
 ## Priorität 1 — Diese Woche
 
@@ -15,6 +29,8 @@ Alles hier erfordert Zugang zu Railway, Cloudflare, Stripe oder GitHub.
 | 4 | **R2 Restore-Test** | [R2_ACTIVATION_CHECKLIST.md](./R2_ACTIVATION_CHECKLIST.md) · `pnpm run ops:r2-checklist` | ☐ |
 | 5 | **Railway MySQL FAILED** | [RAILWAY_MYSQL_OPS.md](./RAILWAY_MYSQL_OPS.md) | ☐ |
 | 6 | **PR #72 schließen** | GitHub → Close | ✅ |
+| 7 | **DNS CAA Records** | `0 issue "letsencrypt.org"` + `0 iodef "mailto:alisadgadyri38@gmail.com"` | ☐ |
+| 8 | **HSTS Preload deployen** | PR #151 mergen → `curl -sI` muss `preload` zeigen · hstspreload.org erst nach 1 Monat | ☐ |
 
 ## Priorität 2 — B2B Go-Live
 
@@ -39,7 +55,7 @@ Alles hier erfordert Zugang zu Railway, Cloudflare, Stripe oder GitHub.
 |---|---------|---------|----------|
 | 14 | `OWNER_MAGIC_CODE` rotieren | Nach Sichtbarkeit in Chat/Logs | ☐ |
 | 15 | `INSPECT_JWT_SECRET` | min. 32 Zeichen in Railway | ☐ |
-| 16 | DMARC `p=reject` | DNS | ☐ |
+| 16 | DMARC `p=reject` | DNS — erst nach Phase A/B in Priorität 0 | ☐ |
 | 17 | Gewerbeschein Impressum | Berlin ~26 EUR | ☐ |
 | 18 | DSGVO-AVVs | Processor-Verträge | ☐ |
 
@@ -52,6 +68,17 @@ Alles hier erfordert Zugang zu Railway, Cloudflare, Stripe oder GitHub.
 | 21 | `PARTNER_PAYOUT_CRON_ENABLED=true` | Quartals-Ledger | ☐ |
 
 ---
+
+## DNS-Schnellcheck (E-Mail + CAA)
+
+```bash
+dig TXT immobilien-akademie-smart.de +short
+dig TXT _dmarc.immobilien-akademie-smart.de +short
+dig TXT resend._domainkey.immobilien-akademie-smart.de +short
+dig TXT send.immobilien-akademie-smart.de +short
+dig CAA immobilien-akademie-smart.de +short
+host -t TXT _spf.resend.com   # NXDOMAIN = SPF-Bug bestätigt
+```
 
 ## Schnell-Verifikation (WSL Copy-Paste)
 
