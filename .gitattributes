@@ -1,0 +1,5 @@
+* text=auto eol=lf
+.dockerignore text eol=lf
+Dockerfile text eol=lf
+railway.toml text eol=lf
+railway.json text eol=lf

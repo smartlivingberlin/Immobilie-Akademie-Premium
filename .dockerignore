@@ -1,41 +1,25 @@
-# Build output - rebuilt in image
-dist/
-.dist/
-
-# Dependencies - reinstalled in image
-node_modules/
-
-# Git
-.git/
-.gitignore
-
-# Dev files
+dist
+node_modules
+.git
+.env
+.env.local
+tests
+docs
+coverage
+playwright-report
+test-results
+.manus-logs
+audit_runs
+projekt_paket1_server.md
+.vscode
+.idea
+*.md
 *.png
 *.jpg
 *.jpeg
 *.gif
-*.md
-*.bak
 *.log
 *.tmp
-
-# Tests
+*.bak
 *.test.ts
 *.spec.ts
-coverage/
-tests/
-playwright-report/
-test-results/
-.manus-logs/
-audit_runs/
-docs/
-projekt_paket1_server.md
-
-# IDE
-.vscode/
-.idea/
-*.swp
-
-# Local config
-.env
-.env.local
