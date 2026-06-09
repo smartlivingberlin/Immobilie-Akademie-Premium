@@ -124,6 +124,7 @@ temp/
 !docs/STRIPE_LIVE_GO_LIVE.md
 !docs/MODUL_678_VERTEILUNGSPLAN.md
 !docs/UEBERGABE_ANTROPIQ_ARCHITEKT_*.md
+!docs/RISIKOREGISTER.md
 *.bak.*
 .tmp/
 _check/
