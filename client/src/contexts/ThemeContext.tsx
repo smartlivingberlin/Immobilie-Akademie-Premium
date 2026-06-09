@@ -1,3 +1,4 @@
+/** @deprecated Nutze useA11yPrefs — einheitlicher Dark-Mode über immo:a11y-prefs */
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 type Theme = "light" | "dark";

@@ -28,8 +28,8 @@ test.describe("Rechenpraxis P0 & Modul-3 Audio", () => {
     }
   });
 
-  test("/app/rechenpraxis lädt Aufgabenliste", async ({ page }) => {
-    await page.goto(`${BASE}/app/rechenpraxis`, { waitUntil: "domcontentloaded" });
+  test("/rechenpraxis lädt Aufgabenliste", async ({ page }) => {
+    await page.goto(`${BASE}/rechenpraxis`, { waitUntil: "domcontentloaded" });
     await expect(page.getByRole("heading", { name: /Rechenpraxis Immobilienwirtschaft/i })).toBeVisible({
       timeout: 15000,
     });
@@ -38,7 +38,7 @@ test.describe("Rechenpraxis P0 & Modul-3 Audio", () => {
   });
 
   test("Rechenpraxis: Fehler-Feedback bei falscher Eingabe", async ({ page }) => {
-    await page.goto(`${BASE}/app/rechenpraxis`, { waitUntil: "domcontentloaded" });
+    await page.goto(`${BASE}/rechenpraxis`, { waitUntil: "domcontentloaded" });
     await page.getByRole("button", { name: /Hausgeld berechnen/i }).first().click({ timeout: 15000 });
     const input = page.getByPlaceholder("Ihre Berechnung...").first();
     await input.fill("4800");

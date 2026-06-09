@@ -24,7 +24,7 @@ const FEATURES = [
 export default function VerwalterRechnerLanding() {
   const { data: user } = trpc.auth.me.useQuery();
 
-  const ctaHref = user ? "/app/rechenpraxis" : "/login?redirect=/app/rechenpraxis";
+  const ctaHref = user ? "/rechenpraxis" : "/login?redirect=/rechenpraxis";
   const preiseHref = user ? "/rechenpraxis-preise" : "/login?redirect=/rechenpraxis-preise";
 
   return (

@@ -32,7 +32,7 @@ console.log('OK: 10 Freemium-WEG-IDs');
 echo ""
 echo "=== Live-Test (nach Railway-Deploy) ==="
 echo "1. Audio: https://immobilien-akademie-smart.de/audio-modus → Modul 3 → Tag 4–22 sichtbar"
-echo "2. Rechenpraxis: https://immobilien-akademie-smart.de/app/rechenpraxis"
+echo "2. Rechenpraxis: https://immobilien-akademie-smart.de/rechenpraxis"
 echo "   - Ohne Vollabo: 10 WEG-Aufgaben frei, Rest mit Schloss"
 echo "   - Falsche Zahl eingeben → regelbasiertes Fehler-Feedback"
 echo "3. E2E (mit B2B_ADMIN_PASSWORD): npx playwright test tests/e2e/24-rechenpraxis-p0-module3-audio.spec.ts"

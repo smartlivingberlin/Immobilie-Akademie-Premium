@@ -1,10 +1,11 @@
-import { useDarkMode } from "@/hooks/useDarkMode";
+import { useA11yPrefs } from "@/hooks/use-a11y-prefs";
 
 export function DarkModeToggle({ className = "" }: { className?: string }) {
-  const { dark, toggle } = useDarkMode();
+  const { prefs, toggleDark } = useA11yPrefs();
+  const dark = prefs.darkMode || prefs.contrast === "dark";
   return (
     <button
-      onClick={toggle}
+      onClick={toggleDark}
       aria-label={dark ? "Heller Modus aktivieren" : "Dunkler Modus aktivieren"}
       title={dark ? "Light Mode" : "Dark Mode"}
       style={{

@@ -19,8 +19,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
-export function GlobalGlossary() {
+type GlobalGlossaryProps = {
+  /** Nur Icon — für eingeklappte Sidebar */
+  compact?: boolean;
+  className?: string;
+};
+
+export function GlobalGlossary({ compact = false, className = "" }: GlobalGlossaryProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
@@ -38,7 +50,6 @@ export function GlobalGlossary() {
     return matchesSearch && matchesCategory;
   });
 
-  // Group terms by first letter for better readability
   const groupedTerms = filteredTerms.reduce((acc, term) => {
     const firstLetter = term.term.charAt(0).toUpperCase();
     if (!acc[firstLetter]) {
@@ -50,14 +61,38 @@ export function GlobalGlossary() {
 
   const sortedLetters = Object.keys(groupedTerms).sort();
 
+  const trigger = compact ? (
+    <Button
+      variant="ghost"
+      size="icon"
+      aria-label="Fachbegriffe & Gesetze"
+      className={`text-slate-300 hover:text-white hover:bg-slate-800 ${className}`}
+    >
+      <BookOpen className="h-5 w-5" />
+    </Button>
+  ) : (
+    <Button variant="outline" size="sm" className={`gap-2 w-full justify-start ${className}`}>
+      <BookOpen className="h-4 w-4" />
+      <span>Fachbegriffe & Gesetze</span>
+    </Button>
+  );
+
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
-        <Button variant="outline" size="sm" className="gap-2 w-full justify-start">
-          <BookOpen className="h-4 w-4" />
-          <span>Fachbegriffe & Gesetze</span>
-        </Button>
-      </DialogTrigger>
+      {compact ? (
+        <TooltipProvider>
+          <Tooltip delayDuration={0}>
+            <TooltipTrigger asChild>
+              <DialogTrigger asChild>{trigger}</DialogTrigger>
+            </TooltipTrigger>
+            <TooltipContent side="right" className="bg-slate-900 text-white border-slate-700">
+              Fachbegriffe & Gesetze
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      ) : (
+        <DialogTrigger asChild>{trigger}</DialogTrigger>
+      )}
       <DialogContent className="max-w-4xl h-[80vh] flex flex-col">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold flex items-center gap-2">

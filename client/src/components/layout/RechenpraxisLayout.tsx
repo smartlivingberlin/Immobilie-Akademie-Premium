@@ -21,7 +21,7 @@ export function RechenpraxisLayout({ children }: RechenpraxisLayoutProps) {
       <header className="sticky top-0 z-20 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
         <div className="container mx-auto px-4 h-14 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3 min-w-0">
-            <Link href="/app/rechenpraxis">
+            <Link href="/rechenpraxis">
               <span className="inline-flex items-center gap-2 font-display font-semibold text-foreground cursor-pointer">
                 <Calculator className="h-5 w-5 text-emerald-600 shrink-0" />
                 <span className="truncate">Rechenpraxis</span>

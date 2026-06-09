@@ -89,10 +89,12 @@ Browser
 - Owner-Dashboard: ComfortBar im Header
 - Video-Tab-Platzhalter: `ModuleVideoComingSoon` mit Skalierung
 
+### Behoben (P1, weiter)
+- Eingeklappte Sidebar: `GlobalGlossary compact` öffnet Lexikon-Dialog
+- Dark-Mode vereinheitlicht: Toasts (`sonner`) + Legacy-`theme`-Migration → `useA11yPrefs`
+- Rechenpraxis kanonisch unter `/rechenpraxis`; `/app/rechenpraxis` → Redirect
+
 ### Offen (P1)
-- Eingeklappte Sidebar: Fachbegriffe-Button ohne Dialog
-- Zwei Dark-Mode-Mechanismen (`useDarkMode` vs `useA11yPrefs`)
-- `/rechenpraxis` vs `/app/rechenpraxis` — zwei Layouts
 - Owner/Admin-Inline-Schriftgrößen (px) noch nicht überall skaliert
 
 ### Offen (P2)
@@ -111,7 +113,8 @@ Browser
 3. https://immobilien-akademie-smart.de/modul/3/tag/4 — A+ wirkt im Lerntext (Theorie)
 4. https://immobilien-akademie-smart.de/modul/3/tag/4 — Tab **Videos** → Platzhalter skaliert mit
 5. https://immobilien-akademie-smart.de/audio-modus — WEG/§ im Text, Comfort oben
-6. https://immobilien-akademie-smart.de/app/rechenpraxis — Freemium + Fehler-Katalog + Schriftzoom
+6. https://immobilien-akademie-smart.de/rechenpraxis — Freemium + Fehler-Katalog + Schriftzoom
+6b. https://immobilien-akademie-smart.de/app/rechenpraxis — leitet auf /rechenpraxis um
 7. https://immobilien-akademie-smart.de/strategie — Seite + Sidebar-Link
 8. https://immobilien-akademie-smart.de/wiederholung — Spaced Repetition
 9. https://immobilien-akademie-smart.de/owner-dashboard — ComfortBar im Header (Owner-Login)

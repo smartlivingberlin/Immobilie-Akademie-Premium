@@ -1,8 +1,10 @@
-import { useTheme } from "next-themes";
+import { useA11yPrefs } from "@/hooks/use-a11y-prefs";
 import { Toaster as Sonner, type ToasterProps } from "sonner";
 
 const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme();
+  const { prefs } = useA11yPrefs();
+  const theme =
+    prefs.darkMode || prefs.contrast === "dark" ? "dark" : "light";
 
   return (
     <Sonner

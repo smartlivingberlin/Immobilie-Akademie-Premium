@@ -1,4 +1,3 @@
-import { useDarkMode } from "@/hooks/useDarkMode";
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
 import { useEffect, useState, useRef } from "react";

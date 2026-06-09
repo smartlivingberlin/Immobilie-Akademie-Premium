@@ -36,6 +36,16 @@ function load(): A11yPrefs {
     if (merged.contrast === "dark" && !raw.darkMode) {
       merged.darkMode = true;
     }
+    // Legacy: ThemeContext / next-themes nutzten localStorage "theme"
+    try {
+      const legacyTheme = localStorage.getItem("theme");
+      if (legacyTheme === "dark" && !raw.darkMode && merged.contrast === "default") {
+        merged.darkMode = true;
+        merged.contrast = "dark";
+      }
+    } catch {
+      /* ignore */
+    }
     return merged;
   } catch {
     return DEFAULTS;
@@ -83,6 +93,7 @@ export function useA11yPrefs() {
       }
       try {
         localStorage.setItem(KEY, JSON.stringify(next));
+        localStorage.removeItem("theme");
       } catch {
         /* ignore */
       }
