@@ -24,8 +24,9 @@ function restoreAbbreviations(text: string): string {
   return text.replaceAll(ABBREV_DOT, ".");
 }
 
+/** Satzgrenzen für Anzeige — Originalschreibweise (WEG, §) bleibt erhalten */
 export function splitSpeechChunks(text: string): string[] {
-  const cleaned = protectAbbreviations(preparePronunciation(text));
+  const cleaned = protectAbbreviations(text);
   const raw = cleaned.match(/[^.!?]+[.!?]+|\S[\s\S]*$/g) ?? [cleaned];
   return raw.map(restoreAbbreviations).map((s) => s.trim()).filter(Boolean);
 }
@@ -65,7 +66,7 @@ export function useSpeech() {
     const next=()=>{
       if(i>=chunks.length){ setState("idle"); setActiveChunkIndex(-1); return; }
       setActiveChunkIndex(i);
-      const u=new SpeechSynthesisUtterance(chunks[i]!);
+      const u=new SpeechSynthesisUtterance(preparePronunciation(chunks[i]!));
       u.lang="de-DE";
       if(voice) u.voice=voice;
       u.rate=prefs.rate;

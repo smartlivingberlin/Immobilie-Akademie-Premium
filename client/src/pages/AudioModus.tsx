@@ -16,6 +16,8 @@ type Lesson = {
   source?: string;
 };
 
+const SECTION_LABELS = new Set(["Vertiefung", "Praxis", "Übung"]);
+
 const MODULE_NAMES: Record<number, string> = {
   1: "Grundkurs",
   2: "Makler §34c",
@@ -244,22 +246,30 @@ export default function AudioModus() {
                 >
                   {state === "idle"
                     ? "Strukturierter Lerntext — Absätze zum Mitlesen und Lernen. Beim Abspielen wird der aktuelle Satz markiert."
-                    : "Markierter Absatz = wird gerade vorgelesen. § wird als „Paragraph“ ausgesprochen."}
+                    : "Markierter Absatz = wird gerade vorgelesen. In der Anzeige bleibt § und WEG — nur die Stimme spricht sie ausgeschrieben."}
                 </p>
                 <div className="space-y-4 text-foreground">
-                  {showChunks.map((chunk, i) => (
-                    <p
-                      key={`${current.id}-chunk-${i}`}
-                      data-chunk={i}
-                      className={`rounded-lg px-3 py-2.5 transition-colors leading-relaxed ${
-                        activeChunkIndex === i && state !== "idle"
-                          ? "bg-primary/15 border-l-4 border-primary font-medium"
+                  {showChunks.map((chunk, i) => {
+                    const text = chunk.trim();
+                    const isSection = SECTION_LABELS.has(text);
+                    const highlighted = activeChunkIndex === i && state !== "idle";
+                    const className = `rounded-lg px-3 py-2.5 transition-colors leading-relaxed ${
+                      highlighted
+                        ? "bg-primary/15 border-l-4 border-primary font-medium"
+                        : isSection
+                          ? "bg-muted/40 border-l-4 border-muted-foreground/30"
                           : "bg-muted/20"
-                      }`}
-                    >
-                      {chunk.trim()}
-                    </p>
-                  ))}
+                    }`;
+                    return isSection ? (
+                      <h4 key={`${current.id}-chunk-${i}`} data-chunk={i} className={`${className} font-semibold text-sm uppercase tracking-wide`}>
+                        {text}
+                      </h4>
+                    ) : (
+                      <p key={`${current.id}-chunk-${i}`} data-chunk={i} className={className}>
+                        {text}
+                      </p>
+                    );
+                  })}
                 </div>
               </div>
             </section>

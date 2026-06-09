@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { splitSpeechChunks } from "./use-speech";
+import { preparePronunciation, splitSpeechChunks } from "./use-speech";
 
 describe("splitSpeechChunks", () => {
   it("splittet nicht bei z.B.", () => {
@@ -13,5 +13,22 @@ describe("splitSpeechChunks", () => {
   it("trennt echte Satzgrenzen", () => {
     const chunks = splitSpeechChunks("Erster Satz. Zweiter Satz.");
     expect(chunks.length).toBeGreaterThanOrEqual(2);
+  });
+
+  it("behält WEG und § in der Anzeige", () => {
+    const chunks = splitSpeechChunks("§ 24 WEG regelt die Einberufung. Die ETV ist zentral.");
+    expect(chunks.join(" ")).toContain("WEG");
+    expect(chunks.join(" ")).toContain("§ 24");
+    expect(chunks.join(" ")).not.toContain("Weh-Eh-Geh");
+    expect(chunks.join(" ")).not.toContain("Paragraph 24");
+  });
+});
+
+describe("preparePronunciation", () => {
+  it("wandelt nur für Sprachausgabe", () => {
+    const spoken = preparePronunciation("§ 24 WEG");
+    expect(spoken).toContain("Paragraph 24");
+    expect(spoken).toContain("Weh-Eh-Geh");
+    expect(spoken).not.toContain("§");
   });
 });
