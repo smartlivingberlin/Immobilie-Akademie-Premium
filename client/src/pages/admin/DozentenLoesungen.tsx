@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { scaledFontSize as fz } from "@/lib/a11yFont";
 import { trpc } from "@/lib/trpc";
 import { CheckCircle, ChevronDown, ChevronUp, BookOpen, Calculator, FileText, Scale, Loader2 } from "lucide-react";
 
@@ -165,10 +166,10 @@ export default function DozentenLoesungen() {
     <div style={{ maxWidth: 1000, margin: "0 auto", padding: "24px 20px" }}>
       <div style={{ marginBottom: 20, display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
         <div>
-          <h1 style={{ fontSize: 24, fontWeight: 700, color: "#0f172a", margin: 0 }}>Dozenten-Lösungsübersicht</h1>
-          <p style={{ color: "#64748b", marginTop: 4, fontSize: 14 }}>Musterlösungen, Rechenwege, BGH-Urteile und Praxisbeispiele für alle Bereiche</p>
+          <h1 style={{ fontSize: fz(24), fontWeight: 700, color: "#0f172a", margin: 0 }}>Dozenten-Lösungsübersicht</h1>
+          <p style={{ color: "#64748b", marginTop: 4, fontSize: fz(14) }}>Musterlösungen, Rechenwege, BGH-Urteile und Praxisbeispiele für alle Bereiche</p>
         </div>
-        <div style={{ padding: "5px 12px", background: "#fef3c7", borderRadius: 8, border: "0.5px solid #fcd34d", fontSize: 11, color: "#92400e" }}>
+        <div style={{ padding: "5px 12px", background: "#fef3c7", borderRadius: 8, border: "0.5px solid #fcd34d", fontSize: fz(11), color: "#92400e" }}>
           🔒 Nur für Dozenten
         </div>
       </div>
@@ -177,7 +178,7 @@ export default function DozentenLoesungen() {
       <div style={{ display: "flex", gap: 6, marginBottom: 16, flexWrap: "wrap" }}>
         {[0,1,2,3,4,5].map(m => (
           <button key={m} onClick={() => setModulFilter(m)}
-            style={{ padding: "5px 12px", borderRadius: 20, border: "0.5px solid", fontSize: 11, fontWeight: 500, cursor: "pointer",
+            style={{ padding: "5px 12px", borderRadius: 20, border: "0.5px solid", fontSize: fz(11), fontWeight: 500, cursor: "pointer",
               background: modulFilter === m ? "#0f172a" : "transparent",
               color: modulFilter === m ? "#fff" : "#64748b",
               borderColor: modulFilter === m ? "#0f172a" : "#e2e8f0" }}>
@@ -195,7 +196,7 @@ export default function DozentenLoesungen() {
           { id: "quiz", label: "Quiz-Fragen", icon: BookOpen },
         ].map(t => (
           <button key={t.id} onClick={() => setAktiveTab(t.id as any)}
-            style={{ padding: "8px 16px", border: "none", borderBottom: `2px solid ${aktiveTab === t.id ? "#2563eb" : "transparent"}`, background: "transparent", fontSize: 13, fontWeight: aktiveTab === t.id ? 600 : 400, color: aktiveTab === t.id ? "#2563eb" : "#64748b", cursor: "pointer" }}>
+            style={{ padding: "8px 16px", border: "none", borderBottom: `2px solid ${aktiveTab === t.id ? "#2563eb" : "transparent"}`, background: "transparent", fontSize: fz(13), fontWeight: aktiveTab === t.id ? 600 : 400, color: aktiveTab === t.id ? "#2563eb" : "#64748b", cursor: "pointer" }}>
             {t.label}
           </button>
         ))}
@@ -208,29 +209,29 @@ export default function DozentenLoesungen() {
             <div key={f.id} style={{ background: "#fff", border: "0.5px solid #e2e8f0", borderRadius: 12, marginBottom: 10, overflow: "hidden" }}>
               <div onClick={() => toggleItem(f.id)}
                 style={{ display: "flex", alignItems: "center", gap: 12, padding: "14px 16px", cursor: "pointer", background: offeneItems.includes(f.id) ? "#f8fafc" : "#fff" }}>
-                <div style={{ width: 28, height: 28, borderRadius: 8, background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 700, color: "#2563eb" }}>M{f.modul}</div>
+                <div style={{ width: 28, height: 28, borderRadius: 8, background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: fz(11), fontWeight: 700, color: "#2563eb" }}>M{f.modul}</div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 500, color: "#0f172a" }}>{f.titel}</div>
-                  <div style={{ fontSize: 11, color: "#94a3b8" }}>{f.aufgabe}</div>
+                  <div style={{ fontSize: fz(13), fontWeight: 500, color: "#0f172a" }}>{f.titel}</div>
+                  <div style={{ fontSize: fz(11), color: "#94a3b8" }}>{f.aufgabe}</div>
                 </div>
-                <div style={{ fontSize: 10, padding: "2px 8px", background: "#f0fdf4", color: "#166534", borderRadius: 20 }}>{f.paragraph}</div>
+                <div style={{ fontSize: fz(10), padding: "2px 8px", background: "#f0fdf4", color: "#166534", borderRadius: 20 }}>{f.paragraph}</div>
                 {offeneItems.includes(f.id) ? <ChevronUp size={16} color="#64748b" /> : <ChevronDown size={16} color="#64748b" />}
               </div>
               {offeneItems.includes(f.id) && (
                 <div style={{ padding: "0 16px 16px", borderTop: "0.5px solid #f1f5f9" }}>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginTop: 12 }}>
                     <div style={{ padding: "12px 14px", background: "#f0fdf4", borderRadius: 10, border: "0.5px solid #bbf7d0" }}>
-                      <div style={{ fontSize: 11, fontWeight: 600, color: "#166534", marginBottom: 6 }}>✅ Musterlösung</div>
-                      <div style={{ fontSize: 12, color: "#374151", lineHeight: 1.7, whiteSpace: "pre-wrap" }}>{f.loesung}</div>
+                      <div style={{ fontSize: fz(11), fontWeight: 600, color: "#166534", marginBottom: 6 }}>✅ Musterlösung</div>
+                      <div style={{ fontSize: fz(12), color: "#374151", lineHeight: 1.7, whiteSpace: "pre-wrap" }}>{f.loesung}</div>
                     </div>
                     <div>
                       <div style={{ padding: "12px 14px", background: "#eff6ff", borderRadius: 10, border: "0.5px solid #bfdbfe", marginBottom: 8 }}>
-                        <div style={{ fontSize: 11, fontWeight: 600, color: "#1d4ed8", marginBottom: 6 }}>🔢 Rechenweg</div>
-                        <div style={{ fontSize: 12, color: "#374151", lineHeight: 1.7, whiteSpace: "pre-wrap", fontFamily: "monospace" }}>{f.rechenweg}</div>
+                        <div style={{ fontSize: fz(11), fontWeight: 600, color: "#1d4ed8", marginBottom: 6 }}>🔢 Rechenweg</div>
+                        <div style={{ fontSize: fz(12), color: "#374151", lineHeight: 1.7, whiteSpace: "pre-wrap", fontFamily: "monospace" }}>{f.rechenweg}</div>
                       </div>
                       <div style={{ padding: "10px 12px", background: "#faf5ff", borderRadius: 10, border: "0.5px solid #e9d5ff" }}>
-                        <div style={{ fontSize: 11, fontWeight: 600, color: "#6d28d9", marginBottom: 4 }}>⚖️ Relevante Paragraphen</div>
-                        <div style={{ fontSize: 12, color: "#374151" }}>{f.paragraph}</div>
+                        <div style={{ fontSize: fz(11), fontWeight: 600, color: "#6d28d9", marginBottom: 4 }}>⚖️ Relevante Paragraphen</div>
+                        <div style={{ fontSize: fz(12), color: "#374151" }}>{f.paragraph}</div>
                       </div>
                     </div>
                   </div>
@@ -245,16 +246,16 @@ export default function DozentenLoesungen() {
       {aktiveTab === "expose" && (
         <div style={{ background: "#fff", border: "0.5px solid #e2e8f0", borderRadius: 12, overflow: "hidden" }}>
           <div style={{ padding: "14px 16px", borderBottom: "0.5px solid #f1f5f9", background: "#f8fafc" }}>
-            <div style={{ fontSize: 13, fontWeight: 600, color: "#374151" }}>Muster-Exposé mit allen GEG-Pflichtangaben</div>
-            <div style={{ fontSize: 11, color: "#94a3b8" }}>Übung 1: 3-Zimmer-Wohnung Berlin-Mitte · Alle 10 Pflichtangaben enthalten</div>
+            <div style={{ fontSize: fz(13), fontWeight: 600, color: "#374151" }}>Muster-Exposé mit allen GEG-Pflichtangaben</div>
+            <div style={{ fontSize: fz(11), color: "#94a3b8" }}>Übung 1: 3-Zimmer-Wohnung Berlin-Mitte · Alle 10 Pflichtangaben enthalten</div>
           </div>
           <div style={{ padding: 16 }}>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 6, marginBottom: 14 }}>
               {["Energieausweis-Typ ✅", "Energieträger ✅", "Baujahr ✅", "Energiekennwert ✅", "Effizienzklasse ✅", "Courtage+MwSt ✅", "Wohnfläche ✅", "Kaufpreis ✅", "Lage ✅", "Objektbeschreibung ✅"].map(p => (
-                <div key={p} style={{ padding: "4px 8px", background: "#f0fdf4", border: "0.5px solid #bbf7d0", borderRadius: 6, fontSize: 10, color: "#166534", textAlign: "center" }}>{p}</div>
+                <div key={p} style={{ padding: "4px 8px", background: "#f0fdf4", border: "0.5px solid #bbf7d0", borderRadius: 6, fontSize: fz(10), color: "#166534", textAlign: "center" }}>{p}</div>
               ))}
             </div>
-            <pre style={{ fontSize: 12, color: "#374151", lineHeight: 1.8, whiteSpace: "pre-wrap", background: "#f8fafc", padding: 16, borderRadius: 10, border: "0.5px solid #e2e8f0" }}>{EXPOSE_MUSTERLOESUNG}</pre>
+            <pre style={{ fontSize: fz(12), color: "#374151", lineHeight: 1.8, whiteSpace: "pre-wrap", background: "#f8fafc", padding: 16, borderRadius: 10, border: "0.5px solid #e2e8f0" }}>{EXPOSE_MUSTERLOESUNG}</pre>
           </div>
         </div>
       )}
@@ -266,12 +267,12 @@ export default function DozentenLoesungen() {
             <div key={u.id} style={{ background: "#fff", border: "0.5px solid #e2e8f0", borderRadius: 12, marginBottom: 10, overflow: "hidden" }}>
               <div onClick={() => toggleItem(u.id + 100)}
                 style={{ display: "flex", alignItems: "center", gap: 12, padding: "14px 16px", cursor: "pointer" }}>
-                <div style={{ width: 28, height: 28, borderRadius: 8, background: "#faf5ff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 700, color: "#7c3aed" }}>M{u.modul}</div>
+                <div style={{ width: 28, height: 28, borderRadius: 8, background: "#faf5ff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: fz(11), fontWeight: 700, color: "#7c3aed" }}>M{u.modul}</div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 500, color: "#0f172a" }}>{u.titel}</div>
-                  <div style={{ fontSize: 11, color: "#94a3b8" }}>{u.aktenzeichen} · {u.datum}</div>
+                  <div style={{ fontSize: fz(13), fontWeight: 500, color: "#0f172a" }}>{u.titel}</div>
+                  <div style={{ fontSize: fz(11), color: "#94a3b8" }}>{u.aktenzeichen} · {u.datum}</div>
                 </div>
-                <div style={{ fontSize: 10, padding: "2px 8px", background: u.prüfungsrelevanz === "Hoch" ? "#fef2f2" : "#fef3c7", color: u.prüfungsrelevanz === "Hoch" ? "#991b1b" : "#92400e", borderRadius: 20 }}>{u.prüfungsrelevanz}</div>
+                <div style={{ fontSize: fz(10), padding: "2px 8px", background: u.prüfungsrelevanz === "Hoch" ? "#fef2f2" : "#fef3c7", color: u.prüfungsrelevanz === "Hoch" ? "#991b1b" : "#92400e", borderRadius: 20 }}>{u.prüfungsrelevanz}</div>
                 {offeneItems.includes(u.id + 100) ? <ChevronUp size={16} color="#64748b" /> : <ChevronDown size={16} color="#64748b" />}
               </div>
               {offeneItems.includes(u.id + 100) && (
@@ -279,17 +280,17 @@ export default function DozentenLoesungen() {
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginTop: 12 }}>
                     <div>
                       <div style={{ padding: "12px 14px", background: "#f8fafc", borderRadius: 10, border: "0.5px solid #e2e8f0", marginBottom: 8 }}>
-                        <div style={{ fontSize: 11, fontWeight: 600, color: "#374151", marginBottom: 6 }}>⚖️ Offizieller Leitsatz</div>
-                        <div style={{ fontSize: 12, color: "#374151", lineHeight: 1.6, fontStyle: "italic" }}>{u.leitsatz}</div>
+                        <div style={{ fontSize: fz(11), fontWeight: 600, color: "#374151", marginBottom: 6 }}>⚖️ Offizieller Leitsatz</div>
+                        <div style={{ fontSize: fz(12), color: "#374151", lineHeight: 1.6, fontStyle: "italic" }}>{u.leitsatz}</div>
                       </div>
                       <div style={{ padding: "12px 14px", background: "#eff6ff", borderRadius: 10, border: "0.5px solid #bfdbfe" }}>
-                        <div style={{ fontSize: 11, fontWeight: 600, color: "#1d4ed8", marginBottom: 6 }}>💬 Einfach erklärt</div>
-                        <div style={{ fontSize: 12, color: "#374151", lineHeight: 1.6 }}>{u.vereinfacht}</div>
+                        <div style={{ fontSize: fz(11), fontWeight: 600, color: "#1d4ed8", marginBottom: 6 }}>💬 Einfach erklärt</div>
+                        <div style={{ fontSize: fz(12), color: "#374151", lineHeight: 1.6 }}>{u.vereinfacht}</div>
                       </div>
                     </div>
                     <div style={{ padding: "12px 14px", background: "#f0fdf4", borderRadius: 10, border: "0.5px solid #bbf7d0" }}>
-                      <div style={{ fontSize: 11, fontWeight: 600, color: "#166534", marginBottom: 6 }}>📋 Praxisbeispiel</div>
-                      <div style={{ fontSize: 12, color: "#374151", lineHeight: 1.6 }}>{u.praxisbeispiel}</div>
+                      <div style={{ fontSize: fz(11), fontWeight: 600, color: "#166534", marginBottom: 6 }}>📋 Praxisbeispiel</div>
+                      <div style={{ fontSize: fz(12), color: "#374151", lineHeight: 1.6 }}>{u.praxisbeispiel}</div>
                     </div>
                   </div>
                 </div>
@@ -317,15 +318,15 @@ export default function DozentenLoesungen() {
                 <div key={q.id} style={{ background: "#fff", border: "0.5px solid #e2e8f0", borderRadius: 10, marginBottom: 8, overflow: "hidden" }}>
                   <div onClick={() => toggleItem(q.id + 1000)}
                     style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "12px 14px", cursor: "pointer" }}>
-                    <div style={{ width: 24, height: 24, borderRadius: 6, background: "#f1f5f9", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700, color: "#64748b", flexShrink: 0 }}>M{q.moduleId}</div>
+                    <div style={{ width: 24, height: 24, borderRadius: 6, background: "#f1f5f9", display: "flex", alignItems: "center", justifyContent: "center", fontSize: fz(10), fontWeight: 700, color: "#64748b", flexShrink: 0 }}>M{q.moduleId}</div>
                     <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.5 }}>{q.questionText}</div>
+                      <div style={{ fontSize: fz(13), color: "#374151", lineHeight: 1.5 }}>{q.questionText}</div>
                       <div style={{ display: "flex", gap: 6, marginTop: 4 }}>
-                        <span style={{ fontSize: 10, padding: "1px 6px", background: "#e2e8f0", color: "#374151", borderRadius: 20 }}>{q.difficulty}</span>
-                        <span style={{ fontSize: 10, padding: "1px 6px", background: "#e2e8f0", color: "#374151", borderRadius: 20 }}>{q.category}</span>
+                        <span style={{ fontSize: fz(10), padding: "1px 6px", background: "#e2e8f0", color: "#374151", borderRadius: 20 }}>{q.difficulty}</span>
+                        <span style={{ fontSize: fz(10), padding: "1px 6px", background: "#e2e8f0", color: "#374151", borderRadius: 20 }}>{q.category}</span>
                       </div>
                     </div>
-                    <div style={{ fontSize: 11, padding: "2px 8px", background: "#f0fdf4", color: "#166534", borderRadius: 6, fontWeight: 600, flexShrink: 0 }}>
+                    <div style={{ fontSize: fz(11), padding: "2px 8px", background: "#f0fdf4", color: "#166534", borderRadius: 6, fontWeight: 600, flexShrink: 0 }}>
                       ✓ {q.correctAnswer}
                     </div>
                     {offeneItems.includes(q.id + 1000) ? <ChevronUp size={14} color="#64748b" /> : <ChevronDown size={14} color="#64748b" />}
@@ -334,7 +335,7 @@ export default function DozentenLoesungen() {
                     <div style={{ padding: "0 14px 14px", borderTop: "0.5px solid #f1f5f9" }}>
                       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6, marginTop: 10, marginBottom: 10 }}>
                         {Object.entries(options).map(([key, val]) => (
-                          <div key={key} style={{ padding: "6px 10px", borderRadius: 6, fontSize: 12,
+                          <div key={key} style={{ padding: "6px 10px", borderRadius: 6, fontSize: fz(12),
                             background: key === q.correctAnswer ? "#f0fdf4" : "#f8fafc",
                             border: `0.5px solid ${key === q.correctAnswer ? "#86efac" : "#e2e8f0"}`,
                             color: key === q.correctAnswer ? "#166534" : "#374151",
@@ -344,7 +345,7 @@ export default function DozentenLoesungen() {
                         ))}
                       </div>
                       {q.explanation && (
-                        <div style={{ padding: "10px 12px", background: "#eff6ff", borderRadius: 8, border: "0.5px solid #bfdbfe", fontSize: 12, color: "#1d4ed8", lineHeight: 1.6 }}>
+                        <div style={{ padding: "10px 12px", background: "#eff6ff", borderRadius: 8, border: "0.5px solid #bfdbfe", fontSize: fz(12), color: "#1d4ed8", lineHeight: 1.6 }}>
                           💡 <strong>Erklärung:</strong> {q.explanation}
                         </div>
                       )}

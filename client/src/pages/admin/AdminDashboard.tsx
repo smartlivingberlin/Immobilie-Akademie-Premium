@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { scaledFontSize as fz } from "@/lib/a11yFont";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
@@ -26,7 +27,7 @@ function isInspectMode(): boolean {
 function LockedButton({ label }: { label: string }) {
   return (
     <span title="Kein Zugang — nur für Eigentümer"
-      style={{ display: "flex", alignItems: "center", gap: 6, background: "#fee2e2", color: "#dc2626", padding: "8px 14px", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "not-allowed", border: "1px solid #fca5a5" }}>
+      style={{ display: "flex", alignItems: "center", gap: 6, background: "#fee2e2", color: "#dc2626", padding: "8px 14px", borderRadius: 8, fontSize: fz(12), fontWeight: 600, cursor: "not-allowed", border: "1px solid #fca5a5" }}>
       ✕ {label}
     </span>
   );
@@ -140,10 +141,10 @@ export default function AdminDashboard() {
       {/* Header */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 24 }}>
         <div>
-          <h1 style={{ fontSize: 24, fontWeight: 700, color: "#0f172a", margin: 0 }}>
+          <h1 style={{ fontSize: fz(24), fontWeight: 700, color: "#0f172a", margin: 0 }}>
             🏠 Admin-Kontrollzentrum
           </h1>
-          <p style={{ color: "#64748b", marginTop: 4, fontSize: 13 }}>
+          <p style={{ color: "#64748b", marginTop: 4, fontSize: fz(13) }}>
             Immobilien Akademie Smart · {new Date().toLocaleDateString("de-DE", { weekday: "long", day: "numeric", month: "long" })}
           </p>
         </div>
@@ -157,15 +158,15 @@ export default function AdminDashboard() {
           ) : (
             <>
               <a href="https://railway.app" target="_blank" rel="noreferrer"
-                style={{ display: "flex", alignItems: "center", gap: 6, background: "#0f172a", color: "white", padding: "8px 14px", borderRadius: 8, fontSize: 12, textDecoration: "none", fontWeight: 600 }}>
+                style={{ display: "flex", alignItems: "center", gap: 6, background: "#0f172a", color: "white", padding: "8px 14px", borderRadius: 8, fontSize: fz(12), textDecoration: "none", fontWeight: 600 }}>
                 <ExternalLink size={14} /> Railway
               </a>
               <a href="https://dashboard.stripe.com" target="_blank" rel="noreferrer"
-                style={{ display: "flex", alignItems: "center", gap: 6, background: "#635bff", color: "white", padding: "8px 14px", borderRadius: 8, fontSize: 12, textDecoration: "none", fontWeight: 600 }}>
+                style={{ display: "flex", alignItems: "center", gap: 6, background: "#635bff", color: "white", padding: "8px 14px", borderRadius: 8, fontSize: fz(12), textDecoration: "none", fontWeight: 600 }}>
                 <DollarSign size={14} /> Stripe
               </a>
               <a href="https://github.com/smartlivingberlin/Immobilie-Akademie-Premium" target="_blank" rel="noreferrer"
-                style={{ display: "flex", alignItems: "center", gap: 6, background: "#24292f", color: "white", padding: "8px 14px", borderRadius: 8, fontSize: 12, textDecoration: "none", fontWeight: 600 }}>
+                style={{ display: "flex", alignItems: "center", gap: 6, background: "#24292f", color: "white", padding: "8px 14px", borderRadius: 8, fontSize: fz(12), textDecoration: "none", fontWeight: 600 }}>
                 <ExternalLink size={14} /> GitHub
               </a>
             </>
@@ -185,13 +186,13 @@ export default function AdminDashboard() {
         ].map(s => (
           <div key={s.label} style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: "14px 16px" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-              <span style={{ fontSize: 11, color: "#64748b", fontWeight: 500 }}>{s.label}</span>
+              <span style={{ fontSize: fz(11), color: "#64748b", fontWeight: 500 }}>{s.label}</span>
               <div style={{ background: s.color + "15", borderRadius: 6, padding: 5 }}>
                 <s.icon size={14} color={s.color} />
               </div>
             </div>
-            <div style={{ fontSize: 22, fontWeight: 700, color: "#0f172a", marginTop: 6 }}>{s.value}</div>
-            <div style={{ fontSize: 11, color: "#94a3b8", marginTop: 2 }}>{s.sub}</div>
+            <div style={{ fontSize: fz(22), fontWeight: 700, color: "#0f172a", marginTop: 6 }}>{s.value}</div>
+            <div style={{ fontSize: fz(11), color: "#94a3b8", marginTop: 2 }}>{s.sub}</div>
           </div>
         ))}
       </div>
@@ -210,7 +211,7 @@ export default function AdminDashboard() {
               padding: "8px 16px", borderRadius: 8, border: "none",
               background: activeTab === t.id ? "#2563eb" : "transparent",
               color: activeTab === t.id ? "white" : "#64748b",
-              fontSize: 13, fontWeight: 600, cursor: "pointer"
+              fontSize: fz(13), fontWeight: 600, cursor: "pointer"
             }}>{t.label}</button>
         ))}
       </div>
@@ -221,7 +222,7 @@ export default function AdminDashboard() {
           <div>
             {TOOLS.map(group => (
               <div key={group.group} style={{ marginBottom: 20 }}>
-                <h2 style={{ fontSize: 12, fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 10 }}>
+                <h2 style={{ fontSize: fz(12), fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 10 }}>
                   {group.group}
                 </h2>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
@@ -235,7 +236,7 @@ export default function AdminDashboard() {
                         onMouseEnter={e => { e.currentTarget.style.borderColor = item.color; e.currentTarget.style.transform = "translateY(-1px)"; }}
                         onMouseLeave={e => { e.currentTarget.style.borderColor = "#e2e8f0"; e.currentTarget.style.transform = "none"; }}>
                         {item.badge && (
-                          <div style={{ position: "absolute", top: 8, right: 8, background: "#fef3c7", color: "#92400e", fontSize: 10, fontWeight: 700, padding: "2px 6px", borderRadius: 4 }}>
+                          <div style={{ position: "absolute", top: 8, right: 8, background: "#fef3c7", color: "#92400e", fontSize: fz(10), fontWeight: 700, padding: "2px 6px", borderRadius: 4 }}>
                             {item.badge}
                           </div>
                         )}
@@ -243,9 +244,9 @@ export default function AdminDashboard() {
                           <div style={{ background: item.color + "15", borderRadius: 6, padding: 6 }}>
                             <item.icon size={15} color={item.color} />
                           </div>
-                          <span style={{ fontSize: 13, fontWeight: 600, color: "#0f172a" }}>{item.name}</span>
+                          <span style={{ fontSize: fz(13), fontWeight: 600, color: "#0f172a" }}>{item.name}</span>
                         </div>
-                        <p style={{ fontSize: 11, color: "#64748b", margin: 0 }}>{item.desc}</p>
+                        <p style={{ fontSize: fz(11), color: "#64748b", margin: 0 }}>{item.desc}</p>
                       </div>
                     </Link>
                   ))}
@@ -256,11 +257,11 @@ export default function AdminDashboard() {
 
           {/* Launch Checklist — nur für Owner */}
           {isOwner && <div>
-            <h2 style={{ fontSize: 12, fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 10 }}>
+            <h2 style={{ fontSize: fz(12), fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 10 }}>
               🚀 Launch-Checkliste
             </h2>
             <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: "16px" }}>
-              <div style={{ marginBottom: 12, background: "#f0fdf4", borderRadius: 8, padding: "8px 12px", fontSize: 12, color: "#166534", fontWeight: 600 }}>
+              <div style={{ marginBottom: 12, background: "#f0fdf4", borderRadius: 8, padding: "8px 12px", fontSize: fz(12), color: "#166534", fontWeight: 600 }}>
                 {doneCount}/{CHECKLIST.length} erledigt · {Math.round(doneCount/CHECKLIST.length*100)}%
               </div>
               <div style={{ width: "100%", height: 6, background: "#e2e8f0", borderRadius: 3, marginBottom: 14 }}>
@@ -268,13 +269,13 @@ export default function AdminDashboard() {
               </div>
               {CHECKLIST.filter(c => !c.ok && c.urgent).length > 0 && (
                 <div style={{ marginBottom: 10 }}>
-                  <div style={{ fontSize: 11, color: "#dc2626", fontWeight: 700, marginBottom: 6 }}>⚠️ DRINGEND</div>
+                  <div style={{ fontSize: fz(11), color: "#dc2626", fontWeight: 700, marginBottom: 6 }}>⚠️ DRINGEND</div>
                   {CHECKLIST.filter(c => !c.ok && c.urgent).map(item => (
                     <div key={item.label} style={{ display: "flex", alignItems: "center", gap: 8, padding: "6px 0", borderBottom: "0.5px solid #fef2f2" }}>
                       <AlertTriangle size={13} color="#dc2626" />
                       <div>
-                        <div style={{ fontSize: 12, color: "#7f1d1d", fontWeight: 500 }}>{item.label}</div>
-                        {item.action && <div style={{ fontSize: 10, color: "#dc2626" }}>{item.action}</div>}
+                        <div style={{ fontSize: fz(12), color: "#7f1d1d", fontWeight: 500 }}>{item.label}</div>
+                        {item.action && <div style={{ fontSize: fz(10), color: "#dc2626" }}>{item.action}</div>}
                       </div>
                     </div>
                   ))}
@@ -285,7 +286,7 @@ export default function AdminDashboard() {
                   {item.ok
                     ? <CheckCircle size={13} color="#059669" />
                     : <AlertTriangle size={13} color={item.urgent ? "#dc2626" : "#d97706"} />}
-                  <span style={{ fontSize: 11, color: item.ok ? "#374151" : item.urgent ? "#7f1d1d" : "#92400e" }}>
+                  <span style={{ fontSize: fz(11), color: item.ok ? "#374151" : item.urgent ? "#7f1d1d" : "#92400e" }}>
                     {item.label}
                   </span>
                 </div>
@@ -293,7 +294,7 @@ export default function AdminDashboard() {
             </div>
 
             {/* Quick Links extern */}
-            <h2 style={{ fontSize: 12, fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 10, marginTop: 20 }}>
+            <h2 style={{ fontSize: fz(12), fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 10, marginTop: 20 }}>
               🔗 Externe Links
             </h2>
             <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 12 }}>
@@ -312,7 +313,7 @@ export default function AdminDashboard() {
                     style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "7px 0", borderBottom: "0.5px solid #f1f5f9", cursor: "not-allowed", opacity: 0.5 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                       <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#dc2626" }} />
-                      <span style={{ fontSize: 12, color: "#dc2626", fontWeight: 500 }}>✕ {link.name}</span>
+                      <span style={{ fontSize: fz(12), color: "#dc2626", fontWeight: 500 }}>✕ {link.name}</span>
                     </div>
                   </div>
                 ) : (
@@ -320,7 +321,7 @@ export default function AdminDashboard() {
                     style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "7px 0", borderBottom: "0.5px solid #f1f5f9", textDecoration: "none" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                       <div style={{ width: 8, height: 8, borderRadius: "50%", background: link.color }} />
-                      <span style={{ fontSize: 12, color: "#374151", fontWeight: 500 }}>{link.name}</span>
+                      <span style={{ fontSize: fz(12), color: "#374151", fontWeight: 500 }}>{link.name}</span>
                     </div>
                     <ExternalLink size={11} color="#94a3b8" />
                   </a>
@@ -336,9 +337,9 @@ export default function AdminDashboard() {
         <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 20 }}>
           <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 20 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
-              <h3 style={{ fontSize: 16, fontWeight: 700, margin: 0 }}>Nutzer-Übersicht</h3>
+              <h3 style={{ fontSize: fz(16), fontWeight: 700, margin: 0 }}>Nutzer-Übersicht</h3>
               <Link href="/admin/nutzer">
-                <button style={{ background: "#2563eb", color: "white", border: "none", borderRadius: 8, padding: "6px 14px", fontSize: 12, cursor: "pointer", fontWeight: 600 }}>
+                <button style={{ background: "#2563eb", color: "white", border: "none", borderRadius: 8, padding: "6px 14px", fontSize: fz(12), cursor: "pointer", fontWeight: 600 }}>
                   Alle verwalten →
                 </button>
               </Link>
@@ -350,26 +351,26 @@ export default function AdminDashboard() {
                 { label: "Admins", value: adminUsers, color: "#7c3aed" },
               ].map(s => (
                 <div key={s.label} style={{ background: "#f8fafc", borderRadius: 8, padding: "12px 16px", textAlign: "center" }}>
-                  <div style={{ fontSize: 24, fontWeight: 700, color: s.color }}>{s.value}</div>
-                  <div style={{ fontSize: 11, color: "#64748b" }}>{s.label}</div>
+                  <div style={{ fontSize: fz(24), fontWeight: 700, color: s.color }}>{s.value}</div>
+                  <div style={{ fontSize: fz(11), color: "#64748b" }}>{s.label}</div>
                 </div>
               ))}
             </div>
             {users?.slice(0, 8).map((u: any) => (
               <div key={u.id} style={{ display: "flex", alignItems: "center", gap: 12, padding: "8px 0", borderBottom: "0.5px solid #f1f5f9" }}>
-                <div style={{ width: 32, height: 32, borderRadius: "50%", background: "#e2e8f0", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: "#64748b" }}>
+                <div style={{ width: 32, height: 32, borderRadius: "50%", background: "#e2e8f0", display: "flex", alignItems: "center", justifyContent: "center", fontSize: fz(13), fontWeight: 700, color: "#64748b" }}>
                   {(u.name || u.email || "?")[0].toUpperCase()}
                 </div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 600, color: "#0f172a" }}>{u.name || "–"}</div>
-                  <div style={{ fontSize: 11, color: "#64748b" }}>{u.email}</div>
+                  <div style={{ fontSize: fz(13), fontWeight: 600, color: "#0f172a" }}>{u.name || "–"}</div>
+                  <div style={{ fontSize: fz(11), color: "#64748b" }}>{u.email}</div>
                 </div>
                 <div style={{ display: "flex", gap: 4 }}>
                   {u.enabledModules?.split(",").filter(Boolean).map((m: string) => (
-                    <span key={m} style={{ background: "#dbeafe", color: "#1e40af", fontSize: 10, fontWeight: 700, padding: "2px 6px", borderRadius: 4 }}>M{m}</span>
+                    <span key={m} style={{ background: "#dbeafe", color: "#1e40af", fontSize: fz(10), fontWeight: 700, padding: "2px 6px", borderRadius: 4 }}>M{m}</span>
                   ))}
                 </div>
-                <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 4, background: u.role === "admin" ? "#fef3c7" : "#f0fdf4", color: u.role === "admin" ? "#92400e" : "#166534", fontWeight: 600 }}>
+                <span style={{ fontSize: fz(10), padding: "2px 8px", borderRadius: 4, background: u.role === "admin" ? "#fef3c7" : "#f0fdf4", color: u.role === "admin" ? "#92400e" : "#166534", fontWeight: 600 }}>
                   {u.role}
                 </span>
               </div>
@@ -378,7 +379,7 @@ export default function AdminDashboard() {
 
           {/* Coaching */}
           <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 20 }}>
-            <h3 style={{ fontSize: 16, fontWeight: 700, margin: "0 0 16px 0" }}>👤 Coaching</h3>
+            <h3 style={{ fontSize: fz(16), fontWeight: 700, margin: "0 0 16px 0" }}>👤 Coaching</h3>
             {coaching?.profiles?.length > 0 ? (
               <div>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, marginBottom: 16 }}>
@@ -388,28 +389,28 @@ export default function AdminDashboard() {
                     { label: "🟢 Aktiv", value: coaching.profiles.filter((p: any) => p.riskLevel === "low").length, color: "#059669" },
                   ].map(s => (
                     <div key={s.label} style={{ background: "#f8fafc", borderRadius: 8, padding: "10px", textAlign: "center" }}>
-                      <div style={{ fontSize: 20, fontWeight: 700, color: s.color }}>{s.value}</div>
-                      <div style={{ fontSize: 10, color: "#64748b" }}>{s.label}</div>
+                      <div style={{ fontSize: fz(20), fontWeight: 700, color: s.color }}>{s.value}</div>
+                      <div style={{ fontSize: fz(10), color: "#64748b" }}>{s.label}</div>
                     </div>
                   ))}
                 </div>
                 {coaching.profiles.slice(0, 5).map((p: any) => (
                   <div key={p.userId} style={{ padding: "8px 0", borderBottom: "0.5px solid #f1f5f9" }}>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                      <span style={{ fontSize: 12, fontWeight: 600 }}>
+                      <span style={{ fontSize: fz(12), fontWeight: 600 }}>
                         {p.riskLevel === "high" ? "🔴" : p.riskLevel === "medium" ? "🟡" : "🟢"} User #{p.userId}
                       </span>
-                      <span style={{ fontSize: 10, color: "#64748b" }}>🔥 {p.streak} | {p.examAvgScore}%</span>
+                      <span style={{ fontSize: fz(10), color: "#64748b" }}>🔥 {p.streak} | {p.examAvgScore}%</span>
                     </div>
-                    <div style={{ fontSize: 10, color: "#64748b", marginTop: 2 }}>{p.nextAction}</div>
+                    <div style={{ fontSize: fz(10), color: "#64748b", marginTop: 2 }}>{p.nextAction}</div>
                   </div>
                 ))}
               </div>
             ) : (
-              <div style={{ background: "#f8fafc", borderRadius: 8, padding: 16, textAlign: "center", color: "#64748b", fontSize: 12 }}>
-                <div style={{ fontSize: 24, marginBottom: 8 }}>👤</div>
+              <div style={{ background: "#f8fafc", borderRadius: 8, padding: 16, textAlign: "center", color: "#64748b", fontSize: fz(12) }}>
+                <div style={{ fontSize: fz(24), marginBottom: 8 }}>👤</div>
                 <p>Noch keine Coaching-Daten.</p>
-                <p style={{ fontSize: 11, marginTop: 4 }}>Läuft täglich 02:00h automatisch.</p>
+                <p style={{ fontSize: fz(11), marginTop: 4 }}>Läuft täglich 02:00h automatisch.</p>
               </div>
             )}
           </div>
@@ -436,11 +437,11 @@ export default function AdminDashboard() {
                     <item.icon size={20} color={item.color} />
                   </div>
                   <div>
-                    <div style={{ fontSize: 14, fontWeight: 700, color: "#0f172a" }}>{item.name}</div>
-                    <div style={{ fontSize: 11, color: item.color, fontWeight: 600 }}>{item.stats}</div>
+                    <div style={{ fontSize: fz(14), fontWeight: 700, color: "#0f172a" }}>{item.name}</div>
+                    <div style={{ fontSize: fz(11), color: item.color, fontWeight: 600 }}>{item.stats}</div>
                   </div>
                 </div>
-                <p style={{ fontSize: 12, color: "#64748b", margin: 0, lineHeight: 1.6 }}>{item.desc}</p>
+                <p style={{ fontSize: fz(12), color: "#64748b", margin: 0, lineHeight: 1.6 }}>{item.desc}</p>
               </div>
             </Link>
           ))}
@@ -451,7 +452,7 @@ export default function AdminDashboard() {
       {activeTab === "system" && (
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
           <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 20 }}>
-            <h3 style={{ fontSize: 16, fontWeight: 700, margin: "0 0 16px 0" }}>⚙️ System-Tools</h3>
+            <h3 style={{ fontSize: fz(16), fontWeight: 700, margin: "0 0 16px 0" }}>⚙️ System-Tools</h3>
             {[
               { name: "White-Label Admin", desc: "Logo, Farben, Branding für B2B-Kunden", href: "/admin/whitelabel", icon: Globe, color: "#d97706" },
               { name: "Portal-Phase", desc: "Coming Soon / Beta / Live umschalten", href: "/admin/phase", icon: Settings, color: "#64748b" },
@@ -463,8 +464,8 @@ export default function AdminDashboard() {
                     <item.icon size={18} color={item.color} />
                   </div>
                   <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: 14, fontWeight: 600, color: "#0f172a" }}>{item.name}</div>
-                    <div style={{ fontSize: 11, color: "#64748b" }}>{item.desc}</div>
+                    <div style={{ fontSize: fz(14), fontWeight: 600, color: "#0f172a" }}>{item.name}</div>
+                    <div style={{ fontSize: fz(11), color: "#64748b" }}>{item.desc}</div>
                   </div>
                   <ChevronRight size={14} color="#94a3b8" />
                 </div>
@@ -473,7 +474,7 @@ export default function AdminDashboard() {
           </div>
 
           <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 20 }}>
-            <h3 style={{ fontSize: 16, fontWeight: 700, margin: "0 0 16px 0" }}>📊 System-Status</h3>
+            <h3 style={{ fontSize: fz(16), fontWeight: 700, margin: "0 0 16px 0" }}>📊 System-Status</h3>
             {[
               { label: "Railway Server", ok: true, detail: "immobilien-akademie-smart.de" },
               {
@@ -497,10 +498,10 @@ export default function AdminDashboard() {
                   : <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#dc2626" }} />
                 }
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 12, fontWeight: 600, color: "#0f172a" }}>{s.label}</div>
-                  <div style={{ fontSize: 10, color: "#94a3b8" }}>{s.detail}</div>
+                  <div style={{ fontSize: fz(12), fontWeight: 600, color: "#0f172a" }}>{s.label}</div>
+                  <div style={{ fontSize: fz(10), color: "#94a3b8" }}>{s.detail}</div>
                 </div>
-                <span style={{ fontSize: 10, fontWeight: 700, color: s.ok ? "#059669" : "#dc2626" }}>
+                <span style={{ fontSize: fz(10), fontWeight: 700, color: s.ok ? "#059669" : "#dc2626" }}>
                   {s.ok ? "OK" : "–"}
                 </span>
               </div>
@@ -514,9 +515,9 @@ export default function AdminDashboard() {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
           <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 20 }}>
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 16 }}>
-              <h3 style={{ fontSize: 16, fontWeight: 700, margin: 0 }}>🤖 SuperAgent v2</h3>
+              <h3 style={{ fontSize: fz(16), fontWeight: 700, margin: 0 }}>🤖 SuperAgent v2</h3>
               <Link href="/admin/portal-agent">
-                <button style={{ background: "#7c3aed", color: "white", border: "none", borderRadius: 8, padding: "6px 14px", fontSize: 12, cursor: "pointer", fontWeight: 600 }}>
+                <button style={{ background: "#7c3aed", color: "white", border: "none", borderRadius: 8, padding: "6px 14px", fontSize: fz(12), cursor: "pointer", fontWeight: 600 }}>
                   Vollansicht →
                 </button>
               </Link>
@@ -528,33 +529,33 @@ export default function AdminDashboard() {
                 { label: "Groq", ok: agentHealth?.aiStatus?.groq, color: "#2563eb" },
               ].map(m => (
                 <div key={m.label} style={{ background: m.ok ? "#f0fdf4" : "#fef2f2", borderRadius: 8, padding: "10px", textAlign: "center", border: `1px solid ${m.ok ? "#bbf7d0" : "#fecaca"}` }}>
-                  <div style={{ fontSize: 16, marginBottom: 4 }}>{m.ok ? "✅" : "❌"}</div>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: m.ok ? "#166534" : "#991b1b" }}>{m.label}</div>
+                  <div style={{ fontSize: fz(16), marginBottom: 4 }}>{m.ok ? "✅" : "❌"}</div>
+                  <div style={{ fontSize: fz(12), fontWeight: 700, color: m.ok ? "#166534" : "#991b1b" }}>{m.label}</div>
                 </div>
               ))}
             </div>
             {auditScore && (
               <div style={{ background: "#f0fdf4", borderRadius: 8, padding: "12px 16px", marginBottom: 12 }}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: "#166534" }}>Letzter Audit</div>
-                <div style={{ fontSize: 24, fontWeight: 700, color: "#059669" }}>{auditScore}/100</div>
-                <div style={{ fontSize: 11, color: "#166534" }}>240/240 Lerntage geprüft</div>
+                <div style={{ fontSize: fz(13), fontWeight: 700, color: "#166534" }}>Letzter Audit</div>
+                <div style={{ fontSize: fz(24), fontWeight: 700, color: "#059669" }}>{auditScore}/100</div>
+                <div style={{ fontSize: fz(11), color: "#166534" }}>240/240 Lerntage geprüft</div>
               </div>
             )}
             <Link href="/admin/ki-monitor">
-              <button style={{ width: "100%", background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 8, padding: "10px", fontSize: 12, cursor: "pointer", fontWeight: 600, color: "#374151" }}>
+              <button style={{ width: "100%", background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 8, padding: "10px", fontSize: fz(12), cursor: "pointer", fontWeight: 600, color: "#374151" }}>
                 📊 KI-Monitor öffnen
               </button>
             </Link>
           </div>
 
           <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 20 }}>
-            <h3 style={{ fontSize: 16, fontWeight: 700, margin: "0 0 16px 0" }}>📋 Cron-Log</h3>
+            <h3 style={{ fontSize: fz(16), fontWeight: 700, margin: "0 0 16px 0" }}>📋 Cron-Log</h3>
             {cronLog ? (
-              <pre style={{ background: "#0f172a", color: "#4ade80", fontSize: 10, padding: 12, borderRadius: 8, maxHeight: 200, overflowY: "auto", fontFamily: "monospace", whiteSpace: "pre-wrap" }}>
+              <pre style={{ background: "#0f172a", color: "#4ade80", fontSize: fz(10), padding: 12, borderRadius: 8, maxHeight: 200, overflowY: "auto", fontFamily: "monospace", whiteSpace: "pre-wrap" }}>
                 {cronLog}
               </pre>
             ) : (
-              <div style={{ background: "#f8fafc", borderRadius: 8, padding: 16, textAlign: "center", color: "#64748b", fontSize: 12 }}>
+              <div style={{ background: "#f8fafc", borderRadius: 8, padding: 16, textAlign: "center", color: "#64748b", fontSize: fz(12) }}>
                 Nächster Lauf: 02:00h
               </div>
             )}

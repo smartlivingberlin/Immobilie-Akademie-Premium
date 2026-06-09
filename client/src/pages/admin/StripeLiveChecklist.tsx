@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { scaledFontSize as fz } from "@/lib/a11yFont";
 import { Link } from "wouter";
 import { ArrowLeft, CheckCircle, AlertTriangle, ExternalLink, Copy } from "lucide-react";
 import { buildStripeLiveEnvTemplate } from "@shared/stripeLiveEnv";
@@ -123,12 +124,12 @@ export default function StripeLiveChecklist() {
   return (
     <div style={{ maxWidth: 900, margin: "0 auto", padding: "24px 20px" }}>
       <Link href="/admin">
-        <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, color: "#64748b", cursor: "pointer", marginBottom: 20 }}>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: fz(13), color: "#64748b", cursor: "pointer", marginBottom: 20 }}>
           <ArrowLeft size={14} /> Admin
         </span>
       </Link>
 
-      <h1 style={{ fontSize: 24, fontWeight: 800, color: "#0f172a", marginBottom: 8 }}>
+      <h1 style={{ fontSize: fz(24), fontWeight: 800, color: "#0f172a", marginBottom: 8 }}>
         Stripe Live-Checkliste
       </h1>
       <p style={{ color: "#64748b", marginBottom: 24 }}>
@@ -136,7 +137,7 @@ export default function StripeLiveChecklist() {
       </p>
 
       {error && (
-        <div style={{ background: "#fef2f2", border: "1px solid #fecaca", borderRadius: 8, padding: 12, marginBottom: 16, fontSize: 13, color: "#dc2626" }}>
+        <div style={{ background: "#fef2f2", border: "1px solid #fecaca", borderRadius: 8, padding: 12, marginBottom: 16, fontSize: fz(13), color: "#dc2626" }}>
           {error}
         </div>
       )}
@@ -147,12 +148,12 @@ export default function StripeLiveChecklist() {
         <>
           <div style={{ display: "flex", gap: 12, marginBottom: 24, flexWrap: "wrap" }}>
             <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 16, flex: 1, minWidth: 140 }}>
-              <div style={{ fontSize: 12, color: "#64748b" }}>Stripe-Modus</div>
-              <div style={{ fontSize: 22, fontWeight: 800, color: modeColor }}>{modeLabel}</div>
+              <div style={{ fontSize: fz(12), color: "#64748b" }}>Stripe-Modus</div>
+              <div style={{ fontSize: fz(22), fontWeight: 800, color: modeColor }}>{modeLabel}</div>
             </div>
             <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 16, flex: 1, minWidth: 140 }}>
-              <div style={{ fontSize: 12, color: "#64748b" }}>Fortschritt</div>
-              <div style={{ fontSize: 22, fontWeight: 800, color: "#0f172a" }}>
+              <div style={{ fontSize: fz(12), color: "#64748b" }}>Fortschritt</div>
+              <div style={{ fontSize: fz(22), fontWeight: 800, color: "#0f172a" }}>
                 {data.doneCount}/{data.totalCount}
               </div>
             </div>
@@ -160,14 +161,14 @@ export default function StripeLiveChecklist() {
               href="https://dashboard.stripe.com"
               target="_blank"
               rel="noreferrer"
-              style={{ display: "inline-flex", alignItems: "center", gap: 6, alignSelf: "center", background: "#635bff", color: "white", padding: "10px 16px", borderRadius: 8, fontSize: 13, fontWeight: 600, textDecoration: "none" }}
+              style={{ display: "inline-flex", alignItems: "center", gap: 6, alignSelf: "center", background: "#635bff", color: "white", padding: "10px 16px", borderRadius: 8, fontSize: fz(13), fontWeight: 600, textDecoration: "none" }}
             >
               Stripe Dashboard <ExternalLink size={14} />
             </a>
             <button
               type="button"
               onClick={copyEnvTemplate}
-              style={{ display: "inline-flex", alignItems: "center", gap: 6, alignSelf: "center", background: "#0f172a", color: "white", padding: "10px 16px", borderRadius: 8, fontSize: 13, fontWeight: 600, border: "none", cursor: "pointer" }}
+              style={{ display: "inline-flex", alignItems: "center", gap: 6, alignSelf: "center", background: "#0f172a", color: "white", padding: "10px 16px", borderRadius: 8, fontSize: fz(13), fontWeight: 600, border: "none", cursor: "pointer" }}
             >
               <Copy size={14} /> {copied ? "Kopiert!" : "ENV-Vorlage"}
             </button>
@@ -175,7 +176,7 @@ export default function StripeLiveChecklist() {
               <button
                 type="button"
                 onClick={copyMissingEnv}
-                style={{ display: "inline-flex", alignItems: "center", gap: 6, alignSelf: "center", background: "#d97706", color: "white", padding: "10px 16px", borderRadius: 8, fontSize: 13, fontWeight: 600, border: "none", cursor: "pointer" }}
+                style={{ display: "inline-flex", alignItems: "center", gap: 6, alignSelf: "center", background: "#d97706", color: "white", padding: "10px 16px", borderRadius: 8, fontSize: fz(13), fontWeight: 600, border: "none", cursor: "pointer" }}
               >
                 <Copy size={14} /> {copiedMissing ? "Kopiert!" : `Fehlende (${missingEnvNames.length})`}
               </button>
@@ -183,38 +184,38 @@ export default function StripeLiveChecklist() {
           </div>
 
           {goLiveReady && (
-            <div style={{ background: "#ecfdf5", border: "1px solid #6ee7b7", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: 14, color: "#065f46" }}>
+            <div style={{ background: "#ecfdf5", border: "1px solid #6ee7b7", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: fz(14), color: "#065f46" }}>
               <strong>Go-Live bereit</strong> — Alle 18 Price-IDs konfiguriert und Stripe im LIVE-Modus.
               Checkliste abschließen und Testkauf durchführen.
             </div>
           )}
 
           {liveReady && data?.stripeMode !== "live" && (
-            <div style={{ background: "#fffbeb", border: "1px solid #fcd34d", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: 13, color: "#92400e" }}>
+            <div style={{ background: "#fffbeb", border: "1px solid #fcd34d", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: fz(13), color: "#92400e" }}>
               Price-IDs vollständig, aber Stripe-Key noch im Testmodus. Railway: <code>STRIPE_SECRET_KEY=sk_live_…</code>
             </div>
           )}
 
           <div style={{ background: verifyResult?.ok ? "#f0fdf4" : "#fffbeb", border: `1px solid ${verifyResult?.ok ? "#bbf7d0" : "#fcd34d"}`, borderRadius: 12, padding: 16, marginBottom: 20 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
-              <strong style={{ fontSize: 14 }}>API-Verifizierung</strong>
+              <strong style={{ fontSize: fz(14) }}>API-Verifizierung</strong>
               <button
                 type="button"
                 onClick={runStripeVerify}
                 disabled={verifying}
-                style={{ padding: "8px 14px", borderRadius: 8, border: "none", background: "#2563eb", color: "white", fontSize: 13, fontWeight: 600, cursor: "pointer" }}
+                style={{ padding: "8px 14px", borderRadius: 8, border: "none", background: "#2563eb", color: "white", fontSize: fz(13), fontWeight: 600, cursor: "pointer" }}
               >
                 {verifying ? "Prüfe…" : "Stripe API testen"}
               </button>
             </div>
             {verifyResult && (
-              <div style={{ marginTop: 10, fontSize: 13, color: verifyResult.ok ? "#166534" : "#92400e" }}>
+              <div style={{ marginTop: 10, fontSize: fz(13), color: verifyResult.ok ? "#166534" : "#92400e" }}>
                 {verifyResult.ok
                   ? <>✅ {verifyResult.mode.toUpperCase()}-Modus · Balance: {verifyResult.currency}</>
                   : <>❌ {verifyResult.error}</>}
-                {verifyResult.recommendation && <div style={{ fontSize: 12, marginTop: 4 }}>{verifyResult.recommendation}</div>}
+                {verifyResult.recommendation && <div style={{ fontSize: fz(12), marginTop: 4 }}>{verifyResult.recommendation}</div>}
                 {verifyResult.priceReadiness && (
-                  <div style={{ fontSize: 11, marginTop: 8, color: "#64748b" }}>
+                  <div style={{ fontSize: fz(11), marginTop: 8, color: "#64748b" }}>
                     Abos {verifyResult.priceReadiness.subscriptions.configured}/{verifyResult.priceReadiness.subscriptions.total} ·
                     Module {verifyResult.priceReadiness.modules.configured}/{verifyResult.priceReadiness.modules.total}
                     {verifyResult.priceReadiness.liveReady && " · ✅ Live-ready"}
@@ -225,14 +226,14 @@ export default function StripeLiveChecklist() {
           </div>
 
           {data.webhookHealth && (
-            <div style={{ background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: 13 }}>
+            <div style={{ background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: fz(13) }}>
               <strong>Webhook-Health:</strong>{" "}
               {data.webhookHealth.recentlyActive ? "✅ Aktiv" : "⚠️ Kein Event (7d)"} ·{" "}
               {data.webhookHealth.totalVerified} Events gesamt
               {data.webhookHealth.lastVerifiedAt && (
                 <> · Letztes: {data.webhookHealth.lastEventType} ({new Date(data.webhookHealth.lastVerifiedAt).toLocaleString("de-DE")})</>
               )}
-              <div style={{ fontSize: 11, color: "#94a3b8", marginTop: 4 }}>{data.webhookHealth.endpoint}</div>
+              <div style={{ fontSize: fz(11), color: "#94a3b8", marginTop: 4 }}>{data.webhookHealth.endpoint}</div>
             </div>
           )}
 
@@ -248,12 +249,12 @@ export default function StripeLiveChecklist() {
           </div>
 
           {priceConfig && missingEnvNames.length > 0 && (
-            <div style={{ background: "#fef2f2", border: "1px solid #fecaca", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: 12 }}>
-              <strong style={{ fontSize: 14, color: "#991b1b" }}>Fehlende Railway ENV ({missingEnvNames.length})</strong>
+            <div style={{ background: "#fef2f2", border: "1px solid #fecaca", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: fz(12) }}>
+              <strong style={{ fontSize: fz(14), color: "#991b1b" }}>Fehlende Railway ENV ({missingEnvNames.length})</strong>
               <p style={{ color: "#b91c1c", margin: "8px 0" }}>
                 Diese Variablen in Railway setzen (Stripe Dashboard → Products → Price-ID kopieren):
               </p>
-              <div style={{ fontFamily: "monospace", fontSize: 11, color: "#7f1d1d", lineHeight: 1.8 }}>
+              <div style={{ fontFamily: "monospace", fontSize: fz(11), color: "#7f1d1d", lineHeight: 1.8 }}>
                 {missingEnvNames.map((env) => (
                   <div key={env}>{env}=price_…</div>
                 ))}
@@ -262,8 +263,8 @@ export default function StripeLiveChecklist() {
           )}
 
           {priceConfig && (
-            <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: 12 }}>
-              <strong style={{ fontSize: 14 }}>Price-ID Abdeckung</strong>
+            <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: fz(12) }}>
+              <strong style={{ fontSize: fz(14) }}>Price-ID Abdeckung</strong>
               <p style={{ color: "#64748b", margin: "8px 0" }}>
                 Abos {priceConfig.readiness?.subscriptions.configured ?? 0}/{priceConfig.readiness?.subscriptions.total ?? 6} ·
                 Module {priceConfig.readiness?.modules.configured ?? 0}/{priceConfig.readiness?.modules.total ?? 12}
@@ -291,8 +292,8 @@ export default function StripeLiveChecklist() {
           )}
 
           {pendingPurchases.length > 0 && (
-            <div style={{ background: "#fffbeb", border: "1px solid #fcd34d", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: 12 }}>
-              <strong style={{ fontSize: 14 }}>Offene Käufe ohne Konto ({pendingPurchases.length})</strong>
+            <div style={{ background: "#fffbeb", border: "1px solid #fcd34d", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: fz(12) }}>
+              <strong style={{ fontSize: fz(14) }}>Offene Käufe ohne Konto ({pendingPurchases.length})</strong>
               <p style={{ color: "#92400e", margin: "8px 0" }}>Nutzer hat bezahlt, aber noch kein Login mit dieser E-Mail.</p>
               {pendingPurchases.slice(0, 5).map((p) => (
                 <div key={p.email + p.createdAt} style={{ padding: "6px 0", borderBottom: "1px solid #fde68a" }}>
@@ -302,8 +303,8 @@ export default function StripeLiveChecklist() {
             </div>
           )}
 
-          <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: 12 }}>
-            <strong style={{ fontSize: 14 }}>Ops Quick-Links</strong>
+          <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: fz(12) }}>
+            <strong style={{ fontSize: fz(14) }}>Ops Quick-Links</strong>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 10 }}>
               {[
                 { href: "/admin/referral", label: "Referral + Backfill" },
@@ -314,7 +315,7 @@ export default function StripeLiveChecklist() {
                 <a
                   key={link.href}
                   href={link.href}
-                  style={{ padding: "6px 12px", borderRadius: 8, border: "1px solid #e2e8f0", color: "#2563eb", textDecoration: "none", fontSize: 12, fontWeight: 600 }}
+                  style={{ padding: "6px 12px", borderRadius: 8, border: "1px solid #e2e8f0", color: "#2563eb", textDecoration: "none", fontSize: fz(12), fontWeight: 600 }}
                 >
                   {link.label} →
                 </a>
@@ -323,11 +324,11 @@ export default function StripeLiveChecklist() {
           </div>
 
           <div style={{ background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 12, padding: 16, marginBottom: 24 }}>
-            <strong style={{ fontSize: 14 }}>Testzahlung (Testmodus)</strong>
-            <p style={{ fontSize: 12, color: "#64748b", margin: "8px 0" }}>
+            <strong style={{ fontSize: fz(14) }}>Testzahlung (Testmodus)</strong>
+            <p style={{ fontSize: fz(12), color: "#64748b", margin: "8px 0" }}>
               Karte: {STRIPE_TEST_CARD.number} · {STRIPE_TEST_CARD.exp} · CVC {STRIPE_TEST_CARD.cvc}
             </p>
-            <ol style={{ fontSize: 12, color: "#475569", margin: 0, paddingLeft: 18 }}>
+            <ol style={{ fontSize: fz(12), color: "#475569", margin: 0, paddingLeft: 18 }}>
               {STRIPE_TEST_CHECKOUT_STEPS.map((step) => (
                 <li key={step} style={{ marginBottom: 4 }}>{step}</li>
               ))}
@@ -335,8 +336,8 @@ export default function StripeLiveChecklist() {
           </div>
 
           <div style={{ background: "#eff6ff", border: "1px solid #bfdbfe", borderRadius: 12, padding: 16, marginBottom: 24 }}>
-            <strong style={{ fontSize: 14 }}>Live-Abschluss-Checkliste</strong>
-            <ol style={{ fontSize: 12, color: "#1e40af", margin: "10px 0 0", paddingLeft: 18 }}>
+            <strong style={{ fontSize: fz(14) }}>Live-Abschluss-Checkliste</strong>
+            <ol style={{ fontSize: fz(12), color: "#1e40af", margin: "10px 0 0", paddingLeft: 18 }}>
               {STRIPE_LIVE_COMPLETION_STEPS.map((step) => (
                 <li key={step} style={{ marginBottom: 4 }}>{step}</li>
               ))}
@@ -348,7 +349,7 @@ export default function StripeLiveChecklist() {
             if (items.length === 0) return null;
             return (
               <div key={cat} style={{ marginBottom: 24 }}>
-                <h2 style={{ fontSize: 13, fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 10 }}>
+                <h2 style={{ fontSize: fz(13), fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 10 }}>
                   {CATEGORY_LABELS[cat]}
                 </h2>
                 <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, overflow: "hidden" }}>
@@ -369,12 +370,12 @@ export default function StripeLiveChecklist() {
                         <AlertTriangle size={18} color={item.urgent ? "#dc2626" : "#d97706"} style={{ flexShrink: 0, marginTop: 2 }} />
                       )}
                       <div style={{ flex: 1 }}>
-                        <div style={{ fontSize: 14, fontWeight: 600, color: "#0f172a" }}>{item.label}</div>
+                        <div style={{ fontSize: fz(14), fontWeight: 600, color: "#0f172a" }}>{item.label}</div>
                         {item.detail && (
-                          <div style={{ fontSize: 12, color: "#64748b", marginTop: 2 }}>{item.detail}</div>
+                          <div style={{ fontSize: fz(12), color: "#64748b", marginTop: 2 }}>{item.detail}</div>
                         )}
                         {item.action && !item.ok && (
-                          <div style={{ fontSize: 11, color: item.urgent ? "#dc2626" : "#92400e", marginTop: 4 }}>
+                          <div style={{ fontSize: fz(11), color: item.urgent ? "#dc2626" : "#92400e", marginTop: 4 }}>
                             → {item.action}
                           </div>
                         )}

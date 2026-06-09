@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { scaledFontSize as fz } from "@/lib/a11yFont";
 import { trpc } from "@/lib/trpc";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -121,14 +122,14 @@ export default function OwnerVideos() {
           </Button>
         </Link>
         <div style={{flex:1}}>
-          <h1 style={{fontSize:24,fontWeight:700,color:"#0f172a",margin:0,display:"flex",alignItems:"center",gap:10}}>
+          <h1 style={{fontSize: fz(24),fontWeight:700,color:"#0f172a",margin:0,display:"flex",alignItems:"center",gap:10}}>
             <Video className="h-6 w-6" style={{color:"#3b82f6"}} /> Video-Verwaltung
           </h1>
-          <p style={{color:"#64748b",fontSize:14,margin:0}}>Lernvideos für alle Module verwalten</p>
+          <p style={{color:"#64748b",fontSize: fz(14),margin:0}}>Lernvideos für alle Module verwalten</p>
         </div>
         <div style={{display:"flex",alignItems:"center",gap:8,background:"#f0fdf4",border:"1px solid #bbf7d0",borderRadius:8,padding:"6px 12px"}}>
           <Shield className="h-4 w-4" style={{color:"#16a34a"}} />
-          <span style={{fontSize:12,color:"#16a34a",fontWeight:600}}>Owner-Zugang</span>
+          <span style={{fontSize: fz(12),color:"#16a34a",fontWeight:600}}>Owner-Zugang</span>
         </div>
       </div>
 
@@ -136,15 +137,15 @@ export default function OwnerVideos() {
       <div style={{display:"flex",gap:12,marginBottom:24,flexWrap:"wrap"}}>
         <Card style={{flex:1,minWidth:140}}>
           <CardContent style={{padding:16,textAlign:"center"}}>
-            <div style={{fontSize:28,fontWeight:700,color:"#3b82f6"}}>{videos?.length || 0}</div>
-            <div style={{fontSize:12,color:"#64748b"}}>Videos gesamt</div>
+            <div style={{fontSize: fz(28),fontWeight:700,color:"#3b82f6"}}>{videos?.length || 0}</div>
+            <div style={{fontSize: fz(12),color:"#64748b"}}>Videos gesamt</div>
           </CardContent>
         </Card>
         {[1,2,3,4,5].map(m => (
           <Card key={m} style={{flex:1,minWidth:80}}>
             <CardContent style={{padding:16,textAlign:"center"}}>
-              <div style={{fontSize:22,fontWeight:700,color:"#0f172a"}}>{videos?.filter(v => v.moduleId === m).length || 0}</div>
-              <div style={{fontSize:11,color:"#64748b"}}>Modul {m}</div>
+              <div style={{fontSize: fz(22),fontWeight:700,color:"#0f172a"}}>{videos?.filter(v => v.moduleId === m).length || 0}</div>
+              <div style={{fontSize: fz(11),color:"#64748b"}}>Modul {m}</div>
             </CardContent>
           </Card>
         ))}
@@ -172,7 +173,7 @@ export default function OwnerVideos() {
           <CardContent style={{padding:48,textAlign:"center"}}>
             <Video style={{width:48,height:48,color:"#cbd5e1",margin:"0 auto 12px"}} />
             <p style={{color:"#64748b",margin:0}}>Noch keine Videos vorhanden.</p>
-            <p style={{color:"#94a3b8",fontSize:13,margin:"4px 0 0"}}>Füge YouTube- oder Vimeo-Links für Lernmodule hinzu.</p>
+            <p style={{color:"#94a3b8",fontSize: fz(13),margin:"4px 0 0"}}>Füge YouTube- oder Vimeo-Links für Lernmodule hinzu.</p>
           </CardContent>
         </Card>
       ) : (
@@ -182,7 +183,7 @@ export default function OwnerVideos() {
             return (
               <Card key={moduleName}>
                 <CardHeader style={{paddingBottom:8}}>
-                  <CardTitle style={{fontSize:16}}>{moduleName}</CardTitle>
+                  <CardTitle style={{fontSize: fz(16)}}>{moduleName}</CardTitle>
                   <CardDescription>{vids.length} Video{vids.length !== 1 ? "s" : ""}</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -208,7 +209,7 @@ export default function OwnerVideos() {
                             </Badge>
                           </TableCell>
                           <TableCell>
-                            {v.isRequired && <Badge variant="destructive" style={{fontSize:11}}>Pflicht</Badge>}
+                            {v.isRequired && <Badge variant="destructive" style={{fontSize: fz(11)}}>Pflicht</Badge>}
                           </TableCell>
                           <TableCell style={{textAlign:"right"}}>
                             <div style={{display:"flex",justifyContent:"flex-end",gap:4}}>

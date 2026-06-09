@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { scaledFontSize as fz } from "@/lib/a11yFont";
 import { trpc } from "@/lib/trpc";
 import { Search, Trash2, Edit3, CheckCircle, XCircle, ChevronDown, Filter, BookOpen } from "lucide-react";
 
@@ -38,8 +39,8 @@ export default function FragenManager() {
   return (
     <div style={{ maxWidth: 1000, margin: "0 auto", padding: "24px 20px" }}>
       <div style={{ marginBottom: 20 }}>
-        <h1 style={{ fontSize: 24, fontWeight: 700, color: "#0f172a", margin: 0 }}>Fragen-Manager</h1>
-        <p style={{ color: "#64748b", marginTop: 4, fontSize: 14 }}>{total} Prüfungsfragen — filtern, bearbeiten, löschen</p>
+        <h1 style={{ fontSize: fz(24), fontWeight: 700, color: "#0f172a", margin: 0 }}>Fragen-Manager</h1>
+        <p style={{ color: "#64748b", marginTop: 4, fontSize: fz(14) }}>{total} Prüfungsfragen — filtern, bearbeiten, löschen</p>
       </div>
 
       {/* Filter-Leiste */}
@@ -48,15 +49,15 @@ export default function FragenManager() {
           <Search size={14} style={{ position: "absolute", left: 10, top: 10, color: "#94a3b8" }} />
           <input value={search} onChange={e => { setSearch(e.target.value); setPage(0); }}
             placeholder="Frage suchen..."
-            style={{ width: "100%", padding: "8px 8px 8px 32px", border: "0.5px solid #e2e8f0", borderRadius: 8, fontSize: 13, background: "#fff" }} />
+            style={{ width: "100%", padding: "8px 8px 8px 32px", border: "0.5px solid #e2e8f0", borderRadius: 8, fontSize: fz(13), background: "#fff" }} />
         </div>
         <select value={filterModule} onChange={e => { setFilterModule(Number(e.target.value)); setPage(0); }}
-          style={{ padding: "8px 12px", border: "0.5px solid #e2e8f0", borderRadius: 8, fontSize: 13, background: "#fff" }}>
+          style={{ padding: "8px 12px", border: "0.5px solid #e2e8f0", borderRadius: 8, fontSize: fz(13), background: "#fff" }}>
           <option value={0}>Alle Module</option>
           {[1,2,3,4,5].map(m => <option key={m} value={m}>{MODULE_NAMES[m]}</option>)}
         </select>
         <select value={filterDifficulty} onChange={e => { setFilterDifficulty(e.target.value); setPage(0); }}
-          style={{ padding: "8px 12px", border: "0.5px solid #e2e8f0", borderRadius: 8, fontSize: 13, background: "#fff" }}>
+          style={{ padding: "8px 12px", border: "0.5px solid #e2e8f0", borderRadius: 8, fontSize: fz(13), background: "#fff" }}>
           <option value="">Alle Schwierigkeiten</option>
           <option value="easy">Einfach</option>
           <option value="medium">Mittel</option>
@@ -74,27 +75,27 @@ export default function FragenManager() {
               {editId === q.id ? (
                 <div>
                   <textarea value={editText} onChange={e => setEditText(e.target.value)}
-                    style={{ width: "100%", padding: 8, border: "1px solid #2563eb", borderRadius: 8, fontSize: 13, minHeight: 80, marginBottom: 8 }} />
+                    style={{ width: "100%", padding: 8, border: "1px solid #2563eb", borderRadius: 8, fontSize: fz(13), minHeight: 80, marginBottom: 8 }} />
                   <div style={{ display: "flex", gap: 8 }}>
                     <button onClick={() => updateMutation.mutate({ id: q.id, questionText: editText })}
-                      style={{ padding: "5px 12px", background: "#2563eb", color: "#fff", border: "none", borderRadius: 6, fontSize: 12, cursor: "pointer" }}>Speichern</button>
+                      style={{ padding: "5px 12px", background: "#2563eb", color: "#fff", border: "none", borderRadius: 6, fontSize: fz(12), cursor: "pointer" }}>Speichern</button>
                     <button onClick={() => setEditId(null)}
-                      style={{ padding: "5px 12px", background: "#f1f5f9", color: "#374151", border: "none", borderRadius: 6, fontSize: 12, cursor: "pointer" }}>Abbrechen</button>
+                      style={{ padding: "5px 12px", background: "#f1f5f9", color: "#374151", border: "none", borderRadius: 6, fontSize: fz(12), cursor: "pointer" }}>Abbrechen</button>
                   </div>
                 </div>
               ) : (
                 <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
                   <div style={{ flex: 1 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-                      <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 20, background: "#e2e8f0", color: "#374151", fontWeight: 500 }}>
+                      <span style={{ fontSize: fz(10), padding: "2px 8px", borderRadius: 20, background: "#e2e8f0", color: "#374151", fontWeight: 500 }}>
                         {MODULE_NAMES[q.moduleId] || `M${q.moduleId}`}
                       </span>
-                      <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 20, background: DIFFICULTY_COLORS[q.difficulty] + "20", color: DIFFICULTY_COLORS[q.difficulty], fontWeight: 500 }}>
+                      <span style={{ fontSize: fz(10), padding: "2px 8px", borderRadius: 20, background: DIFFICULTY_COLORS[q.difficulty] + "20", color: DIFFICULTY_COLORS[q.difficulty], fontWeight: 500 }}>
                         {q.difficulty}
                       </span>
-                      <span style={{ fontSize: 10, color: "#94a3b8" }}>{q.category}</span>
+                      <span style={{ fontSize: fz(10), color: "#94a3b8" }}>{q.category}</span>
                     </div>
-                    <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.5 }}>{q.questionText}</div>
+                    <div style={{ fontSize: fz(13), color: "#374151", lineHeight: 1.5 }}>{q.questionText}</div>
                   </div>
                   <div style={{ display: "flex", gap: 4, flexShrink: 0 }}>
                     <button onClick={() => { setEditId(q.id); setEditText(q.questionText); }}
@@ -120,12 +121,12 @@ export default function FragenManager() {
       {total > PAGE_SIZE && (
         <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 16 }}>
           <button onClick={() => setPage(p => Math.max(0, p-1))} disabled={page === 0}
-            style={{ padding: "6px 14px", border: "0.5px solid #e2e8f0", borderRadius: 8, background: "#fff", cursor: "pointer", fontSize: 12 }}>← Zurück</button>
-          <span style={{ padding: "6px 12px", fontSize: 12, color: "#64748b" }}>
+            style={{ padding: "6px 14px", border: "0.5px solid #e2e8f0", borderRadius: 8, background: "#fff", cursor: "pointer", fontSize: fz(12) }}>← Zurück</button>
+          <span style={{ padding: "6px 12px", fontSize: fz(12), color: "#64748b" }}>
             {page*PAGE_SIZE+1}–{Math.min((page+1)*PAGE_SIZE, total)} von {total}
           </span>
           <button onClick={() => setPage(p => p+1)} disabled={(page+1)*PAGE_SIZE >= total}
-            style={{ padding: "6px 14px", border: "0.5px solid #e2e8f0", borderRadius: 8, background: "#fff", cursor: "pointer", fontSize: 12 }}>Weiter →</button>
+            style={{ padding: "6px 14px", border: "0.5px solid #e2e8f0", borderRadius: 8, background: "#fff", cursor: "pointer", fontSize: fz(12) }}>Weiter →</button>
         </div>
       )}
     </div>

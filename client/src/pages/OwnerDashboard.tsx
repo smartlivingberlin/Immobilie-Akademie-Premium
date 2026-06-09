@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { scaledFontSize as fz } from "@/lib/a11yFont";
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
 import { AzavPdfExport } from "@/components/AzavPdfExport";
@@ -182,7 +183,7 @@ export default function OwnerDashboard() {
   };
 
   if (loading) return (
-    <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:18,color:"#64748b"}}>
+    <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize: fz(18),color:"#64748b"}}>
       Lade Owner Dashboard...
     </div>
   );
@@ -192,10 +193,10 @@ export default function OwnerDashboard() {
       {/* Header */}
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:32}}>
         <div>
-          <h1 style={{fontSize:28,fontWeight:900,margin:0,color:"#3b82f6"}}>
+          <h1 style={{fontSize: fz(28),fontWeight:900,margin:0,color:"#3b82f6"}}>
             👑 Owner Dashboard
           </h1>
-          <p style={{color:"#94a3b8",margin:"4px 0 0",fontSize:14}}>
+          <p style={{color:"#94a3b8",margin:"4px 0 0",fontSize: fz(14)}}>
             Immobilien Akademie Smart — vollständige Kontrolle
           </p>
         </div>
@@ -204,11 +205,11 @@ export default function OwnerDashboard() {
             <ComfortBar compact />
           </div>
           <button onClick={generateMagicLink}
-            style={{background:"#1e40af",color:"white",border:"none",padding:"10px 18px",borderRadius:8,cursor:"pointer",fontSize:13,fontWeight:600}}>
+            style={{background:"#1e40af",color:"white",border:"none",padding:"10px 18px",borderRadius:8,cursor:"pointer",fontSize: fz(13),fontWeight:600}}>
             🔗 Magic Link generieren
           </button>
           <Link href="/admin">
-            <button style={{background:"#334155",color:"white",border:"none",padding:"10px 18px",borderRadius:8,cursor:"pointer",fontSize:13}}>
+            <button style={{background:"#334155",color:"white",border:"none",padding:"10px 18px",borderRadius:8,cursor:"pointer",fontSize: fz(13)}}>
               ⚙️ Admin Panel
             </button>
           </Link>
@@ -216,7 +217,7 @@ export default function OwnerDashboard() {
       </div>
 
       {actionMsg && (
-        <div style={{background:"#065f46",border:"1px solid #10b981",borderRadius:8,padding:"12px 20px",marginBottom:20,fontSize:14}}>
+        <div style={{background:"#065f46",border:"1px solid #10b981",borderRadius:8,padding:"12px 20px",marginBottom:20,fontSize: fz(14)}}>
           {actionMsg}
         </div>
       )}
@@ -233,7 +234,7 @@ export default function OwnerDashboard() {
           {id:"events", label:"🛡️ Ereignisse"},
         ].map(t => (
           <button key={t.id} onClick={() => setActiveTab(t.id as any)}
-            style={{background: activeTab===t.id ? "#3b82f6" : "#1e293b", color:"white", border: activeTab===t.id ? "none" : "1px solid #334155", padding:"8px 16px", borderRadius:8, cursor:"pointer", fontSize:13, fontWeight:600}}>
+            style={{background: activeTab===t.id ? "#3b82f6" : "#1e293b", color:"white", border: activeTab===t.id ? "none" : "1px solid #334155", padding:"8px 16px", borderRadius:8, cursor:"pointer", fontSize: fz(13), fontWeight:600}}>
             {t.label}
           </button>
         ))}
@@ -248,16 +249,16 @@ export default function OwnerDashboard() {
           {label:"Modul 1 frei", value: stats?.modulesUnlocked?.["1"] ?? 0, icon:"📚", color:"#8b5cf6"},
         ].map((s, i) => (
           <div key={i} style={{background:"#1e293b",borderRadius:12,padding:"20px",border:`1px solid ${s.color}33`}}>
-            <div style={{fontSize:28}}>{s.icon}</div>
-            <div style={{fontSize:32,fontWeight:900,color:s.color,margin:"8px 0 4px"}}>{s.value}</div>
-            <div style={{color:"#94a3b8",fontSize:13}}>{s.label}</div>
+            <div style={{fontSize: fz(28)}}>{s.icon}</div>
+            <div style={{fontSize: fz(32),fontWeight:900,color:s.color,margin:"8px 0 4px"}}>{s.value}</div>
+            <div style={{color:"#94a3b8",fontSize: fz(13)}}>{s.label}</div>
           </div>
         ))}
       </div>
 
       {/* System Health */}
       <div style={{background:"#1e293b",borderRadius:12,padding:20,marginBottom:24,border:"1px solid #334155"}}>
-        <h3 style={{margin:"0 0 16px",fontSize:16,color:"#94a3b8",textTransform:"uppercase",letterSpacing:1}}>
+        <h3 style={{margin:"0 0 16px",fontSize: fz(16),color:"#94a3b8",textTransform:"uppercase",letterSpacing:1}}>
           System Status
         </h3>
         <div style={{display:"flex",gap:24,flexWrap:"wrap"}}>
@@ -268,7 +269,7 @@ export default function OwnerDashboard() {
           ].map((h, i) => (
             <div key={i} style={{display:"flex",alignItems:"center",gap:8}}>
               <div style={{width:10,height:10,borderRadius:"50%",background: h.ok ? "#10b981" : "#ef4444"}}/>
-              <span style={{fontSize:14, color: h.ok ? "#10b981" : "#ef4444"}}>{h.label}: {h.ok ? "OK" : "FEHLER"}</span>
+              <span style={{fontSize: fz(14), color: h.ok ? "#10b981" : "#ef4444"}}>{h.label}: {h.ok ? "OK" : "FEHLER"}</span>
             </div>
           ))}
         </div>
@@ -277,7 +278,7 @@ export default function OwnerDashboard() {
       {/* ── TAB: REVENUE ──────────────────────────────── */}
       {activeTab === "revenue" && (
         <div style={{ background: "#1e293b", borderRadius: 12, padding: 24, marginBottom: 24, border: "1px solid #334155" }}>
-          <h3 style={{ margin: "0 0 20px", fontSize: 18, color: "#f59e0b" }}>💰 Stripe Revenue</h3>
+          <h3 style={{ margin: "0 0 20px", fontSize: fz(18), color: "#f59e0b" }}>💰 Stripe Revenue</h3>
           {!revenue ? (
             <p style={{ color: "#94a3b8" }}>Laden…</p>
           ) : (
@@ -294,18 +295,18 @@ export default function OwnerDashboard() {
                   { label: "Price-IDs", value: `${revenue.priceIdsConfigured?.subscriptions}/${revenue.priceIdsConfigured?.subscriptionsTotal ?? 6} + ${revenue.priceIdsConfigured?.modules}/${revenue.priceIdsConfigured?.modulesTotal ?? 12}`, color: "#64748b" },
                 ].map((s) => (
                   <div key={s.label} style={{ background: "#0f172a", borderRadius: 8, padding: 14 }}>
-                    <div style={{ fontSize: 11, color: "#94a3b8" }}>{s.label}</div>
-                    <div style={{ fontSize: 22, fontWeight: 800, color: s.color, marginTop: 4 }}>{s.value}</div>
+                    <div style={{ fontSize: fz(11), color: "#94a3b8" }}>{s.label}</div>
+                    <div style={{ fontSize: fz(22), fontWeight: 800, color: s.color, marginTop: 4 }}>{s.value}</div>
                   </div>
                 ))}
               </div>
               {revenue.webhookHealth && (
-                <p style={{ fontSize: 13, color: "#94a3b8" }}>
+                <p style={{ fontSize: fz(13), color: "#94a3b8" }}>
                   Webhook: {revenue.webhookHealth.recentlyActive ? "✅ aktiv" : "⚠️ kein Event (7d)"} · {revenue.webhookHealth.totalVerified} Events
                 </p>
               )}
               <Link href="/admin/stripe-live">
-                <span style={{ color: "#3b82f6", fontSize: 13, cursor: "pointer" }}>→ Stripe Live-Checkliste</span>
+                <span style={{ color: "#3b82f6", fontSize: fz(13), cursor: "pointer" }}>→ Stripe Live-Checkliste</span>
               </Link>
             </>
           )}
@@ -316,7 +317,7 @@ export default function OwnerDashboard() {
       {/* ── TAB: SETTINGS ──────────────────────────────── */}
       {activeTab === "videos" && (
         <div style={{padding:24,textAlign:"center"}}>
-          <div style={{fontSize:40,marginBottom:12}}>🎬</div>
+          <div style={{fontSize: fz(40),marginBottom:12}}>🎬</div>
           <h2 style={{color:"#0f172a",marginBottom:8}}>Video-Verwaltung</h2>
           <p style={{color:"#64748b",marginBottom:20}}>Lernvideos für alle 5 Module verwalten</p>
           <a href="/owner-videos" style={{background:"#3b82f6",color:"white",padding:"12px 24px",borderRadius:8,textDecoration:"none",fontWeight:600,display:"inline-block"}}>
@@ -328,7 +329,7 @@ export default function OwnerDashboard() {
         <div style={{display:"grid",gap:24}}>
           {/* Preise */}
           <div style={{background:"#1e293b",borderRadius:12,padding:24,border:"1px solid #334155"}}>
-            <h3 style={{margin:"0 0 20px",fontSize:16,color:"#f1f5f9",fontWeight:700}}>💰 Preise verwalten</h3>
+            <h3 style={{margin:"0 0 20px",fontSize: fz(16),color:"#f1f5f9",fontWeight:700}}>💰 Preise verwalten</h3>
             <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))",gap:16}}>
               {[
                 {key:"price_modul_1", label:"Modul 1 (Grundkurs)"},
@@ -339,11 +340,11 @@ export default function OwnerDashboard() {
                 {key:"price_bundle", label:"Komplett-Paket"},
               ].map(({key, label}) => (
                 <div key={key}>
-                  <label style={{color:"#94a3b8",fontSize:12,display:"block",marginBottom:6}}>{label}</label>
+                  <label style={{color:"#94a3b8",fontSize: fz(12),display:"block",marginBottom:6}}>{label}</label>
                   <div style={{display:"flex",gap:8,alignItems:"center"}}>
                     <input type="number" value={settings[key] || ""} onChange={e => setSettings(s => ({...s,[key]:e.target.value}))}
-                      style={{background:"#0f172a",border:"1px solid #475569",borderRadius:6,padding:"8px 12px",color:"white",fontSize:14,width:"100px"}} />
-                    <span style={{color:"#64748b",fontSize:13}}>EUR</span>
+                      style={{background:"#0f172a",border:"1px solid #475569",borderRadius:6,padding:"8px 12px",color:"white",fontSize: fz(14),width:"100px"}} />
+                    <span style={{color:"#64748b",fontSize: fz(13)}}>EUR</span>
                   </div>
                 </div>
               ))}
@@ -352,14 +353,14 @@ export default function OwnerDashboard() {
 
           {/* Video URLs */}
           <div style={{background:"#1e293b",borderRadius:12,padding:24,border:"1px solid #334155"}}>
-            <h3 style={{margin:"0 0 20px",fontSize:16,color:"#f1f5f9",fontWeight:700}}>🎬 Video-URLs (YouTube)</h3>
+            <h3 style={{margin:"0 0 20px",fontSize: fz(16),color:"#f1f5f9",fontWeight:700}}>🎬 Video-URLs (YouTube)</h3>
             <div style={{display:"grid",gap:12}}>
               {[1,2,3,4,5].map(n => (
                 <div key={n} style={{display:"grid",gridTemplateColumns:"150px 1fr",gap:12,alignItems:"center"}}>
-                  <label style={{color:"#94a3b8",fontSize:13}}>Modul {n}</label>
+                  <label style={{color:"#94a3b8",fontSize: fz(13)}}>Modul {n}</label>
                   <input type="url" value={settings[`video_modul_${n}`] || ""} placeholder="https://youtube.com/watch?v=..."
                     onChange={e => setSettings(s => ({...s,[`video_modul_${n}`]:e.target.value}))}
-                    style={{background:"#0f172a",border:"1px solid #475569",borderRadius:6,padding:"8px 12px",color:"white",fontSize:13,width:"100%"}} />
+                    style={{background:"#0f172a",border:"1px solid #475569",borderRadius:6,padding:"8px 12px",color:"white",fontSize: fz(13),width:"100%"}} />
                 </div>
               ))}
             </div>
@@ -367,14 +368,14 @@ export default function OwnerDashboard() {
 
           {/* Landingpage Titel */}
           <div style={{background:"#1e293b",borderRadius:12,padding:24,border:"1px solid #334155"}}>
-            <h3 style={{margin:"0 0 20px",fontSize:16,color:"#f1f5f9",fontWeight:700}}>📄 Landingpage Titel</h3>
+            <h3 style={{margin:"0 0 20px",fontSize: fz(16),color:"#f1f5f9",fontWeight:700}}>📄 Landingpage Titel</h3>
             <div style={{display:"grid",gap:12}}>
               {[1,2,3,4,5].map(n => (
                 <div key={n} style={{display:"grid",gridTemplateColumns:"150px 1fr",gap:12,alignItems:"center"}}>
-                  <label style={{color:"#94a3b8",fontSize:13}}>Modul {n}</label>
+                  <label style={{color:"#94a3b8",fontSize: fz(13)}}>Modul {n}</label>
                   <input type="text" value={settings[`landing_modul_${n}_titel`] || ""}
                     onChange={e => setSettings(s => ({...s,[`landing_modul_${n}_titel`]:e.target.value}))}
-                    style={{background:"#0f172a",border:"1px solid #475569",borderRadius:6,padding:"8px 12px",color:"white",fontSize:13,width:"100%"}} />
+                    style={{background:"#0f172a",border:"1px solid #475569",borderRadius:6,padding:"8px 12px",color:"white",fontSize: fz(13),width:"100%"}} />
                 </div>
               ))}
             </div>
@@ -392,10 +393,10 @@ export default function OwnerDashboard() {
               }
               setSettingsSaved(true);
               setTimeout(() => setSettingsSaved(false), 3000);
-            }} style={{background:"#2563eb",color:"white",border:"none",borderRadius:8,padding:"12px 28px",fontSize:14,fontWeight:700,cursor:"pointer"}}>
+            }} style={{background:"#2563eb",color:"white",border:"none",borderRadius:8,padding:"12px 28px",fontSize: fz(14),fontWeight:700,cursor:"pointer"}}>
               💾 Alle Einstellungen speichern
             </button>
-            {settingsSaved && <span style={{color:"#10b981",fontSize:14,fontWeight:600}}>✅ Gespeichert!</span>}
+            {settingsSaved && <span style={{color:"#10b981",fontSize: fz(14),fontWeight:600}}>✅ Gespeichert!</span>}
           </div>
         </div>
       )}
@@ -405,8 +406,8 @@ export default function OwnerDashboard() {
         <div style={{background:"#1e293b",borderRadius:12,padding:20,border:"1px solid #334155"}}>
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:20}}>
             <div>
-              <h3 style={{margin:"0 0 4px",fontSize:16,color:"#f1f5f9",fontWeight:700}}>🎓 AZAV-Anwesenheitsbericht</h3>
-              <p style={{margin:0,fontSize:12,color:"#64748b"}}>Gemäß §§ 176-180 SGB III — automatisch generiert</p>
+              <h3 style={{margin:"0 0 4px",fontSize: fz(16),color:"#f1f5f9",fontWeight:700}}>🎓 AZAV-Anwesenheitsbericht</h3>
+              <p style={{margin:0,fontSize: fz(12),color:"#64748b"}}>Gemäß §§ 176-180 SGB III — automatisch generiert</p>
             </div>
             <div style={{marginBottom:16}}>
             <AzavPdfExport ownerKey={sessionStorage.getItem("ownerKey")||""} />
@@ -418,13 +419,13 @@ export default function OwnerDashboard() {
                 fetch(`/api/owner/azav-report?key=${ownerKey}`,{credentials:"include",headers:{"x-owner-key":sessionStorage.getItem("ownerKey")||""}})
                   .then(r=>r.json()).then(d=>{setAzavReport(d);setAzavLoading(false);}).catch(()=>setAzavLoading(false));
               }}
-              style={{background:"#2563eb",color:"white",border:"none",borderRadius:8,padding:"10px 20px",fontSize:13,fontWeight:700,cursor:"pointer"}}>
+              style={{background:"#2563eb",color:"white",border:"none",borderRadius:8,padding:"10px 20px",fontSize: fz(13),fontWeight:700,cursor:"pointer"}}>
               {azavLoading?"⏳ Lädt...":"📋 Bericht erstellen"}
             </button>
           </div>
           {azavReport && (
             <div>
-              <div style={{background:"#0f172a",borderRadius:8,padding:"12px 16px",marginBottom:16,fontSize:12,color:"#64748b"}}>
+              <div style={{background:"#0f172a",borderRadius:8,padding:"12px 16px",marginBottom:16,fontSize: fz(12),color:"#64748b"}}>
                 Erstellt: {new Date(azavReport.berichtDatum).toLocaleString("de-DE")} ·
                 Nutzer: {azavReport.gesamtNutzer} ·
                 Zeitraum: {azavReport.zeitraum?.von} bis {azavReport.zeitraum?.bis}
@@ -433,12 +434,12 @@ export default function OwnerDashboard() {
                 <div key={i} style={{background:"#0f172a",borderRadius:10,padding:"16px",marginBottom:12}}>
                   <div style={{display:"flex",justifyContent:"space-between",marginBottom:12}}>
                     <div>
-                      <div style={{fontSize:14,fontWeight:700,color:"#f1f5f9"}}>{b.nutzer?.name||"—"}</div>
-                      <div style={{fontSize:11,color:"#64748b"}}>{b.nutzer?.email}</div>
+                      <div style={{fontSize: fz(14),fontWeight:700,color:"#f1f5f9"}}>{b.nutzer?.name||"—"}</div>
+                      <div style={{fontSize: fz(11),color:"#64748b"}}>{b.nutzer?.email}</div>
                     </div>
                     <div style={{textAlign:"right"}}>
-                      <div style={{fontSize:18,fontWeight:900,color:"#10b981"}}>{b.zusammenfassung?.gesamtUE} UE</div>
-                      <div style={{fontSize:10,color:"#64748b"}}>{b.zusammenfassung?.gesamtStunden}h gesamt</div>
+                      <div style={{fontSize: fz(18),fontWeight:900,color:"#10b981"}}>{b.zusammenfassung?.gesamtUE} UE</div>
+                      <div style={{fontSize: fz(10),color:"#64748b"}}>{b.zusammenfassung?.gesamtStunden}h gesamt</div>
                     </div>
                   </div>
                   <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:8,marginBottom:12}}>
@@ -449,27 +450,27 @@ export default function OwnerDashboard() {
                       {label:"UE gesamt",value:b.zusammenfassung?.gesamtUE},
                     ].map((s,j)=>(
                       <div key={j} style={{background:"#1e293b",borderRadius:6,padding:"8px",textAlign:"center"}}>
-                        <div style={{fontSize:16,fontWeight:800,color:"#60a5fa"}}>{s.value||0}</div>
-                        <div style={{fontSize:9,color:"#64748b"}}>{s.label}</div>
+                        <div style={{fontSize: fz(16),fontWeight:800,color:"#60a5fa"}}>{s.value||0}</div>
+                        <div style={{fontSize: fz(9),color:"#64748b"}}>{s.label}</div>
                       </div>
                     ))}
                   </div>
-                  <div style={{fontSize:11,color:"#475569",marginBottom:8,fontWeight:600}}>TAGESNACHWEIS:</div>
+                  <div style={{fontSize: fz(11),color:"#475569",marginBottom:8,fontWeight:600}}>TAGESNACHWEIS:</div>
                   {(b.tagesNachweis||[]).map((t:any,j:number)=>(
-                    <div key={j} style={{display:"flex",gap:12,padding:"4px 0",borderBottom:"1px solid #1e293b",fontSize:11}}>
+                    <div key={j} style={{display:"flex",gap:12,padding:"4px 0",borderBottom:"1px solid #1e293b",fontSize: fz(11)}}>
                       <span style={{color:"#94a3b8",width:80}}>{t.datum}</span>
                       <span style={{color:"#60a5fa"}}>{t.lernzeit}</span>
                       <span style={{color:"#10b981"}}>{t.ue} UE</span>
                       <span style={{color:"#64748b",flex:1}}>{t.module}</span>
                     </div>
                   ))}
-                  <div style={{marginTop:8,padding:"6px 10px",background:b.azavKonformitaet?.nachweisVorhanden?"#065f46":"#7f1d1d",borderRadius:6,fontSize:11,color:b.azavKonformitaet?.nachweisVorhanden?"#10b981":"#ef4444"}}>
+                  <div style={{marginTop:8,padding:"6px 10px",background:b.azavKonformitaet?.nachweisVorhanden?"#065f46":"#7f1d1d",borderRadius:6,fontSize: fz(11),color:b.azavKonformitaet?.nachweisVorhanden?"#10b981":"#ef4444"}}>
                     {b.azavKonformitaet?.nachweisVorhanden?"✅ AZAV-konformer Nachweis vorhanden":"⚠️ Kein Nachweis — Nutzer hat noch nicht gelernt"}
                     · Zeitraum: {b.azavKonformitaet?.zeitraumVon} bis {b.azavKonformitaet?.zeitraumBis}
                   </div>
                 </div>
               ))}
-              <div style={{fontSize:11,color:"#334155",marginTop:12,padding:"8px 12px",background:"#0f172a",borderRadius:6}}>
+              <div style={{fontSize: fz(11),color:"#334155",marginTop:12,padding:"8px 12px",background:"#0f172a",borderRadius:6}}>
                 ⚖️ {azavReport.hinweis}
               </div>
             </div>
@@ -480,8 +481,8 @@ export default function OwnerDashboard() {
       {/* ── TAB: AUDIT EVENTS ───────────────────────────── */}
       {activeTab === "events" && (
         <div style={{ background: "#1e293b", borderRadius: 12, padding: 24, marginBottom: 24, border: "1px solid #334155" }}>
-          <h3 style={{ margin: "0 0 8px", fontSize: 18, color: "#f59e0b" }}>🛡️ Ereignis-Protokoll</h3>
-          <p style={{ color: "#94a3b8", fontSize: 13, marginBottom: 16 }}>
+          <h3 style={{ margin: "0 0 8px", fontSize: fz(18), color: "#f59e0b" }}>🛡️ Ereignis-Protokoll</h3>
+          <p style={{ color: "#94a3b8", fontSize: fz(13), marginBottom: 16 }}>
             Login, Logout, Modul-Check-in/out, KI-Aufrufe, Owner-Aktionen, Stripe-Käufe — letzte 7 Tage
           </p>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
@@ -490,12 +491,12 @@ export default function OwnerDashboard() {
               placeholder="E-Mail filtern…"
               value={auditFilter}
               onChange={(e) => setAuditFilter(e.target.value)}
-              style={{ background: "#0f172a", border: "1px solid #334155", borderRadius: 8, padding: "8px 12px", color: "#e2e8f0", fontSize: 13, minWidth: 200 }}
+              style={{ background: "#0f172a", border: "1px solid #334155", borderRadius: 8, padding: "8px 12px", color: "#e2e8f0", fontSize: fz(13), minWidth: 200 }}
             />
             <select
               value={auditTypeFilter}
               onChange={(e) => setAuditTypeFilter(e.target.value)}
-              style={{ background: "#0f172a", border: "1px solid #334155", borderRadius: 8, padding: "8px 12px", color: "#e2e8f0", fontSize: 13 }}
+              style={{ background: "#0f172a", border: "1px solid #334155", borderRadius: 8, padding: "8px 12px", color: "#e2e8f0", fontSize: fz(13) }}
             >
               <option value="">Alle Typen</option>
               <option value="login">Login</option>
@@ -519,7 +520,7 @@ export default function OwnerDashboard() {
                 fetch(`/api/owner/audit-events?${params}`, { credentials: "include", headers: { "x-owner-key": ownerKey } })
                   .then(r => r.json()).then(setAuditEvents);
               }}
-              style={{ background: "#2563eb", color: "white", border: "none", borderRadius: 8, padding: "8px 16px", fontSize: 13, cursor: "pointer" }}
+              style={{ background: "#2563eb", color: "white", border: "none", borderRadius: 8, padding: "8px 16px", fontSize: fz(13), cursor: "pointer" }}
             >
               Aktualisieren
             </button>
@@ -528,12 +529,12 @@ export default function OwnerDashboard() {
             <p style={{ color: "#94a3b8" }}>Laden…</p>
           ) : (
             <>
-              <p style={{ fontSize: 12, color: "#64748b", marginBottom: 12 }}>
+              <p style={{ fontSize: fz(12), color: "#64748b", marginBottom: 12 }}>
                 {auditEvents.total ?? 0} Ereignisse gesamt · {auditEvents.events?.length ?? 0} angezeigt
               </p>
               <div style={{ maxHeight: 480, overflowY: "auto" }}>
                 {(auditEvents.events || []).map((ev: any) => (
-                  <div key={ev.id} style={{ display: "grid", gridTemplateColumns: "140px 120px 1fr", gap: 12, padding: "10px 0", borderBottom: "1px solid #0f172a", fontSize: 12 }}>
+                  <div key={ev.id} style={{ display: "grid", gridTemplateColumns: "140px 120px 1fr", gap: 12, padding: "10px 0", borderBottom: "1px solid #0f172a", fontSize: fz(12) }}>
                     <span style={{ color: "#64748b" }}>{ev.createdAt ? new Date(ev.createdAt).toLocaleString("de-DE") : "—"}</span>
                     <span style={{ color: "#f59e0b", fontWeight: 600 }}>{ev.eventType}</span>
                     <span style={{ color: "#e2e8f0" }}>
@@ -544,7 +545,7 @@ export default function OwnerDashboard() {
                   </div>
                 ))}
                 {(auditEvents.events || []).length === 0 && (
-                  <p style={{ color: "#64748b", fontSize: 13 }}>Noch keine Ereignisse protokolliert (nach Deploy werden neue Aktionen erfasst).</p>
+                  <p style={{ color: "#64748b", fontSize: fz(13) }}>Noch keine Ereignisse protokolliert (nach Deploy werden neue Aktionen erfasst).</p>
                 )}
               </div>
             </>
@@ -556,10 +557,10 @@ export default function OwnerDashboard() {
       {live && (
         <div style={{background:"#0f2744",border:"1px solid #1e40af",borderRadius:12,padding:"20px 24px",marginTop:24}}>
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:16}}>
-            <h3 style={{color:"#60a5fa",fontSize:16,fontWeight:700,margin:0}}>
+            <h3 style={{color:"#60a5fa",fontSize: fz(16),fontWeight:700,margin:0}}>
               🟢 Live-Monitoring
             </h3>
-            <span style={{fontSize:11,color:"#475569"}}>Aktualisiert: {new Date(live.now).toLocaleTimeString("de-DE")}</span>
+            <span style={{fontSize: fz(11),color:"#475569"}}>Aktualisiert: {new Date(live.now).toLocaleTimeString("de-DE")}</span>
           </div>
           <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:12,marginBottom:16}}>
             {[
@@ -569,29 +570,29 @@ export default function OwnerDashboard() {
               {label:"Heute aktiv", value: live.todayActive, color:"#f59e0b"},
             ].map((s,i) => (
               <div key={i} style={{background:"#1e293b",borderRadius:8,padding:"12px",textAlign:"center"}}>
-                <div style={{fontSize:24,fontWeight:900,color:s.color}}>{s.value}</div>
-                <div style={{fontSize:10,color:"#64748b",marginTop:4}}>{s.label}</div>
+                <div style={{fontSize: fz(24),fontWeight:900,color:s.color}}>{s.value}</div>
+                <div style={{fontSize: fz(10),color:"#64748b",marginTop:4}}>{s.label}</div>
               </div>
             ))}
           </div>
           {live.activeUsers?.length > 0 && (
             <div style={{marginBottom:12}}>
-              <div style={{fontSize:12,color:"#94a3b8",marginBottom:8,fontWeight:600}}>GERADE ONLINE:</div>
+              <div style={{fontSize: fz(12),color:"#94a3b8",marginBottom:8,fontWeight:600}}>GERADE ONLINE:</div>
               {live.activeUsers.map((u: any, i: number) => (
                 <div key={i} style={{display:"flex",alignItems:"center",gap:8,padding:"6px 0",borderBottom:"1px solid #1e293b"}}>
                   <div style={{width:8,height:8,borderRadius:"50%",background:"#10b981"}}/>
-                  <span style={{fontSize:12,color:"#e2e8f0",flex:1}}>{u.name || u.email}</span>
-                  <span style={{fontSize:10,color:"#64748b"}}>{u.email}</span>
-                  <span style={{fontSize:10,color:"#475569"}}>{u.enabledModules ? `M${u.enabledModules}` : "—"}</span>
+                  <span style={{fontSize: fz(12),color:"#e2e8f0",flex:1}}>{u.name || u.email}</span>
+                  <span style={{fontSize: fz(10),color:"#64748b"}}>{u.email}</span>
+                  <span style={{fontSize: fz(10),color:"#475569"}}>{u.enabledModules ? `M${u.enabledModules}` : "—"}</span>
                 </div>
               ))}
             </div>
           )}
           {live.newUsersToday?.length > 0 && (
             <div style={{marginBottom:12}}>
-              <div style={{fontSize:12,color:"#f59e0b",marginBottom:8,fontWeight:600}}>NEUE NUTZER HEUTE:</div>
+              <div style={{fontSize: fz(12),color:"#f59e0b",marginBottom:8,fontWeight:600}}>NEUE NUTZER HEUTE:</div>
               {live.newUsersToday.map((u: any, i: number) => (
-                <div key={i} style={{fontSize:12,color:"#fbbf24",padding:"3px 0"}}>
+                <div key={i} style={{fontSize: fz(12),color:"#fbbf24",padding:"3px 0"}}>
                   ✨ {u.name || u.email} — {new Date(u.createdAt).toLocaleTimeString("de-DE")}
                 </div>
               ))}
@@ -599,9 +600,9 @@ export default function OwnerDashboard() {
           )}
           {live.recentActivity?.length > 0 && (
             <div>
-              <div style={{fontSize:12,color:"#94a3b8",marginBottom:8,fontWeight:600}}>LETZTE AKTIVITÄTEN:</div>
+              <div style={{fontSize: fz(12),color:"#94a3b8",marginBottom:8,fontWeight:600}}>LETZTE AKTIVITÄTEN:</div>
               {live.recentActivity.slice(0,5).map((a: any, i: number) => (
-                <div key={i} style={{fontSize:11,color:"#64748b",padding:"2px 0"}}>
+                <div key={i} style={{fontSize: fz(11),color:"#64748b",padding:"2px 0"}}>
                   {new Date(a.openedAt).toLocaleTimeString("de-DE")} — {a.name || a.email} — Modul {a.moduleId} Tag {a.dayNumber}
                 </div>
               ))}
@@ -612,10 +613,10 @@ export default function OwnerDashboard() {
 
       {/* === INSPECT-LINK GENERATOR === */}
       <div style={{background:"#1e1b4b",border:"1px solid #4338ca",borderRadius:12,padding:"20px 24px",marginTop:24}}>
-        <h3 style={{color:"#a5b4fc",fontSize:16,fontWeight:600,marginBottom:4}}>
+        <h3 style={{color:"#a5b4fc",fontSize: fz(16),fontWeight:600,marginBottom:4}}>
           🔍 Inspect-Link Generator
         </h3>
-        <p style={{color:"#6366f1",fontSize:12,marginBottom:16}}>
+        <p style={{color:"#6366f1",fontSize: fz(12),marginBottom:16}}>
           Erstelle einen temporären Link für Investoren, Partner oder Tester — sie sehen alles, können aber nichts ändern.
         </p>
 
@@ -624,7 +625,7 @@ export default function OwnerDashboard() {
             <div style={{display:"flex",gap:8,marginBottom:12}}>
               {([48,72] as const).map(h => (
                 <button key={h} onClick={() => setInspectHours(h)}
-                  style={{padding:"8px 20px",borderRadius:8,fontSize:13,fontWeight:700,cursor:"pointer",
+                  style={{padding:"8px 20px",borderRadius:8,fontSize: fz(13),fontWeight:700,cursor:"pointer",
                     background: inspectHours===h ? "#4338ca" : "transparent",
                     color: inspectHours===h ? "white" : "#6366f1",
                     border: inspectHours===h ? "none" : "1px solid #4338ca"}}>
@@ -636,17 +637,17 @@ export default function OwnerDashboard() {
               onClick={createInspectLink}
               disabled={inspectLoading}
               style={{background:"#4338ca",color:"white",border:"none",padding:"10px 20px",
-                      borderRadius:8,fontSize:13,fontWeight:600,cursor:"pointer"}}>
+                      borderRadius:8,fontSize: fz(13),fontWeight:600,cursor:"pointer"}}>
               {inspectLoading ? "⏳ Erstelle Link..." : `🔑 ${inspectHours}h Inspect-Link erstellen`}
             </button>
           </div>
         ) : (
           <div>
             <div style={{background:"#312e81",borderRadius:8,padding:"12px 14px",marginBottom:10}}>
-              <div style={{color:"#c7d2fe",fontSize:11,marginBottom:6,fontWeight:500}}>
+              <div style={{color:"#c7d2fe",fontSize: fz(11),marginBottom:6,fontWeight:500}}>
                 🔗 Inspect-Link (gültig bis {inspectExpiry}):
               </div>
-              <div style={{color:"#a5b4fc",fontSize:11,wordBreak:"break-all",fontFamily:"monospace",lineHeight:1.6}}>
+              <div style={{color:"#a5b4fc",fontSize: fz(11),wordBreak:"break-all",fontFamily:"monospace",lineHeight:1.6}}>
                 {window.location.origin}/inspect/{inspectToken.slice(0,40)}...
               </div>
             </div>
@@ -654,18 +655,18 @@ export default function OwnerDashboard() {
               <button
                 onClick={copyInspectLink}
                 style={{background: inspectCopied ? "#065f46" : "#4338ca",color:"white",
-                        border:"none",padding:"8px 16px",borderRadius:8,fontSize:12,
+                        border:"none",padding:"8px 16px",borderRadius:8,fontSize: fz(12),
                         fontWeight:600,cursor:"pointer"}}>
                 {inspectCopied ? "✅ Kopiert!" : "📋 Link kopieren"}
               </button>
               <button
                 onClick={() => { setInspectToken(null); setInspectExpiry(null); }}
                 style={{background:"transparent",color:"#6366f1",border:"1px solid #4338ca",
-                        padding:"8px 16px",borderRadius:8,fontSize:12,cursor:"pointer"}}>
+                        padding:"8px 16px",borderRadius:8,fontSize: fz(12),cursor:"pointer"}}>
                 🔄 Neuen Link
               </button>
             </div>
-            <p style={{color:"#6366f1",fontSize:11,marginTop:8}}>
+            <p style={{color:"#6366f1",fontSize: fz(11),marginTop:8}}>
               ⚠️ Link gilt {inspectHours} Stunden · Startet auf Modul 1 · KI-Tutor deaktiviert · Keine Änderungen
             </p>
             <div style={{display:"flex",gap:8,flexWrap:"wrap",marginTop:10}}>
@@ -675,7 +676,7 @@ export default function OwnerDashboard() {
                 { href: "/warum-wir", label: "USP" },
                 { href: "/pakete", label: "Pakete" },
               ].map((l) => (
-                <a key={l.href} href={l.href} style={{ fontSize: 11, color: "#a5b4fc", textDecoration: "underline" }}>
+                <a key={l.href} href={l.href} style={{ fontSize: fz(11), color: "#a5b4fc", textDecoration: "underline" }}>
                   {l.label} →
                 </a>
               ))}
@@ -686,11 +687,11 @@ export default function OwnerDashboard() {
 
       {/* SCHNELLLINKS */}
       <div style={{background:"#1e293b",borderRadius:12,padding:20,border:"1px solid #334155",marginTop:20}}>
-        <h3 style={{margin:"0 0 16px",fontSize:16,color:"#f1f5f9",fontWeight:700}}>
+        <h3 style={{margin:"0 0 16px",fontSize: fz(16),color:"#f1f5f9",fontWeight:700}}>
           Schnelllinks
         </h3>
         <div style={{marginBottom:12}}>
-          <div style={{fontSize:11,color:"#94a3b8",marginBottom:6,fontWeight:700}}>KURS-LANDINGPAGES</div>
+          <div style={{fontSize: fz(11),color:"#94a3b8",marginBottom:6,fontWeight:700}}>KURS-LANDINGPAGES</div>
           <div style={{display:"flex",flexWrap:"wrap",gap:6}}>
             {[
               ["Modul 1 Grundkurs","/kurs/modul-1-immobilien-grundkurs"],
@@ -701,45 +702,45 @@ export default function OwnerDashboard() {
             ].map(([label,path]) => (
               <a key={path} href={path} target="_blank" rel="noreferrer"
                 style={{background:"#0f172a",color:"#60a5fa",border:"1px solid #1e3a5f",
-                  borderRadius:8,padding:"5px 10px",fontSize:11,textDecoration:"none"}}>
+                  borderRadius:8,padding:"5px 10px",fontSize: fz(11),textDecoration:"none"}}>
                 {label}
               </a>
             ))}
           </div>
         </div>
         <div style={{marginBottom:12}}>
-          <div style={{fontSize:11,color:"#94a3b8",marginBottom:6,fontWeight:700}}>OEFFENTLICHE SEITEN</div>
+          <div style={{fontSize: fz(11),color:"#94a3b8",marginBottom:6,fontWeight:700}}>OEFFENTLICHE SEITEN</div>
           <div style={{display:"flex",flexWrap:"wrap",gap:6}}>
             {[["Startseite","/"],["Kurse","/kurse"],["Pakete","/pakete"],["Glossar","/glossary"],["Foerderung","/foerderung"]].map(([label,path]) => (
               <a key={path} href={path} target="_blank" rel="noreferrer"
                 style={{background:"#0f172a",color:"#34d399",border:"1px solid #065f46",
-                  borderRadius:8,padding:"5px 10px",fontSize:11,textDecoration:"none"}}>
+                  borderRadius:8,padding:"5px 10px",fontSize: fz(11),textDecoration:"none"}}>
                 {label}
               </a>
             ))}
           </div>
         </div>
         <div style={{marginBottom:12}}>
-          <div style={{fontSize:11,color:"#94a3b8",marginBottom:6,fontWeight:700}}>ADMIN-BEREICHE</div>
+          <div style={{fontSize: fz(11),color:"#94a3b8",marginBottom:6,fontWeight:700}}>ADMIN-BEREICHE</div>
           <div style={{display:"flex",flexWrap:"wrap",gap:6}}>
             {[["Admin","/admin"],["Nutzer","/admin/nutzer"],["Fragen","/admin/fragen"],
               ["Glossar","/admin/glossar"],["Videos","/admin/videos"],
               ["White-Label","/admin/whitelabel"],["KI-Monitor","/admin/ki-monitor"]].map(([label,path]) => (
               <a key={path} href={path} target="_blank" rel="noreferrer"
                 style={{background:"#0f172a",color:"#f59e0b",border:"1px solid #78350f",
-                  borderRadius:8,padding:"5px 10px",fontSize:11,textDecoration:"none"}}>
+                  borderRadius:8,padding:"5px 10px",fontSize: fz(11),textDecoration:"none"}}>
                 {label}
               </a>
             ))}
           </div>
         </div>
         <div>
-          <div style={{fontSize:11,color:"#94a3b8",marginBottom:6,fontWeight:700}}>RECHTLICHES</div>
+          <div style={{fontSize: fz(11),color:"#94a3b8",marginBottom:6,fontWeight:700}}>RECHTLICHES</div>
           <div style={{display:"flex",flexWrap:"wrap",gap:6}}>
             {[["Impressum","/impressum"],["Datenschutz","/datenschutz"],["AGB","/agb"],["Widerruf","/widerruf"]].map(([label,path]) => (
               <a key={path} href={path} target="_blank" rel="noreferrer"
                 style={{background:"#0f172a",color:"#94a3b8",border:"1px solid #334155",
-                  borderRadius:8,padding:"5px 10px",fontSize:11,textDecoration:"none"}}>
+                  borderRadius:8,padding:"5px 10px",fontSize: fz(11),textDecoration:"none"}}>
                 {label}
               </a>
             ))}
