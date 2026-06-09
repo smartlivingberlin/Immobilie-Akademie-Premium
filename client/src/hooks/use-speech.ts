@@ -7,6 +7,11 @@ function loadPrefs(): Prefs {
   catch { return { rate:1, voiceURI:null, pitch:1 }; }
 }
 function savePrefs(p: Prefs) { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); } catch {} }
+export function splitSpeechChunks(text: string): string[] {
+  const cleaned = preparePronunciation(text);
+  return cleaned.match(/[^.!?]+[.!?]+|\S[\s\S]*$/g) ?? [cleaned];
+}
+
 export function preparePronunciation(text: string): string {
   let t = text;
   t = t.replace(/```[\s\S]*?```/g," "); t = t.replace(/[#>*_`~|]/g," ");
@@ -20,6 +25,8 @@ export function useSpeech() {
   const [state,setState]=useState<SpeechState>("idle");
   const [voices,setVoices]=useState<SpeechSynthesisVoice[]>([]);
   const [supported,setSupported]=useState(false);
+  const [activeChunkIndex,setActiveChunkIndex]=useState(-1);
+  const [speechChunks,setSpeechChunks]=useState<string[]>([]);
   const prefsRef=useRef<Prefs>(loadPrefs());
   useEffect(()=>{
     if(!("speechSynthesis" in window)) return;
@@ -31,18 +38,31 @@ export function useSpeech() {
   const speak=useCallback((text:string)=>{
     if(!supported||!text) return;
     const synth=window.speechSynthesis; synth.cancel();
-    const cleaned=preparePronunciation(text);
-    const chunks=cleaned.match(/[^.!?]+[.!?]+|\S[\s\S]*$/g)??[cleaned];
+    const chunks=splitSpeechChunks(text);
+    setSpeechChunks(chunks);
+    setActiveChunkIndex(chunks.length > 0 ? 0 : -1);
     const prefs=prefsRef.current;
     const voice=voices.find(v=>v.voiceURI===prefs.voiceURI)??voices.find(v=>v.lang.startsWith("de"));
     let i=0;
-    const next=()=>{ if(i>=chunks.length){setState("idle");return;} const u=new SpeechSynthesisUtterance(chunks[i]!); u.lang="de-DE"; if(voice) u.voice=voice; u.rate=prefs.rate; u.pitch=prefs.pitch; u.onend=()=>{i++;next();}; u.onerror=()=>setState("idle"); synth.speak(u); };
-    setState("playing"); next();
+    const next=()=>{
+      if(i>=chunks.length){ setState("idle"); setActiveChunkIndex(-1); return; }
+      setActiveChunkIndex(i);
+      const u=new SpeechSynthesisUtterance(chunks[i]!);
+      u.lang="de-DE";
+      if(voice) u.voice=voice;
+      u.rate=prefs.rate;
+      u.pitch=prefs.pitch;
+      u.onend=()=>{ i++; next(); };
+      u.onerror=()=>{ setState("idle"); setActiveChunkIndex(-1); };
+      synth.speak(u);
+    };
+    setState("playing");
+    next();
   },[voices,supported]);
   const pause=useCallback(()=>{ window.speechSynthesis.pause(); setState("paused"); },[]);
   const resume=useCallback(()=>{ window.speechSynthesis.resume(); setState("playing"); },[]);
-  const stop=useCallback(()=>{ window.speechSynthesis.cancel(); setState("idle"); },[]);
+  const stop=useCallback(()=>{ window.speechSynthesis.cancel(); setState("idle"); setActiveChunkIndex(-1); setSpeechChunks([]); },[]);
   const setRate=useCallback((rate:number)=>{ prefsRef.current={...prefsRef.current,rate}; savePrefs(prefsRef.current); },[]);
   const setVoice=useCallback((voiceURI:string|null)=>{ prefsRef.current={...prefsRef.current,voiceURI}; savePrefs(prefsRef.current); },[]);
-  return { state, supported, voices, speak, pause, resume, stop, setRate, setVoice, prefs:prefsRef.current };
+  return { state, supported, voices, speak, pause, resume, stop, setRate, setVoice, prefs:prefsRef.current, activeChunkIndex, speechChunks };
 }

@@ -6,7 +6,11 @@ export type AudioLesson = {
   title: string;
   moduleId: number;
   dayNumber: number;
+  /** Anzeige- und Vorlesetext (identische Quelle) */
   content: string;
+  /** Exakt dieser String wird vorgelesen (Titel + Inhalt) */
+  readAloudText: string;
+  source?: "module_day" | "knowledge";
 };
 
 const MAX_CONTENT_CHARS = 12_000;
@@ -62,12 +66,15 @@ export function parseKnowledgeFile(moduleId: number, baseDir?: string): AudioLes
       if (content.length < 80) continue;
 
       dayNumber++;
+      const body = content.slice(0, MAX_CONTENT_CHARS);
       lessons.push({
-        id: `${moduleId}-${dayNumber}`,
+        id: `${moduleId}-k-${dayNumber}`,
         title,
         moduleId,
         dayNumber,
-        content: content.slice(0, MAX_CONTENT_CHARS),
+        content: body,
+        readAloudText: `${title}. ${body}`,
+        source: "knowledge",
       });
     }
 

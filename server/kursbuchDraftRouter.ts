@@ -1,8 +1,7 @@
 import { Router } from "express";
-import { existsSync, readFileSync } from "fs";
-import { resolve } from "path";
 import { requireAuth } from "./authMiddleware";
 import { parseKnowledgeFile } from "./audioLessonParser";
+import { MODULE_CONTENT_FILES, extractDaysFromModuleFile } from "./moduleDayExtractor";
 
 const router = Router();
 
@@ -14,44 +13,13 @@ const MODULE_NAMES: Record<number, string> = {
   5: "Darlehensvermittler §34i GewO",
 };
 
-const CONTENT_FILES: Record<number, string[]> = {
-  1: ["client/src/pages/modules/Module1Content.ts"],
-  2: ["client/src/pages/modules/Module2ContentPart1_Maximal.ts", "client/src/pages/modules/Module2ContentPart2_Maximal.ts"],
-  3: ["client/src/pages/modules/Module3Content_Maximal.ts", "client/src/pages/modules/Module3Content_Maximal_Part2_Extended.ts"],
-  4: ["client/src/pages/modules/Module4Content_Maximal.ts", "client/src/pages/modules/Module4Content_Valuation_Maximalist.ts"],
-  5: ["client/src/pages/modules/Module5Content_34i_Complete.ts"],
-};
-
 function extractModulePairs(moduleId: number): string[] {
   const pairs: string[] = [];
-  for (const file of CONTENT_FILES[moduleId] || []) {
-    const filePath = resolve(file);
-    if (!existsSync(filePath)) continue;
-    const raw = readFileSync(filePath, "utf8");
-    let currentTitle = "";
-    let currentTheory = "";
-    let currentPractice = "";
-    let currentTask = "";
-    for (const line of raw.split("\n")) {
-      const tMatch = line.match(/title:\s*["`'](.+?)["`']/);
-      const thMatch = line.match(/theory:\s*["`'](.+?)["`']/);
-      const prMatch = line.match(/practice:\s*["`'](.+?)["`']/);
-      const taMatch = line.match(/task:\s*["`'](.+?)["`']/);
-      if (tMatch) currentTitle = tMatch[1];
-      if (thMatch) currentTheory = thMatch[1];
-      if (prMatch) currentPractice = prMatch[1];
-      if (taMatch) {
-        currentTask = taMatch[1];
-        if (currentTitle && currentTheory) {
-          pairs.push(
-            `### ${currentTitle}\n\n**Theorie:** ${currentTheory}\n\n**Praxis:** ${currentPractice}\n\n**Aufgabe:** ${currentTask}`,
-          );
-        }
-        currentTitle = "";
-        currentTheory = "";
-        currentPractice = "";
-        currentTask = "";
-      }
+  for (const file of MODULE_CONTENT_FILES[moduleId] || []) {
+    for (const day of extractDaysFromModuleFile(file)) {
+      pairs.push(
+        `### ${day.title}\n\n**Theorie:** ${day.theory}\n\n${day.extendedTheory ? `**Vertiefung:** ${day.extendedTheory}\n\n` : ""}**Praxis:** ${day.practice}`,
+      );
     }
   }
   return pairs;
