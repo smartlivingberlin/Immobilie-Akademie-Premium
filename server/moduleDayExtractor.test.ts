@@ -24,4 +24,13 @@ describe("moduleDayExtractor", () => {
     const first = lessons[0];
     expect(first.readAloudText).toBe(`${first.title}. ${first.content}`);
   });
+
+  it("extrahiert Modul-3 mit durchgehenden Lerntagen 4–22", () => {
+    const lessons = parseModuleDayLessons(3);
+    const dayNumbers = lessons.map((l) => l.dayNumber);
+    expect(lessons.length).toBeGreaterThanOrEqual(40);
+    for (let day = 4; day <= 22; day++) {
+      expect(dayNumbers).toContain(day);
+    }
+  });
 });

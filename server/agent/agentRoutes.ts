@@ -176,12 +176,21 @@ export function registerAgentRoutes(app: Express) {
     try {
       const { frage, aufgabe, nachrichten } = req.body as {
         frage?: string;
-        aufgabe?: { titel?: string; bereich?: string; berufssituation?: string };
+        aufgabe?: { id?: number; titel?: string; bereich?: string; berufssituation?: string };
         nachrichten?: Array<{ rolle?: string; text?: string }>;
       };
 
       const cleanQuestion = String(frage || "").trim();
       if (!cleanQuestion) return res.status(400).json({ error: "frage erforderlich" });
+
+      const { hasFullRechenpraxisAccess, isFreemiumRechenpraxisTask } = await import("../../shared/rechenpraxisAccess");
+      const userModules = req.user?.enabledModules || "";
+      const userRole = req.user?.role;
+      const taskId = typeof aufgabe?.id === "number" ? aufgabe.id : null;
+      const fullAccess = hasFullRechenpraxisAccess(userModules, userRole);
+      if (!fullAccess && (taskId === null || !isFreemiumRechenpraxisTask(taskId))) {
+        return res.status(403).json({ error: "KI-Assistent nur für freigeschaltete Aufgaben verfügbar" });
+      }
       if (cleanQuestion.length > 1200) return res.status(400).json({ error: "frage zu lang" });
 
       const apiKey = process.env.ANTHROPIC_API_KEY;

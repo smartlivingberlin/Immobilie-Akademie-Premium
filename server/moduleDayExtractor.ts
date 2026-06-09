@@ -10,7 +10,12 @@ export const MODULE_CONTENT_FILES: Record<number, string[]> = {
   ],
   3: [
     "client/src/pages/modules/Module3Content_Maximal.ts",
+    "client/src/pages/modules/Module3Content_Maximal_Part2.ts",
     "client/src/pages/modules/Module3Content_Maximal_Part2_Extended.ts",
+    "client/src/pages/modules/Module3Content_Maximal_Part3.ts",
+    "client/src/pages/modules/Module3Content_Maximal_Part3_Extended.ts",
+    "client/src/pages/modules/Module3Content_Maximal_Part4.ts",
+    "client/src/pages/modules/Module3Content_Maximal_MissingDays.ts",
   ],
   4: [
     "client/src/pages/modules/Module4Content_Maximal.ts",

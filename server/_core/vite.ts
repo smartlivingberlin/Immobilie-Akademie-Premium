@@ -89,10 +89,11 @@ async function authorizeRechenpraxisData(req: Request, res: Response, next: Next
       }
 
       const rawModules = user?.enabledModules || (payload as any).enabledModules || "";
-      const tokens = String(rawModules).split(",").map((m: string) => m.trim()).filter(Boolean);
-      if (tokens.includes(RECHENPRAXIS_MODULE_SENTINEL)) return next();
-      const enabledModules = tokens.map((m: string) => parseInt(m, 10)).filter((n: number) => !isNaN(n));
-      if ([1, 2, 3, 4, 5].some((m) => enabledModules.includes(m))) return next();
+      const { hasFullRechenpraxisAccess } = await import("../../shared/rechenpraxisAccess");
+      if (hasFullRechenpraxisAccess(rawModules, user?.role ?? (payload as any).role)) return next();
+
+      // Freemium: eingeloggte Nutzer ohne Vollabo dürfen JSON laden (Client sperrt Premium-Aufgaben)
+      return next();
     }
 
     res.status(403).json({ error: "Rechenpraxis nicht freigeschaltet" });

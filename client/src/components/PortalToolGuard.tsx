@@ -4,7 +4,14 @@ import { isAccessExpired } from "@shared/accessPolicy";
 import RenewalPaywall from "@/components/RenewalPaywall";
 
 /** Mindestens ein Modul + gültiger Zugang (Rechenpraxis, Rechner, Tools). */
-export default function PortalToolGuard({ children }: { children: React.ReactNode }) {
+export default function PortalToolGuard({
+  children,
+  freemiumAccess = false,
+}: {
+  children: React.ReactNode;
+  /** Eingeloggte Nutzer ohne Modulzugang (z. B. 10 WEG-Aufgaben gratis) */
+  freemiumAccess?: boolean;
+}) {
   const { user, loading } = useAuth();
 
   if (isInspectModeSync()) return <>{children}</>;
@@ -43,7 +50,7 @@ export default function PortalToolGuard({ children }: { children: React.ReactNod
     );
   }
 
-  if (modules.length === 0) {
+  if (modules.length === 0 && !freemiumAccess) {
     return (
       <div className="max-w-md mx-auto py-16 px-4 text-center">
         <h2 className="text-xl font-bold text-slate-900 mb-2">Kurszugang erforderlich</h2>

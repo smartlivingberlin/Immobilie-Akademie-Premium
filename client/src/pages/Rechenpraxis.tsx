@@ -1,8 +1,15 @@
-import { useState, useRef, useEffect, useMemo } from "react";
-import { Calculator, ChevronRight, ChevronDown, Send, RotateCcw, CheckCircle2, ArrowLeft, BookOpen, Lightbulb, MessageCircle } from "lucide-react";
+import { useState, useRef, useEffect, useMemo, useCallback } from "react";
+import { Calculator, ChevronRight, ChevronDown, Send, RotateCcw, CheckCircle2, ArrowLeft, BookOpen, Lightbulb, MessageCircle, Lock } from "lucide-react";
 import { LoadingHandler } from "@/components/LoadingHandler";
 import { SkeletonCard } from "@/components/ui/SkeletonCard";
-import { SkeletonText } from "@/components/ui/SkeletonText";
+import { useAuth } from "@/_core/hooks/useAuth";
+import { getWrongAnswerFeedback } from "@shared/rechenpraxisErrorCatalog";
+import {
+  hasFullRechenpraxisAccess,
+  isFreemiumRechenpraxisTask,
+  RECHENPRAXIS_FREEMIUM_TASK_IDS,
+} from "@shared/rechenpraxisAccess";
+import { RECHENPRAXIS_STANDALONE_MONTHLY_EUR } from "@shared/rechenpraxisProduct";
 
 // ─── TYPEN ───────────────────────────────────────────────────────────────────
 
@@ -40,7 +47,7 @@ interface Aufgabe {
 
 interface KiNachricht { rolle: "user" | "assistant"; text: string }
 
-function KiAssistent({ aufgabe }: { aufgabe: Aufgabe }) {
+function KiAssistent({ aufgabe, enabled }: { aufgabe: Aufgabe; enabled: boolean }) {
   const [offen, setOffen] = useState(false);
   const [nachrichten, setNachrichten] = useState<KiNachricht[]>([]);
   const [eingabe, setEingabe] = useState("");
@@ -52,7 +59,7 @@ function KiAssistent({ aufgabe }: { aufgabe: Aufgabe }) {
   }, [nachrichten]);
 
   const sende = async () => {
-    if (!eingabe.trim() || laden) return;
+    if (!enabled || !eingabe.trim() || laden) return;
     const frage = eingabe.trim();
     setEingabe("");
     setNachrichten(prev => [...prev, { rolle: "user", text: frage }]);
@@ -65,6 +72,7 @@ function KiAssistent({ aufgabe }: { aufgabe: Aufgabe }) {
         body: JSON.stringify({
           frage,
           aufgabe: {
+            id: aufgabe.id,
             titel: aufgabe.titel,
             bereich: aufgabe.bereich,
             berufssituation: aufgabe.berufssituation,
@@ -83,9 +91,26 @@ function KiAssistent({ aufgabe }: { aufgabe: Aufgabe }) {
     setLaden(false);
   };
 
+  if (!enabled) {
+    return (
+      <div style={{ border: "0.5px solid var(--color-border-tertiary)", borderRadius: "var(--border-radius-lg)", padding: "1rem 1.25rem", background: "var(--color-background-secondary)" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+          <Lock size={15} style={{ color: "var(--color-text-secondary)" }} aria-hidden="true" />
+          <span style={{ fontSize: 14, fontWeight: 500, color: "var(--color-text-primary)" }}>KI-Assistent — Premium</span>
+        </div>
+        <p style={{ fontSize: 13, color: "var(--color-text-secondary)", margin: 0, lineHeight: 1.6 }}>
+          Der KI-Assistent ist ab Rechenpraxis Solo ({RECHENPRAXIS_STANDALONE_MONTHLY_EUR} €/Mo) oder Modulkauf verfügbar.
+        </p>
+        <a href="/rechenpraxis-preise" style={{ display: "inline-block", marginTop: 10, fontSize: 13, color: "var(--color-text-info)" }}>
+          Jetzt freischalten →
+        </a>
+      </div>
+    );
+  }
+
   return (
     <div style={{ border: "0.5px solid var(--color-border-tertiary)", borderRadius: "var(--border-radius-lg)", overflow: "hidden" }}>
-      <button onClick={() => setOffen(!offen)} style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0.875rem 1.25rem", background: "var(--color-background-secondary)", border: "none", cursor: "pointer", color: "var(--color-text-primary)" }}>
+      <button onClick={() => setOffen(!offen)} style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0.875rem 1.25rem", background: "var(--color-background-secondary)", border: "none", cursor: "pointer", color: "var(--color-text-primary)", minHeight: 44 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <MessageCircle size={16} style={{ color: "var(--color-text-info)" }} aria-hidden="true" />
           <span style={{ fontSize: 14, fontWeight: 500 }}>Frage stellen — KI-Assistent</span>
@@ -151,9 +176,20 @@ function markAufgabeCompleted(id: number): void {
 
 // ─── AUFGABEN-ANSICHT ─────────────────────────────────────────────────────────
 
-function AufgabenAnsicht({ aufgabe, onZurueck, onComplete }: { aufgabe: Aufgabe; onZurueck: () => void; onComplete: () => void }) {
+function AufgabenAnsicht({
+  aufgabe,
+  onZurueck,
+  onComplete,
+  kiEnabled,
+}: {
+  aufgabe: Aufgabe;
+  onZurueck: () => void;
+  onComplete: () => void;
+  kiEnabled: boolean;
+}) {
   const [antworten, setAntworten] = useState<Record<number, string>>({});
   const [status, setStatus] = useState<Record<number, "offen" | "richtig" | "falsch">>({});
+  const [fehlerFeedback, setFehlerFeedback] = useState<Record<number, ReturnType<typeof getWrongAnswerFeedback>>>({});
   const [zeigeMusser, setZeigeMusser] = useState<Record<number, boolean>>({});
   const [abgeschlossen, setAbgeschlossen] = useState(false);
 
@@ -168,22 +204,36 @@ function AufgabenAnsicht({ aufgabe, onZurueck, onComplete }: { aufgabe: Aufgabe;
   }, [alleRichtig, abgeschlossen, aufgabe.id, onComplete]);
 
   const pruefe = (schritt: Schritt) => {
-    const eingabe = parseFloat(antworten[schritt.nr]?.replace(",", ".").replace(/\./g, match => match) || "0");
+    const raw = antworten[schritt.nr] || "";
+    const eingabe = parseFloat(raw.replace(",", ".").replace(/\./g, (match) => match) || "0");
     const toleranz = schritt.toleranz ?? 0.01;
     const diff = Math.abs(eingabe - schritt.korrekt);
     const ok = toleranz === 0 ? eingabe === schritt.korrekt : diff <= Math.max(toleranz, Math.abs(schritt.korrekt) * 0.005);
     setStatus(prev => ({ ...prev, [schritt.nr]: ok ? "richtig" : "falsch" }));
+    if (!ok) {
+      setFehlerFeedback(prev => ({
+        ...prev,
+        [schritt.nr]: getWrongAnswerFeedback(schritt, raw, aufgabe.bereich),
+      }));
+    } else {
+      setFehlerFeedback(prev => {
+        const next = { ...prev };
+        delete next[schritt.nr];
+        return next;
+      });
+    }
   };
 
   const reset = () => {
     setAntworten({});
     setStatus({});
+    setFehlerFeedback({});
     setZeigeMusser({});
     setAbgeschlossen(false);
   };
 
   return (
-    <div style={{ maxWidth: 800, margin: "0 auto" }}>
+    <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 0.25rem" }}>
       <button onClick={onZurueck} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, color: "var(--color-text-secondary)", background: "none", border: "none", cursor: "pointer", marginBottom: "1.5rem", padding: 0 }}>
         <ArrowLeft size={14} aria-hidden="true" /> Zurück zur Übersicht
       </button>
@@ -239,26 +289,37 @@ function AufgabenAnsicht({ aufgabe, onZurueck, onComplete }: { aufgabe: Aufgabe;
                     <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
                       <input
                         type="text"
+                        inputMode="decimal"
                         value={antworten[schritt.nr] || ""}
                         onChange={e => { setAntworten(prev => ({ ...prev, [schritt.nr]: e.target.value })); setStatus(prev => ({ ...prev, [schritt.nr]: "offen" })); }}
                         onKeyDown={e => e.key === "Enter" && pruefe(schritt)}
                         placeholder="Ihre Berechnung..."
                         disabled={st === "richtig"}
-                        style={{ width: 160, fontFamily: "var(--font-mono)", fontSize: 15, borderColor: st === "falsch" ? "var(--color-border-danger)" : st === "richtig" ? "var(--color-border-success)" : undefined }}
+                        style={{ width: "min(160px, 100%)", minHeight: 44, fontFamily: "var(--font-mono)", fontSize: 15, borderColor: st === "falsch" ? "var(--color-border-danger)" : st === "richtig" ? "var(--color-border-success)" : undefined }}
                       />
                       {schritt.einheit && <span style={{ fontSize: 14, color: "var(--color-text-secondary)" }}>{schritt.einheit}</span>}
-                      <button onClick={() => pruefe(schritt)} disabled={st === "richtig" || !antworten[schritt.nr]} style={{ fontSize: 14, padding: "8px 16px", borderRadius: "var(--border-radius-md)", cursor: "pointer" }}>
+                      <button onClick={() => pruefe(schritt)} disabled={st === "richtig" || !antworten[schritt.nr]} style={{ fontSize: 14, padding: "10px 16px", borderRadius: "var(--border-radius-md)", cursor: "pointer", minHeight: 44 }}>
                         Prüfen
                       </button>
-                      <button onClick={() => setZeigeMusser(prev => ({ ...prev, [schritt.nr]: !prev[schritt.nr] }))} style={{ fontSize: 13, padding: "8px 12px", borderRadius: "var(--border-radius-md)", cursor: "pointer", color: "var(--color-text-secondary)" }}>
+                      <button onClick={() => setZeigeMusser(prev => ({ ...prev, [schritt.nr]: !prev[schritt.nr] }))} style={{ fontSize: 13, padding: "10px 12px", borderRadius: "var(--border-radius-md)", cursor: "pointer", color: "var(--color-text-secondary)", minHeight: 44 }}>
                         {zeigeMusser[schritt.nr] ? "Tipp ausblenden" : "Tipp anzeigen"}
                       </button>
                     </div>
 
-                    {st === "falsch" && (
+                    {st === "falsch" && fehlerFeedback[schritt.nr] && (
                       <div style={{ marginTop: "0.75rem", display: "flex", alignItems: "flex-start", gap: 8, padding: "10px 14px", background: "var(--color-background-danger)", borderRadius: "var(--border-radius-md)" }}>
                         <Lightbulb size={15} style={{ color: "var(--color-text-danger)", flexShrink: 0, marginTop: 2 }} aria-hidden="true" />
-                        <span style={{ fontSize: 13, color: "var(--color-text-danger)", lineHeight: 1.6 }}>Noch nicht ganz. Überprüfen Sie Ihre Rechnung. Nutzen Sie den Tipp wenn Sie nicht weiterkommen.</span>
+                        <div style={{ fontSize: 13, color: "var(--color-text-danger)", lineHeight: 1.6 }}>
+                          <div>{fehlerFeedback[schritt.nr].message}</div>
+                          {fehlerFeedback[schritt.nr].hint && (
+                            <div style={{ marginTop: 6, color: "var(--color-text-secondary)" }}>{fehlerFeedback[schritt.nr].hint}</div>
+                          )}
+                          {fehlerFeedback[schritt.nr].moduleHref && (
+                            <a href={fehlerFeedback[schritt.nr].moduleHref} style={{ display: "inline-block", marginTop: 8, color: "var(--color-text-info)" }}>
+                              Zum Kurs: {fehlerFeedback[schritt.nr].moduleLabel} →
+                            </a>
+                          )}
+                        </div>
                       </div>
                     )}
 
@@ -300,7 +361,7 @@ function AufgabenAnsicht({ aufgabe, onZurueck, onComplete }: { aufgabe: Aufgabe;
         </div>
       )}
 
-      <KiAssistent aufgabe={aufgabe} />
+      <KiAssistent aufgabe={aufgabe} enabled={kiEnabled} />
 
       <div style={{ display: "flex", gap: 8, marginTop: "1rem" }}>
         <button onClick={reset} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, padding: "8px 14px", borderRadius: "var(--border-radius-md)", cursor: "pointer", color: "var(--color-text-secondary)" }}>
@@ -316,14 +377,34 @@ function AufgabenAnsicht({ aufgabe, onZurueck, onComplete }: { aufgabe: Aufgabe;
 import PortalToolGuard from "@/components/PortalToolGuard";
 
 function RechenpraxisPage() {
+  const { user } = useAuth();
   const [AUFGABEN, setAUFGABEN] = useState<Aufgabe[]>([]);
   const [aufgabenGeladen, setAufgabenGeladen] = useState(false);
   const [completedIds, setCompletedIds] = useState<Set<number>>(() => getCompletedIds());
+  const [paywallHinweis, setPaywallHinweis] = useState<string | null>(null);
+  const fullAccess = useMemo(
+    () => hasFullRechenpraxisAccess(user?.enabledModules, user?.role),
+    [user?.enabledModules, user?.role],
+  );
+  const taskAccessible = useCallback(
+    (id: number) => fullAccess || isFreemiumRechenpraxisTask(id),
+    [fullAccess],
+  );
   const BEREICHE = useMemo(() => [...new Set(AUFGABEN.map(a => a.bereich))], [AUFGABEN]);
   const completedCount = useMemo(
     () => AUFGABEN.filter((a) => completedIds.has(a.id)).length,
     [AUFGABEN, completedIds],
   );
+  const bereichStats = useMemo(() => {
+    const stats = new Map<string, { total: number; done: number }>();
+    for (const a of AUFGABEN) {
+      const cur = stats.get(a.bereich) || { total: 0, done: 0 };
+      cur.total += 1;
+      if (completedIds.has(a.id)) cur.done += 1;
+      stats.set(a.bereich, cur);
+    }
+    return stats;
+  }, [AUFGABEN, completedIds]);
 
   useEffect(() => {
     fetch("/data/rechenpraxis.json")
@@ -359,14 +440,33 @@ function RechenpraxisPage() {
   );
 
   return (
-    <PortalToolGuard>
+    <PortalToolGuard freemiumAccess>
     <LoadingHandler
       isLoading={isLoading}
       skeleton={practiceSkeleton}
     >
-    <div style={{ maxWidth: 900, margin: "0 auto", padding: "2rem 1rem" }}>
+    <div style={{ maxWidth: 900, margin: "0 auto", padding: "clamp(1rem, 4vw, 2rem) clamp(0.75rem, 3vw, 1rem)" }}>
         {!aktiveAufgabe ? (
           <>
+            {!fullAccess && (
+              <div style={{ marginBottom: "1.25rem", padding: "1rem 1.25rem", borderRadius: "var(--border-radius-lg)", background: "var(--color-background-info)", border: "0.5px solid var(--color-border-tertiary)" }}>
+                <div style={{ fontSize: 14, fontWeight: 500, color: "var(--color-text-primary)", marginBottom: 4 }}>
+                  Gratis-Vorschau: {RECHENPRAXIS_FREEMIUM_TASK_IDS.length} WEG-Aufgaben
+                </div>
+                <p style={{ fontSize: 13, color: "var(--color-text-secondary)", margin: 0, lineHeight: 1.6 }}>
+                  Alle {AUFGABEN.length} Aufgaben inkl. KI-Assistent ab {RECHENPRAXIS_STANDALONE_MONTHLY_EUR} €/Mo oder Modulkauf.
+                  <a href="/rechenpraxis-preise" style={{ marginLeft: 6, color: "var(--color-text-info)" }}>Preise ansehen →</a>
+                </p>
+              </div>
+            )}
+
+            {paywallHinweis && (
+              <div style={{ marginBottom: "1rem", padding: "0.875rem 1rem", borderRadius: "var(--border-radius-md)", background: "var(--color-background-warning)", fontSize: 13, color: "var(--color-text-warning)" }}>
+                {paywallHinweis}
+                <button onClick={() => setPaywallHinweis(null)} style={{ marginLeft: 12, background: "none", border: "none", cursor: "pointer", fontSize: 12, color: "inherit" }}>Schließen</button>
+              </div>
+            )}
+
             <div style={{ marginBottom: "2rem" }}>
               <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "var(--color-background-info)", color: "var(--color-text-info)", fontSize: 12, fontWeight: 500, padding: "4px 12px", borderRadius: "var(--border-radius-md)", marginBottom: "1rem" }}>
                 <Calculator size={14} aria-hidden="true" /> Rechenpraxis · KI-gestützt
@@ -397,32 +497,48 @@ function RechenpraxisPage() {
               <button onClick={() => setAktiverBereich("alle")} style={{ fontSize: 13, padding: "6px 14px", borderRadius: "var(--border-radius-md)", cursor: "pointer", background: aktiverBereich === "alle" ? "var(--color-text-primary)" : undefined, color: aktiverBereich === "alle" ? "var(--color-background-primary)" : "var(--color-text-secondary)", border: aktiverBereich === "alle" ? "none" : undefined }}>
                 Alle ({AUFGABEN.length})
               </button>
-              {BEREICHE.map(b => (
-                <button key={b} onClick={() => setAktiverBereich(b)} style={{ fontSize: 13, padding: "6px 14px", borderRadius: "var(--border-radius-md)", cursor: "pointer", background: aktiverBereich === b ? "var(--color-text-primary)" : undefined, color: aktiverBereich === b ? "var(--color-background-primary)" : "var(--color-text-secondary)", border: aktiverBereich === b ? "none" : undefined }}>
-                  {b} ({AUFGABEN.filter(a => a.bereich === b).length})
-                </button>
-              ))}
+              {BEREICHE.map(b => {
+                const stat = bereichStats.get(b);
+                const done = stat?.done ?? 0;
+                const total = stat?.total ?? 0;
+                return (
+                  <button key={b} onClick={() => setAktiverBereich(b)} style={{ fontSize: 13, padding: "8px 14px", borderRadius: "var(--border-radius-md)", cursor: "pointer", background: aktiverBereich === b ? "var(--color-text-primary)" : undefined, color: aktiverBereich === b ? "var(--color-background-primary)" : "var(--color-text-secondary)", border: aktiverBereich === b ? "none" : undefined, minHeight: 36 }}>
+                    {b} ({done}/{total})
+                  </button>
+                );
+              })}
             </div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              {gefilterteAufgaben.map(aufgabe => (
-                <button key={aufgabe.id} onClick={() => setAktiveAufgabe(aufgabe)} style={{ display: "flex", alignItems: "flex-start", gap: 16, padding: "1rem 1.25rem", background: "var(--color-background-primary)", border: "0.5px solid var(--color-border-tertiary)", borderRadius: "var(--border-radius-lg)", cursor: "pointer", textAlign: "left", transition: "border-color 0.15s" }}
+              {gefilterteAufgaben.map(aufgabe => {
+                const locked = !taskAccessible(aufgabe.id);
+                return (
+                <button key={aufgabe.id} onClick={() => {
+                  if (locked) {
+                    setPaywallHinweis(`„${aufgabe.titel}" ist Teil des Vollzugangs. Gratis verfügbar: ${RECHENPRAXIS_FREEMIUM_TASK_IDS.length} WEG-Aufgaben.`);
+                    return;
+                  }
+                  setAktiveAufgabe(aufgabe);
+                }} style={{ display: "flex", alignItems: "flex-start", gap: 16, padding: "1rem 1.25rem", background: "var(--color-background-primary)", border: "0.5px solid var(--color-border-tertiary)", borderRadius: "var(--border-radius-lg)", cursor: "pointer", textAlign: "left", transition: "border-color 0.15s", opacity: locked ? 0.72 : 1, minHeight: 44 }}
                   onMouseEnter={e => (e.currentTarget.style.borderColor = "var(--color-border-secondary)")}
                   onMouseLeave={e => (e.currentTarget.style.borderColor = "var(--color-border-tertiary)")}>
-                  {completedIds.has(aufgabe.id)
+                  {locked
+                    ? <Lock size={18} style={{ color: "var(--color-text-tertiary)", flexShrink: 0, marginTop: 2 }} aria-hidden="true" />
+                    : completedIds.has(aufgabe.id)
                     ? <CheckCircle2 size={18} style={{ color: "var(--color-text-success)", flexShrink: 0, marginTop: 2 }} aria-hidden="true" />
                     : <Calculator size={18} style={{ color: "var(--color-text-info)", flexShrink: 0, marginTop: 2 }} aria-hidden="true" />}
-                  <div style={{ flex: 1 }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ fontSize: 15, fontWeight: 500, color: "var(--color-text-primary)", marginBottom: 4 }}>{aufgabe.titel}</div>
                     <div style={{ fontSize: 13, color: "var(--color-text-secondary)", marginBottom: 6, lineHeight: 1.5 }}>{aufgabe.berufssituation.slice(0, 120)}...</div>
                     <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                       <span style={{ fontSize: 11, background: "var(--color-background-info)", color: "var(--color-text-info)", padding: "2px 8px", borderRadius: "var(--border-radius-md)" }}>{aufgabe.bereich}</span>
                       <span style={{ fontSize: 11, color: "var(--color-text-tertiary)" }}>{aufgabe.schritte.length} Schritte</span>
+                      {locked && <span style={{ fontSize: 11, color: "var(--color-text-tertiary)" }}>Premium</span>}
                     </div>
                   </div>
                   <ChevronRight size={16} style={{ color: "var(--color-text-tertiary)", flexShrink: 0, marginTop: 4 }} aria-hidden="true" />
                 </button>
-              ))}
+              );})}
             </div>
           </>
         ) : (
@@ -430,6 +546,7 @@ function RechenpraxisPage() {
             aufgabe={aktiveAufgabe}
             onZurueck={() => setAktiveAufgabe(null)}
             onComplete={() => setCompletedIds(getCompletedIds())}
+            kiEnabled={fullAccess || isFreemiumRechenpraxisTask(aktiveAufgabe.id)}
           />
         )}
     </div>
