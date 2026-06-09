@@ -287,6 +287,8 @@ app.use(express.json({ limit: "1mb" }));
   registerKiStatsRoute(app);
   const { mountKiFairUseGate } = await import("../kiFairUseGate");
   mountKiFairUseGate(app);
+  const { mountAuditKiMiddleware } = await import("../auditMiddleware");
+  mountAuditKiMiddleware(app);
   const { mountGeneratorCacheGate } = await import("../generatorCacheGate");
   mountGeneratorCacheGate(app);
   registerRagTutorRoutes(app);

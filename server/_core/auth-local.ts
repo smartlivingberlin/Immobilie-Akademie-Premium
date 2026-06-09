@@ -231,6 +231,16 @@ export function registerLocalAuthRoutes(app: Express) {
     const cookieOptions = getSessionCookieOptions(req);
     res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
 
+    const registeredUser = await db.getUserByOpenId(openId);
+    const { auditRequestMeta, recordPlatformAudit } = await import("../platformAuditLog");
+    recordPlatformAudit({
+      eventType: "register",
+      actorUserId: registeredUser?.id,
+      actorEmail: email.toLowerCase().trim(),
+      actorRole: newUserRole,
+      ...auditRequestMeta(req),
+    });
+
     // Willkommens-E-Mail (fire & forget)
     try {
       const { Resend } = await import("resend");
@@ -376,6 +386,15 @@ export function registerLocalAuthRoutes(app: Express) {
     // Letzten Login aktualisieren
     await db.updateLastSignedIn(openId);
 
+    const { auditRequestMeta, recordPlatformAudit } = await import("../platformAuditLog");
+    recordPlatformAudit({
+      eventType: "login",
+      actorUserId: user.id,
+      actorEmail: user.email || email,
+      actorRole: user.role,
+      ...auditRequestMeta(req),
+    });
+
     clearInspectCookies(req, res);
     const token = await createSessionToken(openId, user.name || email, user.role || "user", user.enabledModules || "");
     const cookieOptions = getSessionCookieOptions(req);
@@ -388,7 +407,23 @@ export function registerLocalAuthRoutes(app: Express) {
    * POST /api/auth/logout
    * Löscht Session-Cookie.
    */
-  app.post("/api/auth/logout", (req: Request, res: Response) => {
+  app.post("/api/auth/logout", async (req: Request, res: Response) => {
+    try {
+      const { parse: parseCookie } = await import("cookie");
+      const cookies = parseCookie(req.headers.cookie ?? "");
+      const session = await verifySessionToken(cookies[COOKIE_NAME]);
+      if (session?.openId) {
+        const user = await db.getUserByOpenId(session.openId);
+        const { auditRequestMeta, recordPlatformAudit } = await import("../platformAuditLog");
+        recordPlatformAudit({
+          eventType: "logout",
+          actorUserId: user?.id,
+          actorEmail: user?.email || session.openId,
+          actorRole: user?.role,
+          ...auditRequestMeta(req),
+        });
+      }
+    } catch { /* ignore */ }
     clearAllAuthCookies(req, res);
     return res.json({ ok: true });
   });

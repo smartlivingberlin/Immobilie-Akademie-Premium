@@ -159,6 +159,17 @@ export const appRouter = router({
       }),
 
     logout: publicProcedure.mutation(({ ctx }) => {
+      if (ctx.user) {
+        void import("./platformAuditLog").then(({ auditRequestMeta, recordPlatformAudit }) => {
+          recordPlatformAudit({
+            eventType: "logout",
+            actorUserId: ctx.user!.id,
+            actorEmail: ctx.user!.email,
+            actorRole: ctx.user!.role,
+            ...auditRequestMeta(ctx.req),
+          });
+        });
+      }
       clearAllAuthCookies(ctx.req, ctx.res);
       return {
         success: true,
@@ -915,6 +926,17 @@ Antworte im folgenden JSON-Format:
           openedAt: new Date(),
           completed: false,
         });
+        const { auditRequestMeta, recordPlatformAudit } = await import("./platformAuditLog");
+        recordPlatformAudit({
+          eventType: "module_open",
+          actorUserId: ctx.user.id,
+          actorEmail: ctx.user.email,
+          actorRole: ctx.user.role,
+          resourceType: "module",
+          resourceId: `${input.moduleId}:${input.dayId}`,
+          meta: { moduleId: input.moduleId, dayId: input.dayId },
+          ...auditRequestMeta(ctx.req),
+        });
         const hdr = result as unknown as [{ insertId: number }, unknown]; return { logId: Number(hdr[0].insertId) };
       }),
     completeDayByIds: protectedProcedure
@@ -937,6 +959,17 @@ Antworte im folgenden JSON-Format:
             openedAt: new Date(), closedAt: new Date(), completed: true, durationSeconds: input.durationSeconds, heartbeatCount: 0
           });
         }
+        const { auditRequestMeta, recordPlatformAudit } = await import("./platformAuditLog");
+        recordPlatformAudit({
+          eventType: "module_complete",
+          actorUserId: ctx.user.id,
+          actorEmail: ctx.user.email,
+          actorRole: ctx.user.role,
+          resourceType: "module",
+          resourceId: `${input.moduleId}:${input.dayId}`,
+          meta: { moduleId: input.moduleId, dayId: input.dayId, durationSeconds: input.durationSeconds },
+          ...auditRequestMeta(ctx.req),
+        });
         return { ok: true };
       }),
     completeDay: protectedProcedure

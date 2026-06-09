@@ -71,6 +71,14 @@ export async function processStripeWebhookEvent(
   const result = await processModulePurchase(db, String(email), String(modules), productId);
   if (result) {
     logger.info("[Stripe Webhook] Freigeschaltet", { email, modules: result.merged });
+    const { recordPlatformAudit } = await import("./platformAuditLog");
+    recordPlatformAudit({
+      eventType: "stripe_purchase",
+      targetEmail: String(email).toLowerCase().trim(),
+      resourceType: "stripe",
+      resourceId: String(session.id || ""),
+      meta: { modules: result.merged, productId },
+    });
     return;
   }
 

@@ -58,6 +58,18 @@ export function registerOwnerRoutes(app: Express) {
     return false;
   };
 
+  const getOwnerActor = async (req: Request) => {
+    const session = await verifySessionToken(getCookieValue(req, COOKIE_NAME));
+    if (!session?.openId) return { actorEmail: "owner@system", actorRole: "admin" as const };
+    const { getUserByOpenId } = await import("./db");
+    const user = await getUserByOpenId(session.openId);
+    return {
+      actorUserId: user?.id,
+      actorEmail: user?.email || session.openId,
+      actorRole: user?.role || "admin",
+    };
+  };
+
 
   // ── TESTER-ZUGANG ─────────────────────────────────────────────
   app.post("/api/tester/request", async (req: Request, res: Response) => {
@@ -517,6 +529,14 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
       const { getDb } = await import("./db");
       const db = await getDb();
       await db.$client.query(`UPDATE users SET enabledModules = '' WHERE email = ?`, [email]);
+      const owner = await getOwnerActor(req);
+      const { auditRequestMeta, recordPlatformAudit } = await import("./platformAuditLog");
+      recordPlatformAudit({
+        eventType: "owner_lock",
+        ...owner,
+        targetEmail: email,
+        ...auditRequestMeta(req),
+      });
       res.json({ ok: true, msg: `${email} gesperrt` });
     } catch (e: any) { res.status(500).json({ error: e.message }); }
   });
@@ -530,6 +550,14 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
       const { getDb } = await import("./db");
       const db = await getDb();
       await db.$client.query(`UPDATE users SET enabledModules = '1,2,3,4,5' WHERE email = ?`, [email]);
+      const owner = await getOwnerActor(req);
+      const { auditRequestMeta, recordPlatformAudit } = await import("./platformAuditLog");
+      recordPlatformAudit({
+        eventType: "owner_unlock",
+        ...owner,
+        targetEmail: email,
+        ...auditRequestMeta(req),
+      });
       res.json({ ok: true, msg: `${email} freigeschaltet` });
     } catch (e: any) { res.status(500).json({ error: e.message }); }
   });
@@ -560,6 +588,16 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
       const token = await createSessionToken(user.openId, user.name || user.email);
       const cookieOptions = getSessionCookieOptions(req);
       res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
+      const owner = await getOwnerActor(req);
+      const { auditRequestMeta, recordPlatformAudit } = await import("./platformAuditLog");
+      recordPlatformAudit({
+        eventType: "owner_impersonate",
+        actorUserId: owner.actorUserId,
+        actorEmail: owner.actorEmail,
+        actorRole: owner.actorRole,
+        targetEmail: user.email,
+        ...auditRequestMeta(req),
+      });
       res.json({ ok: true, msg: `Eingeloggt als ${user.email}`, redirect: "/" });
     } catch (e: any) { res.status(500).json({ error: e.message }); }
   });
@@ -652,8 +690,36 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
       } else {
         await db.$client.query(`UPDATE users SET role = ? WHERE email = ?`, [role, email]);
       }
+      const owner = await getOwnerActor(req);
+      const { auditRequestMeta, recordPlatformAudit } = await import("./platformAuditLog");
+      recordPlatformAudit({
+        eventType: "owner_set_role",
+        actorUserId: owner.actorUserId,
+        actorEmail: owner.actorEmail,
+        actorRole: owner.actorRole,
+        targetEmail: email,
+        meta: { role },
+        ...auditRequestMeta(req),
+      });
       res.json({ ok: true, msg: `Rolle von ${email} auf ${role} gesetzt` });
     } catch (e: any) { res.status(500).json({ error: e.message }); }
+  });
+
+  // ── AUDIT TRAIL (Ereignisse) ─────────────────────────────────
+  app.get("/api/owner/audit-events", async (req: Request, res: Response) => {
+    if (!(await requireOwner(req, res))) return;
+    try {
+      const { queryPlatformAuditEvents } = await import("./platformAuditLog");
+      const limit = Number(req.query.limit || 50);
+      const offset = Number(req.query.offset || 0);
+      const eventType = req.query.eventType ? String(req.query.eventType) : undefined;
+      const email = req.query.email ? String(req.query.email) : undefined;
+      const sinceHours = req.query.sinceHours ? Number(req.query.sinceHours) : 168;
+      const data = await queryPlatformAuditEvents({ limit, offset, eventType, email, sinceHours });
+      res.json(data);
+    } catch (e: any) {
+      res.status(500).json({ error: e.message });
+    }
   });
 
   // ── AKTIVITAETS-LOG ──────────────────────────────────────────

@@ -62,10 +62,13 @@ export default function OwnerDashboard() {
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [live, setLive] = useState<any>(null);
   const [activity, setActivity] = useState<any>(null);
+  const [auditEvents, setAuditEvents] = useState<any>(null);
+  const [auditFilter, setAuditFilter] = useState("");
+  const [auditTypeFilter, setAuditTypeFilter] = useState("");
   const [statsData, setStatsData] = useState<any>(null);
   const [azavReport, setAzavReport] = useState<any>(null);
   const [azavLoading, setAzavLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState<"users"|"revenue"|"live"|"activity"|"stats"|"azav"|"settings"|"videos">("users");
+  const [activeTab, setActiveTab] = useState<"users"|"revenue"|"live"|"activity"|"events"|"stats"|"azav"|"settings"|"videos">("users");
   const [revenue, setRevenue] = useState<any>(null);
   const [settings, setSettings] = useState<Record<string,string>>({});
   const [settingsSaved, setSettingsSaved] = useState(false);
@@ -90,6 +93,9 @@ export default function OwnerDashboard() {
 
     fetch(`/api/owner/activity?key=${ownerKey}`, { credentials:"include", headers:{"x-owner-key":sessionStorage.getItem("ownerKey")||""} })
       .then(r => r.json()).then(setActivity).catch(()=>{});
+    fetch(`/api/owner/audit-events?key=${ownerKey}&limit=100&sinceHours=168`, {
+      credentials: "include", headers: { "x-owner-key": ownerKey },
+    }).then(r => r.json()).then(setAuditEvents).catch(() => {});
     // Stats laden
     fetch(`/api/owner/stats?key=${ownerKey}`, { credentials:"include", headers:{"x-owner-key":sessionStorage.getItem("ownerKey")||""} })
       .then(r => r.json()).then(setStatsData).catch(()=>{});
@@ -220,6 +226,7 @@ export default function OwnerDashboard() {
           {id:"azav", label:"🎓 AZAV"},
           {id:"live", label:"🟢 Live"},
           {id:"activity", label:"📋 Aktivität"},
+          {id:"events", label:"🛡️ Ereignisse"},
         ].map(t => (
           <button key={t.id} onClick={() => setActiveTab(t.id as any)}
             style={{background: activeTab===t.id ? "#3b82f6" : "#1e293b", color:"white", border: activeTab===t.id ? "none" : "1px solid #334155", padding:"8px 16px", borderRadius:8, cursor:"pointer", fontSize:13, fontWeight:600}}>
@@ -462,6 +469,81 @@ export default function OwnerDashboard() {
                 ⚖️ {azavReport.hinweis}
               </div>
             </div>
+          )}
+        </div>
+      )}
+
+      {/* ── TAB: AUDIT EVENTS ───────────────────────────── */}
+      {activeTab === "events" && (
+        <div style={{ background: "#1e293b", borderRadius: 12, padding: 24, marginBottom: 24, border: "1px solid #334155" }}>
+          <h3 style={{ margin: "0 0 8px", fontSize: 18, color: "#f59e0b" }}>🛡️ Ereignis-Protokoll</h3>
+          <p style={{ color: "#94a3b8", fontSize: 13, marginBottom: 16 }}>
+            Login, Logout, Modul-Check-in/out, KI-Aufrufe, Owner-Aktionen, Stripe-Käufe — letzte 7 Tage
+          </p>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
+            <input
+              type="text"
+              placeholder="E-Mail filtern…"
+              value={auditFilter}
+              onChange={(e) => setAuditFilter(e.target.value)}
+              style={{ background: "#0f172a", border: "1px solid #334155", borderRadius: 8, padding: "8px 12px", color: "#e2e8f0", fontSize: 13, minWidth: 200 }}
+            />
+            <select
+              value={auditTypeFilter}
+              onChange={(e) => setAuditTypeFilter(e.target.value)}
+              style={{ background: "#0f172a", border: "1px solid #334155", borderRadius: 8, padding: "8px 12px", color: "#e2e8f0", fontSize: 13 }}
+            >
+              <option value="">Alle Typen</option>
+              <option value="login">Login</option>
+              <option value="logout">Logout</option>
+              <option value="register">Registrierung</option>
+              <option value="module_open">Modul geöffnet</option>
+              <option value="module_complete">Modul abgeschlossen</option>
+              <option value="ki_call">KI-Aufruf</option>
+              <option value="owner_impersonate">Impersonate</option>
+              <option value="owner_lock">Sperren</option>
+              <option value="owner_unlock">Entsperren</option>
+              <option value="stripe_purchase">Stripe-Kauf</option>
+            </select>
+            <button
+              type="button"
+              onClick={() => {
+                const ownerKey = sessionStorage.getItem("ownerKey") || "";
+                const params = new URLSearchParams({ key: ownerKey, limit: "100", sinceHours: "168" });
+                if (auditFilter) params.set("email", auditFilter);
+                if (auditTypeFilter) params.set("eventType", auditTypeFilter);
+                fetch(`/api/owner/audit-events?${params}`, { credentials: "include", headers: { "x-owner-key": ownerKey } })
+                  .then(r => r.json()).then(setAuditEvents);
+              }}
+              style={{ background: "#2563eb", color: "white", border: "none", borderRadius: 8, padding: "8px 16px", fontSize: 13, cursor: "pointer" }}
+            >
+              Aktualisieren
+            </button>
+          </div>
+          {!auditEvents ? (
+            <p style={{ color: "#94a3b8" }}>Laden…</p>
+          ) : (
+            <>
+              <p style={{ fontSize: 12, color: "#64748b", marginBottom: 12 }}>
+                {auditEvents.total ?? 0} Ereignisse gesamt · {auditEvents.events?.length ?? 0} angezeigt
+              </p>
+              <div style={{ maxHeight: 480, overflowY: "auto" }}>
+                {(auditEvents.events || []).map((ev: any) => (
+                  <div key={ev.id} style={{ display: "grid", gridTemplateColumns: "140px 120px 1fr", gap: 12, padding: "10px 0", borderBottom: "1px solid #0f172a", fontSize: 12 }}>
+                    <span style={{ color: "#64748b" }}>{ev.createdAt ? new Date(ev.createdAt).toLocaleString("de-DE") : "—"}</span>
+                    <span style={{ color: "#f59e0b", fontWeight: 600 }}>{ev.eventType}</span>
+                    <span style={{ color: "#e2e8f0" }}>
+                      {ev.actorEmail || ev.targetEmail || "—"}
+                      {ev.targetEmail && ev.actorEmail && ev.targetEmail !== ev.actorEmail ? ` → ${ev.targetEmail}` : ""}
+                      {ev.resourceId ? ` · ${ev.resourceId}` : ""}
+                    </span>
+                  </div>
+                ))}
+                {(auditEvents.events || []).length === 0 && (
+                  <p style={{ color: "#64748b", fontSize: 13 }}>Noch keine Ereignisse protokolliert (nach Deploy werden neue Aktionen erfasst).</p>
+                )}
+              </div>
+            </>
           )}
         </div>
       )}
