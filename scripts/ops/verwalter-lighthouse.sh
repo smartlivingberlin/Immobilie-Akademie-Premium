@@ -28,6 +28,11 @@ if [[ -z "$CHROME" ]]; then
   exit 1
 fi
 
+if [[ "$(uname -m)" == "aarch64" || "$(uname -m)" == "arm64" ]]; then
+  echo "Hinweis: Lighthouse + Playwright-Chromium auf ARM/WSL oft nicht kompatibel."
+  echo "Nutze PageSpeed: https://pagespeed.web.dev/analysis?url=${BASE}"
+fi
+
 echo "Chrome: $CHROME"
 if ! "$CHROME" --version >/dev/null 2>&1; then
   echo "Chromium startet nicht — fehlende WSL-Libs?"
