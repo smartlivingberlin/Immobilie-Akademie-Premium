@@ -1,4 +1,4 @@
-import { describe, expect, it, beforeEach, afterEach } from "vitest";
+import { describe, expect, it, afterEach } from "vitest";
 import { existsSync, rmSync } from "fs";
 import { join } from "path";
 import {
@@ -17,8 +17,8 @@ describe("verwalterObjektStore", () => {
     if (existsSync(userFile)) rmSync(userFile);
   });
 
-  it("erstellt und listet Objekte", () => {
-    const obj = createObjekt(TEST_USER, {
+  it("erstellt und listet Objekte", async () => {
+    const obj = await createObjekt(TEST_USER, {
       name: "WEG Teststraße",
       adresse: "Test 1",
       plz: "10115",
@@ -28,12 +28,12 @@ describe("verwalterObjektStore", () => {
       verwalterAdresse: "Berlin",
     });
     expect(obj.id).toBeTruthy();
-    expect(listObjekte(TEST_USER)).toHaveLength(1);
-    expect(getObjekt(TEST_USER, obj.id)?.name).toBe("WEG Teststraße");
+    expect(await listObjekte(TEST_USER)).toHaveLength(1);
+    expect((await getObjekt(TEST_USER, obj.id))?.name).toBe("WEG Teststraße");
   });
 
-  it("aktualisiert und löscht", () => {
-    const obj = createObjekt(TEST_USER, {
+  it("aktualisiert und löscht", async () => {
+    const obj = await createObjekt(TEST_USER, {
       name: "WEG A",
       adresse: "A",
       plz: "1",
@@ -42,9 +42,9 @@ describe("verwalterObjektStore", () => {
       verwalterName: "V",
       verwalterAdresse: "V",
     });
-    updateObjekt(TEST_USER, obj.id, { name: "WEG B" });
-    expect(getObjekt(TEST_USER, obj.id)?.name).toBe("WEG B");
-    expect(deleteObjekt(TEST_USER, obj.id)).toBe(true);
-    expect(listObjekte(TEST_USER)).toHaveLength(0);
+    await updateObjekt(TEST_USER, obj.id, { name: "WEG B" });
+    expect((await getObjekt(TEST_USER, obj.id))?.name).toBe("WEG B");
+    expect(await deleteObjekt(TEST_USER, obj.id)).toBe(true);
+    expect(await listObjekte(TEST_USER)).toHaveLength(0);
   });
 });

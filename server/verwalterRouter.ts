@@ -45,28 +45,32 @@ function userId(req: { currentUser?: { id?: number } }): number {
   return id;
 }
 
-router.get("/api/verwalter/objekte", requireAuth, (req, res) => {
+router.get("/api/verwalter/objekte", requireAuth, async (req, res) => {
   try {
-    const objekte = listObjekte(userId(req as any));
+    const objekte = await listObjekte(userId(req as any));
     res.json({ success: true, objekte });
   } catch (e: any) {
     res.status(500).json({ error: e.message });
   }
 });
 
-router.get("/api/verwalter/objekte/:id", requireAuth, (req, res) => {
-  const obj = getObjekt(userId(req as any), String(req.params.id));
-  if (!obj) return res.status(404).json({ error: "Objekt nicht gefunden" });
-  res.json({ success: true, objekt: obj });
+router.get("/api/verwalter/objekte/:id", requireAuth, async (req, res) => {
+  try {
+    const obj = await getObjekt(userId(req as any), String(req.params.id));
+    if (!obj) return res.status(404).json({ error: "Objekt nicht gefunden" });
+    res.json({ success: true, objekt: obj });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
 });
 
-router.post("/api/verwalter/objekte", requireAuth, (req, res) => {
+router.post("/api/verwalter/objekte", requireAuth, async (req, res) => {
   try {
     const body = req.body ?? {};
     if (!body.name?.trim() || !body.adresse?.trim()) {
       return res.status(400).json({ error: "name und adresse erforderlich" });
     }
-    const objekt = createObjekt(userId(req as any), {
+    const objekt = await createObjekt(userId(req as any), {
       name: String(body.name).trim(),
       adresse: String(body.adresse).trim(),
       plz: String(body.plz || "").trim(),
@@ -85,56 +89,64 @@ router.post("/api/verwalter/objekte", requireAuth, (req, res) => {
   }
 });
 
-router.put("/api/verwalter/objekte/:id", requireAuth, (req, res) => {
-  const updated = updateObjekt(userId(req as any), String(req.params.id), req.body ?? {});
-  if (!updated) return res.status(404).json({ error: "Objekt nicht gefunden" });
-  res.json({ success: true, objekt: updated });
+router.put("/api/verwalter/objekte/:id", requireAuth, async (req, res) => {
+  try {
+    const updated = await updateObjekt(userId(req as any), String(req.params.id), req.body ?? {});
+    if (!updated) return res.status(404).json({ error: "Objekt nicht gefunden" });
+    res.json({ success: true, objekt: updated });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
 });
 
-router.delete("/api/verwalter/objekte/:id", requireAuth, (req, res) => {
-  const uid = userId(req as any);
-  const id = String(req.params.id);
-  deleteVorgaengeByObjekt(uid, id);
-  deleteBuchungenByObjekt(uid, id);
-  const ok = deleteObjekt(uid, id);
-  if (!ok) return res.status(404).json({ error: "Objekt nicht gefunden" });
-  res.json({ success: true });
-});
-
-router.get("/api/verwalter/dashboard", requireAuth, (req, res) => {
+router.delete("/api/verwalter/objekte/:id", requireAuth, async (req, res) => {
   try {
     const uid = userId(req as any);
-    const objekte = listObjekte(uid);
+    const id = String(req.params.id);
+    await deleteVorgaengeByObjekt(uid, id);
+    await deleteBuchungenByObjekt(uid, id);
+    const ok = await deleteObjekt(uid, id);
+    if (!ok) return res.status(404).json({ error: "Objekt nicht gefunden" });
+    res.json({ success: true });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+router.get("/api/verwalter/dashboard", requireAuth, async (req, res) => {
+  try {
+    const uid = userId(req as any);
+    const objekte = await listObjekte(uid);
     res.json({
       success: true,
       objekteCount: objekte.length,
-      openVorgaenge: countOpenVorgaenge(uid),
-      overdueVorgaenge: countOverdueVorgaenge(uid),
+      openVorgaenge: await countOpenVorgaenge(uid),
+      overdueVorgaenge: await countOverdueVorgaenge(uid),
     });
   } catch (e: any) {
     res.status(500).json({ error: e.message });
   }
 });
 
-router.get("/api/verwalter/vorgaenge", requireAuth, (req, res) => {
+router.get("/api/verwalter/vorgaenge", requireAuth, async (req, res) => {
   try {
     const objektId = req.query.objektId ? String(req.query.objektId) : undefined;
-    const vorgaenge = listVorgaenge(userId(req as any), objektId);
+    const vorgaenge = await listVorgaenge(userId(req as any), objektId);
     res.json({ success: true, vorgaenge });
   } catch (e: any) {
     res.status(500).json({ error: e.message });
   }
 });
 
-router.post("/api/verwalter/vorgaenge", requireAuth, (req, res) => {
+router.post("/api/verwalter/vorgaenge", requireAuth, async (req, res) => {
   try {
     const body = req.body ?? {};
     const uid = userId(req as any);
     const objektId = String(body.objektId || "").trim();
-    const obj = getObjekt(uid, objektId);
+    const obj = await getObjekt(uid, objektId);
     if (!obj) return res.status(400).json({ error: "Objekt nicht gefunden" });
 
-    const vorgang = createVorgang(uid, {
+    const vorgang = await createVorgang(uid, {
       objektId,
       objektName: obj.name,
       typ: body.typ || "sonstiges",
@@ -150,35 +162,43 @@ router.post("/api/verwalter/vorgaenge", requireAuth, (req, res) => {
   }
 });
 
-router.put("/api/verwalter/vorgaenge/:id", requireAuth, (req, res) => {
-  const updated = updateVorgang(userId(req as any), String(req.params.id), req.body ?? {});
-  if (!updated) return res.status(404).json({ error: "Vorgang nicht gefunden" });
-  res.json({ success: true, vorgang: updated });
+router.put("/api/verwalter/vorgaenge/:id", requireAuth, async (req, res) => {
+  try {
+    const updated = await updateVorgang(userId(req as any), String(req.params.id), req.body ?? {});
+    if (!updated) return res.status(404).json({ error: "Vorgang nicht gefunden" });
+    res.json({ success: true, vorgang: updated });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
 });
 
-router.delete("/api/verwalter/vorgaenge/:id", requireAuth, (req, res) => {
-  const ok = deleteVorgang(userId(req as any), String(req.params.id));
-  if (!ok) return res.status(404).json({ error: "Vorgang nicht gefunden" });
-  res.json({ success: true });
+router.delete("/api/verwalter/vorgaenge/:id", requireAuth, async (req, res) => {
+  try {
+    const ok = await deleteVorgang(userId(req as any), String(req.params.id));
+    if (!ok) return res.status(404).json({ error: "Vorgang nicht gefunden" });
+    res.json({ success: true });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
 });
 
-router.get("/api/verwalter/buchungen", requireAuth, (req, res) => {
+router.get("/api/verwalter/buchungen", requireAuth, async (req, res) => {
   try {
     const objektId = req.query.objektId ? String(req.query.objektId) : undefined;
     const periode = req.query.periode ? String(req.query.periode) : undefined;
-    const buchungen = listBuchungen(userId(req as any), { objektId, periode });
+    const buchungen = await listBuchungen(userId(req as any), { objektId, periode });
     res.json({ success: true, buchungen });
   } catch (e: any) {
     res.status(500).json({ error: e.message });
   }
 });
 
-router.post("/api/verwalter/buchungen", requireAuth, (req, res) => {
+router.post("/api/verwalter/buchungen", requireAuth, async (req, res) => {
   try {
     const body = req.body ?? {};
     const uid = userId(req as any);
     const objektId = String(body.objektId || "").trim();
-    const obj = getObjekt(uid, objektId);
+    const obj = await getObjekt(uid, objektId);
     if (!obj) return res.status(400).json({ error: "Objekt nicht gefunden" });
 
     let einheitNr: string | undefined;
@@ -186,7 +206,7 @@ router.post("/api/verwalter/buchungen", requireAuth, (req, res) => {
       einheitNr = obj.einheiten.find((e) => e.id === body.einheitId)?.nummer;
     }
 
-    const buchung = createBuchung(uid, {
+    const buchung = await createBuchung(uid, {
       objektId,
       objektName: obj.name,
       datum: String(body.datum || ""),
@@ -205,9 +225,9 @@ router.post("/api/verwalter/buchungen", requireAuth, (req, res) => {
   }
 });
 
-router.put("/api/verwalter/buchungen/:id", requireAuth, (req, res) => {
+router.put("/api/verwalter/buchungen/:id", requireAuth, async (req, res) => {
   try {
-    const updated = updateBuchung(userId(req as any), String(req.params.id), req.body ?? {});
+    const updated = await updateBuchung(userId(req as any), String(req.params.id), req.body ?? {});
     if (!updated) return res.status(404).json({ error: "Buchung nicht gefunden" });
     res.json({ success: true, buchung: updated });
   } catch (e: any) {
@@ -215,10 +235,14 @@ router.put("/api/verwalter/buchungen/:id", requireAuth, (req, res) => {
   }
 });
 
-router.delete("/api/verwalter/buchungen/:id", requireAuth, (req, res) => {
-  const ok = deleteBuchung(userId(req as any), String(req.params.id));
-  if (!ok) return res.status(404).json({ error: "Buchung nicht gefunden" });
-  res.json({ success: true });
+router.delete("/api/verwalter/buchungen/:id", requireAuth, async (req, res) => {
+  try {
+    const ok = await deleteBuchung(userId(req as any), String(req.params.id));
+    if (!ok) return res.status(404).json({ error: "Buchung nicht gefunden" });
+    res.json({ success: true });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
 });
 
 router.post("/api/verwalter/buchungen/vorschlagen", requireAuth, async (req, res) => {
@@ -230,7 +254,7 @@ router.post("/api/verwalter/buchungen/vorschlagen", requireAuth, async (req, res
     if (!text || !objektId) return res.status(400).json({ error: "text und objektId erforderlich" });
 
     const uid = userId(req as any);
-    const obj = getObjekt(uid, objektId);
+    const obj = await getObjekt(uid, objektId);
     if (!obj) return res.status(404).json({ error: "Objekt nicht gefunden" });
 
     const vorschlag = await suggestBuchung(text, obj, periode || new Date().toISOString().slice(0, 7));
@@ -245,7 +269,7 @@ router.post("/api/verwalter/buchungen/vorschlagen", requireAuth, async (req, res
   }
 });
 
-router.get("/api/verwalter/buchungen/plausibilitaet", requireAuth, (req, res) => {
+router.get("/api/verwalter/buchungen/plausibilitaet", requireAuth, async (req, res) => {
   try {
     const uid = userId(req as any);
     const objektId = String(req.query.objektId || "").trim();
@@ -253,9 +277,9 @@ router.get("/api/verwalter/buchungen/plausibilitaet", requireAuth, (req, res) =>
     if (!objektId || !periode) {
       return res.status(400).json({ error: "objektId und periode erforderlich" });
     }
-    const obj = getObjekt(uid, objektId);
+    const obj = await getObjekt(uid, objektId);
     if (!obj) return res.status(404).json({ error: "Objekt nicht gefunden" });
-    const buchungen = listBuchungen(uid, { objektId, periode });
+    const buchungen = await listBuchungen(uid, { objektId, periode });
     const hinweise = pruefeBuchungen(buchungen, obj, periode);
     res.json({
       success: true,
@@ -267,7 +291,7 @@ router.get("/api/verwalter/buchungen/plausibilitaet", requireAuth, (req, res) =>
   }
 });
 
-router.get("/api/verwalter/monatsabschluss", requireAuth, (req, res) => {
+router.get("/api/verwalter/monatsabschluss", requireAuth, async (req, res) => {
   try {
     const uid = userId(req as any);
     const objektId = String(req.query.objektId || "").trim();
@@ -275,15 +299,15 @@ router.get("/api/verwalter/monatsabschluss", requireAuth, (req, res) => {
     if (!objektId || !periode) {
       return res.status(400).json({ error: "objektId und periode erforderlich" });
     }
-    const obj = getObjekt(uid, objektId);
+    const obj = await getObjekt(uid, objektId);
     if (!obj) return res.status(404).json({ error: "Objekt nicht gefunden" });
-    const buchungen = listBuchungen(uid, { objektId, periode });
+    const buchungen = await listBuchungen(uid, { objektId, periode });
     const schritte = buildMonatsabschluss({
       objekt: obj,
       buchungen,
       periode,
-      openVorgaenge: countOpenVorgaenge(uid),
-      overdueVorgaenge: countOverdueVorgaenge(uid),
+      openVorgaenge: await countOpenVorgaenge(uid),
+      overdueVorgaenge: await countOverdueVorgaenge(uid),
     });
     res.json({ success: true, schritte });
   } catch (e: any) {
@@ -291,7 +315,7 @@ router.get("/api/verwalter/monatsabschluss", requireAuth, (req, res) => {
   }
 });
 
-router.get("/api/verwalter/export/datev-buchungen", requireAuth, (req, res) => {
+router.get("/api/verwalter/export/datev-buchungen", requireAuth, async (req, res) => {
   try {
     const uid = userId(req as any);
     const objektId = String(req.query.objektId || "").trim();
@@ -299,10 +323,10 @@ router.get("/api/verwalter/export/datev-buchungen", requireAuth, (req, res) => {
     if (!objektId || !periode) {
       return res.status(400).json({ error: "objektId und periode erforderlich" });
     }
-    const obj = getObjekt(uid, objektId);
+    const obj = await getObjekt(uid, objektId);
     if (!obj) return res.status(404).json({ error: "Objekt nicht gefunden" });
 
-    const buchungen = listBuchungen(uid, { objektId, periode });
+    const buchungen = await listBuchungen(uid, { objektId, periode });
     const hinweise = pruefeBuchungen(buchungen, obj, periode);
     const force = req.query.force === "1";
     if (hatPlausibilitaetsFehler(hinweise) && !force) {
@@ -321,9 +345,9 @@ router.get("/api/verwalter/export/datev-buchungen", requireAuth, (req, res) => {
   }
 });
 
-router.get("/api/verwalter/export/stammdaten-csv", requireAuth, (req, res) => {
+router.get("/api/verwalter/export/stammdaten-csv", requireAuth, async (req, res) => {
   try {
-    const objekte = listObjekte(userId(req as any));
+    const objekte = await listObjekte(userId(req as any));
     const csv = buildStammdatenCsv(objekte);
     res.setHeader("Content-Type", "text/csv; charset=utf-8");
     res.setHeader("Content-Disposition", 'attachment; filename="verwalter-stammdaten.csv"');
@@ -344,7 +368,7 @@ router.post("/api/verwalter/assistent", requireAuth, async (req, res) => {
     const seite = body.seite ? String(body.seite) : undefined;
     const objektId = body.objektId ? String(body.objektId) : undefined;
 
-    const contextBlock = buildVerwalterAssistentPrompt(uid, { seite, objektId });
+    const contextBlock = await buildVerwalterAssistentPrompt(uid, { seite, objektId });
 
     const history = Array.isArray(body.nachrichten)
       ? body.nachrichten
@@ -376,12 +400,12 @@ router.post("/api/verwalter/assistent", requireAuth, async (req, res) => {
       : new Date().toISOString().slice(0, 7);
 
     if (!resolvedObjektId) {
-      const objs = listObjekte(uid);
+      const objs = await listObjekte(uid);
       if (objs[0]) resolvedObjektId = objs[0].id;
     }
 
     if (resolvedObjektId && looksLikeBuchungsAnfrage(frage)) {
-      const obj = getObjekt(uid, resolvedObjektId);
+      const obj = await getObjekt(uid, resolvedObjektId);
       if (obj) {
         buchungsVorschlag = await suggestBuchung(frage, obj, periode);
       }
@@ -416,7 +440,7 @@ router.post("/api/verwalter/ki-brief", requireAuth, async (req, res) => {
     }
 
     if (objektId) {
-      const obj = getObjekt(userId(req as any), String(objektId));
+      const obj = await getObjekt(userId(req as any), String(objektId));
       if (obj) {
         const { objektToVorlageDefaults } = await import("../shared/verwalterObjektTypes");
         values = { ...objektToVorlageDefaults(obj), ...values };

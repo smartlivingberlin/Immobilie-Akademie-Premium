@@ -399,6 +399,67 @@ export const openQuestions = mysqlTable("open_questions", {
   modIdx: index("idx_oq_modulId").on(table.modulId),
 }));
 
+/** Verwalter Suite — Objekte, Vorgänge, Buchungen (ersetzt File-Store) */
+export const verwalterObjekte = mysqlTable("verwalter_objekte", {
+  id: varchar("id", { length: 12 }).primaryKey(),
+  userId: int("userId").notNull(),
+  name: varchar("name", { length: 255 }).notNull(),
+  adresse: varchar("adresse", { length: 512 }).notNull(),
+  plz: varchar("plz", { length: 16 }).notNull(),
+  ort: varchar("ort", { length: 128 }).notNull(),
+  einheitenAnzahl: int("einheitenAnzahl").default(0).notNull(),
+  verwalterName: varchar("verwalterName", { length: 255 }).notNull(),
+  verwalterAdresse: varchar("verwalterAdresse", { length: 512 }).notNull(),
+  kontaktEmail: varchar("kontaktEmail", { length: 320 }),
+  kontaktTelefon: varchar("kontaktTelefon", { length: 64 }),
+  notizen: text("notizen"),
+  einheitenJson: text("einheitenJson").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (table) => ({
+  userIdIdx: index("idx_verwalter_objekte_userId").on(table.userId),
+}));
+
+export const verwalterVorgaenge = mysqlTable("verwalter_vorgaenge", {
+  id: varchar("id", { length: 12 }).primaryKey(),
+  userId: int("userId").notNull(),
+  objektId: varchar("objektId", { length: 12 }).notNull(),
+  objektName: varchar("objektName", { length: 255 }).notNull(),
+  typ: varchar("typ", { length: 32 }).notNull(),
+  titel: varchar("titel", { length: 512 }).notNull(),
+  beschreibung: text("beschreibung"),
+  status: varchar("status", { length: 32 }).default("offen").notNull(),
+  faelligAm: varchar("faelligAm", { length: 10 }),
+  relatedVorlageSlug: varchar("relatedVorlageSlug", { length: 128 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (table) => ({
+  userIdIdx: index("idx_verwalter_vorgaenge_userId").on(table.userId),
+  objektIdIdx: index("idx_verwalter_vorgaenge_objektId").on(table.objektId),
+}));
+
+export const verwalterBuchungen = mysqlTable("verwalter_buchungen", {
+  id: varchar("id", { length: 12 }).primaryKey(),
+  userId: int("userId").notNull(),
+  objektId: varchar("objektId", { length: 12 }).notNull(),
+  objektName: varchar("objektName", { length: 255 }).notNull(),
+  datum: varchar("datum", { length: 10 }).notNull(),
+  betrag: varchar("betrag", { length: 24 }).notNull(),
+  sollKonto: varchar("sollKonto", { length: 16 }).notNull(),
+  habenKonto: varchar("habenKonto", { length: 16 }).notNull(),
+  buchungstext: varchar("buchungstext", { length: 512 }).notNull(),
+  belegNr: varchar("belegNr", { length: 64 }),
+  einheitId: varchar("einheitId", { length: 12 }),
+  einheitNr: varchar("einheitNr", { length: 32 }),
+  periode: varchar("periode", { length: 7 }).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (table) => ({
+  userIdIdx: index("idx_verwalter_buchungen_userId").on(table.userId),
+  objektIdIdx: index("idx_verwalter_buchungen_objektId").on(table.objektId),
+  periodeIdx: index("idx_verwalter_buchungen_periode").on(table.periode),
+}));
+
 export const openAnswers = mysqlTable("open_answers", {
   id:           int("id").autoincrement().primaryKey(),
   userId:       int("user_id").notNull(),
@@ -444,3 +505,9 @@ export type Complaint = typeof complaints.$inferSelect;
 export type InsertComplaint = typeof complaints.$inferInsert;
 export type InsertConsentLogEntry = typeof consentLog.$inferInsert;
 export type InsertAvvAgreement = typeof avvAgreements.$inferInsert;
+export type VerwalterObjektRow = typeof verwalterObjekte.$inferSelect;
+export type InsertVerwalterObjektRow = typeof verwalterObjekte.$inferInsert;
+export type VerwalterVorgangRow = typeof verwalterVorgaenge.$inferSelect;
+export type InsertVerwalterVorgangRow = typeof verwalterVorgaenge.$inferInsert;
+export type VerwalterBuchungRow = typeof verwalterBuchungen.$inferSelect;
+export type InsertVerwalterBuchungRow = typeof verwalterBuchungen.$inferInsert;

@@ -7,6 +7,8 @@ import {
   type VorgangStatus,
   type VorgangTyp,
 } from "../shared/verwalterVorgangTypes";
+import { importVerwalterFilesForUser } from "./verwalterFileImport";
+import { verwalterUsesFileStore } from "./verwalterStoreMode";
 
 const STORE_DIR = join(process.cwd(), "data", "verwalter-vorgaenge");
 
@@ -18,7 +20,7 @@ function ensureDir(): void {
   if (!existsSync(STORE_DIR)) mkdirSync(STORE_DIR, { recursive: true });
 }
 
-function loadAll(userId: number): VerwalterVorgang[] {
+function loadAllFile(userId: number): VerwalterVorgang[] {
   ensureDir();
   const path = userFile(userId);
   if (!existsSync(path)) return [];
@@ -30,26 +32,40 @@ function loadAll(userId: number): VerwalterVorgang[] {
   }
 }
 
-function saveAll(userId: number, vorgaenge: VerwalterVorgang[]): void {
+function saveAllFile(userId: number, vorgaenge: VerwalterVorgang[]): void {
   ensureDir();
   writeFileSync(userFile(userId), JSON.stringify(vorgaenge, null, 0), "utf8");
 }
 
-export function listVorgaenge(userId: number, objektId?: string): VerwalterVorgang[] {
-  let list = loadAll(userId);
-  if (objektId) list = list.filter((v) => v.objektId === objektId);
-  return list.sort((a, b) => {
-    const da = a.faelligAm || a.updatedAt;
-    const db = b.faelligAm || b.updatedAt;
-    return da.localeCompare(db);
-  });
+async function ensureMysqlReady(userId: number): Promise<void> {
+  await importVerwalterFilesForUser(userId);
 }
 
-export function getVorgang(userId: number, id: string): VerwalterVorgang | null {
-  return loadAll(userId).find((v) => v.id === id) ?? null;
+export async function listVorgaenge(userId: number, objektId?: string): Promise<VerwalterVorgang[]> {
+  if (verwalterUsesFileStore()) {
+    let list = loadAllFile(userId);
+    if (objektId) list = list.filter((v) => v.objektId === objektId);
+    return list.sort((a, b) => {
+      const da = a.faelligAm || a.updatedAt;
+      const db = b.faelligAm || b.updatedAt;
+      return da.localeCompare(db);
+    });
+  }
+  await ensureMysqlReady(userId);
+  const mysql = await import("./verwalterMysqlBackend");
+  return mysql.listVorgaengeMysql(userId, objektId);
 }
 
-export function createVorgang(
+export async function getVorgang(userId: number, id: string): Promise<VerwalterVorgang | null> {
+  if (verwalterUsesFileStore()) {
+    return loadAllFile(userId).find((v) => v.id === id) ?? null;
+  }
+  await ensureMysqlReady(userId);
+  const mysql = await import("./verwalterMysqlBackend");
+  return mysql.getVorgangMysql(userId, id);
+}
+
+export async function createVorgang(
   userId: number,
   input: {
     objektId: string;
@@ -61,60 +77,91 @@ export function createVorgang(
     faelligAm?: string;
     relatedVorlageSlug?: string;
   },
-): VerwalterVorgang {
-  const now = new Date().toISOString();
-  const v: VerwalterVorgang = {
-    id: randomUUID().slice(0, 12),
-    objektId: input.objektId,
-    objektName: input.objektName,
-    typ: input.typ,
-    titel: input.titel.trim(),
-    beschreibung: input.beschreibung?.trim(),
-    status: input.status ?? "offen",
-    faelligAm: input.faelligAm,
-    relatedVorlageSlug: input.relatedVorlageSlug,
-    createdAt: now,
-    updatedAt: now,
-  };
-  const all = loadAll(userId);
-  all.push(v);
-  saveAll(userId, all);
-  return v;
+): Promise<VerwalterVorgang> {
+  const id = randomUUID().slice(0, 12);
+  if (verwalterUsesFileStore()) {
+    const now = new Date().toISOString();
+    const v: VerwalterVorgang = {
+      id,
+      objektId: input.objektId,
+      objektName: input.objektName,
+      typ: input.typ,
+      titel: input.titel.trim(),
+      beschreibung: input.beschreibung?.trim(),
+      status: input.status ?? "offen",
+      faelligAm: input.faelligAm,
+      relatedVorlageSlug: input.relatedVorlageSlug,
+      createdAt: now,
+      updatedAt: now,
+    };
+    const all = loadAllFile(userId);
+    all.push(v);
+    saveAllFile(userId, all);
+    return v;
+  }
+  await ensureMysqlReady(userId);
+  const mysql = await import("./verwalterMysqlBackend");
+  return mysql.createVorgangMysql(userId, input, id);
 }
 
-export function updateVorgang(
+export async function updateVorgang(
   userId: number,
   id: string,
   patch: Partial<Omit<VerwalterVorgang, "id" | "createdAt">>,
-): VerwalterVorgang | null {
-  const all = loadAll(userId);
-  const idx = all.findIndex((v) => v.id === id);
-  if (idx < 0) return null;
-  all[idx] = { ...all[idx], ...patch, updatedAt: new Date().toISOString() };
-  saveAll(userId, all);
-  return all[idx];
+): Promise<VerwalterVorgang | null> {
+  if (verwalterUsesFileStore()) {
+    const all = loadAllFile(userId);
+    const idx = all.findIndex((v) => v.id === id);
+    if (idx < 0) return null;
+    all[idx] = { ...all[idx], ...patch, updatedAt: new Date().toISOString() };
+    saveAllFile(userId, all);
+    return all[idx];
+  }
+  await ensureMysqlReady(userId);
+  const mysql = await import("./verwalterMysqlBackend");
+  return mysql.updateVorgangMysql(userId, id, patch);
 }
 
-export function deleteVorgang(userId: number, id: string): boolean {
-  const all = loadAll(userId);
-  const next = all.filter((v) => v.id !== id);
-  if (next.length === all.length) return false;
-  saveAll(userId, next);
-  return true;
+export async function deleteVorgang(userId: number, id: string): Promise<boolean> {
+  if (verwalterUsesFileStore()) {
+    const all = loadAllFile(userId);
+    const next = all.filter((v) => v.id !== id);
+    if (next.length === all.length) return false;
+    saveAllFile(userId, next);
+    return true;
+  }
+  await ensureMysqlReady(userId);
+  const mysql = await import("./verwalterMysqlBackend");
+  return mysql.deleteVorgangMysql(userId, id);
 }
 
-export function deleteVorgaengeByObjekt(userId: number, objektId: string): number {
-  const all = loadAll(userId);
-  const next = all.filter((v) => v.objektId !== objektId);
-  const removed = all.length - next.length;
-  if (removed > 0) saveAll(userId, next);
-  return removed;
+export async function deleteVorgaengeByObjekt(userId: number, objektId: string): Promise<number> {
+  if (verwalterUsesFileStore()) {
+    const all = loadAllFile(userId);
+    const next = all.filter((v) => v.objektId !== objektId);
+    const removed = all.length - next.length;
+    if (removed > 0) saveAllFile(userId, next);
+    return removed;
+  }
+  await ensureMysqlReady(userId);
+  const mysql = await import("./verwalterMysqlBackend");
+  return mysql.deleteVorgaengeByObjektMysql(userId, objektId);
 }
 
-export function countOpenVorgaenge(userId: number): number {
-  return loadAll(userId).filter((v) => v.status !== "erledigt").length;
+export async function countOpenVorgaenge(userId: number): Promise<number> {
+  if (verwalterUsesFileStore()) {
+    return loadAllFile(userId).filter((v) => v.status !== "erledigt").length;
+  }
+  await ensureMysqlReady(userId);
+  const mysql = await import("./verwalterMysqlBackend");
+  return mysql.countOpenVorgaengeMysql(userId);
 }
 
-export function countOverdueVorgaenge(userId: number): number {
-  return loadAll(userId).filter((v) => isVorgangOverdue(v)).length;
+export async function countOverdueVorgaenge(userId: number): Promise<number> {
+  if (verwalterUsesFileStore()) {
+    return loadAllFile(userId).filter((v) => isVorgangOverdue(v)).length;
+  }
+  await ensureMysqlReady(userId);
+  const mysql = await import("./verwalterMysqlBackend");
+  return mysql.countOverdueVorgaengeMysql(userId);
 }

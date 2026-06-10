@@ -12,8 +12,8 @@ describe("verwalterAssistentContext", () => {
     if (existsSync(objFile)) rmSync(objFile);
   });
 
-  it("enthält Wissensbasis und Objekt-Kontext", () => {
-    const obj = createObjekt(TEST_USER, {
+  it("enthält Wissensbasis und Objekt-Kontext", async () => {
+    const obj = await createObjekt(TEST_USER, {
       name: "WEG Assistent-Test",
       adresse: "A",
       plz: "1",
@@ -22,7 +22,7 @@ describe("verwalterAssistentContext", () => {
       verwalterName: "V",
       verwalterAdresse: "V",
     });
-    const prompt = buildVerwalterAssistentPrompt(TEST_USER, {
+    const prompt = await buildVerwalterAssistentPrompt(TEST_USER, {
       seite: "/app/verwalter/buchungen",
       objektId: obj.id,
     });

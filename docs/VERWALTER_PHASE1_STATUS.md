@@ -17,13 +17,20 @@
 
 ---
 
-## Bewusst zurückgestellt (Sicherheit / AGENTS.md)
+## In Arbeit (PR MySQL-Migration)
 
-| # | Task | Grund | Nächster Schritt |
-|---|------|-------|------------------|
-| 1 | Verwalter File-Store → MySQL | `drizzle/schema.ts` ist **verboten** zu ändern | Separates OK von Alisad für Schema-PR |
-| 2 | Railway Volume für `data/verwalter-*` | Nur Alisad (Dashboard) | Interim-Backup bis MySQL |
-| 3 | Stripe „Verwalter Tools" Live | Alisad Stripe Dashboard | Nach PR-Merge auf Staging testen |
+| # | Task | Status |
+|---|------|--------|
+| 1 | Tabellen `verwalter_objekte`, `verwalter_vorgaenge`, `verwalter_buchungen` | Migration `0043` |
+| 2 | Auto-Import aus `data/verwalter-*` beim ersten Zugriff | Lazy-Migrate |
+| 3 | Beta-Tester-Anleitung | `docs/VERWALTER_BETA_TESTER.md` |
+
+## Noch offen
+
+| # | Task | Wer |
+|---|------|-----|
+| 1 | Stripe „Verwalter Tools" Live | Alisad Stripe Dashboard |
+| 2 | Eigene Subdomain (Phase 2) | Alisad Railway + DNS |
 
 ---
 
