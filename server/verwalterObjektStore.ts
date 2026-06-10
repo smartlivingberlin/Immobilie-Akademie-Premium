@@ -2,6 +2,8 @@ import { randomUUID } from "crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { join } from "path";
 import type { VerwalterObjekt, VerwalterEinheit } from "../shared/verwalterObjektTypes";
+import { importVerwalterFilesForUser } from "./verwalterFileImport";
+import { verwalterUsesFileStore } from "./verwalterStoreMode";
 
 const STORE_DIR = join(process.cwd(), "data", "verwalter-objekte");
 
@@ -13,7 +15,7 @@ function ensureDir(): void {
   if (!existsSync(STORE_DIR)) mkdirSync(STORE_DIR, { recursive: true });
 }
 
-function loadAll(userId: number): VerwalterObjekt[] {
+function loadAllFile(userId: number): VerwalterObjekt[] {
   ensureDir();
   const path = userFile(userId);
   if (!existsSync(path)) return [];
@@ -25,56 +27,86 @@ function loadAll(userId: number): VerwalterObjekt[] {
   }
 }
 
-function saveAll(userId: number, objekte: VerwalterObjekt[]): void {
+function saveAllFile(userId: number, objekte: VerwalterObjekt[]): void {
   ensureDir();
   writeFileSync(userFile(userId), JSON.stringify(objekte, null, 0), "utf8");
 }
 
-export function listObjekte(userId: number): VerwalterObjekt[] {
-  return loadAll(userId).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+async function ensureMysqlReady(userId: number): Promise<void> {
+  await importVerwalterFilesForUser(userId);
 }
 
-export function getObjekt(userId: number, id: string): VerwalterObjekt | null {
-  return loadAll(userId).find((o) => o.id === id) ?? null;
+export async function listObjekte(userId: number): Promise<VerwalterObjekt[]> {
+  if (verwalterUsesFileStore()) {
+    return loadAllFile(userId).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+  }
+  await ensureMysqlReady(userId);
+  const mysql = await import("./verwalterMysqlBackend");
+  return mysql.listObjekteMysql(userId);
 }
 
-export function createObjekt(
+export async function getObjekt(userId: number, id: string): Promise<VerwalterObjekt | null> {
+  if (verwalterUsesFileStore()) {
+    return loadAllFile(userId).find((o) => o.id === id) ?? null;
+  }
+  await ensureMysqlReady(userId);
+  const mysql = await import("./verwalterMysqlBackend");
+  return mysql.getObjektMysql(userId, id);
+}
+
+export async function createObjekt(
   userId: number,
   input: Omit<VerwalterObjekt, "id" | "createdAt" | "updatedAt" | "einheiten"> & {
     einheiten?: VerwalterEinheit[];
   },
-): VerwalterObjekt {
-  const now = new Date().toISOString();
-  const obj: VerwalterObjekt = {
-    ...input,
-    id: randomUUID().slice(0, 12),
-    einheiten: input.einheiten ?? [],
-    createdAt: now,
-    updatedAt: now,
-  };
-  const all = loadAll(userId);
-  all.push(obj);
-  saveAll(userId, all);
-  return obj;
+): Promise<VerwalterObjekt> {
+  const id = randomUUID().slice(0, 12);
+  if (verwalterUsesFileStore()) {
+    const now = new Date().toISOString();
+    const obj: VerwalterObjekt = {
+      ...input,
+      id,
+      einheiten: input.einheiten ?? [],
+      createdAt: now,
+      updatedAt: now,
+    };
+    const all = loadAllFile(userId);
+    all.push(obj);
+    saveAllFile(userId, all);
+    return obj;
+  }
+  await ensureMysqlReady(userId);
+  const mysql = await import("./verwalterMysqlBackend");
+  return mysql.createObjektMysql(userId, input, id);
 }
 
-export function updateObjekt(
+export async function updateObjekt(
   userId: number,
   id: string,
   patch: Partial<Omit<VerwalterObjekt, "id" | "createdAt">>,
-): VerwalterObjekt | null {
-  const all = loadAll(userId);
-  const idx = all.findIndex((o) => o.id === id);
-  if (idx < 0) return null;
-  all[idx] = { ...all[idx], ...patch, updatedAt: new Date().toISOString() };
-  saveAll(userId, all);
-  return all[idx];
+): Promise<VerwalterObjekt | null> {
+  if (verwalterUsesFileStore()) {
+    const all = loadAllFile(userId);
+    const idx = all.findIndex((o) => o.id === id);
+    if (idx < 0) return null;
+    all[idx] = { ...all[idx], ...patch, updatedAt: new Date().toISOString() };
+    saveAllFile(userId, all);
+    return all[idx];
+  }
+  await ensureMysqlReady(userId);
+  const mysql = await import("./verwalterMysqlBackend");
+  return mysql.updateObjektMysql(userId, id, patch);
 }
 
-export function deleteObjekt(userId: number, id: string): boolean {
-  const all = loadAll(userId);
-  const next = all.filter((o) => o.id !== id);
-  if (next.length === all.length) return false;
-  saveAll(userId, next);
-  return true;
+export async function deleteObjekt(userId: number, id: string): Promise<boolean> {
+  if (verwalterUsesFileStore()) {
+    const all = loadAllFile(userId);
+    const next = all.filter((o) => o.id !== id);
+    if (next.length === all.length) return false;
+    saveAllFile(userId, next);
+    return true;
+  }
+  await ensureMysqlReady(userId);
+  const mysql = await import("./verwalterMysqlBackend");
+  return mysql.deleteObjektMysql(userId, id);
 }

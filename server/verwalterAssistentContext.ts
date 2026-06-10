@@ -9,13 +9,13 @@ export type AssistentRuntimeContext = {
   objektId?: string;
 };
 
-export function buildVerwalterAssistentPrompt(
+export async function buildVerwalterAssistentPrompt(
   userId: number,
   ctx: AssistentRuntimeContext,
-): string {
-  const objekte = listObjekte(userId);
-  const openV = countOpenVorgaenge(userId);
-  const overdueV = countOverdueVorgaenge(userId);
+): Promise<string> {
+  const objekte = await listObjekte(userId);
+  const openV = await countOpenVorgaenge(userId);
+  const overdueV = await countOverdueVorgaenge(userId);
 
   const lines: string[] = [
     buildAssistentKnowledgeBlock(),
@@ -52,7 +52,9 @@ export function buildVerwalterAssistentPrompt(
         );
       }
 
-      const vorgaenge = listVorgaenge(userId, focusId).filter((v) => v.status !== "erledigt").slice(0, 5);
+      const vorgaenge = (await listVorgaenge(userId, focusId))
+        .filter((v) => v.status !== "erledigt")
+        .slice(0, 5);
       if (vorgaenge.length > 0) {
         lines.push("", "Offene Vorgänge:");
         for (const v of vorgaenge) {
@@ -62,7 +64,7 @@ export function buildVerwalterAssistentPrompt(
 
       const now = new Date();
       const periode = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
-      const buchungen = listBuchungen(userId, { objektId: focusId, periode });
+      const buchungen = await listBuchungen(userId, { objektId: focusId, periode });
       if (buchungen.length > 0) {
         const summe = buchungen.reduce((s, b) => s + b.betrag, 0);
         lines.push("", `Buchungen ${periode}: ${buchungen.length} Posten, Summe ${summe.toFixed(2)} €`);

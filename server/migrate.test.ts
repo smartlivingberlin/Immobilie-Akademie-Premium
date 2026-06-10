@@ -13,6 +13,16 @@ describe("migrate ledger", () => {
     expect(sql).toContain("schema_migrations");
   });
 
+  it("0043 creates verwalter mysql tables", () => {
+    const sql = readFileSync(
+      join(process.cwd(), "drizzle/migrations/0043_verwalter_mysql.sql"),
+      "utf8",
+    );
+    expect(sql).toContain("verwalter_objekte");
+    expect(sql).toContain("verwalter_vorgaenge");
+    expect(sql).toContain("verwalter_buchungen");
+  });
+
   it("uses ledger skip logic and strict production mode", () => {
     expect(src).toContain("isMigrationApplied");
     expect(src).toContain("markMigrationApplied");

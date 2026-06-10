@@ -20,8 +20,8 @@ describe("verwalterVorgangStore", () => {
     if (existsSync(userFile)) rmSync(userFile);
   });
 
-  it("erstellt, listet und filtert nach Objekt", () => {
-    const v = createVorgang(TEST_USER, {
+  it("erstellt, listet und filtert nach Objekt", async () => {
+    const v = await createVorgang(TEST_USER, {
       objektId: "obj-1",
       objektName: "WEG A",
       typ: "mahnung",
@@ -29,51 +29,51 @@ describe("verwalterVorgangStore", () => {
       faelligAm: "2030-01-01",
     });
     expect(v.id).toBeTruthy();
-    expect(listVorgaenge(TEST_USER)).toHaveLength(1);
-    expect(listVorgaenge(TEST_USER, "obj-1")).toHaveLength(1);
-    expect(listVorgaenge(TEST_USER, "other")).toHaveLength(0);
+    expect(await listVorgaenge(TEST_USER)).toHaveLength(1);
+    expect(await listVorgaenge(TEST_USER, "obj-1")).toHaveLength(1);
+    expect(await listVorgaenge(TEST_USER, "other")).toHaveLength(0);
   });
 
-  it("aktualisiert Status und zählt offen/überfällig", () => {
-    const v = createVorgang(TEST_USER, {
+  it("aktualisiert Status und zählt offen/überfällig", async () => {
+    const v = await createVorgang(TEST_USER, {
       objektId: "obj-1",
       objektName: "WEG A",
       typ: "etv",
       titel: "ETV 2026",
       faelligAm: "2020-01-01",
     });
-    expect(countOpenVorgaenge(TEST_USER)).toBe(1);
-    expect(countOverdueVorgaenge(TEST_USER)).toBe(1);
+    expect(await countOpenVorgaenge(TEST_USER)).toBe(1);
+    expect(await countOverdueVorgaenge(TEST_USER)).toBe(1);
 
-    updateVorgang(TEST_USER, v.id, { status: "erledigt" });
-    expect(getVorgang(TEST_USER, v.id)?.status).toBe("erledigt");
-    expect(countOpenVorgaenge(TEST_USER)).toBe(0);
-    expect(countOverdueVorgaenge(TEST_USER)).toBe(0);
+    await updateVorgang(TEST_USER, v.id, { status: "erledigt" });
+    expect((await getVorgang(TEST_USER, v.id))?.status).toBe("erledigt");
+    expect(await countOpenVorgaenge(TEST_USER)).toBe(0);
+    expect(await countOverdueVorgaenge(TEST_USER)).toBe(0);
   });
 
-  it("löscht einzeln und kaskadiert nach Objekt", () => {
-    createVorgang(TEST_USER, {
+  it("löscht einzeln und kaskadiert nach Objekt", async () => {
+    await createVorgang(TEST_USER, {
       objektId: "obj-del",
       objektName: "WEG Del",
       typ: "schaden",
       titel: "Wasserschaden",
     });
-    createVorgang(TEST_USER, {
+    await createVorgang(TEST_USER, {
       objektId: "obj-del",
       objektName: "WEG Del",
       typ: "nk",
       titel: "NK 2025",
     });
-    expect(deleteVorgaengeByObjekt(TEST_USER, "obj-del")).toBe(2);
-    expect(listVorgaenge(TEST_USER)).toHaveLength(0);
+    expect(await deleteVorgaengeByObjekt(TEST_USER, "obj-del")).toBe(2);
+    expect(await listVorgaenge(TEST_USER)).toHaveLength(0);
 
-    const v = createVorgang(TEST_USER, {
+    const v = await createVorgang(TEST_USER, {
       objektId: "x",
       objektName: "X",
       typ: "sonstiges",
       titel: "Test",
     });
-    expect(deleteVorgang(TEST_USER, v.id)).toBe(true);
-    expect(listVorgaenge(TEST_USER)).toHaveLength(0);
+    expect(await deleteVorgang(TEST_USER, v.id)).toBe(true);
+    expect(await listVorgaenge(TEST_USER)).toHaveLength(0);
   });
 });
