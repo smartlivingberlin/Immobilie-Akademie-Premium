@@ -15,12 +15,15 @@ export type CachedGeneratorResult = {
   daysCovered?: number;
   blocksProcessed?: number;
   incompleteBlocks?: number;
+  draftFallbacks?: number;
+  complete?: boolean;
   pipeline?: string;
   contentHash?: string;
   generatedAt: string;
   fromCache?: boolean;
   pipelined?: boolean;
   chunked?: boolean;
+  jobId?: string;
 };
 
 function cachePath(moduleId: number, format: string, prefix = "kursbuch-v2", extraKey = ""): string {
@@ -91,7 +94,10 @@ export function readKursbuchPipelineCache(
     if (!existsSync(path)) return null;
     const data = JSON.parse(readFileSync(path, "utf8")) as CachedGeneratorResult;
     if (!data?.success || !data?.content) return null;
-    return { ...data, fromCache: true };
+    const incomplete = (data.incompleteBlocks ?? 0) > 0;
+    const complete = data.complete ?? !incomplete;
+    if (!complete) return null;
+    return { ...data, complete, fromCache: true };
   } catch {
     return null;
   }

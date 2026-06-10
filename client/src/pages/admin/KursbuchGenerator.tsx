@@ -25,6 +25,8 @@ type GenResult = {
   daysCovered?: number;
   daysExtracted?: number;
   incompleteBlocks?: number;
+  draftFallbacks?: number;
+  complete?: boolean;
 };
 
 export default function KursbuchGenerator() {
@@ -64,30 +66,62 @@ export default function KursbuchGenerator() {
   const generatePipeline = async (forceRegenerate = false) => {
     setLoading(true);
     const mod = MODULES.find(m => m.id === selectedModule)!;
-    setProgress(`KI-Pipeline: ${mod.days} Lerntage werden verarbeitet (1 Tag = 1 Job, kann 5–15 Min. dauern)…`);
+    setProgress(`KI-Pipeline v2: Starte Verarbeitung (${mod.days} Lerntage)…`);
     setError(null);
     setResult(null);
+    let jobId: string | undefined;
+
     try {
-      const res = await fetch("/api/ai/generate-kursbuch-pipeline", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ moduleId: selectedModule, format: selectedFormat, forceRegenerate }),
-      });
-      const data = await res.json();
-      if (data.success) {
-        setResult({
-          content: data.content,
-          moduleTitle: data.moduleName || mod.title,
-          format: selectedFormat,
-          fromCache: Boolean(data.fromCache),
-          pipelined: true,
-          daysCovered: data.daysCovered,
-          daysExtracted: data.daysExtracted,
-          incompleteBlocks: data.incompleteBlocks,
+      for (let round = 0; round < 200; round++) {
+        const res = await fetch("/api/ai/generate-kursbuch-pipeline", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            moduleId: selectedModule,
+            format: selectedFormat,
+            forceRegenerate: round === 0 ? forceRegenerate : false,
+            jobId,
+          }),
         });
-      } else setError(data.error || "Fehler");
-    } catch { setError("Verbindungsfehler — bei langen Modulen ggf. erneut versuchen"); }
-    finally { setLoading(false); setProgress(null); }
+        const data = await res.json();
+
+        if (data.jobId) jobId = data.jobId;
+
+        if (data.continue) {
+          const pct = data.percent ?? 0;
+          setProgress(
+            `KI-Pipeline: ${data.processedGroups ?? 0}/${data.totalGroups ?? "?"} Blöcke (${pct}%) · ${data.daysCovered ?? 0}/${data.daysExtracted ?? mod.days} Tage`,
+          );
+          await new Promise((r) => setTimeout(r, 400));
+          continue;
+        }
+
+        if (data.success && data.content) {
+          setResult({
+            content: data.content,
+            moduleTitle: data.moduleName || mod.title,
+            format: selectedFormat,
+            fromCache: Boolean(data.fromCache),
+            pipelined: true,
+            daysCovered: data.daysCovered,
+            daysExtracted: data.daysExtracted,
+            incompleteBlocks: data.incompleteBlocks,
+            draftFallbacks: data.draftFallbacks,
+            complete: data.complete,
+          });
+          return;
+        }
+
+        setError(data.error || "Pipeline unvollständig — bitte erneut versuchen");
+        return;
+      }
+      setError("Zeitlimit erreicht — bitte erneut starten (Job wird fortgesetzt)");
+    } catch {
+      setError("Verbindungsfehler — Job wird beim nächsten Versuch fortgesetzt");
+    } finally {
+      setLoading(false);
+      setProgress(null);
+    }
   };
 
   const download = () => {
@@ -103,8 +137,10 @@ export default function KursbuchGenerator() {
 
   const resultLabel = () => {
     if (result?.pipelined) {
-      const warn = (result.incompleteBlocks ?? 0) > 0 ? ` · ${result.incompleteBlocks} Block(e) ggf. gekürzt` : "";
-      return `(KI-Pipeline · ${result.daysCovered ?? "?"}/${result.daysExtracted ?? "?"} Tage${warn})`;
+      const draft = (result.draftFallbacks ?? 0) > 0 ? ` · ${result.draftFallbacks} Entwurf` : "";
+      const warn = (result.incompleteBlocks ?? 0) > 0 ? ` · ${result.incompleteBlocks} gekürzt` : "";
+      const status = result.complete !== false ? "vollständig" : "teilweise";
+      return `(KI-Pipeline v2 · ${status} · ${result.daysCovered ?? "?"}/${result.daysExtracted ?? "?"} Tage${draft}${warn})`;
     }
     if (result?.fromCache) return "(Portal-Inhalt)";
     return "(KI generiert)";
@@ -176,7 +212,7 @@ export default function KursbuchGenerator() {
         </button>
       </div>
       <p style={{ fontSize: fz(12), color: "#64748b", margin: "-8px 0 16px" }}>
-        Grün: Roh-Markdown aus allen Lerntagen. Blau: KI verarbeitet jeden Tag einzeln mit Fortsetzung bei Token-Limit.
+        Grün: Roh-Markdown aus allen Lerntagen. Blau: KI-Pipeline v2 (Gemini/Groq/Claude, Retry, Entwurf-Fallback, Batch-Fortsetzung).
       </p>
 
       {result && (
