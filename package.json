@@ -25,6 +25,7 @@
     "ops:r2-checklist": "bash scripts/ops/r2-github-secrets-checklist.sh",
     "ops:b2b-team-smoke": "bash scripts/ops/b2b-team-code-smoke.sh",
     "ops:test-admin-login": "bash scripts/ops/test-admin-login.sh",
+    "ops:stripe-preflight": "tsx server/scripts/stripe-price-preflight.ts",
     "test:e2e:b2b": "playwright test tests/e2e/12-b2b-einrichtung.spec.ts tests/e2e/17-b2b-team-codes.spec.ts tests/e2e/18-b2b-checkout.spec.ts --project=chromium"
   },
   "dependencies": {
