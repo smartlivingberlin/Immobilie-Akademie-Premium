@@ -8,6 +8,15 @@ import {
   listObjekte,
   updateObjekt,
 } from "./verwalterObjektStore";
+import {
+  countOpenVorgaenge,
+  countOverdueVorgaenge,
+  createVorgang,
+  deleteVorgang,
+  deleteVorgaengeByObjekt,
+  listVorgaenge,
+  updateVorgang,
+} from "./verwalterVorgangStore";
 import { getVorlageBySlug, renderVorlageBody } from "../shared/verwalterVorlagen";
 
 const router = Router();
@@ -65,8 +74,72 @@ router.put("/api/verwalter/objekte/:id", requireAuth, (req, res) => {
 });
 
 router.delete("/api/verwalter/objekte/:id", requireAuth, (req, res) => {
-  const ok = deleteObjekt(userId(req as any), String(req.params.id));
+  const uid = userId(req as any);
+  const id = String(req.params.id);
+  deleteVorgaengeByObjekt(uid, id);
+  const ok = deleteObjekt(uid, id);
   if (!ok) return res.status(404).json({ error: "Objekt nicht gefunden" });
+  res.json({ success: true });
+});
+
+router.get("/api/verwalter/dashboard", requireAuth, (req, res) => {
+  try {
+    const uid = userId(req as any);
+    const objekte = listObjekte(uid);
+    res.json({
+      success: true,
+      objekteCount: objekte.length,
+      openVorgaenge: countOpenVorgaenge(uid),
+      overdueVorgaenge: countOverdueVorgaenge(uid),
+    });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+router.get("/api/verwalter/vorgaenge", requireAuth, (req, res) => {
+  try {
+    const objektId = req.query.objektId ? String(req.query.objektId) : undefined;
+    const vorgaenge = listVorgaenge(userId(req as any), objektId);
+    res.json({ success: true, vorgaenge });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+router.post("/api/verwalter/vorgaenge", requireAuth, (req, res) => {
+  try {
+    const body = req.body ?? {};
+    const uid = userId(req as any);
+    const objektId = String(body.objektId || "").trim();
+    const obj = getObjekt(uid, objektId);
+    if (!obj) return res.status(400).json({ error: "Objekt nicht gefunden" });
+
+    const vorgang = createVorgang(uid, {
+      objektId,
+      objektName: obj.name,
+      typ: body.typ || "sonstiges",
+      titel: String(body.titel || "Neuer Vorgang"),
+      beschreibung: body.beschreibung ? String(body.beschreibung) : undefined,
+      status: body.status,
+      faelligAm: body.faelligAm ? String(body.faelligAm) : undefined,
+      relatedVorlageSlug: body.relatedVorlageSlug ? String(body.relatedVorlageSlug) : undefined,
+    });
+    res.json({ success: true, vorgang });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+router.put("/api/verwalter/vorgaenge/:id", requireAuth, (req, res) => {
+  const updated = updateVorgang(userId(req as any), String(req.params.id), req.body ?? {});
+  if (!updated) return res.status(404).json({ error: "Vorgang nicht gefunden" });
+  res.json({ success: true, vorgang: updated });
+});
+
+router.delete("/api/verwalter/vorgaenge/:id", requireAuth, (req, res) => {
+  const ok = deleteVorgang(userId(req as any), String(req.params.id));
+  if (!ok) return res.status(404).json({ error: "Vorgang nicht gefunden" });
   res.json({ success: true });
 });
 

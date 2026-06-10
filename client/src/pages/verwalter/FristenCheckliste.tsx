@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Clock, FileText } from "lucide-react";
+import { Clock, FileText, Kanban } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import {
   FRISTEN_CHECKLISTE,
@@ -18,6 +18,11 @@ export default function FristenCheckliste() {
         <p className="mt-2 text-sm text-slate-600 sm:text-base">
           Übersicht zentraler Fristen — mit Verweis auf passende Vorlagen.
         </p>
+        <Link href="/app/verwalter/vorgaenge">
+          <a className="mt-3 inline-flex items-center gap-1.5 text-sm text-emerald-600 hover:underline">
+            <Kanban className="h-4 w-4" /> Vorgang anlegen (Kanban)
+          </a>
+        </Link>
 
         <div className="mt-8 space-y-8">
           {CATEGORIES.map((cat) => {
