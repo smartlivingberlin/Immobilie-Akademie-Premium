@@ -9,6 +9,7 @@ import {
   Database,
   FileText,
   Kanban,
+  LayoutDashboard,
   GraduationCap,
   Home,
   LogOut,
@@ -24,6 +25,7 @@ import { VerwalterGuideBanner } from "@/components/verwalter/VerwalterGuideBanne
 import { VerwalterOnboarding } from "@/components/verwalter/VerwalterOnboarding";
 
 const NAV = [
+  { name: "Übersicht", href: "/app/verwalter", icon: LayoutDashboard, exact: true },
   { name: "Rechenpraxis", href: "/rechenpraxis", icon: Building2 },
   { name: "Praxisrechner", href: "/rechner", icon: Calculator },
   { name: "Objekte", href: "/app/verwalter/objekte", icon: Database },
@@ -34,8 +36,8 @@ const NAV = [
   { name: "Preise & Abo", href: "/rechenpraxis-preise", icon: CreditCard },
 ];
 
-function isNavActive(location: string, href: string): boolean {
-  if (href === "/rechenpraxis") return location === href;
+function isNavActive(location: string, href: string, exact?: boolean): boolean {
+  if (exact || href === "/rechenpraxis") return location === href;
   return location === href || location.startsWith(href + "/");
 }
 
@@ -85,7 +87,7 @@ export default function RechenpraxisProductLayout({ children }: { children: Reac
   const NavLinks = ({ onNavigate }: { onNavigate?: () => void }) => (
     <>
       {NAV.map((item) => {
-        const active = isNavActive(location, item.href);
+        const active = isNavActive(location, item.href, "exact" in item ? item.exact : undefined);
         return (
           <Link key={item.href} href={item.href}>
             <a

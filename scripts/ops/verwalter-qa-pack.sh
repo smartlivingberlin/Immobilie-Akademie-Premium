@@ -53,6 +53,7 @@ PAGES=(
   "/"
   "/verwalter-rechner"
   "/kurs/modul-3-weg-verwalter"
+  "/app/verwalter"
   "/app/verwalter/objekte"
   "/app/verwalter/vorgaenge"
   "/app/verwalter/buchungen"

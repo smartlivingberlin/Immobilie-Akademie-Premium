@@ -64,6 +64,7 @@ const FristenCheckliste = lazy(() => import("@/pages/verwalter/FristenCheckliste
 const ObjekteIndex = lazy(() => import("@/pages/verwalter/ObjekteIndex"));
 const VorgaengeIndex = lazy(() => import("@/pages/verwalter/VorgaengeIndex"));
 const BuchungenIndex = lazy(() => import("@/pages/verwalter/BuchungenIndex"));
+const VerwalterDashboard = lazy(() => import("@/pages/verwalter/VerwalterDashboard"));
 const B2bEinrichtung = lazy(() => import("@/pages/B2bEinrichtung"));
 const Fallstudien = lazy(() => import("@/pages/Fallstudien"));
 const Flashcards = lazy(() => import("@/pages/Flashcards"));
@@ -335,7 +336,11 @@ function Router() {
         <Route path="/owner-dashboard"><AppLayout><OwnerRoute component={OwnerDashboard} /></AppLayout></Route>
         <Route path="/owner-videos"><AppLayout><OwnerRoute component={OwnerVideos} /></AppLayout></Route>
         <Route path="/app/rechenpraxis"><RechenpraxisRedirect /></Route>
-        <Route path="/app/verwalter"><RechenpraxisRedirect /></Route>
+        <Route path="/app/verwalter">
+          <VerwalterProductLayout>
+            <ProtectedRoute component={VerwalterDashboard} />
+          </VerwalterProductLayout>
+        </Route>
         <Route path="/rechenpraxis"><VerwalterProductLayout><ProtectedRoute component={Rechenpraxis} /></VerwalterProductLayout></Route>
         <Route path="/tester-zugang"><TesterZugang /></Route>
         <Route path="/partner-panel"><AppLayout><AdminRoute component={PartnerDashboard} /></AppLayout></Route>
