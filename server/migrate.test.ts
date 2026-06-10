@@ -23,6 +23,15 @@ describe("migrate ledger", () => {
     expect(sql).toContain("verwalter_buchungen");
   });
 
+  it("0044 creates verwalter events and freigaben tables", () => {
+    const sql = readFileSync(
+      join(process.cwd(), "drizzle/migrations/0044_verwalter_events_freigaben.sql"),
+      "utf8",
+    );
+    expect(sql).toContain("verwalter_events");
+    expect(sql).toContain("verwalter_freigaben");
+  });
+
   it("uses ledger skip logic and strict production mode", () => {
     expect(src).toContain("isMigrationApplied");
     expect(src).toContain("markMigrationApplied");

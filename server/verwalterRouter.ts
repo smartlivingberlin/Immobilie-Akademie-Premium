@@ -36,8 +36,30 @@ import {
   pruefeBuchungen,
 } from "../shared/verwalterBuchungPlausibilitaet";
 import { buildMonatsabschluss } from "../shared/verwalterMonatsabschluss";
+import { buildFristBatchVorgaenge } from "../shared/verwalterFristBatch";
+import { getVerwalterFeatureFlags } from "../shared/verwalterFeatureFlags";
+import {
+  appendVerwalterEvent,
+  countVerwalterEvents,
+  countVerwalterFreigaben,
+  createVerwalterFreigabe,
+  listVerwalterEvents,
+  listVerwalterFreigaben,
+  updateVerwalterFreigabeStatus,
+} from "./verwalterEventStore";
 
 const router = Router();
+
+async function logVerwalterEvent(
+  userId: number,
+  input: Parameters<typeof appendVerwalterEvent>[1],
+): Promise<void> {
+  try {
+    await appendVerwalterEvent(userId, input);
+  } catch {
+    /* Event-Log optional — Migration 0044 oder MySQL erforderlich */
+  }
+}
 
 function userId(req: { currentUser?: { id?: number } }): number {
   const id = req.currentUser?.id;
@@ -117,11 +139,22 @@ router.get("/api/verwalter/dashboard", requireVerwalterAuth, async (req, res) =>
   try {
     const uid = userId(req as any);
     const objekte = await listObjekte(uid);
+    let neueEvents = 0;
+    let ausstehendeFreigaben = 0;
+    try {
+      neueEvents = await countVerwalterEvents(uid, "neu");
+      ausstehendeFreigaben = await countVerwalterFreigaben(uid, "ausstehend");
+    } catch {
+      /* Tabellen noch nicht migriert */
+    }
     res.json({
       success: true,
       objekteCount: objekte.length,
       openVorgaenge: await countOpenVorgaenge(uid),
       overdueVorgaenge: await countOverdueVorgaenge(uid),
+      neueEvents,
+      ausstehendeFreigaben,
+      featureFlags: getVerwalterFeatureFlags(),
     });
   } catch (e: any) {
     res.status(500).json({ error: e.message });
@@ -156,6 +189,13 @@ router.post("/api/verwalter/vorgaenge", requireVerwalterAuth, async (req, res) =
       faelligAm: body.faelligAm ? String(body.faelligAm) : undefined,
       relatedVorlageSlug: body.relatedVorlageSlug ? String(body.relatedVorlageSlug) : undefined,
     });
+    const eventTyp = body.relatedVorlageSlug || body.faelligAm ? "frist.vorgang_angelegt" : "vorgang.angelegt";
+    await logVerwalterEvent(uid, {
+      typ: eventTyp,
+      objektId,
+      vorgangId: vorgang.id,
+      payload: { titel: vorgang.titel, typ: vorgang.typ },
+    });
     res.json({ success: true, vorgang });
   } catch (e: any) {
     res.status(500).json({ error: e.message });
@@ -170,6 +210,104 @@ router.put("/api/verwalter/vorgaenge/:id", requireVerwalterAuth, async (req, res
   } catch (e: any) {
     res.status(500).json({ error: e.message });
   }
+});
+
+router.post("/api/verwalter/fristen/batch-vorgaenge", requireVerwalterAuth, async (req, res) => {
+  try {
+    const body = req.body ?? {};
+    const uid = userId(req as any);
+    const objektId = String(body.objektId || "").trim();
+    const startDate = String(body.startDate || new Date().toISOString().slice(0, 10));
+    const obj = await getObjekt(uid, objektId);
+    if (!obj) return res.status(400).json({ error: "Objekt nicht gefunden" });
+
+    const inputs = buildFristBatchVorgaenge(
+      objektId,
+      startDate,
+      Array.isArray(body.fristIds) ? body.fristIds.map(String) : undefined,
+    );
+    const vorgaenge = [];
+    for (const input of inputs) {
+      const vorgang = await createVorgang(uid, {
+        objektId,
+        objektName: obj.name,
+        typ: input.typ,
+        titel: input.titel,
+        beschreibung: input.beschreibung,
+        faelligAm: input.faelligAm,
+        relatedVorlageSlug: input.relatedVorlageSlug,
+      });
+      vorgaenge.push(vorgang);
+    }
+    await logVerwalterEvent(uid, {
+      typ: "fristen.batch_angelegt",
+      objektId,
+      payload: { count: vorgaenge.length, startDate },
+    });
+    res.json({ success: true, count: vorgaenge.length, vorgaenge });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+router.get("/api/verwalter/events", requireVerwalterAuth, async (req, res) => {
+  try {
+    const status = req.query.status ? String(req.query.status) : undefined;
+    const limit = req.query.limit ? Number(req.query.limit) : 50;
+    const events = await listVerwalterEvents(userId(req as any), {
+      status: status as any,
+      limit,
+    });
+    res.json({ success: true, events });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+router.get("/api/verwalter/freigaben", requireVerwalterAuth, async (req, res) => {
+  try {
+    const status = req.query.status ? String(req.query.status) : undefined;
+    const limit = req.query.limit ? Number(req.query.limit) : 50;
+    const freigaben = await listVerwalterFreigaben(userId(req as any), {
+      status: status as any,
+      limit,
+    });
+    res.json({ success: true, freigaben });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+router.post("/api/verwalter/freigaben/:id/freigeben", requireVerwalterAuth, async (req, res) => {
+  try {
+    const uid = userId(req as any);
+    const updated = await updateVerwalterFreigabeStatus(uid, String(req.params.id), "freigegeben");
+    if (!updated) return res.status(404).json({ error: "Freigabe nicht gefunden" });
+    await logVerwalterEvent(uid, {
+      typ: "system.hinweis",
+      objektId: updated.objektId,
+      vorgangId: updated.vorgangId,
+      payload: { action: "freigabe.freigegeben", freigabeId: updated.id },
+    });
+    res.json({ success: true, freigabe: updated });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+router.post("/api/verwalter/freigaben/:id/ablehnen", requireVerwalterAuth, async (req, res) => {
+  try {
+    const uid = userId(req as any);
+    const updated = await updateVerwalterFreigabeStatus(uid, String(req.params.id), "abgelehnt");
+    if (!updated) return res.status(404).json({ error: "Freigabe nicht gefunden" });
+    res.json({ success: true, freigabe: updated });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+router.get("/api/verwalter/feature-flags", requireVerwalterAuth, async (_req, res) => {
+  res.json({ success: true, flags: getVerwalterFeatureFlags() });
 });
 
 router.delete("/api/verwalter/vorgaenge/:id", requireVerwalterAuth, async (req, res) => {
@@ -471,11 +609,32 @@ Ausgabe: nur der fertige Brieftext, keine Meta-Kommentare.`,
       2,
     );
 
+    const text = result.text.trim();
+    const uid = userId(req as any);
+    let freigabeId: string | undefined;
+    try {
+      const freigabe = await createVerwalterFreigabe(uid, {
+        kind: "brief_entwurf",
+        titel: `${vorlage.title} — KI-Entwurf`,
+        objektId: objektId ? String(objektId) : undefined,
+        payload: { text, vorlageSlug: slug, fieldValues: values },
+      });
+      freigabeId = freigabe.id;
+      await logVerwalterEvent(uid, {
+        typ: "freigabe.angelegt",
+        objektId: objektId ? String(objektId) : undefined,
+        payload: { freigabeId, kind: "brief_entwurf" },
+      });
+    } catch {
+      /* Freigabe-Queue optional bis Migration 0044 */
+    }
+
     res.json({
       success: true,
-      text: result.text.trim(),
+      text,
       provider: result.provider,
       complete: result.complete,
+      freigabeId,
     });
   } catch (e: any) {
     res.status(500).json({ error: e.message || "KI-Brief fehlgeschlagen" });

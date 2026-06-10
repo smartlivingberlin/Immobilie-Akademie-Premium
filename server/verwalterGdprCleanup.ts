@@ -5,7 +5,13 @@ const FILE_DIRS = ["verwalter-objekte", "verwalter-vorgaenge", "verwalter-buchun
 
 /** Art. 17 DSGVO — Verwalter-Suite-Daten (MySQL + optional File-Store). */
 export async function deleteVerwalterUserData(db: { $client: { query: (sql: string, params: unknown[]) => Promise<unknown> } }, userId: number) {
-  const tables = ["verwalter_buchungen", "verwalter_vorgaenge", "verwalter_objekte"] as const;
+  const tables = [
+    "verwalter_freigaben",
+    "verwalter_events",
+    "verwalter_buchungen",
+    "verwalter_vorgaenge",
+    "verwalter_objekte",
+  ] as const;
   for (const table of tables) {
     await db.$client.query(`DELETE FROM ${table} WHERE userId = ?`, [userId]).catch(() => {});
   }

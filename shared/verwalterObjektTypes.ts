@@ -5,6 +5,8 @@ export type VerwalterEinheit = {
   nummer: string;
   mea: number;
   eigentuemerName?: string;
+  kontaktEmail?: string;
+  kontaktTelefon?: string;
   flaecheQm?: number;
 };
 

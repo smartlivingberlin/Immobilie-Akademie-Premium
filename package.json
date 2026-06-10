@@ -26,7 +26,9 @@
     "ops:b2b-team-smoke": "bash scripts/ops/b2b-team-code-smoke.sh",
     "ops:test-admin-login": "bash scripts/ops/test-admin-login.sh",
     "test:e2e:b2b": "playwright test tests/e2e/12-b2b-einrichtung.spec.ts tests/e2e/17-b2b-team-codes.spec.ts tests/e2e/18-b2b-checkout.spec.ts --project=chromium",
-    "test:qa:verwalter": "bash scripts/ops/verwalter-qa-pack.sh"
+    "test:qa:verwalter": "bash scripts/ops/verwalter-qa-pack.sh",
+    "ops:verwalter-cli": "bash scripts/ops/verwalter-cli.sh",
+    "ops:verwalter-migrate-status": "tsx server/scripts/verwalter-migrate-status.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.93.0",
