@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { isOAuthEnabled, handleGoogleLogin } from "@/lib/oauth";
 import { ComfortBar } from "@/components/ComfortBar";
+import { SEO } from "@/components/SEO";
 import { resolvePostLoginRedirect } from "@/lib/postLoginRedirect";
 
 export default function LoginPage() {
@@ -71,6 +72,12 @@ export default function LoginPage() {
   const labelStyle = { display: "block", fontSize: "13px", fontWeight: "500" as const, color: "#374151", marginBottom: "6px" };
 
   return (
+    <>
+      <SEO
+        title="Anmelden"
+        description="Anmeldung beim Immobilien Akademie Smart Lernportal — Zugang zu Kursen, Rechenpraxis und Verwalter-Tools."
+        canonical="https://immobilien-akademie-smart.de/login"
+      />
     <div style={{ minHeight: "100vh", background: "linear-gradient(135deg, #0c1628 0%, #0f2744 40%, #1a1040 100%)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px", fontFamily: "system-ui, sans-serif", position: "relative" }}>
       <div style={{ position: "fixed", top: 12, right: 12, zIndex: 50 }}>
         <ComfortBar compact />
@@ -162,5 +169,6 @@ export default function LoginPage() {
         <p style={{ textAlign: "center", fontSize: "11px", color: "#60a5fa", marginTop: "20px" }}>Immobilien Akademie Smart · Berlin</p>
       </div>
     </div>
+    </>
   );
 }
