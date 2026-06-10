@@ -1,11 +1,14 @@
 import type { Express, Request, Response, NextFunction } from "express";
 import { ENV } from "./_core/env";
 import { assertKiFairUse } from "./kiFairUse";
-import { KI_RENEWAL_DAILY_LIMIT } from "../shared/kiFairUse";
+import { KI_FAIR_USE_POST_PATHS, KI_RENEWAL_DAILY_LIMIT } from "../shared/kiFairUse";
 
-/** Fair-Use vor /api/ai/* — ohne ragTutor.ts zu ändern */
-export function mountKiFairUseGate(app: Express): void {
-  app.use("/api/ai", async (req: Request, res: Response, next: NextFunction) => {
+export function createKiFairUseMiddleware(): (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => Promise<void> {
+  return async (req: Request, res: Response, next: NextFunction) => {
     if (req.method !== "POST") return next();
 
     try {
@@ -38,12 +41,20 @@ export function mountKiFairUseGate(app: Express): void {
       return next();
     } catch (err: any) {
       if (err?.code === "KI_QUOTA_EXCEEDED") {
-        return res.status(429).json({
+        res.status(429).json({
           error: `KI-Tageslimit erreicht (${KI_RENEWAL_DAILY_LIMIT} Nachrichten/Tag im Verlängerungs-Tarif). Morgen wieder verfügbar oder Vollzugang über Modulkauf.`,
           quota: err.quota,
         });
+        return;
       }
-      return next();
+      next();
     }
-  });
+  };
+}
+
+export function mountKiFairUseGate(app: Express): void {
+  const middleware = createKiFairUseMiddleware();
+  for (const path of KI_FAIR_USE_POST_PATHS) {
+    app.use(path, middleware);
+  }
 }
