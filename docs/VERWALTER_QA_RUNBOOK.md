@@ -89,7 +89,7 @@ Copy-Paste: letzte 30 Zeilen der Ausgabe.
 
 ```bash
 cd /mnt/c/Users/Lenovo/Immobilie-Akademie-Premium
-CHROME_PATH=$(find ~/.cache/ms-playwright -name chrome -type f 2>/dev/null | head -1)
+CHROME_PATH=$(find ~/.cache/ms-playwright -type f \( -name chrome-headless-shell -o -name chrome \) 2>/dev/null | head -1)
 npx --yes lighthouse https://immobilien-akademie-smart.de/app/verwalter/buchungen \
   --chrome-path="$CHROME_PATH" \
   --only-categories=performance,accessibility,best-practices \

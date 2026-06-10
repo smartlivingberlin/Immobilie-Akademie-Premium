@@ -16,7 +16,9 @@ test.describe("MySQL health endpoints", () => {
   });
 
   test("admin mysql-health ohne Login → 401", async ({ playwright }) => {
-    const anon = await playwright.request.newContext();
+    const anon = await playwright.request.newContext({
+      storageState: { cookies: [], origins: [] },
+    });
     const res = await anon.get(`${BASE}/api/admin/mysql-health`);
     expect(res.status()).toBe(401);
     await anon.dispose();

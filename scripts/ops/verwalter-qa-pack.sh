@@ -183,7 +183,8 @@ echo "    --project=chromium"
 
 echo ""
 echo "── F) Lighthouse (Performance, optional) ──"
-echo "  npx --yes lighthouse ${BASE}/app/verwalter/buchungen --only-categories=performance,accessibility,best-practices --chrome-flags='--headless' --output=json --output-path=./verwalter-lighthouse.json"
+  echo "  CHROME_PATH=\$(find ~/.cache/ms-playwright -type f \\( -name chrome-headless-shell -o -name chrome \\) 2>/dev/null | head -1)"
+  echo "  npx --yes lighthouse ${BASE}/app/verwalter/buchungen --chrome-path=\"\$CHROME_PATH\" --only-categories=performance,accessibility,best-practices --chrome-flags='--headless' --output=json --output-path=./verwalter-lighthouse.json"
 echo "  Report: cat verwalter-lighthouse.json | jq '.categories | to_entries[] | {id: .key, score: .value.score}'"
 
 echo ""
