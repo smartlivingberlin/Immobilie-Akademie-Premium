@@ -7,15 +7,15 @@ import {
 } from "./stripeSeedCatalog";
 
 describe("stripeSeedCatalog", () => {
-  it("has 18 entries (6 subscriptions + 12 one-time)", () => {
-    expect(STRIPE_SEED_SUBSCRIPTIONS).toHaveLength(6);
+  it("has 19 entries (7 subscriptions + 12 one-time)", () => {
+    expect(STRIPE_SEED_SUBSCRIPTIONS).toHaveLength(7);
     expect(STRIPE_SEED_ONE_TIME).toHaveLength(12);
-    expect(STRIPE_SEED_CATALOG).toHaveLength(18);
+    expect(STRIPE_SEED_CATALOG).toHaveLength(19);
   });
 
   it("uses unique env keys", () => {
     const keys = STRIPE_SEED_CATALOG.map((e) => e.envKey);
-    expect(new Set(keys).size).toBe(18);
+    expect(new Set(keys).size).toBe(19);
   });
 
   it("formats env block for Railway", () => {

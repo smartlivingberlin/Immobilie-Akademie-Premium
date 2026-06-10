@@ -7,6 +7,7 @@ export const STRIPE_PRICE_ENV_KEYS = {
   compliance_yearly: "STRIPE_PRICE_COMPLIANCE_YEARLY",
   b2b_starter: "STRIPE_PRICE_B2B_STARTER",
   b2b_professional: "STRIPE_PRICE_B2B_PROFESSIONAL",
+  verwalter_tools_monthly: "STRIPE_PRICE_VERWALTER_TOOLS_MONTHLY",
 } as const;
 
 /** B2B-Plan-ID → Stripe Price-Key */

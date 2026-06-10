@@ -130,6 +130,7 @@ temp/
 !docs/VERWALTER_PHASE1_STATUS.md
 !docs/VERWALTER_BETA_TESTER.md
 !docs/VERWALTER_QA_RUNBOOK.md
+!docs/VERWALTER_STRIPE_SETUP.md
 verwalter-lighthouse.json
 !docs/DATEV_SPEC.md
 !docs/SYSTEM_AUDIT.md

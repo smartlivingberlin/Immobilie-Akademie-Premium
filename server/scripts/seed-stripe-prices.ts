@@ -1,5 +1,5 @@
 /**
- * Erstellt alle 18 Stripe Price-IDs per API (Test oder Live) und gibt Railway-ENV aus.
+ * Erstellt alle 19 Stripe Price-IDs per API (Test oder Live) und gibt Railway-ENV aus.
  *
  * Voraussetzung: STRIPE_SECRET_KEY in der Umgebung (sk_test_… für Phase 5, sk_live_… später).
  *

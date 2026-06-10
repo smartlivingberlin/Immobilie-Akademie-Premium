@@ -16,9 +16,17 @@ export const STRIPE_SEED_SUBSCRIPTIONS: StripeSeedEntry[] = [
   {
     envKey: "STRIPE_PRICE_RECHENPRAXIS_MONTHLY",
     productId: "rechenpraxis_standalone",
-    name: "Rechenpraxis Solo — 128 Aufgaben mit KI-Hilfe",
+    name: "Rechenpraxis Solo — 138 Aufgaben mit KI-Hilfe",
     description: "Monatliches Abo — nur Rechenpraxis, kein Vollkurs",
     unitAmountCents: 1900,
+    recurring: "month",
+  },
+  {
+    envKey: "STRIPE_PRICE_VERWALTER_TOOLS_MONTHLY",
+    productId: "verwalter_tools",
+    name: "Verwalter Tools — WEG-Suite",
+    description: "25 Vorlagen, Objekte, Vorgänge, Buchungen, DATEV-Export, KI-Assistent",
+    unitAmountCents: 3900,
     recurring: "month",
   },
   {

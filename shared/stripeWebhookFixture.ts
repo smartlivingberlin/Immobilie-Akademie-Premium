@@ -31,7 +31,7 @@ export function buildCheckoutCompletedFixture(opts: {
 
 export function buildInvoicePaidFixture(opts: {
   userId: number;
-  type: "renewal" | "compliance" | "b2b" | "rechenpraxis";
+  type: "renewal" | "compliance" | "b2b" | "rechenpraxis" | "verwalter_tools";
   interval?: "month" | "year";
   planId?: string;
   companyName?: string;
