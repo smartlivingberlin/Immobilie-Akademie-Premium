@@ -7,6 +7,11 @@ export type VerwalterEventTyp =
   | "frist.vorgang_angelegt"
   | "fristen.batch_angelegt"
   | "freigabe.angelegt"
+  | "email.eingegangen"
+  | "email.vorgang_angelegt"
+  | "etv.workflow_gestartet"
+  | "etv.phase_fortgeschritten"
+  | "etv.beschluss_angelegt"
   | "system.hinweis";
 
 export type VerwalterEvent = {

@@ -6,8 +6,8 @@ import {
 } from "./verwalterVorlagen";
 
 describe("verwalterVorlagen", () => {
-  it("enthält 25 Vorlagen", () => {
-    expect(VERWALTER_VORLAGEN.length).toBe(25);
+  it("enthält 26 Vorlagen", () => {
+    expect(VERWALTER_VORLAGEN.length).toBe(26);
   });
 
   it("getVorlageBySlug findet neue Sprint-A4-Vorlagen", () => {

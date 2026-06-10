@@ -8,6 +8,7 @@ export async function deleteVerwalterUserData(db: { $client: { query: (sql: stri
   const tables = [
     "verwalter_freigaben",
     "verwalter_events",
+    "verwalter_inbox_messages",
     "verwalter_buchungen",
     "verwalter_vorgaenge",
     "verwalter_objekte",

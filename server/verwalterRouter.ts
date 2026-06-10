@@ -141,11 +141,20 @@ router.get("/api/verwalter/dashboard", requireVerwalterAuth, async (req, res) =>
     const objekte = await listObjekte(uid);
     let neueEvents = 0;
     let ausstehendeFreigaben = 0;
+    let neueInboxNachrichten = 0;
     try {
       neueEvents = await countVerwalterEvents(uid, "neu");
       ausstehendeFreigaben = await countVerwalterFreigaben(uid, "ausstehend");
     } catch {
       /* Tabellen noch nicht migriert */
+    }
+    if (getVerwalterFeatureFlags().inbox) {
+      try {
+        const { countInboxMessages } = await import("./verwalterInboxStore");
+        neueInboxNachrichten = await countInboxMessages(uid, "neu");
+      } catch {
+        /* Migration 0045 optional */
+      }
     }
     res.json({
       success: true,
@@ -154,6 +163,7 @@ router.get("/api/verwalter/dashboard", requireVerwalterAuth, async (req, res) =>
       overdueVorgaenge: await countOverdueVorgaenge(uid),
       neueEvents,
       ausstehendeFreigaben,
+      neueInboxNachrichten,
       featureFlags: getVerwalterFeatureFlags(),
     });
   } catch (e: any) {
@@ -342,6 +352,179 @@ router.get("/api/verwalter/mahnwesen/vorgaenge", requireVerwalterAuth, async (re
     res.json({ success: true, mahnungen });
   } catch (e: any) {
     res.status(500).json({ error: e.message });
+  }
+});
+
+router.get("/api/verwalter/etv/fristen", requireVerwalterAuth, async (req, res) => {
+  try {
+    const etvDatum = String(req.query.etvDatum || "");
+    if (!etvDatum) return res.status(400).json({ error: "etvDatum erforderlich" });
+    const { computeEtvFristen } = await import("../shared/verwalterEtv");
+    res.json({ success: true, fristen: computeEtvFristen(etvDatum) });
+  } catch (e: any) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
+router.post("/api/verwalter/etv/start", requireVerwalterAuth, async (req, res) => {
+  try {
+    const body = req.body ?? {};
+    const { startEtvWorkflow } = await import("./verwalterEtvService");
+    const result = await startEtvWorkflow(userId(req as any), {
+      objektId: String(body.objektId || ""),
+      etvDatum: String(body.etvDatum || ""),
+      etvUhrzeit: body.etvUhrzeit ? String(body.etvUhrzeit) : undefined,
+      etvOrt: body.etvOrt ? String(body.etvOrt) : undefined,
+      tagesordnung: String(body.tagesordnung || ""),
+      onlineEtv: Boolean(body.onlineEtv),
+    });
+    res.json({ success: true, ...result });
+  } catch (e: any) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
+router.post("/api/verwalter/etv/:vorgangId/advance", requireVerwalterAuth, async (req, res) => {
+  try {
+    const { advanceEtvWorkflow } = await import("./verwalterEtvService");
+    const result = await advanceEtvWorkflow(userId(req as any), String(req.params.vorgangId));
+    res.json({ success: true, ...result });
+  } catch (e: any) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
+router.post("/api/verwalter/etv/:vorgangId/beschluss", requireVerwalterAuth, async (req, res) => {
+  try {
+    const body = req.body ?? {};
+    const { addEtvBeschluss } = await import("./verwalterEtvService");
+    const result = await addEtvBeschluss(userId(req as any), String(req.params.vorgangId), {
+      text: String(body.text || ""),
+      mehrheit: body.mehrheit,
+      angenommen: body.angenommen !== false,
+    });
+    res.json({ success: true, ...result });
+  } catch (e: any) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
+router.patch("/api/verwalter/etv/:vorgangId/checkliste", requireVerwalterAuth, async (req, res) => {
+  try {
+    const body = req.body ?? {};
+    const { updateEtvCheckliste } = await import("./verwalterEtvService");
+    const vorgang = await updateEtvCheckliste(userId(req as any), String(req.params.vorgangId), body.checkliste ?? {});
+    res.json({ success: true, vorgang });
+  } catch (e: any) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
+router.get("/api/verwalter/etv/vorgaenge", requireVerwalterAuth, async (req, res) => {
+  try {
+    const objektId = req.query.objektId ? String(req.query.objektId) : undefined;
+    const { listEtvVorgaenge } = await import("./verwalterEtvService");
+    const etvVorgaenge = await listEtvVorgaenge(userId(req as any), objektId);
+    res.json({ success: true, etvVorgaenge });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+router.get("/api/verwalter/inbox", requireVerwalterAuth, async (req, res) => {
+  try {
+    const { isVerwalterInboxEnabled } = await import("../shared/verwalterFeatureFlags");
+    if (!isVerwalterInboxEnabled()) {
+      return res.json({ success: true, enabled: false, messages: [] });
+    }
+    const { listInboxMessages } = await import("./verwalterInboxStore");
+    const status = req.query.status ? String(req.query.status) : undefined;
+    const messages = await listInboxMessages(userId(req as any), {
+      status: status as any,
+      limit: Number(req.query.limit) || 50,
+    });
+    res.json({ success: true, enabled: true, messages });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+router.post("/api/verwalter/inbox/ingest", requireVerwalterAuth, async (req, res) => {
+  try {
+    const { ingestInboundEmail } = await import("./verwalterInboxService");
+    const body = req.body ?? {};
+    const message = await ingestInboundEmail(userId(req as any), {
+      messageId: body.messageId ? String(body.messageId) : undefined,
+      from: String(body.from || ""),
+      fromName: body.fromName ? String(body.fromName) : undefined,
+      subject: String(body.subject || ""),
+      text: body.text ? String(body.text) : undefined,
+      html: body.html ? String(body.html) : undefined,
+      to: body.to ? String(body.to) : undefined,
+    });
+    res.json({ success: true, message });
+  } catch (e: any) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
+router.post("/api/verwalter/inbox/:id/assign", requireVerwalterAuth, async (req, res) => {
+  try {
+    const body = req.body ?? {};
+    const { assignInboxObjekt } = await import("./verwalterInboxService");
+    const message = await assignInboxObjekt(
+      userId(req as any),
+      String(req.params.id),
+      String(body.objektId || ""),
+      body.einheitId ? String(body.einheitId) : undefined,
+    );
+    res.json({ success: true, message });
+  } catch (e: any) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
+router.post("/api/verwalter/inbox/:id/to-vorgang", requireVerwalterAuth, async (req, res) => {
+  try {
+    const body = req.body ?? {};
+    const { createVorgangFromInbox } = await import("./verwalterInboxService");
+    const result = await createVorgangFromInbox(userId(req as any), String(req.params.id), {
+      objektId: body.objektId ? String(body.objektId) : undefined,
+      typ: body.typ,
+    });
+    res.json({ success: true, ...result });
+  } catch (e: any) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
+router.post("/api/verwalter/inbox/webhook", async (req, res) => {
+  try {
+    const { isVerwalterInboxEnabled } = await import("../shared/verwalterFeatureFlags");
+    if (!isVerwalterInboxEnabled()) {
+      return res.status(503).json({ error: "Inbox deaktiviert" });
+    }
+    const secret = String(req.headers["x-verwalter-inbox-secret"] || "");
+    const expected = process.env.VERWALTER_INBOX_WEBHOOK_SECRET || "";
+    if (!expected || secret !== expected) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+    const body = req.body ?? {};
+    const uid = Number(body.userId || process.env.VERWALTER_INBOX_DEFAULT_USER_ID || 0);
+    if (!uid) return res.status(400).json({ error: "userId erforderlich" });
+    const { ingestInboundEmail } = await import("./verwalterInboxService");
+    const message = await ingestInboundEmail(uid, {
+      messageId: body.messageId ? String(body.messageId) : undefined,
+      from: String(body.from || ""),
+      fromName: body.fromName ? String(body.fromName) : undefined,
+      subject: String(body.subject || ""),
+      text: body.text ? String(body.text) : undefined,
+      html: body.html ? String(body.html) : undefined,
+      to: body.to ? String(body.to) : undefined,
+    });
+    res.json({ success: true, message });
+  } catch (e: any) {
+    res.status(400).json({ error: e.message });
   }
 });
 

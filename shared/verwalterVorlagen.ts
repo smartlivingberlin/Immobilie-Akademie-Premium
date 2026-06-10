@@ -266,6 +266,38 @@ Der Plan wird zur Beschlussfassung in der nächsten Eigentümerversammlung vorge
 {{verwalterName}}`,
   },
   {
+    id: "etv-protokoll-inhalt",
+    slug: "etv-protokoll-inhalt",
+    title: "Versammlungsprotokoll (Inhalt)",
+    category: "etv",
+    description: "Strukturiertes Protokoll mit Tagesordnung und Beschlüssen.",
+    legalHint: "Protokoll jedem Eigentümer unverzüglich zugänglich machen (§ 24 Abs. 7 WEG).",
+    fields: [
+      { key: "wegName", label: "WEG", type: "text", required: true },
+      { key: "etvDatum", label: "Datum der Versammlung", type: "date", required: true },
+      { key: "etvUhrzeit", label: "Uhrzeit", type: "text", required: true },
+      { key: "etvOrt", label: "Ort", type: "text", required: true },
+      { key: "tagesordnung", label: "Tagesordnung", type: "textarea", required: true },
+      { key: "beschluesse", label: "Beschlüsse", type: "textarea", required: false },
+      { key: "verwalterName", label: "Verwaltung", type: "text", required: true },
+    ],
+    body: `Protokoll der Eigentümerversammlung
+
+{{wegName}}
+
+Datum: {{etvDatum}}, {{etvUhrzeit}}
+Ort: {{etvOrt}}
+
+Tagesordnung:
+{{tagesordnung}}
+
+Beschlüsse:
+{{beschluesse}}
+
+Unterschrift Verwalter / Protokollführer:
+{{verwalterName}}`,
+  },
+  {
     id: "etv-protokoll",
     slug: "etv-protokoll",
     title: "Protokollhinweis nach ETV",

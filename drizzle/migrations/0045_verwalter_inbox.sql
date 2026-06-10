@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS `verwalter_inbox_messages` (
+  `id` varchar(12) NOT NULL,
+  `userId` int NOT NULL,
+  `messageId` varchar(255) NULL,
+  `fromEmail` varchar(255) NOT NULL,
+  `fromName` varchar(255) NULL,
+  `subject` varchar(512) NOT NULL,
+  `bodyText` text NULL,
+  `bodyHtml` text NULL,
+  `objektId` varchar(12) NULL,
+  `einheitId` varchar(12) NULL,
+  `vorgangId` varchar(12) NULL,
+  `vorgangTypVorschlag` varchar(32) NULL,
+  `status` varchar(32) NOT NULL DEFAULT 'neu',
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `idx_verwalter_inbox_userId` (`userId`),
+  KEY `idx_verwalter_inbox_status` (`status`),
+  UNIQUE KEY `uq_verwalter_inbox_messageId_userId` (`messageId`, `userId`)
+);

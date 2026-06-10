@@ -32,6 +32,21 @@ export const FRISTEN_CHECKLISTE: FristItem[] = [
     category: "beschluss",
   },
   {
+    id: "beschluss-zustellung",
+    title: "Beschluss mitteilen",
+    description: "Beschlussinhalt an alle Eigentümer mit Hinweis auf Anfechtungsfrist.",
+    legalBasis: "§ 46 Abs. 1 WEG",
+    relatedVorlageSlug: "beschluss-hinweis",
+    category: "beschluss",
+  },
+  {
+    id: "beschluss-sammlung",
+    title: "Beschluss-Sammlung pflegen",
+    description: "Neue Beschlüsse in die fortlaufende Beschluss-Sammlung aufnehmen.",
+    legalBasis: "§ 24 Abs. 7 WEG",
+    category: "beschluss",
+  },
+  {
     id: "nk-widerspruch",
     title: "Einwendungen NK-Abrechnung",
     description: "Mieter/Eigentümer: Einwendungen binnen 12 Monaten nach Zugang.",
