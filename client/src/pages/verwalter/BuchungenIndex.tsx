@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
-import { BookOpen, Download, Plus, Trash2 } from "lucide-react";
+import { AlertTriangle, BookOpen, Download, Plus, Sparkles, Trash2 } from "lucide-react";
+import { MonatsabschlussPanel } from "@/components/verwalter/MonatsabschlussPanel";
+import type { BuchungVorschlag } from "@shared/verwalterBuchungVorschlag";
+import type { PlausibilitaetHinweis } from "@shared/verwalterBuchungPlausibilitaet";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -30,6 +33,10 @@ export default function BuchungenIndex() {
   const [saving, setSaving] = useState(false);
   const [exporting, setExporting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [freitext, setFreitext] = useState("");
+  const [vorschlag, setVorschlag] = useState<BuchungVorschlag | null>(null);
+  const [vorschlagLaden, setVorschlagLaden] = useState(false);
+  const [hinweise, setHinweise] = useState<PlausibilitaetHinweis[]>([]);
 
   const selectedObjekt = objekte.find((o) => o.id === objektId);
 
@@ -54,8 +61,42 @@ export default function BuchungenIndex() {
       const res = await fetch(`/api/verwalter/buchungen?${q}`, { credentials: "include" });
       const data = await res.json();
       if (data.success) setBuchungen(data.buchungen);
+      const pRes = await fetch(`/api/verwalter/buchungen/plausibilitaet?${q}`, { credentials: "include" });
+      const pData = await pRes.json();
+      if (pData.success) setHinweise(pData.hinweise);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const vorschlagen = async () => {
+    if (!objektId || !freitext.trim()) return;
+    setVorschlagLaden(true);
+    setError(null);
+    setVorschlag(null);
+    try {
+      const res = await fetch("/api/verwalter/buchungen/vorschlagen", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: freitext, objektId, periode }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Kein Vorschlag");
+      setVorschlag(data.vorschlag);
+      setForm({
+        ...emptyForm,
+        betrag: String(data.vorschlag.betrag),
+        sollKonto: data.vorschlag.sollKonto,
+        habenKonto: data.vorschlag.habenKonto,
+        buchungstext: data.vorschlag.buchungstext,
+        einheitId: data.vorschlag.einheitId || "",
+      });
+      setShowForm(true);
+    } catch (e: any) {
+      setError(e.message);
+    } finally {
+      setVorschlagLaden(false);
     }
   };
 
@@ -119,14 +160,22 @@ export default function BuchungenIndex() {
     await loadBuchungen();
   };
 
-  const exportDatev = async () => {
+  const exportDatev = async (force = false) => {
     if (!objektId) return;
     setExporting(true);
     setError(null);
     try {
-      await downloadDatevBuchungenCsv(objektId, periode);
+      await downloadDatevBuchungenCsv(objektId, periode, force);
     } catch (e: any) {
-      setError(e.message || "DATEV-Export fehlgeschlagen");
+      if (e.hinweise?.length && !force) {
+        const msgs = e.hinweise.map((h: PlausibilitaetHinweis) => h.message).join("\n");
+        if (confirm(`${e.message}\n\n${msgs}\n\nTrotzdem exportieren?`)) {
+          setExporting(false);
+          return exportDatev(true);
+        }
+      } else {
+        setError(e.message || "DATEV-Export fehlgeschlagen");
+      }
     } finally {
       setExporting(false);
     }
@@ -153,7 +202,7 @@ export default function BuchungenIndex() {
               variant="outline"
               className="min-h-[44px] gap-2"
               disabled={!objektId || exporting}
-              onClick={exportDatev}
+              onClick={() => exportDatev()}
             >
               <Download className="h-4 w-4" />
               {exporting ? "Export…" : "DATEV-Export"}
@@ -203,6 +252,60 @@ export default function BuchungenIndex() {
             />
           </div>
         </div>
+
+        <div className="mt-4 rounded-xl border border-dashed border-emerald-300 bg-emerald-50/50 p-4 dark:border-emerald-800 dark:bg-emerald-950/20">
+          <Label htmlFor="freitext" className="flex items-center gap-2 text-sm font-medium">
+            <Sparkles className="h-4 w-4 text-emerald-600" />
+            Buchung in eigenen Worten
+          </Label>
+          <p className="mt-1 text-xs text-slate-500">
+            z. B. „250 Euro Hausgeld WE 3 Müller“ oder „NK Heizkosten 89,50“
+          </p>
+          <div className="mt-2 flex flex-col gap-2 sm:flex-row">
+            <Input
+              id="freitext"
+              className="min-h-[44px] flex-1"
+              value={freitext}
+              onChange={(e) => setFreitext(e.target.value)}
+              placeholder="Beschreiben Sie die Buchung…"
+              onKeyDown={(e) => e.key === "Enter" && vorschlagen()}
+            />
+            <Button
+              onClick={vorschlagen}
+              disabled={!objektId || vorschlagLaden || !freitext.trim()}
+              className="min-h-[44px] shrink-0"
+            >
+              {vorschlagLaden ? "Erkenne…" : "Vorschlag"}
+            </Button>
+          </div>
+          {vorschlag && (
+            <p className="mt-2 text-xs text-emerald-700 dark:text-emerald-300">
+              {vorschlag.erklaerung} ({vorschlag.quelle === "ki" ? "KI" : "Regel"})
+            </p>
+          )}
+        </div>
+
+        {hinweise.length > 0 && (
+          <ul className="mt-4 space-y-2">
+            {hinweise.map((h, i) => (
+              <li
+                key={i}
+                className={`flex items-start gap-2 rounded-lg px-3 py-2 text-sm ${
+                  h.level === "error"
+                    ? "bg-red-50 text-red-800 dark:bg-red-950/30"
+                    : h.level === "warn"
+                      ? "bg-amber-50 text-amber-900 dark:bg-amber-950/30"
+                      : "bg-slate-50 text-slate-600 dark:bg-slate-800/50"
+                }`}
+              >
+                <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
+                {h.message}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <MonatsabschlussPanel objektId={objektId} periode={periode} />
 
         <div className="mt-4 flex flex-wrap gap-2">
           <Button

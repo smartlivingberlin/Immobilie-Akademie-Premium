@@ -122,6 +122,13 @@ Wenn Buchungsvolumen oder Team-Zugang steigt:
 4. ✅ EXTF-Generator aus `listBuchungen(objektId, periode)`
 5. Nutzer-Test mit 1 Steuerberater (5 Buchungen importieren)
 
+## Assistent & Qualitätssicherung (ergänzt)
+
+- **Freitext-Buchungsvorschlag:** `POST /api/verwalter/buchungen/vorschlagen` (Regel + KI)
+- **Plausibilitäts-Check:** `GET /api/verwalter/buchungen/plausibilitaet` — blockiert DATEV bei Fehlern
+- **Monatsabschluss:** `GET /api/verwalter/monatsabschluss` — 5-Schritte-Checkliste
+- **Onboarding:** Wizard für neue Nutzer ohne Objekte
+
 ---
 
 *Keine Rechts- oder Steuerberatung. DATEV ist eingetragenes Markenzeichen der DATEV eG.*
