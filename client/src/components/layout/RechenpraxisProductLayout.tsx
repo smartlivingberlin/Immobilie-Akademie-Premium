@@ -19,6 +19,8 @@ import { trpc } from "@/lib/trpc";
 import { ComfortBar, ComfortBarMini } from "@/components/ComfortBar";
 import { Button } from "@/components/ui/button";
 import { hasFullRechenpraxisAccess } from "@shared/rechenpraxisAccess";
+import { VerwalterAssistent } from "@/components/verwalter/VerwalterAssistent";
+import { VerwalterGuideBanner } from "@/components/verwalter/VerwalterGuideBanner";
 
 const NAV = [
   { name: "Rechenpraxis", href: "/rechenpraxis", icon: Building2 },
@@ -196,7 +198,9 @@ export default function RechenpraxisProductLayout({ children }: { children: Reac
           </div>
         </header>
 
+        <VerwalterGuideBanner path={location} />
         <main className="min-w-0 flex-1">{children}</main>
+        <VerwalterAssistent />
       </div>
 
       {mobileOpen && (
