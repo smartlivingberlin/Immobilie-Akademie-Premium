@@ -18,6 +18,7 @@ import {
   updateVorgang,
 } from "./verwalterVorgangStore";
 import { getVorlageBySlug, renderVorlageBody } from "../shared/verwalterVorlagen";
+import { buildStammdatenCsv } from "./verwalterStammdatenExport";
 
 const router = Router();
 
@@ -141,6 +142,18 @@ router.delete("/api/verwalter/vorgaenge/:id", requireAuth, (req, res) => {
   const ok = deleteVorgang(userId(req as any), String(req.params.id));
   if (!ok) return res.status(404).json({ error: "Vorgang nicht gefunden" });
   res.json({ success: true });
+});
+
+router.get("/api/verwalter/export/stammdaten-csv", requireAuth, (req, res) => {
+  try {
+    const objekte = listObjekte(userId(req as any));
+    const csv = buildStammdatenCsv(objekte);
+    res.setHeader("Content-Type", "text/csv; charset=utf-8");
+    res.setHeader("Content-Disposition", 'attachment; filename="verwalter-stammdaten.csv"');
+    res.send(csv);
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
 });
 
 router.post("/api/verwalter/ki-brief", requireAuth, async (req, res) => {

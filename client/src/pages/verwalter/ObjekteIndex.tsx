@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
-import { Building2, Plus, Trash2, Pencil } from "lucide-react";
+import { Building2, Download, Plus, Trash2, Pencil } from "lucide-react";
+import { downloadStammdatenCsv } from "@/lib/verwalterExport";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -47,6 +48,7 @@ export default function ObjekteIndex() {
   const [editId, setEditId] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [exporting, setExporting] = useState(false);
 
   const load = async () => {
     setLoading(true);
@@ -156,6 +158,17 @@ export default function ObjekteIndex() {
     await load();
   };
 
+  const exportCsv = async () => {
+    setExporting(true);
+    try {
+      await downloadStammdatenCsv();
+    } catch (e: any) {
+      setError(e.message || "CSV-Export fehlgeschlagen");
+    } finally {
+      setExporting(false);
+    }
+  };
+
   return (
     <>
       <SEO title="WEG-Objekte — Verwalter-Rechner" />
@@ -167,9 +180,17 @@ export default function ObjekteIndex() {
               Stammdaten für Vorlagen und KI-Briefe — pro Konto gespeichert.
             </p>
           </div>
-          <Button onClick={openCreate} className="min-h-[44px] gap-2 shrink-0">
-            <Plus className="h-4 w-4" /> Neues Objekt
-          </Button>
+          <div className="flex flex-wrap gap-2 shrink-0">
+            {objekte.length > 0 && (
+              <Button variant="outline" onClick={exportCsv} disabled={exporting} className="min-h-[44px] gap-2">
+                <Download className="h-4 w-4" />
+                {exporting ? "Export…" : "Stammdaten CSV"}
+              </Button>
+            )}
+            <Button onClick={openCreate} className="min-h-[44px] gap-2">
+              <Plus className="h-4 w-4" /> Neues Objekt
+            </Button>
+          </div>
         </div>
 
         {showForm && (
