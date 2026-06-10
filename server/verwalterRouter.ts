@@ -27,6 +27,8 @@ import {
 } from "./verwalterBuchungStore";
 import { buildStammdatenCsv } from "./verwalterStammdatenExport";
 import { buildDatevBuchungenCsv } from "./verwalterDatevExport";
+import { buildVerwalterAssistentPrompt } from "./verwalterAssistentContext";
+import { VERWALTER_ASSISTENT_ROLLE } from "../shared/verwalterAssistentKnowledge";
 
 const router = Router();
 
@@ -243,6 +245,53 @@ router.get("/api/verwalter/export/stammdaten-csv", requireAuth, (req, res) => {
     res.send(csv);
   } catch (e: any) {
     res.status(500).json({ error: e.message });
+  }
+});
+
+router.post("/api/verwalter/assistent", requireAuth, async (req, res) => {
+  try {
+    const body = req.body ?? {};
+    const frage = String(body.frage || "").trim();
+    if (!frage) return res.status(400).json({ error: "frage erforderlich" });
+    if (frage.length > 1500) return res.status(400).json({ error: "frage zu lang" });
+
+    const uid = userId(req as any);
+    const seite = body.seite ? String(body.seite) : undefined;
+    const objektId = body.objektId ? String(body.objektId) : undefined;
+
+    const contextBlock = buildVerwalterAssistentPrompt(uid, { seite, objektId });
+
+    const history = Array.isArray(body.nachrichten)
+      ? body.nachrichten
+          .filter((n: { rolle?: string; text?: string }) => n?.text && (n.rolle === "user" || n.rolle === "assistant"))
+          .slice(-6)
+          .map((n: { rolle: string; text: string }) =>
+            n.rolle === "assistant" ? `ASSISTENT: ${n.text}` : `NUTZER: ${n.text}`,
+          )
+          .join("\n")
+      : "";
+
+    const userPrompt = [
+      history ? `Bisheriger Verlauf:\n${history}\n` : "",
+      `KONTEXT:\n${contextBlock}`,
+      "",
+      `FRAGE DES NUTZERS:\n${frage}`,
+      "",
+      "Antworte auf Deutsch, strukturiert und für Laien verständlich. Max. 8 kurze Absätze oder Aufzählung.",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    const result = await askLlmWithContinuation(VERWALTER_ASSISTENT_ROLLE, userPrompt, 2000, 2);
+
+    res.json({
+      success: true,
+      answer: result.text.trim(),
+      provider: result.provider,
+      complete: result.complete,
+    });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message || "Assistent nicht verfügbar" });
   }
 });
 
