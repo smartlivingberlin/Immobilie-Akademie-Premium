@@ -209,11 +209,16 @@ export function registerAgentRoutes(app: Express) {
       const { default: Anthropic } = await import("@anthropic-ai/sdk");
       const client = new Anthropic({ apiKey });
 
+      const wegHinweis =
+        aufgabe?.bereich === "WEG-Hausgeld & Abrechnung"
+          ? " Hinweis: Fuer echte Buchungen verweisen auf Verwalter-Rechner unter /app/verwalter/buchungen (SKR 1200/8400 Hausgeld) und Vorlagen unter /app/verwalter/vorlagen — nur erwaehnen wenn passend."
+          : "";
+
       const system = `Du bist ein geduldiger Lern-Assistent fuer Immobilienwirtschaft und Rechenpraxis.
 Erklaere fuer Quereinsteiger einfach, klar und ohne unnoetigen Fachjargon.
 Aktuelle Aufgabe: "${aufgabe?.titel || "Rechenpraxis"}"
 Bereich: "${aufgabe?.bereich || "Immobilienwirtschaft"}"
-Kontext: ${aufgabe?.berufssituation || "Keine weitere Kontextangabe."}
+Kontext: ${aufgabe?.berufssituation || "Keine weitere Kontextangabe."}${wegHinweis}
 
 Antworte auf Deutsch, maximal 4 Saetze.
 Gib keine Rechtsberatung und keine offiziellen Pruefungsversprechen.

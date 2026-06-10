@@ -29,6 +29,7 @@ import { buildStammdatenCsv } from "./verwalterStammdatenExport";
 import { buildDatevBuchungenCsv } from "./verwalterDatevExport";
 import { buildVerwalterAssistentPrompt } from "./verwalterAssistentContext";
 import { suggestBuchung } from "./verwalterBuchungVorschlagService";
+import { looksLikeBuchungsAnfrage } from "../shared/verwalterAssistentBuchung";
 import { VERWALTER_ASSISTENT_ROLLE } from "../shared/verwalterAssistentKnowledge";
 import {
   hatPlausibilitaetsFehler,
@@ -368,11 +369,32 @@ router.post("/api/verwalter/assistent", requireAuth, async (req, res) => {
 
     const result = await askLlmWithContinuation(VERWALTER_ASSISTENT_ROLLE, userPrompt, 2000, 2);
 
+    let buchungsVorschlag = null;
+    let resolvedObjektId = objektId;
+    const periode = body.periode
+      ? String(body.periode)
+      : new Date().toISOString().slice(0, 7);
+
+    if (!resolvedObjektId) {
+      const objs = listObjekte(uid);
+      if (objs[0]) resolvedObjektId = objs[0].id;
+    }
+
+    if (resolvedObjektId && looksLikeBuchungsAnfrage(frage)) {
+      const obj = getObjekt(uid, resolvedObjektId);
+      if (obj) {
+        buchungsVorschlag = await suggestBuchung(frage, obj, periode);
+      }
+    }
+
     res.json({
       success: true,
       answer: result.text.trim(),
       provider: result.provider,
       complete: result.complete,
+      buchungsVorschlag,
+      objektId: resolvedObjektId,
+      periode,
     });
   } catch (e: any) {
     res.status(500).json({ error: e.message || "Assistent nicht verfügbar" });
