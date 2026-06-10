@@ -1,4 +1,3 @@
-import { FullscreenContent } from "@/components/FullscreenContent";
 import { scaledFontSize as fz } from "@/lib/a11yFont";
 import { useState } from "react";
 import { Loader2, Download, CheckCircle, Sparkles } from "lucide-react";
@@ -17,12 +16,15 @@ const FORMATS = [
   { id: "skript", label: "Prüfungsskript", desc: "Fragen, Antworten, Paragraphen für IHK", icon: "📝" },
 ];
 
-const MODULE_SUMMARY: Record<number, string> = {
-  1: "Einführung Immobilienwirtschaft: Marktstruktur, Berufsbilder, Grundbuch, Baurecht, BauGB, WEG-Grundlagen, Mietrecht BGB §535, Maklervertrag §652, Energieausweis GEG, PropTech, ESG.",
-  2: "Makler §34c GewO: Erlaubnispflicht, MaBV, Haftpflichtversicherung, IHK-Sachkunde, Maklervertrag §652-656 BGB, Alleinauftrag, Bestellerprinzip, Courtage 2020, Widerrufsrecht, GwG, DSGVO, Exposé-Pflichten GEG.",
-  3: "WEG & Mietrecht: WEMoG 2020, Sondereigentum, Gemeinschaftseigentum, Eigentümerversammlung §24 WEG, Hausgeld, Erhaltungsrücklage, Betriebskostenverordnung, Nebenkostenabrechnung, Mietpreisbremse, Kündigung §573, Mietspiegel.",
-  4: "Gutachter: ImmoWertV 2021, Verkehrswert §194 BauGB, Vergleichswertverfahren, Ertragswertverfahren, Sachwertverfahren, Bodenrichtwerte, Liegenschaftszins, Gutachterausschuss §192 BauGB, Beleihungswert, Erbbaurecht.",
-  5: "Darlehensvermittler §34i: WIKR, ESIS, Annuitätendarlehen, Zinsbindung, Grundschuld §1191 BGB, KfW-Förderung, Beleihungsgrenze, Sondertilgung, Vorfälligkeitsentschädigung, Bonitätsprüfung, Forward-Darlehen.",
+type GenResult = {
+  content: string;
+  moduleTitle: string;
+  format: string;
+  fromCache?: boolean;
+  pipelined?: boolean;
+  daysCovered?: number;
+  daysExtracted?: number;
+  incompleteBlocks?: number;
 };
 
 export default function KursbuchGenerator() {
@@ -30,7 +32,7 @@ export default function KursbuchGenerator() {
   const [selectedFormat, setSelectedFormat] = useState("kursbuch");
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState<string | null>(null);
-  const [result, setResult] = useState<{ content: string; moduleTitle: string; format: string; fromCache?: boolean; chunked?: boolean } | null>(null);
+  const [result, setResult] = useState<GenResult | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const loadDraft = async () => {
@@ -51,21 +53,22 @@ export default function KursbuchGenerator() {
           content: data.content,
           moduleTitle: data.moduleName || mod.title,
           format: selectedFormat,
-          fromCache: true,
+          fromCache: false,
+          daysExtracted: data.daysExtracted,
         });
       } else setError(data.error || "Fehler");
     } catch { setError("Verbindungsfehler"); }
     finally { setLoading(false); setProgress(null); }
   };
 
-  const generateChunked = async (forceRegenerate = false) => {
+  const generatePipeline = async (forceRegenerate = false) => {
     setLoading(true);
-    setProgress("KI verarbeitet alle Lerntage in Blöcken (kann mehrere Minuten dauern)…");
+    const mod = MODULES.find(m => m.id === selectedModule)!;
+    setProgress(`KI-Pipeline: ${mod.days} Lerntage werden verarbeitet (1 Tag = 1 Job, kann 5–15 Min. dauern)…`);
     setError(null);
     setResult(null);
-    const mod = MODULES.find(m => m.id === selectedModule)!;
     try {
-      const res = await fetch("/api/ai/generate-kursbuch-chunked", {
+      const res = await fetch("/api/ai/generate-kursbuch-pipeline", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ moduleId: selectedModule, format: selectedFormat, forceRegenerate }),
@@ -77,35 +80,13 @@ export default function KursbuchGenerator() {
           moduleTitle: data.moduleName || mod.title,
           format: selectedFormat,
           fromCache: Boolean(data.fromCache),
-          chunked: true,
+          pipelined: true,
+          daysCovered: data.daysCovered,
+          daysExtracted: data.daysExtracted,
+          incompleteBlocks: data.incompleteBlocks,
         });
       } else setError(data.error || "Fehler");
-    } catch { setError("Verbindungsfehler"); }
-    finally { setLoading(false); setProgress(null); }
-  };
-
-  const generateWithAi = async (forceRegenerate = false) => {
-    setLoading(true);
-    setProgress("KI generiert (Einzelblock, max. 40 Tage)…");
-    setError(null);
-    setResult(null);
-    const mod = MODULES.find(m => m.id === selectedModule)!;
-    try {
-      const res = await fetch("/api/ai/generate-kursbuch-v2", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ moduleId: selectedModule, format: selectedFormat, forceRegenerate }),
-      });
-      const data = await res.json();
-      if (data.success) {
-        setResult({
-          content: data.content,
-          moduleTitle: data.moduleName || mod.title,
-          format: selectedFormat,
-          fromCache: Boolean(data.fromCache),
-        });
-      } else setError(data.error || "Fehler");
-    } catch { setError("Verbindungsfehler"); }
+    } catch { setError("Verbindungsfehler — bei langen Modulen ggf. erneut versuchen"); }
     finally { setLoading(false); setProgress(null); }
   };
 
@@ -120,11 +101,22 @@ export default function KursbuchGenerator() {
     URL.revokeObjectURL(url);
   };
 
+  const resultLabel = () => {
+    if (result?.pipelined) {
+      const warn = (result.incompleteBlocks ?? 0) > 0 ? ` · ${result.incompleteBlocks} Block(e) ggf. gekürzt` : "";
+      return `(KI-Pipeline · ${result.daysCovered ?? "?"}/${result.daysExtracted ?? "?"} Tage${warn})`;
+    }
+    if (result?.fromCache) return "(Portal-Inhalt)";
+    return "(KI generiert)";
+  };
+
   return (
     <div style={{ maxWidth: 860, margin: "0 auto", padding: "24px 20px" }}>
       <div style={{ marginBottom: 24 }}>
         <h1 style={{ fontSize: fz(24), fontWeight: 700, color: "#0f172a", margin: 0 }}>Kursbuch-Generator</h1>
-        <p style={{ color: "#64748b", marginTop: 4, fontSize: fz(14) }}>Modul wählen → Entwurf (0 €) oder KI (Chunked, alle Tage) → Download</p>
+        <p style={{ color: "#64748b", marginTop: 4, fontSize: fz(14) }}>
+          Entwurf (0 €, alle Tage) oder KI-Pipeline (1 Tag = 1 Job, vollständig)
+        </p>
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 14 }}>
@@ -173,23 +165,18 @@ export default function KursbuchGenerator() {
 
       <div style={{ display: "flex", gap: 10, marginBottom: 20, flexWrap: "wrap" }}>
         <button onClick={loadDraft} disabled={loading}
-          style={{ flex: 1, minWidth: 180, padding: 14, background: loading ? "#94a3b8" : "#059669", color: "#fff", border: "none", borderRadius: 12, fontSize: fz(14), fontWeight: 600, cursor: loading ? "not-allowed" : "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
+          style={{ flex: 1, minWidth: 200, padding: 14, background: loading ? "#94a3b8" : "#059669", color: "#fff", border: "none", borderRadius: 12, fontSize: fz(14), fontWeight: 600, cursor: loading ? "not-allowed" : "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
           {loading ? <Loader2 size={18} style={{ animation: "spin 1s linear infinite" }} /> : <Download size={18} />}
           {loading ? "Lädt..." : "Entwurf (0 €, alle Tage)"}
         </button>
-        <button onClick={() => generateChunked(true)} disabled={loading}
-          style={{ flex: 1, minWidth: 180, padding: 14, background: loading ? "#94a3b8" : "#2563eb", color: "#fff", border: "none", borderRadius: 12, fontSize: fz(14), fontWeight: 600, cursor: loading ? "not-allowed" : "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
+        <button onClick={() => generatePipeline(true)} disabled={loading}
+          style={{ flex: 1, minWidth: 200, padding: 14, background: loading ? "#94a3b8" : "#2563eb", color: "#fff", border: "none", borderRadius: 12, fontSize: fz(14), fontWeight: 600, cursor: loading ? "not-allowed" : "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
           {loading ? <Loader2 size={18} style={{ animation: "spin 1s linear infinite" }} /> : <Sparkles size={18} />}
-          {loading ? "KI erstellt..." : "KI-Kursbuch (Chunked)"}
-        </button>
-        <button onClick={() => generateWithAi(true)} disabled={loading}
-          style={{ flex: 1, minWidth: 180, padding: 14, background: loading ? "#94a3b8" : "#7c3aed", color: "#fff", border: "none", borderRadius: 12, fontSize: fz(14), fontWeight: 600, cursor: loading ? "not-allowed" : "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
-          {loading ? <Loader2 size={18} style={{ animation: "spin 1s linear infinite" }} /> : <Sparkles size={18} />}
-          {loading ? "KI erstellt..." : "KI (Legacy, 40 Tage)"}
+          {loading ? "KI-Pipeline läuft…" : "KI-Pipeline (vollständig)"}
         </button>
       </div>
       <p style={{ fontSize: fz(12), color: "#64748b", margin: "-8px 0 16px" }}>
-        Grün: alle Lerntage aus Moduldateien. Blau: KI in 8-Tage-Blöcken (empfohlen). Lila: älterer Einzelblock mit 40-Tage-Limit.
+        Grün: Roh-Markdown aus allen Lerntagen. Blau: KI verarbeitet jeden Tag einzeln mit Fortsetzung bei Token-Limit.
       </p>
 
       {result && (
@@ -199,7 +186,7 @@ export default function KursbuchGenerator() {
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: fz(13), fontWeight: 600, color: "#374151" }}>{result.moduleTitle}</div>
               <div style={{ fontSize: fz(11), color: "#94a3b8" }}>
-                {result.content.length.toLocaleString()} Zeichen {result.chunked ? "(KI Chunked)" : result.fromCache ? "(Portal-Inhalt / Cache)" : "(KI generiert)"}
+                {result.content.length.toLocaleString()} Zeichen {resultLabel()}
               </div>
             </div>
             <button onClick={download} style={{ display: "flex", alignItems: "center", gap: 6, padding: "7px 14px", background: "#059669", color: "#fff", border: "none", borderRadius: 8, fontSize: fz(12), fontWeight: 500, cursor: "pointer" }}>

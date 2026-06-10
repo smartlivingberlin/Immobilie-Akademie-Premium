@@ -38,7 +38,7 @@ function buildDraft(moduleId: number, format: string): string {
   return `# ${formatTitle}: ${moduleName}
 
 > Automatisch aus Portal-Inhalten (Moduldateien + Wissensdatenbank) — **ohne KI-Kosten**.
-> Zur Veröffentlichung bitte prüfen und ggf. mit „KI-Kursbuch (Chunked)“ verfeinern.
+> Zur Veröffentlichung bitte prüfen und ggf. mit „KI-Pipeline (vollständig)“ verfeinern.
 
 ## Modulüberblick
 
