@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { isOAuthEnabled, handleGoogleLogin } from "@/lib/oauth";
 import { ComfortBar } from "@/components/ComfortBar";
+import { resolvePostLoginRedirect } from "@/lib/postLoginRedirect";
 
 export default function LoginPage() {
   const [mode, setMode] = useState<"login" | "register">("login");
@@ -48,7 +49,7 @@ export default function LoginPage() {
       if (data.role === "admin") {
         window.location.href = "/admin-2fa";
       } else {
-        window.location.href = "/modul/1";
+        window.location.href = resolvePostLoginRedirect();
       }
     } catch { setError("Verbindungsfehler. Bitte erneut versuchen."); }
     finally { setLoading(false); }
@@ -61,7 +62,7 @@ export default function LoginPage() {
       const res = await fetch("/api/auth/redeem-code", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code: demoCode.trim() }), credentials: "include" });
       const data = await res.json();
       if (!res.ok || data?.error) { setDemoCodeMsg("Ungültiger oder abgelaufener Code."); }
-      else { setDemoCodeMsg("Zugang freigeschaltet!"); setTimeout(() => { window.location.href = "/modul/1"; }, 1500); }
+      else { setDemoCodeMsg("Zugang freigeschaltet!"); setTimeout(() => { window.location.href = resolvePostLoginRedirect(); }, 1500); }
     } catch { setDemoCodeMsg("Verbindungsfehler."); }
     finally { setDemoCodeLoading(false); }
   }
