@@ -5,17 +5,24 @@
 import { mkdirSync, writeFileSync } from "fs";
 import { join } from "path";
 import { parseModuleDayLessons } from "../moduleDayExtractor";
+import { getExpectedDayCount, validateModuleContentFiles } from "../moduleContentRegistry";
 
 const outDir = join(process.cwd(), "dist", "data");
 mkdirSync(outDir, { recursive: true });
 
 let total = 0;
 for (let moduleId = 1; moduleId <= 5; moduleId++) {
+  const validation = validateModuleContentFiles(moduleId);
+  if (!validation.ok) {
+    console.warn(`[exportModuleLessons] M${moduleId}: fehlende Dateien: ${validation.missing.join(", ")}`);
+  }
   const lessons = parseModuleDayLessons(moduleId);
+  const expected = getExpectedDayCount(moduleId);
   const outPath = join(outDir, `module-lessons-${moduleId}.json`);
   writeFileSync(outPath, JSON.stringify(lessons));
   total += lessons.length;
-  console.log(`[exportModuleLessons] M${moduleId}: ${lessons.length} Lerntage → ${outPath}`);
+  const status = lessons.length >= expected ? "OK" : "WARN";
+  console.log(`[exportModuleLessons] M${moduleId}: ${lessons.length}/${expected} Lerntage [${status}] → ${outPath}`);
 }
 
 if (total === 0) {

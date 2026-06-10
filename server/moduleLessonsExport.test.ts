@@ -13,7 +13,11 @@ describe("module lessons export", () => {
 
   it("getModuleLessons liefert M3-Inhalte", () => {
     const lessons = getModuleLessons(3);
-    expect(lessons.length).toBeGreaterThanOrEqual(60);
+    expect(lessons.length).toBe(80);
     expect(lessons[0]?.title).toBeTruthy();
+  });
+
+  it("getModuleLessons liefert M4 mit 40 Tagen nach Registry-Fix", () => {
+    expect(getModuleLessons(4).length).toBe(40);
   });
 });
