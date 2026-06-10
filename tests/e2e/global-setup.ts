@@ -32,6 +32,11 @@ function resolveAdminPassword(): string {
 const STATE_PATH = "tests/e2e/.auth-state.json";
 
 async function globalSetup() {
+  if (process.env.PLAYWRIGHT_SKIP_GLOBAL_SETUP === "1") {
+    console.log("⏭️  PLAYWRIGHT_SKIP_GLOBAL_SETUP=1 — kein Login");
+    return;
+  }
+
   const TEST_EMAIL = resolveAdminEmail();
   const TEST_PASSWORD = resolveAdminPassword();
   const browser = await chromium.launch();

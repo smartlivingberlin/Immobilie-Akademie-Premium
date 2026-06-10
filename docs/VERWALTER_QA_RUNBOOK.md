@@ -85,18 +85,20 @@ Copy-Paste: letzte 30 Zeilen der Ausgabe.
 
 **WSL ohne Chrome:** PageSpeed-Link nutzen (Abschnitt 5) — einfacher.
 
-**Mit Playwright-Chromium (nach `pnpm exec playwright install chromium`):**
+**WSL (ein Script):**
 
 ```bash
 cd /mnt/c/Users/Lenovo/Immobilie-Akademie-Premium
-CHROME_PATH=$(find ~/.cache/ms-playwright -type f \( -name chrome-headless-shell -o -name chrome \) 2>/dev/null | head -1)
-npx --yes lighthouse https://immobilien-akademie-smart.de/app/verwalter/buchungen \
-  --chrome-path="$CHROME_PATH" \
-  --only-categories=performance,accessibility,best-practices \
-  --chrome-flags="--headless" \
-  --output=json --output-path=./verwalter-lighthouse.json
+bash scripts/ops/verwalter-lighthouse.sh
+```
 
-cat verwalter-lighthouse.json | jq '.categories | to_entries[] | {id: .key, score: .value.score}'
+Falls Chromium-Libs fehlen: `sudo apt-get install -y libnss3 libatk-bridge2.0-0 libdrm2 libxkbcommon0 libgbm1 libasound2`
+
+**Playwright Admin-401-Tests ohne Login-Setup:**
+
+```bash
+PLAYWRIGHT_SKIP_GLOBAL_SETUP=1 PLAYWRIGHT_BASE_URL=https://immobilien-akademie-smart.de \
+pnpm exec playwright test tests/e2e/21-mysql-health.spec.ts tests/e2e/22-migration-status.spec.ts --project=chromium
 ```
 
 ---
