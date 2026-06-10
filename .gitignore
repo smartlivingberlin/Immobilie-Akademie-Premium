@@ -196,3 +196,4 @@ tests/e2e/.auth-state.json
 stripe_prices.env
 whsec_response.json
 restore_inbox/
+!docs/handover/PROJEKT_HISTORIE_VOLLSTAENDIG.md
