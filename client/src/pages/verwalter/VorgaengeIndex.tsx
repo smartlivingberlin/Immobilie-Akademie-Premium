@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useSearch } from "wouter";
-import { AlertCircle, FileText, Kanban, Plus, Trash2 } from "lucide-react";
+import { AlertCircle, Download, FileText, Kanban, Plus, Trash2 } from "lucide-react";
+import { downloadVorgaengeHtml, downloadVorgaengePdf } from "@/lib/verwalterExport";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -204,9 +205,39 @@ export default function VorgaengeIndex() {
               Mahnungen, ETV, Schäden — Kanban pro Status.
             </p>
           </div>
-          <Button onClick={openCreate} className="min-h-[44px] gap-2 shrink-0" disabled={objekte.length === 0}>
-            <Plus className="h-4 w-4" /> Neuer Vorgang
-          </Button>
+          <div className="flex flex-wrap gap-2 shrink-0">
+            {vorgaenge.length > 0 && (
+              <>
+                <Button
+                  variant="outline"
+                  className="min-h-[44px] gap-2"
+                  onClick={() =>
+                    downloadVorgaengeHtml(
+                      vorgaenge,
+                      objekte.find((o) => o.id === filterObjekt)?.name,
+                    )
+                  }
+                >
+                  <Download className="h-4 w-4" /> HTML
+                </Button>
+                <Button
+                  variant="outline"
+                  className="min-h-[44px] gap-2"
+                  onClick={() =>
+                    downloadVorgaengePdf(
+                      vorgaenge,
+                      objekte.find((o) => o.id === filterObjekt)?.name,
+                    )
+                  }
+                >
+                  <Download className="h-4 w-4" /> PDF
+                </Button>
+              </>
+            )}
+            <Button onClick={openCreate} className="min-h-[44px] gap-2" disabled={objekte.length === 0}>
+              <Plus className="h-4 w-4" /> Neuer Vorgang
+            </Button>
+          </div>
         </div>
 
         <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
