@@ -49,7 +49,7 @@ case "$CMD" in
   migrate-status)
     curl -s "${BASE}/api/health" | (command -v jq >/dev/null && jq '.migrations' || cat)
     ;;
-  events|freigaben|fristen-batch|dashboard|flags|mahnwesen|mahnungen)
+  events|freigaben|fristen-batch|dashboard|flags|mahnwesen|mahnungen|etv|etv-list|inbox|inbox-ingest)
     ensure_verwalter_login
     python3 - "$CMD" "$BASE" <<'PY'
 import json, os, sys, http.cookiejar, urllib.request
@@ -111,6 +111,32 @@ elif cmd == "mahnwesen":
         "betrag": float(os.environ.get("BETRAG", "100")),
         "faelligSeit": os.environ.get("FAELLIG_SEIT") or __import__("datetime").date.today().isoformat(),
     })
+elif cmd == "etv-list":
+    st, body = get("/api/verwalter/etv/vorgaenge")
+elif cmd == "etv":
+    objekt = os.environ.get("OBJEKT_ID", "")
+    if not objekt:
+        st, ob = get("/api/verwalter/objekte")
+        data = json.loads(ob)
+        objekte = data.get("objekte") or []
+        if not objekte:
+            print("Kein Objekt"); sys.exit(1)
+        objekt = objekte[0]["id"]
+    st, body = post("/api/verwalter/etv/start", {
+        "objektId": objekt,
+        "etvDatum": os.environ.get("ETV_DATUM") or __import__("datetime").date.today().isoformat(),
+        "etvUhrzeit": os.environ.get("ETV_UHRZEIT") or "18:00 Uhr",
+        "etvOrt": os.environ.get("ETV_ORT") or "Gemeinschaftsraum",
+        "tagesordnung": os.environ.get("TAGESORDNUNG") or "1. Begrüßung\n2. Wirtschaftsplan\n3. Sonstiges",
+    })
+elif cmd == "inbox":
+    st, body = get("/api/verwalter/inbox")
+elif cmd == "inbox-ingest":
+    st, body = post("/api/verwalter/inbox/ingest", {
+        "from": os.environ.get("FROM") or "eigentuemer@example.com",
+        "subject": os.environ.get("SUBJECT") or "Test E-Mail Inbox",
+        "text": os.environ.get("TEXT") or "Testinhalt für Inbox-Workflow",
+    })
 elif cmd == "fristen-batch":
     objekt = os.environ.get("OBJEKT_ID", "")
     if not objekt:
@@ -146,6 +172,10 @@ PY
     echo "  flags           — Feature-Flags (fragt Passwort unsichtbar)"
     echo "  mahnungen       — aktive Mahnungs-Vorgänge (Login)"
     echo "  mahnwesen       — Stufe-1 starten (Login, BETRAG/EIGENTUEMER optional)"
+    echo "  etv             — ETV starten (Login, ETV_DATUM/TAGESORDNUNG optional)"
+    echo "  etv-list        — aktive ETV-Vorgänge (Login)"
+    echo "  inbox           — Inbox-Liste (Login, VERWALTER_INBOX_ENABLED=1)"
+    echo "  inbox-ingest    — Test-E-Mail simulieren (Login)"
     echo ""
     echo "Login-Alternative: read -s -p 'Passwort: ' B2B_ADMIN_PASSWORD; echo; export B2B_ADMIN_PASSWORD"
     ;;

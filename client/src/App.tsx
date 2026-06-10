@@ -66,6 +66,8 @@ const ObjekteIndex = lazy(() => import("@/pages/verwalter/ObjekteIndex"));
 const VorgaengeIndex = lazy(() => import("@/pages/verwalter/VorgaengeIndex"));
 const BuchungenIndex = lazy(() => import("@/pages/verwalter/BuchungenIndex"));
 const MahnwesenIndex = lazy(() => import("@/pages/verwalter/MahnwesenIndex"));
+const EtvIndex = lazy(() => import("@/pages/verwalter/EtvIndex"));
+const InboxIndex = lazy(() => import("@/pages/verwalter/InboxIndex"));
 const FreigabenIndex = lazy(() => import("@/pages/verwalter/FreigabenIndex"));
 const VerwalterDashboard = lazy(() => import("@/pages/verwalter/VerwalterDashboard"));
 const B2bEinrichtung = lazy(() => import("@/pages/B2bEinrichtung"));
@@ -409,6 +411,16 @@ function Router() {
         <Route path="/app/verwalter/mahnwesen">
           <VerwalterProductLayout>
             <ProtectedRoute component={MahnwesenIndex} />
+          </VerwalterProductLayout>
+        </Route>
+        <Route path="/app/verwalter/etv">
+          <VerwalterProductLayout>
+            <ProtectedRoute component={EtvIndex} />
+          </VerwalterProductLayout>
+        </Route>
+        <Route path="/app/verwalter/inbox">
+          <VerwalterProductLayout>
+            <ProtectedRoute component={InboxIndex} />
           </VerwalterProductLayout>
         </Route>
         <Route path="/app/verwalter/freigaben">

@@ -11,7 +11,9 @@ import {
   Kanban,
   LayoutDashboard,
   Plus,
+  Inbox,
   Scale,
+  Users,
 } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
@@ -29,6 +31,8 @@ type DashboardStats = {
   overdueVorgaenge: number;
   neueEvents?: number;
   ausstehendeFreigaben?: number;
+  neueInboxNachrichten?: number;
+  featureFlags?: { inbox?: boolean };
 };
 
 const QUICK_LINKS = [
@@ -37,6 +41,8 @@ const QUICK_LINKS = [
   { name: "Brief & Vorlage", href: "/app/verwalter/vorlagen", icon: FileText, desc: "Mahnung, ETV, NK" },
   { name: "Buchung erfassen", href: "/app/verwalter/buchungen", icon: BookOpen, desc: "Hausgeld & DATEV" },
   { name: "Mahnwesen", href: "/app/verwalter/mahnwesen", icon: Scale, desc: "3 Stufen + Freigabe" },
+  { name: "ETV-Paket", href: "/app/verwalter/etv", icon: Users, desc: "Protokoll, Beschlüsse, Fristen" },
+  { name: "E-Mail-Inbox", href: "/app/verwalter/inbox", icon: Inbox, desc: "Eingehende Mails → Vorgänge" },
   { name: "Fristen-Checkliste", href: "/app/verwalter/fristen", icon: Clock, desc: "ETV, NK, Mahnung" },
   { name: "Rechenpraxis", href: "/rechenpraxis", icon: Building2, desc: "WEG-Aufgaben üben" },
 ] as const;
@@ -92,6 +98,10 @@ export default function VerwalterDashboard() {
           objekteCount: dash.objekteCount,
           openVorgaenge: dash.openVorgaenge,
           overdueVorgaenge: dash.overdueVorgaenge,
+          neueEvents: dash.neueEvents,
+          ausstehendeFreigaben: dash.ausstehendeFreigaben,
+          neueInboxNachrichten: dash.neueInboxNachrichten,
+          featureFlags: dash.featureFlags,
         });
         if (obj.success) setObjekte(obj.objekte);
         if (vor.success) setVorgaenge(vor.vorgaenge);
@@ -196,6 +206,14 @@ export default function VerwalterDashboard() {
                 hint="KI-Entwürfe warten"
                 tone={(stats.ausstehendeFreigaben ?? 0) > 0 ? "warn" : "default"}
               />
+              {stats.featureFlags?.inbox && (
+                <StatCard
+                  label="Inbox"
+                  value={stats.neueInboxNachrichten ?? 0}
+                  hint="Neue E-Mails"
+                  tone={(stats.neueInboxNachrichten ?? 0) > 0 ? "warn" : "default"}
+                />
+              )}
             </div>
 
             {stats.overdueVorgaenge > 0 && (

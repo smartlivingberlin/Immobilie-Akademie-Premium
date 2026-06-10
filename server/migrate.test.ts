@@ -32,6 +32,14 @@ describe("migrate ledger", () => {
     expect(sql).toContain("verwalter_freigaben");
   });
 
+  it("0045 creates verwalter inbox table", () => {
+    const sql = readFileSync(
+      join(process.cwd(), "drizzle/migrations/0045_verwalter_inbox.sql"),
+      "utf8",
+    );
+    expect(sql).toContain("verwalter_inbox_messages");
+  });
+
   it("uses ledger skip logic and strict production mode", () => {
     expect(src).toContain("isMigrationApplied");
     expect(src).toContain("markMigrationApplied");

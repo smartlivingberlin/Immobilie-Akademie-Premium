@@ -24,6 +24,10 @@
 | Buchungen | https://immobilien-akademie-smart.de/app/verwalter/buchungen |
 | Vorlagen | https://immobilien-akademie-smart.de/app/verwalter/vorlagen |
 | Fristen | https://immobilien-akademie-smart.de/app/verwalter/fristen |
+| Mahnwesen | https://immobilien-akademie-smart.de/app/verwalter/mahnwesen |
+| ETV-Paket | https://immobilien-akademie-smart.de/app/verwalter/etv |
+| Freigaben | https://immobilien-akademie-smart.de/app/verwalter/freigaben |
+| E-Mail-Inbox | https://immobilien-akademie-smart.de/app/verwalter/inbox |
 | Beispiel-Vorlage Mahnung | https://immobilien-akademie-smart.de/app/verwalter/vorlagen/mahnung-stufe1 |
 
 ### Rechenpraxis-Shell (Verwalter-Produkt)
