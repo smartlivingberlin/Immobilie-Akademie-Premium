@@ -3,10 +3,10 @@ import { Route, Switch, useLocation } from "wouter";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { trpc } from "@/lib/trpc";
 import { Toaster } from "@/components/ui/toaster";
-import DashboardLayout from "@/components/layout/DashboardLayout";
-import RechenpraxisProductLayout from "@/components/layout/RechenpraxisProductLayout";
-import Footer from "@/components/layout/Footer";
-import PublicHeader from "@/components/layout/PublicHeader";
+const DashboardLayout = lazy(() => import("@/components/layout/DashboardLayout"));
+const RechenpraxisProductLayout = lazy(() => import("@/components/layout/RechenpraxisProductLayout"));
+const Footer = lazy(() => import("@/components/layout/Footer"));
+const PublicHeader = lazy(() => import("@/components/layout/PublicHeader"));
 import ModuleGuard from "@/components/ModuleGuard";
 import { usePageTracking } from "@/hooks/useAnalytics";
 import { useInspectMode } from "@/hooks/useInspectMode";
@@ -205,19 +205,33 @@ function OwnerRoute({ component: Component }: { component: React.ComponentType }
   return <Component />;
 }
 
-function PublicLayout({ children }: { children: React.ReactNode }) {
-  const [location] = useLocation();
-  const hideHeader = ["/login", "/forgot-password", "/reset-password"].includes(location);
+const layoutFallback = (
+  <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>
+    Laden...
+  </div>
+);
 
+/** Minimales Shell für Login/Auth — kein Header, Footer, StructuredData. */
+function AuthLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <Toaster />
+      <Suspense fallback={null}><CookieConsent /></Suspense>
+      {children}
+    </>
+  );
+}
+
+function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Toaster />
       <Suspense fallback={null}><CookieConsent /></Suspense>
       <Suspense fallback={null}><StructuredData /></Suspense>
-      <div style={{display:'flex',flexDirection:'column',minHeight:'100vh'}}>
-        {!hideHeader && <PublicHeader />}
-        <div style={{flex:'1 0 auto'}}>{children}</div>
-        <Footer />
+      <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+        <Suspense fallback={null}><PublicHeader /></Suspense>
+        <div style={{ flex: "1 0 auto" }}>{children}</div>
+        <Suspense fallback={null}><Footer /></Suspense>
       </div>
     </>
   );
@@ -225,23 +239,27 @@ function PublicLayout({ children }: { children: React.ReactNode }) {
 
 function AppLayout({ children }: { children: React.ReactNode }) {
   return (
-    <DashboardLayout>
-      <Toaster />
-      <Suspense fallback={null}><CookieConsent /></Suspense>
-      <Suspense fallback={null}><StructuredData /></Suspense>
-      {children}
-    </DashboardLayout>
+    <Suspense fallback={layoutFallback}>
+      <DashboardLayout>
+        <Toaster />
+        <Suspense fallback={null}><CookieConsent /></Suspense>
+        <Suspense fallback={null}><StructuredData /></Suspense>
+        {children}
+      </DashboardLayout>
+    </Suspense>
   );
 }
 
 /** Eigenes Shell für Verwalter-Rechner / Rechenpraxis (kein Akademie-Modul-Menü). */
 function VerwalterProductLayout({ children }: { children: React.ReactNode }) {
   return (
-    <RechenpraxisProductLayout>
-      <Toaster />
-      <Suspense fallback={null}><CookieConsent /></Suspense>
-      {children}
-    </RechenpraxisProductLayout>
+    <Suspense fallback={layoutFallback}>
+      <RechenpraxisProductLayout>
+        <Toaster />
+        <Suspense fallback={null}><CookieConsent /></Suspense>
+        {children}
+      </RechenpraxisProductLayout>
+    </Suspense>
   );
 }
 
@@ -263,9 +281,9 @@ function Router() {
       <ErrorBoundary>
       <Switch>
         <Route path="/"><PublicLayout><Home /></PublicLayout></Route>
-        <Route path="/login"><PublicLayout><LoginPage /></PublicLayout></Route>
-        <Route path="/forgot-password"><PublicLayout><ForgotPassword /></PublicLayout></Route>
-        <Route path="/reset-password"><PublicLayout><ResetPassword /></PublicLayout></Route>
+        <Route path="/login"><AuthLayout><LoginPage /></AuthLayout></Route>
+        <Route path="/forgot-password"><AuthLayout><ForgotPassword /></AuthLayout></Route>
+        <Route path="/reset-password"><AuthLayout><ResetPassword /></AuthLayout></Route>
         <Route path="/code-einloesen"><PublicLayout><RedeemCode /></PublicLayout></Route>
         <Route path="/konto/datenschutz"><AppLayout><ProtectedRoute component={MeineDaten} /></AppLayout></Route>
         <Route path="/konto-loeschen"><PublicLayout><DeleteAccount /></PublicLayout></Route>
@@ -393,15 +411,16 @@ function Router() {
 }
 
 export default function App() {
+  const [location] = useLocation();
+  const isAuthRoute = ["/login", "/forgot-password", "/reset-password"].includes(location);
+
   React.useEffect(() => {
-    // Preload critical routes to improve perceived performance
-    const preload = () => {
-      import("@/pages/Home");
-      import("@/pages/LoginPage");
-      import("@/pages/Dashboard");
-    };
-    // Delay preloading slightly to not interfere with initial mount
-    const timer = setTimeout(preload, 2000);
+    const path = window.location.pathname;
+    const timer = setTimeout(() => {
+      if (path === "/" || path === "") void import("@/pages/Home");
+      if (path === "/login") void import("@/pages/LoginPage");
+      if (path.startsWith("/statistiken") || path.startsWith("/modul/")) void import("@/pages/Dashboard");
+    }, 2500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -411,7 +430,9 @@ export default function App() {
         Zum Hauptinhalt springen
       </a>
       <Router />
-      <Suspense fallback={null}><AccessibilityPanel hideFab /></Suspense>
+      {!isAuthRoute && (
+        <Suspense fallback={null}><AccessibilityPanel hideFab /></Suspense>
+      )}
     </>
   );
 }

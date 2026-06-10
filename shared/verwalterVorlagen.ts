@@ -555,6 +555,151 @@ hiermit kündigen wir den Vertrag für {{wegName}} zum {{kuendigungsdatum}} orde
 
 {{verwalterName}}`,
   },
+  {
+    id: "mahnung-stufe3",
+    slug: "mahnung-stufe3",
+    title: "3. Mahnung — letzte Aufforderung",
+    category: "mahnung",
+    description: "Finale Mahnung vor Inkasso oder rechtlichen Schritten.",
+    legalHint: "Vor Versand Rechtsberatung einholen; Verzugszinsen und Kosten dokumentieren.",
+    fields: [
+      { key: "eigentuemerName", label: "Eigentümer", type: "text", required: true },
+      { key: "einheit", label: "Wohnungs-/Einheitsnr.", type: "text", required: true },
+      { key: "wegName", label: "WEG", type: "text", required: true },
+      { key: "betrag", label: "Offener Betrag inkl. Zinsen (€)", type: "number", required: true },
+      { key: "zahlungsfrist", label: "Letzte Zahlungsfrist", type: "date", required: true },
+      { key: "verwalterName", label: "Verwaltung", type: "text", required: true },
+    ],
+    body: `3. Mahnung — letzte Aufforderung
+
+{{eigentuemerName}}
+Einheit {{einheit}}
+{{wegName}}
+
+trotz zweier Mahnungen ist der Gesamtbetrag von {{betrag}} € weiterhin offen.
+
+Wir fordern Sie hiermit letztmalig auf, den Betrag bis {{zahlungsfrist}} zu begleichen. Andernfalls werden wir ohne weitere Ankündigung weitere rechtliche Schritte einleiten.
+
+{{verwalterName}}`,
+  },
+  {
+    id: "etv-vertretungsvollmacht",
+    slug: "etv-vertretungsvollmacht",
+    title: "Vertretungsvollmacht ETV",
+    category: "etv",
+    description: "Vollmacht zur Stimmabgabe in der Eigentümerversammlung.",
+    legalHint: "Schriftform und klare Vollmachtsurkunde empfohlen; Stimmrecht nur wirksam übertragen.",
+    fields: [
+      { key: "wegName", label: "WEG", type: "text", required: true },
+      { key: "vollmachtgeber", label: "Vollmachtgeber (Eigentümer)", type: "text", required: true },
+      { key: "bevollmaechtigter", label: "Bevollmächtigter", type: "text", required: true },
+      { key: "etvDatum", label: "Datum der Versammlung", type: "date", required: true },
+      { key: "etvOrt", label: "Ort der Versammlung", type: "text", required: true },
+      { key: "verwalterName", label: "Verwaltung", type: "text", required: true },
+    ],
+    body: `Vertretungsvollmacht Eigentümerversammlung
+
+{{wegName}}
+
+Ich, {{vollmachtgeber}}, bevollmächtige hiermit {{bevollmaechtigter}}, mich in der Eigentümerversammlung am {{etvDatum}} in {{etvOrt}} zu vertreten und in meinem Namen abzustimmen.
+
+Die Vollmacht gilt für sämtliche Tagesordnungspunkte, sofern nicht gesondert eingeschränkt.
+
+Ort, Datum: _________________
+Unterschrift Vollmachtgeber: _________________
+
+Zur Kenntnis: {{verwalterName}}`,
+  },
+  {
+    id: "etv-tagesordnung-nachtrag",
+    slug: "etv-tagesordnung-nachtrag",
+    title: "Nachtrag zur Tagesordnung",
+    category: "etv",
+    description: "Ergänzung der Tagesordnung vor der Eigentümerversammlung.",
+    legalHint: "Nachtrag nur unter engen Voraussetzungen zulässig (§ 24 Abs. 4 WEG); Fristen prüfen.",
+    fields: [
+      { key: "wegName", label: "WEG", type: "text", required: true },
+      { key: "etvDatum", label: "Datum der Versammlung", type: "date", required: true },
+      { key: "nachtragPunkte", label: "Ergänzte Tagesordnungspunkte", type: "textarea", required: true },
+      { key: "verwalterName", label: "Verwaltung", type: "text", required: true },
+      { key: "verwalterAdresse", label: "Anschrift Verwaltung", type: "textarea", required: true },
+    ],
+    body: `Nachtrag zur Tagesordnung
+
+{{wegName}}
+
+Sehr geehrte Eigentümerinnen und Eigentümer,
+
+zur Eigentümerversammlung am {{etvDatum}} ergänzen wir die Tagesordnung wie folgt:
+
+{{nachtragPunkte}}
+
+Bitte beachten Sie die gesetzlichen Voraussetzungen für einen Tagesordnungsnachtrag.
+
+Mit freundlichen Grüßen
+{{verwalterName}}
+{{verwalterAdresse}}`,
+  },
+  {
+    id: "nk-weg-abrechnung",
+    slug: "nk-weg-abrechnung",
+    title: "WEG-Nebenkostenabrechnung an Eigentümer",
+    category: "nk",
+    description: "Begleitschreiben zur jährlichen WEG-Betriebskostenabrechnung.",
+    legalHint: "Abrechnungsfrist und Verteilungsschlüssel (MEA) dokumentieren; Einwendungsfrist beachten.",
+    fields: [
+      { key: "eigentuemerName", label: "Eigentümer", type: "text", required: true },
+      { key: "wegName", label: "WEG", type: "text", required: true },
+      { key: "objektAdresse", label: "Objekt / Einheit", type: "text", required: true },
+      { key: "abrechnungszeitraum", label: "Abrechnungszeitraum", type: "text", required: true, placeholder: "01.01.2025 – 31.12.2025" },
+      { key: "ergebnis", label: "Nachzahlung / Guthaben (€)", type: "text", required: true },
+      { key: "verwalterName", label: "Verwaltung", type: "text", required: true },
+    ],
+    body: `Nebenkostenabrechnung WEG
+
+{{eigentuemerName}}
+{{objektAdresse}}
+{{wegName}}
+
+Sehr geehrte/r {{eigentuemerName}},
+
+anbei die Betriebskostenabrechnung für den Zeitraum {{abrechnungszeitraum}}.
+
+Ergebnis für Ihre Einheit: {{ergebnis}}
+
+Bitte prüfen Sie die Abrechnung. Einwendungen können innerhalb der gesetzlichen Frist geltend gemacht werden.
+
+{{verwalterName}}`,
+  },
+  {
+    id: "nk-korrekturabrechnung",
+    slug: "nk-korrekturabrechnung",
+    title: "Korrektur Nebenkostenabrechnung",
+    category: "nk",
+    description: "Überarbeitete Abrechnung nach Fehler oder Einwendung.",
+    legalHint: "Korrektur schriftlich begründen; Fristen und Zinsen bei Nachforderung prüfen.",
+    fields: [
+      { key: "empfaenger", label: "Empfänger", type: "text", required: true },
+      { key: "wegName", label: "WEG / Objekt", type: "text", required: true },
+      { key: "ursprungszeitraum", label: "Ursprünglicher Abrechnungszeitraum", type: "text", required: true },
+      { key: "korrekturgrund", label: "Grund der Korrektur", type: "textarea", required: true },
+      { key: "neuesErgebnis", label: "Neues Ergebnis (€)", type: "text", required: true },
+      { key: "verwalterName", label: "Verwaltung", type: "text", required: true },
+    ],
+    body: `Korrektur Nebenkostenabrechnung
+
+{{empfaenger}}
+{{wegName}}
+
+bezugnehmend auf die Abrechnung für {{ursprungszeitraum}} übersenden wir eine korrigierte Nebenkostenabrechnung.
+
+Grund der Korrektur:
+{{korrekturgrund}}
+
+Neues Ergebnis: {{neuesErgebnis}}
+
+{{verwalterName}}`,
+  },
 ];
 
 export function getVorlageBySlug(slug: string): VerwalterVorlage | undefined {

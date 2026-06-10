@@ -57,11 +57,28 @@ export const FRISTEN_CHECKLISTE: FristItem[] = [
     category: "mahnung",
   },
   {
+    id: "mahnung-stufe3",
+    title: "Letzte Mahnung vor Rechtsweg",
+    description: "Nach 2. Mahnung: finale Aufforderung vor Inkasso oder Klage.",
+    legalBasis: "§ 286 BGB",
+    relatedVorlageSlug: "mahnung-stufe3",
+    category: "mahnung",
+  },
+  {
     id: "etv-protokoll",
     title: "Protokoll zur Verfügung stellen",
     description: "Protokoll jedem Eigentümer unverzüglich nach Versammlung.",
     legalBasis: "§ 24 Abs. 7 WEG",
+    relatedVorlageSlug: "etv-protokoll",
     category: "etv",
+  },
+  {
+    id: "nk-weg-abrechnung",
+    title: "WEG-NK-Abrechnung versenden",
+    description: "Jährliche Betriebskostenabrechnung an Eigentümer mit Fristenhinweis.",
+    legalBasis: "§ 28 WEG, Abrechnungsgrundsätze",
+    relatedVorlageSlug: "nk-weg-abrechnung",
+    category: "nk",
   },
 ];
 

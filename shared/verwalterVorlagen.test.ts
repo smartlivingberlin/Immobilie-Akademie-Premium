@@ -6,8 +6,14 @@ import {
 } from "./verwalterVorlagen";
 
 describe("verwalterVorlagen", () => {
-  it("enthält 20 Vorlagen", () => {
-    expect(VERWALTER_VORLAGEN.length).toBe(20);
+  it("enthält 25 Vorlagen", () => {
+    expect(VERWALTER_VORLAGEN.length).toBe(25);
+  });
+
+  it("getVorlageBySlug findet neue Sprint-A4-Vorlagen", () => {
+    expect(getVorlageBySlug("mahnung-stufe3")?.category).toBe("mahnung");
+    expect(getVorlageBySlug("etv-vertretungsvollmacht")?.category).toBe("etv");
+    expect(getVorlageBySlug("nk-weg-abrechnung")?.category).toBe("nk");
   });
 
   it("getVorlageBySlug findet ETV-Einladung", () => {
