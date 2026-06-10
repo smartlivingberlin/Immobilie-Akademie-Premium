@@ -11,6 +11,7 @@ import {
   Kanban,
   LayoutDashboard,
   Plus,
+  Scale,
 } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
@@ -35,6 +36,7 @@ const QUICK_LINKS = [
   { name: "Vorgang erstellen", href: "/app/verwalter/vorgaenge", icon: Kanban, desc: "Kanban & Fristen" },
   { name: "Brief & Vorlage", href: "/app/verwalter/vorlagen", icon: FileText, desc: "Mahnung, ETV, NK" },
   { name: "Buchung erfassen", href: "/app/verwalter/buchungen", icon: BookOpen, desc: "Hausgeld & DATEV" },
+  { name: "Mahnwesen", href: "/app/verwalter/mahnwesen", icon: Scale, desc: "3 Stufen + Freigabe" },
   { name: "Fristen-Checkliste", href: "/app/verwalter/fristen", icon: Clock, desc: "ETV, NK, Mahnung" },
   { name: "Rechenpraxis", href: "/rechenpraxis", icon: Building2, desc: "WEG-Aufgaben üben" },
 ] as const;

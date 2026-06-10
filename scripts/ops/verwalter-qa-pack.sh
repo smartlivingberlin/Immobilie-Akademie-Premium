@@ -60,6 +60,8 @@ PAGES=(
   "/app/verwalter/buchungen"
   "/app/verwalter/vorlagen"
   "/app/verwalter/fristen"
+  "/app/verwalter/mahnwesen"
+  "/app/verwalter/freigaben"
 )
 for p in "${PAGES[@]}"; do
   check_http "$p" "${BASE}${p}" "200"

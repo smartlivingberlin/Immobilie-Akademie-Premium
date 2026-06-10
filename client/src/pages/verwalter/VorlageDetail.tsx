@@ -138,7 +138,13 @@ export default function VorlageDetail() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "KI fehlgeschlagen");
       setPreview(data.text);
-      toast({ title: "KI-Brief erstellt", description: `Provider: ${data.provider}` });
+      const freigabeHint = data.freigabeId
+        ? ` — Freigabe unter /app/verwalter/freigaben`
+        : "";
+      toast({
+        title: "KI-Brief erstellt",
+        description: `Provider: ${data.provider}${freigabeHint}`,
+      });
     } catch (e: any) {
       toast({ title: "Fehler", description: e.message, variant: "destructive" });
     } finally {

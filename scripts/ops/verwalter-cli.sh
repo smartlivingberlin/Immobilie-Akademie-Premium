@@ -49,7 +49,7 @@ case "$CMD" in
   migrate-status)
     curl -s "${BASE}/api/health" | (command -v jq >/dev/null && jq '.migrations' || cat)
     ;;
-  events|freigaben|fristen-batch|dashboard|flags)
+  events|freigaben|fristen-batch|dashboard|flags|mahnwesen|mahnungen)
     ensure_verwalter_login
     python3 - "$CMD" "$BASE" <<'PY'
 import json, os, sys, http.cookiejar, urllib.request
@@ -90,6 +90,27 @@ elif cmd == "dashboard":
     st, body = get("/api/verwalter/dashboard")
 elif cmd == "flags":
     st, body = get("/api/verwalter/feature-flags")
+elif cmd == "mahnungen":
+    st, body = get("/api/verwalter/mahnwesen/vorgaenge")
+elif cmd == "mahnwesen":
+    objekt = os.environ.get("OBJEKT_ID", "")
+    if not objekt:
+        st, ob = get("/api/verwalter/objekte")
+        data = json.loads(ob)
+        objekte = data.get("objekte") or []
+        if not objekte:
+            print("Kein Objekt"); sys.exit(1)
+        objekt = objekte[0]["id"]
+        einheit = (objekte[0].get("einheiten") or [{}])[0]
+    else:
+        einheit = {}
+    st, body = post("/api/verwalter/mahnwesen/start", {
+        "objektId": objekt,
+        "einheitId": os.environ.get("EINHEIT_ID") or einheit.get("id"),
+        "eigentuemerName": os.environ.get("EIGENTUEMER") or einheit.get("eigentuemerName") or "Eigentümer",
+        "betrag": float(os.environ.get("BETRAG", "100")),
+        "faelligSeit": os.environ.get("FAELLIG_SEIT") or __import__("datetime").date.today().isoformat(),
+    })
 elif cmd == "fristen-batch":
     objekt = os.environ.get("OBJEKT_ID", "")
     if not objekt:
@@ -123,6 +144,8 @@ PY
     echo "  freigaben       — ausstehende Freigaben (fragt Passwort unsichtbar)"
     echo "  fristen-batch   — alle Fristen → Vorgänge (OBJEKT_ID optional)"
     echo "  flags           — Feature-Flags (fragt Passwort unsichtbar)"
+    echo "  mahnungen       — aktive Mahnungs-Vorgänge (Login)"
+    echo "  mahnwesen       — Stufe-1 starten (Login, BETRAG/EIGENTUEMER optional)"
     echo ""
     echo "Login-Alternative: read -s -p 'Passwort: ' B2B_ADMIN_PASSWORD; echo; export B2B_ADMIN_PASSWORD"
     ;;
