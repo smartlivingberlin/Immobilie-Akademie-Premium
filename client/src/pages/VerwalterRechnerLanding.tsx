@@ -105,9 +105,9 @@ export default function VerwalterRechnerLanding() {
             <p className="text-slate-300 mb-6">
               White-Label mit Team-Lizenzen ab 199 €/Monat — Rechenpraxis und KI-Tutor für Ihre gesamte Belegschaft.
             </p>
-            <Link href="/fuer-maklerbueros">
+            <Link href="/fuer-verwaltungsbueros">
               <span className="inline-flex items-center gap-2 text-emerald-300 hover:text-white cursor-pointer font-semibold">
-                B2B-Angebot ansehen <ArrowRight className="h-4 w-4" />
+                Verwalter-Werkzeuge ansehen <ArrowRight className="h-4 w-4" />
               </span>
             </Link>
           </div>

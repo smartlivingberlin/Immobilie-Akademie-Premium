@@ -6,7 +6,7 @@ export default function Datenschutz() {
       <Card>
         <CardHeader>
           <CardTitle className="text-3xl font-bold">Datenschutzerklärung</CardTitle>
-          <p className="text-sm text-muted-foreground mt-2">Stand: April 2026</p>
+          <p className="text-sm text-muted-foreground mt-2">Stand: 10. Juni 2026</p>
         </CardHeader>
         <CardContent className="prose prose-slate max-w-none space-y-6">
 
@@ -31,6 +31,29 @@ export default function Datenschutz() {
           <h3>2.3 Technische Zugriffsdaten</h3>
           <p>IP-Adresse (anonymisiert nach 7 Tagen), Browser-Typ, Betriebssystem, Uhrzeit.
           Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.</p>
+
+          <h3>2.4 Verwalter-Werkzeuge (WEG-Objekte, Vorgänge, Buchungen)</h3>
+          <p>
+            Wenn Sie die Verwalter-Werkzeuge nutzen (z.&nbsp;B. unter /app/verwalter), speichern wir die von Ihnen 
+            eingegebenen Daten in unserer Datenbank (MySQL, Server-Standort EU). Dazu können gehören:
+            WEG-Stammdaten, Einheiten, Eigentümer- und Kontaktdaten, Vorgänge, Buchungssätze, Fristen und 
+            ausgefüllte Vorlagenfelder. <strong>Bitte geben Sie nur Daten ein, die Sie zur Nutzung benötigen 
+            und für die Sie eine Rechtsgrundlage haben.</strong> Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO 
+            (Vertrag/Nutzung) bzw. lit. f (berechtigtes Interesse an der Bereitstellung der Tools).
+          </p>
+          <p>
+            Bei Konto-Löschung unter /konto-loeschen werden diese Verwalter-Daten zusammen mit Ihrem Konto 
+            unwiderruflich gelöscht (Art. 17 DSGVO).
+          </p>
+
+          <h3>2.5 KI in Rechenpraxis und Verwalter-Werkzeugen</h3>
+          <p>
+            Für den KI-Tutor, KI-Brief, Buchungsvorschläge und den Verwalter-Assistenten werden Ihre Eingaben 
+            sowie — bei Verwalter-Funktionen — ausgewählte Kontextdaten (z.&nbsp;B. Objektname, offene Vorgänge, 
+            Buchungszeitraum) an die in Abschnitt 4 genannten KI-Anbieter übermittelt. 
+            <strong>Keine personenbezogenen Daten Dritter</strong> (z.&nbsp;B. vollständige Eigentümerlisten) 
+            sollten in Freitextfelder eingegeben werden, sofern nicht erforderlich. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.
+          </p>
 
           <h2>3. Cookies</h2>
           <ul>
@@ -100,6 +123,7 @@ export default function Datenschutz() {
 
           <h2>6. Speicherdauer</h2>
           <p>Kontodaten: bis zur Konto-Löschung. Lernfortschritt: bis zur Konto-Löschung.
+          Verwalter-Werkzeuge (Objekte, Vorgänge, Buchungen): bis zur Konto-Löschung.
           Server-Logs: max. 7 Tage. Zahlungsdaten: 10 Jahre (§ 147 AO).</p>
 
           <h2>7. Datensicherheit</h2>
@@ -110,7 +134,7 @@ export default function Datenschutz() {
           <p>E-Mail: info@immobilien-akademie-smart.de<br />
           (bis Domain-Aktivierung: Kontakt über das Portal-Beschwerdeformular unter /beschwerde)</p>
 
-          <p className="text-xs text-slate-500 mt-8">Stand: April 2026 | Immobilien Akademie Smart</p>
+          <p className="text-xs text-slate-500 mt-8">Stand: 10. Juni 2026 | Immobilien Akademie Smart</p>
         </CardContent>
       </Card>
     </div>

@@ -34,6 +34,7 @@ const Foerderung = lazy(() => import("@/pages/Foerderung"));
 const UspLanding = lazy(() => import("@/pages/UspLanding"));
 const Barrierefreiheit = lazy(() => import("@/pages/Barrierefreiheit"));
 const MaklerbuerosLanding = lazy(() => import("@/pages/MaklerbuerosLanding"));
+const FuerVerwaltungsbuerosLanding = lazy(() => import("@/pages/FuerVerwaltungsbuerosLanding"));
 const Empfehlungsprogramm = lazy(() => import("@/pages/Empfehlungsprogramm"));
 const KursLanding = lazy(() => import("@/pages/kurs/KursLanding"));
 
@@ -367,6 +368,7 @@ function Router() {
         <Route path="/usp"><PublicLayout><UspLanding /></PublicLayout></Route>
         <Route path="/barrierefreiheit"><PublicLayout><Barrierefreiheit /></PublicLayout></Route>
         <Route path="/fuer-maklerbueros"><PublicLayout><MaklerbuerosLanding /></PublicLayout></Route>
+        <Route path="/fuer-verwaltungsbueros"><PublicLayout><FuerVerwaltungsbuerosLanding /></PublicLayout></Route>
         <Route path="/b2b-einrichtung"><B2bEinrichtung /></Route>
         <Route path="/empfehlungsprogramm"><PublicLayout><Empfehlungsprogramm /></PublicLayout></Route>
         <Route path="/compliance-20h"><PublicLayout><ComplianceLanding /></PublicLayout></Route>

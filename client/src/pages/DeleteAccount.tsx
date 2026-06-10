@@ -30,8 +30,8 @@ export default function DeleteAccount() {
       <div className="bg-white rounded-xl p-8 max-w-md w-full">
         <h2 className="text-xl font-bold mb-2 text-red-600">Konto löschen</h2>
         <p className="text-slate-600 mb-4 text-sm">
-          Dies löscht dauerhaft alle deine Daten: Konto, Lernfortschritt und Sessions.
-          Diese Aktion kann nicht rückgängig gemacht werden.
+          Dies löscht dauerhaft alle deine Daten: Konto, Lernfortschritt, Verwalter-Werkzeuge 
+          (WEG-Objekte, Vorgänge, Buchungen) und Sessions. Diese Aktion kann nicht rückgängig gemacht werden.
         </p>
         <p className="text-sm text-slate-500 mb-6">
           Eingeloggt als: <strong>{user?.email}</strong>

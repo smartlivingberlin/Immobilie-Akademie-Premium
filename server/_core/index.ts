@@ -386,6 +386,8 @@ app.use(express.json({ limit: "1mb" }));
       { loc: "/kurs/modul-2-makler-34c", priority: "0.9", changefreq: "monthly" },
       { loc: "/kurs/modul-3-weg-verwalter", priority: "0.9", changefreq: "monthly" },
       { loc: "/verwalter-rechner", priority: "0.95", changefreq: "weekly" },
+      { loc: "/fuer-verwaltungsbueros", priority: "0.95", changefreq: "weekly" },
+      { loc: "/fuer-maklerbueros", priority: "0.9", changefreq: "weekly" },
       { loc: "/rechenpraxis-preise", priority: "0.9", changefreq: "weekly" },
       { loc: "/kurs/modul-4-gutachter", priority: "0.9", changefreq: "monthly" },
       { loc: "/kurs/modul-5-34i-darlehensvermittler", priority: "0.9", changefreq: "monthly" },
