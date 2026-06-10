@@ -15,8 +15,10 @@ test.describe("MySQL health endpoints", () => {
     }
   });
 
-  test("admin mysql-health ohne Login → 401", async ({ request }) => {
-    const res = await request.get(`${BASE}/api/admin/mysql-health`);
+  test("admin mysql-health ohne Login → 401", async ({ playwright }) => {
+    const anon = await playwright.request.newContext();
+    const res = await anon.get(`${BASE}/api/admin/mysql-health`);
     expect(res.status()).toBe(401);
+    await anon.dispose();
   });
 });

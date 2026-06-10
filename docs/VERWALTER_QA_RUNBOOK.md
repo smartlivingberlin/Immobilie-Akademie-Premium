@@ -45,8 +45,10 @@ bash scripts/ops/verwalter-qa-pack.sh
 
 ```bash
 cd /mnt/c/Users/Lenovo/Immobilie-Akademie-Premium
-B2B_ADMIN_PASSWORD='DEIN_PASSWORT' bash scripts/ops/verwalter-qa-pack.sh
+B2B_ADMIN_PASSWORD='hier-dein-echtes-admin-passwort' bash scripts/ops/verwalter-qa-pack.sh
 ```
+
+Wichtig: `'DEIN_PASSWORT'` ist nur Platzhalter — echtes Passwort einsetzen (nicht committen).
 
 → **Gesamte Ausgabe copy-pasten** an Cursor.
 
@@ -81,9 +83,15 @@ Copy-Paste: letzte 30 Zeilen der Ausgabe.
 
 ## 4. Lighthouse (Speed + A11y)
 
+**WSL ohne Chrome:** PageSpeed-Link nutzen (Abschnitt 5) — einfacher.
+
+**Mit Playwright-Chromium (nach `pnpm exec playwright install chromium`):**
+
 ```bash
 cd /mnt/c/Users/Lenovo/Immobilie-Akademie-Premium
+CHROME_PATH=$(find ~/.cache/ms-playwright -name chrome -type f 2>/dev/null | head -1)
 npx --yes lighthouse https://immobilien-akademie-smart.de/app/verwalter/buchungen \
+  --chrome-path="$CHROME_PATH" \
   --only-categories=performance,accessibility,best-practices \
   --chrome-flags="--headless" \
   --output=json --output-path=./verwalter-lighthouse.json
