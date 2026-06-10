@@ -63,6 +63,7 @@ const VorlageDetail = lazy(() => import("@/pages/verwalter/VorlageDetail"));
 const FristenCheckliste = lazy(() => import("@/pages/verwalter/FristenCheckliste"));
 const ObjekteIndex = lazy(() => import("@/pages/verwalter/ObjekteIndex"));
 const VorgaengeIndex = lazy(() => import("@/pages/verwalter/VorgaengeIndex"));
+const BuchungenIndex = lazy(() => import("@/pages/verwalter/BuchungenIndex"));
 const B2bEinrichtung = lazy(() => import("@/pages/B2bEinrichtung"));
 const Fallstudien = lazy(() => import("@/pages/Fallstudien"));
 const Flashcards = lazy(() => import("@/pages/Flashcards"));
@@ -371,6 +372,11 @@ function Router() {
         <Route path="/app/verwalter/vorgaenge">
           <VerwalterProductLayout>
             <ProtectedRoute component={VorgaengeIndex} />
+          </VerwalterProductLayout>
+        </Route>
+        <Route path="/app/verwalter/buchungen">
+          <VerwalterProductLayout>
+            <ProtectedRoute component={BuchungenIndex} />
           </VerwalterProductLayout>
         </Route>
         <Route path="/audio-modus"><AppLayout><ProtectedRoute component={AudioModus} /></AppLayout></Route>

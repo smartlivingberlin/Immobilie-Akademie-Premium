@@ -13,7 +13,7 @@ Schnittstelle zur Treuhand-Buchhaltung: Hausverwaltung erfasst Buchungen, Steuer
 | Phase | Inhalt | Status |
 |-------|--------|--------|
 | **A** | Stammdaten-CSV (Objekte, Einheiten) | ✅ `GET /api/verwalter/export/stammdaten-csv` |
-| **B** | Hausgeld-Buchungen light + EXTF Buchungsstapel | Geplant |
+| **B** | Hausgeld-Buchungen light + EXTF Buchungsstapel | ✅ Live |
 | **C** | DATEV-Connect API, SKR-Auto-Zuordnung | Später |
 
 ## Phase A — Stammdaten-CSV (jetzt)
@@ -58,7 +58,11 @@ type VerwalterBuchung = {
 };
 ```
 
-**UI:** `/app/verwalter/buchungen` — manuelle Erfassung pro Objekt/Monat.
+**UI:** `/app/verwalter/buchungen` — manuelle Erfassung pro Objekt/Monat. ✅
+
+**API:**
+- `GET/POST/PUT/DELETE /api/verwalter/buchungen`
+- `GET /api/verwalter/export/datev-buchungen?objektId=&periode=`
 
 **Validierung:**
 - Soll/Haben-Konten nicht leer
@@ -81,7 +85,7 @@ Format: [DATEV-Formatbeschreibung Buchungsstapel](https://www.datev.de) — vere
 | Belegdatum | Belegdatum | 0106 |
 | Buchungstext | Buchungstext | Hausgeld WE 3 |
 
-**Endpoint (geplant):** `GET /api/verwalter/export/datev-buchungen?objektId=&periode=2026-01`
+**Endpoint:** `GET /api/verwalter/export/datev-buchungen?objektId=&periode=2026-01` ✅
 
 **Dateiname:** `EXTF_Buchungen_{objektId}_{periode}.csv`
 
@@ -113,9 +117,9 @@ Wenn Buchungsvolumen oder Team-Zugang steigt:
 ## Nächste Implementierungsschritte
 
 1. ✅ Stammdaten-CSV
-2. Buchungs-Store + CRUD-API
-3. Buchungs-UI
-4. EXTF-Generator aus `listBuchungen(objektId, periode)`
+2. ✅ Buchungs-Store + CRUD-API (`data/verwalter-buchungen/`)
+3. ✅ Buchungs-UI `/app/verwalter/buchungen`
+4. ✅ EXTF-Generator aus `listBuchungen(objektId, periode)`
 5. Nutzer-Test mit 1 Steuerberater (5 Buchungen importieren)
 
 ---

@@ -18,7 +18,15 @@ import {
   updateVorgang,
 } from "./verwalterVorgangStore";
 import { getVorlageBySlug, renderVorlageBody } from "../shared/verwalterVorlagen";
+import {
+  createBuchung,
+  deleteBuchung,
+  deleteBuchungenByObjekt,
+  listBuchungen,
+  updateBuchung,
+} from "./verwalterBuchungStore";
 import { buildStammdatenCsv } from "./verwalterStammdatenExport";
+import { buildDatevBuchungenCsv } from "./verwalterDatevExport";
 
 const router = Router();
 
@@ -78,6 +86,7 @@ router.delete("/api/verwalter/objekte/:id", requireAuth, (req, res) => {
   const uid = userId(req as any);
   const id = String(req.params.id);
   deleteVorgaengeByObjekt(uid, id);
+  deleteBuchungenByObjekt(uid, id);
   const ok = deleteObjekt(uid, id);
   if (!ok) return res.status(404).json({ error: "Objekt nicht gefunden" });
   res.json({ success: true });
@@ -142,6 +151,87 @@ router.delete("/api/verwalter/vorgaenge/:id", requireAuth, (req, res) => {
   const ok = deleteVorgang(userId(req as any), String(req.params.id));
   if (!ok) return res.status(404).json({ error: "Vorgang nicht gefunden" });
   res.json({ success: true });
+});
+
+router.get("/api/verwalter/buchungen", requireAuth, (req, res) => {
+  try {
+    const objektId = req.query.objektId ? String(req.query.objektId) : undefined;
+    const periode = req.query.periode ? String(req.query.periode) : undefined;
+    const buchungen = listBuchungen(userId(req as any), { objektId, periode });
+    res.json({ success: true, buchungen });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+router.post("/api/verwalter/buchungen", requireAuth, (req, res) => {
+  try {
+    const body = req.body ?? {};
+    const uid = userId(req as any);
+    const objektId = String(body.objektId || "").trim();
+    const obj = getObjekt(uid, objektId);
+    if (!obj) return res.status(400).json({ error: "Objekt nicht gefunden" });
+
+    let einheitNr: string | undefined;
+    if (body.einheitId) {
+      einheitNr = obj.einheiten.find((e) => e.id === body.einheitId)?.nummer;
+    }
+
+    const buchung = createBuchung(uid, {
+      objektId,
+      objektName: obj.name,
+      datum: String(body.datum || ""),
+      betrag: Number(body.betrag),
+      sollKonto: String(body.sollKonto || ""),
+      habenKonto: String(body.habenKonto || ""),
+      buchungstext: String(body.buchungstext || ""),
+      belegNr: body.belegNr ? String(body.belegNr) : undefined,
+      einheitId: body.einheitId ? String(body.einheitId) : undefined,
+      einheitNr,
+      periode: body.periode ? String(body.periode) : undefined,
+    });
+    res.json({ success: true, buchung });
+  } catch (e: any) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
+router.put("/api/verwalter/buchungen/:id", requireAuth, (req, res) => {
+  try {
+    const updated = updateBuchung(userId(req as any), String(req.params.id), req.body ?? {});
+    if (!updated) return res.status(404).json({ error: "Buchung nicht gefunden" });
+    res.json({ success: true, buchung: updated });
+  } catch (e: any) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
+router.delete("/api/verwalter/buchungen/:id", requireAuth, (req, res) => {
+  const ok = deleteBuchung(userId(req as any), String(req.params.id));
+  if (!ok) return res.status(404).json({ error: "Buchung nicht gefunden" });
+  res.json({ success: true });
+});
+
+router.get("/api/verwalter/export/datev-buchungen", requireAuth, (req, res) => {
+  try {
+    const uid = userId(req as any);
+    const objektId = String(req.query.objektId || "").trim();
+    const periode = String(req.query.periode || "").trim();
+    if (!objektId || !periode) {
+      return res.status(400).json({ error: "objektId und periode erforderlich" });
+    }
+    const obj = getObjekt(uid, objektId);
+    if (!obj) return res.status(404).json({ error: "Objekt nicht gefunden" });
+
+    const buchungen = listBuchungen(uid, { objektId, periode });
+    const csv = buildDatevBuchungenCsv(buchungen, { objektName: obj.name, periode });
+    const filename = `EXTF_Buchungen_${objektId}_${periode}.csv`;
+    res.setHeader("Content-Type", "text/csv; charset=utf-8");
+    res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
+    res.send(csv);
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
 });
 
 router.get("/api/verwalter/export/stammdaten-csv", requireAuth, (req, res) => {

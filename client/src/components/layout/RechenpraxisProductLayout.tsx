@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import {
+  BookOpen,
   Building2,
   Calculator,
   Clock,
@@ -25,6 +26,7 @@ const NAV = [
   { name: "Objekte", href: "/app/verwalter/objekte", icon: Database },
   { name: "Vorlagen", href: "/app/verwalter/vorlagen", icon: FileText },
   { name: "Vorgänge", href: "/app/verwalter/vorgaenge", icon: Kanban },
+  { name: "Buchungen", href: "/app/verwalter/buchungen", icon: BookOpen },
   { name: "Fristen", href: "/app/verwalter/fristen", icon: Clock },
   { name: "Preise & Abo", href: "/rechenpraxis-preise", icon: CreditCard },
 ];
