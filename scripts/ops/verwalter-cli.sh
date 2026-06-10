@@ -13,6 +13,32 @@ BASE="${OPS_BASE_URL:-https://immobilien-akademie-smart.de}"
 CMD="${1:-help}"
 shift || true
 
+# Login: ENV, Magic-Link oder interaktiv (Passwort unsichtbar)
+ensure_verwalter_login() {
+  if [[ -n "${MAGIC_LINK_SECRET:-}" ]]; then
+    return 0
+  fi
+  if [[ -n "${B2B_ADMIN_PASSWORD:-}" || -n "${TEST_ADMIN_PASSWORD:-}" ]]; then
+    return 0
+  fi
+  if [[ ! -t 0 ]]; then
+    echo "Login nötig: Passwort interaktiv nur im Terminal."
+    echo "  read -s -p 'Passwort: ' B2B_ADMIN_PASSWORD; echo; export B2B_ADMIN_PASSWORD"
+    echo "  pnpm run ops:verwalter-cli $CMD"
+    exit 1
+  fi
+  local email="${B2B_ADMIN_EMAIL:-${TEST_ADMIN_EMAIL:-alisadgadyri38@gmail.com}}"
+  read -r -p "E-Mail [$email]: " input_email
+  if [[ -n "$input_email" ]]; then
+    export B2B_ADMIN_EMAIL="$input_email"
+  else
+    export B2B_ADMIN_EMAIL="$email"
+  fi
+  read -r -s -p "Passwort: " B2B_ADMIN_PASSWORD
+  echo ""
+  export B2B_ADMIN_PASSWORD
+}
+
 case "$CMD" in
   health)
     curl -s "${BASE}/api/health" | (command -v jq >/dev/null && jq . || cat)
@@ -24,10 +50,7 @@ case "$CMD" in
     curl -s "${BASE}/api/health" | (command -v jq >/dev/null && jq '.migrations' || cat)
     ;;
   events|freigaben|fristen-batch|dashboard|flags)
-    if [[ -z "${B2B_ADMIN_PASSWORD:-}" && -z "${TEST_ADMIN_PASSWORD:-}" && -z "${MAGIC_LINK_SECRET:-}" ]]; then
-      echo "Login nötig: B2B_ADMIN_PASSWORD='…' bash scripts/ops/verwalter-cli.sh $CMD"
-      exit 1
-    fi
+    ensure_verwalter_login
     python3 - "$CMD" "$BASE" <<'PY'
 import json, os, sys, http.cookiejar, urllib.request
 
@@ -95,10 +118,12 @@ PY
     echo "  health          — /api/health (öffentlich)"
     echo "  qa              — vollständiges QA-Pack"
     echo "  migrate-status  — Migrations-Stand aus Health"
-    echo "  dashboard       — Dashboard-Stats (Login)"
-    echo "  events          — letzte Events (Login)"
-    echo "  freigaben       — ausstehende Freigaben (Login)"
-    echo "  fristen-batch   — alle Fristen → Vorgänge (Login, OBJEKT_ID optional)"
-    echo "  flags           — Feature-Flags (Login)"
+    echo "  dashboard       — Dashboard-Stats (fragt Passwort unsichtbar)"
+    echo "  events          — letzte Events (fragt Passwort unsichtbar)"
+    echo "  freigaben       — ausstehende Freigaben (fragt Passwort unsichtbar)"
+    echo "  fristen-batch   — alle Fristen → Vorgänge (OBJEKT_ID optional)"
+    echo "  flags           — Feature-Flags (fragt Passwort unsichtbar)"
+    echo ""
+    echo "Login-Alternative: read -s -p 'Passwort: ' B2B_ADMIN_PASSWORD; echo; export B2B_ADMIN_PASSWORD"
     ;;
 esac
