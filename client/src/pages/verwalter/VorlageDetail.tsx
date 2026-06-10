@@ -1,6 +1,6 @@
-import { useState, useMemo } from "react";
-import { Link, useRoute } from "wouter";
-import { ArrowLeft, Download, Copy } from "lucide-react";
+import { useState, useMemo, useEffect } from "react";
+import { Link, useRoute, useSearch } from "wouter";
+import { ArrowLeft, Download, Copy, Sparkles } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,6 +10,7 @@ import {
   renderVorlageBody,
   type VorlageField,
 } from "@shared/verwalterVorlagen";
+import { objektToVorlageDefaults, type VerwalterObjekt } from "@shared/verwalterObjektTypes";
 import { downloadBriefPdf } from "@/lib/verwalterBriefPdf";
 import { useToast } from "@/hooks/use-toast";
 
@@ -51,16 +52,47 @@ function FieldInput({
 
 export default function VorlageDetail() {
   const [, params] = useRoute("/app/verwalter/vorlagen/:slug");
+  const search = useSearch();
   const slug = params?.slug ?? "";
   const vorlage = getVorlageBySlug(slug);
   const { toast } = useToast();
   const [values, setValues] = useState<Record<string, string>>({});
+  const [preview, setPreview] = useState("");
   const [exporting, setExporting] = useState(false);
+  const [kiLoading, setKiLoading] = useState(false);
+  const [objekte, setObjekte] = useState<VerwalterObjekt[]>([]);
+  const [selectedObjektId, setSelectedObjektId] = useState("");
+  const [kiAnweisung, setKiAnweisung] = useState("");
 
-  const preview = useMemo(() => {
+  const draftPreview = useMemo(() => {
     if (!vorlage) return "";
     return renderVorlageBody(vorlage.body, values);
   }, [vorlage, values]);
+
+  useEffect(() => {
+    setPreview(draftPreview);
+  }, [draftPreview]);
+
+  useEffect(() => {
+    fetch("/api/verwalter/objekte", { credentials: "include" })
+      .then((r) => r.json())
+      .then((d) => {
+        if (d.success) setObjekte(d.objekte);
+      })
+      .catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    const q = new URLSearchParams(search);
+    const oid = q.get("objekt");
+    if (oid) setSelectedObjektId(oid);
+  }, [search]);
+
+  useEffect(() => {
+    if (!selectedObjektId) return;
+    const obj = objekte.find((o) => o.id === selectedObjektId);
+    if (obj) setValues((prev) => ({ ...objektToVorlageDefaults(obj), ...prev }));
+  }, [selectedObjektId, objekte]);
 
   if (!vorlage) {
     return (
@@ -89,6 +121,31 @@ export default function VorlageDetail() {
     toast({ title: "In Zwischenablage kopiert" });
   };
 
+  const handleKiBrief = async () => {
+    setKiLoading(true);
+    try {
+      const res = await fetch("/api/verwalter/ki-brief", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          vorlageSlug: slug,
+          fieldValues: values,
+          objektId: selectedObjektId || undefined,
+          anweisung: kiAnweisung || undefined,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "KI fehlgeschlagen");
+      setPreview(data.text);
+      toast({ title: "KI-Brief erstellt", description: `Provider: ${data.provider}` });
+    } catch (e: any) {
+      toast({ title: "Fehler", description: e.message, variant: "destructive" });
+    } finally {
+      setKiLoading(false);
+    }
+  };
+
   return (
     <>
       <SEO title={`${vorlage.title} — Vorlage`} />
@@ -105,6 +162,25 @@ export default function VorlageDetail() {
           {vorlage.legalHint}
         </p>
 
+        {objekte.length > 0 && (
+          <div className="mt-4">
+            <Label htmlFor="objekt-select">Objekt übernehmen</Label>
+            <select
+              id="objekt-select"
+              className="mt-1 min-h-[44px] w-full rounded-md border border-input bg-background px-3 text-sm sm:max-w-md"
+              value={selectedObjektId}
+              onChange={(e) => setSelectedObjektId(e.target.value)}
+            >
+              <option value="">— manuell —</option>
+              {objekte.map((o) => (
+                <option key={o.id} value={o.id}>
+                  {o.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
           <div className="space-y-4">
             <h2 className="font-semibold">Felder ausfüllen</h2>
@@ -119,10 +195,26 @@ export default function VorlageDetail() {
                 </div>
               </div>
             ))}
+
+            <div>
+              <Label htmlFor="ki-anweisung">KI-Zusatzanweisung (optional)</Label>
+              <Input
+                id="ki-anweisung"
+                className="mt-1 min-h-[44px]"
+                placeholder="z.B. besonders höflich, kurz halten"
+                value={kiAnweisung}
+                onChange={(e) => setKiAnweisung(e.target.value)}
+              />
+            </div>
+
             <div className="flex flex-wrap gap-2 pt-2">
-              <Button onClick={handlePdf} disabled={exporting} className="min-h-[44px] gap-2">
+              <Button onClick={handleKiBrief} disabled={kiLoading} className="min-h-[44px] gap-2 bg-violet-600 hover:bg-violet-700">
+                <Sparkles className="h-4 w-4" />
+                {kiLoading ? "KI formuliert…" : "KI-Brief verfeinern"}
+              </Button>
+              <Button onClick={handlePdf} disabled={exporting} variant="outline" className="min-h-[44px] gap-2">
                 <Download className="h-4 w-4" />
-                {exporting ? "PDF…" : "PDF herunterladen"}
+                {exporting ? "PDF…" : "PDF"}
               </Button>
               <Button variant="outline" onClick={handleCopy} className="min-h-[44px] gap-2">
                 <Copy className="h-4 w-4" /> Kopieren
@@ -130,9 +222,9 @@ export default function VorlageDetail() {
             </div>
           </div>
 
-          <div>
+          <div className="min-w-0">
             <h2 className="mb-2 font-semibold">Vorschau</h2>
-            <pre className="learning-text-scale max-h-[60vh] overflow-auto whitespace-pre-wrap rounded-xl border border-slate-200 bg-white p-4 text-sm leading-relaxed dark:border-slate-700 dark:bg-slate-900 sm:max-h-[70vh]">
+            <pre className="learning-text-scale max-h-[50vh] overflow-x-auto overflow-y-auto whitespace-pre-wrap rounded-xl border border-slate-200 bg-white p-4 text-sm leading-relaxed dark:border-slate-700 dark:bg-slate-900 sm:max-h-[70vh]">
               {preview}
             </pre>
           </div>

@@ -22,4 +22,10 @@ test.describe("Verwalter Produkt — Layout", () => {
     await page.waitForURL(/login|vorlagen/, { timeout: 8000 });
     expect(page.url()).toMatch(/login|vorlagen/);
   });
+
+  test("/app/verwalter/objekte leitet ohne Login um", async ({ page }) => {
+    await page.goto(`${BASE}/app/verwalter/objekte`, { waitUntil: "domcontentloaded" });
+    await page.waitForURL(/login|objekte/, { timeout: 8000 });
+    expect(page.url()).toMatch(/login|objekte/);
+  });
 });

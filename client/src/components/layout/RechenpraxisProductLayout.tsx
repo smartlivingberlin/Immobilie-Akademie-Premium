@@ -5,6 +5,7 @@ import {
   Calculator,
   Clock,
   CreditCard,
+  Database,
   FileText,
   GraduationCap,
   Home,
@@ -20,6 +21,7 @@ import { hasFullRechenpraxisAccess } from "@shared/rechenpraxisAccess";
 const NAV = [
   { name: "Rechenpraxis", href: "/rechenpraxis", icon: Building2 },
   { name: "Praxisrechner", href: "/rechner", icon: Calculator },
+  { name: "Objekte", href: "/app/verwalter/objekte", icon: Database },
   { name: "Vorlagen", href: "/app/verwalter/vorlagen", icon: FileText },
   { name: "Fristen", href: "/app/verwalter/fristen", icon: Clock },
   { name: "Preise & Abo", href: "/rechenpraxis-preise", icon: CreditCard },

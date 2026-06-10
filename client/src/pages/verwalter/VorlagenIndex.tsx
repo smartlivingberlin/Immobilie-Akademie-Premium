@@ -16,8 +16,13 @@ export default function VorlagenIndex() {
       <div className="mx-auto max-w-4xl px-4 py-6 sm:px-6 sm:py-8">
         <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 sm:text-3xl">WEG-Vorlagen</h1>
         <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 sm:text-base">
-          Ausfüllen, Vorschau und PDF-Export — für den Verwaltungsalltag. Keine Rechtsberatung.
+          {VERWALTER_VORLAGEN.length} Vorlagen — ausfüllen, KI-Brief, PDF-Export. Keine Rechtsberatung.
         </p>
+        <Link href="/app/verwalter/objekte">
+          <a className="mt-3 inline-block text-sm text-emerald-600 hover:underline">
+            → WEG-Objekte verwalten (Stammdaten für Vorlagen)
+          </a>
+        </Link>
 
         <div className="mt-8 space-y-8">
           {CATEGORIES.map((cat) => {

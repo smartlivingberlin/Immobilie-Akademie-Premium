@@ -6,8 +6,8 @@ import {
 } from "./verwalterVorlagen";
 
 describe("verwalterVorlagen", () => {
-  it("enthält mindestens 8 Vorlagen", () => {
-    expect(VERWALTER_VORLAGEN.length).toBeGreaterThanOrEqual(8);
+  it("enthält 20 Vorlagen", () => {
+    expect(VERWALTER_VORLAGEN.length).toBe(20);
   });
 
   it("getVorlageBySlug findet ETV-Einladung", () => {
