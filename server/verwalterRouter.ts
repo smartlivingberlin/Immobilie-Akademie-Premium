@@ -306,6 +306,74 @@ router.post("/api/verwalter/freigaben/:id/ablehnen", requireVerwalterAuth, async
   }
 });
 
+router.post("/api/verwalter/mahnwesen/start", requireVerwalterAuth, async (req, res) => {
+  try {
+    const body = req.body ?? {};
+    const { startMahnungWorkflow } = await import("./verwalterMahnwesenService");
+    const result = await startMahnungWorkflow(userId(req as any), {
+      objektId: String(body.objektId || ""),
+      einheitId: body.einheitId ? String(body.einheitId) : undefined,
+      eigentuemerName: String(body.eigentuemerName || ""),
+      betrag: Number(body.betrag),
+      faelligSeit: String(body.faelligSeit || ""),
+      stufe: [1, 2, 3].includes(Number(body.stufe)) ? (Number(body.stufe) as 1 | 2 | 3) : undefined,
+    });
+    res.json({ success: true, ...result });
+  } catch (e: any) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
+router.post("/api/verwalter/mahnwesen/:vorgangId/escalate", requireVerwalterAuth, async (req, res) => {
+  try {
+    const { escalateMahnungWorkflow } = await import("./verwalterMahnwesenService");
+    const result = await escalateMahnungWorkflow(userId(req as any), String(req.params.vorgangId));
+    res.json({ success: true, ...result, previousVorgangId: String(req.params.vorgangId) });
+  } catch (e: any) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
+router.get("/api/verwalter/mahnwesen/vorgaenge", requireVerwalterAuth, async (req, res) => {
+  try {
+    const objektId = req.query.objektId ? String(req.query.objektId) : undefined;
+    const all = await listVorgaenge(userId(req as any), objektId);
+    const mahnungen = all.filter((v) => v.typ === "mahnung");
+    res.json({ success: true, mahnungen });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+router.post("/api/verwalter/freigaben", requireVerwalterAuth, async (req, res) => {
+  try {
+    const body = req.body ?? {};
+    const uid = userId(req as any);
+    const kind = body.kind === "mail_entwurf" || body.kind === "buchung_vorschlag"
+      ? body.kind
+      : "brief_entwurf";
+    if (!body.titel?.trim() || !body.payload) {
+      return res.status(400).json({ error: "titel und payload erforderlich" });
+    }
+    const freigabe = await createVerwalterFreigabe(uid, {
+      kind,
+      titel: String(body.titel).trim(),
+      objektId: body.objektId ? String(body.objektId) : undefined,
+      vorgangId: body.vorgangId ? String(body.vorgangId) : undefined,
+      payload: typeof body.payload === "object" ? body.payload : { text: String(body.payload) },
+    });
+    await logVerwalterEvent(uid, {
+      typ: "freigabe.angelegt",
+      objektId: freigabe.objektId,
+      vorgangId: freigabe.vorgangId,
+      payload: { freigabeId: freigabe.id, kind },
+    });
+    res.json({ success: true, freigabe });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
 router.get("/api/verwalter/feature-flags", requireVerwalterAuth, async (_req, res) => {
   res.json({ success: true, flags: getVerwalterFeatureFlags() });
 });

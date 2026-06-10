@@ -9,7 +9,9 @@ import {
   Database,
   FileText,
   Kanban,
+  ClipboardCheck,
   LayoutDashboard,
+  Scale,
   GraduationCap,
   Home,
   LogOut,
@@ -31,6 +33,8 @@ const NAV = [
   { name: "Objekte", href: "/app/verwalter/objekte", icon: Database },
   { name: "Vorlagen", href: "/app/verwalter/vorlagen", icon: FileText },
   { name: "Vorgänge", href: "/app/verwalter/vorgaenge", icon: Kanban },
+  { name: "Mahnwesen", href: "/app/verwalter/mahnwesen", icon: Scale },
+  { name: "Freigaben", href: "/app/verwalter/freigaben", icon: ClipboardCheck },
   { name: "Buchungen", href: "/app/verwalter/buchungen", icon: BookOpen },
   { name: "Fristen", href: "/app/verwalter/fristen", icon: Clock },
   { name: "Preise & Abo", href: "/rechenpraxis-preise", icon: CreditCard },
@@ -45,6 +49,7 @@ type DashboardStats = {
   objekteCount: number;
   openVorgaenge: number;
   overdueVorgaenge: number;
+  ausstehendeFreigaben?: number;
 };
 
 export default function RechenpraxisProductLayout({ children }: { children: React.ReactNode }) {
@@ -78,6 +83,7 @@ export default function RechenpraxisProductLayout({ children }: { children: Reac
             objekteCount: d.objekteCount,
             openVorgaenge: d.openVorgaenge,
             overdueVorgaenge: d.overdueVorgaenge,
+            ausstehendeFreigaben: d.ausstehendeFreigaben,
           });
         }
       })
@@ -159,6 +165,9 @@ export default function RechenpraxisProductLayout({ children }: { children: Reac
               <div>{dashboard.openVorgaenge} offene Vorgänge</div>
               {dashboard.overdueVorgaenge > 0 && (
                 <div className="text-amber-300">{dashboard.overdueVorgaenge} überfällig</div>
+              )}
+              {(dashboard.ausstehendeFreigaben ?? 0) > 0 && (
+                <div className="text-violet-300">{dashboard.ausstehendeFreigaben} Freigaben</div>
               )}
             </div>
           )}
