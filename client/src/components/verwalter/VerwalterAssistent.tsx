@@ -3,12 +3,21 @@ import { useLocation } from "wouter";
 import { Bot, MessageCircle, Send, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { BuchungsVorschlagCard } from "@/components/verwalter/BuchungsVorschlagCard";
 import { getAssistentVorschlaege } from "@shared/verwalterAssistentKnowledge";
+import type { BuchungVorschlag } from "@shared/verwalterBuchungVorschlag";
+import type { VerwalterObjekt } from "@shared/verwalterObjektTypes";
 
-type Nachricht = { rolle: "user" | "assistant"; text: string };
+type Nachricht = {
+  rolle: "user" | "assistant";
+  text: string;
+  buchungsVorschlag?: BuchungVorschlag;
+  objektId?: string;
+  periode?: string;
+};
 
 const WELCOME =
-  "Hallo! Ich bin Ihr **Verwalter-Assistent**.\n\nIch kenne Ihre Objekte, Vorgänge und Buchungen — erkläre SKR-Konten **Schritt für Schritt** und helfe bei Unsicherheiten.\n\nTipp: Unter **Buchungen** können Sie auch in eigenen Worten tippen (z. B. „250€ Hausgeld WE 3“) — das System schlägt die Konten vor.\n\nStellen Sie eine Frage oder wählen Sie einen Vorschlag.";
+  "Hallo! Ich bin Ihr **Verwalter-Assistent**.\n\nBeschreiben Sie eine Buchung in eigenen Worten — z. B. „250€ Hausgeld WE 3“ — ich schlage Konten vor und Sie können sie **mit einem Klick anlegen**.\n\nOder fragen Sie zu SKR, Fristen und Abläufen.";
 
 export function VerwalterAssistent() {
   const [location] = useLocation();
@@ -18,6 +27,9 @@ export function VerwalterAssistent() {
   ]);
   const [eingabe, setEingabe] = useState("");
   const [laden, setLaden] = useState(false);
+  const [objekte, setObjekte] = useState<VerwalterObjekt[]>([]);
+  const [objektId, setObjektId] = useState("");
+  const [periode] = useState(() => new Date().toISOString().slice(0, 7));
   const endRef = useRef<HTMLDivElement>(null);
   const vorschlaege = getAssistentVorschlaege(location);
 
@@ -30,6 +42,19 @@ export function VerwalterAssistent() {
     window.addEventListener("verwalter-assistent-open", handler);
     return () => window.removeEventListener("verwalter-assistent-open", handler);
   }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    fetch("/api/verwalter/objekte", { credentials: "include" })
+      .then((r) => r.json())
+      .then((d) => {
+        if (d.success && d.objekte?.length) {
+          setObjekte(d.objekte);
+          setObjektId((prev) => prev || d.objekte[0].id);
+        }
+      })
+      .catch(() => {});
+  }, [open]);
 
   const senden = async (frage?: string) => {
     const text = (frage || eingabe).trim();
@@ -46,6 +71,8 @@ export function VerwalterAssistent() {
         body: JSON.stringify({
           frage: text,
           seite: location,
+          objektId: objektId || undefined,
+          periode,
           nachrichten: next.filter((n) => n.text !== WELCOME),
         }),
       });
@@ -54,7 +81,16 @@ export function VerwalterAssistent() {
         res.ok && data.answer
           ? data.answer
           : data.error || "Entschuldigung, ich konnte gerade nicht antworten. Bitte erneut versuchen.";
-      setNachrichten((prev) => [...prev, { rolle: "assistant", text: antwort }]);
+      setNachrichten((prev) => [
+        ...prev,
+        {
+          rolle: "assistant",
+          text: antwort,
+          buchungsVorschlag: data.buchungsVorschlag || undefined,
+          objektId: data.objektId || objektId,
+          periode: data.periode || periode,
+        },
+      ]);
     } catch {
       setNachrichten((prev) => [
         ...prev,
@@ -101,6 +137,23 @@ export function VerwalterAssistent() {
             </button>
           </div>
 
+          {objekte.length > 1 && (
+            <div className="border-b border-slate-100 px-4 py-2 dark:border-slate-800">
+              <label className="text-[10px] text-slate-500">Buchungen für:</label>
+              <select
+                className="mt-0.5 w-full rounded border border-input bg-background px-2 py-1.5 text-xs"
+                value={objektId}
+                onChange={(e) => setObjektId(e.target.value)}
+              >
+                {objekte.map((o) => (
+                  <option key={o.id} value={o.id}>
+                    {o.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
           <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3">
             {nachrichten.map((n, i) => (
               <div
@@ -112,11 +165,17 @@ export function VerwalterAssistent() {
                 }`}
               >
                 <div className="whitespace-pre-wrap leading-relaxed">{n.text}</div>
+                {n.rolle === "assistant" && n.buchungsVorschlag && n.objektId && (
+                  <BuchungsVorschlagCard
+                    vorschlag={n.buchungsVorschlag}
+                    objektId={n.objektId}
+                    periode={n.periode || periode}
+                    onAngelegt={() => {}}
+                  />
+                )}
               </div>
             ))}
-            {laden && (
-              <p className="text-xs text-slate-500 animate-pulse">Denke nach…</p>
-            )}
+            {laden && <p className="text-xs text-slate-500 animate-pulse">Denke nach…</p>}
             <div ref={endRef} />
           </div>
 
@@ -132,6 +191,13 @@ export function VerwalterAssistent() {
                   {v}
                 </button>
               ))}
+              <button
+                type="button"
+                onClick={() => senden("250 Euro Hausgeld WE 1")}
+                className="rounded-full border border-emerald-300 bg-emerald-50 px-2.5 py-1 text-[11px] text-emerald-800"
+              >
+                Beispiel: 250€ Hausgeld
+              </button>
             </div>
           )}
 
@@ -140,11 +206,16 @@ export function VerwalterAssistent() {
               value={eingabe}
               onChange={(e) => setEingabe(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && senden()}
-              placeholder="Frage zu Konten, Buchungen, Fristen…"
+              placeholder="z. B. 250€ Hausgeld Müller…"
               className="min-h-[44px] flex-1 text-sm"
               disabled={laden}
             />
-            <Button onClick={() => senden()} disabled={laden || !eingabe.trim()} className="min-h-[44px] min-w-[44px] shrink-0" aria-label="Senden">
+            <Button
+              onClick={() => senden()}
+              disabled={laden || !eingabe.trim()}
+              className="min-h-[44px] min-w-[44px] shrink-0"
+              aria-label="Senden"
+            >
               <Send className="h-4 w-4" />
             </Button>
           </div>

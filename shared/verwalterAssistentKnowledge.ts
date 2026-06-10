@@ -79,8 +79,8 @@ export function getAssistentVorschlaege(seite: string): string[] {
     if (seite.startsWith(path)) return items;
   }
   return [
+    "250 Euro Hausgeld WE 1",
     "Was soll ich als Erstes tun?",
     "Erkläre Soll und Haben bei Hausgeld",
-    "Wie helfen mir Vorgänge und Fristen?",
   ];
 }
