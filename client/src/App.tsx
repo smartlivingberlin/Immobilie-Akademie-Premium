@@ -4,6 +4,7 @@ import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { trpc } from "@/lib/trpc";
 import { Toaster } from "@/components/ui/toaster";
 import DashboardLayout from "@/components/layout/DashboardLayout";
+import RechenpraxisProductLayout from "@/components/layout/RechenpraxisProductLayout";
 import Footer from "@/components/layout/Footer";
 import PublicHeader from "@/components/layout/PublicHeader";
 import ModuleGuard from "@/components/ModuleGuard";
@@ -226,6 +227,17 @@ function AppLayout({ children }: { children: React.ReactNode }) {
   );
 }
 
+/** Eigenes Shell für Verwalter-Rechner / Rechenpraxis (kein Akademie-Modul-Menü). */
+function VerwalterProductLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <RechenpraxisProductLayout>
+      <Toaster />
+      <Suspense fallback={null}><CookieConsent /></Suspense>
+      {children}
+    </RechenpraxisProductLayout>
+  );
+}
+
 /** Legacy-URL /app/rechenpraxis → kanonisch /rechenpraxis (Query-String bleibt erhalten). */
 function RechenpraxisRedirect() {
   const [, setLocation] = useLocation();
@@ -265,7 +277,7 @@ function Router() {
         <Route path="/agb"><PublicLayout><AGB /></PublicLayout></Route>
         <Route path="/widerruf"><PublicLayout><Widerruf /></PublicLayout></Route>
         <Route path="/bildungskonzept"><PublicLayout><Bildungskonzept /></PublicLayout></Route>
-        <Route path="/rechner"><AppLayout><ProtectedRoute component={Rechner} /></AppLayout></Route>
+        <Route path="/rechner"><VerwalterProductLayout><ProtectedRoute component={Rechner} /></VerwalterProductLayout></Route>
         <Route path="/finanzierungsrechner"><AppLayout><ProtectedRoute component={Calculators} /></AppLayout></Route>
         <Route path="/lehrplan"><PublicLayout><Syllabus /></PublicLayout></Route>
         <Route path="/glossary"><PublicLayout><Glossary /></PublicLayout></Route>
@@ -317,7 +329,8 @@ function Router() {
         <Route path="/owner-dashboard"><AppLayout><OwnerRoute component={OwnerDashboard} /></AppLayout></Route>
         <Route path="/owner-videos"><AppLayout><OwnerRoute component={OwnerVideos} /></AppLayout></Route>
         <Route path="/app/rechenpraxis"><RechenpraxisRedirect /></Route>
-        <Route path="/rechenpraxis"><AppLayout><ProtectedRoute component={Rechenpraxis} /></AppLayout></Route>
+        <Route path="/app/verwalter"><RechenpraxisRedirect /></Route>
+        <Route path="/rechenpraxis"><VerwalterProductLayout><ProtectedRoute component={Rechenpraxis} /></VerwalterProductLayout></Route>
         <Route path="/tester-zugang"><TesterZugang /></Route>
         <Route path="/partner-panel"><AppLayout><AdminRoute component={PartnerDashboard} /></AppLayout></Route>
         <Route path="/foerderung"><PublicLayout><Foerderung /></PublicLayout></Route>
