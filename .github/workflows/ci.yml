@@ -30,8 +30,8 @@ jobs:
             exit 1
           fi
       - run: pnpm exec tsc --noEmit --skipLibCheck
-      - run: pnpm test
       - run: pnpm build
+      - run: pnpm test
       - run: pnpm audit --audit-level=moderate
 
   docker-build:
