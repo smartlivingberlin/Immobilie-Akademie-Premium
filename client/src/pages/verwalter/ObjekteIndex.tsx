@@ -125,6 +125,9 @@ export default function ObjekteIndex() {
         ...e,
         nummer: e.nummer.trim(),
         mea: Number(e.mea) || 0,
+        eigentuemerName: e.eigentuemerName?.trim() || undefined,
+        kontaktEmail: e.kontaktEmail?.trim() || undefined,
+        kontaktTelefon: e.kontaktTelefon?.trim() || undefined,
         flaecheQm: e.flaecheQm != null ? Number(e.flaecheQm) || undefined : undefined,
       }));
       const body = {
@@ -250,7 +253,7 @@ export default function ObjekteIndex() {
                     {form.einheiten.map((e) => (
                       <li
                         key={e.id}
-                        className="grid gap-2 rounded-lg border border-slate-200 p-3 dark:border-slate-700 sm:grid-cols-[1fr_1fr_1fr_auto]"
+                        className="grid gap-2 rounded-lg border border-slate-200 p-3 dark:border-slate-700 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1fr_1fr_auto]"
                       >
                         <Input
                           placeholder="Nr."
@@ -270,6 +273,20 @@ export default function ObjekteIndex() {
                           className="min-h-[40px]"
                           value={e.eigentuemerName ?? ""}
                           onChange={(ev) => updateEinheit(e.id, { eigentuemerName: ev.target.value })}
+                        />
+                        <Input
+                          type="email"
+                          placeholder="E-Mail"
+                          className="min-h-[40px]"
+                          value={e.kontaktEmail ?? ""}
+                          onChange={(ev) => updateEinheit(e.id, { kontaktEmail: ev.target.value })}
+                        />
+                        <Input
+                          type="tel"
+                          placeholder="Telefon"
+                          className="min-h-[40px]"
+                          value={e.kontaktTelefon ?? ""}
+                          onChange={(ev) => updateEinheit(e.id, { kontaktTelefon: ev.target.value })}
                         />
                         <Button
                           type="button"

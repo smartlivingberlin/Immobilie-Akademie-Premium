@@ -33,7 +33,13 @@ describe("GDPR delete coverage", () => {
       path.join(process.cwd(), "server/verwalterGdprCleanup.ts"),
       "utf-8",
     );
-    for (const table of ["verwalter_buchungen", "verwalter_vorgaenge", "verwalter_objekte"]) {
+    for (const table of [
+      "verwalter_freigaben",
+      "verwalter_events",
+      "verwalter_buchungen",
+      "verwalter_vorgaenge",
+      "verwalter_objekte",
+    ]) {
       expect(cleanupSource).toContain(table);
     }
   });

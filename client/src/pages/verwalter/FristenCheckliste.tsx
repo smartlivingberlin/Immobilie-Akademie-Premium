@@ -20,7 +20,9 @@ export default function FristenCheckliste() {
   const [objektId, setObjektId] = useState("");
   const [startDate, setStartDate] = useState(() => new Date().toISOString().slice(0, 10));
   const [creating, setCreating] = useState<string | null>(null);
+  const [batchLoading, setBatchLoading] = useState(false);
   const [created, setCreated] = useState<string | null>(null);
+  const [batchDone, setBatchDone] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -71,6 +73,32 @@ export default function FristenCheckliste() {
     });
   };
 
+  const createAllVorgaenge = async () => {
+    if (!objektId) {
+      setError("Bitte zuerst ein WEG-Objekt anlegen.");
+      return;
+    }
+    setBatchLoading(true);
+    setError(null);
+    setBatchDone(null);
+    try {
+      const res = await fetch("/api/verwalter/fristen/batch-vorgaenge", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ objektId, startDate }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Batch fehlgeschlagen");
+      setBatchDone(data.count ?? 0);
+      setTimeout(() => setBatchDone(null), 5000);
+    } catch (e: any) {
+      setError(e.message);
+    } finally {
+      setBatchLoading(false);
+    }
+  };
+
   return (
     <>
       <SEO title="Fristen-Checkliste WEG" description="Wichtige Fristen für Verwalter: ETV, Beschlüsse, NK." />
@@ -82,10 +110,29 @@ export default function FristenCheckliste() {
               Fristen prüfen — mit einem Klick als Vorgang im Kanban anlegen.
             </p>
           </div>
-          <Button variant="outline" onClick={exportHtml} className="min-h-[44px] shrink-0 gap-2">
-            <Download className="h-4 w-4" /> HTML-Export
-          </Button>
+          <div className="flex flex-wrap gap-2 shrink-0">
+            <Button
+              variant="default"
+              onClick={() => void createAllVorgaenge()}
+              disabled={batchLoading || !objektId}
+              className="min-h-[44px] gap-2"
+            >
+              <Kanban className="h-4 w-4" />
+              {batchLoading ? "Lege an…" : "Alle Fristen → Vorgänge"}
+            </Button>
+            <Button variant="outline" onClick={exportHtml} className="min-h-[44px] gap-2">
+              <Download className="h-4 w-4" /> HTML-Export
+            </Button>
+          </div>
         </div>
+        {batchDone != null && (
+          <p className="mt-3 text-sm text-emerald-600">
+            {batchDone} Vorgänge angelegt —{" "}
+            <Link href="/app/verwalter/vorgaenge">
+              <a className="underline">zum Kanban</a>
+            </Link>
+          </p>
+        )}
 
         <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-900/50">
           <div className="grid gap-4 sm:grid-cols-2">

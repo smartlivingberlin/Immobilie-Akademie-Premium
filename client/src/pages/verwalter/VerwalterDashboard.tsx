@@ -26,6 +26,8 @@ type DashboardStats = {
   objekteCount: number;
   openVorgaenge: number;
   overdueVorgaenge: number;
+  neueEvents?: number;
+  ausstehendeFreigaben?: number;
 };
 
 const QUICK_LINKS = [
@@ -172,7 +174,7 @@ export default function VerwalterDashboard() {
           </div>
         ) : stats ? (
           <>
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
               <StatCard label="WEG-Objekte" value={stats.objekteCount} hint="Stammdaten & Einheiten" />
               <StatCard label="Offene Vorgänge" value={stats.openVorgaenge} hint="Kanban — nicht erledigt" />
               <StatCard
@@ -180,6 +182,17 @@ export default function VerwalterDashboard() {
                 value={stats.overdueVorgaenge}
                 hint="Fälligkeitsdatum verstrichen"
                 tone="warn"
+              />
+              <StatCard
+                label="Neue Events"
+                value={stats.neueEvents ?? 0}
+                hint="Automatisierungs-Log"
+              />
+              <StatCard
+                label="Freigaben"
+                value={stats.ausstehendeFreigaben ?? 0}
+                hint="KI-Entwürfe warten"
+                tone={(stats.ausstehendeFreigaben ?? 0) > 0 ? "warn" : "default"}
               />
             </div>
 
