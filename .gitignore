@@ -191,3 +191,8 @@ tests/reports/
 test-results/
 tests/reports/
 tests/e2e/.auth-state.json
+
+# Secrets & lokale Restore-Artefakte — niemals committen
+stripe_prices.env
+whsec_response.json
+restore_inbox/
