@@ -265,6 +265,296 @@ Der Plan wird zur Beschlussfassung in der nächsten Eigentümerversammlung vorge
 
 {{verwalterName}}`,
   },
+  {
+    id: "etv-protokoll",
+    slug: "etv-protokoll",
+    title: "Protokollhinweis nach ETV",
+    category: "etv",
+    description: "Übersendung des Versammlungsprotokolls.",
+    legalHint: "Protokoll jedem Eigentümer unverzüglich zugänglich machen (§ 24 Abs. 7 WEG).",
+    fields: [
+      { key: "wegName", label: "WEG", type: "text", required: true },
+      { key: "etvDatum", label: "Datum der Versammlung", type: "date", required: true },
+      { key: "verwalterName", label: "Verwaltung", type: "text", required: true },
+    ],
+    body: `Protokoll der Eigentümerversammlung
+
+{{wegName}}
+
+Sehr geehrte Eigentümerinnen und Eigentümer,
+
+anbei das Protokoll der Eigentümerversammlung vom {{etvDatum}}.
+
+{{verwalterName}}`,
+  },
+  {
+    id: "nk-widerspruch-antwort",
+    slug: "nk-widerspruch-antwort",
+    title: "Antwort auf NK-Einwendungen",
+    category: "nk",
+    description: "Stellungnahme zu Einwendungen gegen die Betriebskostenabrechnung.",
+    legalHint: "Einwendungsfrist 12 Monate nach Zugang (§ 556 Abs. 3 BGB).",
+    fields: [
+      { key: "empfaenger", label: "Empfänger", type: "text", required: true },
+      { key: "objektAdresse", label: "Objekt", type: "text", required: true },
+      { key: "einwendung", label: "Einwendung (Kurzfassung)", type: "textarea", required: true },
+      { key: "antwort", label: "Stellungnahme", type: "textarea", required: true },
+      { key: "verwalterName", label: "Verwaltung", type: "text", required: true },
+    ],
+    body: `Stellungnahme zur Nebenkostenabrechnung
+
+{{empfaenger}}
+{{objektAdresse}}
+
+Ihre Einwendung: {{einwendung}}
+
+Unsere Stellungnahme:
+{{antwort}}
+
+{{verwalterName}}`,
+  },
+  {
+    id: "hausmeister-beauftragung",
+    slug: "hausmeister-beauftragung",
+    title: "Beauftragung Hausmeister / Dienstleister",
+    category: "kommunikation",
+    description: "Auftrag für Instandhaltung oder Reinigung.",
+    legalHint: "Leistungsumfang und Vergütung schriftlich fixieren.",
+    fields: [
+      { key: "wegName", label: "Objekt / WEG", type: "text", required: true },
+      { key: "auftragnehmer", label: "Auftragnehmer", type: "text", required: true },
+      { key: "leistung", label: "Leistungsbeschreibung", type: "textarea", required: true },
+      { key: "termin", label: "Ausführungstermin", type: "date", required: true },
+      { key: "verwalterName", label: "Verwaltung", type: "text", required: true },
+    ],
+    body: `Auftrag Instandhaltung
+
+{{auftragnehmer}}
+
+Objekt: {{wegName}}
+Leistung: {{leistung}}
+Termin: {{termin}}
+
+Bitte bestätigen Sie den Termin schriftlich.
+
+{{verwalterName}}`,
+  },
+  {
+    id: "sanierung-info",
+    slug: "sanierung-info",
+    title: "Ankündigung Sanierungsmaßnahme",
+    category: "kommunikation",
+    description: "Information an Eigentümer/Mieter über geplante Arbeiten.",
+    legalHint: "Lärm-/Schmutzzeiten und Ansprechpartner angeben.",
+    fields: [
+      { key: "wegName", label: "Objekt", type: "text", required: true },
+      { key: "massnahme", label: "Maßnahme", type: "textarea", required: true },
+      { key: "zeitraum", label: "Zeitraum", type: "text", required: true },
+      { key: "verwalterName", label: "Verwaltung", type: "text", required: true },
+    ],
+    body: `Ankündigung Sanierungsmaßnahme
+
+{{wegName}}
+
+Geplante Maßnahme: {{massnahme}}
+Zeitraum: {{zeitraum}}
+
+Wir bitten um Verständnis für die entstehenden Einschränkungen.
+
+{{verwalterName}}`,
+  },
+  {
+    id: "laerm-antwort",
+    slug: "laerm-antwort",
+    title: "Antwort Lärmbeschwerde",
+    category: "kommunikation",
+    description: "Reaktion auf Lärmbeschwerde unter Bezug auf Hausordnung.",
+    legalHint: "Hausordnung und ggf. Ordnungsamt-Hinweis; keine Rechtsberatung.",
+    fields: [
+      { key: "beschwerdefuehrer", label: "Beschwerdeführer", type: "text", required: true },
+      { key: "wegName", label: "Objekt", type: "text", required: true },
+      { key: "vorfall", label: "Vorfall", type: "textarea", required: true },
+      { key: "massnahme", label: "Ergriffene Maßnahme", type: "textarea", required: true },
+      { key: "verwalterName", label: "Verwaltung", type: "text", required: true },
+    ],
+    body: `Stellungnahme Lärmbeschwerde
+
+{{beschwerdefuehrer}}
+{{wegName}}
+
+Vorfall: {{vorfall}}
+
+Maßnahme: {{massnahme}}
+
+{{verwalterName}}`,
+  },
+  {
+    id: "hausgeld-anpassung",
+    slug: "hausgeld-anpassung",
+    title: "Anpassung Hausgeld-Vorauszahlung",
+    category: "nk",
+    description: "Mitteilung neuer Hausgeld-Vorauszahlung nach Beschluss.",
+    legalHint: "Beschlussgrundlage und Wirksamkeit dokumentieren.",
+    fields: [
+      { key: "eigentuemerName", label: "Eigentümer", type: "text", required: true },
+      { key: "wegName", label: "WEG", type: "text", required: true },
+      { key: "altBetrag", label: "Bisherige Vorauszahlung (€)", type: "number", required: true },
+      { key: "neuBetrag", label: "Neue Vorauszahlung (€)", type: "number", required: true },
+      { key: "wirksamAb", label: "Wirksam ab", type: "date", required: true },
+      { key: "verwalterName", label: "Verwaltung", type: "text", required: true },
+    ],
+    body: `Anpassung Hausgeld-Vorauszahlung
+
+{{eigentuemerName}}
+{{wegName}}
+
+Bisher: {{altBetrag}} € / Monat
+Neu: {{neuBetrag}} € / Monat, wirksam ab {{wirksamAb}}
+
+Grundlage: Beschluss der Eigentümerversammlung.
+
+{{verwalterName}}`,
+  },
+  {
+    id: "eigentuemer-wechsel",
+    slug: "eigentuemer-wechsel",
+    title: "Mitteilung Eigentümerwechsel",
+    category: "kommunikation",
+    description: "Information an übrige Eigentümer über Verkauf/Übergang.",
+    legalHint: "DSGVO: nur notwendige Daten weitergeben.",
+    fields: [
+      { key: "wegName", label: "WEG", type: "text", required: true },
+      { key: "einheit", label: "Einheit", type: "text", required: true },
+      { key: "neuerEigentuemer", label: "Neuer Eigentümer", type: "text", required: true },
+      { key: "stichtag", label: "Stichtag", type: "date", required: true },
+      { key: "verwalterName", label: "Verwaltung", type: "text", required: true },
+    ],
+    body: `Eigentümerwechsel
+
+{{wegName}}
+
+Einheit {{einheit}}: Eigentumsübergang an {{neuerEigentuemer}} zum {{stichtag}}.
+
+{{verwalterName}}`,
+  },
+  {
+    id: "versicherungsschaden",
+    slug: "versicherungsschaden",
+    title: "Schadensmeldung Versicherung",
+    category: "kommunikation",
+    description: "Meldung eines Gebäudeschadens an die Versicherung.",
+    legalHint: "Fotos und Ursache dokumentieren; Fristen des Vertrags beachten.",
+    fields: [
+      { key: "versicherer", label: "Versicherung", type: "text", required: true },
+      { key: "wegName", label: "Objekt", type: "text", required: true },
+      { key: "schaden", label: "Schadensbeschreibung", type: "textarea", required: true },
+      { key: "schadendatum", label: "Schadensdatum", type: "date", required: true },
+      { key: "verwalterName", label: "Verwaltung", type: "text", required: true },
+    ],
+    body: `Schadensmeldung
+
+{{versicherer}}
+
+Objekt: {{wegName}}
+Datum: {{schadendatum}}
+
+Schaden: {{schaden}}
+
+Kontakt: {{verwalterName}}`,
+  },
+  {
+    id: "instandhaltung-protokoll",
+    slug: "instandhaltung-protokoll",
+    title: "Instandhaltungsprotokoll (kurz)",
+    category: "kommunikation",
+    description: "Dokumentation durchgeführter Instandhaltung.",
+    legalHint: "Für Rücklagen-Nachweis und Eigentümerinformation aufbewahren.",
+    fields: [
+      { key: "wegName", label: "Objekt", type: "text", required: true },
+      { key: "arbeit", label: "Durchgeführte Arbeit", type: "textarea", required: true },
+      { key: "auftragnehmer", label: "Ausführender", type: "text", required: true },
+      { key: "kosten", label: "Kosten (€)", type: "number", required: true },
+      { key: "datum", label: "Datum", type: "date", required: true },
+      { key: "verwalterName", label: "Verwaltung", type: "text", required: true },
+    ],
+    body: `Instandhaltungsprotokoll
+
+{{wegName}} — {{datum}}
+
+Arbeit: {{arbeit}}
+Ausführender: {{auftragnehmer}}
+Kosten: {{kosten}} €
+
+{{verwalterName}}`,
+  },
+  {
+    id: "etv-online",
+    slug: "etv-online",
+    title: "Hinweis Online-Eigentümerversammlung",
+    category: "etv",
+    description: "Information zu hybrider/online ETV gemäß WEG-Reform.",
+    legalHint: "Technische Voraussetzungen und Zugangslink rechtzeitig mitteilen.",
+    fields: [
+      { key: "wegName", label: "WEG", type: "text", required: true },
+      { key: "etvDatum", label: "Datum", type: "date", required: true },
+      { key: "zugangslink", label: "Zugangslink / Ort", type: "text", required: true },
+      { key: "verwalterName", label: "Verwaltung", type: "text", required: true },
+    ],
+    body: `Online-Eigentümerversammlung
+
+{{wegName}}
+
+Termin: {{etvDatum}}
+Zugang: {{zugangslink}}
+
+Bitte testen Sie den Zugang vorab. Technische Fragen an die Verwaltung.
+
+{{verwalterName}}`,
+  },
+  {
+    id: "ruecklage-info",
+    slug: "ruecklage-info",
+    title: "Information Instandhaltungsrücklage",
+    category: "nk",
+    description: "Übersicht Stand der Rücklage § 19 WEG.",
+    legalHint: "Wirtschaftsplan und Beschlüsse als Grundlage.",
+    fields: [
+      { key: "wegName", label: "WEG", type: "text", required: true },
+      { key: "standRuecklage", label: "Stand Rücklage (€)", type: "number", required: true },
+      { key: "geplanteMassnahme", label: "Geplante Maßnahme", type: "textarea", required: true },
+      { key: "verwalterName", label: "Verwaltung", type: "text", required: true },
+    ],
+    body: `Instandhaltungsrücklage
+
+{{wegName}}
+
+Aktueller Stand: {{standRuecklage}} €
+
+Geplante Maßnahme: {{geplanteMassnahme}}
+
+{{verwalterName}}`,
+  },
+  {
+    id: "kuendigung-vertrag",
+    slug: "kuendigung-vertrag",
+    title: "Kündigung Dienstleistervertrag",
+    category: "kommunikation",
+    description: "Ordentliche Kündigung Hausmeister o.ä.",
+    legalHint: "Kündigungsfrist und Vertragsklauseln prüfen.",
+    fields: [
+      { key: "empfaenger", label: "Empfänger", type: "text", required: true },
+      { key: "wegName", label: "Objekt", type: "text", required: true },
+      { key: "kuendigungsdatum", label: "Kündigung zum", type: "date", required: true },
+      { key: "verwalterName", label: "Verwaltung", type: "text", required: true },
+    ],
+    body: `Kündigung
+
+{{empfaenger}}
+
+hiermit kündigen wir den Vertrag für {{wegName}} zum {{kuendigungsdatum}} ordentlich.
+
+{{verwalterName}}`,
+  },
 ];
 
 export function getVorlageBySlug(slug: string): VerwalterVorlage | undefined {

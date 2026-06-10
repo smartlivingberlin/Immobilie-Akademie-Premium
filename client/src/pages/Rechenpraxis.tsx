@@ -262,11 +262,11 @@ function AufgabenAnsicht({
               return (
                 <div key={schritt.nr} style={{ border: `0.5px solid ${borderColor}`, borderRadius: "var(--border-radius-lg)", overflow: "hidden", transition: "border-color 0.2s" }}>
                   <div style={{ padding: "1rem 1.25rem", background: "var(--color-background-secondary)", borderBottom: `0.5px solid ${borderColor}` }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: "0.5rem" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: "0.5rem", flexWrap: "wrap" }}>
                       <div style={{ width: 28, height: 28, borderRadius: "50%", background: st === "richtig" ? "var(--color-background-success)" : "var(--color-background-tertiary)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                         {st === "richtig" ? <CheckCircle2 size={16} style={{ color: "var(--color-text-success)" }} /> : <span style={{ fontSize: fz(13), fontWeight: 500, color: "var(--color-text-secondary)" }}>{schritt.nr}</span>}
                       </div>
-                      <div style={{ fontFamily: "var(--font-mono)", fontSize: fz(13), color: "var(--color-text-info)", background: "var(--color-background-info)", padding: "3px 10px", borderRadius: "var(--border-radius-md)" }}>{schritt.formel}</div>
+                      <div style={{ fontFamily: "var(--font-mono)", fontSize: fz(13), color: "var(--color-text-info)", background: "var(--color-background-info)", padding: "3px 10px", borderRadius: "var(--border-radius-md)", maxWidth: "100%", overflowX: "auto", wordBreak: "break-word" }}>{schritt.formel}</div>
                     </div>
                     <p style={{ fontSize: fz(14), color: "var(--color-text-secondary)", lineHeight: 1.7, margin: 0 }}>{schritt.kontext}</p>
                   </div>
@@ -494,20 +494,23 @@ function RechenpraxisPage() {
               )}
             </div>
 
-            <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: "1.5rem" }}>
-              <button onClick={() => setAktiverBereich("alle")} style={{ fontSize: fz(13), padding: "6px 14px", borderRadius: "var(--border-radius-md)", cursor: "pointer", background: aktiverBereich === "alle" ? "var(--color-text-primary)" : undefined, color: aktiverBereich === "alle" ? "var(--color-background-primary)" : "var(--color-text-secondary)", border: aktiverBereich === "alle" ? "none" : undefined }}>
+            <div style={{ marginBottom: "1.5rem", overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
+              <div style={{ display: "flex", gap: 8, flexWrap: "nowrap", width: "max-content", maxWidth: "100%", paddingBottom: 4 }}>
+              <button onClick={() => setAktiverBereich("alle")} style={{ fontSize: fz(13), padding: "8px 14px", borderRadius: "var(--border-radius-md)", cursor: "pointer", background: aktiverBereich === "alle" ? "var(--color-text-primary)" : undefined, color: aktiverBereich === "alle" ? "var(--color-background-primary)" : "var(--color-text-secondary)", border: aktiverBereich === "alle" ? "none" : undefined, minHeight: 44, flexShrink: 0 }}>
                 Alle ({AUFGABEN.length})
               </button>
               {BEREICHE.map(b => {
                 const stat = bereichStats.get(b);
                 const done = stat?.done ?? 0;
                 const total = stat?.total ?? 0;
+                const short = b.length > 22 ? `${b.slice(0, 20)}…` : b;
                 return (
-                  <button key={b} onClick={() => setAktiverBereich(b)} style={{ fontSize: fz(13), padding: "8px 14px", borderRadius: "var(--border-radius-md)", cursor: "pointer", background: aktiverBereich === b ? "var(--color-text-primary)" : undefined, color: aktiverBereich === b ? "var(--color-background-primary)" : "var(--color-text-secondary)", border: aktiverBereich === b ? "none" : undefined, minHeight: 36 }}>
-                    {b} ({done}/{total})
+                  <button key={b} onClick={() => setAktiverBereich(b)} title={b} style={{ fontSize: fz(13), padding: "8px 14px", borderRadius: "var(--border-radius-md)", cursor: "pointer", background: aktiverBereich === b ? "var(--color-text-primary)" : undefined, color: aktiverBereich === b ? "var(--color-background-primary)" : "var(--color-text-secondary)", border: aktiverBereich === b ? "none" : undefined, minHeight: 44, flexShrink: 0 }}>
+                    {short} ({done}/{total})
                   </button>
                 );
               })}
+              </div>
             </div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>

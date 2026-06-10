@@ -304,6 +304,8 @@ app.use(express.json({ limit: "1mb" }));
   app.use(kursbuchPipelineRouter);
   const { generatorHealthRouter } = await import("../generatorHealthRouter");
   app.use(generatorHealthRouter);
+  const { verwalterRouter } = await import("../verwalterRouter");
+  app.use(verwalterRouter);
   app.use(certificateExportRouter);
   app.use(weiterbildungExportRouter);
   app.use(referralRouter);
