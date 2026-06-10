@@ -6,10 +6,12 @@ import { AccessibilityPanel } from "@/components/AccessibilityPanel";
 type ComfortBarProps = {
   /** Kompakt für enge Header-Zeilen */
   compact?: boolean;
+  /** 44×44px Touch-Ziele (Login, Mobile) */
+  touchFriendly?: boolean;
   className?: string;
 };
 
-export function ComfortBar({ compact = false, className = "" }: ComfortBarProps) {
+export function ComfortBar({ compact = false, touchFriendly = false, className = "" }: ComfortBarProps) {
   const { prefs, bumpFont, toggleDark, update } = useA11yPrefs();
   const [moreOpen, setMoreOpen] = useState(false);
 
@@ -17,6 +19,7 @@ export function ComfortBar({ compact = false, className = "" }: ComfortBarProps)
   const atMin = prefs.fontScale <= A11Y_FONT_MIN + 0.001;
   const atMax = prefs.fontScale >= A11Y_FONT_MAX - 0.001;
 
+  const sizeClass = touchFriendly ? "h-11 w-11" : compact ? "h-8 w-8" : "h-9 w-9";
   const btn =
     "inline-flex items-center justify-center rounded-lg border border-border bg-background text-foreground hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-40 disabled:pointer-events-none";
 
@@ -33,7 +36,7 @@ export function ComfortBar({ compact = false, className = "" }: ComfortBarProps)
 
         <button
           type="button"
-          className={`${btn} ${compact ? "h-8 w-8" : "h-9 w-9"}`}
+          className={`${btn} ${sizeClass}`}
           aria-label="Schrift verkleinern"
           disabled={atMin}
           onClick={() => bumpFont(-0.1)}
@@ -53,7 +56,7 @@ export function ComfortBar({ compact = false, className = "" }: ComfortBarProps)
 
         <button
           type="button"
-          className={`${btn} ${compact ? "h-8 w-8" : "h-9 w-9"}`}
+          className={`${btn} ${sizeClass}`}
           aria-label="Schrift vergrößern"
           disabled={atMax}
           onClick={() => bumpFont(0.1)}
@@ -65,7 +68,7 @@ export function ComfortBar({ compact = false, className = "" }: ComfortBarProps)
 
         <button
           type="button"
-          className={`${btn} ${compact ? "h-8 w-8" : "h-9 w-9"}`}
+          className={`${btn} ${sizeClass}`}
           aria-label={prefs.darkMode ? "Heller Modus" : "Dunkler Modus"}
           aria-pressed={prefs.darkMode}
           onClick={toggleDark}
@@ -75,7 +78,7 @@ export function ComfortBar({ compact = false, className = "" }: ComfortBarProps)
 
         <button
           type="button"
-          className={`${btn} ${compact ? "h-8 w-8" : "h-9 w-9"}`}
+          className={`${btn} ${sizeClass}`}
           aria-label="Weitere Barrierefreiheits-Einstellungen"
           onClick={() => setMoreOpen(true)}
         >
