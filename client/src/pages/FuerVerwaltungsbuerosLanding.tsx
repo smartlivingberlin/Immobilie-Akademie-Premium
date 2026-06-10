@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { Link } from "wouter";
 import { SEO } from "@/components/SEO";
 import { trpc } from "@/lib/trpc";
 import { VERWALTER_VORLAGEN } from "@shared/verwalterVorlagen";
 import { RECHENPRAXIS_TASK_COUNT } from "@shared/rechenpraxisProduct";
+import { VERWALTER_TOOLS_MONTHLY_EUR } from "@shared/verwalterToolsProduct";
 import {
   ArrowRight,
   BookOpen,
@@ -67,7 +69,7 @@ const FAQ = [
   },
   {
     q: "Was kostet es?",
-    a: "Die Verwalter-Werkzeuge sind derzeit für eingeloggte Nutzer im Beta-Rahmen nutzbar. Rechenpraxis-Solo ab 19 €/Monat. Verwaltungsbüros: Team-Angebot ab 199 €/Monat über unsere B2B-Lösung.",
+    a: `Im Beta-Rahmen sind die Verwalter-Werkzeuge für eingeloggte Nutzer kostenlos testbar. Das Verwalter Tools Solo-Abo kostet ${VERWALTER_TOOLS_MONTHLY_EUR} €/Monat (Vorlagen, Objekte, Vorgänge, Buchungen, KI). Rechenpraxis-Solo ab 19 €/Monat. Verwaltungsbüros mit mehreren Nutzern: Team-Angebot ab 199 €/Monat über unsere B2B-Lösung.`,
   },
 ];
 
@@ -79,8 +81,29 @@ const MAIL_BODY = encodeURIComponent(
 
 export default function FuerVerwaltungsbuerosLanding() {
   const { data: user } = trpc.auth.me.useQuery();
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
   const appHref = user ? "/app/verwalter" : "/login?redirect=/app/verwalter";
   const vorlagenHref = user ? "/app/verwalter/vorlagen" : "/login?redirect=/app/verwalter/vorlagen";
+
+  const startVerwalterToolsCheckout = async () => {
+    if (!user) {
+      window.location.href = "/login?redirect=/fuer-verwaltungsbueros";
+      return;
+    }
+    setCheckoutLoading(true);
+    try {
+      const res = await fetch("/api/stripe/verwalter-tools-checkout", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({}),
+      });
+      const data = await res.json();
+      if (data.url) window.location.href = data.url;
+    } finally {
+      setCheckoutLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
@@ -175,6 +198,75 @@ export default function FuerVerwaltungsbuerosLanding() {
             ))}
           </ol>
         </div>
+      </section>
+
+      <section className="max-w-5xl mx-auto px-4 py-16">
+        <h2 className="text-2xl font-bold text-center mb-2 text-slate-900 dark:text-slate-100">Preise</h2>
+        <p className="text-center text-sm text-slate-600 dark:text-slate-400 mb-10 max-w-xl mx-auto">
+          Beta kostenlos testen — Abo jederzeit für den Vollzugang buchbar.
+        </p>
+        <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <div className="rounded-2xl border border-emerald-200 dark:border-emerald-800 bg-emerald-50/50 dark:bg-emerald-950/30 p-6 flex flex-col">
+            <p className="text-sm font-medium text-emerald-700 dark:text-emerald-300 mb-1">Beta</p>
+            <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">Kostenlos testen</h3>
+            <p className="text-3xl font-bold text-emerald-600 mt-4 mb-6">0 €</p>
+            <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400 mb-8 flex-1">
+              <li className="flex gap-2">
+                <CheckCircle2 className="h-4 w-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                Alle Verwalter-Funktionen im Beta-Rahmen
+              </li>
+              <li className="flex gap-2">
+                <CheckCircle2 className="h-4 w-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                {VORLAGEN_COUNT} Vorlagen, Objekte, Kanban, DATEV
+              </li>
+              <li className="flex gap-2">
+                <CheckCircle2 className="h-4 w-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                Kein Zahlungsmittel nötig
+              </li>
+            </ul>
+            <Link href={appHref}>
+              <span className="inline-flex w-full justify-center items-center gap-2 min-h-[44px] bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-6 py-3 rounded-lg cursor-pointer transition-colors">
+                Jetzt starten <ArrowRight className="h-4 w-4" />
+              </span>
+            </Link>
+          </div>
+          <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 flex flex-col shadow-sm">
+            <p className="text-sm font-medium text-slate-500 mb-1">Solo-Abo</p>
+            <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">Verwalter Tools</h3>
+            <p className="mt-4 mb-6">
+              <span className="text-3xl font-bold text-slate-900 dark:text-slate-100">{VERWALTER_TOOLS_MONTHLY_EUR} €</span>
+              <span className="text-slate-500 text-sm"> / Monat</span>
+            </p>
+            <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400 mb-8 flex-1">
+              <li className="flex gap-2">
+                <CheckCircle2 className="h-4 w-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                Voller Suite-Zugang inkl. KI-Assistent
+              </li>
+              <li className="flex gap-2">
+                <CheckCircle2 className="h-4 w-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                Monatlich kündbar über Stripe
+              </li>
+              <li className="flex gap-2">
+                <CheckCircle2 className="h-4 w-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                Ideal nach dem Beta-Test
+              </li>
+            </ul>
+            <button
+              type="button"
+              onClick={() => void startVerwalterToolsCheckout()}
+              disabled={checkoutLoading}
+              className="inline-flex w-full justify-center items-center gap-2 min-h-[44px] bg-slate-900 hover:bg-slate-800 dark:bg-slate-100 dark:hover:bg-white dark:text-slate-900 text-white font-semibold px-6 py-3 rounded-lg transition-colors disabled:opacity-60"
+            >
+              {checkoutLoading ? "Weiterleitung…" : "Abo buchen"}
+            </button>
+          </div>
+        </div>
+        <p className="text-center text-xs text-slate-500 dark:text-slate-400 mt-6">
+          Mehrere Nutzer?{" "}
+          <Link href="/fuer-maklerbueros" className="text-emerald-600 hover:underline">
+            B2B Team-Lizenzen ab 199 €/Monat
+          </Link>
+        </p>
       </section>
 
       <section className="max-w-3xl mx-auto px-4 py-16">

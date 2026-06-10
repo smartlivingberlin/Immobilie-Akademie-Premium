@@ -266,7 +266,7 @@ export default function StripeLiveChecklist() {
             <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 12, padding: 16, marginBottom: 20, fontSize: fz(12) }}>
               <strong style={{ fontSize: fz(14) }}>Price-ID Abdeckung</strong>
               <p style={{ color: "#64748b", margin: "8px 0" }}>
-                Abos {priceConfig.readiness?.subscriptions.configured ?? 0}/{priceConfig.readiness?.subscriptions.total ?? 6} ·
+                Abos {priceConfig.readiness?.subscriptions.configured ?? 0}/{priceConfig.readiness?.subscriptions.total ?? 7} ·
                 Module {priceConfig.readiness?.modules.configured ?? 0}/{priceConfig.readiness?.modules.total ?? 12}
                 {liveReady && " · ✅ Live-ready"}
               </p>

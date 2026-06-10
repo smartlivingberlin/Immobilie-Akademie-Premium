@@ -159,10 +159,10 @@ export default function AGB() {
             Abrechnungszeitraums über das Kundenportal bzw. die in der Bestellbestätigung genannten Wege.
           </p>
           <p>
-            (1b) <strong>Verwalter-Werkzeuge:</strong> Der Zugang kann derzeit im Rahmen des Portals, eines 
-            Modulkaufs, Testzugangs oder B2B-Tenants gewährt werden. Eine gesonderte kostenpflichtige 
-            Produktvariante kann eingeführt werden; maßgeblich sind die zum Zeitpunkt des Vertragsschlusses 
-            angezeigten Preise und Leistungsbeschreibungen.
+            (1b) <strong>Verwalter Tools Solo-Abo:</strong> Monatliches Abonnement für Vorlagen, Objekte, 
+            Vorgänge, Buchungen und KI-Assistent (Fair-Use). Derzeit kann der Zugang zusätzlich im Beta-Rahmen, 
+            über Modulkauf, Testzugang oder B2B-Tenant gewährt werden. Maßgeblich sind die zum Zeitpunkt des 
+            Vertragsschlusses auf /fuer-verwaltungsbueros angezeigten Preise und Leistungsbeschreibungen.
           </p>
           <p>
             (2) Die aktuellen Preise sind auf der Plattform einsehbar. Alle Preise sind Endpreise. Aufgrund der Kleinunternehmerregelung gemäß § 19 UStG wird keine Umsatzsteuer ausgewiesen.

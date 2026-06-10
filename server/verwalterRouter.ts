@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { requireAuth } from "./authMiddleware";
+import { requireVerwalterAuth } from "./verwalterToolsMiddleware";
 import { askLlmWithContinuation } from "./kursbuchLlm";
 import {
   createObjekt,
@@ -45,7 +45,7 @@ function userId(req: { currentUser?: { id?: number } }): number {
   return id;
 }
 
-router.get("/api/verwalter/objekte", requireAuth, async (req, res) => {
+router.get("/api/verwalter/objekte", requireVerwalterAuth, async (req, res) => {
   try {
     const objekte = await listObjekte(userId(req as any));
     res.json({ success: true, objekte });
@@ -54,7 +54,7 @@ router.get("/api/verwalter/objekte", requireAuth, async (req, res) => {
   }
 });
 
-router.get("/api/verwalter/objekte/:id", requireAuth, async (req, res) => {
+router.get("/api/verwalter/objekte/:id", requireVerwalterAuth, async (req, res) => {
   try {
     const obj = await getObjekt(userId(req as any), String(req.params.id));
     if (!obj) return res.status(404).json({ error: "Objekt nicht gefunden" });
@@ -64,7 +64,7 @@ router.get("/api/verwalter/objekte/:id", requireAuth, async (req, res) => {
   }
 });
 
-router.post("/api/verwalter/objekte", requireAuth, async (req, res) => {
+router.post("/api/verwalter/objekte", requireVerwalterAuth, async (req, res) => {
   try {
     const body = req.body ?? {};
     if (!body.name?.trim() || !body.adresse?.trim()) {
@@ -89,7 +89,7 @@ router.post("/api/verwalter/objekte", requireAuth, async (req, res) => {
   }
 });
 
-router.put("/api/verwalter/objekte/:id", requireAuth, async (req, res) => {
+router.put("/api/verwalter/objekte/:id", requireVerwalterAuth, async (req, res) => {
   try {
     const updated = await updateObjekt(userId(req as any), String(req.params.id), req.body ?? {});
     if (!updated) return res.status(404).json({ error: "Objekt nicht gefunden" });
@@ -99,7 +99,7 @@ router.put("/api/verwalter/objekte/:id", requireAuth, async (req, res) => {
   }
 });
 
-router.delete("/api/verwalter/objekte/:id", requireAuth, async (req, res) => {
+router.delete("/api/verwalter/objekte/:id", requireVerwalterAuth, async (req, res) => {
   try {
     const uid = userId(req as any);
     const id = String(req.params.id);
@@ -113,7 +113,7 @@ router.delete("/api/verwalter/objekte/:id", requireAuth, async (req, res) => {
   }
 });
 
-router.get("/api/verwalter/dashboard", requireAuth, async (req, res) => {
+router.get("/api/verwalter/dashboard", requireVerwalterAuth, async (req, res) => {
   try {
     const uid = userId(req as any);
     const objekte = await listObjekte(uid);
@@ -128,7 +128,7 @@ router.get("/api/verwalter/dashboard", requireAuth, async (req, res) => {
   }
 });
 
-router.get("/api/verwalter/vorgaenge", requireAuth, async (req, res) => {
+router.get("/api/verwalter/vorgaenge", requireVerwalterAuth, async (req, res) => {
   try {
     const objektId = req.query.objektId ? String(req.query.objektId) : undefined;
     const vorgaenge = await listVorgaenge(userId(req as any), objektId);
@@ -138,7 +138,7 @@ router.get("/api/verwalter/vorgaenge", requireAuth, async (req, res) => {
   }
 });
 
-router.post("/api/verwalter/vorgaenge", requireAuth, async (req, res) => {
+router.post("/api/verwalter/vorgaenge", requireVerwalterAuth, async (req, res) => {
   try {
     const body = req.body ?? {};
     const uid = userId(req as any);
@@ -162,7 +162,7 @@ router.post("/api/verwalter/vorgaenge", requireAuth, async (req, res) => {
   }
 });
 
-router.put("/api/verwalter/vorgaenge/:id", requireAuth, async (req, res) => {
+router.put("/api/verwalter/vorgaenge/:id", requireVerwalterAuth, async (req, res) => {
   try {
     const updated = await updateVorgang(userId(req as any), String(req.params.id), req.body ?? {});
     if (!updated) return res.status(404).json({ error: "Vorgang nicht gefunden" });
@@ -172,7 +172,7 @@ router.put("/api/verwalter/vorgaenge/:id", requireAuth, async (req, res) => {
   }
 });
 
-router.delete("/api/verwalter/vorgaenge/:id", requireAuth, async (req, res) => {
+router.delete("/api/verwalter/vorgaenge/:id", requireVerwalterAuth, async (req, res) => {
   try {
     const ok = await deleteVorgang(userId(req as any), String(req.params.id));
     if (!ok) return res.status(404).json({ error: "Vorgang nicht gefunden" });
@@ -182,7 +182,7 @@ router.delete("/api/verwalter/vorgaenge/:id", requireAuth, async (req, res) => {
   }
 });
 
-router.get("/api/verwalter/buchungen", requireAuth, async (req, res) => {
+router.get("/api/verwalter/buchungen", requireVerwalterAuth, async (req, res) => {
   try {
     const objektId = req.query.objektId ? String(req.query.objektId) : undefined;
     const periode = req.query.periode ? String(req.query.periode) : undefined;
@@ -193,7 +193,7 @@ router.get("/api/verwalter/buchungen", requireAuth, async (req, res) => {
   }
 });
 
-router.post("/api/verwalter/buchungen", requireAuth, async (req, res) => {
+router.post("/api/verwalter/buchungen", requireVerwalterAuth, async (req, res) => {
   try {
     const body = req.body ?? {};
     const uid = userId(req as any);
@@ -225,7 +225,7 @@ router.post("/api/verwalter/buchungen", requireAuth, async (req, res) => {
   }
 });
 
-router.put("/api/verwalter/buchungen/:id", requireAuth, async (req, res) => {
+router.put("/api/verwalter/buchungen/:id", requireVerwalterAuth, async (req, res) => {
   try {
     const updated = await updateBuchung(userId(req as any), String(req.params.id), req.body ?? {});
     if (!updated) return res.status(404).json({ error: "Buchung nicht gefunden" });
@@ -235,7 +235,7 @@ router.put("/api/verwalter/buchungen/:id", requireAuth, async (req, res) => {
   }
 });
 
-router.delete("/api/verwalter/buchungen/:id", requireAuth, async (req, res) => {
+router.delete("/api/verwalter/buchungen/:id", requireVerwalterAuth, async (req, res) => {
   try {
     const ok = await deleteBuchung(userId(req as any), String(req.params.id));
     if (!ok) return res.status(404).json({ error: "Buchung nicht gefunden" });
@@ -245,7 +245,7 @@ router.delete("/api/verwalter/buchungen/:id", requireAuth, async (req, res) => {
   }
 });
 
-router.post("/api/verwalter/buchungen/vorschlagen", requireAuth, async (req, res) => {
+router.post("/api/verwalter/buchungen/vorschlagen", requireVerwalterAuth, async (req, res) => {
   try {
     const body = req.body ?? {};
     const text = String(body.text || "").trim();
@@ -269,7 +269,7 @@ router.post("/api/verwalter/buchungen/vorschlagen", requireAuth, async (req, res
   }
 });
 
-router.get("/api/verwalter/buchungen/plausibilitaet", requireAuth, async (req, res) => {
+router.get("/api/verwalter/buchungen/plausibilitaet", requireVerwalterAuth, async (req, res) => {
   try {
     const uid = userId(req as any);
     const objektId = String(req.query.objektId || "").trim();
@@ -291,7 +291,7 @@ router.get("/api/verwalter/buchungen/plausibilitaet", requireAuth, async (req, r
   }
 });
 
-router.get("/api/verwalter/monatsabschluss", requireAuth, async (req, res) => {
+router.get("/api/verwalter/monatsabschluss", requireVerwalterAuth, async (req, res) => {
   try {
     const uid = userId(req as any);
     const objektId = String(req.query.objektId || "").trim();
@@ -315,7 +315,7 @@ router.get("/api/verwalter/monatsabschluss", requireAuth, async (req, res) => {
   }
 });
 
-router.get("/api/verwalter/export/datev-buchungen", requireAuth, async (req, res) => {
+router.get("/api/verwalter/export/datev-buchungen", requireVerwalterAuth, async (req, res) => {
   try {
     const uid = userId(req as any);
     const objektId = String(req.query.objektId || "").trim();
@@ -345,7 +345,7 @@ router.get("/api/verwalter/export/datev-buchungen", requireAuth, async (req, res
   }
 });
 
-router.get("/api/verwalter/export/stammdaten-csv", requireAuth, async (req, res) => {
+router.get("/api/verwalter/export/stammdaten-csv", requireVerwalterAuth, async (req, res) => {
   try {
     const objekte = await listObjekte(userId(req as any));
     const csv = buildStammdatenCsv(objekte);
@@ -357,7 +357,7 @@ router.get("/api/verwalter/export/stammdaten-csv", requireAuth, async (req, res)
   }
 });
 
-router.post("/api/verwalter/assistent", requireAuth, async (req, res) => {
+router.post("/api/verwalter/assistent", requireVerwalterAuth, async (req, res) => {
   try {
     const body = req.body ?? {};
     const frage = String(body.frage || "").trim();
@@ -425,7 +425,7 @@ router.post("/api/verwalter/assistent", requireAuth, async (req, res) => {
   }
 });
 
-router.post("/api/verwalter/ki-brief", requireAuth, async (req, res) => {
+router.post("/api/verwalter/ki-brief", requireVerwalterAuth, async (req, res) => {
   try {
     const { vorlageSlug, fieldValues, objektId, anweisung } = req.body ?? {};
     const slug = String(vorlageSlug || "").trim();

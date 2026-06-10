@@ -44,6 +44,10 @@ export async function processStripeWebhookEvent(
       const { processRechenpraxisSubscription } = await import("./stripePurchaseHandler");
       await processRechenpraxisSubscription(db, userId);
     }
+    if (userId > 0 && subType === "verwalter_tools") {
+      const { processVerwalterToolsSubscription } = await import("./stripePurchaseHandler");
+      await processVerwalterToolsSubscription(db, userId);
+    }
     return;
   }
 
@@ -56,6 +60,7 @@ export async function processStripeWebhookEvent(
     || session.metadata?.type === "compliance"
     || session.metadata?.type === "b2b"
     || session.metadata?.type === "rechenpraxis"
+    || session.metadata?.type === "verwalter_tools"
   ) {
     return;
   }

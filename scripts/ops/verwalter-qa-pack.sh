@@ -70,6 +70,15 @@ echo "── B) API ohne Login (Schutz) ──"
 check_api_code "GET /api/health" "${BASE}/api/health" "200"
 check_api_code "GET /api/verwalter/objekte" "${BASE}/api/verwalter/objekte" "401"
 check_api_code "GET /api/verwalter/dashboard" "${BASE}/api/verwalter/dashboard" "401"
+code=$(curl -s -o /dev/null -w "%{http_code}" -X POST --max-time 15 \
+  -H "Content-Type: application/json" -d '{}' "${BASE}/api/stripe/verwalter-tools-checkout" || echo "000")
+if [[ "$code" == "401" ]]; then
+  echo "  OK   [$code] POST /api/stripe/verwalter-tools-checkout"
+  pass=$((pass + 1))
+else
+  echo "  FAIL [$code] POST /api/stripe/verwalter-tools-checkout (erwartet 401)"
+  fail=$((fail + 1))
+fi
 check_api_code "GET /api/admin/mysql-health" "${BASE}/api/admin/mysql-health" "401"
 
 echo ""

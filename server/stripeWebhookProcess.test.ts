@@ -8,6 +8,7 @@ vi.mock("./stripePurchaseHandler", () => ({
   processRenewalPayment: vi.fn(),
   processComplianceSubscription: vi.fn(),
   processRechenpraxisSubscription: vi.fn(),
+  processVerwalterToolsSubscription: vi.fn(),
 }));
 
 vi.mock("./b2bPurchaseHandler", () => ({
@@ -95,6 +96,25 @@ describe("processStripeWebhookEvent", () => {
       },
     });
     expect(processB2bSubscription).toHaveBeenCalledWith(db, 1, "starter", "bobo gmbh");
+  });
+
+  it("processes invoice.paid for Verwalter Tools", async () => {
+    const { processVerwalterToolsSubscription } = await import("./stripePurchaseHandler");
+    vi.mocked(processVerwalterToolsSubscription).mockClear();
+    const db = createDb({ id: 9, enabledModules: "" });
+    await processStripeWebhookEvent(db as any, {
+      type: "invoice.paid",
+      data: {
+        object: {
+          id: "in_vt",
+          metadata: {
+            type: "verwalter_tools",
+            userId: "9",
+          },
+        },
+      },
+    });
+    expect(processVerwalterToolsSubscription).toHaveBeenCalledWith(db, 9);
   });
 
   it("ignores subscription checkout.session.completed events", async () => {

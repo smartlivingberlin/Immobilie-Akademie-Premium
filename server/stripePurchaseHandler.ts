@@ -108,3 +108,36 @@ export async function processRechenpraxisSubscription(
   await setUserKiTier(db, userId, KI_TIER_RENEWAL);
   logger.info("[Stripe] Rechenpraxis subscription processed", { userId });
 }
+
+/** Verwalter Tools Solo-Abo — Sentinel vt */
+export async function processVerwalterToolsSubscription(
+  db: { $client: { query: Function } },
+  userId: number,
+): Promise<void> {
+  const { VERWALTER_TOOLS_MODULE_SENTINEL, VERWALTER_TOOLS_PRODUCT_ID } = await import(
+    "../shared/verwalterToolsProduct"
+  );
+
+  const [userRows] = await db.$client.query(
+    "SELECT enabledModules FROM users WHERE id = ? LIMIT 1",
+    [userId],
+  ) as any;
+  const user = (userRows as any[])[0];
+  if (!user) return;
+
+  const current = String(user.enabledModules || "")
+    .split(",")
+    .map((s: string) => s.trim())
+    .filter(Boolean);
+  const merged = current.includes(VERWALTER_TOOLS_MODULE_SENTINEL)
+    ? current.join(",")
+    : [...current, VERWALTER_TOOLS_MODULE_SENTINEL].join(",");
+
+  await db.$client.query(
+    "UPDATE users SET enabledModules = ?, trialExpiresAt = NULL WHERE id = ?",
+    [merged, userId],
+  );
+  await extendUserAccessFromPurchase(db, userId, VERWALTER_TOOLS_PRODUCT_ID, VERWALTER_TOOLS_MODULE_SENTINEL);
+  await setUserKiTier(db, userId, KI_TIER_RENEWAL);
+  logger.info("[Stripe] Verwalter Tools subscription processed", { userId });
+}

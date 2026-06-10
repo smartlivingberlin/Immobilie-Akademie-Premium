@@ -19,7 +19,8 @@ vi.mock("./referralRewards", () => ({
   applyReferralPurchaseRewards: vi.fn().mockResolvedValue(undefined),
 }));
 
-import { processModulePurchase } from "./stripePurchaseHandler";
+import { processModulePurchase, processVerwalterToolsSubscription } from "./stripePurchaseHandler";
+import { VERWALTER_TOOLS_MODULE_SENTINEL } from "../shared/verwalterToolsProduct";
 
 function createMockDb(user: { id: number; enabledModules: string } | null) {
   const updates: Array<{ sql: string; params: unknown[] }> = [];
@@ -27,7 +28,7 @@ function createMockDb(user: { id: number; enabledModules: string } | null) {
     updates,
     $client: {
       query: vi.fn(async (sql: string, params?: unknown[]) => {
-        if (sql.includes("SELECT id, enabledModules FROM users")) {
+        if (sql.includes("SELECT id, enabledModules FROM users") || sql.includes("SELECT enabledModules FROM users")) {
           return [[user]];
         }
         if (sql.startsWith("UPDATE users SET enabledModules")) {
@@ -54,5 +55,13 @@ describe("processModulePurchase", () => {
     const result = await processModulePurchase(db as any, "missing@example.com", "1");
     expect(result).toBeNull();
     expect(db.updates).toHaveLength(0);
+  });
+});
+
+describe("processVerwalterToolsSubscription", () => {
+  it("adds vt sentinel to enabledModules", async () => {
+    const db = createMockDb({ id: 7, enabledModules: "1,rp" });
+    await processVerwalterToolsSubscription(db as any, 7);
+    expect(db.updates[0]?.params?.[0]).toBe(`1,rp,${VERWALTER_TOOLS_MODULE_SENTINEL}`);
   });
 });

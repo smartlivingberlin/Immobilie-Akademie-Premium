@@ -11,9 +11,9 @@ describe("stripePriceReadiness", () => {
     }
   });
 
-  it("reports six subscription slots", () => {
+  it("reports seven subscription slots", () => {
     const r = getStripePriceReadiness();
-    expect(r.subscriptions.total).toBe(6);
+    expect(r.subscriptions.total).toBe(7);
     expect(r.modules.total).toBe(12);
   });
 

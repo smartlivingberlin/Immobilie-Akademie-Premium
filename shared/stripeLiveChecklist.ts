@@ -24,7 +24,7 @@ export const STRIPE_LIVE_CHECKLIST_DEFS: StripeChecklistItemDef[] = [
   { id: "backfill", label: "Backfill accessExpiresAt ausgeführt", category: "ops", action: "/admin/referral → Anwenden" },
   { id: "test_renewal", label: "Renewal-Checkout im Testmodus verifiziert", category: "stripe", action: "E2E 09-renewal-auth + Stripe Test-Zahlung" },
   { id: "webhook_recent", label: "Webhook-Event in den letzten 7 Tagen", category: "stripe", action: "Testzahlung oder Stripe CLI trigger auslösen" },
-  { id: "stripe_price_ids", label: "Stripe Price-IDs Abos (6/6)", category: "stripe", action: "STRIPE_PRICE_RENEWAL_*, B2B_*, COMPLIANCE, RECHENPRAXIS in Railway" },
+  { id: "stripe_price_ids", label: "Stripe Price-IDs Abos (7/7)", category: "stripe", action: "STRIPE_PRICE_RENEWAL_*, B2B_*, COMPLIANCE, RECHENPRAXIS, VERWALTER_TOOLS in Railway" },
   { id: "stripe_module_price_ids", label: "Stripe Price-IDs Module & Bundles (12/12)", category: "stripe", action: "STRIPE_PRICE_MODUL_* und STRIPE_PRICE_BUNDLE_* in Railway" },
   { id: "stripe_connect", label: "Stripe Connect für Partner-Auszahlungen", category: "stripe", action: "STRIPE_CONNECT_ENABLED=true nach Dashboard-Setup" },
   { id: "payout_cron", label: "Quartals-Payout-Cron (optional)", category: "ops", action: "PARTNER_PAYOUT_CRON_ENABLED=true — 1.1/4.1/7.1/10.1" },

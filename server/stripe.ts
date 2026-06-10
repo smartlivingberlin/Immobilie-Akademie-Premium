@@ -16,6 +16,11 @@ import {
   RECHENPRAXIS_PRODUCT_ID,
   RECHENPRAXIS_STANDALONE_MONTHLY_EUR,
 } from "../shared/rechenpraxisProduct";
+import {
+  VERWALTER_TOOLS_MODULE_SENTINEL,
+  VERWALTER_TOOLS_PRODUCT_ID,
+  VERWALTER_TOOLS_MONTHLY_EUR,
+} from "../shared/verwalterToolsProduct";
 import { buildSubscriptionLineItem } from "./stripeCheckoutHelpers";
 import { B2B_PLAN_PRICE_KEYS, buildPaymentLineItem } from "../shared/stripePriceIds";
 
@@ -176,7 +181,7 @@ stripeRouter.post("/api/stripe/rechenpraxis-checkout", requireAuth, async (req: 
         buildSubscriptionLineItem("rechenpraxis_monthly", {
           currency: "eur",
           product_data: {
-            name: "Rechenpraxis Solo — 128 Aufgaben mit KI-Hilfe",
+            name: "Rechenpraxis Solo — 138 Aufgaben mit KI-Hilfe",
             description: "Monatliches Abo — nur Rechenpraxis, kein Vollkurs",
           },
           unit_amount: RECHENPRAXIS_STANDALONE_MONTHLY_EUR * 100,
@@ -203,6 +208,47 @@ stripeRouter.post("/api/stripe/rechenpraxis-checkout", requireAuth, async (req: 
     res.json({ url: session.url });
   } catch (err: any) {
     logger.error("[Stripe] Rechenpraxis checkout error", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Verwalter Tools — 39 €/Monat (Suite: Vorlagen, CRM-light, Buchungen)
+stripeRouter.post("/api/stripe/verwalter-tools-checkout", requireAuth, async (req: any, res) => {
+  try {
+    const session = await stripe.checkout.sessions.create({
+      mode: "subscription",
+      customer_email: req.currentUser.email || undefined,
+      line_items: [
+        buildSubscriptionLineItem("verwalter_tools_monthly", {
+          currency: "eur",
+          product_data: {
+            name: "Verwalter Tools — WEG-Suite",
+            description: "25 Vorlagen, Objekte, Vorgänge, Buchungen, DATEV-Export, KI-Assistent",
+          },
+          unit_amount: VERWALTER_TOOLS_MONTHLY_EUR * 100,
+          recurring: { interval: "month" },
+        }),
+      ],
+      success_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/app/verwalter?subscribed=1`,
+      cancel_url: `${process.env.APP_URL || "https://immobilien-akademie-smart.de"}/fuer-verwaltungsbueros`,
+      metadata: {
+        type: "verwalter_tools",
+        productId: VERWALTER_TOOLS_PRODUCT_ID,
+        userId: String(req.currentUser.id),
+        modules: VERWALTER_TOOLS_MODULE_SENTINEL,
+      },
+      subscription_data: {
+        metadata: {
+          type: "verwalter_tools",
+          productId: VERWALTER_TOOLS_PRODUCT_ID,
+          userId: String(req.currentUser.id),
+          modules: VERWALTER_TOOLS_MODULE_SENTINEL,
+        },
+      },
+    });
+    res.json({ url: session.url });
+  } catch (err: any) {
+    logger.error("[Stripe] Verwalter Tools checkout error", err);
     res.status(500).json({ error: err.message });
   }
 });
