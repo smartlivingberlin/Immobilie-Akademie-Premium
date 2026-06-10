@@ -92,7 +92,9 @@ cd /mnt/c/Users/Lenovo/Immobilie-Akademie-Premium
 bash scripts/ops/verwalter-lighthouse.sh
 ```
 
-Falls Chromium-Libs fehlen: `sudo apt-get install -y libnss3 libatk-bridge2.0-0 libdrm2 libxkbcommon0 libgbm1 libasound2`
+Falls Chromium-Libs fehlen (Ubuntu 24): `sudo apt-get install -y libnss3 libatk-bridge2.0-0t64 libdrm2 libxkbcommon0 libgbm1 libasound2t64`
+
+**ARM/WSL:** Lighthouse lokal oft unmöglich — PageSpeed-Link nutzen (Abschnitt 5).
 
 **Playwright Admin-401-Tests ohne Login-Setup:**
 

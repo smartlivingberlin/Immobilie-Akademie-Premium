@@ -33,7 +33,11 @@ const STATE_PATH = "tests/e2e/.auth-state.json";
 
 async function globalSetup() {
   if (process.env.PLAYWRIGHT_SKIP_GLOBAL_SETUP === "1") {
-    console.log("⏭️  PLAYWRIGHT_SKIP_GLOBAL_SETUP=1 — kein Login");
+    const { mkdirSync, writeFileSync } = await import("fs");
+    const { dirname } = await import("path");
+    mkdirSync(dirname(STATE_PATH), { recursive: true });
+    writeFileSync(STATE_PATH, JSON.stringify({ cookies: [], origins: [] }));
+    console.log("⏭️  PLAYWRIGHT_SKIP_GLOBAL_SETUP=1 — leerer Auth-State");
     return;
   }
 
