@@ -6,7 +6,7 @@ export default function AGB() {
       <Card>
         <CardHeader>
           <CardTitle className="text-3xl font-bold">Allgemeine Geschäftsbedingungen (AGB)</CardTitle>
-          <p className="text-sm text-muted-foreground mt-2">Stand: 25. Februar 2026</p>
+          <p className="text-sm text-muted-foreground mt-2">Stand: 10. Juni 2026</p>
         </CardHeader>
         <CardContent className="prose prose-slate max-w-none">
           <h2>§ 1 Geltungsbereich</h2>
@@ -38,12 +38,21 @@ export default function AGB() {
             <li>Interaktive Übungen und Aufgaben</li>
             <li>Lernkarten-System mit Spaced Repetition</li>
             <li>Praxisrechner (Miet-, WEG-, Makler-, Darlehens-, Gutachtenrechner)</li>
+            <li>Rechenpraxis (interaktive Rechenaufgaben mit KI-Unterstützung)</li>
+            <li>Verwalter-Werkzeuge (WEG-Objekte, Vorgänge, Buchungen, Vorlagen, Fristen-Checkliste, KI-Brief)</li>
             <li>Fortschritts-Tracking und Zertifikate</li>
           </ul>
           <p>
             (2) Die Inhalte dienen ausschließlich der Information und Weiterbildung. Sie stellen keine 
             Rechtsberatung dar und ersetzen nicht die Beratung durch einen Rechtsanwalt, Steuerberater oder 
             anderen Fachexperten.
+          </p>
+          <p>
+            (2a) <strong>Rechenpraxis und Verwalter-Werkzeuge</strong> sind digitale Hilfsmittel für Übung und 
+            Verwaltungsalltag. Vorlagen und KI-generierte Texte sind <strong>Muster mit Rechtshinweisen</strong>, 
+            keine individuelle Rechts-, Steuer- oder Buchhaltungsberatung. DATEV-Exporte und Buchungsvorschläge 
+            sind technische Hilfen — die Prüfung durch eine steuerberatende Person oder qualifizierte Fachkraft 
+            bleibt in Ihrer Verantwortung.
           </p>
           <p>
             (3) Der Anbieter ist berechtigt, das Angebot jederzeit zu ändern, zu erweitern oder einzuschränken, 
@@ -141,7 +150,19 @@ export default function AGB() {
           <h2>§ 7 Vergütung und Zahlungsbedingungen</h2>
           <p>
             (1) Die Vergütung richtet sich nach der jeweils gewählten Nutzungsvariante (z.B. Einzelmodul, 
-            Gesamtpaket).
+            Gesamtpaket, Rechenpraxis-Solo-Abo, B2B-Team-Lizenz). Aktuelle Preise sind auf der Plattform 
+            ausgewiesen (u.a. unter /rechenpraxis-preise und /fuer-maklerbueros).
+          </p>
+          <p>
+            (1a) <strong>Rechenpraxis-Solo-Abo:</strong> Monatliches Abonnement für den Zugang zur Rechenpraxis 
+            (interaktive Aufgaben inkl. KI-Assistent im Fair-Use-Rahmen). Kündigung zum Ende des jeweiligen 
+            Abrechnungszeitraums über das Kundenportal bzw. die in der Bestellbestätigung genannten Wege.
+          </p>
+          <p>
+            (1b) <strong>Verwalter-Werkzeuge:</strong> Der Zugang kann derzeit im Rahmen des Portals, eines 
+            Modulkaufs, Testzugangs oder B2B-Tenants gewährt werden. Eine gesonderte kostenpflichtige 
+            Produktvariante kann eingeführt werden; maßgeblich sind die zum Zeitpunkt des Vertragsschlusses 
+            angezeigten Preise und Leistungsbeschreibungen.
           </p>
           <p>
             (2) Die aktuellen Preise sind auf der Plattform einsehbar. Alle Preise sind Endpreise. Aufgrund der Kleinunternehmerregelung gemäß § 19 UStG wird keine Umsatzsteuer ausgewiesen.

@@ -52,6 +52,7 @@ echo "── A) Öffentliche Seiten (SPA → 200) ──"
 PAGES=(
   "/"
   "/verwalter-rechner"
+  "/fuer-verwaltungsbueros"
   "/kurs/modul-3-weg-verwalter"
   "/app/verwalter"
   "/app/verwalter/objekte"

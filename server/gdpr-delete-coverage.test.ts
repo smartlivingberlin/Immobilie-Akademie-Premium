@@ -27,6 +27,17 @@ describe("GDPR delete coverage", () => {
     }
   });
 
+  it("deletes Verwalter-Suite data on account removal", () => {
+    expect(routersSource).toContain("deleteVerwalterUserData");
+    const cleanupSource = readFileSync(
+      path.join(process.cwd(), "server/verwalterGdprCleanup.ts"),
+      "utf-8",
+    );
+    for (const table of ["verwalter_buchungen", "verwalter_vorgaenge", "verwalter_objekte"]) {
+      expect(cleanupSource).toContain(table);
+    }
+  });
+
   it("uses the supplemental cleanup in admin and self-service delete flows", () => {
     const calls = routersSource.match(/runPersonalDataCleanup\(db,/g) ?? [];
     expect(calls).toHaveLength(2);

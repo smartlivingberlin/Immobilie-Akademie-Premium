@@ -104,6 +104,9 @@ async function runPersonalDataCleanup(
   for (const query of queries) {
     await db.$client.query(query.sql, query.params).catch(() => {});
   }
+
+  const { deleteVerwalterUserData } = await import("./verwalterGdprCleanup");
+  await deleteVerwalterUserData(db, user.userId);
 }
 
 /**
