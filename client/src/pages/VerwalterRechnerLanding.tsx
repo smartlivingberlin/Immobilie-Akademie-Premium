@@ -8,7 +8,7 @@ import { trpc } from "@/lib/trpc";
 import { RECHENPRAXIS_TASK_COUNT } from "@shared/rechenpraxisProduct";
 
 const BEREICHE = [
-  { title: "WEG-Hausgeld & Abrechnung", count: "30 Aufgaben", desc: "Hausgeld, Sonderumlage, Rücklage, CO₂-Kosten, Heizkosten 70/30, Verwalterhonorar" },
+  { title: "WEG-Hausgeld & Abrechnung", count: "Schwerpunkt WEG", desc: "Hausgeld, Sonderumlage, Rücklage, CO₂-Kosten, Heizkosten 70/30, Verwalterhonorar" },
   { title: "Mietrendite & Kaufpreisfaktor", count: "19 Aufgaben", desc: "Brutto-/Nettorendite, Cashflow, Break-even für Verwaltungsportfolios" },
   { title: "Annuität & Finanzierung", count: "18 Aufgaben", desc: "Beleihungsauslauf, Tilgungsplan, Anschlussfinanzierung" },
   { title: "Wertermittlung", count: "18 Aufgaben", desc: "Ertragswert, Sachwert, Vergleichswert — Grundlagen für Verwaltergutachten" },

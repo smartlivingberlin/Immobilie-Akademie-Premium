@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import {
   Building2,
   Calculator,
+  Clock,
   CreditCard,
+  FileText,
   GraduationCap,
   Home,
   LogOut,
@@ -11,15 +13,22 @@ import {
   X,
 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
-import { ComfortBar } from "@/components/ComfortBar";
+import { ComfortBar, ComfortBarMini } from "@/components/ComfortBar";
 import { Button } from "@/components/ui/button";
 import { hasFullRechenpraxisAccess } from "@shared/rechenpraxisAccess";
 
 const NAV = [
   { name: "Rechenpraxis", href: "/rechenpraxis", icon: Building2 },
   { name: "Praxisrechner", href: "/rechner", icon: Calculator },
+  { name: "Vorlagen", href: "/app/verwalter/vorlagen", icon: FileText },
+  { name: "Fristen", href: "/app/verwalter/fristen", icon: Clock },
   { name: "Preise & Abo", href: "/rechenpraxis-preise", icon: CreditCard },
 ];
+
+function isNavActive(location: string, href: string): boolean {
+  if (href === "/rechenpraxis") return location === href;
+  return location === href || location.startsWith(href + "/");
+}
 
 export default function RechenpraxisProductLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
@@ -32,15 +41,24 @@ export default function RechenpraxisProductLayout({ children }: { children: Reac
   const { data: user } = trpc.auth.me.useQuery();
   const fullAccess = hasFullRechenpraxisAccess(user?.enabledModules ?? "", user?.role);
 
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = "";
+      };
+    }
+  }, [mobileOpen]);
+
   const NavLinks = ({ onNavigate }: { onNavigate?: () => void }) => (
     <>
       {NAV.map((item) => {
-        const active = location === item.href || location.startsWith(item.href + "/");
+        const active = isNavActive(location, item.href);
         return (
           <Link key={item.href} href={item.href}>
             <a
               onClick={onNavigate}
-              className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
+              className={`flex min-h-[44px] items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
                 active
                   ? "bg-emerald-600 text-white"
                   : "text-slate-300 hover:bg-slate-800 hover:text-white"
@@ -56,7 +74,7 @@ export default function RechenpraxisProductLayout({ children }: { children: Reac
       <Link href="/kurse">
         <a
           onClick={onNavigate}
-          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-400 hover:bg-slate-800 hover:text-white"
+          className="flex min-h-[44px] items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-400 hover:bg-slate-800 hover:text-white"
         >
           <GraduationCap className="h-5 w-5 shrink-0" />
           Immobilien-Akademie
@@ -65,7 +83,7 @@ export default function RechenpraxisProductLayout({ children }: { children: Reac
       <Link href="/">
         <a
           onClick={onNavigate}
-          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-400 hover:bg-slate-800 hover:text-white"
+          className="flex min-h-[44px] items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-400 hover:bg-slate-800 hover:text-white"
         >
           <Home className="h-5 w-5 shrink-0" />
           Startseite
@@ -74,8 +92,15 @@ export default function RechenpraxisProductLayout({ children }: { children: Reac
     </>
   );
 
+  const FreemiumBanner = () =>
+    !fullAccess ? (
+      <p className="rounded-md bg-amber-500/15 px-2 py-1.5 text-[11px] text-amber-200">
+        Gratis-Vorschau — 10 WEG-Aufgaben in Rechenpraxis
+      </p>
+    ) : null;
+
   return (
-    <div className="flex min-h-screen bg-slate-50 dark:bg-slate-950">
+    <div className="flex min-h-screen overflow-x-hidden bg-slate-50 dark:bg-slate-950">
       <aside className="hidden w-64 shrink-0 flex-col bg-slate-900 text-white md:flex">
         <div className="border-b border-slate-800 p-5">
           <Link href="/verwalter-rechner">
@@ -91,13 +116,11 @@ export default function RechenpraxisProductLayout({ children }: { children: Reac
               </div>
             </a>
           </Link>
-          {!fullAccess && (
-            <p className="mt-3 rounded-md bg-amber-500/15 px-2 py-1.5 text-[11px] text-amber-200">
-              Gratis-Vorschau — 10 WEG-Aufgaben
-            </p>
-          )}
+          <div className="mt-3">
+            <FreemiumBanner />
+          </div>
         </div>
-        <nav className="flex-1 space-y-1 p-3">
+        <nav className="flex-1 space-y-1 overflow-y-auto p-3">
           <NavLinks />
         </nav>
         <div className="border-t border-slate-800 p-3">
@@ -113,39 +136,65 @@ export default function RechenpraxisProductLayout({ children }: { children: Reac
       </aside>
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="flex items-center justify-between border-b border-slate-200 bg-white px-4 py-3 dark:border-slate-800 dark:bg-slate-900 md:px-6">
-          <div className="flex items-center gap-3">
+        <header className="flex items-center justify-between gap-2 border-b border-slate-200 bg-white px-3 py-2 dark:border-slate-800 dark:bg-slate-900 sm:px-4 md:px-6 md:py-3">
+          <div className="flex min-w-0 items-center gap-2">
             <button
               type="button"
-              className="rounded-md p-2 text-slate-600 hover:bg-slate-100 md:hidden dark:text-slate-300"
+              className="shrink-0 rounded-md p-2 text-slate-600 hover:bg-slate-100 md:hidden dark:text-slate-300"
               onClick={() => setMobileOpen(true)}
               aria-label="Menü öffnen"
             >
               <Menu className="h-5 w-5" />
             </button>
-            <span className="text-sm font-semibold text-slate-800 dark:text-slate-100 md:hidden">
+            <span className="truncate text-sm font-semibold text-slate-800 dark:text-slate-100 md:hidden">
               Verwalter-Rechner
             </span>
           </div>
-          <ComfortBar compact />
+          <div className="shrink-0 md:hidden">
+            <ComfortBarMini />
+          </div>
+          <div className="hidden shrink-0 md:block">
+            <ComfortBar compact />
+          </div>
         </header>
 
-        <main className="flex-1">{children}</main>
+        <main className="min-w-0 flex-1">{children}</main>
       </div>
 
       {mobileOpen && (
-        <div className="fixed inset-0 z-50 md:hidden">
-          <div className="absolute inset-0 bg-black/50" onClick={() => setMobileOpen(false)} />
-          <div className="absolute left-0 top-0 flex h-full w-72 flex-col bg-slate-900 text-white shadow-xl">
+        <div className="fixed inset-0 z-50 md:hidden" role="dialog" aria-modal="true" aria-label="Navigation">
+          <button
+            type="button"
+            className="absolute inset-0 bg-black/50"
+            onClick={() => setMobileOpen(false)}
+            aria-label="Menü schließen"
+          />
+          <div className="absolute left-0 top-0 flex h-full w-[min(100vw-3rem,18rem)] flex-col bg-slate-900 text-white shadow-xl">
             <div className="flex items-center justify-between border-b border-slate-800 p-4">
               <span className="font-bold">Verwalter-Rechner</span>
               <button type="button" onClick={() => setMobileOpen(false)} aria-label="Menü schließen">
                 <X className="h-5 w-5" />
               </button>
             </div>
-            <nav className="flex-1 space-y-1 p-3">
+            <div className="border-b border-slate-800 px-4 py-2">
+              <FreemiumBanner />
+            </div>
+            <nav className="flex-1 space-y-1 overflow-y-auto p-3">
               <NavLinks onNavigate={() => setMobileOpen(false)} />
             </nav>
+            <div className="border-t border-slate-800 p-3">
+              <Button
+                variant="ghost"
+                className="w-full justify-start gap-2 text-slate-400 hover:text-white"
+                onClick={() => {
+                  setMobileOpen(false);
+                  logoutMutation.mutate();
+                }}
+              >
+                <LogOut className="h-4 w-4" />
+                Abmelden
+              </Button>
+            </div>
           </div>
         </div>
       )}

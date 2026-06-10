@@ -38,12 +38,12 @@ export default function RechenpraxisPricing() {
         keywords="Rechenpraxis Preise, Immobilien Rechner Abo, Hausverwaltung Rechentraining"
         canonical="https://immobilien-akademie-smart.de/rechenpraxis-preise"
       />
-      <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+      <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
         <section className="container mx-auto px-4 py-16 max-w-4xl text-center">
           <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-sm font-medium px-4 py-1.5 rounded-full mb-6">
             <Calculator className="h-4 w-4" /> Rechenpraxis
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4">
             Preise & Zugangswege
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-4">
