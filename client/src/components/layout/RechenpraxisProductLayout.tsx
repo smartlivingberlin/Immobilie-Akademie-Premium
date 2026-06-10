@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import {
+  BookOpen,
   Building2,
   Calculator,
   Clock,
   CreditCard,
   Database,
   FileText,
+  Kanban,
   GraduationCap,
   Home,
   LogOut,
@@ -17,12 +19,17 @@ import { trpc } from "@/lib/trpc";
 import { ComfortBar, ComfortBarMini } from "@/components/ComfortBar";
 import { Button } from "@/components/ui/button";
 import { hasFullRechenpraxisAccess } from "@shared/rechenpraxisAccess";
+import { VerwalterAssistent } from "@/components/verwalter/VerwalterAssistent";
+import { VerwalterGuideBanner } from "@/components/verwalter/VerwalterGuideBanner";
+import { VerwalterOnboarding } from "@/components/verwalter/VerwalterOnboarding";
 
 const NAV = [
   { name: "Rechenpraxis", href: "/rechenpraxis", icon: Building2 },
   { name: "Praxisrechner", href: "/rechner", icon: Calculator },
   { name: "Objekte", href: "/app/verwalter/objekte", icon: Database },
   { name: "Vorlagen", href: "/app/verwalter/vorlagen", icon: FileText },
+  { name: "Vorgänge", href: "/app/verwalter/vorgaenge", icon: Kanban },
+  { name: "Buchungen", href: "/app/verwalter/buchungen", icon: BookOpen },
   { name: "Fristen", href: "/app/verwalter/fristen", icon: Clock },
   { name: "Preise & Abo", href: "/rechenpraxis-preise", icon: CreditCard },
 ];
@@ -32,9 +39,16 @@ function isNavActive(location: string, href: string): boolean {
   return location === href || location.startsWith(href + "/");
 }
 
+type DashboardStats = {
+  objekteCount: number;
+  openVorgaenge: number;
+  overdueVorgaenge: number;
+};
+
 export default function RechenpraxisProductLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [dashboard, setDashboard] = useState<DashboardStats | null>(null);
   const logoutMutation = trpc.auth.logout.useMutation({
     onSuccess: () => {
       window.location.href = "/verwalter-rechner";
@@ -51,6 +65,22 @@ export default function RechenpraxisProductLayout({ children }: { children: Reac
       };
     }
   }, [mobileOpen]);
+
+  useEffect(() => {
+    if (!user?.id) return;
+    fetch("/api/verwalter/dashboard", { credentials: "include" })
+      .then((r) => r.json())
+      .then((d) => {
+        if (d.success) {
+          setDashboard({
+            objekteCount: d.objekteCount,
+            openVorgaenge: d.openVorgaenge,
+            overdueVorgaenge: d.overdueVorgaenge,
+          });
+        }
+      })
+      .catch(() => {});
+  }, [user?.id]);
 
   const NavLinks = ({ onNavigate }: { onNavigate?: () => void }) => (
     <>
@@ -121,6 +151,15 @@ export default function RechenpraxisProductLayout({ children }: { children: Reac
           <div className="mt-3">
             <FreemiumBanner />
           </div>
+          {dashboard && (dashboard.objekteCount > 0 || dashboard.openVorgaenge > 0) && (
+            <div className="mt-3 space-y-1 rounded-lg bg-slate-800/80 p-2 text-[11px] text-slate-300">
+              <div>{dashboard.objekteCount} Objekt{dashboard.objekteCount !== 1 ? "e" : ""}</div>
+              <div>{dashboard.openVorgaenge} offene Vorgänge</div>
+              {dashboard.overdueVorgaenge > 0 && (
+                <div className="text-amber-300">{dashboard.overdueVorgaenge} überfällig</div>
+              )}
+            </div>
+          )}
         </div>
         <nav className="flex-1 space-y-1 overflow-y-auto p-3">
           <NavLinks />
@@ -160,7 +199,10 @@ export default function RechenpraxisProductLayout({ children }: { children: Reac
           </div>
         </header>
 
+        <VerwalterGuideBanner path={location} />
         <main className="min-w-0 flex-1">{children}</main>
+        <VerwalterAssistent />
+        <VerwalterOnboarding objekteCount={dashboard?.objekteCount ?? 0} />
       </div>
 
       {mobileOpen && (

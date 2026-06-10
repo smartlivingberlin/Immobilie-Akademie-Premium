@@ -11,6 +11,7 @@ import {
 } from "@shared/rechenpraxisAccess";
 import { RECHENPRAXIS_STANDALONE_MONTHLY_EUR } from "@shared/rechenpraxisProduct";
 import { scaledFontSize as fz } from "@/lib/a11yFont";
+import { RechenpraxisVerwalterHinweis } from "@/components/verwalter/RechenpraxisVerwalterHinweis";
 
 // ─── TYPEN ───────────────────────────────────────────────────────────────────
 
@@ -362,6 +363,7 @@ function AufgabenAnsicht({
         </div>
       )}
 
+      <RechenpraxisVerwalterHinweis aufgabe={aufgabe} />
       <KiAssistent aufgabe={aufgabe} enabled={kiEnabled} />
 
       <div style={{ display: "flex", gap: 8, marginTop: "1rem" }}>
