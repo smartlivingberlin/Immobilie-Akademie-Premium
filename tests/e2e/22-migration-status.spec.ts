@@ -4,7 +4,9 @@ const BASE = process.env.PLAYWRIGHT_BASE_URL || "https://immobilien-akademie-sma
 
 test.describe("Migration status guards", () => {
   test("migration-status ohne Login → 401", async ({ playwright }) => {
-    const anon = await playwright.request.newContext();
+    const anon = await playwright.request.newContext({
+      storageState: { cookies: [], origins: [] },
+    });
     const res = await anon.get(`${BASE}/api/admin/migration-status`);
     expect(res.status()).toBe(401);
     await anon.dispose();
