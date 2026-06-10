@@ -7,36 +7,9 @@ import {
   paragraphsToDisplay,
   type AudioLesson,
 } from "./audioLessonParser";
+import { getModuleContentFiles, MODULE_CONTENT_FILES } from "./moduleContentRegistry";
 
-export const MODULE_CONTENT_FILES: Record<number, string[]> = {
-  1: ["client/src/pages/modules/Module1Content.ts"],
-  2: [
-    "client/src/pages/modules/Module2ContentPart1_Maximal.ts",
-    "client/src/pages/modules/Module2ContentPart2_Maximal.ts",
-  ],
-  3: [
-    "client/src/pages/modules/Module3Content_Maximal.ts",
-    "client/src/pages/modules/Module3Content_Maximal_Part2.ts",
-    "client/src/pages/modules/Module3Content_Maximal_Part2_Extended.ts",
-    "client/src/pages/modules/Module3Content_Maximal_Part3.ts",
-    "client/src/pages/modules/Module3Content_Maximal_Part3_Extended.ts",
-    "client/src/pages/modules/Module3Content_Maximal_Part4.ts",
-    "client/src/pages/modules/Module3Content_Maximal_MissingDays.ts",
-  ],
-  4: [
-    "client/src/pages/modules/Module4Content_Maximal.ts",
-    "client/src/pages/modules/Module4Content_Valuation_Maximalist.ts",
-  ],
-  5: [
-    "client/src/pages/modules/Module5Content_34i_Part1.ts",
-    "client/src/pages/modules/Module5Content_34i_Part2.ts",
-    "client/src/pages/modules/Module5Content_34i_Part3.ts",
-    "client/src/pages/modules/Module5Content_34i_Part4.ts",
-    "client/src/pages/modules/Module5Content_34i_Part5.ts",
-    "client/src/pages/modules/Module5Content_34i_Part6.ts",
-    "client/src/pages/modules/Module5Content_34i_Part7_Final.ts",
-  ],
-};
+export { MODULE_CONTENT_FILES };
 
 type DayFields = {
   dayNumber: number;
@@ -145,7 +118,7 @@ export function getModuleLessons(moduleId: number): AudioLesson[] {
 }
 
 export function parseModuleDayLessons(moduleId: number): AudioLesson[] {
-  const files = MODULE_CONTENT_FILES[moduleId] || [];
+  const files = getModuleContentFiles(moduleId);
   const byDay = new Map<number, DayFields>();
 
   for (const file of files) {

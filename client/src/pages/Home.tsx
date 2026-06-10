@@ -200,11 +200,6 @@ export default function Home() {
                   Alle Module ansehen
                 </a>
               </Link>
-              <Link href="/verwalter-rechner">
-                <a className="inline-flex items-center gap-2 rounded-xl border border-emerald-300/40 bg-emerald-500/20 px-5 py-3 text-sm text-white font-medium hover:bg-emerald-500/30 transition-all">
-                  Verwalter-Rechner <Calculator className="h-3.5 w-3.5" />
-                </a>
-              </Link>
               <Link href="/warum-wir">
                 <a className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-5 py-3 text-sm text-white/80 hover:bg-white/10 transition-all">
                   Warum wir? <Star className="h-3.5 w-3.5" />
@@ -237,42 +232,47 @@ export default function Home() {
           </div>
 
           <div className="hidden lg:block">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-amber-300/30" style={{aspectRatio:"4/3",boxShadow:"0 25px 50px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(245,200,66,0.2)"}}>
-              <img src={IMAGES.hero} alt="Professioneller Immobilienmakler im Berliner Büro"
-                   width={1024} height={1024}
-                   className="w-full h-full object-cover" loading="eager" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 text-white text-sm font-semibold
-                              bg-black/50 backdrop-blur-sm rounded-xl px-4 py-2 text-center">
-                Ihr Karrierestart in der Immobilienwirtschaft
+            <div className="relative rounded-2xl overflow-visible shadow-2xl ring-1 ring-amber-300/30" style={{aspectRatio:"4/3",boxShadow:"0 25px 50px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(245,200,66,0.2)"}}>
+              <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                <img src={IMAGES.hero} alt="Professioneller Immobilienmakler im Berliner Büro"
+                     width={1024} height={1024}
+                     className="w-full h-full object-cover" loading="eager" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 text-white text-sm font-semibold
+                                bg-black/50 backdrop-blur-sm rounded-xl px-4 py-2 text-center">
+                  Ihr Karrierestart in der Immobilienwirtschaft
+                </div>
               </div>
+              <Link href="/verwalter-rechner">
+                <a
+                  className="absolute -bottom-4 -left-4 z-10 block max-w-[220px] -rotate-3 transition-transform duration-300 hover:rotate-0 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded-xl"
+                  aria-label={`Verwalter-Rechner: ${RECHENPRAXIS_TASK_COUNT} WEG-Aufgaben, ab 19 Euro pro Monat`}
+                >
+                  <div className="rounded-xl bg-emerald-600 px-4 py-3 shadow-[0_12px_32px_-8px_rgba(5,150,105,0.65)] ring-1 ring-emerald-400/50 backdrop-blur-sm">
+                    <div className="flex items-center gap-2 text-white">
+                      <Calculator className="h-4 w-4 shrink-0" aria-hidden />
+                      <span className="text-sm font-bold leading-tight">WEG-Rechner</span>
+                    </div>
+                    <p className="mt-1 text-[11px] leading-snug text-emerald-50/95">
+                      {RECHENPRAXIS_TASK_COUNT} Aufgaben · ab 19 €/Mo
+                    </p>
+                    <p className="mt-1 text-[10px] font-medium text-emerald-100/80">Eigenständiges Produkt →</p>
+                  </div>
+                </a>
+              </Link>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* USP: Verwalter-Rechner / Rechenpraxis */}
-      <section className="bg-emerald-50 dark:bg-emerald-950/40 border-y border-emerald-100 dark:border-emerald-900">
-        <div className="container mx-auto px-4 py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div className="max-w-2xl">
-            <p className="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2">Eigenständiges Produkt</p>
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-100 mb-2">
-              Verwalter-Rechner — WEG & Hausverwaltung interaktiv
-            </h2>
-            <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-              {RECHENPRAXIS_TASK_COUNT} Rechenaufgaben mit KI-Hilfe: Hausgeld, Nebenkosten, Sonderumlage, CO₂-Umlage und mehr.
-              Ideal für WEG-Verwalter und Hausverwaltung — auch ohne Vollkurs.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3 shrink-0">
+          {/* Mobile: Verwalter-Rechner kompakt unter Hero-Text */}
+          <div className="lg:hidden">
             <Link href="/verwalter-rechner">
-              <a className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-xl">
-                Mehr erfahren <ArrowRight className="h-4 w-4" />
-              </a>
-            </Link>
-            <Link href="/rechenpraxis-preise">
-              <a className="inline-flex items-center gap-2 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 font-semibold px-6 py-3 rounded-xl hover:bg-emerald-100/50 dark:hover:bg-emerald-900/30">
-                Preise ab 19 €/Mo
+              <a className="flex items-center gap-3 rounded-xl border border-emerald-400/30 bg-emerald-600/90 px-4 py-3 text-white shadow-lg backdrop-blur-sm transition-colors hover:bg-emerald-600">
+                <Calculator className="h-5 w-5 shrink-0" aria-hidden />
+                <div>
+                  <div className="text-sm font-semibold">WEG-Rechner — interaktiv</div>
+                  <div className="text-xs text-emerald-50/90">{RECHENPRAXIS_TASK_COUNT} Aufgaben · ab 19 €/Mo</div>
+                </div>
+                <ArrowRight className="h-4 w-4 ml-auto shrink-0 opacity-80" />
               </a>
             </Link>
           </div>
