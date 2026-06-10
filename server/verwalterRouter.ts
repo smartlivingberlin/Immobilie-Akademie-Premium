@@ -28,7 +28,13 @@ import {
 import { buildStammdatenCsv } from "./verwalterStammdatenExport";
 import { buildDatevBuchungenCsv } from "./verwalterDatevExport";
 import { buildVerwalterAssistentPrompt } from "./verwalterAssistentContext";
+import { suggestBuchung } from "./verwalterBuchungVorschlagService";
 import { VERWALTER_ASSISTENT_ROLLE } from "../shared/verwalterAssistentKnowledge";
+import {
+  hatPlausibilitaetsFehler,
+  pruefeBuchungen,
+} from "../shared/verwalterBuchungPlausibilitaet";
+import { buildMonatsabschluss } from "../shared/verwalterMonatsabschluss";
 
 const router = Router();
 
@@ -214,6 +220,76 @@ router.delete("/api/verwalter/buchungen/:id", requireAuth, (req, res) => {
   res.json({ success: true });
 });
 
+router.post("/api/verwalter/buchungen/vorschlagen", requireAuth, async (req, res) => {
+  try {
+    const body = req.body ?? {};
+    const text = String(body.text || "").trim();
+    const objektId = String(body.objektId || "").trim();
+    const periode = String(body.periode || "").trim();
+    if (!text || !objektId) return res.status(400).json({ error: "text und objektId erforderlich" });
+
+    const uid = userId(req as any);
+    const obj = getObjekt(uid, objektId);
+    if (!obj) return res.status(404).json({ error: "Objekt nicht gefunden" });
+
+    const vorschlag = await suggestBuchung(text, obj, periode || new Date().toISOString().slice(0, 7));
+    if (!vorschlag) {
+      return res.status(422).json({
+        error: "Konnte keine Buchung erkennen. Beispiel: „250 Euro Hausgeld WE 3 Müller“",
+      });
+    }
+    res.json({ success: true, vorschlag });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+router.get("/api/verwalter/buchungen/plausibilitaet", requireAuth, (req, res) => {
+  try {
+    const uid = userId(req as any);
+    const objektId = String(req.query.objektId || "").trim();
+    const periode = String(req.query.periode || "").trim();
+    if (!objektId || !periode) {
+      return res.status(400).json({ error: "objektId und periode erforderlich" });
+    }
+    const obj = getObjekt(uid, objektId);
+    if (!obj) return res.status(404).json({ error: "Objekt nicht gefunden" });
+    const buchungen = listBuchungen(uid, { objektId, periode });
+    const hinweise = pruefeBuchungen(buchungen, obj, periode);
+    res.json({
+      success: true,
+      hinweise,
+      hasErrors: hatPlausibilitaetsFehler(hinweise),
+    });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+router.get("/api/verwalter/monatsabschluss", requireAuth, (req, res) => {
+  try {
+    const uid = userId(req as any);
+    const objektId = String(req.query.objektId || "").trim();
+    const periode = String(req.query.periode || "").trim();
+    if (!objektId || !periode) {
+      return res.status(400).json({ error: "objektId und periode erforderlich" });
+    }
+    const obj = getObjekt(uid, objektId);
+    if (!obj) return res.status(404).json({ error: "Objekt nicht gefunden" });
+    const buchungen = listBuchungen(uid, { objektId, periode });
+    const schritte = buildMonatsabschluss({
+      objekt: obj,
+      buchungen,
+      periode,
+      openVorgaenge: countOpenVorgaenge(uid),
+      overdueVorgaenge: countOverdueVorgaenge(uid),
+    });
+    res.json({ success: true, schritte });
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
 router.get("/api/verwalter/export/datev-buchungen", requireAuth, (req, res) => {
   try {
     const uid = userId(req as any);
@@ -226,6 +302,14 @@ router.get("/api/verwalter/export/datev-buchungen", requireAuth, (req, res) => {
     if (!obj) return res.status(404).json({ error: "Objekt nicht gefunden" });
 
     const buchungen = listBuchungen(uid, { objektId, periode });
+    const hinweise = pruefeBuchungen(buchungen, obj, periode);
+    const force = req.query.force === "1";
+    if (hatPlausibilitaetsFehler(hinweise) && !force) {
+      return res.status(400).json({
+        error: "Plausibilitätsfehler — Export blockiert. force=1 zum Überschreiben.",
+        hinweise,
+      });
+    }
     const csv = buildDatevBuchungenCsv(buchungen, { objektName: obj.name, periode });
     const filename = `EXTF_Buchungen_${objektId}_${periode}.csv`;
     res.setHeader("Content-Type", "text/csv; charset=utf-8");

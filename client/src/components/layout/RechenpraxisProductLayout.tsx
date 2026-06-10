@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import { hasFullRechenpraxisAccess } from "@shared/rechenpraxisAccess";
 import { VerwalterAssistent } from "@/components/verwalter/VerwalterAssistent";
 import { VerwalterGuideBanner } from "@/components/verwalter/VerwalterGuideBanner";
+import { VerwalterOnboarding } from "@/components/verwalter/VerwalterOnboarding";
 
 const NAV = [
   { name: "Rechenpraxis", href: "/rechenpraxis", icon: Building2 },
@@ -201,6 +202,7 @@ export default function RechenpraxisProductLayout({ children }: { children: Reac
         <VerwalterGuideBanner path={location} />
         <main className="min-w-0 flex-1">{children}</main>
         <VerwalterAssistent />
+        <VerwalterOnboarding objekteCount={dashboard?.objekteCount ?? 0} />
       </div>
 
       {mobileOpen && (

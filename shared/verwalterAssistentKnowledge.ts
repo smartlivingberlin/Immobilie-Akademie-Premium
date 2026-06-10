@@ -56,7 +56,8 @@ export const ASSISTENT_VORSCHLAEGE: Record<string, string[]> = {
   "/app/verwalter/buchungen": [
     "Was bedeutet Soll 1200 und Haben 8400?",
     "Wann buche ich Forderung statt Bank?",
-    "Wie funktioniert der DATEV-Export?",
+    "Wie funktioniert der Monatsabschluss?",
+    "Warum blockiert der DATEV-Export?",
   ],
   "/app/verwalter/vorgaenge": [
     "Wann lege ich einen Vorgang an?",

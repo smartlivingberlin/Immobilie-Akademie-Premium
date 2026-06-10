@@ -8,7 +8,7 @@ import { getAssistentVorschlaege } from "@shared/verwalterAssistentKnowledge";
 type Nachricht = { rolle: "user" | "assistant"; text: string };
 
 const WELCOME =
-  "Hallo! Ich bin Ihr **Verwalter-Assistent**.\n\nIch kenne Ihre Objekte, Vorgänge und Buchungen — und erkläre SKR-Konten, Fristen und Abläufe **Schritt für Schritt**, auch für Quereinsteiger.\n\nStellen Sie eine Frage oder wählen Sie einen Vorschlag.";
+  "Hallo! Ich bin Ihr **Verwalter-Assistent**.\n\nIch kenne Ihre Objekte, Vorgänge und Buchungen — erkläre SKR-Konten **Schritt für Schritt** und helfe bei Unsicherheiten.\n\nTipp: Unter **Buchungen** können Sie auch in eigenen Worten tippen (z. B. „250€ Hausgeld WE 3“) — das System schlägt die Konten vor.\n\nStellen Sie eine Frage oder wählen Sie einen Vorschlag.";
 
 export function VerwalterAssistent() {
   const [location] = useLocation();

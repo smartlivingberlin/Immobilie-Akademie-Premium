@@ -172,12 +172,21 @@ export async function downloadStammdatenCsv(): Promise<void> {
   downloadBlob("verwalter-stammdaten.csv", text, "text/csv;charset=utf-8");
 }
 
-export async function downloadDatevBuchungenCsv(objektId: string, periode: string): Promise<void> {
+export async function downloadDatevBuchungenCsv(
+  objektId: string,
+  periode: string,
+  force = false,
+): Promise<void> {
   const q = new URLSearchParams({ objektId, periode });
+  if (force) q.set("force", "1");
   const res = await fetch(`/api/verwalter/export/datev-buchungen?${q}`, { credentials: "include" });
   if (!res.ok) {
     const data = await res.json().catch(() => ({}));
-    throw new Error(data.error || "DATEV-Export fehlgeschlagen");
+    const err = new Error(data.error || "DATEV-Export fehlgeschlagen") as Error & {
+      hinweise?: { level: string; message: string }[];
+    };
+    err.hinweise = data.hinweise;
+    throw err;
   }
   const text = await res.text();
   downloadBlob(`EXTF_Buchungen_${objektId}_${periode}.csv`, text, "text/csv;charset=utf-8");
