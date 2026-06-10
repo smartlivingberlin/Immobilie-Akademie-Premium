@@ -58,6 +58,9 @@ const Weiterbildungsnachweis = lazy(() => import("@/pages/Weiterbildungsnachweis
 const ComplianceLanding = lazy(() => import("@/pages/ComplianceLanding"));
 const VerwalterRechnerLanding = lazy(() => import("@/pages/VerwalterRechnerLanding"));
 const RechenpraxisPricing = lazy(() => import("@/pages/RechenpraxisPricing"));
+const VorlagenIndex = lazy(() => import("@/pages/verwalter/VorlagenIndex"));
+const VorlageDetail = lazy(() => import("@/pages/verwalter/VorlageDetail"));
+const FristenCheckliste = lazy(() => import("@/pages/verwalter/FristenCheckliste"));
 const B2bEinrichtung = lazy(() => import("@/pages/B2bEinrichtung"));
 const Fallstudien = lazy(() => import("@/pages/Fallstudien"));
 const Flashcards = lazy(() => import("@/pages/Flashcards"));
@@ -342,7 +345,22 @@ function Router() {
         <Route path="/empfehlungsprogramm"><PublicLayout><Empfehlungsprogramm /></PublicLayout></Route>
         <Route path="/compliance-20h"><PublicLayout><ComplianceLanding /></PublicLayout></Route>
         <Route path="/verwalter-rechner"><PublicLayout><VerwalterRechnerLanding /></PublicLayout></Route>
-        <Route path="/rechenpraxis-preise"><PublicLayout><RechenpraxisPricing /></PublicLayout></Route>
+        <Route path="/rechenpraxis-preise"><VerwalterProductLayout><RechenpraxisPricing /></VerwalterProductLayout></Route>
+        <Route path="/app/verwalter/vorlagen/:slug">
+          <VerwalterProductLayout>
+            <ProtectedRoute component={VorlageDetail} />
+          </VerwalterProductLayout>
+        </Route>
+        <Route path="/app/verwalter/vorlagen">
+          <VerwalterProductLayout>
+            <ProtectedRoute component={VorlagenIndex} />
+          </VerwalterProductLayout>
+        </Route>
+        <Route path="/app/verwalter/fristen">
+          <VerwalterProductLayout>
+            <ProtectedRoute component={FristenCheckliste} />
+          </VerwalterProductLayout>
+        </Route>
         <Route path="/audio-modus"><AppLayout><ProtectedRoute component={AudioModus} /></AppLayout></Route>
         <Route component={NotFound} />
       </Switch>

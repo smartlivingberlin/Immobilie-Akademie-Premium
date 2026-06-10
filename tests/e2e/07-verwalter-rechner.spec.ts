@@ -7,7 +7,7 @@ test.describe("Verwalter-Rechner Landing", () => {
     const response = await page.goto(`${BASE}/verwalter-rechner`, { waitUntil: "domcontentloaded" });
     expect(response?.status()).toBeLessThan(400);
     await expect(page.locator("h1")).toContainText(/Verwalter-Rechner|WEG/i);
-    await expect(page.getByText(/128|WEG|Hausgeld/i).first()).toBeVisible();
+    await expect(page.getByText(/138|WEG|Hausgeld|Aufgaben/i).first()).toBeVisible();
   });
 
   test("CTA verweist auf Rechenpraxis oder Login", async ({ page }) => {

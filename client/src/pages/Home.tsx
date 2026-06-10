@@ -231,7 +231,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hidden lg:block">
+          <div className="hidden lg:block pb-16">
             <div className="relative rounded-2xl overflow-visible shadow-2xl ring-1 ring-amber-300/30" style={{aspectRatio:"4/3",boxShadow:"0 25px 50px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(245,200,66,0.2)"}}>
               <div className="absolute inset-0 rounded-2xl overflow-hidden">
                 <img src={IMAGES.hero} alt="Professioneller Immobilienmakler im Berliner Büro"
@@ -245,7 +245,7 @@ export default function Home() {
               </div>
               <Link href="/verwalter-rechner">
                 <a
-                  className="absolute -bottom-8 -left-8 z-10 block max-w-[440px] -rotate-3 transition-transform duration-300 hover:rotate-0 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded-2xl"
+                  className="absolute -bottom-6 -left-4 z-10 block w-[min(440px,calc(100%+2rem))] max-w-[440px] -rotate-3 transition-transform duration-300 hover:rotate-0 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded-2xl"
                   aria-label={`Verwalter-Rechner: ${RECHENPRAXIS_TASK_COUNT} WEG-Aufgaben, ab 19 Euro pro Monat`}
                 >
                   <div className="rounded-2xl bg-emerald-600 px-8 py-6 shadow-[0_24px_64px_-16px_rgba(5,150,105,0.65)] ring-1 ring-emerald-400/50 backdrop-blur-sm">
@@ -266,13 +266,16 @@ export default function Home() {
           {/* Mobile: Verwalter-Rechner kompakt unter Hero-Text */}
           <div className="lg:hidden">
             <Link href="/verwalter-rechner">
-              <a className="flex items-center gap-6 rounded-2xl border border-emerald-400/30 bg-emerald-600/90 px-8 py-6 text-white shadow-lg backdrop-blur-sm transition-colors hover:bg-emerald-600">
-                <Calculator className="h-10 w-10 shrink-0" aria-hidden />
-                <div>
-                  <div className="text-2xl font-semibold">WEG-Rechner — interaktiv</div>
-                  <div className="text-xl text-emerald-50/90">{RECHENPRAXIS_TASK_COUNT} Aufgaben · ab 19 €/Mo</div>
+              <a className="flex flex-col gap-4 rounded-2xl border border-emerald-400/30 bg-emerald-600/90 px-5 py-5 text-white shadow-lg backdrop-blur-sm transition-colors hover:bg-emerald-600 sm:flex-row sm:items-center sm:gap-6 sm:px-8 sm:py-6">
+                <div className="flex items-center gap-4 sm:contents">
+                  <Calculator className="h-10 w-10 shrink-0 sm:h-10 sm:w-10" aria-hidden />
+                  <div className="min-w-0 flex-1">
+                    <div className="text-lg font-semibold leading-tight sm:text-2xl">WEG-Rechner — interaktiv</div>
+                    <div className="mt-1 text-base text-emerald-50/90 sm:text-xl">{RECHENPRAXIS_TASK_COUNT} Aufgaben · ab 19 €/Mo</div>
+                  </div>
+                  <ArrowRight className="h-6 w-6 shrink-0 opacity-80 sm:hidden" aria-hidden />
                 </div>
-                <ArrowRight className="h-8 w-8 ml-auto shrink-0 opacity-80" />
+                <ArrowRight className="hidden h-8 w-8 shrink-0 opacity-80 sm:ml-auto sm:block" aria-hidden />
               </a>
             </Link>
           </div>
