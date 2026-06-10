@@ -245,18 +245,18 @@ export default function Home() {
               </div>
               <Link href="/verwalter-rechner">
                 <a
-                  className="absolute -bottom-4 -left-4 z-10 block max-w-[220px] -rotate-3 transition-transform duration-300 hover:rotate-0 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded-xl"
+                  className="absolute -bottom-8 -left-8 z-10 block max-w-[440px] -rotate-3 transition-transform duration-300 hover:rotate-0 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded-2xl"
                   aria-label={`Verwalter-Rechner: ${RECHENPRAXIS_TASK_COUNT} WEG-Aufgaben, ab 19 Euro pro Monat`}
                 >
-                  <div className="rounded-xl bg-emerald-600 px-4 py-3 shadow-[0_12px_32px_-8px_rgba(5,150,105,0.65)] ring-1 ring-emerald-400/50 backdrop-blur-sm">
-                    <div className="flex items-center gap-2 text-white">
-                      <Calculator className="h-4 w-4 shrink-0" aria-hidden />
-                      <span className="text-sm font-bold leading-tight">WEG-Rechner</span>
+                  <div className="rounded-2xl bg-emerald-600 px-8 py-6 shadow-[0_24px_64px_-16px_rgba(5,150,105,0.65)] ring-1 ring-emerald-400/50 backdrop-blur-sm">
+                    <div className="flex items-center gap-4 text-white">
+                      <Calculator className="h-8 w-8 shrink-0" aria-hidden />
+                      <span className="text-2xl font-bold leading-tight">WEG-Rechner</span>
                     </div>
-                    <p className="mt-1 text-[11px] leading-snug text-emerald-50/95">
+                    <p className="mt-2 text-[22px] leading-snug text-emerald-50/95">
                       {RECHENPRAXIS_TASK_COUNT} Aufgaben · ab 19 €/Mo
                     </p>
-                    <p className="mt-1 text-[10px] font-medium text-emerald-100/80">Eigenständiges Produkt →</p>
+                    <p className="mt-2 text-xl font-medium text-emerald-100/80">Eigenständiges Produkt →</p>
                   </div>
                 </a>
               </Link>
@@ -266,13 +266,13 @@ export default function Home() {
           {/* Mobile: Verwalter-Rechner kompakt unter Hero-Text */}
           <div className="lg:hidden">
             <Link href="/verwalter-rechner">
-              <a className="flex items-center gap-3 rounded-xl border border-emerald-400/30 bg-emerald-600/90 px-4 py-3 text-white shadow-lg backdrop-blur-sm transition-colors hover:bg-emerald-600">
-                <Calculator className="h-5 w-5 shrink-0" aria-hidden />
+              <a className="flex items-center gap-6 rounded-2xl border border-emerald-400/30 bg-emerald-600/90 px-8 py-6 text-white shadow-lg backdrop-blur-sm transition-colors hover:bg-emerald-600">
+                <Calculator className="h-10 w-10 shrink-0" aria-hidden />
                 <div>
-                  <div className="text-sm font-semibold">WEG-Rechner — interaktiv</div>
-                  <div className="text-xs text-emerald-50/90">{RECHENPRAXIS_TASK_COUNT} Aufgaben · ab 19 €/Mo</div>
+                  <div className="text-2xl font-semibold">WEG-Rechner — interaktiv</div>
+                  <div className="text-xl text-emerald-50/90">{RECHENPRAXIS_TASK_COUNT} Aufgaben · ab 19 €/Mo</div>
                 </div>
-                <ArrowRight className="h-4 w-4 ml-auto shrink-0 opacity-80" />
+                <ArrowRight className="h-8 w-8 ml-auto shrink-0 opacity-80" />
               </a>
             </Link>
           </div>
