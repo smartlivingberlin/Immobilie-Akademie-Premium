@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useInspectReadOnly } from "@/hooks/useInspectReadOnly";
-import { X, Send, Bot, User, Sparkles } from "lucide-react";
+import { X, Send, Bot, User, Sparkles, Mic, MicOff, Volume2 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -47,11 +47,107 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [listening, setListening] = useState(false);
+  const [speaking, setSpeaking] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const recognitionRef = useRef<MediaRecorder | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const { data: me } = trpc.auth.me.useQuery();
   const kiQuota = (me as { kiQuota?: { limit: number | null; used: number; remaining: number | null } } | null)?.kiQuota;
 
   const suggested = moduleId ? (SUGGESTED[moduleId] || DEFAULT_SUGGESTED) : DEFAULT_SUGGESTED;
+
+  const pickAudioMimeType = (): string => {
+    const candidates = ["audio/webm;codecs=opus", "audio/webm", "audio/mp4", "audio/ogg"];
+    return candidates.find((t) => MediaRecorder.isTypeSupported(t)) || "";
+  };
+
+  const startVoice = async () => {
+    if (listening) {
+      recognitionRef.current?.stop();
+      setListening(false);
+      return;
+    }
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const mimeType = pickAudioMimeType();
+      const recorder = mimeType
+        ? new MediaRecorder(stream, { mimeType })
+        : new MediaRecorder(stream);
+      const chunks: Blob[] = [];
+      const recordedType = mimeType || recorder.mimeType || "audio/webm";
+      recognitionRef.current = recorder;
+      recorder.ondataavailable = (e) => { if (e.data.size > 0) chunks.push(e.data); };
+      recorder.onstop = async () => {
+        stream.getTracks().forEach((t) => t.stop());
+        setListening(false);
+        const blob = new Blob(chunks, { type: recordedType });
+        setIsLoading(true);
+        try {
+          const res = await fetch("/api/ai/transcribe", {
+            method: "POST",
+            credentials: "include",
+            headers: { "Content-Type": recordedType },
+            body: blob,
+          });
+          const data = await res.json();
+          if (data.transcript) {
+            setInput(data.transcript);
+            setTimeout(() => handleSend(data.transcript), 100);
+          } else {
+            setIsLoading(false);
+          }
+        } catch {
+          setIsLoading(false);
+        }
+      };
+      recorder.start();
+      setListening(true);
+      setTimeout(() => { if (recorder.state === "recording") recorder.stop(); }, 10000);
+    } catch {
+      // Mikrofon-Zugriff verweigert oder nicht verfügbar
+    }
+  };
+
+  const speak = async (text: string) => {
+    if (speaking) {
+      audioRef.current?.pause();
+      audioRef.current = null;
+      setSpeaking(false);
+      return;
+    }
+    const clean = text.replace(/\*\*/g, "").replace(/[*`]/g, "").slice(0, 5000).trim();
+    setSpeaking(true);
+    try {
+      const res = await fetch("/api/ai/tts", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json", Accept: "audio/mpeg" },
+        body: JSON.stringify({ text: clean }),
+      });
+      if (res.ok) {
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const audio = new Audio(url);
+        audioRef.current = audio;
+        audio.onended = () => { setSpeaking(false); URL.revokeObjectURL(url); };
+        audio.onerror = () => setSpeaking(false);
+        await audio.play();
+        return;
+      }
+    } catch {
+      // Fallback unten
+    }
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(clean);
+    utterance.lang = "de-DE";
+    utterance.rate = 0.9;
+    utterance.onend = () => setSpeaking(false);
+    utterance.onerror = () => setSpeaking(false);
+    const german = window.speechSynthesis.getVoices().find((v) => v.lang.startsWith("de"));
+    if (german) utterance.voice = german;
+    window.speechSynthesis.speak(utterance);
+  };
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -94,6 +190,7 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
 
       const res = await fetch("/api/ai/rag-tutor", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           question: userMessage,
@@ -192,6 +289,17 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
                     {i < msg.content.split('\n').length - 1 && <br />}
                   </span>
                 ))}
+                {msg.role === "assistant" && msg.id !== "welcome" && (
+                  <button
+                    type="button"
+                    aria-label="Text vorlesen"
+                    onClick={() => speak(msg.content)}
+                    className="mt-2 flex items-center gap-1 text-[11px] text-slate-500 hover:text-blue-600 transition-colors"
+                  >
+                    <Volume2 className="w-3 h-3" />
+                    {speaking ? "Stop" : "Vorlesen"}
+                  </button>
+                )}
               </div>
             </div>
           ))}
@@ -238,6 +346,17 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
           className="text-xs"
           disabled={isLoading}
         />
+        <Button
+          type="button"
+          onClick={startVoice}
+          disabled={isLoading}
+          size="sm"
+          variant="outline"
+          title={listening ? "Aufnahme stoppen" : "Spracheingabe"}
+          className={listening ? "border-red-300 text-red-600" : ""}
+        >
+          {listening ? <MicOff className="w-3 h-3" /> : <Mic className="w-3 h-3" />}
+        </Button>
         <Button
           onClick={() => handleSend()}
           disabled={!input.trim() || isLoading}

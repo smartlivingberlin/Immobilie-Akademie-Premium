@@ -42,7 +42,7 @@ export const lawReferences: Record<string, LawReference> = {
   "ImmoWertV": {
     shortName: "ImmoWertV",
     fullName: "Immobilienwertermittlungsverordnung",
-    url: "https://www.gesetze-im-internet.de/immowertv/",
+    url: "https://www.gesetze-im-internet.de/immowertv_2021/",
   },
   "GrundstVG": {
     shortName: "GrundstVG",

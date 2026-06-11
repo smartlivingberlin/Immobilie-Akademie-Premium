@@ -82,6 +82,11 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
     setShowScrollBtn(scrollHeight - scrollTop - clientHeight > 100);
   };
 
+  const pickAudioMimeType = (): string => {
+    const candidates = ["audio/webm;codecs=opus", "audio/webm", "audio/mp4", "audio/ogg"];
+    return candidates.find((t) => MediaRecorder.isTypeSupported(t)) || "";
+  };
+
   const startVoice = async () => {
     if (listening) {
       recognitionRef.current?.stop();
@@ -90,19 +95,24 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
     }
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const recorder = new MediaRecorder(stream, { mimeType: "audio/webm" });
+      const mimeType = pickAudioMimeType();
+      const recorder = mimeType
+        ? new MediaRecorder(stream, { mimeType })
+        : new MediaRecorder(stream);
       const chunks: Blob[] = [];
+      const recordedType = mimeType || recorder.mimeType || "audio/webm";
       recognitionRef.current = recorder;
       recorder.ondataavailable = (e) => { if (e.data.size > 0) chunks.push(e.data); };
       recorder.onstop = async () => {
         stream.getTracks().forEach(t => t.stop());
         setListening(false);
-        const blob = new Blob(chunks, { type: "audio/webm" });
+        const blob = new Blob(chunks, { type: recordedType });
         setLoading(true);
         try {
           const res = await fetch("/api/ai/transcribe", {
             method: "POST",
-            headers: { "Content-Type": "audio/webm" },
+            credentials: "include",
+            headers: { "Content-Type": recordedType },
             body: blob,
           });
           const data = await res.json();
@@ -133,24 +143,18 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
       setSpeaking(false);
       return;
     }
-    const clean = text.replace(/#{1,3} /g, "").replace(/[*`]/g, "").replace(/---/g, "").slice(0, 300).trim();
+    const clean = text.replace(/#{1,3} /g, "").replace(/[*`]/g, "").replace(/---/g, "").slice(0, 5000).trim();
     setSpeaking(true);
-    // ElevenLabs API-Key wurde auf Server-Proxy verlagert (/api/tts)
 
     try {
-      const voiceId = "pNInz6obpgDQGcFmaJgB";
-      const res = await fetch(`/api/tts`, {
+      const res = await fetch("/api/ai/tts", {
         method: "POST",
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
           "Accept": "audio/mpeg",
         },
-        body: JSON.stringify({
-          text: clean,
-          model_id: "eleven_multilingual_v2",
-          voice_settings: { stability: 0.5, similarity_boost: 0.75 }
-        }),
+        body: JSON.stringify({ text: clean }),
       });
       if (res.ok) {
         const blob = await res.blob();
@@ -187,6 +191,7 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
     try {
       const res = await fetch("/api/ai/analyze-document", {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": file.type || "application/octet-stream",
           "x-filename": file.name,
@@ -231,6 +236,7 @@ ${data.analysis}`,
       const context = msgs.slice(-8).map((m) => ({ role: m.role, content: m.text }));
       const res = await fetch("/api/ai/rag-tutor", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: q, moduleId, context }),
       });

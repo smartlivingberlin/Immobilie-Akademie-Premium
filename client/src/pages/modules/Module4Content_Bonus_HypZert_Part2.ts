@@ -611,7 +611,7 @@ Schritt 3: Diskontierung mit WACC
 Schritt 4: Summierung = Verkehrswert
     `,
     law: [
-      "[HeimMindBauV](https://www.gesetze-im-internet.de/heimmindbauvou/) (Mindestanforderungen Heime)",
+      "[HeimMindBauV](https://www.gesetze-im-internet.de/heimmindbauv/) (Mindestanforderungen Heime)",
       "[SGB XI §72](https://www.gesetze-im-internet.de/sgb_11/__72.html) (Zulassung Pflegeeinrichtungen)",
       "[gif-Richtlinie](https://www.gif-ev.de/) (Hotelbewertung)",
       "[ImmoWertV §3](https://www.gesetze-im-internet.de/immowertv_2021/__3.html) (Besondere Immobilienarten)"

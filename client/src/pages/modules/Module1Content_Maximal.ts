@@ -231,7 +231,7 @@ Herr M. (45) ist Bankkaufmann und will sich als Immobilienmakler selbstständig 
     law: [
       "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Makler & Verwalter)",
       "[§ 34i GewO](https://www.gesetze-im-internet.de/gewo/__34i.html) (Darlehensvermittler)",
-      "[MaBV](https://www.gesetze-im-internet.de/maklerv/) (Makler- und Bauträgerverordnung)"
+      "[MaBV](https://www.gesetze-im-internet.de/mabv/) (Makler- und Bauträgerverordnung)"
     ],
     practice: `
 ### Praxis-Übung: Persönliches Kompetenzprofil
@@ -1222,9 +1222,9 @@ Frau L. ist Eigentümerin einer Ferienwohnung in den Alpen. Sie vermietet die Wo
     `,
     law: [
       "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Erlaubnispflicht)",
-      "[MaBV § 10](https://www.gesetze-im-internet.de/maklerv/__10.html) (Buchführung)",
-      "[MaBV § 15b](https://www.gesetze-im-internet.de/maklerv/__15b.html) (Weiterbildung)",
-      "[MaBV § 16](https://www.gesetze-im-internet.de/maklerv/__16.html) (Prüfung)"
+      "[MaBV § 10](https://www.gesetze-im-internet.de/mabv/__10.html) (Buchführung)",
+      "[MaBV § 15b](https://www.gesetze-im-internet.de/mabv/__15b.html) (Weiterbildung)",
+      "[MaBV § 16](https://www.gesetze-im-internet.de/mabv/__16.html) (Prüfung)"
     ],
     practice: `
 ### Praxis-Übung: §34c-Antrag ausfüllen
@@ -3851,7 +3851,7 @@ Die Digitalisierung verändert die Immobilienbranche fundamental. Wer die neuen 
 
 **Fazit:** Digitalisierung ist kein Luxus, sondern Notwendigkeit. Wer nicht digitalisiert, verliert Kunden.
     `,
-    law: ["[MaBV Anlage 1](https://www.gesetze-im-internet.de/maklerv/anlage_1.html) (Weiterbildung)"],
+    law: ["[MaBV Anlage 1](https://www.gesetze-im-internet.de/mabv/anlage_1.html) (Weiterbildung)"],
     practice: "Recherchieren Sie passende Weiterbildungsangebote für Ihre Spezialisierung.",
     task: "Erstellen Sie einen persönlichen Weiterbildungsplan für die nächsten 3 Jahre.",
     type: "Karriere"
