@@ -136,6 +136,8 @@ verwalter-lighthouse.json
 !docs/SYSTEM_AUDIT.md
 !docs/AUDIT_2026-06-10_*.md
 !docs/AUDIT_2026-06-10_INDEX.md
+!docs/MEGA_AUDIT_2026-06-11_BERICHT.md
+!docs/mega-audit/*.md
 *.bak.*
 .tmp/
 _check/
