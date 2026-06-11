@@ -1,6 +1,7 @@
 import DOMPurify from "dompurify";
 import { useState, useRef, useEffect } from "react";
-import { X, Send, Bot, User, Loader2, Sparkles, ChevronDown, Mic, MicOff, Volume2, VolumeX, Paperclip } from "lucide-react";
+import { X, Send, Bot, User, Loader2, Sparkles, ChevronDown, Mic, MicOff, Volume2, Paperclip } from "lucide-react";
+import { useSpeech } from "@/hooks/use-speech";
 
 interface AIAssistantProps {
   moduleContext?: string;
@@ -53,8 +54,7 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
   const [loading, setLoading] = useState(false);
   const [showScrollBtn, setShowScrollBtn] = useState(false);
   const [listening, setListening] = useState(false);
-  const [speaking, setSpeaking] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const { state: speechState, speak, stop: stopSpeech } = useSpeech();
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const recognitionRef = useRef<MediaRecorder | null>(null);
@@ -136,51 +136,13 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
       console.error("Mikrofon-Zugriff verweigert:", message);
     }
   };
-  const speak = async (text: string) => {
-    if (speaking) {
-      audioRef.current?.pause();
-      audioRef.current = null;
-      setSpeaking(false);
+  const handleSpeak = (text: string) => {
+    if (speechState !== "idle") {
+      stopSpeech();
       return;
     }
     const clean = text.replace(/#{1,3} /g, "").replace(/[*`]/g, "").replace(/---/g, "").slice(0, 5000).trim();
-    setSpeaking(true);
-
-    try {
-      const res = await fetch("/api/ai/tts", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "audio/mpeg",
-        },
-        body: JSON.stringify({ text: clean }),
-      });
-      if (res.ok) {
-        const blob = await res.blob();
-        const url = URL.createObjectURL(blob);
-        const audio = new Audio(url);
-        audioRef.current = audio;
-        audio.onended = () => { setSpeaking(false); URL.revokeObjectURL(url); };
-        audio.onerror = () => setSpeaking(false);
-        await audio.play();
-        return;
-      }
-    } catch (e) {
-      console.warn("ElevenLabs direkt fehlgeschlagen:", e);
-    }
-  
-    // Fallback Browser TTS
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(clean);
-    utterance.lang = "de-DE";
-    utterance.rate = 0.9;
-    utterance.onend = () => setSpeaking(false);
-    utterance.onerror = () => setSpeaking(false);
-    const voices = window.speechSynthesis.getVoices();
-    const german = voices.find(v => v.lang.startsWith("de"));
-    if (german) utterance.voice = german;
-    window.speechSynthesis.speak(utterance);
+    speak(clean);
   };
 
   const handleFileUpload = async (file: File) => {
@@ -359,7 +321,7 @@ ${data.analysis}`,
                 {m.role === "assistant" ? (
                   <>
                   <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(renderMarkdown(m.text)) }} />
-                  <button aria-label="Text vorlesen" onClick={(e) => { e.stopPropagation(); speak(m.text); }} style={{
+                  <button aria-label="Text vorlesen" onClick={(e) => { e.stopPropagation(); handleSpeak(m.text); }} style={{
                     background:"#f1f5f9",border:"1px solid #e2e8f0",cursor:"pointer",
                     marginTop:"10px",padding:"6px 12px",borderRadius:"8px",
                     color:"#475569",fontSize:"13px",fontWeight:"500",
@@ -369,7 +331,7 @@ ${data.analysis}`,
                   onMouseEnter={e=>{(e.currentTarget as HTMLElement).style.background="#dbeafe";(e.currentTarget as HTMLElement).style.color="#2563eb"}}
                   onMouseLeave={e=>{(e.currentTarget as HTMLElement).style.background="#f1f5f9";(e.currentTarget as HTMLElement).style.color="#475569"}}
                   >
-                    <Volume2 size={16}/><span>{speaking ? '⏹ Stop' : '🔊 Vorlesen'}</span>
+                    <Volume2 size={16}/><span>{speechState !== "idle" ? "⏹ Stop" : "🔊 Vorlesen"}</span>
                   </button>
                   </>
                 ) : (

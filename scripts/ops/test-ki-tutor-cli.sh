@@ -69,21 +69,9 @@ with open(jar_path, "w") as f:
 PY
 
 echo ""
-echo "=== 2) TTS /api/ai/tts (Vorlesen) ==="
-TTS_CODE=$(curl -s -o /tmp/tts.mp3 -w "%{http_code}" \
-  -b "$COOKIE_JAR" \
-  -X POST "${BASE}/api/ai/tts" \
-  -H "Content-Type: application/json" \
-  -H "Accept: audio/mpeg" \
-  -d '{"text":"Hallo, dies ist ein Test der Vorlesefunktion."}')
-echo "HTTP ${TTS_CODE}"
-if [[ "$TTS_CODE" = "200" ]]; then
-  BYTES=$(wc -c < /tmp/tts.mp3)
-  echo "Audio-Bytes: ${BYTES} → gespeichert als /tmp/tts.mp3"
-  file /tmp/tts.mp3 2>/dev/null || true
-else
-  head -c 500 /tmp/tts.mp3; echo ""
-fi
+echo "=== 2) Vorlesen (Browser-Stimme) ==="
+echo "Hinweis: Vorlesen läuft kostenlos im Browser (speechSynthesis)."
+echo "Terminal-Test nicht möglich — in der App auf „Vorlesen“ klicken."
 
 echo ""
 echo "=== 3) RAG-Tutor /api/ai/rag-tutor ==="
@@ -96,16 +84,8 @@ echo "HTTP ${RAG_CODE}"
 head -c 400 /tmp/rag.json; echo ""
 
 echo ""
-echo "=== 4) Permissions-Policy (Mikrofon) ==="
-curl -sI "${BASE}/" | grep -i permissions-policy || echo "(Header erst nach Deploy von PR #200 sichtbar)"
-
-echo ""
-echo "=== 5) Ohne Cookie → 401 erwartet ==="
-UNAUTH=$(curl -s -o /dev/null -w "%{http_code}" \
-  -X POST "${BASE}/api/ai/tts" \
-  -H "Content-Type: application/json" \
-  -d '{"text":"test"}')
-echo "TTS ohne Cookie: HTTP ${UNAUTH} (401 erwartet)"
+echo "=== 4) Mikrofon-Header (Permissions-Policy) ==="
+curl -sI "${BASE}/" | grep -i permissions-policy | grep -i microphone || echo "(microphone=(self) nach Deploy prüfen)"
 
 echo ""
 echo "Fertig."

@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useInspectReadOnly } from "@/hooks/useInspectReadOnly";
 import { X, Send, Bot, User, Sparkles, Mic, MicOff, Volume2 } from "lucide-react";
+import { useSpeech } from "@/hooks/use-speech";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -48,10 +49,9 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [listening, setListening] = useState(false);
-  const [speaking, setSpeaking] = useState(false);
+  const { state: speechState, speak, stop: stopSpeech } = useSpeech();
   const scrollRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<MediaRecorder | null>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const { data: me } = trpc.auth.me.useQuery();
   const kiQuota = (me as { kiQuota?: { limit: number | null; used: number; remaining: number | null } } | null)?.kiQuota;
 
@@ -109,44 +109,13 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
     }
   };
 
-  const speak = async (text: string) => {
-    if (speaking) {
-      audioRef.current?.pause();
-      audioRef.current = null;
-      setSpeaking(false);
+  const handleSpeak = (text: string) => {
+    if (speechState !== "idle") {
+      stopSpeech();
       return;
     }
     const clean = text.replace(/\*\*/g, "").replace(/[*`]/g, "").slice(0, 5000).trim();
-    setSpeaking(true);
-    try {
-      const res = await fetch("/api/ai/tts", {
-        method: "POST",
-        credentials: "include",
-        headers: { "Content-Type": "application/json", Accept: "audio/mpeg" },
-        body: JSON.stringify({ text: clean }),
-      });
-      if (res.ok) {
-        const blob = await res.blob();
-        const url = URL.createObjectURL(blob);
-        const audio = new Audio(url);
-        audioRef.current = audio;
-        audio.onended = () => { setSpeaking(false); URL.revokeObjectURL(url); };
-        audio.onerror = () => setSpeaking(false);
-        await audio.play();
-        return;
-      }
-    } catch {
-      // Fallback unten
-    }
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(clean);
-    utterance.lang = "de-DE";
-    utterance.rate = 0.9;
-    utterance.onend = () => setSpeaking(false);
-    utterance.onerror = () => setSpeaking(false);
-    const german = window.speechSynthesis.getVoices().find((v) => v.lang.startsWith("de"));
-    if (german) utterance.voice = german;
-    window.speechSynthesis.speak(utterance);
+    speak(clean);
   };
 
   useEffect(() => {
@@ -293,11 +262,11 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
                   <button
                     type="button"
                     aria-label="Text vorlesen"
-                    onClick={() => speak(msg.content)}
+                    onClick={() => handleSpeak(msg.content)}
                     className="mt-2 flex items-center gap-1 text-[11px] text-slate-500 hover:text-blue-600 transition-colors"
                   >
                     <Volume2 className="w-3 h-3" />
-                    {speaking ? "Stop" : "Vorlesen"}
+                    {speechState !== "idle" ? "Stop" : "Vorlesen"}
                   </button>
                 )}
               </div>
