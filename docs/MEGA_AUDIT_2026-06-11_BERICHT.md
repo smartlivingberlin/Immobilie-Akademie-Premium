@@ -49,6 +49,7 @@
 | [mega-audit/G_MARKETING_SEO.md](./mega-audit/G_MARKETING_SEO.md) | Teil G — SEO, Claims, Landing |
 | [mega-audit/I_STAKEHOLDER.md](./mega-audit/I_STAKEHOLDER.md) | Teil I — Persona-Walkthroughs, Edge-Cases |
 | [mega-audit/H_AZAV.md](./mega-audit/H_AZAV.md) | Teil H1 — AZAV technische Voraussetzungen |
+| [mega-audit/NACHFORDERUNGEN_2026-06-11.md](./mega-audit/NACHFORDERUNGEN_2026-06-11.md) | Nachforderungen, Sentry-Issues S-1–S-3, Quiz/Schema-Vertiefung |
 
 ---
 
@@ -59,7 +60,7 @@
 | Bereich | Reife | Kernerkenntnis |
 |---------|-------|----------------|
 | Hauptportal | 4.0 | Live, 242 Tests grün, Module exportiert, DB connected |
-| Admin-Suite | 3.5 | Umfangreich, APIs geschützt; Sentry konfiguriert aber ENV-abhängig |
+| Admin-Suite | 3.5 | Umfangreich, APIs geschützt; **Sentry aktiv** (~2 Wo. Daten, 4 offene Issues) |
 | Verwalter-Suite | 3.2 | #187–#195 live; CLI-verifiziert; Sub-Produkt im Monorepo |
 | Architektur | 3.0 | Starke Schema-Drift (17 Tabellen nur in Migrationen); Monolithen db/routers |
 | Security | 3.2 | PBKDF2, Rate-Limits, CSP mit unsafe-inline; kein FK-Enforcement |
@@ -135,7 +136,8 @@
 | Punkt | Wer | Tool/Aktion |
 |-------|-----|-------------|
 | Stripe Live-Status, Umsatz, Webhook | Alisad | Stripe Dashboard |
-| Railway Env-Vars (Inbox-Secret, Sentry DSN) | Alisad | Railway CLI |
+| Railway Env-Vars (Inbox-Secret) | Alisad | Railway CLI |
+| Sentry Issues S-1–S-3 beheben | Cursor | siehe NACHFORDERUNGEN |
 | MySQL Row-Counts, Restore-Test | Alisad | `db:backup` + Restore-Runbook |
 | securityheaders.com Score | Claude/Alisad | Browser-Link |
 | SSL Labs / internet.nl | Claude/Alisad | Externe Tools |
