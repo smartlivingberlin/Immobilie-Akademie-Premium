@@ -150,46 +150,6 @@ const resetLimiter = rateLimit({
   message: { error: "Zu viele Reset-Anfragen. Bitte warte 1 Stunde." }
 });
 
-
-
-// ── ElevenLabs TTS-Proxy (API-Key nur server-seitig) ──────────────
-app.post("/api/tts", requireAuth, async (req: any, res: any) => {
-  const { text, voiceId = "21m00Tcm4TlvDq8ikWAM" } = req.body;
-  const apiKey = process.env.ELEVENLABS_API_KEY;
-  if (!apiKey) return res.status(503).json({ error: "TTS nicht konfiguriert" });
-  if (!text || text.length > 500) return res.status(400).json({ error: "Text ungültig" });
-  try {
-    const r = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
-      method: "POST",
-      headers: { "xi-api-key": apiKey, "Content-Type": "application/json" },
-      body: JSON.stringify({ text, model_id: "eleven_multilingual_v2",
-        voice_settings: { stability: 0.5, similarity_boost: 0.75 } }),
-    });
-    if (!r.ok) return res.status(502).json({ error: "TTS-Fehler" });
-    res.setHeader("Content-Type", "audio/mpeg");
-    const buf = await r.arrayBuffer();
-    res.send(Buffer.from(buf));
-  } catch { res.status(502).json({ error: "TTS-Verbindungsfehler" }); }
-});
-
-// DSGVO-Consent Logging (Cookie-Banner)
-app.post("/api/consent", async (req: any, res: any) => {
-  try {
-    const { type, version, timestamp } = req.body;
-    const userId = (req as any).user?.id ?? null;
-    // Anonymes Logging auch ohne Login (für Cookie-Banner vor Registrierung)
-    await (await (await import("../db")).getDb()).$client.query(
-      `INSERT INTO consent_log (userId, consentType, consentVersion, ipAddress)
-       VALUES (?, ?, ?, ?)`,
-      [userId ?? null, type === "accepted" ? "marketing" : "revoked_marketing",
-       version ?? "2026-04", req.ip ?? ""]
-    );
-    res.json({ ok: true });
-  } catch {
-    res.json({ ok: true }); // Fehler still loggen, UX nicht blockieren
-  }
-});
-
   app.use("/api/ai", aiLimiter);
 
 app.use("/api/auth/login", loginLimiter);
@@ -275,6 +235,54 @@ app.post("/api/stripe/webhook", express.raw({ type: "*/*" }), async (req: any, r
 });
 app.use(express.json({ limit: "1mb" }));
   app.use(express.urlencoded({ limit: "1mb", extended: true }));
+
+  // ── ElevenLabs TTS-Proxy (nach express.json — req.body muss geparst sein) ──
+  app.post("/api/tts", requireAuth, async (req: any, res: any) => {
+    try {
+      const { text, voiceId = "21m00Tcm4TlvDq8ikWAM" } = req.body ?? {};
+      const apiKey = process.env.ELEVENLABS_API_KEY;
+      if (!apiKey) return res.status(503).json({ error: "TTS nicht konfiguriert" });
+      if (!text || text.length > 500) return res.status(400).json({ error: "Text ungültig" });
+      const r = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+        method: "POST",
+        headers: { "xi-api-key": apiKey, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          text,
+          model_id: "eleven_multilingual_v2",
+          voice_settings: { stability: 0.5, similarity_boost: 0.75 },
+        }),
+      });
+      if (!r.ok) return res.status(502).json({ error: "TTS-Fehler" });
+      res.setHeader("Content-Type", "audio/mpeg");
+      const buf = await r.arrayBuffer();
+      res.send(Buffer.from(buf));
+    } catch (err: any) {
+      logger.error("[TTS] Fehler", { error: err?.message });
+      res.status(502).json({ error: "TTS-Verbindungsfehler" });
+    }
+  });
+
+  // DSGVO-Consent Logging (Cookie-Banner)
+  app.post("/api/consent", async (req: any, res: any) => {
+    try {
+      const { type, version } = req.body ?? {};
+      const userId = (req as any).user?.id ?? null;
+      await (await (await import("../db")).getDb()).$client.query(
+        `INSERT INTO consent_log (userId, consentType, consentVersion, ipAddress)
+         VALUES (?, ?, ?, ?)`,
+        [
+          userId ?? null,
+          type === "accepted" ? "marketing" : "revoked_marketing",
+          version ?? "2026-04",
+          req.ip ?? "",
+        ],
+      );
+      res.json({ ok: true });
+    } catch {
+      res.json({ ok: true });
+    }
+  });
+
   // OAuth callback (Manus) – nur wenn OAUTH_SERVER_URL konfiguriert
   if (process.env.OAUTH_SERVER_URL) {
     registerOAuthRoutes(app);
