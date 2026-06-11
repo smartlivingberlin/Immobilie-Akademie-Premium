@@ -1,7 +1,8 @@
 import DOMPurify from "dompurify";
 import { useState, useRef, useEffect } from "react";
 import { X, Send, Bot, User, Loader2, Sparkles, ChevronDown, Mic, MicOff, Volume2, Paperclip } from "lucide-react";
-import { useSpeech } from "@/hooks/use-speech";
+import { useToast } from "@/hooks/use-toast";
+import { isBrowserSpeechSupported, speakBrowserText, stopBrowserSpeech } from "@/lib/speakBrowser";
 
 interface AIAssistantProps {
   moduleContext?: string;
@@ -54,7 +55,8 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
   const [loading, setLoading] = useState(false);
   const [showScrollBtn, setShowScrollBtn] = useState(false);
   const [listening, setListening] = useState(false);
-  const { state: speechState, speak, stop: stopSpeech } = useSpeech();
+  const [speaking, setSpeaking] = useState(false);
+  const { toast } = useToast();
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const recognitionRef = useRef<MediaRecorder | null>(null);
@@ -120,11 +122,19 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
             setInput(data.transcript);
             setTimeout(() => send(data.transcript), 100);
           } else {
-            console.error("Transkription fehlgeschlagen:", data.error);
+            toast({
+              title: "Spracherkennung fehlgeschlagen",
+              description: data.error || "Bitte erneut versuchen oder Text eingeben.",
+              variant: "destructive",
+            });
             setLoading(false);
           }
         } catch {
-          console.error("Verbindungsfehler bei Transkription");
+          toast({
+            title: "Verbindungsfehler",
+            description: "Spracherkennung konnte nicht erreicht werden.",
+            variant: "destructive",
+          });
           setLoading(false);
         }
       };
@@ -133,16 +143,35 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
       setTimeout(() => { if (recorder.state === "recording") recorder.stop(); }, 10000);
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
-      console.error("Mikrofon-Zugriff verweigert:", message);
+      toast({
+        title: "Mikrofon nicht verfügbar",
+        description: message.includes("Permission") || message.includes("NotAllowed")
+          ? "Bitte Mikrofon-Zugriff im Browser erlauben. Nach dem Deploy der Server-Aktualisierung muss die Seite neu geladen werden."
+          : message,
+        variant: "destructive",
+      });
     }
   };
   const handleSpeak = (text: string) => {
-    if (speechState !== "idle") {
-      stopSpeech();
+    if (speaking) {
+      stopBrowserSpeech();
+      setSpeaking(false);
+      return;
+    }
+    if (!isBrowserSpeechSupported()) {
+      toast({
+        title: "Vorlesen nicht unterstützt",
+        description: "Ihr Browser unterstützt keine Sprachausgabe.",
+        variant: "destructive",
+      });
       return;
     }
     const clean = text.replace(/#{1,3} /g, "").replace(/[*`]/g, "").replace(/---/g, "").slice(0, 5000).trim();
-    speak(clean);
+    const ok = speakBrowserText(clean, {
+      onEnd: () => setSpeaking(false),
+      onError: () => setSpeaking(false),
+    });
+    if (ok) setSpeaking(true);
   };
 
   const handleFileUpload = async (file: File) => {
@@ -331,7 +360,7 @@ ${data.analysis}`,
                   onMouseEnter={e=>{(e.currentTarget as HTMLElement).style.background="#dbeafe";(e.currentTarget as HTMLElement).style.color="#2563eb"}}
                   onMouseLeave={e=>{(e.currentTarget as HTMLElement).style.background="#f1f5f9";(e.currentTarget as HTMLElement).style.color="#475569"}}
                   >
-                    <Volume2 size={16}/><span>{speechState !== "idle" ? "⏹ Stop" : "🔊 Vorlesen"}</span>
+                    <Volume2 size={16}/><span>{speaking ? "⏹ Stop" : "🔊 Vorlesen"}</span>
                   </button>
                   </>
                 ) : (

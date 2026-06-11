@@ -402,7 +402,7 @@ export default function Module5Detail() {
                               {currentContent?.law.map((item: string, i: number) => (
                                 <div key={i} className="flex gap-3 p-3 bg-blue-50 rounded-lg mb-2">
                                   <span className="text-blue-600 font-bold">§</span>
-                                  <span>{item}</span>
+                                  <div className="prose prose-sm max-w-none break-words"><SmartContent content={item} /></div>
                                 </div>
                               ))}
                             </div>

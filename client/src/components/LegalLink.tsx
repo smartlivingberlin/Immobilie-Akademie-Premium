@@ -70,7 +70,38 @@ export function LegalLink({ law, className = "" }: LegalLinkProps) {
     
     // MaBV (Makler- und Bauträgerverordnung)
     if (text.includes("MaBV")) {
+      const mabvMatch = text.match(/§\s*(\d+[a-z]?)/);
+      if (mabvMatch) {
+        return `https://www.gesetze-im-internet.de/mabv/__${mabvMatch[1]}.html`;
+      }
       return "https://www.gesetze-im-internet.de/mabv/";
+    }
+
+    // ImmoWertV
+    if (text.includes("ImmoWertV") || text.includes("ImmWertV")) {
+      const iwMatch = text.match(/§\s*(\d+[a-z]?)/);
+      if (iwMatch) {
+        return `https://www.gesetze-im-internet.de/immowertv_2021/__${iwMatch[1]}.html`;
+      }
+      return "https://www.gesetze-im-internet.de/immowertv_2021/";
+    }
+
+    // GewO allgemein
+    if (text.includes("GewO")) {
+      const gewoMatch = text.match(/§\s*(\d+[a-z]?)/);
+      if (gewoMatch) {
+        return `https://www.gesetze-im-internet.de/gewo/__${gewoMatch[1]}.html`;
+      }
+      return "https://www.gesetze-im-internet.de/gewo/";
+    }
+
+    // GRStVG / Grundstücksverkehrsgesetz
+    if (text.includes("GRStVG") || text.includes("GrdstVG") || text.includes("GrundstVG")) {
+      const grMatch = text.match(/§\s*(\d+[a-z]?)/);
+      if (grMatch) {
+        return `https://www.gesetze-im-internet.de/grstvg/__${grMatch[1]}.html`;
+      }
+      return "https://www.gesetze-im-internet.de/grstvg/";
     }
     
     // BetrKV (Betriebskostenverordnung)

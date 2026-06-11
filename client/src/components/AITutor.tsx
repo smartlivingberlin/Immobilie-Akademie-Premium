@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { useInspectReadOnly } from "@/hooks/useInspectReadOnly";
 import { X, Send, Bot, User, Sparkles, Mic, MicOff, Volume2 } from "lucide-react";
-import { useSpeech } from "@/hooks/use-speech";
+import { useToast } from "@/hooks/use-toast";
+import { isBrowserSpeechSupported, speakBrowserText, stopBrowserSpeech } from "@/lib/speakBrowser";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -49,7 +50,8 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [listening, setListening] = useState(false);
-  const { state: speechState, speak, stop: stopSpeech } = useSpeech();
+  const [speaking, setSpeaking] = useState(false);
+  const { toast } = useToast();
   const scrollRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<MediaRecorder | null>(null);
   const { data: me } = trpc.auth.me.useQuery();
@@ -95,27 +97,53 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
             setInput(data.transcript);
             setTimeout(() => handleSend(data.transcript), 100);
           } else {
+            toast({
+              title: "Spracherkennung fehlgeschlagen",
+              description: data.error || "Bitte erneut versuchen.",
+              variant: "destructive",
+            });
             setIsLoading(false);
           }
         } catch {
+          toast({
+            title: "Verbindungsfehler",
+            description: "Spracherkennung nicht erreichbar.",
+            variant: "destructive",
+          });
           setIsLoading(false);
         }
       };
       recorder.start();
       setListening(true);
       setTimeout(() => { if (recorder.state === "recording") recorder.stop(); }, 10000);
-    } catch {
-      // Mikrofon-Zugriff verweigert oder nicht verfügbar
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      toast({
+        title: "Mikrofon nicht verfügbar",
+        description: message.includes("Permission") || message.includes("NotAllowed")
+          ? "Bitte Mikrofon im Browser erlauben und Seite neu laden."
+          : message,
+        variant: "destructive",
+      });
     }
   };
 
   const handleSpeak = (text: string) => {
-    if (speechState !== "idle") {
-      stopSpeech();
+    if (speaking) {
+      stopBrowserSpeech();
+      setSpeaking(false);
+      return;
+    }
+    if (!isBrowserSpeechSupported()) {
+      toast({ title: "Vorlesen nicht unterstützt", variant: "destructive" });
       return;
     }
     const clean = text.replace(/\*\*/g, "").replace(/[*`]/g, "").slice(0, 5000).trim();
-    speak(clean);
+    const ok = speakBrowserText(clean, {
+      onEnd: () => setSpeaking(false),
+      onError: () => setSpeaking(false),
+    });
+    if (ok) setSpeaking(true);
   };
 
   useEffect(() => {
@@ -266,7 +294,7 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
                     className="mt-2 flex items-center gap-1 text-[11px] text-slate-500 hover:text-blue-600 transition-colors"
                   >
                     <Volume2 className="w-3 h-3" />
-                    {speechState !== "idle" ? "Stop" : "Vorlesen"}
+                    {speaking ? "Stop" : "Vorlesen"}
                   </button>
                 )}
               </div>

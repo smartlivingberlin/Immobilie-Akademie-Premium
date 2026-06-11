@@ -2051,8 +2051,8 @@ Bausparkassen bieten Bausparverträge (Sparphase + Darlehensphase).
 
 **Beispiel:** München fordert 30% Sozialwohnungen bei Neubauten. Projektentwickler müssen diese Quote erfüllen oder Ausgleichszahlung leisten.
     `,
-    law: ["[§ 1 WEG](https://www.gesetze-im-internet.de/weg/__1.html) (Wohnungseigentum)",
-      "[§ 26a WEG](https://www.gesetze-im-internet.de/weg/__26a.html) (Verwalter Pflichtfortbildung)",
+    law: ["[§ 1 WEG](https://www.gesetze-im-internet.de/woeigg/__1.html) (Wohnungseigentum)",
+      "[§ 26a WEG](https://www.gesetze-im-internet.de/woeigg/__26a.html) (Verwalter Pflichtfortbildung)",
       "[§ 535 BGB](https://www.gesetze-im-internet.de/bgb/__535.html) (Mietvertrag Grundpflichten)"],
     practice: "Erstellen Sie eine Aufgabenliste für einen WEG-Verwalter (kaufmännisch und technisch).",
     task: "Recherchieren Sie: Was ist der Unterschied zwischen WEG-Verwaltung und Mietverwaltung?",
