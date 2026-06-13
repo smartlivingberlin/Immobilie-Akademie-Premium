@@ -82,7 +82,7 @@ async function startServer() {
 
   // Permissions-Policy Header
   app.use((_req, res, next) => {
-    res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=(), payment=(self \"https://js.stripe.com\")");
+    res.setHeader("Permissions-Policy", "camera=(), microphone=(self), geolocation=(), payment=(self \"https://js.stripe.com\")");
     next();
   });
 app.use(helmet({
