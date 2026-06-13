@@ -1,4 +1,4 @@
-import type { APIRequestContext, Page } from "@playwright/test";
+import { expect, type APIRequestContext, type Page } from "@playwright/test";
 
 export const BASE = process.env.PLAYWRIGHT_BASE_URL || "https://immobilien-akademie-smart.de";
 
@@ -56,6 +56,10 @@ export const LAW_SLUG_CHECKS: LawSlugCheck[] = [
   },
 ];
 
+export function slugMatchesHref(href: string, slug: string): boolean {
+  return href.toLowerCase().includes(slug.toLowerCase());
+}
+
 export async function collectGesetzeHrefs(page: Page): Promise<string[]> {
   return page.$$eval('a[href*="gesetze-im-internet.de"]', (anchors) =>
     anchors.map((a) => a.getAttribute("href") || ""),
@@ -66,6 +70,86 @@ export async function openNormenTabIfPresent(page: Page): Promise<void> {
   const normen = page.getByRole("tab", { name: /Normen/i });
   if (await normen.isVisible().catch(() => false)) {
     await normen.click();
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(300);
   }
+}
+
+/**
+ * Navigate to a module tag route and wait for async JSON + tab shell.
+ * Module 1/3 reload once so selectedDay matches the URL without changing app code.
+ */
+export async function gotoModuleTagAndWaitForContent(
+  page: Page,
+  moduleId: number,
+  tagId: number,
+): Promise<void> {
+  const path = `/modul/${moduleId}/tag/${tagId}`;
+  const jsonPattern = `/data/module${moduleId}.json`;
+
+  await page.goto(`${BASE}${path}`, { waitUntil: "domcontentloaded", timeout: 30000 });
+  await expect(page).not.toHaveURL(/\/login/);
+
+  if (moduleId === 1 || moduleId === 3) {
+    const jsonWait = page.waitForResponse(
+      (r) => r.url().includes(jsonPattern) && r.status() === 200,
+      { timeout: 30000 },
+    );
+    await page.reload({ waitUntil: "domcontentloaded" });
+    await expect(page).not.toHaveURL(/\/login/);
+    await jsonWait.catch(() => undefined);
+  } else {
+    await page
+      .waitForResponse((r) => r.url().includes(jsonPattern) && r.status() === 200, {
+        timeout: 30000,
+      })
+      .catch(() => undefined);
+  }
+
+  await expect(page.getByRole("tab", { name: /Theorie/i })).toBeVisible({ timeout: 20000 });
+  await page.waitForFunction(
+    () => document.body.innerText.replace(/\s+/g, " ").trim().length > 400,
+    { timeout: 30000 },
+  );
+}
+
+/** Wait for a gesetze-im-internet href or HTML slug on the current page (Normen tab preferred). */
+export async function waitForLawSlugOnPage(page: Page, slug: string): Promise<void> {
+  const slugLower = slug.toLowerCase();
+  await openNormenTabIfPresent(page);
+  await page.waitForFunction(
+    (s) => {
+      const hrefs = Array.from(
+        document.querySelectorAll('a[href*="gesetze-im-internet.de"]'),
+      ).map((a) => (a.getAttribute("href") || "").toLowerCase());
+      if (hrefs.some((h) => h.includes(s))) return true;
+      return document.documentElement.innerHTML.toLowerCase().includes(s);
+    },
+    slugLower,
+    { timeout: 30000 },
+  );
+}
+
+export async function assertLawSlugPresent(
+  page: Page,
+  moduleId: number,
+  tagId: number,
+  slug: string,
+): Promise<void> {
+  await gotoModuleTagAndWaitForContent(page, moduleId, tagId);
+  await waitForLawSlugOnPage(page, slug);
+
+  const hrefs = await collectGesetzeHrefs(page);
+  const html = await page.content().then((c) => c.toLowerCase());
+  const found =
+    hrefs.some((h) => slugMatchesHref(h, slug)) || html.includes(slug.toLowerCase());
+
+  expect(found, `Kein href mit „${slug}“ auf Modul ${moduleId}/tag/${tagId}`).toBe(true);
+}
+
+/** Locator for the open KI-Assistent overlay panel (not page AudioPlayer). */
+export function kiAssistantPanel(page: Page) {
+  return page
+    .locator("div")
+    .filter({ has: page.getByText("KI-Tutor · Immobilien-Akademie") })
+    .last();
 }

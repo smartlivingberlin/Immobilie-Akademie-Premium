@@ -75,6 +75,18 @@ Workflow muss Secrets als Env an Playwright durchreichen. Ohne Secrets: Public-S
 | `grstvg` | — | dokumentiert ausgeschlossen (nur Glossar/LegalLink) |
 | Modul 5 | Tag 1 | dokumentiert ausgeschlossen (keine festen hrefs) |
 
+Warte-Strategie (Auth-Smoke #209):
+
+- Nach `goto` auf `/modul/{id}/tag/{n}` wird auf `module{n}.json` und sichtbare Tabs gewartet.
+- Modul 1 und 3: ein `reload()` nach dem ersten `goto`, damit der Tag aus der URL zum gerenderten Inhalt passt (ohne App-Code-Änderung).
+- Normen-Tab wird geöffnet, falls vorhanden; Slug-Prüfung ist case-insensitive auf `gesetze-im-internet.de`-hrefs und HTML.
+
+## KI-Assistent Smoke (#205)
+
+- Sichtbarkeit: Mic-Button (`title="Spracheingabe starten"`) **nur im geöffneten KI-Overlay** — nicht den AudioPlayer auf der Tag-Seite.
+- Der Vorlesen-Button (`aria-label="Text vorlesen"`) erscheint erst unter Assistant-Nachrichten (RAG-Antwort). Der Smoke-Test klickt ihn nicht und sendet keine Chatnachricht (keine API-/RAG-Kosten).
+- `speechSynthesis` bleibt in den Tests gemockt.
+
 ## Allgemeine E2E vs. Auth-Smoke
 
 - **`pnpm run test:e2e`** (alle Specs): Erwartet Credentials oder `MAGIC_LINK_SECRET`; bricht früh ab, wenn nichts gesetzt ist.

@@ -3,8 +3,8 @@ import {
   BASE,
   hasValidSession,
   LAW_SLUG_CHECKS,
-  collectGesetzeHrefs,
-  openNormenTabIfPresent,
+  assertLawSlugPresent,
+  kiAssistantPanel,
 } from "./helpers/testAuth";
 
 test.describe("Public smoke (#207 preload / public routes)", () => {
@@ -95,28 +95,11 @@ test.describe("Authenticated smoke (#204/#205/#207)", () => {
       }
 
       const tagId = check.tagId ?? 1;
-      await page.goto(`${BASE}/modul/${check.moduleId}/tag/${tagId}`, {
-        waitUntil: "domcontentloaded",
-        timeout: 30000,
-      });
-      await expect(page).not.toHaveURL(/\/login/);
-      await openNormenTabIfPresent(page);
-      await page.waitForTimeout(1500);
-      const hrefs = await collectGesetzeHrefs(page);
-      const html = await page.content();
-      const found =
-        hrefs.some((h) => h.includes(check.slug)) || html.includes(check.slug);
-      expect(
-        found,
-        `Kein href mit „${check.slug}“ auf Modul ${check.moduleId}/tag/${tagId}`,
-      ).toBe(true);
+      await assertLawSlugPresent(page, check.moduleId, tagId, check.slug);
     });
   }
 
-  test("KI-Assistent: öffnen, Vorlesen- und Mic-Button sichtbar (#205)", async ({
-    page,
-    context,
-  }) => {
+  test("KI-Assistent: öffnen, Mic-Button im Overlay sichtbar (#205)", async ({ page, context }) => {
     await page.addInitScript(() => {
       if (!window.speechSynthesis?.speak) {
         Object.defineProperty(window, "speechSynthesis", {
@@ -129,15 +112,15 @@ test.describe("Authenticated smoke (#204/#205/#207)", () => {
     await page.goto(`${BASE}/modul/1/tag/1`, { waitUntil: "domcontentloaded", timeout: 30000 });
     await expect(page).not.toHaveURL(/\/login/);
     await page.getByRole("button", { name: "KI-Assistent öffnen" }).click({ timeout: 15000 });
-    await expect(page.getByText(/Vorlesen|Stop/i).first()).toBeVisible({ timeout: 10000 });
-    const micButton = page.locator("button").filter({
-      has: page.locator("svg.lucide-mic, svg.lucide-mic-off"),
-    });
-    await expect(micButton.first()).toBeVisible();
-    await expect(micButton.first()).toBeEnabled();
+
+    const panel = kiAssistantPanel(page);
+    await expect(panel.getByText("KI-Tutor · Immobilien-Akademie")).toBeVisible({ timeout: 10000 });
+    const micButton = panel.getByTitle("Spracheingabe starten");
+    await expect(micButton).toBeVisible();
+    await expect(micButton).toBeEnabled();
   });
 
-  test("KI-Assistent: Vorlesen-Button reagiert ohne Page-Error", async ({ page, context }) => {
+  test("KI-Assistent: Overlay öffnet ohne Page-Error (#205)", async ({ page, context }) => {
     await page.addInitScript(() => {
       Object.defineProperty(window, "speechSynthesis", {
         value: {
@@ -155,10 +138,11 @@ test.describe("Authenticated smoke (#204/#205/#207)", () => {
 
     await page.goto(`${BASE}/modul/1/tag/1`, { waitUntil: "domcontentloaded" });
     await page.getByRole("button", { name: "KI-Assistent öffnen" }).click();
-    const vorlesen = page.getByRole("button", { name: /Vorlesen|Stop/i }).first();
-    await expect(vorlesen).toBeVisible();
-    await vorlesen.click();
-    await page.waitForTimeout(500);
+
+    const panel = kiAssistantPanel(page);
+    await expect(panel.getByPlaceholder(/Stelle eine Frage/i)).toBeVisible();
+    await expect(panel.getByTitle("Spracheingabe starten")).toBeVisible();
+    await page.waitForTimeout(300);
     expect(pageErrors).toEqual([]);
   });
 });
