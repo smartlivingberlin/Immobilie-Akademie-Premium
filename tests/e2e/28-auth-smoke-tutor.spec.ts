@@ -89,8 +89,13 @@ test.describe("Authenticated smoke (#204/#205/#207)", () => {
   });
 
   for (const check of LAW_SLUG_CHECKS) {
-    test(`Gesetzeslinks Modul ${check.moduleId} — ${check.label}`, async ({ page }) => {
-      await page.goto(`${BASE}/modul/${check.moduleId}/tag/1`, {
+    test(`Gesetzeslinks — ${check.label}`, async ({ page }) => {
+      if (check.skipReason) {
+        test.skip(true, check.skipReason);
+      }
+
+      const tagId = check.tagId ?? 1;
+      await page.goto(`${BASE}/modul/${check.moduleId}/tag/${tagId}`, {
         waitUntil: "domcontentloaded",
         timeout: 30000,
       });
@@ -101,7 +106,10 @@ test.describe("Authenticated smoke (#204/#205/#207)", () => {
       const html = await page.content();
       const found =
         hrefs.some((h) => h.includes(check.slug)) || html.includes(check.slug);
-      expect(found, `Kein href mit „${check.slug}“ auf Modul ${check.moduleId}/tag/1`).toBe(true);
+      expect(
+        found,
+        `Kein href mit „${check.slug}“ auf Modul ${check.moduleId}/tag/${tagId}`,
+      ).toBe(true);
     });
   }
 

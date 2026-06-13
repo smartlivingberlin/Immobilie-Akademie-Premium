@@ -16,16 +16,44 @@ export async function hasValidSession(request: APIRequestContext): Promise<boole
 
 export type LawSlugCheck = {
   moduleId: number;
+  /** Tag route segment; defaults to 1 in tests. Use 0 for documentation-only entries. */
+  tagId?: number;
   slug: string;
   label: string;
+  /** When set, the test is skipped with this documented reason instead of asserting. */
+  skipReason?: string;
 };
 
-/** #204 Gesetzeslink smoke — href substring checks without external navigation. */
+/**
+ * #204 Gesetzeslink smoke — href/html substring checks without external navigation.
+ * Tag IDs match static content in Module*Content*.ts (see README-AUTH.md).
+ */
 export const LAW_SLUG_CHECKS: LawSlugCheck[] = [
-  { moduleId: 1, slug: "woeigg", label: "WEG (Modul 1)" },
-  { moduleId: 3, slug: "woeigg", label: "WEG (Modul 3)" },
-  { moduleId: 4, slug: "immowertv_2021", label: "ImmoWertV (Modul 4)" },
-  { moduleId: 5, slug: "gesetze-im-internet.de", label: "Gesetzesquellen (Modul 5)" },
+  { moduleId: 1, tagId: 12, slug: "woeigg", label: "WEG (Modul 1 Tag 12)" },
+  { moduleId: 1, tagId: 2, slug: "mabv", label: "MaBV (Modul 1 Tag 2)" },
+  { moduleId: 3, tagId: 1, slug: "woeigg", label: "WEG (Modul 3 Tag 1)" },
+  { moduleId: 4, tagId: 1, slug: "immowertv_2021", label: "ImmoWertV (Modul 4 Tag 1)" },
+  {
+    moduleId: 4,
+    tagId: 37,
+    slug: "heimmindbauv",
+    label: "HeimMindBauV (Modul 4 Tag 37 HypZert Bonus)",
+  },
+  {
+    moduleId: 0,
+    slug: "grstvg",
+    label: "GRStVG (dokumentierte Ausnahme)",
+    skipReason:
+      "GRStVG-hrefs liegen in glossary-data.ts und LegalLink/lawLinks.ts, nicht in Modul-Theorie-/Normen-Tabs der Auth-Smoke-Routen.",
+  },
+  {
+    moduleId: 5,
+    tagId: 1,
+    slug: "n/a",
+    label: "Modul 5 §34i (dokumentierte Ausnahme)",
+    skipReason:
+      "Modul 5 enthält keine festen gesetze-im-internet.de-hrefs auf Tag-Seiten — nur generische Recherche-Hinweise in Übungen.",
+  },
 ];
 
 export async function collectGesetzeHrefs(page: Page): Promise<string[]> {
