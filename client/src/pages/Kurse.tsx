@@ -1,6 +1,35 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Link } from "wouter";
+import { Skeleton } from "@/components/ui/skeleton";
+
+const PRODUCT_SKELETON_COUNT = 7;
+
+function KurseProductSkeleton() {
+  return (
+    <div
+      aria-hidden="true"
+      style={{
+        background: "white",
+        border: "1px solid #e2e8f0",
+        borderRadius: 20,
+        padding: "28px 24px",
+        minHeight: 400,
+        display: "flex",
+        flexDirection: "column",
+        gap: 16,
+      }}
+    >
+      <Skeleton className="h-4 w-1/3" />
+      <Skeleton className="h-5 w-full" />
+      <Skeleton className="h-4 w-full" />
+      <Skeleton className="h-4 w-3/4" />
+      <Skeleton className="h-10 w-1/2" />
+      <Skeleton className="h-8 w-full" />
+      <Skeleton className="mt-auto h-12 w-full" />
+    </div>
+  );
+}
 
 
 const KURS_SLUGS: Record<string, string> = {
@@ -24,6 +53,7 @@ interface Product {
 export default function Kurse() {
   const { user } = useAuth();
   const [products, setProducts] = useState<Product[]>([]);
+  const [productsLoading, setProductsLoading] = useState(true);
   const [loading, setLoading] = useState(false);
   const [widerrufsChecked, setWiderrufsChecked] = useState(false);
   const [agbChecked, setAgbChecked] = useState(false);
@@ -33,7 +63,8 @@ export default function Kurse() {
     fetch("/api/stripe/products")
       .then((r) => r.json())
       .then(setProducts)
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => setProductsLoading(false));
   }, []);
 
   const handleBuy = async (productId: string) => {
@@ -81,8 +112,16 @@ export default function Kurse() {
 
     <div className="max-w-5xl mx-auto px-4 py-12">
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-        {products.map((p) => (
+      <div
+        className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10"
+        aria-busy={productsLoading}
+        aria-live="polite"
+      >
+        {productsLoading
+          ? Array.from({ length: PRODUCT_SKELETON_COUNT }, (_, i) => (
+              <KurseProductSkeleton key={`product-skeleton-${i}`} />
+            ))
+          : products.map((p) => (
           <div key={p.id} style={{
             background:"white",
             border: p.id === "modul_komplett" ? "2px solid #2563eb" : "1px solid #e2e8f0",
