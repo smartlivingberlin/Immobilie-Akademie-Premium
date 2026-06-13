@@ -74,9 +74,15 @@ async function globalSetup() {
   }
 
   if (!TEST_PASSWORD) {
-    throw new Error(
-      "Passwort fehlt. Zuerst: unset TEST_ADMIN_PASSWORD && export B2B_ADMIN_PASSWORD='...' — oder bash scripts/ops/test-admin-login.sh",
+    const { mkdirSync, writeFileSync } = await import("fs");
+    const { dirname } = await import("path");
+    mkdirSync(dirname(STATE_PATH), { recursive: true });
+    writeFileSync(STATE_PATH, JSON.stringify({ cookies: [], origins: [] }));
+    console.log(
+      "⏭️  Keine E2E-Auth-Credentials — leerer Auth-State (authentifizierte Tests werden übersprungen)",
     );
+    await browser.close();
+    return;
   }
 
   const response = await page.request.post(`${BASE}/api/auth/login`, {
