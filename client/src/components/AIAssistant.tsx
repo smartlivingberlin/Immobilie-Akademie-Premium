@@ -1,6 +1,8 @@
 import DOMPurify from "dompurify";
 import { useState, useRef, useEffect } from "react";
-import { X, Send, Bot, User, Loader2, Sparkles, ChevronDown, Mic, MicOff, Volume2, VolumeX, Paperclip } from "lucide-react";
+import { X, Send, Bot, User, Loader2, Sparkles, ChevronDown, Mic, MicOff, Volume2, Paperclip } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { isBrowserSpeechSupported, speakBrowserText, stopBrowserSpeech } from "@/lib/speakBrowser";
 
 interface AIAssistantProps {
   moduleContext?: string;
@@ -54,7 +56,7 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
   const [showScrollBtn, setShowScrollBtn] = useState(false);
   const [listening, setListening] = useState(false);
   const [speaking, setSpeaking] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const { toast } = useToast();
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const recognitionRef = useRef<MediaRecorder | null>(null);
@@ -82,27 +84,47 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
     setShowScrollBtn(scrollHeight - scrollTop - clientHeight > 100);
   };
 
+  const pickAudioMimeType = (): string => {
+    const candidates = ["audio/webm;codecs=opus", "audio/webm", "audio/mp4", "audio/ogg"];
+    return candidates.find((t) => MediaRecorder.isTypeSupported(t)) || "";
+  };
+
   const startVoice = async () => {
     if (listening) {
       recognitionRef.current?.stop();
       setListening(false);
       return;
     }
+    if (typeof MediaRecorder === "undefined") {
+      toast({
+        title: "Spracheingabe nicht unterstützt",
+        description: "Ihr Browser unterstützt keine Audioaufnahme.",
+        variant: "destructive",
+      });
+      return;
+    }
+    let stream: MediaStream | null = null;
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const recorder = new MediaRecorder(stream, { mimeType: "audio/webm" });
+      stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const mimeType = pickAudioMimeType();
+      const recorder = mimeType
+        ? new MediaRecorder(stream, { mimeType })
+        : new MediaRecorder(stream);
       const chunks: Blob[] = [];
+      const recordedType = mimeType || recorder.mimeType || "audio/webm";
       recognitionRef.current = recorder;
       recorder.ondataavailable = (e) => { if (e.data.size > 0) chunks.push(e.data); };
       recorder.onstop = async () => {
-        stream.getTracks().forEach(t => t.stop());
+        stream?.getTracks().forEach(t => t.stop());
+        stream = null;
         setListening(false);
-        const blob = new Blob(chunks, { type: "audio/webm" });
+        const blob = new Blob(chunks, { type: recordedType });
         setLoading(true);
         try {
           const res = await fetch("/api/ai/transcribe", {
             method: "POST",
-            headers: { "Content-Type": "audio/webm" },
+            credentials: "include",
+            headers: { "Content-Type": recordedType },
             body: blob,
           });
           const data = await res.json();
@@ -110,11 +132,19 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
             setInput(data.transcript);
             setTimeout(() => send(data.transcript), 100);
           } else {
-            console.error("Transkription fehlgeschlagen:", data.error);
+            toast({
+              title: "Spracherkennung fehlgeschlagen",
+              description: data.error || "Bitte erneut versuchen oder Text eingeben.",
+              variant: "destructive",
+            });
             setLoading(false);
           }
         } catch {
-          console.error("Verbindungsfehler bei Transkription");
+          toast({
+            title: "Verbindungsfehler",
+            description: "Spracherkennung konnte nicht erreicht werden.",
+            variant: "destructive",
+          });
           setLoading(false);
         }
       };
@@ -122,61 +152,37 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
       setListening(true);
       setTimeout(() => { if (recorder.state === "recording") recorder.stop(); }, 10000);
     } catch (err) {
+      stream?.getTracks().forEach(t => t.stop());
       const message = err instanceof Error ? err.message : String(err);
-      console.error("Mikrofon-Zugriff verweigert:", message);
+      toast({
+        title: "Mikrofon nicht verfügbar",
+        description: message.includes("Permission") || message.includes("NotAllowed")
+          ? "Bitte Mikrofon-Zugriff im Browser erlauben und die Seite neu laden."
+          : message,
+        variant: "destructive",
+      });
     }
   };
-  const speak = async (text: string) => {
+  const handleSpeak = (text: string) => {
     if (speaking) {
-      audioRef.current?.pause();
-      audioRef.current = null;
+      stopBrowserSpeech();
       setSpeaking(false);
       return;
     }
-    const clean = text.replace(/#{1,3} /g, "").replace(/[*`]/g, "").replace(/---/g, "").slice(0, 300).trim();
-    setSpeaking(true);
-    // ElevenLabs API-Key wurde auf Server-Proxy verlagert (/api/tts)
-
-    try {
-      const voiceId = "pNInz6obpgDQGcFmaJgB";
-      const res = await fetch(`/api/tts`, {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "audio/mpeg",
-        },
-        body: JSON.stringify({
-          text: clean,
-          model_id: "eleven_multilingual_v2",
-          voice_settings: { stability: 0.5, similarity_boost: 0.75 }
-        }),
+    if (!isBrowserSpeechSupported()) {
+      toast({
+        title: "Vorlesen nicht unterstützt",
+        description: "Ihr Browser unterstützt keine Sprachausgabe.",
+        variant: "destructive",
       });
-      if (res.ok) {
-        const blob = await res.blob();
-        const url = URL.createObjectURL(blob);
-        const audio = new Audio(url);
-        audioRef.current = audio;
-        audio.onended = () => { setSpeaking(false); URL.revokeObjectURL(url); };
-        audio.onerror = () => setSpeaking(false);
-        await audio.play();
-        return;
-      }
-    } catch (e) {
-      console.warn("ElevenLabs direkt fehlgeschlagen:", e);
+      return;
     }
-  
-    // Fallback Browser TTS
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(clean);
-    utterance.lang = "de-DE";
-    utterance.rate = 0.9;
-    utterance.onend = () => setSpeaking(false);
-    utterance.onerror = () => setSpeaking(false);
-    const voices = window.speechSynthesis.getVoices();
-    const german = voices.find(v => v.lang.startsWith("de"));
-    if (german) utterance.voice = german;
-    window.speechSynthesis.speak(utterance);
+    const clean = text.replace(/#{1,3} /g, "").replace(/[*`]/g, "").replace(/---/g, "").slice(0, 5000).trim();
+    const ok = speakBrowserText(clean, {
+      onEnd: () => setSpeaking(false),
+      onError: () => setSpeaking(false),
+    });
+    if (ok) setSpeaking(true);
   };
 
   const handleFileUpload = async (file: File) => {
@@ -187,6 +193,7 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
     try {
       const res = await fetch("/api/ai/analyze-document", {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": file.type || "application/octet-stream",
           "x-filename": file.name,
@@ -231,6 +238,7 @@ ${data.analysis}`,
       const context = msgs.slice(-8).map((m) => ({ role: m.role, content: m.text }));
       const res = await fetch("/api/ai/rag-tutor", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: q, moduleId, context }),
       });
@@ -353,7 +361,7 @@ ${data.analysis}`,
                 {m.role === "assistant" ? (
                   <>
                   <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(renderMarkdown(m.text)) }} />
-                  <button aria-label="Text vorlesen" onClick={(e) => { e.stopPropagation(); speak(m.text); }} style={{
+                  <button aria-label="Text vorlesen" onClick={(e) => { e.stopPropagation(); handleSpeak(m.text); }} style={{
                     background:"#f1f5f9",border:"1px solid #e2e8f0",cursor:"pointer",
                     marginTop:"10px",padding:"6px 12px",borderRadius:"8px",
                     color:"#475569",fontSize:"13px",fontWeight:"500",
@@ -363,7 +371,7 @@ ${data.analysis}`,
                   onMouseEnter={e=>{(e.currentTarget as HTMLElement).style.background="#dbeafe";(e.currentTarget as HTMLElement).style.color="#2563eb"}}
                   onMouseLeave={e=>{(e.currentTarget as HTMLElement).style.background="#f1f5f9";(e.currentTarget as HTMLElement).style.color="#475569"}}
                   >
-                    <Volume2 size={16}/><span>{speaking ? '⏹ Stop' : '🔊 Vorlesen'}</span>
+                    <Volume2 size={16}/><span>{speaking ? "⏹ Stop" : "🔊 Vorlesen"}</span>
                   </button>
                   </>
                 ) : (

@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { useInspectReadOnly } from "@/hooks/useInspectReadOnly";
-import { X, Send, Bot, User, Sparkles } from "lucide-react";
+import { X, Send, Bot, User, Sparkles, Mic, MicOff, Volume2 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { isBrowserSpeechSupported, speakBrowserText, stopBrowserSpeech } from "@/lib/speakBrowser";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -47,11 +49,121 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [listening, setListening] = useState(false);
+  const [speaking, setSpeaking] = useState(false);
+  const { toast } = useToast();
   const scrollRef = useRef<HTMLDivElement>(null);
+  const recognitionRef = useRef<MediaRecorder | null>(null);
   const { data: me } = trpc.auth.me.useQuery();
   const kiQuota = (me as { kiQuota?: { limit: number | null; used: number; remaining: number | null } } | null)?.kiQuota;
 
   const suggested = moduleId ? (SUGGESTED[moduleId] || DEFAULT_SUGGESTED) : DEFAULT_SUGGESTED;
+
+  const pickAudioMimeType = (): string => {
+    const candidates = ["audio/webm;codecs=opus", "audio/webm", "audio/mp4", "audio/ogg"];
+    return candidates.find((t) => MediaRecorder.isTypeSupported(t)) || "";
+  };
+
+  const startVoice = async () => {
+    if (listening) {
+      recognitionRef.current?.stop();
+      setListening(false);
+      return;
+    }
+    if (isInspectReadOnly) {
+      toast({
+        title: "Inspect-Modus",
+        description: "Spracheingabe ist im Inspect-Modus deaktiviert.",
+        variant: "destructive",
+      });
+      return;
+    }
+    if (typeof MediaRecorder === "undefined") {
+      toast({
+        title: "Spracheingabe nicht unterstützt",
+        description: "Ihr Browser unterstützt keine Audioaufnahme.",
+        variant: "destructive",
+      });
+      return;
+    }
+    let stream: MediaStream | null = null;
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const mimeType = pickAudioMimeType();
+      const recorder = mimeType
+        ? new MediaRecorder(stream, { mimeType })
+        : new MediaRecorder(stream);
+      const chunks: Blob[] = [];
+      const recordedType = mimeType || recorder.mimeType || "audio/webm";
+      recognitionRef.current = recorder;
+      recorder.ondataavailable = (e) => { if (e.data.size > 0) chunks.push(e.data); };
+      recorder.onstop = async () => {
+        stream?.getTracks().forEach((t) => t.stop());
+        stream = null;
+        setListening(false);
+        const blob = new Blob(chunks, { type: recordedType });
+        setIsLoading(true);
+        try {
+          const res = await fetch("/api/ai/transcribe", {
+            method: "POST",
+            credentials: "include",
+            headers: { "Content-Type": recordedType },
+            body: blob,
+          });
+          const data = await res.json();
+          if (data.transcript) {
+            setInput(data.transcript);
+            setTimeout(() => handleSend(data.transcript), 100);
+          } else {
+            toast({
+              title: "Spracherkennung fehlgeschlagen",
+              description: data.error || "Bitte erneut versuchen.",
+              variant: "destructive",
+            });
+            setIsLoading(false);
+          }
+        } catch {
+          toast({
+            title: "Verbindungsfehler",
+            description: "Spracherkennung nicht erreichbar.",
+            variant: "destructive",
+          });
+          setIsLoading(false);
+        }
+      };
+      recorder.start();
+      setListening(true);
+      setTimeout(() => { if (recorder.state === "recording") recorder.stop(); }, 10000);
+    } catch (err) {
+      stream?.getTracks().forEach((t) => t.stop());
+      const message = err instanceof Error ? err.message : String(err);
+      toast({
+        title: "Mikrofon nicht verfügbar",
+        description: message.includes("Permission") || message.includes("NotAllowed")
+          ? "Bitte Mikrofon im Browser erlauben und Seite neu laden."
+          : message,
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleSpeak = (text: string) => {
+    if (speaking) {
+      stopBrowserSpeech();
+      setSpeaking(false);
+      return;
+    }
+    if (!isBrowserSpeechSupported()) {
+      toast({ title: "Vorlesen nicht unterstützt", variant: "destructive" });
+      return;
+    }
+    const clean = text.replace(/\*\*/g, "").replace(/[*`]/g, "").slice(0, 5000).trim();
+    const ok = speakBrowserText(clean, {
+      onEnd: () => setSpeaking(false),
+      onError: () => setSpeaking(false),
+    });
+    if (ok) setSpeaking(true);
+  };
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -94,6 +206,7 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
 
       const res = await fetch("/api/ai/rag-tutor", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           question: userMessage,
@@ -192,6 +305,17 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
                     {i < msg.content.split('\n').length - 1 && <br />}
                   </span>
                 ))}
+                {msg.role === "assistant" && msg.id !== "welcome" && (
+                  <button
+                    type="button"
+                    aria-label="Text vorlesen"
+                    onClick={() => handleSpeak(msg.content)}
+                    className="mt-2 flex items-center gap-1 text-[11px] text-slate-500 hover:text-blue-600 transition-colors"
+                  >
+                    <Volume2 className="w-3 h-3" />
+                    {speaking ? "Stop" : "Vorlesen"}
+                  </button>
+                )}
               </div>
             </div>
           ))}
@@ -238,6 +362,17 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
           className="text-xs"
           disabled={isLoading}
         />
+        <Button
+          type="button"
+          onClick={startVoice}
+          disabled={isLoading || isInspectReadOnly}
+          size="sm"
+          variant="outline"
+          title={isInspectReadOnly ? "Spracheingabe im Inspect-Modus deaktiviert" : listening ? "Aufnahme stoppen" : "Spracheingabe"}
+          className={listening ? "border-red-300 text-red-600" : ""}
+        >
+          {listening ? <MicOff className="w-3 h-3" /> : <Mic className="w-3 h-3" />}
+        </Button>
         <Button
           onClick={() => handleSend()}
           disabled={!input.trim() || isLoading}
