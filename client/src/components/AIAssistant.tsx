@@ -95,8 +95,17 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
       setListening(false);
       return;
     }
+    if (typeof MediaRecorder === "undefined") {
+      toast({
+        title: "Spracheingabe nicht unterstützt",
+        description: "Ihr Browser unterstützt keine Audioaufnahme.",
+        variant: "destructive",
+      });
+      return;
+    }
+    let stream: MediaStream | null = null;
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       const mimeType = pickAudioMimeType();
       const recorder = mimeType
         ? new MediaRecorder(stream, { mimeType })
@@ -106,7 +115,8 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
       recognitionRef.current = recorder;
       recorder.ondataavailable = (e) => { if (e.data.size > 0) chunks.push(e.data); };
       recorder.onstop = async () => {
-        stream.getTracks().forEach(t => t.stop());
+        stream?.getTracks().forEach(t => t.stop());
+        stream = null;
         setListening(false);
         const blob = new Blob(chunks, { type: recordedType });
         setLoading(true);
@@ -142,6 +152,7 @@ export default function AIAssistant({ moduleContext, isOpen, onClose }: AIAssist
       setListening(true);
       setTimeout(() => { if (recorder.state === "recording") recorder.stop(); }, 10000);
     } catch (err) {
+      stream?.getTracks().forEach(t => t.stop());
       const message = err instanceof Error ? err.message : String(err);
       toast({
         title: "Mikrofon nicht verfügbar",

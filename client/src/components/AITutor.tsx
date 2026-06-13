@@ -70,8 +70,25 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
       setListening(false);
       return;
     }
+    if (isInspectReadOnly) {
+      toast({
+        title: "Inspect-Modus",
+        description: "Spracheingabe ist im Inspect-Modus deaktiviert.",
+        variant: "destructive",
+      });
+      return;
+    }
+    if (typeof MediaRecorder === "undefined") {
+      toast({
+        title: "Spracheingabe nicht unterstützt",
+        description: "Ihr Browser unterstützt keine Audioaufnahme.",
+        variant: "destructive",
+      });
+      return;
+    }
+    let stream: MediaStream | null = null;
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       const mimeType = pickAudioMimeType();
       const recorder = mimeType
         ? new MediaRecorder(stream, { mimeType })
@@ -81,7 +98,8 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
       recognitionRef.current = recorder;
       recorder.ondataavailable = (e) => { if (e.data.size > 0) chunks.push(e.data); };
       recorder.onstop = async () => {
-        stream.getTracks().forEach((t) => t.stop());
+        stream?.getTracks().forEach((t) => t.stop());
+        stream = null;
         setListening(false);
         const blob = new Blob(chunks, { type: recordedType });
         setIsLoading(true);
@@ -117,6 +135,7 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
       setListening(true);
       setTimeout(() => { if (recorder.state === "recording") recorder.stop(); }, 10000);
     } catch (err) {
+      stream?.getTracks().forEach((t) => t.stop());
       const message = err instanceof Error ? err.message : String(err);
       toast({
         title: "Mikrofon nicht verfügbar",
@@ -346,10 +365,10 @@ export function AITutor({ isOpen, onClose, moduleContext, moduleId }: AITutorPro
         <Button
           type="button"
           onClick={startVoice}
-          disabled={isLoading}
+          disabled={isLoading || isInspectReadOnly}
           size="sm"
           variant="outline"
-          title={listening ? "Aufnahme stoppen" : "Spracheingabe"}
+          title={isInspectReadOnly ? "Spracheingabe im Inspect-Modus deaktiviert" : listening ? "Aufnahme stoppen" : "Spracheingabe"}
           className={listening ? "border-red-300 text-red-600" : ""}
         >
           {listening ? <MicOff className="w-3 h-3" /> : <Mic className="w-3 h-3" />}
