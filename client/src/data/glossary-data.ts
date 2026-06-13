@@ -273,7 +273,7 @@ export const glossaryData: GlossaryTerm[] = [
     definition: "Regelt die Genehmigungspflicht bei land- und forstwirtschaftlichen Grundstücken zum Schutz vor Bodenspekulation.",
     category: "Recht",
     lawReference: "GrdstVG",
-    lawLink: "https://www.gesetze-im-internet.de/grdstvg/"
+    lawLink: "https://www.gesetze-im-internet.de/grstvg/"
   },
   {
     term: "Haftung",

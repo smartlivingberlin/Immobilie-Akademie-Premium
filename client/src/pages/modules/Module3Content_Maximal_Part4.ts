@@ -589,8 +589,8 @@ Ein 10-Jahres-Plan für die WEG oder das Mietshaus.
 Abgleich der geplanten Kosten mit der Instandhaltungsrücklage. Ggf. Erhöhung des Hausgeldes oder Sonderumlage einplanen.
 `,
     law: [
-      "[§ 19 WEG](https://www.gesetze-im-internet.de/weg/__19.html) (Erhaltung und Modernisierung)",
-      "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) (Wirtschaftsplan)"
+      "[§ 19 WEG](https://www.gesetze-im-internet.de/woeigg/__19.html) (Erhaltung und Modernisierung)",
+      "[§ 28 WEG](https://www.gesetze-im-internet.de/woeigg/__28.html) (Wirtschaftsplan)"
     ],
     practice: `
     task: "Warum ist ein langfristiger Instandhaltungsplan für die WEG wichtig?",
@@ -714,7 +714,7 @@ Verwalter sind oft Mediatoren zwischen Eigentümern, Mietern und Nachbarn.
 *   **Lösungsorientierung:** "Wie können wir das künftig regeln?" statt "Wer ist schuld?"
 `,
     law: [
-      "[§ 14 WEG](https://www.gesetze-im-internet.de/weg/__14.html) (Pflichten der Eigentümer)",
+      "[§ 14 WEG](https://www.gesetze-im-internet.de/woeigg/__14.html) (Pflichten der Eigentümer)",
       "Hausordnung"
     ],
     practice: `
@@ -768,7 +768,7 @@ ETVs können emotional und chaotisch werden. Der Verwalter muss die Versammlung 
 *   **Der Besserwisser:** Fachkompetenz zeigen, aber auch gute Hinweise annehmen.
 `,
     law: [
-      "[§ 24 WEG](https://www.gesetze-im-internet.de/weg/__24.html) (Einberufung, Vorsitz, Niederschrift)"
+      "[§ 24 WEG](https://www.gesetze-im-internet.de/woeigg/__24.html) (Einberufung, Vorsitz, Niederschrift)"
     ],
     practice: `
     task: "Darf der Verwalter einen Eigentümer des Saales verweisen?",
@@ -887,7 +887,7 @@ Die Branche wandelt sich von Papierordnern zu digitalen Plattformen.
 `,
     law: [
         "Art. 13 DSGVO – Informationspflichten",
-        "[§ 23 WEG](https://www.gesetze-im-internet.de/weg/__23.html) – Beschlüsse in der Versammlung",
+        "[§ 23 WEG](https://www.gesetze-im-internet.de/woeigg/__23.html) – Beschlüsse in der Versammlung",
         "Art. 6 DSGVO – Rechtmäßigkeit der Verarbeitung",
       ],
     practice: `
@@ -1075,9 +1075,9 @@ Erstellen Sie Karteikarten zu den wichtigsten Fristen:
 4.  **Mahnwesen:** Verzug, Mahnbescheid, Zwangsvollstreckung.
 `,
     law: [
-        "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) – Wirtschaftsplan, Jahresabrechnung",
+        "[§ 28 WEG](https://www.gesetze-im-internet.de/woeigg/__28.html) – Wirtschaftsplan, Jahresabrechnung",
         "[§ 1922 BGB](https://www.gesetze-im-internet.de/bgb/__1922.html) – Erbfolge (bei Eigentümerwechsel)",
-        "[§ 16 WEG](https://www.gesetze-im-internet.de/weg/__16.html) – Nutzungen, Lasten, Kosten",
+        "[§ 16 WEG](https://www.gesetze-im-internet.de/woeigg/__16.html) – Nutzungen, Lasten, Kosten",
       ],
     practice: `
     task: "Was gehört zwingend in den Vermögensstatus einer WEG-Abrechnung?",
@@ -1129,10 +1129,10 @@ In einer WEG tropft es durch die Decke (Technik/Versicherung). Der Mieter oben v
 4.  **Lösungsweg skizzieren:** Schritt für Schritt.
 `,
     law: [
-        "[§ 18 WEG](https://www.gesetze-im-internet.de/weg/__18.html) – Verwaltung des gemeinschaftlichen Eigentums",
-        "[§ 20 WEG](https://www.gesetze-im-internet.de/weg/__20.html) – Bauliche Veränderungen",
-        "[§ 23 WEG](https://www.gesetze-im-internet.de/weg/__23.html) – Beschlussfassung",
-        "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) – Wirtschaftsplan",
+        "[§ 18 WEG](https://www.gesetze-im-internet.de/woeigg/__18.html) – Verwaltung des gemeinschaftlichen Eigentums",
+        "[§ 20 WEG](https://www.gesetze-im-internet.de/woeigg/__20.html) – Bauliche Veränderungen",
+        "[§ 23 WEG](https://www.gesetze-im-internet.de/woeigg/__23.html) – Beschlussfassung",
+        "[§ 28 WEG](https://www.gesetze-im-internet.de/woeigg/__28.html) – Wirtschaftsplan",
       ],
     practice: `
     task: "Darf der Verwalter ohne Beschluss einen Anwalt für die WEG beauftragen?",
