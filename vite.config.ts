@@ -168,6 +168,21 @@ export default defineConfig({
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
     chunkSizeWarningLimit: 600,
+    modulePreload: {
+      resolveDependencies(_filename, deps) {
+        const deferUntilRoute = [
+          "vendor-markdown",
+          "vendor-charts",
+          "vendor-animation",
+          "html2canvas",
+          "jspdf",
+          "pdfjs",
+          "RenewalPaywall",
+          "AccessibilityPanel",
+        ];
+        return deps.filter((dep) => !deferUntilRoute.some((chunk) => dep.includes(chunk)));
+      },
+    },
     rollupOptions: {
       output: {
         manualChunks: (id) => {
