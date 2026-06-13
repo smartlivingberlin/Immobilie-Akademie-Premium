@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import { expect, type APIRequestContext, type Page } from "@playwright/test";
 
 export const BASE = process.env.PLAYWRIGHT_BASE_URL || "https://immobilien-akademie-smart.de";
@@ -25,7 +27,7 @@ export type LawSlugCheck = {
 };
 
 /**
- * #204 Gesetzeslink smoke — href/html substring checks without external navigation.
+ * #204 Gesetzeslink smoke — strict gesetze-im-internet.de href checks (no html text fallback).
  * Tag IDs match static content in Module*Content*.ts (see README-AUTH.md).
  */
 export const LAW_SLUG_CHECKS: LawSlugCheck[] = [
@@ -56,8 +58,59 @@ export const LAW_SLUG_CHECKS: LawSlugCheck[] = [
   },
 ];
 
+/** Repo source JSON paths validated in smoke (see README-AUTH.md). */
+export const SOURCE_JSON_LINK_ASSERTIONS = [
+  { moduleId: 1, tagId: 2, slug: "mabv", label: "MaBV in module1.json day_2" },
+  { moduleId: 4, tagId: 1, slug: "immowertv_2021", label: "ImmoWertV in module4.json day_1" },
+] as const;
+
 export function slugMatchesHref(href: string, slug: string): boolean {
   return href.toLowerCase().includes(slug.toLowerCase());
+}
+
+function moduleJsonPath(moduleId: number): string {
+  return path.join(process.cwd(), "client/public/data", `module${moduleId}.json`);
+}
+
+function dayLawBlob(day: unknown): string {
+  if (!day || typeof day !== "object") return "";
+  const law = (day as { law?: string[] }).law;
+  if (!Array.isArray(law)) return "";
+  return law.join("\n");
+}
+
+/** Strict: repo source JSON must contain a gesetze-im-internet href with slug in law[]. */
+export function sourceJsonLawContainsGesetzeSlug(
+  moduleId: number,
+  tagId: number,
+  slug: string,
+): boolean {
+  const filePath = moduleJsonPath(moduleId);
+  const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  const blob = dayLawBlob(data[`day_${tagId}`]).toLowerCase();
+  if (!blob.includes("gesetze-im-internet.de")) return false;
+  const hrefs = blob.match(/https:\/\/www\.gesetze-im-internet\.de[^)\s"']+/gi) ?? [];
+  return hrefs.some((href) => slugMatchesHref(href, slug));
+}
+
+/** Whether deployed JSON at BASE already contains the gesetze href for this tag (runtime gate). */
+export async function deployedJsonHasGesetzeSlug(
+  request: APIRequestContext,
+  moduleId: number,
+  tagId: number,
+  slug: string,
+): Promise<boolean> {
+  try {
+    const res = await request.get(`${BASE}/data/module${moduleId}.json`);
+    if (!res.ok()) return false;
+    const data = await res.json();
+    const blob = dayLawBlob(data[`day_${tagId}`]).toLowerCase();
+    if (!blob.includes("gesetze-im-internet.de")) return false;
+    const hrefs = blob.match(/https:\/\/www\.gesetze-im-internet\.de[^)\s"']+/gi) ?? [];
+    return hrefs.some((href) => slugMatchesHref(href, slug));
+  } catch {
+    return false;
+  }
 }
 
 export async function collectGesetzeHrefs(page: Page): Promise<string[]> {
@@ -112,44 +165,51 @@ export async function gotoModuleTagAndWaitForContent(
   );
 }
 
-/** Wait for a gesetze-im-internet href or HTML slug on the current page (Normen tab preferred). */
-export async function waitForLawSlugOnPage(page: Page, slug: string): Promise<void> {
+/** Wait for a rendered gesetze-im-internet anchor containing slug (Normen tab preferred). */
+export async function waitForGesetzeHrefWithSlug(page: Page, slug: string): Promise<void> {
   const slugLower = slug.toLowerCase();
   await openNormenTabIfPresent(page);
   await page.waitForFunction(
-    (s) => {
-      const hrefs = Array.from(
-        document.querySelectorAll('a[href*="gesetze-im-internet.de"]'),
-      ).map((a) => (a.getAttribute("href") || "").toLowerCase());
-      if (hrefs.some((h) => h.includes(s))) return true;
-      return document.documentElement.innerHTML.toLowerCase().includes(s);
-    },
+    (s) =>
+      Array.from(document.querySelectorAll('a[href*="gesetze-im-internet.de"]')).some((a) =>
+        (a.getAttribute("href") || "").toLowerCase().includes(s),
+      ),
     slugLower,
     { timeout: 30000 },
   );
 }
 
-export async function assertLawSlugPresent(
+/** Strict runtime assertion: only rendered gesetze-im-internet hrefs, never html text fallback. */
+export async function assertLawSlugHrefPresent(
   page: Page,
   moduleId: number,
   tagId: number,
   slug: string,
 ): Promise<void> {
   await gotoModuleTagAndWaitForContent(page, moduleId, tagId);
-  await waitForLawSlugOnPage(page, slug);
+  await waitForGesetzeHrefWithSlug(page, slug);
 
   const hrefs = await collectGesetzeHrefs(page);
-  const html = await page.content().then((c) => c.toLowerCase());
-  const found =
-    hrefs.some((h) => slugMatchesHref(h, slug)) || html.includes(slug.toLowerCase());
-
-  expect(found, `Kein href mit „${slug}“ auf Modul ${moduleId}/tag/${tagId}`).toBe(true);
+  const found = hrefs.some((h) => slugMatchesHref(h, slug));
+  expect(
+    found,
+    `Kein gesetze-im-internet.de-href mit „${slug}“ auf Modul ${moduleId}/tag/${tagId} (${BASE})`,
+  ).toBe(true);
 }
 
-/** Locator for the open KI-Assistent overlay panel (not page AudioPlayer). */
+export async function openKiAssistantOverlay(page: Page): Promise<void> {
+  await page.getByRole("button", { name: "KI-Assistent öffnen" }).click({ timeout: 15000 });
+  await expect(page.getByText("KI-Tutor · Immobilien-Akademie")).toBeVisible({ timeout: 10000 });
+}
+
+/**
+ * White dialog panel inside the fixed overlay — contains header, chat and input row.
+ * Avoid `.last()` on header text alone (too narrow and excludes mic/input).
+ */
 export function kiAssistantPanel(page: Page) {
   return page
     .locator("div")
     .filter({ has: page.getByText("KI-Tutor · Immobilien-Akademie") })
-    .last();
+    .filter({ has: page.getByPlaceholder(/Stelle eine Frage zu/i) })
+    .first();
 }

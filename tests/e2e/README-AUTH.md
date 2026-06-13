@@ -79,11 +79,30 @@ Warte-Strategie (Auth-Smoke #209):
 
 - Nach `goto` auf `/modul/{id}/tag/{n}` wird auf `module{n}.json` und sichtbare Tabs gewartet.
 - Modul 1 und 3: ein `reload()` nach dem ersten `goto`, damit der Tag aus der URL zum gerenderten Inhalt passt (ohne App-Code-Änderung).
-- Normen-Tab wird geöffnet, falls vorhanden; Slug-Prüfung ist case-insensitive auf `gesetze-im-internet.de`-hrefs und HTML.
+- Normen-Tab wird geöffnet, falls vorhanden.
+- **Strict:** Es zählen nur gerenderte `a[href*="gesetze-im-internet.de"]`-Links mit Slug — kein `html.includes(slug)`-Fallback (verhindert falsches Grün durch sichtbaren Gesetzestext ohne Link).
+
+### Source JSON vs. Runtime (Production)
+
+| Prüfung | Was | Wann grün |
+|---------|-----|-----------|
+| Source JSON | `client/public/data/module*.json` im Repo | Immer nach #209-Merge im Branch |
+| Runtime E2E | Gerenderte hrefs auf `BASE` (Standard: Production) | Nur wenn deployed JSON denselben gesetze-Slug enthält |
+
+**Wichtig:** Default `BASE=https://immobilien-akademie-smart.de`. JSON-Fixes aus #209 sind auf Production erst nach Merge **und** Deploy sichtbar. Fehlt der Slug in deployed JSON, wird der Runtime-Teil **skipped** (nicht fail, nicht falsch grün). Statische Source-Tests (`Source JSON Gesetzeslinks`) prüfen Repo-Inhalt unabhängig von Production.
+
+Für lokale Validierung aller Runtime-Checks nach JSON-Änderung:
+
+```bash
+PLAYWRIGHT_BASE_URL=http://127.0.0.1:5173 pnpm run test:e2e:auth-smoke
+```
+
+(Voraussetzung: lokaler Dev-Server mit aktuellem `client/public/data`.)
 
 ## KI-Assistent Smoke (#205)
 
-- Sichtbarkeit: Mic-Button (`title="Spracheingabe starten"`) **nur im geöffneten KI-Overlay** — nicht den AudioPlayer auf der Tag-Seite.
+- Sichtbarkeit: Mic-Button (`title="Spracheingabe starten"`) und Input **im weißen KI-Dialog** — Panel-Locator filtert auf Header **und** Placeholder (nicht nur Titel-`div`).
+- Nicht den AudioPlayer auf der Tag-Seite anklicken oder matchen.
 - Der Vorlesen-Button (`aria-label="Text vorlesen"`) erscheint erst unter Assistant-Nachrichten (RAG-Antwort). Der Smoke-Test klickt ihn nicht und sendet keine Chatnachricht (keine API-/RAG-Kosten).
 - `speechSynthesis` bleibt in den Tests gemockt.
 

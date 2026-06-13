@@ -3,8 +3,12 @@ import {
   BASE,
   hasValidSession,
   LAW_SLUG_CHECKS,
-  assertLawSlugPresent,
+  SOURCE_JSON_LINK_ASSERTIONS,
+  assertLawSlugHrefPresent,
+  deployedJsonHasGesetzeSlug,
   kiAssistantPanel,
+  openKiAssistantOverlay,
+  sourceJsonLawContainsGesetzeSlug,
 } from "./helpers/testAuth";
 
 test.describe("Public smoke (#207 preload / public routes)", () => {
@@ -52,6 +56,17 @@ test.describe("Public smoke (#207 preload / public routes)", () => {
   });
 });
 
+test.describe("Source JSON Gesetzeslinks (#209 repo sync)", () => {
+  for (const item of SOURCE_JSON_LINK_ASSERTIONS) {
+    test(`${item.label}`, () => {
+      expect(
+        sourceJsonLawContainsGesetzeSlug(item.moduleId, item.tagId, item.slug),
+        `client/public/data/module${item.moduleId}.json day_${item.tagId} fehlt gesetze-im-internet.de/${item.slug}`,
+      ).toBe(true);
+    });
+  }
+});
+
 test.describe("Authenticated smoke (#204/#205/#207)", () => {
   let authed = false;
 
@@ -89,13 +104,32 @@ test.describe("Authenticated smoke (#204/#205/#207)", () => {
   });
 
   for (const check of LAW_SLUG_CHECKS) {
-    test(`Gesetzeslinks — ${check.label}`, async ({ page }) => {
+    test(`Gesetzeslinks — ${check.label}`, async ({ page, request }) => {
       if (check.skipReason) {
         test.skip(true, check.skipReason);
       }
 
       const tagId = check.tagId ?? 1;
-      await assertLawSlugPresent(page, check.moduleId, tagId, check.slug);
+
+      expect(
+        sourceJsonLawContainsGesetzeSlug(check.moduleId, tagId, check.slug),
+        `Repo-JSON module${check.moduleId}.json day_${tagId} fehlt gesetze-im-internet.de/${check.slug}`,
+      ).toBe(true);
+
+      const deployedHasSlug = await deployedJsonHasGesetzeSlug(
+        request,
+        check.moduleId,
+        tagId,
+        check.slug,
+      );
+      if (!deployedHasSlug) {
+        test.skip(
+          true,
+          `Runtime auf ${BASE}: gesetze-im-internet.de/${check.slug} noch nicht in deployed module${check.moduleId}.json — Merge/Deploy #209 abwarten`,
+        );
+      }
+
+      await assertLawSlugHrefPresent(page, check.moduleId, tagId, check.slug);
     });
   }
 
@@ -111,11 +145,11 @@ test.describe("Authenticated smoke (#204/#205/#207)", () => {
     await context.grantPermissions(["microphone"]);
     await page.goto(`${BASE}/modul/1/tag/1`, { waitUntil: "domcontentloaded", timeout: 30000 });
     await expect(page).not.toHaveURL(/\/login/);
-    await page.getByRole("button", { name: "KI-Assistent öffnen" }).click({ timeout: 15000 });
+    await openKiAssistantOverlay(page);
 
     const panel = kiAssistantPanel(page);
-    await expect(panel.getByText("KI-Tutor · Immobilien-Akademie")).toBeVisible({ timeout: 10000 });
-    const micButton = panel.getByTitle("Spracheingabe starten");
+    await expect(panel).toBeVisible();
+    const micButton = panel.locator('button[title="Spracheingabe starten"]');
     await expect(micButton).toBeVisible();
     await expect(micButton).toBeEnabled();
   });
@@ -137,11 +171,12 @@ test.describe("Authenticated smoke (#204/#205/#207)", () => {
     page.on("pageerror", (e) => pageErrors.push(e.message));
 
     await page.goto(`${BASE}/modul/1/tag/1`, { waitUntil: "domcontentloaded" });
-    await page.getByRole("button", { name: "KI-Assistent öffnen" }).click();
+    await openKiAssistantOverlay(page);
 
     const panel = kiAssistantPanel(page);
-    await expect(panel.getByPlaceholder(/Stelle eine Frage/i)).toBeVisible();
-    await expect(panel.getByTitle("Spracheingabe starten")).toBeVisible();
+    await expect(panel).toBeVisible();
+    await expect(panel.locator('input[placeholder*="Stelle eine Frage"]')).toBeVisible();
+    await expect(panel.locator('button[title="Spracheingabe starten"]')).toBeVisible();
     await page.waitForTimeout(300);
     expect(pageErrors).toEqual([]);
   });
