@@ -33,3 +33,37 @@ drizzle/schema.ts:
 ## STACK
 
 React 19, Vite 5, TypeScript, Express 4.21.2, tRPC, MySQL 9.4, Drizzle ORM, Tailwind CSS 4, pnpm
+
+## Multi-Agent-Prozess
+
+- GitHub ist die Wahrheit.
+- `main` ist geschützt und wird nie direkt beschrieben.
+- Jede Änderung läuft über Issue/Task → Branch → Draft-PR → CI → Review → Merge-Entscheidung.
+- Kein Agent darf Railway, Production, Datenbank, Secrets oder Deploys ändern, außer der Nutzer gibt es ausdrücklich frei.
+- Cursor arbeitet primär an Feature-/UI-/Multi-File-Branches.
+- Codex arbeitet primär read-only, als Reviewer, CI-Analyst, Audit-Agent oder Mini-Fix-Agent.
+- Codex darf in fremde PR-Branches nur pushen, wenn der Nutzer es ausdrücklich erlaubt.
+- Nie zwei Agenten gleichzeitig an derselben Datei oder demselben Kernbereich.
+- `server/_core/index.ts` darf maximal in einem offenen PR gleichzeitig verändert werden.
+- Security-/Config-Fixes bleiben klein, idealerweise 1–3 Dateien.
+- Erst read-only Analyse, dann Code.
+- Obsolete Branches werden geschlossen statt blind rebased.
+- Deploy ist immer ein separater Schritt nach Merge.
+- Prozess-Freigabe ist keine Merge-Freigabe.
+- Merge-Freigabe ist keine Deploy-Freigabe.
+- Jeder PR braucht eigene Prüfung, CI-Bewertung und ausdrückliche Freigabe.
+
+## Merge-Gates
+
+Harte Gates:
+
+- Typecheck / tsc
+- Build
+- Tests
+- Docker-Build, falls production-relevant
+
+Separat zu bewerten:
+
+- `pnpm audit`, wenn der PR die Schwachstelle nicht verursacht
+- E2E/Stripe/Smoke, wenn Secrets oder Testumgebung fehlen
+- externe/flaky Checks
