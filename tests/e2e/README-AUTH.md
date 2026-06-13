@@ -87,9 +87,13 @@ Warte-Strategie (Auth-Smoke #209):
 | Prüfung | Was | Wann grün |
 |---------|-----|-----------|
 | Source JSON | `client/public/data/module*.json` im Repo | Immer nach #209-Merge im Branch |
-| Runtime E2E | Gerenderte hrefs auf `BASE` (Standard: Production) | Nur wenn deployed JSON denselben gesetze-Slug enthält |
+| Runtime E2E | Gerenderte hrefs auf `BASE` (Standard: Production) | Nur wenn deployed JSON denselben gesetze-Slug in `law[]` hat **und** der href im DOM erscheint |
 
-**Wichtig:** Default `BASE=https://immobilien-akademie-smart.de`. JSON-Fixes aus #209 sind auf Production erst nach Merge **und** Deploy sichtbar. Fehlt der Slug in deployed JSON, wird der Runtime-Teil **skipped** (nicht fail, nicht falsch grün). Statische Source-Tests (`Source JSON Gesetzeslinks`) prüfen Repo-Inhalt unabhängig von Production.
+**Wichtig:** Default `BASE=https://immobilien-akademie-smart.de`. JSON-Fixes aus #209 sind auf Production erst nach Merge **und** Deploy sichtbar.
+
+**Skip-Gate (kein Timeout):** Für Slugs, die im Repo-JSON bereits als `gesetze-im-internet.de/...`-href stehen, aber in deployed JSON auf `BASE` noch fehlen (z. B. `immowertv_2021`, `mabv`), wird der Runtime-Teil **skipped** — nicht fail, nicht falsch grün. Statische Source-Tests bleiben hart grün.
+
+**Strict:** Kein `html.includes(slug)` — nur gerenderte `a[href*="gesetze-im-internet.de"]` mit Slug.
 
 Für lokale Validierung aller Runtime-Checks nach JSON-Änderung:
 
@@ -101,8 +105,9 @@ PLAYWRIGHT_BASE_URL=http://127.0.0.1:5173 pnpm run test:e2e:auth-smoke
 
 ## KI-Assistent Smoke (#205)
 
-- Sichtbarkeit: Mic-Button (`title="Spracheingabe starten"`) und Input **im weißen KI-Dialog** — Panel-Locator filtert auf Header **und** Placeholder (nicht nur Titel-`div`).
-- Nicht den AudioPlayer auf der Tag-Seite anklicken oder matchen.
+- Overlay-Root: `div[style*="z-index: 9999"]` (voller Fixed-Overlay, nicht inneres Titel-`div`).
+- Input: `overlay.getByRole("textbox")` — Mic: `getByTitle(/Spracheingabe|Aufnahme/)` oder Lucide-Mic-Icon im Overlay.
+- Nicht den AudioPlayer auf der Tag-Seite matchen oder anklicken.
 - Der Vorlesen-Button (`aria-label="Text vorlesen"`) erscheint erst unter Assistant-Nachrichten (RAG-Antwort). Der Smoke-Test klickt ihn nicht und sendet keine Chatnachricht (keine API-/RAG-Kosten).
 - `speechSynthesis` bleibt in den Tests gemockt.
 

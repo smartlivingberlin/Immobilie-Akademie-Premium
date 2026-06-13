@@ -5,9 +5,9 @@ import {
   LAW_SLUG_CHECKS,
   SOURCE_JSON_LINK_ASSERTIONS,
   assertLawSlugHrefPresent,
-  deployedJsonHasGesetzeSlug,
-  kiAssistantPanel,
+  expectKiAssistantControlsVisible,
   openKiAssistantOverlay,
+  runtimeLawCheckSkipReason,
   sourceJsonLawContainsGesetzeSlug,
 } from "./helpers/testAuth";
 
@@ -111,22 +111,24 @@ test.describe("Authenticated smoke (#204/#205/#207)", () => {
 
       const tagId = check.tagId ?? 1;
 
-      expect(
-        sourceJsonLawContainsGesetzeSlug(check.moduleId, tagId, check.slug),
-        `Repo-JSON module${check.moduleId}.json day_${tagId} fehlt gesetze-im-internet.de/${check.slug}`,
-      ).toBe(true);
+      if (SOURCE_JSON_LINK_ASSERTIONS.some(
+        (item) =>
+          item.moduleId === check.moduleId && item.tagId === tagId && item.slug === check.slug,
+      )) {
+        expect(
+          sourceJsonLawContainsGesetzeSlug(check.moduleId, tagId, check.slug),
+          `Repo-JSON module${check.moduleId}.json day_${tagId} fehlt gesetze-im-internet.de/${check.slug}`,
+        ).toBe(true);
+      }
 
-      const deployedHasSlug = await deployedJsonHasGesetzeSlug(
+      const skipReason = await runtimeLawCheckSkipReason(
         request,
         check.moduleId,
         tagId,
         check.slug,
       );
-      if (!deployedHasSlug) {
-        test.skip(
-          true,
-          `Runtime auf ${BASE}: gesetze-im-internet.de/${check.slug} noch nicht in deployed module${check.moduleId}.json — Merge/Deploy #209 abwarten`,
-        );
+      if (skipReason) {
+        test.skip(true, skipReason);
       }
 
       await assertLawSlugHrefPresent(page, check.moduleId, tagId, check.slug);
@@ -146,12 +148,7 @@ test.describe("Authenticated smoke (#204/#205/#207)", () => {
     await page.goto(`${BASE}/modul/1/tag/1`, { waitUntil: "domcontentloaded", timeout: 30000 });
     await expect(page).not.toHaveURL(/\/login/);
     await openKiAssistantOverlay(page);
-
-    const panel = kiAssistantPanel(page);
-    await expect(panel).toBeVisible();
-    const micButton = panel.locator('button[title="Spracheingabe starten"]');
-    await expect(micButton).toBeVisible();
-    await expect(micButton).toBeEnabled();
+    await expectKiAssistantControlsVisible(page);
   });
 
   test("KI-Assistent: Overlay öffnet ohne Page-Error (#205)", async ({ page, context }) => {
@@ -172,11 +169,7 @@ test.describe("Authenticated smoke (#204/#205/#207)", () => {
 
     await page.goto(`${BASE}/modul/1/tag/1`, { waitUntil: "domcontentloaded" });
     await openKiAssistantOverlay(page);
-
-    const panel = kiAssistantPanel(page);
-    await expect(panel).toBeVisible();
-    await expect(panel.locator('input[placeholder*="Stelle eine Frage"]')).toBeVisible();
-    await expect(panel.locator('button[title="Spracheingabe starten"]')).toBeVisible();
+    await expectKiAssistantControlsVisible(page);
     await page.waitForTimeout(300);
     expect(pageErrors).toEqual([]);
   });

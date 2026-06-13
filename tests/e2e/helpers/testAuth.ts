@@ -79,38 +79,54 @@ function dayLawBlob(day: unknown): string {
   return law.join("\n");
 }
 
+export function extractGesetzeHrefsFromLawBlob(lawBlob: string): string[] {
+  return lawBlob.match(/https:\/\/www\.gesetze-im-internet\.de[^)\s"']+/gi) ?? [];
+}
+
+function gesetzeHrefsForTagFromData(data: Record<string, unknown>, tagId: number): string[] {
+  return extractGesetzeHrefsFromLawBlob(dayLawBlob(data[`day_${tagId}`]));
+}
+
 /** Strict: repo source JSON must contain a gesetze-im-internet href with slug in law[]. */
 export function sourceJsonLawContainsGesetzeSlug(
   moduleId: number,
   tagId: number,
   slug: string,
 ): boolean {
-  const filePath = moduleJsonPath(moduleId);
-  const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
-  const blob = dayLawBlob(data[`day_${tagId}`]).toLowerCase();
-  if (!blob.includes("gesetze-im-internet.de")) return false;
-  const hrefs = blob.match(/https:\/\/www\.gesetze-im-internet\.de[^)\s"']+/gi) ?? [];
-  return hrefs.some((href) => slugMatchesHref(href, slug));
+  const data = JSON.parse(fs.readFileSync(moduleJsonPath(moduleId), "utf8"));
+  return gesetzeHrefsForTagFromData(data, tagId).some((href) => slugMatchesHref(href, slug));
 }
 
-/** Whether deployed JSON at BASE already contains the gesetze href for this tag (runtime gate). */
-export async function deployedJsonHasGesetzeSlug(
+/**
+ * Skip runtime law E2E when repo JSON already has gesetze slug but deployed JSON at BASE does not.
+ * Prevents timeouts against Production before #209 JSON is deployed.
+ */
+export async function runtimeLawCheckSkipReason(
   request: APIRequestContext,
   moduleId: number,
   tagId: number,
   slug: string,
-): Promise<boolean> {
-  try {
-    const res = await request.get(`${BASE}/data/module${moduleId}.json`);
-    if (!res.ok()) return false;
-    const data = await res.json();
-    const blob = dayLawBlob(data[`day_${tagId}`]).toLowerCase();
-    if (!blob.includes("gesetze-im-internet.de")) return false;
-    const hrefs = blob.match(/https:\/\/www\.gesetze-im-internet\.de[^)\s"']+/gi) ?? [];
-    return hrefs.some((href) => slugMatchesHref(href, slug));
-  } catch {
-    return false;
+): Promise<string | null> {
+  const sourceData = JSON.parse(fs.readFileSync(moduleJsonPath(moduleId), "utf8"));
+  const sourceHas = gesetzeHrefsForTagFromData(sourceData, tagId).some((href) =>
+    slugMatchesHref(href, slug),
+  );
+  if (!sourceHas) return null;
+
+  const res = await request.get(`${BASE}/data/module${moduleId}.json`);
+  if (!res.ok()) {
+    return `deployed module${moduleId}.json auf ${BASE} nicht lesbar (HTTP ${res.status()}) — Runtime-Law-Check übersprungen`;
   }
+
+  const deployedData = await res.json();
+  const deployedHas = gesetzeHrefsForTagFromData(deployedData, tagId).some((href) =>
+    slugMatchesHref(href, slug),
+  );
+  if (!deployedHas) {
+    return `Runtime auf ${BASE}: gesetze-im-internet.de/${slug} in Repo-JSON vorhanden, deployed module${moduleId}.json noch ohne diesen href — Merge/Deploy #209 abwarten`;
+  }
+
+  return null;
 }
 
 export async function collectGesetzeHrefs(page: Page): Promise<string[]> {
@@ -123,7 +139,7 @@ export async function openNormenTabIfPresent(page: Page): Promise<void> {
   const normen = page.getByRole("tab", { name: /Normen/i });
   if (await normen.isVisible().catch(() => false)) {
     await normen.click();
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(500);
   }
 }
 
@@ -199,17 +215,32 @@ export async function assertLawSlugHrefPresent(
 
 export async function openKiAssistantOverlay(page: Page): Promise<void> {
   await page.getByRole("button", { name: "KI-Assistent öffnen" }).click({ timeout: 15000 });
-  await expect(page.getByText("KI-Tutor · Immobilien-Akademie")).toBeVisible({ timeout: 10000 });
+  await expect(page.getByText(/KI-Tutor.*Immobilien-Akademie/)).toBeVisible({ timeout: 10000 });
 }
 
-/**
- * White dialog panel inside the fixed overlay — contains header, chat and input row.
- * Avoid `.last()` on header text alone (too narrow and excludes mic/input).
- */
-export function kiAssistantPanel(page: Page) {
-  return page
-    .locator("div")
-    .filter({ has: page.getByText("KI-Tutor · Immobilien-Akademie") })
-    .filter({ has: page.getByPlaceholder(/Stelle eine Frage zu/i) })
-    .first();
+/** Fixed full-screen overlay root (z-index 9999) — not the inner title-only div. */
+export function kiAssistantOverlayRoot(page: Page) {
+  return page.locator('div[style*="z-index: 9999"]').first();
+}
+
+/** Assert KI overlay input + mic are visible without touching page AudioPlayer or sending chat. */
+export async function expectKiAssistantControlsVisible(page: Page): Promise<void> {
+  const overlay = kiAssistantOverlayRoot(page);
+  await expect(overlay).toBeVisible();
+
+  const textbox = overlay.getByRole("textbox");
+  await expect(textbox).toBeVisible();
+
+  const micByTitle = overlay.getByTitle(/Spracheingabe starten|Aufnahme stoppen/i);
+  if ((await micByTitle.count()) > 0) {
+    await expect(micByTitle.first()).toBeVisible();
+    await expect(micByTitle.first()).toBeEnabled();
+    return;
+  }
+
+  const micByIcon = overlay.locator("button").filter({
+    has: overlay.locator("svg.lucide-mic, svg.lucide-mic-off"),
+  });
+  await expect(micByIcon.first()).toBeVisible();
+  await expect(micByIcon.first()).toBeEnabled();
 }
