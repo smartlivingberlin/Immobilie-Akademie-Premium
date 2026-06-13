@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { Route, Switch, useLocation } from "wouter";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { trpc } from "@/lib/trpc";
@@ -7,7 +7,7 @@ const DashboardLayout = lazy(() => import("@/components/layout/DashboardLayout")
 const RechenpraxisProductLayout = lazy(() => import("@/components/layout/RechenpraxisProductLayout"));
 const Footer = lazy(() => import("@/components/layout/Footer"));
 const PublicHeader = lazy(() => import("@/components/layout/PublicHeader"));
-import ModuleGuard from "@/components/ModuleGuard";
+const ModuleGuard = lazy(() => import("@/components/ModuleGuard"));
 import { usePageTracking } from "@/hooks/useAnalytics";
 import { useInspectMode } from "@/hooks/useInspectMode";
 import { isInspectModeSync } from "@/lib/inspectMode";
@@ -148,7 +148,15 @@ function ProtectedModuleRoute({ moduleId, children }: { moduleId: number, childr
   }
   if (!user && !isInspect) { window.location.href = "/login"; return null; }
   if (isInspect) return <>{children}</>;
-  return <ModuleGuard moduleId={moduleId}>{children}</ModuleGuard>;
+  return (
+    <Suspense fallback={
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontSize: 14, color: "#64748b" }}>
+        Laden...
+      </div>
+    }>
+      <ModuleGuard moduleId={moduleId}>{children}</ModuleGuard>
+    </Suspense>
+  );
 }
 
 function AdminRoute({ component: Component }: { component: React.ComponentType }) {
@@ -439,6 +447,21 @@ function Router() {
 export default function App() {
   const [location] = useLocation();
   const isAuthRoute = ["/login", "/forgot-password", "/reset-password"].includes(location);
+  const [a11yReady, setA11yReady] = useState(false);
+
+  useEffect(() => {
+    if (isAuthRoute) {
+      setA11yReady(false);
+      return;
+    }
+    const enable = () => setA11yReady(true);
+    if (typeof requestIdleCallback !== "undefined") {
+      const id = requestIdleCallback(enable, { timeout: 3500 });
+      return () => cancelIdleCallback(id);
+    }
+    const timer = window.setTimeout(enable, 2000);
+    return () => window.clearTimeout(timer);
+  }, [isAuthRoute]);
 
   React.useEffect(() => {
     const path = window.location.pathname;
@@ -456,7 +479,7 @@ export default function App() {
         Zum Hauptinhalt springen
       </a>
       <Router />
-      {!isAuthRoute && (
+      {!isAuthRoute && a11yReady && (
         <Suspense fallback={null}><AccessibilityPanel hideFab /></Suspense>
       )}
     </>
