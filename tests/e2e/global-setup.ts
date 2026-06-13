@@ -31,13 +31,38 @@ function resolveAdminPassword(): string {
 
 const STATE_PATH = "tests/e2e/.auth-state.json";
 
+function hasEnvAuthCredentials(): boolean {
+  for (const candidate of [process.env.B2B_ADMIN_PASSWORD, process.env.TEST_ADMIN_PASSWORD]) {
+    if (candidate && !PLACEHOLDER_PASSWORDS.has(candidate)) return true;
+  }
+  return Boolean(process.env.MAGIC_LINK_SECRET);
+}
+
+function allowEmptyAuthState(): boolean {
+  return (
+    process.env.PLAYWRIGHT_ALLOW_EMPTY_AUTH_STATE === "1" ||
+    process.env.PLAYWRIGHT_SKIP_GLOBAL_SETUP === "1"
+  );
+}
+
+async function writeEmptyAuthState(message: string): Promise<void> {
+  const { mkdirSync, writeFileSync } = await import("fs");
+  const { dirname } = await import("path");
+  mkdirSync(dirname(STATE_PATH), { recursive: true });
+  writeFileSync(STATE_PATH, JSON.stringify({ cookies: [], origins: [] }));
+  console.log(message);
+}
+
 async function globalSetup() {
   if (process.env.PLAYWRIGHT_SKIP_GLOBAL_SETUP === "1") {
-    const { mkdirSync, writeFileSync } = await import("fs");
-    const { dirname } = await import("path");
-    mkdirSync(dirname(STATE_PATH), { recursive: true });
-    writeFileSync(STATE_PATH, JSON.stringify({ cookies: [], origins: [] }));
-    console.log("⏭️  PLAYWRIGHT_SKIP_GLOBAL_SETUP=1 — leerer Auth-State");
+    await writeEmptyAuthState("⏭️  PLAYWRIGHT_SKIP_GLOBAL_SETUP=1 — leerer Auth-State");
+    return;
+  }
+
+  if (!hasEnvAuthCredentials() && allowEmptyAuthState()) {
+    await writeEmptyAuthState(
+      "⏭️  Keine E2E-Auth-Credentials in ENV — leerer Auth-State (authentifizierte Tests werden übersprungen)",
+    );
     return;
   }
 
@@ -45,11 +70,10 @@ async function globalSetup() {
   const TEST_PASSWORD = resolveAdminPassword();
   const browser = await chromium.launch();
   const context = await browser.newContext(
-    existsSync(STATE_PATH) ? { storageState: STATE_PATH } : {}
+    existsSync(STATE_PATH) ? { storageState: STATE_PATH } : {},
   );
   const page = await context.newPage();
 
-  // Prüfen ob bestehender Auth-State noch gültig
   if (existsSync(STATE_PATH)) {
     const check = await page.request.get(`${BASE}/api/auth/me`);
     const data = await check.json();
@@ -74,8 +98,19 @@ async function globalSetup() {
   }
 
   if (!TEST_PASSWORD) {
+    if (allowEmptyAuthState()) {
+      await writeEmptyAuthState(
+        "⏭️  Keine E2E-Auth-Credentials — leerer Auth-State (authentifizierte Tests werden übersprungen)",
+      );
+      await browser.close();
+      return;
+    }
+
+    await browser.close();
     throw new Error(
-      "Passwort fehlt. Zuerst: unset TEST_ADMIN_PASSWORD && export B2B_ADMIN_PASSWORD='...' — oder bash scripts/ops/test-admin-login.sh",
+      "Passwort fehlt. Setze TEST_ADMIN_PASSWORD, B2B_ADMIN_PASSWORD oder MAGIC_LINK_SECRET. " +
+        "Für Auth-Smoke ohne Secrets: PLAYWRIGHT_ALLOW_EMPTY_AUTH_STATE=1 (pnpm run test:e2e:auth-smoke). " +
+        "Oder: unset TEST_ADMIN_PASSWORD && export B2B_ADMIN_PASSWORD='...' — oder bash scripts/ops/test-admin-login.sh",
     );
   }
 
@@ -86,6 +121,7 @@ async function globalSetup() {
 
   if (!response.ok()) {
     const body = await response.text();
+    await browser.close();
     if (response.status() === 429) {
       throw new Error(
         `Rate-Limit aktiv (429). 15 Min. warten oder MAGIC_LINK_SECRET setzen. ${body}`,

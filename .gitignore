@@ -201,3 +201,4 @@ whsec_response.json
 restore_inbox/
 !docs/handover/PROJEKT_HISTORIE_VOLLSTAENDIG.md
 !docs/handover/*.md
+!tests/e2e/README-AUTH.md
