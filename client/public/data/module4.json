@@ -6,7 +6,7 @@
     "law": [
       "[§ 194 BauGB](https://www.gesetze-im-internet.de/bbaug/__194.html) (Verkehrswert)",
       "[§ 193 BauGB](https://www.gesetze-im-internet.de/bbaug/__193.html) (Gutachterausschüsse)",
-      "[ImmoWertV 2021](https://dejure.org/gesetze/ImmoWertV) (Wertermittlungsverordnung)"
+      "[ImmoWertV 2021](https://www.gesetze-im-internet.de/immowertv_2021/) (Wertermittlungsverordnung)"
     ],
     "practice": "\n# Praxisbeispiel: Preis vs. Wert\n\n**Szenario:**\nEin Reihenmittelhaus in München wird für **850.000 €** verkauft.\nDer Gutachter ermittelt einen Verkehrswert von **780.000 €**.\n\n**Analyse der Diskrepanz:**\n*   **Marktlage:** In \"heißen\" Märkten (Verkäufermärkten) liegen die erzielbaren Preise oft über den rechnerischen Werten, da Käufer bereit sind, \"Liebhaberaufschläge\" zu zahlen, um den Zuschlag zu erhalten.\n*   **Persönliche Verhältnisse:** Der Käufer wollte unbedingt in diese Straße, weil seine Eltern nebenan wohnen. Das ist ein \"persönliches Verhältnis\" im Sinne des § 194 BauGB und darf im Verkehrswert nicht berücksichtigt werden.\n\n**Konsequenz für die Finanzierung:**\nDie Bank wird sich am Verkehrswert (bzw. Beleihungswert) von 780.000 € orientieren. Die Differenz von 70.000 € muss der Käufer als zusätzliches Eigenkapital einbringen, da sie nicht werthaltig besichert ist.\n    ",
     "task": "Definieren Sie den Begriff 'Verkehrswert' gemäß § 194 BauGB.",

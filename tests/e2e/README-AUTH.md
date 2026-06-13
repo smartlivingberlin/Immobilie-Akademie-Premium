@@ -75,6 +75,42 @@ Workflow muss Secrets als Env an Playwright durchreichen. Ohne Secrets: Public-S
 | `grstvg` | — | dokumentiert ausgeschlossen (nur Glossar/LegalLink) |
 | Modul 5 | Tag 1 | dokumentiert ausgeschlossen (keine festen hrefs) |
 
+Warte-Strategie (Auth-Smoke #209):
+
+- Nach `goto` auf `/modul/{id}/tag/{n}` wird auf `module{n}.json` und sichtbare Tabs gewartet.
+- Modul 1 und 3: ein `reload()` nach dem ersten `goto`, damit der Tag aus der URL zum gerenderten Inhalt passt (ohne App-Code-Änderung).
+- Normen-Tab wird geöffnet, falls vorhanden.
+- **Strict:** Es zählen nur gerenderte `a[href*="gesetze-im-internet.de"]`-Links mit Slug — kein `html.includes(slug)`-Fallback (verhindert falsches Grün durch sichtbaren Gesetzestext ohne Link).
+
+### Source JSON vs. Runtime (Production)
+
+| Prüfung | Was | Wann grün |
+|---------|-----|-----------|
+| Source JSON | `client/public/data/module*.json` im Repo | Immer nach #209-Merge im Branch |
+| Runtime E2E | Gerenderte hrefs auf `BASE` (Standard: Production) | Nur wenn deployed JSON denselben gesetze-Slug in `law[]` hat **und** der href im DOM erscheint |
+
+**Wichtig:** Default `BASE=https://immobilien-akademie-smart.de`. JSON-Fixes aus #209 sind auf Production erst nach Merge **und** Deploy sichtbar.
+
+**Skip-Gate (kein Timeout):** Für Slugs, die im Repo-JSON bereits als `gesetze-im-internet.de/...`-href stehen, aber in deployed JSON auf `BASE` noch fehlen (z. B. `immowertv_2021`, `mabv`), wird der Runtime-Teil **skipped** — nicht fail, nicht falsch grün. Statische Source-Tests bleiben hart grün.
+
+**Strict:** Kein `html.includes(slug)` — nur gerenderte `a[href*="gesetze-im-internet.de"]` mit Slug.
+
+Für lokale Validierung aller Runtime-Checks nach JSON-Änderung:
+
+```bash
+PLAYWRIGHT_BASE_URL=http://127.0.0.1:5173 pnpm run test:e2e:auth-smoke
+```
+
+(Voraussetzung: lokaler Dev-Server mit aktuellem `client/public/data`.)
+
+## KI-Assistent Smoke (#205)
+
+- Overlay-Root: `div[style*="z-index: 9999"]` (voller Fixed-Overlay, nicht inneres Titel-`div`).
+- Input: `overlay.getByRole("textbox")` — Mic: `getByTitle(/Spracheingabe|Aufnahme/)` oder Lucide-Mic-Icon im Overlay.
+- Nicht den AudioPlayer auf der Tag-Seite matchen oder anklicken.
+- Der Vorlesen-Button (`aria-label="Text vorlesen"`) erscheint erst unter Assistant-Nachrichten (RAG-Antwort). Der Smoke-Test klickt ihn nicht und sendet keine Chatnachricht (keine API-/RAG-Kosten).
+- `speechSynthesis` bleibt in den Tests gemockt.
+
 ## Allgemeine E2E vs. Auth-Smoke
 
 - **`pnpm run test:e2e`** (alle Specs): Erwartet Credentials oder `MAGIC_LINK_SECRET`; bricht früh ab, wenn nichts gesetzt ist.

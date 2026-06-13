@@ -3,8 +3,12 @@ import {
   BASE,
   hasValidSession,
   LAW_SLUG_CHECKS,
-  collectGesetzeHrefs,
-  openNormenTabIfPresent,
+  SOURCE_JSON_LINK_ASSERTIONS,
+  assertLawSlugHrefPresent,
+  expectKiAssistantControlsVisible,
+  openKiAssistantOverlay,
+  runtimeLawCheckSkipReason,
+  sourceJsonLawContainsGesetzeSlug,
 } from "./helpers/testAuth";
 
 test.describe("Public smoke (#207 preload / public routes)", () => {
@@ -52,6 +56,17 @@ test.describe("Public smoke (#207 preload / public routes)", () => {
   });
 });
 
+test.describe("Source JSON Gesetzeslinks (#209 repo sync)", () => {
+  for (const item of SOURCE_JSON_LINK_ASSERTIONS) {
+    test(`${item.label}`, () => {
+      expect(
+        sourceJsonLawContainsGesetzeSlug(item.moduleId, item.tagId, item.slug),
+        `client/public/data/module${item.moduleId}.json day_${item.tagId} fehlt gesetze-im-internet.de/${item.slug}`,
+      ).toBe(true);
+    });
+  }
+});
+
 test.describe("Authenticated smoke (#204/#205/#207)", () => {
   let authed = false;
 
@@ -89,34 +104,38 @@ test.describe("Authenticated smoke (#204/#205/#207)", () => {
   });
 
   for (const check of LAW_SLUG_CHECKS) {
-    test(`Gesetzeslinks — ${check.label}`, async ({ page }) => {
+    test(`Gesetzeslinks — ${check.label}`, async ({ page, request }) => {
       if (check.skipReason) {
         test.skip(true, check.skipReason);
       }
 
       const tagId = check.tagId ?? 1;
-      await page.goto(`${BASE}/modul/${check.moduleId}/tag/${tagId}`, {
-        waitUntil: "domcontentloaded",
-        timeout: 30000,
-      });
-      await expect(page).not.toHaveURL(/\/login/);
-      await openNormenTabIfPresent(page);
-      await page.waitForTimeout(1500);
-      const hrefs = await collectGesetzeHrefs(page);
-      const html = await page.content();
-      const found =
-        hrefs.some((h) => h.includes(check.slug)) || html.includes(check.slug);
-      expect(
-        found,
-        `Kein href mit „${check.slug}“ auf Modul ${check.moduleId}/tag/${tagId}`,
-      ).toBe(true);
+
+      if (SOURCE_JSON_LINK_ASSERTIONS.some(
+        (item) =>
+          item.moduleId === check.moduleId && item.tagId === tagId && item.slug === check.slug,
+      )) {
+        expect(
+          sourceJsonLawContainsGesetzeSlug(check.moduleId, tagId, check.slug),
+          `Repo-JSON module${check.moduleId}.json day_${tagId} fehlt gesetze-im-internet.de/${check.slug}`,
+        ).toBe(true);
+      }
+
+      const skipReason = await runtimeLawCheckSkipReason(
+        request,
+        check.moduleId,
+        tagId,
+        check.slug,
+      );
+      if (skipReason) {
+        test.skip(true, skipReason);
+      }
+
+      await assertLawSlugHrefPresent(page, check.moduleId, tagId, check.slug);
     });
   }
 
-  test("KI-Assistent: öffnen, Vorlesen- und Mic-Button sichtbar (#205)", async ({
-    page,
-    context,
-  }) => {
+  test("KI-Assistent: öffnen, Mic-Button im Overlay sichtbar (#205)", async ({ page, context }) => {
     await page.addInitScript(() => {
       if (!window.speechSynthesis?.speak) {
         Object.defineProperty(window, "speechSynthesis", {
@@ -128,16 +147,11 @@ test.describe("Authenticated smoke (#204/#205/#207)", () => {
     await context.grantPermissions(["microphone"]);
     await page.goto(`${BASE}/modul/1/tag/1`, { waitUntil: "domcontentloaded", timeout: 30000 });
     await expect(page).not.toHaveURL(/\/login/);
-    await page.getByRole("button", { name: "KI-Assistent öffnen" }).click({ timeout: 15000 });
-    await expect(page.getByText(/Vorlesen|Stop/i).first()).toBeVisible({ timeout: 10000 });
-    const micButton = page.locator("button").filter({
-      has: page.locator("svg.lucide-mic, svg.lucide-mic-off"),
-    });
-    await expect(micButton.first()).toBeVisible();
-    await expect(micButton.first()).toBeEnabled();
+    await openKiAssistantOverlay(page);
+    await expectKiAssistantControlsVisible(page);
   });
 
-  test("KI-Assistent: Vorlesen-Button reagiert ohne Page-Error", async ({ page, context }) => {
+  test("KI-Assistent: Overlay öffnet ohne Page-Error (#205)", async ({ page, context }) => {
     await page.addInitScript(() => {
       Object.defineProperty(window, "speechSynthesis", {
         value: {
@@ -154,11 +168,9 @@ test.describe("Authenticated smoke (#204/#205/#207)", () => {
     page.on("pageerror", (e) => pageErrors.push(e.message));
 
     await page.goto(`${BASE}/modul/1/tag/1`, { waitUntil: "domcontentloaded" });
-    await page.getByRole("button", { name: "KI-Assistent öffnen" }).click();
-    const vorlesen = page.getByRole("button", { name: /Vorlesen|Stop/i }).first();
-    await expect(vorlesen).toBeVisible();
-    await vorlesen.click();
-    await page.waitForTimeout(500);
+    await openKiAssistantOverlay(page);
+    await expectKiAssistantControlsVisible(page);
+    await page.waitForTimeout(300);
     expect(pageErrors).toEqual([]);
   });
 });
