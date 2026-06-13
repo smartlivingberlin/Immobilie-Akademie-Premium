@@ -30,9 +30,9 @@ Der Wirtschaftsplan (§ 28 WEG) ist die Prognose der Einnahmen und Ausgaben für
 Wenn die Kosten steigen (z.B. Energiepreise), muss der Verwalter den Wirtschaftsplan anpassen und ein höheres Hausgeld vorschlagen, um Liquiditätsengpässe zu vermeiden.
     `,
     law: [
-      "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) (Wirtschaftsplan, Jahresabrechnung)",
-      "[§ 16 WEG](https://www.gesetze-im-internet.de/weg/__16.html) (Nutzen, Lasten, Kosten)",
-      "[§ 19 WEG](https://www.gesetze-im-internet.de/weg/__19.html) (Wirkung des Urteils)"
+      "[§ 28 WEG](https://www.gesetze-im-internet.de/woeigg/__28.html) (Wirtschaftsplan, Jahresabrechnung)",
+      "[§ 16 WEG](https://www.gesetze-im-internet.de/woeigg/__16.html) (Nutzen, Lasten, Kosten)",
+      "[§ 19 WEG](https://www.gesetze-im-internet.de/woeigg/__19.html) (Wirkung des Urteils)"
     ],
     practice: `
     tasks: [
@@ -527,7 +527,7 @@ Zu Beginn muss jeder Eigentümer unterschreiben. Prüfen Sie Vollmachten von Ver
 Die ETV ist eine nichtöffentliche Veranstaltung. Externe (Mieter, Anwälte, Berater) dürfen nur teilnehmen, wenn die Gemeinschaft dies per Beschluss gestattet oder die Teilungserklärung es erlaubt.
     `,
     law: [
-      "[§ 24 WEG](https://www.gesetze-im-internet.de/weg/__24.html) (Einberufung, Vorsitz)",
+      "[§ 24 WEG](https://www.gesetze-im-internet.de/woeigg/__24.html) (Einberufung, Vorsitz)",
       "BGH V ZR 110/11 (Teilnahme Dritter)"
     ],
     practice: `
@@ -621,7 +621,7 @@ Eine Wohnung = Eine Stimme.
 Hat ein Eigentümer die Mehrheit (z.B. Bauträger hält noch 60% der Anteile), kann er alles allein bestimmen. Die Rechtsprechung greift hier nur bei offensichtlichem Missbrauch ein.
     `,
     law: [
-      "[§ 25 WEG](https://www.gesetze-im-internet.de/weg/__25.html) (Stimmrecht)",
+      "[§ 25 WEG](https://www.gesetze-im-internet.de/woeigg/__25.html) (Stimmrecht)",
       "§ 25 Abs. 4 WEG (Stimmrechtsausschluss bei Interessenkollision)"
     ],
     practice: `
@@ -818,8 +818,8 @@ Werden die Fristen versäumt, wird der Beschluss **bestandskräftig** (gültig),
 Die Klage richtet sich gegen die **Gemeinschaft der Wohnungseigentümer**, nicht gegen den Verwalter oder den Nachbarn.
     `,
     law: [
-      "[§ 44 WEG](https://www.gesetze-im-internet.de/weg/__44.html) (Beschlussklage)",
-      "[§ 45 WEG](https://www.gesetze-im-internet.de/weg/__45.html) (Wirkung des Urteils)",
+      "[§ 44 WEG](https://www.gesetze-im-internet.de/woeigg/__44.html) (Beschlussklage)",
+      "[§ 45 WEG](https://www.gesetze-im-internet.de/woeigg/__45.html) (Wirkung des Urteils)",
       "§ 23 Abs. 4 WEG (Nichtigkeit)"
     ],
     practice: `
@@ -1325,7 +1325,7 @@ Bei rein privaten Streitigkeiten (z.B. Beleidigung unter Nachbarn) ist der Verwa
     `,
     law: [
       "§ 15 Abs. 3 WEG (Gebrauchsregelung)",
-      "[§ 14 WEG](https://www.gesetze-im-internet.de/weg/__14.html) (Pflichten der Eigentümer)"
+      "[§ 14 WEG](https://www.gesetze-im-internet.de/woeigg/__14.html) (Pflichten der Eigentümer)"
     ],
     practice: `
     tasks: [
@@ -1430,8 +1430,8 @@ Als Verwalter müssen Sie überzeugen, beruhigen und führen.
     `,
     law: [
         "[§ 241 BGB](https://www.gesetze-im-internet.de/bgb/__241.html) – Pflichten aus dem Schuldverhältnis",
-        "[§ 23 WEG](https://www.gesetze-im-internet.de/weg/__23.html) – Wohnungseigentümerversammlung",
-        "[§ 18 WEG](https://www.gesetze-im-internet.de/weg/__18.html) – Verwaltung des gemeinschaftlichen Eigentums",
+        "[§ 23 WEG](https://www.gesetze-im-internet.de/woeigg/__23.html) – Wohnungseigentümerversammlung",
+        "[§ 18 WEG](https://www.gesetze-im-internet.de/woeigg/__18.html) – Verwaltung des gemeinschaftlichen Eigentums",
       ],
     practice: `
     tasks: [
@@ -1637,10 +1637,10 @@ Wir haben die Grundlagen der WEG-Verwaltung, die kaufmännische Verwaltung und d
 Nutzen Sie diesen Tag, um offene Fragen zu klären und die Gesetzestexte noch einmal querzulesen.
     `,
     law: [
-        "[§ 1 WEG](https://www.gesetze-im-internet.de/weg/__1.html) – Begriffsbestimmungen",
-        "[§ 18 WEG](https://www.gesetze-im-internet.de/weg/__18.html) – Verwaltung",
-        "[§ 23 WEG](https://www.gesetze-im-internet.de/weg/__23.html) – Eigentümerversammlung",
-        "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) – Wirtschaftsplan",
+        "[§ 1 WEG](https://www.gesetze-im-internet.de/woeigg/__1.html) – Begriffsbestimmungen",
+        "[§ 18 WEG](https://www.gesetze-im-internet.de/woeigg/__18.html) – Verwaltung",
+        "[§ 23 WEG](https://www.gesetze-im-internet.de/woeigg/__23.html) – Eigentümerversammlung",
+        "[§ 28 WEG](https://www.gesetze-im-internet.de/woeigg/__28.html) – Wirtschaftsplan",
       ],
     practice: `
     tasks: [
@@ -1755,8 +1755,8 @@ Für technische Anlagen sind regelmäßige Wartungen gesetzlich vorgeschrieben:
 - **Blitzschutzanlagen:** Alle 4 Jahre.
     `,
     law: [
-      "[§ 13 WEG](https://www.gesetze-im-internet.de/weg/__13.html) (Ordnungsgemäße Verwaltung)",
-      "[§ 21 WEG](https://www.gesetze-im-internet.de/weg/__21.html) (Bauliche Veränderungen)",
+      "[§ 13 WEG](https://www.gesetze-im-internet.de/woeigg/__13.html) (Ordnungsgemäße Verwaltung)",
+      "[§ 21 WEG](https://www.gesetze-im-internet.de/woeigg/__21.html) (Bauliche Veränderungen)",
       "[§ 823 BGB](https://www.gesetze-im-internet.de/bgb/__823.html) (Verkehrssicherungspflicht)",
       "GEG (Gebäudeenergiegesetz)",
       "DIN EN 1176 (Spielplatzsicherheit)"
@@ -1887,10 +1887,10 @@ Seit 2020 können mit einfacher Mehrheit beschlossen werden:
 - **Ausnahme:** Wenn einzelne Eigentümer nicht profitieren, können sie von den Kosten befreit werden (§ 16 Abs. 6 WEG).
     `,
     law: [
-      "[§ 20 WEG](https://www.gesetze-im-internet.de/weg/__20.html) (Bauliche Veränderungen)",
-      "[§ 21 WEG](https://www.gesetze-im-internet.de/weg/__21.html) (Instandhaltung und Instandsetzung)",
-      "[§ 16 WEG](https://www.gesetze-im-internet.de/weg/__16.html) (Kostentragung)",
-      "[§ 25 WEG](https://www.gesetze-im-internet.de/weg/__25.html) (Beschlussfassung)"
+      "[§ 20 WEG](https://www.gesetze-im-internet.de/woeigg/__20.html) (Bauliche Veränderungen)",
+      "[§ 21 WEG](https://www.gesetze-im-internet.de/woeigg/__21.html) (Instandhaltung und Instandsetzung)",
+      "[§ 16 WEG](https://www.gesetze-im-internet.de/woeigg/__16.html) (Kostentragung)",
+      "[§ 25 WEG](https://www.gesetze-im-internet.de/woeigg/__25.html) (Beschlussfassung)"
     ],
     practice: `
     tasks: [
@@ -2037,8 +2037,8 @@ Mindestens 50%, höchstens 70% nach Verbrauch abrechnen — Rest nach Wohnfläch
 4. Vergessene Einnahmen (Versicherungserstattungen)
 5. Kein Vermögensbericht`,
     law: [
-      "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) — Wirtschaftsplan, Rechnungslegung, Vermögensbericht: https://www.gesetze-im-internet.de/woeigg/__28.html",
-      "[§ 19 WEG](https://www.gesetze-im-internet.de/weg/__19.html) — Ordnungsmäßige Verwaltung: https://www.gesetze-im-internet.de/woeigg/__19.html",
+      "[§ 28 WEG](https://www.gesetze-im-internet.de/woeigg/__28.html) — Wirtschaftsplan, Rechnungslegung, Vermögensbericht: https://www.gesetze-im-internet.de/woeigg/__28.html",
+      "[§ 19 WEG](https://www.gesetze-im-internet.de/woeigg/__19.html) — Ordnungsmäßige Verwaltung: https://www.gesetze-im-internet.de/woeigg/__19.html",
       "Heizkostenverordnung (HeizkostenV): https://www.gesetze-im-internet.de/heizkostenv/",
     ],
     practice: `Praxisfall Hausgeldabrechnung:
@@ -2129,9 +2129,9 @@ Zahlt ein Eigentümer nicht:
 ### Besonderheit: Erwerber haftet mit
 Wer eine Eigentumswohnung kauft, haftet für rückständiges Hausgeld des Voreigentümers bis zu einem bestimmten Betrag — wichtig bei der Due Diligence!`,
     law: [
-      "[§ 28 WEG](https://www.gesetze-im-internet.de/weg/__28.html) — Wirtschaftsplan: https://www.gesetze-im-internet.de/woeigg/__28.html",
-      "[§ 19 WEG](https://www.gesetze-im-internet.de/weg/__19.html) — Ordnungsmäßige Verwaltung: https://www.gesetze-im-internet.de/woeigg/__19.html",
-      "[§ 45 WEG](https://www.gesetze-im-internet.de/weg/__45.html) — Anfechtungsklage: https://www.gesetze-im-internet.de/woeigg/__45.html",
+      "[§ 28 WEG](https://www.gesetze-im-internet.de/woeigg/__28.html) — Wirtschaftsplan: https://www.gesetze-im-internet.de/woeigg/__28.html",
+      "[§ 19 WEG](https://www.gesetze-im-internet.de/woeigg/__19.html) — Ordnungsmäßige Verwaltung: https://www.gesetze-im-internet.de/woeigg/__19.html",
+      "[§ 45 WEG](https://www.gesetze-im-internet.de/woeigg/__45.html) — Anfechtungsklage: https://www.gesetze-im-internet.de/woeigg/__45.html",
       "§ 10 Abs. 3 ZVG — Haftung des Erwerbers: https://www.gesetze-im-internet.de/zvg/__10.html",
     ],
     practice: `Praxisfall Sonderumlage:
@@ -2164,7 +2164,7 @@ Eigentümer Schmidt (MEA: 95) fragt:
         question: "Wie lange beträgt die Anfechtungsfrist für WEG-Beschlüsse?",
         options: ["2 Wochen", "1 Monat", "3 Monate", "6 Monate"],
         answer: "1",
-        explanation: "[§ 45 WEG](https://www.gesetze-im-internet.de/weg/__45.html): Die Anfechtungsklage muss innerhalb eines Monats nach Beschlussfassung erhoben werden."
+        explanation: "[§ 45 WEG](https://www.gesetze-im-internet.de/woeigg/__45.html): Die Anfechtungsklage muss innerhalb eines Monats nach Beschlussfassung erhoben werden."
       }
     ]
   }

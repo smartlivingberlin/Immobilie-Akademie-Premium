@@ -35,11 +35,11 @@ Die Reform hat die Position des Verwalters gestärkt, aber auch die Rechte der E
 - **Beschlussfähigkeit:** Die ETV ist nun immer beschlussfähig, unabhängig von der Anzahl der anwesenden Miteigentumsanteile (MEA).
     `,
     law: [
-      "[§ 1 WEG](https://www.gesetze-im-internet.de/weg/__1.html) (Begriffsbestimmungen)",
-      "[§ 5 WEG](https://www.gesetze-im-internet.de/weg/__5.html) (Sondereigentum)",
-      "[§ 18 WEG](https://www.gesetze-im-internet.de/weg/__18.html) (Verwaltung)",
-      "[§ 26 WEG](https://www.gesetze-im-internet.de/weg/__26.html) (Bestellung und Abberufung des Verwalters)",
-      "[§ 27 WEG](https://www.gesetze-im-internet.de/weg/__27.html) (Aufgaben und Befugnisse des Verwalters)"
+      "[§ 1 WEG](https://www.gesetze-im-internet.de/woeigg/__1.html) (Begriffsbestimmungen)",
+      "[§ 5 WEG](https://www.gesetze-im-internet.de/woeigg/__5.html) (Sondereigentum)",
+      "[§ 18 WEG](https://www.gesetze-im-internet.de/woeigg/__18.html) (Verwaltung)",
+      "[§ 26 WEG](https://www.gesetze-im-internet.de/woeigg/__26.html) (Bestellung und Abberufung des Verwalters)",
+      "[§ 27 WEG](https://www.gesetze-im-internet.de/woeigg/__27.html) (Aufgaben und Befugnisse des Verwalters)"
     ],
     practice: `
     tasks: [
@@ -147,10 +147,10 @@ Ein SNR gibt einem Eigentümer das exklusive Recht, eine Fläche des Gemeinschaf
 - **Eintragung:** Sollte im Grundbuch eingetragen werden, um gegen Rechtsnachfolger (neue Käufer) zu wirken.
     `,
     law: [
-      "[§ 3 WEG](https://www.gesetze-im-internet.de/weg/__3.html) (Vertragliche Einräumung von Sondereigentum)",
-      "[§ 8 WEG](https://www.gesetze-im-internet.de/weg/__8.html) (Teilung durch den Eigentümer)",
-      "[§ 10 WEG](https://www.gesetze-im-internet.de/weg/__10.html) (Allgemeine Grundsätze)",
-      "[§ 16 WEG](https://www.gesetze-im-internet.de/weg/__16.html) (Nutzungen, Lasten und Kosten)"
+      "[§ 3 WEG](https://www.gesetze-im-internet.de/woeigg/__3.html) (Vertragliche Einräumung von Sondereigentum)",
+      "[§ 8 WEG](https://www.gesetze-im-internet.de/woeigg/__8.html) (Teilung durch den Eigentümer)",
+      "[§ 10 WEG](https://www.gesetze-im-internet.de/woeigg/__10.html) (Allgemeine Grundsätze)",
+      "[§ 16 WEG](https://www.gesetze-im-internet.de/woeigg/__16.html) (Nutzungen, Lasten und Kosten)"
     ],
     practice: `
     tasks: [
@@ -255,9 +255,9 @@ Die ETV ist der Ort der Willensbildung. Nur hier können wirksame Beschlüsse ge
 - **Allstimmigkeit:** Nur noch selten nötig (z.B. Änderung der Teilungserklärung).
     `,
     law: [
-      "[§ 23 WEG](https://www.gesetze-im-internet.de/weg/__23.html) (Wohnungseigentümerversammlung)",
-      "[§ 24 WEG](https://www.gesetze-im-internet.de/weg/__24.html) (Einberufung, Vorsitz, Niederschrift)",
-      "[§ 25 WEG](https://www.gesetze-im-internet.de/weg/__25.html) (Mehrheitsbeschluss)"
+      "[§ 23 WEG](https://www.gesetze-im-internet.de/woeigg/__23.html) (Wohnungseigentümerversammlung)",
+      "[§ 24 WEG](https://www.gesetze-im-internet.de/woeigg/__24.html) (Einberufung, Vorsitz, Niederschrift)",
+      "[§ 25 WEG](https://www.gesetze-im-internet.de/woeigg/__25.html) (Mehrheitsbeschluss)"
     ],
     practice: `
     tasks: [
