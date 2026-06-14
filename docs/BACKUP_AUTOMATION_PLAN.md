@@ -1,8 +1,18 @@
 # Backup Automation Plan
 
 Stand: 2026-06-06
+Aktualisiert: 2026-06-14 nach S218A/S218B
 
-Dieses Dokument beschreibt die empfohlene Automatisierung fuer Railway-MySQL-Backups der Immobilien Akademie Smart. Es baut auf dem bewiesenen manuellen Backup- und Restore-Test aus `docs/RUNBOOK_BACKUP_RESTORE.md` auf.
+Dieses Dokument beschreibt die empfohlene Automatisierung fuer Railway-MySQL-Backups der Immobilien Akademie Smart. Es baut auf dem historischen manuellen Backup- und Restore-Test aus `docs/RUNBOOK_BACKUP_RESTORE.md` sowie den aktuellen S218A/S218B-Nachweisen aus `docs/BACKUP_INVENTORY.md` auf.
+
+## Aktueller Ist-Stand nach S218A/S218B
+
+- Der GitHub-Actions-Workflow `.github/workflows/mysql-backup-r2.yml` ist bereits als taeglicher Cron aktiv.
+- Ein geplanter GitHub-Actions-Backup-Lauf wurde am 14.06.2026 erfolgreich belegt.
+- Der Cloudflare-R2-Bucket und die erwarteten `latest`-Objekte wurden im Dashboard sichtbar bestaetigt.
+- Im Railway-MySQL-Backups-Tab waren kein Backup-Zeitplan und keine Provider-Backups sichtbar.
+- Entschluesselung und isolierter Restore aus R2 sind weiterhin nicht bewiesen.
+- Bis zur separaten Freigabe bleibt S218C ein Planungs-/Runbook-Thema. Keine operative Restore-Handlung, kein Download und keine Entschluesselung.
 
 ## Entscheidung
 
@@ -78,7 +88,7 @@ Regeln:
 
 - `BACKUP_ENCRYPTION_PASSPHRASE` nur als GitHub Secret speichern.
 - Passphrase nicht in Logs ausgeben.
-- Entschluesselung mindestens einmal lokal testen.
+- Entschluesselung nur nach separater Freigabe in einer isolierten Umgebung testen.
 - Wenn die Passphrase kompromittiert wurde, neue Passphrase setzen und neue Backups erzeugen.
 
 ## Noetige GitHub Secrets
@@ -122,33 +132,34 @@ MYSQLDATABASE
 
 ## Workflow-Strategie
 
-Der initiale Workflow sollte **nicht automatisch aktiv** sein, bis alle Secrets gesetzt und ein manueller Dry Run erfolgreich war. Deshalb liegt im Repo zuerst nur ein Beispiel:
+Historische Zielstrategie war: erst Secrets setzen, manuellen Lauf pruefen, Restore-Test durchfuehren und danach Cron aktiv lassen.
 
-```text
-.github/workflows/mysql-backup-r2.example.yml
-```
+Aktueller Ist-Zustand nach S218A/S218B:
 
-Aktivierung:
+1. GitHub Secrets sind fuer den Backup-Workflow vorhanden.
+2. `.github/workflows/mysql-backup-r2.yml` ist aktiv.
+3. Der taegliche Cron `17 2 * * *` ist aktiv.
+4. Ein erfolgreicher geplanter Lauf mit `DRY_RUN=0` wurde belegt.
+5. R2 `latest`-Objekte wurden sichtbar bestaetigt.
+6. Entschluesselung und isolierter Restore sind weiterhin offen.
 
-1. GitHub Secrets setzen.
-2. Beispielworkflow nach `.github/workflows/mysql-backup-r2.yml` kopieren.
-3. Sicherstellen, dass `RAILWAY_PROJECT_ID` auf das richtige Railway-Projekt zeigt.
-4. Einmal manuell mit `workflow_dispatch` starten.
-5. Ergebnis in R2 pruefen.
-6. Verschluesselten Dump herunterladen.
-7. Lokal entschluesseln.
-8. Lokal restoren.
-9. Erst danach Cron aktiv lassen.
+Diese Abweichung ist bewusst dokumentiert: Der aktive Cron liefert Backup-Evidence, ersetzt aber keinen Restore-Proof. Ein spaeterer Restore-Test darf nur mit separater Freigabe, isolierter Zielumgebung und eigenem Protokoll geplant und durchgefuehrt werden.
 
 ## Restore-Test-Regel
 
-Ein automatisches Backup ist nur dann wertvoll, wenn regelmaessig bewiesen wird, dass es wiederherstellbar ist.
+Ein automatisches Backup ist nur dann voll belastbar, wenn regelmaessig bewiesen wird, dass es wiederherstellbar ist.
 
-Minimum:
+Aktueller Status:
 
-- Monatlich einen R2-Dump herunterladen.
-- In lokale MySQL-8-Instanz restoren.
-- Kernzaehlungen pruefen:
+- Backup-Lauf: belegt.
+- R2-Objekte: sichtbar belegt.
+- Entschluesselung: nicht belegt.
+- Isolierter Restore: nicht belegt.
+- Railway Provider-Backups: nicht sichtbar / kein Schedule.
+
+S218C bleibt bis zur separaten Freigabe gesperrt. Kein R2-Dump herunterladen, nicht entschluesseln und nicht restoren. Zuerst muss ein isolierter Restore-Proof-Plan mit Zielumgebung, Rollen, Stop-Regeln und Beweisprotokoll freigegeben werden.
+
+Spaeterer Mindestnachweis fuer einen echten Restore-Proof:
 
 ```text
 users
@@ -160,17 +171,14 @@ glossar_terms
 pending_purchases
 ```
 
-Phase 2:
+Spaeterer Ausbau nach separater Freigabe:
 
-- Eigenen Restore-Test-Workflow erstellen.
-- Monatlich per `workflow_dispatch` und spaeter Cron ausfuehren.
-- Letzten verschluesselten Dump aus R2 herunterladen.
-- Mit `BACKUP_ENCRYPTION_PASSPHRASE` entschluesseln.
-- In temporaere MySQL-8-Instanz restoren.
-- Kernzaehlungen ausgeben.
-- Ergebnis als kurzfristiges GitHub Artifact speichern, nicht den Dump.
-
-Der Restore-Test-Workflow soll erst aktiviert werden, nachdem der Backup-Workflow mindestens einmal manuell erfolgreich war und ein lokaler Restore aus R2 bestanden wurde.
+- Eigenen Restore-Test-Plan oder Workflow entwerfen.
+- Nur in isolierter Zielumgebung ausfuehren.
+- Keine Verbindung zur Produktion.
+- Keine Dumps, Secrets oder personenbezogenen Inhalte in PRs, Chat, Logs oder Artefakten.
+- Nur nicht-sensitive Metadaten und Ergebnisprotokoll speichern.
+- Restore-Test-Workflow erst aktivieren, wenn der manuelle isolierte Prozess bestanden und abgenommen wurde.
 
 ## Sicherheitsregeln
 
@@ -181,11 +189,9 @@ Der Restore-Test-Workflow soll erst aktiviert werden, nachdem der Backup-Workflo
 
 ## Naechste Ausbaustufen
 
-1. R2-Bucket anlegen.
-2. Least-Privilege R2 API Token erstellen.
-3. GitHub Secrets setzen.
-4. Beispielworkflow aktivieren.
-5. Manuell ausfuehren und Restore-Test dokumentieren.
-6. Secret-Rotation planen und durchfuehren.
-7. Railway-MySQL-FAILED-Status reparieren.
-8. Grossen Portal-Generatoren-Audit starten.
+1. Backup-/Restore-Dokumente mit S218A/S218B synchron halten.
+2. Risikoregister auf die aktuelle Baseline nach #218/#219 aktualisieren.
+3. Isolierten Restore-Proof-Plan erstellen, aber nicht ausfuehren.
+4. R2-Retention, Versionierung, Replication und Notifications/Alerting planen.
+5. Bewusst entscheiden, ob Railway Provider-Backups aktiviert oder die GitHub-Actions-R2-Pipeline als primaerer Backup-Weg dokumentiert wird.
+6. Secret-Rotation nur bei tatsaechlichem Secret-Leak oder geplanter Sicherheitsmassnahme durchfuehren.

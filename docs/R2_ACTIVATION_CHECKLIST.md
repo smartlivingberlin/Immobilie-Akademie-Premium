@@ -1,8 +1,11 @@
 # R2 Backup — Aktivierungs-Checkliste
 
-**Stand:** 07.06.2026  
-**Workflow:** `.github/workflows/mysql-backup-r2.yml`  
+**Stand:** 07.06.2026
+**Aktualisiert:** 2026-06-14 nach S218A/S218B
+**Workflow:** `.github/workflows/mysql-backup-r2.yml`
 **Ziel:** Tägliche verschlüsselte MySQL-Dumps in Cloudflare R2
+
+> Aktueller Ist-Zustand: Der Backup-Cron ist bereits aktiv und ein erfolgreicher GitHub-Actions-R2-Backup-Lauf wurde belegt. R2-`latest`-Objekte sind sichtbar. Entschlüsselung und isolierter Restore sind weiterhin nicht bewiesen. Diese Checkliste ist deshalb nicht mehr als ungeprüfte Erstaktivierung zu lesen, sondern als historischer Aktivierungs-/Betriebsabgleich.
 
 ---
 
@@ -45,38 +48,42 @@ Optional:
    - `mysql/production/latest/immobilien-akademie-smart_mysql_latest.sql.gz.gpg`
    - `mysql/production/latest/key_counts_latest.txt`
 
-## 4. Restore-Test (Pflicht vor Cron)
+## 4. Restore-Test / S218C-Status
 
-Checkliste: [RUNBOOK_BACKUP_RESTORE.md](./RUNBOOK_BACKUP_RESTORE.md) → Abschnitt „Nach R2-Aktivierung“
+Entschlüsselung und isolierter Restore sind weiterhin **nicht bewiesen**.
 
-```bash
-aws s3 cp "s3://$R2_BUCKET/mysql/production/latest/immobilien-akademie-smart_mysql_latest.sql.gz.gpg" ./restore_inbox/ \
-  --endpoint-url "https://$R2_ACCOUNT_ID.r2.cloudflarestorage.com"
+Bis zur separaten Freigabe gilt:
 
-gpg --batch --yes --passphrase "$BACKUP_ENCRYPTION_PASSPHRASE" \
-  -d ./restore_inbox/immobilien-akademie-smart_mysql_latest.sql.gz.gpg \
-  > ./restore_inbox/restore.sql.gz
-gzip -t ./restore_inbox/restore.sql.gz
-```
+- Kein Backup herunterladen.
+- Kein Backup öffnen.
+- Keine Entschlüsselung.
+- Kein Restore.
+- Keine DB-Verbindung.
+- Keine Railway Shell.
+- Keine Provider-Mutation.
+- Keine Secrets, Tokens, URLs oder personenbezogenen Werte kopieren.
 
-Kernzählungen mit `key_counts_latest.txt` vergleichen. Ergebnis in `audit_runs/r2_restore_test_YYYYMMDD/` dokumentieren.
+Ein späterer Restore-Proof darf nur auf Grundlage eines separaten Plans erfolgen. Siehe [RESTORE_PROOF_RUNBOOK.md](./RESTORE_PROOF_RUNBOOK.md).
 
-## 5. Täglichen Cron aktivieren
+## 5. Täglicher Cron — aktueller Ist-Zustand
 
-Nach erfolgreichem Restore-Test ist in `.github/workflows/mysql-backup-r2.yml` aktiv:
+Der tägliche Cron ist bereits in `.github/workflows/mysql-backup-r2.yml` aktiv:
 
 ```yaml
 schedule:
   - cron: "17 2 * * *"
 ```
 
+Diese Abweichung vom ursprünglichen Aktivierungsplan ist bewusst dokumentiert: Der aktive Cron belegt laufende Backup-Erzeugung, ersetzt aber keinen Restore-Proof.
+
 ## 6. Bei Railway MySQL FAILED
 
-**Kein Redeploy ohne Backup.** Reihenfolge:
+**Kein Redeploy ohne Backup und Freigabe.** Reihenfolge:
 
-1. `pnpm run db:backup` (lokal mit Railway CLI)
-2. Oder GitHub Workflow manuell auslösen
-3. Erst danach Railway MySQL analysieren
+1. Aktuelle Backup-Evidence in `docs/BACKUP_INVENTORY.md` prüfen.
+2. Falls nötig: GitHub Workflow manuell auslösen, ohne Secrets oder Dumps offenzulegen.
+3. Kein `pnpm run db:backup`, kein `railway run`, keine DB-Shell und kein Restore ohne separate Freigabe.
+4. Erst danach Railway MySQL read-only analysieren.
 
 ---
 

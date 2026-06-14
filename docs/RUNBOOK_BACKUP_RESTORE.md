@@ -1,19 +1,22 @@
 # Railway MySQL Backup & Restore Runbook
 
 Stand: 2026-06-06
+Aktualisiert: 2026-06-14 nach S218A/S218B
 
-Dieses Runbook dokumentiert den bewiesenen Rettungsweg fuer die Railway-MySQL-Datenbank der Immobilien Akademie Smart. Es ist absichtlich operativ gehalten: erst sichern, dann reparieren.
+Dieses Runbook dokumentiert einen historischen, am 06.06.2026 bewiesenen Rettungsweg fuer die Railway-MySQL-Datenbank der Immobilien Akademie Smart. Es ist nicht als Freigabe fuer aktuelle operative Restore-Handlungen zu verstehen.
+
+> Aktueller Ist-Zustand: GitHub Actions erzeugt verschluesselte Backups und R2-`latest`-Objekte sind sichtbar. Entschluesselung und isolierter Restore aus R2 sind weiterhin nicht bewiesen. S218C bleibt bis zur separaten Freigabe gesperrt: kein Download, keine Entschluesselung, kein Restore, keine Railway Shell, keine DB-Verbindung.
 
 ## Aktueller Befund
 
 - Produktionsdatenbank: Railway MySQL.
 - App-Service: `Immobilie-Akademie-Premium`.
 - DB-Service: `MySQL`.
-- DB-Zugriff ist ueber Railway TCP Proxy moeglich.
+- DB-Zugriff ist technisch ueber Railway TCP Proxy moeglich, aber keine normale Audit-Handlung.
 - Ein manueller Dump wurde am 2026-06-06 erstellt und lokal erfolgreich in eine frische MySQL-8-Instanz restored.
 - Der Railway-MySQL-Service zeigte danach einen `FAILED`-Status fuer den neuesten Deployment-Versuch. Die App konnte dennoch mit der Datenbank arbeiten. Daraus folgt: Keine MySQL-Redeploys oder Restarts ohne frisches Backup und Restore-Test.
 
-## Bewiesener Backup-Stand vom 2026-06-06
+## Historischer Backup-Stand vom 2026-06-06
 
 Artefakt:
 
@@ -28,6 +31,8 @@ Bewiesen:
 - 33 Tabellen restored.
 - Exakte Kernzaehlungen Live und Restore stimmten ueberein.
 
+Dieser Stand ist historisch und ersetzt keinen aktuellen Restore-Proof fuer die R2-Backups aus S218A/S218B.
+
 Kernzaehlungen:
 
 ```text
@@ -40,7 +45,9 @@ glossar_terms      93
 pending_purchases  1
 ```
 
-## Manuellen Dump erstellen
+## Manuellen Dump erstellen — gesperrt ohne Freigabe
+
+Dieser Abschnitt ist historisch/operativ. Nicht ausfuehren, solange keine separate Freigabe vorliegt.
 
 Voraussetzungen:
 
@@ -56,9 +63,11 @@ scripts/backup/railway-mysql-dump.sh
 
 Das Script erzeugt einen Ordner unter `audit_runs/`, erstellt einen komprimierten Dump und fuehrt Basispruefungen aus.
 
-## Restore-Test lokal durchfuehren
+## Restore-Test lokal durchfuehren — gesperrt ohne Freigabe
 
-Ein Backup gilt erst als belastbar, wenn es erfolgreich restored wurde. Beispiel:
+Ein Backup gilt erst als belastbar, wenn es erfolgreich restored wurde. Der folgende Block ist ein historisches Muster und keine aktuelle Ausfuehrungsfreigabe. S218C darf erst nach separatem Restore-Proof-Plan ausgefuehrt werden.
+
+Beispiel:
 
 ```bash
 BACKUP_DIR="audit_runs/mysql_manual_backup_YYYYMMDD_HHMMSS"
@@ -104,7 +113,9 @@ docker exec "$CONTAINER" mysql -urestore_user -p"$USERPW" "$DBNAME" -N -e "
 docker rm -f "$CONTAINER"
 ```
 
-## Live-Counts ohne personenbezogene Daten
+## Live-Counts ohne personenbezogene Daten — gesperrt ohne Freigabe
+
+Dieser Abschnitt nutzt Railway/DB-Zugriff und darf nicht als normale Audit-Handlung ausgefuehrt werden.
 
 ```bash
 railway run --service MySQL -- bash -lc '
@@ -131,9 +142,9 @@ mysql \
 Wenn Railway den `MySQL`-Service als `FAILED` zeigt, obwohl die App erfolgreich DB-Migrationen ausfuehrt:
 
 1. Nicht sofort `redeploy`, `restart`, `down`, `volume detach`, `volume delete` oder Service-Delete ausfuehren.
-2. Zuerst frischen Dump erstellen.
-3. Dump lokal restoren.
-4. Erst danach im Railway-Dashboard pruefen:
+2. Zuerst aktuelle Backup-Evidence in `docs/BACKUP_INVENTORY.md` pruefen.
+3. Kein Dump, Restore, Railway-Run oder DB-Zugriff ohne separate Freigabe.
+4. Erst danach im Railway-Dashboard read-only pruefen:
    - Source muss ein MySQL-Image bzw. DB-Template sein, nicht das GitHub-App-Repo.
    - Kein App-Healthcheck wie `/api/health` fuer MySQL.
    - Volume `/var/lib/mysql` muss erhalten bleiben.
@@ -150,18 +161,28 @@ Wenn Secrets in Terminal-Logs, Chat-Ausgaben oder Screenshots sichtbar wurden, n
 
 Rotation immer mit anschliessendem Healthcheck, Login-Test und mindestens einem Smoke-Test fuer Code-Einloesung und Owner-Dashboard.
 
-## Nach R2-Aktivierung: Restore-Test-Checkliste
+## Nach R2-Aktivierung: Restore-Test-Checkliste — S218C gesperrt
 
-Diese Checkliste ist **Pflicht** nach dem ersten erfolgreichen GitHub-Workflow-Lauf (`.github/workflows/mysql-backup-r2.yml`). Ein Backup in R2 gilt erst als belastbar, wenn der Restore-Test dokumentiert ist.
+Diese Checkliste beschreibt den spaeter notwendigen Restore-Proof. Sie ist **keine** aktuelle Ausfuehrungsfreigabe.
 
-### 1. Dump aus R2 holen
+Aktueller Stand nach S218A/S218B:
+
+- GitHub-Actions-Backup-Lauf belegt.
+- R2-`latest`-Objekte sichtbar.
+- Entschluesselung nicht belegt.
+- Isolierter Restore nicht belegt.
+- Railway Provider-Backups nicht sichtbar / kein Schedule.
+
+Bis zur separaten Freigabe: kein Download, keine Entschluesselung, kein Restore, keine DB-Verbindung, keine Railway Shell.
+
+### 1. Dump aus R2 holen — nur nach separater Freigabe
 
 ```bash
 aws s3 cp "s3://$R2_BUCKET/${R2_PREFIX:-mysql/production}/latest/immobilien-akademie-smart_mysql_latest.sql.gz.gpg" ./restore_inbox/ \
   --endpoint-url "https://$R2_ACCOUNT_ID.r2.cloudflarestorage.com"
 ```
 
-### 2. Entschlüsseln
+### 2. Entschlüsseln — nur nach separater Freigabe
 
 ```bash
 gpg --batch --yes --passphrase "$BACKUP_ENCRYPTION_PASSPHRASE" \
@@ -170,13 +191,13 @@ gpg --batch --yes --passphrase "$BACKUP_ENCRYPTION_PASSPHRASE" \
 gzip -t ./restore_inbox/restore.sql.gz
 ```
 
-### 3. Lokal restoren
+### 3. Lokal restoren — nur nach separater Freigabe
 
 Den Abschnitt **Restore-Test lokal durchfuehren** oben ausfuehren. `BACKUP_DIR` auf `./restore_inbox` setzen.
 
 ### 4. Kernzaehlungen vergleichen
 
-| Tabelle | Erwartung (Stand 06.06.2026) | Restore-Ist | OK |
+| Tabelle | Historische Erwartung (Stand 06.06.2026, nicht aktuelle S218A/S218B-Basis) | Restore-Ist | OK |
 |---------|------------------------------|-------------|-----|
 | users | 4 | ___ | ☐ |
 | trial_leads | 93 | ___ | ☐ |
@@ -202,9 +223,9 @@ Ergebnis in `audit_runs/r2_restore_test_YYYYMMDD/` ablegen:
 
 - `key_counts.txt` (aus Restore)
 - `restore_ok.txt` mit Datum, R2-Pfad, Prüfer
-- Bei Erfolg: Cron im Workflow aktivieren (siehe `BACKUP_AUTOMATION_PLAN.md`)
+- Bei Erfolg: Restore-Faehigkeit dokumentieren. Der Backup-Cron ist bereits aktiv und ersetzt keinen Restore-Proof.
 
-**Regel:** Kein Cron, kein „Production-ready“-Status für R2-Backups ohne mindestens einen dokumentierten Restore-Test.
+**Regel:** Kein „Production-ready“-Status fuer Restore-Faehigkeit ohne mindestens einen dokumentierten, isolierten Restore-Test. Der Backup-Cron ist bereits aktiv und als Backup-Lauf belegt, ersetzt aber keinen Restore-Proof.
 
 ## Naechste Automatisierung
 
@@ -216,4 +237,4 @@ Zielbild:
 - Regelmaessiger Restore-Test (monatlich laut `BACKUP_AUTOMATION_PLAN.md`).
 - Alarm bei fehlgeschlagenem Dump oder Restore.
 
-Bis diese Automatisierung steht, mindestens vor jedem Railway-DB-Eingriff manuell `scripts/backup/railway-mysql-dump.sh` ausfuehren.
+Bis der Restore-Proof geplant und freigegeben ist: keine operativen DB-/Restore-Handlungen ohne separate Freigabe. Vor jedem Railway-DB-Eingriff muss aktuelle Backup-Evidence geprueft und eine eigene Sicherheitsentscheidung getroffen werden.
