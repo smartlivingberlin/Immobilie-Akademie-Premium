@@ -231,7 +231,7 @@ Herr M. (45) ist Bankkaufmann und will sich als Immobilienmakler selbstständig 
     law: [
       "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Makler & Verwalter)",
       "[§ 34i GewO](https://www.gesetze-im-internet.de/gewo/__34i.html) (Darlehensvermittler)",
-      "[MaBV](https://www.gesetze-im-internet.de/mabv/) (Makler- und Bauträgerverordnung)"
+      "[MaBV](https://www.gesetze-im-internet.de/gewo_34cdv/) (Makler- und Bauträgerverordnung)"
     ],
     practice: `
 ### Praxis-Übung: Persönliches Kompetenzprofil
@@ -550,7 +550,7 @@ Das DISG-Modell unterscheidet 4 Persönlichkeitstypen:
     `,
     law: [
       "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Zuverlässigkeit als Berufsvoraussetzung)",
-      "[§ 1 MaBV](https://www.gesetze-im-internet.de/mabv/__1.html) (Berufspflichten Makler)"
+      "[§ 1 MaBV](https://www.gesetze-im-internet.de/gewo_34cdv/__1.html) (Berufspflichten Makler)"
     ],
     practice: `
 ### Praxis-Test: DISG-Selbsteinschätzung
@@ -724,7 +724,7 @@ Ein Vision Board ist eine Collage aus Bildern, Zitaten und Symbolen, die Ihre Zi
     `,
     law: [
       "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Berufspflichten)",
-      "[§ 15b MaBV](https://www.gesetze-im-internet.de/mabv/__15b.html) (20h Weiterbildungspflicht alle 3 Jahre)"
+      "[§ 15b MaBV](https://www.gesetze-im-internet.de/gewo_34cdv/__15b.html) (20h Weiterbildungspflicht alle 3 Jahre)"
     ],
     practice: `
 ### Praxis-Übung: Jahresplanung 2026
@@ -1222,9 +1222,9 @@ Frau L. ist Eigentümerin einer Ferienwohnung in den Alpen. Sie vermietet die Wo
     `,
     law: [
       "[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Erlaubnispflicht)",
-      "[MaBV § 10](https://www.gesetze-im-internet.de/mabv/__10.html) (Buchführung)",
-      "[MaBV § 15b](https://www.gesetze-im-internet.de/mabv/__15b.html) (Weiterbildung)",
-      "[MaBV § 16](https://www.gesetze-im-internet.de/mabv/__16.html) (Prüfung)"
+      "[MaBV § 10](https://www.gesetze-im-internet.de/gewo_34cdv/__10.html) (Buchführung)",
+      "[MaBV § 15b](https://www.gesetze-im-internet.de/gewo_34cdv/__15b.html) (Weiterbildung)",
+      "[MaBV § 16](https://www.gesetze-im-internet.de/gewo_34cdv/__16.html) (Prüfung)"
     ],
     practice: `
 ### Praxis-Übung: §34c-Antrag ausfüllen
@@ -1857,7 +1857,7 @@ Wann ist ein Markt überhitzt? Achten Sie auf diese Warnsignale:
     `,
     law: ["[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Maklererlaubnis)",
       "[§ 652 BGB](https://www.gesetze-im-internet.de/bgb/__652.html) (Maklervertrag)",
-      "[§ 1 MaBV](https://www.gesetze-im-internet.de/mabv/__1.html) (Berufspflichten)"],
+      "[§ 1 MaBV](https://www.gesetze-im-internet.de/gewo_34cdv/__1.html) (Berufspflichten)"],
     practice: "Erstellen Sie einen typischen Tagesablauf eines Maklers mit Zeitblöcken für Akquise, Besichtigungen, Verwaltung.",
     task: "Interviewen Sie einen Makler (oder recherchieren Sie online): Was sind die 3 größten Herausforderungen im Berufsalltag?",
     type: "Berufsbild"
@@ -2272,7 +2272,7 @@ Ein Investor mit 5 Mio. € Eigenkapital könnte folgendes Portfolio aufbauen:
 
 **Fazit:** Diversifikation reduziert Risiken. Wohnimmobilien sind das Fundament, Gewerbeimmobilien bieten höhere Renditen.
     `,
-    law: ["[ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2021/)", "[BauGB](https://www.gesetze-im-internet.de/bbaug/)"],
+    law: ["[ImmoWertV](https://www.gesetze-im-internet.de/immowertv_2022/)", "[BauGB](https://www.gesetze-im-internet.de/bbaug/)"],
     practice: "Unterscheiden Sie: Kurzbewertung (Makler) vs. Vollgutachten (Sachverständiger).",
     task: "Recherchieren Sie die Voraussetzungen, um öffentlich bestellter Gutachter zu werden.",
     type: "Berufsbild"
@@ -2300,7 +2300,7 @@ Ein Investor mit 5 Mio. € Eigenkapital könnte folgendes Portfolio aufbauen:
         options: [
           "BGB",
           "GewO",
-          "ImmoWertV 2021",
+          "ImmoWertV 2022",
           "WEG"
         ],
         correct: 2,
@@ -2985,7 +2985,7 @@ Steuern sind ein komplexes, aber essentielles Thema für jeden Immobilienprofi. 
     law: [
       "[§ 23 EStG](https://www.gesetze-im-internet.de/estg/__23.html) (Spekulationssteuer 10 Jahre)",
       "[§ 4 GrEStG](https://www.gesetze-im-internet.de/grestg_1983/__4.html) (Grunderwerbsteuer)",
-      "[§ 15b MaBV](https://www.gesetze-im-internet.de/mabv/__15b.html) (Zeitmanagement Berufspflichten)"
+      "[§ 15b MaBV](https://www.gesetze-im-internet.de/gewo_34cdv/__15b.html) (Zeitmanagement Berufspflichten)"
     ],
     practice: "Erstellen Sie einen Wochenplan mit festen Blöcken für Akquise, Besichtigungen und Verwaltung.",
     task: "Planen Sie eine ideale Arbeitswoche mit Work-Life-Balance.",
@@ -3851,7 +3851,7 @@ Die Digitalisierung verändert die Immobilienbranche fundamental. Wer die neuen 
 
 **Fazit:** Digitalisierung ist kein Luxus, sondern Notwendigkeit. Wer nicht digitalisiert, verliert Kunden.
     `,
-    law: ["[MaBV Anlage 1](https://www.gesetze-im-internet.de/mabv/anlage_1.html) (Weiterbildung)"],
+    law: ["[MaBV Anlage 1](https://www.gesetze-im-internet.de/gewo_34cdv/anlage_1.html) (Weiterbildung)"],
     practice: "Recherchieren Sie passende Weiterbildungsangebote für Ihre Spezialisierung.",
     task: "Erstellen Sie einen persönlichen Weiterbildungsplan für die nächsten 3 Jahre.",
     type: "Karriere"
@@ -4145,7 +4145,7 @@ Ein Projektentwickler baut ein Studentenwohnheim (100 Zimmer) aus Modulen. Bauko
     `,
     law: ["[§ 34c GewO](https://www.gesetze-im-internet.de/gewo/__34c.html) (Maklererlaubnis Zusammenfassung)",
       "[§ 652 BGB](https://www.gesetze-im-internet.de/bgb/__652.html) (Maklervertrag)",
-      "[§ 15b MaBV](https://www.gesetze-im-internet.de/mabv/__15b.html) (Weiterbildungspflicht)",
+      "[§ 15b MaBV](https://www.gesetze-im-internet.de/gewo_34cdv/__15b.html) (Weiterbildungspflicht)",
       "[Art. 14 GG](https://www.gesetze-im-internet.de/gg/art_14.html) (Eigentumsgarantie)"],
     practice: "Präsentieren Sie Ihr persönliches Portfolio (Lebenslauf, Ziele, Kompetenzen, Vision Board).",
     tasks: [

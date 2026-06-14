@@ -37,12 +37,12 @@ export const lawReferences: Record<string, LawReference> = {
   "MaBV": {
     shortName: "MaBV",
     fullName: "Makler- und Bauträgerverordnung",
-    url: "https://www.gesetze-im-internet.de/mabv/",
+    url: "https://www.gesetze-im-internet.de/gewo_34cdv/",
   },
   "ImmoWertV": {
     shortName: "ImmoWertV",
     fullName: "Immobilienwertermittlungsverordnung",
-    url: "https://www.gesetze-im-internet.de/immowertv_2021/",
+    url: "https://www.gesetze-im-internet.de/immowertv_2022/",
   },
   "GrundstVG": {
     shortName: "GrundstVG",
