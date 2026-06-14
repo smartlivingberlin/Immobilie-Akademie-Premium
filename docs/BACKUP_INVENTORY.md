@@ -159,3 +159,69 @@ Sofort stoppen, wenn:
 ### Einordnung
 
 Der erfolgreiche GitHub-Actions-Lauf beweist, dass die konfigurierte Backup-Pipeline am geprüften Datum einen Dump erstellt, verschlüsselt und laut Log nach R2 hochgeladen hat. Das ist ein echter Betriebsnachweis für den Backup-Lauf, aber noch kein Restore-Proof. Ein Backup gilt erst als vollständig belastbar, wenn zusätzlich Entschlüsselung und isolierter Restore erfolgreich getestet und dokumentiert wurden.
+
+---
+
+## 11. S218B — Provider-Metadaten Cloudflare R2 / Railway MySQL
+
+**Status:** Teilweise bestätigt — R2-Objekte sichtbar, Railway-Provider-Backups nicht sichtbar.
+**Art der Prüfung:** Read-only Dashboard-Metadatenprüfung.
+**Wichtig:** Es wurden keine Dumps geöffnet, keine Backups heruntergeladen, keine Secrets kopiert, keine Entschlüsselung durchgeführt und kein Restore ausgelöst.
+
+### Cloudflare R2
+
+| Prüffeld | Status | Nachweis |
+|---|---|---|
+| Bucket sichtbar | Bestätigt | Bucket `immobilien-akademie-backups` sichtbar |
+| Bucket erstellt | Bestätigt | `Jun 8, 2026` |
+| Bucket Location | Bestätigt | `Eastern Europe (EEUR)` |
+| Public Access | Bestätigt deaktiviert | `Disabled` |
+| Default Storage Class | Bestätigt | `Standard` |
+| Objektanzahl | Bestätigt | `18` |
+| Bucket Size | Bestätigt | `654.95 kB` |
+| latest Prefix | Bestätigt | `mysql/production/latest/` sichtbar |
+| latest Backup-Datei | Bestätigt | `immobilien-akademie-smart_mysql_latest.sql.gz.gpg` sichtbar |
+| latest Backup LastModified | Bestätigt | `14 Jun 2026 09:00:28 MESZ` |
+| latest Backup Größe | Bestätigt | `77.13 kB` |
+| key_counts_latest | Bestätigt | `key_counts_latest.txt` sichtbar |
+| key_counts LastModified | Bestätigt | `14 Jun 2026 09:00:30 MESZ` |
+| key_counts Größe | Bestätigt | `120 B` |
+| Custom Domain | Bestätigt deaktiviert | Keine Custom Domain |
+| Public Development URL | Bestätigt deaktiviert | Disabled |
+| R2 Data Catalog | Bestätigt deaktiviert | Disabled |
+| CORS Policy | Bestätigt nicht gesetzt | Keine CORS Policy |
+| Object Lifecycle Rules | Teilweise aktiv | Nur `Default Multipart Abort Rule`, Abort uploads after 7 days |
+| Backup-Retention/Lifecycle | Offen | Keine spezifische Backup-Retention bestätigt |
+| Bucket Lock Rules | Nicht aktiv | Keine Bucket Lock Rules |
+| Event Notifications | Nicht aktiv | Workers Paid Plan erforderlich |
+| On Demand Migration | Nicht aktiv | Disabled |
+| Local Uploads | Nicht aktiv | Disabled |
+| Versionierung | Nicht geprüft / nicht gefunden | Im Dashboard nicht als aktiv bestätigt |
+| Replication | Nicht geprüft / nicht gefunden | Im Dashboard nicht als aktiv bestätigt |
+
+### Railway MySQL
+
+| Prüffeld | Status | Nachweis |
+|---|---|---|
+| MySQL-Service sichtbar | Bestätigt | Railway-Projekt production, MySQL-Service |
+| Backups-Tab sichtbar | Bestätigt | Tab `Backups` vorhanden |
+| Backup schedule | Nicht aktiv | `No backup schedule` |
+| Provider-Backups | Nicht vorhanden sichtbar | `No Backups` |
+| Restore/New backup Funktion | Sichtbar, nicht genutzt | Keine Aktion ausgelöst |
+| Variables | Werte nicht kopiert | Werte waren maskiert |
+| Tabellenliste | Sichtbar, keine Inhalte kopiert | Keine Tabellenwerte exportiert |
+
+### Einordnung
+
+Die Cloudflare-R2-Prüfung bestätigt, dass der erwartete Backup-Bucket existiert und dass `latest`-Backup-Objekte sichtbar sind. Dies stützt den GitHub-Actions-Nachweis aus S218A. Gleichzeitig sind Backup-Retention, Bucket Lock, Versionierung, Replication und Notifications nicht als aktiv bestätigt.
+
+Die Railway-Prüfung zeigt im MySQL-Backups-Tab keinen aktiven Backup-Zeitplan und keine sichtbaren Provider-Backups. Damit ist aktuell kein Railway-Provider-Backup-Fallback belegt. Die belastbare Backup-Grundlage ist derzeit die eigene GitHub-Actions-R2-Pipeline; Restore und Entschlüsselung bleiben weiterhin unbewiesen.
+
+### Weiterhin offen
+
+- Entschlüsselungsprobe in isolierter Umgebung
+- Restore-Proof in isolierter Umgebung
+- R2-spezifische Backup-Retention
+- R2 Versionierung oder Replication
+- R2 Event Notifications / Alerting
+- Railway Provider-Backup-Strategie oder bewusste Dokumentation, dass kein Railway-Provider-Backup genutzt wird
