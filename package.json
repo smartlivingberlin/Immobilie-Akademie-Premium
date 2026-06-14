@@ -11,7 +11,7 @@
     "format": "prettier --write .",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "test:e2e:smoke": "playwright test tests/playwright/17-module-smoke-readonly.spec.ts --project=playwright-tests",
+    "test:e2e:smoke": "PLAYWRIGHT_SKIP_GLOBAL_SETUP=1 playwright test tests/playwright/18-public-smoke.spec.ts --project=playwright-tests",
     "test:e2e:auth-smoke": "PLAYWRIGHT_ALLOW_EMPTY_AUTH_STATE=1 playwright test tests/e2e/28-auth-smoke-tutor.spec.ts --project=chromium",
     "test:e2e:stripe-guards": "PLAYWRIGHT_SKIP_GLOBAL_SETUP=1 playwright test tests/e2e/14-stripe-price-config.spec.ts tests/e2e/20-stripe-live-readiness.spec.ts tests/e2e/21-mysql-health.spec.ts tests/e2e/22-migration-status.spec.ts --project=chromium",
     "test:e2e:stripe-live": "playwright test tests/e2e/16-stripe-payment-flow.spec.ts tests/e2e/15-stripe-checkout-smoke.spec.ts tests/e2e/18-b2b-checkout.spec.ts --project=chromium",
@@ -29,7 +29,8 @@
     "test:e2e:b2b": "playwright test tests/e2e/12-b2b-einrichtung.spec.ts tests/e2e/17-b2b-team-codes.spec.ts tests/e2e/18-b2b-checkout.spec.ts --project=chromium",
     "test:qa:verwalter": "bash scripts/ops/verwalter-qa-pack.sh",
     "ops:verwalter-cli": "bash scripts/ops/verwalter-cli.sh",
-    "ops:verwalter-migrate-status": "tsx server/scripts/verwalter-migrate-status.ts"
+    "ops:verwalter-migrate-status": "tsx server/scripts/verwalter-migrate-status.ts",
+    "test:e2e:module-auth-smoke": "playwright test tests/playwright/17-module-smoke-readonly.spec.ts --project=playwright-tests"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.93.0",
