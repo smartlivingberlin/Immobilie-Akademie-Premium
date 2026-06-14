@@ -47,10 +47,10 @@ Ertragswert: 35.680 × 18,44 + 344.400 = 1.001.779 €
 **Verkehrswert: 1.002.000 € (gerundet)**
     `,
     law: [
-      "[ImmoWertV §24](https://www.gesetze-im-internet.de/immowertv_2021/__24.html) (Bewirtschaftungskosten)",
-      "[ImmoWertV §36](https://www.gesetze-im-internet.de/immowertv_2021/__36.html) (Liegenschaftszinssatz)",
+      "[ImmoWertV §24](https://www.gesetze-im-internet.de/immowertv_2022/__24.html) (Bewirtschaftungskosten)",
+      "[ImmoWertV §36](https://www.gesetze-im-internet.de/immowertv_2022/__36.html) (Liegenschaftszinssatz)",
       "[§ 558 BGB](https://www.gesetze-im-internet.de/bgb/__558.html) (Mietspiegel)",
-      "[ImmoWertV §29](https://www.gesetze-im-internet.de/immowertv_2021/__29.html) (Mietausfallwagnis)"
+      "[ImmoWertV §29](https://www.gesetze-im-internet.de/immowertv_2022/__29.html) (Mietausfallwagnis)"
     ],
     practice: `
 ### Ihre Aufgabe: Gleiche Anlage — andere Rahmenbedingungen
@@ -125,7 +125,7 @@ qualifizierte Sachverständigengutachten nicht."
     law: [
       "[EBA-Leitlinien](https://www.eba.europa.eu/) (AVM-Anforderungen Banken, 2019)",
       "[CRR Art. 208](https://eur-lex.europa.eu/) (Immobiliensicherheiten Bankenaufsicht)",
-      "[ImmoWertV §3](https://www.gesetze-im-internet.de/immowertv_2021/__3.html) (Qualitätsstandards Wertermittlung)"
+      "[ImmoWertV §3](https://www.gesetze-im-internet.de/immowertv_2022/__3.html) (Qualitätsstandards Wertermittlung)"
     ],
     practice: `
 ### Vergleich: AVM vs. Sachverständigengutachten
@@ -315,7 +315,7 @@ Beleihungswert (80% × 17.550.000): 14.040.000 €
     `,
     law: [
       "[gif-Richtlinie MF/G](https://www.gif-ev.de/) (Mietflächen Gewerbe)",
-      "[ImmoWertV §27-36](https://www.gesetze-im-internet.de/immowertv_2021/) (Ertragswert Gewerbe)",
+      "[ImmoWertV §27-36](https://www.gesetze-im-internet.de/immowertv_2022/) (Ertragswert Gewerbe)",
       "[§ 578 BGB](https://www.gesetze-im-internet.de/bgb/__578.html) (Gewerbemietvertrag)",
       "[PfandbriefG §16](https://www.gesetze-im-internet.de/pfandbriefg/__16.html) (Beleihungswert)"
     ],
@@ -432,10 +432,10 @@ Gebäudesachwert = Herstellungswert × (1 - AWM) × Marktanpassung
 | Industriehalle | Sachwert | Ertrag |
     `,
     law: [
-      "[ImmoWertV §15-19](https://www.gesetze-im-internet.de/immowertv_2021/) (Vergleichswertverfahren)",
-      "[ImmoWertV §20-36](https://www.gesetze-im-internet.de/immowertv_2021/) (Ertragswertverfahren)",
-      "[ImmoWertV §37-46](https://www.gesetze-im-internet.de/immowertv_2021/) (Sachwertverfahren)",
-      "[ImmoWertV §3](https://www.gesetze-im-internet.de/immowertv_2021/__3.html) (Verfahrenswahl)"
+      "[ImmoWertV §15-19](https://www.gesetze-im-internet.de/immowertv_2022/) (Vergleichswertverfahren)",
+      "[ImmoWertV §20-36](https://www.gesetze-im-internet.de/immowertv_2022/) (Ertragswertverfahren)",
+      "[ImmoWertV §37-46](https://www.gesetze-im-internet.de/immowertv_2022/) (Sachwertverfahren)",
+      "[ImmoWertV §3](https://www.gesetze-im-internet.de/immowertv_2022/__3.html) (Verfahrenswahl)"
     ],
     practice: `
 ### Schnell-Quiz: Welches Verfahren?
@@ -516,7 +516,7 @@ Schäden → Dach, Putz, Drainage
 - Energieausweis fotografieren
     `,
     law: [
-      "[ImmoWertV §6](https://www.gesetze-im-internet.de/immowertv_2021/__6.html) (Grundstücksmerkmale)",
+      "[ImmoWertV §6](https://www.gesetze-im-internet.de/immowertv_2022/__6.html) (Grundstücksmerkmale)",
       "[GEG §80](https://www.gesetze-im-internet.de/geg/__80.html) (Energieausweis-Pflicht)",
       "[WoFlV](https://www.gesetze-im-internet.de/woflv/) (Wohnflächenberechnung)",
       "[DIN 277](https://www.din.de/) (Grundflächen und Rauminhalte)"
@@ -614,7 +614,7 @@ Schritt 4: Summierung = Verkehrswert
       "[HeimMindBauV](https://www.gesetze-im-internet.de/heimmindbauv/) (Mindestanforderungen Heime)",
       "[SGB XI §72](https://www.gesetze-im-internet.de/sgb_11/__72.html) (Zulassung Pflegeeinrichtungen)",
       "[gif-Richtlinie](https://www.gif-ev.de/) (Hotelbewertung)",
-      "[ImmoWertV §3](https://www.gesetze-im-internet.de/immowertv_2021/__3.html) (Besondere Immobilienarten)"
+      "[ImmoWertV §3](https://www.gesetze-im-internet.de/immowertv_2022/__3.html) (Besondere Immobilienarten)"
     ],
     practice: `
 ### Fallstudie: Stadthotel Leipzig
@@ -698,7 +698,7 @@ Verkehrswert: 424.000 € (gerundet)
 Mindestens 6 Fehler sind enthalten.
     `,
     law: [
-      "[ImmoWertV 2021 komplett](https://www.gesetze-im-internet.de/immowertv_2021/) (Prüfungsgrundlage)",
+      "[ImmoWertV 2022 komplett](https://www.gesetze-im-internet.de/immowertv_2022/) (Prüfungsgrundlage)",
       "[WoFlV](https://www.gesetze-im-internet.de/woflv/) (Wohnflächendefinition)",
       "[NHK 2010](https://www.iwb-online.de/) (Normalherstellungskosten)"
     ],
@@ -898,7 +898,7 @@ Break-Even: 2-5 Gutachten
     law: [
       "[HypZert S Anforderungen](https://www.hypzert.de/de/zertifizierung/angebotsuebersicht/hypzert-s) (Offizielle Voraussetzungen)",
       "[§ 194 BauGB](https://www.gesetze-im-internet.de/bbaug/__194.html) (Verkehrswert — Basis aller Gutachten)",
-      "[ImmoWertV 2021](https://www.gesetze-im-internet.de/immowertv_2021/) (Wertermittlungsverordnung)"
+      "[ImmoWertV 2022](https://www.gesetze-im-internet.de/immowertv_2022/) (Wertermittlungsverordnung)"
     ],
     practice: `
 ### Ihr persönlicher 5-Jahres-Aktionsplan
