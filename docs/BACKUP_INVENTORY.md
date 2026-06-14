@@ -1,8 +1,8 @@
 # Backup-Inventar — Immobilien Akademie Premium
 
-**Stand:** 14. Juni 2026  
-**Scope:** MySQL, R2/Object Storage, Railway-Produktionsbetrieb  
-**Status:** Read-only Inventar / Vorbereitung  
+**Stand:** 14. Juni 2026
+**Scope:** MySQL, R2/Object Storage, Railway-Produktionsbetrieb
+**Status:** Read-only Inventar / Vorbereitung
 **Wichtig:** Dieses Dokument enthält keine Secrets, keine Dumps, keine Produktionsdaten und führt keinen Restore aus.
 
 ---
@@ -116,3 +116,46 @@ Sofort stoppen, wenn:
 | Datum | Änderung |
 |---|---|
 | 14.06.2026 | Erstes Backup-Inventar als read-only Doku-Track nach Restore-Proof-Runbook #216 erstellt. |
+
+---
+
+## 10. S218A — GitHub Actions Backup-Lauf-Metadaten
+
+**Status:** Teilweise bestätigt — GitHub-Actions-seitiger Backup-Lauf erfolgreich.
+**Quelle:** GitHub Actions Workflow `MySQL Backup to Cloudflare R2`, Run `27491293716`.
+**Art der Prüfung:** Read-only Log-/Metadatenprüfung.
+**Wichtig:** Es wurden keine Dumps geöffnet, keine Backups heruntergeladen, keine Secrets ausgegeben und kein Restore durchgeführt.
+
+### Bestätigte Metadaten
+
+| Prüffeld | Status | Nachweis |
+|---|---|---|
+| Workflow vorhanden | Bestätigt | `.github/workflows/mysql-backup-r2.yml` |
+| Schedule vorhanden | Bestätigt | Cron `17 2 * * *` |
+| Letzter geprüfter geplanter Lauf | Bestätigt | Run `27491293716`, `schedule`, `success` |
+| Dry Run | Bestätigt | `DRY_RUN=0` |
+| GitHub Secrets verfügbar | Teilweise bestätigt | Secrets waren im Lauf vorhanden und maskiert; Werte wurden nicht ausgegeben |
+| MySQL Dump erstellt | Bestätigt | Log zeigt Erstellung von `immobilien-akademie-smart_mysql_20260614_065909.sql.gz` |
+| Dump komprimiert geprüft | Bestätigt | Workflow führte `gzip -t` aus und brach nicht ab |
+| Backup verschlüsselt | Bestätigt | GPG AES256 erzeugte `.sql.gz.gpg`; Plain `.sql.gz` wurde entfernt |
+| Upload nach R2 daily | Bestätigt laut GitHub Actions Log | Upload nach `mysql/production/daily/...` erfolgreich |
+| Upload nach R2 latest | Bestätigt laut GitHub Actions Log | Upload nach `mysql/production/latest/immobilien-akademie-smart_mysql_latest.sql.gz.gpg` erfolgreich |
+| Key-count Metadata | Bestätigt | `key_counts_latest.txt` und GitHub Artifact `mysql-backup-metadata-20260614_065909` |
+| Artifact Retention | Bestätigt | GitHub Artifact läuft laut Metadaten am `2026-06-28T07:00:30Z` ab |
+
+### Weiterhin nicht bestätigt
+
+| Prüffeld | Status | Notiz |
+|---|---|---|
+| Cloudflare R2 Bucket-Konfiguration | Offen | Dashboard-/R2-Metadatenprüfung nötig |
+| R2 Lifecycle / Retention | Offen | Nicht aus GitHub Actions ableitbar |
+| R2 Versionierung | Offen | Dashboard nötig |
+| R2 Replication | Offen | Dashboard nötig |
+| R2 Alerting | Offen | Provider-/Monitoring-Prüfung nötig |
+| Entschlüsselbarkeit des Backups | Offen | Separater isolierter Test nötig, kein Produktionsdump im Repo |
+| Restore-Fähigkeit | Offen | Separater Restore-Proof in isolierter Umgebung nötig |
+| Railway Provider-Backups | Offen | Railway Dashboard nötig |
+
+### Einordnung
+
+Der erfolgreiche GitHub-Actions-Lauf beweist, dass die konfigurierte Backup-Pipeline am geprüften Datum einen Dump erstellt, verschlüsselt und laut Log nach R2 hochgeladen hat. Das ist ein echter Betriebsnachweis für den Backup-Lauf, aber noch kein Restore-Proof. Ein Backup gilt erst als vollständig belastbar, wenn zusätzlich Entschlüsselung und isolierter Restore erfolgreich getestet und dokumentiert wurden.
