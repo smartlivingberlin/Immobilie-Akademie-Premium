@@ -24,7 +24,7 @@ Wenn es technisch unmoeglich ist ohne diese Dateien: Brich den Task ab und beric
 
 ## 🛠️ STACK & UMGEBUNG
 
-React 19, Vite 7, TypeScript, Express 4.21.2, tRPC 11, MySQL 9.4, Drizzle ORM, Tailwind CSS 4, pnpm.
+React, Vite, TypeScript, Express, tRPC, MySQL, Drizzle ORM, Tailwind CSS, pnpm. See `package.json` and lockfile for exact frontend/tooling versions.
 
 **Baseline:**
 - `main` ist operativ geschuetzt (Human Review erforderlich).
