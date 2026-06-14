@@ -1,88 +1,69 @@
 # AGENTS.md — Jules Steuerungsdatei
 # Jules liest diese Datei automatisch bei jedem Task.
 
-## 🚫 ABSOLUT VERBOTENE DATEIEN — NIEMALS AENDERN
+## ABSOLUT VERBOTENE DATEIEN — NIEMALS AENDERN
 
-- `drizzle/schema.ts`
-- `server/db.ts`
-- `server/ragTutor.ts`
-- `server/_core/context.ts`
-- `server/_core/sdk.ts`
+drizzle/schema.ts
+server/db.ts
+server/ragTutor.ts
+server/_core/context.ts
+server/_core/sdk.ts
 
-Wenn dein Plan eine dieser Dateien beruehrt: **Aendere den Plan.**
+Wenn dein Plan eine dieser Dateien beruehrt: Aendere den Plan.
 Wenn es technisch unmoeglich ist ohne diese Dateien: Brich den Task ab und berichte warum.
 
-## ⚠️ KRITISCHE KORREKTUREN (NIEMALS UEBERSCHRIEBEN)
+## KRITISCHE KORREKTUREN DIE NIEMALS UEBERSCHRIEBEN WERDEN DUERFEN
 
-**server/ragTutor.ts:**
-- Korrekter Modellname: `claude-haiku-4-5`
-- NIEMALS: `claude-haiku-4-5-20251001`
+server/ragTutor.ts:
+- Korrekter Modellname: claude-haiku-4-5
+- NIEMALS: claude-haiku-4-5-20251001
 
-**drizzle/schema.ts:**
-- Enthaelt manuelle Type-Exports am Ende der Datei.
-- Diese Exports NIEMALS entfernen oder veraendern.
+drizzle/schema.ts:
+- Enthaelt manuelle Type-Exports am Ende der Datei
+- Diese Exports NIEMALS entfernen oder veraendern
 
-## 🛠️ STACK & UMGEBUNG
+## PFLICHTPRUEFUNG VOR PR-ERSTELLUNG
 
-React, Vite, TypeScript, Express, tRPC, MySQL, Drizzle ORM, Tailwind CSS, pnpm. See `package.json` and lockfile for exact frontend/tooling versions.
+1. Fuehre aus: npx tsc --noEmit --skipLibCheck
+2. Ergebnis muss sein: 0 errors
+3. Pruefe: keine verbotene Datei geaendert
+4. Pruefe: Module6/7/8 existieren nicht
+5. Nur wenn alle 4 Punkte OK: PR erstellen
 
-**Baseline:**
-- `main` ist operativ geschuetzt (Human Review erforderlich).
-- Railway Production ist mit GitHub `main` verbunden.
-- **Auto-Deploy auf `main` ist aktiv** (wartet auf GitHub Actions).
-- Jeder Merge in `main` kann ein Production-Deployment ausloesen.
+## STACK
 
-## ✅ SICHERE VALIDIERUNGS-COMMANDS
+React 19, Vite 5, TypeScript, Express 4.21.2, tRPC, MySQL 9.4, Drizzle ORM, Tailwind CSS 4, pnpm
 
-Vor jeder PR-Erstellung/Submission muessen diese Befehle erfolgreich durchlaufen:
+## Multi-Agent-Prozess
 
-1. `pnpm install --frozen-lockfile`
-2. `pnpm exec tsc --noEmit --skipLibCheck` (Muss 0 Fehler ergeben)
-3. `pnpm build`
-4. `pnpm test`
-5. `PLAYWRIGHT_BASE_URL="https://immobilien-akademie-smart.de" pnpm run test:e2e:smoke`
-
-**E2E Scripts Guide:**
-- `test:e2e:smoke`: Public no-auth smoke test.
-- `test:e2e:module-auth-smoke`: Authenticated module smoke (benoetigt Auth-Setup).
-- `test:e2e:auth-smoke`: Auth flow smoke (erlaubt ggf. empty auth state).
-- `test:e2e:stripe-guards`: Anonymous no-auth guard testing.
-- `stripe-live`: Optional, nur mit Secrets moeglich.
-
-## ❌ VERBOTENE / HIGH-RISK AKTIONEN
-
-- Keine direkten Commits auf `main`.
-- Kein Merge ohne explizite menschliche Freigabe.
-- Kein manuelles Deployment ohne ausdruecklichen Auftrag.
-- Keine Mutationen in Railway (Config, DB, Resources).
-- Keine Mutationen in Stripe Live.
-- Keine DB-Schema Migrationen oder `db:push` (Schema-Aenderungen nur nach Absprache).
-- **Keine Secrets** in Prompts, Logs, Dateien oder Commits.
-- Keine breiten Refactors oder "Monster PRs".
-
-## 📦 PR DISZIPLIN
-
-- **Small Branches:** Nur kleine, isolierte Aenderungen.
-- **Atomic Topics:** Ein Thema pro PR.
-- **Transparenz:** Liste im PR genau auf, welche Dateien geaendert wurden.
-- **Validierung:** Liste alle durchgefuehrten Validierungs-Gates und deren Ergebnisse.
-- **Keine Artefakte:** Keine `audit/` Ordner oder temporaere Analyse-Files in den PR aufnehmen.
-- **Deployment-Bewusstsein:** Behandle jeden Product-Code Change als deploy-relevant (wegen Auto-Deploy).
-
-## ⚖️ COMPLIANCE & RECHTLICHES
-
-Aenderungen an folgenden Inhalten sind **strikt verboten** ohne explizite, quellengestuetzte menschliche Review:
-- Rechtliche Texte (Impressum, AGB, Datenschutz).
-- IHK / AZAV Claims.
-- Foerderung (Funding) Informationen.
-- Pricing & Kurs-Pakete.
-- SEO Meta-Daten & Public Trust Signale.
-
-## 🔄 MULTI-AGENT-PROZESS
-
-- GitHub ist die "Source of Truth".
-- Codex arbeitet primär read-only (Reviewer, CI-Analyst, Audit).
+- GitHub ist die Wahrheit.
+- `main` ist geschützt und wird nie direkt beschrieben.
+- Jede Änderung läuft über Issue/Task → Branch → Draft-PR → CI → Review → Merge-Entscheidung.
+- Kein Agent darf Railway, Production, Datenbank, Secrets oder Deploys ändern, außer der Nutzer gibt es ausdrücklich frei.
+- Cursor arbeitet primär an Feature-/UI-/Multi-File-Branches.
+- Codex arbeitet primär read-only, als Reviewer, CI-Analyst, Audit-Agent oder Mini-Fix-Agent.
+- Codex darf in fremde PR-Branches nur pushen, wenn der Nutzer es ausdrücklich erlaubt.
 - Nie zwei Agenten gleichzeitig an derselben Datei oder demselben Kernbereich.
 - `server/_core/index.ts` darf maximal in einem offenen PR gleichzeitig verändert werden.
+- Security-/Config-Fixes bleiben klein, idealerweise 1–3 Dateien.
+- Erst read-only Analyse, dann Code.
 - Obsolete Branches werden geschlossen statt blind rebased.
+- Deploy ist immer ein separater Schritt nach Merge.
+- Prozess-Freigabe ist keine Merge-Freigabe.
+- Merge-Freigabe ist keine Deploy-Freigabe.
 - Jeder PR braucht eigene Prüfung, CI-Bewertung und ausdrückliche Freigabe.
+
+## Merge-Gates
+
+Harte Gates:
+
+- Typecheck / tsc
+- Build
+- Tests
+- Docker-Build, falls production-relevant
+
+Separat zu bewerten:
+
+- `pnpm audit`, wenn der PR die Schwachstelle nicht verursacht
+- E2E/Stripe/Smoke, wenn Secrets oder Testumgebung fehlen
+- externe/flaky Checks

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # DNS and Email Verification Check for immobilien-akademie-smart.de
 # Read-only verification of core infrastructure records.
-# NOTE: HSTS is already verified separately in the application core.
+# NOTE: HSTS was verified separately via live response headers; this script checks DNS/email only.
 set -euo pipefail
 
 DOMAIN="${1:-immobilien-akademie-smart.de}"
@@ -50,7 +50,7 @@ if [[ -n "$SPF" ]]; then
   if echo "$SPF" | grep -q 'include:'; then
     ok "SPF includes found"
   else
-    review "SPF policy found but no includes - verify with email provider"
+    review "SPF policy found but no includes - verify with current email provider dashboard"
   fi
 else
   missing "No SPF record found on root domain"
@@ -64,12 +64,12 @@ fi
 
 echo ""
 echo "── 4. DKIM Records (Common Selectors) ──"
-# Resend is the primary provider, checking their default selector
+# Check common DKIM selectors. Verify active selectors in the current email provider dashboard.
 DKIM_RESEND=$(dig +short TXT "resend._domainkey.${DOMAIN}" @1.1.1.1 | head -1 || true)
 if [[ -n "$DKIM_RESEND" ]]; then
-  ok "DKIM (resend selector) found"
+  ok "DKIM selector 'resend' found"
 else
-  review "DKIM (resend selector) missing - verify in provider dashboard"
+  review "DKIM selector 'resend' missing - verify active selectors in provider dashboard"
 fi
 
 echo ""
@@ -97,8 +97,7 @@ fi
 
 echo ""
 echo "── 7. HSTS Status ──"
-info "HSTS Preload and Max-Age are handled by application middleware."
-info "DNS-level HSTS (via CAA or other) is not required but can be reviewed."
+info "HSTS was verified separately via live response headers; this script checks DNS/email only."
 
 echo ""
 echo "══════════════════════════════════════════════════════════"
