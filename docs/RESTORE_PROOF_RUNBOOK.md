@@ -162,8 +162,54 @@ Der Restore-Test muss gestoppt werden, wenn:
 
 ---
 
+## 9.1 S225 — Isolierter Restore-Proof Gate-Checklist
+
+Diese Checkliste ist ein Planungs- und Freigabe-Gate. Sie ist **keine Ausführungsfreigabe**.
+
+Ein echter Restore-Proof darf erst gestartet werden, wenn alle Pflichtpunkte vorab bestätigt sind.
+
+| Gate | Pflicht? | Status vor Ausführung | Bedeutung |
+|---|---:|---|---|
+| Aktuelle Backup-Evidence geprüft | Ja | Offen | Letzter GitHub-Actions-R2-Lauf und R2-`latest`-Objekte müssen read-only bestätigt sein. |
+| Backup nicht ins Repo kopieren | Ja | Pflicht | Keine Dumps, keine `.gpg`-Dateien, keine Entschlüsselungsartefakte im Repo. |
+| Secrets nicht ausgeben | Ja | Pflicht | Keine Passphrases, Tokens, DB-URLs oder Provider-Keys in Terminalausgaben, Reports, PRs oder Chats. |
+| Isolierte Zielumgebung definiert | Ja | Offen | Restore nur in separater Testumgebung, niemals gegen Production. |
+| Live-DB-Verbindung ausgeschlossen | Ja | Offen | Vor Start muss technisch klar sein, dass kein Restore gegen Railway-Production laufen kann. |
+| Verantwortliche Person benannt | Ja | Offen | Durchführung nur mit ausdrücklicher Freigabe und klarer Zuständigkeit. |
+| Datenschutz-Rahmen geklärt | Ja | Offen | Keine personenbezogenen Daten in Screenshots, Logs, Reports oder PRs. |
+| Entschlüsselungsweg geplant | Ja | Offen | GPG/Passphrase-Verwendung nur lokal/isoliert und ohne Offenlegung. |
+| Integritätsprüfung geplant | Ja | Offen | Mindestens `gpg`/`gzip`-Prüfung und Kernzählungen ohne personenbezogene Daten. |
+| Smoke-Test-Ziel definiert | Ja | Offen | Optionaler App-Smoke nur gegen isolierte Test-DB. |
+| Abbruchregel bestätigt | Ja | Offen | Sofort stoppen bei Live-Verbindung, Secrets in Logs, unklarer Umgebung oder Tool-Mutation. |
+| Ergebnisprotokoll vorbereitet | Ja | Offen | Ergebnis nur mit Metadaten, Zeiten, Counts, Fehlern und Lessons Learned dokumentieren. |
+
+### Nicht-Ziele dieses Gates
+
+- kein Backup-Download
+- keine Entschlüsselung
+- kein Restore
+- keine DB-Verbindung
+- keine Railway-Shell
+- keine R2-Mutation
+- kein Deploy
+- kein Test mit echten Nutzerinhalten in Reports
+
+### Mindest-Ergebnis eines späteren Restore-Proofs
+
+Ein späterer Restore-Proof gilt erst dann als belastbar, wenn separat dokumentiert ist:
+
+1. welches Backup geprüft wurde,
+2. wo es isoliert wiederhergestellt wurde,
+3. ob Entschlüsselung und Integritätsprüfung erfolgreich waren,
+4. welche Kernzählungen verglichen wurden,
+5. ob ein optionaler App-Smoke gegen die isolierte Umgebung erfolgreich war,
+6. welche Risiken oder Folgeaufgaben offen bleiben.
+
+---
+
 ## 10. Change History
 
 | Datum | Änderung |
 |---|---|
+| 14.06.2026 | S225 Gate-Checklist für isolierten Restore-Proof ergänzt; weiterhin keine Ausführungsfreigabe. |
 | 14.06.2026 | Erstes Restore-Proof-Runbook als Doku-Track nach Risikoregister #215 erstellt. |
