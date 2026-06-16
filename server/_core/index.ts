@@ -226,6 +226,7 @@ app.post("/api/stripe/webhook", express.raw({ type: "*/*" }), async (req: any, r
       await processStripeWebhookEvent(db, event);
     } catch (dbErr: any) {
       logger.error("[Stripe Webhook] Verarbeitungsfehler", dbErr);
+      return res.status(500).json({ error: "Webhook processing failed" });
     }
     res.json({ received: true });
   } catch (err: any) {
