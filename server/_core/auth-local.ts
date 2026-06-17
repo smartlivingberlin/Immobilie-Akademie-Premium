@@ -100,6 +100,69 @@ export async function verifySessionToken(
   }
 }
 
+// ── Pending Purchase Claim ────────────────────────────────────────────────────
+
+type DbConn = { $client: { query: Function } };
+
+/**
+ * Claimt offene pending_purchases für eine E-Mail und merged Module in users.enabledModules.
+ * Wird bei Register und Login aufgerufen, damit Gast-Käufe nach Account-Nutzung greifen.
+ *
+ * Bei Claim-Fehler (P1): Aufrufer soll loggen und Login/Register nicht hart blockieren —
+ * der Nutzer kann sich anmelden, Module bleiben ggf. gesperrt bis Support oder erneuter Versuch.
+ */
+export async function claimPendingPurchasesForUser(
+  dbConn: DbConn,
+  userId: number,
+  email: string,
+  currentEnabledModules: string,
+): Promise<string> {
+  const normalizedEmail = email.toLowerCase().trim();
+  const [pendingRows] = await dbConn.$client.query(
+    "SELECT modules, productId FROM pending_purchases WHERE email = ? AND claimedAt IS NULL",
+    [normalizedEmail],
+  ) as any;
+
+  if ((pendingRows as any[]).length === 0) {
+    return currentEnabledModules;
+  }
+
+  const current = String(currentEnabledModules || "")
+    .split(",")
+    .map((s: string) => s.trim())
+    .filter(Boolean);
+  const purchased = (pendingRows as any[]).flatMap((row: any) =>
+    String(row.modules || "")
+      .split(",")
+      .map((s: string) => s.trim())
+      .filter(Boolean),
+  );
+  const merged = [...new Set([...current, ...purchased])].join(",");
+
+  await dbConn.$client.query(
+    "UPDATE users SET enabledModules = ?, trialExpiresAt = NULL WHERE id = ?",
+    [merged, userId],
+  );
+  const { extendUserAccessFromPurchase } = await import("../accessExpiry");
+  for (const row of pendingRows as any[]) {
+    await extendUserAccessFromPurchase(
+      dbConn,
+      userId,
+      row.productId,
+      String(row.modules || ""),
+    );
+  }
+  const { applyReferralPurchaseRewards } = await import("../referralRewards");
+  await applyReferralPurchaseRewards(dbConn, userId);
+  await dbConn.$client.query(
+    "UPDATE pending_purchases SET claimedAt = NOW(), claimedByUserId = ? WHERE email = ? AND claimedAt IS NULL",
+    [userId, normalizedEmail],
+  );
+  logger.info("[Auth] Pending Purchases geclaimt", { email: normalizedEmail, modules: merged, userId });
+
+  return merged;
+}
+
 // ── Express Routes ────────────────────────────────────────────────────────────
 
 /**
@@ -169,51 +232,17 @@ export function registerLocalAuthRoutes(app: Express) {
       const normalizedEmail = email.toLowerCase().trim();
       const [userRows] = await dbConn.$client.query(
         "SELECT id, enabledModules FROM users WHERE openId = ? LIMIT 1",
-        [openId]
+        [openId],
       ) as any;
       const newUser = (userRows as any[])[0];
 
       if (newUser?.id) {
-        const [pendingRows] = await dbConn.$client.query(
-          "SELECT modules FROM pending_purchases WHERE email = ? AND claimedAt IS NULL",
-          [normalizedEmail]
-        ) as any;
-
-        if ((pendingRows as any[]).length > 0) {
-          const current = String(newUser.enabledModules || "")
-            .split(",")
-            .map((s: string) => s.trim())
-            .filter(Boolean);
-          const purchased = (pendingRows as any[]).flatMap((row: any) =>
-            String(row.modules || "")
-              .split(",")
-              .map((s: string) => s.trim())
-              .filter(Boolean)
-          );
-          const merged = [...new Set([...current, ...purchased])].join(",");
-          sessionEnabledModules = merged;
-
-          await dbConn.$client.query(
-            "UPDATE users SET enabledModules = ?, trialExpiresAt = NULL WHERE id = ?",
-            [merged, newUser.id]
-          );
-          const { extendUserAccessFromPurchase } = await import("../accessExpiry");
-          for (const row of pendingRows as any[]) {
-            await extendUserAccessFromPurchase(
-              dbConn,
-              newUser.id,
-              row.productId,
-              String(row.modules || ""),
-            );
-          }
-          const { applyReferralPurchaseRewards } = await import("../referralRewards");
-          await applyReferralPurchaseRewards(dbConn, newUser.id);
-          await dbConn.$client.query(
-            "UPDATE pending_purchases SET claimedAt = NOW(), claimedByUserId = ? WHERE email = ? AND claimedAt IS NULL",
-            [newUser.id, normalizedEmail]
-          );
-          logger.info("[Auth Register] Pending Purchases geclaimt", { email: normalizedEmail, modules: merged });
-        }
+        sessionEnabledModules = await claimPendingPurchasesForUser(
+          dbConn,
+          newUser.id,
+          normalizedEmail,
+          String(newUser.enabledModules || ""),
+        );
 
         if (referralCode && typeof referralCode === "string") {
           const { attributeReferral } = await import("../referralRewards");
@@ -386,6 +415,21 @@ export function registerLocalAuthRoutes(app: Express) {
     // Letzten Login aktualisieren
     await db.updateLastSignedIn(openId);
 
+    // Pending Purchases claimen (Gast-Kauf vor Login mit bestehendem Account)
+    let sessionEnabledModules = user.enabledModules || "";
+    try {
+      const dbConn = await db.getDb();
+      sessionEnabledModules = await claimPendingPurchasesForUser(
+        dbConn,
+        user.id,
+        email.toLowerCase().trim(),
+        sessionEnabledModules,
+      );
+    } catch (claimErr: any) {
+      // P1: Fehlender Claim kann Paywall trotz Zahlung bedeuten — Login absichtlich nicht blockieren.
+      logger.error("[Auth Login] Pending Purchase Claim fehlgeschlagen", claimErr);
+    }
+
     const { auditRequestMeta, recordPlatformAudit } = await import("../platformAuditLog");
     recordPlatformAudit({
       eventType: "login",
@@ -396,7 +440,7 @@ export function registerLocalAuthRoutes(app: Express) {
     });
 
     clearInspectCookies(req, res);
-    const token = await createSessionToken(openId, user.name || email, user.role || "user", user.enabledModules || "");
+    const token = await createSessionToken(openId, user.name || email, user.role || "user", sessionEnabledModules);
     const cookieOptions = getSessionCookieOptions(req);
     res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
 
