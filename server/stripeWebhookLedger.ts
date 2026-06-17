@@ -8,7 +8,19 @@ type DbConn = { $client: { query: Function } };
  * Kein Drizzle-Schema und keine Migrationsdatei — die Tabelle wird beim ersten
  * Ledger-Zugriff per CREATE TABLE IF NOT EXISTS angelegt (Deploy-Gate beachten).
  */
-const STALE_PROCESSING_MS = 5 * 60 * 1000;
+const DEFAULT_STALE_MINUTES = 10;
+
+export function getStripeWebhookStaleMinutes(): number {
+  const raw = process.env.STRIPE_WEBHOOK_STALE_MINUTES;
+  if (!raw) return DEFAULT_STALE_MINUTES;
+  const parsed = parseInt(raw, 10);
+  if (!Number.isFinite(parsed) || parsed <= 0) return DEFAULT_STALE_MINUTES;
+  return parsed;
+}
+
+export function getStripeWebhookStaleMs(): number {
+  return getStripeWebhookStaleMinutes() * 60 * 1000;
+}
 
 let tableReady: Promise<void> | null = null;
 
@@ -52,7 +64,7 @@ function isProcessingStale(updatedAt: string | Date | null | undefined): boolean
   if (!updatedAt) return true;
   const ts = updatedAt instanceof Date ? updatedAt.getTime() : new Date(updatedAt).getTime();
   if (Number.isNaN(ts)) return true;
-  return Date.now() - ts >= STALE_PROCESSING_MS;
+  return Date.now() - ts >= getStripeWebhookStaleMs();
 }
 
 async function selectLedgerRow(db: DbConn, eventId: string) {
@@ -103,7 +115,7 @@ async function claimExistingRow(
       /**
        * Trade-off (S231H): Parallele Duplikate liefern 200 + skip statt erneut zu verarbeiten.
        * Das verhindert doppelte Side-Effects, kann aber einen legitimen Retry verzögern,
-       * solange der erste Worker noch läuft. Stale processing (>5 Min) wird wieder freigegeben.
+       * solange der erste Worker noch läuft. Stale processing (STRIPE_WEBHOOK_STALE_MINUTES) wird wieder freigegeben.
        */
       return { shouldProcess: false, eventId, reason: "processing_duplicate" };
     }
@@ -173,4 +185,145 @@ export async function markStripeWebhookEventFailed(
 /** Test-Helfer: setzt Ledger-Table-Cache zurück. */
 export function resetStripeWebhookLedgerTableCacheForTests(): void {
   tableReady = null;
+}
+
+export type StripeWebhookErrorClass = "db_error" | "business_error" | "stripe_error" | "unknown";
+
+/** Triage-Hilfe aus lastError — keine perfekte Fehlerforensik, keine DB-Spalte in S231J. */
+export function classifyStripeWebhookError(lastError: string | null): StripeWebhookErrorClass {
+  if (!lastError) return "unknown";
+  const lower = lastError.toLowerCase();
+  if (/er_|mysql|connection|timeout|econnrefused|deadlock|duplicate entry|db down/.test(lower)) {
+    return "db_error";
+  }
+  if (/stripe|signature|checkout|invoice|webhook/.test(lower)) {
+    return "stripe_error";
+  }
+  if (/module|entitlement|access|pending|purchase|enabledmodules/.test(lower)) {
+    return "business_error";
+  }
+  return "unknown";
+}
+
+export type StripeWebhookLedgerStats = {
+  failedCount: number;
+  processingCount: number;
+  staleProcessingCount: number;
+  processedCount: number;
+  lastFailedAt: string | null;
+  lastProcessedAt: string | null;
+  staleThresholdMinutes: number;
+};
+
+export type StripeWebhookRecoveryEvent = {
+  eventId: string;
+  eventType: string;
+  objectId: string | null;
+  status: "processing" | "processed" | "failed";
+  attempts: number;
+  updatedAt: string;
+  processedAt: string | null;
+  lastError: string | null;
+  errorClass: StripeWebhookErrorClass;
+};
+
+function normalizeQueryLimit(limit?: number, defaultLimit = 20, maxLimit = 100): number {
+  const value = limit ?? defaultLimit;
+  if (!Number.isFinite(value) || value <= 0) return defaultLimit;
+  return Math.min(Math.floor(value), maxLimit);
+}
+
+function toIsoString(value: string | Date | null | undefined): string | null {
+  if (!value) return null;
+  const date = value instanceof Date ? value : new Date(value);
+  return Number.isNaN(date.getTime()) ? null : date.toISOString();
+}
+
+function mapRecoveryEvent(row: Record<string, unknown>): StripeWebhookRecoveryEvent {
+  const status = String(row.status) as StripeWebhookRecoveryEvent["status"];
+  const lastError = row.lastError == null ? null : String(row.lastError);
+  return {
+    eventId: String(row.eventId),
+    eventType: String(row.eventType),
+    objectId: row.objectId == null ? null : String(row.objectId),
+    status,
+    attempts: Number(row.attempts) || 0,
+    updatedAt: toIsoString(row.updatedAt as string | Date) || new Date(0).toISOString(),
+    processedAt: toIsoString(row.processedAt as string | Date | null),
+    lastError,
+    errorClass: classifyStripeWebhookError(lastError),
+  };
+}
+
+export async function getStripeWebhookLedgerStats(db: DbConn): Promise<StripeWebhookLedgerStats> {
+  await ensureStripeWebhookLedgerTable(db);
+  const staleMinutes = getStripeWebhookStaleMinutes();
+
+  const [countRows] = await db.$client.query(`
+    SELECT
+      SUM(CASE WHEN status = 'failed' THEN 1 ELSE 0 END) AS failedCount,
+      SUM(CASE WHEN status = 'processing' THEN 1 ELSE 0 END) AS processingCount,
+      SUM(CASE WHEN status = 'processed' THEN 1 ELSE 0 END) AS processedCount,
+      MAX(CASE WHEN status = 'failed' THEN updatedAt END) AS lastFailedAt,
+      MAX(CASE WHEN status = 'processed' THEN processedAt END) AS lastProcessedAt
+    FROM stripe_webhook_events
+  `) as [Record<string, unknown>[]];
+
+  const [staleRows] = await db.$client.query(
+    `SELECT COUNT(*) AS staleProcessingCount
+     FROM stripe_webhook_events
+     WHERE status = 'processing'
+       AND updatedAt < DATE_SUB(NOW(), INTERVAL ? MINUTE)`,
+    [staleMinutes],
+  ) as [{ staleProcessingCount: number }[]];
+
+  const counts = (countRows as any[])[0] || {};
+  return {
+    failedCount: Number(counts.failedCount) || 0,
+    processingCount: Number(counts.processingCount) || 0,
+    staleProcessingCount: Number((staleRows as any[])[0]?.staleProcessingCount) || 0,
+    processedCount: Number(counts.processedCount) || 0,
+    lastFailedAt: toIsoString(counts.lastFailedAt as string | Date | null),
+    lastProcessedAt: toIsoString(counts.lastProcessedAt as string | Date | null),
+    staleThresholdMinutes: staleMinutes,
+  };
+}
+
+export async function listFailedStripeWebhookEvents(
+  db: DbConn,
+  limit?: number,
+): Promise<StripeWebhookRecoveryEvent[]> {
+  await ensureStripeWebhookLedgerTable(db);
+  const boundedLimit = normalizeQueryLimit(limit);
+  const [rows] = await db.$client.query(
+    `SELECT eventId, eventType, objectId, status, attempts, updatedAt, processedAt, lastError
+     FROM stripe_webhook_events
+     WHERE status = 'failed'
+     ORDER BY updatedAt DESC
+     LIMIT ?`,
+    [boundedLimit],
+  ) as [Record<string, unknown>[]];
+  return (rows as any[]).map(mapRecoveryEvent);
+}
+
+export async function listStaleProcessingStripeWebhookEvents(
+  db: DbConn,
+  olderThanMinutes?: number,
+  limit?: number,
+): Promise<StripeWebhookRecoveryEvent[]> {
+  await ensureStripeWebhookLedgerTable(db);
+  const minutes = olderThanMinutes && olderThanMinutes > 0
+    ? Math.floor(olderThanMinutes)
+    : getStripeWebhookStaleMinutes();
+  const boundedLimit = normalizeQueryLimit(limit);
+  const [rows] = await db.$client.query(
+    `SELECT eventId, eventType, objectId, status, attempts, updatedAt, processedAt, lastError
+     FROM stripe_webhook_events
+     WHERE status = 'processing'
+       AND updatedAt < DATE_SUB(NOW(), INTERVAL ? MINUTE)
+     ORDER BY updatedAt ASC
+     LIMIT ?`,
+    [minutes, boundedLimit],
+  ) as [Record<string, unknown>[]];
+  return (rows as any[]).map(mapRecoveryEvent);
 }

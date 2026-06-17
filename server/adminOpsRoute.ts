@@ -144,7 +144,10 @@ adminOpsRouter.get("/api/admin/mysql-health", requireAdmin, async (_req, res) =>
 
 adminOpsRouter.get("/api/admin/stripe-webhook-health", requireAdmin, async (_req, res) => {
   try {
-    res.json(getStripeWebhookHealth());
+    const { getDb } = await import("./db");
+    const db = await getDb();
+    const { getStripeWebhookHealthWithLedger } = await import("./stripeWebhookHealth");
+    res.json(await getStripeWebhookHealthWithLedger(db));
   } catch (e: any) {
     res.status(500).json({ error: e.message });
   }
