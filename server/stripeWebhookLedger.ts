@@ -327,3 +327,40 @@ export async function listStaleProcessingStripeWebhookEvents(
   ) as [Record<string, unknown>[]];
   return (rows as any[]).map(mapRecoveryEvent);
 }
+
+export async function getStripeWebhookRecoveryEventById(
+  db: DbConn,
+  eventId: string,
+): Promise<StripeWebhookRecoveryEvent | null> {
+  await ensureStripeWebhookLedgerTable(db);
+  const [rows] = await db.$client.query(
+    `SELECT eventId, eventType, objectId, status, attempts, updatedAt, processedAt, lastError
+     FROM stripe_webhook_events
+     WHERE eventId = ?
+     LIMIT 1`,
+    [eventId],
+  ) as [Record<string, unknown>[]];
+  const row = (rows as any[])[0];
+  return row ? mapRecoveryEvent(row) : null;
+}
+
+export type StripeWebhookReplayEligibility =
+  | { eligible: true; reason: "failed" | "stale_processing" }
+  | { eligible: false; reason: "missing" | "processed" | "fresh_processing" };
+
+/** Prüft, ob ein Ledger-Eintrag für manuelles Single-Event-Replay geeignet ist (S231K). */
+export function evaluateStripeWebhookReplayEligibility(
+  event: StripeWebhookRecoveryEvent | null | undefined,
+): StripeWebhookReplayEligibility {
+  if (!event) return { eligible: false, reason: "missing" };
+  if (event.status === "processed") return { eligible: false, reason: "processed" };
+  if (event.status === "failed") return { eligible: true, reason: "failed" };
+  if (event.status === "processing") {
+    const updatedAt = new Date(event.updatedAt);
+    if (isProcessingStale(updatedAt)) {
+      return { eligible: true, reason: "stale_processing" };
+    }
+    return { eligible: false, reason: "fresh_processing" };
+  }
+  return { eligible: false, reason: "missing" };
+}

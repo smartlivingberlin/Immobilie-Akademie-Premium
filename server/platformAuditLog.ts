@@ -11,7 +11,8 @@ export type AuditEventType =
   | "owner_lock"
   | "owner_unlock"
   | "owner_set_role"
-  | "stripe_purchase";
+  | "stripe_purchase"
+  | "stripe_webhook_replay";
 
 export type AuditEventInput = {
   eventType: AuditEventType;
