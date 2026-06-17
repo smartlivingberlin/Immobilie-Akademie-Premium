@@ -66,8 +66,10 @@ export function validateReplayEventMatchesLedger(
   if (event.id !== ledger.eventId) return "event_id_mismatch";
   if (event.type !== ledger.eventType) return "event_type_mismatch";
   const objectId = event.data.object?.id;
-  if (ledger.objectId && typeof objectId === "string" && objectId !== ledger.objectId) {
-    return "object_id_mismatch";
+  if (ledger.objectId) {
+    if (typeof objectId !== "string" || objectId !== ledger.objectId) {
+      return "object_id_mismatch";
+    }
   }
   return null;
 }
@@ -188,6 +190,8 @@ export async function handleStripeWebhookReplayRequest(options: {
     return { status: 429, body: { error: "rate_limited" } };
   }
 
+  recordActualReplay(actorUserId);
+
   try {
     const claim = await claimStripeWebhookEvent(db, event);
     if (!claim.shouldProcess) {
@@ -198,7 +202,6 @@ export async function handleStripeWebhookReplayRequest(options: {
     const { processStripeWebhookEvent } = await import("./stripeWebhookProcess");
     await processStripeWebhookEvent(db, event);
     await markStripeWebhookEventProcessed(db, event.id);
-    recordActualReplay(actorUserId);
 
     auditReplayAttempt(actor, event.id, event.type, ledger!.objectId, false, "replayed", req, {
       claimReason: claim.reason,

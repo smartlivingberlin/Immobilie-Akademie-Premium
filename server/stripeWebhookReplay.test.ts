@@ -392,6 +392,38 @@ describe("stripeWebhookReplay", () => {
     expect(result.body.error).toBe("object_id_mismatch");
   });
 
+  it("rejects actual replay when ledger objectId is missing from event", async () => {
+    const db = createReplayDb({
+      evt_replay_1: {
+        eventType: baseEvent.type,
+        objectId: "cs_replay_1",
+        status: "failed",
+        attempts: 1,
+        updatedAt: new Date(Date.now() - 120_000),
+        lastError: "db down",
+        processedAt: null,
+      },
+    });
+
+    const result = await handleStripeWebhookReplayRequest({
+      db: db as any,
+      body: {
+        dryRun: false,
+        confirm: STRIPE_WEBHOOK_REPLAY_CONFIRM_PHRASE,
+        event: {
+          id: baseEvent.id,
+          type: baseEvent.type,
+          data: { object: { customer_email: "buyer@example.com" } },
+        },
+      },
+      actor,
+    });
+
+    expect(result.status).toBe(400);
+    expect(result.body.error).toBe("object_id_mismatch");
+    expect(mockProcessEvent).not.toHaveBeenCalled();
+  });
+
   it("marks failed again when processor throws", async () => {
     process.env.STRIPE_WEBHOOK_MANUAL_REPLAY_ENABLED = "1";
     mockProcessEvent.mockRejectedValueOnce(new Error("processor failed"));
@@ -421,6 +453,51 @@ describe("stripeWebhookReplay", () => {
     expect(result.body.error).toBe("processing_failed");
     expect(db.rows.get("evt_replay_1")?.status).toBe("failed");
     expect(db.rows.get("evt_replay_1")?.lastError).toContain("processor failed");
+  });
+
+  it("rate limits second actual replay after failed processing attempt", async () => {
+    process.env.STRIPE_WEBHOOK_MANUAL_REPLAY_ENABLED = "1";
+    process.env.STRIPE_WEBHOOK_MANUAL_REPLAY_RATE_LIMIT_SECONDS = "60";
+    mockProcessEvent.mockRejectedValueOnce(new Error("processor failed"));
+    const db = createReplayDb({
+      evt_replay_1: {
+        eventType: baseEvent.type,
+        objectId: "cs_replay_1",
+        status: "failed",
+        attempts: 1,
+        updatedAt: new Date(Date.now() - 120_000),
+        lastError: "old error",
+        processedAt: null,
+      },
+    });
+
+    const first = await handleStripeWebhookReplayRequest({
+      db: db as any,
+      body: {
+        dryRun: false,
+        confirm: STRIPE_WEBHOOK_REPLAY_CONFIRM_PHRASE,
+        event: baseEvent,
+      },
+      actor,
+    });
+
+    expect(first.status).toBe(500);
+    expect(first.body.error).toBe("processing_failed");
+
+    mockProcessEvent.mockResolvedValueOnce(undefined);
+    const second = await handleStripeWebhookReplayRequest({
+      db: db as any,
+      body: {
+        dryRun: false,
+        confirm: STRIPE_WEBHOOK_REPLAY_CONFIRM_PHRASE,
+        event: baseEvent,
+      },
+      actor,
+    });
+
+    expect(second.status).toBe(429);
+    expect(second.body.error).toBe("rate_limited");
+    expect(mockProcessEvent).toHaveBeenCalledTimes(1);
   });
 
   it("rate limits second actual replay within window", async () => {
@@ -538,6 +615,16 @@ describe("stripeWebhookReplay", () => {
     expect(
       validateReplayEventMatchesLedger({ ...event, id: "evt_2" }, ledger),
     ).toBe("event_id_mismatch");
+    expect(
+      validateReplayEventMatchesLedger(
+        normalizeStripeWebhookReplayEvent({
+          id: "evt_1",
+          type: "checkout.session.completed",
+          data: { object: {} },
+        }),
+        ledger,
+      ),
+    ).toBe("object_id_mismatch");
   });
 
   it("isStripeWebhookManualReplayEnabled respects env", () => {
