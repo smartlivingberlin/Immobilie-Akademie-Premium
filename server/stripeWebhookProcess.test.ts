@@ -76,6 +76,7 @@ describe("processStripeWebhookEvent", () => {
     vi.mocked(processB2bSubscription).mockClear();
     const db = createDb({ id: 1, enabledModules: "" });
     await processStripeWebhookEvent(db as any, {
+      id: "evt_invoice_b2b",
       type: "invoice.paid",
       data: {
         object: {
@@ -103,6 +104,7 @@ describe("processStripeWebhookEvent", () => {
     vi.mocked(processVerwalterToolsSubscription).mockClear();
     const db = createDb({ id: 9, enabledModules: "" });
     await processStripeWebhookEvent(db as any, {
+      id: "evt_invoice_vt",
       type: "invoice.paid",
       data: {
         object: {
@@ -121,6 +123,7 @@ describe("processStripeWebhookEvent", () => {
     processModulePurchase.mockClear();
     const db = createDb({ id: 1, enabledModules: "1" });
     await processStripeWebhookEvent(db as any, {
+      id: "evt_checkout_sub",
       type: "checkout.session.completed",
       data: {
         object: {

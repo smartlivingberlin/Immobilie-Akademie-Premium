@@ -10,6 +10,7 @@ export function getInvoiceSubscriptionMetadata(invoice: Record<string, any>): Re
 }
 
 export type StripeWebhookEvent = {
+  id: string;
   type: string;
   data: { object: Record<string, unknown> };
 };
