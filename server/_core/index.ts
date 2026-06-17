@@ -296,12 +296,14 @@ app.use(express.json({ limit: "1mb" }));
   
   app.get("/api/health", async (_req, res) => {
     const { getMysqlHealth } = await import("../mysqlHealth");
+    const { getPublicRuntimeInfo } = await import("../runtimeInfo");
     const health = await getMysqlHealth();
     const body = {
       ok: health.ok,
       db: health.ok ? "connected" : "unavailable",
       latencyMs: health.latencyMs,
       ts: new Date().toISOString(),
+      runtime: getPublicRuntimeInfo(),
       ...(health.migrations ? { migrations: health.migrations } : {}),
       ...(health.error ? { error: health.error } : {}),
     };
