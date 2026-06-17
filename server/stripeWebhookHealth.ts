@@ -1,5 +1,7 @@
 /** In-Memory Stripe-Webhook-Health (letztes verifiziertes Event) */
 
+import type { StripeWebhookLedgerStats } from "./stripeWebhookLedger";
+
 let lastVerifiedAt: string | null = null;
 let lastEventType: string | null = null;
 let totalVerified = 0;
@@ -25,4 +27,42 @@ export function getStripeWebhookHealth() {
     endpoint: "https://immobilien-akademie-smart.de/api/stripe/webhook",
     expectedEvents: ["checkout.session.completed", "invoice.paid"],
   };
+}
+
+type StripeWebhookLedgerHealth =
+  | ({ available: true } & StripeWebhookLedgerStats)
+  | { available: false; error: "ledger_unavailable" };
+
+export type StripeWebhookHealthWithLedger = ReturnType<typeof getStripeWebhookHealth> & {
+  ledger: StripeWebhookLedgerHealth;
+};
+
+/** Erweitert In-Memory-Health um persistente Ledger-Stats (S231J read-only). */
+export async function getStripeWebhookHealthWithLedger(
+  db: { $client: { query: Function } } | null | undefined,
+): Promise<StripeWebhookHealthWithLedger> {
+  const base = getStripeWebhookHealth();
+  if (!db) {
+    return {
+      ...base,
+      ledger: { available: false, error: "ledger_unavailable" },
+    };
+  }
+
+  try {
+    const { getStripeWebhookLedgerStats } = await import("./stripeWebhookLedger");
+    const stats = await getStripeWebhookLedgerStats(db);
+    return {
+      ...base,
+      ledger: {
+        available: true,
+        ...stats,
+      },
+    };
+  } catch {
+    return {
+      ...base,
+      ledger: { available: false, error: "ledger_unavailable" },
+    };
+  }
 }
