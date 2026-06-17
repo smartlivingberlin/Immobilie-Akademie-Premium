@@ -153,6 +153,28 @@ adminOpsRouter.get("/api/admin/stripe-webhook-health", requireAdmin, async (_req
   }
 });
 
+adminOpsRouter.post("/api/admin/stripe-webhook-replay", requireAdmin, async (req: any, res) => {
+  try {
+    const { getDb } = await import("./db");
+    const db = await getDb();
+    const { handleStripeWebhookReplayRequest } = await import("./stripeWebhookReplay");
+    const result = await handleStripeWebhookReplayRequest({
+      db,
+      body: req.body,
+      actor: {
+        id: req.currentUser?.id,
+        email: req.currentUser?.email,
+        role: req.currentUser?.role,
+        name: req.currentUser?.name,
+      },
+      req,
+    });
+    res.status(result.status).json(result.body);
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
 adminOpsRouter.get("/api/admin/payout-ledger", requireAdmin, async (_req, res) => {
   try {
     const { getDb } = await import("./db");
