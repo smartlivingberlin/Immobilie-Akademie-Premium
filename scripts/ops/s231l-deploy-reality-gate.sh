@@ -5,8 +5,26 @@ set -euo pipefail
 
 BASE="${1:-https://immobilien-akademie-smart.de}"
 WWW_BASE="${WWW_BASE:-https://www.immobilien-akademie-smart.de}"
-EXPECTED_SHA="${EXPECTED_SHA:-006076e37658e876d213e16a16eab6a2fc7c47d3}"
 STRICT_SHA="${STRICT_SHA:-1}"
+
+EXPECTED_SHA_SOURCE="env:EXPECTED_SHA"
+if [ -z "${EXPECTED_SHA:-}" ]; then
+  if [ -n "${EXPECTED_SHA_REF:-}" ]; then
+    EXPECTED_SHA="$(git rev-parse --verify "${EXPECTED_SHA_REF}^{commit}" 2>/dev/null || true)"
+    EXPECTED_SHA_SOURCE="git:${EXPECTED_SHA_REF}"
+  else
+    EXPECTED_SHA="$(git rev-parse --verify "origin/main^{commit}" 2>/dev/null || true)"
+    EXPECTED_SHA_SOURCE="git:origin/main"
+  fi
+fi
+if [ -z "${EXPECTED_SHA:-}" ]; then
+  EXPECTED_SHA="$(git rev-parse --verify "HEAD^{commit}" 2>/dev/null || true)"
+  EXPECTED_SHA_SOURCE="git:HEAD"
+fi
+if [ -z "${EXPECTED_SHA:-}" ]; then
+  echo "FAIL  expected SHA unavailable; set EXPECTED_SHA=<commit> or run from a git checkout"
+  exit 1
+fi
 
 pass=0
 fail=0
@@ -34,6 +52,7 @@ echo "=== S231L Deploy-SHA / Runtime-Activation Reality Gate ==="
 echo "base=${BASE}"
 echo "www=${WWW_BASE}"
 echo "expected_sha=${EXPECTED_SHA}"
+echo "expected_sha_source=${EXPECTED_SHA_SOURCE}"
 echo "strict_sha=${STRICT_SHA}"
 echo ""
 
