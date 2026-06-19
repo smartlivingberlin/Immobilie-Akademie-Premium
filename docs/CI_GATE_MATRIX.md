@@ -1,8 +1,10 @@
 # CI Gate Matrix
 
-Stand: 2026-06-15
-Baseline: `9962b70b289ce73baa09325b6073bae143c8d657`
-Letzter Safety-Tag: `safety/pr224-stripe-sandbox-market-release-gate-live-health-9962b70`
+Stand: 2026-06-19
+Baseline: `94ffcb35a37daf37c5412b25c3e2f63585087cc8`
+Letzter Safety-Tag: `safety/pr236-s233n-dompurify-3.4.11-audit-main-ci-health-94ffcb3`
+
+Hinweis: Diese Matrix dokumentiert die aktuelle Gate-Lage nach S233N. Der moderate dompurify-Audit-Befund ist behoben; `pnpm audit --audit-level=moderate` läuft erfolgreich. Es verbleibt ein Low-Hinweis, der nicht Teil des Moderate-Gates ist.
 
 Diese Matrix dokumentiert, welche CI-/E2E-/Ops-Gates aktuell harte Merge-Gates sind und welche nur Signale, optionale Prüfungen oder separate Betriebsprozesse darstellen.
 
