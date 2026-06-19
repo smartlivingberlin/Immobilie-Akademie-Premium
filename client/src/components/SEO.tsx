@@ -11,9 +11,9 @@ interface SEOProps {
 }
 
 const DEFAULT_SEO = {
-  title: "Immobilien Akademie Smart | IHK-orientierte Immobilien-Weiterbildung",
-  description: `Online-Lernportal für Immobilienberufe: IHK-orientierte Vorbereitung auf §34i und WEG-Verwalter nach §26a WEG sowie Praxiswissen zu §34c GewO, Maklerrecht und Immobilienbewertung. ${PUBLIC_QUIZ_QUESTION_COUNT} Lernfragen, KI-Tutor, ${STRUCTURED_LEARNING_DAYS} Lerntage.`,
-  keywords: "Immobilienmakler Ausbildung, §34c GewO, WEG-Verwalter, Mietverwalter, §34i Darlehensvermittler, IHK-orientiert, Immobilien Weiterbildung, Online Lernportal",
+  title: "Immobilien Akademie Smart | Praxisorientierte Immobilien-Weiterbildung",
+  description: `Online-Lernportal für Immobilienberufe: Vorbereitung auf die Sachkundeprüfung §34i, WEG-Verwalter nach §26a WEG sowie Praxiswissen zu §34c GewO, Maklerrecht und Immobilienbewertung. ${PUBLIC_QUIZ_QUESTION_COUNT} Lernfragen, KI-Tutor, ${STRUCTURED_LEARNING_DAYS} Lerntage.`,
+  keywords: "Immobilienmakler Ausbildung, §34c GewO, WEG-Verwalter, Mietverwalter, §34i Darlehensvermittler, Sachkundeprüfung §34i, Immobilien Weiterbildung, Online Lernportal",
   ogImage: "/og-image.svg",
 };
 
@@ -125,7 +125,7 @@ export const PAGE_SEO = {
   home: {
     title: "Startseite",
     description: "Komplette Immobilien-Ausbildung mit 5 Modulen: Makler §34c, WEG-Verwalter, Mietverwalter, Gutachter, §34i. 240 Tage, KI-Tutor, Videos, Quizze.",
-    keywords: "Immobilienmakler, §34c, WEG, Mietverwalter, §34i, IHK, Weiterbildung",
+    keywords: "Immobilienmakler, §34c, WEG, Mietverwalter, §34i, Weiterbildung",
   },
   modul1: {
     title: "Modul 1: Einführung & Grundlagen",
@@ -134,8 +134,8 @@ export const PAGE_SEO = {
   },
   modul2: {
     title: "Modul 2: Maklerrecht & §34c GewO",
-    description: "Maklerrecht, §34c GewO, Maklerverordnung, Wettbewerbsrecht. 60 Tage Ausbildung mit Praxisbeispielen, Gerichtsurteilen und IHK-Vorbereitung.",
-    keywords: "§34c GewO, Maklerrecht, Maklerverordnung, IHK Makler, Wettbewerbsrecht",
+    description: "Maklerrecht, §34c GewO, Maklerverordnung, Wettbewerbsrecht. 60 Tage Ausbildung mit Praxisbeispielen, Gerichtsurteilen und Wissenschecks.",
+    keywords: "§34c GewO, Maklerrecht, Maklerverordnung, Makler Weiterbildung, Wettbewerbsrecht",
   },
   modul3: {
     title: "Modul 3: Verwaltung (WEG & Miet)",
@@ -150,12 +150,12 @@ export const PAGE_SEO = {
   modul5: {
     title: "Modul 5: Finanzierung & §34i",
     description: "Immobiliardarlehensvermittlung §34i, Kreditprozesse, Finanzierungsmodelle. 40 Tage IHK-Prüfungsvorbereitung mit Rechenbeispielen.",
-    keywords: "§34i, Immobilienfinanzierung, Darlehensvermittler, IHK Prüfung, Kreditvermittlung",
+    keywords: "§34i, Immobilienfinanzierung, Darlehensvermittler, Sachkundeprüfung §34i, Kreditvermittlung",
   },
   pruefung: {
     title: "Prüfungsmodus",
     description: "KI-generierte Prüfungsfragen für alle 5 Module. 50 Fragen, 90 Minuten, sofortiges Feedback. Wissenslücken-Analyse und Empfehlungen.",
-    keywords: "IHK Prüfung §34i, WEG-Verwalter Prüfung, Prüfungsvorbereitung Immobilien, Online Test",
+    keywords: "Sachkundeprüfung §34i, WEG-Verwalter Prüfung, Prüfungsvorbereitung Immobilien, Online Test",
   },
   glossary: {
     title: "Fachbegriffe & Gesetze",
