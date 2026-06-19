@@ -27,7 +27,7 @@ const MODULES = [
 ];
 
 const STATS = [
-  { n: MARKETING_LEARNING_TASKS_COUNT, suffix: "+", label: "Lernaufgaben", sub: "IHK-Fragen, Rechenübungen & Praxisfälle" },
+  { n: MARKETING_LEARNING_TASKS_COUNT, suffix: "+", label: "Lernaufgaben", sub: "Prüfungsfragen, Rechenübungen & Praxisfälle" },
   { n: STRUCTURED_LEARNING_DAYS, suffix: "", label: "Strukturierte Lerntage", sub: "5 vollständige Module" },
   { n: KI_MODEL_COUNT, suffix: "", label: "KI-Modelle", sub: "Claude · Gemini · Groq" },
   { n: 24, suffix: "/7", label: "Tutor verfügbar", sub: "keine Wartezeiten" },
@@ -37,7 +37,7 @@ const FEATURES = [
   { icon:Bot, title:"KI-Tutor mit Sokrates-Modus", desc:"Erklärt Paragraphen in Klartext, stellt Rückfragen, verweist auf Quellen. Claude + Gemini + Groq." },
   { icon:BookOpenCheck, title:"Echte Gesetzesquellen", desc:"Jede fachliche Aussage verlinkt auf gesetze-im-internet.de und IHK-Quellen." },
   { icon:Clock, title:"240 strukturierte Lerntage", desc:"5 Tabs pro Tag: Theorie, Normen, Analyse, Aufgaben, Videos. Lernfortschritt serverseitig." },
-  { icon:Award, title:"Kursabschluss-Zertifikate", desc:"PDF-Zertifikate nach bestandener Prüfung. Ab 70% Punktzahl. IHK-konformes Format." },
+  { icon:Award, title:"Kursabschluss-Zertifikate", desc:"PDF-Zertifikate nach bestandener Prüfung. Ab 70% Punktzahl. Portal-eigenes Abschlussformat." },
   { icon:GraduationCap, title:"Adaptiver Lernpfad", desc:"Schwächenanalyse via Spaced Repetition. Die Plattform passt sich Ihrem Tempo an." },
   { icon:ShieldCheck, title:"DSGVO & rechtssicher", desc:"Inhalte werden fachlich und compliance-orientiert geprüft. Barrierefreiheit wird schrittweise verbessert." },
 ];
@@ -138,7 +138,7 @@ export default function Home() {
       <SEO
         title="Immobilien Akademie Smart — §34c Makler, §34i, WEG-Verwaltung, Immobilienbewertung Online"
         description="Praxiswissen §34c Makler, §34i-Sachkunde, WEG-Verwaltung, Immobilienbewertung. KI-Tutor, 240 Lerntage, Praxisaufgaben. Ab 149€."
-        keywords="§34c GewO Makler, §34i GewO IHK-Sachkunde, WEG-Verwaltung, Immobilienbewertung, Online-Weiterbildung Immobilien"
+        keywords="§34c GewO Makler, §34i GewO Sachkundeprüfung, WEG-Verwaltung, Immobilienbewertung, Online-Weiterbildung Immobilien"
       />
 
       {/* HERO */}
@@ -288,7 +288,7 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
               {icon:ShieldCheck, label:"DSGVO", sub:"konform"},
-              {icon:Award, label:"IHK-orientiert", sub:"geprüfte Inhalte"},
+              {icon:Award, label:"Praxisorientiert", sub:"strukturierte Inhalte"},
               {icon:Sparkles, label:"KI-Tutor", sub:"Claude · Gemini · Groq"},
               {icon:Users, label:"5 Berufsbilder", sub:"ein Portal"},
             ].map((t,i)=>(
