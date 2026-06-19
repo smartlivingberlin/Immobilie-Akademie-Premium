@@ -56,7 +56,7 @@ export default function Bildungskonzept() {
             <li>Selbständige Immobilieneigentümer und Verwalter</li>
           </ul>
           <div className="mt-3 p-3 bg-slate-50 rounded-lg text-xs">
-            <strong>Zugangsvoraussetzungen:</strong> Kein formaler Bildungsabschluss erforderlich. Empfohlen: mittlerer Schulabschluss, Grundkenntnisse Deutsch (B2), Internetzugang. Für IHK-Prüfungen §34c/§34i gelten separate Zulassungsvoraussetzungen der jeweiligen IHK.
+            <strong>Zugangsvoraussetzungen:</strong> Kein formaler Bildungsabschluss erforderlich. Empfohlen: mittlerer Schulabschluss, Grundkenntnisse Deutsch (B2), Internetzugang. Für die Sachkundeprüfung nach §34i GewO und für erlaubnis- bzw. weiterbildungsbezogene Themen nach §34c GewO gelten jeweils eigene rechtliche Vorgaben und zuständige Stellen.
           </div>
         </section>
 

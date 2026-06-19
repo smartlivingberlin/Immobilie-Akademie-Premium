@@ -39,7 +39,7 @@ const FEATURES = [
   { icon:Clock, title:"240 strukturierte Lerntage", desc:"5 Tabs pro Tag: Theorie, Normen, Analyse, Aufgaben, Videos. Lernfortschritt serverseitig." },
   { icon:Award, title:"Kursabschluss-Zertifikate", desc:"PDF-Zertifikate nach bestandener Prüfung. Ab 70% Punktzahl. IHK-konformes Format." },
   { icon:GraduationCap, title:"Adaptiver Lernpfad", desc:"Schwächenanalyse via Spaced Repetition. Die Plattform passt sich Ihrem Tempo an." },
-  { icon:ShieldCheck, title:"DSGVO & rechtssicher", desc:"Alle Inhalte juristisch geprüft. WCAG 2.2 AA. Barrierefreiheit inklusive." },
+  { icon:ShieldCheck, title:"DSGVO & rechtssicher", desc:"Inhalte werden fachlich und compliance-orientiert geprüft. Barrierefreiheit wird schrittweise verbessert." },
 ];
 
 const IMAGES = {
