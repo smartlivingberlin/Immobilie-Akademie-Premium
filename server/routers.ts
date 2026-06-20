@@ -457,7 +457,7 @@ Akzeptable offizielle Quellen mit Links:
 - §34i GewO → https://www.gesetze-im-internet.de/gewo/__34i.html
 - BGB Mietrecht → https://www.gesetze-im-internet.de/bgb/__535.html
 - WEG → https://www.gesetze-im-internet.de/woeigg/
-- MaBV → https://www.gesetze-im-internet.de/mabv/
+- MaBV → https://www.gesetze-im-internet.de/gewo_34cdv/
 - ImmoWertV 2021 → https://www.gesetze-im-internet.de/immowertv_2021/
 - IHK Deutschland → https://www.dihk.de
 - BGH-Urteile → https://juris.bundesgerichtshof.de
