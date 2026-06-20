@@ -56,7 +56,7 @@ export const WISSENS_KARTE = {
         "§34c GewO": "https://www.gesetze-im-internet.de/gewo/__34c.html",
         "§652 BGB": "https://www.gesetze-im-internet.de/bgb/__652.html",
         "§653 BGB": "https://www.gesetze-im-internet.de/bgb/__653.html",
-        "MaBV": "https://www.gesetze-im-internet.de/mabv/",
+        "MaBV": "https://www.gesetze-im-internet.de/gewo_34cdv/",
         "WoVermG": "https://www.gesetze-im-internet.de/wovermrg/",
       }
     },

@@ -47,7 +47,7 @@ export const lawReferences: Record<string, LawReference> = {
   "GrundstVG": {
     shortName: "GrundstVG",
     fullName: "Grundstücksverkehrsgesetz",
-    url: "https://www.gesetze-im-internet.de/grstvg/",
+    url: "https://www.gesetze-im-internet.de/grdstvg/",
   },
   "EStG": {
     shortName: "EStG",

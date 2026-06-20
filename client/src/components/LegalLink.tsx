@@ -72,9 +72,9 @@ export function LegalLink({ law, className = "" }: LegalLinkProps) {
     if (text.includes("MaBV")) {
       const mabvMatch = text.match(/§\s*(\d+[a-z]?)/);
       if (mabvMatch) {
-        return `https://www.gesetze-im-internet.de/mabv/__${mabvMatch[1]}.html`;
+        return `https://www.gesetze-im-internet.de/gewo_34cdv/__${mabvMatch[1]}.html`;
       }
-      return "https://www.gesetze-im-internet.de/mabv/";
+      return "https://www.gesetze-im-internet.de/gewo_34cdv/";
     }
 
     // ImmoWertV
@@ -99,9 +99,9 @@ export function LegalLink({ law, className = "" }: LegalLinkProps) {
     if (text.includes("GRStVG") || text.includes("GrdstVG") || text.includes("GrundstVG")) {
       const grMatch = text.match(/§\s*(\d+[a-z]?)/);
       if (grMatch) {
-        return `https://www.gesetze-im-internet.de/grstvg/__${grMatch[1]}.html`;
+        return `https://www.gesetze-im-internet.de/grdstvg/__${grMatch[1]}.html`;
       }
-      return "https://www.gesetze-im-internet.de/grstvg/";
+      return "https://www.gesetze-im-internet.de/grdstvg/";
     }
     
     // BetrKV (Betriebskostenverordnung)
