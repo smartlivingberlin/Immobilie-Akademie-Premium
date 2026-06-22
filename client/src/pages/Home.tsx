@@ -36,7 +36,7 @@ const STATS = [
 const FEATURES = [
   { icon:Bot, title:"KI-Tutor mit Sokrates-Modus", desc:"Erklärt Paragraphen in Klartext, stellt Rückfragen, verweist auf Quellen. Claude + Gemini + Groq." },
   { icon:BookOpenCheck, title:"Echte Gesetzesquellen", desc:"Jede fachliche Aussage verlinkt auf gesetze-im-internet.de und IHK-Quellen." },
-  { icon:Clock, title:"240 strukturierte Lerntage", desc:"5 Tabs pro Tag: Theorie, Normen, Analyse, Aufgaben, Videos. Lernfortschritt serverseitig." },
+  { icon:Clock, title:"240 strukturierte Lerntage", desc:"5 Tabs pro Tag: Theorie, Normen, Analyse, Aufgaben, Video-Bereich. Lernfortschritt serverseitig." },
   { icon:Award, title:"Kursabschluss-Zertifikate", desc:"PDF-Zertifikate nach bestandener Prüfung. Ab 70% Punktzahl. Portal-eigenes Abschlussformat." },
   { icon:GraduationCap, title:"Adaptiver Lernpfad", desc:"Schwächenanalyse via Spaced Repetition. Die Plattform passt sich Ihrem Tempo an." },
   { icon:ShieldCheck, title:"DSGVO & rechtssicher", desc:"Inhalte werden fachlich und compliance-orientiert geprüft. Barrierefreiheit wird schrittweise verbessert." },
