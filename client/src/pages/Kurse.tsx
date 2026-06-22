@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Link } from "wouter";
 import { Skeleton } from "@/components/ui/skeleton";
+import { RENEWAL_YEARLY_EUR } from "@shared/accessPolicy";
+
+const ACCESS_CLAIM_SHORT = `Lernzeit inklusive · danach ab ${RENEWAL_YEARLY_EUR} €/Jahr weiternutzbar`;
 
 const PRODUCT_SKELETON_COUNT = 7;
 
@@ -104,8 +107,9 @@ export default function Kurse() {
             Einzelne Kurse kaufen
           </h1>
           <p style={{ fontSize:16, color:"#64748b", maxWidth:500, margin:"0 auto", lineHeight:1.6 }}>
-            Wählen Sie ein einzelnes Modul oder sparen Sie mit unseren Paketen.
-            Einmalzahlung — dauerhafter Zugang.
+            Wählen Sie ein einzelnes Modul oder sparen Sie mit unseren Paketen.{" "}
+            Einmalzahlung mit Lernzeit inklusive (4–20 Monate je nach Modul). Danach optional ab {RENEWAL_YEARLY_EUR} €/Jahr.
+            Keine automatische Verlängerung beim Erstkauf.
           </p>
         </div>
       </div>
@@ -228,7 +232,8 @@ export default function Kurse() {
             💰 Mehrere Module? Bis zu 290 € sparen!
           </div>
           <div style={{fontSize:13,color:"#64748b"}}>
-            Mit unseren Vorteilspaketen bekommen Sie alle Module günstiger — einmalig kaufen, dauerhaft nutzen.
+            Mit unseren Vorteilspaketen bekommen Sie alle Module günstiger — {ACCESS_CLAIM_SHORT}.
+            Keine automatische Verlängerung beim Erstkauf.
           </div>
         </div>
         <Link href="/pakete">

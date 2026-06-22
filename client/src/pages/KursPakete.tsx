@@ -5,6 +5,9 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { CheckCircle2, ArrowRight, Star, Zap, Building2, TrendingUp, Award, Crown, Shield, Clock, Users, BookOpen } from "lucide-react";
 import { trackEvent } from "@/hooks/useAnalytics";
 import { MARKETING_LEARNING_TASKS_LABEL, STRUCTURED_LEARNING_DAYS } from "@shared/claims";
+import { RENEWAL_YEARLY_EUR } from "@shared/accessPolicy";
+
+const ACCESS_CLAIM_SHORT = `Lernzeit inklusive · danach ab ${RENEWAL_YEARLY_EUR} €/Jahr weiternutzbar`;
 
 const MODULE_INFO: Record<number, { name: string; short: string; emoji: string; color: string }> = {
   1: { name: "Immobilien-Grundkurs", short: "Grundkurs", emoji: "🏠", color: "#2563eb" },
@@ -27,7 +30,7 @@ const PAKETE = [
 
 const TRUST = [
   { icon:"🎓", label:"Praxisorientiert", sub:"§34c Weiterbildung + §34i Sachkunde" },
-  { icon:"📱", label:"Dauerhafter Zugang", sub:"Einmaliger Kaufpreis, kein Abo" },
+  { icon:"📱", label:"Lernzeit inklusive", sub:`4–20 Monate Zugang · danach ab ${RENEWAL_YEARLY_EUR} €/Jahr. Keine automatische Verlängerung beim Erstkauf.` },
   { icon:"🤖", label:"KI-Tutor inklusive", sub:"Claude + Gemini + Groq" },
   { icon:"📋", label:`${MARKETING_LEARNING_TASKS_LABEL} Lernaufgaben`, sub:"Lernfragen, Rechenübungen & Praxisfälle" },
   { icon:"🎯", label:"Prüfungssimulation", sub:"Realistische Testumgebung" },
@@ -79,7 +82,8 @@ export default function KursPakete() {
 
           <p style={{ fontSize:17, color:"#94a3b8", maxWidth:540, margin:"0 auto 32px", lineHeight:1.6 }}>
             6 maßgeschneiderte Pakete — für Makler, Verwalter, Gutachter und Allrounder.
-            Einmalzahlung, dauerhafter Zugang, fachlich vorbereitet.
+            Einmalzahlung mit großzügiger Lernzeit inklusive (4–20 Monate je nach Paket).
+            Danach optional weiter nutzbar ab {RENEWAL_YEARLY_EUR} €/Jahr. Keine automatische Verlängerung beim Erstkauf.
           </p>
 
           <div style={{ display:"flex", gap:32, justifyContent:"center", flexWrap:"wrap", marginBottom:8 }}>
@@ -200,7 +204,7 @@ export default function KursPakete() {
                     </div>
                   )}
                   <div style={{ fontSize:11, color:"#94a3b8", marginTop:6 }}>
-                    Endpreis · Einmalzahlung · kein Abo
+                    {ACCESS_CLAIM_SHORT}
                   </div>
                 </div>
 
