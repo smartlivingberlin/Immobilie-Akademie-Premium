@@ -365,7 +365,9 @@
         "hint": "Denken Sie an das Konzept der Stützung zwischen den Verfahren und überlegen Sie, welches Verfahren für die konkrete Objektart als marktüblich gilt.",
         "type": "reflection"
       }
-    ]
+    ],
+    "caseStudy": "\n**Fall: Verfahrenswahl beim Reihenhaus**\nEin vermietetes Reihenhaus in einer Siedlung soll bewertet werden. Der Ertragswert ergibt 420.000 €, der Vergleichswert (drei Nachbarverkäufe) 445.000 €, der Sachwert 460.000 €.\n\n**Analyse:** Alle drei Verfahren sind zulässig. Der Gutachter führt sie parallel zur Stützung durch und wählt das verfahrensprägende Ergebnis — hier oft Vergleichswert wegen homogener Siedlung und ausreichender Vergleichsdaten. Abweichungen über 10–15 % erfordern Fehleranalyse. Der Verkehrswert (§ 194 BauGB) ist stets das Ziel, nicht ein einzelnes Rechenverfahren.\n",
+    "solution": "\n**Die drei normierten Wertermittlungsverfahren (ImmoWertV):**\n\n1. **Vergleichswertverfahren** (§§ 15–16 ImmoWertV) — Orientierung an tatsächlichen Kaufpreisen vergleichbarer Objekte.\n2. **Ertragswertverfahren** (§§ 17–20 ImmoWertV) — Kapitalisierung marktüblicher Mieteinnahmen.\n3. **Sachwertverfahren** (§§ 21–26 ImmoWertV) — Herstellungskosten abzüglich Alterswertminderung plus Bodenwert.\n\n**Merksatz:** Verfahren wählen nach Objektart und Datenlage — am Ende entscheidet der marktübliche, verfahrensprägende Ansatz.\n"
   },
   "day_9": {
     "title": "Bodenwertermittlung Deep Dive",
@@ -403,7 +405,9 @@
         "hint": "Denken Sie an alternative Bewertungsverfahren der ImmoWertV und prüfen Sie, welche Vergleichsdaten aus ähnlichen Lagen zur Verfügung stehen.",
         "type": "reflection"
       }
-    ]
+    ],
+    "caseStudy": "\n**Fall: Tiefes Eckgrundstück in Vorstadt**\nEin 1.200 m² großes Grundstück hat 400 m² Vorderland (baureif) und 800 m² Hinterland (Garten). Bodenrichtwert: 400 €/m² bei GFZ 0,6. Das Objektgrundstück hat GFZ 1,0 — Umrechnungskoeffizient 1,12. Zudem Ecklage (+8 %).\n\n**Analyse:** Hinterland ist nicht wertlos, wird aber mit 10–20 % des Baulandwertes angesetzt. GFZ-Abweichungen erfordern Umrechnung über Gutachterausschuss-Tabellen, nicht lineare Hochrechnung. Ecklage verbessert Bebaubarkeit und Erschließung — typischer Zuschlag 5–10 %.\n",
+    "solution": "\n**Ist Hinterland wertlos?**\n\n**Nein** — aber es ist **weniger wertvoll als Bauland (Vorderland)**.\n\n**Typische Bewertung:**\n- Vorderland: voller Bodenwert (baureif, erschlossen)\n- Hinterland/Gartenland: oft **10–20 %** des Baulandwertes pro m²\n\n**Begründung:** Hinterland ist nicht unmittelbar bebaubar, hat eingeschränkte Nutzung, erhöht aber Grundstücksattraktivität (Garten, Privatsphäre).\n\n**Praxis:** Bei sehr tiefen Grundstücken Zonenwertbildung (Vorder-/Hinterland getrennt) statt pauschaler Gesamtfläche × BRW.\n"
   },
   "day_10": {
     "title": "Zwischenprüfung: Verfahrenskompetenz",
@@ -440,7 +444,9 @@
         "hint": "Denken Sie an den Stichtag der Bewertung und überlegen Sie, wie sich Marktbedingungen und Immobilienwerte über die Zeit entwickeln können.",
         "type": "reflection"
       }
-    ]
+    ],
+    "caseStudy": "\n**Fall: Kleines Zinshaus vor Banktermin**\nDrei Wohnungen, 18.000 € Jahresrohertrag, BWK 20 %, Liegenschaftszins 4 %, RND 40 Jahre (Vervielfältiger 19,79), Bodenwert 150.000 €. Die Bank verlangt einen aktuellen Ertragswert zum Finanzierungsstichtag.\n\n**Analyse:** Reinertrag 14.400 €, Bodenwertverzinsung 6.000 €, Gebäudereinertrag 8.400 €, Gebäudeertragswert 166.236 €, Gesamtertragswert **316.236 €**. Steigt der Bodenwert auf 300.000 €, wächst die Bodenverzinsung — der Gebäudeanteil sinkt (Residualprinzip). Gutachten sind nur für den Stichtag gültig; nach 6–12 Monaten verlangen Banken meist ein Update.\n",
+    "solution": "\n**Ertragswert — Lösungsweg (Zinshaus-Übung):**\n\n| Schritt | Berechnung | Ergebnis |\n|---------|------------|----------|\n| 1. Rohertrag | gegeben | 18.000 € |\n| 2. Reinertrag | 18.000 − 20 % BWK | **14.400 €** |\n| 3. Bodenwertverzinsung | 150.000 × 4 % | 6.000 € |\n| 4. Gebäudereinertrag | 14.400 − 6.000 | 8.400 € |\n| 5. Gebäudeertragswert | 8.400 × 19,79 | 166.236 € |\n| 6. Ertragswert gesamt | 166.236 + 150.000 | **316.236 €** |\n\n**Gerundet:** ca. **316.000 €**\n"
   },
   "day_11": {
     "title": "Sachwertverfahren: Normalherstellungskosten (NHK)",
@@ -489,7 +495,9 @@
         "hint": "Denken Sie an die klassische Sachwertformel mit den fünf Hauptkomponenten: Herstellungskosten, Baupreisanpassung, Alterswertminderung, Bodenwert und abschließender Marktanpassung über den Sachwertfaktor. Vergessen Sie nicht die Außenanlagen als separaten Kostenbaustein zu berücksichtigen.",
         "type": "reflection"
       }
-    ]
+    ],
+    "caseStudy": "\n**Fall: EFH-Herstellungskosten München vs. Dresden**\nEin freistehendes EFH (BGF 195 m², BJ 2001) in München-Schwabing: NHK indexiert, Alterswertminderung, Bodenwert dominiert mit 82 % — Verkehrswert ca. 2,1 Mio. €. Vergleichsobjekt Dresden-Striesen (BGF 160 m², BJ 1992): Sachwertfaktor 0,95, Verkehrswert ca. 332.000 €.\n\n**Analyse:** Sachwert basiert auf NHK (objektivierte Normalherstellungskosten), nicht auf tatsächlichen Eigentümer-Rechnungen. BGF zählt Außenmaße nach DIN 277 — nicht WoFlV. Garagen werden separat bewertet. In Hochpreisregionen überwiegt der Bodenwert; der Sachwertfaktor passt Substanzrechnung an die Marktlage an.\n",
+    "solution": "\n**Wohnfläche vs. BGF:**\n\n| | Wohnfläche (WoFlV) | BGF (DIN 277) |\n|---|---|---|\n| **Messung** | Lichte Innenmaße bewohnbarer Räume | Außenmaße aller Geschosse |\n| **Enthält** | Wohn-/Nutzräume (mit Regeln für Schrägen) | Wände, Konstruktion, Treppen, ggf. Keller/DG |\n| **Verwendung** | Mietverträge, Exposés | Sachwertverfahren, NHK-Berechnung |\n\n**Merksatz:** Für Herstellungskosten im Sachwertverfahren gilt **BGF**, nicht Wohnfläche.\n"
   },
   "day_12": {
     "title": "Sachwertverfahren: Alterswertminderung & Marktanpassung",
@@ -526,7 +534,9 @@
         "hint": "Denken Sie an die grundlegenden Eigenschaften von Grund und Boden im Vergleich zu einem Gebäude - welche physischen Veränderungen durchläuft das eine im Zeitverlauf, welche das andere?",
         "type": "reflection"
       }
-    ]
+    ],
+    "caseStudy": "\n**Fall: Kernsaniertes EFH mit „falschem\" Alter**\nEin 40 Jahre altes Haus (GND 80) wurde vor 5 Jahren kernsaniert (Dach, Fenster, Heizung). Herstellungskosten neu: 552.000 €, Bodenwert 200.000 €, Außenanlagen 15.000 €, Sachwertfaktor 1,1. Lineare Alterswertminderung 50 % wäre ungerecht.\n\n**Analyse:** Statt 40/80 = 50 % Abschreibung wird eine **modifizierte Restnutzungsdauer** angesetzt — fiktives Baujahr oder verlängerte RND. Vorläufiger Sachwert: 629.000 €, mit Marktanpassung **691.900 €**. Sachwertfaktor 0,8 bedeutet: Markt realisiert nur 80 % der Substanzkosten — typisch in strukturschwachen Regionen. Bodenwert wird nicht alterswertgemindert.\n",
+    "solution": "\n**Kernsanierung bei 40-jährigem Haus — Vorgehen:**\n\n1. **Modifizierte Restnutzungsdauer** ermitteln (nicht blind chronologisches Alter).\n2. **Fiktives Baujahr** anpassen — z. B. nach Kernsanierung vor 5 Jahren RND wieder 60+ Jahre.\n3. **Dokumentation:** Welche Bauteile wurden erneuert? (Dach, Fenster, Haustechnik)\n4. **Alterswertminderung** auf Basis der **wirtschaftlichen** Nutzungsdauer, nicht nur Baujahr.\n\n**Ohne Sanierung:** 40/80 = 50 % Minderung.\n**Mit Kernsanierung:** deutlich geringere Minderung — Gebäude wirtschaftlich „jünger\".\n\n**Grundsatz:** Substanz und Markt getrennt betrachten; Bodenwert bleibt ungemindert.\n"
   },
   "day_13": {
     "title": "Aufbau eines Verkehrswertgutachtens",
@@ -563,7 +573,9 @@
         "hint": "Denken Sie daran, dass Immobilienbewertung keine exakte Wissenschaft ist und überlegen Sie, welchen Eindruck ein Verkehrswert mit Cent-Beträgen beim Auftraggeber erwecken würde.",
         "type": "reflection"
       }
-    ]
+    ],
+    "caseStudy": "\n**Fall: Feuchter Keller in Berlin-Pankow**\nBeim Ortstermin für ein EFH (BJ 1985) stellt der Gutachter Feuchtigkeit im Keller fest. Der Eigentümer minimiert den Mangel. Der Gutachter dokumentiert per Feuchtigkeitsmessung, schätzt Abdichtungskosten mit 25.000 € (BKI) und zieht diesen Betrag als boG vom vorläufigen Sachwert ab.\n\n**Analyse:** Jedes Gutachten braucht auf dem Deckblatt: Objektadresse, Wertermittlungsstichtag, Auftraggeber, Gutachter. boG (besondere objektspezifische Grundstücksmerkmale) erfassen alles, was Standardverfahren nicht abbilden — mit Begründungspflicht. Fotos und Pläne dienen der Beweissicherung. Runden ist üblich (453.219 € → 453.000 €), um Scheingenauigkeit zu vermeiden.\n",
+    "solution": "\n**Deckblatt — Pflichtangaben:**\n\n1. **Adresse** des Bewertungsobjekts\n2. **Wertermittlungsstichtag** (Wert gilt nur für diesen Tag)\n3. **Qualitätsstichtag** (falls abweichend vom Wertermittlungsstichtag)\n4. **Auftraggeber** (Name, ggf. Auftragsgrund)\n5. **Gutachter** (Name, Qualifikation, ggf. ö.b.u.v.-Status)\n\n**Zusätzlich üblich:** Gutachtenart, Aktenzeichen, Objektbezeichnung.\n\n**Merksatz:** Wer — Was — Wann — muss auf einen Blick erkennbar sein.\n"
   },
   "day_14": {
     "title": "Objektbeschreibung & Bauschäden",
@@ -600,7 +612,9 @@
         "hint": "Denken Sie an die verschiedenen Rissarten und ihre Ursachen - welche Kräfte wirken bei Fundamentproblemen auf das Mauerwerk ein und in welche Richtung verlaufen die daraus resultierenden Spannungen?",
         "type": "reflection"
       }
-    ]
+    ],
+    "caseStudy": "\n**Fall: MFH Baujahr 1960 — drei Mängel**\nBei der Bewertung eines MFH findet der Gutachter: (1) diagonaler Setzungsriss in der Fassade — Statik ungeklärt, Risikoabschlag oder Auflage; (2) Asbest-Fassadenplatten, 400 m², Entsorgung ca. 40.000 € boG; (3) veraltete Elektrik (8 WE × 8.000 €) = 64.000 € boG. Vorläufiger Ertragswert 1.200.000 €, nach boG-Abzug **ca. 1.096.000 €**.\n\n**Analyse:** Gutachter ermitteln **Marktwertminderungen**, nicht primär Sanierungskosten. Cost-to-cure orientiert, aber nicht immer 1:1 („Ärger-Faktor\"). „Neu für alt\": Bei ohnehin fälliger Erneuerung ist der Abzug geringer. Asbestverdacht: typische Floor-Flex-Platten der 60er/70er mit bitumenhaltigem Kleber.\n",
+    "solution": "\n**Sanierungskosten vs. Marktwertminderung:**\n\n| | Sanierungskosten | Marktwertminderung |\n|---|---|---|\n| **Perspektive** | Techniker/Bauingenieur | Gutachter/Markt |\n| **Frage** | Was kostet die Behebung? | Was zahlt ein Käufer weniger? |\n| **Bezug** | Handwerkerkalkulation | Verkehrswert (§ 194 BauGB) |\n\n**Oft ähnlich** (Cost-to-cure), aber Abweichungen bei:\n- **„Neu für alt\"** — alte Anlage ohnehin fällig → geringerer Abzug\n- **Risiko-/Ärger-Faktor** — Markt zieht mehr ab als reine Kosten\n- **Ungeklärte Schäden** — pauschaler Risikoabschlag statt Vollkosten\n\n**Merksatz:** Gutachter bewerten **Wert**, nicht **Handwerkerrechnungen**.\n"
   },
   "day_15": {
     "title": "Spezialfälle: Rechte und Belastungen",
