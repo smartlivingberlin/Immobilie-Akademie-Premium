@@ -652,7 +652,9 @@
         "hint": "Denken Sie daran, wie der Verkehrswert grundsätzlich ermittelt wird und welche Rolle der Notar beim Kaufpreisfluss spielt.",
         "type": "reflection"
       }
-    ]
+    ],
+    "caseStudy": "\n**Fall: Lebenslanges Wohnrecht beim Hausverkauf**\nFrau Müller (75) verkauft ihr Haus für 500.000 € an den Neffen, behält ein lebenslanges Wohnrecht. Marktmiete: 12.000 €/Jahr, BWK 20 %, Reinertrag des Rechts 9.600 €/Jahr. Leibrentenbarwertfaktor (Alter 75, LZ 3,5 %): ca. 9,8. Wert des Rechts: **94.080 €**. Verkehrswert belastet: **405.920 €**.\n\n**Analyse:** Wohnungsrecht mindert den Wert um den Barwert der entgangenen Miete. Nießbrauch geht weiter — der Berechtigte darf auch vermieten. Grundschulden in Abt. III mindern den Verkehrswert nicht. Wegerechte mindern den Bodenwert des betroffenen Streifens. Zieht die Wohnberechtigte ins Pflegeheim, erlischt das Recht nicht automatisch — Löschung nur mit notarieller Löschungsbewilligung.\n",
+    "solution": "\n**Wohnberechtigte im Pflegeheim — Rechtsfolge:**\n\nDas **dingliche Wohnrecht** (§ 1093 BGB) erlischt **nicht automatisch** beim Einzug ins Pflegeheim.\n\n**Mögliche Konstellationen:**\n1. **Recht bleibt bestehen** — Eigentümer kann die Räume nicht frei nutzen\n2. **Vermietung** — nur wenn vertraglich gestattet\n3. **Kapitalabfindung** — Eigentümer kauft das Recht ab (freiwillig)\n4. **Löschung im Grundbuch** — nur mit **notarieller Löschungsbewilligung** des Berechtigten\n\n**Merksatz:** Auszug ≠ Erlöschen. Ohne Löschungsbewilligung bleibt die Belastung im Grundbuch.\n"
   },
   "day_16": {
     "title": "Gewerbeimmobilien & DCF-Verfahren",
@@ -689,7 +691,9 @@
         "hint": "Denken Sie an das Ende des Betrachtungszeitraums einer DCF-Analyse und fragen Sie sich, welcher Wert dort für die Immobilie angesetzt wird. Dieser Wert hat oft einen erheblichen Einfluss auf das Gesamtergebnis der Bewertung.",
         "type": "definition"
       }
-    ]
+    ],
+    "caseStudy": "\n**Fall: Einkaufszentrum mit Ankermieter**\nEin Einkaufszentrum hat einen großen Supermarkt als Hauptmieter (Anchor Tenant). Der Vertrag läuft noch 8 Jahre, die Miete ist indexiert. Der Liegenschaftszins liegt bei 5,5 % — deutlich über Wohnimmobilien wegen Leerstands- und Konjunkturrisiko.\n\n**Analyse:** Der Ankermieter stabilisiert Frequenz und Mieteinnahmen für das gesamte Objekt. Drittverwendungsfähigkeit bei Standard-Büros hoch, bei Kinos oder Spezialobjekten niedrig. DCF bildet temporären Leerstand (Jahr 1–2 minus, ab Jahr 3 Miete) realistischer ab als klassischer Ertragswert mit boG-Abzug. Terminal Value am Ende des Betrachtungszeitraums macht oft den größten Anteil des DCF-Barwerts aus.\n",
+    "solution": "\n**Anchor Tenant (Ankermieter):**\n\nEin **Ankermieter** ist ein wesentlicher Hauptmieter, der das Objekt wirtschaftlich **stabilisiert** — typisch ein Supermarkt oder großer Einzelhändler in einem Einkaufszentrum.\n\n**Wirkung auf den Wert:**\n- Zieht Kundenfrequenz und Folgemieter an\n- Längere Vertragslaufzeiten, höhere Bonität\n- Senkt Leerstands- und Vermietungsrisiko\n- Erhöht Planbarkeit der Cashflows\n\n**Merksatz:** Fehlt der Ankermieter oder kündigt er, sinkt der Wert des gesamten Zentrums überproportional.\n"
   },
   "day_17": {
     "title": "Digitale Bewertungstools (AVM)",
@@ -726,7 +730,9 @@
         "hint": "Denken Sie an die Kombination von automatisierten Bewertungsverfahren und traditioneller Gutachtertätigkeit. Der Begriff \"Hybrid\" deutet bereits auf eine Mischform zweier unterschiedlicher Bewertungsansätze hin.",
         "type": "definition"
       }
-    ]
+    ],
+    "caseStudy": "\n**Fall: Online-Bewertung vs. Sachwert**\nEin Makler lässt ein EFH per AVM bewerten: Ergebnis 450.000–520.000 €. Seine Sachwertrechnung ergibt 410.000 €. Gründe für die Abweichung: feuchter Keller, Lärmbelästigung durch neue Umgehungsstraße, unsaniertes Bad — alles unsichtbar für den Algorithmus.\n\n**Analyse:** AVMs (Sprengnetter, PriceHubble) liefern schnelle Indikationen für Standardobjekte in Standardlagen. Für Gericht, Finanzamt oder Bank reicht das nicht — es fehlen Besichtigung, boG und Rechtsprüfung. Banken nutzen AVM für Kleindarlehen und Portfolio-Monitoring. Hybrid-Gutachten kombinieren Datenbasis (AVM) mit menschlicher Plausibilisierung vor Ort.\n",
+    "solution": "\n**Kann ein AVM ein Gutachten ersetzen?**\n\n**Nein** — zumindest nicht, wenn **Rechtssicherheit** gefordert ist.\n\n| | AVM | Verkehrswertgutachten |\n|---|---|---|\n| **Geschwindigkeit** | Sekunden | Tage/Wochen |\n| **Kosten** | Niedrig | Höher |\n| **Innenzustand** | Blind | Besichtigung |\n| **Gericht/Bank/FA** | Ungeeignet | Geeignet |\n| **Bauschäden, Rechte** | Nicht erfasst | Vollständig |\n\n**Einsatz AVM:** Erste Indikation, Standard-ETW, Portfolio-Re-Valuation.\n\n**Merksatz:** Computer schätzt Statistik — der Gutachter bewertet das konkrete Objekt.\n"
   },
   "day_18": {
     "title": "Haftung & Berufsbild",
@@ -763,7 +769,9 @@
         "hint": "Denken Sie an die Objektivität der Wertermittlung und überlegen Sie, welche Auswirkungen eine finanzielle Beteiligung des Gutachters am Ergebnis haben könnte.",
         "type": "reflection"
       }
-    ]
+    ],
+    "caseStudy": "\n**Fall: „Gutachter\" ohne Qualifikation**\nEin Makler bietet „Marktpreiseinschätzungen\" an, nennt sich „Immobiliensachverständiger\" und versichert dem Käufer, das Ergebnis sei bankenfähig. Die Vermögensschadenhaftpflicht deckt Gutachtertätigkeit nicht ab. Das Gutachten war für die Bank bestimmt — Haftung gegenüber Dritten möglich.\n\n**Analyse:** „Sachverständiger\" ist in Deutschland **nicht geschützt**. Geschützt sind Titel wie ö.b.u.v. (IHK) oder zertifizierter SV (ISO 17024). Gefälligkeitsgutachten (Wert künstlich hoch) können Betrug sein (§ 263 StGB). Erfolgshonorare (% vom Wert) machen das Gutachten wertlos wegen Befangenheit. Haftung verjährt regelmäßig in 3 Jahren (§ 195 BGB).\n",
+    "solution": "\n**Wer darf sich „Sachverständiger\" nennen?**\n\n**Jeder** — der Begriff ist in Deutschland **nicht gesetzlich geschützt**.\n\n**Geschützte / anerkannte Qualifikationen:**\n- **Ö.b.u.v. Sachverständiger** — öffentlich bestellt und vereidigt (IHK)\n- **Zertifizierter Sachverständiger** — z. B. nach DIN ISO/IEC 17024 (HypZert, DIA)\n- **HypZert F/S** — spezialisierte Bank- und Verkehrswertqualifikation\n\n**Praxis für Makler:**\n- Disclaimer unter Marktpreiseinschätzungen\n- Haftpflichtdeckung prüfen (Gutachtertätigkeit oft ausgeschlossen)\n- Kein Ersatz für Verkehrswertgutachten nach § 194 BauGB versprechen\n\n**Merksatz:** Titel prüfen — nicht jeder „Gutachter\" ist Gutachter.\n"
   },
   "day_19": {
     "title": "Abschlussprüfung & Fallstudie",
@@ -794,7 +802,9 @@
         "hint": "Denken Sie daran, dass der Sachwertfaktor das Verhältnis zwischen Marktpreis und Sachwert widerspiegelt - bei welchen Objektmerkmalen zahlen Käufer typischerweise weniger als die reinen Herstellungskosten?",
         "type": "reflection"
       }
-    ]
+    ],
+    "caseStudy": "\n**Fall: „Sorgenkind\" in Berlin-Spandau**\nEFH BJ 1975, 120 m², Grundstück 800 m², BRW 300 €/m². Originalzustand, feuchter Keller (boG −20.000 €), Wegerecht für Hinterlieger auf 50 m². Sachwertverfahren: Bodenwert 232.500 € (nach Wegerechtsabschlag), Zeitwert Gebäude 131.250 €, vorläufiger Sachwert 363.750 €, Marktanpassung × 0,9 = 327.375 €, abzüglich Keller **307.375 €**.\n\n**Analyse:** Sachwertverfahren ist führend bei selbstgenutztem EFH. Wegerecht mindert Bodenwert des betroffenen Streifens. Sachwertfaktor < 1,0 wegen unsaniertem Zustand und Randlage — Markt zahlt weniger als Substanzkosten. boG erfasst Mängel, die Standardverfahren nicht abbilden.\n",
+    "solution": "\n**Führendes Verfahren — Abschlussfall Spandau:**\n\nDas **Sachwertverfahren** war hier führend.\n\n**Begründung:**\n- **Selbstgenutztes Einfamilienhaus** — keine Renditeorientierung\n- Substanz und Lage stehen im Vordergrund, nicht Mietkapitalisierung\n- Ertragswert bei Eigennutzung ungeeignet; Vergleichswert ergänzend zur Plausibilisierung möglich\n\n**Ergebnis:** Verkehrswert ca. **307.000 €** (gerundet) nach Sachwert, Marktanpassung und boG-Abzug.\n\n**Merksatz:** Nutzungsart bestimmt das verfahrensprägende Ergebnis.\n"
   },
   "day_20": {
     "title": "Zertifikat & Karriere",
@@ -821,7 +831,9 @@
         "hint": "Denken Sie an die offiziellen Stellen, die gesetzlich zur Marktbeobachtung verpflichtet sind, sowie an die großen Player der Immobilienbranche, die regelmäßig eigene Analysen veröffentlichen.",
         "type": "reflection"
       }
-    ]
+    ],
+    "caseStudy": "\n**Fall: Vom Kurs zur ersten Bewertung**\nEin Makler hat Modul 4 abgeschlossen und bewertet das Haus seiner Tante schriftlich: Sachwert grob, Vergleich mit drei Nachbarverkäufen, Flächen nach WoFlV geprüft, Kellerfeuchte als boG notiert. Ergebnis liegt 8 % unter dem AVM-Onlinepreis — plausibel wegen Sanierungsstau.\n\n**Analyse:** Fortbildung ist laufend Pflicht — Markt, ImmoWertV und GEG ändern sich. Für Makler/Verwalter: 20 Stunden in 3 Jahren (§ 34c GewO). Marktdaten: Grundstücksmarktberichte der Gutachterausschüsse, IVD-Preisspiegel, JLL/CBRE. Karrierewege: Bank, freiberuflicher SV, Fonds — Qualifikation (HypZert, ö.b.u.v.) öffnet Türen.\n",
+    "solution": "\n**Wie oft fortbilden?**\n\n**Laufend und kontinuierlich** — der Immobilienmarkt und die Rechtslage ändern sich ständig.\n\n**Gesetzliche Mindestanforderungen:**\n- **§ 34c GewO:** 20 Stunden Fortbildung in **3 Jahren** (Makler, Verwalter)\n- **HypZert / Zertifizierung:** eigene Weiterbildungspflichten (z. B. 20 h / 2 Jahre)\n\n**Themen mit hoher Aktualität:**\n- ImmoWertV, GEG/Energieausweis\n- Grundstücksmarktberichte, neue LZ-Sätze\n- Digitale Tools (AVM, Hybrid-Gutachten)\n\n**Merksatz:** Wer stillsteht, bewertet mit veralteten Annahmen — Haftungsrisiko inklusive.\n"
   },
   "day_21": {
     "title": "Gutachten-Struktur: Aufbau & Formale Anforderungen",
@@ -856,7 +868,9 @@
         "solution": "# HypZert S Zulassungsvoraussetzungen 2025/2026\n\nDie HypZert S Prüfung erfordert nachweislich mindestens **fünf Jahre Berufserfahrung** in der Immobilienbewertung oder dem Sachverständigenwesen. Kandidaten müssen einen **anerkannten Abschluss** (z.B. Diplom Sachverständiger, Bachelor/Master-Abschluss Immobilienwirtschaft) oder entsprechende Fortbildungen nachweisen.\n\nZwingend erforderlich sind **mindestens 15 Gutachtennachweise** aus den letzten drei Jahren, die den Qualitätsstandards nach ImmoWertV 2021 entsprechen. Diese müssen den Massstab des §194 BauGB dokumentieren und Verkehrswertermittlungen nach den anerkannten Bewertungsverfahren (Vergleichswert-, Ertragswert-, Sachwertverfahren) nachweisen.\n\nZusätzlich ist eine **aktuelle Haftpflichtversicherung** (mind. 250.000 Euro Deckung) sowie die Teilnahme an **zertifizierten Fortbildungsmaßnahmen** notwendig. Die vollständige aktuelle Liste finden Sie auf www.hypzert.de mit regelmäßigen Aktualisierungen zu Anforderungsänderungen."
       }
     ],
-    "quiz": []
+    "quiz": [],
+    "caseStudy": "\n**Fall: HypZert-S-Gutachten für Finanzierung**\nEin Auftraggeber verlangt ein „schnelles Kurzgutachten\" für die Bank. Der Gutachter erklärt: Kurzgutachten = Orientierung, nicht gerichtsverwertbar. Vollgutachten nach § 194 BauGB braucht Grundbuch, Flurkarte, Energieausweis, drei Verfahren, begründete Verfahrenswahl und nachvollziehbare Quellenangaben.\n\n**Analyse:** HypZert S prüft vor allem **logische Stringenz** der Wertermittlung — nicht nur Vollständigkeit. Kritisch: Marktanalyse, Vergleichswert-Herleitung, Widerspruchsfreiheit zwischen Text und Rechnung. Typische Fehler: veralteter BRW, fehlende Quellen, widersprüchliche Flächen. Checkliste: Grundbuch < 3 Monate, Baulasten, Baupläne, Energieausweis.\n",
+    "solution": "\n**HypZert S — wichtigste Gutachtenteile:**\n\n1. **Wertermittlung & Verfahrenswahl** — methodisch korrekt, begründet, verfahrensprägend\n2. **Marktanalyse & Vergleichswerte** — aktuelle Quellen, transparente Anpassungsfaktoren (ImmoWertV § 15)\n3. **Objektbeschreibung & Flächen** — widerspruchsfrei zu Grundbuch und Plänen\n4. **Plausibilität & Risikodarstellung** — Grenzen der Aussagesicherheit benennen\n5. **Ergebnis & Zusammenfassung** — nachvollziehbare Ableitung des Verkehrswerts (§ 194 BauGB)\n\n**Prüfungslogik:** Nicht Vollständigkeit allein, sondern **Nachvollziehbarkeit und Stringenz**.\n\n**Kurzgutachten vs. Vollgutachten:** Kurz = Orientierung; Voll = § 194 BauGB-konform, bank- und gerichtsfähig.\n"
   },
   "day_22": {
     "title": "Beleihungswert vs. Verkehrswert: Prüfungsrelevante Unterschiede",
