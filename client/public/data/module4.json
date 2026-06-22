@@ -35,7 +35,9 @@
         "hint": "Denken Sie daran, dass eine vermietete Wohnung primär als Renditeobjekt betrachtet wird - welches Verfahren berücksichtigt die laufenden Mieteinnahmen am besten?",
         "type": "reflection"
       }
-    ]
+    ],
+    "caseStudy": "\n**Fall: Finanzierung scheitert am Verkehrswert**\nEin Ehepaar kauft ein Reihenmittelhaus in München für 850.000 €. Der öffentlich bestellte Sachverständige ermittelt zum Wertermittlungsstichtag einen Verkehrswert von 780.000 €. Die Hausbank beleiht nur bis zum Beleihungswert; die Differenz von 70.000 € muss das Paar als zusätzliches Eigenkapital einbringen.\n\n**Analyse:** Der erzielte Kaufpreis ist kein Verkehrswert im Sinne des § 194 BauGB. Persönliche Motive (Nachbarschaft der Eltern) und Verkäufermarkt können den Preis über den objektivierten Wert heben. Für die Finanzierung zählt der stichtagsbezogene, marktübliche Wert — nicht der individuelle Zahlungswillen.\n",
+    "solution": "\n**Verkehrswert gemäß § 194 BauGB:**\n\nDer Verkehrswert (Marktwert) ist der Preis, der am Wertermittlungsstichtag im gewöhnlichen Geschäftsverkehr nach rechtlichen Gegebenheiten, tatsächlichen Eigenschaften, sonstiger Beschaffenheit und Lage des Objekts **ohne Rücksicht auf ungewöhnliche oder persönliche Verhältnisse** zu erzielen wäre.\n\n**Kernpunkte für die Praxis:**\n1. **Stichtagsbezug** — der Wert gilt nur für einen bestimmten Tag.\n2. **Objektivierung** — Liebhaberpreise und Notverkäufe werden ausgeblendet.\n3. **Abgrenzung Preis/Wert** — der tatsächlich gezahlte Preis kann vom Verkehrswert abweichen.\n"
   },
   "day_2": {
     "title": "Rechtliche Grundlagen & Flächenberechnung",
@@ -73,7 +75,9 @@
         "hint": "Denken Sie an die Normenhierarchie im deutschen Recht und überlegen Sie, welche unterschiedlichen Rechtsquellen-Typen hier vorliegen. Betrachten Sie dabei den Verbindlichkeitsgrad und die Funktion beider Regelwerke in der praktischen Wertermittlung.",
         "type": "definition"
       }
-    ]
+    ],
+    "caseStudy": "\n**Fall: Falsche Wohnfläche im Exposé**\nEin Makler wirbt eine Dachgeschosswohnung mit „50 m² Wohnfläche inkl. Terrasse\". Nach WoFlV sind es rechnerisch nur 27,5 m² (Dachschrägen und Terrasse nur anteilig). Der Käufer macht Mängelansprüche geltend.\n\n**Analyse:** Flächenangaben sind ein häufiger Haftungstreiber. Balkone und Terrassen werden nach WoFlV in der Regel mit 25 % angesetzt, bei besonderem Wohnwert bis 50 %. Keller- und Hobbyräume ohne Aufenthaltsqualität zählen nicht zur Wohnfläche. Grundschulden in Abteilung III mindern den Verkehrswert nicht — sie werden beim Verkauf aus dem Kaufpreis getilgt.\n",
+    "solution": "\n**Balkon nach WoFlV:**\n\nEin Balkon wird bei der Wohnflächenberechnung **in der Regel mit 25 %** seiner Grundfläche angesetzt.\n\n**Ausnahme:** Bei besonderem Wohnwert (z. B. großzügige Gestaltung, Südausrichtung, Überdachung) können **bis zu 50 %** angesetzt werden.\n\n**Merksatz:** Balkonfläche ≠ Wohnfläche. Im Exposé und Gutachten immer die Berechnungsmethode dokumentieren.\n"
   },
   "day_3": {
     "title": "Marktanalyse & Makro-Standort",
@@ -110,7 +114,9 @@
         "hint": "Denken Sie daran, dass der Bodenrichtwert für ein \"Richtwertgrundstück\" mit durchschnittlichen Eigenschaften ermittelt wird. Überlegen Sie, was passiert, wenn ein konkretes Grundstück von diesen Standardeigenschaften abweicht.",
         "type": "reflection"
       }
-    ]
+    ],
+    "caseStudy": "\n**Fall: Bodenrichtwert passt nicht aufs Eckgrundstück**\nIn Köln liegt der ausgewiesene Bodenrichtwert bei 600 €/m². Das zu bewertende Grundstück ist ein Eckgrundstück mit GFZ 1,2 statt 1,0 am Richtwertgrundstück und hat bessere Zufahrt.\n\n**Analyse:** Der BRW ist ein Durchschnittswert für ein fiktives Richtwertgrundstück — nicht der individuelle Bodenwert. Abweichungen bei Größe, Zuschnitt, Baurecht und Mikrolage erfordern Zu- oder Abschläge über Umrechnungskoeffizienten des Gutachterausschusses. Makrolage (Wirtschaftskraft der Region) und Mikrolage (Straße, Lärm, Ausrichtung) sind getrennt zu bewerten.\n",
+    "solution": "\n**Makrolage vs. Mikrolage:**\n\n| | Makrolage | Mikrolage |\n|---|---|---|\n| **Ebene** | Region, Stadt, Wirtschaftsraum | Straße, Nachbarschaft, Grundstück |\n| **Faktoren** | Bevölkerung, Arbeitsmarkt, Infrastruktur | Lärm, ÖPNV, Schulen, Ausrichtung |\n| **Beispiel** | „München wächst, hohe Nachfrage\" | „Hinterhof vs. Vorderhaus, Hauptstraße\" |\n\n**Praxis:** Erst Makrostandort beurteilen (Marktumfeld), dann Mikrostandort (konkretes Objekt). Beide fließen in Bodenwert und Marktanpassung ein.\n"
   },
   "day_4": {
     "title": "Vergleichswertverfahren",
@@ -172,7 +178,9 @@
         "hint": "Berechnen Sie zuerst den Indexfaktor aus dem Verhältnis der aktuellen zur Basis-Indexzahl, bevor Sie den Lagezuschlag anwenden. Denken Sie an die korrekte Reihenfolge: Basispreis × Indexfaktor × Lagefaktor × Fläche.",
         "type": "reflection"
       }
-    ]
+    ],
+    "caseStudy": "\n**Fall: ETW in Hamburg-Eimsbüttel**\nEine 68 m² große Eigentumswohnung (BJ 1995, 2. OG, Balkon, kein Aufzug) soll bewertet werden. Drei Vergleichskäufe liegen zwischen 4.000 und 4.600 €/m². Nach Bereinigung um Ausstattungsunterschiede ergibt sich ein Mittelwert von ca. 4.269 €/m² — Verkehrswert rund 290.000 €.\n\n**Analyse:** Das Vergleichswertverfahren ist hier verfahrensprägend, weil genügend vergleichbare ETW-Transaktionen vorliegen. Kaufpreise müssen indexiert und um Objektmerkmale (Balkon, Etage, Aufzug) bereinigt werden. Größere Wohnungen haben oft einen niedrigeren €/m²-Preis (degressiver Verlauf).\n",
+    "solution": "\n**Vergleichswertverfahren — Anwendungsbereich:**\n\nAm besten geeignet für **Eigentumswohnungen** und **unbebaute Grundstücke**, weil hier häufig ausreichend vergleichbare Kaufpreise am Markt vorliegen.\n\n**Weitere Eignung:** Reihenhäuser in homogenen Siedlungen.\n\n**Nicht ideal:** Einzigartige Villen, Spezialgewerbe ohne Vergleichsdaten — hier Sachwert oder Ertragswert ergänzend prüfen.\n"
   },
   "day_5": {
     "title": "Ertragswertverfahren: Rohertrag & Bewirtschaftungskosten",
@@ -222,7 +230,9 @@
         "hint": "Berechnen Sie den Reinertrag mit der Formel Rohertrag × (1 - BWK-Satz) und denken Sie bei den unterschiedlichen BWK-Sätzen an die typischen Kostentreiber wie Gebäudealter, Instandhaltungsaufwand und regionale Verwaltungskosten.",
         "type": "reflection"
       }
-    ]
+    ],
+    "caseStudy": "\n**Fall: „Oma-Miete\" im Mehrfamilienhaus**\nEin MFH in Köln-Ehrenfeld erzielt 9,20 €/m² Ist-Miete, die Marktmiete liegt bei 10,50 €/m². Langjährige Mieter mit Kündigungsschutz zahlen unter Marktniveau.\n\n**Analyse:** Für den Ertragswert gilt die **marktüblich erzielbare Miete**, nicht die tatsächliche Ist-Miete. Eine zu niedrige Miete (under-rented) verfälscht den Wert nach unten; eine Wuchermiete verfälscht nach oben. Der Rohertrag basiert auf Nettokaltmiete. Bewirtschaftungskosten (Verwaltung, Instandhaltung, Mietausfallwagnis) mindern den Reinertrag — Heizkosten sind durchlaufende Posten.\n",
+    "solution": "\n**Warum nicht die Ist-Miete?**\n\nDer Verkehrswert muss **objektiv und marktgerecht** sein (§ 194 BauGB). Die aktuelle Miete kann durch persönliche, zeitliche oder rechtliche Besonderheiten verzerrt sein:\n\n- **Zu niedrig:** Gefälligkeitsmiete, Altverträge, verwandtschaftliche Vermietung\n- **Zu hoch:** Wucher, kurzfristige Sondervereinbarungen\n\n**Maßgeblich:** die marktüblich erzielbare Jahresnettokaltmiete am Wertermittlungsstichtag.\n\n**Folge:** Under-rented-Objekte haben Mietsteigerungspotenzial, das gesondert (z. B. über Barwert des Mietausfalls) zu behandeln ist.\n"
   },
   "day_6": {
     "title": "Ertragswertverfahren: Bodenwertverzinsung & Vervielfältiger",
@@ -271,7 +281,9 @@
         "hint": "Denken Sie an die Ertragswertformel mit Bodenwertverzinsung und Barwertfaktor - der Liegenschaftszinssatz spielt dabei eine doppelte Rolle bei der Verzinsung und Kapitalisierung.",
         "type": "reflection"
       }
-    ]
+    ],
+    "caseStudy": "\n**Fall: MFH-Bewertung mit Bodenwertverzinsung**\nReinertrag eines MFH: 51.000 €/Jahr. Bodenwert: 400.000 €, Liegenschaftszins 5,0 %, Restnutzungsdauer 30 Jahre. Bodenwertanteil: 20.000 €. Gebäudereinertrag: 31.000 €. Mit Vervielfältiger 15,37 ergibt sich ein Ertragswert von ca. 876.000 €.\n\n**Analyse:** Der Gesamtertrag stammt aus Boden (unbegrenzte Nutzung) und Gebäude (begrenzte Restnutzungsdauer). Die Bodenwertverzinsung isoliert den Bodenanteil; nur der Gebäudereinertrag wird mit dem Vervielfältiger kapitalisiert. Steigt der Liegenschaftszins, sinkt der Ertragswert (Investoren verlangen höhere Rendite).\n",
+    "solution": "\n**Warum Bodenwertverzinsung abziehen?**\n\n1. Der **Boden** ist praktisch unvergänglich — sein Wert wird am Ende separat addiert.\n2. Das **Gebäude** hat eine begrenzte Restnutzungsdauer — nur dessen Ertrag wird mit dem **Vervielfältiger** (Barwertfaktor) kapitalisiert.\n3. Ohne Abzug würde der Bodenertrag doppelt bewertet (einmal im Reinertrag, einmal im Bodenwert).\n\n**Formel-Kette:** Reinertrag − Bodenwertverzinsung = Gebäudereinertrag → × Vervielfältiger = Gebäudeertragswert → + Bodenwert = Ertragswert.\n"
   },
   "day_7": {
     "title": "Ertragswert: Sonderfälle & Übungen",
@@ -314,7 +326,9 @@
         "hint": "Denken Sie an das Residualverfahren und berechnen Sie zunächst den Ertragswert mit der Marktmiete, bevor Sie die Mietminderung durch die Differenz zur tatsächlichen Ist-Miete quantifizieren. Berücksichtigen Sie dabei, dass die Mietminderung über die Restnutzungsdauer kapitalisiert werden muss.",
         "type": "reflection"
       }
-    ]
+    ],
+    "caseStudy": "\n**Fall: Untervermietetes MFH in Nürnberg-Gostenhof**\nMarktmiete 9,80 €/m², Ist-Miete 6,50 €/m² bei 380 m² Wohnfläche. Altmieter seit 15 Jahren. Ertragswert auf Marktmietbasis: ca. 710.000 €. Barwert der Mietminderung über die Restnutzungsdauer: ca. 259.000 €. Verkehrswert: rund 452.000 €.\n\n**Analyse:** „Under-rented\" bedeutet: Ist-Miete liegt unter Marktmiete. Der Gutachter rechnet mit Marktmiete, zieht aber den Barwert des realen Mietausfalls (boG) ab, weil der Käufer die Miete nicht sofort anheben kann. Wer nur mit Ist-Miete rechnet, unterschätzt das Potenzial; wer nur mit Marktmiete rechnet, ignoriert das rechtliche Hindernis.\n",
+    "solution": "\n**Under-rented:**\n\nDie **tatsächliche Miete liegt unter der marktüblichen Miete**. Das Objekt hat **Mietsteigerungspotenzial**, das ein neuer Eigentümer erst nach Kündigung, Neuvermietung oder zulässiger Mieterhöhung realisieren kann.\n\n**Bewertungslogik:**\n1. Ertragswert mit **Marktmiete** berechnen (objektiver Ansatz).\n2. **Barwert des Mietausfalls** abziehen (Differenz Ist vs. Markt über realistische Anpassungsdauer).\n3. Ergebnis: realistischer Verkehrswert unter Berücksichtigung bestehender Mietverhältnisse.\n\n**Gegenteil:** Over-rented — Ist-Miete über Marktniveau, oft mit Risikoabschlag zu behandeln.\n"
   },
   "day_8": {
     "title": "Wiederholung & Zwischentest (Verfahren)",
