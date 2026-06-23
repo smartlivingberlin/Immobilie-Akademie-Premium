@@ -171,7 +171,8 @@
       }
     ],
     "caseStudy": "\n**Fall: Der Barzahler**\nKäufer fragt: \"Kann ich 50.000 € Anzahlung bar an den Verkäufer geben?\"\n**Alarm:** Immobilienkauf mit Bargeld ist in Deutschland zwar zivilrechtlich möglich (aber Notare dürfen es nicht beurkunden/abwickeln), aber hochgradig verdächtig. Makler MUSS das melden.\n    ",
-    "type": "Recht"
+    "type": "Recht",
+    "solution": "\n**Lösung: Der Barzahler — GwG §10 Sorgfaltspflichten**\n\n**Rechtliche Einordnung:**\nNach §10 GwG hat der Makler als Verpflichteter allgemeine Sorgfaltspflichten: Kundenidentifizierung (§11), Prüfung des wirtschaftlich Berechtigten und risikobasierte Due Diligence. Eine Baranzahlung von 50.000 € im Immobilientransaktionskontext ist ein klassisches Geldwäsche-Indiz.\n\n**Pflichten des Maklers:**\n1. **Identifizierung** — Personalausweis/Reisepass, ggf. Gesellschaftsdokumente bei juristischen Personen\n2. **Herkunft der Gelder** — schriftlicher Nachweis der Mittelherkunft verlangen (Kontoauszüge, Verkaufserlöse)\n3. **Erhöhte Sorgfaltspflicht** bei Barzahlungen über 10.000 € (§15 Abs. 3 GwG)\n4. **Verdachtsmeldung** an die FIU über goAML bei begründetem Verdacht (§43 GwG), ohne Kunde zu informieren (Tipping-off-Verbot §47)\n\n**Handlungsempfehlung:**\nBarzahlung ablehnen und auf kontrollierbare Zahlungswege (Notaranderkonto, Banküberweisung) verweisen. Geschäft bis zur Klärung aussetzen. Dokumentation 5 Jahre aufbewahren (§8 GwG).\n\n**Merksatz:** Bargeld im Immobilienkauf = rote Flagge. Melden, nicht mitmachen.\n    "
   },
   "day_6": {
     "title": "Datenschutz (DSGVO) für Makler",
@@ -670,7 +671,7 @@
     ],
     "caseStudy": "\n**Fall: Die verzögerte Finanzierung**\nUnterlagen kommen kleckerweise. Bank braucht 4 Wochen zur Prüfung. Verkäufer wird nervös und verkauft an jemand anderen.\n**Lösung:** Unterlagen *vor* Vermarktungsstart komplett haben! \"Bankfertiges Exposé\".\n    ",
     "task": "Erstellen Sie eine Checkliste 'Bankunterlagen'.",
-    "solution": "\n(Siehe Theory + Besonderheiten wie Erbpachtvertrag, Baulastenverzeichnis).\n    ",
+    "solution": "\n**Lösung: Die verzögerte Finanzierung — Objektunterlagen nach §34c GewO**\n\n**Fallanalyse:**\nUnvollständige Unterlagen blockieren die Bankprüfung. Der Verkäufer verliert Geduld und verkauft anderweitsig — der Makler verliert Provision und Vertrauen.\n\n**Pflichten aus §34c GewO und MaBV:**\nNach §34c Abs. 1 GewO ist der Makler zur sorgfältigen Vermittlung verpflichtet. Die MaBV und Bankenpraxis verlangen eine **vollständige Objektakte** vor Vermarktungsstart:\n- Grundbuchauszug (max. 3 Monate alt)\n- Flurkarte, Baupläne, Energieausweis\n- Bei ETW: Teilungserklärung, Wirtschaftsplan, Protokolle\n- Miet- und Nebenkostenaufstellung bei Kapitalanlagen\n\n**Lösung: „Bankfertiges Exposé\"**\n1. **Checkliste vor Auftrag** — alle Beleihungsunterlagen beim Verkäufer anfordern\n2. **Digitaler Datenraum** — passwortgeschützte Cloud für Käufer und Bank\n3. **Vollständigkeitsprüfung** — erst nach kompletter Akte Vermarktung starten\n\n**Praxis-Tipp:** Je Tag Verzögerung erhöht sich das Abbruchrisiko. Professionelles Objektunterlagen-Management ist Provisionssicherung.\n    ",
     "type": "Organisation"
   },
   "day_21": {
@@ -764,7 +765,8 @@
       }
     ],
     "caseStudy": "\n**Berliner Praxisfall: ETW Prenzlauer Berg**\n\nBewertungsobjekt: 3-Zimmer-ETW, 72 m², Baujahr 1990, 3. OG ohne Aufzug, Balkon vorhanden\n\nVergleichsobjekte aus Kaufpreissammlung Berlin 2024:\n- Objekt A: 5.800 €/m², gleicher Bezirk, BJ 1992, 2. OG, kein Balkon\n- Objekt B: 6.200 €/m², gleicher Bezirk, BJ 1988, 4. OG mit Aufzug\n- Objekt C: 5.600 €/m², gleicher Bezirk, BJ 1991, 1. OG, kein Balkon\n\nBereinigter Mittelwert: (5.800 + 6.200 + 5.600) / 3 = 5.867 €/m²\n\nAnpassungen:\n- Balkon vorhanden (Objekte haben keinen): +2,5%\n- Kein Aufzug, 3. OG: -1,5%\n- Netto-Anpassung: +1,0%\n\nAngepasster Wert: 5.867 × 1,01 = 5.926 €/m²\nVerkehrswert: 5.926 × 72 m² = 426.672 € → gerundet 427.000 €\n\nIHK-Merksatz: Immer auf volle 1.000 € runden!\n    ",
-    "type": "Bewertung"
+    "type": "Bewertung",
+    "solution": "\n**Lösung: Berliner ETW Prenzlauer Berg — §15 ImmoWertV Vergleichswert**\n\n**Methode:** Vergleichswertverfahren nach §15 ImmoWertV — anwendbar bei ausreichenden Marktdaten (ETW in gefragter Lage).\n\n**Rechenweg (Fall):**\n1. **Vergleichspreise** aus Kaufpreissammlung: (5.800 + 6.200 + 5.600) / 3 = **5.867 €/m²**\n2. **Anpassungen** gemäß Unterschieden zum Bewertungsobjekt:\n   - Balkon vorhanden: +2,5%\n   - Kein Aufzug, 3. OG: −1,5%\n   - Netto: +1,0%\n3. **Angepasster m²-Preis:** 5.867 × 1,01 = **5.926 €/m²**\n4. **Verkehrswert:** 5.926 × 72 m² = 426.672 € → **427.000 €** (gerundet)\n\n**Rechtliche Grundlage:**\n§194 BauGB definiert Verkehrswert; §15 ImmoWertV regelt systematische Anpassung von Vergleichsobjekten auf Wohnfläche, Lage, Baujahr und Ausstattung.\n\n**Merksatz:** 3 Vergleichsobjekte → Mittelwert → anpassen → auf volle 1.000 € runden.\n    "
   },
   "day_23": {
     "title": "Sachwertverfahren (§ 21 ImmoWertV)",
@@ -838,7 +840,8 @@
       }
     ],
     "caseStudy": "\n**Fall: Die Miete ist zu niedrig**\nMFH, Miete 5€/qm. Markt 10€/qm.\n**Bewertung:** Man darf mit der *marktüblichen* Miete rechnen, wenn eine Erhöhung rechtlich möglich ist. Sonst Abschläge (\"Over-Rented\" vs \"Under-Rented\").\n    ",
-    "type": "Bewertung"
+    "type": "Bewertung",
+    "solution": "\n**Lösung: Die Miete ist zu niedrig — §27 ImmoWertV Ertragswert**\n\n**Kernfrage:** Darf der Gutachter/Makler mit marktüblicher Miete rechnen, obwohl Ist-Miete nur 5 €/m² beträgt?\n\n**Rechtliche Grundlage §27 ImmoWertV:**\nDas Ertragswertverfahren kapitalisiert den **nachhaltigen Ertrag**. Bei untermarktiger Miete gilt:\n- **Marktmiete** ist anzusetzen, wenn eine Erhöhung **rechtlich und wirtschaftlich realisierbar** ist (§27 ff. ImmoWertV, Bewirtschaftungskosten ca. 18–25 %)\n- Liegt die Miete **dauerhaft** unter Markt und sind Erhöhungen unmöglich → **Abzug** vom Ertragswert (Under-Rented vs. Over-Rented)\n\n**Berechnungslogik:**\n1. Rohertrag: Marktmiete (10 €/m²) × Fläche × 12\n2. Minus Bewirtschaftungskosten (~20 %)\n3. Reinertrag minus Bodenwertverzinsung\n4. Kapitalisierung mit Liegenschaftszins und Vervielfältiger\n5. Bei Ist-Miete < Marktmiete: **Mietdifferenz barwertig abziehen**\n\n**Praxis für Makler:** Mietverträge prüfen, Mieterhöhungspotenzial dokumentieren — sonst verkaufen Sie den Käufer mit falschen Renditeerwartungen an.\n    "
   },
   "day_25": {
     "title": "Bauschäden & Mängel erkennen",
@@ -1686,7 +1689,7 @@
     ],
     "caseStudy": "\n**Fall: Das Corona-Verbot**\nBeherbergungsverbot. Ferienwohnung leer. Kredit läuft weiter.\n**Risiko:** Klumpenrisiko.\n    ",
     "task": "Berechnen Sie den Break-Even: Fixkosten 10.000 €/Jahr. Miete 100 €/Nacht. Variable Kosten 20 €/Nacht.",
-    "solution": "\nDeckungsbeitrag: 80 €/Nacht.\n10.000 / 80 = 125 Nächte Mindestbelegung.\n    ",
+    "solution": "\n**Lösung: Das Corona-Verbot — Ferienimmobilien nach §34c GewO**\n\n**Fallanalyse:**\nBeherbergungsverbot → 0 % Auslastung, Kredit läuft weiter. Klumpenrisiko: Einnahmen entfallen, Fixkosten bleiben (Break-Even z.B. 125 Nächte/Jahr bei 80 € Deckungsbeitrag).\n\n**Aufklärungspflicht des Maklers (§34c GewO):**\nVor Vermittlung muss der Makler **wesentliche Risiken** offenlegen:\n- **Zweckentfremdungsverbote** (kommunal/Landesrecht)\n- **Auslastungs- und Saisonrisiko** — nicht garantierbare Renditen\n- **Finanzierungseinschränkungen** — Banken oft nur 60–70 % Beleihung\n- **Betreibermodelle** — Vertragsbindung, Poolverträge prüfen\n- **Krisenfolgen** (Pandemie, Reisebeschränkungen) als Systemrisiko\n\n**Handlungsempfehlung:**\nRealistische Break-Even-Rechnung im Exposé, Risikohinweis zur Nutzungsänderung, Finanzierbarkeit vor Vermarktung klären. Keine Renditeversprechen.\n\n**Merksatz:** Ferienimmobilie = Spezialsegment. Transparenz schützt Provision und Haftung.\n    ",
     "type": "Spezial"
   },
   "day_50": {
