@@ -43,9 +43,7 @@ describe("Content Quality Audit", () => {
           stubs.push(tag);
         }
       }
-      if (stubs.length > 0) {
-        console.error(`M${m} STUBS: ${stubs.join(", ")}`);
-      }
+      if (stubs.length > 0) console.error(`M${m} STUBS: ${stubs.join(", ")}`);
       expect(stubs).toHaveLength(0);
     });
 
@@ -61,9 +59,8 @@ describe("Content Quality Audit", () => {
           }
         }
       }
-      if (missing.length > 0) {
+      if (missing.length > 0)
         console.warn(`M${m} fehlende Task-Lösungen: ${missing.join(", ")}`);
-      }
       expect(missing).toHaveLength(0);
     });
 
@@ -86,7 +83,7 @@ describe("Content Quality Audit", () => {
         `PRÜF=${pruef}/${total} ` +
         `ohneCase=${noCase} ohneTopSol=${noTopSol}`
       );
-      expect(true).toBe(true); // Soft report, kein Fail
+      expect(true).toBe(true);
     });
   }
 });
