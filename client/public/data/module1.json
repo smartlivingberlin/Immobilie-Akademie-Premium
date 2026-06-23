@@ -528,7 +528,9 @@
         "correct": 1,
         "explanation": "Makrolage = übergeordnete Ebene (Stadt, Region, Wirtschaftsraum). Mikrolage = konkrete Lage (Straße, Nachbarschaft, Anbindung)."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Makler-Start — Erlaubnis da, aber kein Netzwerk**\n\nHerr B. (38) hat die **§ 34c GewO**-Erlaubnis und will als Makler in Hamburg-Altona starten. Er kennt die Mikro-Lage gut, hat aber keine Objekte und keine Käuferdatenbank. Er will sofort 7,14 % Provision vom Verkäufer verlangen — „wie die Großen\".\n\n**Analyse:** **§ 34c GewO** — Erlaubnis ≠ Umsatz. **§ 652 BGB** — Provision nur bei wirksamem Maklervertrag und erfolgreicher Vermittlung. **MaBV** — Exposé-Pflichten, Energieausweis, schriftliche Provisionsvereinbarung vor Tätigkeit.\n\n**Praxis-Tipp:** Erst Farmgebiet + 3 Vergleichsobjekte recherchieren, dann Akquise — Marktkenntnis verkauft den Makler.",
+    "solution": "**Makler-Berufsfeld — Musterlösung**\n\n**Ausgangslage:** Quereinsteiger mit § 34c-Erlaubnis, kein Netzwerk, Wunsch nach sofortiger Vollprovision.\n\n**Rechtliche Einordnung:**\n| Norm | Kerninhalt | Praxis |\n|------|------------|--------|\n| **§ 34c GewO** | Erlaubnispflicht, Zuverlässigkeit | Erlaubnisurkunde vor Erstgespräch |\n| **§ 652 BGB** | Maklerlohn bei Erfolg | Schriftlicher Maklervertrag zuerst |\n| **MaBV § 5** | Exposé-Pflichtangaben | Checkliste vor Inserat |\n\n**Marktanalyse (3 Schritte):**\n1. Makro: Kaufkraft, Arbeitsmarkt, Preisentwicklung 10 Jahre\n2. Mikro: 7 Faktoren (Anbindung, Schulen, Sicherheit …)\n3. Vergleich: ImmoScout24 + Gutachterausschuss\n\n**Empfehlung:** 6 Monate Akquise-Plan — 2 Objekte/Monat ansprechen, 1 Farmgebiet, CRM einrichten. Provision realistisch kommunizieren (regional 3,57–7,14 %).\n\n**Merksatz:** Makler verkauft Vertrauen durch Marktkenntnis — nicht nur Inserate."
   },
   "day_12": {
     "title": "Berufsfeld: Immobilienverwalter",
@@ -574,7 +576,9 @@
         "correct": 1,
         "explanation": "WEG-Verwaltung verwaltet gemeinschaftliches Eigentum einer Eigentümergemeinschaft. Mietverwaltung verwaltet Mietobjekte für einzelne Eigentümer."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: WEG oder Mietverwaltung — welcher Job passt?**\n\nFrau L. (44) hat § 34c-Erlaubnis und Jobangebot von zwei Verwaltungen: A) WEG mit 120 Einheiten, Streit um Dachsanierung. B) Mietverwaltung mit 45 Wohnungen, ein Vermieter, hohe Fluktuation.\n\n**Analyse:** **§ 26a WEG** — Verwalter mit Fortbildungspflicht. **§ 1 WEG** — Gemeinschaftseigentum vs. Sondereigentum. **§ 535 BGB** — Mietvertrag, Instandhaltung beim Vermieter. Unterschiedliche Konflikte, gleiche Erlaubnis **§ 34c GewO**.\n\n**Praxis-Tipp:** WEG = viele Eigentümer, Beschlüsse; Mietverwaltung = ein Auftraggeber, Mietrecht — Stärken vorher klären.",
+    "solution": "**Immobilienverwalter — Musterlösung**\n\n**Vergleich WEG vs. Mietverwaltung:**\n| Kriterium | WEG-Verwaltung | Mietverwaltung |\n|-----------|----------------|----------------|\n| Auftraggeber | Eigentümergemeinschaft | Einzelvermieter |\n| Rechtsbasis | **§ 26a WEG** | **§ 535 BGB** |\n| Konflikte | ETV, Sonderumlagen | Mieter, Mietminderung |\n| Vergütung | 20–35 €/WE/Monat | 20–30 % Jahresnettokaltmiete |\n\n**Fall WEG (120 WE):** Dachsanierung = qualifizierte Mehrheit, Wirtschaftsplan, Rücklage prüfen. Verwalter koordiniert, entscheidet nicht allein.\n\n**Fall Miet (45 WE):** Fluktuation = Leerstandsrisiko, Mietvertragsmanagement, Nebenkostenabrechnung.\n\n**Empfehlung Frau L.:** Bei Konfliktstärke und Zahlenaffinität → WEG. Bei direkter Kundenbetreuung → Mietverwaltung.\n\n**Merksatz:** Verwalter = Bestandspflege — kaufmännisch UND technisch."
   },
   "day_13": {
     "title": "Berufsfeld: Gutachter & Sachverständiger",
@@ -619,7 +623,9 @@
         "correct": 2,
         "explanation": "Die Immobilienwertermittlungsverordnung (ImmoWertV) 2021 regelt die Verfahren zur Ermittlung von Grundstückswerten (§194 BauGB)."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Gericht bestellt Gutachter — neutral bleiben**\n\nSachverständiger R. wird vom Amtsgericht nach **§ 404 ZPO** als Gutachter bestellt: Streit um Verkehrswert einer Gewerbeimmobilie (Verkäufer 1,2 Mio. €, Käufer 950.000 €). Mandant drängt: „Sagen Sie 1,1 Mio., wir zahlen gut.\"\n\n**Analyse:** **§ 36 GewO** — öffentliche Bestellung erfordert Zuverlässigkeit und besondere Sachkunde. **§ 404 ZPO** — Gutachter ist Parteiunabhängig. **ImmoWertV** — Vergleichs-, Sach-, Ertragswertverfahren dokumentieren.\n\n**Praxis-Tipp:** Nur Marktdaten und Verfahren — keine Mandantenwünsche. Gutachten = Beweismittel, nicht Verkaufsargument.",
+    "solution": "**Gutachter & Sachverständiger — Musterlösung**\n\n**Pflichten des gerichtlich bestellten Gutachters:**\n- **Unparteilichkeit** (§ 404 ZPO) — keine Parteinahme\n- **Nachvollziehbare Methodik** (ImmoWertV 2021)\n- **Besichtigung** und Fotodokumentation\n- **Eidesstattliche Versicherung** der Richtigkeit\n\n**Wertermittlung Gewerbeimmobilie:**\n1. Verfahren wählen: Ertragswert bei vermietetem Objekt oft prägend\n2. Marktdaten: Gutachterausschuss, Vergleichstransaktionen\n3. Plausibilität: Bandbreite ± 10 % begründen\n\n**Abgrenzung Makler-Kurzbewertung:**\n| | Makler | Sachverständiger |\n|---|--------|------------------|\n| Ziel | Verkaufspreis | Objektiver Verkehrswert |\n| Bindung | Nein | Gerichtsfest möglich |\n| Haftung | Beratung | Gutachtenhaftung |\n\n**Merksatz:** Gutachter bewertet — er verkauft nicht."
   },
   "day_14": {
     "title": "Berufsfeld: Darlehensvermittler",
@@ -664,7 +670,9 @@
         "correct": 1,
         "explanation": "§34i GewO regelt die Erlaubnispflicht für Immobiliardarlehensvermittler gemäß EU-WIKR."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Makler will auch Finanzierung — zwei Erlaubnisse?**\n\nMaklerin S. (§ 34c) vermittelt ein Haus für 520.000 € und will direkt die Finanzierung anbieten: „Ein Ansprechpartner für alles.\" Sie hat keine **§ 34i**-Erlaubnis, aber Kontakte zu drei Banken.\n\n**Analyse:** **§ 34i GewO** — Immobiliardarlehensvermittlung erlaubnispflichtig (Sachkundeprüfung, Haftpflicht 1 Mio. €). **§ 34c ≠ § 34i** — getrennte Erlaubnisse. **ImmVermV** — Sachkunde und Weiterbildung 15 h/Jahr.\n\n**Praxis-Tipp:** Ohne § 34i nur an Finanzierungsvermittler verweisen — sonst Bußgeld bis 50.000 € (§ 144 GewO).",
+    "solution": "**Darlehensvermittler — Musterlösung**\n\n**Abgrenzung § 34c vs. § 34i:**\n| | § 34c Makler | § 34i Darlehensvermittler |\n|---|-------------|---------------------------|\n| Tätigkeit | Objekt vermitteln | Darlehen beraten/vermitteln |\n| Sachkunde | Nicht Pflicht | IHK-Prüfung Pflicht |\n| Haftpflicht | 250.000 € | 1 Mio. € Personenschäden |\n| Provision | 3–7 % Kaufpreis | 0,5–2 % Darlehen |\n\n**Fall Haus 520.000 €:**\n- Maklerin darf: Objekt vermitteln, Finanzierungsvermittler empfehlen\n- Maklerin darf nicht: selbst Darlehen vermitteln ohne § 34i\n\n**Finanzierungsrechnung (Orientierung):**\n- Kaufpreis 520.000 € + NK 10 % = 572.000 €\n- EK 20 % = 114.000 € → Darlehen ca. 458.000 €\n- Rate bei 5,5 % + 2 % Tilgung: ca. 2.870 €/Monat\n\n**Empfehlung:** Kooperationsvertrag mit § 34i-Partner — Kunde profitiert, Compliance gewahrt.\n\n**Merksatz:** Zwei Erlaubnisse für zwei Tätigkeiten — nicht vermischen."
   },
   "day_15": {
     "title": "Datenschutz (DSGVO) & Verbraucherschutz",
@@ -709,7 +717,9 @@
         "correct": 1,
         "explanation": "Art. 6 DSGVO listet die Rechtsgrundlagen für die Verarbeitung personenbezogener Daten abschließend auf."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Exposé mit Käuferfoto — DSGVO-Verstoß?**\n\nMakler veröffentlicht auf der Website ein Exposé mit Foto eines Interessenten („Familie Müller besichtigt die Villa\") — ohne Einwilligung. Parallel: Widerrufsbelehrung im Maklervertrag fehlt, Kunde unterschreibt online.\n\n**Analyse:** **Art. 6 DSGVO** — Rechtsgrundlage für Verarbeitung (Einwilligung oder Vertrag). **Art. 5 DSGVO** — Transparenz, Zweckbindung. **§ 13 BGB** — Verbraucher vs. Unternehmer. **§ 355 BGB** — Widerruf 14 Tage bei Fernabsatz.\n\n**Praxis-Tipp:** Fotos nur mit schriftlicher Einwilligung; Widerrufsbelehrung vor Unterschrift — sonst verlängerte Widerrufsfrist.",
+    "solution": "**DSGVO & Verbraucherschutz — Musterlösung**\n\n**DSGVO-Checkliste Immobilienmakler:**\n| Pflicht | Norm | Praxis |\n|---------|------|--------|\n| Rechtsgrundlage | Art. 6 DSGVO | Einwilligung oder Vertrag |\n| Transparenz | Art. 13/14 DSGVO | Datenschutzerklärung |\n| Löschung | Art. 17 DSGVO | Nach Zweckerfüllung |\n| Sicherheit | Art. 32 DSGVO | CRM verschlüsseln |\n\n**Fall Exposé-Foto:** Veröffentlichung ohne Einwilligung = Verstoß. Bußgeld bis 20 Mio. € oder 4 % Umsatz. Foto sofort entfernen, Vorgang dokumentieren.\n\n**Fall Widerruf:** Fehlende Widerrufsbelehrung → Frist beginnt nicht, Verbraucher kann monatelang widerrufen. Maklervertrag anfechtbar.\n\n**Verbraucher (§ 13 BGB):** Natürliche Person, nicht gewerblich — erweiterte Schutzrechte.\n\n**Merksatz:** Daten und Widerruf — lieber einmal zu viel erklärt als abgemahnt."
   },
   "day_16": {
     "title": "Arbeitsalltag & Zeitmanagement",
@@ -755,7 +765,9 @@
         "correct": 2,
         "explanation": "§23 EStG: Bei privaten Veräußerungsgeschäften entfällt die Steuer nach einer Haltefrist von 10 Jahren."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Akquise-Stau — 12 Besichtigungen, kein Abschluss**\n\nMakler T. hat eine Woche mit 12 Besichtigungen verbracht, aber Exposés liegen unvollständig, Grundbuchauszüge fehlen, Follow-up-E-Mails nicht versendet. Eigentümer R. beschwert sich: „Sie sind nie erreichbar nach 18 Uhr.\"\n\n**Analyse:** Eisenhower-Matrix — Besichtigungen (wichtig+dringend) verdrängen Dokumentation (wichtig, nicht dringend). 80-%-Regel: 20 % Puffer für Notartermine und Rückrufe. Batch-Processing: Exposés morgens, Besichtigungen nachmittags.\n\n**Praxis-Tipp:** Wochenplan mit festen Blöcken — Akquise Di/Do, Verwaltung Mo/Mi, freier Freitag-Nachmittag.",
+    "solution": "**Arbeitsalltag & Zeitmanagement — Musterlösung**\n\n**Eisenhower-Matrix für Makler:**\n| Quadrant | Aufgaben | Aktion |\n|----------|----------|--------|\n| Wichtig + Dringend | Besichtigung, Notar | Sofort |\n| Wichtig + Nicht dringend | Exposé, Grundbuch, CRM | Terminblock |\n| Dringend + Unwichtig | E-Mails abarbeiten | Delegieren/kürzen |\n| Beides nicht | Social Media endlos | Streichen |\n\n**Wochenplan (Beispiel):**\n- Mo 8–12: Verwaltung, Exposés, Grundbuchrecherche\n- Di/Do 10–18: Besichtigungen (max. 3/Tag)\n- Mi 9–12: Akquise-Telefonate\n- Fr 8–12: Follow-up, Abrechnung\n\n**Fall T. — Sofortmaßnahmen:**\n1. Offene Exposés diese Woche fertigstellen\n2. Auto-Reply mit Erreichbarkeitszeiten\n3. Max. 3 Besichtigungen/Tag\n\n**Merksatz:** Struktur schlägt Hektik — Kunden merken Professionalität."
   },
   "day_17": {
     "title": "Digitale Tools & Technologien",
@@ -801,7 +813,9 @@
         "correct": 1,
         "explanation": "OnOffice und FlowFact sind die marktführenden CRM-Systeme speziell für deutsche Immobilienmakler."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: CRM-Chaos — drei Systeme, keine Daten**\n\nBüro W. nutzt Excel für Kunden, WhatsApp für Termine und ImmoScout24-Postfach für Anfragen. Interessent K. bekommt dreimal dasselbe Exposé, Datenschutz-Einwilligung liegt nirgends.\n\n**Analyse:** Digitale Tools (OnOffice, FlowFact, Propstack) bündeln CRM, Exposé und Portal-Sync. **GoBD** — revisionssichere Dokumentation. **Art. 32 DSGVO** — technische Schutzmaßnahmen.\n\n**Praxis-Tipp:** Ein CRM als Single Source of Truth — alle Kanäle anbinden, Einwilligungen zentral speichern.",
+    "solution": "**Digitale Tools — Musterlösung**\n\n**Tool-Landschaft Makler:**\n| Tool | Funktion | Priorität |\n|------|----------|----------|\n| CRM (OnOffice/FlowFact) | Kunden, Objekte, Fristen | Pflicht |\n| Portale (ImmoScout24) | Reichweite, Leads | Pflicht |\n| E-Signatur | Maklervertrag digital | Empfohlen |\n| Virtuelle Tour | 360°/Matterport | Optional |\n\n**CRM-Einführung (4 Schritte):**\n1. Bestandsdaten importieren (einmalig)\n2. Workflow: Anfrage → Qualifizierung → Besichtigung → Vertrag\n3. DSGVO: Einwilligung beim Erstkontakt\n4. Portal-Sync aktivieren (kein Doppelversand)\n\n**Fall Büro W.:** Sofort auf ein CRM konsolidieren. WhatsApp nur mit dokumentierter Einwilligung (DSGVO-Risiko).\n\n**ROI:** 30–50 % weniger Admin-Zeit, weniger Fehler, bessere Conversion.\n\n**Merksatz:** Ein System, ein Prozess — sonst verliert man Kunden und Daten."
   },
   "day_18": {
     "title": "Prozessautomatisierung",
@@ -845,7 +859,9 @@
         "correct": 1,
         "explanation": "§7 UWG verbietet unzumutbare Belästigungen durch Werbung — relevant für E-Mail-Marketing und Werbeanrufe ohne Einwilligung."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Lead-Funnel ohne Follow-up — 40 Anfragen, 2 Termine**\n\nMaklerin startet Facebook-Kampagne für Neubau-Projekt. 40 Anfragen in 3 Tagen — aber keine automatische Antwort, keine Qualifizierung, keine Terminbuchung. Nach 5 Tagen sind 35 Interessenten weg.\n\n**Analyse:** Lead-Funnel: Anfrage → Auto-Reply (5 Min.) → Qualifizierung (Budget, Finanzierung) → Termin → Besichtigung. E-Mail-Automation und Chatbot entlasten. **eIDAS** — qualifizierte Signatur für Maklervertrag.\n\n**Praxis-Tipp:** Erste Antwort in 15 Minuten — danach sinkt Conversion um 80 %.",
+    "solution": "**Prozessautomatisierung — Musterlösung**\n\n**Lead-Funnel (5 Stufen):**\n| Stufe | Aktion | Automatisierung |\n|-------|--------|-----------------|\n| 1 Anfrage | Portal/Social/Website | Webhook ins CRM |\n| 2 Antwort | Bestätigung + Exposé | E-Mail-Template (< 15 Min.) |\n| 3 Qualifizierung | Budget, EK, Zeitrahmen | Online-Formular |\n| 4 Termin | Besichtigung buchen | Kalender-Link (Calendly) |\n| 5 Follow-up | Nicht-Erscheiner | 2 Reminder automatisch |\n\n**Fall 40 Anfragen:** Mit Automation: 25 qualifizierte Leads, 12 Termine, 3 Abschlüsse. Ohne: 2 Termine.\n\n**Rechtliches:** Auto-Mails nur mit Einwilligung (DSGVO). Widerrufshinweis bei Fernabsatz.\n\n**Merksatz:** Automatisierung = schneller + dokumentiert — nicht unpersönlich."
   },
   "day_19": {
     "title": "Karriereplanung & Weiterbildung",
@@ -889,7 +905,9 @@
         "correct": 2,
         "explanation": "§15b MaBV: Immobilienmakler und Wohnimmobilienverwalter müssen alle 3 Jahre 20 Stunden Weiterbildung nachweisen."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Weiterbildung vergessen — IHK-Prüfung der Unterlagen**\n\nMakler H. hat seit 4 Jahren keine Fortbildung nachgewiesen (**§ 15b MaBV**: 20 h / 3 Jahre). Bei Routineprüfung der IHK droht Verwarnung. Er argumentiert: „Ich lerne im Alltag.\"\n\n**Analyse:** **§ 34c GewO** — Erlaubnis an Pflichten gebunden. **MaBV Anlage 1** — Weiterbildungsnachweis. Themen: GEG, DSGVO, Maklerrecht, Mietrecht. Spezialisierung (Gewerbe, ESG) als Karrieresprung.\n\n**Praxis-Tipp:** Fortbildungsplan jährlich: 7 h/Jahr = 21 h in 3 Jahren — Webinare zählen.",
+    "solution": "**Karriereplanung & Weiterbildung — Musterlösung**\n\n**Weiterbildungspflicht § 15b MaBV:**\n- 20 Stunden in 3 Jahren (Makler + WEG-Verwalter)\n- Nachweis bei IHK/Gewerbeamt\n- Themen: Recht, Technik, Verbraucherschutz\n\n**3-Jahres-Plan (Beispiel):**\n| Jahr | Stunden | Schwerpunkte |\n|------|---------|-------------|\n| 1 | 7 h | GEG, Energieausweis |\n| 2 | 7 h | DSGVO, GwG |\n| 3 | 6 h | Mietrecht, BGH-Rechtsprechung |\n\n**Karrierepfade:**\n- Spezialist (Gewerbe, Neubau, ESG)\n- Führungskraft (Teamleitung)\n- Unternehmer (eigene § 34c-GmbH)\n\n**Fall H.:** Sofort 20 h nachholen (IVD/RDM-Webinare), Nachweise einreichen, jährlichen Plan erstellen.\n\n**Merksatz:** Weiterbildung = Erlaubnis-Schutz + Wettbewerbsvorteil."
   },
   "day_20": {
     "title": "Abschluss Modul 1 & Portfolio",
@@ -936,6 +954,8 @@
       }
     ],
     "type": "Abschluss",
-    "task": "Erstellen Sie Ihr persönliches Karriere-Portfolio: Fassen Sie die 10 wichtigsten Erkenntnisse aus Modul 1 zusammen, definieren Sie Ihre Spezialisierung (Makler/Verwalter/Gutachter/Finanzierer) und formulieren Sie 3 SMART-Ziele für die nächsten 6 Monate."
+    "task": "Erstellen Sie Ihr persönliches Karriere-Portfolio: Fassen Sie die 10 wichtigsten Erkenntnisse aus Modul 1 zusammen, definieren Sie Ihre Spezialisierung (Makler/Verwalter/Gutachter/Finanzierer) und formulieren Sie 3 SMART-Ziele für die nächsten 6 Monate.",
+    "caseStudy": "**Fall: Modul 1 abgeschlossen — welche Richtung?**\n\nLernende K. hat 20 Tage Grundlagen geschafft: Grundbuch, Baurecht, Finanzierung, Berufsbilder. Sie will „irgendwas mit Immobilien\" — Makler, Verwalter oder Gutachter? Kein Portfolio, keine SMART-Ziele.\n\n**Analyse:** Modul 1 Zusammenfassung: Akteure, Recht, Märkte, Berufsfelder. Nächster Schritt: Spezialisierung wählen (Modul 2 = Makler § 34c). Portfolio: Kompetenzen, Ziele, Referenzen.\n\n**Praxis-Tipp:** 3 SMART-Ziele für 6 Monate formulieren — z. B. „§ 34c-Antrag bis 30.09.\", „10 Netzwerk-Kontakte/Monat\", „Modul 2 Tag 1–20 bis Jahresende\".",
+    "solution": "**Abschluss Modul 1 — Musterlösung**\n\n**Portfolio-Struktur:**\n1. **Kompetenzen:** Was kann ich? (Grundbuch lesen, Marktanalyse, Rechtsgrundlagen)\n2. **Berufsfeld:** Makler / Verwalter / Gutachter / Finanzierung\n3. **SMART-Ziele (6 Monate):**\n   - S: § 34c-Antrag stellen\n   - M: Modul 2 zu 50 % abschließen\n   - A: 2 Praktikumstage bei Maklerbüro\n   - R: IHK-Kurs parallel\n   - T: Bis 31.12.\n\n**Modul-1-Kern (10 Punkte):**\nGrundbuch, Baurecht, Finanzierung, Steuern, Akteure, § 34c/34i, DSGVO, Zeitmanagement, Digitalisierung, Weiterbildung.\n\n**Empfehlung K.:** Persönlichkeitstest + Praktikumstag → dann Modul 2 (Makler) oder Modul 3 (Verwalter).\n\n**Merksatz:** Grundlagen geschafft — jetzt Spezialisierung und Plan."
   }
 }
