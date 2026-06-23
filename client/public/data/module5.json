@@ -817,7 +817,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Praxisbeispiel: Haushaltsrechnung und Finanzierungsplanung\n\n**Ausgangssituation:** Ein Ehepaar (Nettoeinkommen 4.500 €) plant den Kauf einer Eigentumswohnung (Kaufpreis 350.000 €).\n\n**Haushaltsrechnung:**\n- Einnahmen: 4.500 €\n- Ausgaben: Lebenshaltung 1.800 €, Versicherungen 300 €, Pkw 400 €, sonstige Rücklagen 200 € = 2.700 €\n- **Verfügbares Einkommen: 1.800 €**\n- **Maximale Darlehensrate: 1.800 € ÷ 1,2 = 1.500 €**\n\n**Finanzierungsplanung:**\n- Eigenkapital (20%): 70.000 €\n- Nebenkosten (12%): 42.000 €\n- Gesamtkapitalbedarf: 462.000 €\n- Darlehenssumme: 392.000 €\n- Beleihungsauslauf: 112% (überschreitet 80%-Grenze ⚠️)\n\n**Ergebnis:** Bei realistischer Kalkulation (80% Beleihung = 280.000 €) und 2% Anfangstilgung beträgt die monatliche Rate ca. 933 €. Das Paar benötigt zusätzliches Eigenkapital oder niedrigere Kaufpreiserwartung. Diese Analyse ist Grundlage der Kreditwürdigkeitsprüfung nach Kreditwesengesetz."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Grenzfall Haushaltsrechnung — reicht das Einkommen?**\n\nKunde M. (29, ledig) will ETW für 295.000 € kaufen. Netto 3.400 €, Ausgaben 2.050 € (inkl. Sparen 350 €). Eigenkapital 42.000 €. Er rechnet: „3.400 minus 2.050 = 1.350 € für die Rate — das reicht doch!\" Bank lehnt vorläufig ab.\n\n**Analyse:** **§ 505a BGB** — Kreditwürdigkeit: verfügbares Einkommen / 1,2 = max. Rate. Hier: 1.350 / 1,2 = **1.125 €**. Darlehensbedarf ca. 282.000 € (inkl. NK) → Rate bei 5,5 % ca. **1.293 €** — **nicht tragbar**. Eigenkapitalquote nur 14 %.\n\n**Praxis-Tipp:** Haushaltsrechnung schriftlich, 20-%-Puffer erklären — dann Objektpreis oder EK anpassen."
   },
   "day_22": {
     "title": "Übungsaufgaben: Konditionsvergleich und Effektivzins",
@@ -851,7 +852,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Praxisbeispiel: Konditionsvergleich Immobilienfinanzierung\n\n**Szenario:** Ehepaar benötigt 300.000 € für Hauskauf, 20 Jahre Zinsbindung.\n\n**Angebot Bank A:** Sollzins 3,2%, Bearbeitungsgebühr 1.200 €, Schätzgebühr 450 €\n**Angebot Bank B:** Sollzins 3,15%, Bearbeitungsgebühr 0 €, Schätzgebühr 350 €\n**Angebot Bank C:** Sollzins 3,25%, Bearbeitungsgebühr 0 €, Bereitstellungszins 0,3%/Monat ab Monat 4\n\n**Effektivzinsberechnung (vereinfacht):**\n- **Bank A:** 3,2% + (1.650 € ÷ 300.000 € ÷ 20 Jahre) ≈ **3,43%**\n- **Bank B:** 3,15% + (350 € ÷ 300.000 € ÷ 20 Jahre) ≈ **3,21%**\n- **Bank C:** 3,25% + Bereitstellungszinsrisiko ≈ **3,55%+**\n\n**Ergebnis:** Bank B bietet trotz minimal höherem Sollzins den besten Effektivzins durch niedrigere Nebenkosten. Versteckte Bereitstellungszinsen bei Bank C verschlechtern die Gesamtkonditionen erheblich.\n\n**Kundenempfehlung:** Immer Effektivzins vergleichen, nicht nur Sollzins!"
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Drei Bankangebote — welches wirklich günstig?**\n\nKundin sucht 320.000 € Darlehen. Bank A: Soll 3,15 %, Effektiv **3,72 %** (Bereitstellungszins ab Monat 2). Bank B: Soll 3,35 %, Effektiv **3,48 %**. Bank C: Soll **3,05 %**, Effektiv 3,55 %, aber 1 % Bearbeitungsgebühr. Kundin: „Bank C hat den niedrigsten Sollzins!\"\n\n**Analyse:** **§ 492 Abs. 2 BGB** — Vergleich nur über **Effektivzins**. Versteckte Kosten: Bereitstellungszins, Gebühren. Dokumentation im Beratungsprotokoll.\n\n**Praxis-Tipp:** ESIS-Zeile Effektivzins markieren — nie nur Sollzins verkaufen."
   },
   "day_23": {
     "title": "Übungsaufgaben: Bonitätsprüfung und Schufa",
@@ -886,7 +888,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Bonitätsprüfung in der Praxis: Kreditvergabe mit Schufa-Negativmerkmalen\n\n**Fallbeispiel:** Ein 45-jähriger Selbstständiger beantragt einen Immobilienkredit über 250.000 €. Die Schufa-Auskunft zeigt einen Score von 75% (schlecht) aufgrund eines vor 18 Monaten beglichenen Zahlungsverzugs.\n\n**Prüfungsablauf:**\n\nDie Bank dokumentiert zunächst die Negativmerkmale gemäß § 18a KWG. Die Einkommensprüfung anhand der letzten drei Steuerbescheide und betriebswirtschaftliche Auswertung zeigt ein stabiles Einkommen von 4.500 € monatlich. Die Ausgabenprüfung mittels Haushaltsrechnung ergibt eine Kreditquote von 35% – akzeptabel. Das Eigenkapital beträgt 15% (Beleihungswert 85%).\n\n**Bewertung:** Trotz schwacher Schufa-Bonität kann die Bank das Darlehen unter Bedingungen gewähren: erhöhter Zinssatz (+0,5%), höherer Eigenkapitalanteil (25%), zusätzliche Sicherheiten (Lebensversicherung), regelmäßige Bonitätsüberprüfung. Die Dokumentation erfolgt nach Bankrichtlinien und KWG-Anforderungen.\n\n**Ergebnis:** Kreditvergabe mit risikoadäquater Preisgestaltung."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Schufa 82 % und zwei Ratenkredite**\n\nPaar W. beantragt 380.000 €. Netto zusammen 6.100 €, Dispo dauerhaft ausgereizt. Schufa: 82 %, zwei Ratenkredite (420 €/Monat). Eigenkapital 55.000 €. Vermittler will „schnell zur Zusage\".\n\n**Analyse:** **§ 505a / § 505b BGB** — Bonität und keine Kreditvergabe bei erkennbarer Zahlungsunfähigkeit. Haushaltsrechnung inkl. Ratenkredite. Schufa < 90 % = Einschränkungen. Ablösung Kleinkredite vor Antrag oft Pflicht.\n\n**Praxis-Tipp:** Schufa + 3 Gehaltsnachweise + Haushaltsrechnung — erst dann Bank ansprechen."
   },
   "day_24": {
     "title": "Übungsaufgaben: Beratungsprotokoll und Dokumentation",
@@ -920,7 +923,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Beratungsprotokoll und Dokumentation – Praxisbeispiel\n\n**Fallsituation:** Ein Makler berät ein Ehepaar (Nettoeinkommen: 5.500 €/Monat) zu einer Immobilienfinanzierung über 400.000 € bei 2 % Zinssatz und 2 % Tilgung.\n\n**Dokumentationspflicht:** Das Beratungsprotokoll muss gemäß § 511 BGB vor Vertragsabschluss erstellt werden und folgende Punkte enthalten:\n- Identifikation der Darlehensnehmer\n- Ermittlung der Einkommenssituation und Kreditfähigkeit\n- Bedarfsanalyse (Kaufpreis, Eigenkapital, Finanzierungslücke)\n- Darlehensbedingungen (Laufzeit ca. 34 Jahre, monatliche Rate ca. 1.333 €)\n- Risikoaufklärung (Zinsänderungsrisiko nach Sollzinsbindung)\n- Empfehlung mit Begründung\n- Unterzeichnung durch beide Parteien\n\n**Aufbewahrung:** Das Original verbleibt beim Kreditgeber (10 Jahre), eine beglaubigte Kopie erhält der Kunde. Dies dokumentiert Beratungsqualität und schützt vor Schadensersatzansprüchen wegen fehlerhafter Beratung."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Beratungsprotokoll fehlt — Beschwerde bei IHK**\n\nKunde kauft Haus (Darlehen 410.000 €). Behauptet: nie über Zinsbindung 15 Jahre und fehlende Sondertilgung aufgeklärt. Vermittler hat nur E-Mail mit Banklink geschickt, kein Protokoll, keine Unterschrift.\n\n**Analyse:** **§ 491a BGB** — vorvertragliche Informationen. **§ 511 BGB** — Bedarfsanalyse, Empfehlung, Risiken **dokumentieren** (10 Jahre Aufbewahrung). Ohne Protokoll: Beweislast beim Vermittler.\n\n**Praxis-Tipp:** Protokoll: Ziel, Einkommen, gewähltes Produkt, Alternativen, Risiken — vor Vertragsunterschrift."
   },
   "day_25": {
     "title": "Übungsaufgaben: Rechtsfälle und Gesetze",
@@ -960,7 +964,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Praxisbeispiel: Vorfälligkeitsentschädigung bei vorzeitiger Kreditablösung\n\n**Sachverhalt:** Ein Darlehensnehmer möchte sein Immobiliendarlehen (Laufzeit 20 Jahre, 3,5% Zinssatz) nach 8 Jahren vorzeitig ablösen. Die Bank verlangt eine Vorfälligkeitsentschädigung von 15.000 Euro.\n\n**Rechtliche Grundlage:** § 489 Abs. 1 Nr. 3 BGB gewährt dem Darlehensnehmer bei Immobiliar-Verbraucherdarlehensverträgen ein Sonderkündigungsrecht mit zweimonatiger Frist. Die Bank darf eine angemessene Vorfälligkeitsentschädigung verlangen (§ 490 Abs. 3 BGB).\n\n**Problematik:** Die Vorfälligkeitsentschädigung ist auf den Betrag begrenzt, um den die Gesamteinnahmen des Darlehensgebers die Kosten unterschreiten. Der Finanzierungsvorteil durch sinkende Marktzinsen (aktuell unter 3,5%) muss die Bank belegen können.\n\n**Lösung:** Die Bank muss nachweisen, dass die geforderte Entschädigung tatsächliche Verluste kompensiert – nicht als pauschale Strafgebühr. Im aktuellen Zinsumfeld können höhere Entschädigungen problematisch sein. Eine unabhängige Bewertung wird empfohlen."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Rechtsfragen im Erstgespräch**\n\nKunde fragt: „Brauchen Sie überhaupt eine Erlaubnis? Mein Makler vermittelt auch Kredite.\" Parallel: 14-Tage-Widerruf nach Unterschrift, ESIS erst am Vertragstag.\n\n**Analyse:** **§ 34i GewO** vs. **§ 34c GewO** — Makler ≠ Darlehensvermittler. **ImmVermV** — Sachkunde. **§ 495 BGB** — Widerruf 14 Tage. **§ 491a BGB** — ESIS rechtzeitig vor Vertrag.\n\n**Praxis-Tipp:** Erlaubnisurkunde und Versicherungsnachweis im Erstgespräch vorlegen — Vertrauen und Compliance."
   },
   "day_26": {
     "title": "Fallstudie: Erstberatung Eigenheimfinanzierung",
@@ -994,7 +999,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Fallstudie: Erstberatung Eigenheimfinanzierung – Musterlösung\n\n## Praxisbeispiel & Aktuelle Rahmenbedingungen\n\n**Ausgangssituation:** Gemäß aktueller Haufe-Ratgeber und IHK-Empfehlungen steigen Finanzierungsanforderungen bei niedrigem Eigenkapitalquoten. Moderne Beratungspraxis erfordert gemäß §34i GewO umfassende Bonitätsprüfung und Kreditwürdigkeitsprüfung nach §18a KWG.\n\n**Relevante Erkenntnisse:**\n- **Eigenkapitalquote:** Kreditinstitute fordern mindestens 15-20 % (gegenüber früher 10 %)\n- **Debt-Service-Coverage-Ratio (DSCR):** Monatliche Kreditrate sollte 35-40 % des Nettoeinkommens nicht überschreiten\n- **Stresstest-Anforderungen:** Bonität bei Zinsanpassung prüfen (aktuelle Referenzsätze: 5,0-6,5 %)\n- **Absicherung:** Wohngebäudeversicherung und Restschuldversicherung obligatorisch\n- **Rechtsgrundlagen:** Gesetze-im-Internet.de: MaklerV (Maklergebührenverordnung), KWG (Kreditwesengesetz)\n\n**Fazit:** Professionelle Erstberatung verlangt systematische Bedarfsermittlung, vollständige Bonitätsdokumentation und transparente Konditionsofferte."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Erstberatung Eigenheim — der komplette Ablauf**\n\nFamilie P. (2 Kinder): Kaufpreis 465.000 €, EK 85.000 €, Netto 7.200 €. Wunsch: 10 Jahre Zinsbindung, Sondertilgung. Noch kein Objekt reserviert. Kunde erwartet „Zusage heute\".\n\n**Analyse:** **§ 491a / § 655a BGB** — Erstberatung: Bedarf klären, Haushaltsrechnung, Finanzierungsvergleich, **Finanzierungsbestätigung** vs. endgültige Zusage. ESIS vor Vertrag. Kein Druck ohne Objektunterlagen.\n\n**Praxis-Tipp:** Checkliste Erstberatung: EK, NK 10–15 %, Rate/1,2, 3 Banken, Risiko Zins/Tilgung — alles ins Protokoll."
   },
   "day_27": {
     "title": "Fallstudie: Anschlussfinanzierung und Umschuldung",
@@ -1028,7 +1034,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Anschlussfinanzierung und Umschuldung – Musterlösung\n\n**Situation:** Restschuld 220.000 €, Zinsbindung endet in 12 Monaten, Prolongationsangebot 4,5%.\n\n**Handlungsschritte:**\n\n1. **Prolongationsangebot prüfen:** Bank muss 3 Monate vor Ablauf schriftlich anbieten. 4,5% ist marktüblich, aber nicht bindend – Verhandlung möglich.\n\n2. **Umschuldungsangebote einholen:** Konkurrenzbanken kalkulieren ca. 30-50 Basispunkte günstiger. Bei 220.000 € = 660-1.100 € jährliche Ersparnis.\n\n3. **Forward-Darlehen nutzen:** Ab 3 Monaten vor Ablauf sicherbar. Empfohlen bei stabilen/sinkenden Zinsen. Aktuelle Forwardsätze ca. 0,2-0,3% Aufschlag.\n\n4. **Sonderkündigungsrecht:** Nach § 490 Abs. 2 BGB mit 3-Monats-Frist zum Ablausdatum möglich – Wechsel unbegrenzt realisierbar.\n\n**Empfehlung:** Umschuldung zu 4,0-4,2% mit Forward-Option bis Anschluss prüfen. Wechselkosten (ca. 800-1.200 €) refinanzieren sich innerhalb 18 Monaten."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Anschlussfinanzierung in 6 Monaten**\n\nKunde: Restschuld 215.000 €, Zinsbindung endet 30.09., Bank bietet Prolongation 4,65 %. Markt 3,95 %. Fragt nach **Forward-Darlehen** und **§ 489 BGB** (10 Jahre).\n\n**Analyse:** **§ 489 BGB** — Sonderkündigung nach 10 Jahren, 6 Monate Frist, keine VFE. Vorher: Umschuldung vs. Forward (Prämie ca. 0,01–0,03 %/Monat). Grundschuld-Abtretung ~0,2 % kalkulieren.\n\n**Praxis-Tipp:** 12 Monate vor Ende: Vergleichstabelle Prolongation / Umschuldung / Forward — Entscheidung dokumentieren."
   },
   "day_28": {
     "title": "Fallstudie: Baufinanzierung mit KfW-Förderung",
@@ -1041,7 +1048,7 @@
     ],
     "practice": "**Ihre Aufgabe:**\n\nBearbeiten Sie die Fallstudie vollständig:\n\n1. **KfW-Programme prüfen:** Welches Programm ist geeignet?\n2. **Finanzierungsplanung:** Berechnen Sie Eigenkapital, Darlehensbedarf\n3. **Konditionsvergleich:** Vergleichen Sie mit/ohne KfW-Förderung\n4. **Ersparnis berechnen:** Wie viel spart die Familie durch KfW?\n5. **Produktempfehlung:** Begründen Sie Ihre Empfehlung\n6. **Risikoaufklärung:** Klären Sie über alle Risiken auf\n7. **Beratungsprotokoll:** Erstellen Sie ein vollständiges Beratungsprotokoll\n\n**Zusatzfragen:**\n\n1. Welche Vorteile hat die KfW-Förderung?\n2. Welche Anforderungen muss das Haus erfüllen?\n3. Wann muss der KfW-Antrag gestellt werden?\n4. Was ist ein Tilgungszuschuss?\n5. Wie berechnet man die Ersparnis?",
     "task": "**Aufgabe 1: Tilgungszuschuss**\n\nBerechnen Sie den Tilgungszuschuss:\n- KfW-Darlehen: 150.000 €\n- Tilgungszuschuss: 25% (KfW 40)\n- **Tilgungszuschuss:** ?\n- **Effektiver Darlehensbetrag:** ?\n\n---\n\n**Aufgabe 2: Monatliche Rate**\n\nBerechnen Sie die monatliche Rate:\n- KfW-Darlehen: 150.000 € (0,01% p.a., nur Zinsen erste 5 Jahre)\n- Hausbank-Darlehen: 330.000 € (3,6% p.a., 2% Tilgung)\n- **Monatliche Rate KfW (erste 5 Jahre):** ?\n- **Monatliche Rate Hausbank:** ?\n- **Gesamtrate:** ?\n\n---\n\n**Aufgabe 3: Ersparnis**\n\nBerechnen Sie die Ersparnis:\n- Ohne KfW: 480.000 € zu 3,6% p.a., Rate 2.240 €/Monat\n- Mit KfW: Rate 1.541 €/Monat (erste 5 Jahre)\n- **Ersparnis pro Monat:** ?\n- **Ersparnis über 5 Jahre:** ?\n- **Tilgungszuschuss:** 37.500 €\n- **Gesamtersparnis:** ?",
-    "solution": "**Lösung Aufgabe 1:**\n- Tilgungszuschuss: 150.000 € × 25% = 37.500 €\n- Effektiver Darlehensbetrag: 150.000 € - 37.500 € = 112.500 €\n\n**Lösung Aufgabe 2:**\n- Monatliche Rate KfW: 150.000 € × 0,01% / 12 = 1,25 €\n- Monatliche Rate Hausbank: 330.000 € × (3,6% + 2%) / 12 = 1.540 €\n- Gesamtrate: 1,25 € + 1.540 € = 1.541 €\n\n**Lösung Aufgabe 3:**\n- Ersparnis pro Monat: 2.240 € - 1.541 € = 699 €\n- Ersparnis über 5 Jahre: 699 € × 12 × 5 = 41.940 €\n- Tilgungszuschuss: 37.500 €\n- Gesamtersparnis: 41.940 € + 37.500 € = 79.440 €",
+    "solution": "**Baufinanzierung mit KfW — Musterlösung**\n\n**Ausgangslage:** Neubau KfW 40, Gesamtkosten 520.000 €, Eigenkapital 95.000 €, Darlehensbedarf 425.000 €.\n\n**Finanzierungsstruktur:**\n| Baustein | Betrag | Kondition |\n|----------|--------|----------|\n| KfW 261 | 150.000 € | ca. 0,01 % + Tilgungszuschuss 25 % |\n| Hausbank | 275.000 € | Marktzins + 2 % Tilgung |\n| Eigenkapital | 95.000 € | — |\n\n**Tilgungszuschuss:** 150.000 × 25 % = **37.500 €** (nicht rückzahlbar)\n\n**Rate (vereinfacht):**\n- KfW erste 5 Jahre: nur Zinsen (minimal)\n- Hausbank: 275.000 × 5,5 % / 12 ≈ **1.260 €**\n- Gesamt erste Jahre deutlich unter Vollfinanzierung ohne KfW\n\n**Pflichten:** Energieeffizienz-Experte, KfW-Antrag vor Baubeginn, Bestätigung KfW-40 nach Fertigstellung\n\n**Ersparnis:** Zuschuss + niedriger KfW-Zins vs. alleinige Hausbankfinanzierung — oft **50.000–80.000 €** über Laufzeit\n\n**Merksatz:** KfW zuerst planen — ohne Energieberater keine Förderung.",
     "type": "Prüfungsvorbereitung",
     "tasks": [
       {
@@ -1062,7 +1069,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Fallstudie: Baufinanzierung mit KfW-Förderung – Musterlösung\n\n**Ausgangssituation:**\nFamilie Schmidt plant Neubau eines KfW-40-Effizienzhauses (Baukosten: 400.000 EUR). Eigenkapital: 80.000 EUR (20%). Finanzierungsbedarf: 320.000 EUR.\n\n**Optimale Finanzierungsstruktur:**\n\n1. **KfW-261-Darlehen** (Neubau Effizienzhaus 40): 200.000 EUR\n   - Zinssatz: ca. 3,2% p.a. (aktuell)\n   - Tilgung: 1% p.a.\n   - Tilgungszuschuss: 5% (10.000 EUR = nicht rückzahlbar)\n\n2. **Hausbank-Darlehen** (Kombinationsdarlehen): 120.000 EUR\n   - Zinssatz: ca. 3,8% p.a.\n   - Tilgung: 2% p.a.\n\n**Gesamtkostenvergleich:**\n- Mit KfW-Förderung: Ersparnisse durch reduzierten Zinssatz + 10.000 EUR Zuschuss ≈ 18.500 EUR über 20 Jahre\n- Gesamtbelastung sinkt durch Energieeffizienzanforderungen zusätzlich\n\n**Erfolgsfaktoren:** Energiestandard-Nachweis (KfW-Sachverständiger), frühzeitige Antragstellung vor Baubeginn, Kombinierbarkeit mit Hausbank ausnutzen."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: KfW 40 Neubau — Tilgungszuschuss nicht vergessen**\n\nFamilie baut KfW-40-Haus (Gesamtkosten 520.000 €). EK 95.000 €. Plan: 150.000 € **KfW 261** + 275.000 € Hausbank. Energieberater noch nicht beauftragt — Bauanlauf in 4 Wochen.\n\n**Analyse:** **KfW-Merkblatt** — Antrag **vor** Baubeginn, Baubegleitung Pflicht. **§ 488 BGB** — Annuität Hausbank vs. günstiger KfW-Zins. Tilgungszuschuss 25 % bei KfW 40 = **37.500 €** Ersparnis.\n\n**Praxis-Tipp:** Förderfahrplan: KfW (Rang 1) → Hausbank → Eigenkapital — Energieberater zuerst beauftragen."
   },
   "day_29": {
     "title": "Fallstudie: Finanzierung für Selbstständige",
@@ -1076,7 +1084,7 @@
     ],
     "practice": "**Ihre Aufgabe:**\n\nBearbeiten Sie die Fallstudie vollständig:\n\n1. **Einkommensprüfung:** Berechnen Sie das Durchschnittseinkommen (3 Jahre)\n2. **Finanzierungsplanung:** Berechnen Sie Eigenkapital, Darlehensbedarf\n3. **Haushaltsrechnung:** Erstellen Sie eine Haushaltsrechnung (30% Puffer)\n4. **Konditionsvergleich:** Vergleichen Sie die 3 Bankangebote\n5. **Steuerliche Vorteile:** Berechnen Sie die Steuerersparnis\n6. **Produktempfehlung:** Begründen Sie Ihre Empfehlung\n7. **Beratungsprotokoll:** Erstellen Sie ein vollständiges Beratungsprotokoll\n\n**Zusatzfragen:**\n\n1. Welche Besonderheiten gelten für Selbstständige?\n2. Welche Unterlagen benötigen Sie?\n3. Warum höherer Sicherheitspuffer (30%)?\n4. Welche steuerlichen Vorteile gibt es?\n5. Ist die Finanzierung tragbar?",
     "task": "**Aufgabe 1: Durchschnittseinkommen**\n\nBerechnen Sie das Durchschnittseinkommen:\n- 2023: 72.000 €/Jahr\n- 2024: 84.000 €/Jahr\n- 2025: 90.000 €/Jahr\n- **Durchschnitt pro Jahr:** ?\n- **Durchschnitt pro Monat:** ?\n\n---\n\n**Aufgabe 2: Maximale Darlehensrate**\n\nBerechnen Sie die maximale Darlehensrate:\n- Verfügbares Einkommen: 2.833 €/Monat\n- Sicherheitspuffer: 30% (Selbstständige)\n- **Maximale Darlehensrate:** ?\n\n---\n\n**Aufgabe 3: Steuerersparnis**\n\nBerechnen Sie die Steuerersparnis:\n- Zinsen Jahr 1: 15.115 €\n- AfA: 11.000 €\n- Steuersatz: 40%\n- **Steuerersparnis pro Jahr:** ?\n- **Steuerersparnis pro Monat:** ?",
-    "solution": "**Lösung Aufgabe 1:**\n- Durchschnitt pro Jahr: (72.000 € + 84.000 € + 90.000 €) / 3 = 82.000 €\n- Durchschnitt pro Monat: 82.000 € / 12 = 6.833 €\n\n**Lösung Aufgabe 2:**\n- Maximale Darlehensrate: 2.833 € / 1,3 = 2.179 €\n\n**Lösung Aufgabe 3:**\n- Steuerersparnis pro Jahr: (15.115 € + 11.000 €) × 40% = 10.446 €\n- Steuerersparnis pro Monat: 10.446 € / 12 = 870 €",
+    "solution": "**Finanzierung Selbstständige — Musterlösung**\n\n**Kunde:** Handwerksmeister, 10 Jahre selbstständig, Gewerbeimmobilie 550.000 €\n\n**Einkommensprüfung:**\n- Jahr 1–3: 72k / 84k / 90k € → Durchschnitt **82.000 €/Jahr** (6.833 €/Monat)\n- Trend steigend = positiv, aber Bank rechnet konservativ\n\n**Gesamtkosten:** 550.000 + 5 % Grunderwerbsteuer + 2 % Notar ≈ **588.500 €**\n\n**Eigenkapital:** 180.000 € → Quote **30,6 %** (ausreichend für Selbstständige)\n\n**Darlehensbedarf:** ca. **408.500 €**\n\n**Besonderheiten:**\n- 3 Steuerbescheide + BWA Pflicht\n- Risikozuschlag 0,1–0,5 % auf Zins\n- Max. Rate: verfügbares Einkommen / **1,3** (30-%-Puffer)\n- Steuervorteil: Zinsen + AfA absetzbar\n\n**Empfehlung:** Annuität 10 Jahre Zinsbindung, 2,5 % Tilgung, Sondertilgung 5 %\n\n**Merksatz:** Selbstständig = Durchschnitt 3 Jahre + mehr Eigenkapital + Dokumentation.",
     "type": "Prüfungsvorbereitung",
     "tasks": [
       {
@@ -1097,7 +1105,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Finanzierungsberatung für Selbstständige: Handwerksmeister-Fallstudie\n\n## Ausgangssituation\nHandwerksmeister, 15 Jahre selbstständig, möchte Gewerbeimmobilie (Wert: 450.000 €) kaufen. Durchschnittseinkommen: 65.000 € netto, schwankungsanfällig (±20%).\n\n## Besonderheiten bei der Kreditwürdigkeitsprüfung\n\n**Einkommensnachweis:** Letzte 3 Steuerbescheide analysieren, Gewinn- und Verlustrechnung prüfen. Einkommensschwankungen durch Durchschnittsbildung normalisieren (hier: konservativ 52.000 € kalkulieren).\n\n**Eigenkapitalquote:** Mindestens 25–30% empfohlen (nicht wie bei Angestellten 10–20%). Erforderlich: 112.500 €.\n\n**Risikoprämie:** Kreditgeber addieren 0,5–1,5% Risikozuschlag zum Basiszinssatz wegen Volatilität der Einnahmen.\n\n**Tilgungsquote:** Angestrebte Tilgung 3–4% p.a. (nicht 2%), um schneller schuldenfrei zu werden.\n\n**Nebenkosten:** Makler, Notar, Grundbuch, Gründungskosten für Gewerbebetrieb berücksichtigen (ca. 15.000 €).\n\n## Kreditstruktur\nDarlehen: 337.500 € (Annuitätendarlehen)\nZinssatz: 4,2% + 0,8% Risikozuschlag = 5,0%\nLaufzeit: 25 Jahre, Tilgung 3,5% p.a."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Handwerksmeister — Gewerbeimmobilie finanzieren**\n\nMeister Weber (10 Jahre selbstständig): Gewerbehalle 550.000 €, EK 180.000 €. Einkommen schwankend (72k / 84k / 90k €). Bank verlangt **3 Steuerbescheide** und Risikozuschlag 0,3 %.\n\n**Analyse:** **§ 505a BGB** — Bonität: Durchschnitt 3 Jahre, nicht Bestjahr. Selbstständige: EK **30 %** üblich, Puffer 30 % statt 20 %. AfA und Zinsen als Betriebsausgabe.\n\n**Praxis-Tipp:** BWA + Steuerbescheide + Haushaltsrechnung mit konservativem Einkommen — dann Konditionsvergleich."
   },
   "day_30": {
     "title": "Fallstudie: Komplexe Finanzierung mit mehreren Herausforderungen",
@@ -1110,7 +1119,7 @@
     ],
     "practice": "**Ihre Aufgabe:**\n\nBearbeiten Sie die Fallstudie vollständig:\n\n1. **Problemanalyse:** Identifizieren Sie alle Probleme\n2. **Lösungsansätze:** Entwickeln Sie kreative Lösungen\n3. **Finanzierungsplanung:** Berechnen Sie Eigenkapital, Darlehensbedarf\n4. **Haushaltsrechnung:** Erstellen Sie eine Haushaltsrechnung (mit Mieteinnahmen)\n5. **Konditionsvergleich:** Vergleichen Sie die 3 Bankangebote\n6. **Produktempfehlung:** Begründen Sie Ihre Empfehlung\n7. **Beratungsprotokoll:** Erstellen Sie ein vollständiges Beratungsprotokoll\n\n**Zusatzfragen:**\n\n1. Welche Probleme sehen Sie?\n2. Welche Lösungen schlagen Sie vor?\n3. Wie gehen Sie mit dem befristeten Vertrag um?\n4. Wie nutzen Sie die Mieteinnahmen?\n5. Ist die Finanzierung tragbar?",
     "task": "**Aufgabe 1: Eigenkapitalquote**\n\nBerechnen Sie die Eigenkapitalquote:\n- Gesamtkosten: 506.000 €\n- Eigenkapital: 84.000 €\n- **Eigenkapitalquote:** ?\n- **Ausreichend (≥20%):** ?\n\n---\n\n**Aufgabe 2: Verfügbares Einkommen**\n\nBerechnen Sie das verfügbare Einkommen:\n- Gesamteinkommen: 7.100 €/Monat\n- Mieteinnahmen (netto): 1.400 €/Monat\n- Ausgaben: 4.730 €/Monat\n- **Verfügbares Einkommen:** ?\n- **Maximale Darlehensrate (20% Puffer):** ?\n\n---\n\n**Aufgabe 3: Monatliche Rate**\n\nBerechnen Sie die monatliche Rate:\n- Darlehensbetrag: 422.000 €\n- Zinssatz: 3,90% p.a.\n- Tilgung: 2% p.a.\n- **Monatliche Rate:** ?",
-    "solution": "**Lösung Aufgabe 1:**\n- Eigenkapitalquote: 84.000 € / 506.000 € = 16,6%\n- Ausreichend: Nein (< 20%), aber mit Mieteinnahmen akzeptabel\n\n**Lösung Aufgabe 2:**\n- Verfügbares Einkommen: (7.100 € + 1.400 €) - 4.730 € = 3.770 €\n- Maximale Darlehensrate: 3.770 € / 1,2 = 3.142 €\n\n**Lösung Aufgabe 3:**\n- Monatliche Rate: 422.000 € × (3,90% + 2%) / 12 = 2.076 €",
+    "solution": "**Komplexe Finanzierung — Musterlösung**\n\n**Probleme identifiziert:**\n1. Niedriges EK (8,5 % brutto)\n2. Befristeter Arbeitsvertrag\n3. Zwei Ratenkredite (430 €/Monat)\n4. Renovierungsbedarf 60.000 €\n5. Mieteinnahmen unsicher\n\n**Lösungsschritte:**\n| Maßnahme | Effekt |\n|----------|--------|\n| Ratenkredite ablösen (11.000 €) | +430 €/Monat frei, Schufa besser |\n| Eltern-Darlehen 50.000 € | EK-Quote ~16,6 % |\n| Renovierung auf 40.000 € sofort | Darlehen reduziert |\n| Arbeitgeber-Bestätigung unbefristet | Risikozuschlag sinkt |\n| Miete 70 % anrechnen | +980 € Einkommen |\n\n**Ergebnis:** Darlehen ca. 422.000 €, Rate ~2.076 €, max. Rate ~3.142 € → **tragbar** mit Voraussetzungen\n\n**Risiken:** Mietausfall, Befristung, Zins nach 10 Jahren — im Protokoll\n\n**Merksatz:** Komplex = zerlegen, parallel lösen, dokumentieren.",
     "type": "Prüfungsvorbereitung",
     "tasks": [
       {
@@ -1131,7 +1140,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Komplexe Finanzierung: Mehrfamilienhaus mit Eigennutzung\n\n**Fallkonstellation:**\nEhepaar (kaufmännische Angestellte + befristeter Arbeitsvertrag), Kaufpreis 450.000 €, Eigenkapital 60.000 € (13 %), bestehende Darlehensverbindlichkeiten 35.000 €, Sanierungsbedarf 40.000 €.\n\n**Lösungsansatz:**\n\n1. **Zweitrangige Grundschuld:** Sanierungskosten über KfW-Darlehen (energetische Sanierung, 2. Rang) mit zinsgünstigen Konditionen finanzieren\n\n2. **Risikominderung:** Beamtendarlehen für den sicheren Einkommensteil + Privatkreditlinie für variablen Anteil\n\n3. **Eigennutzungs-/Vermietungsanteil trennen:** Kaufpreisaufteilung ermöglicht optimierte Darlehenskonditionen und Eigentumsaufteilung\n\n4. **Staffeltilgung:** Erste Jahre geringere Tilgung (Sanierungsphase), danach erhöht bei stabilisiertem Einkommen\n\n5. **Vollständige Schuldenfreiheit bestehender Kredite:** vor Darlehensauszahlung\n\n**Ergebnis:** Tragfähige Finanzierungsstruktur durch Kombination verschiedener Bausteine, realistische Belastungsquote unter 40 %, Sanierungsfähigkeit gesichert."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Mehrfamilienhaus — viele Baustellen gleichzeitig**\n\nPaar Klein: MFH 420.000 € + Renovierung 40.000 €, EK nur 45.000 € (nach Ablösung Ratenkredite 34.000 €). Ehemann befristet bis 2027. Mieteinnahmen 1.750 € brutto. Zwei Ratenkredite noch offen.\n\n**Analyse:** **§ 491a / § 505a BGB** — Komplexfall: EK-Quote, befristeter Vertrag, Mieteinnahmen (Bank ~70 %), Ratenkredite ablösen. Kreative Bausteine: Eltern-Darlehen, Renovierung stufen, Arbeitgeber-Bestätigung.\n\n**Praxis-Tipp:** Probleme listen → Priorität → Lösung je Punkt — nie nur eine Bank ohne Gesamtkonzept."
   },
   "day_31": {
     "title": "Prüfungssimulation 1: Multiple-Choice-Fragen (50 Fragen)",
@@ -1168,8 +1178,9 @@
       }
     ],
     "task": "Zählen Sie Ihre richtigen Antworten und berechnen Sie Ihre Punktzahl in Prozent.",
-    "solution": "Siehe Lösungen oben. Bei <70%: Schwachstellen identifizieren und wiederholen.",
-    "type": "Prüfungsvorbereitung"
+    "solution": "**Prüfungssimulation 1 — Auswertung und Lernplan**\n\n**Bestehensgrenze:** 35 von 50 Fragen richtig (70 %) in 90 Minuten\n\n**Kernantworten (Auswahl):**\n| Nr. | Thema | Richtige Antwort |\n|-----|-------|------------------|\n| 1 | Erlaubnis §34i | Darlehensvermittler |\n| 5 | Widerruf | 14 Tage |\n| 8 | Sonderkündigung | Nach 10 Jahren |\n| 15 | Effektivzins | Sollzins + Nebenkosten |\n| 31 | Kreditwürdigkeit | § 18a KWG |\n\n**Strategie:** Erst alle Fragen durchlesen, sichere zuerst, unsichere markieren. Bei <70 %: Schwachstellen-Tag (39) nutzen.\n\n**Merksatz:** MC = Faktenwissen plus Fristen — Karteikarten §34i, §491a, §489, GwG.",
+    "type": "Prüfungsvorbereitung",
+    "caseStudy": "**Fall: MC-Prüfung — 50 Fragen unter Zeitdruck**\n\nPrüfling sitzt in der IHK-Simulation: Frage 23: „Wann Sonderkündigung ohne VFE?\" — Antwort B oder C? Frage 41: GwG-Aufbewahrung — 5 oder 10 Jahre? Zeit läuft, 12 Fragen noch offen.\n\n**Analyse:** Prüfungssimulation Tag 31 — **70 %** zum Bestehen (35/50). Schwerpunkte: §34i, §491a, §489, GwG, Darlehensarten, Effektivzins. Zeitmanagement: max. 1,5 Min./Frage.\n\n**Praxis-Tipp:** Antworten B bei Erlaubnis/Haftpflicht/Weiterbildung oft richtig — aber Gesetzestexte wiederholen, nicht raten."
   },
   "day_32": {
     "title": "Prüfungssimulation 2: Rechenaufgaben (20 Aufgaben)",
@@ -1202,8 +1213,9 @@
       }
     ],
     "task": "Zählen Sie Ihre richtigen Antworten und berechnen Sie Ihre Punktzahl in Prozent.",
-    "solution": "Siehe Lösungen oben. Bei <70%: Formeln wiederholen und üben.",
-    "type": "Prüfungsvorbereitung"
+    "solution": "**Prüfungssimulation 2 — Rechenaufgaben Auswertung**\n\n**Bestehensgrenze:** 14 von 20 Aufgaben (70 %) in 60 Minuten\n\n**Kernlösungen (Auswahl):**\n| Aufgabe | Formel | Ergebnis |\n|---------|--------|----------|\n| 1 Annuität | 250.000 × 5,5 % / 12 | **1.146 €/Monat** |\n| 4 Max. Rate | 1.800 / 1,2 | **1.500 €** |\n| 5 BLA | 280.000 / 350.000 × 100 | **80 %** |\n| 6 VFE | (3,5−2,0) % × 200.000 × 5 | **15.000 €** |\n| 8 NK | 350.000 × 10 % | **35.000 €** |\n\n**Häufige Fehler:** Jährliche statt monatliche Umrechnung, Prozent nicht in Dezimal, VFE ohne Restjahre.\n\n**Strategie:** Formel hinschreiben → rechnen → Plausibilität (Rate < Max-Rate).\n\n**Merksatz:** Rechenprüfung = Formeln sicher + Einheiten prüfen.",
+    "type": "Prüfungsvorbereitung",
+    "caseStudy": "**Fall: Rechenprüfung — Annuität unter Stress**\n\nAufgabe 8/20: Darlehen 280.000 €, 3,4 % + 2,2 % Tilgung — monatliche Rate? Prüfling verwechselt jährliche und monatliche Umrechnung. Noch 40 Minuten, 12 Aufgaben offen.\n\n**Analyse:** Formeln: **Annuität** = Darlehen × (Zins + Tilgung) / 12. **Effektivzins** vereinfacht. **VFE** = (Vertragszins − Wiederanlage) × Restschuld × Jahre. Bestehen: 14/20 (70 %).\n\n**Praxis-Tipp:** Formel erst hinschreiben, Einheiten prüfen (€/Monat vs. €/Jahr) — dann rechnen."
   },
   "day_33": {
     "title": "Prüfungssimulation 3: Fallstudien (3 Fallstudien)",
@@ -1236,8 +1248,9 @@
       }
     ],
     "task": "Zählen Sie Ihre Punkte und berechnen Sie Ihre Punktzahl in Prozent.",
-    "solution": "Siehe Lösungen in Tagen 26-28. Bei <70%: Fallstudien wiederholen.",
-    "type": "Prüfungsvorbereitung"
+    "solution": "**Prüfungssimulation 3 — Fallstudien Musterlösung**\n\n**Bestehensgrenze:** 70 von 100 Punkten in 120 Minuten\n\n**Fall 1 Erstberatung (40 P.):** Haushalt: 3.800 − 2.100 = 1.700 € verfügbar, max. Rate 1.417 €. EK-Quote 60.000 / 308.000 = 19,5 % (knapp). Darlehen ca. 248.000 €, Rate ~1.135 € → tragbar. Empfehlung: 10 J. Zinsbindung, 2 % Tilgung, Sondertilgung 5 %.\n\n**Fall 2 Anschluss (30 P.):** Umschuldung 4,0 % vs. Prolongation 4,5 % → Ersparnis ca. 1.100 €/Jahr, Kosten 440 € → Nettoersparnis ab Jahr 1. **§ 489 BGB** prüfen (10 Jahre).\n\n**Fall 3 KfW (30 P.):** Tilgungszuschuss 150.000 × 25 % = 37.500 €. Rate Hausbank + KfW kombiniert berechnen.\n\n**Merksatz:** 5-Schritte-Vorlage — Situation, Haushalt, Produkt, Risiko, Protokoll.",
+    "type": "Prüfungsvorbereitung",
+    "caseStudy": "**Fall: Drei Fallstudien in 120 Minuten**\n\nPrüfungssimulation: Fall 1 Erstberatung (40 P.), Fall 2 Anschlussfinanzierung (30 P.), Fall 3 KfW (30 P.). Kandidatin verliert in Fall 1 zu viel Zeit bei Haushaltsrechnung — Fall 3 unvollständig.\n\n**Analyse:** Systematik: **Situation → Haushalt → Produkt → Risiko → Protokoll**. Zeitbudget: ca. 40 Min./Fall. 70 von 100 Punkten nötig.\n\n**Praxis-Tipp:** Vorlage mit 5 Schritten auswendig — in Prüfung und echter Beratung gleicher Ablauf."
   },
   "day_34": {
     "title": "Prüfungssimulation 4: Mündliche Prüfung (10 Fragen)",
@@ -1272,7 +1285,8 @@
     ],
     "task": "Bewerten Sie Ihre Antworten nach den Kriterien: Fachliche Korrektheit, Verständlichkeit, Vollständigkeit.",
     "solution": "Siehe Lösungen in Tagen 1-20. Bei <70%: Gesetze und Praxisbeispiele wiederholen.",
-    "type": "Prüfungsvorbereitung"
+    "type": "Prüfungsvorbereitung",
+    "caseStudy": "**Fall: Mündliche Prüfung — „Erklären Sie § 489 BGB\"**\n\nPrüfer: „Was darf der Kunde nach 10 Jahren — und was kostet das?\" Kandidat zögert, verwechselt mit **§ 502 BGB** (VFE). Zweite Frage: Unterschied Prolongation und Umschuldung.\n\n**Analyse:** **§ 489 BGB**: ordentliche Sonderkündigung nach 10 Jahren, **6 Monate** Frist, **keine** Vorfälligkeitsentschädigung. Prolongation = gleiche Bank; Umschuldung = Wechsel.\n\n**Praxis-Tipp:** Mündlich: Definition → Frist → Kundennutzen — 60–90 Sekunden, dann Beispiel."
   },
   "day_35": {
     "title": "Prüfungssimulation 5: Gesamtprüfung (Alle Bereiche)",
@@ -1304,7 +1318,8 @@
     ],
     "task": "Zählen Sie Ihre Punkte und berechnen Sie Ihre Punktzahl in Prozent. Identifizieren Sie Schwachstellen.",
     "solution": "Siehe Lösungen in Tagen 31-34. Bei <70%: Schwachstellen wiederholen (Tage 36-40).",
-    "type": "Prüfungsvorbereitung"
+    "type": "Prüfungsvorbereitung",
+    "caseStudy": "**Fall: Gesamtprüfung — alles in einem Durchlauf**\n\nSimulation Tag 35: MC-Block, dann Rechnen, dann Kurzfall. Prüfling hat in Einzeltraining 75 % — im Mix nur 62 %. Thema: Zeitmanagement und Nervosität.\n\n**Analyse:** Gesamtprüfung testet **Kombination** aller Bereiche (Tag 21–34). Schwache Glieder: Effektivzins, GwG-Fristen, KfW-Zuschuss.\n\n**Praxis-Tipp:** In den letzten Tagen immer **gemischte** Übungen — nicht nur Einzelthemen."
   },
   "day_36": {
     "title": "Wiederholung: Gesetze und Paragraphen",
@@ -1342,8 +1357,9 @@
       }
     ],
     "task": "Schreiben Sie alle Gesetze aus dem Gedächtnis auf und prüfen Sie Ihre Antworten.",
-    "solution": "Siehe oben. Bei Fehlern: Gesetze wiederholen.",
-    "type": "Prüfungsvorbereitung"
+    "solution": "**Wiederholung Gesetze — Paragraphen-Spickzettel**\n\n| Norm | Kerninhalt | Praxis |\n|------|------------|--------|\n| **§ 34i GewO** | Erlaubnis, Sachkunde, Haftpflicht 1 Mio. € | Erlaubnis vor Erstgespräch zeigen |\n| **§ 491a BGB** | ESIS vor Vertrag, Widerruf 14 Tage | ESIS mit Zeitstempel |\n| **§ 511 BGB** | Beratung dokumentieren | Protokoll unterschrieben |\n| **§ 489 BGB** | Kündigung nach 10 J., 6 Mon. | Anschlussfinanzierung |\n| **§ 498 BGB** | Kündigung bei 3 Mon. Verzug | Mahnwesen Kunde warnen |\n| **§ 502 BGB** | Vorfälligkeitsentschädigung | Vor vorzeitiger Tilgung rechnen |\n| **GwG** | Identifizierung, Mittelherkunft | EK-Nachweis |\n| **DSGVO** | Datenschutz, Löschung | Sichere Übermittlung |\n\n**Merksatz:** Jeder Paragraph = eine Pflicht im Beratungsalltag — nicht nur Prüfungsstoff.",
+    "type": "Prüfungsvorbereitung",
+    "caseStudy": "**Fall: Gesetzes-Quiz mit Kundenbezug**\n\nKunde fragt nach Prüfungsvorbereitung: „Was ist der Unterschied § 491a und § 511 BGB?\" Vermittlerin wiederholt für sich: ESIS = Information, § 511 = Beratung und Dokumentation.\n\n**Analyse:** Wiederholung **§ 34i GewO** (Erlaubnis, 1 Mio. €, 15 h WB), **§ 491a** (ESIS, Widerruf), **§ 511** (Protokoll 10 J.), **GwG** (5 J. Aufbewahrung), **DSGVO**.\n\n**Praxis-Tipp:** Gesetze nicht nur auswendig — jedem Paragraphen **einen Kundenfall** zuordnen."
   },
   "day_37": {
     "title": "Wiederholung: Formeln und Berechnungen",
@@ -1375,8 +1391,9 @@
       }
     ],
     "task": "Schreiben Sie alle Formeln aus dem Gedächtnis auf und rechnen Sie 10 Beispielaufgaben.",
-    "solution": "Siehe oben. Bei Fehlern: Formeln wiederholen und üben.",
-    "type": "Prüfungsvorbereitung"
+    "solution": "**Formeln — Prüfungs- und Praxis-Spickzettel**\n\n**Annuität (Monat):**\nRate = Darlehen × (Zinssatz + Tilgung) / 12\n\n**Effektivzins (vereinfacht):**\nEffektiv ≈ Sollzins + (Nebenkosten / Darlehen / Laufzeit in Jahren)\n\n**Haushalt:**\nVerfügbar = Einnahmen − Ausgaben\nMax. Rate = Verfügbar / 1,2\n\n**Beleihungsauslauf:**\nBLA = Darlehen / Beleihungswert × 100 %\n\n**Vorfälligkeitsentschädigung:**\nVFE = (Vertragszins − Wiederanlagezins) × Restschuld × Restjahre\n\n**Grunderwerbsteuer:**\nGrunderwerbsteuer = Kaufpreis × Steuersatz (3,5–6,5 %)\n\n**Beispiel:** 300.000 € × (3,5 %+2%)/12 = **1.375 €/Monat**\n\n**Merksatz:** Formel hinschreiben → rechnen → Plausibilität (Rate < Max-Rate).",
+    "type": "Prüfungsvorbereitung",
+    "caseStudy": "**Fall: Formelsammlung in der Prüfung**\n\nKandidat darf keine Formelsammlung nutzen. Blanko-Zettel: Annuität, Effektivzins, VFE, Beleihungsauslauf — eine Formel fehlt (max. Rate = Einkommen / 1,2). Rechenaufgabe 15 scheitert.\n\n**Analyse:** Kernformeln: **Annuität**, **Effektivzins**, **Haushalt**, **BLA**, **VFE**, **Grunderwerbsteuer**. Tag 32 + 37 wiederholen.\n\n**Praxis-Tipp:** Formeln täglich 5 Min. schriftlich — gleiche Routine wie im echten Kundengespräch (schnelle Kalkulation)."
   },
   "day_38": {
     "title": "Wiederholung: Praxisbeispiele und Fallstudien",
@@ -1409,8 +1426,9 @@
       }
     ],
     "task": "Bearbeiten Sie 3 Fallstudien Ihrer Wahl vollständig und prüfen Sie Ihre Antworten.",
-    "solution": "Siehe Lösungen in Tagen 26-30. Bei Fehlern: Fallstudien wiederholen.",
-    "type": "Prüfungsvorbereitung"
+    "solution": "**Wiederholung Praxisbeispiele — 5-Fall-Checkliste**\n\n| Tag | Thema | Kernschritte |\n|-----|-------|-------------|\n| 26 | Erstberatung | Haushalt, EK 20 %, 3 Banken, Protokoll |\n| 27 | Anschluss | § 489, Prolongation vs. Umschuldung, Forward |\n| 28 | KfW | Antrag vor Baubeginn, Zuschuss 25 %, Rang 1 |\n| 29 | Selbstständig | 3 Steuerbescheide, EK 30 %, /1,3 Puffer |\n| 30 | Komplex | Probleme zerlegen, parallel lösen |\n\n**§ 491a BGB:** Jedes Beispiel endet mit dokumentierter Empfehlung und Risikoaufklärung.\n\n**Übung:** Je Fall 90-Sekunden-Pitch — Situation, Zahlen, Empfehlung.\n\n**Merksatz:** Praxis = gleiche 5 Schritte wie in der Prüfung.",
+    "type": "Prüfungsvorbereitung",
+    "caseStudy": "**Fall: Praxisfall-Marathon vor der Prüfung**\n\nVermittlerin wiederholt Tag 26–30: Erstberatung, Anschluss, KfW, Selbstständiger, MFH-Komplex. Kunde morgen real — gleiche Struktur wie Fallstudie Tag 33.\n\n**Analyse:** **§ 491a BGB** — Praxisbeispiele verbinden Theorie mit Ablauf: Bedarf → Zahlen → Vergleich → Empfehlung → Risiko.\n\n**Praxis-Tipp:** Einen Fall pro Tag 26–30 laut **durchsprechen** (90 Sek. Pitch) — Prüfung und Akquise."
   },
   "day_39": {
     "title": "Wiederholung: Schwachstellen identifizieren und beheben",
@@ -1441,8 +1459,9 @@
       }
     ],
     "task": "Erstellen Sie eine Liste Ihrer Schwachstellen und arbeiten Sie diese systematisch durch.",
-    "solution": "Siehe Lösungen in Tagen 1-38. Bei Schwachstellen: Gezielt wiederholen und üben.",
-    "type": "Prüfungsvorbereitung"
+    "solution": "**Schwachstellen beheben — strukturierter Lernplan**\n\n**Schritt 1:** Fehlerprotokoll aus Tag 31–35 (Thema | Frage | richtige Antwort)\n\n**Schritt 2:** Top-3-Schwächen heute:\n| Schwäche | Wiederholung | Quelle |\n|----------|-------------|--------|\n| GwG Aufbewahrung | 5 Jahre | Tag 36 |\n| VFE-Formel | (VZ−WZ)×RS×Jahre | Tag 37 |\n| § 511 Protokoll | 10 Jahre | Tag 36 |\n\n**Schritt 3:** Je Schwäche 10 Min. aktiv (Karteikarte, 3 Beispiele)\n\n**Schritt 4:** Mini-Test (5 Fragen) — erst bei 4/5 weiter\n\n**Merksatz:** Schwächen gezielt, nicht alles nochmal lesen.",
+    "type": "Prüfungsvorbereitung",
+    "caseStudy": "**Fall: Schwachstellen-Liste nach Simulation**\n\nAuswertung Tag 31–35: MC GwG falsch, VFE Rechenfehler, mündlich § 511 unklar. Plan: heute nur diese drei Blöcke, morgen Gesamt-Simulation wiederholen.\n\n**Analyse:** Tag 39 — gezielte Wiederholung statt breites Lesen. Fehlerprotokoll führen und nur die drei schwächsten Themenblöcke bearbeiten.\n\n**Praxis-Tipp:** Gleiche Methode im Berufsalltag: Nach jedem schwierigen Fall Notiz „Thema wiederholen\"."
   },
   "day_40": {
     "title": "Abschluss: Letzte Wiederholung und Prüfungsvorbereitung",
@@ -1479,7 +1498,8 @@
       }
     ],
     "task": "Erstellen Sie eine Checkliste für die Prüfung (Unterlagen, Anfahrt, Zeitplan).",
-    "solution": "Sie sind bestens vorbereitet! Viel Erfolg bei der Sachkundeprüfung §34i!",
-    "type": "Prüfungsvorbereitung"
+    "solution": "**Abschluss Modul 5 — Prüfungstag-Checkliste**\n\n**Vor der Prüfung:** Ausweis, Anmeldebestätigung, Stifte, Anfahrt planen, 8 h Schlaf.\n\n**Letzte 150 Min. Wiederholung:**\n- 60 Min. Gesetze: §34i, §491a, §511, §489, GwG, DSGVO\n- 60 Min. Formeln: Annuität, Effektivzins, Haushalt, BLA, VFE\n- 30 Min. einen Praxisfall laut durchsprechen\n\n**In der Prüfung:** Frage genau lesen, MC sichere zuerst, Rechen: Formel → rechnen → Plausibilität.\n\n**40 Tage geschafft:** Erlaubnis, Vertrag, Bonität, Sicherheit, Simulation — Sie sind vorbereitet.\n\n**Merksatz:** Ruhe und Systematik schlagen Last-Minute-Stoff.",
+    "type": "Prüfungsvorbereitung",
+    "caseStudy": "**Fall: Letzter Tag — mental ready für §34i**\n\nLernender: Checkliste Prüfung (Ausweis, Anmeldung, Anfahrt). 60 Min. Gesetze, 60 Min. Formeln, 30 Min. Fall durchsprechen. Kein neues Stoff mehr — nur Vertrauen.\n\n**Analyse:** Abschluss Modul 5 Theoriephase: **40 Tage** §34i-Vorbereitung. Kern: Erlaubnis, Vertrag, Bonität, Sicherheit, Prüfungssimulation.\n\n**Praxis-Tipp:** Prüfungstag: Frage genau lesen, bei MC erst sichere, bei Rechen Formel zuerst — wie im Kundengespräch strukturiert bleiben."
   }
 }
