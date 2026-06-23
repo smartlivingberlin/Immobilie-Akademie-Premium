@@ -55,3 +55,148 @@ export function getGuideForPath(path: string): GuideStep | null {
   }
   return null;
 }
+
+export type Szenario = {
+  id: string;
+  titel: string;
+  beschreibung: string;
+  icon: string;
+  dauer: string;
+  schritte: Array<{
+    nr: number;
+    titel: string;
+    beschreibung: string;
+    href: string;
+    aktion: string;
+  }>;
+};
+
+export const VERWALTER_SZENARIEN: Szenario[] = [
+  {
+    id: "etv-vorbereiten",
+    titel: "ETV vorbereiten",
+    beschreibung: "Einladung, Tagesordnung, Protokoll — Schritt für Schritt.",
+    icon: "Users",
+    dauer: "20 Min",
+    schritte: [
+      {
+        nr: 1,
+        titel: "Objekt prüfen",
+        beschreibung: "Stammdaten und Einheiten vollständig?",
+        href: "/app/verwalter/objekte",
+        aktion: "Objekte öffnen",
+      },
+      {
+        nr: 2,
+        titel: "Frist anlegen",
+        beschreibung: "ETV-Frist im Kanban erstellen (6-Wochen-Regel).",
+        href: "/app/verwalter/fristen",
+        aktion: "Fristen öffnen",
+      },
+      {
+        nr: 3,
+        titel: "Einladung erstellen",
+        beschreibung: "Vorlage ETV-Einladung ausfüllen und versenden.",
+        href: "/app/verwalter/vorlagen",
+        aktion: "Vorlagen öffnen",
+      },
+      {
+        nr: 4,
+        titel: "ETV durchführen",
+        beschreibung: "Beschlüsse, Abstimmungen, Protokoll.",
+        href: "/app/verwalter/etv",
+        aktion: "ETV öffnen",
+      },
+    ],
+  },
+  {
+    id: "mahnung-starten",
+    titel: "Mahnverfahren starten",
+    beschreibung: "Rückstand prüfen, Mahnung erstellen, KI-Brief.",
+    icon: "Scale",
+    dauer: "10 Min",
+    schritte: [
+      {
+        nr: 1,
+        titel: "Rückstand prüfen",
+        beschreibung: "Offene Buchungen und Zahlungsrückstände.",
+        href: "/app/verwalter/buchungen",
+        aktion: "Buchungen öffnen",
+      },
+      {
+        nr: 2,
+        titel: "Mahnung erstellen",
+        beschreibung: "Stufe 1, 2 oder 3 — Vorlage auswählen.",
+        href: "/app/verwalter/mahnwesen",
+        aktion: "Mahnwesen öffnen",
+      },
+      {
+        nr: 3,
+        titel: "KI-Brief verfeinern",
+        beschreibung: "Optional: Brief mit KI professionell formulieren.",
+        href: "/app/verwalter/vorlagen",
+        aktion: "Vorlagen öffnen",
+      },
+    ],
+  },
+  {
+    id: "jahresabrechnung",
+    titel: "Jahresabrechnung vorbereiten",
+    beschreibung: "Buchungen, DATEV-Export, Abrechnung erstellen.",
+    icon: "BookOpen",
+    dauer: "30 Min",
+    schritte: [
+      {
+        nr: 1,
+        titel: "Buchungen prüfen",
+        beschreibung: "Vollständigkeit und Plausibilität der Buchungen.",
+        href: "/app/verwalter/buchungen",
+        aktion: "Buchungen öffnen",
+      },
+      {
+        nr: 2,
+        titel: "DATEV-Export",
+        beschreibung: "CSV-Export für Steuerberater erstellen.",
+        href: "/app/verwalter/buchungen",
+        aktion: "Buchungen öffnen",
+      },
+      {
+        nr: 3,
+        titel: "Abrechnung erstellen",
+        beschreibung: "Vorlage Jahresabrechnung ausfüllen.",
+        href: "/app/verwalter/vorlagen",
+        aktion: "Vorlagen öffnen",
+      },
+    ],
+  },
+  {
+    id: "neues-objekt",
+    titel: "Neues Objekt aufnehmen",
+    beschreibung: "Stammdaten, Einheiten, erste Vorlage.",
+    icon: "Database",
+    dauer: "15 Min",
+    schritte: [
+      {
+        nr: 1,
+        titel: "Objekt anlegen",
+        beschreibung: "Name, Adresse, WEG-Stammdaten eingeben.",
+        href: "/app/verwalter/objekte",
+        aktion: "Objekte öffnen",
+      },
+      {
+        nr: 2,
+        titel: "Erste Vorlage",
+        beschreibung: "Verwaltervertrag oder Willkommensbrief.",
+        href: "/app/verwalter/vorlagen",
+        aktion: "Vorlagen öffnen",
+      },
+      {
+        nr: 3,
+        titel: "Ersten Vorgang anlegen",
+        beschreibung: "z.B. Übergabe oder erste ETV planen.",
+        href: "/app/verwalter/vorgaenge",
+        aktion: "Vorgänge öffnen",
+      },
+    ],
+  },
+];
