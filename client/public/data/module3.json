@@ -795,7 +795,9 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Jahresabrechnung in der WEG-Praxis: Rechercheergebnisse\n\n## Wichtigste Quellen\n- **gesetze-im-internet.de**: WEG § 28 (Verwalterpflichten)\n- **Haufe.de**: Aktuelle Abrechnungsrichtlinien und BGH-Urteile\n- **IHK-Webseiten**: Branchenleitfäden zur Abrechnungspraxis\n\n## Kernaussagen\nDer BGH hat in jüngeren Entscheidungen (z.B. BGH VIII ZR 222/17) unterstrichen, dass die Jahresabrechnung nachvollziehbar und transparent sein muss. Häufige Beanstandungen entstehen durch:\n- Fehlende Belegnachweise\n- Unklare Kostenverteilungsschlüssel\n- Verspätete Rechnungslegung (Frist: § 28 Abs. 3 WEG)\n\n## Praxisrelevanz\nFehlerhafte Abrechnungen führen zu Einsprüchen, Schadensersatzforderungen und Vertrauensverlust. Verwalter müssen digitale Dokumentation und GDPR-konforme Datenverwaltung beherrschen. Gute Abrechnungspraxis ist entscheidend für die Haftungsbegrenzung des Verwalters."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Jahresabrechnung 2025 — Saldo passt nicht**\n\nWEG „Am Markt 3\" (10 WE): Gesamtabrechnung weist Ausgaben 186.400 € aus, Summe der Einzelabrechnungen 184.900 € — Differenz 1.500 €. Bankauszug 31.12.: 42.300 €, Abrechnung zeigt 43.800 €. Heizkosten Gesamt 28.000 €, Messdienstleister verteilt 28.000 €, aber Brennstoffrechnung Januar 2026 bezahlt (Abflussprinzip).\n\n**Analyse:** **§ 28 Abs. 2 WEG** verlangt Gesamtabrechnung und Einzelabrechnungen — Summen müssen übereinstimmen. Abgrenzung: Zahlungszeitpunkt maßgeblich (GoBD/Abfluss), Heizkosten Ausnahme Leistungsprinzip (HeizkostenV). Rücklagenzinsen nicht vergessen. Plausibilitätscheck vor Versand.\n\n**Praxis-Tipp:** Vier-Augen-Prüfung und Checkliste Saldo-Gleichheit, Kontenabstimmung, Heizkostenabgleich.",
+    "solution": "**Jahresabrechnung — Gesamtabrechnung und Plausibilität (§ 28 Abs. 2 WEG)**\n\n**Bestandteile:**\n- Gesamtabrechnung (Einnahmen/Ausgaben)\n- Einzelabrechnungen je Eigentümer\n- Entwicklung Erhaltungsrücklage\n- Vermögensstatus (Konten, Forderungen)\n\n**§ 28 Abs. 2 WEG:**\nJährliche Gegenüberstellung — Grundlage für Hausgeldabrechnung und Beschluss in der ETV.\n\n**Plausibilitäts-Checkliste:**\n1. Summe Einzel = Gesamtabrechnung?\n2. Bankendsaldo = rechnerischer Saldo?\n3. Heizkosten Gesamt = Messdienstleister-Summe?\n4. Rücklage: Anfang + Zuführung − Entnahme + Zinsen = Ende?\n5. Abgrenzung Zahlungsdatum (Heizkosten: Verbrauchszeitraum)\n\n**Abrechnungsspitze:**\nNur Ergebnis (Nachzahlung/Guthaben) wird festgestellt — Vorauszahlungen aus WiPla.\n\n**Merksatz:** Die Abrechnung ist das Verwalter-Zeugnis — jeder Euro belegbar."
   },
   "day_42": {
     "title": "Der Wirtschaftsplan: Der Blick in die Zukunft",
@@ -827,7 +829,9 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Recherche-Ergebnisse: Der Wirtschaftsplan in der WEG-Praxis\n\n**Wichtigste Quellen:**\n- www.gesetze-im-internet.de (WEG § 28 Abs. 2, § 110)\n- www.haufe.de/immobilien (Fachinformationen zur Kostensteigerung 2024)\n- www.haus-und-grund.de (Praxisratgeber Wirtschaftsplan)\n\n**Kernaussagen:**\nDie aktuelle Kostenentwicklung 2024/2025 zeigt erhebliche Herausforderungen: Energiekosten bleiben volatil (teilweise +8-12%), Handwerkerstundensätze steigen kontinuierlich (+6-8%), Versicherungen erhöhen sich um 4-6%. Der BGH betont (III ZR 183/20), dass Verwalter transparent kalkulieren müssen und Rücklagen realistisch bemessen sein sollten.\n\n**Praxisrelevanz:**\nVerwalter müssen bei der Wirtschaftsplanaufstellung differenziert vorgehen: Nicht pauschal +3% kalkulieren, sondern branchenspezifische Indizes berücksichtigen. Die Dokumentation der Annahmen wird zunehmend im Streitfall überprüft. Eigentümerversammlungen fordern transparente Begründungen für Kostensteigerungen – eine bloße Bezugnahme auf „gestiegene Preise\" genügt nicht mehr."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: WiPla 2026 — Energie +30 %, Eigentümer rebellieren**\n\nVerwalter legt Wirtschaftsplan vor: Versicherung +10 % (4.400 €), Gartenpflege neuer Vertrag 3.500 € (statt 3.000 €), Heizöl-Prognose +30 %. Hausgeld steigt von 320 € auf 385 €/WE/Monat. Beirat: „Zu knapp geplant im Vorjahr — Nachzahlung 1.800 € pro WE!\"\n\n**Analyse:** **§ 28 Abs. 1 WEG:** Verwalter stellt WiPla auf, ETV beschließt Vorauszahlungen. Basis = Vorjahresabrechnung + realistische Steigerungen + Sonderfaktoren (TÜV Aufzug). Liquiditätsreserve 5–10 % vermeidet Zahlungsunfähigkeit im Winter. Umlagefähige vs. nicht umlagefähige Kosten trennen (BetrKV).\n\n**Praxis-Tipp:** Lieber transparente Erhöhung mit Reserve als Nachzahlungsschock — Rechnung im Anhang zur ETV.",
+    "solution": "**Wirtschaftsplan — Erstellung und Beschluss (§ 28 Abs. 1 WEG)**\n\n**Pflicht:**\nVerwalter erstellt jährlichen WiPla — ohne Beschluss keine Zahlungspflicht (außer Fortgeltungsklausel).\n\n**Aufbau:**\n- Bewirtschaftungskosten (umlagefähig)\n- Verwaltungskosten (nicht umlagefähig)\n- Zuführung Erhaltungsrücklage\n\n**Methodik:**\n1. Vorjahresabrechnung als Basis\n2. Preissteigerungen (Energie +5–15 %, Versicherung +3–5 %)\n3. Sonderfaktoren (TÜV, Vertragswechsel)\n4. Liquiditätsreserve 5–10 %\n\n**Beispiel:**\nVersicherung 4.000 € × 1,10 = 4.400 € | Garten 3.500 € | Strom 1.200 € stabil\n\n**§ 28 Abs. 1 WEG:**\nETV beschließt Vorauszahlungen mit einfacher Mehrheit — Verteilung nach MEA.\n\n**Merksatz:** WiPla = Blick nach vorn. Reserve schützt vor der Liquiditätsfalle."
   },
   "day_23": {
     "title": "Instandhaltung & Instandsetzung",
@@ -1133,7 +1137,9 @@
       }
     ],
     "task": "Vergleichen Sie drei Verwalter-Software-Lösungen (Domus, Haufe, Immoware) anhand einer Matrix (Funktionen, Kosten, Cloud/On-Premise).",
-    "type": "Digital"
+    "type": "Digital",
+    "caseStudy": "**Fall: Software-Migration in der WEG „Rheinblick 12\" — Datenchaos und GoBD-Risiko**\n\nDie WEG mit 18 Einheiten wechselt vom Excel-basierten System auf Immoware24. Der Vorgängerverwalter liefert Stammdaten als unstrukturierte CSV-Dateien. Miteigentumsanteile stimmen nicht mit der Teilungserklärung überein, offene Posten aus 2024 fehlen, Eigentümerportal-Zugänge werden doppelt angelegt.\n\n**Analyse:** Ohne saubere Migration drohen fehlerhafte Hausgeldabrechnungen und GoBD-Verstöße. Der Verwalter stoppt den Live-Gang, legt eine **Migrations-Checkliste** an (Stammdaten, Konten, MEA-Abgleich, Test-Jahresabrechnung) und führt einen **Parallelbetrieb** über einen Monat. AVV mit dem Anbieter wird vor Datenimport unterzeichnet.\n\n**Praxis-Tipp:** Nie am 31.12. live schalten — Test mit einer Pilot-WEG und schriftliche Freigabe des Beirats einholen.",
+    "solution": "**Verwalter-Software — Auswahl, Migration und Betrieb**\n\n**Pflichtfunktionen prüfen:**\n- Buchhaltung (Hausgeld, Jahresabrechnung, Wirtschaftsplan)\n- Dokumentenmanagement mit Zugriffsrechten\n- Eigentümerportal und Fristenmanagement\n- GoBD-konforme Archivierung und revisionssichere Ablage\n\n**DSGVO bei Cloud-Systemen:**\n- Auftragsverarbeitungsvertrag (Art. 28 DSGVO) vor Produktivstart\n- Speicherort EU, Rollenkonzept, Löschkonzept\n\n**Migrations-Ablauf:**\n1. Ist-Analyse und Datenbereinigung\n2. MEA- und Kontenabgleich mit Teilungserklärung\n3. Testabrechnung Vorjahr im neuen System\n4. Schulung Mitarbeiter, Eigentümer-Info zum Portal\n5. Go-Live mit Parallelbuchung (4 Wochen)\n\n**Vergleichsmatrix (Domus / Haufe / Immoware):** Funktionen, Kosten, Cloud vs. On-Premise, Schnittstellen Bank/ DATEV.\n\n**Merksatz:** Software ist nur so gut wie die Stammdaten — Migration ist Verwalterprojekt, nicht IT-Nebenjob."
   },
   "day_32": {
     "title": "Datenschutz & DSGVO im Alltag",
@@ -1165,7 +1171,9 @@
       }
     ],
     "task": "Erstellen Sie ein Muster-Antwortschreiben auf eine DSGVO-Auskunftsanfrage eines Eigentümers.",
-    "type": "Recht"
+    "type": "Recht",
+    "caseStudy": "**Fall: DSGVO-Auskunft und Datenpanne in der WEG „Sonnenhof\"**\n\nEigentümer M. verlangt per E-Mail eine vollständige Auskunft über alle zu seiner Person gespeicherten Daten — inklusive Abstimmungsverhalten bei der letzten ETV. Gleichzeitig entdeckt der Verwalter, dass ein Praktikant eine Excel-Liste mit Namen, Bankverbindungen und Telefonnummern aller Eigentümer unverschlüsselt an einen falsch adressierten Newsletter verschickt hat.\n\n**Analyse:** Die Auskunftsanfrage ist berechtigt (Art. 15 DSGVO). Abstimmungsverhalten darf nur offengelegt werden, wenn eine gesetzliche Offenlegungspflicht besteht — nicht pauschal. Die Fehlmail ist eine **Datenpanne** (Art. 33 DSGVO): Meldung an die Aufsichtsbehörde innerhalb von 72 Stunden prüfen, Betroffene informieren.\n\n**Rechtsgrundlagen prüfen:** Art. 6 Abs. 1 lit. b (Vertrag), lit. c (gesetzliche Pflicht), lit. f (berechtigtes Interesse).",
+    "solution": "**DSGVO im Verwalteralltag — Auskunft, Rechtsgrundlagen, Datenpanne**\n\n**Grundsätze (Art. 5 DSGVO):**\nRechtmäßigkeit, Zweckbindung, Datenminimierung, Richtigkeit, Speicherbegrenzung, Integrität und Vertraulichkeit.\n\n**Rechtsgrundlagen (Art. 6 DSGVO):**\n- **lit. b:** Vertragserfüllung (Verwaltervertrag, Hausgeld)\n- **lit. c:** Gesetzliche Pflicht (z. B. Aufbewahrung, Meldewesen)\n- **lit. f:** Berechtigtes Interesse (z. B. Schadensabwehr) — Interessenabwägung dokumentieren\n\n**Auskunftsanfrage bearbeiten:**\n1. Identität prüfen\n2. Verarbeitungsverzeichnis konsultieren\n3. Kopien bereitstellen (Art. 15), Frist 1 Monat\n4. Abstimmungsdetails nur bei Offenlegungspflicht\n\n**Datenpanne (Art. 33/34):**\n- Risiko bewerten, 72h-Meldung an Behörde\n- Betroffene informieren bei hohem Risiko\n- Maßnahmen: Verschlüsselung, Schulung, Zugriffskontrolle\n\n**Merksatz:** Nur erheben, was nötig ist — und jeden Zugriff nachvollziehbar machen."
   },
   "day_33": {
     "title": "Digitale Eigentümerversammlung",
@@ -1196,7 +1204,9 @@
       }
     ],
     "task": "Erstellen Sie einen Leitfaden für Eigentümer zur Online-Teilnahme (Zoom/Teams, technische Voraussetzungen, Abstimmung).",
-    "type": "Digital"
+    "type": "Digital",
+    "caseStudy": "**Fall: Hybride ETV bricht zusammen — Beschlussfähigkeit in Frage**\n\nWEG „Lindenpark\" (24 WE) tagt hybrid: 9 Eigentümer im Saal, 11 online. Während der Abstimmung über eine Dachsanierung (85.000 €) fallen bei drei Online-Teilnehmern die Verbindungen aus. Der Vorsitzende lässt die Abstimmung dennoch durchgehen: 14 Ja, 4 Nein, 2 Enthaltungen. Eigentümer K., kurz offline, bestreitet die Beschlussfähigkeit.\n\n**Analyse:** **§ 23 Abs. 1 WEG** erlaubt Online-/Hybrid-ETV, wenn die Voraussetzungen erfüllt sind. **§ 24 WEG** regelt Einberufung und Ablauf — Teilnahmerechte müssen gewahrt bleiben. Technische Ausfälle während der Abstimmung können Anfechtungsrisiken begründen. Der Verwalter hätte eine Unterbrechung und Wiederholung der Abstimmung für Betroffene vorschlagen sollen.\n\n**Praxis-Tipp:** Technik-Probe 48h vorher, Backup-Telefonkonferenz, Protokoll mit Online-/Präsenzstatus.",
+    "solution": "**Digitale Eigentümerversammlung — Formate, Recht, Technik**\n\n**Drei Formate:**\n- **Präsenz:** Standard ohne Zustimmungserfordernis\n- **Hybrid:** Vor Ort + online (praxisnah, Satzungsklausel prüfen)\n- **Volldigital:** Zustimmung aller Eigentümer erforderlich (§ 23 Abs. 1 Satz 2 WEG)\n\n**Einberufung (§ 24 WEG):**\nFristen, Tagesordnung, Hinweis auf Durchführungsform, Zugangsdaten rechtzeitig.\n\n**Technische Mindestanforderungen:**\n- Identifikation der Teilnehmer\n- Manipulationssichere Abstimmung\n- Protokoll mit Anwesenheit und Stimmverhalten\n- Aufzeichnung nur mit Einwilligung aller (DSGVO)\n\n**Umlaufbeschluss (§ 23 Abs. 3 WEG):**\nPer E-Mail möglich, **Einstimmigkeit** erforderlich.\n\n**Bei Störungen:** Abstimmung unterbrechen, erneute Verbindung, ggf. Wiederholung — nicht überstimmen.\n\n**Merksatz:** Digital tagen heißt: gleiche Rechte wie im Saal, plus dokumentierte Technik."
   },
   "day_34": {
     "title": "Prozessoptimierung & Zeitmanagement",
@@ -1227,7 +1237,9 @@
       }
     ],
     "task": "Entwerfen Sie einen standardisierten Workflow für eine Schadensmeldung (Eingang, Prüfung, Beauftragung, Abrechnung, Dokumentation).",
-    "type": "Management"
+    "type": "Management",
+    "caseStudy": "**Fall: Zeitfresser-Verwalter — 60 Anrufe, null Strategie**\n\nVerwalter S. bearbeitet täglich 60+ Telefonanfragen (Hausgeld, Schadensmeldungen, ETV-Termine), beantwortet E-Mails zwischen 22 und 23 Uhr und hat seit drei Monaten keinen Wirtschaftsplan für eine neue WEG fertiggestellt. Eigentümer beschweren sich über Verzögerungen; Mitarbeiter kündigen wegen Überlastung.\n\n**Analyse:** Reaktives Arbeiten ohne Standardprozesse frisst Kapazität. **Lean-Prinzip:** Verschwendung identifizieren (Doppelprüfungen, Medienbrüche, fehlende Vorlagen). Lösung: Eigentümerportal für Standardauskünfte, Schadens-Workflow mit Ticket-System, feste Erreichbarkeitszeiten, 60/20/20-Zeitmodell (geplant/Reaktion/Strategie).\n\n**Praxis-Tipp:** Wiederkehrende Anfragen in FAQ und Portal-Artikel überführen — Telefon nur für Eskalationen.",
+    "solution": "**Prozessoptimierung und Zeitmanagement für Verwalter**\n\n**Typische Zeitfresser:**\n- Manuelle Buchungen und Doppeldatenerfassung\n- Telefonische Standardauskünfte\n- Papierpost ohne Scan-Workflow\n- Reaktives Störungsmanagement ohne Priorisierung\n\n**Standardisierung:**\n- Checklisten: Schadensmeldung, Mieterwechsel, ETV-Vorbereitung\n- Vorlagen: Anschreiben, Mahnung, Protokoll\n- Workflow Schadensmeldung: Eingang → Prüfung → Beauftragung → Abrechnung → Dokumentation\n\n**Digitale Hebel:**\n- Aufgabenmanagement (Asana, Trello)\n- Eigentümerportal (−60 % Routineanrufe möglich)\n- E-Signatur, automatische Wiedervorlagen\n\n**Zeitplanung:**\n60 % geplante Arbeit | 20 % Reaktionszeit | 20 % strategische Entwicklung\n\n**Merksatz:** Prozess vor Perfektion — ein dokumentierter Ablauf schlägt tägliches Improvisieren."
   },
   "day_35": {
     "title": "Mietrecht Spezial: Gewerbemietrecht",
@@ -1258,7 +1270,9 @@
       }
     ],
     "task": "Prüfen Sie einen Gewerbemietvertrag auf unwirksame AGB-Klauseln (Schönheitsreparaturen, Kleinreparaturen, Kündigungsverzicht).",
-    "type": "Recht"
+    "type": "Recht",
+    "caseStudy": "**Fall: Gewerbemietvertrag im Erdgeschoss — unwirksame Klauseln**\n\nEigentümergemeinschaft vermietet Ladenfläche (120 m²) an Bäckerei L. Der Entwurf enthält: unbegrenzte Kaution (4 Monatsmieten), pauschale Schönheitsreparaturen alle 3 Jahre, Kündigungsverzicht des Mieters für 10 Jahre, Indexmiete ohne Bezugnahme auf VPI. Verwalter soll unterschreiben.\n\n**Analyse:** Gewerbemietrecht (§§ 535 ff. BGB) ist weitgehend dispositiv, aber **AGB-Kontrolle** greift bei vorformulierten Verträgen. Schönheitsreparatur-Pauschale und Kündigungsverzicht sind kritisch. **§ 578 BGB** regelt Fortsetzung und Überleitung bei Geschäftsveräußerung — relevant bei Mieterwechsel oder Verkauf. Schriftform bei Laufzeit > 1 Jahr (§ 550 BGB).\n\n**Praxis-Tipp:** ETV-Beschluss zur Gewerbevermietung vor Unterzeichnung — nicht nur Verwalterentscheidung.",
+    "solution": "**Gewerbemietrecht — Vertragsfreiheit mit Grenzen**\n\n**Abgrenzung Wohnraum:**\nKeine Mietpreisbremse, schwächerer Kündigungsschutz, Kaution unbegrenzt (aber AGB-prüfen), Schönheitsreparaturen vereinbar.\n\n**Pflichtklauseln prüfen:**\n- **Indexmiete:** VPI-Bezug, Anpassungsrhythmus, Schriftform\n- **Kündigung:** § 580a BGB — quartalsweise, 6 Monate (wenn nicht abweichend vereinbart)\n- **§ 578 BGB:** Fortsetzung des Mietverhältnisses bei Betriebsübergang beachten\n\n**Unwirksame AGB-Muster:**\n- Pauschale Schönheitsreparaturen ohne Abgrenzung\n- Einseitiger Kündigungsverzicht\n- Überhöhte Kleinreparaturklauseln\n\n**Verwalter-Checkliste:**\n1. ETV-Zustimmung zur Vermietung\n2. Konkurrenzschutz, Betriebspflicht, Rückbaupflicht klären\n3. Nebenkosten und Heizkosten separat\n4. Schriftform und Anlagen (Grundriss, Inventar)\n\n**Merksatz:** Im Gewerbe gilt Vertragsfreiheit — aber nicht Willkür. Klauseln einzeln prüfen."
   },
   "day_36": {
     "title": "Mietrecht Spezial: Möbliertes Wohnen",
@@ -1290,7 +1304,9 @@
       }
     ],
     "task": "Berechnen Sie den zulässigen Zuschlag für eine Möblierung im Wert von 5.000 € bei einer Nutzungsdauer von 10 Jahren.",
-    "type": "Finanzen"
+    "type": "Finanzen",
+    "caseStudy": "**Fall: „Möbliert\" oder nur befristet? — Streit in der WEG**\n\nEigentümer R. vermietet seine 45-m²-Wohnung mit Bett, Schreibtisch und Einbauküche (Anschaffung 5.000 €) für 1.200 € warm als „möblierte Kurzzeitmiete\" an Pendler. Nach 8 Monaten kündigt er fristlos wegen Lärmbelästigung. Mieterin beruft sich auf normalen Kündigungsschutz.\n\n**Analyse:** Möblierung allein begründet nicht automatisch Wohnung auf Zeit (§ 575 BGB). **§ 549 BGB** betrifft Ausnahmen vom Kündigungsschutz — die bloße Möblierung führt nicht zu den Kurzfristen des § 549. Möblierungszuschlag separat ausweisen (Mietpreisbremse!). Inventarliste mit Fotos bei Ein-/Auszug. WEG: Hausordnung und ggf. Beschluss zu Kurzzeitvermietung prüfen.\n\n**Kalkulation:** Zuschlag 1–3 % des Inventarwerts/Monat → bei 5.000 € ca. 50–150 €.",
+    "solution": "**Möbliertes Wohnen — Recht, Kalkulation, Dokumentation**\n\n**Rechtliche Einordnung:**\nAllgemeines Mietrecht (§§ 535 ff. BGB). Möblierung ≠ Wohnung auf Zeit. Zeitmietvertrag nur bei Eigenbedarf, Umbau oder befristeter Überlassung an Mitarbeiter (§ 575 BGB).\n\n**§ 549 BGB:**\nAusnahmen vom allgemeinen Kündigungsschutz — nicht durch bloße Möblierung erfüllt. Kurzfristige Kündigung nur bei gesetzlichen Tatbeständen.\n\n**Möblierungszuschlag:**\n- Separat zur Kaltmiete ausweisen\n- Orientierung: 1–3 % Inventarwert/Monat\n- Beispiel Küche 5.000 €, 10 Jahre ND → ca. 42–125 €/Monat Zuschlag\n\n**Pflichten Verwalter (WEG-Kontext):**\n- Inventarliste + Übergabeprotokoll\n- Hausordnung bei hoher Fluktuation\n- Mietpreisbremse in angespannten Märkten\n\n**Merksatz:** Inventar dokumentieren, Zuschlag transparent — und Abgrenzung zu § 575 prüfen."
   },
   "day_37": {
     "title": "Mietrecht Spezial: Öffentlich gefördert",
@@ -1322,7 +1338,9 @@
       }
     ],
     "task": "Ermitteln Sie die zulässige Kostenmiete anhand einer Wirtschaftlichkeitsberechnung (Kapitaldienst + Bewirtschaftungskosten).",
-    "type": "Recht"
+    "type": "Recht",
+    "caseStudy": "**Fall: WBS abgelaufen — darf der Verwalter den Mieterwechsel verweigern?**\n\nIn der geförderten Wohnung (Bindung bis 2038) beantragt Mieterin W. einen Wohnungstausch mit Verwandten ohne gültigen Wohnberechtigungsschein (WBS abgelaufen). Eigentümer will Marktmiete nach Auszug. Verwalter prüft Belegungsbindung und Kostenmiete.\n\n**Analyse:** **WoBindG** und Fördervertrag verlangen Belegung mit berechtigten Haushalten. Neuvermietung nur mit gültigem WBS und Einkommensnachweis. **§ 556 BGB** regelt Betriebskosten — bei Kostenmiete keine willkürliche Erhöhung über die gebundene Kostenmiete. Bindungsfrist im Blick behalten; Eigentümer rechtzeitig über Auslauf informieren.\n\n**Praxis-Tipp:** WBS-Kopie jährlich aktualisieren, Förderakte separat führen.",
+    "solution": "**Öffentlich geförderter Wohnraum — Bindung, WBS, Kostenmiete**\n\n**Doppelte Bindung:**\nMietrecht (BGB) + öffentlich-rechtliche Förderauflagen (WoBindG, Landesförderung).\n\n**Belegungsbindung:**\n- Nur Mieter mit **Wohnberechtigungsschein**\n- Einkommensgrenzen je Bundesland, Gültigkeit 1 Jahr\n- Verwalter prüft bei jedem Wechsel\n\n**Kostenmiete (WoBindG § 10):**\nTatsächliche Kosten + angemessene Rendite — keine Marktmiete. Erhöhungen nur mit Nachweis.\n\n**§ 556 BGB:**\nBetriebskosten als Vorauszahlung/Nebenkosten — bei gefördertem Wohnraum besonders transparent abrechnen.\n\n**Auslaufende Bindung:**\nNach 15–40 Jahren Wechsel zu Marktmiete möglich — Eigentümer früh informieren.\n\n**Merksatz:** Förderakte = zweites Mietrecht. Ohne WBS keine Neuvermietung."
   },
   "day_38": {
     "title": "Mietrecht Spezial: Staffel- & Indexmiete",
@@ -1354,7 +1372,9 @@
       }
     ],
     "task": "Formulieren Sie eine wirksame Staffelmietklausel für einen Mietvertrag (5 Jahre, jährliche Erhöhung um 3%).",
-    "type": "Recht"
+    "type": "Recht",
+    "caseStudy": "**Fall: Staffelmiete oder Index — was gilt nach drei Jahren?**\n\nVermieterin V. verlangt nach 3 Jahren 12 % mehr Miete bei Staffelmietvertrag, obwohl die Staffel nur 3 % jährlich vorsah — plus separates Erhöhungsverlangen nach § 558 BGB. Mieter widerspricht. Vertrag: „Miete steigt jährlich um 3 %, Verbraucherpreisindex Berlin\" — Mischform unklar.\n\n**Analyse:** **§ 557a BGB (Staffelmiete):** Erhöhungen im Voraus festgelegt, mindestens 12 Monate Abstand, kein § 558 während Laufzeit. **§ 557b BGB (Indexmiete):** Kopplung an VPI, Anpassung frühestens nach 12 Monaten, schriftliche Vereinbarung. Mischklauseln sind unwirksam. Berechnung Index: Neue Miete = Alte × (neuer VPI / alter VPI).\n\n**Beispiel:** 800 €, VPI 105 → 115 → 800 × 115/105 = 876,19 €.",
+    "solution": "**Staffel- und Indexmiete — Gestaltung und Berechnung**\n\n**Staffelmiete (§ 557a BGB):**\n- Feste Stufen im Vertrag (z. B. Jahr 1: 900 €, Jahr 2: 950 €)\n- Mindestabstand 12 Monate\n- **Kein** § 558-Erhöhungsverlangen parallel\n- Schriftform erforderlich\n\n**Indexmiete (§ 557b BGB):**\n- Bezug auf **Verbraucherpreisindex** (Statistisches Bundesamt)\n- Erste Anpassung frühestens nach 12 Monaten\n- Formel im Vertrag fixieren\n- Berechnung: Miete_neu = Miete_alt × (VPI_neu / VPI_alt)\n\n**Mietpreisbremse:**\nAusgangsmiete bei Neuvermietung max. 10 % über ortsüblicher Vergleichsmiete.\n\n**Verwalter-Tipp:**\nNur eine Mechanik wählen — Staffel ODER Index. Musterklausel mit Datum und Indexstand dokumentieren.\n\n**Merksatz:** Planbare Erhöhung braucht klare Formel — Mischformen scheitern vor Gericht."
   },
   "day_39": {
     "title": "Konfliktmanagement: Eigentümer vs. Eigentümer",
@@ -1386,7 +1406,9 @@
       }
     ],
     "task": "Entwickeln Sie einen Leitfaden für Konfliktgespräche (Vorbereitung, Gesprächsführung, Dokumentation, Nachbereitung).",
-    "type": "Kommunikation"
+    "type": "Kommunikation",
+    "caseStudy": "**Fall: Balkon vs. Gemeinschaftsgarten — Nachbarstreit eskaliert**\n\nEigentümer A. nutzt den Gemeinschaftsgarten für Grillfeste bis 23 Uhr; Eigentümer B. (darüber liegend) klagt über Lärm und ruft die Polizei. A. behauptet, der Garten gehöre ihm mit, weil er direkten Zugang hat. Verwalter erhält täglich Beschwerden, Parteien drohen mit Anwalt.\n\n**Analyse:** **§ 14 WEG:** Gemeinschaftseigentum gehört allen Miteigentümern — Sondernutzungsrecht nur bei Beschluss oder Teilungserklärung. Lärm: Hausordnung und örtliche Ruhezeiten. Verwalter **neutral** vermitteln, dokumentieren, Eskalationsstufen: Ansprache → Mediation → außerordentliche ETV → ggf. Klage.\n\n**Praxis-Tipp:** Harvard-Konzept — Interessen statt Positionen, separates Gespräch mit jeder Partei zuerst.",
+    "solution": "**Konfliktmanagement Eigentümer vs. Eigentümer**\n\n**Typische Konfliktursachen:**\nLärm, Haustiere, Parkplatz, bauliche Änderungen, Kostenteilung, Gemeinschaftsflächen.\n\n**§ 14 WEG — Gemeinschaftseigentum:**\nGemeinschaftliches Eigentum steht allen zu — Nutzung nur nach Regeln (Teilungserklärung, Beschluss, Hausordnung). Kein Alleingang bei Sondernutzung.\n\n**Rolle Verwalter:**\n- Neutral, sachlich, dokumentiert\n- Keine Parteinahme\n- Kommunikation ermöglichen, nicht richten\n\n**Eskalationsstufen:**\n1. Direkte Ansprache / Vermittlung\n2. Externe Mediation\n3. Außerordentliche ETV\n4. Beschlussklage (§ 44 WEG)\n\n**Leitfaden Konfliktgespräch:**\nVorbereitung → gemeinsames Gespräch → Protokoll → Nachbereitung\n\n**Merksatz:** Früh eingreifen, neutral bleiben, schriftlich festhalten."
   },
   "day_40": {
     "title": "Abschluss Block 2: Prüfungsvorbereitung WEG",
@@ -1417,7 +1439,9 @@
       }
     ],
     "task": "Erstellen Sie eine Mindmap mit allen Themen aus Block 2 (Tag 21-40) und deren Zusammenhängen.",
-    "type": "Prüfung"
+    "type": "Prüfung",
+    "caseStudy": "**Fall: Prüfungssimulation — der Prüfer fragt quer**\n\nAuszubildende Verwalterin steht vor der mündlichen Prüfung. Der Prüfer kombiniert Themen: „Erklären Sie Sonder- vs. Gemeinschaftseigentum am Balkon, nennen Sie die Frist für die Jahresabrechnung, und: Darf eine hybride ETV einen Aufzug beschließen, wenn 40 % online dabei sind?\"\n\n**Analyse:** Block 2 (Tag 21–40) verknüpft Technik, EDV, DSGVO, digitale ETV, Mietrecht-Spezial und Konfliktmanagement. Kern-Paragraphen: §§ 1, 10, 16, 18–20, 23–24, 26, 28 WEG. Lernstrategie: Struktur (§§ 1–20 Grundlagen, §§ 21–35 Verwaltung), Fallbeispiele üben, Abrechnungen rechnen.\n\n**Praxis-Tipp:** Mindmap Tag 21–40 erstellen — Verbindungslinien statt Stichwortlisten.",
+    "solution": "**Prüfungsvorbereitung Block 2 — Wiederholung und Strategie**\n\n**10 Prüfungs-Paragraphen:**\n§ 1 (Begriff) | § 10 (Grundsätze) | § 16 (Kosten) | § 18 (Verwaltung) | § 19 (ordnungsmäßige Verwaltung) | § 20 (bauliche Veränderungen) | § 23 (ETV) | § 24 (Einberufung) | § 26 (Verwalter) | § 28 (Wirtschaftsplan)\n\n**Häufige Prüfungsfragen:**\n- Sonder- vs. Gemeinschaftseigentum\n- Voraussetzungen bauliche Veränderungen\n- ETV-Ablauf und Fristen\n- Hausgeldberechnung / Verteilerschlüssel\n- Verwalterrechte und -pflichten\n\n**Themenblock 2:**\nGebäudetechnik → EDV/DSGVO → digitale ETV → Prozesse → Mietrecht-Spezial → Konflikte\n\n**Lernstrategie:**\n1. Paragraphen-Karteikarten\n2. Rechenbeispiele Abrechnung + Rücklage\n3. Mündliche Fallsimulation (3 Min. pro Thema)\n\n**Merksatz:** Verknüpfen statt auswendig — der Prüfer testet Anwendung."
   },
   "day_43": {
     "title": "Rücklagenbildung & Verwendung",
@@ -1484,7 +1508,9 @@
       }
     ],
     "task": "Erstellen Sie einen kompletten Jahreswirtschaftsplan für eine WEG mit 10 Einheiten inkl. Heizkostenprognose.",
-    "type": "Finanzen"
+    "type": "Finanzen",
+    "caseStudy": "**Fall: JWP 2027 — Heizkostenexplosion und neue Rücklagenpflicht**\n\nWEG „Westend 5\" (10 WE): Verwalter erstellt Jahreswirtschaftsplan. Heizkosten Vorjahr 18.000 €, Prognose 24.000 € (+33 %). Erhaltungsrücklage soll von 60 € auf 95 €/WE steigen wegen anstehender Dachmaßnahme 2028. Eigentümer E. fordert „altes Hausgeld\" — Verwalter muss begründen.\n\n**Analyse:** **§ 28 Abs. 1 WEG** — JWP als Einnahmen-Ausgaben-Vorschau, Beschluss ETV vor Wirtschaftsjahr. Heizkosten separat kalkulieren, Energievolatilität dokumentieren. Rücklagenposten transparent (Peterssche Formel / Instandhaltungsplan). Kommunikation: Anlage mit Kostentreibern an ETV-Unterlagen.\n\n**Praxis-Tipp:** Vergleich Vorjahr/Plan/Nutzer je Kostenart — Transparenz reduziert Widerspruch.",
+    "solution": "**Jahreswirtschaftsplan (JWP) — Erstellung nach § 28 Abs. 1 WEG**\n\n**Zweck:**\nPrognose aller Einnahmen und Ausgaben — Grundlage monatlicher Hausgelder.\n\n**Pflichtbestandteile:**\n- Bewirtschaftungskosten (Versicherung, Hausmeister, Energie)\n- Verwaltungshonorar\n- Erhaltungsrücklage\n- Ggf. Sonderposten (TÜV, Wartungen)\n\n**Erstellungsschritte:**\n1. Ist-Kosten Vorjahr analysieren\n2. Preis- und Verbrauchsprognosen (Heizung!)\n3. Instandhaltungsplan berücksichtigen\n4. Auf MEA verteilen → Hausgeld/Monat\n5. ETV-Beschluss vor 01.01.\n\n**§ 28 Abs. 1 WEG:**\nWirtschaftsplan und Festlegung der Vorauszahlungen durch Eigentümerversammlung.\n\n**Kommunikation:**\nBegründung schriftlich (Energie, Versicherung, Rücklage) — nicht nur Summe.\n\n**Merksatz:** JWP ist Prognose — ehrlich planen schlägt billig beschließen."
   },
   "day_45": {
     "title": "Jahresabrechnung - Gesamtabrechnung",
@@ -1516,7 +1542,9 @@
       }
     ],
     "task": "Erstellen Sie den Mantelbogen (Gesamtabrechnung) für ein Wirtschaftsjahr mit Vermögensstatus.",
-    "type": "Finanzen"
+    "type": "Finanzen",
+    "caseStudy": "**Fall: Gesamtabrechnung 2025 — Genehmigung verweigert**\n\nWEG „Südpark\": Abrechnung verspätet (September statt Juni). Position „Verwaltungskosten extern 8.400 €\" ohne Belegnachweis. Erhaltungsrücklage: Entnahme 22.000 € für Fassade, im WiPla nur 15.000 € budgetiert. Eigentümerversammlung lehnt Feststellung ab — Nachzahlungen blockiert.\n\n**Analyse:** **§ 28 Abs. 2 WEG** — Gesamtabrechnung mit vollständiger Einnahmen-/Ausgabenübersicht, Rücklagenentwicklung, Belegbarkeit. Verzug riskiert Schadensersatz. Abweichung WiPla vs. Ist muss erklärt werden. Vermögensstatus und Kontenabstimmung Pflicht.\n\n**Praxis-Tipp:** Belegeinsicht 2 Wochen vor ETV anbieten — Streit vermeiden vor dem Beschluss.",
+    "solution": "**Jahresabrechnung — Gesamtabrechnung nach § 28 Abs. 2 WEG**\n\n**Inhalt Gesamtabrechnung:**\n- Alle Einnahmen (Hausgeld, Sonderumlagen, Zinsen)\n- Alle Ausgaben nach Kostenarten\n- Saldo und Rücklagenentwicklung\n- Vermögensstatus (Bank, Forderungen, Verbindlichkeiten)\n\n**§ 28 Abs. 2 WEG:**\nJährliche Rechenschaft — Genehmigung durch ETV (einfache Mehrheit).\n\n**Fristen:**\nGesetzlich nicht fix, üblich bis 30.06. Folgejahr — Verzug = Haftungsrisiko.\n\n**Pflichten Verwalter:**\n- Belegbare Positionen\n- Abstimmung Bank = Buchhaltung\n- Abweichungen WiPla erläutern\n- Heizkosten Leistungsprinzip\n\n**Bei Ablehnung:**\nMängel nachbessern, erneute Vorlage — Nachzahlungen erst nach Beschluss fällig.\n\n**Merksatz:** Gesamtabrechnung = Vertrauensbeweis. Ohne Belege keine Genehmigung."
   },
   "day_46": {
     "title": "Jahresabrechnung - Einzelabrechnung",
