@@ -35,7 +35,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Praxisbeispiel: §34i GewO in der Immobiliardarlehensvermittlung\n\n**Fallsituation:**\nEin unabhängiger Finanzberater vermittelt einem Verbraucher ein Darlehen zur Renovierung eines Wohnhauses. Das Darlehen wird durch eine Grundschuld besichert. Der Vermittler führt eine umfassende Kreditwürdigkeitsprüfung durch und dokumentiert die Kreditwürdigkeitsanforderungen gem. §18a KreditwesenG (KWG).\n\n**Rechtliche Anforderungen:**\nDer Vermittler benötigt die Erlaubnis nach §34i Abs. 1 GewO, da er gewerbsmäßig Immobiliar-Verbraucherdarlehensverträge vermittelt. Die Sachkundeprüfung vor der IHK prüft Kenntnisse in Bankrecht, Immobilienfinanzierung und Verbraucherschutzbestimmungen.\n\n**Compliance:**\nDer Vermittler muss die Kreditwürdigkeitsprüfung dokumentieren, Interessenskonflikte offenlegen und dem Verbraucher vorab ein Merkblatt bereitstellen. Eine ordnungsgemäße Dokumentation ist entscheidend für die Erlaubnisaufrechterhaltung."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Erstberatung — Darf ich überhaupt vermitteln?**\n\nFrau L. (ehemalige Bankangestellte) möchte selbstständig Immobilienfinanzierungen vermitteln. Sie hat keine §34i-Erlaubnis, aber eine abgeschlossene IHK-Sachkundeprüfung vom letzten Monat. Kundin M. (42 J.) kommt mit 65.000 € Eigenkapital und Wunsch nach einem Einfamilienhaus für 420.000 €. Sie fragt: „Sind Sie lizenziert? Was dokumentieren Sie?\"\n\n**Analyse:** **§ 34i GewO** — gewerbsmäßige Vermittlung/Beratung von Immobiliar-Verbraucherdarlehensverträgen erlaubnispflichtig. **ImmVermV §§ 1–4** regeln Sachkunde und Erlaubnisverfahren. Ohne erteilte Erlaubnis keine Tätigkeit — auch nicht mit bestandener Prüfung allein. Berufshaftpflicht, Bedarfsanalyse und Dokumentation ab erstem Kontakt.\n\n**Praxis-Tipp:** Vor Erstgespräch: Erlaubnisnachweis, Versicherung, Interessenkonflikt offenlegen — sonst Bußgeld bis 50.000 € (§ 144 GewO)."
   },
   "day_2": {
     "title": "Rechtsfähigkeit, Geschäftsfähigkeit und Vertragsrecht",
@@ -75,7 +76,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Praxisbeispiel: Immobiliendarlehen und beschränkte Geschäftsfähigkeit\n\n**Sachverhalt:**\nEin 16-jähriger angehender Immobilienmakler möchte mit elterlicher Unterstützung ein Grundstück erwerben und benötigt einen Kreditvertrag.\n\n**Rechtliche Analyse:**\nDer Minderjährige ist gemäß § 104 BGB beschränkt geschäftsfähig. Ein Darlehensvertrag ist kein lediglich rechtlich vorteilhaftes Geschäft, sondern belastet den Schuldner mit Zahlungsverpflichtungen. Nach § 107 BGB ist daher die ausdrückliche Zustimmung beider Eltern erforderlich.\n\n**Praxisrelevanz:**\nDie kreditgebende Bank wird den Vertrag nur abschließen, wenn die elterliche Genehmigung schriftlich vorliegt. Fehlende Zustimmung führt zu Nichtigkeit des Vertrags (§ 108 Abs. 1 BGB). Der Kreditgeber haftet für Bonitätsprüfung und Aufklärung.\n\n**Lösung:**\nDie Eltern erteilen notariell beglaubigte Zustimmung. Alternativ wartet der Kandidat bis zur Vollendung des 18. Lebensjahres, um volle Geschäftsfähigkeit zu erlangen."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Junge Käufer — wer unterschreibt den Kredit?**\n\nPaar Berger: Er 19, sie 20 — beide in Ausbildung. Eltern wollen das Darlehen für ein Reihenhaus (350.000 €) „mitfinanzieren\" und bürgen. Der Sohn will allein unterschreiben, die Bank sendet den Vertrag per E-Mail zur „digitalen Signatur\".\n\n**Analyse:** **§§ 104–130 BGB** — unter 18 beschränkt geschäftsfähig (§ 106 BGB), Immobiliardarlehen nicht lediglich vorteilhaft (§ 107 BGB). **§ 492 BGB** — Schriftform mit eigenhändiger Unterschrift, E-Mail reicht nicht. Widerrufsrecht **§ 495 BGB** (14 Tage) erst nach wirksamem Vertrag.\n\n**Praxis-Tipp:** Personalausweis prüfen, bei Minderjährigen elterliche Zustimmung schriftlich — Vertrag sonst schwebend unwirksam (§ 108 BGB)."
   },
   "day_3": {
     "title": "Grundstücke, Erbbaurecht, Wohnungseigentum - Rechtliche Grundlagen",
@@ -115,7 +117,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Praxisbeispiel: Erbbaurecht und Finanzierungsherausforderungen\n\n**Fallsituation:**\nIn vielen deutschen Großstädten (Berlin, München, Frankfurt) werden Wohnbauprojekte zunehmend auf Erbbaurecht errichtet. Ein aktuelles Beispiel: Stadtentwicklungsprojekte vergeben Grundstücke als Erbbaurecht (typisch 99 Jahre) an Projektentwickler, um Bodenspekulationen zu vermeiden und bezahlbaren Wohnraum zu schaffen.\n\n**Finanzierungsprobleme:**\nKreditinstitute behandeln Erbbaurechte kritischer als Grundeigentum. Bei kürzeren Restlaufzeiten (unter 30 Jahren) sinkt die Beleihungswertquote erheblich. Der jährlich steigende Erbbauzins reduziert die Rentabilität und damit die Kreditwürdigkeit. Käufer zahlen zudem „Erbbauzinskapitalisierung\" ein – der Zins wird mit Faktor 18-20 kapitalisiert.\n\n**Rechtliche Konsequenzen:**\n§ 1 ErbbauRG gewährleistet Grundbucheintrag und Verkehrsfähigkeit. Allerdings erfordert die Finanzierung transparente Kostenkalkulationen und sorgfältige Laufzeitanalysen, um Refinanzierungsrisiken am Laufzeitende zu minimieren."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Erbbaurecht oder Volleigentum — was finanziert die Bank?**\n\nKunde S. vergleicht zwei Objekte: Reihenhaus auf Volleigentum (480.000 €) vs. Neubau auf Erbbaurechtsgrundstück (320.000 € + 8.400 €/Jahr Erbbauzins, Restlaufzeit 62 Jahre). Er fragt: „Warum will Bank B beim Erbbaurecht nur 60 % Beleihung?\"\n\n**Analyse:** **WEG §§ 1–3** — Wohnungseigentum als grundstücksgleiches Recht. **ErbbauRG § 1** — befristetes Nutzungsrecht, Heimfallrisiko. Bank bewertet Restlaufzeit und Erbbauzins in der Haushaltsrechnung. **§ 873 BGB** — dingliche Rechte nur mit Grundbucheintrag.\n\n**Praxis-Tipp:** Grundbuchauszug und Erbbauvertrag vor Beratung — Beleihungswert und Belastungsquote transparent erklären."
   },
   "day_4": {
     "title": "Grundbuch: Aufbau, Funktion und Eintragungen",
@@ -154,7 +157,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Grundbuch: Praxisbeispiel Immobilienfinanzierung\n\n**Fallszenario:** Ein Kaufinteressent erwirbt ein Einfamilienhaus für 400.000 EUR. Die Bank gewährt ein Darlehen von 320.000 EUR und fordert eine Eintragung ins Grundbuch.\n\n**Grundbuchauszug zeigt:**\n- **Abteilung I:** Eigentümer (Käufer nach Eintragung)\n- **Abteilung II:** Wegerecht zugunsten des Nachbarn, Wohnrecht der Verkäuferin\n- **Abteilung III:** Grundschuld 320.000 EUR zugunsten der Kreditbank (rang­älteste Sicherheit)\n\n**Praktische Relevanz:** Vor Darlehensvergabe prüft der Kreditgeber das Grundbuch auf Altlasten. Die Wegerechtsbelastung ist unproblematisch, das Wohnrecht beschränkt jedoch die Verwertbarkeit. Die Bank trägt ihre Grundschuld ins Grundbuch ein – dies sichert ihre Forderung ab (§ 1191 BGB). Bei Zahlungsausfällen kann die Bank das Grundstück verwerten.\n\n**Merkpunkt:** Eintragungen in Abteilung III sind für Kreditgeber entscheidend; sie bestimmen die Sicherungsquote und das Ausfallrisiko."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Grundbuchauszug — Belastungen vor Kauf klären**\n\nKundin will Eigentumswohnung kaufen (295.000 €). Im Grundbuchauszug: Abteilung II — Dienstbarkeit Tiefgarage; Abteilung III — Grundschuld 240.000 € zugunsten Sparkasse. Verkäufer: „Die Grundschuld wird gelöscht.\" Finanzierung noch nicht beantragt.\n\n**Analyse:** **GBO §§ 1–10** — öffentlicher Glaube des Grundbuchs. Abteilung III zeigt dingliche Belastungen — alte Grundschuld muss vor oder bei Finanzierung abgelöst/ablösen werden. **§ 873 BGB** — Eigentumsübertragung nur mit Auflassung und Eintragung.\n\n**Praxis-Tipp:** Aktuellen Grundbuchauszug (nicht älter als 3 Monate) in die Akte — ohne Bereinigung Abteilung III keine saubere Neufinanzierung."
   },
   "day_5": {
     "title": "Immobiliar-Verbraucherdarlehensvertrag und Verbraucherkreditrecht",
@@ -194,7 +198,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Praxisbeispiel: Widerrufsrecht bei unzureichender Widerrufsbelehrung\n\n**Sachverhalt:** Ein Verbraucher schloss 2022 einen Immobiliar-Verbraucherdarlehensvertrag (€ 250.000) zur Hausrenovierung ab. Die Bank händigte eine fehlerhafte Widerrufsbelehrung aus – die Widerrufsfrist war unklar formuliert.\n\n**Rechtliche Würdigung:** Nach § 495 BGB hat der Verbraucher ein 14-tägiges Widerrufsrecht. Gemäß § 492 Abs. 2 BGB muss die Widerrufsbelehrung transparent und verständlich sein. Eine fehlerhafte Belehrung verlängert die Frist auf drei Monate (§ 356 BGB analog).\n\n**Konsequenzen:** Der Verbraucher widerrief nach 60 Tagen erfolgreich. Die Bank musste den gesamten Darlehensvertrag rückgängig machen, alle geleisteten Zahlungen erstatten und die Grundschuld löschen.\n\n**Praktische Relevanz:** Dieses Szenario verdeutlicht die strenge Auslegung verbraucherschützender Vorschriften durch Gerichte. Darlehensgeber müssen § 491a BGB-konforme Informationen vor Vertragsschluss bereitstellen und Widerrufsbelehrungen fehlerlos ausgestalten – anderenfalls drohen kostspielige Rückabwicklungen."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: ESIS und Schriftform — was muss vor dem Vertrag passieren?**\n\nKunde erhält von Vermittler nur eine Provisionsvereinbarung und ein Bankangebot per PDF. Er soll „heute unterschreiben\" — Notartermin ist in 10 Tagen. ESIS-Merkblatt wurde nicht übergeben.\n\n**Analyse:** **§ 491a BGB** — vorvertragliche Informationen (ESIS) rechtzeitig vor Vertragsschluss. **§ 492 BGB** — Schriftform Immobiliar-Verbraucherdarlehensvertrag mit Pflichtangaben (Nettodarlehen, Effektivzins, Laufzeit, Sicherheiten). **§ 495 BGB** — 14 Tage Widerruf.\n\n**Praxis-Tipp:** ESIS + Beratungsdokumentation vor Unterschrift — Frist und Vollständigkeit in der Akte notieren."
   },
   "day_6": {
     "title": "Verhaltens- und Informationspflichten als Immobiliardarlehensvermittler",
@@ -233,7 +238,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Verhaltens- und Informationspflichten des Immobiliardarlehensvermittlers – Praxisbeispiel\n\n**Fallkonstellation:** Ein Immobiliardarlehensvermittler empfiehlt einem Kunden mit Nettomonatseinkommen von 2.500 € ein Darlehen von 400.000 € mit monatlicher Belastung von 2.200 € (inkl. Nebenkosten). Eine Bonitätsprüfung fand nicht statt.\n\n**Rechtsverletzung:** Der Vermittler verstieß gegen §511 BGB (Informationspflicht) und §34i Abs. 3 GewO. Die Empfehlung war nicht geeignet, da die Darlehensbelastung 88% des Einkommens überstieg und die Lebenshaltungskosten nicht berücksichtigt wurden.\n\n**Konsequenzen:** Der Kunde konnte das Darlehen nicht bedienen und forderte Schadensersatz. Das Amtsgericht verurteilte den Vermittler zur Zahlung von 50.000 €. Begründung: Verletzung der Bonitätsprüfungspflicht und fehlende kundengerechte Beratung gemäß §511 Abs. 2 BGB.\n\n**Lehre:** Dokumentierte Bonitätsprüfung und nachvollziehbare Geeignetheitsprüfung sind essentiell zur Haftungsvermeidung."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Beratungsprotokoll — Standard oder individuell?**\n\nVermittler nutzt ein generisches Merkblatt ohne Kundendaten. Kundin mit variablem Einkommen (Freelancerin) bekommt Empfehlung „10 Jahre Zinsbindung\" — ohne Risikoaufklärung zu Zinsanstieg nach Bindungsende.\n\n**Analyse:** **§ 491a Abs. 3 BGB** — individuelle Beratung auf Bedarf und Verständnis abstimmen. **Richtlinie 2014/17/EU Art. 15** — angemessene Erläuterung von Risiken variabler Zinsen. **§ 511 BGB** — dokumentierte Bedarfsanalyse und Produktempfehlung.\n\n**Praxis-Tipp:** Protokoll: Einkommen, Sicherheitspuffer, gewählte Zinsbindung, Alternativen — 10 Jahre Aufbewahrung."
   },
   "day_7": {
     "title": "Kreditwesengesetz (KWG) und Geldwäschegesetz (GwG)",
@@ -274,7 +280,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Praxisbeispiel: Geldwäschebekämpfung im Immobiliensektor\n\n**Fallsituation:**\nEin Immobiliendarlehensvermittler erhält von einem Kunden die Anfrage zur Finanzierung eines Mehrfamilienhauses (2 Mio. €). Der Käufer möchte die Eigenkapitalquote von 30 % (600.000 €) durch mehrere Bareinzahlungen von verschiedenen Personen erbringen, ohne diese namentlich zu benennen.\n\n**Rechtsfolgen:**\nDer Vermittler muss gem. §§ 10, 11 GwG die **Kundenidentifizierung** durchführen und die **Herkunft der Mittel** klären. Die Zahlung durch Dritte erfordert die Identifizierung dieser Personen (Beneficial Owner). Bareinzahlungen ohne transparente Herkunftsbestätigung sind verdächtig und müssen der **FIU gemäß § 47 GwG** gemeldet werden.\n\n**Konsequenzen bei Nichtbeachtung:**\nGeldstrafen bis 5 Mio. € (§ 56 GwG), Reputationsschaden, Entzug der Maklererlaubnis (§ 34i GewO). Das KWG verpflichtet zur Dokumentation; fehlerhafte AML-Compliance führt zu Aufsichtsmitteln durch die BaFin.\n\n**Lösung:** Vollständige Dokumentation aller Geldquellen mit amtlichen Ausweisen vor Darlehensvermittlung."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Baranzahlung und Auslandsüberweisung — GwG-Alarm**\n\nKunde möchte 90.000 € „Bargeld aus dem Ausland\" als Eigenkapital nachweisen. Herkunft: Verkauf einer Wohnung in einem Nicht-EU-Land, keine Dokumentation. Er drängt auf schnelle Kreditzusage.\n\n**Analyse:** **KWG § 32** — ordnungsgemäße Geschäftsorganisation. **GwG §§ 10–17** — Kundenidentifizierung (§ 11), verstärkte Sorgfalt bei hohem Risiko, **Herkunft der Mittel** (§ 11 Abs. 5). Verdacht → Meldung an FIU (§ 43 GwG).\n\n**Praxis-Tipp:** Ohne nachvollziehbare Mittelherkunft keine Vermittlung — dokumentieren und ggf. Geschäftsbeziehung ablehnen."
   },
   "day_8": {
     "title": "Verbraucherschutz, Schlichtungsstellen und Unlauterer Wettbewerb",
@@ -316,7 +323,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Praxisbeispiel: Intransparente Maklergebühren und Verbraucherschlichtung\n\nEin häufiges Praxisbeispiel ist die fehlerhafte Informationspflicht bei Immobilienmakler-Provisionen. Ein Makler vereinbart mündlich eine Provision von 7,14 % zzgl. MwSt., ohne diese schriftlich gemäß § 491a BGB (Informationen zum Darlehen) und der Maklergebührenverordnung transparent darzulegen.\n\nDer Verbraucher erkennt die tatsächliche Gebührenbelastung erst bei der Schlussrechnung und fühlt sich getäuscht – eine unlautere Geschäftspraktik nach § 3 UWG (fehlende Informationen über wesentliche Vertragsbedingungen).\n\n**Lösungsweg:** Der Verbraucher reicht eine Beschwerde bei der zuständigen Schlichtungsstelle (z.B. Ombudsman der Bundesbank für Darlehensvermittler oder Maklerverbände) ein. Diese prüft kostengünstig, ob die Informationspflichten verletzt wurden. Das Unternehmen wird zur Stellungnahme aufgefordert. Bei Verdacht auf Zuwiderhandlung empfiehlt die Schlichtungsstelle eine Rückerstattung oder Beilegung.\n\n**Ergebnis:** Außergerichtliche Konfliktlösung schützt Verbraucherrechte effektiv und spart Prozesskosten."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: „Garantiert beste Kondition\" — UWG-Falle**\n\nKonkurrenzvermittler wirbt: „Wir garantieren den niedrigsten Zins Deutschlands.\" Ihr Kunde fragt, warum Ihr Angebot 0,15 % höher ist. Parallel: Bank zahlt höhere Provision bei längerer Zinsbindung — nicht offengelegt.\n\n**Analyse:** **UWG** — irreführende geschäftliche Handlung (§ 5 UWG), unzulässige Garantieversprechen. **§ 491a BGB** / **§ 505a BGB** — transparente Kosten und Provisionen. Interessenkonflikt offenlegen.\n\n**Praxis-Tipp:** Vergleich mindestens drei Anbieter dokumentieren — keine Superlativ-Werbung ohne Beleg."
   },
   "day_9": {
     "title": "Datenschutz (DSGVO), Verschwiegenheit und Zuständigkeiten der Aufsicht",
@@ -358,7 +366,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Datenschutz in der Immobiliarfinanzierung – Praxisbeispiel\n\n**Fallsituation:** Ein Immobilienmakler übermittelt Kundendaten (Namen, Einkommensnachweise, Kontoauszüge) an einen Kreditvermittler ohne vorherige schriftliche Einwilligung der Kunden.\n\n**Rechtsverletzung:** Die Weitergabe verstößt gegen Art. 6 DSGVO (fehlende Rechtsgrundlage) und Art. 32 DSGVO (unzureichende Sicherungsmaßnahmen). Als Immobiliendarlehensvermittler nach §34i GewO trifft den Makler eine **Geheimhaltungspflicht** (§34c Abs. 9 GewO).\n\n**Aufsicht:** Das zuständige **Gewerbeamt** leitet ein Ordnungswidrigkeitsverfahren ein. Die **Landesaufsichtsbehörde** und der **Landesdatenschutzbeauftragte** kontrollieren die Einhaltung der DSGVO.\n\n**Folgen:** Bußgeld bis 20 Millionen Euro oder 4 % des weltweiten Jahresumsatzes (Art. 83 DSGVO), Schadensersatzansprüche der betroffenen Personen (Art. 82 DSGVO), mögliche Widerruf der Gewerberlaubnis.\n\n**Prävention:** Datenschutzerklärung vor Datenverarbeitung, schriftliche Einwilligung, Datenverarbeitungsverträge, technische Verschlüsselung."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Schufa-Kopie per WhatsApp — DSGVO-Stress**\n\nKunde sendet Schufa-Auskunft und Gehaltsnachweise per WhatsApp an Vermittler. Dieser leitet die Unterlagen an drei Banken weiter — ohne Einwilligung, ohne AV-Vertrag mit dem Messenger-Dienst.\n\n**Analyse:** **Art. 5 DSGVO** — Zweckbindung, Datenminimierung, Sicherheit. **Art. 6 DSGVO** — Rechtsgrundlage (Vertrag lit. b oder Einwilligung). Finanzdaten = besondere Kategorien sensibler Verarbeitung — sichere Kanäle, Löschkonzept.\n\n**Praxis-Tipp:** Verschlüsselte Upload-Plattform oder persönliche Übergabe — Einwilligung und Löschfrist dokumentieren."
   },
   "day_10": {
     "title": "Steuerliche Aspekte des Immobilienerwerbs",
@@ -396,7 +405,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Steuerliche Aspekte des Immobilienerwerbs – Praxisbeispiel\n\n**Fallszenario: Kauf eines Mehrfamilienhauses (4 Wohnungen) in Baden-Württemberg**\n\nEin Investor erwirbt ein Mehrfamilienhaus für 800.000 EUR. Die Grunderwerbsteuer (5% BW) beträgt 40.000 EUR und wird beim Notartermin fällig.\n\n**Jährliche Steuerbelastung:**\n- Grundsteuer: ca. 2.400 EUR (Hebesatz 3,0%)\n- Mieteinnahmen brutto: 48.000 EUR\n- Abzugsfähige Werbungskosten: Hypothekenzinsen (28.000 EUR), Instandhaltungsrücklage (4.800 EUR), AfA Gebäude (16.000 EUR)\n- Steuerpflichtiges Einkommen: -800 EUR (Verlust)\n\n**Ergebnis:** Trotz positiver Cashflows entsteht ein Steuerverlust durch die AfA, der andere Einkünfte reduziert. Bei Verkauf nach 8 Jahren ist der Gewinn dem persönlichen Steuersatz unterworfen (Spekulationssteuer relevant). Die Immobilie wird somit trotz Steuerverluste interessant durch Wertsteigerungspotenziale und Leverage-Effekte."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Kapitalanlage-Wohnung — Steuer mitrechnen**\n\nKunde kauft vermietete ETW (280.000 €) zur Kapitalanlage. Er erwartet „steuerfreien Gewinn beim Verkauf in 5 Jahren\". Nettokaltmiete 950 €, AfA noch nicht kalkuliert.\n\n**Analyse:** **EStG § 21** — Einkünfte aus Vermietung, Werbungskosten, **AfA** (2 % linear Gebäudeanteil). **§ 23 EStG** — private Veräußerungsgeschäfte: Frist **10 Jahre** bei Immobilien (nicht 5!). Grunderwerbsteuer und laufende Versteuerung der Miete.\n\n**Praxis-Tipp:** Steuerberater-Hinweis im Beratungsprotokoll — Vermittler keine Steuerberatung, aber auf 10-Jahres-Frist hinweisen."
   },
   "day_11": {
     "title": "Darlehensarten: Annuitätendarlehen, Tilgungsdarlehen, Endfälliges Darlehen",
@@ -433,7 +443,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Praxisbeispiel: Darlehensarten in der Immobilienfinanzierung\n\n**Szenario:** Ein Ehepaar erwirbt ein Einfamilienhaus für 400.000 EUR, benötigt ein Darlehen von 320.000 EUR bei 3,5% p.a. Zinsen über 20 Jahre.\n\n**Annuitätendarlehen:** Monatliche Rate 1.614 EUR (konstant). Im 1. Monat: 934 EUR Zinsen, 680 EUR Tilgung. Im 240. Monat: nur noch ~50 EUR Zinsen, ~1.564 EUR Tilgung. Vorteil: Planungssicherheit durch gleichbleibende Ratenhöhe, optimale Haushaltsbudgetierung.\n\n**Tilgungsdarlehen:** Konstante Tilgung monatlich 1.333 EUR. Erste Rate: 2.267 EUR (Zinsen + Tilgung), letzte Rate: ~1.380 EUR. Vorteil: schnellerer Schuldenabbau, geringere Gesamtzinslast (~85.000 EUR vs. 108.000 EUR beim Annuitätendarlehen). Nachteil: hohe Anfangsbelastung.\n\n**Endfälliges Darlehen:** 320.000 EUR Darlehen, monatlich nur 933 EUR Zinszahlung, Tilgung nach 20 Jahren in einer Summe. Kombination mit Bausparvertrag als Tilgungssicherungsmittel nach § 34i GewO. Vorteil: niedrige monatliche Belastung; Nachteil: Tilgungsrisiko, komplexere Struktur."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Annuität oder Tilgung — was passt zur Familie?**\n\nFamilie Weber: Netto 6.200 €, Kaufpreis 450.000 €, Eigenkapital 90.000 €. Bank A bietet **Annuität** 1.650 €/Monat (3,4 % + 2 % Tilgung). Bank B **Tilgungsdarlehen** — anfangs 2.100 €, sinkend. Kunde: „Was ist günstiger?\"\n\n**Analyse:** **§ 488 BGB** — Darlehensvertrag; **Annuitätendarlehen**: konstante Rate, Tilgungsanteil steigt. Haushaltsrechnung: maximale Rate = verfügbares Einkommen / 1,2. Gesamtkosten über Laufzeit vergleichen, nicht nur erste Rate.\n\n**Praxis-Tipp:** Tilgungsplan beider Varianten ausdrucken — Planbarkeit vs. Gesamtzinskosten erklären."
   },
   "day_12": {
     "title": "Bauspardarlehen, KfW-Darlehen und Förderprogramme",
@@ -470,7 +481,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Bauspardarlehen und KfW-Förderung in der Praxis\n\n**Fallbeispiel: Jungfamilie mit KfW-Effizienzhaus-Standard**\n\nEin Ehepaar (beide 35 Jahre) plant den Kauf eines Altbaus für 350.000 €. Eigenkapital: 80.000 € (23 %). Strategie:\n\n1. **Bauspardarlehen**: Abschluss eines Bausparvertrags (Bausparsumme 150.000 €) mit 8-jähriger Ansparphase. Wohnungsbauprämie (9 % auf max. 2.100 € jährlich) senkt Ansparquote.\n\n2. **KfW-Darlehen (Programm 261)**: Modernisierung zu KfW-Effizienzhaus 70. Förderdarlehen 120.000 € mit 1,5 % Effektivzins, 20 % Tilgungszuschuss (24.000 €).\n\n3. **Finanzierungslücke**: Anschlussfinanzierung durch Hausbank für 100.000 €.\n\n**Gesamteffekt**: Kombinierte Nutzung reduziert Zinsbelastung um ca. 35.000 € über 20 Jahre. Planungssicherheit durch Zinsgarantie und staatliche Förderungen maximiert Kreditwürdigkeit und Rentabilität."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: KfW 261 und Bauspar — Förderung kombinieren**\n\nNeubau KfW-40-Haus (520.000 €). Kunde hat Bausparvertrag (40.000 € angespart, Zuteilung in 8 Monaten). Fragt nach **KfW 261** und ob Bauspardarlehen vor oder nach Bankdarlehen.\n\n**Analyse:** **BausparkG** — Zuteilungsreife, Darlehenszins nach Tarif. **KfW-Merkblatt** — Förderkredit oft vorrangig vor Bankdarlehen im Grundbuch (Rangfolge). Energieeffizienz-Nachweis für KfW-Antrag.\n\n**Praxis-Tipp:** Förderfahrplan zeichnen: KfW → Bauspar → Bank — Rang und Eigenkapitalquote abstimmen."
   },
   "day_13": {
     "title": "Zinsbindung, Sollzins, Effektivzins und Konditionsvergleich",
@@ -508,7 +520,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Praxisbeispiel: Zinsbindungsvergleich bei Immobilienfinanzierung\n\n**Szenario:** Ein Kreditnehmer benötigt 300.000 € für ein Einfamilienhaus. Bank A bietet 10 Jahre Zinsbindung mit 3,5% Sollzins und 3,8% Effektivzins (inkl. 0,5% Bearbeitungsgebühr). Bank B offeriert 15 Jahre Zinsbindung mit 3,8% Sollzins und 4,1% Effektivzins.\n\n**Analyse:** Der Sollzinsunterschied beträgt 0,3%, der Effektivzinsunterschied 0,3 Prozentpunkte. Bei 25-jähriger Gesamtlaufzeit und anschließender Anschlussfinanzierung kostet die längere Zinsbindung bei Bank B etwa 15.000 € mehr Gesamtzinsen. Allerdings sichert Bank B gegen Zinsanstieg in 15 statt 10 Jahren ab.\n\n**Bewertung:** Neben dem Effektivzins sind Sondertilgungsrechte (kostenlos bis 5% p.a.), Bereitstellungszinsen und die Zinsmarktprognose entscheidend. Ein Konditionsvergleich mehrerer Angebote ist essentiell – hier hätte der Kreditnehmer Bank A gewählt, falls kurzfristig Zinsrückgang erwartet wird."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: 3,2 % Sollzins — aber 3,8 % Effektivzins?**\n\nKunde vergleicht zwei Angebote: Bank X Soll 3,2 %, Effektiv 3,45 %. Bank Y Soll 3,15 %, Effektiv 3,72 % (hohe Bereitstellungszinsen). Er versteht den Unterschied nicht.\n\n**Analyse:** **§ 492 Abs. 2 BGB** — Effektivjahreszins als Vergleichsgröße. **§ 489 BGB** — Sonderkündigung nach 10 Jahren. Sollzins ≠ Gesamtkosten — Bereitstellungszins, Kontoführung, Sondertilgungsgebühren einrechnen.\n\n**Praxis-Tipp:** EU-Standardisiertes Merkblatt (ESIS) Zeile für Zeile erklären — Vergleich immer am Effektivzins."
   },
   "day_14": {
     "title": "Bonitätsprüfung, Schufa-Auskunft und Kreditwürdigkeitsprüfung",
@@ -545,7 +558,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Praxisbeispiel: Bonitätsprüfung bei Immobilienfinanzierung\n\n**Fallsituation:**\nEin 35-jähriger Angestellter beantragt ein Hypothekendarlehen über 300.000 € für ein Eigenheim. Sein Nettoeinkommen beträgt 3.500 €/Monat.\n\n**Bonitätsprüfung:**\nDie Bank fordert Gehaltsabrechnungen (letzte 3 Monate) und Steuerbescheide (2 Jahre) an. Die Ausgabenprüfung zeigt bestehende Kreditverpflichtungen: Autokredit (400 €/Monat), Konsumentenkredit (200 €/Monat). Die Vermögensprüfung weist Eigenkapital von 80.000 € nach.\n\n**Schufa-Auskunft:**\nDer Schufa-Score beträgt 94 % (befriedigend). Die Auskunft verzeichnet zwei pünktlich bediente Altdarlehen, keine negativen Einträge oder Insolvenzen.\n\n**Kreditwürdigkeitsprüfung:**\nUnter Anwendung der Debt-Service-Coverage-Ratio (DSCR) wird die maximale Belastung berechnet. Mit Kreditrate (~1.800 €), bestehenden Verpflichtungen (600 €) und Lebenshaltungskosten (1.200 €) liegt die Gesamtbelastung bei 3.600 € – knapp über der Obergrenze. Die Bank genehmigt das Darlehen mit erhöhtem Zinssatz als Risikoausgleich."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Grenzbelastung — darf die Bank so viel?**\n\nPaar mit 5.800 € netto, zwei Kinder. Rate soll 2.350 € betragen (Belastung 40 %). Schufa-Score gut, aber Dispo dauerhaft ausgeschöpft. Vermittler will „noch schnell die Zusage\".\n\n**Analyse:** **§ 505a BGB** — Kreditwürdigkeitsprüfung vor Vertrag. **§ 505b BGB** — keine Kreditvergabe bei Erkennbarkeit der Zahlungsunfähigkeit. Haushaltsrechnung inkl. Kinder, Puffer, bestehende Kredite.\n\n**Praxis-Tipp:** Belastung max. 35–40 % netto — bei Grenzwert ehrliche Absage oder Objektpreis senken, nicht Druck auf Bank."
   },
   "day_15": {
     "title": "Sicherheiten: Grundschuld, Hypothek, Bürgschaft",
@@ -583,7 +597,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Praxisbeispiel: Grundschuld bei Immobilienfinanzierung\n\n**Ausgangssituation:** Ein Ehepaar finanziert ein Einfamilienhaus (Kaufpreis 350.000 €) mit einem Hypothekendarlehen von 280.000 €. Die Bank verlangt Sicherheiten.\n\n**Sicherheitskonzept der Bank:**\n- **Grundschuld (1. Rang):** 280.000 € notariell bestellt, Eintrag ins Grundbuch (Kosten ca. 1.400 €). Diese abstrakte Sicherheit bleibt bestehen, auch wenn das Darlehen getilgt wird – ideal für Folgefinanzierungen.\n- **Bürgschaft:** Der Vater eines Ehepartners bürgt für 50.000 € (sog. Nachrangbürgschaft), da das Eigenkapital knapp ist. Er haftet persönlich und unbeschränkt.\n\n**Praxisrelevanz:** Bei Zahlungsausfall kann die Bank die Grundschuld verwerten (Zwangsversteigerung). Parallel kann sie den Bürgen in Regress nehmen. Die Rangfolge ist entscheidend: Eine nachrangige Grundschuld von 100.000 € würde bei Verwertung erst nach Befriedigung der 1. Grundschuld bedient.\n\n**Fazit:** Kombinierte Sicherheitsstrukturen minimieren Ausfallrisiken und ermöglichen bessere Konditionen."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Grundschuld 320.000 € — Brief oder Buch?**\n\nNotar fragt vor Beurkundung: Grundschuld in **Höhe von 320.000 €** mit 15 % Zinsen zur Sicherung. Kunde: „Brauchen wir das volle Betrag? Was ist der Unterschied Brief- und Buchgrundschuld?\"\n\n**Analyse:** **§§ 1113–1191 BGB** — Grundschuld abstrakt, Höchstbetrag oft über Darlehen (Sicherheitspuffer). **Hypothek** akzessorisch (selten heute). Abtretung der Grundschuld bei Bankwechsel — Kosten kalkulieren.\n\n**Praxis-Tipp:** Höhe mit Bank abstimmen (nicht unnötig überbesichern) — Buchgrundschuld üblich, keine physische Urkunde nötig."
   },
   "day_16": {
     "title": "Anschlussfinanzierung, Prolongation und Forward-Darlehen",
@@ -618,7 +633,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Anschlussfinanzierung: Praktische Optimierungsstrategie\n\n**Ausgangssituation:**\nEin Eigenheimbesitzer mit 200.000 € Restschuld steht nach 10 Jahren Zinsbindung (3,5%) vor der Anschlussfinanzierung. Die Bank bietet Prolongation zu 4,2% an.\n\n**Handlungsoptionen und Analyse:**\n\n**Prolongation:** Bank nutzt Wechselträgheit; Zinsaufschlag von 0,7% bedeutet jährlich 1.400 € Mehrkosten.\n\n**Umschuldung:** Marktrecherche ergibt bessere Konditionen (3,8%) bei konkurrierender Bank. Grundschuldabtretungskosten (~400 €) amortisieren sich innerhalb weniger Monate. Netto-Ersparnis: ca. 800 €/Jahr.\n\n**Forward-Darlehen:** Hätte 2 Jahre vorher bei besseren Zinsen (3,2%) abgeschlossen Sicherheit ohne Kündigungsfrist nach Zinsbindungsende bieten können.\n\n**Empfehlung:**\nAktive Marktrecherche und Umschuldung nutzen. Für zukünftige Finanzierungen: Forward-Darlehen ab 3 Jahre vor Ablauf einplanen. Dokumentation der Konditionenanfragen notwendig zur Nachweisbarkeit der Kreditwürdigkeitsprüfung nach §18a KWG."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Zinsbindung endet in 8 Monaten — was tun?**\n\nKunde: Restschuld 198.000 €, aktuell 2,9 %, Bank bietet Prolongation 4,6 %. Markt: 3,8 % bei Konkurrenz. Er fragt nach **Forward-Darlehen** und **§ 489 BGB**.\n\n**Analyse:** **§ 489 BGB** — Sonderkündigungsrecht nach 10 Jahren (6 Monate Frist), keine Vorfälligkeitsentschädigung. Vorher: Umschuldung vs. Forward (Zins heute für später sichern). Grundschuld-Abtretung Kosten einrechnen.\n\n**Praxis-Tipp:** 12 Monate vor Ende: Vergleich Prolongation / Umschuldung / Forward — Entscheidung dokumentieren."
   },
   "day_17": {
     "title": "Vorfälligkeitsentschädigung, Sondertilgung und Tilgungssatzwechsel",
@@ -654,7 +670,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Praxisbeispiel: Vorfälligkeitsentschädigung und Sondertilgung bei Immobiliendarlehen\n\n**Fallszenario:** Ein Darlehensnehmer hat ein Immobiliendarlehen über 300.000 € zu 2,5% Festzins mit 2% Tilgung abgeschlossen. Nach 6 Jahren möchte er vorzeitig tilgen.\n\n**Vorfälligkeitsentschädigung:** Bei sofortiger vollständiger Rückzahlung berechnet die Bank den Zinsverlust. Liegt der aktuelle Wiederanlagezins bei 1,5%, entsteht ein Differenzschaden: (2,5% - 1,5%) × Restschuld × verbleibende Laufzeit. Dies kann mehrere tausend Euro betragen.\n\n**Sondertilgungsrecht:** Optimal wäre eine Darlehensvereinbarung mit 5% jährlichem Sondertilgungsrecht ohne Vorfälligkeitsentschädigung. Der Darlehensnehmer könnte regelmäßig zusätzliche Beträge tilgen, ohne Strafzinsen zu zahlen.\n\n**Tilgungssatzwechsel:** Alternativ ermöglicht der Wechsel von 2% auf 3% Tilgung eine erhöhte Rückzahlungsgeschwindigkeit ohne Vorfälligkeitsentschädigung, solange die Gesamtrate (Zins + Tilgung) die Kreditfähigkeit nicht überschreitet.\n\n**Empfehlung:** Beide Optionen präventiv im Darlehensvertrag vereinbaren (§ 489 BGB)."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Erbschaft — Darlehen vorzeitig tilgen?**\n\nKunde erbt 120.000 €, will Restschuld 185.000 € sofort tilgen. Vertrag: 8 Jahre Zinsbindung noch aktiv, Bank nennt **Vorfälligkeitsentschädigung 9.400 €**.\n\n**Analyse:** **§ 502 BGB** — Entschädigung bei vorzeitiger Rückzahlung (Ausnahme: § 489 nach 10 Jahren). Berechnung: Zinsdifferenzmethode. **Sondertilgung** jährlich oft 5 % ohne Entschädigung — Vertrag prüfen.\n\n**Praxis-Tipp:** Erst Sondertilgungsrecht ausschöpfen, dann Vorfälligkeitsrechnung — manchmal Anlage besser als Tilgung."
   },
   "day_18": {
     "title": "Risiken der Immobilienfinanzierung und Absicherung",
@@ -689,7 +706,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Praxisbeispiel: Zinsänderungsrisiko und Absicherungslücken\n\n**Ausgangssituation:** Ein Ehepaar (beide 35 Jahre, Angestellte) finanziert eine Immobilie mit 300.000 € Darlehenssumme über 10 Jahre Zinsbindung à 2,5%. Nach Ablauf droht Anschlussfinanzierung zu 5,5% – monatliche Belastung steigt um ca. 750 €.\n\n**Identifizierte Risiken:**\n- **Zinsänderungsrisiko:** Deutlich höhere Raten gefährden Zahlungsfähigkeit\n- **Zahlungsunfähigkeitsrisiko:** Jobverlust eines Partners → sofortige Liquiditätskrise\n- **Lücke:** Nur Risikolebensversicherung vorhanden, keine Berufsunfähigkeitsabsicherung\n\n**Empfohlene Maßnahmen:**\n1. **Berufsunfähigkeitsversicherung** (Prämie ~60-80 €/Monat) für beide Partner – Rentenzahlung bei Erwerbsunfähigkeit\n2. **Rücklagenbildung:** 18.000 € (3 × monatliche Rate) zur Pufferung von Zinssprüngen\n3. **Tilgungsoptimierung:** Erhöhung auf 3% während günstiger Zinsphase\n4. **Anschlussfinanzierung:** Frühzeitige Zinsfestschreibung (36 Monate vor Ablauf)\n\nDiese **ganzheitliche Strategie** reduziert Ausfallrisiken nachweislich."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Variable Zinsen — Risiko nicht verstanden**\n\nKunde wählt Darlehen mit **6 Monate Euribor-Anpassung** wegen anfänglich 0,3 % niedrigerem Zins. Keine Rücklagen, kein Risikoleben. Einkommen gerade ausreichend für Rate.\n\n**Analyse:** **§§ 490, 505a BGB** — Risikoaufklärung Zinsänderung, Belastbarkeit bei steigenden Raten. Stressrechnung: Rate +2 Prozentpunkte. Absicherung: BU, Risikoleben, Rücklagen.\n\n**Praxis-Tipp:** Worst-Case-Rechnung ins Protokoll — variable Zinsen nur mit Puffer empfehlen."
   },
   "day_19": {
     "title": "Besondere Finanzierungsformen: Mietkauf, Leibrente, Reverse Mortgage",
@@ -725,7 +743,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Besondere Finanzierungsformen im Immobilienmarkt 2024\n\n**Reverse Mortgage als Lösungsansatz für Altersarmut:**\nAktuelle Studien zeigen steigende Nachfrage nach Umkehrhypotheken in Deutschland. Senioren ab 65 Jahren mit bezahlten Immobilien, aber niedrigen Renteneinkommen nutzen Reverse Mortgages zur Liquiditätsverbesserung. Beispiel: Ein 70-Jähriger mit schuldenfreiem Haus (Marktwert 400.000 €) erhält monatlich ca. 800-1.200 € Rentenzahlung, bleibt jedoch wohnen. Die Rückzahlung erfolgt erst nach Tod oder Immobilienauszug aus dem Verkaufserlös.\n\n**Rechtlicher Rahmen:**\nReverse Mortgages unterliegen § 608 BGB (Leibrentenvertrag). Kreditinstitute müssen Aufklärungspflichten erfüllen und Beratung zur Finanzierungsalternative dokumentieren.\n\n**Mietkauf-Trend:**\nMietkauf gewinnt bei Käufern ohne Eigenkapital an Bedeutung. Mietzahlungen (typisch 60-80 % des Kaufpreises) werden teilweise angerechnet, ermöglichen paralleles Sparen auf Kaufpreis-Rest.\n\n**Kritische Punkte:** Reverse Mortgages bergen Zinsänderungsrisiken; Mietkauf birgt Bonitätsrisiken für Verkäufer."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Mietkauf statt Kredit — Alternative erklären**\n\nKunde mit schwacher Schufa (Insolvenz vor 4 Jahren) will Einfamilienhaus. Makler schlägt **Mietkauf** vor: 5 Jahre Miete, dann Kaufoption. Kein klassisches Bankdarlehen.\n\n**Analyse:** Sonderform — Mietkauf = Miete + Kaufoption, oft höhere Gesamtkosten. Kein § 34i-Standarddarlehen, aber Beratungspflicht bei Vermittlung von Finanzierungskonzepten prüfen. Eigenkapitalaufbau während Mietphase, Notarvertrag prüfen.\n\n**Praxis-Tipp:** Schriftlicher Vergleich Mietkauf vs. klassische Finanzierung nach Schufa-Sanierung — Transparenz über Gesamtkosten und Eigentumsübergang."
   },
   "day_20": {
     "title": "Zusammenfassung Theorie und Vorbereitung auf Prüfungsvorbereitung",
@@ -763,7 +782,8 @@
         "hint": "Nutzen Sie Quellen wie Haufe.de, IHK-Webseite oder Gesetze-im-internet.de für aktuelle Informationen.",
         "solution": "# Praxisbeispiel: Immobilienfinanzierung mit §34i-Compliance\n\n**Szenario:** Ein Darlehensvermittler berät ein Ehepaar (Bruttoeinkommen 5.500 €) beim Kauf einer Immobilie für 350.000 €. Eigenkapitalquote: 15 % (52.500 €).\n\n**Kritische Prüfpunkte nach §34i GewO:**\n\nDie Bonitätsprüfung gemäß §655c BGB erfordert Einkommensnachweise und Haushaltsrechnung. Belastungsquote max. 35 % des Nettoeinkommens. Bei den Eheleuten: monatliche Belastung ca. 1.300 € (zulässig).\n\n**Sicherheiten:** Grundschuld in Abteilung III ins Grundbuch eintragen lassen. Versicherungspflicht prüfen (Gebäudeversicherung, ggf. Risikolebensversicherung).\n\n**Verbraucherschutz:** Widerrufsrecht (14 Tage), detaillierte Angaben im ESIS-Merkblatt dokumentieren, DSGVO-Datenschutz beachten.\n\n**KfW-Förderung:** Effizienzhaus-Standard prüfen (Zinsvorteil bis 0,5 %).\n\n**Fazit:** Systematische Checkliste und lückenlose Dokumentation sichern Compliance und Vermittlungsqualität."
       }
-    ]
+    ],
+    "caseStudy": "**Fall: Theorie-Check vor Prüfung — komplexer Kunde**\n\nIHK-Prüfling simuliert: Ehepaar, 380.000 € ETW, 60.000 € EK, Freelancer-Einkommen, KfW-Förderung, 10 Jahre Zinsbindung, Grundschuld, ESIS, GwG, DSGVO — alles in einem Beratungsgespräch.\n\n**Analyse:** Wiederholung Tag 1–19: Erlaubnis **§ 34i**, Vertrag **§§ 492, 511**, Bonität **§ 505a**, Sicherheit **§§ 1113 ff.**, Förderung KfW/Bauspar, Steuerhinweis, Dokumentation.\n\n**Praxis-Tipp:** Systematik: Recht → Objekt → Haushalt → Produkt → Sicherheit → Risiko → Protokoll — Prüfung und Praxis gleicher Ablauf."
   },
   "day_21": {
     "title": "Übungsaufgaben: Haushaltsrechnung und Finanzierungsplanung",
