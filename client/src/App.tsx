@@ -58,6 +58,7 @@ const Certificates = lazy(() => import("@/pages/Certificates"));
 const Weiterbildungsnachweis = lazy(() => import("@/pages/Weiterbildungsnachweis"));
 const ComplianceLanding = lazy(() => import("@/pages/ComplianceLanding"));
 const VerwalterRechnerLanding = lazy(() => import("@/pages/VerwalterRechnerLanding"));
+const VerwalterSuiteLanding = lazy(() => import("@/pages/VerwalterSuiteLanding"));
 const RechenpraxisPricing = lazy(() => import("@/pages/RechenpraxisPricing"));
 const VorlagenIndex = lazy(() => import("@/pages/verwalter/VorlagenIndex"));
 const VorlageDetail = lazy(() => import("@/pages/verwalter/VorlageDetail"));
@@ -385,6 +386,7 @@ function Router() {
         <Route path="/empfehlungsprogramm"><PublicLayout><Empfehlungsprogramm /></PublicLayout></Route>
         <Route path="/compliance-20h"><PublicLayout><ComplianceLanding /></PublicLayout></Route>
         <Route path="/verwalter-rechner"><PublicLayout><VerwalterRechnerLanding /></PublicLayout></Route>
+        <Route path="/verwalter-suite"><PublicLayout><VerwalterSuiteLanding /></PublicLayout></Route>
         <Route path="/rechenpraxis-preise"><VerwalterProductLayout><RechenpraxisPricing /></VerwalterProductLayout></Route>
         <Route path="/app/verwalter/vorlagen/:slug">
           <VerwalterProductLayout>
