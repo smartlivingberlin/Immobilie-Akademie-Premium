@@ -1576,7 +1576,9 @@
       }
     ],
     "task": "Erstellen Sie eine Einzelabrechnung für Wohnung Nr. 3 (75 m², 2 Personen, MEA 850/10.000).",
-    "type": "Finanzen"
+    "type": "Finanzen",
+    "caseStudy": "**Fall: Einzelabrechnung WE 3 — Nachzahlung 1.240 € streitig**\n\nWEG „Kastanienhof\" (10 WE): Gesamtabrechnung genehmigt. Eigentümerin W. (WE 3, MEA 850/10.000, 75 m²) erhält Einzelabrechnung mit Nachzahlung 1.240 €. Sie bestreitet die Heizkosten (nach Verbrauch) und den Verteilerschlüssel für Müll (MEA statt Personen). Im März 2025 verkaufte sie die Wohnung — der Käufer fordert anteilige Abrechnung.\n\n**Analyse:** **§ 28 Abs. 2 WEG** verlangt für jeden Eigentümer eine nachvollziehbare Einzelabrechnung: Vorauszahlungen vs. Ist-Kosten, Verteilerschlüssel je Kostenart. Bei Eigentümerwechsel: anteilige Hausgeld- und Kostenverteilung nach Übergabetag. Heizkosten separat nach HKVO.\n\n**Praxis-Tipp:** Einzelabrechnung mit Rechenweg-Anlage — nicht nur Summe.",
+    "solution": "**Einzelabrechnung nach § 28 Abs. 2 WEG**\n\n**Inhalt je Eigentümer:**\n- Geleistete Vorauszahlungen (Hausgeld)\n- Anteilige Gesamtkosten nach Verteilerschlüssel\n- **Abrechnungsspitze:** Nachzahlung oder Guthaben\n\n**§ 28 Abs. 2 WEG:**\nGegenüberstellung auf Einzelebene — Grundlage für Forderung/Gutschrift.\n\n**Verteilerschlüssel (§ 16 WEG):**\n| Kostenart | Schlüssel |\n|-----------|----------|\n| Versicherung, Verwaltung | MEA |\n| Heizung | Verbrauch + Fläche (HKVO) |\n| Müll | MEA oder Beschluss |\n\n**Eigentümerwechsel:**\nVerkäufer/Käufer anteilig nach Kalendertagen im Abrechnungsjahr.\n\n**Beispiel WE 3:**\nMEA 8,5 % → Kostenanteil = Gesamtkosten × 0,085\n\n**Merksatz:** Gesamtabrechnung + Einzelabrechnung = Summe muss stimmen."
   },
   "day_47": {
     "title": "Heizkostenabrechnung & HKVO",
@@ -1608,7 +1610,9 @@
       }
     ],
     "task": "Verteilen Sie Gesamtheizkosten von 12.000 € korrekt nach 70/30-Schlüssel (70% Verbrauch, 30% Fläche) auf 10 Wohnungen.",
-    "type": "Technik"
+    "type": "Technik",
+    "caseStudy": "**Fall: Heizkostenabrechnung Techem — 15 % Kürzung droht**\n\nWEG „Nordpark\" (10 WE): Gesamtheizkosten 12.000 €. Messdienstleister rechnet 70 % verbrauchsabhängig ab — aber in zwei Wohnungen fehlen Ablesungen (defekte Heizkostenverteiler). Grundkostenanteil nur 25 % statt mindestens 30 %. Eigentümer H. kündigt Kürzung nach **HeizkostenV § 12** an.\n\n**Analyse:** **§ 7 HeizkostenV** regelt Verteilung (mind. 50–70 % Verbrauch). **§ 8 HeizkostenV:** Grundkosten 30–50 % nach Wohnfläche/MEA. Fehlende Ablesungen = Schätzung, gekennzeichnet. Verstoß gegen HKVO → Kürzungsrecht 15 %.\n\n**Praxis-Tipp:** Gesamtkosten Abrechnung = Summe Messdienstleister vor Freigabe.",
+    "solution": "**Heizkostenabrechnung — HKVO Verteilung und Prüfung**\n\n**§ 7 HeizkostenV (Verteilung):**\n- Mind. **50 %** verbrauchsabhängig (Praxis oft 70 %)\n- Rest: Grundkosten nach Wohnfläche oder MEA\n\n**§ 8 HeizkostenV (Grund-/Verbrauchskosten):**\n- Verbrauchskosten: 50–70 %\n- Grundkosten: 30–50 %\n\n**Berechnung 12.000 € (70/30):**\n- Verbrauch: 8.400 € → nach Zählerständen\n- Grund: 3.600 € → nach m² oder MEA\n\n**Pflichten Verwalter:**\n1. Abrechnung Messdienstleister plausibilisieren\n2. Gerätenummern und Ablesungen prüfen\n3. Fehlende Werte dokumentieren/schätzen\n4. Gesamtsumme = Brennstoff + Betriebskosten Heizung\n\n**Kürzungsrecht (§ 12 HKVO):**\nBei Verstoß gegen Pflichten → bis 15 % Minderung.\n\n**Merksatz:** HKVO hat Vorrang — 70/30 korrekt oder Eigentümer kürzen."
   },
   "day_48": {
     "title": "Rechnungsprüfung durch den Beirat",
@@ -1639,7 +1643,9 @@
       }
     ],
     "task": "Erstellen Sie eine Checkliste für die Rechnungsprüfung durch den Beirat (10 Punkte).",
-    "type": "Organisation"
+    "type": "Organisation",
+    "caseStudy": "**Fall: Beirat findet Lücke — 4.200 € ohne Beleg**\n\nVerwaltungsbeirat prüft Jahresabrechnung vor ETV. Stichprobe 20 Rechnungen: Position „Reparatur Tiefgaragentor 4.200 €\" ohne Originalbeleg, Rücklagenentwicklung stimmt nicht (Zinsen fehlen). Beirat verweigert Prüfvermerk, Eigentümer werden nervös.\n\n**Analyse:** **§ 29 WEG** — Beirat kontrolliert und unterstützt Verwalter. Rechnungsprüfung: Belege, Kontobewegungen, Rücklage. **§ 666 BGB** — Verwalter hat Sorgfaltspflicht und Rechenschaftslegung. Fehlende Belege = Abrechnungsmangel.\n\n**Praxis-Tipp:** Digitaler Belegordner mit Beirats-Zugang vor Prüftermin.",
+    "solution": "**Rechnungsprüfung durch den Beirat — § 29 WEG, § 666 BGB**\n\n**§ 29 WEG (Beirat):**\n- Kontrolle und Unterstützung des Verwalters\n- Rechnungsprüfung vor ETV üblich\n- Haftung nur bei grober Fahrlässigkeit/Vorsatz\n\n**§ 666 BGB (Verwalterpflichten):**\nSorgfältige Geschäftsführung, Rechenschaft, Treuepflicht.\n\n**Prüf-Checkliste (10 Punkte):**\n1. Gesamtabrechnung = Summe Einzelabrechnungen\n2. Bankendsaldo = Buchhaltung\n3. Belege zu jeder Position\n4. Verteilerschlüssel korrekt\n5. Heizkosten = Messdienstleister\n6. Rücklage inkl. Zinsen\n7. Abgrenzung Zahlungsdatum\n8. Sonderumlagen ausgewiesen\n9. Vermögensstatus vollständig\n10. WiPla-Abweichungen erklärt\n\n**Bei Mängeln:**\nSchriftliche Stellungnahme an Verwalter, Korrektur vor ETV.\n\n**Merksatz:** Beirat ist Frühwarnsystem — nicht Formsache."
   },
   "day_49": {
     "title": "Entlastung des Verwalters",
@@ -1670,7 +1676,9 @@
       }
     ],
     "task": "Schreiben Sie den Tagesordnungspunkt 'Genehmigung Jahresabrechnung 2025 und Entlastung des Verwalters' für die Eigentümerversammlung.",
-    "type": "Recht"
+    "type": "Recht",
+    "caseStudy": "**Fall: Entlastung verweigert — Vertrauenskrise**\n\nETV „Am Seeufer\": Jahresabrechnung genehmigt, aber Entlastung des Verwalters mit 6 Ja, 5 Nein abgelehnt. Grund: verspätete Abrechnung (8 Monate) und undokumentierte Verwaltungskosten. Verwalter ist Eigentümer in WE 2 — stimmt nicht mit ab.\n\n**Analyse:** **§ 28 Abs. 5 WEG** — Entlastung als Beschluss, Verzicht auf bekannte Ansprüche (nicht unbekannte Mängel). Einfache Mehrheit. Verwalter darf nicht abstimmen (Interessenkonflikt). Getrennte Abstimmung: Abrechnung ≠ Entlastung.\n\n**Praxis-Tipp:** Entlastung nie mit Abrechnung in einem TOP vermischen.",
+    "solution": "**Entlastung des Verwalters — § 28 Abs. 5 WEG**\n\n**Rechtswirkung:**\n- Verzicht auf **bekannte** Ansprüche aus abgelaufenem WJ\n- **Nicht:** unbekannte Mängel, Vorsatz, grobe Fahrlässigkeit\n- **Nicht:** strafrechtliche Verfolgung\n\n**§ 28 Abs. 5 WEG:**\nBeschluss der Eigentümerversammlung zur Entlastung.\n\n**Abstimmung:**\n- Einfache Mehrheit\n- Verwalter **stimmberechtigt ausgeschlossen**\n- Empfehlung: nach Genehmigung Abrechnung, eigener TOP\n\n**TOP-Muster:**\n„Entlastung des Verwalters für das Wirtschaftsjahr 2025 gemäß § 28 Abs. 5 WEG\"\n\n**Verweigerung:**\nIndiz für Vertrauensverlust — Abberufung möglich (§ 26 WEG).\n\n**Merksatz:** Entlastung = Vertrauensvotum, kein Automatismus."
   },
   "day_50": {
     "title": "Praxisprojekt: Die fehlerhafte Abrechnung",
@@ -1701,7 +1709,9 @@
       }
     ],
     "task": "Korrigieren Sie eine fehlerhafte Muster-Abrechnung und schreiben Sie eine Erläuterung für die Eigentümer.",
-    "type": "Praxis"
+    "type": "Praxis",
+    "caseStudy": "**Fall: Wasser nach Personen statt MEA — Korrektur nötig**\n\nAbrechnung 2025 verteilt Wasserkosten (3.800 €) nach Personenzahl. Gemeinschaftsordnung und Beschluss: **MEA**. Eigentümer M. zahlt 420 € zu viel, Eigentümer N. zu wenig. Nach Genehmigung in ETV meldet M. den Fehler — Anfechtung droht.\n\n**Analyse:** Fehlerhafte **§ 28 Abs. 2 WEG**-Abrechnung. Korrektur: 1. Fehler dokumentieren, 2. Verwalter anweisen, 3. Beirat prüft, 4. korrigierte Abrechnung in ETV, 5. ggf. **§ 44 WEG** (1 Monat Frist). Verjährung Ansprüche: 3 Jahre (§ 195 BGB).\n\n**Praxis-Tipp:** Verteilerschlüssel-Tabelle vor jeder Abrechnung gegen TE/Satzung abgleichen.",
+    "solution": "**Fehlerhafte Abrechnung — Korrektur nach § 28 Abs. 2 WEG**\n\n**Typische Fehler:**\n- Falscher Verteilerschlüssel\n- Doppelbuchungen\n- Fehlende Positionen\n- Rücklagenfehler\n- Abgrenzungsfehler\n\n**Korrektur-Ablauf:**\n1. Fehler schriftlich mit Beleg nachweisen\n2. Verwalter: Berichtigung innerhalb Frist\n3. Beirat: unabhängige Prüfung\n4. ETV: Feststellung korrigierte Abrechnung\n5. Nachzahlung/Guthaben neu berechnen\n\n**§ 28 Abs. 2 WEG:**\nGesamt- und Einzelabrechnung müssen rechnerisch und rechtlich stimmen.\n\n**Beispiel Wasser 3.800 €:**\n- Falsch (Personen): ungleichmäßig\n- Richtig (MEA): Anteil = 3.800 × (eigene MEA / Gesamt-MEA)\n\n**Anfechtung:** § 44 WEG — 1 Monat ab Beschluss.\n\n**Merksatz:** Ein Schlüssel-Fehler betrifft alle — sofort korrigieren."
   },
   "day_51": {
     "title": "Einladung & Tagesordnung (TOPs)",
@@ -1733,7 +1743,9 @@
       }
     ],
     "task": "Formulieren Sie 5 rechtssichere Tagesordnungspunkte (Abrechnung, Wirtschaftsplan, bauliche Veränderung, Verwalterbestellung, Sonstiges).",
-    "type": "Organisation"
+    "type": "Organisation",
+    "caseStudy": "**Fall: Einladung mit 2 Wochen Frist — Beschluss anfechtbar?**\n\nVerwalter lädt per E-Mail zur ETV ein: Versammlung in 16 Tagen, TOP „Sanierung Balkone\" fehlt — Eigentümer B. reicht Antrag 5 Tage vorher ein (Dach 45.000 €). Vorsitzender nimmt TOP ohne Zustimmung aller auf. 3 Eigentümer fehlen.\n\n**Analyse:** **§ 24 Abs. 2 WEG** — Einladungsfrist mindestens **3 Wochen** vor Versammlung (nicht 2!). Textform seit WEG-Reform. Fehlende TOPs: nachträglich nur mit **Zustimmung aller** Eigentümer. Formfehler → Anfechtungsrisiko **§ 44 WEG**.\n\n**Praxis-Tipp:** Einladung 22–25 Tage vorher versenden, Zugang dokumentieren.",
+    "solution": "**Einladung und Tagesordnung — § 24 Abs. 2 WEG**\n\n**Pflichtangaben Einladung:**\n- Datum, Uhrzeit, Ort (oder Online-Zugang)\n- **Vollständige Tagesordnung** mit Beschlusspunkten\n- Form: **Textform** (E-Mail zulässig)\n\n**§ 24 Abs. 2 WEG (Frist):**\nMindestens **3 Wochen** vor der Versammlung zugehen.\n\n**TOP-Regeln:**\n- Klar und präzise (nicht „Sanierung\")\n- Eigentümeranträge: Frist z. B. 1 Woche vorher\n- **Neue TOPs:** nur mit Zustimmung **aller** Eigentümer\n\n**5 rechtssichere TOPs:**\n1. Feststellung Jahresabrechnung 2025\n2. Beschluss Wirtschaftsplan 2026\n3. Fassadensanierung (Kosten, Finanzierung)\n4. Verwalterbestellung\n5. Sonstiges (kein Beschluss ohne TOP)\n\n**Merksatz:** 3 Wochen + klare TOPs = halbe Anfechtung vermieden."
   },
   "day_52": {
     "title": "Vollmachten & Vertretung",
@@ -1764,7 +1776,9 @@
       }
     ],
     "task": "Entwerfen Sie ein Vollmachtsformular für die Eigentümerversammlung (mit Hinweis auf Vertretungsbeschränkungen).",
-    "type": "Recht"
+    "type": "Recht",
+    "caseStudy": "**Fall: Vollmacht ohne Unterschrift — Stimmen zählen nicht**\n\nETV mit 12 Eigentümern: 4 erscheinen persönlich, 5 mit Vollmacht. Zwei Vollmachten: Fax-Kopie ohne Originalunterschrift, eine Generalvollmacht von 2019. Versammlungsleiter lässt alle Stimmen zu — knappe Mehrheit für Sonderumlage 60.000 €.\n\n**Analyse:** **§ 25 Abs. 3 WEG** — Vollmacht in **Textform** für diese Versammlung. Vertretung: Ehegatte, Lebenspartner, Verwandte 1. Grades, Haushaltsangehörige, andere Eigentümer. Prüfpflicht Versammlungsleiter: Form, Umfang, Kopie zum Protokoll. Ungültige Vollmacht = Stimme fehlt.\n\n**Praxis-Tipp:** Vollmachtsformular mit TOP-Bezug und Vertretungsgrenzen bereitstellen.",
+    "solution": "**Vollmachten in der ETV — § 25 Abs. 3 WEG**\n\n**§ 25 Abs. 3 WEG:**\nStimmrecht kann in Textform übertragen werden.\n\n**Zulässige Bevollmächtigte:**\n- Andere Eigentümer\n- Ehegatte / eingetragener Lebenspartner\n- Verwandte 1. Grades\n- Im Haushalt lebende Personen\n- (Satzung kann einschränken)\n\n**Form-Anforderungen:**\n- Textform (schriftlich, E-Mail mit Signatur)\n- Für **diese** Versammlung\n- Bevollmächtigter benannt\n- Umfang erkennbar (nicht 2019-Generalvollmacht)\n\n**Prüfung Anwesenheitsliste:**\n1. Vollmacht vorliegend?\n2. Identität Bevollmächtigter?\n3. Vertretungsgrenze (max. Vollmachten)?\n4. Kopie an Protokoll\n\n**Verwalter als Bevollmächtigter:**\nNur wenn Satzung/Beschluss ausdrücklich erlaubt.\n\n**Merksatz:** Keine gültige Vollmacht = keine Stimme — vor Abstimmung prüfen."
   },
   "day_53": {
     "title": "Versammlungsleitung & Ablauf",
@@ -1795,7 +1809,9 @@
       }
     ],
     "task": "Erstellen Sie einen Leitfaden 'Ablauf einer Eigentümerversammlung' für sich selbst (Begrüßung bis Verabschiedung).",
-    "type": "Softskills"
+    "type": "Softskills",
+    "caseStudy": "**Fall: ETV eskaliert — Sonderumlage, Zwischenrufe, Tränen**\n\n50 Eigentümer, TOP Sonderumlage 120.000 € Dach. Nach 20 Minuten Debatte: persönliche Beleidigungen, Zwischenrufe, zwei Eigentümer stehen auf und verlassen den Saal. Online-Teilnehmer schalten Mikrofone ungefragt ein.\n\n**Analyse:** **§ 24 WEG** — Versammlungsleitung (Verwalter oder Beirat): Beschlussfähigkeit feststellen, Hausrecht, Redeordnung, Abstimmungen leiten. Seit WEG-Reform: **kein Mindestquorum** (§ 25 WEG). Bei massiven Störungen: Verweisung, ggf. Vertagung.\n\n**Praxis-Tipp:** Redeliste, 3-Minuten-Regel, Pause bei Eskalation — vor Abstimmung Ruhe herstellen.",
+    "solution": "**Versammlungsleitung — § 24 WEG**\n\n**Aufgaben Versammlungsleiter:**\n- Eröffnung, Beschlussfähigkeit (§ 25 WEG)\n- Tagesordnung durchgehen\n- Redeordnung durchsetzen\n- Abstimmungen durchführen und **verkünden**\n- Hausrecht bei Störungen\n\n**§ 24 WEG (Ablauf):**\nEinberufung, Leitung, Protokoll — Verwalter standardmäßig Leiter.\n\n**Leitfaden Ablauf:**\n1. Begrüßung, Feststellung Beschlussfähigkeit\n2. TOP 1 … n der Reihe nach\n3. Bei Konflikt: Redeliste, Zeitlimit\n4. Abstimmung → Ergebnis verkünden\n5. Protokollhinweis, Verabschiedung\n\n**Deeskalation:**\n- Sachlich bleiben, nicht parteiisch\n- Pausen anberaumen\n- Persönliches getrennt von Sache\n- Störer verweisen (Hausrecht)\n\n**Merksatz:** Leitung = Autorität plus Neutralität — nicht Mitstreiter."
   },
   "day_54": {
     "title": "Beschlussfassung & Abstimmung",
@@ -1827,7 +1843,9 @@
       }
     ],
     "task": "Berechnen Sie das Abstimmungsergebnis: 10 Eigentümer, 10.000 MEA, 7 Ja-Stimmen (6.500 MEA), 2 Nein (2.500 MEA), 1 Enthaltung (1.000 MEA). Ist die einfache Mehrheit erreicht?",
-    "type": "Recht"
+    "type": "Recht",
+    "caseStudy": "**Fall: Enthaltung oder Nein? — Mehrheit unklar**\n\n10 Eigentümer, 10.000 MEA gesamt. Abstimmung Wirtschaftsplan: 7 Ja (6.500 MEA), 2 Nein (2.500 MEA), 1 Enthaltung (1.000 MEA). Vorsitzender verkündet Annahme. Eigentümer mit Enthaltung: „Wir waren dagegen, nur nicht mitgerechnet.\"\n\n**Analyse:** **§ 25 WEG** — Stimmrecht nach Köpfen (1 Eigentümer = 1 Stimme), soweit Satzung nicht abweicht. **Einfache Mehrheit:** mehr Ja als Nein — **Enthaltungen zählen nicht** als Nein. Qualifizierte Mehrheit bei baulichen Veränderungen (§ 20 WEG). Geheimabstimmung auf Antrag.\n\n**Ergebnis:** 7 > 2 → Beschluss angenommen.",
+    "solution": "**Beschlussfassung und Abstimmung — § 25 WEG**\n\n**Mehrheitsarten:**\n- **Einfach (§ 25 Abs. 1 WEG):** Mehrheit der abgegebenen Stimmen (WiPla, Entlastung)\n- **Qualifiziert (§ 20 WEG):** z. B. bauliche Veränderungen\n\n**Stimmrecht:**\nGrundsatz: **1 Eigentümer = 1 Stimme** (Kopfprinzip)\nAbweichung nur in Gemeinschaftsordnung\n\n**Enthaltungen:**\nWerden **nicht** mitgezählt → zählen weder als Ja noch Nein\n\n**Rechenbeispiel:**\n7 Ja, 2 Nein, 1 Enthaltung → **angenommen** (7 > 2)\n\n**Abstimmungsverfahren:**\n- Offen (Handzeichen) — Standard\n- Geheim auf Antrag\n\n**Protokoll:**\nJa / Nein / Enthaltungen exakt dokumentieren\n\n**Merksatz:** Enthaltung ist kein Nein — aber auch keine Zustimmung."
   },
   "day_55": {
     "title": "Verkündung & Protokollierung",
@@ -1858,7 +1876,9 @@
       }
     ],
     "task": "Protokollieren Sie 3 gefasste Beschlüsse rechtssicher (Fassadensanierung, Wirtschaftsplan, Verwalterbestellung).",
-    "type": "Dokumente"
+    "type": "Dokumente",
+    "caseStudy": "**Fall: Protokoll mit „Zitterbeschluss\" — Anfechtung droht**\n\nProtokoll ETV: TOP 4 „Die Eigentümer beschließen die Sanierung in vertretbarem Umfang nach Möglichkeit.\" Abstimmung: 8 Ja, 3 Nein. Drei Wochen später: Handwerkerbeauftragung 95.000 € — Minderheit klagt auf Unklarheit.\n\n**Analyse:** **§ 24 Abs. 6 WEG** — Niederschrift unverzüglich, mit Beschlusstext im **Wortlaut**, Abstimmungsergebnis. Verkündung in der Versammlung konstitutiv. Unklare Formulierung = anfechtbar. Pflichtinhalt: Datum, Teilnehmer, TOPs, Ergebnisse.\n\n**Praxis-Tipp:** Beschlusstext vor Abstimmung vorlesen und bestätigen lassen.",
+    "solution": "**Verkündung und Protokoll — § 24 Abs. 6 WEG**\n\n**Verkündung:**\nErgebnis sofort nach Abstimmung durch Versammlungsleiter — **konstitutiv**.\n\n**§ 24 Abs. 6 WEG (Niederschrift):**\n- Unverzüglich erstellen\n- Datum, Ort, Teilnehmer\n- Tagesordnung und Beschlüsse **im Wortlaut**\n- Abstimmungsergebnis (Ja/Nein/Enthaltung)\n- Unterschrift Verwalter (+ Beirat)\n\n**Gute Beschlusstexte:**\n- Konkrete Maßnahme und Kosten\n- Finanzierung benannt\n- Mehrheit dokumentiert\n\n**Schlecht („Zitterbeschluss\"):**\n„Sanierung nach Möglichkeit\" — **nicht umsetzbar**\n\n**3 Muster-Beschlüsse:**\n1. Fassadensanierung 120.000 € (Rücklage + Sonderumlage)\n2. Wirtschaftsplan 2026 beschlossen\n3. Verwalter X bestellt bis 31.12.2027\n\n**Merksatz:** Was nicht klar beschlossen ist, darf der Verwalter nicht tun."
   },
   "day_56": {
     "title": "Beschluss-Sammlung führen",
@@ -1889,7 +1909,9 @@
       }
     ],
     "task": "Übertragen Sie 5 Protokoll-Beschlüsse in die Beschluss-Sammlung (mit Datum, Wortlaut, Abstimmungsergebnis).",
-    "type": "Organisation"
+    "type": "Organisation",
+    "caseStudy": "**Fall: Käufer will Einsicht — Beschluss-Sammlung lückenhaft**\n\nNotar fordert für WE-Kauf Einsicht in **Beschluss-Sammlung** seit 2007. Verwalter liefert Ordner: 2019–2025 vollständig, 2007–2018 nur teilweise, ein Protokoll 2014 fehlt. Käufer strafft Kaufpreis.\n\n**Analyse:** **§ 24 Abs. 7 WEG** — Verwalterpflicht, alle Beschlüsse seit 01.07.2007 chronologisch. Einsicht: Eigentümer und Kaufinteressenten (§ 18 Abs. 4 WEG). Aufgehobene Beschlüsse kennzeichnen. Fehlende Sammlung = Pflichtverletzung.\n\n**Praxis-Tipp:** Nach jeder ETV: Beschlüsse innerhalb 7 Tage in Sammlung übertragen.",
+    "solution": "**Beschluss-Sammlung — § 24 Abs. 7 WEG**\n\n**Pflicht:**\nVerwalter führt Sammlung aller Beschlüsse ab **01.07.2007**.\n\n**Inhalt je Beschluss:**\n- Datum und Ort der ETV\n- Beschlusstext (Wortlaut)\n- Abstimmungsergebnis\n- ggf. „aufgehoben am …\"\n\n**§ 24 Abs. 7 WEG:**\nChronologische, vollständige Dokumentation.\n\n**Führung:**\n- Ordner oder digitales Archiv\n- Nach jeder ETV aktualisieren\n- Einsicht für Eigentümer und **Kaufinteressenten**\n\n**5 Protokoll-Beschlüsse übertragen:**\nSystematisch: TOP → Wortlaut → Ja/Nein/Enth → Datum\n\n**Folgen bei Lücken:**\nPflichtverletzung, Abberufungsrisiko, Kaufhindernis\n\n**Merksatz:** Beschluss-Sammlung = Gedächtnis der WEG — lückenlos pflegen."
   },
   "day_57": {
     "title": "Anfechtungsklage & Nichtigkeitsklage",
@@ -1921,7 +1943,9 @@
       }
     ],
     "task": "Erstellen Sie ein Informationsschreiben an die Eigentümer über eine eingegangene Anfechtungsklage (sachlich, neutral).",
-    "type": "Recht"
+    "type": "Recht",
+    "caseStudy": "**Fall: Anfechtungsklage eingegangen — Fassadenbeschluss**\n\nETV beschloss Fassadensanierung 14:3. Eigentümer K. klagt beim WEG-Gericht: Einladungsfrist nur 18 Tage, TOP unpräzise. Klage **§ 44 WEG** einen Monat nach Versammlung. Verwalter informiert Gemeinschaft, Streitwert 80.000 €.\n\n**Analyse:** **§ 44 WEG** — Anfechtungsklage binnen **1 Monat** ab Beschluss, Amtsgericht. Gründe: Verfahrensfehler (Einladung, TOP), materielle Rechtsverstöße. **Nichtigkeitsklage** bei schweren Mängeln ohne Frist. Verwalter: Eigentümer informieren, Anwalt, Formfehler in Zukunft vermeiden.\n\n**Praxis-Tipp:** Einladungsnachweis und Protokoll archivieren — Beweislast.",
+    "solution": "**Anfechtungs- und Nichtigkeitsklage — § 44 WEG**\n\n**Anfechtungsklage (§ 44 WEG):**\n- Frist: **1 Monat** ab Beschlussfassung\n- Gericht: Amtsgericht (Wohnungseigentumssache)\n- Klageberechtigt: Eigentümer (nicht abgestimmt oder Nein)\n\n**Anfechtungsgründe:**\n- Verfahrensfehler (§ 24: Frist, TOP)\n- Verstoß gegen Gesetz/Satzung\n- Verletzung von Verfahrensrechten\n\n**Nichtigkeitsklage:**\nSchwerwiegende Mängel (z. B. keine ETV) — **keine Monatsfrist**\n\n**Reaktion Verwalter:**\n1. Klagezustellung an Beirat/Eigentümer\n2. Rechtsanwalt mandatieren\n3. Kostenrisiko kommunizieren\n4. Umsetzung Beschluss ggf. aussetzen\n\n**Prävention:**\n3-Wochen-Frist, klare TOPs, Protokoll, Verkündung\n\n**Merksatz:** Formfehler bei ETV können Millionen-Beschlüsse kippen."
   },
   "day_58": {
     "title": "Sonderumlage beschließen & einziehen",
@@ -1952,7 +1976,9 @@
       }
     ],
     "task": "Formulieren Sie einen Beschlussantrag für eine Sonderumlage von 80.000 € (Fassadensanierung) mit Fälligkeitsregelung.",
-    "type": "Finanzen"
+    "type": "Finanzen",
+    "caseStudy": "**Fall: Rücklage leer — Sonderumlage 80.000 €**\n\nDachsanierung 80.000 €, Rücklage 12.000 €. Verwalter bereitet Beschluss vor: Sonderumlage 68.000 € nach MEA, Fälligkeit 30 Tage nach Beschluss. Eigentümer S. bittet um Ratenzahlung. Zwei Eigentümer zahlen nicht — Mahnung.\n\n**Analyse:** **§ 28 Abs. 1 WEG** — Wirtschaftsplan und Vorauszahlungen; Sonderumlage als **außerordentliche** Zahlung per ETV-Beschluss (einfache Mehrheit). Verteilung nach MEA (§ 16 WEG). Einzug: Verwalter setzt Fälligkeit, Mahnverfahren möglich.\n\n**Praxis-Tipp:** Kostenvoranschlag und Finanzierungsplan als ETV-Anlage — vor Abstimmung.",
+    "solution": "**Sonderumlage — Beschluss und Einzug (§ 28 Abs. 1 WEG)**\n\n**Wann Sonderumlage?**\nUnvorhergesehene Kosten, Rücklage nicht ausreichend (z. B. Dach, Rohrbruch).\n\n**§ 28 Abs. 1 WEG (Kontext):**\nWirtschaftsplan regelt laufende Vorauszahlungen — Sonderumlage **zusätzlich** per Beschluss.\n\n**Beschlussantrag Muster:**\n„Die WEG beschließt eine Sonderumlage von 80.000 € für Fassadensanierung gemäß Angebot [Datum]. Verteilung nach MEA. Fälligkeit 30 Tage nach Beschluss.\"\n\n**Berechnung:**\nAnteil = Gesamtbetrag × (eigene MEA / Summe MEA)\n\n**Einzug:**\n1. Beschluss protokollieren\n2. Anschreiben mit Fälligkeit\n3. Mahnung bei Verzug\n4. Zwangsvollstreckung (letztes Mittel)\n\n**Alternative:**\nBankdarlehn der WEG (§ 18 WEG) — eigener Beschluss\n\n**Merksatz:** Sonderumlage vermeiden durch Rücklage — sonst sauber beschließen."
   },
   "day_59": {
     "title": "Konfliktmanagement in der Versammlung",
@@ -1983,7 +2009,9 @@
       }
     ],
     "task": "Entwickeln Sie ein Rollenspiel: Zwei Eigentümer streiten über Lärmbelästigung. Sie moderieren als Verwalter.",
-    "type": "Softskills"
+    "type": "Softskills",
+    "caseStudy": "**Fall: ETV-Knall — „Sie sind gekauft vom Beirat!\"**\n\nTOP Heizungserneuerung: Eigentümer P. beschimpft Beirat und Verwalter persönlich, ruft „Betrug\". Versammlungsleiter warnt, P. wiederholt. 40 Teilnehmer, Protokollant stoppt Aufzeichnung.\n\n**Analyse:** **§ 14 WEG** — Gemeinschaftseigentum, gemeinschaftliche Interessen. Konflikt in ETV: Versammlungsleiter neutral, Hausrecht, Redeordnung. **§ 24 WEG** Leitung. Dokumentation im Protokoll. Nachbereitung: Einzelgespräche vor nächster ETV.\n\n**Praxis-Tipp:** Harvard-Konzept — Interessen statt Positionen; bei persönlichen Angriffen unterbrechen.",
+    "solution": "**Konfliktmanagement in der Versammlung — § 14 WEG**\n\n**§ 14 WEG (Bezug):**\nGemeinschaftliches Eigentum — Entscheidungen betreffen alle; Konflikte oft um Nutzung und Kosten.\n\n**Eskalationsstufen:**\n1. Redeordnung erinnern\n2. Persönliches unterbinden\n3. Pause / Vertagung TOP\n4. Hausrecht: Verweisung\n5. Protokoll + Nachbereitung\n\n**Deeskalation:**\n- Aktives Zuhören\n- Ich-Botschaften\n- Sachfragen stellen\n- Mehrheitsmeinung zusammenfassen\n\n**Versammlungsleiter:**\nNeutral (§ 24 WEG), nicht Partei\n\n**Rollenspiel Lärm:**\nBeide Parteien separat anhören → gemeinsame Regel (Hausordnung)\n\n**Dokumentation:**\nStörungen und Maßnahmen im Protokoll\n\n**Merksatz:** Emotionen anerkennen, Entscheidung sachlich — sonst Anfechtung."
   },
   "day_60": {
     "title": "Abschluss Block 3: Prüfungsvorbereitung",
@@ -2014,7 +2042,9 @@
       }
     ],
     "task": "Erstellen Sie eine Zusammenfassung aller Themen aus Block 3 (Tag 41-60) als Lernkarten (Vorder-/Rückseite).",
-    "type": "Prüfung"
+    "type": "Prüfung",
+    "caseStudy": "**Fall: Prüfungssimulation Block 3 — 5 Fragen in 15 Minuten**\n\nPrüfer: „(1) Frist Einladung ETV? (2) Heizkosten 70/30 — welche Norm? (3) Wann Entlastung? (4) Anfechtungsfrist? (5) Was gehört in die Beschluss-Sammlung?\" Kandidatin verknüpft Tag 41–59: Abrechnung, HKVO, ETV, Beschlüsse.\n\n**Analyse:** Block 3 (Tag 41–60): Wirtschaftsplan, Jahresabrechnung, Heizkosten, Beiratsprüfung, Entlastung, ETV-Recht (Einladung bis Protokoll), Sonderumlage, Konflikte. Kern: **§§ 23–25, 28, 44 WEG** plus HKVO.\n\n**Praxis-Tipp:** Lernkarten Vorderseite Frage / Rückseite Paragraph + Fall.",
+    "solution": "**Prüfungsvorbereitung Block 3 — Tag 41–60**\n\n**Kernthemen:**\n| Bereich | Paragraphen |\n|---------|-------------|\n| WiPla / Abrechnung | § 28 Abs. 1–2 WEG |\n| Heizkosten | HeizkostenV § 7, § 8 |\n| Beirat | § 29 WEG |\n| Entlastung | § 28 Abs. 5 WEG |\n| ETV | § 23, § 24, § 25 WEG |\n| Anfechtung | § 44 WEG |\n| Sonderumlage | § 28, § 16 WEG |\n\n**Typische Prüfungsaufgaben:**\n- Hausgeld aus Kostenpositionen berechnen\n- Fehler in Abrechnung finden\n- Einladungsfrist (3 Wochen)\n- Abstimmung mit Enthaltung\n- Anfechtungsfrist 1 Monat\n\n**Lernstrategie:**\n1. Rechenaufgaben täglich\n2. Musterbeschlüsse analysieren\n3. Fristen-Karteikarten\n4. Mündliche Fallsimulation 3 Min./Thema\n\n**Musterantworten Kurz:**\nEinladung § 24 Abs. 2 (3 Wo.) | HKVO § 7/8 | Entlastung § 28 Abs. 5 | Anfechtung § 44 (1 Mon.) | Sammlung § 24 Abs. 7\n\n**Merksatz:** Block 3 = Zahlen plus Form — beides sitzen lassen."
   },
   "day_61": {
     "title": "Mietverwaltung: Grundlagen & Vertrag",
