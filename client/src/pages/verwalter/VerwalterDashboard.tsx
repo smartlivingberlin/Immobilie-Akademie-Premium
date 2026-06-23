@@ -5,6 +5,7 @@ import {
   ArrowRight,
   BookOpen,
   Building2,
+  ChevronDown,
   Clock,
   Database,
   FileText,
@@ -17,6 +18,8 @@ import {
 } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { SzenarienPanel } from "@/components/verwalter/SzenarienPanel";
 import type { VerwalterObjekt } from "@shared/verwalterObjektTypes";
 import {
   isVorgangOverdue,
@@ -70,6 +73,31 @@ function StatCard({
       <div className="mt-1 text-3xl font-bold tabular-nums">{value}</div>
       {hint && <div className="mt-1 text-xs text-slate-500">{hint}</div>}
     </div>
+  );
+}
+
+function SzenarienSection({ defaultOpen }: { defaultOpen: boolean }) {
+  const [open, setOpen] = useState(defaultOpen);
+
+  return (
+    <Collapsible open={open} onOpenChange={setOpen} className="rounded-xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900">
+      <CollapsibleTrigger className="flex w-full items-center justify-between gap-3 px-4 py-4 text-left sm:px-5">
+        <div>
+          <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
+            Was möchten Sie heute erledigen?
+          </h2>
+          <p className="mt-0.5 text-sm text-slate-600 dark:text-slate-400">
+            Geführte Szenarien mit Schritt-für-Schritt-Pfad durch die Verwalter-Suite.
+          </p>
+        </div>
+        <ChevronDown
+          className={`h-5 w-5 shrink-0 text-slate-500 transition-transform ${open ? "rotate-180" : ""}`}
+        />
+      </CollapsibleTrigger>
+      <CollapsibleContent className="border-t border-slate-200 px-4 py-4 dark:border-slate-700 sm:px-5 sm:py-5">
+        <SzenarienPanel />
+      </CollapsibleContent>
+    </Collapsible>
   );
 }
 
@@ -183,6 +211,9 @@ export default function VerwalterDashboard() {
                 Erstes Objekt anlegen
               </Button>
             </Link>
+            <div className="mt-8 text-left">
+              <SzenarienSection defaultOpen />
+            </div>
           </div>
         ) : stats ? (
           <>
@@ -230,6 +261,10 @@ export default function VerwalterDashboard() {
                 </div>
               </div>
             )}
+
+            <div className="mt-10">
+              <SzenarienSection defaultOpen={false} />
+            </div>
 
             <section className="mt-10">
               <h2 className="text-lg font-semibold">Schnellzugriff</h2>
