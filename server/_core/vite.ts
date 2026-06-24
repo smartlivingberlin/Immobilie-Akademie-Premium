@@ -170,9 +170,59 @@ export function serveStatic(app: Express) {
     const indexPath = path.join(staticDir, "index.html");
     const portalMode = process.env.PORTAL_MODE ?? "akademie";
     const html = readFileSync(indexPath, "utf-8");
+    const faqJsonLd = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Für wen ist das Portal geeignet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Für Immobilienmakler (§34c), WEG-Verwalter (§26a WEG), Darlehensvermittler (§34i) und Immobiliengutachter.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "Gibt es eine kostenlose Testphase?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja — alle 5 Module können 24 Stunden kostenlos getestet werden. Keine Kreditkarte erforderlich.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "Wie unterscheidet sich das Portal von klassischen IHK-Kursen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Klassische Kurse kosten 1.290–1.690 Euro mit festen Live-Zeiten. Unser Portal ist ab 299 Euro verfügbar, komplett selbstbestimmt und mit KI-Tutor rund um die Uhr.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "Wie funktioniert der KI-Tutor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Der KI-Tutor beantwortet Prüfungsfragen, erklärt Gesetze und gibt Feedback zu Aufgaben — in jedem Lerntag verfügbar.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "Kann ich den Kurs für die 20h-Fortbildungspflicht nach §34c nutzen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Das Portal bereitet auf IHK-relevante Themen vor. Ob die Weiterbildung als Nachweis anerkannt wird, entscheidet die zuständige Behörde.",
+          },
+        },
+      ],
+    });
+    const faqScript = portalMode !== "verwalter"
+      ? `<script type="application/ld+json">${faqJsonLd}</script>`
+      : "";
     const injected = html.replace(
       "</head>",
-      `<script>window.__PORTAL_MODE__="${portalMode}";</script></head>`,
+      `<script>window.__PORTAL_MODE__="${portalMode}";</script>
+     ${faqScript}</head>`,
     );
     res.send(injected);
   });
