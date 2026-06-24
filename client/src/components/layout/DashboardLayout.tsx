@@ -2,9 +2,10 @@ import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { Link, useLocation } from "wouter";
 import AIAssistant from "@/components/AIAssistant";
-import { BookOpen, GraduationCap, Home, LayoutDashboard, Settings, LogOut, Menu, X, Search, ChevronLeft, ChevronRight, Gavel, Calculator, FileText, Sparkles, HelpCircle, Building2, Award, BarChart3, Trophy, Video, ClipboardCheck, Brain, KeyRound, Film, BookText, Upload, FlaskConical, FileCheck, Headphones, RotateCcw, Compass, MessageSquareQuote } from "lucide-react";
+import { BookOpen, GraduationCap, Home, LayoutDashboard, Settings, LogOut, Menu, X, Search, ChevronLeft, ChevronRight, Gavel, Calculator, FileText, Sparkles, HelpCircle, Building2, Award, BarChart3, Trophy, Video, ClipboardCheck, Brain, KeyRound, Film, BookText, Upload, FlaskConical, FileCheck, Headphones, RotateCcw, Compass, MessageSquareQuote, Kanban, Scale, Users, Inbox, Clock } from "lucide-react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import Footer from "@/components/layout/Footer";
+import { isVerwalterPortal } from "@/lib/portalMode";
 import { useWhiteLabel } from "@/contexts/WhiteLabelContext";
 import { useModuleAccess } from "@/hooks/useModuleAccess";
 import { useInspectReadOnly } from "@/hooks/useInspectReadOnly";
@@ -36,7 +37,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   const { user } = useAuth();
   const { isReadOnly: isInspectReadOnly } = useInspectReadOnly();
-  const showAdminNav = user?.role === "admin" || isInspectModeSync();
+  const verwalterMode = isVerwalterPortal();
+  const showAdminNav = !verwalterMode && (user?.role === "admin" || isInspectModeSync());
   const { isWhiteLabeled, companyName, logoUrl, config } = useWhiteLabel();
 
   const allModules = [
@@ -64,7 +66,20 @@ interface NavigationItem {
   locked?: boolean;
 }
 
-const navigation: NavigationItem[] = [
+const navigation: NavigationItem[] = verwalterMode
+  ? [
+      { name: "Übersicht", href: "/app/verwalter", icon: LayoutDashboard },
+      { name: "Objekte", href: "/app/verwalter/objekte", icon: Building2 },
+      { name: "Vorgänge", href: "/app/verwalter/vorgaenge", icon: Kanban },
+      { name: "Buchungen", href: "/app/verwalter/buchungen", icon: BookOpen },
+      { name: "Mahnwesen", href: "/app/verwalter/mahnwesen", icon: Scale },
+      { name: "ETV", href: "/app/verwalter/etv", icon: Users },
+      { name: "Inbox", href: "/app/verwalter/inbox", icon: Inbox },
+      { name: "Freigaben", href: "/app/verwalter/freigaben", icon: ClipboardCheck },
+      { name: "Vorlagen", href: "/app/verwalter/vorlagen", icon: FileText },
+      { name: "Fristen", href: "/app/verwalter/fristen", icon: Clock },
+    ]
+  : [
   { name: "Startseite", href: "/", icon: Home },
   ...modulesWithAccess.map((m) => ({ name: m.name, href: m.href, icon: m.icon, locked: m.locked })),
   { name: "📄 Dokument-Werkstatt", href: `/dokument-werkstatt/${modulId}`, icon: FileText },
@@ -189,8 +204,14 @@ const navigation: NavigationItem[] = [
                 </div>
               )}
               <div>
-                <div className="font-bold text-lg leading-none">{isWhiteLabeled ? companyName : 'Immobilien'}</div>
-                {!isWhiteLabeled && <span className="text-xs text-blue-400 font-medium">Akademie</span>}
+                {verwalterMode ? (
+                  <div className="font-bold text-lg leading-none">Verwalter-Suite</div>
+                ) : (
+                  <>
+                    <div className="font-bold text-lg leading-none">{isWhiteLabeled ? companyName : 'Immobilien'}</div>
+                    {!isWhiteLabeled && <span className="text-xs text-blue-400 font-medium">Akademie</span>}
+                  </>
+                )}
               </div>
             </div>
           )}
@@ -240,6 +261,7 @@ const navigation: NavigationItem[] = [
             ))}
 
             {/* Help & Resources */}
+            {!verwalterMode && (
             <div className="pt-4 mt-4 border-t border-slate-800">
               {isCollapsed ? (
                 <TooltipProvider>
@@ -272,6 +294,7 @@ const navigation: NavigationItem[] = [
                 </div>
               )}
             </div>
+            )}
 
             {/* Admin Section (admins + inspect preview guests) */}
             {showAdminNav && (
@@ -362,6 +385,7 @@ const navigation: NavigationItem[] = [
             )}
 
             {/* Glossary Integration */}
+            {!verwalterMode && (
             <div className="border-t border-slate-800 pt-4">
               {isCollapsed ? (
                 <>
@@ -536,6 +560,7 @@ const navigation: NavigationItem[] = [
                 </div>
               )}
             </div>
+            )}
           </nav>
         </div>
 
@@ -609,7 +634,7 @@ const navigation: NavigationItem[] = [
             <div className="bg-primary p-1.5 rounded-lg shrink-0">
               <GraduationCap className="h-5 w-5 text-primary-foreground" />
             </div>
-            <span className="font-bold text-foreground truncate">Immobilien Akademie</span>
+            <span className="font-bold text-foreground truncate">{verwalterMode ? "Verwalter-Suite" : "Immobilien Akademie"}</span>
           </div>
           <div className="flex items-center gap-1 shrink-0">
             <ComfortBar compact />
