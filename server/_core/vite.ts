@@ -7,6 +7,7 @@ import { jwtVerify } from "jose";
 import { COOKIE_NAME } from "@shared/const";
 import { isInspectModeActive } from "../inspectMode";
 import { RECHENPRAXIS_MODULE_SENTINEL } from "../../shared/rechenpraxisProduct";
+import { readFileSync } from "fs";
 
 const PROTECTED_CHUNKS: Record<string, number[]> = {
   "Module1Detail": [1],
@@ -168,7 +169,7 @@ export function serveStatic(app: Express) {
     res.setHeader("Referrer-Policy", "no-referrer");
     const indexPath = path.join(staticDir, "index.html");
     const portalMode = process.env.PORTAL_MODE ?? "akademie";
-    const html = require("fs").readFileSync(indexPath, "utf-8");
+    const html = readFileSync(indexPath, "utf-8");
     const injected = html.replace(
       "</head>",
       `<script>window.__PORTAL_MODE__="${portalMode}";</script></head>`,
