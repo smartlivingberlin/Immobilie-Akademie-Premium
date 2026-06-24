@@ -82,6 +82,10 @@ export default function LoginPage() {
       const res = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), credentials: "include" });
       const data = await res.json();
       if (!res.ok) { setError(data.error || "Fehler beim Anmelden."); return; }
+      if (data.role === "admin" && isVerwalterPortal()) {
+        window.location.href = "/app/verwalter";
+        return;
+      }
       if (data.role === "admin") {
         window.location.href = "/admin-2fa";
       } else {
