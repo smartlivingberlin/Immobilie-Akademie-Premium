@@ -367,6 +367,14 @@ function Router() {
             <Route path="/modul/4"><PortalRedirect to="/app/verwalter" /></Route>
             <Route path="/modul/5/tag/:day"><PortalRedirect to="/app/verwalter" /></Route>
             <Route path="/modul/5"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/foerderung"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/warum-wir"><PortalRedirect to="/verwalter-suite" /></Route>
+            <Route path="/bildungskonzept"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/fuer-maklerbueros"><PortalRedirect to="/verwalter-suite" /></Route>
+            <Route path="/compliance-20h"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/empfehlungsprogramm"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/tester-zugang"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/b2b-einrichtung"><PortalRedirect to="/app/verwalter" /></Route>
           </>
         )}
         <Route path="/zahlung-erfolgreich"><PublicLayout><ZahlungErfolgreich /></PublicLayout></Route>
