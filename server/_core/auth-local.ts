@@ -284,7 +284,41 @@ export function registerLocalAuthRoutes(app: Express) {
       console.error("[register] Willkommens-E-Mail fehlgeschlagen:", emailErr);
     }
 
+    try {
+      const {
+        createEmailVerificationToken,
+        sendVerificationEmail,
+      } = await import("../emailVerification");
+      const verifyToken = await createEmailVerificationToken(openId);
+      await sendVerificationEmail(email, verifyToken);
+    } catch (verifyErr) {
+      console.error("[register] Verifikations-E-Mail fehlgeschlagen:", verifyErr);
+    }
+
     return res.json({ ok: true, name: name.trim(), role });
+  });
+
+  app.get("/api/auth/verify-email", async (req: Request, res: Response) => {
+    const token = String(req.query.token ?? "").trim();
+    if (!token) {
+      return res.status(400).send("Bestätigungslink fehlt.");
+    }
+    const {
+      parseEmailVerificationToken,
+      markEmailVerifiedByOpenId,
+    } = await import("../emailVerification");
+    const parsed = await parseEmailVerificationToken(token);
+    if (!parsed) {
+      return res.status(400).send("Link ungültig oder abgelaufen.");
+    }
+    const { getDb } = await import("../db");
+    const dbConn = await getDb();
+    const updated = await markEmailVerifiedByOpenId(dbConn, parsed.openId);
+    const appUrl = process.env.APP_URL || "https://immobilien-akademie-smart.de";
+    if (!updated) {
+      return res.redirect(`${appUrl}/statistiken?verified=already`);
+    }
+    return res.redirect(`${appUrl}/statistiken?verified=1`);
   });
 
   /**
@@ -410,6 +444,21 @@ export function registerLocalAuthRoutes(app: Express) {
     const creds = await db.getPasswordHash(openId);
     if (!creds || !verifyPassword(password, creds.hash, creds.salt)) {
       return res.status(401).json({ error: "E-Mail oder Passwort falsch." });
+    }
+
+    const { getDb } = await import("../db");
+    const dbConn = await getDb();
+    const {
+      getUserVerificationRow,
+      isEmailVerificationBlocked,
+      EMAIL_VERIFICATION_REQUIRED_MSG,
+    } = await import("../emailVerification");
+    const verification = await getUserVerificationRow(dbConn, user.id);
+    if (verification && isEmailVerificationBlocked(verification)) {
+      return res.status(403).json({
+        error: EMAIL_VERIFICATION_REQUIRED_MSG,
+        emailVerificationRequired: true,
+      });
     }
 
     // Letzten Login aktualisieren

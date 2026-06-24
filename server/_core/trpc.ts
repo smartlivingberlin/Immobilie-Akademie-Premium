@@ -43,6 +43,23 @@ const requireUser = t.middleware(async opts => {
     throw new TRPCError({ code: "UNAUTHORIZED", message: UNAUTHED_ERR_MSG });
   }
 
+  if (ctx.user.id) {
+    const { getDb } = await import("../db");
+    const dbConn = await getDb();
+    const {
+      getUserVerificationRow,
+      isEmailVerificationBlocked,
+      EMAIL_VERIFICATION_REQUIRED_MSG,
+    } = await import("../emailVerification");
+    const verification = await getUserVerificationRow(dbConn, ctx.user.id);
+    if (verification && isEmailVerificationBlocked(verification)) {
+      throw new TRPCError({
+        code: "FORBIDDEN",
+        message: EMAIL_VERIFICATION_REQUIRED_MSG,
+      });
+    }
+  }
+
   return next({
     ctx: {
       ...ctx,

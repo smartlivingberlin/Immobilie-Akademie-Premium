@@ -449,9 +449,9 @@ Referenz: `server/scripts/seed-stripe-prices.ts`, `shared/stripePriceReadiness.t
 
 ### A.3 NF-13 — Offene Fragen an Alisad (Produktentscheidung)
 
-1. **E-Mail-Verifikation bei Registrierung:** Aktuell **bewusst nicht implementiert** — `POST /api/auth/register` erstellt sofort Session (`server/_core/auth-local.ts`). Nur Willkommens-Mail via Resend, kein Bestätigungslink, kein Gate vor Login. **Frage an Alisad:** Soll das so bleiben (niedrigere Hürde, höheres Fake-Account-Risiko) oder Double-Opt-In vor erstem Login?
+1. **E-Mail-Verifikation:** **Entscheidung Alisad (Hybrid)** — Sofort-Session bei Register, Verifikations-Mail parallel, Sperre nach 7 Tagen ohne Bestätigung (`emailVerifiedAt`, Migration `0044`). Branch: `cursor/hybrid-email-verification-7dbc`.
 
-2. **Post-Delete DSGVO-Verify:** `account.deleteMyAccount` löscht Multi-Table (`routers.ts`), aber es gibt **keinen** Audit-Log-Eintrag oder Verify-Endpoint der nachweist „User X vollständig entfernt“. **Frage an Alisad:** Soll ein `deletion_audit_log` (userId-Hash, Timestamp, Tabellen-Checkliste, kein PII) für Compliance-Nachweise eingeführt werden?
+2. **Post-Delete DSGVO-Verify:** **Entscheidung Alisad: Ja.** `deletion_audit_log` mit SHA256-Hash, Tabellen-JSON, kein PII. Umsetzung: PR #146 (`cursor/dsgvo-deletion-audit-log-7dbc`).
 
 ---
 
