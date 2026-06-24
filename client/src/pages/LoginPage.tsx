@@ -3,6 +3,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { isOAuthEnabled, handleGoogleLogin } from "@/lib/oauth";
 import { ComfortBar } from "@/components/ComfortBar";
 import { SEO } from "@/components/SEO";
+import { isVerwalterPortal } from "@/lib/portalMode";
 import { resolvePostLoginRedirect } from "@/lib/postLoginRedirect";
 
 const TOUCH_MIN = 44;
@@ -84,7 +85,10 @@ export default function LoginPage() {
       if (data.role === "admin") {
         window.location.href = "/admin-2fa";
       } else {
-        window.location.href = resolvePostLoginRedirect();
+        const redirectTo = isVerwalterPortal()
+          ? "/app/verwalter"
+          : resolvePostLoginRedirect("/statistiken");
+        window.location.href = redirectTo;
       }
     } catch { setError("Verbindungsfehler. Bitte erneut versuchen."); }
     finally { setLoading(false); }
@@ -97,7 +101,15 @@ export default function LoginPage() {
       const res = await fetch("/api/auth/redeem-code", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code: demoCode.trim() }), credentials: "include" });
       const data = await res.json();
       if (!res.ok || data?.error) { setDemoCodeMsg("Ungültiger oder abgelaufener Code."); }
-      else { setDemoCodeMsg("Zugang freigeschaltet!"); setTimeout(() => { window.location.href = resolvePostLoginRedirect(); }, 1500); }
+      else {
+        setDemoCodeMsg("Zugang freigeschaltet!");
+        setTimeout(() => {
+          const redirectTo = isVerwalterPortal()
+            ? "/app/verwalter"
+            : resolvePostLoginRedirect("/statistiken");
+          window.location.href = redirectTo;
+        }, 1500);
+      }
     } catch { setDemoCodeMsg("Verbindungsfehler."); }
     finally { setDemoCodeLoading(false); }
   }

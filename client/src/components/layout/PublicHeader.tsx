@@ -2,8 +2,9 @@ import { Link, useLocation } from "wouter";
 import { useState } from "react";
 import { Menu, X, Headphones, BookOpen, Award, Building2 } from "lucide-react";
 import { ComfortBar } from "@/components/ComfortBar";
+import { isVerwalterPortal } from "@/lib/portalMode";
 
-const NAV = [
+const AKADEMIE_NAV = [
   { href: "/kurse",           label: "Kurse" },
   { href: "/verwalter-rechner", label: "Verwalter-Rechner", icon: Building2 },
   { href: "/warum-wir",       label: "Warum wir" },
@@ -13,9 +14,18 @@ const NAV = [
   { href: "/audio-modus",     label: "Audio-Modus",  icon: Headphones },
 ];
 
+const VERWALTER_NAV = [
+  { href: "/verwalter-suite", label: "Verwalter-Suite", icon: Building2 },
+  { href: "/rechenpraxis",  label: "Rechenpraxis" },
+  { href: "/hilfe",         label: "Hilfe" },
+];
+
 export default function PublicHeader() {
   const [location] = useLocation();
   const [open, setOpen] = useState(false);
+  const verwalterMode = isVerwalterPortal();
+  const nav = verwalterMode ? VERWALTER_NAV : AKADEMIE_NAV;
+  const homeHref = verwalterMode ? "/verwalter-suite" : "/";
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
@@ -23,21 +33,27 @@ export default function PublicHeader() {
         <div className="flex items-center justify-between h-16">
 
           {/* Logo */}
-          <Link href="/">
+          <Link href={homeHref}>
             <a className="flex items-center gap-2.5 group">
               <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
                 <span className="font-display font-bold text-primary-foreground text-sm">IA</span>
               </div>
               <div className="hidden sm:block">
-                <div className="font-display font-semibold text-sm text-foreground leading-none">Immobilien Akademie</div>
-                <div className="text-xs text-muted-foreground leading-none mt-0.5">Smart</div>
+                {verwalterMode ? (
+                  <div className="font-display font-semibold text-sm text-foreground leading-none">Verwalter-Suite</div>
+                ) : (
+                  <>
+                    <div className="font-display font-semibold text-sm text-foreground leading-none">Immobilien Akademie</div>
+                    <div className="text-xs text-muted-foreground leading-none mt-0.5">Smart</div>
+                  </>
+                )}
               </div>
             </a>
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-1">
-            {NAV.map(({ href, label, icon: Icon }) => {
+            {nav.map(({ href, label, icon: Icon }) => {
               const active = location === href;
               return (
                 <Link key={href} href={href}>
@@ -57,26 +73,32 @@ export default function PublicHeader() {
           {/* Right side */}
           <div className="flex items-center gap-2">
             <ComfortBar compact />
-            <Link href="/code-einloesen">
-              <a className="hidden lg:inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors">
-                Code einlösen
-              </a>
-            </Link>
-            <Link href="/b2b-einrichtung">
-              <a className="hidden lg:inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors">
-                B2B-Portal
-              </a>
-            </Link>
+            {!verwalterMode && (
+              <>
+                <Link href="/code-einloesen">
+                  <a className="hidden lg:inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors">
+                    Code einlösen
+                  </a>
+                </Link>
+                <Link href="/b2b-einrichtung">
+                  <a className="hidden lg:inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors">
+                    B2B-Portal
+                  </a>
+                </Link>
+              </>
+            )}
             <Link href="/login">
               <a className="hidden sm:inline-flex items-center px-4 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors">
                 Anmelden
               </a>
             </Link>
-            <Link href="/kurs/modul-1-immobilien-grundkurs">
-              <a className="hidden sm:inline-flex items-center px-4 py-1.5 rounded-lg text-sm font-semibold bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
-                Kostenlos testen
-              </a>
-            </Link>
+            {!verwalterMode && (
+              <Link href="/kurs/modul-1-immobilien-grundkurs">
+                <a className="hidden sm:inline-flex items-center px-4 py-1.5 rounded-lg text-sm font-semibold bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
+                  Kostenlos testen
+                </a>
+              </Link>
+            )}
 
             {/* Mobile menu toggle */}
             <button onClick={() => setOpen(!open)}
@@ -90,7 +112,7 @@ export default function PublicHeader() {
         {/* Mobile Nav */}
         {open && (
           <div className="md:hidden border-t border-border py-3 space-y-1">
-            {NAV.map(({ href, label, icon: Icon }) => (
+            {nav.map(({ href, label, icon: Icon }) => (
               <Link key={href} href={href}>
                 <a onClick={() => setOpen(false)}
                   className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
@@ -104,26 +126,32 @@ export default function PublicHeader() {
               </Link>
             ))}
             <div className="pt-2 border-t border-border flex flex-col gap-2 px-3">
-              <Link href="/code-einloesen">
-                <a onClick={() => setOpen(false)} className="flex items-center justify-center px-4 py-2 rounded-lg text-sm font-medium border border-border hover:bg-muted transition-colors">
-                  Code einlösen
-                </a>
-              </Link>
-              <Link href="/b2b-einrichtung">
-                <a onClick={() => setOpen(false)} className="flex items-center justify-center px-4 py-2 rounded-lg text-sm font-medium border border-border hover:bg-muted transition-colors">
-                  B2B-Portal
-                </a>
-              </Link>
+              {!verwalterMode && (
+                <>
+                  <Link href="/code-einloesen">
+                    <a onClick={() => setOpen(false)} className="flex items-center justify-center px-4 py-2 rounded-lg text-sm font-medium border border-border hover:bg-muted transition-colors">
+                      Code einlösen
+                    </a>
+                  </Link>
+                  <Link href="/b2b-einrichtung">
+                    <a onClick={() => setOpen(false)} className="flex items-center justify-center px-4 py-2 rounded-lg text-sm font-medium border border-border hover:bg-muted transition-colors">
+                      B2B-Portal
+                    </a>
+                  </Link>
+                </>
+              )}
               <Link href="/login">
                 <a onClick={() => setOpen(false)} className="flex items-center justify-center px-4 py-2 rounded-lg text-sm font-medium border border-border hover:bg-muted transition-colors">
                   Anmelden
                 </a>
               </Link>
-              <Link href="/kurs/modul-1-immobilien-grundkurs">
-                <a className="flex items-center justify-center px-4 py-2 rounded-lg text-sm font-semibold bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
-                  Kostenlos testen
-                </a>
-              </Link>
+              {!verwalterMode && (
+                <Link href="/kurs/modul-1-immobilien-grundkurs">
+                  <a className="flex items-center justify-center px-4 py-2 rounded-lg text-sm font-semibold bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
+                    Kostenlos testen
+                  </a>
+                </Link>
+              )}
             </div>
           </div>
         )}

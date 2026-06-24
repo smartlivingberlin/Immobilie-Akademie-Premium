@@ -2,6 +2,7 @@ import React, { lazy, Suspense, useEffect, useState } from "react";
 import { Route, Switch, useLocation } from "wouter";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { trpc } from "@/lib/trpc";
+import { isVerwalterPortal } from "@/lib/portalMode";
 import { Toaster } from "@/components/ui/toaster";
 const DashboardLayout = lazy(() => import("@/components/layout/DashboardLayout"));
 const RechenpraxisProductLayout = lazy(() => import("@/components/layout/RechenpraxisProductLayout"));
@@ -287,20 +288,35 @@ function RechenpraxisRedirect() {
   return null;
 }
 
+function PortalRedirect({ to }: { to: string }) {
+  const [, setLocation] = useLocation();
+  useEffect(() => {
+    setLocation(to, { replace: true });
+  }, [to, setLocation]);
+  return null;
+}
+
 function Router() {
   usePageTracking();
+  const verwalterMode = isVerwalterPortal();
   return (
     <main id="main-content"><Suspense fallback={<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",fontSize:"18px",color:"#64748b"}}>Laden...</div>}>
       <InspectBanner />
       <ErrorBoundary>
       <Switch>
-        <Route path="/"><PublicLayout><Home /></PublicLayout></Route>
+        {verwalterMode ? (
+          <Route path="/"><PortalRedirect to="/verwalter-suite" /></Route>
+        ) : (
+          <Route path="/"><PublicLayout><Home /></PublicLayout></Route>
+        )}
         <Route path="/login"><AuthLayout><LoginPage /></AuthLayout></Route>
         <Route path="/forgot-password"><AuthLayout><ForgotPassword /></AuthLayout></Route>
         <Route path="/reset-password"><AuthLayout><ResetPassword /></AuthLayout></Route>
         <Route path="/code-einloesen"><PublicLayout><RedeemCode /></PublicLayout></Route>
         <Route path="/konto/datenschutz"><AppLayout><ProtectedRoute component={MeineDaten} /></AppLayout></Route>
         <Route path="/konto-loeschen"><PublicLayout><DeleteAccount /></PublicLayout></Route>
+        {!verwalterMode && (
+          <>
         <Route path="/dokument-werkstatt/:modulId">{(params: any) => <AppLayout><ProtectedRoute component={() => <DokumentWerkstatt modulId={Number(params?.modulId ?? 1)} />} /></AppLayout>}</Route>
         <Route path="/offene-fragen/:modulId">{(params: any) => <AppLayout><ProtectedRoute component={() => <OpenQuizPage modulId={Number(params?.modulId ?? 1)} />} /></AppLayout>}</Route>
         <Route path="/pakete"><PublicLayout><KursPakete /></PublicLayout></Route>
@@ -310,6 +326,49 @@ function Router() {
         <Route path="/kurs/modul-3-weg-verwalter"><PublicLayout><KursLanding slug="modul-3-weg-verwalter" /></PublicLayout></Route>
         <Route path="/kurs/modul-4-gutachter"><PublicLayout><KursLanding slug="modul-4-gutachter" /></PublicLayout></Route>
         <Route path="/kurs/modul-5-34i-darlehensvermittler"><PublicLayout><KursLanding slug="modul-5-34i-darlehensvermittler" /></PublicLayout></Route>
+          </>
+        )}
+        {verwalterMode && (
+          <>
+            <Route path="/dokument-werkstatt/:modulId"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/offene-fragen/:modulId"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/pakete"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/kurse"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/kurs/modul-1-immobilien-grundkurs"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/kurs/modul-2-makler-34c"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/kurs/modul-3-weg-verwalter"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/kurs/modul-4-gutachter"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/kurs/modul-5-34i-darlehensvermittler"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/lehrplan"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/finanzierungsrechner"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/statistiken"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/quiz/:moduleId"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/quiz"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/gamification"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/pruefung/:sessionId/ergebnis"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/pruefung/:sessionId"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/pruefung"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/strategie"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/zertifikate"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/weiterbildungsnachweis"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/fallstudien"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/wiederholung"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/lernkarten"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/expose-trainer"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/dokument-viewer"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/audio-modus"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/modul/1/tag/:day"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/modul/1"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/modul/2/tag/:day"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/modul/2"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/modul/3/tag/:day"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/modul/3"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/modul/4/tag/:day"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/modul/4"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/modul/5/tag/:day"><PortalRedirect to="/app/verwalter" /></Route>
+            <Route path="/modul/5"><PortalRedirect to="/app/verwalter" /></Route>
+          </>
+        )}
         <Route path="/zahlung-erfolgreich"><PublicLayout><ZahlungErfolgreich /></PublicLayout></Route>
         <Route path="/impressum"><PublicLayout><Impressum /></PublicLayout></Route>
         <Route path="/datenschutz"><PublicLayout><Datenschutz /></PublicLayout></Route>
@@ -317,6 +376,8 @@ function Router() {
         <Route path="/widerruf"><PublicLayout><Widerruf /></PublicLayout></Route>
         <Route path="/bildungskonzept"><PublicLayout><Bildungskonzept /></PublicLayout></Route>
         <Route path="/rechner"><VerwalterProductLayout><ProtectedRoute component={Rechner} /></VerwalterProductLayout></Route>
+        {!verwalterMode && (
+          <>
         <Route path="/finanzierungsrechner"><AppLayout><ProtectedRoute component={Calculators} /></AppLayout></Route>
         <Route path="/lehrplan"><PublicLayout><Syllabus /></PublicLayout></Route>
         <Route path="/glossary"><PublicLayout><Glossary /></PublicLayout></Route>
@@ -337,6 +398,7 @@ function Router() {
         <Route path="/lernkarten"><AppLayout><ProtectedRoute component={Flashcards} /></AppLayout></Route>
         <Route path="/expose-trainer"><AppLayout><ProtectedRoute component={ExposeTrainer} /></AppLayout></Route>
         <Route path="/dokument-viewer"><AppLayout><ProtectedRoute component={DokumentViewer} /></AppLayout></Route>
+        <Route path="/audio-modus"><AppLayout><ProtectedRoute component={AudioModus} /></AppLayout></Route>
         <Route path="/modul/1/tag/:day"><AppLayout><ProtectedModuleRoute moduleId={1}><Module1Detail /></ProtectedModuleRoute></AppLayout></Route>
         <Route path="/modul/1"><AppLayout><ProtectedModuleRoute moduleId={1}><Module1WithIntro /></ProtectedModuleRoute></AppLayout></Route>
         <Route path="/modul/2/tag/:day"><AppLayout><ProtectedModuleRoute moduleId={2}><Module2Detail /></ProtectedModuleRoute></AppLayout></Route>
@@ -347,6 +409,15 @@ function Router() {
         <Route path="/modul/4"><AppLayout><ProtectedModuleRoute moduleId={4}><Module4WithIntro /></ProtectedModuleRoute></AppLayout></Route>
         <Route path="/modul/5/tag/:day"><AppLayout><ProtectedModuleRoute moduleId={5}><Module5Detail /></ProtectedModuleRoute></AppLayout></Route>
         <Route path="/modul/5"><AppLayout><ProtectedModuleRoute moduleId={5}><Module5WithIntro /></ProtectedModuleRoute></AppLayout></Route>
+          </>
+        )}
+        {verwalterMode && (
+          <>
+        <Route path="/glossary"><PublicLayout><Glossary /></PublicLayout></Route>
+        <Route path="/hilfe"><PublicLayout><UserGuide /></PublicLayout></Route>
+        <Route path="/beschwerde"><PublicLayout><ComplaintForm /></PublicLayout></Route>
+          </>
+        )}
         <Route path="/admin/upload"><AppLayout><AdminRoute component={ContentUpload} /></AppLayout></Route>
         <Route path="/admin/kursbuch"><AppLayout><AdminRoute component={KursbuchGenerator} /></AppLayout></Route>
         <Route path="/admin/dozenten"><AppLayout><AdminRoute component={DozentenCockpit} /></AppLayout></Route>
@@ -438,7 +509,6 @@ function Router() {
             <ProtectedRoute component={FreigabenIndex} />
           </VerwalterProductLayout>
         </Route>
-        <Route path="/audio-modus"><AppLayout><ProtectedRoute component={AudioModus} /></AppLayout></Route>
         <Route component={NotFound} />
       </Switch>
       </ErrorBoundary>
