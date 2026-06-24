@@ -32,6 +32,7 @@ Repository → Settings → Secrets and variables → Actions → **New reposito
 | `R2_SECRET_ACCESS_KEY` | R2 API Token |
 | `R2_BUCKET` | Bucket-Name |
 | `BACKUP_ENCRYPTION_PASSPHRASE` | `openssl rand -base64 32` — **sicher aufbewahren** |
+| `OPS_ALERT_WEBHOOK_URL` | Slack Incoming Webhook URL (Failure-Alert Job) |
 
 Optional:
 
