@@ -10,6 +10,35 @@ import {
   ShieldAlert,
   Sparkles,
 } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+const VERWALTER_FAQ = [
+  {
+    question: "Für wen ist die Verwalter-Suite geeignet?",
+    answer:
+      "Für Solo-Verwalter und kleine WEG-Büros mit bis zu 50 Einheiten als KI-gestützte Starter-Suite für den Arbeitsalltag.",
+  },
+  {
+    question: "Ist die Suite eine vollständige Hausverwaltungssoftware?",
+    answer:
+      "Nein — sie ist eine Starter-Suite. Für große Portfolios mit 100+ Einheiten empfehlen sich Immoware24 oder SCALARA.",
+  },
+  {
+    question: "Sind meine Daten sicher?",
+    answer:
+      "Ja — alle Daten sind mandantengetrennt. Kein anderer Nutzer sieht Ihre Daten.",
+  },
+  {
+    question: "Was kostet der DATEV-Export?",
+    answer:
+      "Der DATEV-orientierte CSV-Export ist in beiden Tarifen enthalten. Keine Zusatzkosten.",
+  },
+];
 
 const FEATURES = [
   "Verwalten Sie Objekte, Vorgänge und Buchungen zentral in einem schlanken Arbeitsbereich.",
@@ -146,6 +175,27 @@ export default function VerwalterSuiteLanding() {
             </Link>
           </div>
         </div>
+      </section>
+
+      <section className="max-w-3xl mx-auto px-4 py-14 sm:py-16">
+        <h2 className="text-2xl font-bold text-center mb-2 text-slate-900 dark:text-slate-100">
+          Häufige Fragen
+        </h2>
+        <p className="text-center text-sm text-slate-600 dark:text-slate-400 mb-8">
+          Antworten zur Verwalter-Suite auf einen Blick.
+        </p>
+        <Accordion type="single" collapsible className="w-full">
+          {VERWALTER_FAQ.map((item) => (
+            <AccordionItem key={item.question} value={item.question}>
+              <AccordionTrigger className="text-left text-base font-semibold">
+                {item.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                {item.answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </section>
 
       <section className="bg-emerald-600 text-white py-12 sm:py-14">

@@ -294,7 +294,12 @@ export default function KursLanding({ slug }: { slug: string }) {
 
   return (
     <>
-      <SEO title={kurs.seo_title} description={kurs.seo_desc} ogImage="/icon-512.png" />
+      <SEO
+        title={kurs.seo_title}
+        description={kurs.seo_desc}
+        ogImage="/icon-512.png"
+        kurs={{ titel: kurs.titel, seo_desc: kurs.seo_desc, preis: kurs.preis }}
+      />
       <div style={{ minHeight:"100vh", background:"#f8fafc" }}>
 
         {/* ── HERO ─────────────────────────────────────────── */}
@@ -342,6 +347,9 @@ export default function KursLanding({ slug }: { slug: string }) {
                   {kurs.preis} €
                 </div>
                 <div style={{ fontSize:11, color:"#94a3b8", marginBottom:16 }}>Endpreis · inkl. 2× Lernzeit · Verlängerung ab 29 €/Jahr</div>
+                <p style={{ fontSize:11, color:"#64748b", lineHeight:1.5, marginBottom:16, background:"#f0fdf4", border:"1px solid #bbf7d0", borderRadius:8, padding:"10px 12px" }}>
+                  💡 Förderung möglich: Prüfen Sie ob Sie einen Bildungsgutschein der Agentur für Arbeit oder ESF-Förderung Ihres Bundeslandes nutzen können.
+                </p>
 
                 {/* Widerrufs-Checkbox */}
                 <div style={{ background: widerrufsError ? "#fef2f2" : "#f8fafc", border:`1px solid ${widerrufsError ? "#fca5a5" : "#e2e8f0"}`, borderRadius:8, padding:"10px 12px", marginBottom:12 }}>

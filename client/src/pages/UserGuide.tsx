@@ -114,7 +114,7 @@ export default function UserGuide() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-slate-800 mb-2">24-Stunden-Testzugang</h3>
-                <p className="text-slate-600 leading-relaxed">Klicken Sie auf der Startseite auf <strong>"24h kostenlos testen"</strong>. Geben Sie Ihre E-Mail-Adresse ein. Sie erhalten per E-Mail einen Zugangscode, den Sie unter <strong>/code-einloesen</strong> einlösen. Der Testzugang gilt 24 Stunden für Modul 1 — keine Kreditkarte erforderlich.</p>
+                <p className="text-slate-600 leading-relaxed">Klicken Sie auf der Startseite auf <strong>"24h kostenlos testen"</strong>. Geben Sie Ihre E-Mail-Adresse ein. Sie erhalten per E-Mail einen Zugangscode, den Sie unter <strong>/code-einloesen</strong> einlösen. Der Testzugang gilt 24 Stunden für alle 5 Module — keine Kreditkarte erforderlich.</p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-slate-800 mb-2">Passwort vergessen</h3>

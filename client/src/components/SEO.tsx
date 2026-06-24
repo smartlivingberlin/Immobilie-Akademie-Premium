@@ -2,12 +2,25 @@ import { useEffect } from "react";
 import { useLocation } from "wouter";
 import { PUBLIC_QUIZ_QUESTION_COUNT, STRUCTURED_LEARNING_DAYS } from "@shared/claims";
 
+export interface KursSeoData {
+  titel: string;
+  seo_desc: string;
+  preis: number;
+}
+
+export interface FaqSeoItem {
+  question: string;
+  answer: string;
+}
+
 interface SEOProps {
   title?: string;
   description?: string;
   keywords?: string;
   ogImage?: string;
   canonical?: string;
+  kurs?: KursSeoData;
+  faq?: FaqSeoItem[];
 }
 
 const DEFAULT_SEO = {
@@ -16,6 +29,12 @@ const DEFAULT_SEO = {
   keywords: "Immobilienmakler Ausbildung, §34c GewO, WEG-Verwalter, Mietverwalter, §34i Darlehensvermittler, Sachkundeprüfung §34i, Immobilien Weiterbildung, Online Lernportal",
   ogImage: "/og-image.svg",
 };
+
+const ORGANIZATION_PROVIDER = {
+  "@type": "Organization",
+  "name": "Immobilien Akademie Smart",
+  "url": "https://www.immobilien-akademie-smart.de",
+} as const;
 
 /**
  * SEO Komponente zur Verwaltung von Meta-Tags und strukturierten Daten.
@@ -27,7 +46,7 @@ const DEFAULT_SEO = {
  * @param {string} [ogImage] - Bild für Open Graph (Social Sharing).
  * @param {string} [canonical] - Kanonische URL der Seite.
  */
-export function SEO({ title, description, keywords, ogImage, canonical }: SEOProps) {
+export function SEO({ title, description, keywords, ogImage, canonical, kurs, faq }: SEOProps) {
   const [location] = useLocation();
   
   const fullTitle = title ? `${title} | Immobilien Akademie Smart` : DEFAULT_SEO.title;
@@ -87,24 +106,64 @@ export function SEO({ title, description, keywords, ogImage, canonical }: SEOPro
     canonicalLink.href = canonicalUrl;
 
     // Structured Data (JSON-LD)
+    const graph: Record<string, unknown>[] = [
+      {
+        "@type": "EducationalOrganization",
+        "name": "Immobilien Akademie Smart",
+        "description": metaDescription,
+        "url": "https://immobilien-akademie-smart.de",
+        "logo": metaImage,
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "DE",
+        },
+        "offers": {
+          "@type": "Offer",
+          "category": "Immobilien Ausbildung",
+          "priceCurrency": "EUR",
+          "price": "0",
+          "availability": "https://schema.org/InStock",
+        },
+      },
+    ];
+
+    if (kurs) {
+      graph.push({
+        "@type": "Course",
+        "name": kurs.titel,
+        "description": kurs.seo_desc,
+        "provider": ORGANIZATION_PROVIDER,
+        "offers": {
+          "@type": "Offer",
+          "price": kurs.preis,
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "online",
+          "inLanguage": "de",
+        },
+      });
+    }
+
+    if (faq?.length) {
+      graph.push({
+        "@type": "FAQPage",
+        "mainEntity": faq.map((item) => ({
+          "@type": "Question",
+          "name": item.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.answer,
+          },
+        })),
+      });
+    }
+
     const structuredData = {
       "@context": "https://schema.org",
-      "@type": "EducationalOrganization",
-      "name": "Immobilien Akademie Smart",
-      "description": metaDescription,
-      "url": "https://immobilien-akademie-smart.de",
-      "logo": metaImage,
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "DE"
-      },
-      "offers": {
-        "@type": "Offer",
-        "category": "Immobilien Ausbildung",
-        "priceCurrency": "EUR",
-        "price": "0",
-        "availability": "https://schema.org/InStock"
-      }
+      "@graph": graph,
     };
 
     let scriptTag = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
@@ -115,7 +174,7 @@ export function SEO({ title, description, keywords, ogImage, canonical }: SEOPro
     }
     scriptTag.textContent = JSON.stringify(structuredData);
 
-  }, [fullTitle, metaDescription, metaKeywords, metaImage, canonicalUrl]);
+  }, [fullTitle, metaDescription, metaKeywords, metaImage, canonicalUrl, kurs, faq]);
 
   return null;
 }
