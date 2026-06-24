@@ -1,0 +1,29 @@
+# Immobilien Akademie Smart
+> Online-Lernportal für Immobilienprofis in Deutschland.
+> IHK-Vorbereitung für §34c, §34i, WEG-Verwalter und Gutachter.
+
+## Produkte
+- [Immobilien Akademie Smart](https://www.immobilien-akademie-smart.de): Lernportal mit 240 Lerntagen, KI-Tutor, Prüfungssimulation
+- [Verwalter-Suite](https://verwalter-suite.up.railway.app): KI-gestützte Starter-Suite für WEG-Verwalter
+
+## Inhalte
+- Modul 1: Immobilien-Grundkurs (20 Lerntage)
+- Modul 2: Makler §34c GewO (60 Lerntage)
+- Modul 3: WEG-Verwalter §26a WEG (80 Lerntage)
+- Modul 4: Gutachter / Wertermittlung (40 Lerntage)
+- Modul 5: §34i Darlehensvermittlung (40 Lerntage)
+
+## Verwalter-Suite Features
+- Objekte, Vorgänge, Buchungen
+- ETV-Workflow, Mahnwesen, Freigaben
+- DATEV-orientierter CSV-Export
+- KI-Brief und KI-Assistent
+- 26 praxisorientierte Vorlagen
+
+## Rechtliches
+- [Impressum](https://www.immobilien-akademie-smart.de/impressum)
+- [Datenschutz](https://www.immobilien-akademie-smart.de/datenschutz)
+
+## Betreiber
+Alisad Gadyri, Berlin, Deutschland
+Immobilien Akademie Smart GmbH (i.G.)
