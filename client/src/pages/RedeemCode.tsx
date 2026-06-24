@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
+import { isVerwalterPortal } from "@/lib/portalMode";
 
 export default function RedeemCode() {
   const [code, setCode] = useState("");
@@ -106,7 +107,7 @@ export default function RedeemCode() {
             <p className="text-xs text-slate-400">
               Noch keinen Code? Teste das Portal kostenlos:
             </p>
-            <Link href="/kurse">
+            <Link href={isVerwalterPortal() ? "/verwalter-suite" : "/kurse"}>
               <button className="text-blue-600 text-sm font-medium hover:underline">
                 Kostenlos 24h testen →
               </button>
