@@ -63,6 +63,7 @@ export default function VorlageDetail() {
   const [objekte, setObjekte] = useState<VerwalterObjekt[]>([]);
   const [selectedObjektId, setSelectedObjektId] = useState("");
   const [kiAnweisung, setKiAnweisung] = useState("");
+  const [error, setError] = useState<string | null>(null);
 
   const draftPreview = useMemo(() => {
     if (!vorlage) return "";
@@ -79,7 +80,7 @@ export default function VorlageDetail() {
       .then((d) => {
         if (d.success) setObjekte(d.objekte);
       })
-      .catch(() => {});
+      .catch(() => setError("Daten konnten nicht geladen werden."));
   }, []);
 
   useEffect(() => {
@@ -117,7 +118,9 @@ export default function VorlageDetail() {
   };
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(preview);
+    navigator.clipboard.writeText(preview).catch(() => {
+      console.warn("Clipboard nicht verfügbar");
+    });
     toast({ title: "In Zwischenablage kopiert" });
   };
 
@@ -167,6 +170,12 @@ export default function VorlageDetail() {
         <p className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-900 dark:bg-amber-950 dark:text-amber-200">
           {vorlage.legalHint}
         </p>
+
+        {error && (
+          <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 mb-4 mt-4">
+            {error}
+          </div>
+        )}
 
         {objekte.length > 0 && (
           <div className="mt-4">

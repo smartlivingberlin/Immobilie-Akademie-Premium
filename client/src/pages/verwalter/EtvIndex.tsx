@@ -54,6 +54,8 @@ export default function EtvIndex() {
         }
       }
       if (eData.success) setEtvVorgaenge(eData.etvVorgaenge);
+    } catch (e) {
+      setError("Daten konnten nicht geladen werden.");
     } finally {
       setLoading(false);
     }
@@ -287,7 +289,14 @@ export default function EtvIndex() {
           </div>
           {loading ? (
             <p className="mt-4 text-slate-500">Lädt…</p>
-          ) : activeEtv.length === 0 ? (
+          ) : (
+            <>
+          {error && (
+            <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 mb-4">
+              {error}
+            </div>
+          )}
+          {activeEtv.length === 0 ? (
             <p className="mt-4 text-sm text-slate-500">Keine aktiven ETV-Vorgänge.</p>
           ) : (
             <ul className="mt-4 space-y-4">
@@ -386,6 +395,8 @@ export default function EtvIndex() {
                 );
               })}
             </ul>
+          )}
+            </>
           )}
         </section>
       </div>

@@ -38,6 +38,8 @@ export default function InboxIndex() {
       setEnabled(Boolean(fData.flags?.inbox));
       if (iData.success) setMessages(iData.messages || []);
       if (oData.success) setObjekte(oData.objekte);
+    } catch (e) {
+      setError("Daten konnten nicht geladen werden.");
     } finally {
       setLoading(false);
     }
@@ -190,7 +192,14 @@ export default function InboxIndex() {
         <section className="mt-8">
           {loading ? (
             <p className="text-slate-500">Lädt…</p>
-          ) : messages.length === 0 ? (
+          ) : (
+            <>
+          {error && (
+            <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 mb-4">
+              {error}
+            </div>
+          )}
+          {messages.length === 0 ? (
             <p className="text-sm text-slate-500">Keine Nachrichten in der Inbox.</p>
           ) : (
             <ul className="space-y-3">
@@ -264,6 +273,8 @@ export default function InboxIndex() {
                 </li>
               ))}
             </ul>
+          )}
+            </>
           )}
         </section>
       </div>

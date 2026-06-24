@@ -47,6 +47,8 @@ export default function MahnwesenIndex() {
         }
       }
       if (mData.success) setMahnungen(mData.mahnungen);
+    } catch (e) {
+      setError("Daten konnten nicht geladen werden.");
     } finally {
       setLoading(false);
     }
@@ -239,7 +241,14 @@ export default function MahnwesenIndex() {
           </div>
           {loading ? (
             <p className="mt-4 text-slate-500">Lädt…</p>
-          ) : activeMahnungen.length === 0 ? (
+          ) : (
+            <>
+          {error && (
+            <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 mb-4">
+              {error}
+            </div>
+          )}
+          {activeMahnungen.length === 0 ? (
             <p className="mt-4 text-sm text-slate-500">Keine offenen Mahnungs-Vorgänge.</p>
           ) : (
             <ul className="mt-4 space-y-3">
@@ -291,6 +300,8 @@ export default function MahnwesenIndex() {
                 );
               })}
             </ul>
+          )}
+            </>
           )}
         </section>
       </div>

@@ -34,7 +34,7 @@ export default function FristenCheckliste() {
           setObjektId(d.objekte[0].id);
         }
       })
-      .catch(() => {});
+      .catch(() => setError("Daten konnten nicht geladen werden."));
   }, []);
 
   const createVorgang = async (item: FristItem) => {
@@ -132,6 +132,12 @@ export default function FristenCheckliste() {
               <a className="underline">zum Kanban</a>
             </Link>
           </p>
+        )}
+
+        {error && (
+          <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 mb-4 mt-4">
+            {error}
+          </div>
         )}
 
         <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-900/50">
