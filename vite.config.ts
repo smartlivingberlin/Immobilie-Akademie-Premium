@@ -154,6 +154,9 @@ const plugins = [react(), tailwindcss(), jsxLocPlugin(), ...(process.env.NODE_EN
 export default defineConfig({
   // _archive Verzeichnis aus Build ausschließen
   plugins,
+  define: {
+    "import.meta.env.VITE_PORTAL_MODE": JSON.stringify(process.env.PORTAL_MODE ?? "akademie"),
+  },
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),

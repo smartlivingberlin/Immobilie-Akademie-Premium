@@ -7,6 +7,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 async function startServer() {
+  const portalMode = process.env.PORTAL_MODE ?? "akademie";
+  void portalMode;
+
   const app = express();
   const server = createServer(app);
 

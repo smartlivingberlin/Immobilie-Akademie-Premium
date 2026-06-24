@@ -24,6 +24,7 @@ import { trpc } from "@/lib/trpc";
 import { ComfortBar, ComfortBarMini } from "@/components/ComfortBar";
 import { Button } from "@/components/ui/button";
 import { hasFullRechenpraxisAccess } from "@shared/rechenpraxisAccess";
+import { isVerwalterPortal } from "@/lib/portalMode";
 import { VerwalterAssistent } from "@/components/verwalter/VerwalterAssistent";
 import { VerwalterGuideBanner } from "@/components/verwalter/VerwalterGuideBanner";
 import { VerwalterOnboarding } from "@/components/verwalter/VerwalterOnboarding";
@@ -60,9 +61,13 @@ export default function RechenpraxisProductLayout({ children }: { children: Reac
   const [location] = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dashboard, setDashboard] = useState<DashboardStats | null>(null);
+  const verwalterMode = isVerwalterPortal();
+  const brandName = verwalterMode ? "Verwalter-Suite" : "Verwalter-Rechner";
+  const homeHref = verwalterMode ? "/verwalter-suite" : "/verwalter-rechner";
+  const logoutRedirect = verwalterMode ? "/verwalter-suite" : "/verwalter-rechner";
   const logoutMutation = trpc.auth.logout.useMutation({
     onSuccess: () => {
-      window.location.href = "/verwalter-rechner";
+      window.location.href = logoutRedirect;
     },
   });
   const { data: user } = trpc.auth.me.useQuery();
@@ -114,25 +119,29 @@ export default function RechenpraxisProductLayout({ children }: { children: Reac
           </Link>
         );
       })}
-      <div className="my-3 border-t border-slate-700" />
-      <Link href="/kurse">
-        <a
-          onClick={onNavigate}
-          className="flex min-h-[44px] items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-400 hover:bg-slate-800 hover:text-white"
-        >
-          <GraduationCap className="h-5 w-5 shrink-0" />
-          Immobilien-Akademie
-        </a>
-      </Link>
-      <Link href="/">
-        <a
-          onClick={onNavigate}
-          className="flex min-h-[44px] items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-400 hover:bg-slate-800 hover:text-white"
-        >
-          <Home className="h-5 w-5 shrink-0" />
-          Startseite
-        </a>
-      </Link>
+      {!verwalterMode && (
+        <>
+          <div className="my-3 border-t border-slate-700" />
+          <Link href="/kurse">
+            <a
+              onClick={onNavigate}
+              className="flex min-h-[44px] items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-400 hover:bg-slate-800 hover:text-white"
+            >
+              <GraduationCap className="h-5 w-5 shrink-0" />
+              Immobilien-Akademie
+            </a>
+          </Link>
+          <Link href="/">
+            <a
+              onClick={onNavigate}
+              className="flex min-h-[44px] items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-400 hover:bg-slate-800 hover:text-white"
+            >
+              <Home className="h-5 w-5 shrink-0" />
+              Startseite
+            </a>
+          </Link>
+        </>
+      )}
     </>
   );
 
@@ -147,14 +156,14 @@ export default function RechenpraxisProductLayout({ children }: { children: Reac
     <div className="flex min-h-screen overflow-x-hidden bg-slate-50 dark:bg-slate-950">
       <aside className="hidden w-64 shrink-0 flex-col bg-slate-900 text-white md:flex">
         <div className="border-b border-slate-800 p-5">
-          <Link href="/verwalter-rechner">
+          <Link href={homeHref}>
             <a className="block">
               <div className="flex items-center gap-2">
                 <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-600">
                   <Building2 className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-sm font-bold leading-tight">Verwalter-Rechner</div>
+                  <div className="text-sm font-bold leading-tight">{brandName}</div>
                   <div className="text-[10px] text-emerald-300/80">Rechenpraxis · WEG & NK</div>
                 </div>
               </div>
@@ -203,7 +212,7 @@ export default function RechenpraxisProductLayout({ children }: { children: Reac
               <Menu className="h-5 w-5" />
             </button>
             <span className="truncate text-sm font-semibold text-slate-800 dark:text-slate-100 md:hidden">
-              Verwalter-Rechner
+              {brandName}
             </span>
           </div>
           <div className="shrink-0 md:hidden">
@@ -230,7 +239,7 @@ export default function RechenpraxisProductLayout({ children }: { children: Reac
           />
           <div className="absolute left-0 top-0 flex h-full w-[min(100vw-3rem,18rem)] flex-col bg-slate-900 text-white shadow-xl">
             <div className="flex items-center justify-between border-b border-slate-800 p-4">
-              <span className="font-bold">Verwalter-Rechner</span>
+              <span className="font-bold">{brandName}</span>
               <button type="button" onClick={() => setMobileOpen(false)} aria-label="Menü schließen">
                 <X className="h-5 w-5" />
               </button>
