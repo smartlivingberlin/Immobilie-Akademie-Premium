@@ -1,4 +1,5 @@
 import express from "express";
+import fs from "node:fs";
 import { createServer } from "http";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -8,7 +9,6 @@ const __dirname = path.dirname(__filename);
 
 async function startServer() {
   const portalMode = process.env.PORTAL_MODE ?? "akademie";
-  void portalMode;
 
   const app = express();
   const server = createServer(app);
@@ -23,7 +23,13 @@ async function startServer() {
 
   // Handle client-side routing - serve index.html for all routes
   app.get("*", (_req, res) => {
-    res.sendFile(path.join(staticPath, "index.html"));
+    const indexPath = path.join(staticPath, "index.html");
+    const html = fs.readFileSync(indexPath, "utf-8");
+    const injected = html.replace(
+      "</head>",
+      `<script>window.__PORTAL_MODE__="${portalMode}";</script></head>`,
+    );
+    res.type("html").send(injected);
   });
 
   const port = process.env.PORT || 3000;
