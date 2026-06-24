@@ -11,6 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 export default function FreigabenIndex() {
   const [freigaben, setFreigaben] = useState<VerwalterFreigabe[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [acting, setActing] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<string | null>(null);
   const { toast } = useToast();
@@ -23,6 +24,8 @@ export default function FreigabenIndex() {
       });
       const data = await res.json();
       if (data.success) setFreigaben(data.freigaben);
+    } catch (e) {
+      setError("Daten konnten nicht geladen werden.");
     } finally {
       setLoading(false);
     }
@@ -55,7 +58,9 @@ export default function FreigabenIndex() {
 
   const copyText = async (f: VerwalterFreigabe) => {
     const text = String(f.payload.text ?? "");
-    await navigator.clipboard.writeText(text);
+    navigator.clipboard.writeText(text).catch(() => {
+      console.warn("Clipboard nicht verfügbar");
+    });
     toast({ title: "Text kopiert" });
   };
 
@@ -70,7 +75,14 @@ export default function FreigabenIndex() {
 
         {loading ? (
           <p className="mt-8 text-slate-500">Lädt…</p>
-        ) : freigaben.length === 0 ? (
+        ) : (
+          <>
+        {error && (
+          <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 mb-4">
+            {error}
+          </div>
+        )}
+        {freigaben.length === 0 ? (
           <p className="mt-8 rounded-xl border border-dashed border-slate-300 p-8 text-center text-slate-500">
             Keine ausstehenden Freigaben. Starten Sie eine Mahnung oder nutzen Sie KI-Brief in Vorlagen.
           </p>
@@ -138,6 +150,8 @@ export default function FreigabenIndex() {
               );
             })}
           </ul>
+        )}
+          </>
         )}
       </div>
     </>

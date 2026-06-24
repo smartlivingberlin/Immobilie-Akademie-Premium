@@ -58,6 +58,8 @@ export default function VorgaengeIndex() {
       const oData = await oRes.json();
       if (vData.success) setVorgaenge(vData.vorgaenge);
       if (oData.success) setObjekte(oData.objekte);
+    } catch (e) {
+      setError("Daten konnten nicht geladen werden.");
     } finally {
       setLoading(false);
     }
@@ -343,7 +345,14 @@ export default function VorgaengeIndex() {
 
         {loading ? (
           <p className="mt-8 text-slate-500">Lädt…</p>
-        ) : vorgaenge.length === 0 ? (
+        ) : (
+          <>
+        {error && (
+          <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 mb-4">
+            {error}
+          </div>
+        )}
+        {vorgaenge.length === 0 ? (
           <p className="mt-8 rounded-xl border border-dashed border-slate-300 p-8 text-center text-slate-500">
             Noch keine Vorgänge. Legen Sie einen an — z. B. Mahnung, ETV oder Schaden.
           </p>
@@ -395,6 +404,8 @@ export default function VorgaengeIndex() {
                 </section>
               ))}
             </div>
+          </>
+        )}
           </>
         )}
       </div>

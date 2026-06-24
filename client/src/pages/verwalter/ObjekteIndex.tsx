@@ -56,6 +56,8 @@ export default function ObjekteIndex() {
       const res = await fetch("/api/verwalter/objekte", { credentials: "include" });
       const data = await res.json();
       if (data.success) setObjekte(data.objekte);
+    } catch (e) {
+      setError("Daten konnten nicht geladen werden.");
     } finally {
       setLoading(false);
     }
@@ -319,7 +321,14 @@ export default function ObjekteIndex() {
         <div className="mt-8">
           {loading ? (
             <p className="text-slate-500">Lädt…</p>
-          ) : objekte.length === 0 ? (
+          ) : (
+            <>
+          {error && (
+            <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 mb-4">
+              {error}
+            </div>
+          )}
+          {objekte.length === 0 ? (
             <p className="rounded-xl border border-dashed border-slate-300 p-8 text-center text-slate-500">
               Noch keine Objekte. Legen Sie Ihr erstes WEG an — Daten werden für Vorlagen & KI-Briefe genutzt.
             </p>
@@ -360,6 +369,8 @@ export default function ObjekteIndex() {
                 </li>
               ))}
             </ul>
+          )}
+            </>
           )}
         </div>
       </div>

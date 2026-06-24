@@ -41,11 +41,15 @@ export default function BuchungenIndex() {
   const selectedObjekt = objekte.find((o) => o.id === objektId);
 
   const loadObjekte = async () => {
-    const res = await fetch("/api/verwalter/objekte", { credentials: "include" });
-    const data = await res.json();
-    if (data.success) {
-      setObjekte(data.objekte);
-      if (!objektId && data.objekte[0]) setObjektId(data.objekte[0].id);
+    try {
+      const res = await fetch("/api/verwalter/objekte", { credentials: "include" });
+      const data = await res.json();
+      if (data.success) {
+        setObjekte(data.objekte);
+        if (!objektId && data.objekte[0]) setObjektId(data.objekte[0].id);
+      }
+    } catch (e) {
+      setError("Daten konnten nicht geladen werden.");
     }
   };
 
@@ -64,6 +68,8 @@ export default function BuchungenIndex() {
       const pRes = await fetch(`/api/verwalter/buchungen/plausibilitaet?${q}`, { credentials: "include" });
       const pData = await pRes.json();
       if (pData.success) setHinweise(pData.hinweise);
+    } catch (e) {
+      setError("Daten konnten nicht geladen werden.");
     } finally {
       setLoading(false);
     }
@@ -446,7 +452,14 @@ export default function BuchungenIndex() {
         <div className="mt-8">
           {loading ? (
             <p className="text-slate-500">Lädt…</p>
-          ) : buchungen.length === 0 ? (
+          ) : (
+            <>
+          {error && (
+            <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 mb-4">
+              {error}
+            </div>
+          )}
+          {buchungen.length === 0 ? (
             <p className="rounded-xl border border-dashed border-slate-300 p-8 text-center text-slate-500">
               Keine Buchungen in {periode}. Erfassen Sie Hausgeld, Forderungen oder NK-Aufwand.
             </p>
@@ -499,6 +512,8 @@ export default function BuchungenIndex() {
                   </tbody>
                 </table>
               </div>
+            </>
+          )}
             </>
           )}
         </div>
