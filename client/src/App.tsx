@@ -2,7 +2,7 @@ import React, { lazy, Suspense, useEffect, useState } from "react";
 import { Route, Switch, useLocation } from "wouter";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { trpc } from "@/lib/trpc";
-import { isVerwalterPortal } from "@/lib/portalMode";
+import { isVerwalterPortal, applyPortalMetaTags } from "@/lib/portalMode";
 import { Toaster } from "@/components/ui/toaster";
 const DashboardLayout = lazy(() => import("@/components/layout/DashboardLayout"));
 const RechenpraxisProductLayout = lazy(() => import("@/components/layout/RechenpraxisProductLayout"));
@@ -528,6 +528,10 @@ export default function App() {
   const [location] = useLocation();
   const isAuthRoute = ["/login", "/forgot-password", "/reset-password"].includes(location);
   const [a11yReady, setA11yReady] = useState(false);
+
+  useEffect(() => {
+    applyPortalMetaTags();
+  }, []);
 
   useEffect(() => {
     if (isAuthRoute) {
