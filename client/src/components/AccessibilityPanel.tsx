@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "wouter";
+import { isVerwalterPortal } from "@/lib/portalMode";
 import { Accessibility, Type, Mic, MicOff, RotateCcw, Wind, X, Sparkles } from "lucide-react";
 import { useA11yPrefs, type ContrastMode } from "../hooks/use-a11y-prefs";
 import { useVoiceCommands } from "../hooks/use-voice-commands";
@@ -34,7 +35,7 @@ export function AccessibilityPanel({ hideFab = false, forceOpen = false, onClose
   };
 
   const commands = useMemo(()=>[
-    { patterns:[/^(gehe? zu|öffne) kurs/,/^kurs(e)?$/], action:()=>{navigate("/kurse");toast("Kurse");}, description:"‚Öffne Kurse'" },
+    { patterns:[/^(gehe? zu|öffne) kurs/,/^kurs(e)?$/], action:()=>{navigate(isVerwalterPortal() ? "/verwalter-suite" : "/kurse");toast("Kurse");}, description:"‚Öffne Kurse'" },
     { patterns:[/^(gehe? zu|öffne) glossar/,/^glossar$/], action:()=>{navigate("/glossar");toast("Glossar");}, description:"‚Öffne Glossar'" },
     { patterns:[/^(gehe? zu|öffne) dashboard/,/^dashboard$/], action:()=>{navigate("/dashboard");toast("Dashboard");}, description:"‚Gehe zum Dashboard'" },
     { patterns:[/^(gehe? zu|öffne) förderung/,/^förderung$/], action:()=>{navigate("/foerderung");toast("Förderung");}, description:"‚Öffne Förderung'" },
@@ -55,7 +56,7 @@ export function AccessibilityPanel({ hideFab = false, forceOpen = false, onClose
     { patterns:[/^(öffne) audio/,/^audio modus$/], action:()=>{navigate("/audio-modus");toast("Audio-Modus");}, description:"‚Öffne Audio-Modus'" },
     { patterns:[/^(öffne) rechner/,/^rechner$/], action:()=>{navigate("/rechner");toast("Rechner");}, description:"‚Öffne Rechner'" },
     { patterns:[/^(öffne) zertifikate/,/^zertifikate$/], action:()=>{navigate("/zertifikate");toast("Zertifikate");}, description:"‚Öffne Zertifikate'" },
-    { patterns:[/^(öffne) pakete/,/^pakete$/], action:()=>{navigate("/pakete");toast("Pakete");}, description:"‚Öffne Pakete'" },
+    { patterns:[/^(öffne) pakete/,/^pakete$/], action:()=>{navigate(isVerwalterPortal() ? "/verwalter-suite" : "/pakete");toast("Pakete");}, description:"‚Öffne Pakete'" },
     { patterns:[/^(öffne) hilfe/,/^hilfe$/,/^hilfe$/], action:()=>speak("Verfügbare Befehle: Öffne Modul 1 bis 5. Starte Quiz oder Prüfung. Öffne Lernkarten, Glossar, Dashboard, Statistiken, Audio-Modus, Rechner, Zertifikate, Pakete, Kurse, Förderung. Vorlesen zum Vorlesen der Seite. Stopp zum Anhalten. Schrift größer oder kleiner."), description:"‚Hilfe'" },
   ],[navigate,prefs,update,speak,stopSpeak]);
 
