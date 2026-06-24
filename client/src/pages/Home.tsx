@@ -17,6 +17,40 @@ import {
 } from "@shared/claims";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
 import { RECHENPRAXIS_TASK_COUNT } from "@shared/rechenpraxisProduct";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+const HOME_FAQ = [
+  {
+    question: "Für wen ist das Portal geeignet?",
+    answer:
+      "Für Immobilienmakler (§34c), WEG-Verwalter (§26a WEG), Darlehensvermittler (§34i) und Immobiliengutachter — Einsteiger und Berufserfahrene.",
+  },
+  {
+    question: "Wie unterscheidet sich das Portal von klassischen IHK-Vorbereitungskursen?",
+    answer:
+      "Klassische Kurse kosten 1.290–1.690€ mit festen Live-Zeiten. Unser Portal ab 299€, selbstbestimmt, mit KI-Tutor rund um die Uhr.",
+  },
+  {
+    question: "Gibt es eine kostenlose Testphase?",
+    answer:
+      "Ja — alle 5 Module können 24 Stunden kostenlos getestet werden. Keine Kreditkarte, keine Verpflichtung.",
+  },
+  {
+    question: "Kann ich den Kurs für die 20h-Pflicht nach §34c nutzen?",
+    answer:
+      "Das Portal bereitet auf IHK-relevante Themen vor. Ob Ihre Weiterbildung als Nachweis anerkannt wird, entscheidet Ihre zuständige Behörde.",
+  },
+  {
+    question: "Wie funktioniert der KI-Tutor?",
+    answer:
+      "Der KI-Tutor beantwortet Prüfungsfragen, erklärt Gesetze und gibt Feedback zu Aufgaben — in jedem Lerntag verfügbar.",
+  },
+];
 
 const MODULES = [
   { id:1, title:"Modul 1: Immobilien-Grundkurs", kurz:"Das Fundament", preis:"149", tage:20, ue:160, slug:"modul-1-immobilien-grundkurs", desc:"Grundstücksrecht, Grundbuch, Baurecht, Wertermittlung — die Pflichtbasis für alle weiteren Module.", badge:"Einstieg", farbe:"#1d4ed8", textFarbe:"white" },
@@ -139,6 +173,7 @@ export default function Home() {
         title="Immobilien Akademie Smart — §34c Makler, §34i, WEG-Verwaltung, Immobilienbewertung Online"
         description="Praxiswissen §34c Makler, §34i-Sachkunde, WEG-Verwaltung, Immobilienbewertung. KI-Tutor, 240 Lerntage, Praxisaufgaben. Ab 149€."
         keywords="§34c GewO Makler, §34i GewO Sachkundeprüfung, WEG-Verwaltung, Immobilienbewertung, Online-Weiterbildung Immobilien"
+        faq={HOME_FAQ}
       />
 
       {/* HERO */}
@@ -454,6 +489,29 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-background border-t border-border">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <div className="text-center mb-10">
+            <div className="text-xs uppercase tracking-widest text-primary font-semibold mb-3">FAQ</div>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground">
+              Häufige Fragen
+            </h2>
+          </div>
+          <Accordion type="single" collapsible className="w-full">
+            {HOME_FAQ.map((item) => (
+              <AccordionItem key={item.question} value={item.question}>
+                <AccordionTrigger className="text-left text-base font-semibold">
+                  {item.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed">
+                  {item.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
       <ExitIntentPopup />
