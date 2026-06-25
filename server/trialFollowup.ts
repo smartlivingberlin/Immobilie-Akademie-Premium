@@ -3,6 +3,7 @@ import { sql } from "drizzle-orm";
 
 const BASE_URL = process.env.PUBLIC_URL || 
   "https://immobilien-akademie-smart.de";
+const TRIAL_FOLLOWUP_ENABLED = process.env.TRIAL_FOLLOWUP_ENABLED === "1" || process.env.TRIAL_FOLLOWUP_ENABLED === "true";
 const RESEND_KEY = process.env.RESEND_API_KEY || "";
 
 async function sendFollowupEmail(
@@ -67,6 +68,7 @@ async function sendFollowupEmail(
 export async function runTrialFollowupCron(): Promise<void> {
   // SMTP jetzt konfiguriert — Cron aktiv
   try {
+  if (!TRIAL_FOLLOWUP_ENABLED) { console.log("[TrialFollowup] deaktiviert: TRIAL_FOLLOWUP_ENABLED nicht gesetzt"); return; }
   if (!RESEND_KEY) return;
   
   const db = await getDb();
