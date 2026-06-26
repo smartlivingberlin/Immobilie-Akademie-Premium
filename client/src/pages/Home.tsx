@@ -57,7 +57,7 @@ const MODULES = [
   { id:2, title:"Modul 2: Makler §34c GewO", kurz:"Die Lizenz", preis:"499", tage:60, ue:480, slug:"modul-2-makler-34c", desc:"Maklerrecht, Provision, Exposé, Kaufvertrag, GwG, MaBV — alles für die professionelle Maklerpraxis nach §34c GewO.", badge:"Beliebt", farbe:"#6d28d9", textFarbe:"white" },
   { id:3, title:"Modul 3: WEG-Verwalter", kurz:"Die Verwaltung", preis:"699", tage:80, ue:640, slug:"modul-3-weg-verwalter", desc:"WEG-Reform 2020, Eigentümerversammlung, Nebenkostenabrechnung, Mietrecht §535ff BGB.", badge:"Vollständig", farbe:"#047857", textFarbe:"white" },
   { id:4, title:"Modul 4: Gutachter", kurz:"Die Bewertung", preis:"399", tage:40, ue:320, slug:"modul-4-gutachter", desc:"ImmoWertV 2021: Vergleichs-, Ertrags- und Sachwertverfahren. HypZert-Vorbereitung.", badge:"Präzise", farbe:"#b45309", textFarbe:"white" },
-  { id:5, title:"Modul 5: §34i GewO", kurz:"Die Finanzierung", preis:"499", tage:40, ue:320, slug:"modul-5-34i-darlehensvermittler", desc:"Annuitätendarlehen, KfW-Förderung, EU-WIKR, ESIS-Merkblatt — Ihre Finanzierungslizenz.", badge:"Komplett", farbe:"#9d174d", textFarbe:"white" },
+  { id:5, title:"Modul 5: §34i GewO", kurz:"Die Finanzierung", preis:"499", tage:40, ue:320, slug:"modul-5-34i-darlehensvermittler", desc:"Annuitätendarlehen, KfW-Förderung, EU-WIKR, ESIS-Merkblatt — Finanzierungswissen für §34i.", badge:"Komplett", farbe:"#9d174d", textFarbe:"white" },
 ];
 
 const STATS = [
@@ -69,7 +69,7 @@ const STATS = [
 
 const FEATURES = [
   { icon:Bot, title:"KI-Tutor mit Sokrates-Modus", desc:"Erklärt Paragraphen in Klartext, stellt Rückfragen, verweist auf Quellen. Claude + Gemini + Groq." },
-  { icon:BookOpenCheck, title:"Echte Gesetzesquellen", desc:"Jede fachliche Aussage verlinkt auf gesetze-im-internet.de und IHK-Quellen." },
+  { icon:BookOpenCheck, title:"Echte Gesetzesquellen", desc:"Viele fachliche Inhalte verweisen auf Gesetzes- und IHK-Quellen." },
   { icon:Clock, title:"240 strukturierte Lerntage", desc:"5 Tabs pro Tag: Theorie, Normen, Analyse, Aufgaben, Video-Bereich. Lernfortschritt serverseitig." },
   { icon:Award, title:"Kursabschluss-Zertifikate", desc:"PDF-Zertifikate nach bestandener Prüfung. Ab 70% Punktzahl. Portal-eigenes Abschlussformat." },
   { icon:GraduationCap, title:"Adaptiver Lernpfad", desc:"Schwächenanalyse via Spaced Repetition. Die Plattform passt sich Ihrem Tempo an." },
@@ -420,7 +420,7 @@ export default function Home() {
                 </div>
                 <span className="text-xs font-semibold" style={{background:"oklch(0.78 0.15 75)",color:"oklch(0.22 0.05 60)",padding:"4px 10px",borderRadius:"999px"}}>Empfohlen</span>
               </div>
-              <h3 className="font-display font-semibold text-lg text-foreground mb-2">Komplett-Ausbildung</h3>
+              <h3 className="font-display font-semibold text-lg text-foreground mb-2">Komplett-Weiterbildung</h3>
               <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-4">
                 Alle 5 Module — Makler, Verwalter, Gutachter, Finanzierer. {STRUCTURED_LEARNING_DAYS} Lerntage, {MARKETING_LEARNING_TASKS_LABEL} Aufgaben, 5 Zertifikate.
               </p>

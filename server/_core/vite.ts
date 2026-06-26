@@ -195,7 +195,7 @@ export function serveStatic(app: Express) {
           "name": "Wie unterscheidet sich das Portal von klassischen IHK-Kursen?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Klassische Kurse kosten 1.290–1.690 Euro mit festen Live-Zeiten. Unser Portal ist ab 299 Euro verfügbar, komplett selbstbestimmt und mit KI-Tutor rund um die Uhr.",
+            "text": "Klassische Kurse kosten 1.290–1.690 Euro mit festen Live-Zeiten. Unser Portal ist mit Modulen ab 149 Euro verfügbar, komplett selbstbestimmt und mit KI-Tutor rund um die Uhr.",
           },
         },
         {

@@ -348,7 +348,7 @@ export default function KursLanding({ slug }: { slug: string }) {
                 </div>
                 <div style={{ fontSize:11, color:"#94a3b8", marginBottom:16 }}>Endpreis · inkl. 2× Lernzeit · Verlängerung ab 29 €/Jahr</div>
                 <p style={{ fontSize:11, color:"#64748b", lineHeight:1.5, marginBottom:16, background:"#f0fdf4", border:"1px solid #bbf7d0", borderRadius:8, padding:"10px 12px" }}>
-                  💡 Förderung möglich: Prüfen Sie ob Sie einen Bildungsgutschein der Agentur für Arbeit oder ESF-Förderung Ihres Bundeslandes nutzen können.
+                  💡 Förderung: Bildungsgutschein oder ESF nur nach Zulassung, Bewilligung und Einzelfallprüfung möglich. AZAV-Zertifizierung wird angestrebt — aktuell kein Förderanspruch aus diesem Programm.
                 </p>
 
                 {/* Widerrufs-Checkbox */}

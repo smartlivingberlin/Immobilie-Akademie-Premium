@@ -28,7 +28,7 @@ export default function Module5WithIntro() {
           "Annuitätendarlehen vollständig berechnen",
           "Kunden bei Immobilienfinanzierung beraten",
           "KfW-Förderprogramme erklären und vermitteln",
-          "Als zertifizierter Darlehensvermittler arbeiten",
+          "Auf §34i-Sachkunde und Erlaubnisvoraussetzungen vorbereitet sein",
         ]}
         examRelevance="Orientiert am IHK-Rahmenplan §34i GewO. Alle Rechenaufgaben mit vollständigen Lösungswegen."
         legalBasis="§34i GewO, WIKR"

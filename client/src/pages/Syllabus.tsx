@@ -124,7 +124,7 @@ export default function Syllabus() {
         "Konfliktmanagement",
         "Rhetorik & Körpersprache",
         "Verkaufspsychologie",
-        "Prüfungsvorbereitung IHK",
+        "Praxis- und Erlaubniswissen §34c",
         "Prüfungssimulation",
         "Abschlussprüfung Modul 2"
       ]
@@ -217,7 +217,7 @@ export default function Syllabus() {
         "Genossenschaftsverwaltung",
         "Kommunale Wohnungsverwaltung",
         "Nachhaltigkeitsmanagement (ESG)",
-        "Zertifizierter Verwalter (IHK)",
+        "Vorbereitung auf Themen der Prüfung zum zertifizierten Verwalter nach §26a WEG",
         "Prüfungsvorbereitung",
         "Fallstudien & Praxis",
         "Abschlussprüfung Modul 3"
@@ -317,7 +317,7 @@ export default function Syllabus() {
           <div>
             <div className="flex items-center gap-2 mb-2">
               <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200">
-                Offizieller Lehrgang 2026
+                Portalinterner Lehrplan 2026
               </Badge>
               <span className="text-sm text-slate-500">Stand: Februar 2026</span>
             </div>

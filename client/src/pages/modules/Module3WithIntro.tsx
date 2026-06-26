@@ -27,10 +27,10 @@ export default function Module3WithIntro() {
           "WEG-Versammlungen rechtssicher durchführen",
           "Nebenkostenabrechnungen erstellen und prüfen",
           "Mietrechtliche Konflikte einschätzen",
-          "Als zertifizierter Verwalter nach §26a WEG arbeiten",
+          "Themen der Prüfung zum zertifizierten Verwalter nach §26a WEG einordnen",
           "Eigene Immobilien professionell verwalten",
         ]}
-        examRelevance="Vorbereitung auf die IHK-Sachkundeprüfung Verwalter §26a WEG. Enthält aktuelle BGH-Urteile 2023-2025 zu WEG und Mietrecht."
+        examRelevance="Vorbereitung auf Themen der IHK-Prüfung zum zertifizierten Verwalter nach §26a WEG. Enthält aktuelle BGH-Urteile 2023-2025 zu WEG und Mietrecht."
         legalBasis="WEG, BGB §535ff"
         difficulty="Fortgeschritten"
         onStart={() => setShowIntro(false)}

@@ -13,18 +13,18 @@ export const quizCasesModule1: QuizCase[] = [
       "§34c Abs. 2 GewO - Versagungsgründe",
       "§15 GewO - Gewerbeuntersagung"
     ],
-    correctAnswer: "Nein, Herr Müller darf noch nicht als Makler tätig werden.\n\n**Begründung:**\n\n1. **Erlaubnispflicht (§34c Abs. 1 GewO):** Wer gewerbsmäßig als Immobilienmakler tätig sein will, bedarf der Erlaubnis der zuständigen Behörde. Die bloße Gewerbeanmeldung reicht nicht aus.\n\n2. **Voraussetzungen für die Erlaubnis:**\n   - **Zuverlässigkeit:** Keine Vorstrafen, keine Insolvenz, keine Gewerbeuntersagung\n   - **Geordnete Vermögensverhältnisse:** Keine Schulden, die die Tätigkeit gefährden\n   - **Sachkunde:** Nachweis durch IHK-Prüfung oder gleichwertige Qualifikation\n   - **Berufshaftpflichtversicherung:** Mindestdeckung 1 Mio. € für Personenschäden, 250.000 € für Sachschäden\n\n3. **Rechtsfolge bei Verstoß:** Tätigkeit ohne Erlaubnis ist eine Ordnungswidrigkeit (§144 Abs. 1 Nr. 1 GewO) und kann mit Bußgeld bis zu 50.000 € geahndet werden. Zudem sind Maklerverträge ohne Erlaubnis nichtig.\n\n**Fazit:** Herr Müller muss erst die Erlaubnis nach §34c GewO beantragen und erhalten, bevor er als Makler tätig werden darf.",
+    correctAnswer: "Nein, Herr Müller darf noch nicht als Makler tätig werden.\n\n**Begründung:**\n\n1. **Erlaubnispflicht (§34c Abs. 1 GewO):** Wer gewerbsmäßig als Immobilienmakler tätig sein will, bedarf der behördlichen Erlaubnis. Die bloße Gewerbeanmeldung reicht nicht aus.\n\n2. **Kernvoraussetzungen für die Erlaubnis als Immobilienmakler:**\n   - **Persönliche Zuverlässigkeit:** z. B. keine schwerwiegenden Vorstrafen, keine Gewerbeuntersagung\n   - **Geordnete Vermögensverhältnisse:** keine Vermögensverhältnisse, die die Zuverlässigkeit in Frage stellen\n\n3. **Wichtige Abgrenzung:** Für die Immobilienmakler-Erlaubnis nach §34c GewO ist **kein** IHK-Sachkundenachweis erforderlich (anders als bei §34i-Darlehensvermittlern). Eine Berufshaftpflichtversicherung ist für die Makler-Erlaubnis nach §34c GewO ebenfalls **keine** pauschale Erlaubnisvoraussetzung.\n\n4. **Rechtsfolge bei Verstoß:** Tätigkeit ohne Erlaubnis ist eine Ordnungswidrigkeit (§144 Abs. 1 Nr. 1 GewO) und kann mit Bußgeld bis zu 50.000 € geahndet werden. Zudem sind Maklerverträge ohne Erlaubnis nichtig.\n\n**Fazit:** Herr Müller muss erst die Erlaubnis nach §34c GewO beantragen und erhalten, bevor er als Makler tätig werden darf.",
     commonMistakes: [
       "Verwechslung von Gewerbeanmeldung und Erlaubnis nach §34c GewO",
       "Annahme, dass man sofort nach Gewerbeanmeldung tätig werden darf",
-      "Übersehen der Sachkundeanforderung",
-      "Fehlende Kenntnis der Berufshaftpflichtversicherung als Voraussetzung"
+      "Übertragung der §34i-Sachkundeanforderung fälschlich auf §34c-Makler",
+      "Annahme einer pauschalen Berufshaftpflichtversicherung als Makler-Erlaubnisvoraussetzung"
     ],
     learningPoints: [
       "Erlaubnis nach §34c GewO ist zwingend erforderlich für Immobilienmakler",
       "Gewerbeanmeldung allein reicht nicht aus",
-      "Vier Hauptvoraussetzungen: Zuverlässigkeit, Vermögen, Sachkunde, Versicherung",
-      "Tätigkeit ohne Erlaubnis ist Ordnungswidrigkeit mit Bußgeld bis 50.000 €"
+      "Kernvoraussetzungen: persönliche Zuverlässigkeit und geordnete Vermögensverhältnisse",
+      "§34c-Makler: kein IHK-Sachkundenachweis — das gilt anders bei §34i"
     ]
   },
   {
@@ -59,25 +59,25 @@ export const quizCasesModule1: QuizCase[] = [
     title: "Berufshaftpflichtversicherung: Mindestdeckung",
     category: "Versicherung & Haftung",
     difficulty: "Experte",
-    scenario: "Herr Klein möchte als Immobilienmakler tätig werden und hat bereits die Sachkundeprüfung bestanden. Bei der Beantragung der Erlaubnis nach §34c GewO wird er aufgefordert, eine Berufshaftpflichtversicherung nachzuweisen. Er findet ein günstiges Angebot mit folgenden Deckungssummen: 500.000 € für Personenschäden, 200.000 € für Sachschäden, 100.000 € für Vermögensschäden.",
-    question: "Reicht diese Versicherung für die Erlaubnis nach §34c GewO aus? Nennen Sie die gesetzlich vorgeschriebenen Mindestdeckungssummen und erläutern Sie, warum höhere Deckungen sinnvoll sein können.",
+    scenario: "Herr Klein möchte als Immobilienmakler tätig werden und prüft freiwillig — aus Haftungs- und Risikogründen — eine Berufs- bzw. Betriebshaftpflicht- oder Vermögensschadenhaftpflichtversicherung. Er findet ein günstiges Angebot mit folgenden Deckungssummen: 500.000 € für Personenschäden, 200.000 € für Sachschäden, 100.000 € für Vermögensschäden.",
+    question: "Wie ist dieses Versicherungsangebot im Hinblick auf typische Haftungsrisiken eines Maklers einzuordnen, und warum können ausreichende Deckungssummen sinnvoll sein?",
     legalContext: [
-      "§34c Abs. 1 Satz 4 GewO - Versicherungspflicht",
-      "MaBV (Makler- und Bauträgerverordnung) §3 - Mindestdeckungssummen",
-      "BGB §280 - Schadensersatzpflicht"
+      "§34c Abs. 1 GewO — Erlaubnisvoraussetzungen für Immobilienmakler",
+      "BGB §280 — Schadensersatzpflicht",
+      "Typische Haftungsrisiken im Maklergeschäft (Beratungs-, Vermittlungs- und Dokumentationsfehler)"
     ],
-    correctAnswer: "Nein, diese Versicherung reicht nicht aus.\n\n**Gesetzliche Mindestdeckungssummen (§3 MaBV):**\n\n1. **Personenschäden:** Mindestens 1.000.000 € (nicht 500.000 €)\n2. **Sach- und Vermögensschäden:** Mindestens 250.000 € (nicht 200.000 € bzw. 100.000 €)\n3. **Jahreshöchstleistung:** Mindestens das Zweifache der Mindestversicherungssumme\n\n**Analyse des Angebots:**\n- Personenschäden: 500.000 € → **zu niedrig** (Mindestens 1 Mio. € erforderlich)\n- Sachschäden: 200.000 € → **zu niedrig** (Mindestens 250.000 € erforderlich)\n- Vermögensschäden: 100.000 € → **zu niedrig** (Mindestens 250.000 € erforderlich)\n\n**Warum höhere Deckungen sinnvoll sind:**\n\n1. **Schadensrisiko:** Bei Immobiliengeschäften können schnell Schäden in Millionenhöhe entstehen (z.B. fehlerhafte Beratung bei Kaufpreisverhandlungen, Versäumnis von Fristen)\n2. **Existenzsicherung:** Höhere Deckungen schützen vor finanzieller Existenzbedrohung\n3. **Marktüblich:** Viele Makler haben Deckungen von 3-5 Mio. € für Personenschäden und 1-2 Mio. € für Vermögensschäden\n4. **Vertrauensbildung:** Höhere Deckungen signalisieren Professionalität gegenüber Kunden\n\n**Fazit:** Herr Klein muss eine Versicherung mit mindestens 1 Mio. € für Personenschäden und 250.000 € für Sach-/Vermögensschäden abschließen. Empfohlen werden höhere Deckungen.",
+    correctAnswer: "**Einordnung des Angebots:**\n\nDas Angebot weist im Vergleich zu marktüblichen Orientierungswerten eher niedrige Deckungssummen auf. Für typische Makler-Haftungsrisiken (z. B. fehlerhafte Beratung, Fristversäumnisse, Schadensersatzansprüche) können Schadenssummen schnell die angebotenen Limits übersteigen.\n\n**Wichtige Abgrenzung zur Erlaubnis:**\n\nFür die **Immobilienmakler-Erlaubnis nach §34c GewO** ist eine Berufshaftpflichtversicherung **keine pauschale gesetzliche Erlaubnisvoraussetzung**. Die behördliche Erlaubnis setzt insbesondere persönliche Zuverlässigkeit und geordnete Vermögensverhältnisse voraus — nicht den Nachweis einer bestimmten Versicherung.\n\n**Warum Versicherung trotzdem sinnvoll sein kann:**\n\n1. **Haftungsrisiko:** Bei Immobiliengeschäften können Schäden in sechsstelliger oder höherer Höhe entstehen.\n2. **Existenzsicherung:** Ausreichende Deckungen schützen vor finanzieller Existenzbedrohung durch Schadensersatzforderungen.\n3. **Kundenvertrauen:** Angemessene Versicherungsdeckung signalisiert Professionalität.\n4. **Marktüblich:** Viele Makler wählen freiwillig höhere Deckungen (z. B. 1–3 Mio. € Personenschäden, 250.000 €–1 Mio. € Vermögensschäden als Orientierung — keine gesetzliche Pflichtsumme für reine §34c-Makler).\n\n**Fazit:** Herr Klein sollte das Angebot nicht allein nach dem Preis, sondern nach Haftungsrisiko und Deckungsumfang prüfen. Eine Versicherung kann aus Risikogründen sinnvoll sein, ersetzt aber weder die §34c-Erlaubnis noch einen behördlichen Sachkundenachweis.",
     commonMistakes: [
-      "Verwechslung der Mindestdeckungssummen für Personen- und Sachschäden",
-      "Übersehen der separaten Anforderung für Vermögensschäden",
+      "Annahme, dass eine Berufshaftpflichtversicherung pauschale Erlaubnisvoraussetzung für §34c-Makler ist",
+      "Verwechslung von freiwilliger Risikovorsorge und behördlicher Erlaubnis",
       "Annahme, dass die günstigste Versicherung ausreicht",
-      "Fehlende Kenntnis der Jahreshöchstleistung"
+      "Übertragung von Versicherungspflichten anderer Gewerbearten (z. B. §34i) auf §34c-Makler"
     ],
     learningPoints: [
-      "Mindestdeckung: 1 Mio. € Personenschäden, 250.000 € Sach-/Vermögensschäden",
-      "Höhere Deckungen sind aus Haftungsgründen empfehlenswert",
-      "Versicherungsnachweis ist Voraussetzung für Erlaubnis nach §34c GewO",
-      "Jahreshöchstleistung muss mindestens das Zweifache der Mindestversicherungssumme betragen"
+      "§34c-Makler: Erlaubnis setzt v. a. Zuverlässigkeit und geordnete Vermögensverhältnisse voraus",
+      "Berufshaftpflicht ist keine pauschale §34c-Erlaubnisvoraussetzung für Immobilienmakler",
+      "Makler schließen geeignete Haftpflicht-/Vermögensschadenversicherungen aus Haftungs- und Risikogründen ab",
+      "Deckungssummen sind Risikoentscheidung — nicht automatisch gesetzliche Mindestpflicht für reine §34c-Makler"
     ]
   }
 ];
