@@ -55,7 +55,7 @@ export const modules: ModuleData[] = [
     id: 3,
     title: "Modul 3: Immobilienverwaltung und Facility Management",
     shortTitle: "Verwalter & FM",
-    description: "Ausbildung zum Immobilienverwalter und Facility Manager.",
+    description: "Weiterbildung für Immobilienverwalter und Facility-Management-Grundlagen.",
     days: 80,
     ue: 640,
     status: 'active', // Aktueller Fokus

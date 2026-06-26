@@ -76,7 +76,7 @@ export default function Calculators() {
           </h2>
           <div className="space-y-4 text-slate-700 dark:text-slate-300">
             <p>
-              Diese Rechner sind speziell für die Ausbildung zum Darlehensvermittler (§34i GewO) entwickelt worden
+              Diese Rechner sind speziell für die Vorbereitung und Weiterbildung im Bereich Darlehensvermittlung (§34i GewO) entwickelt worden
               und helfen Ihnen, die wichtigsten Finanzierungsberechnungen zu verstehen und durchzuführen.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-6">

@@ -26,7 +26,7 @@ interface SEOProps {
 const DEFAULT_SEO = {
   title: "Immobilien Akademie Smart | Praxisorientierte Immobilien-Weiterbildung",
   description: `Online-Lernportal für Immobilienberufe: Vorbereitung auf die Sachkundeprüfung §34i, WEG-Verwalter nach §26a WEG sowie Praxiswissen zu §34c GewO, Maklerrecht und Immobilienbewertung. ${PUBLIC_QUIZ_QUESTION_COUNT} Lernfragen, KI-Tutor, ${STRUCTURED_LEARNING_DAYS} Lerntage.`,
-  keywords: "Immobilienmakler Ausbildung, §34c GewO, WEG-Verwalter, Mietverwalter, §34i Darlehensvermittler, Sachkundeprüfung §34i, Immobilien Weiterbildung, Online Lernportal",
+  keywords: "Immobilienmakler Weiterbildung, §34c GewO, WEG-Verwalter, Mietverwalter, §34i Darlehensvermittler, Sachkundeprüfung §34i, Immobilien Prüfungsvorbereitung, Online Lernportal",
   ogImage: "/og-image.svg",
 };
 
@@ -119,7 +119,7 @@ export function SEO({ title, description, keywords, ogImage, canonical, kurs, fa
         },
         "offers": {
           "@type": "Offer",
-          "category": "Immobilien Ausbildung",
+          "category": "Immobilien Weiterbildung",
           "priceCurrency": "EUR",
           "price": "0",
           "availability": "https://schema.org/InStock",
@@ -183,17 +183,17 @@ export function SEO({ title, description, keywords, ogImage, canonical, kurs, fa
 export const PAGE_SEO = {
   home: {
     title: "Startseite",
-    description: "Komplette Immobilien-Ausbildung mit 5 Modulen: Makler §34c, WEG-Verwalter, Mietverwalter, Gutachter, §34i. 240 Tage, KI-Tutor, Videos, Quizze.",
+    description: "Immobilien-Weiterbildung mit 5 Modulen: Makler §34c, WEG-Verwalter, Mietverwalter, Gutachter, §34i. 240 Tage, KI-Tutor, Videos, Quizze.",
     keywords: "Immobilienmakler, §34c, WEG, Mietverwalter, §34i, Weiterbildung",
   },
   modul1: {
     title: "Modul 1: Einführung & Grundlagen",
-    description: "Grundlagen der Immobilienwirtschaft: Akteure, Märkte, ethische Grundsätze. 20 Tage intensive Ausbildung mit Quizzen und KI-Tutor.",
+    description: "Grundlagen der Immobilienwirtschaft: Akteure, Märkte, ethische Grundsätze. 20 Tage strukturierte Weiterbildung mit Quizzen und KI-Tutor.",
     keywords: "Immobilienwirtschaft Grundlagen, Immobilienmärkte, Makler Einführung",
   },
   modul2: {
     title: "Modul 2: Maklerrecht & §34c GewO",
-    description: "Maklerrecht, §34c GewO, Maklerverordnung, Wettbewerbsrecht. 60 Tage Ausbildung mit Praxisbeispielen, Gerichtsurteilen und Wissenschecks.",
+    description: "Maklerrecht, §34c GewO, Maklerverordnung, Wettbewerbsrecht. 60 Tage Weiterbildung mit Praxisbeispielen, Gerichtsurteilen und Wissenschecks.",
     keywords: "§34c GewO, Maklerrecht, Maklerverordnung, Makler Weiterbildung, Wettbewerbsrecht",
   },
   modul3: {
