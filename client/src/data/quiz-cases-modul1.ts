@@ -13,18 +13,18 @@ export const quizCasesModule1: QuizCase[] = [
       "§34c Abs. 2 GewO - Versagungsgründe",
       "§15 GewO - Gewerbeuntersagung"
     ],
-    correctAnswer: "Nein, Herr Müller darf noch nicht als Makler tätig werden.\n\n**Begründung:**\n\n1. **Erlaubnispflicht (§34c Abs. 1 GewO):** Wer gewerbsmäßig als Immobilienmakler tätig sein will, bedarf der Erlaubnis der zuständigen Behörde. Die bloße Gewerbeanmeldung reicht nicht aus.\n\n2. **Voraussetzungen für die Erlaubnis:**\n   - **Zuverlässigkeit:** Keine Vorstrafen, keine Insolvenz, keine Gewerbeuntersagung\n   - **Geordnete Vermögensverhältnisse:** Keine Schulden, die die Tätigkeit gefährden\n   - **Sachkunde:** Nachweis durch IHK-Prüfung oder gleichwertige Qualifikation\n   - **Berufshaftpflichtversicherung:** Mindestdeckung 1 Mio. € für Personenschäden, 250.000 € für Sachschäden\n\n3. **Rechtsfolge bei Verstoß:** Tätigkeit ohne Erlaubnis ist eine Ordnungswidrigkeit (§144 Abs. 1 Nr. 1 GewO) und kann mit Bußgeld bis zu 50.000 € geahndet werden. Zudem sind Maklerverträge ohne Erlaubnis nichtig.\n\n**Fazit:** Herr Müller muss erst die Erlaubnis nach §34c GewO beantragen und erhalten, bevor er als Makler tätig werden darf.",
+    correctAnswer: "Nein, Herr Müller darf noch nicht als Makler tätig werden.\n\n**Begründung:**\n\n1. **Erlaubnispflicht (§34c Abs. 1 GewO):** Wer gewerbsmäßig als Immobilienmakler tätig sein will, bedarf der behördlichen Erlaubnis. Die bloße Gewerbeanmeldung reicht nicht aus.\n\n2. **Kernvoraussetzungen für die Erlaubnis als Immobilienmakler:**\n   - **Persönliche Zuverlässigkeit:** z. B. keine schwerwiegenden Vorstrafen, keine Gewerbeuntersagung\n   - **Geordnete Vermögensverhältnisse:** keine Vermögensverhältnisse, die die Zuverlässigkeit in Frage stellen\n\n3. **Wichtige Abgrenzung:** Für die Immobilienmakler-Erlaubnis nach §34c GewO ist **kein** IHK-Sachkundenachweis erforderlich (anders als bei §34i-Darlehensvermittlern). Eine Berufshaftpflichtversicherung ist für die Makler-Erlaubnis nach §34c GewO ebenfalls **keine** pauschale Erlaubnisvoraussetzung.\n\n4. **Rechtsfolge bei Verstoß:** Tätigkeit ohne Erlaubnis ist eine Ordnungswidrigkeit (§144 Abs. 1 Nr. 1 GewO) und kann mit Bußgeld bis zu 50.000 € geahndet werden. Zudem sind Maklerverträge ohne Erlaubnis nichtig.\n\n**Fazit:** Herr Müller muss erst die Erlaubnis nach §34c GewO beantragen und erhalten, bevor er als Makler tätig werden darf.",
     commonMistakes: [
       "Verwechslung von Gewerbeanmeldung und Erlaubnis nach §34c GewO",
       "Annahme, dass man sofort nach Gewerbeanmeldung tätig werden darf",
-      "Übersehen der Sachkundeanforderung",
-      "Fehlende Kenntnis der Berufshaftpflichtversicherung als Voraussetzung"
+      "Übertragung der §34i-Sachkundeanforderung fälschlich auf §34c-Makler",
+      "Annahme einer pauschalen Berufshaftpflichtversicherung als Makler-Erlaubnisvoraussetzung"
     ],
     learningPoints: [
       "Erlaubnis nach §34c GewO ist zwingend erforderlich für Immobilienmakler",
       "Gewerbeanmeldung allein reicht nicht aus",
-      "Vier Hauptvoraussetzungen: Zuverlässigkeit, Vermögen, Sachkunde, Versicherung",
-      "Tätigkeit ohne Erlaubnis ist Ordnungswidrigkeit mit Bußgeld bis 50.000 €"
+      "Kernvoraussetzungen: persönliche Zuverlässigkeit und geordnete Vermögensverhältnisse",
+      "§34c-Makler: kein IHK-Sachkundenachweis — das gilt anders bei §34i"
     ]
   },
   {

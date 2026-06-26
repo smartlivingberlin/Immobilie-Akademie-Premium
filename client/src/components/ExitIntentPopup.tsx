@@ -33,7 +33,7 @@ export default function ExitIntentPopup() {
             ✓ Testzugang für alle 5 Module (auf Anfrage)
           </p>
           <p className="text-blue-600 text-sm">✓ KI-Tutor 24/7 nutzbar</p>
-          <p className="text-blue-600 text-sm">✓ {MARKETING_LEARNING_TASKS_LABEL} IHK-Prüfungsfragen</p>
+          <p className="text-blue-600 text-sm">✓ {MARKETING_LEARNING_TASKS_LABEL} prüfungsnahe Lernfragen</p>
         </div>
 
         <div className="space-y-3">

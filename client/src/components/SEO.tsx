@@ -117,13 +117,6 @@ export function SEO({ title, description, keywords, ogImage, canonical, kurs, fa
           "@type": "PostalAddress",
           "addressCountry": "DE",
         },
-        "offers": {
-          "@type": "Offer",
-          "category": "Immobilien Weiterbildung",
-          "priceCurrency": "EUR",
-          "price": "0",
-          "availability": "https://schema.org/InStock",
-        },
       },
     ];
 
