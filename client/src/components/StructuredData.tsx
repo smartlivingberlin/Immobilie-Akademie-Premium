@@ -70,7 +70,7 @@ export function StructuredData() {
     const courseSchema = {
       "@context": "https://schema.org",
       "@type": "Course",
-      "name": "Immobilien-Komplettausbildung: Makler, Verwalter, Darlehensvermittler",
+      "name": "Immobilien-Weiterbildung: Makler, Verwalter, Darlehensvermittler",
       "description": "Online-Lernportal für Immobilienprofis mit 240 Lerntagen. Praxiswissen zu §34c GewO, §34i GewO, WEG-Verwaltung und Immobilienbewertung.",
       "provider": {
         "@type": "EducationalOrganization",
@@ -131,10 +131,10 @@ export function StructuredData() {
         },
         {
           "@type": "Question",
-          "name": "Wie lange dauert die Ausbildung?",
+          "name": "Wie lange dauert die Bearbeitung der Lerninhalte?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Die Komplettausbildung umfasst 240 Lerntage mit Lernaufgaben. Je nach individuellem Lerntempo kann die Ausbildung in 3-12 Monaten absolviert werden.",
+            "text": "Das Lernportal umfasst 240 Lerntage mit Lernaufgaben. Je nach individuellem Lerntempo können die Lerninhalte in 3-12 Monaten bearbeitet werden.",
           },
         },
         {

@@ -138,7 +138,7 @@ export default function Syllabus() {
       borderColor: "border-indigo-200",
       duration: "80 Tage",
       units: "640 UE",
-      description: "Umfassende Ausbildung zum WEG- und Mietverwalter mit technischem und kaufmännischem Schwerpunkt.",
+      description: "Umfassende Weiterbildung und Prüfungsvorbereitung für WEG- und Mietverwaltung mit technischem und kaufmännischem Schwerpunkt.",
       topics: [
         "Einführung in die WEG-Verwaltung",
         "Die Teilungserklärung",
@@ -323,7 +323,7 @@ export default function Syllabus() {
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-slate-900">Gesamter Lehrplan</h1>
             <p className="text-slate-600 mt-2 max-w-2xl">
-              Der vollständige Ausbildungsplan über alle 5 Module und 240 Tage. 
+              Der vollständige Lernplan über alle 5 Module und 240 Tage.
               Insgesamt {STRUCTURED_LEARNING_DAYS} Lerntage mit {MARKETING_LEARNING_TASKS_LABEL} Lernaufgaben für Ihre Karriere.
             </p>
           </div>
