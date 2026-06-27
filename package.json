@@ -145,7 +145,6 @@
     "axe-playwright": "^2.2.2",
     "drizzle-kit": "^0.31.8",
     "esbuild": "^0.28.1",
-    "pnpm": "^10.18.1",
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",
     "rollup-plugin-visualizer": "^7.0.1",
@@ -159,7 +158,7 @@
     "vite-plugin-manus-runtime": "^0.0.57",
     "vitest": "^4.1.8"
   },
-  "packageManager": "pnpm@10.4.1+sha512.c753b6c3ad7afa13af388fa6d808035a008e30ea9993f58c6663e2bc5ff21679aa834db094987129aa4d488b86df57f7b634981b2f827cdcacc698cc0cfb88af",
+  "packageManager": "pnpm@10.34.4+sha512.8768be55200ae3f2226b6527fcca2687e14bc4e5f12d7721a0f25da3df47915177058648db4177baf348120fa0ba2752d8d8d93f6beaf1fe64ae18da8de961af",
   "pnpm": {
     "patchedDependencies": {
       "wouter@3.7.1": "patches/wouter@3.7.1.patch"
