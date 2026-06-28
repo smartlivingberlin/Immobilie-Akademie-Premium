@@ -134,9 +134,9 @@ async function sendAlert(failedChecks: string[], checks: Record<string, any>): P
       </thead>
       <tbody>${rows}</tbody>
     </table>
-    <a href="${BASE_URL}/owner-dashboard?key=${process.env.OWNER_MAGIC_CODE || ''}"
+    <a href="${BASE_URL}/owner"
        style="display:inline-block;background:#0f1f3d;color:#f5c842;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold">
-      Owner-Dashboard öffnen →
+      Owner-Login öffnen →
     </a>
   </div>
 </div>

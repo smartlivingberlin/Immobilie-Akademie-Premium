@@ -13,7 +13,7 @@ export function AzavPdfExport({ ownerKey }: AzavPdfProps) {
     setLoading(true);
     try {
       // Daten vom Server holen
-      const params = new URLSearchParams({ key: ownerKey });
+      const params = new URLSearchParams();
       if (startDate) params.append("startDate", startDate);
       if (endDate) params.append("endDate", endDate);
 
