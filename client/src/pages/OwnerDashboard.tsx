@@ -83,29 +83,29 @@ export default function OwnerDashboard() {
     if (urlKey) sessionStorage.setItem("ownerKey", urlKey);
     const ownerKey = urlKey || sessionStorage.getItem("ownerKey") || "";
     // Live-Monitoring alle 30s aktualisieren
-    const fetchLive = () => fetch(`/api/owner/live?key=${ownerKey}`, {
+    const fetchLive = () => fetch("/api/owner/live", {
       credentials: "include", headers: { "x-owner-key": ownerKey }
     }).then(r => r.json()).then(setLive).catch(() => {});
     fetchLive();
     const liveInterval = setInterval(fetchLive, 30000);
     setTimeout(() => clearInterval(liveInterval), 1800000); // 30min max
     // Aktivitaets-Log laden
-    fetch(`/api/owner/settings?key=${ownerKey}`, { credentials:"include", headers:{"x-owner-key":sessionStorage.getItem("ownerKey")||""} })
+    fetch("/api/owner/settings", { credentials:"include", headers:{"x-owner-key":sessionStorage.getItem("ownerKey")||""} })
       .then(r => r.json()).then(d => { if(d.settings) setSettings(d.settings); }).catch(() => {});
 
-    fetch(`/api/owner/activity?key=${ownerKey}`, { credentials:"include", headers:{"x-owner-key":sessionStorage.getItem("ownerKey")||""} })
+    fetch("/api/owner/activity", { credentials:"include", headers:{"x-owner-key":sessionStorage.getItem("ownerKey")||""} })
       .then(r => r.json()).then(setActivity).catch(()=>{});
-    fetch(`/api/owner/audit-events?key=${ownerKey}&limit=100&sinceHours=168`, {
+    fetch("/api/owner/audit-events?limit=100&sinceHours=168", {
       credentials: "include", headers: { "x-owner-key": ownerKey },
     }).then(r => r.json()).then(setAuditEvents).catch(() => {});
     // Stats laden
-    fetch(`/api/owner/stats?key=${ownerKey}`, { credentials:"include", headers:{"x-owner-key":sessionStorage.getItem("ownerKey")||""} })
+    fetch("/api/owner/stats", { credentials:"include", headers:{"x-owner-key":sessionStorage.getItem("ownerKey")||""} })
       .then(r => r.json()).then(setStatsData).catch(()=>{});
-    fetch(`/api/owner/dashboard?key=${ownerKey}`, { credentials: "include", headers: { "x-owner-key": ownerKey } })
+    fetch("/api/owner/dashboard", { credentials: "include", headers: { "x-owner-key": ownerKey } })
       .then(r => r.json())
       .then(d => { setStats(d); setLoading(false); })
       .catch(() => setLoading(false));
-    fetch(`/api/owner/revenue?key=${ownerKey}`, { credentials: "include", headers: { "x-owner-key": ownerKey } })
+    fetch("/api/owner/revenue", { credentials: "include", headers: { "x-owner-key": ownerKey } })
       .then(r => r.json())
       .then(setRevenue)
       .catch(() => {});
@@ -416,7 +416,7 @@ export default function OwnerDashboard() {
               onClick={()=>{
                 setAzavLoading(true);
                 const ownerKey = sessionStorage.getItem("ownerKey")||"";
-                fetch(`/api/owner/azav-report?key=${ownerKey}`,{credentials:"include",headers:{"x-owner-key":sessionStorage.getItem("ownerKey")||""}})
+                fetch("/api/owner/azav-report",{credentials:"include",headers:{"x-owner-key":sessionStorage.getItem("ownerKey")||""}})
                   .then(r=>r.json()).then(d=>{setAzavReport(d);setAzavLoading(false);}).catch(()=>setAzavLoading(false));
               }}
               style={{background:"#2563eb",color:"white",border:"none",borderRadius:8,padding:"10px 20px",fontSize: fz(13),fontWeight:700,cursor:"pointer"}}>
@@ -514,7 +514,7 @@ export default function OwnerDashboard() {
               type="button"
               onClick={() => {
                 const ownerKey = sessionStorage.getItem("ownerKey") || "";
-                const params = new URLSearchParams({ key: ownerKey, limit: "100", sinceHours: "168" });
+                const params = new URLSearchParams({ limit: "100", sinceHours: "168" });
                 if (auditFilter) params.set("email", auditFilter);
                 if (auditTypeFilter) params.set("eventType", auditTypeFilter);
                 fetch(`/api/owner/audit-events?${params}`, { credentials: "include", headers: { "x-owner-key": ownerKey } })

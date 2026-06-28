@@ -20,4 +20,10 @@ describe("HealthWatcher", () => {
     expect(source).not.toContain("quiz_data?.ok");
     expect(source).not.toContain("module4_hints");
   });
+  it("does not expose owner magic code in alert email links", () => {
+    expect(source).not.toContain("owner-dashboard?key");
+    expect(source).not.toContain("OWNER_MAGIC_CODE || ''");
+    expect(source).toContain('href="${BASE_URL}/owner"');
+  });
+
 });
