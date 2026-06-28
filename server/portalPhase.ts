@@ -180,10 +180,9 @@ let _currentPhase: Phase = "A";
 export async function getCurrentPhase(db?: any): Promise<Phase> {
   if (!db) return _currentPhase;
   try {
-    const result = await db.execute(
+    const [rows] = await db.$client.query(
       `SELECT value FROM portal_settings WHERE key_name = 'portal_phase' LIMIT 1`
-    );
-    const rows = result[0] as any[];
+    ) as any;
     if (rows && rows.length > 0) {
       const phase = rows[0].value as Phase;
       if (["A","B","C","D"].includes(phase)) {
@@ -201,7 +200,7 @@ export async function setCurrentPhase(phase: Phase, db?: any): Promise<void> {
   _currentPhase = phase;
   if (!db) return;
   try {
-    await db.execute(`
+    await db.$client.query(`
       CREATE TABLE IF NOT EXISTS portal_settings (
         id INT AUTO_INCREMENT PRIMARY KEY,
         key_name VARCHAR(100) UNIQUE NOT NULL,
@@ -209,7 +208,7 @@ export async function setCurrentPhase(phase: Phase, db?: any): Promise<void> {
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
       )
     `);
-    await db.execute(`
+    await db.$client.query(`
       INSERT INTO portal_settings (key_name, value)
       VALUES ('portal_phase', ?)
       ON DUPLICATE KEY UPDATE value = ?
