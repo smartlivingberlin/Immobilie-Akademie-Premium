@@ -3,7 +3,6 @@ import { requireAdmin } from "./authMiddleware";
 import { logger } from "./_core/logger";
 import crypto from "crypto";
 import { getDb } from "./db";
-import { sql } from "drizzle-orm";
 import { Resend } from "resend";
 
 function createResend() {
@@ -79,7 +78,7 @@ export function registerTrialRoutes(app: Express) {
   // Hilfsfunktion: trialExpiresAt in users-Tabelle setzen
 async function setTrialExpiry(db: any, email: string, expiresAt: Date) {
   try {
-    await db.execute(
+    await db.$client.query(
       `UPDATE users SET trialExpiresAt = ? WHERE email = ?`,
       [expiresAt, email]
     );
@@ -101,10 +100,10 @@ async function setTrialExpiry(db: any, email: string, expiresAt: Date) {
       const db = await getDb();
 
       // Prüfe ob schon ein Eintrag existiert
-      const existing = await db.execute(
-        sql`SELECT id, code, expiresAt, extensionCount FROM trial_leads WHERE email = ${emailClean} LIMIT 1`
+      const [rows] = await db.$client.query(
+        `SELECT id, code, expiresAt, extensionCount FROM trial_leads WHERE email = ? LIMIT 1`,
+        [emailClean]
       ) as any;
-      const rows = existing[0] as any[];
 
       if (rows?.length > 0) {
         const row = rows[0];
@@ -117,12 +116,14 @@ async function setTrialExpiry(db: any, email: string, expiresAt: Date) {
         }
         if (stillActive) {
           const newExpiry = new Date(new Date(row.expiresAt).getTime() + 24 * 60 * 60 * 1000);
-          await db.execute(
-            sql`UPDATE trial_leads SET expiresAt = ${newExpiry}, extended = 1, extensionCount = extensionCount + 1 WHERE email = ${emailClean}`
-        );
+          await db.$client.query(
+            `UPDATE trial_leads SET expiresAt = ?, extended = 1, extensionCount = extensionCount + 1 WHERE email = ?`,
+            [newExpiry, emailClean]
+          );
         // presentation_codes auch verlängern
-        await db.execute(
-          sql`UPDATE presentation_codes SET expiresAt = ${newExpiry}, usageCount = 0 WHERE code = ${row.code}`
+        await db.$client.query(
+          `UPDATE presentation_codes SET expiresAt = ?, usageCount = 0 WHERE code = ?`,
+          [newExpiry, row.code]
           );
           await sendTrialEmail(nameClean, emailClean, row.code, 48).catch((e) => logger.error("[Trial] E-Mail Fehler (Verlängerung)", e));
           return res.json({ ok: true, extended: true, message: "Ihr Testzugang wurde um 24 Stunden verlängert. Bitte prüfen Sie Ihre E-Mails." });
@@ -134,23 +135,27 @@ async function setTrialExpiry(db: any, email: string, expiresAt: Date) {
       const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000);
 
       if (rows?.length > 0) {
-        await db.execute(
-          sql`UPDATE trial_leads SET name = ${nameClean}, code = ${code}, moduleInterest = ${moduleInterest || null}, expiresAt = ${expiresAt}, usedAt = NULL, extended = 0, extensionCount = 0 WHERE email = ${emailClean}`
+        await db.$client.query(
+          `UPDATE trial_leads SET name = ?, code = ?, moduleInterest = ?, expiresAt = ?, usedAt = NULL, extended = 0, extensionCount = 0 WHERE email = ?`,
+          [nameClean, code, moduleInterest || null, expiresAt, emailClean]
         );
       } else {
-        await db.execute(
-          sql`INSERT INTO trial_leads (name, email, code, moduleInterest, expiresAt) VALUES (${nameClean}, ${emailClean}, ${code}, ${moduleInterest || null}, ${expiresAt})`
+        await db.$client.query(
+          `INSERT INTO trial_leads (name, email, code, moduleInterest, expiresAt) VALUES (?, ?, ?, ?, ?)`,
+          [nameClean, emailClean, code, moduleInterest || null, expiresAt]
         );
       }
 
       // In presentation_codes eintragen — das ist was redeemPresentationCode() liest
       try {
-        await db.execute(
-          sql`DELETE FROM presentation_codes WHERE code = ${code}`
+        await db.$client.query(
+          `DELETE FROM presentation_codes WHERE code = ?`,
+          [code]
         );
-        await db.execute(
-          sql`INSERT INTO presentation_codes (code, label, enabledModules, expiresAt, isActive, maxUsage, usageCount)
-              VALUES (${code}, ${"Trial " + emailClean}, ${"1,2,3,4,5"}, ${expiresAt}, ${1}, ${3}, ${0})`
+        await db.$client.query(
+          `INSERT INTO presentation_codes (code, label, enabledModules, expiresAt, isActive, maxUsage, usageCount)
+              VALUES (?, ?, ?, ?, ?, ?, ?)`,
+          [code, "Trial " + emailClean, "1,2,3,4,5", expiresAt, 1, 3, 0]
         );
         logger.info("[Trial] presentation_codes OK", { code });
       } catch (e: any) {
@@ -170,10 +175,10 @@ async function setTrialExpiry(db: any, email: string, expiresAt: Date) {
   app.get("/api/trial/validate/:code", async (req: Request, res: Response) => {
     try {
       const db = await getDb();
-      const result = await db.execute(
-        sql`SELECT id, name, email, expiresAt FROM trial_leads WHERE code = ${req.params.code} LIMIT 1`
+      const [rows] = await db.$client.query(
+        `SELECT id, name, email, expiresAt FROM trial_leads WHERE code = ? LIMIT 1`,
+        [req.params.code]
       ) as any;
-      const rows = result[0] as any[];
       if (!rows?.length) return res.status(404).json({ valid: false });
       const valid = new Date(rows[0].expiresAt) > new Date();
       return res.json({ valid, expiresAt: rows[0].expiresAt, name: rows[0].name });
@@ -186,10 +191,9 @@ async function setTrialExpiry(db: any, email: string, expiresAt: Date) {
   app.get("/api/admin/trial-leads", requireAdmin, async (req: Request, res: Response) => {
     try {
       const db = await getDb();
-      const result = await db.execute(
-        sql`SELECT id, name, email, moduleInterest, code, expiresAt, usedAt, extended, extensionCount, createdAt FROM trial_leads ORDER BY createdAt DESC LIMIT 200`
+      const [leads] = await db.$client.query(
+        `SELECT id, name, email, moduleInterest, code, expiresAt, usedAt, extended, extensionCount, createdAt FROM trial_leads ORDER BY createdAt DESC LIMIT 200`
       ) as any;
-      const leads = result[0] as any[];
       return res.json({ leads: leads || [], total: leads?.length || 0 });
     } catch (err) {
       return res.status(500).json({ error: "DB-Fehler" });
