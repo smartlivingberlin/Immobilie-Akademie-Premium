@@ -1,17 +1,24 @@
 import { test, expect, Page, BrowserContext } from '@playwright/test';
 
 const BASE = 'https://immobilien-akademie-smart.de';
+const TEST_ADMIN_EMAIL = process.env.TEST_ADMIN_EMAIL || "";
+const TEST_ADMIN_PASSWORD = process.env.TEST_ADMIN_PASSWORD || "";
 
 // Gemeinsame Login-Funktion mit Cookie-Persistenz
 async function loginAndGetContext(page: Page): Promise<boolean> {
+  if (!TEST_ADMIN_EMAIL || !TEST_ADMIN_PASSWORD) {
+    console.log("Login: skipped because TEST_ADMIN_EMAIL/TEST_ADMIN_PASSWORD are not set");
+    return false;
+  }
+
   await page.goto(`${BASE}/login`, { waitUntil: 'networkidle', timeout: 20000 });
   await page.waitForTimeout(2000);
   
   const emailInput = page.locator('input').first();
   const pwInput = page.locator('input[type="password"]');
   
-  await emailInput.fill('admin@immobilie.de');
-  await pwInput.fill('84%D#Lq2#0n1rUmMBqOT');
+  await emailInput.fill(TEST_ADMIN_EMAIL);
+  await pwInput.fill(TEST_ADMIN_PASSWORD);
   await page.keyboard.press('Enter');
   await page.waitForTimeout(4000);
   
