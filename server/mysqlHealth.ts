@@ -13,14 +13,16 @@ export async function getMysqlHealth(): Promise<MysqlHealthResult> {
   try {
     const { getDb } = await import("./db");
     const db = await getDb();
-    const [[row]] = (await db.execute("SELECT COUNT(*) as cnt FROM users")) as any;
+    const [[row]] = (await db.$client.query(
+      "SELECT COUNT(*) as cnt FROM users"
+    )) as any;
     let migrations: MysqlHealthResult["migrations"];
     try {
       const total = listMigrationFiles().length;
-      const [[appliedRow]] = (await db.execute(
+      const [[appliedRow]] = (await db.$client.query(
         "SELECT COUNT(*) as cnt FROM schema_migrations",
       )) as any;
-      const [[lastRow]] = (await db.execute(
+      const [[lastRow]] = (await db.$client.query(
         "SELECT filename FROM schema_migrations ORDER BY filename DESC LIMIT 1",
       )) as any;
       const applied = Number(appliedRow?.cnt ?? 0);

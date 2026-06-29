@@ -314,10 +314,10 @@ app.use(express.json({ limit: "1mb" }));
   app.get("/api/stats/public", aiLimiter, async (_req, res) => {
     try {
       const db = await (await import("../db")).getDb();
-      const [[users]] = await db.execute(
+      const [[users]] = await db.$client.query(
         "SELECT COUNT(*) as total FROM users"
       ) as any;
-      const [[active]] = await db.execute(
+      const [[active]] = await db.$client.query(
         "SELECT COUNT(*) as cnt FROM users WHERE lastSignedIn > DATE_SUB(NOW(), INTERVAL 1 HOUR)"
       ) as any;
       res.json({
@@ -410,15 +410,17 @@ app.get("/api/stats/dashboard", requireAuth, async (req: any, res: any) => {
   try {
     const db = await (await import("../db")).getDb();
     const userId = req.currentUser.id;
-    const { sql: sqlFn } = await import("drizzle-orm");
-    const [[logs]] = await db.execute(
-      sqlFn`SELECT COUNT(*) as total, SUM(completed) as completed, SUM(durationSeconds) as totalSeconds FROM learning_logs WHERE userId = ${userId}`
+    const [[logs]] = await db.$client.query(
+      "SELECT COUNT(*) as total, SUM(completed) as completed, SUM(durationSeconds) as totalSeconds FROM learning_logs WHERE userId = ?",
+      [userId]
     ) as any;
-    const [[exams]] = await db.execute(
-      sqlFn`SELECT COUNT(*) as total, AVG(score) as avgScore FROM exam_sessions WHERE userId = ${userId} AND completedAt IS NOT NULL`
+    const [[exams]] = await db.$client.query(
+      "SELECT COUNT(*) as total, AVG(score) as avgScore FROM exam_sessions WHERE userId = ? AND completedAt IS NOT NULL",
+      [userId]
     ) as any;
-    const [[certs]] = await db.execute(
-      sqlFn`SELECT COUNT(*) as total FROM certificates WHERE userId = ${userId}`
+    const [[certs]] = await db.$client.query(
+      "SELECT COUNT(*) as total FROM certificates WHERE userId = ?",
+      [userId]
     ) as any;
     res.json({
       daysCompleted: Number(logs?.completed || 0),

@@ -1,4 +1,3 @@
-import { sql } from "drizzle-orm";
 import { z } from "zod";
 import type { Express, NextFunction, Request, Response } from "express";
 import { generateOTP, verifyOTP, sendOTPEmail } from "./twoFactor";
@@ -908,7 +907,7 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
       const db = await getDb();
       let rows: any[] = [];
       try {
-        const [r] = await db.execute("SELECT setting_key, setting_value, setting_type, description FROM portal_settings ORDER BY setting_key") as any;
+        const [r] = await db.$client.query("SELECT setting_key, setting_value, setting_type, description FROM portal_settings ORDER BY setting_key") as any;
         rows = r;
       } catch { return res.json({ ok: true, settings: {} }); }
       const settings: Record<string, string> = {};
@@ -943,8 +942,9 @@ input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;fo
       if (!settingKey || value === undefined) return res.status(400).json({ error: "key und value erforderlich" });
       const { getDb } = await import("./db");
       const db = await getDb();
-      await db.execute(
-        sql`INSERT INTO portal_settings (setting_key, setting_value) VALUES (${settingKey}, ${value}) ON DUPLICATE KEY UPDATE setting_value = ${value}`
+      await db.$client.query(
+        "INSERT INTO portal_settings (setting_key, setting_value) VALUES (?, ?) ON DUPLICATE KEY UPDATE setting_value = ?",
+        [settingKey, value, value]
       );
       res.json({ ok: true, key: settingKey, value });
     } catch (e: any) {
