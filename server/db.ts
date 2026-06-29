@@ -1297,8 +1297,8 @@ export async function redeemPresentationCode(code: string): Promise<{success: bo
 
 export async function listPresentationCodes(): Promise<any[]> {
   const db = await getDb();
-  const rows = await db.execute(`SELECT * FROM presentation_codes ORDER BY createdAt DESC`) as any;
-  return Array.isArray(rows) ? rows : (rows as any).rows ?? [];
+  const [rows] = await db.$client.query("SELECT * FROM presentation_codes ORDER BY createdAt DESC") as any;
+  return Array.isArray(rows) ? rows : [];
 }
 
 export async function createPresentationCode(code: string, label: string, modules: string, expiresAt: Date | null, maxUsage: number | null): Promise<void> {
