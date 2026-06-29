@@ -1,6 +1,5 @@
 import Stripe from "stripe";
 import { Router, type Request, type Response } from "express";
-import { sql } from "drizzle-orm";
 import { Resend } from "resend";
 
 function createResend() {
@@ -424,12 +423,13 @@ export async function stripeWebhookHandler(req: any, res: any) {
     try {
       const { getDb } = await import("./db");
       const db = await getDb();
-      const rows = await db.execute(
-        sql`SELECT id, name, enabledModules FROM users WHERE email = ${email}`
+      const [userRows] = await db.$client.query(
+        "SELECT id, name, enabledModules FROM users WHERE email = ?",
+        [email]
       ) as any;
-      const userRows = (rows as any).rows ?? (rows as any[]);
-      if (userRows.length > 0) {
-        const user = userRows[0];
+      const users = userRows as any[];
+      if (users.length > 0) {
+        const user = users[0];
         const current = (user.enabledModules || "").split(",").map((s: string) => s.trim()).filter(Boolean);
         const newMods = modules.split(",").map((s: string) => s.trim()).filter(Boolean);
         const merged = [...new Set([...current, ...newMods])].join(",");
