@@ -801,6 +801,12 @@ Antworte im folgenden JSON-Format:
         const userRecord = (await db.select().from(s.users).where(eq(s.users.id, uid)).limit(1))[0];
         const openId = userRecord?.openId ?? '';
         const userEmail = userRecord?.email ?? '';
+        const { snapshotUserDeletionCounts, recordDeletionAudit } = await import("./deletionAudit");
+        const tablesAffected = await snapshotUserDeletionCounts(db, {
+          userId: uid,
+          email: userEmail,
+          openId,
+        });
         await db.delete(s.openAnswers).where(eq(s.openAnswers.userId, uid)).catch(() => {});
         await db.delete(s.spacedRepetition).where(eq(s.spacedRepetition.userId, uid)).catch(() => {});
         await db.delete(s.videoProgress).where(eq(s.videoProgress.userId, uid)).catch(() => {});
@@ -829,6 +835,12 @@ Antworte im folgenden JSON-Format:
         await db.delete(s.learningLogs).where(eq(s.learningLogs.userId, uid)).catch(() => {});
         await db.delete(s.authCredentials).where(eq(s.authCredentials.openId, openId)).catch(() => {});
         await db.delete(s.users).where(eq(s.users.id, uid));
+        await recordDeletionAudit(db, {
+          userId: uid,
+          initiatedBy: "admin",
+          triggeredVia: "trpc.adminUsers.deleteUser",
+          tablesAffected,
+        }).catch(() => {});
         return { ok: true };
       }),
   }),
@@ -842,6 +854,12 @@ Antworte im folgenden JSON-Format:
       const userId = ctx.user.id;
       const openId = ctx.user.openId;
       const userEmail = ctx.user.email ?? "";
+      const { snapshotUserDeletionCounts, recordDeletionAudit } = await import("./deletionAudit");
+      const tablesAffected = await snapshotUserDeletionCounts(db, {
+        userId,
+        email: userEmail,
+        openId,
+      });
 
       // 1. Chat-Messages (Kind von chat_conversations)
       const convs = await db.select({ id: schema.chatConversations.id })
@@ -911,6 +929,12 @@ Antworte im folgenden JSON-Format:
       await runPersonalDataCleanup(db, { userId, email: userEmail, openId });
       await db.delete(schema.users)
         .where(eq(schema.users.id, userId));
+      await recordDeletionAudit(db, {
+        userId,
+        initiatedBy: "user",
+        triggeredVia: "trpc.account.deleteMyAccount",
+        tablesAffected,
+      }).catch(() => {});
 
       return { ok: true, deleted: "Alle personenbezogenen Daten gemäß Art. 17 DSGVO gelöscht." };
     }),

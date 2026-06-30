@@ -48,4 +48,11 @@ describe("GDPR delete coverage", () => {
     const calls = routersSource.match(/runPersonalDataCleanup\(db,/g) ?? [];
     expect(calls).toHaveLength(2);
   });
+
+  it("records deletion audit log in admin and self-service delete flows", () => {
+    expect(routersSource).toContain("recordDeletionAudit");
+    expect(routersSource).toContain("snapshotUserDeletionCounts");
+    const auditCalls = routersSource.match(/recordDeletionAudit\(db,/g) ?? [];
+    expect(auditCalls).toHaveLength(2);
+  });
 });
