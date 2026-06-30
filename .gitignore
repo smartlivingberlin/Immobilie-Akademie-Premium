@@ -203,3 +203,7 @@ restore_inbox/
 !docs/handover/*.md
 !tests/e2e/README-AUTH.md
 !docs/AUTOMATION_CRON_RISK_MATRIX.md
+!docs/TEST_HARNESS_AUTH_STATE.md
+# Local Playwright auth state / browser session files (secrets/cookies)
+playwright/.auth/
+tests/playwright/.auth/
