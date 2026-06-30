@@ -465,7 +465,7 @@ export default function OwnerDashboard() {
                     </div>
                   ))}
                   <div style={{marginTop:8,padding:"6px 10px",background:b.azavKonformitaet?.nachweisVorhanden?"#065f46":"#7f1d1d",borderRadius:6,fontSize: fz(11),color:b.azavKonformitaet?.nachweisVorhanden?"#10b981":"#ef4444"}}>
-                    {b.azavKonformitaet?.nachweisVorhanden?"✅ AZAV-konformer Nachweis vorhanden":"⚠️ Kein Nachweis — Nutzer hat noch nicht gelernt"}
+                    {b.azavKonformitaet?.nachweisVorhanden?"✅ Interner Lernzeitnachweis vorhanden":"⚠️ Kein Nachweis — Nutzer hat noch nicht gelernt"}
                     · Zeitraum: {b.azavKonformitaet?.zeitraumVon} bis {b.azavKonformitaet?.zeitraumBis}
                   </div>
                 </div>

@@ -162,11 +162,11 @@ export default function Bildungskonzept() {
             <li>Prüfungssimulation: 50 Fragen, 90 Minuten, Bestehensgrenze 70%</li>
             <li>Prüfungsmodus: Schwachstellenanalyse und Wissenslücken-Identifikation</li>
             <li>Zertifikat nach Modul-Abschluss (ab 80% Quiz-Score)</li>
-            <li>Lernfortschritts-Tracking in Datenbank (AZAV-konformer Aktivitäts-Heartbeat)</li>
+            <li>Lernfortschritts-Tracking in Datenbank (interner Aktivitätsnachweis)</li>
             <li>Fragerecht jederzeit via KI-Tutor (synchron: Live-Sessions, asynchron: KI)</li>
           </ul>
           <div className="mt-3 p-3 bg-amber-50 border border-amber-100 rounded-lg text-xs text-amber-700">
-            <strong>ZFU-Hinweis:</strong> Die Lernerfolgskontrolle (Fragerecht via KI-Tutor und Live-Sessions) entspricht den Anforderungen des §1 Abs. 1 FernUSG. ZFU-Zulassungsantrag ist in Vorbereitung.
+            <strong>Rechtlicher Hinweis:</strong> Aktuell ist Phase A als digitales Selbstlernmaterial ohne externe Zertifizierung ausgewiesen. FernUSG-/ZFU-relevante Einstufungen werden vor einer kostenpflichtigen Aktivierung gesondert rechtlich geprüft.
           </div>
         </section>
 
